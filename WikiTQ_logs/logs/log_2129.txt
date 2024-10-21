@@ -1,0 +1,138 @@
+************************************************************************************************************************
+Sample 2129 - Plan 1: Query: how much was the lowest cost of a car with trailer previous to january 1 of 2008?
+Sample 2129 - Plan 1: Groundtruth: ['£5.00']
+Sample 2129 - Plan 1: X-Original table pd: 
+   date_introduced class_1__e_g__motorbike_ class_2__e_g__car_  \
+0  9 december 2003                    £1.00              £2.00   
+1     23 july 2004                    £1.00              £2.00   
+2   16 august 2004                    £2.00              £3.00   
+3     14 june 2005                    £2.50              £3.50   
+4   1 january 2008                    £2.50              £4.50   
+5   1 january 2009                    £2.70              £4.70   
+6     1 march 2010                    £2.70              £5.00   
+7     1 march 2011                    £3.00              £5.30   
+8     1 march 2012                    £3.00              £5.50   
+
+  class_3__e_g__car_with_trailer_ class_4__e_g__van_ class_5__e_g__hgv_  
+0                           £5.00              £5.00             £10.00  
+1                           £5.00              £5.00              £6.00  
+2                           £6.00              £6.00              £6.00  
+3                           £7.00              £7.00              £7.00  
+4                           £8.00              £9.00              £9.00  
+5                           £8.40              £9.40              £9.40  
+6                           £9.00             £10.00             £10.00  
+7                           £9.60             £10.60             £10.60  
+8                          £10.00             £11.00             £11.00  
+Sample 2129 - Plan 1: Caption: none
+Sample 2129 - Plan 1: Original table: [['date_introduced', 'class_1__e_g__motorbike_', 'class_2__e_g__car_', 'class_3__e_g__car_with_trailer_', 'class_4__e_g__van_', 'class_5__e_g__hgv_'], ['9 december 2003', '£1.00', '£2.00', '£5.00', '£5.00', '£10.00'], ['23 july 2004', '£1.00', '£2.00', '£5.00', '£5.00', '£6.00'], ['16 august 2004', '£2.00', '£3.00', '£6.00', '£6.00', '£6.00'], ['14 june 2005', '£2.50', '£3.50', '£7.00', '£7.00', '£7.00'], ['1 january 2008', '£2.50', '£4.50', '£8.00', '£9.00', '£9.00'], ['1 january 2009', '£2.70', '£4.70', '£8.40', '£9.40', '£9.40'], ['1 march 2010', '£2.70', '£5.00', '£9.00', '£10.00', '£10.00'], ['1 march 2011', '£3.00', '£5.30', '£9.60', '£10.60', '£10.60'], ['1 march 2012', '£3.00', '£5.50', '£10.00', '£11.00', '£11.00']]
+########################################################################################################################
+Sample 2129 - Plan 1: Operation 1: Extract the numerical value from the 'class_3__e_g__car_with_trailer_' column then add column 'num_cost' to the existing table.
+Sample 2129 - Plan 1: Selected indices: [[0, 3], [1, 3], [2, 3], [3, 3], [4, 3], [5, 3], [6, 3], [7, 3], [8, 3]]
+Sample 2129 - Plan 1: X-Table after operation df:
+   date_introduced class_1__e_g__motorbike_ class_2__e_g__car_  \
+0  9 december 2003                    £1.00              £2.00   
+1     23 july 2004                    £1.00              £2.00   
+2   16 august 2004                    £2.00              £3.00   
+3     14 june 2005                    £2.50              £3.50   
+4   1 january 2008                    £2.50              £4.50   
+5   1 january 2009                    £2.70              £4.70   
+6     1 march 2010                    £2.70              £5.00   
+7     1 march 2011                    £3.00              £5.30   
+8     1 march 2012                    £3.00              £5.50   
+
+  class_3__e_g__car_with_trailer_ class_4__e_g__van_ class_5__e_g__hgv_  \
+0                           £5.00              £5.00             £10.00   
+1                           £5.00              £5.00              £6.00   
+2                           £6.00              £6.00              £6.00   
+3                           £7.00              £7.00              £7.00   
+4                           £8.00              £9.00              £9.00   
+5                           £8.40              £9.40              £9.40   
+6                           £9.00             £10.00             £10.00   
+7                           £9.60             £10.60             £10.60   
+8                          £10.00             £11.00             £11.00   
+
+   num_cost  
+0       5.0  
+1       5.0  
+2       6.0  
+3       7.0  
+4       8.0  
+5       8.4  
+6       9.0  
+7       9.6  
+8      10.0  
+Sample 2129 - Plan 1: Table after operation: [['date_introduced', 'class_1__e_g__motorbike_', 'class_2__e_g__car_', 'class_3__e_g__car_with_trailer_', 'class_4__e_g__van_', 'class_5__e_g__hgv_', 'num_cost'], ['9 december 2003', '£1.00', '£2.00', '£5.00', '£5.00', '£10.00', 5.0], ['23 july 2004', '£1.00', '£2.00', '£5.00', '£5.00', '£6.00', 5.0], ['16 august 2004', '£2.00', '£3.00', '£6.00', '£6.00', '£6.00', 6.0], ['14 june 2005', '£2.50', '£3.50', '£7.00', '£7.00', '£7.00', 7.0], ['1 january 2008', '£2.50', '£4.50', '£8.00', '£9.00', '£9.00', 8.0], ['1 january 2009', '£2.70', '£4.70', '£8.40', '£9.40', '£9.40', 8.4], ['1 march 2010', '£2.70', '£5.00', '£9.00', '£10.00', '£10.00', 9.0], ['1 march 2011', '£3.00', '£5.30', '£9.60', '£10.60', '£10.60', 9.6], ['1 march 2012', '£3.00', '£5.50', '£10.00', '£11.00', '£11.00', 10.0]]
+########################################################################################################################
+Sample 2129 - Plan 1: Operation 2: Select rows where the 'date_introduced' is before 'January 1, 2008'.
+Sample 2129 - Plan 1: Selected indices: [[4, 0], [7, 0], [2, 0], [8, 0], [3, 0], [5, 0], [6, 0]]
+Sample 2129 - Plan 1: X-Table after operation df:
+  date_introduced class_1__e_g__motorbike_ class_2__e_g__car_  \
+0  16 august 2004                    £2.00              £3.00   
+1    14 june 2005                    £2.50              £3.50   
+2  1 january 2008                    £2.50              £4.50   
+3  1 january 2009                    £2.70              £4.70   
+4    1 march 2010                    £2.70              £5.00   
+5    1 march 2011                    £3.00              £5.30   
+6    1 march 2012                    £3.00              £5.50   
+
+  class_3__e_g__car_with_trailer_ class_4__e_g__van_ class_5__e_g__hgv_  \
+0                           £6.00              £6.00              £6.00   
+1                           £7.00              £7.00              £7.00   
+2                           £8.00              £9.00              £9.00   
+3                           £8.40              £9.40              £9.40   
+4                           £9.00             £10.00             £10.00   
+5                           £9.60             £10.60             £10.60   
+6                          £10.00             £11.00             £11.00   
+
+   num_cost  
+0       6.0  
+1       7.0  
+2       8.0  
+3       8.4  
+4       9.0  
+5       9.6  
+6      10.0  
+Sample 2129 - Plan 1: Table after operation: [['date_introduced', 'class_1__e_g__motorbike_', 'class_2__e_g__car_', 'class_3__e_g__car_with_trailer_', 'class_4__e_g__van_', 'class_5__e_g__hgv_', 'num_cost'], ['16 august 2004', '£2.00', '£3.00', '£6.00', '£6.00', '£6.00', 6.0], ['14 june 2005', '£2.50', '£3.50', '£7.00', '£7.00', '£7.00', 7.0], ['1 january 2008', '£2.50', '£4.50', '£8.00', '£9.00', '£9.00', 8.0], ['1 january 2009', '£2.70', '£4.70', '£8.40', '£9.40', '£9.40', 8.4], ['1 march 2010', '£2.70', '£5.00', '£9.00', '£10.00', '£10.00', 9.0], ['1 march 2011', '£3.00', '£5.30', '£9.60', '£10.60', '£10.60', 9.6], ['1 march 2012', '£3.00', '£5.50', '£10.00', '£11.00', '£11.00', 10.0]]
+########################################################################################################################
+Sample 2129 - Plan 1: Operation 3: Select the 'num_cost' column.
+Sample 2129 - Plan 1: Selected indices: []
+Sample 2129 - Plan 1: X-Table after operation df:
+   num_cost
+0       6.0
+1       7.0
+2       8.0
+3       8.4
+4       9.0
+5       9.6
+6      10.0
+Sample 2129 - Plan 1: Table after operation: [['num_cost'], [6.0], [7.0], [8.0], [8.4], [9.0], [9.6], [10.0]]
+########################################################################################################################
+Sample 2129 - Plan 1: Operation 4: Order the table by 'num_cost' in ascending order.
+Sample 2129 - Plan 1: Selected indices: [[4, 0], [0, 0], [2, 0], [3, 0], [5, 0], [6, 0], [1, 0]]
+Sample 2129 - Plan 1: X-Table after operation df:
+   num_cost
+0       6.0
+1       7.0
+2       8.0
+3       8.4
+4       9.0
+5       9.6
+6      10.0
+Sample 2129 - Plan 1: Table after operation: [['num_cost'], [6.0], [7.0], [8.0], [8.4], [9.0], [9.6], [10.0]]
+########################################################################################################################
+Sample 2129 - Plan 1: Operation 5: Select row number 1.
+Sample 2129 - Plan 1: Selected indices: []
+Sample 2129 - Plan 1: X-Table after operation df:
+   num_cost
+0       6.0
+Sample 2129 - Plan 1: Table after operation: [['num_cost'], [6.0]]
+########################################################################################################################
+Sample 2129 - Plan 1: Operation 6: Select the 'num_cost' column.
+Sample 2129 - Plan 1: Selected indices: []
+Sample 2129 - Plan 1: X-Table after operation df:
+   num_cost
+0       6.0
+Sample 2129 - Plan 1: Table after operation: [['num_cost'], [6.0]]
+Fall-back: FALSE
+Answer from plan 1: [[6.0]]
+Groundtruth: ['£5.00']

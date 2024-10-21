@@ -1,0 +1,1643 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which home town has the most representatives?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Group the table by the 'home_town__county' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>district</td>
+<td>representative</td>
+<td>party</td>
+<td>home_town__county</td>
+<td>term_of_service</td>
+</tr>
+<tr>
+<td>1st district</td>
+<td>charles r. blasdel</td>
+<td>republican</td>
+<td>east liverpool, columbiana</td>
+<td></td>
+</tr>
+<tr>
+<td>2nd district</td>
+<td>jon m. peterson</td>
+<td>republican</td>
+<td>delaware, delaware</td>
+<td></td>
+</tr>
+<tr>
+<td>3rd district</td>
+<td>jim carmichael</td>
+<td>republican</td>
+<td>wooster, wayne</td>
+<td></td>
+</tr>
+<tr>
+<td>4th district</td>
+<td>john r. willamowski</td>
+<td>republican</td>
+<td>lima, allen</td>
+<td></td>
+</tr>
+<tr>
+<td>5th district</td>
+<td>tim schaffer</td>
+<td>republican</td>
+<td>lancaster, fairfield</td>
+<td></td>
+</tr>
+<tr>
+<td>6th district</td>
+<td>robert e. latta</td>
+<td>republican</td>
+<td>bowling green, wood</td>
+<td></td>
+</tr>
+<tr>
+<td>7th district</td>
+<td>edward s. jerse</td>
+<td>democratic</td>
+<td>euclid, cuyahoga</td>
+<td>-2005</td>
+</tr>
+<tr>
+<td>8th district</td>
+<td>lance t. mason</td>
+<td>democratic</td>
+<td>shaker heights, cuyahoga</td>
+<td></td>
+</tr>
+<tr>
+<td>9th district</td>
+<td>claudette j. woodard</td>
+<td>democratic</td>
+<td>cleveland heights, cuyahoga</td>
+<td></td>
+</tr>
+<tr>
+<td>10th district</td>
+<td>shirley a. smith</td>
+<td>democratic</td>
+<td>cleveland, cuyahoga</td>
+<td></td>
+</tr>
+<tr>
+<td>11th district</td>
+<td>annie l. key</td>
+<td>democratic</td>
+<td>cleveland, cuyahoga</td>
+<td></td>
+</tr>
+<tr>
+<td>12th district</td>
+<td>michael debose</td>
+<td>democratic</td>
+<td>cleveland, cuyahoga</td>
+<td></td>
+</tr>
+<tr>
+<td>13th district</td>
+<td>michael j. skindell</td>
+<td>democratic</td>
+<td>lakewood, cuyahoga</td>
+<td></td>
+</tr>
+<tr>
+<td>14th district</td>
+<td>dale miller</td>
+<td>democratic</td>
+<td>cleveland, cuyahoga</td>
+<td></td>
+</tr>
+<tr>
+<td>15th district</td>
+<td>timothy j. degeeter</td>
+<td>democratic</td>
+<td>parma, cuyahoga</td>
+<td></td>
+</tr>
+<tr>
+<td>16th district</td>
+<td>sally conway kilbane</td>
+<td>republican</td>
+<td>rocky river, cuyahoga</td>
+<td></td>
+</tr>
+<tr>
+<td>17th district</td>
+<td>james peter trakas</td>
+<td>republican</td>
+<td>independence, cuyahoga</td>
+<td></td>
+</tr>
+<tr>
+<td>18th district</td>
+<td>thomas f. patton</td>
+<td>republican</td>
+<td>strongsville, cuyahoga</td>
+<td></td>
+</tr>
+<tr>
+<td>19th district</td>
+<td>larry l. flowers</td>
+<td>republican</td>
+<td>canal winchester, fairfield/franklin</td>
+<td></td>
+</tr>
+<tr>
+<td>20th district</td>
+<td>jim mcgregor</td>
+<td>republican</td>
+<td>gahanna, franklin</td>
+<td></td>
+</tr>
+<tr>
+<td>21st district</td>
+<td>linda reidelbach</td>
+<td>republican</td>
+<td>columbus, franklin</td>
+<td></td>
+</tr>
+<tr>
+<td>22nd district</td>
+<td>jim hughes</td>
+<td>republican</td>
+<td>columbus, franklin</td>
+<td></td>
+</tr>
+<tr>
+<td>23rd district</td>
+<td>larry wolpert</td>
+<td>republican</td>
+<td>hilliard, franklin</td>
+<td></td>
+</tr>
+<tr>
+<td>24th district</td>
+<td>geoffrey c. smith</td>
+<td>republican</td>
+<td>columbus, franklin</td>
+<td></td>
+</tr>
+<tr>
+<td>25th district</td>
+<td>daniel stewart</td>
+<td>democratic</td>
+<td>columbus, franklin</td>
+<td></td>
+</tr>
+<tr>
+<td>26th district</td>
+<td>larry price</td>
+<td>democratic</td>
+<td>columbus, franklin</td>
+<td>-2005</td>
+</tr>
+<tr>
+<td>27th district</td>
+<td>joyce beatty</td>
+<td>democratic</td>
+<td>columbus, franklin</td>
+<td></td>
+</tr>
+<tr>
+<td>28th district</td>
+<td>jim raussen</td>
+<td>republican</td>
+<td>springdale, hamilton</td>
+<td></td>
+</tr>
+<tr>
+<td>29th district</td>
+<td>patricia m. clancy</td>
+<td>republican</td>
+<td>cincinnati, hamilton</td>
+<td>-2005</td>
+</tr>
+<tr>
+<td>30th district</td>
+<td>william j. seitz</td>
+<td>republican</td>
+<td>cincinnati, hamilton</td>
+<td></td>
+</tr>
+<tr>
+<td>31st district</td>
+<td>steven l. driehaus</td>
+<td>democratic</td>
+<td>cincinnati, hamilton</td>
+<td></td>
+</tr>
+<tr>
+<td>32nd district</td>
+<td>catherine l. barrett</td>
+<td>democratic</td>
+<td>cincinnati, hamilton</td>
+<td></td>
+</tr>
+<tr>
+<td>33rd district</td>
+<td>tyrone k. yates</td>
+<td>democratic</td>
+<td>cincinnati, hamilton</td>
+<td></td>
+</tr>
+<tr>
+<td>34th district</td>
+<td>tom brinkman jr.</td>
+<td>republican</td>
+<td>cincinnati, hamilton</td>
+<td></td>
+</tr>
+<tr>
+<td>35th district</td>
+<td>michelle g. schneider</td>
+<td>republican</td>
+<td>cincinnati, hamilton</td>
+<td></td>
+</tr>
+<tr>
+<td>36th district</td>
+<td>arlene j. setzer</td>
+<td>republican</td>
+<td>vandalia, montgomery</td>
+<td></td>
+</tr>
+<tr>
+<td>37th district</td>
+<td>jon a. husted</td>
+<td>republican</td>
+<td>kettering, montgomery</td>
+<td></td>
+</tr>
+<tr>
+<td>38th district</td>
+<td>john j. white</td>
+<td>republican</td>
+<td>kettering, montgomery</td>
+<td></td>
+</tr>
+<tr>
+<td>39th district</td>
+<td>dixie j. allen</td>
+<td>republican</td>
+<td>dayton, montgomery</td>
+<td></td>
+</tr>
+<tr>
+<td>40th district</td>
+<td>fred strahorn</td>
+<td>democratic</td>
+<td>dayton, montgomery</td>
+<td></td>
+</tr>
+<tr>
+<td>41st district</td>
+<td>marilyn slaby</td>
+<td>republican</td>
+<td>akron, summit</td>
+<td></td>
+</tr>
+<tr>
+<td>42nd district</td>
+<td>john widowfield</td>
+<td>republican</td>
+<td>cuyahoga falls, summit</td>
+<td></td>
+</tr>
+<tr>
+<td>43rd district</td>
+<td>mary taylor</td>
+<td>republican</td>
+<td>green, summit</td>
+<td></td>
+</tr>
+<tr>
+<td>44th district</td>
+<td>barbara a. sykes</td>
+<td>democratic</td>
+<td>akron, summit</td>
+<td></td>
+</tr>
+<tr>
+<td>45th district</td>
+<td>robert j. otterman</td>
+<td>democratic</td>
+<td>akron, summit</td>
+<td></td>
+</tr>
+<tr>
+<td>46th district</td>
+<td>lynn e. olman</td>
+<td>republican</td>
+<td>maumee, lucas</td>
+<td>-2005</td>
+</tr>
+<tr>
+<td>47th district</td>
+<td>peter ujvagi</td>
+<td>democratic</td>
+<td>toledo, lucas</td>
+<td></td>
+</tr>
+<tr>
+<td>48th district</td>
+<td>edna brown</td>
+<td>democratic</td>
+<td>toledo, lucas</td>
+<td></td>
+</tr>
+<tr>
+<td>49th district</td>
+<td>jeanine perry</td>
+<td>democratic</td>
+<td>toledo, lucas</td>
+<td></td>
+</tr>
+<tr>
+<td>50th district</td>
+<td>john p. hagan</td>
+<td>republican</td>
+<td>marlboro twp., stark</td>
+<td></td>
+</tr>
+<tr>
+<td>51st district</td>
+<td>w. scott oelslager</td>
+<td>republican</td>
+<td>canton, stark</td>
+<td></td>
+</tr>
+<tr>
+<td>52nd district</td>
+<td>mary m. cirelli</td>
+<td>democratic</td>
+<td>canton, stark</td>
+<td>-2005</td>
+</tr>
+<tr>
+<td>53rd district</td>
+<td>shawn n. webster</td>
+<td>republican</td>
+<td>millville, butler</td>
+<td></td>
+</tr>
+<tr>
+<td>54th district</td>
+<td>courtney e. combs</td>
+<td>republican</td>
+<td>hamilton, butler</td>
+<td></td>
+</tr>
+<tr>
+<td>55th district</td>
+<td>gary w. cates</td>
+<td>republican</td>
+<td>west chester twp., butler</td>
+<td>-2005</td>
+</tr>
+<tr>
+<td>56th district</td>
+<td>joseph f. koziura</td>
+<td>democratic</td>
+<td>lorain, lorain</td>
+<td></td>
+</tr>
+<tr>
+<td>57th district</td>
+<td>earl j. martin</td>
+<td>republican</td>
+<td>avon lake, lorain</td>
+<td></td>
+</tr>
+<tr>
+<td>58th district</td>
+<td>kathleen l. walcher</td>
+<td>republican</td>
+<td>norwalk, huron</td>
+<td></td>
+</tr>
+<tr>
+<td>59th district</td>
+<td>kenneth a. carano sr.</td>
+<td>democratic</td>
+<td>austintown, mahoning</td>
+<td></td>
+</tr>
+<tr>
+<td>60th district</td>
+<td>sylvester d. patton jr.</td>
+<td>democratic</td>
+<td>youngstown, mahoning</td>
+<td></td>
+</tr>
+<tr>
+<td>61st district</td>
+<td>john a. boccieri</td>
+<td>democratic</td>
+<td>new middletown, mahoning</td>
+<td></td>
+</tr>
+<tr>
+<td>62nd district</td>
+<td>jamie callender</td>
+<td>republican</td>
+<td>willowick, lake</td>
+<td>-2005</td>
+</tr>
+<tr>
+<td>63rd district</td>
+<td>ron young</td>
+<td>republican</td>
+<td>leroy, geauga</td>
+<td>-2005</td>
+</tr>
+<tr>
+<td>64th district</td>
+<td>daniel j. sferra</td>
+<td>democratic</td>
+<td>warren, trumbull</td>
+<td>2005-</td>
+</tr>
+<tr>
+<td>65th district</td>
+<td>sandra stabile harwood</td>
+<td>democratic</td>
+<td>niles, trumbull</td>
+<td>;</td>
+</tr>
+<tr>
+<td>66th district</td>
+<td>jean schmidt</td>
+<td>republican</td>
+<td>miami township, clermont</td>
+<td>-2005</td>
+</tr>
+<tr>
+<td>67th district</td>
+<td>tom raga</td>
+<td>republican</td>
+<td>deerfield township, warren</td>
+<td></td>
+</tr>
+<tr>
+<td>68th district</td>
+<td>kathleen chandler</td>
+<td>democratic</td>
+<td>kent, portage</td>
+<td></td>
+</tr>
+<tr>
+<td>69th district</td>
+<td>charles e. calvert</td>
+<td>republican</td>
+<td>medina, medina</td>
+<td></td>
+</tr>
+<tr>
+<td>70th district</td>
+<td>kevin dewine</td>
+<td>republican</td>
+<td>fairborn, greene</td>
+<td></td>
+</tr>
+<tr>
+<td>71st district</td>
+<td>david r. evans</td>
+<td>republican</td>
+<td>newark, licking</td>
+<td></td>
+</tr>
+<tr>
+<td>72nd district</td>
+<td>merle grace kearns</td>
+<td>republican</td>
+<td>springfield, clark</td>
+<td></td>
+</tr>
+<tr>
+<td>73rd district</td>
+<td>william j. hartnett</td>
+<td>democratic</td>
+<td>mansfield, richland</td>
+<td></td>
+</tr>
+<tr>
+<td>74th district</td>
+<td>stephen p. buehrer</td>
+<td>republican</td>
+<td>delta, fulton</td>
+<td></td>
+</tr>
+<tr>
+<td>75th district</td>
+<td>james m. hoops</td>
+<td>republican</td>
+<td>napoleon, henry</td>
+<td></td>
+</tr>
+<tr>
+<td>76th district</td>
+<td>michael e. gilb</td>
+<td>republican</td>
+<td>findlay, hancock</td>
+<td></td>
+</tr>
+<tr>
+<td>77th district</td>
+<td>keith l. faber</td>
+<td>republican</td>
+<td>celina, mercer</td>
+<td></td>
+</tr>
+<tr>
+<td>78th district</td>
+<td>derrick seaver</td>
+<td>democratic\n(switched to\nrepublican\non 11 zz18zz 2004)</td>
+<td>minster, auglaize</td>
+<td></td>
+</tr>
+<tr>
+<td>79th district</td>
+<td>diana m. fessler</td>
+<td>republican</td>
+<td>new carlisle, clark</td>
+<td></td>
+</tr>
+<tr>
+<td>80th district</td>
+<td>chris redfern</td>
+<td>democratic</td>
+<td>port clinton, ottawa</td>
+<td></td>
+</tr>
+<tr>
+<td>81st district</td>
+<td>jeff wagner</td>
+<td>republican</td>
+<td>sycamore, seneca</td>
+<td></td>
+</tr>
+<tr>
+<td>82nd district</td>
+<td>stephen reinhard</td>
+<td>republican</td>
+<td>bucyrus, crawford</td>
+<td></td>
+</tr>
+<tr>
+<td>83rd district</td>
+<td>anthony e. core</td>
+<td>republican</td>
+<td>rushsylvania, logan</td>
+<td></td>
+</tr>
+<tr>
+<td>84th district</td>
+<td>chris widener</td>
+<td>republican</td>
+<td>springfield, clark</td>
+<td></td>
+</tr>
+<tr>
+<td>85th district</td>
+<td>john m. schlichter</td>
+<td>republican</td>
+<td>washington court house, fayette</td>
+<td></td>
+</tr>
+<tr>
+<td>86th district</td>
+<td>david t. daniels</td>
+<td>republican</td>
+<td>greenfield, highland</td>
+<td></td>
+</tr>
+<tr>
+<td>87th district</td>
+<td>clyde evans</td>
+<td>republican</td>
+<td>rio grande, gallia</td>
+<td></td>
+</tr>
+<tr>
+<td>88th district</td>
+<td>tom niehaus</td>
+<td>republican</td>
+<td>new richmond, clermont</td>
+<td>-2005</td>
+</tr>
+<tr>
+<td>89th district</td>
+<td>todd book</td>
+<td>democratic</td>
+<td>mcdermott, scioto</td>
+<td></td>
+</tr>
+<tr>
+<td>90th district</td>
+<td>thom collier</td>
+<td>republican</td>
+<td>mount vernon, knox</td>
+<td></td>
+</tr>
+<tr>
+<td>91st district</td>
+<td>larry householder</td>
+<td>republican</td>
+<td>glenford, perry</td>
+<td>-2005</td>
+</tr>
+<tr>
+<td>92nd district</td>
+<td>jimmy stewart</td>
+<td>republican</td>
+<td>athens, athens</td>
+<td></td>
+</tr>
+<tr>
+<td>93rd district</td>
+<td>nancy p. hollister</td>
+<td>republican</td>
+<td>marietta, washington</td>
+<td>-2005</td>
+</tr>
+<tr>
+<td>94th district</td>
+<td>james aslanides</td>
+<td>republican</td>
+<td>coshocton, coschocton</td>
+<td></td>
+</tr>
+<tr>
+<td>95th district</td>
+<td>john domenick</td>
+<td>democratic</td>
+<td>smithfield, jefferson</td>
+<td></td>
+</tr>
+<tr>
+<td>96th district</td>
+<td>charles a. wilson jr.</td>
+<td>democratic</td>
+<td>bridgeport, belmont</td>
+<td>-2005</td>
+</tr>
+<tr>
+<td>97th district</td>
+<td>bob gibbs</td>
+<td>republican</td>
+<td>lakeville, holmes\n<</td>
+<td></td>
+</tr>
+<tr>
+<td>98th district</td>
+<td>timothy j. grendell</td>
+<td>republican</td>
+<td>chesterland, geauga</td>
+<td>-2005</td>
+</tr>
+<tr>
+<td>99th district</td>
+<td>l. george distel</td>
+<td>democratic</td>
+<td>conneaut, ashtabula</td>
+<td></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Count the number of representatives in each group.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>home_town__county</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">akron, summit</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">athens, athens</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">austintown, mahoning</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">avon lake, lorain</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">bowling green, wood</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">bridgeport, belmont</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">bucyrus, crawford</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">canal winchester, fairfield/franklin</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">canton, stark</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">celina, mercer</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">chesterland, geauga</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">cincinnati, hamilton</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">cleveland heights, cuyahoga</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">cleveland, cuyahoga</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">columbus, franklin</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">conneaut, ashtabula</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">coshocton, coschocton</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">cuyahoga falls, summit</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">dayton, montgomery</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">deerfield township, warren</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">delaware, delaware</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">delta, fulton</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">east liverpool, columbiana</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">euclid, cuyahoga</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">fairborn, greene</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">findlay, hancock</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">gahanna, franklin</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">glenford, perry</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">green, summit</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">greenfield, highland</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">hamilton, butler</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">hilliard, franklin</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">independence, cuyahoga</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">kent, portage</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">kettering, montgomery</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">lakeville, holmes\n<</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">lakewood, cuyahoga</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">lancaster, fairfield</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">leroy, geauga</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">lima, allen</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">lorain, lorain</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">mansfield, richland</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">marietta, washington</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">marlboro twp., stark</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">maumee, lucas</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">mcdermott, scioto</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">medina, medina</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">miami township, clermont</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">millville, butler</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">minster, auglaize</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">mount vernon, knox</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">napoleon, henry</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">new carlisle, clark</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">new middletown, mahoning</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">new richmond, clermont</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">newark, licking</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">niles, trumbull</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">norwalk, huron</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">parma, cuyahoga</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">port clinton, ottawa</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">rio grande, gallia</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">rocky river, cuyahoga</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">rushsylvania, logan</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">shaker heights, cuyahoga</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">smithfield, jefferson</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">springdale, hamilton</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">springfield, clark</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">strongsville, cuyahoga</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">sycamore, seneca</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">toledo, lucas</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">vandalia, montgomery</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">warren, trumbull</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">washington court house, fayette</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">west chester twp., butler</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">willowick, lake</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">wooster, wayne</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">youngstown, mahoning</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Order the groups by the count of representatives in descending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>home_town__county</td>
+<td>representatives_count</td>
+</tr>
+<tr>
+<td>akron, summit</td>
+<td>1</td>
+</tr>
+<tr>
+<td>athens, athens</td>
+<td>1</td>
+</tr>
+<tr>
+<td>austintown, mahoning</td>
+<td>1</td>
+</tr>
+<tr>
+<td>avon lake, lorain</td>
+<td>1</td>
+</tr>
+<tr>
+<td>bowling green, wood</td>
+<td>1</td>
+</tr>
+<tr>
+<td>bridgeport, belmont</td>
+<td>1</td>
+</tr>
+<tr>
+<td>bucyrus, crawford</td>
+<td>1</td>
+</tr>
+<tr>
+<td>canal winchester, fairfield/franklin</td>
+<td>1</td>
+</tr>
+<tr>
+<td>canton, stark</td>
+<td>1</td>
+</tr>
+<tr>
+<td>celina, mercer</td>
+<td>1</td>
+</tr>
+<tr>
+<td>chesterland, geauga</td>
+<td>1</td>
+</tr>
+<tr>
+<td>cincinnati, hamilton</td>
+<td>1</td>
+</tr>
+<tr>
+<td>cleveland heights, cuyahoga</td>
+<td>1</td>
+</tr>
+<tr>
+<td>cleveland, cuyahoga</td>
+<td>1</td>
+</tr>
+<tr>
+<td>columbus, franklin</td>
+<td>1</td>
+</tr>
+<tr>
+<td>conneaut, ashtabula</td>
+<td>1</td>
+</tr>
+<tr>
+<td>coshocton, coschocton</td>
+<td>1</td>
+</tr>
+<tr>
+<td>cuyahoga falls, summit</td>
+<td>1</td>
+</tr>
+<tr>
+<td>dayton, montgomery</td>
+<td>1</td>
+</tr>
+<tr>
+<td>deerfield township, warren</td>
+<td>1</td>
+</tr>
+<tr>
+<td>delaware, delaware</td>
+<td>1</td>
+</tr>
+<tr>
+<td>delta, fulton</td>
+<td>1</td>
+</tr>
+<tr>
+<td>east liverpool, columbiana</td>
+<td>1</td>
+</tr>
+<tr>
+<td>euclid, cuyahoga</td>
+<td>1</td>
+</tr>
+<tr>
+<td>fairborn, greene</td>
+<td>1</td>
+</tr>
+<tr>
+<td>findlay, hancock</td>
+<td>1</td>
+</tr>
+<tr>
+<td>gahanna, franklin</td>
+<td>1</td>
+</tr>
+<tr>
+<td>glenford, perry</td>
+<td>1</td>
+</tr>
+<tr>
+<td>green, summit</td>
+<td>1</td>
+</tr>
+<tr>
+<td>greenfield, highland</td>
+<td>1</td>
+</tr>
+<tr>
+<td>hamilton, butler</td>
+<td>1</td>
+</tr>
+<tr>
+<td>hilliard, franklin</td>
+<td>1</td>
+</tr>
+<tr>
+<td>independence, cuyahoga</td>
+<td>1</td>
+</tr>
+<tr>
+<td>kent, portage</td>
+<td>1</td>
+</tr>
+<tr>
+<td>kettering, montgomery</td>
+<td>1</td>
+</tr>
+<tr>
+<td>lakeville, holmes\n<</td>
+<td>1</td>
+</tr>
+<tr>
+<td>lakewood, cuyahoga</td>
+<td>1</td>
+</tr>
+<tr>
+<td>lancaster, fairfield</td>
+<td>1</td>
+</tr>
+<tr>
+<td>leroy, geauga</td>
+<td>1</td>
+</tr>
+<tr>
+<td>lima, allen</td>
+<td>1</td>
+</tr>
+<tr>
+<td>lorain, lorain</td>
+<td>1</td>
+</tr>
+<tr>
+<td>mansfield, richland</td>
+<td>1</td>
+</tr>
+<tr>
+<td>marietta, washington</td>
+<td>1</td>
+</tr>
+<tr>
+<td>marlboro twp., stark</td>
+<td>1</td>
+</tr>
+<tr>
+<td>maumee, lucas</td>
+<td>1</td>
+</tr>
+<tr>
+<td>mcdermott, scioto</td>
+<td>1</td>
+</tr>
+<tr>
+<td>medina, medina</td>
+<td>1</td>
+</tr>
+<tr>
+<td>miami township, clermont</td>
+<td>1</td>
+</tr>
+<tr>
+<td>millville, butler</td>
+<td>1</td>
+</tr>
+<tr>
+<td>minster, auglaize</td>
+<td>1</td>
+</tr>
+<tr>
+<td>mount vernon, knox</td>
+<td>1</td>
+</tr>
+<tr>
+<td>napoleon, henry</td>
+<td>1</td>
+</tr>
+<tr>
+<td>new carlisle, clark</td>
+<td>1</td>
+</tr>
+<tr>
+<td>new middletown, mahoning</td>
+<td>1</td>
+</tr>
+<tr>
+<td>new richmond, clermont</td>
+<td>1</td>
+</tr>
+<tr>
+<td>newark, licking</td>
+<td>1</td>
+</tr>
+<tr>
+<td>niles, trumbull</td>
+<td>1</td>
+</tr>
+<tr>
+<td>norwalk, huron</td>
+<td>1</td>
+</tr>
+<tr>
+<td>parma, cuyahoga</td>
+<td>1</td>
+</tr>
+<tr>
+<td>port clinton, ottawa</td>
+<td>1</td>
+</tr>
+<tr>
+<td>rio grande, gallia</td>
+<td>1</td>
+</tr>
+<tr>
+<td>rocky river, cuyahoga</td>
+<td>1</td>
+</tr>
+<tr>
+<td>rushsylvania, logan</td>
+<td>1</td>
+</tr>
+<tr>
+<td>shaker heights, cuyahoga</td>
+<td>1</td>
+</tr>
+<tr>
+<td>smithfield, jefferson</td>
+<td>1</td>
+</tr>
+<tr>
+<td>springdale, hamilton</td>
+<td>1</td>
+</tr>
+<tr>
+<td>springfield, clark</td>
+<td>1</td>
+</tr>
+<tr>
+<td>strongsville, cuyahoga</td>
+<td>1</td>
+</tr>
+<tr>
+<td>sycamore, seneca</td>
+<td>1</td>
+</tr>
+<tr>
+<td>toledo, lucas</td>
+<td>1</td>
+</tr>
+<tr>
+<td>vandalia, montgomery</td>
+<td>1</td>
+</tr>
+<tr>
+<td>warren, trumbull</td>
+<td>1</td>
+</tr>
+<tr>
+<td>washington court house, fayette</td>
+<td>1</td>
+</tr>
+<tr>
+<td>west chester twp., butler</td>
+<td>1</td>
+</tr>
+<tr>
+<td>willowick, lake</td>
+<td>1</td>
+</tr>
+<tr>
+<td>wooster, wayne</td>
+<td>1</td>
+</tr>
+<tr>
+<td>youngstown, mahoning</td>
+<td>1</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Select the group with the highest count.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>home_town__county</td>
+<td>representatives_count</td>
+</tr>
+<tr>
+<td>akron, summit</td>
+<td>1</td>
+</tr>
+<tr>
+<td>athens, athens</td>
+<td>1</td>
+</tr>
+<tr>
+<td>austintown, mahoning</td>
+<td>1</td>
+</tr>
+<tr>
+<td>avon lake, lorain</td>
+<td>1</td>
+</tr>
+<tr>
+<td>bowling green, wood</td>
+<td>1</td>
+</tr>
+<tr>
+<td>bridgeport, belmont</td>
+<td>1</td>
+</tr>
+<tr>
+<td>bucyrus, crawford</td>
+<td>1</td>
+</tr>
+<tr>
+<td>canal winchester, fairfield/franklin</td>
+<td>1</td>
+</tr>
+<tr>
+<td>canton, stark</td>
+<td>1</td>
+</tr>
+<tr>
+<td>celina, mercer</td>
+<td>1</td>
+</tr>
+<tr>
+<td>chesterland, geauga</td>
+<td>1</td>
+</tr>
+<tr>
+<td>cincinnati, hamilton</td>
+<td>1</td>
+</tr>
+<tr>
+<td>cleveland heights, cuyahoga</td>
+<td>1</td>
+</tr>
+<tr>
+<td>cleveland, cuyahoga</td>
+<td>1</td>
+</tr>
+<tr>
+<td>columbus, franklin</td>
+<td>1</td>
+</tr>
+<tr>
+<td>conneaut, ashtabula</td>
+<td>1</td>
+</tr>
+<tr>
+<td>coshocton, coschocton</td>
+<td>1</td>
+</tr>
+<tr>
+<td>cuyahoga falls, summit</td>
+<td>1</td>
+</tr>
+<tr>
+<td>dayton, montgomery</td>
+<td>1</td>
+</tr>
+<tr>
+<td>deerfield township, warren</td>
+<td>1</td>
+</tr>
+<tr>
+<td>delaware, delaware</td>
+<td>1</td>
+</tr>
+<tr>
+<td>delta, fulton</td>
+<td>1</td>
+</tr>
+<tr>
+<td>east liverpool, columbiana</td>
+<td>1</td>
+</tr>
+<tr>
+<td>euclid, cuyahoga</td>
+<td>1</td>
+</tr>
+<tr>
+<td>fairborn, greene</td>
+<td>1</td>
+</tr>
+<tr>
+<td>findlay, hancock</td>
+<td>1</td>
+</tr>
+<tr>
+<td>gahanna, franklin</td>
+<td>1</td>
+</tr>
+<tr>
+<td>glenford, perry</td>
+<td>1</td>
+</tr>
+<tr>
+<td>green, summit</td>
+<td>1</td>
+</tr>
+<tr>
+<td>greenfield, highland</td>
+<td>1</td>
+</tr>
+<tr>
+<td>hamilton, butler</td>
+<td>1</td>
+</tr>
+<tr>
+<td>hilliard, franklin</td>
+<td>1</td>
+</tr>
+<tr>
+<td>independence, cuyahoga</td>
+<td>1</td>
+</tr>
+<tr>
+<td>kent, portage</td>
+<td>1</td>
+</tr>
+<tr>
+<td>kettering, montgomery</td>
+<td>1</td>
+</tr>
+<tr>
+<td>lakeville, holmes\n<</td>
+<td>1</td>
+</tr>
+<tr>
+<td>lakewood, cuyahoga</td>
+<td>1</td>
+</tr>
+<tr>
+<td>lancaster, fairfield</td>
+<td>1</td>
+</tr>
+<tr>
+<td>leroy, geauga</td>
+<td>1</td>
+</tr>
+<tr>
+<td>lima, allen</td>
+<td>1</td>
+</tr>
+<tr>
+<td>lorain, lorain</td>
+<td>1</td>
+</tr>
+<tr>
+<td>mansfield, richland</td>
+<td>1</td>
+</tr>
+<tr>
+<td>marietta, washington</td>
+<td>1</td>
+</tr>
+<tr>
+<td>marlboro twp., stark</td>
+<td>1</td>
+</tr>
+<tr>
+<td>maumee, lucas</td>
+<td>1</td>
+</tr>
+<tr>
+<td>mcdermott, scioto</td>
+<td>1</td>
+</tr>
+<tr>
+<td>medina, medina</td>
+<td>1</td>
+</tr>
+<tr>
+<td>miami township, clermont</td>
+<td>1</td>
+</tr>
+<tr>
+<td>millville, butler</td>
+<td>1</td>
+</tr>
+<tr>
+<td>minster, auglaize</td>
+<td>1</td>
+</tr>
+<tr>
+<td>mount vernon, knox</td>
+<td>1</td>
+</tr>
+<tr>
+<td>napoleon, henry</td>
+<td>1</td>
+</tr>
+<tr>
+<td>new carlisle, clark</td>
+<td>1</td>
+</tr>
+<tr>
+<td>new middletown, mahoning</td>
+<td>1</td>
+</tr>
+<tr>
+<td>new richmond, clermont</td>
+<td>1</td>
+</tr>
+<tr>
+<td>newark, licking</td>
+<td>1</td>
+</tr>
+<tr>
+<td>niles, trumbull</td>
+<td>1</td>
+</tr>
+<tr>
+<td>norwalk, huron</td>
+<td>1</td>
+</tr>
+<tr>
+<td>parma, cuyahoga</td>
+<td>1</td>
+</tr>
+<tr>
+<td>port clinton, ottawa</td>
+<td>1</td>
+</tr>
+<tr>
+<td>rio grande, gallia</td>
+<td>1</td>
+</tr>
+<tr>
+<td>rocky river, cuyahoga</td>
+<td>1</td>
+</tr>
+<tr>
+<td>rushsylvania, logan</td>
+<td>1</td>
+</tr>
+<tr>
+<td>shaker heights, cuyahoga</td>
+<td>1</td>
+</tr>
+<tr>
+<td>smithfield, jefferson</td>
+<td>1</td>
+</tr>
+<tr>
+<td>springdale, hamilton</td>
+<td>1</td>
+</tr>
+<tr>
+<td>springfield, clark</td>
+<td>1</td>
+</tr>
+<tr>
+<td>strongsville, cuyahoga</td>
+<td>1</td>
+</tr>
+<tr>
+<td>sycamore, seneca</td>
+<td>1</td>
+</tr>
+<tr>
+<td>toledo, lucas</td>
+<td>1</td>
+</tr>
+<tr>
+<td>vandalia, montgomery</td>
+<td>1</td>
+</tr>
+<tr>
+<td>warren, trumbull</td>
+<td>1</td>
+</tr>
+<tr>
+<td>washington court house, fayette</td>
+<td>1</td>
+</tr>
+<tr>
+<td>west chester twp., butler</td>
+<td>1</td>
+</tr>
+<tr>
+<td>willowick, lake</td>
+<td>1</td>
+</tr>
+<tr>
+<td>wooster, wayne</td>
+<td>1</td>
+</tr>
+<tr>
+<td>youngstown, mahoning</td>
+<td>1</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 5: Select the 'home_town__county' column from the selected group.</div>
+<div id="step-3" class="content">
+<table>
+<tr>
+<td>home_town__county</td>
+<td>highest_count</td>
+</tr>
+<tr>
+<td>akron, summit</td>
+<td>1</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>home_town__county</td>
+</tr>
+<tr>
+<td>akron, summit</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['akron, summit']]</h3>
+</body></html>

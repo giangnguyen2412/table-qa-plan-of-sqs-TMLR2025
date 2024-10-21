@@ -1,0 +1,618 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> in what year did he lead the most laps in?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Extract the numerical value from the 'led' column then add column 'num_led' to existing table.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>car</td>
+<td>start</td>
+<td>qual</td>
+<td>rank</td>
+<td>finish</td>
+<td>laps</td>
+<td>led</td>
+<td>retired</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1926</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">31</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">102.789</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">142</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">flagged</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1927</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">27</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">27</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">107.765</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">22</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">200</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">running</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1928</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">117.031</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">200</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">33</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">running</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1929</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">23</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">112.146</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">15</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">91</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">supercharger</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1930</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">100.033</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">18</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">79</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">valve</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1931</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">37</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">111.725</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">18</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">167</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">crash t4</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1932</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">25</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">108.896</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">34</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">184</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">flagged</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1933</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">34</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">113.578</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">15</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">200</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">running</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1934</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">113.733</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">94</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rod</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1935</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">44</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">115.459</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">21</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">102</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">magneto</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1937</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">38</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">118.788</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">200</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">running</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1938</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">122.499</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">130</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rod</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1939</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">62</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">27</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">121.749</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">200</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">running</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">totals</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">totals</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">totals</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">totals</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">totals</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">totals</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1989</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">33</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Order the table by 'num_led' in descending order.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>car</td>
+<td>start</td>
+<td>qual</td>
+<td>rank</td>
+<td>finish</td>
+<td>laps</td>
+<td>led</td>
+<td>retired</td>
+<td>num_led</td>
+</tr>
+<tr>
+<td>1926</td>
+<td>31</td>
+<td>12</td>
+<td>102.789</td>
+<td>13</td>
+<td>11</td>
+<td>142</td>
+<td>0</td>
+<td>flagged</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td>1927</td>
+<td>27</td>
+<td>27</td>
+<td>107.765</td>
+<td>22</td>
+<td>3</td>
+<td>200</td>
+<td>0</td>
+<td>running</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td>1928</td>
+<td>8</td>
+<td>4</td>
+<td>117.031</td>
+<td>4</td>
+<td>10</td>
+<td>200</td>
+<td>33</td>
+<td>running</td>
+<td><span class="highlighted-cell" title="Used in transformation">33</span></td>
+</tr>
+<tr>
+<td>1929</td>
+<td>23</td>
+<td>11</td>
+<td>112.146</td>
+<td>15</td>
+<td>17</td>
+<td>91</td>
+<td>0</td>
+<td>supercharger</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td>1930</td>
+<td>9</td>
+<td>20</td>
+<td>100.033</td>
+<td>18</td>
+<td>20</td>
+<td>79</td>
+<td>0</td>
+<td>valve</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td>1931</td>
+<td>37</td>
+<td>19</td>
+<td>111.725</td>
+<td>6</td>
+<td>18</td>
+<td>167</td>
+<td>0</td>
+<td>crash t4</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td>1932</td>
+<td>25</td>
+<td>20</td>
+<td>108.896</td>
+<td>34</td>
+<td>13</td>
+<td>184</td>
+<td>0</td>
+<td>flagged</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td>1933</td>
+<td>34</td>
+<td>12</td>
+<td>113.578</td>
+<td>15</td>
+<td>7</td>
+<td>200</td>
+<td>0</td>
+<td>running</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td>1934</td>
+<td>8</td>
+<td>7</td>
+<td>113.733</td>
+<td>13</td>
+<td>17</td>
+<td>94</td>
+<td>0</td>
+<td>rod</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td>1935</td>
+<td>44</td>
+<td>6</td>
+<td>115.459</td>
+<td>11</td>
+<td>21</td>
+<td>102</td>
+<td>0</td>
+<td>magneto</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td>1937</td>
+<td>38</td>
+<td>7</td>
+<td>118.788</td>
+<td>16</td>
+<td>8</td>
+<td>200</td>
+<td>0</td>
+<td>running</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td>1938</td>
+<td>17</td>
+<td>4</td>
+<td>122.499</td>
+<td>6</td>
+<td>17</td>
+<td>130</td>
+<td>0</td>
+<td>rod</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td>1939</td>
+<td>62</td>
+<td>27</td>
+<td>121.749</td>
+<td>24</td>
+<td>11</td>
+<td>200</td>
+<td>0</td>
+<td>running</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td>totals</td>
+<td>totals</td>
+<td>totals</td>
+<td>totals</td>
+<td>totals</td>
+<td>totals</td>
+<td>1989</td>
+<td>33</td>
+<td></td>
+<td><span class="highlighted-cell" title="Used in transformation">33</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select row number 1.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>car</td>
+<td>start</td>
+<td>qual</td>
+<td>rank</td>
+<td>finish</td>
+<td>laps</td>
+<td>led</td>
+<td>retired</td>
+<td>num_led</td>
+</tr>
+<tr>
+<td>1928</td>
+<td>8</td>
+<td>4</td>
+<td>117.031</td>
+<td>4</td>
+<td>10</td>
+<td>200</td>
+<td>33</td>
+<td>running</td>
+<td>33</td>
+</tr>
+<tr>
+<td>totals</td>
+<td>totals</td>
+<td>totals</td>
+<td>totals</td>
+<td>totals</td>
+<td>totals</td>
+<td>1989</td>
+<td>33</td>
+<td></td>
+<td>33</td>
+</tr>
+<tr>
+<td>1926</td>
+<td>31</td>
+<td>12</td>
+<td>102.789</td>
+<td>13</td>
+<td>11</td>
+<td>142</td>
+<td>0</td>
+<td>flagged</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1927</td>
+<td>27</td>
+<td>27</td>
+<td>107.765</td>
+<td>22</td>
+<td>3</td>
+<td>200</td>
+<td>0</td>
+<td>running</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1929</td>
+<td>23</td>
+<td>11</td>
+<td>112.146</td>
+<td>15</td>
+<td>17</td>
+<td>91</td>
+<td>0</td>
+<td>supercharger</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1930</td>
+<td>9</td>
+<td>20</td>
+<td>100.033</td>
+<td>18</td>
+<td>20</td>
+<td>79</td>
+<td>0</td>
+<td>valve</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1931</td>
+<td>37</td>
+<td>19</td>
+<td>111.725</td>
+<td>6</td>
+<td>18</td>
+<td>167</td>
+<td>0</td>
+<td>crash t4</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1932</td>
+<td>25</td>
+<td>20</td>
+<td>108.896</td>
+<td>34</td>
+<td>13</td>
+<td>184</td>
+<td>0</td>
+<td>flagged</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1933</td>
+<td>34</td>
+<td>12</td>
+<td>113.578</td>
+<td>15</td>
+<td>7</td>
+<td>200</td>
+<td>0</td>
+<td>running</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1934</td>
+<td>8</td>
+<td>7</td>
+<td>113.733</td>
+<td>13</td>
+<td>17</td>
+<td>94</td>
+<td>0</td>
+<td>rod</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1935</td>
+<td>44</td>
+<td>6</td>
+<td>115.459</td>
+<td>11</td>
+<td>21</td>
+<td>102</td>
+<td>0</td>
+<td>magneto</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1937</td>
+<td>38</td>
+<td>7</td>
+<td>118.788</td>
+<td>16</td>
+<td>8</td>
+<td>200</td>
+<td>0</td>
+<td>running</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1938</td>
+<td>17</td>
+<td>4</td>
+<td>122.499</td>
+<td>6</td>
+<td>17</td>
+<td>130</td>
+<td>0</td>
+<td>rod</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1939</td>
+<td>62</td>
+<td>27</td>
+<td>121.749</td>
+<td>24</td>
+<td>11</td>
+<td>200</td>
+<td>0</td>
+<td>running</td>
+<td>0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Select the 'year' column.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>car</td>
+<td>start</td>
+<td>qual</td>
+<td>rank</td>
+<td>finish</td>
+<td>laps</td>
+<td>led</td>
+<td>retired</td>
+<td>num_led</td>
+</tr>
+<tr>
+<td>1928</td>
+<td>8</td>
+<td>4</td>
+<td>117.031</td>
+<td>4</td>
+<td>10</td>
+<td>200</td>
+<td>33</td>
+<td>running</td>
+<td>33</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>year</td>
+</tr>
+<tr>
+<td>1928</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[1928]]</h3>
+</body></html>

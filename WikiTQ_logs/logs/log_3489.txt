@@ -1,0 +1,53 @@
+************************************************************************************************************************
+Sample 3489 - Plan 1: Query: how many have an octal in the 60s or decimal in the 40s?
+Sample 3489 - Plan 1: Groundtruth: ['8']
+Sample 3489 - Plan 1: X-Original table pd: 
+      binary  octal  decimal  hexadecimal  glyph
+0  0011 0000     60       48           30      0
+1  0011 0001     61       49           31      1
+2  0011 0010     62       50           32      2
+3  0011 0011     63       51           33      3
+4  0011 0100     64       52           34      4
+5  0011 0101     65       53           35      5
+6  0011 0110     66       54           36      6
+7  0011 0111     67       55           37      7
+8  0011 1000     70       56           38      8
+9  0011 1001     71       57           39      9
+Sample 3489 - Plan 1: Caption: none
+Sample 3489 - Plan 1: Original table: [['binary', 'octal', 'decimal', 'hexadecimal', 'glyph'], ['0011\xa00000', '060', '48', '30', '0'], ['0011\xa00001', '061', '49', '31', '1'], ['0011\xa00010', '062', '50', '32', '2'], ['0011\xa00011', '063', '51', '33', '3'], ['0011\xa00100', '064', '52', '34', '4'], ['0011\xa00101', '065', '53', '35', '5'], ['0011\xa00110', '066', '54', '36', '6'], ['0011\xa00111', '067', '55', '37', '7'], ['0011\xa01000', '070', '56', '38', '8'], ['0011\xa01001', '071', '57', '39', '9']]
+########################################################################################################################
+Sample 3489 - Plan 1: Operation 1: Select rows where the 'octal' column is in the range of 60 to 69.
+Sample 3489 - Plan 1: Selected indices: [[0, 1], [7, 1], [2, 1], [3, 1], [6, 1], [1, 1], [5, 1], [4, 1]]
+Sample 3489 - Plan 1: X-Table after operation df:
+      binary  octal  decimal  hexadecimal  glyph
+0  0011 0000     60       48           30      0
+1  0011 0001     61       49           31      1
+2  0011 0010     62       50           32      2
+3  0011 0011     63       51           33      3
+4  0011 0100     64       52           34      4
+5  0011 0101     65       53           35      5
+6  0011 0110     66       54           36      6
+7  0011 0111     67       55           37      7
+Sample 3489 - Plan 1: Table after operation: [['binary', 'octal', 'decimal', 'hexadecimal', 'glyph'], ['0011\xa00000', 60, 48, 30, 0], ['0011\xa00001', 61, 49, 31, 1], ['0011\xa00010', 62, 50, 32, 2], ['0011\xa00011', 63, 51, 33, 3], ['0011\xa00100', 64, 52, 34, 4], ['0011\xa00101', 65, 53, 35, 5], ['0011\xa00110', 66, 54, 36, 6], ['0011\xa00111', 67, 55, 37, 7]]
+########################################################################################################################
+Sample 3489 - Plan 1: Operation 2: Select rows where the 'decimal' column is in the range of 40 to 49.
+Sample 3489 - Plan 1: Selected indices: [[0, 2], [1, 2]]
+Sample 3489 - Plan 1: X-Table after operation df:
+      binary  octal  decimal  hexadecimal  glyph
+0  0011 0000     60       48           30      0
+1  0011 0001     61       49           31      1
+Sample 3489 - Plan 1: Table after operation: [['binary', 'octal', 'decimal', 'hexadecimal', 'glyph'], ['0011\xa00000', 60, 48, 30, 0], ['0011\xa00001', 61, 49, 31, 1]]
+########################################################################################################################
+Sample 3489 - Plan 1: Operation 3: Combine the results from steps 1 and 2 using the logical OR operator.
+Sample 3489 - Plan 1: Selected indices: [[1, 2], [1, 1], [1, 4], [1, 0], [1, 3]]
+Sample 3489 - Plan 1: X-Table after operation df:
+      binary  octal  decimal  hexadecimal  glyph
+0  0011 0001     61       49           31      1
+Sample 3489 - Plan 1: Table after operation: [['binary', 'octal', 'decimal', 'hexadecimal', 'glyph'], ['0011\xa00001', 61, 49, 31, 1]]
+########################################################################################################################
+Sample 3489 - Plan 1: Operation 4: Count the number of rows that satisfy the condition in step 3.
+SQL execution error in operation 4: Execution failed on sql 'Write a SQL command that: Count the number of rows that satisfy the condition in step 3.': near "Write": syntax error
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['row 1', 'row 2', 'row 3', 'row 4', 'row 5', 'row 6', 'row 7', 'row 8', 'row 9', 'row 10']]
+Groundtruth: ['8']

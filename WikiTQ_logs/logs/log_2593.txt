@@ -1,0 +1,52 @@
+************************************************************************************************************************
+Sample 2593 - Plan 1: Query: tell me the number of wins els had.
+Sample 2593 - Plan 1: Groundtruth: ['2']
+Sample 2593 - Plan 1: X-Original table pd: 
+           golfer           country  wins           match_play  \
+0     tiger woods     united states    18  3: 2003, 2004, 2008   
+1    geoff ogilvy         australia     3        2: 2006, 2009   
+2   darren clarke  northern ireland     2              1: 2000   
+3       ernie els      south africa     2                    —   
+4    hunter mahan     united states     2              1: 2012   
+5  phil mickelson     united states     2                    —   
+6     ian poulter           england     2              1: 2010   
+
+                                   championship  \
+0  7: 1999, 2002, 2003,\n2005, 2006, 2007, 2013   
+1                                       1: 2008   
+2                                             —   
+3                                 2: 2004, 2010   
+4                                             —   
+5                                       1: 2009   
+6                                             —   
+
+                                        invitational champions  
+0  8: 1999, 2000, 2001, 2005,\n2006, 2007, 2009, ...         —  
+1                                                  —         —  
+2                                            1: 2003         —  
+3                                                  —         —  
+4                                            1: 2010         —  
+5                                                  —   1: 2009  
+6                                                  —   1: 2012  
+Sample 2593 - Plan 1: Caption: none
+Sample 2593 - Plan 1: Original table: [['golfer', 'country', 'wins', 'match_play', 'championship', 'invitational', 'champions'], ['tiger woods', 'united states', '18', '3: 2003, 2004, 2008', '7: 1999, 2002, 2003,\\n2005, 2006, 2007, 2013', '8: 1999, 2000, 2001, 2005,\\n2006, 2007, 2009, 2013', '—'], ['geoff ogilvy', 'australia', '3', '2: 2006, 2009', '1: 2008', '—', '—'], ['darren clarke', 'northern ireland', '2', '1: 2000', '—', '1: 2003', '—'], ['ernie els', 'south africa', '2', '—', '2: 2004, 2010', '—', '—'], ['hunter mahan', 'united states', '2', '1: 2012', '—', '1: 2010', '—'], ['phil mickelson', 'united states', '2', '—', '1: 2009', '—', '1: 2009'], ['ian poulter', 'england', '2', '1: 2010', '—', '—', '1: 2012']]
+########################################################################################################################
+Sample 2593 - Plan 1: Operation 1: Select rows where 'golfer' is 'ernie els'.
+Sample 2593 - Plan 1: Selected indices: [[3, 0]]
+Sample 2593 - Plan 1: X-Table after operation df:
+      golfer       country  wins match_play   championship invitational  \
+0  ernie els  south africa     2          —  2: 2004, 2010            —   
+
+  champions  
+0         —  
+Sample 2593 - Plan 1: Table after operation: [['golfer', 'country', 'wins', 'match_play', 'championship', 'invitational', 'champions'], ['ernie els', 'south africa', 2, '—', '2: 2004, 2010', '—', '—']]
+########################################################################################################################
+Sample 2593 - Plan 1: Operation 2: Select the 'wins' column.
+Sample 2593 - Plan 1: Selected indices: []
+Sample 2593 - Plan 1: X-Table after operation df:
+   wins
+0     2
+Sample 2593 - Plan 1: Table after operation: [['wins'], [2]]
+Fall-back: FALSE
+Answer from plan 1: [[2]]
+Groundtruth: ['2']

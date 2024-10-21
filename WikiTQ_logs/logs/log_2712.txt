@@ -1,0 +1,111 @@
+************************************************************************************************************************
+Sample 2712 - Plan 1: Query: what is the next award listed after 2008?
+Sample 2712 - Plan 1: Groundtruth: ['Best Supporting Actress']
+Sample 2712 - Plan 1: X-Original table pd: 
+    year                              organization                    award  \
+0   2005  47th the television drama academy awards             best actress   
+1   2007       10th nikkan sports drama grand prix             best actress   
+2   2007                       16th hashida awards           newcomer award   
+3   2007             2007 mtv student voice awards             best actress   
+4   2007  54th the television academy drama awards             best actress   
+5   2008           nickelodeon kids' choice awards             best actress   
+6   2010           nikkan sports grand prix (fall)  best supporting actress   
+7   2011                       3rd tama film award    best emerging actress   
+8   2011      35th fumiko yamaji award film awards         newcomer actress   
+9   2011             26th nikkan sport film awards            best newcomer   
+10  2011                                   tv navi             best actress   
+11  2011  70th the television drama academy awards             best actress   
+12  2012                 35th japan academy awards    best starring actress   
+13  2012         japan film festival theater staff             best actress   
+14  2012              16th nikkan sport grand prix             best actress   
+
+                                       work     result  
+0                           hana yori dango        won  
+1                         hana yori dango 2        won  
+2                         hana yori dango 2        won  
+3                         hana yori dango 2        won  
+4                                first kiss  nominated  
+5                         hana yori dango 2        won  
+6                     veterinarian dolittle  nominated  
+7                    miracle in the pacific        won  
+8                           youkame no semi        won  
+9   youkame no semi, miracle in the pacific        won  
+10                                  ohisama        won  
+11                                  ohisama        won  
+12                          youkame no semi        won  
+13                          youkame no semi        won  
+14                                   tokkan  nominated  
+Sample 2712 - Plan 1: Caption: none
+Sample 2712 - Plan 1: Original table: [['year', 'organization', 'award', 'work', 'result'], ['2005', '47th the television drama academy awards', 'best actress', 'hana yori dango', 'won'], ['2007', '10th nikkan sports drama grand prix', 'best actress', 'hana yori dango 2', 'won'], ['2007', '16th hashida awards', 'newcomer award', 'hana yori dango 2', 'won'], ['2007', '2007 mtv student voice awards', 'best actress', 'hana yori dango 2', 'won'], ['2007', '54th the television academy drama awards', 'best actress', 'first kiss', 'nominated'], ['2008', "nickelodeon kids' choice awards", 'best actress', 'hana yori dango 2', 'won'], ['2010', 'nikkan sports grand prix (fall)', 'best supporting actress', 'veterinarian dolittle', 'nominated'], ['2011', '3rd tama film award', 'best emerging actress', 'miracle in the pacific', 'won'], ['2011', '35th fumiko yamaji award film awards', 'newcomer actress', 'youkame no semi', 'won'], ['2011', '26th nikkan sport film awards', 'best newcomer', 'youkame no semi, miracle in the pacific', 'won'], ['2011', 'tv navi', 'best actress', 'ohisama', 'won'], ['2011', '70th the television drama academy awards', 'best actress', 'ohisama', 'won'], ['2012', '35th japan academy awards', 'best starring actress', 'youkame no semi', 'won'], ['2012', 'japan film festival theater staff', 'best actress', 'youkame no semi', 'won'], ['2012', '16th nikkan sport grand prix', 'best actress', 'tokkan', 'nominated']]
+########################################################################################################################
+Sample 2712 - Plan 1: Operation 1: Select rows where the 'year' is greater than 2008.
+Sample 2712 - Plan 1: Selected indices: [[9, 0], [11, 0], [12, 0], [7, 0], [13, 0], [8, 0], [14, 0], [10, 0], [6, 0]]
+Sample 2712 - Plan 1: X-Table after operation df:
+   year                              organization                    award  \
+0  2010           nikkan sports grand prix (fall)  best supporting actress   
+1  2011                       3rd tama film award    best emerging actress   
+2  2011      35th fumiko yamaji award film awards         newcomer actress   
+3  2011             26th nikkan sport film awards            best newcomer   
+4  2011                                   tv navi             best actress   
+5  2011  70th the television drama academy awards             best actress   
+6  2012                 35th japan academy awards    best starring actress   
+7  2012         japan film festival theater staff             best actress   
+8  2012              16th nikkan sport grand prix             best actress   
+
+                                      work     result  
+0                    veterinarian dolittle  nominated  
+1                   miracle in the pacific        won  
+2                          youkame no semi        won  
+3  youkame no semi, miracle in the pacific        won  
+4                                  ohisama        won  
+5                                  ohisama        won  
+6                          youkame no semi        won  
+7                          youkame no semi        won  
+8                                   tokkan  nominated  
+Sample 2712 - Plan 1: Table after operation: [['year', 'organization', 'award', 'work', 'result'], [2010, 'nikkan sports grand prix (fall)', 'best supporting actress', 'veterinarian dolittle', 'nominated'], [2011, '3rd tama film award', 'best emerging actress', 'miracle in the pacific', 'won'], [2011, '35th fumiko yamaji award film awards', 'newcomer actress', 'youkame no semi', 'won'], [2011, '26th nikkan sport film awards', 'best newcomer', 'youkame no semi, miracle in the pacific', 'won'], [2011, 'tv navi', 'best actress', 'ohisama', 'won'], [2011, '70th the television drama academy awards', 'best actress', 'ohisama', 'won'], [2012, '35th japan academy awards', 'best starring actress', 'youkame no semi', 'won'], [2012, 'japan film festival theater staff', 'best actress', 'youkame no semi', 'won'], [2012, '16th nikkan sport grand prix', 'best actress', 'tokkan', 'nominated']]
+########################################################################################################################
+Sample 2712 - Plan 1: Operation 2: Order the table by 'year' in ascending order.
+Sample 2712 - Plan 1: Selected indices: [[4, 0], [0, 0], [7, 0], [2, 0], [8, 0], [3, 0], [5, 0], [6, 0], [1, 0]]
+Sample 2712 - Plan 1: X-Table after operation df:
+   year                              organization                    award  \
+0  2010           nikkan sports grand prix (fall)  best supporting actress   
+1  2011                       3rd tama film award    best emerging actress   
+2  2011      35th fumiko yamaji award film awards         newcomer actress   
+3  2011             26th nikkan sport film awards            best newcomer   
+4  2011                                   tv navi             best actress   
+5  2011  70th the television drama academy awards             best actress   
+6  2012                 35th japan academy awards    best starring actress   
+7  2012         japan film festival theater staff             best actress   
+8  2012              16th nikkan sport grand prix             best actress   
+
+                                      work     result  
+0                    veterinarian dolittle  nominated  
+1                   miracle in the pacific        won  
+2                          youkame no semi        won  
+3  youkame no semi, miracle in the pacific        won  
+4                                  ohisama        won  
+5                                  ohisama        won  
+6                          youkame no semi        won  
+7                          youkame no semi        won  
+8                                   tokkan  nominated  
+Sample 2712 - Plan 1: Table after operation: [['year', 'organization', 'award', 'work', 'result'], [2010, 'nikkan sports grand prix (fall)', 'best supporting actress', 'veterinarian dolittle', 'nominated'], [2011, '3rd tama film award', 'best emerging actress', 'miracle in the pacific', 'won'], [2011, '35th fumiko yamaji award film awards', 'newcomer actress', 'youkame no semi', 'won'], [2011, '26th nikkan sport film awards', 'best newcomer', 'youkame no semi, miracle in the pacific', 'won'], [2011, 'tv navi', 'best actress', 'ohisama', 'won'], [2011, '70th the television drama academy awards', 'best actress', 'ohisama', 'won'], [2012, '35th japan academy awards', 'best starring actress', 'youkame no semi', 'won'], [2012, 'japan film festival theater staff', 'best actress', 'youkame no semi', 'won'], [2012, '16th nikkan sport grand prix', 'best actress', 'tokkan', 'nominated']]
+########################################################################################################################
+Sample 2712 - Plan 1: Operation 3: Select row number 1.
+Sample 2712 - Plan 1: Selected indices: []
+Sample 2712 - Plan 1: X-Table after operation df:
+   year                     organization                    award  \
+0  2010  nikkan sports grand prix (fall)  best supporting actress   
+
+                    work     result  
+0  veterinarian dolittle  nominated  
+Sample 2712 - Plan 1: Table after operation: [['year', 'organization', 'award', 'work', 'result'], [2010, 'nikkan sports grand prix (fall)', 'best supporting actress', 'veterinarian dolittle', 'nominated']]
+########################################################################################################################
+Sample 2712 - Plan 1: Operation 4: Select the 'award' column.
+Sample 2712 - Plan 1: Selected indices: []
+Sample 2712 - Plan 1: X-Table after operation df:
+                     award
+0  best supporting actress
+Sample 2712 - Plan 1: Table after operation: [['award'], ['best supporting actress']]
+Fall-back: FALSE
+Answer from plan 1: [['best supporting actress']]
+Groundtruth: ['Best Supporting Actress']

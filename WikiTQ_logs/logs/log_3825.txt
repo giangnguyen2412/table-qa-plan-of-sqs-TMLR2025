@@ -1,0 +1,73 @@
+************************************************************************************************************************
+Sample 3825 - Plan 1: Query: how many viewers watched the last season of csi: crime scene investigation?
+Sample 3825 - Plan 1: Groundtruth: ['11.63 million']
+Sample 3825 - Plan 1: X-Original table pd: 
+    season  episodes                                    time_slot__est_  \
+0        1        23  friday 9pm/8c (october 6, 2000 – january 12, 2...   
+1        2        23                                    thursday 9pm/8c   
+2        3        23                                    thursday 9pm/8c   
+3        4        23                                    thursday 9pm/8c   
+4        5        25                                    thursday 9pm/8c   
+5        6        24                                    thursday 9pm/8c   
+6        7        24                                    thursday 9pm/8c   
+7        8        17                                    thursday 9pm/8c   
+8        9        24                                    thursday 9pm/8c   
+9       10        23                                    thursday 9pm/8c   
+10      11        22                                    thursday 9pm/8c   
+11      12        22                                  wednesday 10pm/9c   
+12      13        22                                  wednesday 10pm/9c   
+
+   original_airing_nseason_premiere original_airing_nseason_finale  \
+0                   october 6, 2000                   may 17, 2001   
+1                september 27, 2001                   may 16, 2002   
+2                september 26, 2002                   may 15, 2003   
+3                september 25, 2003                   may 20, 2004   
+4                september 23, 2004                   may 19, 2005   
+5                september 22, 2005                   may 18, 2006   
+6                september 21, 2006                   may 17, 2007   
+7                september 27, 2007                   may 15, 2008   
+8                   october 9, 2008                   may 14, 2009   
+9                september 24, 2009                   may 20, 2010   
+10               september 23, 2010                   may 12, 2011   
+11               september 21, 2011                    may 9, 2012   
+12               september 26, 2012                   may 15, 2013   
+
+   original_airing_ntv_season rank  viewers_n_in_millions_  
+0                   2000–2001  #10                   17.80  
+1                   2001–2002   #2                   23.69  
+2                   2002–2003   #1                   26.20  
+3                   2003–2004   #2                   25.27  
+4                   2004–2005   #2                   26.26  
+5                   2005–2006   #3                   24.86  
+6                   2006–2007   #4                   20.34  
+7                   2007–2008   #9                   16.62  
+8                   2008–2009   #4                   18.52  
+9                   2009–2010  #12                   14.92  
+10                  2010–2011  #12                   13.52  
+11                  2011–2012  #21                   12.49  
+12                  2012–2013  #25                   11.63  
+Sample 3825 - Plan 1: Caption: none
+Sample 3825 - Plan 1: Original table: [['season', 'episodes', 'time_slot__est_', 'original_airing_nseason_premiere', 'original_airing_nseason_finale', 'original_airing_ntv_season', 'rank', 'viewers_n_in_millions_'], ['1', '23', 'friday 9pm/8c (october 6, 2000 – january 12, 2001)\\nthursday 9pm/8c (february 1, 2001 – may 17, 2001)', 'october\xa06,\xa02000', 'may\xa017,\xa02001', '2000–2001', '#10', '17.80'], ['2', '23', 'thursday 9pm/8c', 'september\xa027,\xa02001', 'may\xa016,\xa02002', '2001–2002', '#2', '23.69'], ['3', '23', 'thursday 9pm/8c', 'september\xa026,\xa02002', 'may 15, 2003', '2002–2003', '#1', '26.20'], ['4', '23', 'thursday 9pm/8c', 'september\xa025,\xa02003', 'may 20, 2004', '2003–2004', '#2', '25.27'], ['5', '25', 'thursday 9pm/8c', 'september\xa023,\xa02004', 'may 19, 2005', '2004–2005', '#2', '26.26'], ['6', '24', 'thursday 9pm/8c', 'september\xa022,\xa02005', 'may 18, 2006', '2005–2006', '#3', '24.86'], ['7', '24', 'thursday 9pm/8c', 'september\xa021,\xa02006', 'may 17, 2007', '2006–2007', '#4', '20.34'], ['8', '17', 'thursday 9pm/8c', 'september\xa027,\xa02007', 'may 15, 2008', '2007–2008', '#9', '16.62'], ['9', '24', 'thursday 9pm/8c', 'october\xa09,\xa02008', 'may 14, 2009', '2008–2009', '#4', '18.52'], ['10', '23', 'thursday 9pm/8c', 'september\xa024,\xa02009', 'may 20, 2010', '2009–2010', '#12', '14.92'], ['11', '22', 'thursday 9pm/8c', 'september\xa023,\xa02010', 'may 12, 2011', '2010–2011', '#12', '13.52'], ['12', '22', 'wednesday 10pm/9c', 'september 21, 2011', 'may 9, 2012', '2011–2012', '#21', '12.49'], ['13', '22', 'wednesday 10pm/9c', 'september 26, 2012', 'may 15, 2013', '2012–2013', '#25', '11.63']]
+########################################################################################################################
+Sample 3825 - Plan 1: Operation 1: Select the row where the 'season' is the last season of CSI: Crime Scene Investigation.
+Sample 3825 - Plan 1: Selected indices: [[12, 0]]
+Sample 3825 - Plan 1: X-Table after operation df:
+   season  episodes    time_slot__est_ original_airing_nseason_premiere  \
+0      13        22  wednesday 10pm/9c               september 26, 2012   
+
+  original_airing_nseason_finale original_airing_ntv_season rank  \
+0                   may 15, 2013                  2012–2013  #25   
+
+   viewers_n_in_millions_  
+0                   11.63  
+Sample 3825 - Plan 1: Table after operation: [['season', 'episodes', 'time_slot__est_', 'original_airing_nseason_premiere', 'original_airing_nseason_finale', 'original_airing_ntv_season', 'rank', 'viewers_n_in_millions_'], [13, 22, 'wednesday 10pm/9c', 'september 26, 2012', 'may 15, 2013', '2012–2013', '#25', 11.63]]
+########################################################################################################################
+Sample 3825 - Plan 1: Operation 2: Select the 'viewers_n_in_millions_' column from the selected row.
+Sample 3825 - Plan 1: Selected indices: []
+Sample 3825 - Plan 1: X-Table after operation df:
+   viewers
+0    11.63
+Sample 3825 - Plan 1: Table after operation: [['viewers'], [11.63]]
+Fall-back: FALSE
+Answer from plan 1: [[11.63]]
+Groundtruth: ['11.63 million']

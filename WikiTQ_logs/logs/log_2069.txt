@@ -1,0 +1,29 @@
+************************************************************************************************************************
+Sample 2069 - Plan 1: Query: how many strokes ahead was olin brown ahead of tiger woods?
+Sample 2069 - Plan 1: Groundtruth: ['3']
+Sample 2069 - Plan 1: X-Original table pd: 
+  place            player        country         score to_par
+0     1     retief goosen   south africa  68-70-69=207     –3
+1    t2       olin browne  united states  67-71-72=210      e
+2    t2        jason gore  united states  71-67-72=210      e
+3    t4  michael campbell    new zealand  71-69-71=211     +1
+4    t4       mark hensby      australia  71-68-72=211     +1
+5     6        david toms  united states  70-72-70=212     +2
+6    t7        k. j. choi    south korea  69-70-74=213     +3
+7    t7     peter hedblom         sweden  77-66-70=213     +3
+8    t7      lee westwood        england  68-72-73=213     +3
+9    t7       tiger woods  united states  70-71-72=213     +3
+Sample 2069 - Plan 1: Caption: none
+Sample 2069 - Plan 1: Original table: [['place', 'player', 'country', 'score', 'to_par'], ['1', 'retief goosen', 'south africa', '68-70-69=207', '–3'], ['t2', 'olin browne', 'united states', '67-71-72=210', 'e'], ['t2', 'jason gore', 'united states', '71-67-72=210', 'e'], ['t4', 'michael campbell', 'new zealand', '71-69-71=211', '+1'], ['t4', 'mark hensby', 'australia', '71-68-72=211', '+1'], ['6', 'david toms', 'united states', '70-72-70=212', '+2'], ['t7', 'k. j. choi', 'south korea', '69-70-74=213', '+3'], ['t7', 'peter hedblom', 'sweden', '77-66-70=213', '+3'], ['t7', 'lee westwood', 'england', '68-72-73=213', '+3'], ['t7', 'tiger woods', 'united states', '70-71-72=213', '+3']]
+########################################################################################################################
+Sample 2069 - Plan 1: Operation 1: Extract the numerical value from the 'score' column for Olin Browne and Tiger Woods, then add columns 'olin_score' and 'woods_score' to the existing table.
+SQL execution error in operation 1: Execution failed on sql 'SELECT *,
+       CAST(SUBSTR(score, INSTR(score, '=') + 2, INSTR(score, '-') - INSTR(score, '=') - 2) AS INTEGER) AS olin_score,
+       CAST(SUBSTR(score, INSTR(score, '-', -1) + 1) AS INTEGER) AS woods_score
+FROM table_sql
+WHERE player = 'olin browne' OR player = 'tiger woods';
+-- Extract the numerical value from the 'score' column for Olin Browne and Tiger Woods, then add columns 'olin_score' and 'woods_score' to the existing table.': wrong number of arguments to function INSTR()
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['3']]
+Groundtruth: ['3']

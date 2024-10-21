@@ -1,0 +1,495 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> who has the top number of times?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Order the table by the 'times_' column in descending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>wrestler_</td>
+<td>times_</td>
+<td>date_</td>
+<td>location_</td>
+<td>notes_</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">super delfin</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">january 4, 2000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tokyo, japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">beat dick togo for the championship</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">takehiro murahama</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">may 7, 2000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tokyo, japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">super delfin</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">june 18, 2000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">osaka, japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gamma</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">june 24, 2001</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">osaka, japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">super delfin</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">january 3, 2002</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">osaka, japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">takehiro murahama</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">july 6, 2003</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">osaka, japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">daio quallt</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">april 17, 2004</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">osaka, japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">billyken kid</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">august 8, 2004</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">osaka, japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">“big boss” ma-g-ma</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">october 2, 2004</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">osaka, japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">super dolphin</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">february 13, 2005</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">osaka, japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">super delfin</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">february 26, 2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">osaka, japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">billyken kid</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">august 26, 2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">osaka, japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tigers mask</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">february 12, 2007</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">osaka, japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">hideyoshi</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">july 26, 2008</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">osaka, japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">billyken kid</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">february 15, 2009</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">osaka, japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dick togo</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">july 25, 2009</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">osaka, japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">billyken kid</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">february 11, 2010</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">osaka, japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cima</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">june 18, 2010</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">osaka, japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tigers mask</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">july 29, 2010</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">osaka, japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">asian cougar / kuuga</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">august 28, 2010</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">osaka, japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">asian cougar renamed himself kuuga during his reign.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tigers mask</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">april 29, 2011</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">osaka, japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">billyken kid</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">august 14, 2011</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">osaka, japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">daisuke harada</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">february 26, 2012</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">osaka, japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">black buffalo</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">march 25, 2012</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">osaka, japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">daisuke harada</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">july 22, 2012</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">osaka, japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">vacated</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">n/a</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">march 30, 2013</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">osaka, japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">title vacated, after harada announced that he was not re-signing with osaka pro after his contract ran out on april 29, 2013.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tigers mask</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">may 19, 2013</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">osaka, japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">defeated billyken kid in the finals of a four-man tournament to win the vacant title.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">quiet storm</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">july 21, 2013</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">osaka, japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">zeus</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">january 19, 2014</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">osaka, japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select row number 1.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>wrestler_</td>
+<td>times_</td>
+<td>date_</td>
+<td>location_</td>
+<td>notes_</td>
+</tr>
+<tr>
+<td>billyken kid</td>
+<td>5</td>
+<td>august 14, 2011</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>super delfin</td>
+<td>4</td>
+<td>february 26, 2006</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>billyken kid</td>
+<td>4</td>
+<td>february 11, 2010</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>tigers mask</td>
+<td>4</td>
+<td>may 19, 2013</td>
+<td>osaka, japan</td>
+<td>defeated billyken kid in the finals of a four-man tournament to win the vacant title.</td>
+</tr>
+<tr>
+<td>super delfin</td>
+<td>3</td>
+<td>january 3, 2002</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>billyken kid</td>
+<td>3</td>
+<td>february 15, 2009</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>tigers mask</td>
+<td>3</td>
+<td>april 29, 2011</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>super delfin</td>
+<td>2</td>
+<td>june 18, 2000</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>takehiro murahama</td>
+<td>2</td>
+<td>july 6, 2003</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>billyken kid</td>
+<td>2</td>
+<td>august 26, 2006</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>tigers mask</td>
+<td>2</td>
+<td>july 29, 2010</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>daisuke harada</td>
+<td>2</td>
+<td>july 22, 2012</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>super delfin</td>
+<td>1</td>
+<td>january 4, 2000</td>
+<td>tokyo, japan</td>
+<td>beat dick togo for the championship</td>
+</tr>
+<tr>
+<td>takehiro murahama</td>
+<td>1</td>
+<td>may 7, 2000</td>
+<td>tokyo, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>gamma</td>
+<td>1</td>
+<td>june 24, 2001</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>daio quallt</td>
+<td>1</td>
+<td>april 17, 2004</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>billyken kid</td>
+<td>1</td>
+<td>august 8, 2004</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>“big boss” ma-g-ma</td>
+<td>1</td>
+<td>october 2, 2004</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>super dolphin</td>
+<td>1</td>
+<td>february 13, 2005</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>tigers mask</td>
+<td>1</td>
+<td>february 12, 2007</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>hideyoshi</td>
+<td>1</td>
+<td>july 26, 2008</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>dick togo</td>
+<td>1</td>
+<td>july 25, 2009</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>cima</td>
+<td>1</td>
+<td>june 18, 2010</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>asian cougar / kuuga</td>
+<td>1</td>
+<td>august 28, 2010</td>
+<td>osaka, japan</td>
+<td>asian cougar renamed himself kuuga during his reign.</td>
+</tr>
+<tr>
+<td>daisuke harada</td>
+<td>1</td>
+<td>february 26, 2012</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>black buffalo</td>
+<td>1</td>
+<td>march 25, 2012</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>quiet storm</td>
+<td>1</td>
+<td>july 21, 2013</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>zeus</td>
+<td>1</td>
+<td>january 19, 2014</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>vacated</td>
+<td>n/a</td>
+<td>march 30, 2013</td>
+<td>osaka, japan</td>
+<td>title vacated, after harada announced that he was not re-signing with osaka pro after his contract ran out on april 29, 2013.</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select the 'wrestler_' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>wrestler_</td>
+<td>times_</td>
+<td>date_</td>
+<td>location_</td>
+<td>notes_</td>
+</tr>
+<tr>
+<td>billyken kid</td>
+<td>5</td>
+<td>august 14, 2011</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>wrestler_</td>
+</tr>
+<tr>
+<td>billyken kid</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['billyken kid']]</h3>
+</body></html>

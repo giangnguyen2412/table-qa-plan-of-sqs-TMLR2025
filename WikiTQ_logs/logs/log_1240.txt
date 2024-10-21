@@ -1,0 +1,71 @@
+************************************************************************************************************************
+Sample 1240 - Plan 1: Query: how many games had a combined score result of more than 4?
+Sample 1240 - Plan 1: Groundtruth: ['4']
+Sample 1240 - Plan 1: X-Original table pd: 
+   year matches        winner results    pakistan_ncaptain  \
+0  1978       4  pakistan win   3 - 1  islahuddin siddique   
+1  1981       4  pakistan win   2 - 1        akhtar rasool   
+2  1986       7     india win   3 - 2        hassan sardar   
+3  1988       6          draw   2 - 2            nasir ali   
+4  1998       8  pakistan win   4 - 3          tahir zaman   
+5  1999       9  pakistan win   5 - 3          atif bashir   
+6  2004       8  pakistan win   4 - 2         waseem ahmad   
+7  2006       6  pakistan win   3 - 1     mohammad saqlain   
+8  2013     tba           tba     tba                  tba   
+
+       pakistan_ncoach   india_ncaptain        india_ncoach  
+0     sayad a. hussain    v. j. philips        r. s. gentle  
+1            zakauddin    surjeet singh       harmeek singh  
+2     anwar ahmad khan  mohmmad shaheed        m. p. ganesh  
+3     manzoor-ul-hasan     m. m. somaya        m. p. ganesh  
+4  islahuddin siddique   dhanraj pillay         v bhaskaran  
+5       shahnaz shaikh      anil aldrin         v bhaskaran  
+6      roelant oltmans    dileep tirkey         gehard rach  
+7           asif bajwa    ignace tirkey  rajinder singh jr.  
+8                  tba              tba                 tba  
+Sample 1240 - Plan 1: Caption: none
+Sample 1240 - Plan 1: Original table: [['year', 'matches', 'winner', 'results', 'pakistan_ncaptain', 'pakistan_ncoach', 'india_ncaptain', 'india_ncoach'], ['1978', '4', 'pakistan win', '3 - 1', 'islahuddin siddique', 'sayad a. hussain', 'v. j. philips', 'r. s. gentle'], ['1981', '4', 'pakistan win', '2 - 1', 'akhtar rasool', 'zakauddin', 'surjeet singh', 'harmeek singh'], ['1986', '7', 'india win', '3 - 2', 'hassan sardar', 'anwar ahmad khan', 'mohmmad shaheed', 'm. p. ganesh'], ['1988', '6', 'draw', '2 - 2', 'nasir ali', 'manzoor-ul-hasan', 'm. m. somaya', 'm. p. ganesh'], ['1998', '8', 'pakistan win', '4 - 3', 'tahir zaman', 'islahuddin siddique', 'dhanraj pillay', 'v bhaskaran'], ['1999', '9', 'pakistan win', '5 - 3', 'atif bashir', 'shahnaz shaikh', 'anil aldrin', 'v bhaskaran'], ['2004', '8', 'pakistan win', '4 - 2', 'waseem ahmad', 'roelant oltmans', 'dileep tirkey', 'gehard rach'], ['2006', '6', 'pakistan win', '3 - 1', 'mohammad saqlain', 'asif bajwa', 'ignace tirkey', 'rajinder singh jr.'], ['2013', 'tba', 'tba', 'tba', 'tba', 'tba', 'tba', 'tba']]
+########################################################################################################################
+Sample 1240 - Plan 1: Operation 1: Extract the numerical values from the 'results' column and split them into separate columns for the scores of Pakistan and India.
+Sample 1240 - Plan 1: Selected indices: [[0, 1], [0, 7], [0, 0], [0, 4], [0, 6], [0, 2], [0, 3], [0, 5], [1, 1], [1, 7], [1, 0], [1, 4], [1, 6], [1, 2], [1, 3], [1, 5], [2, 1], [2, 7], [2, 0], [2, 4], [2, 6], [2, 2], [2, 3], [2, 5], [3, 1], [3, 7], [3, 0], [3, 4], [3, 6], [3, 2], [3, 3], [3, 5], [4, 1], [4, 7], [4, 0], [4, 4], [4, 6], [4, 2], [4, 3], [4, 5], [5, 1], [5, 7], [5, 0], [5, 4], [5, 6], [5, 2], [5, 3], [5, 5], [6, 1], [6, 7], [6, 0], [6, 4], [6, 6], [6, 2], [6, 3], [6, 5], [7, 1], [7, 7], [7, 0], [7, 4], [7, 6], [7, 2], [7, 3], [7, 5], [8, 1], [8, 7], [8, 0], [8, 4], [8, 6], [8, 2], [8, 3], [8, 5]]
+Sample 1240 - Plan 1: X-Table after operation df:
+   year matches        winner results  pakistan_score  india_score  \
+0  1978       4  pakistan win   3 - 1               3            1   
+1  1981       4  pakistan win   2 - 1               2            1   
+2  1986       7     india win   3 - 2               3            2   
+3  1988       6          draw   2 - 2               2            2   
+4  1998       8  pakistan win   4 - 3               4            3   
+5  1999       9  pakistan win   5 - 3               5            3   
+6  2004       8  pakistan win   4 - 2               4            2   
+7  2006       6  pakistan win   3 - 1               3            1   
+8  2013     tba           tba     tba               0            0   
+
+     pakistan_ncaptain      pakistan_ncoach   india_ncaptain  \
+0  islahuddin siddique     sayad a. hussain    v. j. philips   
+1        akhtar rasool            zakauddin    surjeet singh   
+2        hassan sardar     anwar ahmad khan  mohmmad shaheed   
+3            nasir ali     manzoor-ul-hasan     m. m. somaya   
+4          tahir zaman  islahuddin siddique   dhanraj pillay   
+5          atif bashir       shahnaz shaikh      anil aldrin   
+6         waseem ahmad      roelant oltmans    dileep tirkey   
+7     mohammad saqlain           asif bajwa    ignace tirkey   
+8                  tba                  tba              tba   
+
+         india_ncoach  
+0        r. s. gentle  
+1       harmeek singh  
+2        m. p. ganesh  
+3        m. p. ganesh  
+4         v bhaskaran  
+5         v bhaskaran  
+6         gehard rach  
+7  rajinder singh jr.  
+8                 tba  
+Sample 1240 - Plan 1: Table after operation: [['year', 'matches', 'winner', 'results', 'pakistan_score', 'india_score', 'pakistan_ncaptain', 'pakistan_ncoach', 'india_ncaptain', 'india_ncoach'], [1978, '4', 'pakistan win', '3 - 1', 3, 1, 'islahuddin siddique', 'sayad a. hussain', 'v. j. philips', 'r. s. gentle'], [1981, '4', 'pakistan win', '2 - 1', 2, 1, 'akhtar rasool', 'zakauddin', 'surjeet singh', 'harmeek singh'], [1986, '7', 'india win', '3 - 2', 3, 2, 'hassan sardar', 'anwar ahmad khan', 'mohmmad shaheed', 'm. p. ganesh'], [1988, '6', 'draw', '2 - 2', 2, 2, 'nasir ali', 'manzoor-ul-hasan', 'm. m. somaya', 'm. p. ganesh'], [1998, '8', 'pakistan win', '4 - 3', 4, 3, 'tahir zaman', 'islahuddin siddique', 'dhanraj pillay', 'v bhaskaran'], [1999, '9', 'pakistan win', '5 - 3', 5, 3, 'atif bashir', 'shahnaz shaikh', 'anil aldrin', 'v bhaskaran'], [2004, '8', 'pakistan win', '4 - 2', 4, 2, 'waseem ahmad', 'roelant oltmans', 'dileep tirkey', 'gehard rach'], [2006, '6', 'pakistan win', '3 - 1', 3, 1, 'mohammad saqlain', 'asif bajwa', 'ignace tirkey', 'rajinder singh jr.'], [2013, 'tba', 'tba', 'tba', 0, 0, 'tba', 'tba', 'tba', 'tba']]
+########################################################################################################################
+Sample 1240 - Plan 1: Operation 2: Add a new column 'combined_score' to the existing table, which is the sum of the scores of Pakistan and India.
+SQL execution error in operation 2: 'NoneType' object is not iterable
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['3', '4', '2', '1', '4', '5', '4', '3']]
+Groundtruth: ['4']

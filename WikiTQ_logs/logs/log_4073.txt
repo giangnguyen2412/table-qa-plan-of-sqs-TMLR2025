@@ -1,0 +1,40 @@
+************************************************************************************************************************
+Sample 4073 - Plan 1: Query: who was the only player picked after james cotton?
+Sample 4073 - Plan 1: Groundtruth: ['Michael Green']
+Sample 4073 - Plan 1: X-Original table pd: 
+   round  pick            name position             college
+0      1     9  brian urlacher        s          new mexico
+1      2    39      mike brown        s            nebraska
+2      3    69       dez white       wr        georgia tech
+3      3    87    dustin lyman       te         wake forest
+4      4   125   reggie austin       db         wake forest
+5      6   170    frank murphy       wr        kansas state
+6      6   174    paul edinger        k      michigan state
+7      7   223    james cotton       de          ohio state
+8      7   254   michael green        s  northwestern state
+Sample 4073 - Plan 1: Caption: none
+Sample 4073 - Plan 1: Original table: [['round', 'pick', 'name', 'position', 'college'], ['1', '9', 'brian urlacher', 's', 'new mexico'], ['2', '39', 'mike brown', 's', 'nebraska'], ['3', '69', 'dez white', 'wr', 'georgia tech'], ['3', '87', 'dustin lyman', 'te', 'wake forest'], ['4', '125', 'reggie austin', 'db', 'wake forest'], ['6', '170', 'frank murphy', 'wr', 'kansas state'], ['6', '174', 'paul edinger', 'k', 'michigan state'], ['7', '223', 'james cotton', 'de', 'ohio state'], ['7', '254', 'michael green', 's', 'northwestern state']]
+########################################################################################################################
+Sample 4073 - Plan 1: Operation 1: Select rows where 'pick' is greater than the pick of James Cotton.
+Sample 4073 - Plan 1: Selected indices: [[8, 2], [8, 1]]
+Sample 4073 - Plan 1: X-Table after operation df:
+   round  pick           name position             college
+0      7   254  michael green        s  northwestern state
+Sample 4073 - Plan 1: Table after operation: [['round', 'pick', 'name', 'position', 'college'], [7, 254, 'michael green', 's', 'northwestern state']]
+########################################################################################################################
+Sample 4073 - Plan 1: Operation 2: Select the 'name' column.
+Sample 4073 - Plan 1: Selected indices: []
+Sample 4073 - Plan 1: X-Table after operation df:
+            name
+0  michael green
+Sample 4073 - Plan 1: Table after operation: [['name'], ['michael green']]
+########################################################################################################################
+Sample 4073 - Plan 1: Operation 3: Select row number 1.
+Sample 4073 - Plan 1: Selected indices: []
+Sample 4073 - Plan 1: X-Table after operation df:
+            name
+0  michael green
+Sample 4073 - Plan 1: Table after operation: [['name'], ['michael green']]
+Fall-back: FALSE
+Answer from plan 1: [['michael green']]
+Groundtruth: ['Michael Green']

@@ -1,0 +1,208 @@
+************************************************************************************************************************
+Sample 3680 - Plan 1: Query: what is the highest ranking the album received in any list before the year 2000?
+Sample 3680 - Plan 1: Groundtruth: ['3']
+Sample 3680 - Plan 1: X-Original table pd: 
+                                    publication         country  \
+0                                  bill shapiro   united states   
+1                                       blender   united states   
+2                      dave marsh & kevin stein   united states   
+3   elvis costello (vanity fair, issue no. 483)   united states   
+4                                infoplease.com   united states   
+5                                jimmy guterman   united states   
+6                                    kitsap sun   united states   
+7                               paul gambaccini   united states   
+8                         the recording academy   united states   
+9                                 robert dimery   united states   
+10                   rolling stone (steve pond)   united states   
+11                                rolling stone   united states   
+12                                         vibe   united states   
+13                                    hot press         ireland   
+14                                         mojo  united kingdom   
+15                                          nme  united kingdom   
+16                                          nme  united kingdom   
+17                               the new nation  united kingdom   
+18                                       sounds  united kingdom   
+19                                    the times  united kingdom   
+20                                     time out  united kingdom   
+21                                     the wire  united kingdom   
+22                                adresseavisen          norway   
+23                                          pop          sweden   
+24                                          oor     netherlands   
+25                                         vpro     netherlands   
+26                                         spex         germany   
+27                                  rock de lux           spain   
+28                                  rock de lux           spain   
+
+                                             accolade  year rank  
+0                      the top 100 rock compact discs  1991    *  
+1        the 100 greatest american albums of all time  2002   15  
+2            the 40 best of album chartmakers by year  1981    6  
+3                                 500 albums you need  2005    *  
+4                                must-have recordings  1998    *  
+5      the 100 best rock and roll records of all time  1992   27  
+6                 top 200 albums of the last 40 years  2005   67  
+7           the world critics best albums of all time  1987   84  
+8                grammy hall of fame albums and songs  2004    *  
+9            1001 albums you must hear before you die  2005    *  
+10  steve pond's 50 (+27) essential albums of the 70s  1990   39  
+11                the 500 greatest albums of all time  2003  165  
+12  51 albums representing a generation, a sound a...  2004    *  
+13                    the 100 best albums of all time  1989   32  
+14            mojo 1000, the ultimate cd buyers guide  2001    *  
+15                           all times top 100 albums  1985   46  
+16        all times top 100 albums + top 50 by decade  1993  145  
+17                    top 100 albums by black artists  2005   27  
+18                    the 100 best albums of all time  1986   24  
+19                    the 100 best albums of all time  1993   58  
+20                    the 100 best albums of all time  1989    3  
+21           the 100 most important records ever made  1992    *  
+22              the 100 (+23) best albums of all time  1995  101  
+23      the world's 100 best albums + 300 complements  1994  101  
+24                                 albums of the year  1973   41  
+25      299 nominations of the best album of all time  2006    *  
+26                      the 100 albums of the century  1999   93  
+27                   the 100 best albums of the 1970s  1988   39  
+28                    the 200 best albums of all time  2002   53  
+Sample 3680 - Plan 1: Caption: none
+Sample 3680 - Plan 1: Original table: [['publication', 'country', 'accolade', 'year', 'rank'], ['bill shapiro', 'united states', 'the top 100 rock compact discs', '1991', '*'], ['blender', 'united states', 'the 100 greatest american albums of all time', '2002', '15'], ['dave marsh & kevin stein', 'united states', 'the 40 best of album chartmakers by year', '1981', '6'], ['elvis costello (vanity fair, issue no. 483)', 'united states', '500 albums you need', '2005', '*'], ['infoplease.com', 'united states', 'must-have recordings', '1998', '*'], ['jimmy guterman', 'united states', 'the 100 best rock and roll records of all time', '1992', '27'], ['kitsap sun', 'united states', 'top 200 albums of the last 40 years', '2005', '67'], ['paul gambaccini', 'united states', 'the world critics best albums of all time', '1987', '84'], ['the recording academy', 'united states', 'grammy hall of fame albums and songs', '2004', '*'], ['robert dimery', 'united states', '1001 albums you must hear before you die', '2005', '*'], ['rolling stone (steve pond)', 'united states', "steve pond's 50 (+27) essential albums of the 70s", '1990', '39'], ['rolling stone', 'united states', 'the 500 greatest albums of all time', '2003', '165'], ['vibe', 'united states', '51 albums representing a generation, a sound and a movement', '2004', '*'], ['hot press', 'ireland', 'the 100 best albums of all time', '1989', '32'], ['mojo', 'united kingdom', 'mojo 1000, the ultimate cd buyers guide', '2001', '*'], ['nme', 'united kingdom', 'all times top 100 albums', '1985', '46'], ['nme', 'united kingdom', 'all times top 100 albums + top 50 by decade', '1993', '145'], ['the new nation', 'united kingdom', 'top 100 albums by black artists', '2005', '27'], ['sounds', 'united kingdom', 'the 100 best albums of all time', '1986', '24'], ['the times', 'united kingdom', 'the 100 best albums of all time', '1993', '58'], ['time out', 'united kingdom', 'the 100 best albums of all time', '1989', '3'], ['the wire', 'united kingdom', 'the 100 most important records ever made', '1992', '*'], ['adresseavisen', 'norway', 'the 100 (+23) best albums of all time', '1995', '101'], ['pop', 'sweden', "the world's 100 best albums + 300 complements", '1994', '101'], ['oor', 'netherlands', 'albums of the year', '1973', '41'], ['vpro', 'netherlands', '299 nominations of the best album of all time', '2006', '*'], ['spex', 'germany', 'the 100 albums of the century', '1999', '93'], ['rock de lux', 'spain', 'the 100 best albums of the 1970s', '1988', '39'], ['rock de lux', 'spain', 'the 200 best albums of all time', '2002', '53']]
+########################################################################################################################
+Sample 3680 - Plan 1: Operation 1: Select rows where the 'rank' column is not equal to '*'.
+Sample 3680 - Plan 1: Selected indices: [[23, 4], [5, 4], [27, 4], [16, 4], [7, 4], [18, 4], [20, 4], [22, 4], [11, 4], [2, 4], [13, 4], [24, 4], [15, 4], [26, 4], [6, 4], [28, 4], [17, 4], [19, 4], [10, 4], [1, 4]]
+Sample 3680 - Plan 1: X-Table after operation df:
+                   publication         country  \
+0                      blender   united states   
+1     dave marsh & kevin stein   united states   
+2               jimmy guterman   united states   
+3                   kitsap sun   united states   
+4              paul gambaccini   united states   
+5   rolling stone (steve pond)   united states   
+6                rolling stone   united states   
+7                    hot press         ireland   
+8                          nme  united kingdom   
+9                          nme  united kingdom   
+10              the new nation  united kingdom   
+11                      sounds  united kingdom   
+12                   the times  united kingdom   
+13                    time out  united kingdom   
+14               adresseavisen          norway   
+15                         pop          sweden   
+16                         oor     netherlands   
+17                        spex         germany   
+18                 rock de lux           spain   
+19                 rock de lux           spain   
+
+                                             accolade  year  rank  
+0        the 100 greatest american albums of all time  2002    15  
+1            the 40 best of album chartmakers by year  1981     6  
+2      the 100 best rock and roll records of all time  1992    27  
+3                 top 200 albums of the last 40 years  2005    67  
+4           the world critics best albums of all time  1987    84  
+5   steve pond's 50 (+27) essential albums of the 70s  1990    39  
+6                 the 500 greatest albums of all time  2003   165  
+7                     the 100 best albums of all time  1989    32  
+8                            all times top 100 albums  1985    46  
+9         all times top 100 albums + top 50 by decade  1993   145  
+10                    top 100 albums by black artists  2005    27  
+11                    the 100 best albums of all time  1986    24  
+12                    the 100 best albums of all time  1993    58  
+13                    the 100 best albums of all time  1989     3  
+14              the 100 (+23) best albums of all time  1995   101  
+15      the world's 100 best albums + 300 complements  1994   101  
+16                                 albums of the year  1973    41  
+17                      the 100 albums of the century  1999    93  
+18                   the 100 best albums of the 1970s  1988    39  
+19                    the 200 best albums of all time  2002    53  
+Sample 3680 - Plan 1: Table after operation: [['publication', 'country', 'accolade', 'year', 'rank'], ['blender', 'united states', 'the 100 greatest american albums of all time', 2002, '15'], ['dave marsh & kevin stein', 'united states', 'the 40 best of album chartmakers by year', 1981, '6'], ['jimmy guterman', 'united states', 'the 100 best rock and roll records of all time', 1992, '27'], ['kitsap sun', 'united states', 'top 200 albums of the last 40 years', 2005, '67'], ['paul gambaccini', 'united states', 'the world critics best albums of all time', 1987, '84'], ['rolling stone (steve pond)', 'united states', "steve pond's 50 (+27) essential albums of the 70s", 1990, '39'], ['rolling stone', 'united states', 'the 500 greatest albums of all time', 2003, '165'], ['hot press', 'ireland', 'the 100 best albums of all time', 1989, '32'], ['nme', 'united kingdom', 'all times top 100 albums', 1985, '46'], ['nme', 'united kingdom', 'all times top 100 albums + top 50 by decade', 1993, '145'], ['the new nation', 'united kingdom', 'top 100 albums by black artists', 2005, '27'], ['sounds', 'united kingdom', 'the 100 best albums of all time', 1986, '24'], ['the times', 'united kingdom', 'the 100 best albums of all time', 1993, '58'], ['time out', 'united kingdom', 'the 100 best albums of all time', 1989, '3'], ['adresseavisen', 'norway', 'the 100 (+23) best albums of all time', 1995, '101'], ['pop', 'sweden', "the world's 100 best albums + 300 complements", 1994, '101'], ['oor', 'netherlands', 'albums of the year', 1973, '41'], ['spex', 'germany', 'the 100 albums of the century', 1999, '93'], ['rock de lux', 'spain', 'the 100 best albums of the 1970s', 1988, '39'], ['rock de lux', 'spain', 'the 200 best albums of all time', 2002, '53']]
+########################################################################################################################
+Sample 3680 - Plan 1: Operation 2: Select rows where the 'year' column is less than 2000.
+Sample 3680 - Plan 1: Selected indices: [[9, 3], [4, 3], [16, 3], [11, 3], [17, 3], [12, 3], [7, 3], [2, 3], [13, 3], [8, 3], [14, 3], [18, 3], [15, 3], [5, 3], [1, 3]]
+Sample 3680 - Plan 1: X-Table after operation df:
+                   publication         country  \
+0     dave marsh & kevin stein   united states   
+1               jimmy guterman   united states   
+2              paul gambaccini   united states   
+3   rolling stone (steve pond)   united states   
+4                    hot press         ireland   
+5                          nme  united kingdom   
+6                          nme  united kingdom   
+7                       sounds  united kingdom   
+8                    the times  united kingdom   
+9                     time out  united kingdom   
+10               adresseavisen          norway   
+11                         pop          sweden   
+12                         oor     netherlands   
+13                        spex         germany   
+14                 rock de lux           spain   
+
+                                             accolade  year  rank  
+0            the 40 best of album chartmakers by year  1981     6  
+1      the 100 best rock and roll records of all time  1992    27  
+2           the world critics best albums of all time  1987    84  
+3   steve pond's 50 (+27) essential albums of the 70s  1990    39  
+4                     the 100 best albums of all time  1989    32  
+5                            all times top 100 albums  1985    46  
+6         all times top 100 albums + top 50 by decade  1993   145  
+7                     the 100 best albums of all time  1986    24  
+8                     the 100 best albums of all time  1993    58  
+9                     the 100 best albums of all time  1989     3  
+10              the 100 (+23) best albums of all time  1995   101  
+11      the world's 100 best albums + 300 complements  1994   101  
+12                                 albums of the year  1973    41  
+13                      the 100 albums of the century  1999    93  
+14                   the 100 best albums of the 1970s  1988    39  
+Sample 3680 - Plan 1: Table after operation: [['publication', 'country', 'accolade', 'year', 'rank'], ['dave marsh & kevin stein', 'united states', 'the 40 best of album chartmakers by year', 1981, 6], ['jimmy guterman', 'united states', 'the 100 best rock and roll records of all time', 1992, 27], ['paul gambaccini', 'united states', 'the world critics best albums of all time', 1987, 84], ['rolling stone (steve pond)', 'united states', "steve pond's 50 (+27) essential albums of the 70s", 1990, 39], ['hot press', 'ireland', 'the 100 best albums of all time', 1989, 32], ['nme', 'united kingdom', 'all times top 100 albums', 1985, 46], ['nme', 'united kingdom', 'all times top 100 albums + top 50 by decade', 1993, 145], ['sounds', 'united kingdom', 'the 100 best albums of all time', 1986, 24], ['the times', 'united kingdom', 'the 100 best albums of all time', 1993, 58], ['time out', 'united kingdom', 'the 100 best albums of all time', 1989, 3], ['adresseavisen', 'norway', 'the 100 (+23) best albums of all time', 1995, 101], ['pop', 'sweden', "the world's 100 best albums + 300 complements", 1994, 101], ['oor', 'netherlands', 'albums of the year', 1973, 41], ['spex', 'germany', 'the 100 albums of the century', 1999, 93], ['rock de lux', 'spain', 'the 100 best albums of the 1970s', 1988, 39]]
+########################################################################################################################
+Sample 3680 - Plan 1: Operation 3: Order the table by the 'rank' column in ascending order.
+Sample 3680 - Plan 1: Selected indices: [[4, 4], [7, 4], [2, 4], [12, 4], [0, 4], [3, 4], [14, 4], [8, 4], [13, 4], [10, 4], [5, 4], [6, 4], [1, 4], [11, 4], [9, 4]]
+Sample 3680 - Plan 1: X-Table after operation df:
+                   publication         country  \
+0                     time out  united kingdom   
+1     dave marsh & kevin stein   united states   
+2                       sounds  united kingdom   
+3               jimmy guterman   united states   
+4                    hot press         ireland   
+5   rolling stone (steve pond)   united states   
+6                  rock de lux           spain   
+7                          oor     netherlands   
+8                          nme  united kingdom   
+9                    the times  united kingdom   
+10             paul gambaccini   united states   
+11                        spex         germany   
+12               adresseavisen          norway   
+13                         pop          sweden   
+14                         nme  united kingdom   
+
+                                             accolade  year  rank  
+0                     the 100 best albums of all time  1989     3  
+1            the 40 best of album chartmakers by year  1981     6  
+2                     the 100 best albums of all time  1986    24  
+3      the 100 best rock and roll records of all time  1992    27  
+4                     the 100 best albums of all time  1989    32  
+5   steve pond's 50 (+27) essential albums of the 70s  1990    39  
+6                    the 100 best albums of the 1970s  1988    39  
+7                                  albums of the year  1973    41  
+8                            all times top 100 albums  1985    46  
+9                     the 100 best albums of all time  1993    58  
+10          the world critics best albums of all time  1987    84  
+11                      the 100 albums of the century  1999    93  
+12              the 100 (+23) best albums of all time  1995   101  
+13      the world's 100 best albums + 300 complements  1994   101  
+14        all times top 100 albums + top 50 by decade  1993   145  
+Sample 3680 - Plan 1: Table after operation: [['publication', 'country', 'accolade', 'year', 'rank'], ['time out', 'united kingdom', 'the 100 best albums of all time', 1989, 3], ['dave marsh & kevin stein', 'united states', 'the 40 best of album chartmakers by year', 1981, 6], ['sounds', 'united kingdom', 'the 100 best albums of all time', 1986, 24], ['jimmy guterman', 'united states', 'the 100 best rock and roll records of all time', 1992, 27], ['hot press', 'ireland', 'the 100 best albums of all time', 1989, 32], ['rolling stone (steve pond)', 'united states', "steve pond's 50 (+27) essential albums of the 70s", 1990, 39], ['rock de lux', 'spain', 'the 100 best albums of the 1970s', 1988, 39], ['oor', 'netherlands', 'albums of the year', 1973, 41], ['nme', 'united kingdom', 'all times top 100 albums', 1985, 46], ['the times', 'united kingdom', 'the 100 best albums of all time', 1993, 58], ['paul gambaccini', 'united states', 'the world critics best albums of all time', 1987, 84], ['spex', 'germany', 'the 100 albums of the century', 1999, 93], ['adresseavisen', 'norway', 'the 100 (+23) best albums of all time', 1995, 101], ['pop', 'sweden', "the world's 100 best albums + 300 complements", 1994, 101], ['nme', 'united kingdom', 'all times top 100 albums + top 50 by decade', 1993, 145]]
+########################################################################################################################
+Sample 3680 - Plan 1: Operation 4: Select row number 1.
+Sample 3680 - Plan 1: Selected indices: []
+Sample 3680 - Plan 1: X-Table after operation df:
+  publication         country                         accolade  year  rank
+0    time out  united kingdom  the 100 best albums of all time  1989     3
+Sample 3680 - Plan 1: Table after operation: [['publication', 'country', 'accolade', 'year', 'rank'], ['time out', 'united kingdom', 'the 100 best albums of all time', 1989, 3]]
+########################################################################################################################
+Sample 3680 - Plan 1: Operation 5: Select the 'rank' column.
+Sample 3680 - Plan 1: Selected indices: []
+Sample 3680 - Plan 1: X-Table after operation df:
+   rank
+0     3
+Sample 3680 - Plan 1: Table after operation: [['rank'], [3]]
+Fall-back: FALSE
+Answer from plan 1: [[3]]
+Groundtruth: ['3']

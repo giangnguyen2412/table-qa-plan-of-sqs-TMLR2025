@@ -1,0 +1,54 @@
+************************************************************************************************************************
+Sample 608 - Plan 1: Query: what is the average index of the oscar de la hoya amino charter school?
+Sample 608 - Plan 1: Groundtruth: ['710.2']
+Sample 608 - Plan 1: X-Original table pd: 
+                                       school  c_2007  c_2008  c_2009  c_2010  \
+0  francisco bravo medical magnet high school   807.0     818     815     820   
+1  marc and eva stern math and science school   718.0     792     788     788   
+2  oscar de la hoya animo charter high school   662.0     726     709     710   
+3               james a. garfield high school   553.0     597     593     632   
+4                 abraham lincoln high school   594.0     609     588     616   
+5                  woodrow wilson high school   582.0     585     600     615   
+6              theodore roosevelt high school   557.0     551     576     608   
+7                thomas jefferson high school   457.0     516     514     546   
+8                    santee education complex     NaN     502     521     552   
+
+   c_2011  
+0   832.0  
+1   809.0  
+2   744.0  
+3   705.0  
+4   643.0  
+5   636.0  
+6     NaN  
+7   546.0  
+8   565.0  
+Sample 608 - Plan 1: Caption: none
+Sample 608 - Plan 1: Original table: [['school', 'c_2007', 'c_2008', 'c_2009', 'c_2010', 'c_2011'], ['francisco bravo medical magnet high school', '807', '818', '815', '820', '832'], ['marc and eva stern math and science school', '718', '792', '788', '788', '809'], ['oscar de la hoya animo charter high school', '662', '726', '709', '710', '744'], ['james a. garfield high school', '553', '597', '593', '632', '705'], ['abraham lincoln high school', '594', '609', '588', '616', '643'], ['woodrow wilson high school', '582', '585', '600', '615', '636'], ['theodore roosevelt high school', '557', '551', '576', '608', ''], ['thomas jefferson high school', '457', '516', '514', '546', '546'], ['santee education complex', '', '502', '521', '552', '565']]
+########################################################################################################################
+Sample 608 - Plan 1: Operation 1: Select the row where the 'school' is 'oscar de la hoya animo charter high school'.
+Sample 608 - Plan 1: Selected indices: [[2, 0]]
+Sample 608 - Plan 1: X-Table after operation df:
+                                       school  c_2007  c_2008  c_2009  c_2010  \
+0  oscar de la hoya animo charter high school   662.0     726     709     710   
+
+   c_2011  
+0   744.0  
+Sample 608 - Plan 1: Table after operation: [['school', 'c_2007', 'c_2008', 'c_2009', 'c_2010', 'c_2011'], ['oscar de la hoya animo charter high school', 662.0, 726, 709, 710, 744.0]]
+########################################################################################################################
+Sample 608 - Plan 1: Operation 2: Calculate the average of the 'c_2007', 'c_2008', 'c_2009', 'c_2010', and 'c_2011' columns for the selected row.
+Sample 608 - Plan 1: Selected indices: []
+Sample 608 - Plan 1: X-Table after operation df:
+   average_total
+0         3551.0
+Sample 608 - Plan 1: Table after operation: [['average_total'], [3551.0]]
+########################################################################################################################
+Sample 608 - Plan 1: Operation 3: Select the calculated average value.
+Sample 608 - Plan 1: Selected indices: []
+Sample 608 - Plan 1: X-Table after operation df:
+   calculated_average_value
+0                    3551.0
+Sample 608 - Plan 1: Table after operation: [['calculated_average_value'], [3551.0]]
+Fall-back: FALSE
+Answer from plan 1: [[3551.0]]
+Groundtruth: ['710.2']

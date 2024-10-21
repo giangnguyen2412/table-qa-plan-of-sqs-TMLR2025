@@ -1,0 +1,36 @@
+************************************************************************************************************************
+Sample 2638 - Plan 1: Query: how many finished in at least 5 hours?
+Sample 2638 - Plan 1: Groundtruth: ['3']
+Sample 2638 - Plan 1: X-Original table pd: 
+   rank             name    nationality     time
+0   NaN     joanne malar         canada  4:43.64
+1   NaN    alison fealey  united states  4:48.31
+2   NaN      jenny kurth  united states  4:57.24
+3   4.0    sonia fonseca    puerto rico  5:03.15
+4   5.0   fabíola molina         brazil  5:03.43
+5   6.0     isabel rojas       colombia  5:11.58
+6   7.0     carolyn adel       suriname  5:13.24
+7   8.0  edith arraspide      argentina  5:13.95
+Sample 2638 - Plan 1: Caption: none
+Sample 2638 - Plan 1: Original table: [['rank', 'name', 'nationality', 'time'], ['', 'joanne malar', 'canada', '4:43.64'], ['', 'alison fealey', 'united states', '4:48.31'], ['', 'jenny kurth', 'united states', '4:57.24'], ['4', 'sonia fonseca', 'puerto rico', '5:03.15'], ['5', 'fabíola molina', 'brazil', '5:03.43'], ['6', 'isabel rojas', 'colombia', '5:11.58'], ['7', 'carolyn adel', 'suriname', '5:13.24'], ['8', 'edith arraspide', 'argentina', '5:13.95']]
+########################################################################################################################
+Sample 2638 - Plan 1: Operation 1: Select rows where the 'time' is greater than or equal to '5:00:00'.
+Sample 2638 - Plan 1: Selected indices: [[4, 3], [7, 3], [3, 3], [5, 3], [6, 3]]
+Sample 2638 - Plan 1: X-Table after operation df:
+   rank             name  nationality     time
+0   4.0    sonia fonseca  puerto rico  5:03.15
+1   5.0   fabíola molina       brazil  5:03.43
+2   6.0     isabel rojas     colombia  5:11.58
+3   7.0     carolyn adel     suriname  5:13.24
+4   8.0  edith arraspide    argentina  5:13.95
+Sample 2638 - Plan 1: Table after operation: [['rank', 'name', 'nationality', 'time'], [4.0, 'sonia fonseca', 'puerto rico', '5:03.15'], [5.0, 'fabíola molina', 'brazil', '5:03.43'], [6.0, 'isabel rojas', 'colombia', '5:11.58'], [7.0, 'carolyn adel', 'suriname', '5:13.24'], [8.0, 'edith arraspide', 'argentina', '5:13.95']]
+########################################################################################################################
+Sample 2638 - Plan 1: Operation 2: Count the number of rows.
+Sample 2638 - Plan 1: Selected indices: []
+Sample 2638 - Plan 1: X-Table after operation df:
+   row_count
+0          5
+Sample 2638 - Plan 1: Table after operation: [['row_count'], [5]]
+Fall-back: FALSE
+Answer from plan 1: [[5]]
+Groundtruth: ['3']

@@ -1,0 +1,49 @@
+************************************************************************************************************************
+Sample 2530 - Plan 1: Query: what is the only route with over 120,000 passengers?
+Sample 2530 - Plan 1: Groundtruth: ['Quintana Roo, Cancún']
+Sample 2530 - Plan 1: X-Original table pd: 
+   rank                            city passengers  ranking  \
+0     1            quintana roo, cancún    132,046      NaN   
+1     2           nuevo león, monterrey    106,513      NaN   
+2     3              guerrero, acapulco     56,069      NaN   
+3     4            jalisco, guadalajara     52,584      NaN   
+4     5        jalisco, puerto vallarta     43,419      1.0   
+5     6  baja california sur, los cabos     37,526      1.0   
+6     7    guerrero, ixtapa/zihuatanejo     35,507      NaN   
+7     8        baja california, tijuana     14,906      NaN   
+8     9           tabasco, villahermosa      6,928      1.0   
+9    10             tamaulipas, tampico      3,619      1.0   
+
+                                 airline  
+0  aeroméxico connect, interjet, volaris  
+1           aeroméxico connect, interjet  
+2           aeroméxico connect, interjet  
+3            aeroméxico connect, volaris  
+4                               interjet  
+5                               interjet  
+6                               interjet  
+7                               interjet  
+8                            vivaaerobus  
+9                            vivaaerobus  
+Sample 2530 - Plan 1: Caption: none
+Sample 2530 - Plan 1: Original table: [['rank', 'city', 'passengers', 'ranking', 'airline'], ['1', 'quintana roo, cancún', '132,046', '', 'aeroméxico connect, interjet, volaris'], ['2', 'nuevo león, monterrey', '106,513', '', 'aeroméxico connect, interjet'], ['3', 'guerrero, acapulco', '56,069', '', 'aeroméxico connect, interjet'], ['4', 'jalisco, guadalajara', '52,584', '', 'aeroméxico connect, volaris'], ['5', 'jalisco, puerto vallarta', '43,419', '1', 'interjet'], ['6', 'baja california sur, los cabos', '37,526', '1', 'interjet'], ['7', 'guerrero, ixtapa/zihuatanejo', '35,507', '', 'interjet'], ['8', 'baja california, tijuana', '14,906', '', 'interjet'], ['9', 'tabasco, villahermosa', '6,928', '1', 'vivaaerobus'], ['10', 'tamaulipas, tampico', '3,619', '1', 'vivaaerobus']]
+########################################################################################################################
+Sample 2530 - Plan 1: Operation 1: Select rows where 'passengers' is greater than 120,000.
+Sample 2530 - Plan 1: Selected indices: []
+Sample 2530 - Plan 1: X-Table after operation df:
+   rank                  city passengers  ranking  \
+0     1  quintana roo, cancún    132,046      NaN   
+
+                                 airline  
+0  aeroméxico connect, interjet, volaris  
+Sample 2530 - Plan 1: Table after operation: [['rank', 'city', 'passengers', 'ranking', 'airline'], [1, 'quintana roo, cancún', '132,046', None, 'aeroméxico connect, interjet, volaris']]
+########################################################################################################################
+Sample 2530 - Plan 1: Operation 2: Select the 'city' column.
+Sample 2530 - Plan 1: Selected indices: []
+Sample 2530 - Plan 1: X-Table after operation df:
+                   city
+0  quintana roo, cancún
+Sample 2530 - Plan 1: Table after operation: [['city'], ['quintana roo, cancún']]
+Fall-back: FALSE
+Answer from plan 1: [['quintana roo, cancún']]
+Groundtruth: ['Quintana Roo, Cancún']

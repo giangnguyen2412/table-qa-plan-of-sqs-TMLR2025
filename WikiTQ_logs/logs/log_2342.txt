@@ -1,0 +1,80 @@
+************************************************************************************************************************
+Sample 2342 - Plan 1: Query: which match no. has the lowest combined score?
+Sample 2342 - Plan 1: Groundtruth: ['25']
+Sample 2342 - Plan 1: X-Original table pd: 
+   match_no_ match_type        team_europe      score      team_usa  \
+0         25    singles    mika koivuniemi  217 - 279  chris barnes   
+1         26    singles      osku palermaa  217 - 244   tommy jones   
+2         27    singles          paul moor  210 - 199      tim mack   
+3         28    singles     tore torgersen  206 - 275     doug kent   
+4         29    singles  tomas leandersson  176 - 258  bill hoffman   
+5         30      baker        team europe  202 - 203      team usa   
+6         31    singles     tore torgersen  202 - 264  chris barnes   
+7         32    singles      osku palermaa  196 - 235   tommy jones   
+
+  progressive_total  
+0           14 - 11  
+1           14 - 12  
+2           15 - 12  
+3           15 - 13  
+4           15 - 14  
+5           15 - 15  
+6           15 - 16  
+7           15 - 17  
+Sample 2342 - Plan 1: Caption: none
+Sample 2342 - Plan 1: Original table: [['match_no_', 'match_type', 'team_europe', 'score', 'team_usa', 'progressive_total'], ['25', 'singles', 'mika koivuniemi', '217 - 279', 'chris barnes', '14 - 11'], ['26', 'singles', 'osku palermaa', '217 - 244', 'tommy jones', '14 - 12'], ['27', 'singles', 'paul moor', '210 - 199', 'tim mack', '15 - 12'], ['28', 'singles', 'tore torgersen', '206 - 275', 'doug kent', '15 - 13'], ['29', 'singles', 'tomas leandersson', '176 - 258', 'bill hoffman', '15 - 14'], ['30', 'baker', 'team europe', '202 - 203', 'team usa', '15 - 15'], ['31', 'singles', 'tore torgersen', '202 - 264', 'chris barnes', '15 - 16'], ['32', 'singles', 'osku palermaa', '196 - 235', 'tommy jones', '15 - 17']]
+########################################################################################################################
+Sample 2342 - Plan 1: Operation 1: Extract the numerical scores from the 'score' column and add a new column 'combined_score' to the existing table.
+Sample 2342 - Plan 1: Selected indices: [[0, 3], [1, 3], [2, 3], [3, 3], [4, 3], [5, 3], [6, 3], [7, 3]]
+Sample 2342 - Plan 1: X-Table after operation df:
+   match_no_ match_type        team_europe      score      team_usa  \
+0         25    singles    mika koivuniemi  217 - 279  chris barnes   
+1         26    singles      osku palermaa  217 - 244   tommy jones   
+2         27    singles          paul moor  210 - 199      tim mack   
+3         28    singles     tore torgersen  206 - 275     doug kent   
+4         29    singles  tomas leandersson  176 - 258  bill hoffman   
+5         30      baker        team europe  202 - 203      team usa   
+6         31    singles     tore torgersen  202 - 264  chris barnes   
+7         32    singles      osku palermaa  196 - 235   tommy jones   
+
+  progressive_total  combined_score  
+0           14 - 11             496  
+1           14 - 12             461  
+2           15 - 12             409  
+3           15 - 13             481  
+4           15 - 14             434  
+5           15 - 15             405  
+6           15 - 16             466  
+7           15 - 17             431  
+Sample 2342 - Plan 1: Table after operation: [['match_no_', 'match_type', 'team_europe', 'score', 'team_usa', 'progressive_total', 'combined_score'], [25, 'singles', 'mika koivuniemi', '217 - 279', 'chris barnes', '14 - 11', 496], [26, 'singles', 'osku palermaa', '217 - 244', 'tommy jones', '14 - 12', 461], [27, 'singles', 'paul moor', '210 - 199', 'tim mack', '15 - 12', 409], [28, 'singles', 'tore torgersen', '206 - 275', 'doug kent', '15 - 13', 481], [29, 'singles', 'tomas leandersson', '176 - 258', 'bill hoffman', '15 - 14', 434], [30, 'baker', 'team europe', '202 - 203', 'team usa', '15 - 15', 405], [31, 'singles', 'tore torgersen', '202 - 264', 'chris barnes', '15 - 16', 466], [32, 'singles', 'osku palermaa', '196 - 235', 'tommy jones', '15 - 17', 431]]
+########################################################################################################################
+Sample 2342 - Plan 1: Operation 2: Calculate the combined score by summing the scores for each match. 
+Sample 2342 - Plan 1: Selected indices: []
+Sample 2342 - Plan 1: X-Table after operation df:
+   combined_score
+0            3583
+Sample 2342 - Plan 1: Table after operation: [['combined_score'], [3583]]
+########################################################################################################################
+Sample 2342 - Plan 1: Operation 3: Order the table by the 'combined_score' column in ascending order.
+Sample 2342 - Plan 1: Selected indices: []
+Sample 2342 - Plan 1: X-Table after operation df:
+   combined_score
+0            3583
+Sample 2342 - Plan 1: Table after operation: [['combined_score'], [3583]]
+########################################################################################################################
+Sample 2342 - Plan 1: Operation 4: Select row number 1.
+Sample 2342 - Plan 1: Selected indices: []
+Sample 2342 - Plan 1: X-Table after operation df:
+   combined_score
+0            3583
+Sample 2342 - Plan 1: Table after operation: [['combined_score'], [3583]]
+########################################################################################################################
+Sample 2342 - Plan 1: Operation 5: Select the 'match_no_' column.
+Sample 2342 - Plan 1: Selected indices: []
+Sample 2342 - Plan 1: X-Table after operation df:
+   combined_score
+0            3583
+Sample 2342 - Plan 1: Table after operation: [['combined_score'], [3583]]
+Fall-back: FALSE
+Answer from plan 1: [[3583]]
+Groundtruth: ['25']

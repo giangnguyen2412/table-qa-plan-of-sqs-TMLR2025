@@ -1,0 +1,536 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> what is the name of the first wrestler on this chart?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select the first row from the table.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>wrestler_</td>
+<td>reigns_</td>
+<td>date_</td>
+<td>place_</td>
+<td>notes_</td>
+</tr>
+<tr>
+<td>ron starr</td>
+<td>1</td>
+<td>september 19, 1986</td>
+<td>ponce, puerto rico</td>
+<td>defeated invader i in a tournament final</td>
+</tr>
+<tr>
+<td>invader i</td>
+<td>1</td>
+<td>november 5, 1986</td>
+<td>san juan, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>jason the terrible</td>
+<td>1</td>
+<td>january 17, 1987</td>
+<td>caguas, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>invader i</td>
+<td>2</td>
+<td>september 18, 1987</td>
+<td>san juan, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>grizzly boone</td>
+<td>1</td>
+<td>october 24, 1987</td>
+<td>bayamon, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>invader i</td>
+<td>3</td>
+<td>november 25, 1987</td>
+<td>san juan, puerto rico</td>
+<td>held up after a match against super black ninja on january 8, 1988 in san juan, pr</td>
+</tr>
+<tr>
+<td>super black ninja</td>
+<td>1</td>
+<td>february 6, 1988</td>
+<td>guaynabo, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>invader i</td>
+<td>4</td>
+<td>april 2, 1988</td>
+<td>bayamon, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>ron starr</td>
+<td>2</td>
+<td>june 25, 1988</td>
+<td>carolina, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>carlos colon</td>
+<td>1</td>
+<td>august 20, 1988</td>
+<td>bayamon, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>jason the terrible</td>
+<td>2</td>
+<td>january 28, 1989</td>
+<td>carolina, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>carlos colon</td>
+<td>2</td>
+<td>march 1, 1989</td>
+<td>carolina, puerto rico</td>
+<td>vacant on may 22, 1989 after colon was injured by steve strong on may 20, 1989</td>
+</tr>
+<tr>
+<td>tnt</td>
+<td>1</td>
+<td>june 17, 1989</td>
+<td>san juan, puerto rico</td>
+<td>defeats abudda dein; vacant on february 9, 1990 when tnt wins the wwc universal heavyweight title</td>
+</tr>
+<tr>
+<td>leo burke</td>
+<td>1</td>
+<td>march 24, 1990</td>
+<td>caguas, puerto rico</td>
+<td>defeats carlos colon in a tournament final.</td>
+</tr>
+<tr>
+<td>tnt</td>
+<td>2</td>
+<td>april 25, 1990</td>
+<td>san juan, puerto rico</td>
+<td>won the vacant title</td>
+</tr>
+<tr>
+<td>action jackson (original tnt)</td>
+<td>1</td>
+<td>january 26, 1991</td>
+<td>caguas, puerto rico</td>
+<td>wins tournament; loses a name match on march 2, 1991 in bayamon, pr</td>
+</tr>
+<tr>
+<td>tnt</td>
+<td>3</td>
+<td>march 30, 1991</td>
+<td>bayamon, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>king kong</td>
+<td>1</td>
+<td>april 20, 1991</td>
+<td>bayamon, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>tnt</td>
+<td>4</td>
+<td>june 1, 1991</td>
+<td>bayamon, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>fidel sierra</td>
+<td>1</td>
+<td>october 19, 1991</td>
+<td>bayamon, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>tnt</td>
+<td>5</td>
+<td>october 26, 1991</td>
+<td>carolina, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>dick murdoch</td>
+<td>1</td>
+<td>november 23, 1991</td>
+<td>arroyo, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>invader i</td>
+<td>5</td>
+<td>december 25, 1991</td>
+<td>san juan, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>dick murdoch</td>
+<td>2</td>
+<td>january 6, 1992</td>
+<td>san juan, puerto rico</td>
+<td>vacant on january 6, 1993 when murdoch leaves the promotion.</td>
+</tr>
+<tr>
+<td>carlos colon</td>
+<td>3</td>
+<td>june 18, 1994</td>
+<td>san juan, puerto rico</td>
+<td>defeated mighty koadiak in a tournament final.</td>
+</tr>
+<tr>
+<td>mighty koadiak</td>
+<td>1</td>
+<td>1994</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>rex king</td>
+<td>1</td>
+<td>1995</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>sean morley</td>
+<td>1</td>
+<td>1995</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ricky santana</td>
+<td>1</td>
+<td>1995</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>rex king</td>
+<td>2</td>
+<td>1995</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>pulgarcito</td>
+<td>1</td>
+<td>november 11, 1995</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>mighty koadiak</td>
+<td>2</td>
+<td>november 26, 1995</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>sweet brown sugar (skip young)</td>
+<td>1</td>
+<td>january 6, 1996</td>
+<td>caguas, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>ricky santana</td>
+<td>2</td>
+<td>march 23, 1996</td>
+<td>caguas, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>"jungle" jim steele</td>
+<td>1</td>
+<td>april 20, 1996</td>
+<td>caguas, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>el bronco i</td>
+<td>1</td>
+<td>may 18, 1996</td>
+<td>caguas, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>sean morley</td>
+<td>2</td>
+<td>may 30, 1996</td>
+<td>caguas, puerto rico</td>
+<td>joins the wwf in 1997, but is still recognized as champion; title becomes vacant on march 3, 1999.</td>
+</tr>
+<tr>
+<td>glamour boy shane</td>
+<td>1</td>
+<td>april 2, 1999</td>
+<td>guaynabo, puerto rico</td>
+<td>defeated "jungle" jim steele for vacant title.</td>
+</tr>
+<tr>
+<td>mustafa saed</td>
+<td>1</td>
+<td>august 14, 1999</td>
+<td>caguas, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>glamour boy shane</td>
+<td>2</td>
+<td>september 19, 1999</td>
+<td>guaynabo, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>chicky starr</td>
+<td>1</td>
+<td>november 13, 1999</td>
+<td>naguabo, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>glamour boy shane</td>
+<td>3</td>
+<td>january 6, 2000</td>
+<td>caguas, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>rex king</td>
+<td>3</td>
+<td>march 19, 2000</td>
+<td>cabo rojo, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>chris grant</td>
+<td>1</td>
+<td>april 21, 2001</td>
+<td>orocovis, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>alex porteau</td>
+<td>1</td>
+<td>july 7, 2001</td>
+<td>carolina, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>chris grant</td>
+<td>2</td>
+<td>july 21, 2001</td>
+<td>orocovis, puerto rico</td>
+<td>wins the title by forfeit</td>
+</tr>
+<tr>
+<td>bad boy bradley</td>
+<td>1</td>
+<td>september 8, 2001</td>
+<td>bayamón, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>super gladiator</td>
+<td>1</td>
+<td>october 6, 2001</td>
+<td>caguas, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>ricky santana</td>
+<td>3</td>
+<td>march 16, 2002</td>
+<td>aibonito, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>rico suave</td>
+<td>1</td>
+<td>april 6, 2002</td>
+<td>caguas, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>ray gonzalez</td>
+<td>1</td>
+<td>april 27, 2002</td>
+<td>san lorenzo, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>carlos colon</td>
+<td>4</td>
+<td>june 8, 2002</td>
+<td>toa baja, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>ray gonzalez</td>
+<td>2</td>
+<td>june 15, 2002</td>
+<td>caguas, puerto rico</td>
+<td>vacates title on july 1, 2002 when he leaves the company.</td>
+</tr>
+<tr>
+<td>wilfredo alejandro</td>
+<td>1</td>
+<td>july 6, 2002</td>
+<td>cayey, puerto rico</td>
+<td>wins a battle royal for the vacant title.</td>
+</tr>
+<tr>
+<td>fidel sierra</td>
+<td>2</td>
+<td>august 24, 2002</td>
+<td>coamo, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>chris candido</td>
+<td>1</td>
+<td>june 6, 2003</td>
+<td>cayey, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>vengador boricua</td>
+<td>1</td>
+<td>july 19, 2003</td>
+<td>carolina, puerto rico</td>
+<td>title becomes inactive when vengador boricua leaves the company.</td>
+</tr>
+<tr>
+<td>superstar romeo</td>
+<td>1</td>
+<td>february 3, 2007</td>
+<td>caguas, puerto rico</td>
+<td>romeo beat barabas jr. to win the reactivated title.</td>
+</tr>
+<tr>
+<td>rico suave</td>
+<td>2</td>
+<td>march 17, 2007</td>
+<td>bayamon, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>crazy rudy</td>
+<td>1</td>
+<td>april 28, 2007</td>
+<td>bayamon, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>ash rubinsky</td>
+<td>1</td>
+<td>november 24, 2007</td>
+<td>bayamon, puerto rico</td>
+<td>wins a 7-man battle royal.</td>
+</tr>
+<tr>
+<td>b.j.</td>
+<td>1</td>
+<td>january 6, 2008</td>
+<td>choliseo, puerto rico</td>
+<td>wins the title after winning an 11 man battle royal</td>
+</tr>
+<tr>
+<td>hammett</td>
+<td>1</td>
+<td>march 1, 2008</td>
+<td>tao baja, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>b.j.</td>
+<td>2</td>
+<td>march 15, 2008</td>
+<td>lares, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>chris joel</td>
+<td>1</td>
+<td>may 10, 2008</td>
+<td>bayamon, puerto rico</td>
+<td></td>
+</tr>
+<tr>
+<td>vacant</td>
+<td></td>
+<td></td>
+<td></td>
+<td>chris joel jumps to iwa</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select the 'wrestler_' column from the selected row.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>wrestler_</td>
+<td>reigns_</td>
+<td>date_</td>
+<td>place_</td>
+<td>notes_</td>
+</tr>
+<tr>
+<td>ron starr</td>
+<td>1.0</td>
+<td>september 19, 1986</td>
+<td>ponce, puerto rico</td>
+<td>defeated invader i in a tournament final</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>wrestler_</td>
+</tr>
+<tr>
+<td>ron starr</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['ron starr']]</h3>
+</body></html>

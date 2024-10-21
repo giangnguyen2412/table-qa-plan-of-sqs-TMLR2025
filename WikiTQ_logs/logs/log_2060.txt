@@ -1,0 +1,53 @@
+************************************************************************************************************************
+Sample 2060 - Plan 1: Query: how many times did fred capossela call the race?
+Sample 2060 - Plan 1: Groundtruth: ['5']
+Sample 2060 - Plan 1: X-Original table pd: 
+   year network     race_caller                color_commentator  \
+0  1959     cbs  fred capossela   bryan field and chris schenkel   
+1  1958     cbs  fred capossela                      bryan field   
+2  1957     cbs  fred capossela                      bryan field   
+3  1956     cbs  fred capossela                      bryan field   
+4  1955     cbs  fred capossela  phil sutterfield and win elliot   
+5  1954     cbs     bryan field                        mel allen   
+6  1953     cbs     bryan field                        mel allen   
+7  1952     cbs     bryan field                       sam renick   
+
+          reporters trophy_presentation  
+0                        chris schenkel  
+1                                        
+2                                        
+3                                        
+4                                        
+5                            bill corum  
+6  phil sutterfield    phil sutterfield  
+7                                        
+Sample 2060 - Plan 1: Caption: none
+Sample 2060 - Plan 1: Original table: [['year', 'network', 'race_caller', 'color_commentator', 'reporters', 'trophy_presentation'], ['1959', 'cbs', 'fred capossela', 'bryan field and chris schenkel', '', 'chris schenkel'], ['1958', 'cbs', 'fred capossela', 'bryan field', '', ''], ['1957', 'cbs', 'fred capossela', 'bryan field', '', ''], ['1956', 'cbs', 'fred capossela', 'bryan field', '', ''], ['1955', 'cbs', 'fred capossela', 'phil sutterfield and win elliot', '', ''], ['1954', 'cbs', 'bryan field', 'mel allen', '', 'bill corum'], ['1953', 'cbs', 'bryan field', 'mel allen', 'phil sutterfield', 'phil sutterfield'], ['1952', 'cbs', 'bryan field', 'sam renick', '', '']]
+########################################################################################################################
+Sample 2060 - Plan 1: Operation 1: Select rows where 'race_caller' is 'fred capossela'.
+Sample 2060 - Plan 1: Selected indices: [[1, 2], [4, 2], [0, 2], [2, 2], [3, 2]]
+Sample 2060 - Plan 1: X-Table after operation df:
+   year network     race_caller                color_commentator  reporters  \
+0  1959     cbs  fred capossela   bryan field and chris schenkel        NaN   
+1  1958     cbs  fred capossela                      bryan field        NaN   
+2  1957     cbs  fred capossela                      bryan field        NaN   
+3  1956     cbs  fred capossela                      bryan field        NaN   
+4  1955     cbs  fred capossela  phil sutterfield and win elliot        NaN   
+
+  trophy_presentation  
+0      chris schenkel  
+1                      
+2                      
+3                      
+4                      
+Sample 2060 - Plan 1: Table after operation: [['year', 'network', 'race_caller', 'color_commentator', 'reporters', 'trophy_presentation'], [1959, 'cbs', 'fred capossela', 'bryan field and chris schenkel', '', 'chris schenkel'], [1958, 'cbs', 'fred capossela', 'bryan field', '', ''], [1957, 'cbs', 'fred capossela', 'bryan field', '', ''], [1956, 'cbs', 'fred capossela', 'bryan field', '', ''], [1955, 'cbs', 'fred capossela', 'phil sutterfield and win elliot', '', '']]
+########################################################################################################################
+Sample 2060 - Plan 1: Operation 2: Count the number of rows.
+Sample 2060 - Plan 1: Selected indices: []
+Sample 2060 - Plan 1: X-Table after operation df:
+   row_count
+0          5
+Sample 2060 - Plan 1: Table after operation: [['row_count'], [5]]
+Fall-back: FALSE
+Answer from plan 1: [[5]]
+Groundtruth: ['5']

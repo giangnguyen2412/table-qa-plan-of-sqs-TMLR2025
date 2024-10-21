@@ -1,0 +1,128 @@
+************************************************************************************************************************
+Sample 328 - Plan 1: Query: what was the highest overall standing that she achieved?
+Sample 328 - Plan 1: Groundtruth: ['112']
+Sample 328 - Plan 1: X-Original table pd: 
+   season  age                   overall                    slalom  \
+0    2004   17                       112                         –   
+1    2005   18                        37                         –   
+2    2006   19                        22                         –   
+3    2007   20                        33                         –   
+4    2008   21                        38                         –   
+5    2009   22                         9                         –   
+6    2010   23                        28                         –   
+7    2011   24  injured, did not compete  injured, did not compete   
+8    2012   25                        75                         –   
+9    2013   26                        37                         –   
+
+              giant_nslalom                   super_g  \
+0                         –                        51   
+1                        27                        18   
+2                        18                        37   
+3                        50                        15   
+4                         –                        35   
+5                        40                         2   
+6                         –                        13   
+7  injured, did not compete  injured, did not compete   
+8                        28                         –   
+9                        17                        28   
+
+                   downhill                  combined  
+0                         –                         —  
+1                        49                         —  
+2                        15                         —  
+3                        23                         —  
+4                        13                         —  
+5                         5                        50  
+6                        23                         —  
+7  injured, did not compete  injured, did not compete  
+8                         –                         —  
+9                        30                         —  
+Sample 328 - Plan 1: Caption: none
+Sample 328 - Plan 1: Original table: [['season', 'age', 'overall', 'slalom', 'giant_nslalom', 'super_g', 'downhill', 'combined'], ['2004', '17', '112', '–', '–', '51', '–', '—'], ['2005', '18', '37', '–', '27', '18', '49', '—'], ['2006', '19', '22', '–', '18', '37', '15', '—'], ['2007', '20', '33', '–', '50', '15', '23', '—'], ['2008', '21', '38', '–', '–', '35', '13', '—'], ['2009', '22', '9', '–', '40', '2', '5', '50'], ['2010', '23', '28', '–', '–', '13', '23', '—'], ['2011', '24', 'injured, did not compete', 'injured, did not compete', 'injured, did not compete', 'injured, did not compete', 'injured, did not compete', 'injured, did not compete'], ['2012', '25', '75', '–', '28', '–', '–', '—'], ['2013', '26', '37', '–', '17', '28', '30', '—']]
+########################################################################################################################
+Sample 328 - Plan 1: Operation 1: Select rows where the 'overall' column is not equal to '-' or 'injured, did not compete'.
+Sample 328 - Plan 1: Selected indices: []
+Sample 328 - Plan 1: X-Table after operation df:
+   season  age  overall slalom giant_nslalom super_g downhill combined
+0    2004   17      112      –             –      51        –        —
+1    2005   18       37      –            27      18       49        —
+2    2006   19       22      –            18      37       15        —
+3    2007   20       33      –            50      15       23        —
+4    2008   21       38      –             –      35       13        —
+5    2009   22        9      –            40       2        5       50
+6    2010   23       28      –             –      13       23        —
+7    2012   25       75      –            28       –        –        —
+8    2013   26       37      –            17      28       30        —
+Sample 328 - Plan 1: Table after operation: [['season', 'age', 'overall', 'slalom', 'giant_nslalom', 'super_g', 'downhill', 'combined'], [2004, 17, '112', '–', '–', '51', '–', '—'], [2005, 18, '37', '–', '27', '18', '49', '—'], [2006, 19, '22', '–', '18', '37', '15', '—'], [2007, 20, '33', '–', '50', '15', '23', '—'], [2008, 21, '38', '–', '–', '35', '13', '—'], [2009, 22, '9', '–', '40', '2', '5', '50'], [2010, 23, '28', '–', '–', '13', '23', '—'], [2012, 25, '75', '–', '28', '–', '–', '—'], [2013, 26, '37', '–', '17', '28', '30', '—']]
+########################################################################################################################
+Sample 328 - Plan 1: Operation 2: Extract the numerical value from the 'overall' column then add column 'num_overall' to the existing table.
+Sample 328 - Plan 1: Selected indices: [[0, 2], [1, 2], [2, 2], [3, 2], [4, 2], [5, 2], [6, 2], [7, 2], [8, 2]]
+Sample 328 - Plan 1: X-Table after operation df:
+   season  age  overall slalom giant_nslalom super_g downhill combined  \
+0    2004   17      112      –             –      51        –        —   
+1    2005   18       37      –            27      18       49        —   
+2    2006   19       22      –            18      37       15        —   
+3    2007   20       33      –            50      15       23        —   
+4    2008   21       38      –             –      35       13        —   
+5    2009   22        9      –            40       2        5       50   
+6    2010   23       28      –             –      13       23        —   
+7    2012   25       75      –            28       –        –        —   
+8    2013   26       37      –            17      28       30        —   
+
+   num_overall  
+0          112  
+1           37  
+2           22  
+3           33  
+4           38  
+5            9  
+6           28  
+7           75  
+8           37  
+Sample 328 - Plan 1: Table after operation: [['season', 'age', 'overall', 'slalom', 'giant_nslalom', 'super_g', 'downhill', 'combined', 'num_overall'], [2004, 17, 112, '–', '–', '51', '–', '—', 112], [2005, 18, 37, '–', '27', '18', '49', '—', 37], [2006, 19, 22, '–', '18', '37', '15', '—', 22], [2007, 20, 33, '–', '50', '15', '23', '—', 33], [2008, 21, 38, '–', '–', '35', '13', '—', 38], [2009, 22, 9, '–', '40', '2', '5', '50', 9], [2010, 23, 28, '–', '–', '13', '23', '—', 28], [2012, 25, 75, '–', '28', '–', '–', '—', 75], [2013, 26, 37, '–', '17', '28', '30', '—', 37]]
+########################################################################################################################
+Sample 328 - Plan 1: Operation 3: Order the table by 'num_overall' in descending order.
+Sample 328 - Plan 1: Selected indices: [[8, 8], [3, 8], [5, 8], [6, 8], [1, 8], [4, 8], [0, 8], [7, 8], [2, 8]]
+Sample 328 - Plan 1: X-Table after operation df:
+   season  age  overall slalom giant_nslalom super_g downhill combined  \
+0    2004   17      112      –             –      51        –        —   
+1    2012   25       75      –            28       –        –        —   
+2    2008   21       38      –             –      35       13        —   
+3    2005   18       37      –            27      18       49        —   
+4    2013   26       37      –            17      28       30        —   
+5    2007   20       33      –            50      15       23        —   
+6    2010   23       28      –             –      13       23        —   
+7    2006   19       22      –            18      37       15        —   
+8    2009   22        9      –            40       2        5       50   
+
+   num_overall  
+0          112  
+1           75  
+2           38  
+3           37  
+4           37  
+5           33  
+6           28  
+7           22  
+8            9  
+Sample 328 - Plan 1: Table after operation: [['season', 'age', 'overall', 'slalom', 'giant_nslalom', 'super_g', 'downhill', 'combined', 'num_overall'], [2004, 17, 112, '–', '–', '51', '–', '—', 112], [2012, 25, 75, '–', '28', '–', '–', '—', 75], [2008, 21, 38, '–', '–', '35', '13', '—', 38], [2005, 18, 37, '–', '27', '18', '49', '—', 37], [2013, 26, 37, '–', '17', '28', '30', '—', 37], [2007, 20, 33, '–', '50', '15', '23', '—', 33], [2010, 23, 28, '–', '–', '13', '23', '—', 28], [2006, 19, 22, '–', '18', '37', '15', '—', 22], [2009, 22, 9, '–', '40', '2', '5', '50', 9]]
+########################################################################################################################
+Sample 328 - Plan 1: Operation 4: Select row number 1.
+Sample 328 - Plan 1: Selected indices: []
+Sample 328 - Plan 1: X-Table after operation df:
+   season  age  overall slalom giant_nslalom  super_g downhill combined  \
+0    2004   17      112      –             –       51        –        —   
+
+   num_overall  
+0          112  
+Sample 328 - Plan 1: Table after operation: [['season', 'age', 'overall', 'slalom', 'giant_nslalom', 'super_g', 'downhill', 'combined', 'num_overall'], [2004, 17, 112, '–', '–', '51', '–', '—', 112]]
+########################################################################################################################
+Sample 328 - Plan 1: Operation 5: Select the 'overall' column.
+Sample 328 - Plan 1: Selected indices: []
+Sample 328 - Plan 1: X-Table after operation df:
+   overall
+0      112
+Sample 328 - Plan 1: Table after operation: [['overall'], [112]]
+Fall-back: FALSE
+Answer from plan 1: [[112]]
+Groundtruth: ['112']

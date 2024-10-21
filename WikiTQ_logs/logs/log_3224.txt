@@ -1,0 +1,46 @@
+************************************************************************************************************************
+Sample 3224 - Plan 1: Query: which of these stations do not have a "k" in their call sign?
+Sample 3224 - Plan 1: Groundtruth: ['WNAX-FM']
+Sample 3224 - Plan 1: X-Original table pd: 
+  frequency call_sign                              name           format  \
+0   89.7 fm      kusd  south dakota public broadcasting              npr   
+1   93.1 fm      kkya                              kk93          country   
+2   94.3 fm      kdam                           the dam  mainstream rock   
+3  104.1 fm   wnax-fm                    the wolf 104.1          country   
+4  106.3 fm      kvht                classic hits 106.3     classic hits   
+
+                                               owner  target_city_market  \
+0  sd board of directors for educational telecomm...  yankton/vermillion   
+1                        riverfront broadcasting llc  yankton/vermillion   
+2                        riverfront broadcasting llc  yankton/vermillion   
+3                                saga communications  yankton/vermillion   
+4                      cullhane communications, inc.  yankton/vermillion   
+
+  city_of_license  
+0      vermillion  
+1         yankton  
+2      hartington  
+3         yankton  
+4      vermillion  
+Sample 3224 - Plan 1: Caption: none
+Sample 3224 - Plan 1: Original table: [['frequency', 'call_sign', 'name', 'format', 'owner', 'target_city_market', 'city_of_license'], ['89.7 fm', 'kusd', 'south dakota public broadcasting', 'npr', 'sd board of directors for educational telecommunications', 'yankton/vermillion', 'vermillion'], ['93.1 fm', 'kkya', 'kk93', 'country', 'riverfront broadcasting llc', 'yankton/vermillion', 'yankton'], ['94.3 fm', 'kdam', 'the dam', 'mainstream rock', 'riverfront broadcasting llc', 'yankton/vermillion', 'hartington'], ['104.1 fm', 'wnax-fm', 'the wolf 104.1', 'country', 'saga communications', 'yankton/vermillion', 'yankton'], ['106.3 fm', 'kvht', 'classic hits 106.3', 'classic hits', 'cullhane communications, inc.', 'yankton/vermillion', 'vermillion']]
+########################################################################################################################
+Sample 3224 - Plan 1: Operation 1: Select rows where the 'call_sign' does not contain the letter 'k'.
+Sample 3224 - Plan 1: Selected indices: []
+Sample 3224 - Plan 1: X-Table after operation df:
+  frequency call_sign            name   format                owner  \
+0  104.1 fm   wnax-fm  the wolf 104.1  country  saga communications   
+
+   target_city_market city_of_license  
+0  yankton/vermillion         yankton  
+Sample 3224 - Plan 1: Table after operation: [['frequency', 'call_sign', 'name', 'format', 'owner', 'target_city_market', 'city_of_license'], ['104.1 fm', 'wnax-fm', 'the wolf 104.1', 'country', 'saga communications', 'yankton/vermillion', 'yankton']]
+########################################################################################################################
+Sample 3224 - Plan 1: Operation 2: Select the 'name' column.
+Sample 3224 - Plan 1: Selected indices: []
+Sample 3224 - Plan 1: X-Table after operation df:
+             name
+0  the wolf 104.1
+Sample 3224 - Plan 1: Table after operation: [['name'], ['the wolf 104.1']]
+Fall-back: FALSE
+Answer from plan 1: [['the wolf 104.1']]
+Groundtruth: ['WNAX-FM']

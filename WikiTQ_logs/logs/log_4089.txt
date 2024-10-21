@@ -1,0 +1,343 @@
+************************************************************************************************************************
+Sample 4089 - Plan 1: Query: how many offenses occurred after april 21, 2012?
+Sample 4089 - Plan 1: Groundtruth: ['4']
+Sample 4089 - Plan 1: X-Original table pd: 
+      date_of_incident                       offender                   team  \
+0   september 20, 2011  pierre-luc letourneau-leblond         calgary flames   
+1   september 21, 2011                   jody shelley    philadelphia flyers   
+2   september 23, 2011               james wisniewski  columbus blue jackets   
+3   september 23, 2011                  brad staubitz         minnesota wild   
+4   september 24, 2011                     brad boyes         buffalo sabres   
+5   september 24, 2011          jean-francois jacques          anaheim ducks   
+6   september 26, 2011                    tom sestito    philadelphia flyers   
+7   september 28, 2011                  brendan smith      detroit red wings   
+8   september 30, 2011               clarke macarthur    toronto maple leafs   
+9      october 8, 2011           pierre-marc bouchard         minnesota wild   
+10    october 17, 2011                    kris letang    pittsburgh penguins   
+11    october 28, 2011                    andy sutton        edmonton oilers   
+12    october 28, 2011                daniel carcillo     chicago blackhawks   
+13    november 2, 2011                 patrick kaleta         buffalo sabres   
+14   november 17, 2011                  chris stewart        st. louis blues   
+15   november 23, 2011                  andre deveaux       new york rangers   
+16   november 26, 2011                 max pacioretty     montreal canadiens   
+17    december 3, 2011                  jordin tootoo    nashville predators   
+18    december 3, 2011                   mark fistric           dallas stars   
+19    december 6, 2011                   kevin porter     colorado avalanche   
+20    december 7, 2011                    ville leino         buffalo sabres   
+21    december 7, 2011                    andy sutton        edmonton oilers   
+22   december 17, 2011                    milan lucic          boston bruins   
+23   december 18, 2011                   rene bourque         calgary flames   
+24   december 20, 2011                deryk engelland    pittsburgh penguins   
+25   december 31, 2011                       ian cole        st. louis blues   
+26   december 31, 2011                     krys barch       florida panthers   
+27   december 31, 2011                   raffi torres        phoenix coyotes   
+28     january 2, 2012                daniel carcillo     chicago blackhawks   
+29     january 3, 2012                   rene bourque         calgary flames   
+30     january 7, 2012                  brad marchand          boston bruins   
+31     january 8, 2012          jean-francois jacques          anaheim ducks   
+32    january 14, 2012                     dane byers  columbus blue jackets   
+33    january 21, 2012                 andrew ference          boston bruins   
+34    january 22, 2012                  alex ovechkin    washington capitals   
+35   february 12, 2012                    zac rinaldo    philadelphia flyers   
+36   february 18, 2012                  warren peters         minnesota wild   
+37       march 8, 2012                     mike green    washington capitals   
+38      march 12, 2012                    tyler myers         buffalo sabres   
+39      march 15, 2012                   jeff skinner    carolina hurricanes   
+40      march 20, 2012                     shane doan        phoenix coyotes   
+41      march 21, 2012                   duncan keith     chicago blackhawks   
+42       april 1, 2012                   kyle quincey      detroit red wings   
+43       april 5, 2012                   nate prosser         minnesota wild   
+44      april 11, 2012                     byron bitz      vancouver canucks   
+45      april 14, 2012                   carl hagelin       new york rangers   
+46      april 14, 2012                   matt carkner        ottawa senators   
+47      april 14, 2012                    andrew shaw     chicago blackhawks   
+48      april 15, 2012                    craig adams    pittsburgh penguins   
+49      april 15, 2012                     james neal    pittsburgh penguins   
+50      april 15, 2012                    arron asham    pittsburgh penguins   
+51      april 14, 2012              nicklas backstrom    washington capitals   
+52      april 17, 2012                   raffi torres        phoenix coyotes   
+53         may 4, 2012               rostislav klesla        phoenix coyotes   
+54         may 6, 2012                  claude giroux    philadelphia flyers   
+55        may 15, 2012                  martin hanzal        phoenix coyotes   
+56        may 20, 2012                  brandon prust       new york rangers   
+
+                                              offense      date_of_action  \
+0                             boarding matt clackson.  september 22, 2011   
+1                              boarding darryl boyce.  september 22, 2011   
+2         illegal hit to the head of cal clutterbuck.  september 24, 2011   
+3                     checking cody bass from behind.  september 26, 2011   
+4            illegal hit to the head of joe colborne.  september 25, 2011   
+5   leaving bench to initiate a fight with mike duco.  september 27, 2011   
+6                 checking andre deveaux from behind.  september 28, 2011   
+7               illegal hit to the head of ben smith.  september 30, 2011   
+8       illegal hit to the head of justin abdelkader.     october 1, 2011   
+9                         high sticking matt calvert.     october 9, 2011   
+10                     boarding alexander burmistrov.    october 18, 2011   
+11                        elbowing gabriel landeskog.    november 1, 2011   
+12                  hit from behind on joni pitkanen.    october 29, 2011   
+13                         headbutt on jakub voracek.    november 3, 2011   
+14              checking niklas kronwall from behind.   november 18, 2011   
+15      illegal hit to the head of tomas fleischmann.   november 23, 2011   
+16            illegal hit to the head of kris letang.   november 28, 2011   
+17                   charging goaltender ryan miller.    december 6, 2011   
+18                        charging nino niederreiter.    december 7, 2011   
+19                               kneeing david booth.    december 8, 2011   
+20                                elbowing matt read.    december 8, 2011   
+21                      charging alexei ponikarovsky.    december 8, 2011   
+22                  checking zac rinaldo from behind.   december 19, 2011   
+23               checking brent seabrook from behind.   december 19, 2011   
+24          illegal hit to the head of marcus kruger.   december 22, 2011   
+25      illegal hit to the head of justin abdelkader.     january 1, 2012   
+26       insensitive comments directed at p.k. subban     january 5, 2012   
+27                              charging nate prosser     january 2, 2012   
+28                               boarding tom gilbert     january 4, 2012   
+29                        elbowing nicklas backstrom.     january 4, 2012   
+30                                clipping sami salo.     january 9, 2012   
+31          illegal hit to the head of r.j. umberger.     january 9, 2012   
+32      illegal hit to the head of andrew desjardins.    january 16, 2012   
+33                            boarding ryan mcdonagh.    january 22, 2012   
+34                          charging zbynek michalek.    january 23, 2012   
+35                        charging jonathan ericsson.   february 13, 2012   
+36                       cross-checking david backes.   february 19, 2012   
+37         illegal hit to the head of brett connolly.       march 9, 2012   
+38                              boarding scott gomez.      march 13, 2012   
+39                              kicking scott nichol.      march 16, 2012   
+40                               elbowing jamie benn.      march 21, 2012   
+41                             elbowing daniel sedin.      march 23, 2012   
+42                            charging tomas kopecky.       april 2, 2012   
+43                         head-butting jamal mayers.       april 6, 2012   
+44                            boarding kyle clifford.      april 12, 2012   
+45                        elbowing daniel alfredsson.      april 15, 2012   
+46               aggressing an unwilling brian boyle.      april 15, 2012   
+47                    charging goaltender mike smith.      april 17, 2012   
+48  instigator penalty in the last five minutes of...      april 16, 2012   
+49                            charging claude giroux.      april 17, 2012   
+50                     cross-checking brayden schenn.      april 17, 2012   
+51                      cross-checking rich peverley.      april 17, 2012   
+52           late charge to the head of marian hossa.      april 21, 2012   
+53                           boarding matt halischuk.         may 6, 2012   
+54         illegal hit to the head of dainius zubrus.         may 7, 2012   
+55                             boarding dustin brown.        may 16, 2012   
+56                         elbowing anton volchenkov.        may 20, 2012   
+
+                                              length  
+0          5 games† (4 pre-season, 1 regular season)  
+1         10 games† (5 pre-season, 5 regular season)  
+2         12 games† (4 pre-season, 8 regular season)  
+3          7 games† (4 pre-season, 3 regular season)  
+4                            2 games† (2 pre-season)  
+5          9 games† (4 pre-season, 5 regular season)  
+6          4 games† (2 pre-season, 2 regular season)  
+7          8 games† (3 pre-season, 5 regular season)  
+8          3 games† (1 pre-season, 2 regular season)  
+9                                            2 games  
+10                                           2 games  
+11                                           5 games  
+12                                           2 games  
+13                                           4 games  
+14                                           3 games  
+15                                           3 games  
+16                                           3 games  
+17                                           2 games  
+18                                           3 games  
+19                                           4 games  
+20                                            1 game  
+21                                           8 games  
+22                                            1 game  
+23                                           2 games  
+24                                           3 games  
+25                                           3 games  
+26                                            1 game  
+27                                           2 games  
+28                                           7 games  
+29                                           5 games  
+30                                           5 games  
+31                                           3 games  
+32                                           3 games  
+33                                           3 games  
+34                                           3 games  
+35                                           2 games  
+36                                            1 game  
+37                                           3 games  
+38                                           3 games  
+39                                           2 games  
+40                                           3 games  
+41                                           5 games  
+42                                            1 game  
+43                                            1 game  
+44                          2 games‡ (2 post-season)  
+45                          3 games‡ (3 post-season)  
+46                           1 game‡ (1 post-season)  
+47                          3 games‡ (3 post-season)  
+48                           1 game‡ (1 post-season)  
+49                           1 game‡ (1 post-season)  
+50                         4 games‡ (3 post-season)*  
+51                           1 game‡ (1 post-season)  
+52  25 games\nreduced to 21 games‡ (13 post-season)*  
+53                           1 game‡ (1 post-season)  
+54                           1 game‡ (1 post-season)  
+55                           1 game‡ (1 post-season)  
+56                           1 game‡ (1 post-season)  
+Sample 4089 - Plan 1: Caption: none
+Sample 4089 - Plan 1: Original table: [['date_of_incident', 'offender', 'team', 'offense', 'date_of_action', 'length'], ['september 20, 2011', 'pierre-luc letourneau-leblond', 'calgary flames', 'boarding matt clackson.', 'september 22, 2011', '5 games† (4 pre-season, 1 regular season)'], ['september 21, 2011', 'jody shelley', 'philadelphia flyers', 'boarding darryl boyce.', 'september 22, 2011', '10 games† (5 pre-season, 5 regular season)'], ['september 23, 2011', 'james wisniewski', 'columbus blue jackets', 'illegal hit to the head of cal clutterbuck.', 'september 24, 2011', '12 games† (4 pre-season, 8 regular season)'], ['september 23, 2011', 'brad staubitz', 'minnesota wild', 'checking cody bass from behind.', 'september 26, 2011', '7 games† (4 pre-season, 3 regular season)'], ['september 24, 2011', 'brad boyes', 'buffalo sabres', 'illegal hit to the head of joe colborne.', 'september 25, 2011', '2 games† (2 pre-season)'], ['september 24, 2011', 'jean-francois jacques', 'anaheim ducks', 'leaving bench to initiate a fight with mike duco.', 'september 27, 2011', '9 games† (4 pre-season, 5 regular season)'], ['september 26, 2011', 'tom sestito', 'philadelphia flyers', 'checking andre deveaux from behind.', 'september 28, 2011', '4 games† (2 pre-season, 2 regular season)'], ['september 28, 2011', 'brendan smith', 'detroit red wings', 'illegal hit to the head of ben smith.', 'september 30, 2011', '8 games† (3 pre-season, 5 regular season)'], ['september 30, 2011', 'clarke macarthur', 'toronto maple leafs', 'illegal hit to the head of justin abdelkader.', 'october 1, 2011', '3 games† (1 pre-season, 2 regular season)'], ['october 8, 2011', 'pierre-marc bouchard', 'minnesota wild', 'high sticking matt calvert.', 'october 9, 2011', '2 games'], ['october 17, 2011', 'kris letang', 'pittsburgh penguins', 'boarding alexander burmistrov.', 'october 18, 2011', '2 games'], ['october 28, 2011', 'andy sutton', 'edmonton oilers', 'elbowing gabriel landeskog.', 'november 1, 2011', '5 games'], ['october 28, 2011', 'daniel carcillo', 'chicago blackhawks', 'hit from behind on joni pitkanen.', 'october 29, 2011', '2 games'], ['november 2, 2011', 'patrick kaleta', 'buffalo sabres', 'headbutt on jakub voracek.', 'november 3, 2011', '4 games'], ['november 17, 2011', 'chris stewart', 'st. louis blues', 'checking niklas kronwall from behind.', 'november 18, 2011', '3 games'], ['november 23, 2011', 'andre deveaux', 'new york rangers', 'illegal hit to the head of tomas fleischmann.', 'november 23, 2011', '3 games'], ['november 26, 2011', 'max pacioretty', 'montreal canadiens', 'illegal hit to the head of kris letang.', 'november 28, 2011', '3 games'], ['december 3, 2011', 'jordin tootoo', 'nashville predators', 'charging goaltender ryan miller.', 'december 6, 2011', '2 games'], ['december 3, 2011', 'mark fistric', 'dallas stars', 'charging nino niederreiter.', 'december 7, 2011', '3 games'], ['december 6, 2011', 'kevin porter', 'colorado avalanche', 'kneeing david booth.', 'december 8, 2011', '4 games'], ['december 7, 2011', 'ville leino', 'buffalo sabres', 'elbowing matt read.', 'december 8, 2011', '1 game'], ['december 7, 2011', 'andy sutton', 'edmonton oilers', 'charging alexei ponikarovsky.', 'december 8, 2011', '8 games'], ['december 17, 2011', 'milan lucic', 'boston bruins', 'checking zac rinaldo from behind.', 'december 19, 2011', '1 game'], ['december 18, 2011', 'rene bourque', 'calgary flames', 'checking brent seabrook from behind.', 'december 19, 2011', '2 games'], ['december 20, 2011', 'deryk engelland', 'pittsburgh penguins', 'illegal hit to the head of marcus kruger.', 'december 22, 2011', '3 games'], ['december 31, 2011', 'ian cole', 'st. louis blues', 'illegal hit to the head of justin abdelkader.', 'january 1, 2012', '3 games'], ['december 31, 2011', 'krys barch', 'florida panthers', 'insensitive comments directed at p.k. subban', 'january 5, 2012', '1 game'], ['december 31, 2011', 'raffi torres', 'phoenix coyotes', 'charging nate prosser', 'january 2, 2012', '2 games'], ['january 2, 2012', 'daniel carcillo', 'chicago blackhawks', 'boarding tom gilbert', 'january 4, 2012', '7 games'], ['january 3, 2012', 'rene bourque', 'calgary flames', 'elbowing nicklas backstrom.', 'january 4, 2012', '5 games'], ['january 7, 2012', 'brad marchand', 'boston bruins', 'clipping sami salo.', 'january 9, 2012', '5 games'], ['january 8, 2012', 'jean-francois jacques', 'anaheim ducks', 'illegal hit to the head of r.j. umberger.', 'january 9, 2012', '3 games'], ['january 14, 2012', 'dane byers', 'columbus blue jackets', 'illegal hit to the head of andrew desjardins.', 'january 16, 2012', '3 games'], ['january 21, 2012', 'andrew ference', 'boston bruins', 'boarding ryan mcdonagh.', 'january 22, 2012', '3 games'], ['january 22, 2012', 'alex ovechkin', 'washington capitals', 'charging zbynek michalek.', 'january 23, 2012', '3 games'], ['february 12, 2012', 'zac rinaldo', 'philadelphia flyers', 'charging jonathan ericsson.', 'february 13, 2012', '2 games'], ['february 18, 2012', 'warren peters', 'minnesota wild', 'cross-checking david backes.', 'february 19, 2012', '1 game'], ['march 8, 2012', 'mike green', 'washington capitals', 'illegal hit to the head of brett connolly.', 'march 9, 2012', '3 games'], ['march 12, 2012', 'tyler myers', 'buffalo sabres', 'boarding scott gomez.', 'march 13, 2012', '3 games'], ['march 15, 2012', 'jeff skinner', 'carolina hurricanes', 'kicking scott nichol.', 'march 16, 2012', '2 games'], ['march 20, 2012', 'shane doan', 'phoenix coyotes', 'elbowing jamie benn.', 'march 21, 2012', '3 games'], ['march 21, 2012', 'duncan keith', 'chicago blackhawks', 'elbowing daniel sedin.', 'march 23, 2012', '5 games'], ['april 1, 2012', 'kyle quincey', 'detroit red wings', 'charging tomas kopecky.', 'april 2, 2012', '1 game'], ['april 5, 2012', 'nate prosser', 'minnesota wild', 'head-butting jamal mayers.', 'april 6, 2012', '1 game'], ['april 11, 2012', 'byron bitz', 'vancouver canucks', 'boarding kyle clifford.', 'april 12, 2012', '2 games‡ (2 post-season)'], ['april 14, 2012', 'carl hagelin', 'new york rangers', 'elbowing daniel alfredsson.', 'april 15, 2012', '3 games‡ (3 post-season)'], ['april 14, 2012', 'matt carkner', 'ottawa senators', 'aggressing an unwilling brian boyle.', 'april 15, 2012', '1 game‡ (1 post-season)'], ['april 14, 2012', 'andrew shaw', 'chicago blackhawks', 'charging goaltender mike smith.', 'april 17, 2012', '3 games‡ (3 post-season)'], ['april 15, 2012', 'craig adams', 'pittsburgh penguins', 'instigator penalty in the last five minutes of a game.', 'april 16, 2012', '1 game‡ (1 post-season)'], ['april 15, 2012', 'james neal', 'pittsburgh penguins', 'charging claude giroux.', 'april 17, 2012', '1 game‡ (1 post-season)'], ['april 15, 2012', 'arron asham', 'pittsburgh penguins', 'cross-checking brayden schenn.', 'april 17, 2012', '4 games‡ (3 post-season)*'], ['april 14, 2012', 'nicklas backstrom', 'washington capitals', 'cross-checking rich peverley.', 'april 17, 2012', '1 game‡ (1 post-season)'], ['april 17, 2012', 'raffi torres', 'phoenix coyotes', 'late charge to the head of marian hossa.', 'april 21, 2012', '25 games\\nreduced to 21 games‡ (13 post-season)*'], ['may 4, 2012', 'rostislav klesla', 'phoenix coyotes', 'boarding matt halischuk.', 'may 6, 2012', '1 game‡ (1 post-season)'], ['may 6, 2012', 'claude giroux', 'philadelphia flyers', 'illegal hit to the head of dainius zubrus.', 'may 7, 2012', '1 game‡ (1 post-season)'], ['may 15, 2012', 'martin hanzal', 'phoenix coyotes', 'boarding dustin brown.', 'may 16, 2012', '1 game‡ (1 post-season)'], ['may 20, 2012', 'brandon prust', 'new york rangers', 'elbowing anton volchenkov.', 'may 20, 2012', '1 game‡ (1 post-season)']]
+########################################################################################################################
+Sample 4089 - Plan 1: Operation 1: Select rows where the 'date_of_action' is after 'april 21, 2012'.
+Sample 4089 - Plan 1: Selected indices: [[12, 4], [23, 4], [56, 4], [34, 4], [3, 4], [14, 4], [36, 4], [5, 4], [27, 4], [16, 4], [38, 4], [25, 4], [7, 4], [18, 4], [29, 4], [40, 4], [20, 4], [31, 4], [53, 4], [22, 4], [55, 4], [11, 4], [33, 4], [9, 4], [2, 4], [13, 4], [0, 4], [24, 4], [35, 4], [15, 4], [26, 4], [6, 4], [39, 4], [37, 4], [17, 4], [4, 4], [28, 4], [8, 4], [19, 4], [30, 4], [41, 4], [10, 4], [32, 4], [43, 4], [1, 4], [21, 4], [54, 4]]
+Sample 4089 - Plan 1: X-Table after operation df:
+      date_of_incident                       offender                   team  \
+0   september 20, 2011  pierre-luc letourneau-leblond         calgary flames   
+1   september 21, 2011                   jody shelley    philadelphia flyers   
+2   september 23, 2011               james wisniewski  columbus blue jackets   
+3   september 23, 2011                  brad staubitz         minnesota wild   
+4   september 24, 2011                     brad boyes         buffalo sabres   
+5   september 24, 2011          jean-francois jacques          anaheim ducks   
+6   september 26, 2011                    tom sestito    philadelphia flyers   
+7   september 28, 2011                  brendan smith      detroit red wings   
+8   september 30, 2011               clarke macarthur    toronto maple leafs   
+9      october 8, 2011           pierre-marc bouchard         minnesota wild   
+10    october 17, 2011                    kris letang    pittsburgh penguins   
+11    october 28, 2011                    andy sutton        edmonton oilers   
+12    october 28, 2011                daniel carcillo     chicago blackhawks   
+13    november 2, 2011                 patrick kaleta         buffalo sabres   
+14   november 17, 2011                  chris stewart        st. louis blues   
+15   november 23, 2011                  andre deveaux       new york rangers   
+16   november 26, 2011                 max pacioretty     montreal canadiens   
+17    december 3, 2011                  jordin tootoo    nashville predators   
+18    december 3, 2011                   mark fistric           dallas stars   
+19    december 6, 2011                   kevin porter     colorado avalanche   
+20    december 7, 2011                    ville leino         buffalo sabres   
+21    december 7, 2011                    andy sutton        edmonton oilers   
+22   december 17, 2011                    milan lucic          boston bruins   
+23   december 18, 2011                   rene bourque         calgary flames   
+24   december 20, 2011                deryk engelland    pittsburgh penguins   
+25   december 31, 2011                       ian cole        st. louis blues   
+26   december 31, 2011                     krys barch       florida panthers   
+27   december 31, 2011                   raffi torres        phoenix coyotes   
+28     january 2, 2012                daniel carcillo     chicago blackhawks   
+29     january 3, 2012                   rene bourque         calgary flames   
+30     january 7, 2012                  brad marchand          boston bruins   
+31     january 8, 2012          jean-francois jacques          anaheim ducks   
+32    january 14, 2012                     dane byers  columbus blue jackets   
+33    january 21, 2012                 andrew ference          boston bruins   
+34    january 22, 2012                  alex ovechkin    washington capitals   
+35   february 12, 2012                    zac rinaldo    philadelphia flyers   
+36   february 18, 2012                  warren peters         minnesota wild   
+37       march 8, 2012                     mike green    washington capitals   
+38      march 12, 2012                    tyler myers         buffalo sabres   
+39      march 15, 2012                   jeff skinner    carolina hurricanes   
+40      march 20, 2012                     shane doan        phoenix coyotes   
+41      march 21, 2012                   duncan keith     chicago blackhawks   
+42       april 5, 2012                   nate prosser         minnesota wild   
+43         may 4, 2012               rostislav klesla        phoenix coyotes   
+44         may 6, 2012                  claude giroux    philadelphia flyers   
+45        may 15, 2012                  martin hanzal        phoenix coyotes   
+46        may 20, 2012                  brandon prust       new york rangers   
+
+                                              offense      date_of_action  \
+0                             boarding matt clackson.  september 22, 2011   
+1                              boarding darryl boyce.  september 22, 2011   
+2         illegal hit to the head of cal clutterbuck.  september 24, 2011   
+3                     checking cody bass from behind.  september 26, 2011   
+4            illegal hit to the head of joe colborne.  september 25, 2011   
+5   leaving bench to initiate a fight with mike duco.  september 27, 2011   
+6                 checking andre deveaux from behind.  september 28, 2011   
+7               illegal hit to the head of ben smith.  september 30, 2011   
+8       illegal hit to the head of justin abdelkader.     october 1, 2011   
+9                         high sticking matt calvert.     october 9, 2011   
+10                     boarding alexander burmistrov.    october 18, 2011   
+11                        elbowing gabriel landeskog.    november 1, 2011   
+12                  hit from behind on joni pitkanen.    october 29, 2011   
+13                         headbutt on jakub voracek.    november 3, 2011   
+14              checking niklas kronwall from behind.   november 18, 2011   
+15      illegal hit to the head of tomas fleischmann.   november 23, 2011   
+16            illegal hit to the head of kris letang.   november 28, 2011   
+17                   charging goaltender ryan miller.    december 6, 2011   
+18                        charging nino niederreiter.    december 7, 2011   
+19                               kneeing david booth.    december 8, 2011   
+20                                elbowing matt read.    december 8, 2011   
+21                      charging alexei ponikarovsky.    december 8, 2011   
+22                  checking zac rinaldo from behind.   december 19, 2011   
+23               checking brent seabrook from behind.   december 19, 2011   
+24          illegal hit to the head of marcus kruger.   december 22, 2011   
+25      illegal hit to the head of justin abdelkader.     january 1, 2012   
+26       insensitive comments directed at p.k. subban     january 5, 2012   
+27                              charging nate prosser     january 2, 2012   
+28                               boarding tom gilbert     january 4, 2012   
+29                        elbowing nicklas backstrom.     january 4, 2012   
+30                                clipping sami salo.     january 9, 2012   
+31          illegal hit to the head of r.j. umberger.     january 9, 2012   
+32      illegal hit to the head of andrew desjardins.    january 16, 2012   
+33                            boarding ryan mcdonagh.    january 22, 2012   
+34                          charging zbynek michalek.    january 23, 2012   
+35                        charging jonathan ericsson.   february 13, 2012   
+36                       cross-checking david backes.   february 19, 2012   
+37         illegal hit to the head of brett connolly.       march 9, 2012   
+38                              boarding scott gomez.      march 13, 2012   
+39                              kicking scott nichol.      march 16, 2012   
+40                               elbowing jamie benn.      march 21, 2012   
+41                             elbowing daniel sedin.      march 23, 2012   
+42                         head-butting jamal mayers.       april 6, 2012   
+43                           boarding matt halischuk.         may 6, 2012   
+44         illegal hit to the head of dainius zubrus.         may 7, 2012   
+45                             boarding dustin brown.        may 16, 2012   
+46                         elbowing anton volchenkov.        may 20, 2012   
+
+                                        length  
+0    5 games† (4 pre-season, 1 regular season)  
+1   10 games† (5 pre-season, 5 regular season)  
+2   12 games† (4 pre-season, 8 regular season)  
+3    7 games† (4 pre-season, 3 regular season)  
+4                      2 games† (2 pre-season)  
+5    9 games† (4 pre-season, 5 regular season)  
+6    4 games† (2 pre-season, 2 regular season)  
+7    8 games† (3 pre-season, 5 regular season)  
+8    3 games† (1 pre-season, 2 regular season)  
+9                                      2 games  
+10                                     2 games  
+11                                     5 games  
+12                                     2 games  
+13                                     4 games  
+14                                     3 games  
+15                                     3 games  
+16                                     3 games  
+17                                     2 games  
+18                                     3 games  
+19                                     4 games  
+20                                      1 game  
+21                                     8 games  
+22                                      1 game  
+23                                     2 games  
+24                                     3 games  
+25                                     3 games  
+26                                      1 game  
+27                                     2 games  
+28                                     7 games  
+29                                     5 games  
+30                                     5 games  
+31                                     3 games  
+32                                     3 games  
+33                                     3 games  
+34                                     3 games  
+35                                     2 games  
+36                                      1 game  
+37                                     3 games  
+38                                     3 games  
+39                                     2 games  
+40                                     3 games  
+41                                     5 games  
+42                                      1 game  
+43                     1 game‡ (1 post-season)  
+44                     1 game‡ (1 post-season)  
+45                     1 game‡ (1 post-season)  
+46                     1 game‡ (1 post-season)  
+Sample 4089 - Plan 1: Table after operation: [['date_of_incident', 'offender', 'team', 'offense', 'date_of_action', 'length'], ['september 20, 2011', 'pierre-luc letourneau-leblond', 'calgary flames', 'boarding matt clackson.', 'september 22, 2011', '5 games† (4 pre-season, 1 regular season)'], ['september 21, 2011', 'jody shelley', 'philadelphia flyers', 'boarding darryl boyce.', 'september 22, 2011', '10 games† (5 pre-season, 5 regular season)'], ['september 23, 2011', 'james wisniewski', 'columbus blue jackets', 'illegal hit to the head of cal clutterbuck.', 'september 24, 2011', '12 games† (4 pre-season, 8 regular season)'], ['september 23, 2011', 'brad staubitz', 'minnesota wild', 'checking cody bass from behind.', 'september 26, 2011', '7 games† (4 pre-season, 3 regular season)'], ['september 24, 2011', 'brad boyes', 'buffalo sabres', 'illegal hit to the head of joe colborne.', 'september 25, 2011', '2 games† (2 pre-season)'], ['september 24, 2011', 'jean-francois jacques', 'anaheim ducks', 'leaving bench to initiate a fight with mike duco.', 'september 27, 2011', '9 games† (4 pre-season, 5 regular season)'], ['september 26, 2011', 'tom sestito', 'philadelphia flyers', 'checking andre deveaux from behind.', 'september 28, 2011', '4 games† (2 pre-season, 2 regular season)'], ['september 28, 2011', 'brendan smith', 'detroit red wings', 'illegal hit to the head of ben smith.', 'september 30, 2011', '8 games† (3 pre-season, 5 regular season)'], ['september 30, 2011', 'clarke macarthur', 'toronto maple leafs', 'illegal hit to the head of justin abdelkader.', 'october 1, 2011', '3 games† (1 pre-season, 2 regular season)'], ['october 8, 2011', 'pierre-marc bouchard', 'minnesota wild', 'high sticking matt calvert.', 'october 9, 2011', '2 games'], ['october 17, 2011', 'kris letang', 'pittsburgh penguins', 'boarding alexander burmistrov.', 'october 18, 2011', '2 games'], ['october 28, 2011', 'andy sutton', 'edmonton oilers', 'elbowing gabriel landeskog.', 'november 1, 2011', '5 games'], ['october 28, 2011', 'daniel carcillo', 'chicago blackhawks', 'hit from behind on joni pitkanen.', 'october 29, 2011', '2 games'], ['november 2, 2011', 'patrick kaleta', 'buffalo sabres', 'headbutt on jakub voracek.', 'november 3, 2011', '4 games'], ['november 17, 2011', 'chris stewart', 'st. louis blues', 'checking niklas kronwall from behind.', 'november 18, 2011', '3 games'], ['november 23, 2011', 'andre deveaux', 'new york rangers', 'illegal hit to the head of tomas fleischmann.', 'november 23, 2011', '3 games'], ['november 26, 2011', 'max pacioretty', 'montreal canadiens', 'illegal hit to the head of kris letang.', 'november 28, 2011', '3 games'], ['december 3, 2011', 'jordin tootoo', 'nashville predators', 'charging goaltender ryan miller.', 'december 6, 2011', '2 games'], ['december 3, 2011', 'mark fistric', 'dallas stars', 'charging nino niederreiter.', 'december 7, 2011', '3 games'], ['december 6, 2011', 'kevin porter', 'colorado avalanche', 'kneeing david booth.', 'december 8, 2011', '4 games'], ['december 7, 2011', 'ville leino', 'buffalo sabres', 'elbowing matt read.', 'december 8, 2011', '1 game'], ['december 7, 2011', 'andy sutton', 'edmonton oilers', 'charging alexei ponikarovsky.', 'december 8, 2011', '8 games'], ['december 17, 2011', 'milan lucic', 'boston bruins', 'checking zac rinaldo from behind.', 'december 19, 2011', '1 game'], ['december 18, 2011', 'rene bourque', 'calgary flames', 'checking brent seabrook from behind.', 'december 19, 2011', '2 games'], ['december 20, 2011', 'deryk engelland', 'pittsburgh penguins', 'illegal hit to the head of marcus kruger.', 'december 22, 2011', '3 games'], ['december 31, 2011', 'ian cole', 'st. louis blues', 'illegal hit to the head of justin abdelkader.', 'january 1, 2012', '3 games'], ['december 31, 2011', 'krys barch', 'florida panthers', 'insensitive comments directed at p.k. subban', 'january 5, 2012', '1 game'], ['december 31, 2011', 'raffi torres', 'phoenix coyotes', 'charging nate prosser', 'january 2, 2012', '2 games'], ['january 2, 2012', 'daniel carcillo', 'chicago blackhawks', 'boarding tom gilbert', 'january 4, 2012', '7 games'], ['january 3, 2012', 'rene bourque', 'calgary flames', 'elbowing nicklas backstrom.', 'january 4, 2012', '5 games'], ['january 7, 2012', 'brad marchand', 'boston bruins', 'clipping sami salo.', 'january 9, 2012', '5 games'], ['january 8, 2012', 'jean-francois jacques', 'anaheim ducks', 'illegal hit to the head of r.j. umberger.', 'january 9, 2012', '3 games'], ['january 14, 2012', 'dane byers', 'columbus blue jackets', 'illegal hit to the head of andrew desjardins.', 'january 16, 2012', '3 games'], ['january 21, 2012', 'andrew ference', 'boston bruins', 'boarding ryan mcdonagh.', 'january 22, 2012', '3 games'], ['january 22, 2012', 'alex ovechkin', 'washington capitals', 'charging zbynek michalek.', 'january 23, 2012', '3 games'], ['february 12, 2012', 'zac rinaldo', 'philadelphia flyers', 'charging jonathan ericsson.', 'february 13, 2012', '2 games'], ['february 18, 2012', 'warren peters', 'minnesota wild', 'cross-checking david backes.', 'february 19, 2012', '1 game'], ['march 8, 2012', 'mike green', 'washington capitals', 'illegal hit to the head of brett connolly.', 'march 9, 2012', '3 games'], ['march 12, 2012', 'tyler myers', 'buffalo sabres', 'boarding scott gomez.', 'march 13, 2012', '3 games'], ['march 15, 2012', 'jeff skinner', 'carolina hurricanes', 'kicking scott nichol.', 'march 16, 2012', '2 games'], ['march 20, 2012', 'shane doan', 'phoenix coyotes', 'elbowing jamie benn.', 'march 21, 2012', '3 games'], ['march 21, 2012', 'duncan keith', 'chicago blackhawks', 'elbowing daniel sedin.', 'march 23, 2012', '5 games'], ['april 5, 2012', 'nate prosser', 'minnesota wild', 'head-butting jamal mayers.', 'april 6, 2012', '1 game'], ['may 4, 2012', 'rostislav klesla', 'phoenix coyotes', 'boarding matt halischuk.', 'may 6, 2012', '1 game‡ (1 post-season)'], ['may 6, 2012', 'claude giroux', 'philadelphia flyers', 'illegal hit to the head of dainius zubrus.', 'may 7, 2012', '1 game‡ (1 post-season)'], ['may 15, 2012', 'martin hanzal', 'phoenix coyotes', 'boarding dustin brown.', 'may 16, 2012', '1 game‡ (1 post-season)'], ['may 20, 2012', 'brandon prust', 'new york rangers', 'elbowing anton volchenkov.', 'may 20, 2012', '1 game‡ (1 post-season)']]
+########################################################################################################################
+Sample 4089 - Plan 1: Operation 2: Count the number of rows.
+Sample 4089 - Plan 1: Selected indices: []
+Sample 4089 - Plan 1: X-Table after operation df:
+   row_count
+0         47
+Sample 4089 - Plan 1: Table after operation: [['row_count'], [47]]
+Fall-back: FALSE
+Answer from plan 1: [[47]]
+Groundtruth: ['4']

@@ -1,0 +1,39 @@
+
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+.sql-command { background-color: #f0f0f0; padding: 10px; border-left: 4px solid #4CAF50; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> the teams with 3 losses have 0 ties</h3>
+<h3>Input Table: 1894 ahac season</h3>
+<div class="step">
+<table>
+<tr><td>team</td><td>games_played</td><td>wins</td><td>losses</td><td>ties</td><td>goals_for</td><td>goals_against</td></tr><tr><td>montreal hockey club</td><td>8</td><td>5</td><td>3</td><td>0</td><td>25</td><td>15</td></tr><tr><td>ottawa hockey club</td><td>8</td><td>5</td><td>3</td><td>0</td><td>24</td><td>16</td></tr><tr><td>montreal victorias</td><td>8</td><td>5</td><td>3</td><td>0</td><td>36</td><td>20</td></tr><tr><td>quebec hockey club</td><td>8</td><td>5</td><td>3</td><td>0</td><td>26</td><td>27</td></tr><tr><td>montreal crystals</td><td>8</td><td>0</td><td>8</td><td>0</td><td>10</td><td>43</td></tr>
+</table>
+</div>
+<h3>SQL Command:</h3>
+<div class="sql-command">SELECT 
+    CASE 
+        WHEN (SELECT ties FROM table_sql WHERE losses = 3) = 0 
+        THEN 'TRUE' 
+        ELSE 'FALSE' 
+    END;</div>
+</body></html>

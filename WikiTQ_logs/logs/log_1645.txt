@@ -1,0 +1,49 @@
+************************************************************************************************************************
+Sample 1645 - Plan 1: Query: how many people live in giza?
+Sample 1645 - Plan 1: Groundtruth: ['6,272,571']
+Sample 1645 - Plan 1: X-Original table pd: 
+   nr_        name area__km²_ population__2006_     capital  \
+0    1  alexandria      2,900         4,110,015  alexandria   
+1    2       asyut     25,926         3,441,597       asyut   
+2    3       cairo      3,435         7,786,640       cairo   
+3    4     gharbia     25,400         3,790,670       tanta   
+4    5        giza     85,153         6,272,571        giza   
+5    6    ismailia      1,442           942,832    ismailia   
+6    7   port said         72           570,768   port said   
+7    6        suez     17,840           510,935        suez   
+
+                                             club_s_  
+0  al itthad al sakandary - el-olympi - haras el ...  
+1                                      petrol asyout  
+2  al-ahly - al mokawloon - enppi - el-jaish - el...  
+3                                   ghazl el-mehalla  
+4                                   zamalek- tersana  
+5                                            ismaily  
+6                                           al masry  
+7                                           petrojet  
+Sample 1645 - Plan 1: Caption: none
+Sample 1645 - Plan 1: Original table: [['nr_', 'name', 'area__km²_', 'population__2006_', 'capital', 'club_s_'], ['1', 'alexandria', '2,900', '4,110,015', 'alexandria', 'al itthad al sakandary - el-olympi - haras el hodood'], ['2', 'asyut', '25,926', '3,441,597', 'asyut', 'petrol asyout'], ['3', 'cairo', '3,435', '7,786,640', 'cairo', 'al-ahly - al mokawloon - enppi - el-jaish - el-shorta - itesalat'], ['4', 'gharbia', '25,400', '3,790,670', 'tanta', 'ghazl el-mehalla'], ['5', 'giza', '85,153', '6,272,571', 'giza', 'zamalek- tersana'], ['6', 'ismailia', '1,442', '942,832', 'ismailia', 'ismaily'], ['7', 'port said', '72', '570,768', 'port said', 'al masry'], ['6', 'suez', '17,840', '510,935', 'suez', 'petrojet']]
+########################################################################################################################
+Sample 1645 - Plan 1: Operation 1: Select the row(s) where the 'name' is 'giza'.
+Sample 1645 - Plan 1: Selected indices: [[4, 1]]
+Sample 1645 - Plan 1: X-Table after operation df:
+   nr_  name area__km²_ population__2006_ capital           club_s_
+0    5  giza     85,153         6,272,571    giza  zamalek- tersana
+Sample 1645 - Plan 1: Table after operation: [['nr_', 'name', 'area__km²_', 'population__2006_', 'capital', 'club_s_'], [5, 'giza', '85,153', '6,272,571', 'giza', 'zamalek- tersana']]
+########################################################################################################################
+Sample 1645 - Plan 1: Operation 2: Extract the numerical value from the 'population__2006_' column and remove any commas.
+Sample 1645 - Plan 1: Selected indices: []
+Sample 1645 - Plan 1: X-Table after operation df:
+   population
+0     6272571
+Sample 1645 - Plan 1: Table after operation: [['population'], ['6272571']]
+########################################################################################################################
+Sample 1645 - Plan 1: Operation 3: Calculate the sum of the population values from the selected row(s).
+Sample 1645 - Plan 1: Selected indices: []
+Sample 1645 - Plan 1: X-Table after operation df:
+   total_population
+0           6272571
+Sample 1645 - Plan 1: Table after operation: [['total_population'], [6272571]]
+Fall-back: FALSE
+Answer from plan 1: [[6272571]]
+Groundtruth: ['6,272,571']

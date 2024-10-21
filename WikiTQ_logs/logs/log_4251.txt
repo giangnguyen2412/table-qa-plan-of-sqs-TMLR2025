@@ -1,0 +1,45 @@
+************************************************************************************************************************
+Sample 4251 - Plan 1: Query: how long was the final time for the united states?
+Sample 4251 - Plan 1: Groundtruth: ['3:43.42']
+Sample 4251 - Plan 1: X-Original table pd: 
+   rank  pair        country  \
+0   NaN     3    netherlands   
+1   NaN     4  united states   
+2   NaN     2         russia   
+3   4.0     1         canada   
+4   5.0     1         norway   
+5   6.0     3        germany   
+6   7.0     4    south korea   
+7   8.0     2         poland   
+
+                                            athletes     time  deficit  
+0         sven kramer\nkoen verweij\njan blokhuijsen  3:41.43      NaN  
+1           shani davis\nbrian hansen\njonathan kuck  3:43.42     1.99  
+2       ivan skobrev\ndenis yuskov\nyevgeny lalenkov  3:43.62     2.19  
+3     denny morrison\nmathieu giroux\nlucas makowsky  3:44.38     2.95  
+4  sverre lunde pedersen\nhåvard bøkko\nkristian ...  3:46.33     4.90  
+5       patrick beckert\nmarco weber\nrobert lehmann  3:46.48     5.05  
+6       lee seung-hoon\njoo hyong-jun\nko byung-wook  3:47.18     5.75  
+7  zbigniew bródka\nkonrad niedźwiedzki\njan szym...  3:47.72     6.29  
+Sample 4251 - Plan 1: Caption: none
+Sample 4251 - Plan 1: Original table: [['rank', 'pair', 'country', 'athletes', 'time', 'deficit'], ['', '3', 'netherlands', 'sven kramer\\nkoen verweij\\njan blokhuijsen', '3:41.43', ''], ['', '4', 'united states', 'shani davis\\nbrian hansen\\njonathan kuck', '3:43.42', '+1.99'], ['', '2', 'russia', 'ivan skobrev\\ndenis yuskov\\nyevgeny lalenkov', '3:43.62', '+2.19'], ['4', '1', 'canada', 'denny morrison\\nmathieu giroux\\nlucas makowsky', '3:44.38', '+2.95'], ['5', '1', 'norway', 'sverre lunde pedersen\\nhåvard bøkko\\nkristian reistad fredriksen', '3:46.33', '+4.90'], ['6', '3', 'germany', 'patrick beckert\\nmarco weber\\nrobert lehmann', '3:46.48', '+5.05'], ['7', '4', 'south korea', 'lee seung-hoon\\njoo hyong-jun\\nko byung-wook', '3:47.18', '+5.75'], ['8', '2', 'poland', 'zbigniew bródka\\nkonrad niedźwiedzki\\njan szymański', '3:47.72', '+6.29']]
+########################################################################################################################
+Sample 4251 - Plan 1: Operation 1: Select rows where 'country' is 'united states'.
+Sample 4251 - Plan 1: Selected indices: [[1, 2]]
+Sample 4251 - Plan 1: X-Table after operation df:
+   rank  pair        country                                  athletes  \
+0   NaN     4  united states  shani davis\nbrian hansen\njonathan kuck   
+
+      time  deficit  
+0  3:43.42     1.99  
+Sample 4251 - Plan 1: Table after operation: [['rank', 'pair', 'country', 'athletes', 'time', 'deficit'], [None, 4, 'united states', 'shani davis\\nbrian hansen\\njonathan kuck', '3:43.42', 1.99]]
+########################################################################################################################
+Sample 4251 - Plan 1: Operation 2: Select the 'time' column.
+Sample 4251 - Plan 1: Selected indices: []
+Sample 4251 - Plan 1: X-Table after operation df:
+      time
+0  3:43.42
+Sample 4251 - Plan 1: Table after operation: [['time'], ['3:43.42']]
+Fall-back: FALSE
+Answer from plan 1: [['3:43.42']]
+Groundtruth: ['3:43.42']

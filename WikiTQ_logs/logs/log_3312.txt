@@ -1,0 +1,88 @@
+************************************************************************************************************************
+Sample 3312 - Plan 1: Query: how many latin letter character sets are there?
+Sample 3312 - Plan 1: Groundtruth: ['52']
+Sample 3312 - Plan 1: X-Original table pd: 
+               name glyph c_string unicode               unicode_name
+0               nul            \\0  u+0000                 null (nul)
+1             alert            \\a  u+0007                 bell (bel)
+2         backspace            \\b  u+0008             backspace (bs)
+3               tab            \\t  u+0009  character tabulation (ht)
+4   carriage-return            \\r  u+000d       carriage return (cr)
+..              ...   ...      ...     ...                        ...
+95                w     w        w  u+0077       latin small letter w
+96                x     x        x  u+0078       latin small letter x
+97                y     y        y  u+0079       latin small letter y
+98                z     z        z  u+007a       latin small letter z
+99       left-brace     {        {  u+007b         left curly bracket
+
+[100 rows x 5 columns]
+Sample 3312 - Plan 1: Caption: none
+Sample 3312 - Plan 1: Original table: [['name', 'glyph', 'c_string', 'unicode', 'unicode_name'], ['nul', '', '\\\\0', 'u+0000', 'null (nul)'], ['alert', '', '\\\\a', 'u+0007', 'bell (bel)'], ['backspace', '', '\\\\b', 'u+0008', 'backspace (bs)'], ['tab', '', '\\\\t', 'u+0009', 'character tabulation (ht)'], ['carriage-return', '', '\\\\r', 'u+000d', 'carriage return (cr)'], ['newline', '', '\\\\n', 'u+000a', 'line feed (lf)'], ['vertical-tab', '', '\\\\v', 'u+000b', 'line tabulation (vt)'], ['form-feed', '', '\\\\f', 'u+000c', 'form feed (ff)'], ['space', '', '', 'u+0020', 'space'], ['exclamation-mark', '!', '!', 'u+0021', 'exclamation mark'], ['quotation-mark', '"', '\\\\"', 'u+0022', 'quotation mark'], ['number-sign', '#', '#', 'u+0023', 'number sign'], ['dollar-sign', '$', '$', 'u+0024', 'dollar sign'], ['percent-sign', '%', '%', 'u+0025', 'percent sign'], ['ampersand', '&', '&', 'u+0026', 'ampersand'], ['apostrophe', "'", "\\\\'", 'u+0027', 'apostrophe'], ['left-parenthesis', '(', '(', 'u+0028', 'left parenthesis'], ['right-parenthesis', ')', ')', 'u+0029', 'right parenthesis'], ['asterisk', '*', '*', 'u+002a', 'asterisk'], ['plus-sign', '+', '+', 'u+002b', 'plus sign'], ['comma', ',', ',', 'u+002c', 'comma'], ['hyphen', '-', '-', 'u+002d', 'hyphen-minus'], ['period', '.', '.', 'u+002e', 'full stop'], ['slash', '/', '/', 'u+002f', 'solidus'], ['zero', '0', '0', 'u+0030', 'digit zero'], ['one', '1', '1', 'u+0031', 'digit one'], ['two', '2', '2', 'u+0032', 'digit two'], ['three', '3', '3', 'u+0033', 'digit three'], ['four', '4', '4', 'u+0034', 'digit four'], ['five', '5', '5', 'u+0035', 'digit five'], ['six', '6', '6', 'u+0036', 'digit six'], ['seven', '7', '7', 'u+0037', 'digit seven'], ['eight', '8', '8', 'u+0038', 'digit eight'], ['nine', '9', '9', 'u+0039', 'digit nine'], ['colon', ':', ':', 'u+003a', 'colon'], ['semicolon', ';', ';', 'u+003b', 'semicolon'], ['less-than-sign', '<', '<', 'u+003c', 'less-than sign'], ['equals-sign', '=', '=', 'u+003d', 'equals sign'], ['greater-than-sign', '>', '>', 'u+003e', 'greater-than sign'], ['question-mark', '?', '?', 'u+003f', 'question mark'], ['commercial-at', '@', '@', 'u+0040', 'commercial at'], ['a', 'a', 'a', 'u+0041', 'latin capital letter a'], ['b', 'b', 'b', 'u+0042', 'latin capital letter b'], ['c', 'c', 'c', 'u+0043', 'latin capital letter c'], ['d', 'd', 'd', 'u+0044', 'latin capital letter d'], ['e', 'e', 'e', 'u+0045', 'latin capital letter e'], ['f', 'f', 'f', 'u+0046', 'latin capital letter f'], ['g', 'g', 'g', 'u+0047', 'latin capital letter g'], ['h', 'h', 'h', 'u+0048', 'latin capital letter h'], ['i', 'i', 'i', 'u+0049', 'latin capital letter i'], ['j', 'j', 'j', 'u+004a', 'latin capital letter j'], ['k', 'k', 'k', 'u+004b', 'latin capital letter k'], ['l', 'l', 'l', 'u+004c', 'latin capital letter l'], ['m', 'm', 'm', 'u+004d', 'latin capital letter m'], ['n', 'n', 'n', 'u+004e', 'latin capital letter n'], ['o', 'o', 'o', 'u+004f', 'latin capital letter o'], ['p', 'p', 'p', 'u+0050', 'latin capital letter p'], ['q', 'q', 'q', 'u+0051', 'latin capital letter q'], ['r', 'r', 'r', 'u+0052', 'latin capital letter r'], ['s', 's', 's', 'u+0053', 'latin capital letter s'], ['t', 't', 't', 'u+0054', 'latin capital letter t'], ['u', 'u', 'u', 'u+0055', 'latin capital letter u'], ['v', 'v', 'v', 'u+0056', 'latin capital letter v'], ['w', 'w', 'w', 'u+0057', 'latin capital letter w'], ['x', 'x', 'x', 'u+0058', 'latin capital letter x'], ['y', 'y', 'y', 'u+0059', 'latin capital letter y'], ['z', 'z', 'z', 'u+005a', 'latin capital letter z'], ['left-square-bracket', '[', '[', 'u+005b', 'left square bracket'], ['backslash', '\\\\', '\\\\\\\\', 'u+005c', 'reverse solidus'], ['right-square-bracket', ']', ']', 'u+005d', 'right square bracket'], ['circumflex', '^', '^', 'u+005e', 'circumflex accent'], ['underscore', '_', '_', 'u+005f', 'low line'], ['grave-accent', '`', '`', 'u+0060', 'grave accent'], ['a', 'a', 'a', 'u+0061', 'latin small letter a'], ['b', 'b', 'b', 'u+0062', 'latin small letter b'], ['c', 'c', 'c', 'u+0063', 'latin small letter c'], ['d', 'd', 'd', 'u+0064', 'latin small letter d'], ['e', 'e', 'e', 'u+0065', 'latin small letter e'], ['f', 'f', 'f', 'u+0066', 'latin small letter f'], ['g', 'g', 'g', 'u+0067', 'latin small letter g'], ['h', 'h', 'h', 'u+0068', 'latin small letter h'], ['i', 'i', 'i', 'u+0069', 'latin small letter i'], ['j', 'j', 'j', 'u+006a', 'latin small letter j'], ['k', 'k', 'k', 'u+006b', 'latin small letter k'], ['l', 'l', 'l', 'u+006c', 'latin small letter l'], ['m', 'm', 'm', 'u+006d', 'latin small letter m'], ['n', 'n', 'n', 'u+006e', 'latin small letter n'], ['o', 'o', 'o', 'u+006f', 'latin small letter o'], ['p', 'p', 'p', 'u+0070', 'latin small letter p'], ['q', 'q', 'q', 'u+0071', 'latin small letter q'], ['r', 'r', 'r', 'u+0072', 'latin small letter r'], ['s', 's', 's', 'u+0073', 'latin small letter s'], ['t', 't', 't', 'u+0074', 'latin small letter t'], ['u', 'u', 'u', 'u+0075', 'latin small letter u'], ['v', 'v', 'v', 'u+0076', 'latin small letter v'], ['w', 'w', 'w', 'u+0077', 'latin small letter w'], ['x', 'x', 'x', 'u+0078', 'latin small letter x'], ['y', 'y', 'y', 'u+0079', 'latin small letter y'], ['z', 'z', 'z', 'u+007a', 'latin small letter z'], ['left-brace', '{', '{', 'u+007b', 'left curly bracket'], ['vertical-line', '\\p', '\\p', 'u+007c', 'vertical line'], ['right-brace', '}', '}', 'u+007d', 'right curly bracket'], ['tilde', '~', '~', 'u+007e', 'tilde']]
+########################################################################################################################
+Sample 3312 - Plan 1: Operation 1: Select rows where 'unicode_name' contains the phrase "latin small letter" or "latin capital letter".
+Sample 3312 - Plan 1: Selected indices: [[45, 4], [78, 4], [89, 4], [56, 4], [47, 4], [58, 4], [80, 4], [91, 4], [60, 4], [93, 4], [51, 4], [49, 4], [82, 4], [62, 4], [73, 4], [84, 4], [95, 4], [53, 4], [64, 4], [86, 4], [97, 4], [55, 4], [77, 4], [42, 4], [75, 4], [44, 4], [66, 4], [88, 4], [46, 4], [57, 4], [79, 4], [90, 4], [48, 4], [81, 4], [59, 4], [92, 4], [50, 4], [61, 4], [83, 4], [94, 4], [41, 4], [52, 4], [74, 4], [85, 4], [96, 4], [43, 4], [65, 4], [76, 4], [98, 4], [63, 4], [54, 4], [87, 4]]
+Sample 3312 - Plan 1: X-Table after operation df:
+   name glyph c_string unicode            unicode_name
+0     a     a        a  u+0041  latin capital letter a
+1     b     b        b  u+0042  latin capital letter b
+2     c     c        c  u+0043  latin capital letter c
+3     d     d        d  u+0044  latin capital letter d
+4     e     e        e  u+0045  latin capital letter e
+5     f     f        f  u+0046  latin capital letter f
+6     g     g        g  u+0047  latin capital letter g
+7     h     h        h  u+0048  latin capital letter h
+8     i     i        i  u+0049  latin capital letter i
+9     j     j        j  u+004a  latin capital letter j
+10    k     k        k  u+004b  latin capital letter k
+11    l     l        l  u+004c  latin capital letter l
+12    m     m        m  u+004d  latin capital letter m
+13    n     n        n  u+004e  latin capital letter n
+14    o     o        o  u+004f  latin capital letter o
+15    p     p        p  u+0050  latin capital letter p
+16    q     q        q  u+0051  latin capital letter q
+17    r     r        r  u+0052  latin capital letter r
+18    s     s        s  u+0053  latin capital letter s
+19    t     t        t  u+0054  latin capital letter t
+20    u     u        u  u+0055  latin capital letter u
+21    v     v        v  u+0056  latin capital letter v
+22    w     w        w  u+0057  latin capital letter w
+23    x     x        x  u+0058  latin capital letter x
+24    y     y        y  u+0059  latin capital letter y
+25    z     z        z  u+005a  latin capital letter z
+26    a     a        a  u+0061    latin small letter a
+27    b     b        b  u+0062    latin small letter b
+28    c     c        c  u+0063    latin small letter c
+29    d     d        d  u+0064    latin small letter d
+30    e     e        e  u+0065    latin small letter e
+31    f     f        f  u+0066    latin small letter f
+32    g     g        g  u+0067    latin small letter g
+33    h     h        h  u+0068    latin small letter h
+34    i     i        i  u+0069    latin small letter i
+35    j     j        j  u+006a    latin small letter j
+36    k     k        k  u+006b    latin small letter k
+37    l     l        l  u+006c    latin small letter l
+38    m     m        m  u+006d    latin small letter m
+39    n     n        n  u+006e    latin small letter n
+40    o     o        o  u+006f    latin small letter o
+41    p     p        p  u+0070    latin small letter p
+42    q     q        q  u+0071    latin small letter q
+43    r     r        r  u+0072    latin small letter r
+44    s     s        s  u+0073    latin small letter s
+45    t     t        t  u+0074    latin small letter t
+46    u     u        u  u+0075    latin small letter u
+47    v     v        v  u+0076    latin small letter v
+48    w     w        w  u+0077    latin small letter w
+49    x     x        x  u+0078    latin small letter x
+50    y     y        y  u+0079    latin small letter y
+51    z     z        z  u+007a    latin small letter z
+Sample 3312 - Plan 1: Table after operation: [['name', 'glyph', 'c_string', 'unicode', 'unicode_name'], ['a', 'a', 'a', 'u+0041', 'latin capital letter a'], ['b', 'b', 'b', 'u+0042', 'latin capital letter b'], ['c', 'c', 'c', 'u+0043', 'latin capital letter c'], ['d', 'd', 'd', 'u+0044', 'latin capital letter d'], ['e', 'e', 'e', 'u+0045', 'latin capital letter e'], ['f', 'f', 'f', 'u+0046', 'latin capital letter f'], ['g', 'g', 'g', 'u+0047', 'latin capital letter g'], ['h', 'h', 'h', 'u+0048', 'latin capital letter h'], ['i', 'i', 'i', 'u+0049', 'latin capital letter i'], ['j', 'j', 'j', 'u+004a', 'latin capital letter j'], ['k', 'k', 'k', 'u+004b', 'latin capital letter k'], ['l', 'l', 'l', 'u+004c', 'latin capital letter l'], ['m', 'm', 'm', 'u+004d', 'latin capital letter m'], ['n', 'n', 'n', 'u+004e', 'latin capital letter n'], ['o', 'o', 'o', 'u+004f', 'latin capital letter o'], ['p', 'p', 'p', 'u+0050', 'latin capital letter p'], ['q', 'q', 'q', 'u+0051', 'latin capital letter q'], ['r', 'r', 'r', 'u+0052', 'latin capital letter r'], ['s', 's', 's', 'u+0053', 'latin capital letter s'], ['t', 't', 't', 'u+0054', 'latin capital letter t'], ['u', 'u', 'u', 'u+0055', 'latin capital letter u'], ['v', 'v', 'v', 'u+0056', 'latin capital letter v'], ['w', 'w', 'w', 'u+0057', 'latin capital letter w'], ['x', 'x', 'x', 'u+0058', 'latin capital letter x'], ['y', 'y', 'y', 'u+0059', 'latin capital letter y'], ['z', 'z', 'z', 'u+005a', 'latin capital letter z'], ['a', 'a', 'a', 'u+0061', 'latin small letter a'], ['b', 'b', 'b', 'u+0062', 'latin small letter b'], ['c', 'c', 'c', 'u+0063', 'latin small letter c'], ['d', 'd', 'd', 'u+0064', 'latin small letter d'], ['e', 'e', 'e', 'u+0065', 'latin small letter e'], ['f', 'f', 'f', 'u+0066', 'latin small letter f'], ['g', 'g', 'g', 'u+0067', 'latin small letter g'], ['h', 'h', 'h', 'u+0068', 'latin small letter h'], ['i', 'i', 'i', 'u+0069', 'latin small letter i'], ['j', 'j', 'j', 'u+006a', 'latin small letter j'], ['k', 'k', 'k', 'u+006b', 'latin small letter k'], ['l', 'l', 'l', 'u+006c', 'latin small letter l'], ['m', 'm', 'm', 'u+006d', 'latin small letter m'], ['n', 'n', 'n', 'u+006e', 'latin small letter n'], ['o', 'o', 'o', 'u+006f', 'latin small letter o'], ['p', 'p', 'p', 'u+0070', 'latin small letter p'], ['q', 'q', 'q', 'u+0071', 'latin small letter q'], ['r', 'r', 'r', 'u+0072', 'latin small letter r'], ['s', 's', 's', 'u+0073', 'latin small letter s'], ['t', 't', 't', 'u+0074', 'latin small letter t'], ['u', 'u', 'u', 'u+0075', 'latin small letter u'], ['v', 'v', 'v', 'u+0076', 'latin small letter v'], ['w', 'w', 'w', 'u+0077', 'latin small letter w'], ['x', 'x', 'x', 'u+0078', 'latin small letter x'], ['y', 'y', 'y', 'u+0079', 'latin small letter y'], ['z', 'z', 'z', 'u+007a', 'latin small letter z']]
+########################################################################################################################
+Sample 3312 - Plan 1: Operation 2: Count the number of rows.
+Sample 3312 - Plan 1: Selected indices: []
+Sample 3312 - Plan 1: X-Table after operation df:
+   row_count
+0         52
+Sample 3312 - Plan 1: Table after operation: [['row_count'], [52]]
+Fall-back: FALSE
+Answer from plan 1: [[52]]
+Groundtruth: ['52']

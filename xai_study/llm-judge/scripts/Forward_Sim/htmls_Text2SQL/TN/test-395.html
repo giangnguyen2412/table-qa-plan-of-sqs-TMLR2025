@@ -1,0 +1,39 @@
+
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+.sql-command { background-color: #f0f0f0; padding: 10px; border-left: 4px solid #4CAF50; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> the game between team 1 saint - louis fc and team 2 eleven arrows fc has the highest combined agg compared to any featured games</h3>
+<h3>Input Table: 1992 african cup of champions clubs</h3>
+<div class="step">
+<table>
+<tr><td>team_1</td><td>agg</td><td>team_2</td><td>1st_leg</td><td>2nd_leg</td></tr><tr><td>botswana defence force xi</td><td>1 - 2</td><td>mbabane highlanders</td><td>1 - 1</td><td>0 - 1</td></tr><tr><td>arsenal (maseru)</td><td>4 - 0</td><td>eleven arrows fc</td><td>3 - 0</td><td>1 - 0</td></tr><tr><td>cd elá nguema</td><td>2 - 6</td><td>primeiro de agosto</td><td>2 - 3</td><td>0 - 3 1</td></tr><tr><td>lprc oilers</td><td>2 - 3</td><td>mighty blackpool</td><td>1 - 0</td><td>1 - 3</td></tr><tr><td>asc police</td><td>2 - 2 (4 - 5)</td><td>as real bamako</td><td>1 - 1</td><td>1 - 1</td></tr><tr><td>port autonome</td><td>0 - 0 (1 - 3)</td><td>sporting clube da praia</td><td>0 - 0</td><td>0 - 0</td></tr><tr><td>saint - george sa</td><td>2 - 4</td><td>al ittihad</td><td>2 - 1</td><td>0 - 3</td></tr><tr><td>saint - louis fc</td><td>2 - 7</td><td>young africans</td><td>1 - 3</td><td>1 - 4</td></tr><tr><td>sahel sc</td><td>4 - 2</td><td>postel sport</td><td>2 - 1</td><td>2 - 1</td></tr><tr><td>tourbillon fc</td><td>1 - 1</td><td>forces armées ca</td><td>0 - 0</td><td>1 - 1</td></tr>
+</table>
+</div>
+<h3>SQL Command:</h3>
+<div class="sql-command">SELECT 
+    CASE 
+        WHEN (SELECT MAX(agg) FROM table_sql) = (SELECT agg FROM table_sql WHERE team_1 = 'saint - louis fc' AND team_2 = 'eleven arrows fc') 
+        THEN 'TRUE' 
+        ELSE 'FALSE' 
+    END;</div>
+</body></html>

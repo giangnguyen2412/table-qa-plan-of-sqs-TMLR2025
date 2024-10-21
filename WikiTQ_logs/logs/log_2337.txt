@@ -1,0 +1,73 @@
+************************************************************************************************************************
+Sample 2337 - Plan 1: Query: what other event besides the men's 50 km walk did shaul ladani enter?
+Sample 2337 - Plan 1: Groundtruth: ['20 km walk']
+Sample 2337 - Plan 1: X-Original table pd: 
+                   name          sport                               event  \
+0          shaul ladani      athletics                    men's 50 km walk   
+1     esther shahamorov      athletics                       women's 100 m   
+2     esther shahamorov      athletics               women's 100 m hurdles   
+3              dan alon        fencing                          men's foil   
+4   yehuda weissenstein        fencing                          men's foil   
+5         yair michaeli        sailing                     flying dutchman   
+6            itzhak nir        sailing                     flying dutchman   
+7     henry hershkowitz       shooting                50 metre rifle prone   
+8     henry hershkowitz       shooting      50 metre rifle three positions   
+9          zelig stroch       shooting                50 metre rifle prone   
+10          shlomit nir       swimming          women's 100 m breaststroke   
+11          shlomit nir       swimming          women's 200 m breaststroke   
+12         david berger  weightlifting          light-heavyweight <82.5 kg   
+13       ze'ev friedman  weightlifting                 bantamweight <56 kg   
+14        yossef romano  weightlifting                 middleweight <75 kg   
+15          gad tsobari      wrestling  freestyle — light flyweight <48 kg   
+16       eliezer halfin      wrestling      freestyle — lightweight <68 kg   
+17          mark slavin      wrestling   greco-roman — middleweight <82 kg   
+
+            placing                                        performance  
+0                19  4:24:38.6\n(also entered for 20 km walk, but d...  
+1   semifinal (5th)                                              11.49  
+2         semifinal   did not start (left munich before the semifinal)  
+3      second round                             w5–l5 (1r 3-2, 2r 2-3)  
+4      second round                             w2–l8 (1r 2-3, 2r 0-5)  
+5                23  28-22-22-19-25-19-dns = 171 pts\n(left kiel be...  
+6                23  28-22-22-19-25-19-dns = 171 pts\n(left kiel be...  
+7                23                                            593/600  
+8                46                                          1114/1200  
+9                57                                            589/600  
+10      heats (8th)                                            1:20.90  
+11      heats (6th)                                            2:53.60  
+12                —                            j:132.5 c:122.5 s:— t:—  
+13               12                        j:102.5 c:102.5 s:125 t:330  
+14                —  (retired injured on third attempt to press 137...  
+15      group stage                                              0w–2l  
+16      group stage                                              1w–2l  
+17                —         (taken hostage before his scheduled event)  
+Sample 2337 - Plan 1: Caption: none
+Sample 2337 - Plan 1: Original table: [['name', 'sport', 'event', 'placing', 'performance'], ['shaul ladani', 'athletics', "men's 50 km walk", '19', '4:24:38.6\\n(also entered for 20 km walk, but did not start)'], ['esther shahamorov', 'athletics', "women's 100 m", 'semifinal (5th)', '11.49'], ['esther shahamorov', 'athletics', "women's 100 m hurdles", 'semifinal', 'did not start (left munich before the semifinal)'], ['dan alon', 'fencing', "men's foil", 'second round', 'w5–l5 (1r 3-2, 2r 2-3)'], ['yehuda weissenstein', 'fencing', "men's foil", 'second round', 'w2–l8 (1r 2-3, 2r 0-5)'], ['yair michaeli', 'sailing', 'flying dutchman', '23', '28-22-22-19-25-19-dns = 171 pts\\n(left kiel before 7th race)'], ['itzhak nir', 'sailing', 'flying dutchman', '23', '28-22-22-19-25-19-dns = 171 pts\\n(left kiel before 7th race)'], ['henry hershkowitz', 'shooting', '50 metre rifle prone', '23', '593/600'], ['henry hershkowitz', 'shooting', '50 metre rifle three positions', '46', '1114/1200'], ['zelig stroch', 'shooting', '50 metre rifle prone', '57', '589/600'], ['shlomit nir', 'swimming', "women's 100 m breaststroke", 'heats (8th)', '1:20.90'], ['shlomit nir', 'swimming', "women's 200 m breaststroke", 'heats (6th)', '2:53.60'], ['david berger', 'weightlifting', 'light-heavyweight <82.5 kg', '—', 'j:132.5 c:122.5 s:— t:—'], ["ze'ev friedman", 'weightlifting', 'bantamweight <56 kg', '12', 'j:102.5 c:102.5 s:125 t:330'], ['yossef romano', 'weightlifting', 'middleweight <75 kg', '—', '(retired injured on third attempt to press 137.5kg)'], ['gad tsobari', 'wrestling', 'freestyle — light flyweight <48 kg', 'group stage', '0w–2l'], ['eliezer halfin', 'wrestling', 'freestyle — lightweight <68 kg', 'group stage', '1w–2l'], ['mark slavin', 'wrestling', 'greco-roman — middleweight <82 kg', '—', '(taken hostage before his scheduled event)']]
+########################################################################################################################
+Sample 2337 - Plan 1: Operation 1: Select rows where the 'name' is 'shaul ladani'.
+Sample 2337 - Plan 1: Selected indices: [[0, 0]]
+Sample 2337 - Plan 1: X-Table after operation df:
+           name      sport             event  placing  \
+0  shaul ladani  athletics  men's 50 km walk       19   
+
+                                         performance  
+0  4:24:38.6\n(also entered for 20 km walk, but d...  
+Sample 2337 - Plan 1: Table after operation: [['name', 'sport', 'event', 'placing', 'performance'], ['shaul ladani', 'athletics', "men's 50 km walk", '19', '4:24:38.6\\n(also entered for 20 km walk, but did not start)']]
+########################################################################################################################
+Sample 2337 - Plan 1: Operation 2: Select the 'event' column.
+Sample 2337 - Plan 1: Selected indices: []
+Sample 2337 - Plan 1: X-Table after operation df:
+              event
+0  men's 50 km walk
+Sample 2337 - Plan 1: Table after operation: [['event'], ["men's 50 km walk"]]
+########################################################################################################################
+Sample 2337 - Plan 1: Operation 3: Exclude the 'men's 50 km walk' event from the selected events.
+Sample 2337 - Plan 1: Selected indices: []
+Sample 2337 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [event]
+Index: []
+Sample 2337 - Plan 1: Table after operation: [['event']]
+Fall-back: TRUE
+Answer from plan 1: [['20 km walk']]
+Groundtruth: ['20 km walk']

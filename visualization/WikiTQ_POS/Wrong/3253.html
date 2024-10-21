@@ -1,0 +1,3412 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which town had the longest span between establishment and disestablishment?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Calculate the duration between the establishment and disestablishment for each town by subtracting the "established" year from the "disestablished" year. Add a new column called "duration" to the existing table.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>town_name</td>
+<td>county</td>
+<td>established</td>
+<td>disestablished</td>
+<td>current_status</td>
+<td>remarks</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">white cloud</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">doniphan county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1856</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008 estimated population of 227</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ray</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pawnee county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">most of the houses were demolished or moved in the 1950s. the old co-op remains and still bears the town name. large berm south of the co-op is what is left from the demolition 38.174742,-98.962701</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">iowa point</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">doniphan county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1854</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">post office closed in 1933</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">small population near k-7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">eagle springs</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">doniphan county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1883</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">townsite was abandoned, only ruins remain</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">was a health resort that lasted into the 1930s.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">geary city</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">doniphan county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">march 23, 1856</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">only foundations remain</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">doniphan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">doniphan county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1854</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1943</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">still on maps but little remains</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a trading post was established on the site in 1852</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">four houses</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wyandotte county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">exact location unknown</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">was actually a trading post from 1826-1828</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rising sun</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jefferson county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1857</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">mid-1860s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a kansas river access point is near the location and named after the town.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">was a lecompton satellite community.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">hickory point</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jefferson county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1855</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a kansas state historical marker is near the location along u.s. 59.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">location of the battle of hickory point, a skirmish between pro-slavery and free state forces.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">arrington</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">atchison county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1854</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a small population resides along k-116.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kennekuk</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">atchison county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1858</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">america city</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nemaha county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">february 14, 1857</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">post office closed in 1933</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a couple buildings and a cemetery remain</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">juniata</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pottawatomie county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1854</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1858</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">on private property and not accessible</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pawnee</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">riley county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1854</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1855</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the old territorial capitol building still stands is well-preserved</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">was the territorial capitol until 1855 when it was moved to shawnee mission.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">randolph</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">riley county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1855</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008 estimated population of 198</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">moved two miles west when tuttle creek lake was built.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">irving</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">marshall county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1859</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1960</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">located on corps land and is easily accessible.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">abandoned for the construction of tuttle creek lake.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">alcove springs</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">marshall county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">now a well-preserved park</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">was never an official town but was a stop on the oregon trail. numerous carvings in the spring's rocks feature traveler's initials and other things. a member of the donner party is buried nearby.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">trading post</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">linn county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1842 (established as a trading post)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a small population remains just off of u.s. 69.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">near the site of the marais des cygnes massacre.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">centropolis</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">franklin county.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1854</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1930</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a small population remains on a county road about ten miles northwest of ottawa centropolis christian church and centropolis baptist church are open.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">minneola</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">franklin county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1854</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1860s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nothing remains of the town.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">was the territorial capitol briefly in 1858. not to be confused with minneola in clark county.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">silkville</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">franklin county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1870</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1892</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">several buildings remain including an old house and a stone school southwest of williamsburg.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">black jack</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">douglas county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1857 (incorporated)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1870s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">santa fe trail wagon swales, a roadside park, cemetery and the well-preserved battlefield site remain and are open to public.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">franklin</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">douglas county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1853 (early stage stop)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">post office closed 1867</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nothing remains of the town except two small neglected cemeteries and franklin road off of k-10.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">big springs</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">douglas county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1854</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a small population remains along u.s. 40.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">calhoun</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">shawnee county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1855</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1868</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nothing remains of this town.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">calhoun was also the name of a county that was made up of northern shawnee county, most of jackson county and half of pottawatomie county. when shawnee county's northern border was extended, calhoun ceased to be.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">indianola</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">shawnee county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1854</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">mid-1860s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nothing remains of the site.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">there is an indianola road located near the goodyear plant near u.s. 24.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sumner city</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">shawnee county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">never established</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">was mainly a paper town that was supposed to be an all-black community east of topeka.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">uniontown</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">shawnee county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1848</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1854</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">townsite is now located in and around the green wildlife refuge southeast of willard.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">uniontown was a trail stop and a place where the pottawatomi would spend money. a cholera epidemic killed 22 indians and they were buried in a mass grave. the grave is located in the center of the cemetery. not to be confused with uniontown in bourbon county.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">peterton</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">osage county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1870</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1930s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">there is still a small population in the area.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bushong</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lyon county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">mid-1880s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1984</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008 estimated population of 50</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">several ruins of the downtown and old consolidated school remain.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">volland</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wabaunsee county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">several buildings remain abandoned in the area.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">located about ten miles southwest of alma.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">newbury</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wabaunsee county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1869</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1888</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a small population and a huge catholic church remain three miles north of paxico.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">army city</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">geary county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1917</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1920</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">any remains of army city are currently on fort riley property.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">army city was built exclusively for servicemen at fort riley during world war i.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">diamond springs</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">morris county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1825 (as a santa fe trail stop)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1863</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">few remains exist but a monument to diamond springs was erected in diamond springs cemetery</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">empire city</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cherokee county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1877</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1907</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">any remains are currently maintained by galena.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">empire city was annexed to galena in 1907.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wilsonton</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">labette county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1887</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1913</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nothing remains except a cemetery.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ella wilson was the founder of the town and when she died in 1913, the town died with her.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ladore</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">neosho county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">incorporated 1869</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1874</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">inaccessible</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">was the site of a mass lynching in may 1870.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">octagon city</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">allen county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1855</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1856</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nothing remains of the townsite</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">octagon city was a social experiment where the settlers of the town vowed to eat no meat. the town was so called because the main streets were laid out in an octagon.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cofachiqui</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">allen county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1855</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1860</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the site of cofachiqui was demolished when a cement company bought the land.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mildred</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">allen county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1907</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">ca. 1983</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008 estimated population of 58.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bassett</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">allen county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1900</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1930s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008 estimated population of 21</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">belmont</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">woodson county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1857</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">post office closed in 1877</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">townsite is now on private property and inaccessible.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">neosho falls</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">woodson county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1857</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008 estimated population of 159</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">guilford</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wilson county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1861</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1889</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a few ruins and structures still survive.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cave springs</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">elk county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1875</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1949</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">now on private property.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cave springs was established as a "health" resort. the resort failed in the 1880s when people starting questioning the springs' healing properties. the town was officially vacated in 1949.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">elgin</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chautauqua county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008 estimated population of 71</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">midian</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">buter county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1916</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">post office closed in 1950</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">townsite is now on private property.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">oil hill</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">butler county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1918</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1969</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">townsite is on private property but the kansas turnpike does pass under oil hill road just outside of el dorado.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">minersville</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cloud county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1870s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1920s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">some houses and foundations remain along with a cemetery.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">waconda</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mitchell county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the site lies under the waters of waconda reservoir.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">located near the waconda springs, a natural aquifer used by native americans.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dispatch</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">smith and jewell counties</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1869</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a church, some houses and a cemetery remain.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">webster</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rooks county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1885</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1953</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a small community still exists near the webster lake dam.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">long island</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">phillips county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1870s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008 estimated population of 140.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">brookville</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">saline county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1869</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008 estimated population of 263.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the population was once near 2,000 in 1870s but after the turn of the century, the population began to decline. the city was also the site of the brookville hotel until 2000 when the hotel moved to abilene.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sveadal</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mcpherson</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1868</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1870s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the townsite is now located within the city limits of lindsborg.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">beach valley</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rice county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1857</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">townsite is now on private property.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dubuque</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">russell and barton counties</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1887</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a beautiful catholic church and cemetery are all that remain.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rome</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ellis county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1867</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1868</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a marker near fort hays state college indicates where rome once was.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rome was co-founded by william "buffalo bill" cody.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chetola</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ellis county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1886</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1907</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">townsite is now on private property.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">hunnewell</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sumner county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1940s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008 estimated population of 75</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">runnymede</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">harper county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1887</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1892</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nothing remains of the town.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">freeport</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">harper county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1878</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008 estimated population of 7.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">freeport is the smallest incorporated town in kansas.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ash valley</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pawnee county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1916</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1960s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">old roads and some structures still remain.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">achilles</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rawlins county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1875</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">post office closed in 1951.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">only a cemetery remains.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">achilles was the site of the battle of sappa creek in 1875, it was one of the bloodiest indian battles fought in northwest kansas.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mina</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">marshall county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1889</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1940s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a railroad town, founded in 1889. the property fell into private hands and was plowed under.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mingo</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">thomas county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1887</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1940s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the townsite become the private property of pat reilly, who plowed it under, until 1972 when it was sold to the brown brothers.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">voltaire</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sherman county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1885</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1889</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nothing remains of the townsite and is now on private property.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">blufton</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">trego county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nothing remains</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the site of blufton is the same as threshing machine canyon which is part of cedar bluff state park which is a part of the cedar bluff reservoir.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sidney</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ness county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1870s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1880s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">only foundations remain.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">amy</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lane county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1887</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1954</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a small community still exists.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">farnsworth</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lane county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1880</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1891</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nothing remains.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mcallaster</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">logan county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1887</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1930s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a small population exists and several buildings remain.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sheridan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">logan county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1868</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1870s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">townsite is on private property.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">coronado</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wichita county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">incorporated 1885</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1889</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nothing remains but some older buildings in leoti are from coronado.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">colokan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">greeley county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1886</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1897</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nothing remains of the townsite.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lexington</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">clark county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1885</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1900</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nothing remains of the townsite except a community building.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cash city</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">clark county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1885</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1895</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nothing remains of the townsite.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">beersheba</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">hodgeman county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1882</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1886</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nothing remains of the townsite.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">beersheba was established as an experimental jewish agricultural community.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ravanna</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">finney county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1882</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">post office closed in 1922</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">only foundations remain.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">battled with eminence for county seat of garfield county. in 1893, garfield county was annexed to finney county and the feud was over.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">eminence</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">finney county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1886</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">post office closed in 1943.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nothing remains of the townsite.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">battled with ravanna for county seat of garfield county, which ended in 1893 when garfield county was annexed to finney county.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">terry</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">finney county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1885</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1890s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nothing remains of the townsite.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">hartland</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kearny county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1885</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1910s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nothing remains of the townsite.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chantilly</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kearny county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1887</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1893</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nothing remains of the townsite.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">coolidge</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">hamilton county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1883</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008 estimated population of 86.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kendall</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">hamilton county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1885</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a small population (approx. 50) remains.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">trail city</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">hamilton county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1885</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1890s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ulysses</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">grant county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1885</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the old ulysses townsite is currently on private property but the "new" ulysses site has an estimated population of 5,557 as of 2008.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">in 1908, ulysses moved three miles down the road to a new location in an attempt to not pay back bonds that had become due.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">santa fe</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">haskell county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1886</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1918</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nothing remains and a portion of the townsite is on private property.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fargo springs</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">seward county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1885</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1910s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nothing remains of the townsite.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">springfield</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">seward county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1885</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1890s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">springfield was located at the intersection of u.s. 83 and u.s. 160 north of liberal.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">palermo</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">doniphan county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1855</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">post office closed 1904</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a small population still remains eight miles southeast of troy near the missouri river.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bendena</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">doniphan county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1886</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1890s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a small community remains along k-20.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kickapoo city</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">leavenworth county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1854</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">post office closed 1920</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a small population remains in the area.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bain city</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">leavenworth county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1867</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1964</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bain city was annexed to leavenworth in 1964.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">quindaro</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wyandotte county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1850s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1862</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">any remains of quindaro are now in the city limits of kansas city in quindaro park.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">six-mile house</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wyandotte county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nothing remains of the site.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">six-mile house, so called because of its distance from wyandotte (kansas city) on leavenworth rd, was the headquarters of the free-state 'redlegs' who guarded the border of kansas from pro-slave incursions.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">padonia</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">brown county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1850s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">post office closed in 1933</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">padonia lies among a cluster of houses and farm fields.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">padonia was the site of a bloodless skirmish in the 1850s called the battle of padonia.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ash point</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nemaha county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1859</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1870</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nothing remains of the townsite.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">neuchatel</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nemaha county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1857</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the cemetery, church, town hall and schoolhouse have all been restored and well-kept.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">blaine</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pottawatomie county</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1880s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">st. columbkillane catholic church and former catholic school still stand at the intersection of k-99 and k-116.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td>louisville</td>
+<td>pottawatomie county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1857</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>2008 estimated population of 207.</td>
+<td></td>
+</tr>
+<tr>
+<td>afton</td>
+<td>marshall county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1893</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>a small cemetery and church mark the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>bigelow</td>
+<td>marshall county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1880s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1960s</span></td>
+<td>all that remains is the antioch cemetery.</td>
+<td>bigelow was demolished during construction of tuttle creek lake.</td>
+</tr>
+<tr>
+<td>bala</td>
+<td>riley county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1870</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">post office closed in 1966</span></td>
+<td>fort riley has now expanded into what was bala.</td>
+<td></td>
+</tr>
+<tr>
+<td>monticello</td>
+<td>johnson county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1857</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">post office closed in 1905</span></td>
+<td>the old school house,cemertery,and a few houses from the 1940s remain south of shawnee mission parkway in west shawnee shawnee and lenexa.</td>
+<td></td>
+</tr>
+<tr>
+<td>paris</td>
+<td>linn county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1854</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>moneka</td>
+<td>linn county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1857</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1870s</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>lone star</td>
+<td>douglas county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1870s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">post office closed in 1953</span></td>
+<td>a small population remains just south of clinton lake near lone star lake.</td>
+<td>a community existed in the area before lone star was organized. a post office was formed in 1875 under bond, then gideon. the name lone star was chosen in the 1890s.</td>
+</tr>
+<tr>
+<td>potwin place</td>
+<td>shawnee county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1869</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1899</span></td>
+<td>the site is well-preserved off of sw 6th avenue in topeka and is listed on the national register of historic places.</td>
+<td>potwin was annexed to topeka in 1899.</td>
+</tr>
+<tr>
+<td>auburndale</td>
+<td>shawnee county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1888</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1899</span></td>
+<td>auburndale is currently a neighborhood in topeka and is commemorated by auburndale park.</td>
+<td></td>
+</tr>
+<tr>
+<td>willard</td>
+<td>shawnee and wabaunsee counties</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1860s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1950s</span></td>
+<td>2000 estimated population of 86.</td>
+<td></td>
+</tr>
+<tr>
+<td>richland</td>
+<td>shawnee county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1872</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1960s</span></td>
+<td>nothing remains of the townsite except some ruins and the cemetery.</td>
+<td>richland is notable for being the birthplace of georgia neese clark, the treasurer of the united states under president truman from 1949-1953.</td>
+</tr>
+<tr>
+<td>110 mile creek</td>
+<td>osage county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1854</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1870s</span></td>
+<td>nothing remains of the townsite, it is on private property. a santa fe trail marker marks the general location along u.s. 56.</td>
+<td></td>
+</tr>
+<tr>
+<td>arvonia</td>
+<td>osage county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1860s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>some old buildings, ruins and a church still stand in the area.</td>
+<td></td>
+</tr>
+<tr>
+<td>fostoria</td>
+<td>osage county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>strawn</td>
+<td>coffey county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1870s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1961</span></td>
+<td>"old" strawn is now located underneath the john redmond reservoir while new strawn is located along u.s. 75.</td>
+<td></td>
+</tr>
+<tr>
+<td>miller</td>
+<td>lyon county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1886</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>a small population and some abandoned businesses remain in the area.</td>
+<td></td>
+</tr>
+<tr>
+<td>dunlap</td>
+<td>morris county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>2000 estimated population of 81.</td>
+<td></td>
+</tr>
+<tr>
+<td>skiddy</td>
+<td>morris county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1869</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>a small population (approx. 20) remains in the area.</td>
+<td></td>
+</tr>
+<tr>
+<td>freedom colony</td>
+<td>bourbon county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1897</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">early 1900s</span></td>
+<td>nothing remains of the townsite.</td>
+<td>in 1905, most cabins were burned down. frank cotton discovered that the boards on his house were soaked with kerosene. cotton saved his house but the remaining cabins burned to the ground.</td>
+</tr>
+<tr>
+<td>rollin</td>
+<td>neosho county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1890</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1921</span></td>
+<td>nothing remains of the townsite except delos johnson's (the town founder) house and a neglected cemetery.</td>
+<td></td>
+</tr>
+<tr>
+<td>cato</td>
+<td>crawford county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1858</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">post office closed in 1905</span></td>
+<td>the cato historical preservation association meets at 6:30 pm on the fourth tuesday of each month at arcadia community center, arcadia, kansas. the old school has been restored. cato christian church is in good repair, but closed. a community reunion is held yearly.\p</td>
+<td></td>
+</tr>
+<tr>
+<td>farlington</td>
+<td>crawford county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1870</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>a small population remains in the area.</td>
+<td>farlington is located just southwest of crawford state park on k-7.</td>
+</tr>
+<tr>
+<td>croweburg</td>
+<td>crawford county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1907</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>a small population remains along with some shotgun houses and some building ruins.</td>
+<td></td>
+</tr>
+<tr>
+<td>monmouth</td>
+<td>crawford county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1857</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">post office closed in 1955</span></td>
+<td>very little remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>treece</td>
+<td>cherokee county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">early 1900s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2012</span></td>
+<td>2010 census population of 138. as of may 2012, only 2 people remain.</td>
+<td>due to years of mining in the area, the land in and around treece is unstable and contaminated which had led to the citizens wanting the government to buy their land so that they can move.</td>
+</tr>
+<tr>
+<td>le hunt</td>
+<td>montgomery county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1905</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">early 1930s</span></td>
+<td>some ruins remain east of the elk city lake.</td>
+<td>the town was fairly bustling thanks to a central cement factory in the center of town being the biggest employer. during the great depression, cement sales dropped significantly and went out of business, so the town died</td>
+</tr>
+<tr>
+<td>votaw</td>
+<td>montgomery county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1881</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1900</span></td>
+<td>nothing remains of the townsite.</td>
+<td>votaw was an experimental colony founded by african-americans. after 1900, the population slowly moved elsewhere. the last building burned down in 1915.</td>
+</tr>
+<tr>
+<td>hewins</td>
+<td>chautauqua county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1870s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">post office closed in 1966</span></td>
+<td>a small population remains.</td>
+<td></td>
+</tr>
+<tr>
+<td>boston</td>
+<td>chautauqua county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1871</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1875</span></td>
+<td>nothing remains of the townsite.</td>
+<td>boston was the county seat of howard county which was split into chautauqua and elk counties in 1875. sedan became the new county seat of chautauqua county.</td>
+</tr>
+<tr>
+<td>delaware springs</td>
+<td>wilson county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1869</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>kalida</td>
+<td>woodson county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1869</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1883</span></td>
+<td>currently on property known as the kalida farm.</td>
+<td></td>
+</tr>
+<tr>
+<td>defiance</td>
+<td>woodson county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1873</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1878, the post office closed in 1886</span></td>
+<td>only a hotel remains that is being used as a residence.</td>
+<td></td>
+</tr>
+<tr>
+<td>reece</td>
+<td>greenwood county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1870</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>a small population (approx. 50) still exists.</td>
+<td></td>
+</tr>
+<tr>
+<td>smileyberg</td>
+<td>butler county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1904</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">early 1920s</span></td>
+<td>some structures still remain. a transmission shop is open.</td>
+<td></td>
+</tr>
+<tr>
+<td>rosalia</td>
+<td>butler county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1879</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>a small population (approx. 100) still exists.</td>
+<td></td>
+</tr>
+<tr>
+<td>strawberry</td>
+<td>washington county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1861</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>nothing remains of the townsite.</td>
+<td>a plaque was dedicated in 1990 commemorating strawberry.</td>
+</tr>
+<tr>
+<td>salem</td>
+<td>jewell county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1871</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>asherville</td>
+<td>mitchell county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">early 1860s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>a small population still exists.</td>
+<td></td>
+</tr>
+<tr>
+<td>lake sibley</td>
+<td>cloud county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1865</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">post office closed in 1876.</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>industry</td>
+<td>dickinson & clay counties</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1868</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>a small population (approx. 20) remains.</td>
+<td></td>
+</tr>
+<tr>
+<td>holland</td>
+<td>dickinson county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">unknown</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1942</span></td>
+<td>a church, now used as a town hall, and a few houses, is all that remains.</td>
+<td></td>
+</tr>
+<tr>
+<td>elmo</td>
+<td>dickinson county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1866</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">post office closed in 1966.</span></td>
+<td>a few buildings and population remain.</td>
+<td></td>
+</tr>
+<tr>
+<td>abram</td>
+<td>lincoln county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1870</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1872</span></td>
+<td>nothing remains of the townsite.</td>
+<td>a monument was erected in 1936. abram was the first lincoln county seat.</td>
+</tr>
+<tr>
+<td>carneiro</td>
+<td>ellsworth county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>a small population remains just north of mushroom rock state park.</td>
+<td></td>
+</tr>
+<tr>
+<td>zarah</td>
+<td>barton county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1872</span></td>
+<td>nothing remains of the townsite.</td>
+<td>was originally a part of fort zarah which was abandoned in 1869. the last resident left zarah in 1875.</td>
+</tr>
+<tr>
+<td>galatia</td>
+<td>barton county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1885</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>2000 estimated population of 61.</td>
+<td></td>
+</tr>
+<tr>
+<td>boyd</td>
+<td>barton county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1886</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1930s</span></td>
+<td>some abandoned buildings and ruins remain.</td>
+<td></td>
+</tr>
+<tr>
+<td>hitschmann</td>
+<td>barton county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>some old buildings still remain.</td>
+<td>all of hitschmann is currently on private property.</td>
+</tr>
+<tr>
+<td>raymond</td>
+<td>rice county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1872</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>2008 estimated population of 80.</td>
+<td></td>
+</tr>
+<tr>
+<td>frederick</td>
+<td>rice county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1878</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>2008 estimated population of 11.</td>
+<td>frederick is the second-smallest incorporated town in kansas.</td>
+</tr>
+<tr>
+<td>yocemento</td>
+<td>ellis county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1906</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>some ruins of the old cement company remain as do some abandoned houses and other buildings.</td>
+<td></td>
+</tr>
+<tr>
+<td>alexander</td>
+<td>rush county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1869</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>2008 estimated population of 66.</td>
+<td></td>
+</tr>
+<tr>
+<td>geuda springs</td>
+<td>sumner county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1857</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>2008 estimated population of 191.</td>
+<td></td>
+</tr>
+<tr>
+<td>bluff city</td>
+<td>harper county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1886</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>2008 estimated population of 73.</td>
+<td>bluff city was originally founded as a fraud in 1873 to swindle money from the kansas legislature. the first settlers in the area didn't arrive until 1876.</td>
+</tr>
+<tr>
+<td>camchester</td>
+<td>harper county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">late 1880s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">post office moved to manchester, oklahoma in 1903.</span></td>
+<td>nothing remains of the townsite.</td>
+<td>originally named cameron until 1900.</td>
+</tr>
+<tr>
+<td>"old" clear water</td>
+<td>sedgwick county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1868</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1894</span></td>
+<td>little remains of old clear water but clearwater has an estimated (as of 2008) population of 2,405.</td>
+<td></td>
+</tr>
+<tr>
+<td>marshall</td>
+<td>sedgwick county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1872</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1883</span></td>
+<td>nothing remains of the townsite.</td>
+<td>the entire town of marshall was moved to cheney in 1883.</td>
+</tr>
+<tr>
+<td>waterloo</td>
+<td>kingman county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>a small population (approx. 20) remains as well as some houses and other buildings.</td>
+<td></td>
+</tr>
+<tr>
+<td>castleton</td>
+<td>reno county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1872</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">post office closed in 1957</span></td>
+<td>a few homes and abandoned buildings remain.</td>
+<td>castleton was used as the setting of sevillinois for the 1952 movie wait till the sun shines, nellie.</td>
+</tr>
+<tr>
+<td>lerado</td>
+<td>reno county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1886</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1887</span></td>
+<td>an old schoolhouse, church, and abandoned grocery store remain but most of lerado is now farmland.</td>
+<td></td>
+</tr>
+<tr>
+<td>old kiowa</td>
+<td>barber county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1872</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1884</span></td>
+<td>nothing remains of the townsite.</td>
+<td>old kiowa was abandoned when the railroad was built four miles to the south and a new kiowa was established.</td>
+</tr>
+<tr>
+<td>lake city</td>
+<td>barber county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1873</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>a small population (approx. 30) remains. the united methodist church is open.</td>
+<td></td>
+</tr>
+<tr>
+<td>sun city</td>
+<td>barber county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1871</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>2008 estimated population of 72.</td>
+<td></td>
+</tr>
+<tr>
+<td>comanche city</td>
+<td>comanche county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1885</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1905</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>hopewell</td>
+<td>pratt county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1901</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1920s</span></td>
+<td>a small population (approx. 10) remains.</td>
+<td></td>
+</tr>
+<tr>
+<td>byers</td>
+<td>pratt county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1914</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>2008 estimated population of 49.</td>
+<td></td>
+</tr>
+<tr>
+<td>zenith</td>
+<td>stafford county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1886</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>a small population (approx. 20) still remains.</td>
+<td></td>
+</tr>
+<tr>
+<td>trousdale</td>
+<td>edwards county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1916</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>a small resident population of about 40 remains.</td>
+<td></td>
+</tr>
+<tr>
+<td>devizes</td>
+<td>norton county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1873</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1930s</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>kanona</td>
+<td>decatur county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1880</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>some ruins and abandoned buildings remain.</td>
+<td>the site of kanona is currently on private property.</td>
+</tr>
+<tr>
+<td>burntwood city</td>
+<td>rawlins county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1860s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>blakeman</td>
+<td>rawlins county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>little remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>ludell</td>
+<td>rawlins county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1884</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>a small resident population remains along with some ruins and abandoned buildings.</td>
+<td></td>
+</tr>
+<tr>
+<td>eustis</td>
+<td>sherman county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1885</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1887</span></td>
+<td>nothing remains of the townsite.</td>
+<td>the entire was moved in 1887 to goodland.</td>
+</tr>
+<tr>
+<td>itasca</td>
+<td>sherman county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1885</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1887</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>california</td>
+<td>lane county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1879</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1880s</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>vega</td>
+<td>wallace county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1880s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">post office closed in 1908</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>pond city</td>
+<td>wallace county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1866</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>pierceville</td>
+<td>finney county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1872</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>a small population remains along u.s. 50.</td>
+<td></td>
+</tr>
+<tr>
+<td>englewood</td>
+<td>clark county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1884</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>2008 estimated population of 95.</td>
+<td></td>
+</tr>
+<tr>
+<td>sitka</td>
+<td>clark county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1909</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">post office closed in 1964</span></td>
+<td>a small population and some abandoned buildings and ruins still remain.</td>
+<td></td>
+</tr>
+<tr>
+<td>arkalon</td>
+<td>seward county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1888</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">post office closed in 1929</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>woodsdale</td>
+<td>stevens county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1885</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">late 1880s</span></td>
+<td>nothing remains of the townsite.</td>
+<td>battled with hugoton for county seat of stevens county.</td>
+</tr>
+<tr>
+<td>voorhees</td>
+<td>stevens county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1887</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">late 1890s</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>goguac</td>
+<td>stanton county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1889</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1890s</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>borders</td>
+<td>stanton county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1887</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1888</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>pardee</td>
+<td>atchison county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1855</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1888</span></td>
+<td>nothing remains of the townsite but the pardee cemetery.</td>
+<td>named for pardee butler, a farmer and preacher who was sent adrift on a raft in the missouri river by pro-slavery men.</td>
+</tr>
+<tr>
+<td>port william</td>
+<td>atchison county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1856</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>fort cavagnial</td>
+<td>leavenworth county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1744</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1764</span></td>
+<td>nothing remains of the old fort.</td>
+<td>cavagnial is an old french fort and trading post. when lewis and clark came through the area in 1804, they saw no sign of the old fort. the exact location is unknown.</td>
+</tr>
+<tr>
+<td>delaware city</td>
+<td>leavenworth county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1854</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1870s</span></td>
+<td>some ruins and street grades are all that remain.</td>
+<td></td>
+</tr>
+<tr>
+<td>springdale</td>
+<td>leavenworth county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1860</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1920s</span></td>
+<td>the kansas city metro area has grown into the area of springdale.</td>
+<td></td>
+</tr>
+<tr>
+<td>owl city</td>
+<td>jefferson county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1930s</span></td>
+<td>nothing remains of the site and it is rumored that it is now under the waters of perry lake.</td>
+<td>owl city was mainly a section house on the leavenworth and topeka railroad.</td>
+</tr>
+<tr>
+<td>granada</td>
+<td>nemaha county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1855</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>some ruins and abandoned building remain on what used to be main street.</td>
+<td></td>
+</tr>
+<tr>
+<td>richmond</td>
+<td>nemaha county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1855</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1860s</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>guittard station</td>
+<td>marshall county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1857</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1900</span></td>
+<td>some abandoned buildings remain.</td>
+<td>guittard station was a major stop for the pony express.</td>
+</tr>
+<tr>
+<td>marietta</td>
+<td>marshall county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1881</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1920s</span></td>
+<td>a small population remains as does some buildings.</td>
+<td></td>
+</tr>
+<tr>
+<td>stockdale</td>
+<td>riley county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1957</span></td>
+<td>the townsite is under the waters of the tuttle creek reservoir.</td>
+<td></td>
+</tr>
+<tr>
+<td>cleburne</td>
+<td>riley county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1860</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1960</span></td>
+<td>nothing remains of the townsite.</td>
+<td>originally called big timber until 1878.</td>
+</tr>
+<tr>
+<td>garrison</td>
+<td>pottawatomie county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>aubry</td>
+<td>johnson county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1857</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1888</span></td>
+<td>nothing remains but aubry township is named for the town.</td>
+<td>aubry was located around 192nd street and metcalf.</td>
+</tr>
+<tr>
+<td>oxford</td>
+<td>johnson county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mid-1850s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1871</span></td>
+<td>nothing remains of the townsite.</td>
+<td>not to be confused with oxford, kansas in sumner county, an existing city with a population of 1,049 as of 2010.</td>
+</tr>
+<tr>
+<td>sunflower village/clearview city</td>
+<td>johnson county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1943</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1959</span></td>
+<td>old residences, streets and other buildings remain in and around clearview city.</td>
+<td>sunflower village was established exclusively for the sunflower army ammunition plant, the plant and town remain just off of k-10 south of desoto.</td>
+</tr>
+<tr>
+<td>tontzville</td>
+<td>miami county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1866</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1874</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>stanton</td>
+<td>miami county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1855</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>several houses and businesses remain.</td>
+<td>william quantrill lived in stanton during the winter of 1859-60.</td>
+</tr>
+<tr>
+<td>hyatt</td>
+<td>anderson county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1856</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>lone elm</td>
+<td>anderson county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1869</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>2008 estimated population of 26.</td>
+<td></td>
+</tr>
+<tr>
+<td>ransomville</td>
+<td>franklin county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1878</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1914</span></td>
+<td>the ransom house still stands as does some other houses and buildings.</td>
+<td></td>
+</tr>
+<tr>
+<td>peoria</td>
+<td>franklin county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1857</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1880s</span></td>
+<td>a small population remains and peoria township is named for it.</td>
+<td></td>
+</tr>
+<tr>
+<td>stull</td>
+<td>douglas county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1857</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>a couple of churches, some houses and the old schoolhouse remain.</td>
+<td>originally called deer creek community until 1899 when the post office opened, the post office closed in 1903.</td>
+</tr>
+<tr>
+<td>ottumwa</td>
+<td>coffey county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1855</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>a small population remains on the north edge of the john redmond reservoir.</td>
+<td></td>
+</tr>
+<tr>
+<td>havana</td>
+<td>osage county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1858</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">early 1870s</span></td>
+<td>ruins of the havana stage station and hotel remain and a sign has been posted on the site.</td>
+<td>not to be confused with havana in montgomery county.</td>
+</tr>
+<tr>
+<td>superior</td>
+<td>osage county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1859</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>the site is now part of superior game farms just south of burlingame.</td>
+<td></td>
+</tr>
+<tr>
+<td>kansapolis/rochester</td>
+<td>shawnee county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1854</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">late 1850s/early 1860s</span></td>
+<td>nothing remains of the townsite, only rochester cemetery and rochester road in north topeka mark the site.</td>
+<td></td>
+</tr>
+<tr>
+<td>wanamaker</td>
+<td>shawnee county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1891</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1917</span></td>
+<td>nothing remains of the townsite however wanamaker road, topeka's main western edge road, bears its name.</td>
+<td>after a tornado destroyed the town in 1917, it was not rebuilt.</td>
+</tr>
+<tr>
+<td>wilmington</td>
+<td>wabaunsee county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1856</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1872</span></td>
+<td>nothing remains of the townsite.</td>
+<td>the site is currently maintained as a hiking trail by a local chapter of boy scouts.</td>
+</tr>
+<tr>
+<td>alida</td>
+<td>geary county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1858</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1967</span></td>
+<td>the site of alida lies underneath the waters of milford lake.</td>
+<td></td>
+</tr>
+<tr>
+<td>columbia</td>
+<td>lyon county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1855</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1857</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>agnes city</td>
+<td>lyon county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1858</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">early 1860s</span></td>
+<td>only a small cemetery marks the townsite.</td>
+<td>was the county seat of lyon county until losing to americus who then lost it to emporia.</td>
+</tr>
+<tr>
+<td>white rock</td>
+<td>republic county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1866</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>nothing remains of the townsite.</td>
+<td>founded by thomas lovewell. most of the town lies under the water of the lovewell reservoir.</td>
+</tr>
+<tr>
+<td>reamsville</td>
+<td>smith county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1880</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>a small population remains.</td>
+<td>an old dutch mill, built in 1882, was moved to smith center in 1938.</td>
+</tr>
+<tr>
+<td>harlan</td>
+<td>smith county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1877</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>a small population remains as well as the ruins of main street and a high school gymnasium.</td>
+<td>harlan was home to gould college which lasted from 1881 until 1891.</td>
+</tr>
+<tr>
+<td>lindsey</td>
+<td>ottawa county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1866</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">post office closed in 1942.</span></td>
+<td>nothing remains of the townsite except an old well.</td>
+<td></td>
+</tr>
+<tr>
+<td>lyona</td>
+<td>dickinson county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1857</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">post office closed in 1888.</span></td>
+<td>nothing remains of the townsite except for a church & the old lyona school built in 1870.</td>
+<td></td>
+</tr>
+<tr>
+<td>canada</td>
+<td>marion county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1873</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>a small population (approx. 40) remains.</td>
+<td></td>
+</tr>
+<tr>
+<td>boomer city</td>
+<td>saline county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mid-1940s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>boomer city was established as a town to house the construction people working on the kanapolis reservoir. when the lake was completed, the town was abandoned.</td>
+<td></td>
+</tr>
+<tr>
+<td>mariposa</td>
+<td>saline county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1856</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">unknown</span></td>
+<td>the town barely got started and was abandoned soon after its founding.</td>
+<td></td>
+</tr>
+<tr>
+<td>buchanan</td>
+<td>saline county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1857</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">late 1850s</span></td>
+<td>the town was surveyed but soon after a local child died after arrived in buchanan, the town was abandoned.</td>
+<td></td>
+</tr>
+<tr>
+<td>kipp</td>
+<td>saline county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">early 1860s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1960s</span></td>
+<td>a small population remains.</td>
+<td></td>
+</tr>
+<tr>
+<td>dry creek</td>
+<td>saline county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1877</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">post office closed in 1887.</span></td>
+<td>an old blacksmith shop still stands but nothing else remains.</td>
+<td></td>
+</tr>
+<tr>
+<td>terra cotta</td>
+<td>ellsworth county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1867</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1888</span></td>
+<td>nothing remains of the townsite.</td>
+<td>ironically, in 1901, a railroad built a depot at terra cotta despite nothing being there. it was moved in 1934.</td>
+</tr>
+<tr>
+<td>idavale</td>
+<td>ellsworth county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1893</span></td>
+<td>the idavale ranch is located on the kanapolis reservoir legacy trail, along with terra cotta.</td>
+<td></td>
+</tr>
+<tr>
+<td>fairport</td>
+<td>russell county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1880</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1940s</span></td>
+<td>a small population remains.</td>
+<td></td>
+</tr>
+<tr>
+<td>redwing</td>
+<td>barton county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1890</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>a small population (approx. 20) remains.</td>
+<td></td>
+</tr>
+<tr>
+<td>boyd</td>
+<td>barton county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1886</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>a small population and building ruins remain.</td>
+<td></td>
+</tr>
+<tr>
+<td>cain city</td>
+<td>rice county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1881</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1889</span></td>
+<td>after the founder, roger cain, died, the town was slowly abandoned. nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>empire</td>
+<td>mcpherson county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1855, post office established in 1861</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">late 1870s</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>hukle</td>
+<td>sedgwick county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1885</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1915</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>marshall</td>
+<td>sedgwick county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1872</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1880s</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>calista</td>
+<td>kingman county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1880s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1970s</span></td>
+<td>an old grain elevator and a couple of houses remain.</td>
+<td></td>
+</tr>
+<tr>
+<td>meridian</td>
+<td>sumner county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1871</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1886</span></td>
+<td>the town never actually existed despite being named the county seat in 1871.</td>
+<td></td>
+</tr>
+<tr>
+<td>saratoga</td>
+<td>pratt county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1878</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">early 1900s</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>drury</td>
+<td>sumner county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1882</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>a small population (approx. 20) remains along with a dam built in 1882.</td>
+<td></td>
+</tr>
+<tr>
+<td>zyba</td>
+<td>sumner county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1888</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1915</span></td>
+<td>nothing remains of the townsite, the town was wiped off the map by a tornado.</td>
+<td></td>
+</tr>
+<tr>
+<td>belvidere</td>
+<td>kiowa county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1887</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>a small population remains.</td>
+<td></td>
+</tr>
+<tr>
+<td>leota</td>
+<td>norton county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1873</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1882</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>port landis</td>
+<td>norton county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1872</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>woodruff</td>
+<td>phillips county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1885</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>a small population remains.</td>
+<td></td>
+</tr>
+<tr>
+<td>gandy</td>
+<td>sherman county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1885</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1887</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>hawkeye</td>
+<td>decatur county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1876</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1880s</span></td>
+<td>little remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>coyote</td>
+<td>trego county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">january 1868</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">june 1868</span></td>
+<td>coyote was the western terminus of the union pacific during construction. when the railroad moved on, coyote was abandoned.</td>
+<td></td>
+</tr>
+<tr>
+<td>augustine</td>
+<td>logan county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1887</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">post office closed in 1895</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>vega</td>
+<td>wallace county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1887</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1890s</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>jerome</td>
+<td>gove county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1886</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">post office closed in 1943</span></td>
+<td>little remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>sherlock</td>
+<td>finney county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1872</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>in 1910, the people of sherlock renamed the town holcomb, which still exists.</td>
+<td></td>
+</tr>
+<tr>
+<td>old montezuma</td>
+<td>gray county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1886</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1895</span></td>
+<td>some ruins remain in the area.</td>
+<td>in 1912, the santa fe railroad laid out a new town named montezuma which continues to thrive.</td>
+</tr>
+<tr>
+<td>hess</td>
+<td>gray county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1887</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>morton city</td>
+<td>hodgeman county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1877</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1880s</span></td>
+<td>some ruins of old stone houses remain.</td>
+<td>the townsite is now a part of the hanna hereford ranch.</td>
+</tr>
+<tr>
+<td>ivanhoe</td>
+<td>haskell county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">late 1880s</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1920s</span></td>
+<td>nothing remains of the townsite except for a santa fe trail marker and a cemetery.</td>
+<td></td>
+</tr>
+<tr>
+<td>dermot</td>
+<td>stevens county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1887</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">post office closed in 1929</span></td>
+<td>nothing remains of the townsite.</td>
+<td>the town was short-lived but the post office existed decades longer than the actual town.</td>
+</tr>
+<tr>
+<td>pleasant plains</td>
+<td>morton county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>taloga</td>
+<td>morton county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1886</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1890s</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>mertilla</td>
+<td>meade county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1885</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1893</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>nirwana city</td>
+<td>meade county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1886</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1888</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>carthage</td>
+<td>meade county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1885</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1885</span></td>
+<td>the town was abandoned when meade center won the county seat. nothing remains but a main street through meade is named carthage.</td>
+<td></td>
+</tr>
+<tr>
+<td>pearlette</td>
+<td>meade county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1879</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1880</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>spring lake/artesian city</td>
+<td>meade county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1885</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1893</span></td>
+<td>renamed artesian city from spring lake in 1887, nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>veteran</td>
+<td>stanton county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1885</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1886</span></td>
+<td>the exact location of the first townsite of veteran is unknown but the second location became johnson city in 1886.</td>
+<td>the town of veteran was apparently founded by civil war veterans.</td>
+</tr>
+<tr>
+<td>annelly</td>
+<td>harvey county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>the main street and an old schoolhouse remain.</td>
+<td></td>
+</tr>
+<tr>
+<td>elk</td>
+<td>chase county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">post office closed in 1923</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>farmer city</td>
+<td>wichita county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>hail ridge</td>
+<td>linn county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">post office closed in 1888</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>millbrook</td>
+<td>graham county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1880</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1887</span></td>
+<td>the ruins of a schoolhouse remain in the area.</td>
+<td></td>
+</tr>
+<tr>
+<td>prairie city</td>
+<td>douglas county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1857</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1883</span></td>
+<td>a cemetery, ruins of an old church and an abandoned stone house are all that remain of the town.</td>
+<td></td>
+</tr>
+<tr>
+<td>smoky hill city</td>
+<td>ellis county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1899</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1905</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>sibley</td>
+<td>cloud county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>thurman</td>
+<td>chase county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1874</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1944</span></td>
+<td>little remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>twin mound</td>
+<td>douglas county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1857</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">early 1900s</span></td>
+<td>a small population remains along with an old cemetery, schoolhouse and the natural mounds the town was named for.</td>
+<td></td>
+</tr>
+<tr>
+<td>muncie</td>
+<td>wyandotte county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>muncie is now a part of suburban kansas city.</td>
+<td></td>
+</tr>
+<tr>
+<td>stringtown/woodstock</td>
+<td>jefferson county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1865</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">post office closed in 1891</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>zarah</td>
+<td>johnson county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1902</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>nothing remains of the townsite.</td>
+<td>zarah might have been located near shawnee mission parkway and woodland road.</td>
+</tr>
+<tr>
+<td>emerald community</td>
+<td>anderson county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1857</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>ohio city</td>
+<td>franklin county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1857</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1864</span></td>
+<td>nothing remains of the townsite.</td>
+<td>was the county seat from 1861 until 1864.</td>
+</tr>
+<tr>
+<td>williamsport</td>
+<td>shawnee county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1857</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>camp whiteside</td>
+<td>geary county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1930s</span></td>
+<td>nothing remains of the site.</td>
+<td></td>
+</tr>
+<tr>
+<td>toledo</td>
+<td>chase county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1860</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>a cemetery and some farms are all that remain.</td>
+<td></td>
+</tr>
+<tr>
+<td>wauneta</td>
+<td>chautauqua county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">post office closed in 1931</span></td>
+<td>a united methodist church is located on k-166 east of cedarvale.</td>
+<td></td>
+</tr>
+<tr>
+<td>union center</td>
+<td>elk county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1868</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>geneva</td>
+<td>allen county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1857</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">post office closed in 1942.</span></td>
+<td>little remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>fact</td>
+<td>clay county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">unknown</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>little remains of the townsite, a small population remains.</td>
+<td></td>
+</tr>
+<tr>
+<td>victor</td>
+<td>mitchell county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1959</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>shipton</td>
+<td>saline county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">post office closed in 1895</span></td>
+<td>nothing remains of the townsite.</td>
+<td>the entire town was auctioned off in 1909.</td>
+</tr>
+<tr>
+<td>black wolf</td>
+<td>ellsworth county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1879</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>a grain elevator and some other buildings remain.</td>
+<td>black wolf is currently on private property.</td>
+</tr>
+<tr>
+<td>shaffer</td>
+<td>rush county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1892</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>little remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>beaver</td>
+<td>barton county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1918</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>a small population remains.</td>
+<td></td>
+</tr>
+<tr>
+<td>wherry</td>
+<td>rice county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>nothing remains of the townsite.</td>
+<td>the last building marking the site burned down in 1967.</td>
+</tr>
+<tr>
+<td>saxman</td>
+<td>rice county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>a small population (approx. 30) remains.</td>
+<td></td>
+</tr>
+<tr>
+<td>roxbury</td>
+<td>mcpherson county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1866</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>a small population (approx. 75) remains.</td>
+<td></td>
+</tr>
+<tr>
+<td>ashtabula colony</td>
+<td>mcpherson county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1871</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>merged with mcpherson.</td>
+<td></td>
+</tr>
+<tr>
+<td>medora</td>
+<td>reno county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>little remains of the townsite, a small population remains.</td>
+<td></td>
+</tr>
+<tr>
+<td>bayneville</td>
+<td>sedgwick county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1884</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>some houses and ruins remain in the area.</td>
+<td></td>
+</tr>
+<tr>
+<td>basil</td>
+<td>kingman county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1892</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1930s</span></td>
+<td>all that remains is an abandoned grain elevator.</td>
+<td>founded as gage until 1901.</td>
+</tr>
+<tr>
+<td>elm mills</td>
+<td>barber county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1879</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>touzalin</td>
+<td>meade county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1884</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1885</span></td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>centerview</td>
+<td>edwards county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">~1880</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>structures still stand, and two families still live on the townsite.</td>
+<td></td>
+</tr>
+<tr>
+<td>acres</td>
+<td>clark county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">early 2000s</span></td>
+<td>town has been completely vacant for a few years. six buildings remain standing on the townsite, including an elevator & old school.</td>
+<td></td>
+</tr>
+<tr>
+<td>croft</td>
+<td>pratt county</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2000s</span></td>
+<td>two vacant grain elevators, two vacant houses, an old school, and a few ruins remain in this town.</td>
+<td></td>
+</tr>
+</table>
+</div>
+<hr>
+<table>
+<tr>
+<td>town_name</td>
+<td>county</td>
+<td>established</td>
+<td>disestablished</td>
+<td>current_status</td>
+<td>remarks</td>
+<td>duration</td>
+</tr>
+<tr>
+<td>white cloud</td>
+<td>doniphan county</td>
+<td>1856</td>
+<td></td>
+<td>2008 estimated population of 227</td>
+<td></td>
+<td>-1856</td>
+</tr>
+<tr>
+<td>ray</td>
+<td>pawnee county</td>
+<td></td>
+<td></td>
+<td>most of the houses were demolished or moved in the 1950s. the old co-op remains and still bears the town name. large berm south of the co-op is what is left from the demolition 38.174742,-98.962701</td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>iowa point</td>
+<td>doniphan county</td>
+<td>1854</td>
+<td>post office closed in 1933</td>
+<td>small population near k-7</td>
+<td></td>
+<td>-1854</td>
+</tr>
+<tr>
+<td>eagle springs</td>
+<td>doniphan county</td>
+<td>1883</td>
+<td></td>
+<td>townsite was abandoned, only ruins remain</td>
+<td>was a health resort that lasted into the 1930s.</td>
+<td>-1883</td>
+</tr>
+<tr>
+<td>geary city</td>
+<td>doniphan county</td>
+<td>march 23, 1856</td>
+<td></td>
+<td>only foundations remain</td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>doniphan</td>
+<td>doniphan county</td>
+<td>1854</td>
+<td>1943</td>
+<td>still on maps but little remains</td>
+<td>a trading post was established on the site in 1852</td>
+<td>89</td>
+</tr>
+<tr>
+<td>four houses</td>
+<td>wyandotte county</td>
+<td></td>
+<td></td>
+<td>exact location unknown</td>
+<td>was actually a trading post from 1826-1828</td>
+<td>0</td>
+</tr>
+<tr>
+<td>rising sun</td>
+<td>jefferson county</td>
+<td>1857</td>
+<td>mid-1860s</td>
+<td>a kansas river access point is near the location and named after the town.</td>
+<td>was a lecompton satellite community.</td>
+<td>-1857</td>
+</tr>
+<tr>
+<td>hickory point</td>
+<td>jefferson county</td>
+<td>1855</td>
+<td></td>
+<td>a kansas state historical marker is near the location along u.s. 59.</td>
+<td>location of the battle of hickory point, a skirmish between pro-slavery and free state forces.</td>
+<td>-1855</td>
+</tr>
+<tr>
+<td>arrington</td>
+<td>atchison county</td>
+<td>1854</td>
+<td></td>
+<td>a small population resides along k-116.</td>
+<td></td>
+<td>-1854</td>
+</tr>
+<tr>
+<td>kennekuk</td>
+<td>atchison county</td>
+<td>1858</td>
+<td></td>
+<td></td>
+<td></td>
+<td>-1858</td>
+</tr>
+<tr>
+<td>america city</td>
+<td>nemaha county</td>
+<td>february 14, 1857</td>
+<td>post office closed in 1933</td>
+<td>a couple buildings and a cemetery remain</td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>juniata</td>
+<td>pottawatomie county</td>
+<td>1854</td>
+<td>1858</td>
+<td>on private property and not accessible</td>
+<td></td>
+<td>4</td>
+</tr>
+<tr>
+<td>pawnee</td>
+<td>riley county</td>
+<td>1854</td>
+<td>1855</td>
+<td>the old territorial capitol building still stands is well-preserved</td>
+<td>was the territorial capitol until 1855 when it was moved to shawnee mission.</td>
+<td>1</td>
+</tr>
+<tr>
+<td>randolph</td>
+<td>riley county</td>
+<td>1855</td>
+<td></td>
+<td>2008 estimated population of 198</td>
+<td>moved two miles west when tuttle creek lake was built.</td>
+<td>-1855</td>
+</tr>
+<tr>
+<td>irving</td>
+<td>marshall county</td>
+<td>1859</td>
+<td>1960</td>
+<td>located on corps land and is easily accessible.</td>
+<td>abandoned for the construction of tuttle creek lake.</td>
+<td>101</td>
+</tr>
+<tr>
+<td>alcove springs</td>
+<td>marshall county</td>
+<td></td>
+<td></td>
+<td>now a well-preserved park</td>
+<td>was never an official town but was a stop on the oregon trail. numerous carvings in the spring's rocks feature traveler's initials and other things. a member of the donner party is buried nearby.</td>
+<td>0</td>
+</tr>
+<tr>
+<td>trading post</td>
+<td>linn county</td>
+<td>1842 (established as a trading post)</td>
+<td></td>
+<td>a small population remains just off of u.s. 69.</td>
+<td>near the site of the marais des cygnes massacre.</td>
+<td>-1842</td>
+</tr>
+<tr>
+<td>centropolis</td>
+<td>franklin county.</td>
+<td>1854</td>
+<td>1930</td>
+<td>a small population remains on a county road about ten miles northwest of ottawa centropolis christian church and centropolis baptist church are open.</td>
+<td></td>
+<td>76</td>
+</tr>
+<tr>
+<td>minneola</td>
+<td>franklin county</td>
+<td>1854</td>
+<td>1860s</td>
+<td>nothing remains of the town.</td>
+<td>was the territorial capitol briefly in 1858. not to be confused with minneola in clark county.</td>
+<td>6</td>
+</tr>
+<tr>
+<td>silkville</td>
+<td>franklin county</td>
+<td>1870</td>
+<td>1892</td>
+<td>several buildings remain including an old house and a stone school southwest of williamsburg.</td>
+<td></td>
+<td>22</td>
+</tr>
+<tr>
+<td>black jack</td>
+<td>douglas county</td>
+<td>1857 (incorporated)</td>
+<td>1870s</td>
+<td>santa fe trail wagon swales, a roadside park, cemetery and the well-preserved battlefield site remain and are open to public.</td>
+<td></td>
+<td>13</td>
+</tr>
+<tr>
+<td>franklin</td>
+<td>douglas county</td>
+<td>1853 (early stage stop)</td>
+<td>post office closed 1867</td>
+<td>nothing remains of the town except two small neglected cemeteries and franklin road off of k-10.</td>
+<td></td>
+<td>-1853</td>
+</tr>
+<tr>
+<td>big springs</td>
+<td>douglas county</td>
+<td>1854</td>
+<td></td>
+<td>a small population remains along u.s. 40.</td>
+<td></td>
+<td>-1854</td>
+</tr>
+<tr>
+<td>calhoun</td>
+<td>shawnee county</td>
+<td>1855</td>
+<td>1868</td>
+<td>nothing remains of this town.</td>
+<td>calhoun was also the name of a county that was made up of northern shawnee county, most of jackson county and half of pottawatomie county. when shawnee county's northern border was extended, calhoun ceased to be.</td>
+<td>13</td>
+</tr>
+<tr>
+<td>indianola</td>
+<td>shawnee county</td>
+<td>1854</td>
+<td>mid-1860s</td>
+<td>nothing remains of the site.</td>
+<td>there is an indianola road located near the goodyear plant near u.s. 24.</td>
+<td>-1854</td>
+</tr>
+<tr>
+<td>sumner city</td>
+<td>shawnee county</td>
+<td>never established</td>
+<td></td>
+<td>was mainly a paper town that was supposed to be an all-black community east of topeka.</td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>uniontown</td>
+<td>shawnee county</td>
+<td>1848</td>
+<td>1854</td>
+<td>townsite is now located in and around the green wildlife refuge southeast of willard.</td>
+<td>uniontown was a trail stop and a place where the pottawatomi would spend money. a cholera epidemic killed 22 indians and they were buried in a mass grave. the grave is located in the center of the cemetery. not to be confused with uniontown in bourbon county.</td>
+<td>6</td>
+</tr>
+<tr>
+<td>peterton</td>
+<td>osage county</td>
+<td>1870</td>
+<td>1930s</td>
+<td>there is still a small population in the area.</td>
+<td></td>
+<td>60</td>
+</tr>
+<tr>
+<td>bushong</td>
+<td>lyon county</td>
+<td>mid-1880s</td>
+<td>1984</td>
+<td>2008 estimated population of 50</td>
+<td>several ruins of the downtown and old consolidated school remain.</td>
+<td>1984</td>
+</tr>
+<tr>
+<td>volland</td>
+<td>wabaunsee county</td>
+<td></td>
+<td></td>
+<td>several buildings remain abandoned in the area.</td>
+<td>located about ten miles southwest of alma.</td>
+<td>0</td>
+</tr>
+<tr>
+<td>newbury</td>
+<td>wabaunsee county</td>
+<td>1869</td>
+<td>1888</td>
+<td>a small population and a huge catholic church remain three miles north of paxico.</td>
+<td></td>
+<td>19</td>
+</tr>
+<tr>
+<td>army city</td>
+<td>geary county</td>
+<td>1917</td>
+<td>1920</td>
+<td>any remains of army city are currently on fort riley property.</td>
+<td>army city was built exclusively for servicemen at fort riley during world war i.</td>
+<td>3</td>
+</tr>
+<tr>
+<td>diamond springs</td>
+<td>morris county</td>
+<td>1825 (as a santa fe trail stop)</td>
+<td>1863</td>
+<td>few remains exist but a monument to diamond springs was erected in diamond springs cemetery</td>
+<td></td>
+<td>38</td>
+</tr>
+<tr>
+<td>empire city</td>
+<td>cherokee county</td>
+<td>1877</td>
+<td>1907</td>
+<td>any remains are currently maintained by galena.</td>
+<td>empire city was annexed to galena in 1907.</td>
+<td>30</td>
+</tr>
+<tr>
+<td>wilsonton</td>
+<td>labette county</td>
+<td>1887</td>
+<td>1913</td>
+<td>nothing remains except a cemetery.</td>
+<td>ella wilson was the founder of the town and when she died in 1913, the town died with her.</td>
+<td>26</td>
+</tr>
+<tr>
+<td>ladore</td>
+<td>neosho county</td>
+<td>incorporated 1869</td>
+<td>1874</td>
+<td>inaccessible</td>
+<td>was the site of a mass lynching in may 1870.</td>
+<td>1874</td>
+</tr>
+<tr>
+<td>octagon city</td>
+<td>allen county</td>
+<td>1855</td>
+<td>1856</td>
+<td>nothing remains of the townsite</td>
+<td>octagon city was a social experiment where the settlers of the town vowed to eat no meat. the town was so called because the main streets were laid out in an octagon.</td>
+<td>1</td>
+</tr>
+<tr>
+<td>cofachiqui</td>
+<td>allen county</td>
+<td>1855</td>
+<td>1860</td>
+<td>the site of cofachiqui was demolished when a cement company bought the land.</td>
+<td></td>
+<td>5</td>
+</tr>
+<tr>
+<td>mildred</td>
+<td>allen county</td>
+<td>1907</td>
+<td>ca. 1983</td>
+<td>2008 estimated population of 58.</td>
+<td></td>
+<td>-1907</td>
+</tr>
+<tr>
+<td>bassett</td>
+<td>allen county</td>
+<td>1900</td>
+<td>1930s</td>
+<td>2008 estimated population of 21</td>
+<td></td>
+<td>30</td>
+</tr>
+<tr>
+<td>belmont</td>
+<td>woodson county</td>
+<td>1857</td>
+<td>post office closed in 1877</td>
+<td>townsite is now on private property and inaccessible.</td>
+<td></td>
+<td>-1857</td>
+</tr>
+<tr>
+<td>neosho falls</td>
+<td>woodson county</td>
+<td>1857</td>
+<td></td>
+<td>2008 estimated population of 159</td>
+<td></td>
+<td>-1857</td>
+</tr>
+<tr>
+<td>guilford</td>
+<td>wilson county</td>
+<td>1861</td>
+<td>1889</td>
+<td>a few ruins and structures still survive.</td>
+<td></td>
+<td>28</td>
+</tr>
+<tr>
+<td>cave springs</td>
+<td>elk county</td>
+<td>1875</td>
+<td>1949</td>
+<td>now on private property.</td>
+<td>cave springs was established as a "health" resort. the resort failed in the 1880s when people starting questioning the springs' healing properties. the town was officially vacated in 1949.</td>
+<td>74</td>
+</tr>
+<tr>
+<td>elgin</td>
+<td>chautauqua county</td>
+<td></td>
+<td></td>
+<td>2008 estimated population of 71</td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>midian</td>
+<td>buter county</td>
+<td>1916</td>
+<td>post office closed in 1950</td>
+<td>townsite is now on private property.</td>
+<td></td>
+<td>-1916</td>
+</tr>
+<tr>
+<td>oil hill</td>
+<td>butler county</td>
+<td>1918</td>
+<td>1969</td>
+<td>townsite is on private property but the kansas turnpike does pass under oil hill road just outside of el dorado.</td>
+<td></td>
+<td>51</td>
+</tr>
+<tr>
+<td>minersville</td>
+<td>cloud county</td>
+<td>1870s</td>
+<td>1920s</td>
+<td>some houses and foundations remain along with a cemetery.</td>
+<td></td>
+<td>50</td>
+</tr>
+<tr>
+<td>waconda</td>
+<td>mitchell county</td>
+<td></td>
+<td></td>
+<td>the site lies under the waters of waconda reservoir.</td>
+<td>located near the waconda springs, a natural aquifer used by native americans.</td>
+<td>0</td>
+</tr>
+<tr>
+<td>dispatch</td>
+<td>smith and jewell counties</td>
+<td>1869</td>
+<td></td>
+<td>a church, some houses and a cemetery remain.</td>
+<td></td>
+<td>-1869</td>
+</tr>
+<tr>
+<td>webster</td>
+<td>rooks county</td>
+<td>1885</td>
+<td>1953</td>
+<td>a small community still exists near the webster lake dam.</td>
+<td></td>
+<td>68</td>
+</tr>
+<tr>
+<td>long island</td>
+<td>phillips county</td>
+<td>1870s</td>
+<td></td>
+<td>2008 estimated population of 140.</td>
+<td></td>
+<td>-1870</td>
+</tr>
+<tr>
+<td>brookville</td>
+<td>saline county</td>
+<td>1869</td>
+<td></td>
+<td>2008 estimated population of 263.</td>
+<td>the population was once near 2,000 in 1870s but after the turn of the century, the population began to decline. the city was also the site of the brookville hotel until 2000 when the hotel moved to abilene.</td>
+<td>-1869</td>
+</tr>
+<tr>
+<td>sveadal</td>
+<td>mcpherson</td>
+<td>1868</td>
+<td>1870s</td>
+<td>the townsite is now located within the city limits of lindsborg.</td>
+<td></td>
+<td>2</td>
+</tr>
+<tr>
+<td>beach valley</td>
+<td>rice county</td>
+<td>1857</td>
+<td></td>
+<td>townsite is now on private property.</td>
+<td></td>
+<td>-1857</td>
+</tr>
+<tr>
+<td>dubuque</td>
+<td>russell and barton counties</td>
+<td>1887</td>
+<td></td>
+<td>a beautiful catholic church and cemetery are all that remain.</td>
+<td></td>
+<td>-1887</td>
+</tr>
+<tr>
+<td>rome</td>
+<td>ellis county</td>
+<td>1867</td>
+<td>1868</td>
+<td>a marker near fort hays state college indicates where rome once was.</td>
+<td>rome was co-founded by william "buffalo bill" cody.</td>
+<td>1</td>
+</tr>
+<tr>
+<td>chetola</td>
+<td>ellis county</td>
+<td>1886</td>
+<td>1907</td>
+<td>townsite is now on private property.</td>
+<td></td>
+<td>21</td>
+</tr>
+<tr>
+<td>hunnewell</td>
+<td>sumner county</td>
+<td></td>
+<td>1940s</td>
+<td>2008 estimated population of 75</td>
+<td></td>
+<td>1940</td>
+</tr>
+<tr>
+<td>runnymede</td>
+<td>harper county</td>
+<td>1887</td>
+<td>1892</td>
+<td>nothing remains of the town.</td>
+<td></td>
+<td>5</td>
+</tr>
+<tr>
+<td>freeport</td>
+<td>harper county</td>
+<td>1878</td>
+<td></td>
+<td>2008 estimated population of 7.</td>
+<td>freeport is the smallest incorporated town in kansas.</td>
+<td>-1878</td>
+</tr>
+<tr>
+<td>ash valley</td>
+<td>pawnee county</td>
+<td>1916</td>
+<td>1960s</td>
+<td>old roads and some structures still remain.</td>
+<td></td>
+<td>44</td>
+</tr>
+<tr>
+<td>achilles</td>
+<td>rawlins county</td>
+<td>1875</td>
+<td>post office closed in 1951.</td>
+<td>only a cemetery remains.</td>
+<td>achilles was the site of the battle of sappa creek in 1875, it was one of the bloodiest indian battles fought in northwest kansas.</td>
+<td>-1875</td>
+</tr>
+<tr>
+<td>mina</td>
+<td>marshall county</td>
+<td>1889</td>
+<td>1940s</td>
+<td>a railroad town, founded in 1889. the property fell into private hands and was plowed under.</td>
+<td></td>
+<td>51</td>
+</tr>
+<tr>
+<td>mingo</td>
+<td>thomas county</td>
+<td>1887</td>
+<td>1940s</td>
+<td>the townsite become the private property of pat reilly, who plowed it under, until 1972 when it was sold to the brown brothers.</td>
+<td></td>
+<td>53</td>
+</tr>
+<tr>
+<td>voltaire</td>
+<td>sherman county</td>
+<td>1885</td>
+<td>1889</td>
+<td>nothing remains of the townsite and is now on private property.</td>
+<td></td>
+<td>4</td>
+</tr>
+<tr>
+<td>blufton</td>
+<td>trego county</td>
+<td></td>
+<td></td>
+<td>nothing remains</td>
+<td>the site of blufton is the same as threshing machine canyon which is part of cedar bluff state park which is a part of the cedar bluff reservoir.</td>
+<td>0</td>
+</tr>
+<tr>
+<td>sidney</td>
+<td>ness county</td>
+<td>1870s</td>
+<td>1880s</td>
+<td>only foundations remain.</td>
+<td></td>
+<td>10</td>
+</tr>
+<tr>
+<td>amy</td>
+<td>lane county</td>
+<td>1887</td>
+<td>1954</td>
+<td>a small community still exists.</td>
+<td></td>
+<td>67</td>
+</tr>
+<tr>
+<td>farnsworth</td>
+<td>lane county</td>
+<td>1880</td>
+<td>1891</td>
+<td>nothing remains.</td>
+<td></td>
+<td>11</td>
+</tr>
+<tr>
+<td>mcallaster</td>
+<td>logan county</td>
+<td>1887</td>
+<td>1930s</td>
+<td>a small population exists and several buildings remain.</td>
+<td></td>
+<td>43</td>
+</tr>
+<tr>
+<td>sheridan</td>
+<td>logan county</td>
+<td>1868</td>
+<td>1870s</td>
+<td>townsite is on private property.</td>
+<td></td>
+<td>2</td>
+</tr>
+<tr>
+<td>coronado</td>
+<td>wichita county</td>
+<td>incorporated 1885</td>
+<td>1889</td>
+<td>nothing remains but some older buildings in leoti are from coronado.</td>
+<td></td>
+<td>1889</td>
+</tr>
+<tr>
+<td>colokan</td>
+<td>greeley county</td>
+<td>1886</td>
+<td>1897</td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+<td>11</td>
+</tr>
+<tr>
+<td>lexington</td>
+<td>clark county</td>
+<td>1885</td>
+<td>1900</td>
+<td>nothing remains of the townsite except a community building.</td>
+<td></td>
+<td>15</td>
+</tr>
+<tr>
+<td>cash city</td>
+<td>clark county</td>
+<td>1885</td>
+<td>1895</td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+<td>10</td>
+</tr>
+<tr>
+<td>beersheba</td>
+<td>hodgeman county</td>
+<td>1882</td>
+<td>1886</td>
+<td>nothing remains of the townsite.</td>
+<td>beersheba was established as an experimental jewish agricultural community.</td>
+<td>4</td>
+</tr>
+<tr>
+<td>ravanna</td>
+<td>finney county</td>
+<td>1882</td>
+<td>post office closed in 1922</td>
+<td>only foundations remain.</td>
+<td>battled with eminence for county seat of garfield county. in 1893, garfield county was annexed to finney county and the feud was over.</td>
+<td>-1882</td>
+</tr>
+<tr>
+<td>eminence</td>
+<td>finney county</td>
+<td>1886</td>
+<td>post office closed in 1943.</td>
+<td>nothing remains of the townsite.</td>
+<td>battled with ravanna for county seat of garfield county, which ended in 1893 when garfield county was annexed to finney county.</td>
+<td>-1886</td>
+</tr>
+<tr>
+<td>terry</td>
+<td>finney county</td>
+<td>1885</td>
+<td>1890s</td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+<td>5</td>
+</tr>
+<tr>
+<td>hartland</td>
+<td>kearny county</td>
+<td>1885</td>
+<td>1910s</td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+<td>25</td>
+</tr>
+<tr>
+<td>chantilly</td>
+<td>kearny county</td>
+<td>1887</td>
+<td>1893</td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+<td>6</td>
+</tr>
+<tr>
+<td>coolidge</td>
+<td>hamilton county</td>
+<td>1883</td>
+<td></td>
+<td>2008 estimated population of 86.</td>
+<td></td>
+<td>-1883</td>
+</tr>
+<tr>
+<td>kendall</td>
+<td>hamilton county</td>
+<td>1885</td>
+<td></td>
+<td>a small population (approx. 50) remains.</td>
+<td></td>
+<td>-1885</td>
+</tr>
+<tr>
+<td>trail city</td>
+<td>hamilton county</td>
+<td>1885</td>
+<td>1890s</td>
+<td></td>
+<td></td>
+<td>5</td>
+</tr>
+<tr>
+<td>ulysses</td>
+<td>grant county</td>
+<td>1885</td>
+<td></td>
+<td>the old ulysses townsite is currently on private property but the "new" ulysses site has an estimated population of 5,557 as of 2008.</td>
+<td>in 1908, ulysses moved three miles down the road to a new location in an attempt to not pay back bonds that had become due.</td>
+<td>-1885</td>
+</tr>
+<tr>
+<td>santa fe</td>
+<td>haskell county</td>
+<td>1886</td>
+<td>1918</td>
+<td>nothing remains and a portion of the townsite is on private property.</td>
+<td></td>
+<td>32</td>
+</tr>
+<tr>
+<td>fargo springs</td>
+<td>seward county</td>
+<td>1885</td>
+<td>1910s</td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+<td>25</td>
+</tr>
+<tr>
+<td>springfield</td>
+<td>seward county</td>
+<td>1885</td>
+<td>1890s</td>
+<td>springfield was located at the intersection of u.s. 83 and u.s. 160 north of liberal.</td>
+<td></td>
+<td>5</td>
+</tr>
+<tr>
+<td>palermo</td>
+<td>doniphan county</td>
+<td>1855</td>
+<td>post office closed 1904</td>
+<td>a small population still remains eight miles southeast of troy near the missouri river.</td>
+<td></td>
+<td>-1855</td>
+</tr>
+<tr>
+<td>bendena</td>
+<td>doniphan county</td>
+<td>1886</td>
+<td>1890s</td>
+<td>a small community remains along k-20.</td>
+<td></td>
+<td>4</td>
+</tr>
+<tr>
+<td>kickapoo city</td>
+<td>leavenworth county</td>
+<td>1854</td>
+<td>post office closed 1920</td>
+<td>a small population remains in the area.</td>
+<td></td>
+<td>-1854</td>
+</tr>
+<tr>
+<td>bain city</td>
+<td>leavenworth county</td>
+<td>1867</td>
+<td>1964</td>
+<td>bain city was annexed to leavenworth in 1964.</td>
+<td></td>
+<td>97</td>
+</tr>
+<tr>
+<td>quindaro</td>
+<td>wyandotte county</td>
+<td>1850s</td>
+<td>1862</td>
+<td>any remains of quindaro are now in the city limits of kansas city in quindaro park.</td>
+<td></td>
+<td>12</td>
+</tr>
+<tr>
+<td>six-mile house</td>
+<td>wyandotte county</td>
+<td></td>
+<td></td>
+<td>nothing remains of the site.</td>
+<td>six-mile house, so called because of its distance from wyandotte (kansas city) on leavenworth rd, was the headquarters of the free-state 'redlegs' who guarded the border of kansas from pro-slave incursions.</td>
+<td>0</td>
+</tr>
+<tr>
+<td>padonia</td>
+<td>brown county</td>
+<td>1850s</td>
+<td>post office closed in 1933</td>
+<td>padonia lies among a cluster of houses and farm fields.</td>
+<td>padonia was the site of a bloodless skirmish in the 1850s called the battle of padonia.</td>
+<td>-1850</td>
+</tr>
+<tr>
+<td>ash point</td>
+<td>nemaha county</td>
+<td>1859</td>
+<td>1870</td>
+<td>nothing remains of the townsite.</td>
+<td></td>
+<td>11</td>
+</tr>
+<tr>
+<td>neuchatel</td>
+<td>nemaha county</td>
+<td>1857</td>
+<td></td>
+<td>the cemetery, church, town hall and schoolhouse have all been restored and well-kept.</td>
+<td></td>
+<td>-1857</td>
+</tr>
+<tr>
+<td>blaine</td>
+<td>pottawatomie county</td>
+<td>1880s</td>
+<td></td>
+<td>st. columbkillane catholic church and former catholic school still stand at the intersection of k-99 and k-116.</td>
+<td></td>
+<td>-1880</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['white cloud', 'doniphan county', '1856', '', '2008 estimated population of 227', '', -1856], ['ray', 'pawnee county', '', '', 'most of the houses were demolished or moved in the 1950s. the old co-op remains and still bears the town name. large berm south of the co-op is what is left from the demolition 38.174742,-98.962701', '', 0], ['iowa point', 'doniphan county', '1854', 'post office closed in 1933', 'small population near k-7', '', -1854], ['eagle springs', 'doniphan county', '1883', '', 'townsite was abandoned, only ruins remain', 'was a health resort that lasted into the 1930s.', -1883], ['geary city', 'doniphan county', 'march 23, 1856', '', 'only foundations remain', '', 0], ['doniphan', 'doniphan county', '1854', '1943', 'still on maps but little remains', 'a trading post was established on the site in 1852', 89], ['four houses', 'wyandotte county', '', '', 'exact location unknown', 'was actually a trading post from 1826-1828', 0], ['rising sun', 'jefferson county', '1857', 'mid-1860s', 'a kansas river access point is near the location and named after the town.', 'was a lecompton satellite community.', -1857], ['hickory point', 'jefferson county', '1855', '', 'a kansas state historical marker is near the location along u.s. 59.', 'location of the battle of hickory point, a skirmish between pro-slavery and free state forces.', -1855], ['arrington', 'atchison county', '1854', '', 'a small population resides along k-116.', '', -1854], ['kennekuk', 'atchison county', '1858', '', '', '', -1858], ['america city', 'nemaha county', 'february 14, 1857', 'post office closed in 1933', 'a couple buildings and a cemetery remain', '', 0], ['juniata', 'pottawatomie county', '1854', '1858', 'on private property and not accessible', '', 4], ['pawnee', 'riley county', '1854', '1855', 'the old territorial capitol building still stands is well-preserved', 'was the territorial capitol until 1855 when it was moved to shawnee mission.', 1], ['randolph', 'riley county', '1855', '', '2008 estimated population of 198', 'moved two miles west when tuttle creek lake was built.', -1855], ['irving', 'marshall county', '1859', '1960', 'located on corps land and is easily accessible.', 'abandoned for the construction of tuttle creek lake.', 101], ['alcove springs', 'marshall county', '', '', 'now a well-preserved park', "was never an official town but was a stop on the oregon trail. numerous carvings in the spring's rocks feature traveler's initials and other things. a member of the donner party is buried nearby.", 0], ['trading post', 'linn county', '1842 (established as a trading post)', '', 'a small population remains just off of u.s. 69.', 'near the site of the marais des cygnes massacre.', -1842], ['centropolis', 'franklin county.', '1854', '1930', 'a small population remains on a county road about ten miles northwest of ottawa centropolis christian church and centropolis baptist church are open.', '', 76], ['minneola', 'franklin county', '1854', '1860s', 'nothing remains of the town.', 'was the territorial capitol briefly in 1858. not to be confused with minneola in clark county.', 6], ['silkville', 'franklin county', '1870', '1892', 'several buildings remain including an old house and a stone school southwest of williamsburg.', '', 22], ['black jack', 'douglas county', '1857 (incorporated)', '1870s', 'santa fe trail wagon swales, a roadside park, cemetery and the well-preserved battlefield site remain and are open to public.', '', 13], ['franklin', 'douglas county', '1853 (early stage stop)', 'post office closed 1867', 'nothing remains of the town except two small neglected cemeteries and franklin road off of k-10.', '', -1853], ['big springs', 'douglas county', '1854', '', 'a small population remains along u.s. 40.', '', -1854], ['calhoun', 'shawnee county', '1855', '1868', 'nothing remains of this town.', "calhoun was also the name of a county that was made up of northern shawnee county, most of jackson county and half of pottawatomie county. when shawnee county's northern border was extended, calhoun ceased to be.", 13], ['indianola', 'shawnee county', '1854', 'mid-1860s', 'nothing remains of the site.', 'there is an indianola road located near the goodyear plant near u.s. 24.', -1854], ['sumner city', 'shawnee county', 'never established', '', 'was mainly a paper town that was supposed to be an all-black community east of topeka.', '', 0], ['uniontown', 'shawnee county', '1848', '1854', 'townsite is now located in and around the green wildlife refuge southeast of willard.', 'uniontown was a trail stop and a place where the pottawatomi would spend money. a cholera epidemic killed 22 indians and they were buried in a mass grave. the grave is located in the center of the cemetery. not to be confused with uniontown in bourbon county.', 6], ['peterton', 'osage county', '1870', '1930s', 'there is still a small population in the area.', '', 60], ['bushong', 'lyon county', 'mid-1880s', '1984', '2008 estimated population of 50', 'several ruins of the downtown and old consolidated school remain.', 1984], ['volland', 'wabaunsee county', '', '', 'several buildings remain abandoned in the area.', 'located about ten miles southwest of alma.', 0], ['newbury', 'wabaunsee county', '1869', '1888', 'a small population and a huge catholic church remain three miles north of paxico.', '', 19], ['army city', 'geary county', '1917', '1920', 'any remains of army city are currently on fort riley property.', 'army city was built exclusively for servicemen at fort riley during world war i.', 3], ['diamond springs', 'morris county', '1825 (as a santa fe trail stop)', '1863', 'few remains exist but a monument to diamond springs was erected in diamond springs cemetery', '', 38], ['empire city', 'cherokee county', '1877', '1907', 'any remains are currently maintained by galena.', 'empire city was annexed to galena in 1907.', 30], ['wilsonton', 'labette county', '1887', '1913', 'nothing remains except a cemetery.', 'ella wilson was the founder of the town and when she died in 1913, the town died with her.', 26], ['ladore', 'neosho county', 'incorporated 1869', '1874', 'inaccessible', 'was the site of a mass lynching in may 1870.', 1874], ['octagon city', 'allen county', '1855', '1856', 'nothing remains of the townsite', 'octagon city was a social experiment where the settlers of the town vowed to eat no meat. the town was so called because the main streets were laid out in an octagon.', 1], ['cofachiqui', 'allen county', '1855', '1860', 'the site of cofachiqui was demolished when a cement company bought the land.', '', 5], ['mildred', 'allen county', '1907', 'ca. 1983', '2008 estimated population of 58.', '', -1907], ['bassett', 'allen county', '1900', '1930s', '2008 estimated population of 21', '', 30], ['belmont', 'woodson county', '1857', 'post office closed in 1877', 'townsite is now on private property and inaccessible.', '', -1857], ['neosho falls', 'woodson county', '1857', '', '2008 estimated population of 159', '', -1857], ['guilford', 'wilson county', '1861', '1889', 'a few ruins and structures still survive.', '', 28], ['cave springs', 'elk county', '1875', '1949', 'now on private property.', 'cave springs was established as a "health" resort. the resort failed in the 1880s when people starting questioning the springs\' healing properties. the town was officially vacated in 1949.', 74], ['elgin', 'chautauqua county', '', '', '2008 estimated population of 71', '', 0], ['midian', 'buter county', '1916', 'post office closed in 1950', 'townsite is now on private property.', '', -1916], ['oil hill', 'butler county', '1918', '1969', 'townsite is on private property but the kansas turnpike does pass under oil hill road just outside of el dorado.', '', 51], ['minersville', 'cloud county', '1870s', '1920s', 'some houses and foundations remain along with a cemetery.', '', 50], ['waconda', 'mitchell county', '', '', 'the site lies under the waters of waconda reservoir.', 'located near the waconda springs, a natural aquifer used by native americans.', 0], ['dispatch', 'smith and jewell counties', '1869', '', 'a church, some houses and a cemetery remain.', '', -1869], ['webster', 'rooks county', '1885', '1953', 'a small community still exists near the webster lake dam.', '', 68], ['long island', 'phillips county', '1870s', '', '2008 estimated population of 140.', '', -1870], ['brookville', 'saline county', '1869', '', '2008 estimated population of 263.', 'the population was once near 2,000 in 1870s but after the turn of the century, the population began to decline. the city was also the site of the brookville hotel until 2000 when the hotel moved to abilene.', -1869], ['sveadal', 'mcpherson', '1868', '1870s', 'the townsite is now located within the city limits of lindsborg.', '', 2], ['beach valley', 'rice county', '1857', '', 'townsite is now on private property.', '', -1857], ['dubuque', 'russell and barton counties', '1887', '', 'a beautiful catholic church and cemetery are all that remain.', '', -1887], ['rome', 'ellis county', '1867', '1868', 'a marker near fort hays state college indicates where rome once was.', 'rome was co-founded by william "buffalo bill" cody.', 1], ['chetola', 'ellis county', '1886', '1907', 'townsite is now on private property.', '', 21], ['hunnewell', 'sumner county', '', '1940s', '2008 estimated population of 75', '', 1940], ['runnymede', 'harper county', '1887', '1892', 'nothing remains of the town.', '', 5], ['freeport', 'harper county', '1878', '', '2008 estimated population of 7.', 'freeport is the smallest incorporated town in kansas.', -1878], ['ash valley', 'pawnee county', '1916', '1960s', 'old roads and some structures still remain.', '', 44], ['achilles', 'rawlins county', '1875', 'post office closed in 1951.', 'only a cemetery remains.', 'achilles was the site of the battle of sappa creek in 1875, it was one of the bloodiest indian battles fought in northwest kansas.', -1875], ['mina', 'marshall county', '1889', '1940s', 'a railroad town, founded in 1889. the property fell into private hands and was plowed under.', '', 51], ['mingo', 'thomas county', '1887', '1940s', 'the townsite become the private property of pat reilly, who plowed it under, until 1972 when it was sold to the brown brothers.', '', 53], ['voltaire', 'sherman county', '1885', '1889', 'nothing remains of the townsite and is now on private property.', '', 4], ['blufton', 'trego county', '', '', 'nothing remains', 'the site of blufton is the same as threshing machine canyon which is part of cedar bluff state park which is a part of the cedar bluff reservoir.', 0], ['sidney', 'ness county', '1870s', '1880s', 'only foundations remain.', '', 10], ['amy', 'lane county', '1887', '1954', 'a small community still exists.', '', 67], ['farnsworth', 'lane county', '1880', '1891', 'nothing remains.', '', 11], ['mcallaster', 'logan county', '1887', '1930s', 'a small population exists and several buildings remain.', '', 43], ['sheridan', 'logan county', '1868', '1870s', 'townsite is on private property.', '', 2], ['coronado', 'wichita county', 'incorporated 1885', '1889', 'nothing remains but some older buildings in leoti are from coronado.', '', 1889], ['colokan', 'greeley county', '1886', '1897', 'nothing remains of the townsite.', '', 11], ['lexington', 'clark county', '1885', '1900', 'nothing remains of the townsite except a community building.', '', 15], ['cash city', 'clark county', '1885', '1895', 'nothing remains of the townsite.', '', 10], ['beersheba', 'hodgeman county', '1882', '1886', 'nothing remains of the townsite.', 'beersheba was established as an experimental jewish agricultural community.', 4], ['ravanna', 'finney county', '1882', 'post office closed in 1922', 'only foundations remain.', 'battled with eminence for county seat of garfield county. in 1893, garfield county was annexed to finney county and the feud was over.', -1882], ['eminence', 'finney county', '1886', 'post office closed in 1943.', 'nothing remains of the townsite.', 'battled with ravanna for county seat of garfield county, which ended in 1893 when garfield county was annexed to finney county.', -1886], ['terry', 'finney county', '1885', '1890s', 'nothing remains of the townsite.', '', 5], ['hartland', 'kearny county', '1885', '1910s', 'nothing remains of the townsite.', '', 25], ['chantilly', 'kearny county', '1887', '1893', 'nothing remains of the townsite.', '', 6], ['coolidge', 'hamilton county', '1883', '', '2008 estimated population of 86.', '', -1883], ['kendall', 'hamilton county', '1885', '', 'a small population (approx. 50) remains.', '', -1885], ['trail city', 'hamilton county', '1885', '1890s', '', '', 5], ['ulysses', 'grant county', '1885', '', 'the old ulysses townsite is currently on private property but the "new" ulysses site has an estimated population of 5,557 as of 2008.', 'in 1908, ulysses moved three miles down the road to a new location in an attempt to not pay back bonds that had become due.', -1885], ['santa fe', 'haskell county', '1886', '1918', 'nothing remains and a portion of the townsite is on private property.', '', 32], ['fargo springs', 'seward county', '1885', '1910s', 'nothing remains of the townsite.', '', 25], ['springfield', 'seward county', '1885', '1890s', 'springfield was located at the intersection of u.s. 83 and u.s. 160 north of liberal.', '', 5], ['palermo', 'doniphan county', '1855', 'post office closed 1904', 'a small population still remains eight miles southeast of troy near the missouri river.', '', -1855], ['bendena', 'doniphan county', '1886', '1890s', 'a small community remains along k-20.', '', 4], ['kickapoo city', 'leavenworth county', '1854', 'post office closed 1920', 'a small population remains in the area.', '', -1854], ['bain city', 'leavenworth county', '1867', '1964', 'bain city was annexed to leavenworth in 1964.', '', 97], ['quindaro', 'wyandotte county', '1850s', '1862', 'any remains of quindaro are now in the city limits of kansas city in quindaro park.', '', 12], ['six-mile house', 'wyandotte county', '', '', 'nothing remains of the site.', "six-mile house, so called because of its distance from wyandotte (kansas city) on leavenworth rd, was the headquarters of the free-state 'redlegs' who guarded the border of kansas from pro-slave incursions.", 0], ['padonia', 'brown county', '1850s', 'post office closed in 1933', 'padonia lies among a cluster of houses and farm fields.', 'padonia was the site of a bloodless skirmish in the 1850s called the battle of padonia.', -1850], ['ash point', 'nemaha county', '1859', '1870', 'nothing remains of the townsite.', '', 11], ['neuchatel', 'nemaha county', '1857', '', 'the cemetery, church, town hall and schoolhouse have all been restored and well-kept.', '', -1857], ['blaine', 'pottawatomie county', '1880s', '', 'st. columbkillane catholic church and former catholic school still stand at the intersection of k-99 and k-116.', '', -1880]]</h3>
+</body></html>

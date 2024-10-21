@@ -1,0 +1,63 @@
+************************************************************************************************************************
+Sample 339 - Plan 1: Query: during what time period was there no shirt sponsers?
+Sample 339 - Plan 1: Groundtruth: ['1982-1985']
+Sample 339 - Plan 1: X-Original table pd: 
+         year kit_manufacturer             shirt_sponsor  \
+0   1977–1978                           national express   
+1   1982–1985            umbro                             
+2   1985–1986            umbro                 whitbread   
+3   1986–1988           henson                  duraflex   
+4   1988–1989                                   gulf oil   
+5   1991–1993          technik                  gulf oil   
+6   1993–1994       club sport                  gulf oil   
+7   1994–1995       klūb sport                   empress   
+8   1995–1996      matchwinner                   empress   
+9   1996–1997               uk       endsleigh insurance   
+10  1997–1999            errea       endsleigh insurance   
+11  1999–2004            errea       towergate insurance   
+12  2004–2008            errea  bence building merchants   
+13      2008–            errea              mira showers   
+14  2009–2011            errea              mira showers   
+15  2011–2013            errea              mira showers   
+16      2013–            errea              mira showers   
+
+      back_of_shirt_sponsor         short_sponsor  
+0                                                  
+1                                                  
+2                                                  
+3                                                  
+4                                                  
+5                                                  
+6                                                  
+7                                                  
+8                                                  
+9                                                  
+10                                                 
+11                                                 
+12                                                 
+13                                                 
+14     psu technology group                        
+15              barr stadia  gloucestershire echo  
+16  gloucestershire college  gloucestershire echo  
+Sample 339 - Plan 1: Caption: none
+Sample 339 - Plan 1: Original table: [['year', 'kit_manufacturer', 'shirt_sponsor', 'back_of_shirt_sponsor', 'short_sponsor'], ['1977–1978', '', 'national express', '', ''], ['1982–1985', 'umbro', '', '', ''], ['1985–1986', 'umbro', 'whitbread', '', ''], ['1986–1988', 'henson', 'duraflex', '', ''], ['1988–1989', '', 'gulf oil', '', ''], ['1991–1993', 'technik', 'gulf oil', '', ''], ['1993–1994', 'club sport', 'gulf oil', '', ''], ['1994–1995', 'klūb sport', 'empress', '', ''], ['1995–1996', 'matchwinner', 'empress', '', ''], ['1996–1997', 'uk', 'endsleigh insurance', '', ''], ['1997–1999', 'errea', 'endsleigh insurance', '', ''], ['1999–2004', 'errea', 'towergate insurance', '', ''], ['2004–2008', 'errea', 'bence building merchants', '', ''], ['2008–', 'errea', 'mira showers', '', ''], ['2009–2011', 'errea', 'mira showers', 'psu technology group', ''], ['2011–2013', 'errea', 'mira showers', 'barr stadia', 'gloucestershire echo'], ['2013–', 'errea', 'mira showers', 'gloucestershire college', 'gloucestershire echo']]
+########################################################################################################################
+Sample 339 - Plan 1: Operation 1: Select rows where the 'shirt_sponsor' column is empty.
+Sample 339 - Plan 1: Selected indices: [[1, 2]]
+Sample 339 - Plan 1: X-Table after operation df:
+        year kit_manufacturer  shirt_sponsor  back_of_shirt_sponsor  \
+0  1982–1985            umbro            NaN                    NaN   
+
+   short_sponsor  
+0            NaN  
+Sample 339 - Plan 1: Table after operation: [['year', 'kit_manufacturer', 'shirt_sponsor', 'back_of_shirt_sponsor', 'short_sponsor'], ['1982–1985', 'umbro', '', '', '']]
+########################################################################################################################
+Sample 339 - Plan 1: Operation 2: Select the 'year' column.
+Sample 339 - Plan 1: Selected indices: []
+Sample 339 - Plan 1: X-Table after operation df:
+        year
+0  1982–1985
+Sample 339 - Plan 1: Table after operation: [['year'], ['1982–1985']]
+Fall-back: FALSE
+Answer from plan 1: [['1982–1985']]
+Groundtruth: ['1982-1985']

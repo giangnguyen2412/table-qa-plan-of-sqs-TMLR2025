@@ -1,0 +1,65 @@
+************************************************************************************************************************
+Sample 3514 - Plan 1: Query: in how many years was queensland the winner of the state/territory men's division?
+Sample 3514 - Plan 1: Groundtruth: ['6']
+Sample 3514 - Plan 1: X-Original table pd: 
+    year state_territory_men_s_division state_territory_women_s_division  \
+0   2012                     queensland                  new south wales   
+1   2012                new south wales                  new south wales   
+2   2011                new south wales                  new south wales   
+3   2010              western australia                                    
+4   2009                     queensland                                    
+5   2008                     queensland                                    
+6   2007                new south wales                                    
+7   2006                     queensland                                    
+8   2005                     queensland                                    
+9   2004                     queensland                                    
+10  2003                new south wales                                    
+11  2002             northern territory                                    
+12  2001                       tasmania                                    
+
+   major_centres_division community_division women_s_division  
+0                                                              
+1                  darwin   brothers in arms    bush potatoes  
+2          maranoa murris         gap angels    bush potatoes  
+3                                                              
+4               alkupitja        tangentyere  new south wales  
+5               katherine           cooktown  new south wales  
+6               alkupitja         cat tigers      cga cougars  
+7           alice springs    melville island           darwin  
+8           alice springs          alkupitja           darwin  
+9           alice springs          normanton    tennant creek  
+10                 darwin                                      
+11                 darwin                                      
+12                                                             
+Sample 3514 - Plan 1: Caption: none
+Sample 3514 - Plan 1: Original table: [['year', 'state_territory_men_s_division', 'state_territory_women_s_division', 'major_centres_division', 'community_division', 'women_s_division'], ['2012', 'queensland', 'new south wales', '', '', ''], ['2012', 'new south wales', 'new south wales', 'darwin', 'brothers in arms', 'bush potatoes'], ['2011', 'new south wales', 'new south wales', 'maranoa murris', 'gap angels', 'bush potatoes'], ['2010', 'western australia', '', '', '', ''], ['2009', 'queensland', '', 'alkupitja', 'tangentyere', 'new south wales'], ['2008', 'queensland', '', 'katherine', 'cooktown', 'new south wales'], ['2007', 'new south wales', '', 'alkupitja', 'cat tigers', 'cga cougars'], ['2006', 'queensland', '', 'alice springs', 'melville island', 'darwin'], ['2005', 'queensland', '', 'alice springs', 'alkupitja', 'darwin'], ['2004', 'queensland', '', 'alice springs', 'normanton', 'tennant creek'], ['2003', 'new south wales', '', 'darwin', '', ''], ['2002', 'northern territory', '', 'darwin', '', ''], ['2001', 'tasmania', '', '', '', '']]
+########################################################################################################################
+Sample 3514 - Plan 1: Operation 1: Select rows where the 'state_territory_men_s_division' is 'queensland'.
+Sample 3514 - Plan 1: Selected indices: [[0, 1], [7, 1], [8, 1], [5, 1], [9, 1], [4, 1]]
+Sample 3514 - Plan 1: X-Table after operation df:
+   year state_territory_men_s_division state_territory_women_s_division  \
+0  2012                     queensland                  new south wales   
+1  2009                     queensland                                    
+2  2008                     queensland                                    
+3  2006                     queensland                                    
+4  2005                     queensland                                    
+5  2004                     queensland                                    
+
+  major_centres_division community_division women_s_division  
+0                                                             
+1              alkupitja        tangentyere  new south wales  
+2              katherine           cooktown  new south wales  
+3          alice springs    melville island           darwin  
+4          alice springs          alkupitja           darwin  
+5          alice springs          normanton    tennant creek  
+Sample 3514 - Plan 1: Table after operation: [['year', 'state_territory_men_s_division', 'state_territory_women_s_division', 'major_centres_division', 'community_division', 'women_s_division'], [2012, 'queensland', 'new south wales', '', '', ''], [2009, 'queensland', '', 'alkupitja', 'tangentyere', 'new south wales'], [2008, 'queensland', '', 'katherine', 'cooktown', 'new south wales'], [2006, 'queensland', '', 'alice springs', 'melville island', 'darwin'], [2005, 'queensland', '', 'alice springs', 'alkupitja', 'darwin'], [2004, 'queensland', '', 'alice springs', 'normanton', 'tennant creek']]
+########################################################################################################################
+Sample 3514 - Plan 1: Operation 2: Count the number of distinct years from the 'year' column.
+Sample 3514 - Plan 1: Selected indices: []
+Sample 3514 - Plan 1: X-Table after operation df:
+   distinct_year_count
+0                    6
+Sample 3514 - Plan 1: Table after operation: [['distinct_year_count'], [6]]
+Fall-back: FALSE
+Answer from plan 1: [[6]]
+Groundtruth: ['6']

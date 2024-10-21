@@ -1,0 +1,42 @@
+
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+.sql-command { background-color: #f0f0f0; padding: 10px; border-left: 4px solid #4CAF50; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> gaming alerts asked for the least amount of money</h3>
+<h3>Input Table: dragons' den (uk)</h3>
+<div class="step">
+<table>
+<tr><td>episode</td><td>first_aired</td><td>entrepreneur_(s)</td><td>company_or_product_name</td><td>money_requested</td><td>investing_dragon_(s)</td></tr><tr><td>episode 1</td><td>2007-10-15</td><td>celia norowzian & ian forshew</td><td>beach break live</td><td>50000</td><td>peter jones</td></tr><tr><td>episode 1</td><td>2007-10-15</td><td>laban roomes</td><td>goldgenie (formerly midas touch)</td><td>60000</td><td>james caan</td></tr><tr><td>episode 2</td><td>2007-10-22</td><td>sarah lu</td><td>youdoodoll</td><td>35000</td><td>deborah meaden</td></tr><tr><td>episode 2</td><td>2007-10-22</td><td>emmie matthews & ed stevens</td><td>gaming alerts</td><td>200000</td><td>theo paphitis</td></tr><tr><td>episode 3</td><td>2007-10-29</td><td>mark champkins</td><td>concentrate design</td><td>100000</td><td>peter jones</td></tr><tr><td>episode 4</td><td>2007-11-05</td><td>max mcmurdo</td><td>reestore</td><td>50000</td><td>deborah meaden & theo paphitis</td></tr><tr><td>episode 4</td><td>2007-11-05</td><td>jamie jenkinson</td><td>cush'n 'shade</td><td>100000</td><td>deborah meaden & peter jones</td></tr><tr><td>episode 5</td><td>2007-11-19</td><td>shane lake and tony charles</td><td>hungryhousecouk</td><td>100000</td><td>james caan & duncan bannatyne</td></tr><tr><td>episode 6</td><td>2007-11-26</td><td>ian helmore</td><td>steri spray</td><td>145000</td><td>deborah meaden & theo paphitis</td></tr><tr><td>episode 6</td><td>2007-11-26</td><td>mark and eleanor davis</td><td>caribbean ready meals</td><td>100000</td><td>james caan & duncan bannatyne</td></tr><tr><td>episode 7</td><td>2007-12-03</td><td>sammy french</td><td>fit fur life</td><td>100000</td><td>james caan</td></tr><tr><td>episode 7</td><td>2007-12-03</td><td>jerry mantalvanos & paul merker</td><td>jpm eco logistics</td><td>100000</td><td>deborah meaden & theo paphitis</td></tr><tr><td>episode 8</td><td>2007-12-11</td><td>peter moule</td><td>electroexpo , chocbox</td><td>150000</td><td>duncan bannatyne & james caan</td></tr><tr><td>episode 9</td><td>2007-12-18</td><td>amanda jones & james brown</td><td>red button design</td><td>50000</td><td>all five dragons</td></tr>
+</table>
+</div>
+<h3>SQL Command:</h3>
+<div class="sql-command">SELECT 
+    CASE 
+        WHEN money_requested = (SELECT MIN(money_requested) FROM table_sql) 
+        THEN 'TRUE' 
+        ELSE 'FALSE' 
+    END 
+FROM table_sql 
+WHERE company_or_product_name = 'gaming alerts';</div>
+<h3>Prediction: False</h3>
+</body></html>

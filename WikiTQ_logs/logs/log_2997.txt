@@ -1,0 +1,74 @@
+************************************************************************************************************************
+Sample 2997 - Plan 1: Query: other than mlw, who released one in 1907?
+Sample 2997 - Plan 1: Groundtruth: ['ALCO']
+Sample 2997 - Plan 1: X-Original table pd: 
+  builder             works_numbers  dates  \
+0     mlw  39548-39562\n40583-40622   1906   
+1     mlw  42331-42345\n43150-43164   1907   
+2    alco  42046-42060\n43540-43554   1907   
+3     mlw               45163-45182   1908   
+4     mlw               46880-46894   1910   
+5    alco               49663-49674   1911   
+6    alco               50472-50481   1911   
+
+                                   cn_numbers  \
+0                             2525-2566\n2663   
+1                  2577-2605\n2661-2662\n2685   
+2  2567-2576\n2606-2615\n2664-2665\n2669-2676   
+3                                   2627-2646   
+4                             2647-2660\n2686   
+5                        2616-2625\n2677-2678   
+6                  2626\n2666-2668\n2679-2684   
+
+                         gt_numbers                         notes  
+0                           651-705                                
+1                           721-750                                
+2  706-720\n752\n755\n758\n761\n763                                
+3                           631-650                                
+4                           616-630                                
+5                           766-777  built at alco's brooks works  
+6             779-780\n784\n786-787                                
+Sample 2997 - Plan 1: Caption: none
+Sample 2997 - Plan 1: Original table: [['builder', 'works_numbers', 'dates', 'cn_numbers', 'gt_numbers', 'notes'], ['mlw', '39548-39562\\n40583-40622', '1906', '2525-2566\\n2663', '651-705', ''], ['mlw', '42331-42345\\n43150-43164', '1907', '2577-2605\\n2661-2662\\n2685', '721-750', ''], ['alco', '42046-42060\\n43540-43554', '1907', '2567-2576\\n2606-2615\\n2664-2665\\n2669-2676', '706-720\\n752\\n755\\n758\\n761\\n763', ''], ['mlw', '45163-45182', '1908', '2627-2646', '631-650', ''], ['mlw', '46880-46894', '1910', '2647-2660\\n2686', '616-630', ''], ['alco', '49663-49674', '1911', '2616-2625\\n2677-2678', '766-777', "built at alco's brooks works"], ['alco', '50472-50481', '1911', '2626\\n2666-2668\\n2679-2684', '779-780\\n784\\n786-787', '']]
+########################################################################################################################
+Sample 2997 - Plan 1: Operation 1: Select rows where the 'builder' is not 'mlw'.
+Sample 2997 - Plan 1: Selected indices: [[2, 0], [5, 0], [6, 0]]
+Sample 2997 - Plan 1: X-Table after operation df:
+  builder             works_numbers  dates  \
+0    alco  42046-42060\n43540-43554   1907   
+1    alco               49663-49674   1911   
+2    alco               50472-50481   1911   
+
+                                   cn_numbers  \
+0  2567-2576\n2606-2615\n2664-2665\n2669-2676   
+1                        2616-2625\n2677-2678   
+2                  2626\n2666-2668\n2679-2684   
+
+                         gt_numbers                         notes  
+0  706-720\n752\n755\n758\n761\n763                                
+1                           766-777  built at alco's brooks works  
+2             779-780\n784\n786-787                                
+Sample 2997 - Plan 1: Table after operation: [['builder', 'works_numbers', 'dates', 'cn_numbers', 'gt_numbers', 'notes'], ['alco', '42046-42060\\n43540-43554', 1907, '2567-2576\\n2606-2615\\n2664-2665\\n2669-2676', '706-720\\n752\\n755\\n758\\n761\\n763', ''], ['alco', '49663-49674', 1911, '2616-2625\\n2677-2678', '766-777', "built at alco's brooks works"], ['alco', '50472-50481', 1911, '2626\\n2666-2668\\n2679-2684', '779-780\\n784\\n786-787', '']]
+########################################################################################################################
+Sample 2997 - Plan 1: Operation 2: Select rows where the 'dates' is '1907'.
+Sample 2997 - Plan 1: Selected indices: [[0, 2]]
+Sample 2997 - Plan 1: X-Table after operation df:
+  builder             works_numbers  dates  \
+0    alco  42046-42060\n43540-43554   1907   
+
+                                   cn_numbers  \
+0  2567-2576\n2606-2615\n2664-2665\n2669-2676   
+
+                         gt_numbers  notes  
+0  706-720\n752\n755\n758\n761\n763    NaN  
+Sample 2997 - Plan 1: Table after operation: [['builder', 'works_numbers', 'dates', 'cn_numbers', 'gt_numbers', 'notes'], ['alco', '42046-42060\\n43540-43554', 1907, '2567-2576\\n2606-2615\\n2664-2665\\n2669-2676', '706-720\\n752\\n755\\n758\\n761\\n763', '']]
+########################################################################################################################
+Sample 2997 - Plan 1: Operation 3: Select the 'builder' column.
+Sample 2997 - Plan 1: Selected indices: []
+Sample 2997 - Plan 1: X-Table after operation df:
+  builder
+0    alco
+Sample 2997 - Plan 1: Table after operation: [['builder'], ['alco']]
+Fall-back: FALSE
+Answer from plan 1: [['alco']]
+Groundtruth: ['ALCO']

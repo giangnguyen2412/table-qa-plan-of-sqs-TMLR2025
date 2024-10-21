@@ -1,0 +1,185 @@
+************************************************************************************************************************
+Sample 1929 - Plan 1: Query: what was the highest score achieved by any opponent team?
+Sample 1929 - Plan 1: Groundtruth: ['5']
+Sample 1929 - Plan 1: X-Original table pd: 
+            date            team       competition          round  \
+0         july 7            gent     intertoto cup        round 2   
+1        july 14            gent     intertoto cup        round 2   
+2        july 21            gent     intertoto cup        round 3   
+3        july 29            gent     intertoto cup        round 3   
+4        july 31            genk  champions league  qual. round 2   
+5       august 8            genk  champions league  qual. round 2   
+6      august 15      anderlecht  champions league  qual. round 3   
+7      august 16  standard liège          uefa cup  qual. round 2   
+8      august 29      anderlecht  champions league  qual. round 3   
+9      august 30  standard liège          uefa cup  qual. round 2   
+10  september 20      anderlecht          uefa cup        round 1   
+11  september 20     club brugge          uefa cup        round 1   
+12  september 20  standard liège          uefa cup        round 1   
+13     october 4      anderlecht          uefa cup        round 1   
+14     october 4     club brugge          uefa cup        round 1   
+15     october 4  standard liège          uefa cup        round 1   
+16    october 25      anderlecht          uefa cup    group stage   
+17    november 8      anderlecht          uefa cup    group stage   
+18    december 6      anderlecht          uefa cup    group stage   
+19   december 19      anderlecht          uefa cup    group stage   
+20   february 13      anderlecht          uefa cup    round of 32   
+21   february 21      anderlecht          uefa cup    round of 32   
+22       march 6      anderlecht          uefa cup    round of 16   
+23      march 12      anderlecht          uefa cup    round of 16   
+
+              leg              opponent  \
+0     leg 1, home          cliftonville   
+1     leg 2, away          cliftonville   
+2     leg 1, home               aalborg   
+3     leg 2, away               aalborg   
+4     leg 1, home              sarajevo   
+5     leg 2, away              sarajevo   
+6     leg 1, away            fenerbahçe   
+7     leg 1, away              käerjeng   
+8     leg 2, home            fenerbahçe   
+9     leg 2, home              käerjeng   
+10    leg 1, home            rapid wien   
+11    leg 1, away                 brann   
+12    leg 1, away  zenit st. petersburg   
+13    leg 2, away            rapid wien   
+14    leg 2, home                 brann   
+15    leg 2, home  zenit st. petersburg   
+16  match 1, home       hapoel tel aviv   
+17  match 2, away               aalborg   
+18  match 3, home     tottenham hotspur   
+19  match 4, away                getafe   
+20    leg 1, home              bordeaux   
+21    leg 2, away              bordeaux   
+22    leg 1, home         bayern munich   
+23    leg 2, away         bayern munich   
+
+                                     location score  
+0                   jules ottenstadion, ghent   2-0  
+1                       windsor park, belfast   4-0  
+2                   jules ottenstadion, ghent   1-1  
+3                  energi nord arena, aalborg   1-2  
+4                         cristal arena, genk   1-2  
+5      asim ferhatović hase stadium, sarajevo   1-0  
+6           şükrü saracoğlu stadium, istanbul   0-1  
+7              stade josy barthel, luxembourg   3-0  
+8   constant vanden stock stadium, anderlecht   0-2  
+9               stade maurice dufrasne, liège   1-0  
+10  constant vanden stock stadium, anderlecht   1-1  
+11                      brann stadion, bergen   1-0  
+12        petrovsky stadium, saint petersburg   0-3  
+13            gerhard hanappi stadium, vienna   1-0  
+14                jan breydel stadium, bruges   1-2  
+15              stade maurice dufrasne, liège   1-1  
+16  constant vanden stock stadium, anderlecht   2-0  
+17                 energi nord arena, aalborg   1-1  
+18  constant vanden stock stadium, anderlecht   1-1  
+19             coliseum alfonso pérez, getafe   1-2  
+20  constant vanden stock stadium, anderlecht   2-1  
+21              stade chaban-delmas, bordeaux   1-1  
+22  constant vanden stock stadium, anderlecht   0-5  
+23                      allianz arena, munich   2-1  
+Sample 1929 - Plan 1: Caption: none
+Sample 1929 - Plan 1: Original table: [['date', 'team', 'competition', 'round', 'leg', 'opponent', 'location', 'score'], ['july 7', 'gent', 'intertoto cup', 'round 2', 'leg 1, home', 'cliftonville', 'jules ottenstadion, ghent', '2-0'], ['july 14', 'gent', 'intertoto cup', 'round 2', 'leg 2, away', 'cliftonville', 'windsor park, belfast', '4-0'], ['july 21', 'gent', 'intertoto cup', 'round 3', 'leg 1, home', 'aalborg', 'jules ottenstadion, ghent', '1-1'], ['july 29', 'gent', 'intertoto cup', 'round 3', 'leg 2, away', 'aalborg', 'energi nord arena, aalborg', '1-2'], ['july 31', 'genk', 'champions league', 'qual. round 2', 'leg 1, home', 'sarajevo', 'cristal arena, genk', '1-2'], ['august 8', 'genk', 'champions league', 'qual. round 2', 'leg 2, away', 'sarajevo', 'asim ferhatović hase stadium, sarajevo', '1-0'], ['august 15', 'anderlecht', 'champions league', 'qual. round 3', 'leg 1, away', 'fenerbahçe', 'şükrü saracoğlu stadium, istanbul', '0-1'], ['august 16', 'standard liège', 'uefa cup', 'qual. round 2', 'leg 1, away', 'käerjeng', 'stade josy barthel, luxembourg', '3-0'], ['august 29', 'anderlecht', 'champions league', 'qual. round 3', 'leg 2, home', 'fenerbahçe', 'constant vanden stock stadium, anderlecht', '0-2'], ['august 30', 'standard liège', 'uefa cup', 'qual. round 2', 'leg 2, home', 'käerjeng', 'stade maurice dufrasne, liège', '1-0'], ['september 20', 'anderlecht', 'uefa cup', 'round 1', 'leg 1, home', 'rapid wien', 'constant vanden stock stadium, anderlecht', '1-1'], ['september 20', 'club brugge', 'uefa cup', 'round 1', 'leg 1, away', 'brann', 'brann stadion, bergen', '1-0'], ['september 20', 'standard liège', 'uefa cup', 'round 1', 'leg 1, away', 'zenit st. petersburg', 'petrovsky stadium, saint petersburg', '0-3'], ['october 4', 'anderlecht', 'uefa cup', 'round 1', 'leg 2, away', 'rapid wien', 'gerhard hanappi stadium, vienna', '1-0'], ['october 4', 'club brugge', 'uefa cup', 'round 1', 'leg 2, home', 'brann', 'jan breydel stadium, bruges', '1-2'], ['october 4', 'standard liège', 'uefa cup', 'round 1', 'leg 2, home', 'zenit st. petersburg', 'stade maurice dufrasne, liège', '1-1'], ['october 25', 'anderlecht', 'uefa cup', 'group stage', 'match 1, home', 'hapoel tel aviv', 'constant vanden stock stadium, anderlecht', '2-0'], ['november 8', 'anderlecht', 'uefa cup', 'group stage', 'match 2, away', 'aalborg', 'energi nord arena, aalborg', '1-1'], ['december 6', 'anderlecht', 'uefa cup', 'group stage', 'match 3, home', 'tottenham hotspur', 'constant vanden stock stadium, anderlecht', '1-1'], ['december 19', 'anderlecht', 'uefa cup', 'group stage', 'match 4, away', 'getafe', 'coliseum alfonso pérez, getafe', '1-2'], ['february 13', 'anderlecht', 'uefa cup', 'round of 32', 'leg 1, home', 'bordeaux', 'constant vanden stock stadium, anderlecht', '2-1'], ['february 21', 'anderlecht', 'uefa cup', 'round of 32', 'leg 2, away', 'bordeaux', 'stade chaban-delmas, bordeaux', '1-1'], ['march 6', 'anderlecht', 'uefa cup', 'round of 16', 'leg 1, home', 'bayern munich', 'constant vanden stock stadium, anderlecht', '0-5'], ['march 12', 'anderlecht', 'uefa cup', 'round of 16', 'leg 2, away', 'bayern munich', 'allianz arena, munich', '2-1']]
+########################################################################################################################
+Sample 1929 - Plan 1: Operation 1: Order the table by the 'score' column in descending order.
+Sample 1929 - Plan 1: Selected indices: [[23, 7], [12, 7], [14, 7], [3, 7], [5, 7], [16, 7], [18, 7], [7, 7], [20, 7], [22, 7], [9, 7], [0, 7], [11, 7], [2, 7], [13, 7], [15, 7], [6, 7], [4, 7], [17, 7], [8, 7], [19, 7], [10, 7], [1, 7], [21, 7]]
+Sample 1929 - Plan 1: X-Table after operation df:
+            date            team       competition          round  \
+0        march 6      anderlecht          uefa cup    round of 16   
+1   september 20  standard liège          uefa cup        round 1   
+2        july 29            gent     intertoto cup        round 3   
+3        july 31            genk  champions league  qual. round 2   
+4      august 29      anderlecht  champions league  qual. round 3   
+5      october 4     club brugge          uefa cup        round 1   
+6    december 19      anderlecht          uefa cup    group stage   
+7        july 21            gent     intertoto cup        round 3   
+8      august 15      anderlecht  champions league  qual. round 3   
+9   september 20      anderlecht          uefa cup        round 1   
+10     october 4  standard liège          uefa cup        round 1   
+11    november 8      anderlecht          uefa cup    group stage   
+12    december 6      anderlecht          uefa cup    group stage   
+13   february 13      anderlecht          uefa cup    round of 32   
+14   february 21      anderlecht          uefa cup    round of 32   
+15      march 12      anderlecht          uefa cup    round of 16   
+16        july 7            gent     intertoto cup        round 2   
+17       july 14            gent     intertoto cup        round 2   
+18      august 8            genk  champions league  qual. round 2   
+19     august 16  standard liège          uefa cup  qual. round 2   
+20     august 30  standard liège          uefa cup  qual. round 2   
+21  september 20     club brugge          uefa cup        round 1   
+22     october 4      anderlecht          uefa cup        round 1   
+23    october 25      anderlecht          uefa cup    group stage   
+
+              leg              opponent  \
+0     leg 1, home         bayern munich   
+1     leg 1, away  zenit st. petersburg   
+2     leg 2, away               aalborg   
+3     leg 1, home              sarajevo   
+4     leg 2, home            fenerbahçe   
+5     leg 2, home                 brann   
+6   match 4, away                getafe   
+7     leg 1, home               aalborg   
+8     leg 1, away            fenerbahçe   
+9     leg 1, home            rapid wien   
+10    leg 2, home  zenit st. petersburg   
+11  match 2, away               aalborg   
+12  match 3, home     tottenham hotspur   
+13    leg 1, home              bordeaux   
+14    leg 2, away              bordeaux   
+15    leg 2, away         bayern munich   
+16    leg 1, home          cliftonville   
+17    leg 2, away          cliftonville   
+18    leg 2, away              sarajevo   
+19    leg 1, away              käerjeng   
+20    leg 2, home              käerjeng   
+21    leg 1, away                 brann   
+22    leg 2, away            rapid wien   
+23  match 1, home       hapoel tel aviv   
+
+                                     location score  
+0   constant vanden stock stadium, anderlecht   0-5  
+1         petrovsky stadium, saint petersburg   0-3  
+2                  energi nord arena, aalborg   1-2  
+3                         cristal arena, genk   1-2  
+4   constant vanden stock stadium, anderlecht   0-2  
+5                 jan breydel stadium, bruges   1-2  
+6              coliseum alfonso pérez, getafe   1-2  
+7                   jules ottenstadion, ghent   1-1  
+8           şükrü saracoğlu stadium, istanbul   0-1  
+9   constant vanden stock stadium, anderlecht   1-1  
+10              stade maurice dufrasne, liège   1-1  
+11                 energi nord arena, aalborg   1-1  
+12  constant vanden stock stadium, anderlecht   1-1  
+13  constant vanden stock stadium, anderlecht   2-1  
+14              stade chaban-delmas, bordeaux   1-1  
+15                      allianz arena, munich   2-1  
+16                  jules ottenstadion, ghent   2-0  
+17                      windsor park, belfast   4-0  
+18     asim ferhatović hase stadium, sarajevo   1-0  
+19             stade josy barthel, luxembourg   3-0  
+20              stade maurice dufrasne, liège   1-0  
+21                      brann stadion, bergen   1-0  
+22            gerhard hanappi stadium, vienna   1-0  
+23  constant vanden stock stadium, anderlecht   2-0  
+Sample 1929 - Plan 1: Table after operation: [['date', 'team', 'competition', 'round', 'leg', 'opponent', 'location', 'score'], ['march 6', 'anderlecht', 'uefa cup', 'round of 16', 'leg 1, home', 'bayern munich', 'constant vanden stock stadium, anderlecht', '0-5'], ['september 20', 'standard liège', 'uefa cup', 'round 1', 'leg 1, away', 'zenit st. petersburg', 'petrovsky stadium, saint petersburg', '0-3'], ['july 29', 'gent', 'intertoto cup', 'round 3', 'leg 2, away', 'aalborg', 'energi nord arena, aalborg', '1-2'], ['july 31', 'genk', 'champions league', 'qual. round 2', 'leg 1, home', 'sarajevo', 'cristal arena, genk', '1-2'], ['august 29', 'anderlecht', 'champions league', 'qual. round 3', 'leg 2, home', 'fenerbahçe', 'constant vanden stock stadium, anderlecht', '0-2'], ['october 4', 'club brugge', 'uefa cup', 'round 1', 'leg 2, home', 'brann', 'jan breydel stadium, bruges', '1-2'], ['december 19', 'anderlecht', 'uefa cup', 'group stage', 'match 4, away', 'getafe', 'coliseum alfonso pérez, getafe', '1-2'], ['july 21', 'gent', 'intertoto cup', 'round 3', 'leg 1, home', 'aalborg', 'jules ottenstadion, ghent', '1-1'], ['august 15', 'anderlecht', 'champions league', 'qual. round 3', 'leg 1, away', 'fenerbahçe', 'şükrü saracoğlu stadium, istanbul', '0-1'], ['september 20', 'anderlecht', 'uefa cup', 'round 1', 'leg 1, home', 'rapid wien', 'constant vanden stock stadium, anderlecht', '1-1'], ['october 4', 'standard liège', 'uefa cup', 'round 1', 'leg 2, home', 'zenit st. petersburg', 'stade maurice dufrasne, liège', '1-1'], ['november 8', 'anderlecht', 'uefa cup', 'group stage', 'match 2, away', 'aalborg', 'energi nord arena, aalborg', '1-1'], ['december 6', 'anderlecht', 'uefa cup', 'group stage', 'match 3, home', 'tottenham hotspur', 'constant vanden stock stadium, anderlecht', '1-1'], ['february 13', 'anderlecht', 'uefa cup', 'round of 32', 'leg 1, home', 'bordeaux', 'constant vanden stock stadium, anderlecht', '2-1'], ['february 21', 'anderlecht', 'uefa cup', 'round of 32', 'leg 2, away', 'bordeaux', 'stade chaban-delmas, bordeaux', '1-1'], ['march 12', 'anderlecht', 'uefa cup', 'round of 16', 'leg 2, away', 'bayern munich', 'allianz arena, munich', '2-1'], ['july 7', 'gent', 'intertoto cup', 'round 2', 'leg 1, home', 'cliftonville', 'jules ottenstadion, ghent', '2-0'], ['july 14', 'gent', 'intertoto cup', 'round 2', 'leg 2, away', 'cliftonville', 'windsor park, belfast', '4-0'], ['august 8', 'genk', 'champions league', 'qual. round 2', 'leg 2, away', 'sarajevo', 'asim ferhatović hase stadium, sarajevo', '1-0'], ['august 16', 'standard liège', 'uefa cup', 'qual. round 2', 'leg 1, away', 'käerjeng', 'stade josy barthel, luxembourg', '3-0'], ['august 30', 'standard liège', 'uefa cup', 'qual. round 2', 'leg 2, home', 'käerjeng', 'stade maurice dufrasne, liège', '1-0'], ['september 20', 'club brugge', 'uefa cup', 'round 1', 'leg 1, away', 'brann', 'brann stadion, bergen', '1-0'], ['october 4', 'anderlecht', 'uefa cup', 'round 1', 'leg 2, away', 'rapid wien', 'gerhard hanappi stadium, vienna', '1-0'], ['october 25', 'anderlecht', 'uefa cup', 'group stage', 'match 1, home', 'hapoel tel aviv', 'constant vanden stock stadium, anderlecht', '2-0']]
+########################################################################################################################
+Sample 1929 - Plan 1: Operation 2: Select row number 1.
+Sample 1929 - Plan 1: Selected indices: []
+Sample 1929 - Plan 1: X-Table after operation df:
+      date        team competition        round          leg       opponent  \
+0  march 6  anderlecht    uefa cup  round of 16  leg 1, home  bayern munich   
+
+                                    location score  
+0  constant vanden stock stadium, anderlecht   0-5  
+Sample 1929 - Plan 1: Table after operation: [['date', 'team', 'competition', 'round', 'leg', 'opponent', 'location', 'score'], ['march 6', 'anderlecht', 'uefa cup', 'round of 16', 'leg 1, home', 'bayern munich', 'constant vanden stock stadium, anderlecht', '0-5']]
+########################################################################################################################
+Sample 1929 - Plan 1: Operation 3: Select the 'score' column.
+Sample 1929 - Plan 1: Selected indices: []
+Sample 1929 - Plan 1: X-Table after operation df:
+  score
+0   0-5
+Sample 1929 - Plan 1: Table after operation: [['score'], ['0-5']]
+Fall-back: FALSE
+Answer from plan 1: [['0-5']]
+Groundtruth: ['5']

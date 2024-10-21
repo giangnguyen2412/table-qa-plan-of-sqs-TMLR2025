@@ -1,0 +1,59 @@
+************************************************************************************************************************
+Sample 2972 - Plan 1: Query: how long did derek fisher's career last?
+Sample 2972 - Plan 1: Groundtruth: ['1 year']
+Sample 2972 - Plan 1: X-Original table pd: 
+           player  no_    nationality        position years_for_jazz  \
+0      jim farmer   30  united states           guard        1988-89   
+1  derrick favors   15  united states         forward   2011-present   
+2  kyrylo fesenko   44        ukraine          center        2007-11   
+3    derek fisher    2  united states           guard      2006-2007   
+4     greg foster   44  united states  center/forward        1995-99   
+5    bernie fryer   25  united states           guard        1975-76   
+6     todd fuller   52  united states          center        1998-99   
+7    terry furlow   25  united states   guard/forward        1979-80   
+
+             school_club_team  
+0                     alabama  
+1                georgia tech  
+2  cherkasy monkeys (ukraine)  
+3        arkansas-little rock  
+4                        utep  
+5                         byu  
+6        north carolina state  
+7              michigan state  
+Sample 2972 - Plan 1: Caption: none
+Sample 2972 - Plan 1: Original table: [['player', 'no_', 'nationality', 'position', 'years_for_jazz', 'school_club_team'], ['jim farmer', '30', 'united states', 'guard', '1988-89', 'alabama'], ['derrick favors', '15', 'united states', 'forward', '2011-present', 'georgia tech'], ['kyrylo fesenko', '44', 'ukraine', 'center', '2007-11', 'cherkasy monkeys (ukraine)'], ['derek fisher', '2', 'united states', 'guard', '2006-2007', 'arkansas-little rock'], ['greg foster', '44', 'united states', 'center/forward', '1995-99', 'utep'], ['bernie fryer', '25', 'united states', 'guard', '1975-76', 'byu'], ['todd fuller', '52', 'united states', 'center', '1998-99', 'north carolina state'], ['terry furlow', '25', 'united states', 'guard/forward', '1979-80', 'michigan state']]
+########################################################################################################################
+Sample 2972 - Plan 1: Operation 1: Select rows where 'player' is 'derek fisher'.
+Sample 2972 - Plan 1: Selected indices: [[3, 0]]
+Sample 2972 - Plan 1: X-Table after operation df:
+         player  no_    nationality position years_for_jazz  \
+0  derek fisher    2  united states    guard      2006-2007   
+
+       school_club_team  
+0  arkansas-little rock  
+Sample 2972 - Plan 1: Table after operation: [['player', 'no_', 'nationality', 'position', 'years_for_jazz', 'school_club_team'], ['derek fisher', 2, 'united states', 'guard', '2006-2007', 'arkansas-little rock']]
+########################################################################################################################
+Sample 2972 - Plan 1: Operation 2: Extract the 'years_for_jazz' column.
+Sample 2972 - Plan 1: Selected indices: []
+Sample 2972 - Plan 1: X-Table after operation df:
+  years_for_jazz
+0      2006-2007
+Sample 2972 - Plan 1: Table after operation: [['years_for_jazz'], ['2006-2007']]
+########################################################################################################################
+Sample 2972 - Plan 1: Operation 3: Calculate the duration of Derek Fisher's career by subtracting the start year from the end year.
+Sample 2972 - Plan 1: Selected indices: [[0, 0]]
+Sample 2972 - Plan 1: X-Table after operation df:
+   start_year  end_year  duration
+0         NaN       NaN       NaN
+Sample 2972 - Plan 1: Table after operation: [['start_year', 'end_year', 'duration'], [None, None, None]]
+########################################################################################################################
+Sample 2972 - Plan 1: Operation 4: Select the calculated duration of Derek Fisher's career.
+Sample 2972 - Plan 1: Selected indices: []
+Sample 2972 - Plan 1: X-Table after operation df:
+   duration
+0       NaN
+Sample 2972 - Plan 1: Table after operation: [['duration'], [None]]
+Fall-back: TRUE
+Answer from plan 1: [['2006-2007']]
+Groundtruth: ['1 year']

@@ -1,0 +1,41 @@
+
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+.sql-command { background-color: #f0f0f0; padding: 10px; border-left: 4px solid #4CAF50; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> canada and the united states are the two nationalities of players with rounds lower than four</h3>
+<h3>Input Table: 2007 - 08 los angeles kings season</h3>
+<div class="step">
+<table>
+<tr><td>round</td><td>player</td><td>nationality</td><td>nhl_team</td><td>college_/_junior_/_club_team_(league)</td></tr><tr><td>1</td><td>thomas hickey (d)</td><td>canada</td><td>los angeles kings</td><td>seattle thunderbirds ( whl )</td></tr><tr><td>2</td><td>oscar moller (c)</td><td>sweden</td><td>los angeles kings</td><td>chilliwack bruins ( whl )</td></tr><tr><td>2</td><td>wayne simmonds (rw)</td><td>canada</td><td>los angeles kings</td><td>owen sound attack ( whl )</td></tr><tr><td>3</td><td>bryan cameron (c)</td><td>canada</td><td>los angeles kings</td><td>belleville bulls ( ohl )</td></tr><tr><td>4</td><td>alec martinez (d)</td><td>united states</td><td>los angeles kings</td><td>miami university ( ncaa )</td></tr><tr><td>4</td><td>dwight king (c)</td><td>canada</td><td>los angeles kings</td><td>lethbridge hurricanes ( whl )</td></tr><tr><td>5</td><td>linden rowat (g)</td><td>canada</td><td>los angeles kings</td><td>regina pats ( whl )</td></tr><tr><td>5</td><td>joshua turnbull (c)</td><td>united states</td><td>los angeles kings</td><td>waterloo black hawks ( ushl )</td></tr><tr><td>7</td><td>josh kidd (d)</td><td>canada</td><td>los angeles kings</td><td>erie otters ( ohl )</td></tr><tr><td>7</td><td>matt fillier (lw)</td><td>canada</td><td>los angeles kings</td><td>st john 's fog devils ( qmjhl )</td></tr>
+</table>
+</div>
+<h3>SQL Command:</h3>
+<div class="sql-command">SELECT 
+    CASE 
+        WHEN COUNT(*) = 2 THEN 'TRUE' 
+        ELSE 'FALSE' 
+    END 
+FROM table_sql 
+WHERE round < 4 
+AND nationality IN ('canada', 'united states');</div>
+</body></html>

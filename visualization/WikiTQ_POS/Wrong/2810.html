@@ -1,0 +1,693 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how many games in 2006 and no score at the end of the game?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'date' column contains the year '2006'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>date</td>
+<td>opponent</td>
+<td>venue</td>
+<td>result</td>
+<td>attendance</td>
+<td>scorers</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13 august 2005</span></td>
+<td>charlton athletic</td>
+<td>stadium of light</td>
+<td>1–3</td>
+<td>34,446</td>
+<td>gray</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20 august 2005</span></td>
+<td>liverpool</td>
+<td>anfield</td>
+<td>0–1</td>
+<td>44,913</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">23 august 2005</span></td>
+<td>manchester city</td>
+<td>stadium of light</td>
+<td>1–2</td>
+<td>33,357</td>
+<td>le tallec</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">27 august 2005</span></td>
+<td>wigan athletic</td>
+<td>jjb stadium</td>
+<td>0–1</td>
+<td>17,223</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10 september 2005</span></td>
+<td>chelsea</td>
+<td>stamford bridge</td>
+<td>0–2</td>
+<td>41,969</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">17 september 2005</span></td>
+<td>west bromwich albion</td>
+<td>stadium of light</td>
+<td>1–1</td>
+<td>31,657</td>
+<td>breen</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">25 september 2005</span></td>
+<td>middlesbrough</td>
+<td>riverside stadium</td>
+<td>2–0</td>
+<td>29,583</td>
+<td>miller, arca</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1 october 2005</span></td>
+<td>west ham united</td>
+<td>stadium of light</td>
+<td>1–1</td>
+<td>31,212</td>
+<td>miller</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">15 october 2005</span></td>
+<td>manchester united</td>
+<td>stadium of light</td>
+<td>1–3</td>
+<td>39,085</td>
+<td>elliott</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">23 october 2005</span></td>
+<td>newcastle united</td>
+<td>st james' park</td>
+<td>2–3</td>
+<td>52,302</td>
+<td>lawrence, elliott</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">29 october 2005</span></td>
+<td>portsmouth</td>
+<td>stadium of light</td>
+<td>1–4</td>
+<td>34,926</td>
+<td>whitehead (pen)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5 november 2005</span></td>
+<td>arsenal</td>
+<td>highbury</td>
+<td>1–3</td>
+<td>38,210</td>
+<td>stubbs</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19 november 2005</span></td>
+<td>aston villa</td>
+<td>stadium of light</td>
+<td>1–3</td>
+<td>39,707</td>
+<td>whitehead (pen)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">26 november 2005</span></td>
+<td>birmingham city</td>
+<td>stadium of light</td>
+<td>0–1</td>
+<td>32,442</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">30 november 2005</span></td>
+<td>liverpool</td>
+<td>stadium of light</td>
+<td>0–2</td>
+<td>32,697</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3 december 2005</span></td>
+<td>tottenham hotspur</td>
+<td>white hart lane</td>
+<td>2–3</td>
+<td>36,244</td>
+<td>whitehead, le tallec</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10 december 2005</span></td>
+<td>charlton athletic</td>
+<td>the valley</td>
+<td>0–2</td>
+<td>26,065</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">26 december 2005</span></td>
+<td>bolton wanderers</td>
+<td>stadium of light</td>
+<td>0–0</td>
+<td>32,232</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">31 december 2005</span></td>
+<td>everton</td>
+<td>stadium of light</td>
+<td>0–1</td>
+<td>30,567</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2 january 2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fulham</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">craven cottage</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1–2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19,372</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lawrence</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">15 january 2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chelsea</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stadium of light</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1–2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">32,420</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lawrence</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">21 january 2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">west bromwich albion</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the hawthorns</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">26,464</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">watson (own goal)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">31 january 2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">middlesbrough</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stadium of light</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">31,675</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">4 february 2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">west ham united</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">boleyn ground</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">34,745</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">12 february 2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tottenham hotspur</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stadium of light</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1–1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">34,700</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">murphy</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">15 february 2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">blackburn rovers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ewood park</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">18,220</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">25 february 2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">birmingham city</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">st. andrew's</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">29,257</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">3 march 2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">manchester city</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">city of manchester stadium</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1–2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">42,200</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kyle</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">11 march 2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wigan athletic</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stadium of light</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">31,194</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">18 march 2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bolton wanderers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">reebok stadium</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">23,568</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">25 march 2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">blackburn rovers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stadium of light</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">29,593</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1 april 2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">everton</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">goodison park</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2–2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">38,093</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stead, delap</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">14 april 2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">manchester united</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">old trafford</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">72,519</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">17 april 2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">newcastle united</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stadium of light</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1–4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">40,032</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">hoyte</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">22 april 2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">portsmouth</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fratton park</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1–2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20,078</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">miller</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1 may 2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">arsenal</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stadium of light</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">44,003</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">4 may 2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fulham</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stadium of light</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2–1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">28,226</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">le tallec, brown</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">7 may 2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">aston villa</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">villa park</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1–2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">33,820</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">d. collins</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select rows where the 'result' column does not contain a score (no score at the end of the game).</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>date</td>
+<td>opponent</td>
+<td>venue</td>
+<td>result</td>
+<td>attendance</td>
+<td>scorers</td>
+</tr>
+<tr>
+<td>2 january 2006</td>
+<td>fulham</td>
+<td>craven cottage</td>
+<td>1–2</td>
+<td>19,372</td>
+<td>lawrence</td>
+</tr>
+<tr>
+<td>15 january 2006</td>
+<td>chelsea</td>
+<td>stadium of light</td>
+<td>1–2</td>
+<td>32,420</td>
+<td>lawrence</td>
+</tr>
+<tr>
+<td>21 january 2006</td>
+<td>west bromwich albion</td>
+<td>the hawthorns</td>
+<td>1–0</td>
+<td>26,464</td>
+<td>watson (own goal)</td>
+</tr>
+<tr>
+<td>31 january 2006</td>
+<td>middlesbrough</td>
+<td>stadium of light</td>
+<td>0–3</td>
+<td>31,675</td>
+<td></td>
+</tr>
+<tr>
+<td>4 february 2006</td>
+<td>west ham united</td>
+<td>boleyn ground</td>
+<td>0–2</td>
+<td>34,745</td>
+<td></td>
+</tr>
+<tr>
+<td>12 february 2006</td>
+<td>tottenham hotspur</td>
+<td>stadium of light</td>
+<td>1–1</td>
+<td>34,700</td>
+<td>murphy</td>
+</tr>
+<tr>
+<td>15 february 2006</td>
+<td>blackburn rovers</td>
+<td>ewood park</td>
+<td>0–2</td>
+<td>18,220</td>
+<td></td>
+</tr>
+<tr>
+<td>25 february 2006</td>
+<td>birmingham city</td>
+<td>st. andrew's</td>
+<td>0–1</td>
+<td>29,257</td>
+<td></td>
+</tr>
+<tr>
+<td>3 march 2006</td>
+<td>manchester city</td>
+<td>city of manchester stadium</td>
+<td>1–2</td>
+<td>42,200</td>
+<td>kyle</td>
+</tr>
+<tr>
+<td>11 march 2006</td>
+<td>wigan athletic</td>
+<td>stadium of light</td>
+<td>0–1</td>
+<td>31,194</td>
+<td></td>
+</tr>
+<tr>
+<td>18 march 2006</td>
+<td>bolton wanderers</td>
+<td>reebok stadium</td>
+<td>0–2</td>
+<td>23,568</td>
+<td></td>
+</tr>
+<tr>
+<td>25 march 2006</td>
+<td>blackburn rovers</td>
+<td>stadium of light</td>
+<td>0–1</td>
+<td>29,593</td>
+<td></td>
+</tr>
+<tr>
+<td>1 april 2006</td>
+<td>everton</td>
+<td>goodison park</td>
+<td>2–2</td>
+<td>38,093</td>
+<td>stead, delap</td>
+</tr>
+<tr>
+<td>14 april 2006</td>
+<td>manchester united</td>
+<td>old trafford</td>
+<td>0–0</td>
+<td>72,519</td>
+<td></td>
+</tr>
+<tr>
+<td>17 april 2006</td>
+<td>newcastle united</td>
+<td>stadium of light</td>
+<td>1–4</td>
+<td>40,032</td>
+<td>hoyte</td>
+</tr>
+<tr>
+<td>22 april 2006</td>
+<td>portsmouth</td>
+<td>fratton park</td>
+<td>1–2</td>
+<td>20,078</td>
+<td>miller</td>
+</tr>
+<tr>
+<td>1 may 2006</td>
+<td>arsenal</td>
+<td>stadium of light</td>
+<td>0–3</td>
+<td>44,003</td>
+<td></td>
+</tr>
+<tr>
+<td>4 may 2006</td>
+<td>fulham</td>
+<td>stadium of light</td>
+<td>2–1</td>
+<td>28,226</td>
+<td>le tallec, brown</td>
+</tr>
+<tr>
+<td>7 may 2006</td>
+<td>aston villa</td>
+<td>villa park</td>
+<td>1–2</td>
+<td>33,820</td>
+<td>d. collins</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Count the number of rows that satisfy both conditions.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>date</td>
+<td>opponent</td>
+<td>venue</td>
+<td>result</td>
+<td>attendance</td>
+<td>scorers</td>
+</tr>
+<tr>
+<td>2 january 2006</td>
+<td>fulham</td>
+<td>craven cottage</td>
+<td>1–2</td>
+<td>19,372</td>
+<td>lawrence</td>
+</tr>
+<tr>
+<td>15 january 2006</td>
+<td>chelsea</td>
+<td>stadium of light</td>
+<td>1–2</td>
+<td>32,420</td>
+<td>lawrence</td>
+</tr>
+<tr>
+<td>21 january 2006</td>
+<td>west bromwich albion</td>
+<td>the hawthorns</td>
+<td>1–0</td>
+<td>26,464</td>
+<td>watson (own goal)</td>
+</tr>
+<tr>
+<td>31 january 2006</td>
+<td>middlesbrough</td>
+<td>stadium of light</td>
+<td>0–3</td>
+<td>31,675</td>
+<td></td>
+</tr>
+<tr>
+<td>4 february 2006</td>
+<td>west ham united</td>
+<td>boleyn ground</td>
+<td>0–2</td>
+<td>34,745</td>
+<td></td>
+</tr>
+<tr>
+<td>12 february 2006</td>
+<td>tottenham hotspur</td>
+<td>stadium of light</td>
+<td>1–1</td>
+<td>34,700</td>
+<td>murphy</td>
+</tr>
+<tr>
+<td>15 february 2006</td>
+<td>blackburn rovers</td>
+<td>ewood park</td>
+<td>0–2</td>
+<td>18,220</td>
+<td></td>
+</tr>
+<tr>
+<td>25 february 2006</td>
+<td>birmingham city</td>
+<td>st. andrew's</td>
+<td>0–1</td>
+<td>29,257</td>
+<td></td>
+</tr>
+<tr>
+<td>3 march 2006</td>
+<td>manchester city</td>
+<td>city of manchester stadium</td>
+<td>1–2</td>
+<td>42,200</td>
+<td>kyle</td>
+</tr>
+<tr>
+<td>11 march 2006</td>
+<td>wigan athletic</td>
+<td>stadium of light</td>
+<td>0–1</td>
+<td>31,194</td>
+<td></td>
+</tr>
+<tr>
+<td>18 march 2006</td>
+<td>bolton wanderers</td>
+<td>reebok stadium</td>
+<td>0–2</td>
+<td>23,568</td>
+<td></td>
+</tr>
+<tr>
+<td>25 march 2006</td>
+<td>blackburn rovers</td>
+<td>stadium of light</td>
+<td>0–1</td>
+<td>29,593</td>
+<td></td>
+</tr>
+<tr>
+<td>1 april 2006</td>
+<td>everton</td>
+<td>goodison park</td>
+<td>2–2</td>
+<td>38,093</td>
+<td>stead, delap</td>
+</tr>
+<tr>
+<td>14 april 2006</td>
+<td>manchester united</td>
+<td>old trafford</td>
+<td>0–0</td>
+<td>72,519</td>
+<td></td>
+</tr>
+<tr>
+<td>17 april 2006</td>
+<td>newcastle united</td>
+<td>stadium of light</td>
+<td>1–4</td>
+<td>40,032</td>
+<td>hoyte</td>
+</tr>
+<tr>
+<td>22 april 2006</td>
+<td>portsmouth</td>
+<td>fratton park</td>
+<td>1–2</td>
+<td>20,078</td>
+<td>miller</td>
+</tr>
+<tr>
+<td>1 may 2006</td>
+<td>arsenal</td>
+<td>stadium of light</td>
+<td>0–3</td>
+<td>44,003</td>
+<td></td>
+</tr>
+<tr>
+<td>4 may 2006</td>
+<td>fulham</td>
+<td>stadium of light</td>
+<td>2–1</td>
+<td>28,226</td>
+<td>le tallec, brown</td>
+</tr>
+<tr>
+<td>7 may 2006</td>
+<td>aston villa</td>
+<td>villa park</td>
+<td>1–2</td>
+<td>33,820</td>
+<td>d. collins</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>COUNT(*)</td>
+</tr>
+<tr>
+<td>0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[0]]</h3>
+</body></html>

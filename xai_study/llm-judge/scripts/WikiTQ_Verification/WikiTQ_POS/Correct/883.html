@@ -1,0 +1,481 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which material does not have a wavelength above 500nm?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'λ__nm_' column is not null.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>material</td>
+<td>λ__nm_</td>
+<td>n</td>
+</tr>
+<tr>
+<td>vacuum</td>
+<td></td>
+<td>1 (by definition)</td>
+</tr>
+<tr>
+<td>air at stp</td>
+<td></td>
+<td>1.000277</td>
+</tr>
+<tr>
+<td>air</td>
+<td>589.29</td>
+<td>1.000293</td>
+</tr>
+<tr>
+<td>carbon dioxide</td>
+<td>589.29</td>
+<td>1.00045</td>
+</tr>
+<tr>
+<td>helium</td>
+<td>589.29</td>
+<td>1.000036</td>
+</tr>
+<tr>
+<td>hydrogen</td>
+<td>589.29</td>
+<td>1.000132</td>
+</tr>
+<tr>
+<td>arsenic trisulfide and sulfur in methylene iodide</td>
+<td></td>
+<td>1.9</td>
+</tr>
+<tr>
+<td>benzene</td>
+<td>589.29</td>
+<td>1.501</td>
+</tr>
+<tr>
+<td>carbon disulfide</td>
+<td>589.29</td>
+<td>1.628</td>
+</tr>
+<tr>
+<td>carbon tetrachloride</td>
+<td>589.29</td>
+<td>1.461</td>
+</tr>
+<tr>
+<td>ethyl alcohol (ethanol)</td>
+<td>589.29</td>
+<td>1.361</td>
+</tr>
+<tr>
+<td>silicone oil</td>
+<td></td>
+<td>1.336-1.582</td>
+</tr>
+<tr>
+<td>water</td>
+<td>589.29</td>
+<td>1.3330</td>
+</tr>
+<tr>
+<td>10% glucose solution in water</td>
+<td>589.29</td>
+<td>1.3477</td>
+</tr>
+<tr>
+<td>20% glucose solution in water</td>
+<td>589.29</td>
+<td>1.3635</td>
+</tr>
+<tr>
+<td>60% glucose solution in water</td>
+<td>589.29</td>
+<td>1.4394</td>
+</tr>
+<tr>
+<td>titanium dioxide (rutile phase )</td>
+<td>589.29</td>
+<td>2.496</td>
+</tr>
+<tr>
+<td>diamond</td>
+<td>589.29</td>
+<td>2.419</td>
+</tr>
+<tr>
+<td>strontium titanate</td>
+<td>589.29</td>
+<td>2.41</td>
+</tr>
+<tr>
+<td>amber</td>
+<td>589.29</td>
+<td>1.55</td>
+</tr>
+<tr>
+<td>fused silica (also called fused quartz)</td>
+<td>589.29</td>
+<td>1.458</td>
+</tr>
+<tr>
+<td>sodium chloride</td>
+<td>589.29</td>
+<td>1.544</td>
+</tr>
+<tr>
+<td>liquid helium</td>
+<td></td>
+<td>1.025</td>
+</tr>
+<tr>
+<td>water ice</td>
+<td></td>
+<td>1.31</td>
+</tr>
+<tr>
+<td>cornea (human)</td>
+<td></td>
+<td>1.373/1.380/1.401</td>
+</tr>
+<tr>
+<td>lens (human)</td>
+<td></td>
+<td>1.386 - 1.406</td>
+</tr>
+<tr>
+<td>acetone</td>
+<td></td>
+<td>1.36</td>
+</tr>
+<tr>
+<td>ethanol</td>
+<td></td>
+<td>1.36</td>
+</tr>
+<tr>
+<td>glycerol</td>
+<td></td>
+<td>1.4729</td>
+</tr>
+<tr>
+<td>bromine</td>
+<td></td>
+<td>1.661</td>
+</tr>
+<tr>
+<td>teflon af</td>
+<td></td>
+<td>1.315</td>
+</tr>
+<tr>
+<td>teflon</td>
+<td></td>
+<td>1.35 - 1.38</td>
+</tr>
+<tr>
+<td>cytop</td>
+<td></td>
+<td>1.34</td>
+</tr>
+<tr>
+<td>sylgard 184 (polydimethylsiloxane)</td>
+<td></td>
+<td>1.4118</td>
+</tr>
+<tr>
+<td>pla</td>
+<td></td>
+<td>1.46</td>
+</tr>
+<tr>
+<td>acrylic glass</td>
+<td></td>
+<td>1.490 - 1.492</td>
+</tr>
+<tr>
+<td>polycarbonate</td>
+<td></td>
+<td>1.584 - 1.586</td>
+</tr>
+<tr>
+<td>pmma</td>
+<td></td>
+<td>1.4893 - 1.4899</td>
+</tr>
+<tr>
+<td>petg</td>
+<td></td>
+<td>1.57</td>
+</tr>
+<tr>
+<td>pet</td>
+<td></td>
+<td>1.5750</td>
+</tr>
+<tr>
+<td>crown glass (pure)</td>
+<td></td>
+<td>1.50 - 1.54</td>
+</tr>
+<tr>
+<td>flint glass (pure)</td>
+<td></td>
+<td>1.60 - 1.62</td>
+</tr>
+<tr>
+<td>crown glass (impure)</td>
+<td></td>
+<td>1.485 - 1.755</td>
+</tr>
+<tr>
+<td>flint glass (impure)</td>
+<td></td>
+<td>1.523 - 1.925</td>
+</tr>
+<tr>
+<td>pyrex (a borosilicate glass)</td>
+<td></td>
+<td>1.470</td>
+</tr>
+<tr>
+<td>cryolite</td>
+<td></td>
+<td>1.338</td>
+</tr>
+<tr>
+<td>rock salt</td>
+<td></td>
+<td>1.516</td>
+</tr>
+<tr>
+<td>sapphire</td>
+<td></td>
+<td>1.762–1.778</td>
+</tr>
+<tr>
+<td>sugar solution, 25%</td>
+<td></td>
+<td>1.3723</td>
+</tr>
+<tr>
+<td>sugar solution, 50%</td>
+<td></td>
+<td>1.4200</td>
+</tr>
+<tr>
+<td>sugar solution, 75%</td>
+<td></td>
+<td>1.4774</td>
+</tr>
+<tr>
+<td>cubic zirconia</td>
+<td></td>
+<td>2.15 - 2.18</td>
+</tr>
+<tr>
+<td>potassium niobate (knbo3)</td>
+<td></td>
+<td>2.28</td>
+</tr>
+<tr>
+<td>silicon carbide</td>
+<td></td>
+<td>2.65 - 2.69</td>
+</tr>
+<tr>
+<td>cinnabar (mercury sulfide)</td>
+<td></td>
+<td>3.02</td>
+</tr>
+<tr>
+<td>gallium(iii) phosphide</td>
+<td></td>
+<td>3.5</td>
+</tr>
+<tr>
+<td>gallium(iii) arsenide</td>
+<td></td>
+<td>3.927</td>
+</tr>
+<tr>
+<td>zinc oxide</td>
+<td>390</td>
+<td>2.4</td>
+</tr>
+<tr>
+<td>germanium</td>
+<td></td>
+<td>4.01</td>
+</tr>
+<tr>
+<td>silicon</td>
+<td>590</td>
+<td>3.962</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select rows where the value in the 'λ__nm_' column is less than or equal to 500.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>material</td>
+<td>λ__nm_</td>
+<td>n</td>
+</tr>
+<tr>
+<td>air</td>
+<td>589.29</td>
+<td>1.000293</td>
+</tr>
+<tr>
+<td>carbon dioxide</td>
+<td>589.29</td>
+<td>1.00045</td>
+</tr>
+<tr>
+<td>helium</td>
+<td>589.29</td>
+<td>1.000036</td>
+</tr>
+<tr>
+<td>hydrogen</td>
+<td>589.29</td>
+<td>1.000132</td>
+</tr>
+<tr>
+<td>benzene</td>
+<td>589.29</td>
+<td>1.501</td>
+</tr>
+<tr>
+<td>carbon disulfide</td>
+<td>589.29</td>
+<td>1.628</td>
+</tr>
+<tr>
+<td>carbon tetrachloride</td>
+<td>589.29</td>
+<td>1.461</td>
+</tr>
+<tr>
+<td>ethyl alcohol (ethanol)</td>
+<td>589.29</td>
+<td>1.361</td>
+</tr>
+<tr>
+<td>water</td>
+<td>589.29</td>
+<td>1.3330</td>
+</tr>
+<tr>
+<td>10% glucose solution in water</td>
+<td>589.29</td>
+<td>1.3477</td>
+</tr>
+<tr>
+<td>20% glucose solution in water</td>
+<td>589.29</td>
+<td>1.3635</td>
+</tr>
+<tr>
+<td>60% glucose solution in water</td>
+<td>589.29</td>
+<td>1.4394</td>
+</tr>
+<tr>
+<td>titanium dioxide (rutile phase )</td>
+<td>589.29</td>
+<td>2.496</td>
+</tr>
+<tr>
+<td>diamond</td>
+<td>589.29</td>
+<td>2.419</td>
+</tr>
+<tr>
+<td>strontium titanate</td>
+<td>589.29</td>
+<td>2.41</td>
+</tr>
+<tr>
+<td>amber</td>
+<td>589.29</td>
+<td>1.55</td>
+</tr>
+<tr>
+<td>fused silica (also called fused quartz)</td>
+<td>589.29</td>
+<td>1.458</td>
+</tr>
+<tr>
+<td>sodium chloride</td>
+<td>589.29</td>
+<td>1.544</td>
+</tr>
+<tr>
+<td>zinc oxide</td>
+<td>390.0</td>
+<td>2.4</td>
+</tr>
+<tr>
+<td>silicon</td>
+<td>590.0</td>
+<td>3.962</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select the 'material' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>material</td>
+<td>λ__nm_</td>
+<td>n</td>
+</tr>
+<tr>
+<td>zinc oxide</td>
+<td>390.0</td>
+<td>2.4</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>material</td>
+</tr>
+<tr>
+<td>zinc oxide</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['zinc oxide']]</h3>
+</body></html>

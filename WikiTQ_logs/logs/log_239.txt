@@ -1,0 +1,44 @@
+************************************************************************************************************************
+Sample 239 - Plan 1: Query: which player has the most victories?
+Sample 239 - Plan 1: Groundtruth: ['Carl Fogarty']
+Sample 239 - Plan 1: X-Original table pd: 
+   year            rider victories          bike manufacturer_s_championship
+0  1994     carl fogarty        11    ducati 916                      ducati
+1  1995     carl fogarty        13    ducati 916                      ducati
+2  1996      troy corser         7    ducati 916                      ducati
+3  1998     carl fogarty         3    ducati 916                      ducati
+4  1999     carl fogarty        11    ducati 996                      ducati
+5  2000  (colin edwards)       (7)  (honda rc51)                      ducati
+6  2001     troy bayliss         6    ducati 996                      ducati
+Sample 239 - Plan 1: Caption: none
+Sample 239 - Plan 1: Original table: [['year', 'rider', 'victories', 'bike', 'manufacturer_s_championship'], ['1994', 'carl fogarty', '11', 'ducati 916', 'ducati'], ['1995', 'carl fogarty', '13', 'ducati 916', 'ducati'], ['1996', 'troy corser', '7', 'ducati 916', 'ducati'], ['1998', 'carl fogarty', '3', 'ducati 916', 'ducati'], ['1999', 'carl fogarty', '11', 'ducati 996', 'ducati'], ['2000', '(colin edwards)', '(7)', '(honda rc51)', 'ducati'], ['2001', 'troy bayliss', '6', 'ducati 996', 'ducati']]
+########################################################################################################################
+Sample 239 - Plan 1: Operation 1: Order the table by the 'victories' column in descending order.
+Sample 239 - Plan 1: Selected indices: [[6, 2], [1, 2], [4, 2], [0, 2], [2, 2], [3, 2], [5, 2]]
+Sample 239 - Plan 1: X-Table after operation df:
+   year            rider victories          bike manufacturer_s_championship
+0  1995     carl fogarty        13    ducati 916                      ducati
+1  1994     carl fogarty        11    ducati 916                      ducati
+2  1999     carl fogarty        11    ducati 996                      ducati
+3  1996      troy corser         7    ducati 916                      ducati
+4  2001     troy bayliss         6    ducati 996                      ducati
+5  1998     carl fogarty         3    ducati 916                      ducati
+6  2000  (colin edwards)       (7)  (honda rc51)                      ducati
+Sample 239 - Plan 1: Table after operation: [['year', 'rider', 'victories', 'bike', 'manufacturer_s_championship'], [1995, 'carl fogarty', '13', 'ducati 916', 'ducati'], [1994, 'carl fogarty', '11', 'ducati 916', 'ducati'], [1999, 'carl fogarty', '11', 'ducati 996', 'ducati'], [1996, 'troy corser', '7', 'ducati 916', 'ducati'], [2001, 'troy bayliss', '6', 'ducati 996', 'ducati'], [1998, 'carl fogarty', '3', 'ducati 916', 'ducati'], [2000, '(colin edwards)', '(7)', '(honda rc51)', 'ducati']]
+########################################################################################################################
+Sample 239 - Plan 1: Operation 2: Select row number 1.
+Sample 239 - Plan 1: Selected indices: []
+Sample 239 - Plan 1: X-Table after operation df:
+   year         rider  victories        bike manufacturer_s_championship
+0  1995  carl fogarty         13  ducati 916                      ducati
+Sample 239 - Plan 1: Table after operation: [['year', 'rider', 'victories', 'bike', 'manufacturer_s_championship'], [1995, 'carl fogarty', '13', 'ducati 916', 'ducati']]
+########################################################################################################################
+Sample 239 - Plan 1: Operation 3: Select the 'rider' column.
+Sample 239 - Plan 1: Selected indices: []
+Sample 239 - Plan 1: X-Table after operation df:
+          rider
+0  carl fogarty
+Sample 239 - Plan 1: Table after operation: [['rider'], ['carl fogarty']]
+Fall-back: FALSE
+Answer from plan 1: [['carl fogarty']]
+Groundtruth: ['Carl Fogarty']

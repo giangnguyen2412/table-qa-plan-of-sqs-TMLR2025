@@ -1,0 +1,67 @@
+************************************************************************************************************************
+Sample 1649 - Plan 1: Query: how many games had an attendance above 60,000?
+Sample 1649 - Plan 1: Groundtruth: ['8']
+Sample 1649 - Plan 1: X-Original table pd: 
+            date            opponent_ rank_  \
+0   september 12         #7 nebraska*         
+1   september 19       at iowa state*         
+2   september 26             #6 ucla*         
+3      october 3      at northwestern   #18   
+4     october 10              indiana   #15   
+5     october 17       at #5 michigan   #12   
+6     october 24            minnesota    #6   
+7     october 31          at illinois   #16   
+8     november 7               purdue         
+9    november 14         at wisconsin         
+10   november 21       michigan state   #19   
+11     january 1  vs. #12 washington*   #13   
+
+                                                 site   tv   result attendance  
+0                     kinnick stadium • iowa city, ia        w 10-7     60,160  
+1         cyclone stadium • ames, ia (cy-hawk trophy)       l 12-23     53,922  
+2                     kinnick stadium • iowa city, ia        w 20-7     60,004  
+3                        dyche stadium • evanston, il        w 64-0     30,113  
+4                     kinnick stadium • iowa city, ia       w 42-28     60,000  
+5                    michigan stadium • ann arbor, mi         w 9-7    105,915  
+6   kinnick stadium • iowa city, ia (floyd of rose...  abc  l 10-12     60,000  
+7                    memorial stadium • champaign, il        l 7-24     66,877  
+8                     kinnick stadium • iowa city, ia        w 33-7     60,114  
+9                  camp randall stadium • madison, wi  abc   w 17-7     78,731  
+10                    kinnick stadium • iowa city, ia        w 36-7     60,103  
+11               rose bowl • pasadena, ca (rose bowl)  nbc   l 0-28    105,611  
+Sample 1649 - Plan 1: Caption: none
+Sample 1649 - Plan 1: Original table: [['date', 'opponent_', 'rank_', 'site', 'tv', 'result', 'attendance'], ['september 12', '#7\xa0nebraska*', '', 'kinnick stadium • iowa city, ia', '', 'w\xa010-7', '60,160'], ['september 19', 'at\xa0iowa state*', '', 'cyclone stadium • ames, ia (cy-hawk trophy)', '', 'l\xa012-23', '53,922'], ['september 26', '#6\xa0ucla*', '', 'kinnick stadium • iowa city, ia', '', 'w\xa020-7', '60,004'], ['october 3', 'at\xa0northwestern', '#18', 'dyche stadium • evanston, il', '', 'w\xa064-0', '30,113'], ['october 10', 'indiana', '#15', 'kinnick stadium • iowa city, ia', '', 'w\xa042-28', '60,000'], ['october 17', 'at\xa0#5\xa0michigan', '#12', 'michigan stadium • ann arbor, mi', '', 'w\xa09-7', '105,915'], ['october 24', 'minnesota', '#6', 'kinnick stadium • iowa city, ia (floyd of rosedale)', 'abc', 'l\xa010-12', '60,000'], ['october 31', 'at\xa0illinois', '#16', 'memorial stadium • champaign, il', '', 'l\xa07-24', '66,877'], ['november 7', 'purdue', '', 'kinnick stadium • iowa city, ia', '', 'w\xa033-7', '60,114'], ['november 14', 'at\xa0wisconsin', '', 'camp randall stadium • madison, wi', 'abc', 'w\xa017-7', '78,731'], ['november 21', 'michigan state', '#19', 'kinnick stadium • iowa city, ia', '', 'w\xa036-7', '60,103'], ['january 1', 'vs.\xa0#12\xa0washington*', '#13', 'rose bowl • pasadena, ca (rose bowl)', 'nbc', 'l\xa00-28', '105,611']]
+########################################################################################################################
+Sample 1649 - Plan 1: Operation 1: Select rows where the 'attendance' is greater than 60,000.
+Sample 1649 - Plan 1: Selected indices: []
+Sample 1649 - Plan 1: X-Table after operation df:
+           date            opponent_ rank_  \
+0  september 12         #7 nebraska*         
+1  september 26             #6 ucla*         
+2    october 17       at #5 michigan   #12   
+3    october 31          at illinois   #16   
+4    november 7               purdue         
+5   november 14         at wisconsin         
+6   november 21       michigan state   #19   
+7     january 1  vs. #12 washington*   #13   
+
+                                   site   tv  result attendance  
+0       kinnick stadium • iowa city, ia       w 10-7     60,160  
+1       kinnick stadium • iowa city, ia       w 20-7     60,004  
+2      michigan stadium • ann arbor, mi        w 9-7    105,915  
+3      memorial stadium • champaign, il       l 7-24     66,877  
+4       kinnick stadium • iowa city, ia       w 33-7     60,114  
+5    camp randall stadium • madison, wi  abc  w 17-7     78,731  
+6       kinnick stadium • iowa city, ia       w 36-7     60,103  
+7  rose bowl • pasadena, ca (rose bowl)  nbc  l 0-28    105,611  
+Sample 1649 - Plan 1: Table after operation: [['date', 'opponent_', 'rank_', 'site', 'tv', 'result', 'attendance'], ['september 12', '#7\xa0nebraska*', '', 'kinnick stadium • iowa city, ia', '', 'w\xa010-7', '60,160'], ['september 26', '#6\xa0ucla*', '', 'kinnick stadium • iowa city, ia', '', 'w\xa020-7', '60,004'], ['october 17', 'at\xa0#5\xa0michigan', '#12', 'michigan stadium • ann arbor, mi', '', 'w\xa09-7', '105,915'], ['october 31', 'at\xa0illinois', '#16', 'memorial stadium • champaign, il', '', 'l\xa07-24', '66,877'], ['november 7', 'purdue', '', 'kinnick stadium • iowa city, ia', '', 'w\xa033-7', '60,114'], ['november 14', 'at\xa0wisconsin', '', 'camp randall stadium • madison, wi', 'abc', 'w\xa017-7', '78,731'], ['november 21', 'michigan state', '#19', 'kinnick stadium • iowa city, ia', '', 'w\xa036-7', '60,103'], ['january 1', 'vs.\xa0#12\xa0washington*', '#13', 'rose bowl • pasadena, ca (rose bowl)', 'nbc', 'l\xa00-28', '105,611']]
+########################################################################################################################
+Sample 1649 - Plan 1: Operation 2: Count the number of rows.
+Sample 1649 - Plan 1: Selected indices: []
+Sample 1649 - Plan 1: X-Table after operation df:
+   row_count
+0          8
+Sample 1649 - Plan 1: Table after operation: [['row_count'], [8]]
+Fall-back: FALSE
+Answer from plan 1: [[8]]
+Groundtruth: ['8']

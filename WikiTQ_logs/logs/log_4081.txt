@@ -1,0 +1,51 @@
+************************************************************************************************************************
+Sample 4081 - Plan 1: Query: what club did chemcedine el araichi play for before excelsior mouscron?
+Sample 4081 - Plan 1: Groundtruth: ['KSV Roeselare']
+Sample 4081 - Plan 1: X-Original table pd: 
+     season                club              competition  games  goals
+0   2002/03           raec mons           jupiler league     19      0
+1   2003/04           raec mons           jupiler league     23      0
+2   2004/05       ksv roeselare  belgian second division     29      1
+3   2005/06       ksv roeselare           jupiler league     26      0
+4   2006/07       ksv roeselare           jupiler league     29      1
+5   2007/08       ksv roeselare           jupiler league     25      0
+6   2008/09  excelsior mouscron           jupiler league     31      1
+7   2009/10  excelsior mouscron           jupiler league     14      1
+8   2009/10        győri eto fc             soproni liga      1      0
+9   2010/11            kortrijk           jupiler league      0      0
+10                                                totaal    278      4
+Sample 4081 - Plan 1: Caption: none
+Sample 4081 - Plan 1: Original table: [['season', 'club', 'competition', 'games', 'goals'], ['2002/03', 'raec mons', 'jupiler league', '19', '0'], ['2003/04', 'raec mons', 'jupiler league', '23', '0'], ['2004/05', 'ksv roeselare', 'belgian second division', '29', '1'], ['2005/06', 'ksv roeselare', 'jupiler league', '26', '0'], ['2006/07', 'ksv roeselare', 'jupiler league', '29', '1'], ['2007/08', 'ksv roeselare', 'jupiler league', '25', '0'], ['2008/09', 'excelsior mouscron', 'jupiler league', '31', '1'], ['2009/10', 'excelsior mouscron', 'jupiler league', '14', '1'], ['2009/10', 'győri eto fc', 'soproni liga', '1', '0'], ['2010/11', 'kortrijk', 'jupiler league', '0', '0'], ['', '', 'totaal', '278', '4']]
+########################################################################################################################
+Sample 4081 - Plan 1: Operation 1: Select rows where the 'club' column is not equal to 'excelsior mouscron'.
+Sample 4081 - Plan 1: Selected indices: [[0, 1], [2, 1], [8, 1], [3, 1], [1, 1], [10, 1], [5, 1], [9, 1], [4, 1]]
+Sample 4081 - Plan 1: X-Table after operation df:
+    season           club              competition  games  goals
+0  2002/03      raec mons           jupiler league     19      0
+1  2003/04      raec mons           jupiler league     23      0
+2  2004/05  ksv roeselare  belgian second division     29      1
+3  2005/06  ksv roeselare           jupiler league     26      0
+4  2006/07  ksv roeselare           jupiler league     29      1
+5  2007/08  ksv roeselare           jupiler league     25      0
+6  2009/10   győri eto fc             soproni liga      1      0
+7  2010/11       kortrijk           jupiler league      0      0
+8                                           totaal    278      4
+Sample 4081 - Plan 1: Table after operation: [['season', 'club', 'competition', 'games', 'goals'], ['2002/03', 'raec mons', 'jupiler league', 19, 0], ['2003/04', 'raec mons', 'jupiler league', 23, 0], ['2004/05', 'ksv roeselare', 'belgian second division', 29, 1], ['2005/06', 'ksv roeselare', 'jupiler league', 26, 0], ['2006/07', 'ksv roeselare', 'jupiler league', 29, 1], ['2007/08', 'ksv roeselare', 'jupiler league', 25, 0], ['2009/10', 'győri eto fc', 'soproni liga', 1, 0], ['2010/11', 'kortrijk', 'jupiler league', 0, 0], ['', '', 'totaal', 278, 4]]
+########################################################################################################################
+Sample 4081 - Plan 1: Operation 2: Select the 'club' column.
+Sample 4081 - Plan 1: Selected indices: []
+Sample 4081 - Plan 1: X-Table after operation df:
+            club
+0      raec mons
+1      raec mons
+2  ksv roeselare
+3  ksv roeselare
+4  ksv roeselare
+5  ksv roeselare
+6   győri eto fc
+7       kortrijk
+8               
+Sample 4081 - Plan 1: Table after operation: [['club'], ['raec mons'], ['raec mons'], ['ksv roeselare'], ['ksv roeselare'], ['ksv roeselare'], ['ksv roeselare'], ['győri eto fc'], ['kortrijk'], ['']]
+Fall-back: FALSE
+Answer from plan 1: [['raec mons'], ['raec mons'], ['ksv roeselare'], ['ksv roeselare'], ['ksv roeselare'], ['ksv roeselare'], ['győri eto fc'], ['kortrijk'], ['']]
+Groundtruth: ['KSV Roeselare']

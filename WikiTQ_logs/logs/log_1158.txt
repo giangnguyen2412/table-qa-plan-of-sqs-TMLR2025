@@ -1,0 +1,57 @@
+************************************************************************************************************************
+Sample 1158 - Plan 1: Query: the person that is listed last of the democrats
+Sample 1158 - Plan 1: Groundtruth: ['Ed Perlmutter']
+Sample 1158 - Plan 1: X-Original table pd: 
+   district         incumbent c_2008_status     democratic        republican
+0         1     diana degette   re-election  diana degette      george lilly
+1         2        mark udall          open    jared polis      scott starin
+2         3      john salazar   re-election   john salazar        wayne wolf
+3         4  marilyn musgrave   re-election   betsy markey  marilyn musgrave
+4         5      doug lamborn   re-election    hal bidlack      doug lamborn
+5         6      tom tancredo          open       hank eng      mike coffman
+6         7     ed perlmutter   re-election  ed perlmutter     john w. lerew
+Sample 1158 - Plan 1: Caption: none
+Sample 1158 - Plan 1: Original table: [['district', 'incumbent', 'c_2008_status', 'democratic', 'republican'], ['1', 'diana degette', 're-election', 'diana degette', 'george lilly'], ['2', 'mark udall', 'open', 'jared polis', 'scott starin'], ['3', 'john salazar', 're-election', 'john salazar', 'wayne wolf'], ['4', 'marilyn musgrave', 're-election', 'betsy markey', 'marilyn musgrave'], ['5', 'doug lamborn', 're-election', 'hal bidlack', 'doug lamborn'], ['6', 'tom tancredo', 'open', 'hank eng', 'mike coffman'], ['7', 'ed perlmutter', 're-election', 'ed perlmutter', 'john w. lerew']]
+########################################################################################################################
+Sample 1158 - Plan 1: Operation 1: Select the 'democratic' column.
+Sample 1158 - Plan 1: Selected indices: []
+Sample 1158 - Plan 1: X-Table after operation df:
+      democratic
+0  diana degette
+1    jared polis
+2   john salazar
+3   betsy markey
+4    hal bidlack
+5       hank eng
+6  ed perlmutter
+Sample 1158 - Plan 1: Table after operation: [['democratic'], ['diana degette'], ['jared polis'], ['john salazar'], ['betsy markey'], ['hal bidlack'], ['hank eng'], ['ed perlmutter']]
+########################################################################################################################
+Sample 1158 - Plan 1: Operation 2: Order the table by the 'democratic' column in descending order.
+Sample 1158 - Plan 1: Selected indices: []
+Sample 1158 - Plan 1: X-Table after operation df:
+      democratic
+0   john salazar
+1    jared polis
+2       hank eng
+3    hal bidlack
+4  ed perlmutter
+5  diana degette
+6   betsy markey
+Sample 1158 - Plan 1: Table after operation: [['democratic'], ['john salazar'], ['jared polis'], ['hank eng'], ['hal bidlack'], ['ed perlmutter'], ['diana degette'], ['betsy markey']]
+########################################################################################################################
+Sample 1158 - Plan 1: Operation 3: Select the last row.
+Sample 1158 - Plan 1: Selected indices: [[0, 0]]
+Sample 1158 - Plan 1: X-Table after operation df:
+     democratic
+0  john salazar
+Sample 1158 - Plan 1: Table after operation: [['democratic'], ['john salazar']]
+########################################################################################################################
+Sample 1158 - Plan 1: Operation 4: Select the 'democratic' cell in the last row.
+Sample 1158 - Plan 1: Selected indices: []
+Sample 1158 - Plan 1: X-Table after operation df:
+     democratic
+0  john salazar
+Sample 1158 - Plan 1: Table after operation: [['democratic'], ['john salazar']]
+Fall-back: FALSE
+Answer from plan 1: [['john salazar']]
+Groundtruth: ['Ed Perlmutter']

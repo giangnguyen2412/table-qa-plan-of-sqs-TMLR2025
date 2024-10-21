@@ -1,0 +1,413 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> who is in first place?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Order the table by the 'wins' column in descending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>place</td>
+<td>rider</td>
+<td>country</td>
+<td>team</td>
+<td>points</td>
+<td>wins</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sylvain geboers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">belgium</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">suzuki</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3066</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">3</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">adolf weil</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">germany</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">maico</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2331</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">torlief hansen</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sweden</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">husqvarna</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2052</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">roger de coster</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">belgium</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">suzuki</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1865</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">3</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">joel robert</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">belgium</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">suzuki</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1730</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">heikki mikkola</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">finland</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">husqvarna</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1680</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">willy bauer</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">germany</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">maico</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1276</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gaston rahier</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">belgium</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">čz</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1112</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pierre karsmakers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">netherlands</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">husqvarna</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1110</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dave bickers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united kingdom</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">čz</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1076</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">john banks</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united kingdom</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">čz</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">971</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">andy roberton</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united kingdom</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">husqvarna</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">810</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">vlastimil valek</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">czechoslovakia</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">čz</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">709</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">14</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mark blackwell</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united states</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">husqvarna</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">604</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">15</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">brad lackey</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united states</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">čz</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">603</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gary jones</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united states</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yamaha</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">439</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">john desoto</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united states</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">suzuki</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">425</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">18</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chris horsefield</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united kingdom</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">čz</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">416</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">uno palm</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sweden</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">husqvarna</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">324</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">peter lamppu</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united states</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">montesa</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">309</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select row number 1.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>place</td>
+<td>rider</td>
+<td>country</td>
+<td>team</td>
+<td>points</td>
+<td>wins</td>
+</tr>
+<tr>
+<td>1</td>
+<td>sylvain geboers</td>
+<td>belgium</td>
+<td>suzuki</td>
+<td>3066</td>
+<td>3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>roger de coster</td>
+<td>belgium</td>
+<td>suzuki</td>
+<td>1865</td>
+<td>3</td>
+</tr>
+<tr>
+<td>2</td>
+<td>adolf weil</td>
+<td>germany</td>
+<td>maico</td>
+<td>2331</td>
+<td>2</td>
+</tr>
+<tr>
+<td>6</td>
+<td>heikki mikkola</td>
+<td>finland</td>
+<td>husqvarna</td>
+<td>1680</td>
+<td>2</td>
+</tr>
+<tr>
+<td>5</td>
+<td>joel robert</td>
+<td>belgium</td>
+<td>suzuki</td>
+<td>1730</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>torlief hansen</td>
+<td>sweden</td>
+<td>husqvarna</td>
+<td>2052</td>
+<td>0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>willy bauer</td>
+<td>germany</td>
+<td>maico</td>
+<td>1276</td>
+<td>0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>gaston rahier</td>
+<td>belgium</td>
+<td>čz</td>
+<td>1112</td>
+<td>0</td>
+</tr>
+<tr>
+<td>9</td>
+<td>pierre karsmakers</td>
+<td>netherlands</td>
+<td>husqvarna</td>
+<td>1110</td>
+<td>0</td>
+</tr>
+<tr>
+<td>10</td>
+<td>dave bickers</td>
+<td>united kingdom</td>
+<td>čz</td>
+<td>1076</td>
+<td>0</td>
+</tr>
+<tr>
+<td>11</td>
+<td>john banks</td>
+<td>united kingdom</td>
+<td>čz</td>
+<td>971</td>
+<td>0</td>
+</tr>
+<tr>
+<td>12</td>
+<td>andy roberton</td>
+<td>united kingdom</td>
+<td>husqvarna</td>
+<td>810</td>
+<td>0</td>
+</tr>
+<tr>
+<td>13</td>
+<td>vlastimil valek</td>
+<td>czechoslovakia</td>
+<td>čz</td>
+<td>709</td>
+<td>0</td>
+</tr>
+<tr>
+<td>14</td>
+<td>mark blackwell</td>
+<td>united states</td>
+<td>husqvarna</td>
+<td>604</td>
+<td>0</td>
+</tr>
+<tr>
+<td>15</td>
+<td>brad lackey</td>
+<td>united states</td>
+<td>čz</td>
+<td>603</td>
+<td>0</td>
+</tr>
+<tr>
+<td>16</td>
+<td>gary jones</td>
+<td>united states</td>
+<td>yamaha</td>
+<td>439</td>
+<td>0</td>
+</tr>
+<tr>
+<td>17</td>
+<td>john desoto</td>
+<td>united states</td>
+<td>suzuki</td>
+<td>425</td>
+<td>0</td>
+</tr>
+<tr>
+<td>18</td>
+<td>chris horsefield</td>
+<td>united kingdom</td>
+<td>čz</td>
+<td>416</td>
+<td>0</td>
+</tr>
+<tr>
+<td>19</td>
+<td>uno palm</td>
+<td>sweden</td>
+<td>husqvarna</td>
+<td>324</td>
+<td>0</td>
+</tr>
+<tr>
+<td>20</td>
+<td>peter lamppu</td>
+<td>united states</td>
+<td>montesa</td>
+<td>309</td>
+<td>0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select the 'rider' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>place</td>
+<td>rider</td>
+<td>country</td>
+<td>team</td>
+<td>points</td>
+<td>wins</td>
+</tr>
+<tr>
+<td>1</td>
+<td>sylvain geboers</td>
+<td>belgium</td>
+<td>suzuki</td>
+<td>3066</td>
+<td>3</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>rider</td>
+</tr>
+<tr>
+<td>sylvain geboers</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['sylvain geboers']]</h3>
+</body></html>

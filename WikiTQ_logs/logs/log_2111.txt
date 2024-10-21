@@ -1,0 +1,58 @@
+************************************************************************************************************************
+Sample 2111 - Plan 1: Query: is the highest number of episodes in a season above or below 50?
+Sample 2111 - Plan 1: Groundtruth: ['above']
+Sample 2111 - Plan 1: X-Original table pd: 
+   season  episodes    season_premiere      season_finale
+0       1        20      march 4, 2006       may 13, 2006
+1       2        52    october 7, 2006      july 16, 2007
+2       3        44   october 15, 2007       june 2, 2008
+3       4        48   october 13, 2008       may 11, 2009
+4       5        40   october 12, 2009      june 14, 2010
+5       6        20  september 6, 2010   december 6, 2010
+6       7         8   october 29, 2013  december 17, 2013
+Sample 2111 - Plan 1: Caption: none
+Sample 2111 - Plan 1: Original table: [['season', 'episodes', 'season_premiere', 'season_finale'], ['1', '20', 'march 4, 2006', 'may 13, 2006'], ['2', '52', 'october 7, 2006', 'july 16, 2007'], ['3', '44', 'october 15, 2007', 'june 2, 2008'], ['4', '48', 'october 13, 2008', 'may 11, 2009'], ['5', '40', 'october 12, 2009', 'june 14, 2010'], ['6', '20', 'september 6, 2010', 'december 6, 2010'], ['7', '8', 'october 29, 2013', 'december 17, 2013']]
+########################################################################################################################
+Sample 2111 - Plan 1: Operation 1: Select the 'episodes' column.
+Sample 2111 - Plan 1: Selected indices: []
+Sample 2111 - Plan 1: X-Table after operation df:
+   episodes
+0        20
+1        52
+2        44
+3        48
+4        40
+5        20
+6         8
+Sample 2111 - Plan 1: Table after operation: [['episodes'], [20], [52], [44], [48], [40], [20], [8]]
+########################################################################################################################
+Sample 2111 - Plan 1: Operation 2: Find the maximum value in the 'episodes' column.
+Sample 2111 - Plan 1: Selected indices: []
+Sample 2111 - Plan 1: X-Table after operation df:
+   max_episodes
+0            52
+Sample 2111 - Plan 1: Table after operation: [['max_episodes'], [52]]
+########################################################################################################################
+Sample 2111 - Plan 1: Operation 3: Compare the maximum value to 50.
+Sample 2111 - Plan 1: Selected indices: [[0, 0]]
+Sample 2111 - Plan 1: X-Table after operation df:
+   max_episodes
+0            52
+Sample 2111 - Plan 1: Table after operation: [['max_episodes'], [52]]
+########################################################################################################################
+Sample 2111 - Plan 1: Operation 4: If the maximum value is above 50, the answer is "above".
+Sample 2111 - Plan 1: Selected indices: []
+Sample 2111 - Plan 1: X-Table after operation df:
+  answer
+0  above
+Sample 2111 - Plan 1: Table after operation: [['answer'], ['above']]
+########################################################################################################################
+Sample 2111 - Plan 1: Operation 5: If the maximum value is below or equal to 50, the answer is "below".
+Sample 2111 - Plan 1: Selected indices: []
+Sample 2111 - Plan 1: X-Table after operation df:
+  answer
+0  below
+Sample 2111 - Plan 1: Table after operation: [['answer'], ['below']]
+Fall-back: FALSE
+Answer from plan 1: [['below']]
+Groundtruth: ['above']

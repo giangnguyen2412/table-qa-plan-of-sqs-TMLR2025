@@ -1,0 +1,425 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which athlete had the largest number of final points?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Order the table by the 'final_npoints' column in descending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>rank</td>
+<td>diver</td>
+<td>preliminary_npoints</td>
+<td>preliminary_nrank</td>
+<td>final_npoints</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sylvie bernier (can)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">489.51</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">530.70</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kelly mccormick (usa)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">516.75</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">527.46</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">christina seufert (usa)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">481.41</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">517.62</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">li yihua (chn)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">517.92</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">506.52</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">li qiaoxian (chn)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">466.83</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">487.68</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">elsa tenorio (mex)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">460.56</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">463.56</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lesley smith (zim)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">438.72</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">451.89</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">debbie fuller (can)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">437.04</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">450.99</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jennifer donnet (aus)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">432.78</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">443.13</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">daphne jongejans (ned)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">487.95</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">437.40</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">anita rossing (swe)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">464.58</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">424.98</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">verónica ribot (arg)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">443.25</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">422.52</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ann fargher (nzl)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">421.65</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">14</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tine tollan (nor)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">419.55</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">14</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">15</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">antonette wilken (zim)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">414.66</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">15</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">guadalupe canseco (mex)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">411.96</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">claire izacard (fra)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">403.17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">18</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">valerie mcfarland-beddoe (aus)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">401.13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">18</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">alison childs (gbr)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">400.68</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kerstin finke (frg)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">393.93</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">21</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nicole kreil (aut)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">382.68</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">21</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">22</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">joana figueiredo (por)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">374.07</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">22</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">23</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">angela ribeiro (bra)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">370.68</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">23</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rim hassan (egy)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">258.63</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select row number 1.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>rank</td>
+<td>diver</td>
+<td>preliminary_npoints</td>
+<td>preliminary_nrank</td>
+<td>final_npoints</td>
+</tr>
+<tr>
+<td>None</td>
+<td>sylvie bernier (can)</td>
+<td>489.51</td>
+<td>3</td>
+<td>530.7</td>
+</tr>
+<tr>
+<td>None</td>
+<td>kelly mccormick (usa)</td>
+<td>516.75</td>
+<td>2</td>
+<td>527.46</td>
+</tr>
+<tr>
+<td>None</td>
+<td>christina seufert (usa)</td>
+<td>481.41</td>
+<td>5</td>
+<td>517.62</td>
+</tr>
+<tr>
+<td>4.0</td>
+<td>li yihua (chn)</td>
+<td>517.92</td>
+<td>1</td>
+<td>506.52</td>
+</tr>
+<tr>
+<td>5.0</td>
+<td>li qiaoxian (chn)</td>
+<td>466.83</td>
+<td>6</td>
+<td>487.68</td>
+</tr>
+<tr>
+<td>6.0</td>
+<td>elsa tenorio (mex)</td>
+<td>460.56</td>
+<td>8</td>
+<td>463.56</td>
+</tr>
+<tr>
+<td>7.0</td>
+<td>lesley smith (zim)</td>
+<td>438.72</td>
+<td>10</td>
+<td>451.89</td>
+</tr>
+<tr>
+<td>8.0</td>
+<td>debbie fuller (can)</td>
+<td>437.04</td>
+<td>11</td>
+<td>450.99</td>
+</tr>
+<tr>
+<td>9.0</td>
+<td>jennifer donnet (aus)</td>
+<td>432.78</td>
+<td>12</td>
+<td>443.13</td>
+</tr>
+<tr>
+<td>10.0</td>
+<td>daphne jongejans (ned)</td>
+<td>487.95</td>
+<td>4</td>
+<td>437.4</td>
+</tr>
+<tr>
+<td>11.0</td>
+<td>anita rossing (swe)</td>
+<td>464.58</td>
+<td>7</td>
+<td>424.98</td>
+</tr>
+<tr>
+<td>12.0</td>
+<td>verónica ribot (arg)</td>
+<td>443.25</td>
+<td>9</td>
+<td>422.52</td>
+</tr>
+<tr>
+<td>13.0</td>
+<td>ann fargher (nzl)</td>
+<td>421.65</td>
+<td>13</td>
+<td>None</td>
+</tr>
+<tr>
+<td>14.0</td>
+<td>tine tollan (nor)</td>
+<td>419.55</td>
+<td>14</td>
+<td>None</td>
+</tr>
+<tr>
+<td>15.0</td>
+<td>antonette wilken (zim)</td>
+<td>414.66</td>
+<td>15</td>
+<td>None</td>
+</tr>
+<tr>
+<td>16.0</td>
+<td>guadalupe canseco (mex)</td>
+<td>411.96</td>
+<td>16</td>
+<td>None</td>
+</tr>
+<tr>
+<td>17.0</td>
+<td>claire izacard (fra)</td>
+<td>403.17</td>
+<td>17</td>
+<td>None</td>
+</tr>
+<tr>
+<td>18.0</td>
+<td>valerie mcfarland-beddoe (aus)</td>
+<td>401.13</td>
+<td>18</td>
+<td>None</td>
+</tr>
+<tr>
+<td>19.0</td>
+<td>alison childs (gbr)</td>
+<td>400.68</td>
+<td>19</td>
+<td>None</td>
+</tr>
+<tr>
+<td>20.0</td>
+<td>kerstin finke (frg)</td>
+<td>393.93</td>
+<td>20</td>
+<td>None</td>
+</tr>
+<tr>
+<td>21.0</td>
+<td>nicole kreil (aut)</td>
+<td>382.68</td>
+<td>21</td>
+<td>None</td>
+</tr>
+<tr>
+<td>22.0</td>
+<td>joana figueiredo (por)</td>
+<td>374.07</td>
+<td>22</td>
+<td>None</td>
+</tr>
+<tr>
+<td>23.0</td>
+<td>angela ribeiro (bra)</td>
+<td>370.68</td>
+<td>23</td>
+<td>None</td>
+</tr>
+<tr>
+<td>24.0</td>
+<td>rim hassan (egy)</td>
+<td>258.63</td>
+<td>24</td>
+<td>None</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select the 'diver' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>rank</td>
+<td>diver</td>
+<td>preliminary_npoints</td>
+<td>preliminary_nrank</td>
+<td>final_npoints</td>
+</tr>
+<tr>
+<td>None</td>
+<td>sylvie bernier (can)</td>
+<td>489.51</td>
+<td>3</td>
+<td>530.7</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>diver</td>
+</tr>
+<tr>
+<td>sylvie bernier (can)</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['sylvie bernier\xa0(can)']]</h3>
+</body></html>

@@ -1,0 +1,63 @@
+************************************************************************************************************************
+Sample 3114 - Plan 1: Query: which single had a 1 position on their ca chart position and a 4 on the hot 100 for the us?
+Sample 3114 - Plan 1: Groundtruth: ['Ironic']
+Sample 3114 - Plan 1: X-Original table pd: 
+   year                title  chart_positions_nau  chart_positions_nca  \
+0  1995  "you oughta know" a                    4                   20   
+1  1995  "hand in my pocket"                   13                    1   
+2  1996             "ironic"                    3                    1   
+3  1996          "you learn"                   20                    1   
+4  1996     "head over feet"                   12                    1   
+5  1997  "all i really want"                   40                    2   
+
+  chart_positions_nie chart_positions_nnl chart_positions_nnz  \
+0                   —                  11                  25   
+1                   —                   —                   7   
+2                   8                   6                   3   
+3                   —                  13                   —   
+4                  11                  33                  27   
+5                   —                   —                   —   
+
+   chart_positions_nuk chart_positions_nus_nhot_100  \
+0                   22                            —   
+1                   26                            —   
+2                   11                            4   
+3                   24                            6   
+4                    7                            —   
+5                   59                            —   
+
+   chart_positions_nus_nairplay  chart_positions_nus_nalternative  
+0                            13                                 1  
+1                            15                                 1  
+2                             2                                 1  
+3                             1                                 7  
+4                             3                                25  
+5                            65                                14  
+Sample 3114 - Plan 1: Caption: none
+Sample 3114 - Plan 1: Original table: [['year', 'title', 'chart_positions_nau', 'chart_positions_nca', 'chart_positions_nie', 'chart_positions_nnl', 'chart_positions_nnz', 'chart_positions_nuk', 'chart_positions_nus_nhot_100', 'chart_positions_nus_nairplay', 'chart_positions_nus_nalternative'], ['1995', '"you oughta know" a', '4', '20', '—', '11', '25', '22', '—', '13', '1'], ['1995', '"hand in my pocket"', '13', '1', '—', '—', '7', '26', '—', '15', '1'], ['1996', '"ironic"', '3', '1', '8', '6', '3', '11', '4', '2', '1'], ['1996', '"you learn"', '20', '1', '—', '13', '—', '24', '6', '1', '7'], ['1996', '"head over feet"', '12', '1', '11', '33', '27', '7', '—', '3', '25'], ['1997', '"all i really want"', '40', '2', '—', '—', '—', '59', '—', '65', '14']]
+########################################################################################################################
+Sample 3114 - Plan 1: Operation 1: Select rows where 'chart_positions_nca' is equal to 1 and 'chart_positions_nus_nhot_100' is equal to 4.
+Sample 3114 - Plan 1: Selected indices: [[2, 3], [2, 8]]
+Sample 3114 - Plan 1: X-Table after operation df:
+   year     title  chart_positions_nau  chart_positions_nca  \
+0  1996  "ironic"                    3                    1   
+
+   chart_positions_nie  chart_positions_nnl  chart_positions_nnz  \
+0                    8                    6                    3   
+
+   chart_positions_nuk  chart_positions_nus_nhot_100  \
+0                   11                             4   
+
+   chart_positions_nus_nairplay  chart_positions_nus_nalternative  
+0                             2                                 1  
+Sample 3114 - Plan 1: Table after operation: [['year', 'title', 'chart_positions_nau', 'chart_positions_nca', 'chart_positions_nie', 'chart_positions_nnl', 'chart_positions_nnz', 'chart_positions_nuk', 'chart_positions_nus_nhot_100', 'chart_positions_nus_nairplay', 'chart_positions_nus_nalternative'], [1996, '"ironic"', 3, 1, '8', '6', '3', 11, '4', 2, 1]]
+########################################################################################################################
+Sample 3114 - Plan 1: Operation 2: Select the 'title' column.
+Sample 3114 - Plan 1: Selected indices: []
+Sample 3114 - Plan 1: X-Table after operation df:
+      title
+0  "ironic"
+Sample 3114 - Plan 1: Table after operation: [['title'], ['"ironic"']]
+Fall-back: FALSE
+Answer from plan 1: [['"ironic"']]
+Groundtruth: ['Ironic']

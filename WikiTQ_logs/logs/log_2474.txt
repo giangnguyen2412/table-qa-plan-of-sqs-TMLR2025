@@ -1,0 +1,81 @@
+************************************************************************************************************************
+Sample 2474 - Plan 1: Query: was paul moor in a singles match after team europe?
+Sample 2474 - Plan 1: Groundtruth: ['no']
+Sample 2474 - Plan 1: X-Original table pd: 
+   match_no_ match_type        team_europe      score      team_usa  \
+0         25    singles    mika koivuniemi  217 - 279  chris barnes   
+1         26    singles      osku palermaa  217 - 244   tommy jones   
+2         27    singles          paul moor  210 - 199      tim mack   
+3         28    singles     tore torgersen  206 - 275     doug kent   
+4         29    singles  tomas leandersson  176 - 258  bill hoffman   
+5         30      baker        team europe  202 - 203      team usa   
+6         31    singles     tore torgersen  202 - 264  chris barnes   
+7         32    singles      osku palermaa  196 - 235   tommy jones   
+
+  progressive_total  
+0           14 - 11  
+1           14 - 12  
+2           15 - 12  
+3           15 - 13  
+4           15 - 14  
+5           15 - 15  
+6           15 - 16  
+7           15 - 17  
+Sample 2474 - Plan 1: Caption: none
+Sample 2474 - Plan 1: Original table: [['match_no_', 'match_type', 'team_europe', 'score', 'team_usa', 'progressive_total'], ['25', 'singles', 'mika koivuniemi', '217 - 279', 'chris barnes', '14 - 11'], ['26', 'singles', 'osku palermaa', '217 - 244', 'tommy jones', '14 - 12'], ['27', 'singles', 'paul moor', '210 - 199', 'tim mack', '15 - 12'], ['28', 'singles', 'tore torgersen', '206 - 275', 'doug kent', '15 - 13'], ['29', 'singles', 'tomas leandersson', '176 - 258', 'bill hoffman', '15 - 14'], ['30', 'baker', 'team europe', '202 - 203', 'team usa', '15 - 15'], ['31', 'singles', 'tore torgersen', '202 - 264', 'chris barnes', '15 - 16'], ['32', 'singles', 'osku palermaa', '196 - 235', 'tommy jones', '15 - 17']]
+########################################################################################################################
+Sample 2474 - Plan 1: Operation 1: Select rows where 'match_type' is 'singles'.
+Sample 2474 - Plan 1: Selected indices: [[0, 1], [7, 1], [2, 1], [3, 1], [6, 1], [1, 1], [4, 1]]
+Sample 2474 - Plan 1: X-Table after operation df:
+   match_no_ match_type        team_europe      score      team_usa  \
+0         25    singles    mika koivuniemi  217 - 279  chris barnes   
+1         26    singles      osku palermaa  217 - 244   tommy jones   
+2         27    singles          paul moor  210 - 199      tim mack   
+3         28    singles     tore torgersen  206 - 275     doug kent   
+4         29    singles  tomas leandersson  176 - 258  bill hoffman   
+5         31    singles     tore torgersen  202 - 264  chris barnes   
+6         32    singles      osku palermaa  196 - 235   tommy jones   
+
+  progressive_total  
+0           14 - 11  
+1           14 - 12  
+2           15 - 12  
+3           15 - 13  
+4           15 - 14  
+5           15 - 16  
+6           15 - 17  
+Sample 2474 - Plan 1: Table after operation: [['match_no_', 'match_type', 'team_europe', 'score', 'team_usa', 'progressive_total'], [25, 'singles', 'mika koivuniemi', '217 - 279', 'chris barnes', '14 - 11'], [26, 'singles', 'osku palermaa', '217 - 244', 'tommy jones', '14 - 12'], [27, 'singles', 'paul moor', '210 - 199', 'tim mack', '15 - 12'], [28, 'singles', 'tore torgersen', '206 - 275', 'doug kent', '15 - 13'], [29, 'singles', 'tomas leandersson', '176 - 258', 'bill hoffman', '15 - 14'], [31, 'singles', 'tore torgersen', '202 - 264', 'chris barnes', '15 - 16'], [32, 'singles', 'osku palermaa', '196 - 235', 'tommy jones', '15 - 17']]
+########################################################################################################################
+Sample 2474 - Plan 1: Operation 2: Select rows where 'team_europe' is 'paul moor'.
+Sample 2474 - Plan 1: Selected indices: [[2, 2]]
+Sample 2474 - Plan 1: X-Table after operation df:
+   match_no_ match_type team_europe      score  team_usa progressive_total
+0         27    singles   paul moor  210 - 199  tim mack           15 - 12
+Sample 2474 - Plan 1: Table after operation: [['match_no_', 'match_type', 'team_europe', 'score', 'team_usa', 'progressive_total'], [27, 'singles', 'paul moor', '210 - 199', 'tim mack', '15 - 12']]
+########################################################################################################################
+Sample 2474 - Plan 1: Operation 3: Check if there are any rows remaining after step 2.
+Sample 2474 - Plan 1: Selected indices: []
+Sample 2474 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [remaining_rows]
+Index: []
+Sample 2474 - Plan 1: Table after operation: [['remaining_rows']]
+########################################################################################################################
+Sample 2474 - Plan 1: Operation 4: If there are remaining rows, the answer is "Yes, Paul Moor was in a singles match after Team Europe."
+Sample 2474 - Plan 1: Selected indices: []
+Sample 2474 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [answer]
+Index: []
+Sample 2474 - Plan 1: Table after operation: [['answer']]
+########################################################################################################################
+Sample 2474 - Plan 1: Operation 5: If there are no remaining rows, the answer is "No, Paul Moor was not in a singles match after Team Europe."
+Sample 2474 - Plan 1: Selected indices: []
+Sample 2474 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [answer]
+Index: []
+Sample 2474 - Plan 1: Table after operation: [['answer']]
+Fall-back: TRUE
+Answer from plan 1: [['yes']]
+Groundtruth: ['no']

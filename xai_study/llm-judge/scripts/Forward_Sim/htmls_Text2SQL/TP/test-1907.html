@@ -1,0 +1,45 @@
+
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+.sql-command { background-color: #f0f0f0; padding: 10px; border-left: 4px solid #4CAF50; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> two of the teams have the same number of goals scored against them</h3>
+<h3>Input Table: 1940 in brazilian football</h3>
+<div class="step">
+<table>
+<tr><td>position</td><td>team</td><td>points</td><td>played</td><td>against</td><td>difference</td></tr><tr><td>1</td><td>flamengo</td><td>13</td><td>8</td><td>12</td><td>8</td></tr><tr><td>2</td><td>fluminense</td><td>13</td><td>8</td><td>15</td><td>10</td></tr><tr><td>3</td><td>corinthians</td><td>9</td><td>8</td><td>15</td><td>4</td></tr><tr><td>4</td><td>palestra itália</td><td>8</td><td>8</td><td>19</td><td>3</td></tr><tr><td>5</td><td>portuguesa</td><td>7</td><td>8</td><td>23</td><td>- 10</td></tr><tr><td>6</td><td>botafogo</td><td>6</td><td>8</td><td>25</td><td>0</td></tr><tr><td>7</td><td>vasco da gama</td><td>6</td><td>8</td><td>19</td><td>- 2</td></tr><tr><td>8</td><td>américa</td><td>6</td><td>8</td><td>25</td><td>- 10</td></tr><tr><td>9</td><td>são paulo</td><td>4</td><td>8</td><td>24</td><td>- 13</td></tr>
+</table>
+</div>
+<h3>SQL Command:</h3>
+<div class="sql-command">SELECT 
+    CASE 
+        WHEN COUNT(*) > 0 THEN 'TRUE' 
+        ELSE 'FALSE' 
+    END 
+FROM table_sql 
+WHERE against IN (
+    SELECT against 
+    FROM table_sql 
+    GROUP BY against 
+    HAVING COUNT(*) > 1
+)</div>
+</body></html>

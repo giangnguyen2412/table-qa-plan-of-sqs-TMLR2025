@@ -1,0 +1,65 @@
+************************************************************************************************************************
+Sample 213 - Plan 1: Query: what is the previous name of ajax?
+Sample 213 - Plan 1: Groundtruth: ['Ajax the Great']
+Sample 213 - Plan 1: X-Original table pd: 
+                   name  pennant                 namesake  \
+0               leander       75        leander of abydos   
+1                 orion       85         orion the hunter   
+2               neptune       20  neptune, god of the sea   
+3                  ajax       22           ajax the great   
+4              achilles       70                 achilles   
+5               amphion       29        amphion of thebes   
+6                apollo       63     apollo, god of light   
+7  sydney\n(ex-phaeton)       48           city of sydney   
+
+                   builder           ordered          laid_down  \
+0   hm dockyard, devonport  18 february 1928      1 august 1928   
+1   hm dockyard, devonport     24 march 1931  26 september 1931   
+2  hm dockyard, portsmouth      2 march 1931  24 september 1931   
+3        vickers armstrong    1 october 1932    7 february 1933   
+4            cammell laird  16 february 1931       11 june 1931   
+5  hm dockyard, portsmouth   1 december 1932       22 june 1933   
+6   hm dockyard, devonport      1 march 1933     15 august 1933   
+7              swan hunter  10 february 1933        8 july 1933   
+
+            launched       commissioned  \
+0       13 july 1929       23 july 1931   
+1   24 november 1932    18 january 1934   
+2    31 january 1933   23 february 1934   
+3       1 march 1934      12 april 1935   
+4   1 september 1932      24 march 1936   
+5       27 july 1934       15 june 1936   
+6     9 october 1934    13 january 1936   
+7  22 september 1934  24 september 1935   
+
+                                                fate  
+0  transferred to royal new zealand navy as hmnzs...  
+1                         broken up at dalmuir, 1949  
+2    sunk in minefield off tripoli, 19 december 1941  
+3                         broken up at newport, 1949  
+4  transferred to royal new zealand navy as hmnzs...  
+5  sold to royal australian navy as hmas perth, 1...  
+6  sold to royal australian navy as hmas hobart, ...  
+7           sunk in surface action, 19 november 1941  
+Sample 213 - Plan 1: Caption: none
+Sample 213 - Plan 1: Original table: [['name', 'pennant', 'namesake', 'builder', 'ordered', 'laid_down', 'launched', 'commissioned', 'fate'], ['leander', '75', 'leander of abydos', 'hm dockyard, devonport', '18 february 1928', '1 august 1928', '13 july 1929', '23 july 1931', 'transferred to royal new zealand navy as hmnzs leander 1941-1945\\nbroken up at blyth 1950'], ['orion', '85', 'orion the hunter', 'hm dockyard, devonport', '24 march 1931', '26 september 1931', '24 november 1932', '18 january 1934', 'broken up at dalmuir, 1949'], ['neptune', '20', 'neptune, god of the sea', 'hm dockyard, portsmouth', '2 march 1931', '24 september 1931', '31 january 1933', '23 february 1934', 'sunk in minefield off tripoli, 19 december 1941'], ['ajax', '22', 'ajax the great', 'vickers armstrong', '1 october 1932', '7 february 1933', '1 march 1934', '12 april 1935', 'broken up at newport, 1949'], ['achilles', '70', 'achilles', 'cammell laird', '16 february 1931', '11 june 1931', '1 september 1932', '24 march 1936', 'transferred to royal new zealand navy as hmnzs achilles 1941-1946\\nsold to indian navy as hims delhi 1948'], ['amphion', '29', 'amphion of thebes', 'hm dockyard, portsmouth', '1 december 1932', '22 june 1933', '27 july 1934', '15 june 1936', 'sold to royal australian navy as hmas perth, 1939\\nsunk in torpedo attack, 1 march 1942'], ['apollo', '63', 'apollo, god of light', 'hm dockyard, devonport', '1 march 1933', '15 august 1933', '9 october 1934', '13 january 1936', 'sold to royal australian navy as hmas hobart, 1938\\nbroken up at osaka, 1962'], ['sydney\\n(ex-phaeton)', '48', 'city of sydney', 'swan hunter', '10 february 1933', '8 july 1933', '22 september 1934', '24 september 1935', 'sunk in surface action, 19 november 1941']]
+########################################################################################################################
+Sample 213 - Plan 1: Operation 1: Select rows where the 'name' is 'ajax'.
+Sample 213 - Plan 1: Selected indices: [[3, 0]]
+Sample 213 - Plan 1: X-Table after operation df:
+   name  pennant        namesake            builder         ordered  \
+0  ajax       22  ajax the great  vickers armstrong  1 october 1932   
+
+         laid_down      launched   commissioned                        fate  
+0  7 february 1933  1 march 1934  12 april 1935  broken up at newport, 1949  
+Sample 213 - Plan 1: Table after operation: [['name', 'pennant', 'namesake', 'builder', 'ordered', 'laid_down', 'launched', 'commissioned', 'fate'], ['ajax', 22, 'ajax the great', 'vickers armstrong', '1 october 1932', '7 february 1933', '1 march 1934', '12 april 1935', 'broken up at newport, 1949']]
+########################################################################################################################
+Sample 213 - Plan 1: Operation 2: Select the 'namesake' column.
+Sample 213 - Plan 1: Selected indices: []
+Sample 213 - Plan 1: X-Table after operation df:
+         namesake
+0  ajax the great
+Sample 213 - Plan 1: Table after operation: [['namesake'], ['ajax the great']]
+Fall-back: FALSE
+Answer from plan 1: [['ajax the great']]
+Groundtruth: ['Ajax the Great']

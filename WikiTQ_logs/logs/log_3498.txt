@@ -1,0 +1,56 @@
+************************************************************************************************************************
+Sample 3498 - Plan 1: Query: who is the next highest scorer after jamie cureton for this season?
+Sample 3498 - Plan 1: Groundtruth: ["John O'Flynn"]
+Sample 3498 - Plan 1: X-Original table pd: 
+             name  league  fa_cup  league_cup  jp_trophy  total
+0    scot bennett       5       0           0          0      5
+1     danny coles       3       0           0          0      3
+2   liam sercombe       1       0           0          0      1
+3        alan gow       4       0           0          0      4
+4    john o'flynn      11       0           1          0     12
+5   guillem bauza       2       0           0          0      2
+6   jimmy keohane       3       0           0          0      3
+7     pat baldwin       1       0           0          0      1
+8   jamie cureton      20       0           0          0     20
+9    arron davies       3       0           0          0      3
+10   jake gosling       1       0           0          0      1
+11      own goals       0       0           0          0      0
+12          total       0       0           0          0      0
+Sample 3498 - Plan 1: Caption: none
+Sample 3498 - Plan 1: Original table: [['name', 'league', 'fa_cup', 'league_cup', 'jp_trophy', 'total'], ['scot bennett', '5', '0', '0', '0', '5'], ['danny coles', '3', '0', '0', '0', '3'], ['liam sercombe', '1', '0', '0', '0', '1'], ['alan gow', '4', '0', '0', '0', '4'], ["john o'flynn", '11', '0', '1', '0', '12'], ['guillem bauza', '2', '0', '0', '0', '2'], ['jimmy keohane', '3', '0', '0', '0', '3'], ['pat baldwin', '1', '0', '0', '0', '1'], ['jamie cureton', '20', '0', '0', '0', '20'], ['arron davies', '3', '0', '0', '0', '3'], ['jake gosling', '1', '0', '0', '0', '1'], ['own goals', '0', '0', '0', '0', '0'], ['total', '0', '0', '0', '0', '0']]
+########################################################################################################################
+Sample 3498 - Plan 1: Operation 1: Order the table by the 'total' column in descending order.
+Sample 3498 - Plan 1: Selected indices: [[10, 5], [5, 5], [6, 5], [1, 5], [9, 5], [4, 5], [0, 5], [11, 5], [12, 5], [7, 5], [2, 5], [8, 5], [3, 5]]
+Sample 3498 - Plan 1: X-Table after operation df:
+             name  league  fa_cup  league_cup  jp_trophy  total
+0   jamie cureton      20       0           0          0     20
+1    john o'flynn      11       0           1          0     12
+2    scot bennett       5       0           0          0      5
+3        alan gow       4       0           0          0      4
+4     danny coles       3       0           0          0      3
+5   jimmy keohane       3       0           0          0      3
+6    arron davies       3       0           0          0      3
+7   guillem bauza       2       0           0          0      2
+8   liam sercombe       1       0           0          0      1
+9     pat baldwin       1       0           0          0      1
+10   jake gosling       1       0           0          0      1
+11      own goals       0       0           0          0      0
+12          total       0       0           0          0      0
+Sample 3498 - Plan 1: Table after operation: [['name', 'league', 'fa_cup', 'league_cup', 'jp_trophy', 'total'], ['jamie cureton', 20, 0, 0, 0, 20], ["john o'flynn", 11, 0, 1, 0, 12], ['scot bennett', 5, 0, 0, 0, 5], ['alan gow', 4, 0, 0, 0, 4], ['danny coles', 3, 0, 0, 0, 3], ['jimmy keohane', 3, 0, 0, 0, 3], ['arron davies', 3, 0, 0, 0, 3], ['guillem bauza', 2, 0, 0, 0, 2], ['liam sercombe', 1, 0, 0, 0, 1], ['pat baldwin', 1, 0, 0, 0, 1], ['jake gosling', 1, 0, 0, 0, 1], ['own goals', 0, 0, 0, 0, 0], ['total', 0, 0, 0, 0, 0]]
+########################################################################################################################
+Sample 3498 - Plan 1: Operation 2: Select the row number 2.
+Sample 3498 - Plan 1: Selected indices: []
+Sample 3498 - Plan 1: X-Table after operation df:
+           name  league  fa_cup  league_cup  jp_trophy  total
+0  john o'flynn      11       0           1          0     12
+Sample 3498 - Plan 1: Table after operation: [['name', 'league', 'fa_cup', 'league_cup', 'jp_trophy', 'total'], ["john o'flynn", 11, 0, 1, 0, 12]]
+########################################################################################################################
+Sample 3498 - Plan 1: Operation 3: Select the 'name' column.
+Sample 3498 - Plan 1: Selected indices: []
+Sample 3498 - Plan 1: X-Table after operation df:
+           name
+0  john o'flynn
+Sample 3498 - Plan 1: Table after operation: [['name'], ["john o'flynn"]]
+Fall-back: FALSE
+Answer from plan 1: [["john o'flynn"]]
+Groundtruth: ["John O'Flynn"]

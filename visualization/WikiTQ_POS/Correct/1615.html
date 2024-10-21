@@ -1,0 +1,205 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which airport is the most busy?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Order the table by 'passengers_handled' in descending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>rank</td>
+<td>airport</td>
+<td>passengers_handled</td>
+<td>change_n2011_12</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">london heathrow</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">828,531</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0%</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">london gatwick</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">607,417</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7%</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">london stansted</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">331,607</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3%</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">london luton</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">276,488</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0%</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">belfast international</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">266,987</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8%</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bristol</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">239,666</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8%</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">birmingham</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">208,123</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2%</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">southampton</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">173,576</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24%</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">london city</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">158,239</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6%</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">belfast city</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">100,003</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4%</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select row number 1.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>rank</td>
+<td>airport</td>
+<td>passengers_handled</td>
+<td>change_n2011_12</td>
+</tr>
+<tr>
+<td>1</td>
+<td>london heathrow</td>
+<td>828,531</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>2</td>
+<td>london gatwick</td>
+<td>607,417</td>
+<td>7%</td>
+</tr>
+<tr>
+<td>3</td>
+<td>london stansted</td>
+<td>331,607</td>
+<td>3%</td>
+</tr>
+<tr>
+<td>4</td>
+<td>london luton</td>
+<td>276,488</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>5</td>
+<td>belfast international</td>
+<td>266,987</td>
+<td>8%</td>
+</tr>
+<tr>
+<td>6</td>
+<td>bristol</td>
+<td>239,666</td>
+<td>8%</td>
+</tr>
+<tr>
+<td>7</td>
+<td>birmingham</td>
+<td>208,123</td>
+<td>2%</td>
+</tr>
+<tr>
+<td>8</td>
+<td>southampton</td>
+<td>173,576</td>
+<td>24%</td>
+</tr>
+<tr>
+<td>9</td>
+<td>london city</td>
+<td>158,239</td>
+<td>6%</td>
+</tr>
+<tr>
+<td>10</td>
+<td>belfast city</td>
+<td>100,003</td>
+<td>4%</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select the 'airport' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>rank</td>
+<td>airport</td>
+<td>passengers_handled</td>
+<td>change_n2011_12</td>
+</tr>
+<tr>
+<td>1</td>
+<td>london heathrow</td>
+<td>828,531</td>
+<td>0%</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>airport</td>
+</tr>
+<tr>
+<td>london heathrow</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['london heathrow']]</h3>
+</body></html>

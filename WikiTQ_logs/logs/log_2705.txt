@@ -1,0 +1,63 @@
+************************************************************************************************************************
+Sample 2705 - Plan 1: Query: which candidate has the most votes?
+Sample 2705 - Plan 1: Groundtruth: ['Patrick McLoughlin']
+Sample 2705 - Plan 1: X-Original table pd: 
+                  party                  candidate   votes     _    __
+0          conservative         patrick mcloughlin  24,280  48.0   5.9
+1                labour              stephen clamp  16,910  33.4  -0.1
+2      liberal democrat             jeremy beckett   7,922  15.7  -1.8
+3                  ukip            stuart bavester     672   1.3   0.5
+4  monster raving loony  "the flying brick" delves     472   0.9   0.4
+5           independent             robert goodall     333   0.7   0.5
+6              majority                   majority   7,370  14.6   NaN
+7               turnout                    turnout  50,589  67.8 -10.5
+8     conservative hold          conservative hold   swing   NaN   NaN
+Sample 2705 - Plan 1: Caption: none
+Sample 2705 - Plan 1: Original table: [['party', 'candidate', 'votes', '_', '__'], ['conservative', 'patrick mcloughlin', '24,280', '48.0', '+5.9'], ['labour', 'stephen clamp', '16,910', '33.4', '-0.1'], ['liberal democrat', 'jeremy beckett', '7,922', '15.7', '-1.8'], ['ukip', 'stuart bavester', '672', '1.3', '+0.5'], ['monster raving loony', '"the flying brick" delves', '472', '0.9', '+0.4'], ['independent', 'robert goodall', '333', '0.7', '+0.5'], ['majority', 'majority', '7,370', '14.6', ''], ['turnout', 'turnout', '50,589', '67.8', '-10.5'], ['conservative hold', 'conservative hold', 'swing', '', '']]
+########################################################################################################################
+Sample 2705 - Plan 1: Operation 1: Select the 'candidate' and 'votes' columns.
+Sample 2705 - Plan 1: Selected indices: []
+Sample 2705 - Plan 1: X-Table after operation df:
+                   candidate   votes
+0         patrick mcloughlin  24,280
+1              stephen clamp  16,910
+2             jeremy beckett   7,922
+3            stuart bavester     672
+4  "the flying brick" delves     472
+5             robert goodall     333
+6                   majority   7,370
+7                    turnout  50,589
+8          conservative hold   swing
+Sample 2705 - Plan 1: Table after operation: [['candidate', 'votes'], ['patrick mcloughlin', '24,280'], ['stephen clamp', '16,910'], ['jeremy beckett', '7,922'], ['stuart bavester', '672'], ['"the flying brick" delves', '472'], ['robert goodall', '333'], ['majority', '7,370'], ['turnout', '50,589'], ['conservative hold', 'swing']]
+########################################################################################################################
+Sample 2705 - Plan 1: Operation 2: Order the table by the 'votes' column in descending order.
+Sample 2705 - Plan 1: Selected indices: [[0, 1], [7, 1], [2, 1], [8, 1], [3, 1], [6, 1], [1, 1], [5, 1], [4, 1]]
+Sample 2705 - Plan 1: X-Table after operation df:
+                   candidate   votes
+0                    turnout  50,589
+1         patrick mcloughlin  24,280
+2              stephen clamp  16,910
+3             jeremy beckett   7,922
+4                   majority   7,370
+5            stuart bavester     672
+6  "the flying brick" delves     472
+7             robert goodall     333
+8          conservative hold   swing
+Sample 2705 - Plan 1: Table after operation: [['candidate', 'votes'], ['turnout', '50,589'], ['patrick mcloughlin', '24,280'], ['stephen clamp', '16,910'], ['jeremy beckett', '7,922'], ['majority', '7,370'], ['stuart bavester', '672'], ['"the flying brick" delves', '472'], ['robert goodall', '333'], ['conservative hold', 'swing']]
+########################################################################################################################
+Sample 2705 - Plan 1: Operation 3: Select row number 1.
+Sample 2705 - Plan 1: Selected indices: []
+Sample 2705 - Plan 1: X-Table after operation df:
+  candidate   votes
+0   turnout  50,589
+Sample 2705 - Plan 1: Table after operation: [['candidate', 'votes'], ['turnout', '50,589']]
+########################################################################################################################
+Sample 2705 - Plan 1: Operation 4: Select the 'candidate' column.
+Sample 2705 - Plan 1: Selected indices: []
+Sample 2705 - Plan 1: X-Table after operation df:
+  candidate
+0   turnout
+Sample 2705 - Plan 1: Table after operation: [['candidate'], ['turnout']]
+Fall-back: FALSE
+Answer from plan 1: [['turnout']]
+Groundtruth: ['Patrick McLoughlin']

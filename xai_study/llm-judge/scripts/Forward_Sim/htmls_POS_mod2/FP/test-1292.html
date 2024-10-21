@@ -1,0 +1,527 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr/>
+<h3><span>Statement:</span> michael phelps has more medals than larisa latyna</h3>
+<h3>Input Table: list of multiple olympic medalists</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where 'athlete' is 'michael phelps'.</div>
+<div class="content" id="step-1">
+<table>
+<tr>
+<td>medal_count</td>
+<td>date</td>
+<td>athlete</td>
+<td>nation</td>
+<td>sport</td>
+<td>record_medal_event</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1896-04-06</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">james connolly</span></td>
+<td>united states</td>
+<td>athletics</td>
+<td>triple jump g</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1896-04-06</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">alexandre tuffère</span></td>
+<td>france</td>
+<td>athletics</td>
+<td>triple jump s</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1896-04-06</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">ioannis persakis</span></td>
+<td>greece</td>
+<td>athletics</td>
+<td>triple jump b</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1896-04-06</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">robert garrett</span></td>
+<td>united states</td>
+<td>athletics</td>
+<td>discus g</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1896-04-06</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">panagiotis paraskevopoulos</span></td>
+<td>greece</td>
+<td>athletics</td>
+<td>discus s</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1896-04-06</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">sotirios versis</span></td>
+<td>greece</td>
+<td>athletics</td>
+<td>discus b</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1896-04-07</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">robert garrett</span></td>
+<td>united states</td>
+<td>athletics</td>
+<td>long jump s</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1896-04-07</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">james connolly</span></td>
+<td>united states</td>
+<td>athletics</td>
+<td>long jump b</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1896-04-07</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">robert garrett</span></td>
+<td>united states</td>
+<td>athletics</td>
+<td>shot put g</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1896-04-09</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">carl schuhmann</span></td>
+<td>germany</td>
+<td>gymnastics</td>
+<td>vault g</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1896-04-09</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">hermann weingärtner</span></td>
+<td>germany</td>
+<td>gymnastics</td>
+<td>vault b</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1896-04-09</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">hermann weingärtner</span></td>
+<td>germany</td>
+<td>gymnastics</td>
+<td>pommel horse s</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1896-04-09</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">hermann weingärtner</span></td>
+<td>germany</td>
+<td>gymnastics</td>
+<td>rings s</td>
+</tr>
+<tr>
+<td>6</td>
+<td>1896-04-09</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">hermann weingärtner</span></td>
+<td>germany</td>
+<td>gymnastics</td>
+<td>horizontal bar g</td>
+</tr>
+<tr>
+<td>6</td>
+<td>1900-07-16</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">robert garrett</span></td>
+<td>united states</td>
+<td>athletics</td>
+<td>standing triple jump b</td>
+</tr>
+<tr>
+<td>6</td>
+<td>1904-09-03</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">ray ewry</span></td>
+<td>united states</td>
+<td>athletics</td>
+<td>standing triple jump g</td>
+</tr>
+<tr>
+<td>7</td>
+<td>1908-07-20</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">ray ewry</span></td>
+<td>united states</td>
+<td>athletics</td>
+<td>standing long jump g</td>
+</tr>
+<tr>
+<td>8</td>
+<td>1908-07-23</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">ray ewry</span></td>
+<td>united states</td>
+<td>athletics</td>
+<td>standing high jump g</td>
+</tr>
+<tr>
+<td>8</td>
+<td>1920-07-29</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">carl osburn</span></td>
+<td>united states</td>
+<td>shooting</td>
+<td>team 300 m / 600 m military rifle , prone g</td>
+</tr>
+<tr>
+<td>9</td>
+<td>1920-07-30</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">carl osburn</span></td>
+<td>united states</td>
+<td>shooting</td>
+<td>300 m military rifle , standing g</td>
+</tr>
+<tr>
+<td>10</td>
+<td>1920-07-31</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">carl osburn</span></td>
+<td>united states</td>
+<td>shooting</td>
+<td>team free rifle g</td>
+</tr>
+<tr>
+<td>11</td>
+<td>1924-06-27</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">carl osburn</span></td>
+<td>united states</td>
+<td>shooting</td>
+<td>600 m free rifle s</td>
+</tr>
+<tr>
+<td>11</td>
+<td>1928-08-03</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">paavo nurmi</span></td>
+<td>finland</td>
+<td>athletics</td>
+<td>5000 m s</td>
+</tr>
+<tr>
+<td>12</td>
+<td>1928-08-04</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">paavo nurmi</span></td>
+<td>finland</td>
+<td>athletics</td>
+<td>3000 m steeplechase s</td>
+</tr>
+<tr>
+<td>12</td>
+<td>1960-09-02</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">edoardo mangiarotti</span></td>
+<td>italy</td>
+<td>fencing</td>
+<td>team foil s</td>
+</tr>
+<tr>
+<td>13</td>
+<td>1960-09-09</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">edoardo mangiarotti</span></td>
+<td>italy</td>
+<td>fencing</td>
+<td>team épée g</td>
+</tr>
+<tr>
+<td>13</td>
+<td>1964-10-21</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">larisa latynina</span></td>
+<td>soviet union</td>
+<td>gymnastics</td>
+<td>team g</td>
+</tr>
+<tr>
+<td>14</td>
+<td>1964-10-21</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">larisa latynina</span></td>
+<td>soviet union</td>
+<td>gymnastics</td>
+<td>all - around s</td>
+</tr>
+<tr>
+<td>15</td>
+<td>1964-10-22</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">larisa latynina</span></td>
+<td>soviet union</td>
+<td>gymnastics</td>
+<td>vault s</td>
+</tr>
+<tr>
+<td>16</td>
+<td>1964-10-22</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">larisa latynina</span></td>
+<td>soviet union</td>
+<td>gymnastics</td>
+<td>uneven bars b</td>
+</tr>
+<tr>
+<td>17</td>
+<td>1964-10-23</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">larisa latynina</span></td>
+<td>soviet union</td>
+<td>gymnastics</td>
+<td>balance beam b</td>
+</tr>
+<tr>
+<td>18</td>
+<td>1964-10-23</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">larisa latynina</span></td>
+<td>soviet union</td>
+<td>gymnastics</td>
+<td>floor exercise g</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">18</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">2012-07-31</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">michael phelps</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">united states</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">swimming</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">200 m butterfly s</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">19</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">2012-07-31</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">michael phelps</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">united states</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">swimming</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">4 x 200 m freestyle g</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">20</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">2012-08-02</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">michael phelps</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">united states</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">swimming</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">200 m individual medley g</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">21</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">2012-08-03</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">michael phelps</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">united states</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">swimming</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">100 m butterfly g</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">22</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">2012-08-04</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">michael phelps</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">united states</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">swimming</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">4 100 m medley relay g</span></td>
+</tr>
+</table>
+</div>
+<hr/>
+<div class="step">
+<div class="step-title">Step 2: Extract the sum of 'medal_count' from the selected rows then add column 'phelps_medals' to the existing table.</div>
+<div class="content" id="step-0">
+<table>
+<tr>
+<td>medal_count</td>
+<td>date</td>
+<td>athlete</td>
+<td>nation</td>
+<td>sport</td>
+<td>record_medal_event</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">18</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">2012-07-31</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">michael phelps</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">united states</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">swimming</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">200 m butterfly s</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">19</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">2012-07-31</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">michael phelps</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">united states</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">swimming</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">4 x 200 m freestyle g</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">20</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">2012-08-02</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">michael phelps</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">united states</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">swimming</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">200 m individual medley g</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">21</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">2012-08-03</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">michael phelps</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">united states</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">swimming</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">100 m butterfly g</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">22</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">2012-08-04</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">michael phelps</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">united states</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">swimming</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">4 100 m medley relay g</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr/>
+<div class="step">
+<div class="step-title">Step 3: Select rows where 'athlete' is 'larisa latynina'.</div>
+<div class="content" id="step-1">
+<table>
+<tr>
+<td>medal_count</td>
+<td>date</td>
+<td>athlete</td>
+<td>nation</td>
+<td>sport</td>
+<td>record_medal_event</td>
+<td>phelps_medals</td>
+</tr>
+<tr>
+<td>18</td>
+<td>2012-07-31</td>
+<td>michael phelps</td>
+<td>united states</td>
+<td>swimming</td>
+<td>200 m butterfly s</td>
+<td>100</td>
+</tr>
+<tr>
+<td>19</td>
+<td>2012-07-31</td>
+<td>michael phelps</td>
+<td>united states</td>
+<td>swimming</td>
+<td>4 x 200 m freestyle g</td>
+<td>100</td>
+</tr>
+<tr>
+<td>20</td>
+<td>2012-08-02</td>
+<td>michael phelps</td>
+<td>united states</td>
+<td>swimming</td>
+<td>200 m individual medley g</td>
+<td>100</td>
+</tr>
+<tr>
+<td>21</td>
+<td>2012-08-03</td>
+<td>michael phelps</td>
+<td>united states</td>
+<td>swimming</td>
+<td>100 m butterfly g</td>
+<td>100</td>
+</tr>
+<tr>
+<td>22</td>
+<td>2012-08-04</td>
+<td>michael phelps</td>
+<td>united states</td>
+<td>swimming</td>
+<td>4 100 m medley relay g</td>
+<td>100</td>
+</tr>
+</table>
+</div>
+</div>
+<hr/>
+<div class="step">
+<div class="step-title">Step 4: Extract the sum of 'medal_count' from the selected rows then add column 'latynina_medals' to the existing table.</div>
+<div class="content" id="step-2">
+<table>
+<tr>
+<td>medal_count</td>
+<td>date</td>
+<td>athlete</td>
+<td>nation</td>
+<td>sport</td>
+<td>record_medal_event</td>
+<td>phelps_medals</td>
+</tr>
+</table>
+</div>
+</div>
+<hr/>
+<div class="step">
+<div class="step-title">Step 5: Use a `CASE` statement to return TRUE if 'phelps_medals' is greater than 'latynina_medals', otherwise return FALSE.</div>
+<div class="content" id="step-3">
+<table>
+<tr>
+<td>medal_count</td>
+<td>date</td>
+<td>athlete</td>
+<td>nation</td>
+<td>sport</td>
+<td>record_medal_event</td>
+<td>phelps_medals</td>
+<td>latynina_medals</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">None</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">None</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">None</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">None</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">None</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">None</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">None</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">None</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr/>
+<table>
+<tr>
+<td>medal_count</td>
+<td>date</td>
+<td>athlete</td>
+<td>nation</td>
+<td>sport</td>
+<td>record_medal_event</td>
+<td>phelps_medals</td>
+<td>latynina_medals</td>
+<td>phelps_greater_than_latynina</td>
+</tr>
+<tr>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+<td>FALSE</td>
+</tr>
+</table>
+</div>
+</div>
+<hr/>
+</body></html>

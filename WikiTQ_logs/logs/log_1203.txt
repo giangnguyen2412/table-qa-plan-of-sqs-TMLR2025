@@ -1,0 +1,62 @@
+************************************************************************************************************************
+Sample 1203 - Plan 1: Query: what's the most number of people who showed up to watch regular season?
+Sample 1203 - Plan 1: Groundtruth: ['75,287']
+Sample 1203 - Plan 1: X-Original table pd: 
+    week                date                opponent   result attendance
+0      1   september 4, 1988        at detroit lions  l 31–17     31,075
+1      2  september 11, 1988      new orleans saints  l 29–21     48,901
+2      3  september 18, 1988  at san francisco 49ers  w 34–17     60,168
+3      4  september 25, 1988       at dallas cowboys  l 26–20     39,702
+4      5     october 2, 1988        seattle seahawks  l 31–20     28,619
+5      6     october 9, 1988        los angeles rams   l 33–0     30,852
+6      7    october 16, 1988       at denver broncos  l 30–14     75,287
+7      8    october 23, 1988         new york giants  l 23–16     45,092
+8      9    october 30, 1988  at philadelphia eagles  w 27–24     60,091
+9     10    november 6, 1988       green bay packers   w 20–0     29,952
+10    11   november 13, 1988      san diego chargers   l 10–7     26,329
+11    12   november 20, 1988  at los angeles raiders   w 12–6     40,967
+12    13   november 27, 1988    tampa bay buccaneers  w 17–10     14,020
+13    14    december 4, 1988     san francisco 49ers   l 13–3     44,048
+14    15   december 11, 1988     at los angeles rams   l 22–7     42,828
+15    16   december 18, 1988   at new orleans saints   l 10–9     60,566
+Sample 1203 - Plan 1: Caption: none
+Sample 1203 - Plan 1: Original table: [['week', 'date', 'opponent', 'result', 'attendance'], ['1', 'september 4, 1988', 'at detroit lions', 'l 31–17', '31,075'], ['2', 'september 11, 1988', 'new orleans saints', 'l 29–21', '48,901'], ['3', 'september 18, 1988', 'at san francisco 49ers', 'w 34–17', '60,168'], ['4', 'september 25, 1988', 'at dallas cowboys', 'l 26–20', '39,702'], ['5', 'october 2, 1988', 'seattle seahawks', 'l 31–20', '28,619'], ['6', 'october 9, 1988', 'los angeles rams', 'l 33–0', '30,852'], ['7', 'october 16, 1988', 'at denver broncos', 'l 30–14', '75,287'], ['8', 'october 23, 1988', 'new york giants', 'l 23–16', '45,092'], ['9', 'october 30, 1988', 'at philadelphia eagles', 'w 27–24', '60,091'], ['10', 'november 6, 1988', 'green bay packers', 'w 20–0', '29,952'], ['11', 'november 13, 1988', 'san diego chargers', 'l 10–7', '26,329'], ['12', 'november 20, 1988', 'at los angeles raiders', 'w 12–6', '40,967'], ['13', 'november 27, 1988', 'tampa bay buccaneers', 'w 17–10', '14,020'], ['14', 'december 4, 1988', 'san francisco 49ers', 'l 13–3', '44,048'], ['15', 'december 11, 1988', 'at los angeles rams', 'l 22–7', '42,828'], ['16', 'december 18, 1988', 'at new orleans saints', 'l 10–9', '60,566']]
+########################################################################################################################
+Sample 1203 - Plan 1: Operation 1: Order the table by the 'attendance' column in descending order.
+Sample 1203 - Plan 1: Selected indices: [[4, 4], [7, 4], [2, 4], [13, 4], [8, 4], [14, 4], [3, 4], [0, 4], [15, 4], [10, 4], [5, 4], [6, 4], [1, 4], [12, 4], [11, 4], [9, 4]]
+Sample 1203 - Plan 1: X-Table after operation df:
+    week                date                opponent   result attendance
+0      7    october 16, 1988       at denver broncos  l 30–14     75,287
+1     16   december 18, 1988   at new orleans saints   l 10–9     60,566
+2      3  september 18, 1988  at san francisco 49ers  w 34–17     60,168
+3      9    october 30, 1988  at philadelphia eagles  w 27–24     60,091
+4      2  september 11, 1988      new orleans saints  l 29–21     48,901
+5      8    october 23, 1988         new york giants  l 23–16     45,092
+6     14    december 4, 1988     san francisco 49ers   l 13–3     44,048
+7     15   december 11, 1988     at los angeles rams   l 22–7     42,828
+8     12   november 20, 1988  at los angeles raiders   w 12–6     40,967
+9      4  september 25, 1988       at dallas cowboys  l 26–20     39,702
+10     1   september 4, 1988        at detroit lions  l 31–17     31,075
+11     6     october 9, 1988        los angeles rams   l 33–0     30,852
+12    10    november 6, 1988       green bay packers   w 20–0     29,952
+13     5     october 2, 1988        seattle seahawks  l 31–20     28,619
+14    11   november 13, 1988      san diego chargers   l 10–7     26,329
+15    13   november 27, 1988    tampa bay buccaneers  w 17–10     14,020
+Sample 1203 - Plan 1: Table after operation: [['week', 'date', 'opponent', 'result', 'attendance'], [7, 'october 16, 1988', 'at denver broncos', 'l 30–14', '75,287'], [16, 'december 18, 1988', 'at new orleans saints', 'l 10–9', '60,566'], [3, 'september 18, 1988', 'at san francisco 49ers', 'w 34–17', '60,168'], [9, 'october 30, 1988', 'at philadelphia eagles', 'w 27–24', '60,091'], [2, 'september 11, 1988', 'new orleans saints', 'l 29–21', '48,901'], [8, 'october 23, 1988', 'new york giants', 'l 23–16', '45,092'], [14, 'december 4, 1988', 'san francisco 49ers', 'l 13–3', '44,048'], [15, 'december 11, 1988', 'at los angeles rams', 'l 22–7', '42,828'], [12, 'november 20, 1988', 'at los angeles raiders', 'w 12–6', '40,967'], [4, 'september 25, 1988', 'at dallas cowboys', 'l 26–20', '39,702'], [1, 'september 4, 1988', 'at detroit lions', 'l 31–17', '31,075'], [6, 'october 9, 1988', 'los angeles rams', 'l 33–0', '30,852'], [10, 'november 6, 1988', 'green bay packers', 'w 20–0', '29,952'], [5, 'october 2, 1988', 'seattle seahawks', 'l 31–20', '28,619'], [11, 'november 13, 1988', 'san diego chargers', 'l 10–7', '26,329'], [13, 'november 27, 1988', 'tampa bay buccaneers', 'w 17–10', '14,020']]
+########################################################################################################################
+Sample 1203 - Plan 1: Operation 2: Select the first row.
+Sample 1203 - Plan 1: Selected indices: []
+Sample 1203 - Plan 1: X-Table after operation df:
+   week              date           opponent   result attendance
+0     7  october 16, 1988  at denver broncos  l 30–14     75,287
+Sample 1203 - Plan 1: Table after operation: [['week', 'date', 'opponent', 'result', 'attendance'], [7, 'october 16, 1988', 'at denver broncos', 'l 30–14', '75,287']]
+########################################################################################################################
+Sample 1203 - Plan 1: Operation 3: Select the 'attendance' column.
+Sample 1203 - Plan 1: Selected indices: []
+Sample 1203 - Plan 1: X-Table after operation df:
+  attendance
+0     75,287
+Sample 1203 - Plan 1: Table after operation: [['attendance'], ['75,287']]
+Fall-back: FALSE
+Answer from plan 1: [['75,287']]
+Groundtruth: ['75,287']

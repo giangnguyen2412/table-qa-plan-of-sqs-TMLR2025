@@ -1,0 +1,1598 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> did the bulldogs perform better or worse in the 1905 season than the 1906 season?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'season' is either 1905 or 1906.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>season</td>
+<td>conference</td>
+<td>head_coach</td>
+<td>total_wins</td>
+<td>total_losses</td>
+<td>total_ties</td>
+<td>conference_wins</td>
+<td>conference_losses</td>
+<td>conference_ties</td>
+<td>conference_standing</td>
+<td>postseason_result</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1905</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">independent</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sidney smith</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">—</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">—</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">—</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">—</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">—</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1906</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">independent</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ralph foster</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">—</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">—</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">—</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">—</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">—</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1907</span></td>
+<td>independent</td>
+<td>ralph foster</td>
+<td>1</td>
+<td>5</td>
+<td>1</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1908</span></td>
+<td>southern intercollegiate</td>
+<td>ralph foster</td>
+<td>4</td>
+<td>1</td>
+<td>1</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1909</span></td>
+<td>southern intercollegiate</td>
+<td>sam costen</td>
+<td>4</td>
+<td>3</td>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1910</span></td>
+<td>southern intercollegiate</td>
+<td>sam costen</td>
+<td>3</td>
+<td>4</td>
+<td>0</td>
+<td>1</td>
+<td>3</td>
+<td>0</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1911</span></td>
+<td>southern intercollegiate</td>
+<td>l. s. letellier</td>
+<td>5</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1912</span></td>
+<td>southern intercollegiate</td>
+<td>l. s. letellier</td>
+<td>3</td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+<td>0</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1913</span></td>
+<td>southern intercollegiate</td>
+<td>george c. rogers</td>
+<td>3</td>
+<td>4</td>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1914</span></td>
+<td>southern intercollegiate</td>
+<td>george c. rogers</td>
+<td>2</td>
+<td>5</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+<td>0</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1915</span></td>
+<td>southern intercollegiate</td>
+<td>george c. rogers</td>
+<td>5</td>
+<td>3</td>
+<td>0</td>
+<td>2</td>
+<td>3</td>
+<td>0</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1916</span></td>
+<td>southern intercollegiate</td>
+<td>harvey o'brien</td>
+<td>6</td>
+<td>1</td>
+<td>1</td>
+<td>4</td>
+<td>1</td>
+<td>0</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1917</span></td>
+<td>southern intercollegiate</td>
+<td>harvey o'brien</td>
+<td>3</td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>3</td>
+<td>0</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1918</span></td>
+<td>southern intercollegiate</td>
+<td>harvey o'brien</td>
+<td>0</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1919</span></td>
+<td>southern intercollegiate</td>
+<td>george c. rogers</td>
+<td>4</td>
+<td>4</td>
+<td>1</td>
+<td>2</td>
+<td>4</td>
+<td>1</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1920</span></td>
+<td>southern intercollegiate</td>
+<td>harvey o'brien</td>
+<td>2</td>
+<td>6</td>
+<td>0</td>
+<td>1</td>
+<td>5</td>
+<td>0</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1921</span></td>
+<td>southern intercollegiate</td>
+<td>harvey o'brien</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1922</span></td>
+<td>southern intercollegiate</td>
+<td>carl prause</td>
+<td>3</td>
+<td>5</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1923</span></td>
+<td>southern intercollegiate</td>
+<td>carl prause</td>
+<td>5</td>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1924</span></td>
+<td>southern intercollegiate</td>
+<td>carl prause</td>
+<td>6</td>
+<td>4</td>
+<td>0</td>
+<td>4</td>
+<td>2</td>
+<td>0</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1925</span></td>
+<td>southern intercollegiate</td>
+<td>carl prause</td>
+<td>6</td>
+<td>4</td>
+<td>0</td>
+<td>4</td>
+<td>2</td>
+<td>0</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1926</span></td>
+<td>southern intercollegiate</td>
+<td>carl prause</td>
+<td>7</td>
+<td>3</td>
+<td>0</td>
+<td>4</td>
+<td>3</td>
+<td>0</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1927</span></td>
+<td>southern intercollegiate</td>
+<td>carl prause</td>
+<td>3</td>
+<td>6</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1928</span></td>
+<td>southern intercollegiate</td>
+<td>carl prause</td>
+<td>6</td>
+<td>3</td>
+<td>1</td>
+<td>3</td>
+<td>3</td>
+<td>0</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1929</span></td>
+<td>southern intercollegiate</td>
+<td>carl prause</td>
+<td>5</td>
+<td>4</td>
+<td>1</td>
+<td>4</td>
+<td>0</td>
+<td>1</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1930</span></td>
+<td>southern intercollegiate</td>
+<td>johnny floyd</td>
+<td>4</td>
+<td>5</td>
+<td>2</td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1931</span></td>
+<td>southern intercollegiate</td>
+<td>johnny floyd</td>
+<td>5</td>
+<td>4</td>
+<td>1</td>
+<td>4</td>
+<td>1</td>
+<td>0</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1932</span></td>
+<td>southern intercollegiate</td>
+<td>tatum gressette</td>
+<td>4</td>
+<td>5</td>
+<td>0</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1933</span></td>
+<td>southern intercollegiate</td>
+<td>tatum gressette</td>
+<td>3</td>
+<td>5</td>
+<td>1</td>
+<td>3</td>
+<td>2</td>
+<td>0</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1934</span></td>
+<td>southern intercollegiate</td>
+<td>tatum gressette</td>
+<td>3</td>
+<td>5</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1935</span></td>
+<td>southern intercollegiate</td>
+<td>tatum gressette</td>
+<td>4</td>
+<td>3</td>
+<td>1</td>
+<td>3</td>
+<td>1</td>
+<td>0</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1936</span></td>
+<td>southern</td>
+<td>tatum gressette</td>
+<td>4</td>
+<td>6</td>
+<td>0</td>
+<td>0</td>
+<td>4</td>
+<td>0</td>
+<td>14</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1937</span></td>
+<td>southern</td>
+<td>tatum gressette</td>
+<td>7</td>
+<td>4</td>
+<td>0</td>
+<td>2</td>
+<td>3</td>
+<td>0</td>
+<td>8</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1938</span></td>
+<td>southern</td>
+<td>tatum gressette</td>
+<td>6</td>
+<td>5</td>
+<td>0</td>
+<td>2</td>
+<td>3</td>
+<td>0</td>
+<td>10</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1939</span></td>
+<td>southern</td>
+<td>tatum gressette</td>
+<td>3</td>
+<td>8</td>
+<td>0</td>
+<td>0</td>
+<td>4</td>
+<td>0</td>
+<td>15</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1940</span></td>
+<td>southern</td>
+<td>bo rowland</td>
+<td>4</td>
+<td>5</td>
+<td>0</td>
+<td>0</td>
+<td>4</td>
+<td>0</td>
+<td>15</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1941</span></td>
+<td>southern</td>
+<td>bo rowland</td>
+<td>4</td>
+<td>3</td>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+<td>1</td>
+<td>14</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1942</span></td>
+<td>southern</td>
+<td>bo rowland</td>
+<td>5</td>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+<td>8</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1943</span></td>
+<td>no team</td>
+<td>no team</td>
+<td>no team</td>
+<td>no team</td>
+<td>no team</td>
+<td>no team</td>
+<td>no team</td>
+<td>no team</td>
+<td>no team</td>
+<td>no team</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1944</span></td>
+<td>no team</td>
+<td>no team</td>
+<td>no team</td>
+<td>no team</td>
+<td>no team</td>
+<td>no team</td>
+<td>no team</td>
+<td>no team</td>
+<td>no team</td>
+<td>no team</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1945</span></td>
+<td>no team</td>
+<td>no team</td>
+<td>no team</td>
+<td>no team</td>
+<td>no team</td>
+<td>no team</td>
+<td>no team</td>
+<td>no team</td>
+<td>no team</td>
+<td>no team</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1946</span></td>
+<td>southern</td>
+<td>j. quinn decker</td>
+<td>3</td>
+<td>5</td>
+<td>0</td>
+<td>1</td>
+<td>5</td>
+<td>0</td>
+<td>15</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1947</span></td>
+<td>southern</td>
+<td>j. quinn decker</td>
+<td>3</td>
+<td>5</td>
+<td>0</td>
+<td>1</td>
+<td>4</td>
+<td>0</td>
+<td>12</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1948</span></td>
+<td>southern</td>
+<td>j. quinn decker</td>
+<td>2</td>
+<td>7</td>
+<td>0</td>
+<td>0</td>
+<td>5</td>
+<td>0</td>
+<td>16</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1949</span></td>
+<td>southern</td>
+<td>j. quinn decker</td>
+<td>4</td>
+<td>5</td>
+<td>0</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+<td>7</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1950</span></td>
+<td>southern</td>
+<td>j. quinn decker</td>
+<td>4</td>
+<td>6</td>
+<td>0</td>
+<td>2</td>
+<td>3</td>
+<td>0</td>
+<td>11</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1951</span></td>
+<td>southern</td>
+<td>j. quinn decker</td>
+<td>4</td>
+<td>6</td>
+<td>0</td>
+<td>1</td>
+<td>3</td>
+<td>0</td>
+<td>14</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1952</span></td>
+<td>southern</td>
+<td>j. quinn decker</td>
+<td>3</td>
+<td>5</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+<td>1</td>
+<td>13</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1953</span></td>
+<td>southern</td>
+<td>john d. mcmillan</td>
+<td>2</td>
+<td>7</td>
+<td>0</td>
+<td>1</td>
+<td>3</td>
+<td>0</td>
+<td>9</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1954</span></td>
+<td>southern</td>
+<td>john d. mcmillan</td>
+<td>2</td>
+<td>8</td>
+<td>0</td>
+<td>0</td>
+<td>4</td>
+<td>0</td>
+<td>9</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1955</span></td>
+<td>southern</td>
+<td>john sauer</td>
+<td>5</td>
+<td>4</td>
+<td>0</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+<td>5</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1956</span></td>
+<td>southern</td>
+<td>john sauer</td>
+<td>3</td>
+<td>5</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+<td>0</td>
+<td>8</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1957</span></td>
+<td>southern</td>
+<td>eddie teague</td>
+<td>5</td>
+<td>4</td>
+<td>1</td>
+<td>4</td>
+<td>2</td>
+<td>0</td>
+<td>3</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1958</span></td>
+<td>southern</td>
+<td>eddie teague</td>
+<td>4</td>
+<td>6</td>
+<td>0</td>
+<td>2</td>
+<td>3</td>
+<td>0</td>
+<td>7</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1959</span></td>
+<td>southern</td>
+<td>eddie teague</td>
+<td>8</td>
+<td>2</td>
+<td>0</td>
+<td>5</td>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1960</span></td>
+<td>southern</td>
+<td>eddie teague</td>
+<td>8</td>
+<td>2</td>
+<td>1</td>
+<td>4</td>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+<td>tangerine bowl</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1961</span></td>
+<td>southern</td>
+<td>eddie teague</td>
+<td>7</td>
+<td>3</td>
+<td>0</td>
+<td>5</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1962</span></td>
+<td>southern</td>
+<td>eddie teague</td>
+<td>3</td>
+<td>7</td>
+<td>0</td>
+<td>1</td>
+<td>4</td>
+<td>0</td>
+<td>7</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1963</span></td>
+<td>southern</td>
+<td>eddie teague</td>
+<td>4</td>
+<td>6</td>
+<td>0</td>
+<td>2</td>
+<td>4</td>
+<td>0</td>
+<td>7</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1964</span></td>
+<td>southern</td>
+<td>eddie teague</td>
+<td>4</td>
+<td>6</td>
+<td>0</td>
+<td>4</td>
+<td>3</td>
+<td>0</td>
+<td>4</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1965</span></td>
+<td>southern</td>
+<td>eddie teague</td>
+<td>2</td>
+<td>8</td>
+<td>0</td>
+<td>2</td>
+<td>6</td>
+<td>0</td>
+<td>8</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1966</span></td>
+<td>southern</td>
+<td>red parker</td>
+<td>4</td>
+<td>6</td>
+<td>0</td>
+<td>3</td>
+<td>5</td>
+<td>0</td>
+<td>6</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1967</span></td>
+<td>southern</td>
+<td>red parker</td>
+<td>5</td>
+<td>6</td>
+<td>0</td>
+<td>2</td>
+<td>4</td>
+<td>0</td>
+<td>7</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1968</span></td>
+<td>southern</td>
+<td>red parker</td>
+<td>5</td>
+<td>5</td>
+<td>0</td>
+<td>4</td>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1969</span></td>
+<td>southern</td>
+<td>red parker</td>
+<td>7</td>
+<td>3</td>
+<td>0</td>
+<td>4</td>
+<td>2</td>
+<td>0</td>
+<td>3</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1970</span></td>
+<td>southern</td>
+<td>red parker</td>
+<td>5</td>
+<td>6</td>
+<td>0</td>
+<td>4</td>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1971</span></td>
+<td>southern</td>
+<td>red parker</td>
+<td>8</td>
+<td>3</td>
+<td>0</td>
+<td>4</td>
+<td>2</td>
+<td>0</td>
+<td>3</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1972</span></td>
+<td>southern</td>
+<td>red parker</td>
+<td>5</td>
+<td>6</td>
+<td>0</td>
+<td>4</td>
+<td>3</td>
+<td>0</td>
+<td>4</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1973</span></td>
+<td>southern</td>
+<td>bobby ross</td>
+<td>3</td>
+<td>8</td>
+<td>0</td>
+<td>1</td>
+<td>6</td>
+<td>0</td>
+<td>7</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1974</span></td>
+<td>southern</td>
+<td>bobby ross</td>
+<td>4</td>
+<td>7</td>
+<td>0</td>
+<td>3</td>
+<td>4</td>
+<td>0</td>
+<td>5</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1975</span></td>
+<td>southern</td>
+<td>bobby ross</td>
+<td>6</td>
+<td>5</td>
+<td>0</td>
+<td>4</td>
+<td>3</td>
+<td>0</td>
+<td>4</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1976</span></td>
+<td>southern</td>
+<td>bobby ross</td>
+<td>6</td>
+<td>5</td>
+<td>0</td>
+<td>1</td>
+<td>4</td>
+<td>0</td>
+<td>6</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1977</span></td>
+<td>southern</td>
+<td>bobby ross</td>
+<td>5</td>
+<td>6</td>
+<td>0</td>
+<td>3</td>
+<td>2</td>
+<td>0</td>
+<td>3</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1978</span></td>
+<td>southern</td>
+<td>art baker</td>
+<td>5</td>
+<td>6</td>
+<td>0</td>
+<td>2</td>
+<td>3</td>
+<td>0</td>
+<td>5</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1979</span></td>
+<td>southern</td>
+<td>art baker</td>
+<td>6</td>
+<td>5</td>
+<td>0</td>
+<td>4</td>
+<td>2</td>
+<td>0</td>
+<td>3</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1980</span></td>
+<td>southern</td>
+<td>art baker</td>
+<td>7</td>
+<td>4</td>
+<td>0</td>
+<td>3</td>
+<td>2</td>
+<td>0</td>
+<td>4</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1981</span></td>
+<td>southern</td>
+<td>art baker</td>
+<td>7</td>
+<td>3</td>
+<td>1</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td>4</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1982</span></td>
+<td>southern</td>
+<td>art baker</td>
+<td>5</td>
+<td>6</td>
+<td>0</td>
+<td>3</td>
+<td>4</td>
+<td>0</td>
+<td>4</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1983</span></td>
+<td>southern</td>
+<td>tom moore</td>
+<td>3</td>
+<td>8</td>
+<td>0</td>
+<td>1</td>
+<td>6</td>
+<td>0</td>
+<td>7</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1984</span></td>
+<td>southern</td>
+<td>tom moore</td>
+<td>7</td>
+<td>4</td>
+<td>0</td>
+<td>4</td>
+<td>2</td>
+<td>0</td>
+<td>3</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1985</span></td>
+<td>southern</td>
+<td>tom moore</td>
+<td>5</td>
+<td>5</td>
+<td>1</td>
+<td>2</td>
+<td>4</td>
+<td>1</td>
+<td>5</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1986</span></td>
+<td>southern</td>
+<td>tom moore</td>
+<td>3</td>
+<td>8</td>
+<td>0</td>
+<td>0</td>
+<td>6</td>
+<td>0</td>
+<td>8</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1987</span></td>
+<td>southern</td>
+<td>charlie taaffe</td>
+<td>4</td>
+<td>7</td>
+<td>0</td>
+<td>1</td>
+<td>5</td>
+<td>0</td>
+<td>8</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1988</span></td>
+<td>southern</td>
+<td>charlie taaffe</td>
+<td>8</td>
+<td>4</td>
+<td>0</td>
+<td>5</td>
+<td>2</td>
+<td>0</td>
+<td>3</td>
+<td>first round</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1989</span></td>
+<td>southern</td>
+<td>charlie taaffe</td>
+<td>5</td>
+<td>5</td>
+<td>1</td>
+<td>1</td>
+<td>5</td>
+<td>1</td>
+<td>8</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1990</span></td>
+<td>southern</td>
+<td>charlie taaffe</td>
+<td>7</td>
+<td>5</td>
+<td>0</td>
+<td>4</td>
+<td>3</td>
+<td>0</td>
+<td>3</td>
+<td>first round</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1991</span></td>
+<td>southern</td>
+<td>charlie taaffe</td>
+<td>7</td>
+<td>4</td>
+<td>0</td>
+<td>5</td>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1992</span></td>
+<td>southern</td>
+<td>charlie taaffe</td>
+<td>11</td>
+<td>2</td>
+<td>0</td>
+<td>6</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>quarterfinals</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1993</span></td>
+<td>southern</td>
+<td>charlie taaffe</td>
+<td>5</td>
+<td>6</td>
+<td>0</td>
+<td>4</td>
+<td>4</td>
+<td>0</td>
+<td>4</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1994</span></td>
+<td>southern</td>
+<td>charlie taaffe</td>
+<td>6</td>
+<td>5</td>
+<td>0</td>
+<td>4</td>
+<td>4</td>
+<td>0</td>
+<td>5</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1995</span></td>
+<td>southern</td>
+<td>charlie taaffe</td>
+<td>2</td>
+<td>9</td>
+<td>0</td>
+<td>0</td>
+<td>8</td>
+<td>0</td>
+<td>8</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1996</span></td>
+<td>southern</td>
+<td>don powers</td>
+<td>4</td>
+<td>7</td>
+<td>0</td>
+<td>3</td>
+<td>5</td>
+<td>0</td>
+<td>5</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1997</span></td>
+<td>southern</td>
+<td>don powers</td>
+<td>6</td>
+<td>5</td>
+<td>0</td>
+<td>4</td>
+<td>4</td>
+<td>0</td>
+<td>4</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1998</span></td>
+<td>southern</td>
+<td>don powers</td>
+<td>5</td>
+<td>6</td>
+<td>0</td>
+<td>4</td>
+<td>4</td>
+<td>0</td>
+<td>4</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1999</span></td>
+<td>southern</td>
+<td>don powers</td>
+<td>2</td>
+<td>9</td>
+<td>0</td>
+<td>1</td>
+<td>7</td>
+<td>0</td>
+<td>8</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2000</span></td>
+<td>southern</td>
+<td>don powers</td>
+<td>2</td>
+<td>9</td>
+<td>0</td>
+<td>1</td>
+<td>7</td>
+<td>0</td>
+<td>t-8</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2001</span></td>
+<td>southern</td>
+<td>ellis johnson</td>
+<td>3</td>
+<td>7</td>
+<td>0</td>
+<td>2</td>
+<td>6</td>
+<td>0</td>
+<td>7</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2002</span></td>
+<td>southern</td>
+<td>ellis johnson</td>
+<td>3</td>
+<td>9</td>
+<td>—</td>
+<td>1</td>
+<td>7</td>
+<td>—</td>
+<td>9</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2003</span></td>
+<td>southern</td>
+<td>ellis johnson</td>
+<td>6</td>
+<td>6</td>
+<td>—</td>
+<td>4</td>
+<td>4</td>
+<td>—</td>
+<td>4</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2004</span></td>
+<td>southern</td>
+<td>john zernhelt</td>
+<td>3</td>
+<td>7</td>
+<td>—</td>
+<td>2</td>
+<td>5</td>
+<td>—</td>
+<td>t-5</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2005</span></td>
+<td>southern</td>
+<td>kevin higgins</td>
+<td>4</td>
+<td>7</td>
+<td>—</td>
+<td>2</td>
+<td>5</td>
+<td>—</td>
+<td>7</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2006</span></td>
+<td>southern</td>
+<td>kevin higgins</td>
+<td>5</td>
+<td>6</td>
+<td>—</td>
+<td>4</td>
+<td>3</td>
+<td>—</td>
+<td>4</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2007</span></td>
+<td>southern</td>
+<td>kevin higgins</td>
+<td>7</td>
+<td>4</td>
+<td>—</td>
+<td>4</td>
+<td>3</td>
+<td>—</td>
+<td>t-3</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008</span></td>
+<td>southern</td>
+<td>kevin higgins</td>
+<td>4</td>
+<td>8</td>
+<td>—</td>
+<td>2</td>
+<td>6</td>
+<td>—</td>
+<td>7</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2009</span></td>
+<td>southern</td>
+<td>kevin higgins</td>
+<td>4</td>
+<td>7</td>
+<td>—</td>
+<td>2</td>
+<td>6</td>
+<td>—</td>
+<td>7</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2010</span></td>
+<td>southern</td>
+<td>kevin higgins</td>
+<td>3</td>
+<td>8</td>
+<td>—</td>
+<td>1</td>
+<td>7</td>
+<td>—</td>
+<td>t-8</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2011</span></td>
+<td>southern</td>
+<td>kevin higgins</td>
+<td>4</td>
+<td>7</td>
+<td>—</td>
+<td>2</td>
+<td>6</td>
+<td>—</td>
+<td>8</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2012</span></td>
+<td>southern</td>
+<td>kevin higgins</td>
+<td>7</td>
+<td>4</td>
+<td>—</td>
+<td>5</td>
+<td>3</td>
+<td>—</td>
+<td>t-4</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2013</span></td>
+<td>southern</td>
+<td>kevin higgins</td>
+<td>5</td>
+<td>7</td>
+<td>—</td>
+<td>4</td>
+<td>4</td>
+<td>—</td>
+<td>t-4</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2014</span></td>
+<td>southern</td>
+<td>mike houston</td>
+<td>upcoming</td>
+<td>upcoming</td>
+<td>upcoming</td>
+<td>upcoming</td>
+<td>upcoming</td>
+<td>upcoming</td>
+<td>upcoming</td>
+<td>upcoming</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">totals:\n105 seasons</span></td>
+<td>2 conferences</td>
+<td>23 head coaches</td>
+<td>total\nwins\n473</td>
+<td>total\nlosses\n536</td>
+<td>total\nties\n32</td>
+<td>239 conference wins\n55 siaa\n184 socon</td>
+<td>379 conference losses\n58 siaa\n321 socon</td>
+<td>13 conference ties\n8 siaa\n5 socon</td>
+<td>regular season\nchampions\n2 times</td>
+<td>1–0 bowl record\n1–3 playoff record</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Calculate the total wins, total losses, and total ties for each season.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>season</td>
+<td>conference</td>
+<td>head_coach</td>
+<td>total_wins</td>
+<td>total_losses</td>
+<td>total_ties</td>
+<td>conference_wins</td>
+<td>conference_losses</td>
+<td>conference_ties</td>
+<td>conference_standing</td>
+<td>postseason_result</td>
+</tr>
+<tr>
+<td>1905</td>
+<td>independent</td>
+<td>sidney smith</td>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>1906</td>
+<td>independent</td>
+<td>ralph foster</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Compare the total wins, total losses, and total ties between the 1905 and 1906 seasons.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>season</td>
+<td>total_wins</td>
+<td>total_losses</td>
+<td>total_ties</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1905</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">2</span></td>
+<td>3</td>
+<td>1</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1906</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">3</span></td>
+<td>0</td>
+<td>0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Determine if the Bulldogs performed better or worse in the 1905 season compared to the 1906 season based on the comparison in step 3.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>wins_1905</td>
+<td>losses_1905</td>
+<td>ties_1905</td>
+<td>wins_1906</td>
+<td>losses_1906</td>
+<td>ties_1906</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>performance_comparison</td>
+</tr>
+<tr>
+<td>worse</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['worse']]</h3>
+</body></html>

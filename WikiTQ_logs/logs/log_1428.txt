@@ -1,0 +1,60 @@
+************************************************************************************************************************
+Sample 1428 - Plan 1: Query: what was the time difference between first and eighth place?
+Sample 1428 - Plan 1: Groundtruth: ['0:30.31']
+Sample 1428 - Plan 1: X-Original table pd: 
+   rank             name    nationality     time
+0   NaN     joanne malar         canada  4:43.64
+1   NaN    alison fealey  united states  4:48.31
+2   NaN      jenny kurth  united states  4:57.24
+3   4.0    sonia fonseca    puerto rico  5:03.15
+4   5.0   fabíola molina         brazil  5:03.43
+5   6.0     isabel rojas       colombia  5:11.58
+6   7.0     carolyn adel       suriname  5:13.24
+7   8.0  edith arraspide      argentina  5:13.95
+Sample 1428 - Plan 1: Caption: none
+Sample 1428 - Plan 1: Original table: [['rank', 'name', 'nationality', 'time'], ['', 'joanne malar', 'canada', '4:43.64'], ['', 'alison fealey', 'united states', '4:48.31'], ['', 'jenny kurth', 'united states', '4:57.24'], ['4', 'sonia fonseca', 'puerto rico', '5:03.15'], ['5', 'fabíola molina', 'brazil', '5:03.43'], ['6', 'isabel rojas', 'colombia', '5:11.58'], ['7', 'carolyn adel', 'suriname', '5:13.24'], ['8', 'edith arraspide', 'argentina', '5:13.95']]
+########################################################################################################################
+Sample 1428 - Plan 1: Operation 1: Extract the numerical time from the 'time' column then add column 'num_time' to the existing table.
+Sample 1428 - Plan 1: Selected indices: [[0, 3], [1, 3], [2, 3], [3, 3], [4, 3], [5, 3], [6, 3], [7, 3]]
+Sample 1428 - Plan 1: X-Table after operation df:
+   rank             name    nationality     time  num_time
+0   NaN     joanne malar         canada  4:43.64     43.64
+1   NaN    alison fealey  united states  4:48.31     48.31
+2   NaN      jenny kurth  united states  4:57.24     57.24
+3   4.0    sonia fonseca    puerto rico  5:03.15      3.15
+4   5.0   fabíola molina         brazil  5:03.43      3.43
+5   6.0     isabel rojas       colombia  5:11.58     11.58
+6   7.0     carolyn adel       suriname  5:13.24     13.24
+7   8.0  edith arraspide      argentina  5:13.95     13.95
+Sample 1428 - Plan 1: Table after operation: [['rank', 'name', 'nationality', 'time', 'num_time'], [nan, 'joanne malar', 'canada', '4:43.64', 43.64], [nan, 'alison fealey', 'united states', '4:48.31', 48.31], [nan, 'jenny kurth', 'united states', '4:57.24', 57.24], [4.0, 'sonia fonseca', 'puerto rico', '5:03.15', 3.15], [5.0, 'fabíola molina', 'brazil', '5:03.43', 3.43], [6.0, 'isabel rojas', 'colombia', '5:11.58', 11.58], [7.0, 'carolyn adel', 'suriname', '5:13.24', 13.24], [8.0, 'edith arraspide', 'argentina', '5:13.95', 13.95]]
+########################################################################################################################
+Sample 1428 - Plan 1: Operation 2: Order the table by 'rank' in ascending order.
+Sample 1428 - Plan 1: Selected indices: [[4, 0], [0, 0], [7, 0], [2, 0], [3, 0], [5, 0], [6, 0], [1, 0]]
+Sample 1428 - Plan 1: X-Table after operation df:
+   rank             name    nationality     time  num_time
+0   NaN     joanne malar         canada  4:43.64     43.64
+1   NaN    alison fealey  united states  4:48.31     48.31
+2   NaN      jenny kurth  united states  4:57.24     57.24
+3   4.0    sonia fonseca    puerto rico  5:03.15      3.15
+4   5.0   fabíola molina         brazil  5:03.43      3.43
+5   6.0     isabel rojas       colombia  5:11.58     11.58
+6   7.0     carolyn adel       suriname  5:13.24     13.24
+7   8.0  edith arraspide      argentina  5:13.95     13.95
+Sample 1428 - Plan 1: Table after operation: [['rank', 'name', 'nationality', 'time', 'num_time'], [nan, 'joanne malar', 'canada', '4:43.64', 43.64], [nan, 'alison fealey', 'united states', '4:48.31', 48.31], [nan, 'jenny kurth', 'united states', '4:57.24', 57.24], [4.0, 'sonia fonseca', 'puerto rico', '5:03.15', 3.15], [5.0, 'fabíola molina', 'brazil', '5:03.43', 3.43], [6.0, 'isabel rojas', 'colombia', '5:11.58', 11.58], [7.0, 'carolyn adel', 'suriname', '5:13.24', 13.24], [8.0, 'edith arraspide', 'argentina', '5:13.95', 13.95]]
+########################################################################################################################
+Sample 1428 - Plan 1: Operation 3: Select row number 1 and row number 8.
+Sample 1428 - Plan 1: Selected indices: [[7, 0]]
+Sample 1428 - Plan 1: X-Table after operation df:
+   rank             name nationality     time  num_time
+0   8.0  edith arraspide   argentina  5:13.95     13.95
+Sample 1428 - Plan 1: Table after operation: [['rank', 'name', 'nationality', 'time', 'num_time'], [8.0, 'edith arraspide', 'argentina', '5:13.95', 13.95]]
+########################################################################################################################
+Sample 1428 - Plan 1: Operation 4: Calculate the time difference between the 'num_time' of row number 1 and row number 8.
+Sample 1428 - Plan 1: Selected indices: []
+Sample 1428 - Plan 1: X-Table after operation df:
+   time_difference
+0              NaN
+Sample 1428 - Plan 1: Table after operation: [['time_difference'], [None]]
+Fall-back: TRUE
+Answer from plan 1: [['0:30.31']]
+Groundtruth: ['0:30.31']

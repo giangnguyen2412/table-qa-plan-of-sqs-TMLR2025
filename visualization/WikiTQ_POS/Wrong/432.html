@@ -1,0 +1,593 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how many managers were there between 1961 and 1987?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'year' is between 1961 and 1987.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>record</td>
+<td>finish</td>
+<td>manager</td>
+<td>playoffs</td>
+</tr>
+<tr>
+<td>1961</td>
+<td>68-86</td>
+<td>6th</td>
+<td>tommy heath / bill werle</td>
+<td>none</td>
+</tr>
+<tr>
+<td>1962</td>
+<td>77-76</td>
+<td>5th</td>
+<td>irv noren</td>
+<td>none</td>
+</tr>
+<tr>
+<td>1963</td>
+<td>81-77</td>
+<td>4th</td>
+<td>irv noren</td>
+<td></td>
+</tr>
+<tr>
+<td>1964</td>
+<td>60-98</td>
+<td>10th</td>
+<td>bob lemon</td>
+<td></td>
+</tr>
+<tr>
+<td>1965</td>
+<td>75-72</td>
+<td>6th (t)</td>
+<td>george case</td>
+<td></td>
+</tr>
+<tr>
+<td>1966</td>
+<td>63-84</td>
+<td>10th</td>
+<td>george case</td>
+<td></td>
+</tr>
+<tr>
+<td>1967</td>
+<td>60-87</td>
+<td>12th</td>
+<td>wayne terwilliger</td>
+<td></td>
+</tr>
+<tr>
+<td>1968</td>
+<td>78-69</td>
+<td>3rd</td>
+<td>bill adair</td>
+<td></td>
+</tr>
+<tr>
+<td>1969</td>
+<td>74-72</td>
+<td>4th</td>
+<td>chuck tanner</td>
+<td></td>
+</tr>
+<tr>
+<td>1970</td>
+<td>98-48</td>
+<td>1st</td>
+<td>chuck tanner</td>
+<td>lost league finals</td>
+</tr>
+<tr>
+<td>1971</td>
+<td>73-73</td>
+<td>4th (t)</td>
+<td>bill adair</td>
+<td></td>
+</tr>
+<tr>
+<td>1972</td>
+<td>74-74</td>
+<td>5th</td>
+<td>rocky bridges</td>
+<td></td>
+</tr>
+<tr>
+<td>1973</td>
+<td>70-74</td>
+<td>5th</td>
+<td>rocky bridges / warren hacker / roy hartsfield</td>
+<td></td>
+</tr>
+<tr>
+<td>1974</td>
+<td>67-77</td>
+<td>6th</td>
+<td>roy hartsfield</td>
+<td></td>
+</tr>
+<tr>
+<td>1975</td>
+<td>88-56</td>
+<td>1st</td>
+<td>roy hartsfield</td>
+<td>league champs</td>
+</tr>
+<tr>
+<td>1976</td>
+<td>77-68</td>
+<td>2nd</td>
+<td>roy hartsfield</td>
+<td>league champs</td>
+</tr>
+<tr>
+<td>1977</td>
+<td>79-67</td>
+<td>2nd</td>
+<td>dick phillips</td>
+<td>lost league finals</td>
+</tr>
+<tr>
+<td>1978</td>
+<td>56-82</td>
+<td>8th</td>
+<td>dick phillips</td>
+<td></td>
+</tr>
+<tr>
+<td>1979</td>
+<td>72-76</td>
+<td>8th</td>
+<td>dick phillips</td>
+<td>lost league finals</td>
+</tr>
+<tr>
+<td>1980</td>
+<td>76-65</td>
+<td>5th</td>
+<td>doug rader</td>
+<td>lost league finals</td>
+</tr>
+<tr>
+<td>1981</td>
+<td>72-65</td>
+<td>3rd (t)</td>
+<td>doug rader</td>
+<td>lost in 1st round</td>
+</tr>
+<tr>
+<td>1982</td>
+<td>73-71</td>
+<td>5th</td>
+<td>doug rader</td>
+<td></td>
+</tr>
+<tr>
+<td>1983</td>
+<td>72-71</td>
+<td>5th</td>
+<td>tom trebelhorn</td>
+<td></td>
+</tr>
+<tr>
+<td>1984</td>
+<td>87-53</td>
+<td>1st</td>
+<td>tommy sandt</td>
+<td>lost league finals</td>
+</tr>
+<tr>
+<td>1985</td>
+<td>84-59</td>
+<td>1st</td>
+<td>tommy sandt</td>
+<td>lost in 1st round</td>
+</tr>
+<tr>
+<td>1986</td>
+<td>65-79</td>
+<td>9th</td>
+<td>tommy sandt</td>
+<td></td>
+</tr>
+<tr>
+<td>1987</td>
+<td>65-75</td>
+<td>9th</td>
+<td>bob bailey</td>
+<td></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select the 'manager' column.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>record</td>
+<td>finish</td>
+<td>manager</td>
+<td>playoffs</td>
+</tr>
+<tr>
+<td>1961</td>
+<td>68-86</td>
+<td>6th</td>
+<td>tommy heath / bill werle</td>
+<td>none</td>
+</tr>
+<tr>
+<td>1962</td>
+<td>77-76</td>
+<td>5th</td>
+<td>irv noren</td>
+<td>none</td>
+</tr>
+<tr>
+<td>1963</td>
+<td>81-77</td>
+<td>4th</td>
+<td>irv noren</td>
+<td></td>
+</tr>
+<tr>
+<td>1964</td>
+<td>60-98</td>
+<td>10th</td>
+<td>bob lemon</td>
+<td></td>
+</tr>
+<tr>
+<td>1965</td>
+<td>75-72</td>
+<td>6th (t)</td>
+<td>george case</td>
+<td></td>
+</tr>
+<tr>
+<td>1966</td>
+<td>63-84</td>
+<td>10th</td>
+<td>george case</td>
+<td></td>
+</tr>
+<tr>
+<td>1967</td>
+<td>60-87</td>
+<td>12th</td>
+<td>wayne terwilliger</td>
+<td></td>
+</tr>
+<tr>
+<td>1968</td>
+<td>78-69</td>
+<td>3rd</td>
+<td>bill adair</td>
+<td></td>
+</tr>
+<tr>
+<td>1969</td>
+<td>74-72</td>
+<td>4th</td>
+<td>chuck tanner</td>
+<td></td>
+</tr>
+<tr>
+<td>1970</td>
+<td>98-48</td>
+<td>1st</td>
+<td>chuck tanner</td>
+<td>lost league finals</td>
+</tr>
+<tr>
+<td>1971</td>
+<td>73-73</td>
+<td>4th (t)</td>
+<td>bill adair</td>
+<td></td>
+</tr>
+<tr>
+<td>1972</td>
+<td>74-74</td>
+<td>5th</td>
+<td>rocky bridges</td>
+<td></td>
+</tr>
+<tr>
+<td>1973</td>
+<td>70-74</td>
+<td>5th</td>
+<td>rocky bridges / warren hacker / roy hartsfield</td>
+<td></td>
+</tr>
+<tr>
+<td>1974</td>
+<td>67-77</td>
+<td>6th</td>
+<td>roy hartsfield</td>
+<td></td>
+</tr>
+<tr>
+<td>1975</td>
+<td>88-56</td>
+<td>1st</td>
+<td>roy hartsfield</td>
+<td>league champs</td>
+</tr>
+<tr>
+<td>1976</td>
+<td>77-68</td>
+<td>2nd</td>
+<td>roy hartsfield</td>
+<td>league champs</td>
+</tr>
+<tr>
+<td>1977</td>
+<td>79-67</td>
+<td>2nd</td>
+<td>dick phillips</td>
+<td>lost league finals</td>
+</tr>
+<tr>
+<td>1978</td>
+<td>56-82</td>
+<td>8th</td>
+<td>dick phillips</td>
+<td></td>
+</tr>
+<tr>
+<td>1979</td>
+<td>72-76</td>
+<td>8th</td>
+<td>dick phillips</td>
+<td>lost league finals</td>
+</tr>
+<tr>
+<td>1980</td>
+<td>76-65</td>
+<td>5th</td>
+<td>doug rader</td>
+<td>lost league finals</td>
+</tr>
+<tr>
+<td>1981</td>
+<td>72-65</td>
+<td>3rd (t)</td>
+<td>doug rader</td>
+<td>lost in 1st round</td>
+</tr>
+<tr>
+<td>1982</td>
+<td>73-71</td>
+<td>5th</td>
+<td>doug rader</td>
+<td></td>
+</tr>
+<tr>
+<td>1983</td>
+<td>72-71</td>
+<td>5th</td>
+<td>tom trebelhorn</td>
+<td></td>
+</tr>
+<tr>
+<td>1984</td>
+<td>87-53</td>
+<td>1st</td>
+<td>tommy sandt</td>
+<td>lost league finals</td>
+</tr>
+<tr>
+<td>1985</td>
+<td>84-59</td>
+<td>1st</td>
+<td>tommy sandt</td>
+<td>lost in 1st round</td>
+</tr>
+<tr>
+<td>1986</td>
+<td>65-79</td>
+<td>9th</td>
+<td>tommy sandt</td>
+<td></td>
+</tr>
+<tr>
+<td>1987</td>
+<td>65-75</td>
+<td>9th</td>
+<td>bob bailey</td>
+<td></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Remove any duplicate values from the 'manager' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>manager</td>
+</tr>
+<tr>
+<td>tommy heath / bill werle</td>
+</tr>
+<tr>
+<td>irv noren</td>
+</tr>
+<tr>
+<td>irv noren</td>
+</tr>
+<tr>
+<td>bob lemon</td>
+</tr>
+<tr>
+<td>george case</td>
+</tr>
+<tr>
+<td>george case</td>
+</tr>
+<tr>
+<td>wayne terwilliger</td>
+</tr>
+<tr>
+<td>bill adair</td>
+</tr>
+<tr>
+<td>chuck tanner</td>
+</tr>
+<tr>
+<td>chuck tanner</td>
+</tr>
+<tr>
+<td>bill adair</td>
+</tr>
+<tr>
+<td>rocky bridges</td>
+</tr>
+<tr>
+<td>rocky bridges / warren hacker / roy hartsfield</td>
+</tr>
+<tr>
+<td>roy hartsfield</td>
+</tr>
+<tr>
+<td>roy hartsfield</td>
+</tr>
+<tr>
+<td>roy hartsfield</td>
+</tr>
+<tr>
+<td>dick phillips</td>
+</tr>
+<tr>
+<td>dick phillips</td>
+</tr>
+<tr>
+<td>dick phillips</td>
+</tr>
+<tr>
+<td>doug rader</td>
+</tr>
+<tr>
+<td>doug rader</td>
+</tr>
+<tr>
+<td>doug rader</td>
+</tr>
+<tr>
+<td>tom trebelhorn</td>
+</tr>
+<tr>
+<td>tommy sandt</td>
+</tr>
+<tr>
+<td>tommy sandt</td>
+</tr>
+<tr>
+<td>tommy sandt</td>
+</tr>
+<tr>
+<td>bob bailey</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Count the number of unique managers.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>manager</td>
+</tr>
+<tr>
+<td>tommy heath / bill werle</td>
+</tr>
+<tr>
+<td>irv noren</td>
+</tr>
+<tr>
+<td>bob lemon</td>
+</tr>
+<tr>
+<td>george case</td>
+</tr>
+<tr>
+<td>wayne terwilliger</td>
+</tr>
+<tr>
+<td>bill adair</td>
+</tr>
+<tr>
+<td>chuck tanner</td>
+</tr>
+<tr>
+<td>rocky bridges</td>
+</tr>
+<tr>
+<td>rocky bridges / warren hacker / roy hartsfield</td>
+</tr>
+<tr>
+<td>roy hartsfield</td>
+</tr>
+<tr>
+<td>dick phillips</td>
+</tr>
+<tr>
+<td>doug rader</td>
+</tr>
+<tr>
+<td>tom trebelhorn</td>
+</tr>
+<tr>
+<td>tommy sandt</td>
+</tr>
+<tr>
+<td>bob bailey</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>unique_managers</td>
+</tr>
+<tr>
+<td>15</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[15]]</h3>
+</body></html>

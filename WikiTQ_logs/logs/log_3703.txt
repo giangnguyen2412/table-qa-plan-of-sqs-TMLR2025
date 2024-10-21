@@ -1,0 +1,51 @@
+************************************************************************************************************************
+Sample 3703 - Plan 1: Query: how many decimals are in the 50s but are not even numbers?
+Sample 3703 - Plan 1: Groundtruth: ['4']
+Sample 3703 - Plan 1: X-Original table pd: 
+      binary  octal  decimal  hexadecimal  glyph
+0  0011 0000     60       48           30      0
+1  0011 0001     61       49           31      1
+2  0011 0010     62       50           32      2
+3  0011 0011     63       51           33      3
+4  0011 0100     64       52           34      4
+5  0011 0101     65       53           35      5
+6  0011 0110     66       54           36      6
+7  0011 0111     67       55           37      7
+8  0011 1000     70       56           38      8
+9  0011 1001     71       57           39      9
+Sample 3703 - Plan 1: Caption: none
+Sample 3703 - Plan 1: Original table: [['binary', 'octal', 'decimal', 'hexadecimal', 'glyph'], ['0011\xa00000', '060', '48', '30', '0'], ['0011\xa00001', '061', '49', '31', '1'], ['0011\xa00010', '062', '50', '32', '2'], ['0011\xa00011', '063', '51', '33', '3'], ['0011\xa00100', '064', '52', '34', '4'], ['0011\xa00101', '065', '53', '35', '5'], ['0011\xa00110', '066', '54', '36', '6'], ['0011\xa00111', '067', '55', '37', '7'], ['0011\xa01000', '070', '56', '38', '8'], ['0011\xa01001', '071', '57', '39', '9']]
+########################################################################################################################
+Sample 3703 - Plan 1: Operation 1: Select rows where the 'decimal' value is in the range of 50 to 59.
+Sample 3703 - Plan 1: Selected indices: [[6, 2], [9, 2], [4, 2], [7, 2], [2, 2], [8, 2], [3, 2], [5, 2]]
+Sample 3703 - Plan 1: X-Table after operation df:
+      binary  octal  decimal  hexadecimal  glyph
+0  0011 0010     62       50           32      2
+1  0011 0011     63       51           33      3
+2  0011 0100     64       52           34      4
+3  0011 0101     65       53           35      5
+4  0011 0110     66       54           36      6
+5  0011 0111     67       55           37      7
+6  0011 1000     70       56           38      8
+7  0011 1001     71       57           39      9
+Sample 3703 - Plan 1: Table after operation: [['binary', 'octal', 'decimal', 'hexadecimal', 'glyph'], ['0011\xa00010', 62, 50, 32, 2], ['0011\xa00011', 63, 51, 33, 3], ['0011\xa00100', 64, 52, 34, 4], ['0011\xa00101', 65, 53, 35, 5], ['0011\xa00110', 66, 54, 36, 6], ['0011\xa00111', 67, 55, 37, 7], ['0011\xa01000', 70, 56, 38, 8], ['0011\xa01001', 71, 57, 39, 9]]
+########################################################################################################################
+Sample 3703 - Plan 1: Operation 2: Exclude rows where the 'decimal' value is divisible by 2 (even numbers).
+Sample 3703 - Plan 1: Selected indices: []
+Sample 3703 - Plan 1: X-Table after operation df:
+      binary  octal  decimal  hexadecimal  glyph
+0  0011 0011     63       51           33      3
+1  0011 0101     65       53           35      5
+2  0011 0111     67       55           37      7
+3  0011 1001     71       57           39      9
+Sample 3703 - Plan 1: Table after operation: [['binary', 'octal', 'decimal', 'hexadecimal', 'glyph'], ['0011\xa00011', 63, 51, 33, 3], ['0011\xa00101', 65, 53, 35, 5], ['0011\xa00111', 67, 55, 37, 7], ['0011\xa01001', 71, 57, 39, 9]]
+########################################################################################################################
+Sample 3703 - Plan 1: Operation 3: Count the number of remaining rows.
+Sample 3703 - Plan 1: Selected indices: []
+Sample 3703 - Plan 1: X-Table after operation df:
+   remaining_rows
+0               4
+Sample 3703 - Plan 1: Table after operation: [['remaining_rows'], [4]]
+Fall-back: FALSE
+Answer from plan 1: [[4]]
+Groundtruth: ['4']

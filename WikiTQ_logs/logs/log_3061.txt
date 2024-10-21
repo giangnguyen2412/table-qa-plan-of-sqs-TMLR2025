@@ -1,0 +1,172 @@
+************************************************************************************************************************
+Sample 3061 - Plan 1: Query: which match had the largest difference in score for the first set?
+Sample 3061 - Plan 1: Groundtruth: ['Argentina F8']
+Sample 3061 - Plan 1: X-Original table pd: 
+    no_                date    tournament surface      partnering  \
+0   1.0  september 13, 2010    ecuador f2    hard  roberto quiroz   
+1   2.0       april 4, 2011      chile f2    clay   sergio galdós   
+2   3.0      april 11, 2011      chile f3    clay  roberto quiroz   
+3   4.0      august 8, 2011       peru f1    clay   sergio galdós   
+4   5.0      august 5, 2012         manta    hard     renzo olivo   
+5   6.0     august 20, 2012   colombia f2    clay     ariel behar   
+6   7.0     august 26, 2012    ecuador f3    clay   sergio galdós   
+7   8.0     october 8, 2012      chile f8    clay  gustavo sterin   
+8   9.0        may 13, 2013  argentina f6    clay   sergio galdós   
+9  10.0        may 27, 2013  argentina f8    clay   sergio galdós   
+
+                               opponent_in_the_final                score  
+0                     peter aarts\n christopher racz             6–4, 6–4  
+1               guillermo hormazábal\n rodrigo pérez  5–7, 7–6(5), [10–5]  
+2    luis david martínez\n miguel ángel reyes-varela             6–4, 7–5  
+3                        martín cuevas\n guido pella             6–4, 6–0  
+4                       víctor estrella\n joão souza             6–3, 6–0  
+5              nicolas barrientos\n michael quintero             2-1 ret.  
+6        mauricio echazú\n guillermo rivera-aránguiz             6-2, 6-1  
+7  cristóbal saavedra-corvalán\n guillermo rivera...             6-4, 7-5  
+8              franco agamenone\n jose angel carrizo     4-6, 6-4, [10–1]  
+9               daniel dutra da silva\n pablo galdón             6-0, 7-5  
+Sample 3061 - Plan 1: Caption: none
+Sample 3061 - Plan 1: Original table: [['no_', 'date', 'tournament', 'surface', 'partnering', 'opponent_in_the_final', 'score'], ['1.', 'september 13, 2010', 'ecuador f2', 'hard', 'roberto quiroz', 'peter aarts\\n christopher racz', '6–4, 6–4'], ['2.', 'april 4, 2011', 'chile f2', 'clay', 'sergio galdós', 'guillermo hormazábal\\n rodrigo pérez', '5–7, 7–6(5), [10–5]'], ['3.', 'april 11, 2011', 'chile f3', 'clay', 'roberto quiroz', 'luis david martínez\\n miguel ángel reyes-varela', '6–4, 7–5'], ['4.', 'august 8, 2011', 'peru f1', 'clay', 'sergio galdós', 'martín cuevas\\n guido pella', '6–4, 6–0'], ['5.', 'august 5, 2012', 'manta', 'hard', 'renzo olivo', 'víctor estrella\\n joão souza', '6–3, 6–0'], ['6.', 'august 20, 2012', 'colombia f2', 'clay', 'ariel behar', 'nicolas barrientos\\n michael quintero', '2-1 ret.'], ['7.', 'august 26, 2012', 'ecuador f3', 'clay', 'sergio galdós', 'mauricio echazú\\n guillermo rivera-aránguiz', '6-2, 6-1'], ['8.', 'october 8, 2012', 'chile f8', 'clay', 'gustavo sterin', 'cristóbal saavedra-corvalán\\n guillermo rivera-aránguiz', '6-4, 7-5'], ['9.', 'may 13, 2013', 'argentina f6', 'clay', 'sergio galdós', 'franco agamenone\\n jose angel carrizo', '4-6, 6-4, [10–1]'], ['10.', 'may 27, 2013', 'argentina f8', 'clay', 'sergio galdós', 'daniel dutra da silva\\n pablo galdón', '6-0, 7-5']]
+########################################################################################################################
+Sample 3061 - Plan 1: Operation 1: Extract the numerical values from the 'score' column for the first set, then add a column 'first_set_score' to the existing table.
+Sample 3061 - Plan 1: Selected indices: [[0, 6], [1, 6], [2, 6], [3, 6], [4, 6], [5, 6], [6, 6], [7, 6], [8, 6], [9, 6]]
+Sample 3061 - Plan 1: X-Table after operation df:
+    no_                date    tournament surface      partnering  \
+0   1.0  september 13, 2010    ecuador f2    hard  roberto quiroz   
+1   2.0       april 4, 2011      chile f2    clay   sergio galdós   
+2   3.0      april 11, 2011      chile f3    clay  roberto quiroz   
+3   4.0      august 8, 2011       peru f1    clay   sergio galdós   
+4   5.0      august 5, 2012         manta    hard     renzo olivo   
+5   6.0     august 20, 2012   colombia f2    clay     ariel behar   
+6   7.0     august 26, 2012    ecuador f3    clay   sergio galdós   
+7   8.0     october 8, 2012      chile f8    clay  gustavo sterin   
+8   9.0        may 13, 2013  argentina f6    clay   sergio galdós   
+9  10.0        may 27, 2013  argentina f8    clay   sergio galdós   
+
+                               opponent_in_the_final                score  \
+0                     peter aarts\n christopher racz             6–4, 6–4   
+1               guillermo hormazábal\n rodrigo pérez  5–7, 7–6(5), [10–5]   
+2    luis david martínez\n miguel ángel reyes-varela             6–4, 7–5   
+3                        martín cuevas\n guido pella             6–4, 6–0   
+4                       víctor estrella\n joão souza             6–3, 6–0   
+5              nicolas barrientos\n michael quintero             2-1 ret.   
+6        mauricio echazú\n guillermo rivera-aránguiz             6-2, 6-1   
+7  cristóbal saavedra-corvalán\n guillermo rivera...             6-4, 7-5   
+8              franco agamenone\n jose angel carrizo     4-6, 6-4, [10–1]   
+9               daniel dutra da silva\n pablo galdón             6-0, 7-5   
+
+   first_set_score  
+0                6  
+1                5  
+2                6  
+3                6  
+4                6  
+5                0  
+6                6  
+7                6  
+8                4  
+9                6  
+Sample 3061 - Plan 1: Table after operation: [['no_', 'date', 'tournament', 'surface', 'partnering', 'opponent_in_the_final', 'score', 'first_set_score'], [1.0, 'september 13, 2010', 'ecuador f2', 'hard', 'roberto quiroz', 'peter aarts\\n christopher racz', '6–4, 6–4', 6], [2.0, 'april 4, 2011', 'chile f2', 'clay', 'sergio galdós', 'guillermo hormazábal\\n rodrigo pérez', '5–7, 7–6(5), [10–5]', 5], [3.0, 'april 11, 2011', 'chile f3', 'clay', 'roberto quiroz', 'luis david martínez\\n miguel ángel reyes-varela', '6–4, 7–5', 6], [4.0, 'august 8, 2011', 'peru f1', 'clay', 'sergio galdós', 'martín cuevas\\n guido pella', '6–4, 6–0', 6], [5.0, 'august 5, 2012', 'manta', 'hard', 'renzo olivo', 'víctor estrella\\n joão souza', '6–3, 6–0', 6], [6.0, 'august 20, 2012', 'colombia f2', 'clay', 'ariel behar', 'nicolas barrientos\\n michael quintero', '2-1 ret.', 0], [7.0, 'august 26, 2012', 'ecuador f3', 'clay', 'sergio galdós', 'mauricio echazú\\n guillermo rivera-aránguiz', '6-2, 6-1', 6], [8.0, 'october 8, 2012', 'chile f8', 'clay', 'gustavo sterin', 'cristóbal saavedra-corvalán\\n guillermo rivera-aránguiz', '6-4, 7-5', 6], [9.0, 'may 13, 2013', 'argentina f6', 'clay', 'sergio galdós', 'franco agamenone\\n jose angel carrizo', '4-6, 6-4, [10–1]', 4], [10.0, 'may 27, 2013', 'argentina f8', 'clay', 'sergio galdós', 'daniel dutra da silva\\n pablo galdón', '6-0, 7-5', 6]]
+########################################################################################################################
+Sample 3061 - Plan 1: Operation 2: Calculate the difference between the scores of the first set for each match and add a column 'first_set_score_diff' to the existing table.
+Sample 3061 - Plan 1: Selected indices: [[0, 7], [0, 6], [1, 7], [1, 6], [2, 7], [2, 6], [3, 7], [3, 6], [4, 7], [4, 6], [5, 7], [5, 6], [6, 7], [6, 6], [7, 7], [7, 6], [8, 7], [8, 6], [9, 7], [9, 6]]
+Sample 3061 - Plan 1: X-Table after operation df:
+    no_                date    tournament surface      partnering  \
+0   1.0  september 13, 2010    ecuador f2    hard  roberto quiroz   
+1   2.0       april 4, 2011      chile f2    clay   sergio galdós   
+2   3.0      april 11, 2011      chile f3    clay  roberto quiroz   
+3   4.0      august 8, 2011       peru f1    clay   sergio galdós   
+4   5.0      august 5, 2012         manta    hard     renzo olivo   
+5   6.0     august 20, 2012   colombia f2    clay     ariel behar   
+6   7.0     august 26, 2012    ecuador f3    clay   sergio galdós   
+7   8.0     october 8, 2012      chile f8    clay  gustavo sterin   
+8   9.0        may 13, 2013  argentina f6    clay   sergio galdós   
+9  10.0        may 27, 2013  argentina f8    clay   sergio galdós   
+
+                               opponent_in_the_final                score  \
+0                     peter aarts\n christopher racz             6–4, 6–4   
+1               guillermo hormazábal\n rodrigo pérez  5–7, 7–6(5), [10–5]   
+2    luis david martínez\n miguel ángel reyes-varela             6–4, 7–5   
+3                        martín cuevas\n guido pella             6–4, 6–0   
+4                       víctor estrella\n joão souza             6–3, 6–0   
+5              nicolas barrientos\n michael quintero             2-1 ret.   
+6        mauricio echazú\n guillermo rivera-aránguiz             6-2, 6-1   
+7  cristóbal saavedra-corvalán\n guillermo rivera...             6-4, 7-5   
+8              franco agamenone\n jose angel carrizo     4-6, 6-4, [10–1]   
+9               daniel dutra da silva\n pablo galdón             6-0, 7-5   
+
+   first_set_score  first_set_score_diff  
+0                6                     0  
+1                5                     0  
+2                6                     0  
+3                6                     0  
+4                6                     0  
+5                0                     0  
+6                6                    -8  
+7                6                   -10  
+8                4                   -10  
+9                6                    -6  
+Sample 3061 - Plan 1: Table after operation: [['no_', 'date', 'tournament', 'surface', 'partnering', 'opponent_in_the_final', 'score', 'first_set_score', 'first_set_score_diff'], [1.0, 'september 13, 2010', 'ecuador f2', 'hard', 'roberto quiroz', 'peter aarts\\n christopher racz', '6–4, 6–4', 6, 0], [2.0, 'april 4, 2011', 'chile f2', 'clay', 'sergio galdós', 'guillermo hormazábal\\n rodrigo pérez', '5–7, 7–6(5), [10–5]', 5, 0], [3.0, 'april 11, 2011', 'chile f3', 'clay', 'roberto quiroz', 'luis david martínez\\n miguel ángel reyes-varela', '6–4, 7–5', 6, 0], [4.0, 'august 8, 2011', 'peru f1', 'clay', 'sergio galdós', 'martín cuevas\\n guido pella', '6–4, 6–0', 6, 0], [5.0, 'august 5, 2012', 'manta', 'hard', 'renzo olivo', 'víctor estrella\\n joão souza', '6–3, 6–0', 6, 0], [6.0, 'august 20, 2012', 'colombia f2', 'clay', 'ariel behar', 'nicolas barrientos\\n michael quintero', '2-1 ret.', 0, 0], [7.0, 'august 26, 2012', 'ecuador f3', 'clay', 'sergio galdós', 'mauricio echazú\\n guillermo rivera-aránguiz', '6-2, 6-1', 6, -8], [8.0, 'october 8, 2012', 'chile f8', 'clay', 'gustavo sterin', 'cristóbal saavedra-corvalán\\n guillermo rivera-aránguiz', '6-4, 7-5', 6, -10], [9.0, 'may 13, 2013', 'argentina f6', 'clay', 'sergio galdós', 'franco agamenone\\n jose angel carrizo', '4-6, 6-4, [10–1]', 4, -10], [10.0, 'may 27, 2013', 'argentina f8', 'clay', 'sergio galdós', 'daniel dutra da silva\\n pablo galdón', '6-0, 7-5', 6, -6]]
+########################################################################################################################
+Sample 3061 - Plan 1: Operation 3: Order the table by 'first_set_score_diff' in descending order.
+Sample 3061 - Plan 1: Selected indices: [[8, 8], [3, 8], [5, 8], [6, 8], [1, 8], [9, 8], [4, 8], [0, 8], [7, 8], [2, 8]]
+Sample 3061 - Plan 1: X-Table after operation df:
+    no_                date    tournament surface      partnering  \
+0   1.0  september 13, 2010    ecuador f2    hard  roberto quiroz   
+1   2.0       april 4, 2011      chile f2    clay   sergio galdós   
+2   3.0      april 11, 2011      chile f3    clay  roberto quiroz   
+3   4.0      august 8, 2011       peru f1    clay   sergio galdós   
+4   5.0      august 5, 2012         manta    hard     renzo olivo   
+5   6.0     august 20, 2012   colombia f2    clay     ariel behar   
+6  10.0        may 27, 2013  argentina f8    clay   sergio galdós   
+7   7.0     august 26, 2012    ecuador f3    clay   sergio galdós   
+8   8.0     october 8, 2012      chile f8    clay  gustavo sterin   
+9   9.0        may 13, 2013  argentina f6    clay   sergio galdós   
+
+                               opponent_in_the_final                score  \
+0                     peter aarts\n christopher racz             6–4, 6–4   
+1               guillermo hormazábal\n rodrigo pérez  5–7, 7–6(5), [10–5]   
+2    luis david martínez\n miguel ángel reyes-varela             6–4, 7–5   
+3                        martín cuevas\n guido pella             6–4, 6–0   
+4                       víctor estrella\n joão souza             6–3, 6–0   
+5              nicolas barrientos\n michael quintero             2-1 ret.   
+6               daniel dutra da silva\n pablo galdón             6-0, 7-5   
+7        mauricio echazú\n guillermo rivera-aránguiz             6-2, 6-1   
+8  cristóbal saavedra-corvalán\n guillermo rivera...             6-4, 7-5   
+9              franco agamenone\n jose angel carrizo     4-6, 6-4, [10–1]   
+
+   first_set_score  first_set_score_diff  
+0                6                     0  
+1                5                     0  
+2                6                     0  
+3                6                     0  
+4                6                     0  
+5                0                     0  
+6                6                    -6  
+7                6                    -8  
+8                6                   -10  
+9                4                   -10  
+Sample 3061 - Plan 1: Table after operation: [['no_', 'date', 'tournament', 'surface', 'partnering', 'opponent_in_the_final', 'score', 'first_set_score', 'first_set_score_diff'], [1.0, 'september 13, 2010', 'ecuador f2', 'hard', 'roberto quiroz', 'peter aarts\\n christopher racz', '6–4, 6–4', 6, 0], [2.0, 'april 4, 2011', 'chile f2', 'clay', 'sergio galdós', 'guillermo hormazábal\\n rodrigo pérez', '5–7, 7–6(5), [10–5]', 5, 0], [3.0, 'april 11, 2011', 'chile f3', 'clay', 'roberto quiroz', 'luis david martínez\\n miguel ángel reyes-varela', '6–4, 7–5', 6, 0], [4.0, 'august 8, 2011', 'peru f1', 'clay', 'sergio galdós', 'martín cuevas\\n guido pella', '6–4, 6–0', 6, 0], [5.0, 'august 5, 2012', 'manta', 'hard', 'renzo olivo', 'víctor estrella\\n joão souza', '6–3, 6–0', 6, 0], [6.0, 'august 20, 2012', 'colombia f2', 'clay', 'ariel behar', 'nicolas barrientos\\n michael quintero', '2-1 ret.', 0, 0], [10.0, 'may 27, 2013', 'argentina f8', 'clay', 'sergio galdós', 'daniel dutra da silva\\n pablo galdón', '6-0, 7-5', 6, -6], [7.0, 'august 26, 2012', 'ecuador f3', 'clay', 'sergio galdós', 'mauricio echazú\\n guillermo rivera-aránguiz', '6-2, 6-1', 6, -8], [8.0, 'october 8, 2012', 'chile f8', 'clay', 'gustavo sterin', 'cristóbal saavedra-corvalán\\n guillermo rivera-aránguiz', '6-4, 7-5', 6, -10], [9.0, 'may 13, 2013', 'argentina f6', 'clay', 'sergio galdós', 'franco agamenone\\n jose angel carrizo', '4-6, 6-4, [10–1]', 4, -10]]
+########################################################################################################################
+Sample 3061 - Plan 1: Operation 4: Select row number 1.
+Sample 3061 - Plan 1: Selected indices: []
+Sample 3061 - Plan 1: X-Table after operation df:
+   no_                date  tournament surface      partnering  \
+0  1.0  september 13, 2010  ecuador f2    hard  roberto quiroz   
+
+            opponent_in_the_final     score  first_set_score  \
+0  peter aarts\n christopher racz  6–4, 6–4                6   
+
+   first_set_score_diff  
+0                     0  
+Sample 3061 - Plan 1: Table after operation: [['no_', 'date', 'tournament', 'surface', 'partnering', 'opponent_in_the_final', 'score', 'first_set_score', 'first_set_score_diff'], [1.0, 'september 13, 2010', 'ecuador f2', 'hard', 'roberto quiroz', 'peter aarts\\n christopher racz', '6–4, 6–4', 6, 0]]
+########################################################################################################################
+Sample 3061 - Plan 1: Operation 5: Select the 'tournament' column, 'partnering' column, 'opponent_in_the_final' column, and 'score' column.
+Sample 3061 - Plan 1: Selected indices: []
+Sample 3061 - Plan 1: X-Table after operation df:
+   tournament      partnering           opponent_in_the_final     score
+0  ecuador f2  roberto quiroz  peter aarts\n christopher racz  6–4, 6–4
+Sample 3061 - Plan 1: Table after operation: [['tournament', 'partnering', 'opponent_in_the_final', 'score'], ['ecuador f2', 'roberto quiroz', 'peter aarts\\n christopher racz', '6–4, 6–4']]
+Fall-back: FALSE
+Answer from plan 1: [['ecuador f2', 'roberto quiroz', 'peter aarts\\n christopher racz', '6–4, 6–4']]
+Groundtruth: ['Argentina F8']

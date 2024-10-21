@@ -1,0 +1,50 @@
+************************************************************************************************************************
+Sample 1460 - Plan 1: Query: who has the most goals scored?
+Sample 1460 - Plan 1: Groundtruth: ['Landon Donovan']
+Sample 1460 - Plan 1: X-Original table pd: 
+    _            player  goals  caps        career
+0   1    landon donovan     57   155  2000–present
+1   2     clint dempsey     36   103  2004–present
+2   3      eric wynalda     34   106     1990–2000
+3   4     brian mcbride     30    95     1993–2006
+4   5     joe-max moore     24   100     1992–2002
+5  6t     jozy altidore     21    67  2007–present
+6  6t      bruce murray     21    86     1985–1993
+7   8     eddie johnson     19    62  2004–present
+8  9t    earnie stewart     17   101     1990–2004
+9  9t  damarcus beasley     17   114  2001–present
+Sample 1460 - Plan 1: Caption: none
+Sample 1460 - Plan 1: Original table: [['_', 'player', 'goals', 'caps', 'career'], ['1', 'landon donovan', '57', '155', '2000–present'], ['2', 'clint dempsey', '36', '103', '2004–present'], ['3', 'eric wynalda', '34', '106', '1990–2000'], ['4', 'brian mcbride', '30', '95', '1993–2006'], ['5', 'joe-max moore', '24', '100', '1992–2002'], ['6t', 'jozy altidore', '21', '67', '2007–present'], ['6t', 'bruce murray', '21', '86', '1985–1993'], ['8', 'eddie johnson', '19', '62', '2004–present'], ['9t', 'earnie stewart', '17', '101', '1990–2004'], ['9t', 'damarcus beasley', '17', '114', '2001–present']]
+########################################################################################################################
+Sample 1460 - Plan 1: Operation 1: Order the table by the 'goals' column in descending order.
+Sample 1460 - Plan 1: Selected indices: [[6, 2], [1, 2], [9, 2], [4, 2], [0, 2], [7, 2], [2, 2], [8, 2], [3, 2], [5, 2]]
+Sample 1460 - Plan 1: X-Table after operation df:
+    _            player  goals  caps        career
+0   1    landon donovan     57   155  2000–present
+1   2     clint dempsey     36   103  2004–present
+2   3      eric wynalda     34   106     1990–2000
+3   4     brian mcbride     30    95     1993–2006
+4   5     joe-max moore     24   100     1992–2002
+5  6t     jozy altidore     21    67  2007–present
+6  6t      bruce murray     21    86     1985–1993
+7   8     eddie johnson     19    62  2004–present
+8  9t    earnie stewart     17   101     1990–2004
+9  9t  damarcus beasley     17   114  2001–present
+Sample 1460 - Plan 1: Table after operation: [['_', 'player', 'goals', 'caps', 'career'], ['1', 'landon donovan', 57, 155, '2000–present'], ['2', 'clint dempsey', 36, 103, '2004–present'], ['3', 'eric wynalda', 34, 106, '1990–2000'], ['4', 'brian mcbride', 30, 95, '1993–2006'], ['5', 'joe-max moore', 24, 100, '1992–2002'], ['6t', 'jozy altidore', 21, 67, '2007–present'], ['6t', 'bruce murray', 21, 86, '1985–1993'], ['8', 'eddie johnson', 19, 62, '2004–present'], ['9t', 'earnie stewart', 17, 101, '1990–2004'], ['9t', 'damarcus beasley', 17, 114, '2001–present']]
+########################################################################################################################
+Sample 1460 - Plan 1: Operation 2: Select row number 1.
+Sample 1460 - Plan 1: Selected indices: []
+Sample 1460 - Plan 1: X-Table after operation df:
+   _          player  goals  caps        career
+0  1  landon donovan     57   155  2000–present
+Sample 1460 - Plan 1: Table after operation: [['_', 'player', 'goals', 'caps', 'career'], ['1', 'landon donovan', 57, 155, '2000–present']]
+########################################################################################################################
+Sample 1460 - Plan 1: Operation 3: Select the 'player' column.
+Sample 1460 - Plan 1: Selected indices: []
+Sample 1460 - Plan 1: X-Table after operation df:
+           player
+0  landon donovan
+Sample 1460 - Plan 1: Table after operation: [['player'], ['landon donovan']]
+Fall-back: FALSE
+Answer from plan 1: [['landon donovan']]
+Groundtruth: ['Landon Donovan']

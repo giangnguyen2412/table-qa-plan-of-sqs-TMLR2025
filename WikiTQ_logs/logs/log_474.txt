@@ -1,0 +1,47 @@
+************************************************************************************************************************
+Sample 474 - Plan 1: Query: in total, what did the players from united states score?
+Sample 474 - Plan 1: Groundtruth: ['845']
+Sample 474 - Plan 1: X-Original table pd: 
+  place            player        country         score to_par
+0     1     retief goosen   south africa  68-70-69=207     –3
+1    t2       olin browne  united states  67-71-72=210      e
+2    t2        jason gore  united states  71-67-72=210      e
+3    t4  michael campbell    new zealand  71-69-71=211     +1
+4    t4       mark hensby      australia  71-68-72=211     +1
+5     6        david toms  united states  70-72-70=212     +2
+6    t7        k. j. choi    south korea  69-70-74=213     +3
+7    t7     peter hedblom         sweden  77-66-70=213     +3
+8    t7      lee westwood        england  68-72-73=213     +3
+9    t7       tiger woods  united states  70-71-72=213     +3
+Sample 474 - Plan 1: Caption: none
+Sample 474 - Plan 1: Original table: [['place', 'player', 'country', 'score', 'to_par'], ['1', 'retief goosen', 'south africa', '68-70-69=207', '–3'], ['t2', 'olin browne', 'united states', '67-71-72=210', 'e'], ['t2', 'jason gore', 'united states', '71-67-72=210', 'e'], ['t4', 'michael campbell', 'new zealand', '71-69-71=211', '+1'], ['t4', 'mark hensby', 'australia', '71-68-72=211', '+1'], ['6', 'david toms', 'united states', '70-72-70=212', '+2'], ['t7', 'k. j. choi', 'south korea', '69-70-74=213', '+3'], ['t7', 'peter hedblom', 'sweden', '77-66-70=213', '+3'], ['t7', 'lee westwood', 'england', '68-72-73=213', '+3'], ['t7', 'tiger woods', 'united states', '70-71-72=213', '+3']]
+########################################################################################################################
+Sample 474 - Plan 1: Operation 1: Select rows where the 'country' is 'united states'.
+Sample 474 - Plan 1: Selected indices: [[1, 2], [2, 2], [9, 2], [5, 2]]
+Sample 474 - Plan 1: X-Table after operation df:
+  place       player        country         score to_par
+0    t2  olin browne  united states  67-71-72=210      e
+1    t2   jason gore  united states  71-67-72=210      e
+2     6   david toms  united states  70-72-70=212     +2
+3    t7  tiger woods  united states  70-71-72=213     +3
+Sample 474 - Plan 1: Table after operation: [['place', 'player', 'country', 'score', 'to_par'], ['t2', 'olin browne', 'united states', '67-71-72=210', 'e'], ['t2', 'jason gore', 'united states', '71-67-72=210', 'e'], ['6', 'david toms', 'united states', '70-72-70=212', '+2'], ['t7', 'tiger woods', 'united states', '70-71-72=213', '+3']]
+########################################################################################################################
+Sample 474 - Plan 1: Operation 2: Extract the numerical score from the 'score' column then add column 'num_score' to the existing table.
+Sample 474 - Plan 1: Selected indices: [[0, 3], [1, 3], [2, 3], [3, 3]]
+Sample 474 - Plan 1: X-Table after operation df:
+  place       player        country         score to_par  num_score
+0    t2  olin browne  united states  67-71-72=210      e        210
+1    t2   jason gore  united states  71-67-72=210      e        210
+2     6   david toms  united states  70-72-70=212     +2        212
+3    t7  tiger woods  united states  70-71-72=213     +3        213
+Sample 474 - Plan 1: Table after operation: [['place', 'player', 'country', 'score', 'to_par', 'num_score'], ['t2', 'olin browne', 'united states', '67-71-72=210', 'e', 210], ['t2', 'jason gore', 'united states', '71-67-72=210', 'e', 210], ['6', 'david toms', 'united states', '70-72-70=212', '+2', 212], ['t7', 'tiger woods', 'united states', '70-71-72=213', '+3', 213]]
+########################################################################################################################
+Sample 474 - Plan 1: Operation 3: Sum the 'num_score' column to calculate the total score of the players from the United States.
+Sample 474 - Plan 1: Selected indices: []
+Sample 474 - Plan 1: X-Table after operation df:
+   total_score
+0          845
+Sample 474 - Plan 1: Table after operation: [['total_score'], [845]]
+Fall-back: FALSE
+Answer from plan 1: [[845]]
+Groundtruth: ['845']

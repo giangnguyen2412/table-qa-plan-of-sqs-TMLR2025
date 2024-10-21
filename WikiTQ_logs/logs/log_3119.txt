@@ -1,0 +1,30 @@
+************************************************************************************************************************
+Sample 3119 - Plan 1: Query: how many total points did the last ranked person have?
+Sample 3119 - Plan 1: Groundtruth: ['252.6']
+Sample 3119 - Plan 1: X-Original table pd: 
+   rank             name nationality  c_1st__m_  c_2nd__m_  points
+0     1  matti hautamäki         fin      132.0      131.5   274.3
+1     2       tami kiuru         fin      128.5      130.5   264.7
+2     3     janne ahonen         fin      127.0      130.5   264.0
+3     4      adam małysz         pol      127.0      130.5   261.5
+4     5   andreas kofler         aut      126.5      132.0   261.3
+5    11      jakub janda         cze      123.5      128.5   252.6
+Sample 3119 - Plan 1: Caption: none
+Sample 3119 - Plan 1: Original table: [['rank', 'name', 'nationality', 'c_1st__m_', 'c_2nd__m_', 'points'], ['1', 'matti hautamäki', 'fin', '132.0', '131.5', '274.3'], ['2', 'tami kiuru', 'fin', '128.5', '130.5', '264.7'], ['3', 'janne ahonen', 'fin', '127.0', '130.5', '264.0'], ['4', 'adam małysz', 'pol', '127.0', '130.5', '261.5'], ['5', 'andreas kofler', 'aut', '126.5', '132.0', '261.3'], ['11', 'jakub janda', 'cze', '123.5', '128.5', '252.6']]
+########################################################################################################################
+Sample 3119 - Plan 1: Operation 1: Select the row where the 'rank' is the last value in the table.
+Sample 3119 - Plan 1: Selected indices: [[5, 0]]
+Sample 3119 - Plan 1: X-Table after operation df:
+   rank         name nationality  c_1st__m_  c_2nd__m_  points
+0    11  jakub janda         cze      123.5      128.5   252.6
+Sample 3119 - Plan 1: Table after operation: [['rank', 'name', 'nationality', 'c_1st__m_', 'c_2nd__m_', 'points'], [11, 'jakub janda', 'cze', 123.5, 128.5, 252.6]]
+########################################################################################################################
+Sample 3119 - Plan 1: Operation 2: Select the 'points' column from the selected row.
+Sample 3119 - Plan 1: Selected indices: []
+Sample 3119 - Plan 1: X-Table after operation df:
+   points
+0   252.6
+Sample 3119 - Plan 1: Table after operation: [['points'], [252.6]]
+Fall-back: FALSE
+Answer from plan 1: [[252.6]]
+Groundtruth: ['252.6']

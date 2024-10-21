@@ -1,0 +1,270 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which racer was the only one not to finish on the final lap?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where 'time_retired' is '+1 lap'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>pos</td>
+<td>rider</td>
+<td>manufacturer</td>
+<td>time_retired</td>
+<td>points</td>
+</tr>
+<tr>
+<td>1</td>
+<td>loris capirossi</td>
+<td>honda</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">38:04.730</span></td>
+<td>25</td>
+</tr>
+<tr>
+<td>2</td>
+<td>valentino rossi</td>
+<td>aprilia</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+0.180</span></td>
+<td>20</td>
+</tr>
+<tr>
+<td>3</td>
+<td>jeremy mcwilliams</td>
+<td>aprilia</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+0.534</span></td>
+<td>16</td>
+</tr>
+<tr>
+<td>4</td>
+<td>tohru ukawa</td>
+<td>honda</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+0.537</span></td>
+<td>13</td>
+</tr>
+<tr>
+<td>5</td>
+<td>shinya nakano</td>
+<td>yamaha</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+0.742</span></td>
+<td>11</td>
+</tr>
+<tr>
+<td>6</td>
+<td>ralf waldmann</td>
+<td>aprilia</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+7.019</span></td>
+<td>10</td>
+</tr>
+<tr>
+<td>7</td>
+<td>franco battaini</td>
+<td>aprilia</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+20.889</span></td>
+<td>9</td>
+</tr>
+<tr>
+<td>8</td>
+<td>stefano perugini</td>
+<td>honda</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+20.891</span></td>
+<td>8</td>
+</tr>
+<tr>
+<td>9</td>
+<td>jason vincent</td>
+<td>honda</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+21.310</span></td>
+<td>7</td>
+</tr>
+<tr>
+<td>10</td>
+<td>anthony west</td>
+<td>tsr-honda</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+26.816</span></td>
+<td>6</td>
+</tr>
+<tr>
+<td>11</td>
+<td>alex hofmann</td>
+<td>tsr-honda</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+26.933</span></td>
+<td>5</td>
+</tr>
+<tr>
+<td>12</td>
+<td>sebastian porto</td>
+<td>yamaha</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+27.054</span></td>
+<td>4</td>
+</tr>
+<tr>
+<td>13</td>
+<td>tomomi manako</td>
+<td>yamaha</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+27.903</span></td>
+<td>3</td>
+</tr>
+<tr>
+<td>14</td>
+<td>masaki tokudome</td>
+<td>tsr-honda</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+33.161</span></td>
+<td>2</td>
+</tr>
+<tr>
+<td>15</td>
+<td>jarno janssen</td>
+<td>tsr-honda</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+56.248</span></td>
+<td>1</td>
+</tr>
+<tr>
+<td>16</td>
+<td>luca boscoscuro</td>
+<td>tsr-honda</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+56.432</span></td>
+<td></td>
+</tr>
+<tr>
+<td>17</td>
+<td>johann stigefelt</td>
+<td>yamaha</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+1:07.433</span></td>
+<td></td>
+</tr>
+<tr>
+<td>18</td>
+<td>julien allemand</td>
+<td>tsr-honda</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+1:16.347</span></td>
+<td></td>
+</tr>
+<tr>
+<td>19</td>
+<td>fonsi nieto</td>
+<td>yamaha</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+1:25.622</span></td>
+<td></td>
+</tr>
+<tr>
+<td>20</td>
+<td>lucas oliver bulto</td>
+<td>yamaha</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+1:25.758</span></td>
+<td></td>
+</tr>
+<tr>
+<td>21</td>
+<td>david garcia</td>
+<td>yamaha</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+1:33.867</span></td>
+<td></td>
+</tr>
+<tr>
+<td>22</td>
+<td>rudie markink</td>
+<td>aprilia</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+1:40.280</span></td>
+<td></td>
+</tr>
+<tr>
+<td>23</td>
+<td>arno visscher</td>
+<td>aprilia</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+1:40.635</span></td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">henk van de lagemaat</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">honda</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">+1 lap</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td>ret</td>
+<td>maurice bolwerk</td>
+<td>tsr-honda</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">retirement</span></td>
+<td></td>
+</tr>
+<tr>
+<td>ret</td>
+<td>andre romein</td>
+<td>honda</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">retirement</span></td>
+<td></td>
+</tr>
+<tr>
+<td>ret</td>
+<td>roberto rolfo</td>
+<td>aprilia</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">retirement</span></td>
+<td></td>
+</tr>
+<tr>
+<td>ret</td>
+<td>marcellino lucchi</td>
+<td>aprilia</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">retirement</span></td>
+<td></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select the 'rider' column.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>pos</td>
+<td>rider</td>
+<td>manufacturer</td>
+<td>time_retired</td>
+<td>points</td>
+</tr>
+<tr>
+<td>24</td>
+<td>henk van de lagemaat</td>
+<td>honda</td>
+<td>+1 lap</td>
+<td>None</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>rider</td>
+</tr>
+<tr>
+<td>henk van de lagemaat</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['henk van de lagemaat']]</h3>
+</body></html>

@@ -1,0 +1,79 @@
+************************************************************************************************************************
+Sample 3568 - Plan 1: Query: what is the total number of winning tickets?
+Sample 3568 - Plan 1: Groundtruth: ['565']
+Sample 3568 - Plan 1: X-Original table pd: 
+   divisions prize__eur_ odds_of_winning__1 in_  number_of_winning_tickets  \
+0        all   45,000.00                   3.54                        565   
+1        1st   18,000.00                  2,000                          1   
+2        2nd      750.00                  2,000                          1   
+3        3rd      600.00                  2,000                          1   
+4        4th      450.00                  2,000                          1   
+5        5th      300.00                  2,000                          1   
+6        6th      135.00                  2,000                          1   
+7        sub      180.00                  2,000                          2   
+8        sub      180.00                  2,000                          2   
+9        sub      180.00                  2,000                          2   
+10       sub   17,820.00                   20.2                        297   
+11       sub    3,420.00                  105.3                         57   
+12       sub    2,985.00                   10.1                        199   
+
+                     in_order_to_win  
+0                          any prize  
+1               match all 5 in order  
+2               match all 5 in order  
+3               match all 5 in order  
+4               match all 5 in order  
+5               match all 5 in order  
+6               match all 5 in order  
+7        nearest number to 1st prize  
+8        nearest number to 2nd prize  
+9        nearest number to 3rd prize  
+10  first 3 digits of 1st, 2nd & 3rd  
+11   last 2 digits of 1st, 2nd & 3rd  
+12               last 1 digit of 1st  
+Sample 3568 - Plan 1: Caption: none
+Sample 3568 - Plan 1: Original table: [['divisions', 'prize__eur_', 'odds_of_winning__1\xa0in_', 'number_of_winning_tickets', 'in_order_to_win'], ['all', '45,000.00', '3.54', '565', 'any prize'], ['1st', '18,000.00', '2,000', '1', 'match all 5 in order'], ['2nd', '750.00', '2,000', '1', 'match all 5 in order'], ['3rd', '600.00', '2,000', '1', 'match all 5 in order'], ['4th', '450.00', '2,000', '1', 'match all 5 in order'], ['5th', '300.00', '2,000', '1', 'match all 5 in order'], ['6th', '135.00', '2,000', '1', 'match all 5 in order'], ['sub', '180.00', '2,000', '2', 'nearest number to 1st prize'], ['sub', '180.00', '2,000', '2', 'nearest number to 2nd prize'], ['sub', '180.00', '2,000', '2', 'nearest number to 3rd prize'], ['sub', '17,820.00', '20.2', '297', 'first 3 digits of 1st, 2nd & 3rd'], ['sub', '3,420.00', '105.3', '57', 'last 2 digits of 1st, 2nd & 3rd'], ['sub', '2,985.00', '10.1', '199', 'last 1 digit of 1st']]
+########################################################################################################################
+Sample 3568 - Plan 1: Operation 1: Select rows where the 'number_of_winning_tickets' column is not null.
+Sample 3568 - Plan 1: Selected indices: []
+Sample 3568 - Plan 1: X-Table after operation df:
+   divisions prize__eur_ odds_of_winning__1 in_  number_of_winning_tickets  \
+0        all   45,000.00                   3.54                        565   
+1        1st   18,000.00                  2,000                          1   
+2        2nd      750.00                  2,000                          1   
+3        3rd      600.00                  2,000                          1   
+4        4th      450.00                  2,000                          1   
+5        5th      300.00                  2,000                          1   
+6        6th      135.00                  2,000                          1   
+7        sub      180.00                  2,000                          2   
+8        sub      180.00                  2,000                          2   
+9        sub      180.00                  2,000                          2   
+10       sub   17,820.00                   20.2                        297   
+11       sub    3,420.00                  105.3                         57   
+12       sub    2,985.00                   10.1                        199   
+
+                     in_order_to_win  
+0                          any prize  
+1               match all 5 in order  
+2               match all 5 in order  
+3               match all 5 in order  
+4               match all 5 in order  
+5               match all 5 in order  
+6               match all 5 in order  
+7        nearest number to 1st prize  
+8        nearest number to 2nd prize  
+9        nearest number to 3rd prize  
+10  first 3 digits of 1st, 2nd & 3rd  
+11   last 2 digits of 1st, 2nd & 3rd  
+12               last 1 digit of 1st  
+Sample 3568 - Plan 1: Table after operation: [['divisions', 'prize__eur_', 'odds_of_winning__1\xa0in_', 'number_of_winning_tickets', 'in_order_to_win'], ['all', '45,000.00', '3.54', 565, 'any prize'], ['1st', '18,000.00', '2,000', 1, 'match all 5 in order'], ['2nd', '750.00', '2,000', 1, 'match all 5 in order'], ['3rd', '600.00', '2,000', 1, 'match all 5 in order'], ['4th', '450.00', '2,000', 1, 'match all 5 in order'], ['5th', '300.00', '2,000', 1, 'match all 5 in order'], ['6th', '135.00', '2,000', 1, 'match all 5 in order'], ['sub', '180.00', '2,000', 2, 'nearest number to 1st prize'], ['sub', '180.00', '2,000', 2, 'nearest number to 2nd prize'], ['sub', '180.00', '2,000', 2, 'nearest number to 3rd prize'], ['sub', '17,820.00', '20.2', 297, 'first 3 digits of 1st, 2nd & 3rd'], ['sub', '3,420.00', '105.3', 57, 'last 2 digits of 1st, 2nd & 3rd'], ['sub', '2,985.00', '10.1', 199, 'last 1 digit of 1st']]
+########################################################################################################################
+Sample 3568 - Plan 1: Operation 2: Sum the values in the 'number_of_winning_tickets' column.
+Sample 3568 - Plan 1: Selected indices: []
+Sample 3568 - Plan 1: X-Table after operation df:
+   total_tickets
+0           1130
+Sample 3568 - Plan 1: Table after operation: [['total_tickets'], [1130]]
+Fall-back: FALSE
+Answer from plan 1: [[1130]]
+Groundtruth: ['565']

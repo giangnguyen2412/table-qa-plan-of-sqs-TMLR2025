@@ -1,0 +1,77 @@
+************************************************************************************************************************
+Sample 846 - Plan 1: Query: what is the least number of points earned?
+Sample 846 - Plan 1: Groundtruth: ['16']
+Sample 846 - Plan 1: X-Original table pd: 
+   pos        team  played  won  draw  lost  goals_for  goals_against  \
+0    1          kr      18   11     4     3         27             14   
+1    2      fylkir      18   10     5     3         39             16   
+2    3   grindavík      18    8     6     4         25             18   
+3    4         íbv      18    8     5     5         29             17   
+4    5          ía      18    7     5     6         21             17   
+5    6    keflavík      18    4     7     7         21             35   
+6    7  breiðablik      18    5     3    10         29             35   
+7    8        fram      18    4     5     9         22             33   
+8    9    stjarnan      18    4     5     9         18             31   
+9   10     leiftur      18    3     7     8         24             39   
+
+   goal_difference  points                  notes  
+0               13      37  uefa champions league  
+1               23      35               uefa cup  
+2                7      30               uefa cup  
+3               12      29         inter-toto cup  
+4                4      26                         
+5              -14      19                         
+6               -6      18                         
+7              -11      17                         
+8              -13      17              relegated  
+9              -15      16              relegated  
+Sample 846 - Plan 1: Caption: none
+Sample 846 - Plan 1: Original table: [['pos', 'team', 'played', 'won', 'draw', 'lost', 'goals_for', 'goals_against', 'goal_difference', 'points', 'notes'], ['1', 'kr', '18', '11', '4', '3', '27', '14', '+13', '37', 'uefa champions league'], ['2', 'fylkir', '18', '10', '5', '3', '39', '16', '+23', '35', 'uefa cup'], ['3', 'grindavík', '18', '8', '6', '4', '25', '18', '+7', '30', 'uefa cup'], ['4', 'íbv', '18', '8', '5', '5', '29', '17', '+12', '29', 'inter-toto cup'], ['5', 'ía', '18', '7', '5', '6', '21', '17', '+4', '26', ''], ['6', 'keflavík', '18', '4', '7', '7', '21', '35', '-14', '19', ''], ['7', 'breiðablik', '18', '5', '3', '10', '29', '35', '-6', '18', ''], ['8', 'fram', '18', '4', '5', '9', '22', '33', '-11', '17', ''], ['9', 'stjarnan', '18', '4', '5', '9', '18', '31', '-13', '17', 'relegated'], ['10', 'leiftur', '18', '3', '7', '8', '24', '39', '-15', '16', 'relegated']]
+########################################################################################################################
+Sample 846 - Plan 1: Operation 1: Order the table by the 'points' column in ascending order.
+Sample 846 - Plan 1: Selected indices: [[9, 9], [4, 9], [0, 9], [7, 9], [2, 9], [8, 9], [3, 9], [5, 9], [6, 9], [1, 9]]
+Sample 846 - Plan 1: X-Table after operation df:
+   pos        team  played  won  draw  lost  goals_for  goals_against  \
+0   10     leiftur      18    3     7     8         24             39   
+1    8        fram      18    4     5     9         22             33   
+2    9    stjarnan      18    4     5     9         18             31   
+3    7  breiðablik      18    5     3    10         29             35   
+4    6    keflavík      18    4     7     7         21             35   
+5    5          ía      18    7     5     6         21             17   
+6    4         íbv      18    8     5     5         29             17   
+7    3   grindavík      18    8     6     4         25             18   
+8    2      fylkir      18   10     5     3         39             16   
+9    1          kr      18   11     4     3         27             14   
+
+   goal_difference  points                  notes  
+0              -15      16              relegated  
+1              -11      17                         
+2              -13      17              relegated  
+3               -6      18                         
+4              -14      19                         
+5                4      26                         
+6               12      29         inter-toto cup  
+7                7      30               uefa cup  
+8               23      35               uefa cup  
+9               13      37  uefa champions league  
+Sample 846 - Plan 1: Table after operation: [['pos', 'team', 'played', 'won', 'draw', 'lost', 'goals_for', 'goals_against', 'goal_difference', 'points', 'notes'], [10, 'leiftur', 18, 3, 7, 8, 24, 39, -15, 16, 'relegated'], [8, 'fram', 18, 4, 5, 9, 22, 33, -11, 17, ''], [9, 'stjarnan', 18, 4, 5, 9, 18, 31, -13, 17, 'relegated'], [7, 'breiðablik', 18, 5, 3, 10, 29, 35, -6, 18, ''], [6, 'keflavík', 18, 4, 7, 7, 21, 35, -14, 19, ''], [5, 'ía', 18, 7, 5, 6, 21, 17, 4, 26, ''], [4, 'íbv', 18, 8, 5, 5, 29, 17, 12, 29, 'inter-toto cup'], [3, 'grindavík', 18, 8, 6, 4, 25, 18, 7, 30, 'uefa cup'], [2, 'fylkir', 18, 10, 5, 3, 39, 16, 23, 35, 'uefa cup'], [1, 'kr', 18, 11, 4, 3, 27, 14, 13, 37, 'uefa champions league']]
+########################################################################################################################
+Sample 846 - Plan 1: Operation 2: Select row number 1.
+Sample 846 - Plan 1: Selected indices: []
+Sample 846 - Plan 1: X-Table after operation df:
+   pos     team  played  won  draw  lost  goals_for  goals_against  \
+0   10  leiftur      18    3     7     8         24             39   
+
+   goal_difference  points      notes  
+0              -15      16  relegated  
+Sample 846 - Plan 1: Table after operation: [['pos', 'team', 'played', 'won', 'draw', 'lost', 'goals_for', 'goals_against', 'goal_difference', 'points', 'notes'], [10, 'leiftur', 18, 3, 7, 8, 24, 39, -15, 16, 'relegated']]
+########################################################################################################################
+Sample 846 - Plan 1: Operation 3: Select the 'points' column.
+Sample 846 - Plan 1: Selected indices: []
+Sample 846 - Plan 1: X-Table after operation df:
+   points
+0      16
+Sample 846 - Plan 1: Table after operation: [['points'], [16]]
+Fall-back: FALSE
+Answer from plan 1: [[16]]
+Groundtruth: ['16']

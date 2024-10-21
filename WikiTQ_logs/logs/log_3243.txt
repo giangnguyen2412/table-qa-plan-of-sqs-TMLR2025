@@ -1,0 +1,177 @@
+************************************************************************************************************************
+Sample 3243 - Plan 1: Query: what is the oldest album that wasn't a single only?
+Sample 3243 - Plan 1: Groundtruth: ['"Language of Love"']
+Sample 3243 - Plan 1: X-Original table pd: 
+    year                                         single  \
+0   1957                       "sittin' in the balcony"   
+1   1961                             "language of love"   
+2   1962                         "thou shalt not steal"   
+3   1962                            "callin' dr. casey"   
+4   1962                                     "road hog"   
+5   1963  "bad news" (b/w "guitar player(her and him)")   
+6   1964          "blue train (of the heartbreak line)"   
+7   1964                                     "th' wife"   
+8   1965                               "that ain't all"   
+9   1966                   "silver cloud talkin' blues"   
+10  1966                        "you're the guilty one"   
+11  1967                                 "it's my time"   
+12  1968                        "odd folks of okracoke"   
+13  1969                                   "brown girl"   
+14  1971                              "lord have mercy"   
+15  1979   "every day i learn a little more about love"   
+
+   chart_positions_nus_country chart_positions_nus  \
+0                            —                  38   
+1                            —                  32   
+2                            —                  73   
+3                            —                  83   
+4                            —                  65   
+5                           23                   —   
+6                           44                 132   
+7                           45                   —   
+8                           20                   —   
+9                            —                   —   
+10                           —                   —   
+11                          51                   —   
+12                           —                   —   
+13                           —                   —   
+14                           —                   —   
+15                           —                   —   
+
+                                             album  
+0                                      single only  
+1                                 language of love  
+2                                     singles only  
+3                                     singles only  
+4                                     twelve sides  
+5                                     singles only  
+6                                     singles only  
+7                                     singles only  
+8                                     singles only  
+9   a bizarre collection of the most unusual songs  
+10                                     single only  
+11             suburban attitudes in country verse  
+12                                     single only  
+13             the open mind of john d. loudermilk  
+14                                volume 1-elloree  
+15                            just passing through  
+Sample 3243 - Plan 1: Caption: none
+Sample 3243 - Plan 1: Original table: [['year', 'single', 'chart_positions_nus_country', 'chart_positions_nus', 'album'], ['1957', '"sittin\' in the balcony"', '—', '38', 'single only'], ['1961', '"language of love"', '—', '32', 'language of love'], ['1962', '"thou shalt not steal"', '—', '73', 'singles only'], ['1962', '"callin\' dr. casey"', '—', '83', 'singles only'], ['1962', '"road hog"', '—', '65', 'twelve sides'], ['1963', '"bad news" (b/w "guitar player(her and him)")', '23', '—', 'singles only'], ['1964', '"blue train (of the heartbreak line)"', '44', '132', 'singles only'], ['1964', '"th\' wife"', '45', '—', 'singles only'], ['1965', '"that ain\'t all"', '20', '—', 'singles only'], ['1966', '"silver cloud talkin\' blues"', '—', '—', 'a bizarre collection of the most unusual songs'], ['1966', '"you\'re the guilty one"', '—', '—', 'single only'], ['1967', '"it\'s my time"', '51', '—', 'suburban attitudes in country verse'], ['1968', '"odd folks of okracoke"', '—', '—', 'single only'], ['1969', '"brown girl"', '—', '—', 'the open mind of john d. loudermilk'], ['1971', '"lord have mercy"', '—', '—', 'volume 1-elloree'], ['1979', '"every day i learn a little more about love"', '—', '—', 'just passing through']]
+########################################################################################################################
+Sample 3243 - Plan 1: Operation 1: Select rows where the 'album' column is not equal to 'single only'.
+Sample 3243 - Plan 1: Selected indices: [[4, 4], [7, 4], [2, 4], [13, 4], [8, 4], [3, 4], [14, 4], [15, 4], [5, 4], [6, 4], [1, 4], [11, 4], [9, 4]]
+Sample 3243 - Plan 1: X-Table after operation df:
+    year                                         single  \
+0   1961                             "language of love"   
+1   1962                         "thou shalt not steal"   
+2   1962                            "callin' dr. casey"   
+3   1962                                     "road hog"   
+4   1963  "bad news" (b/w "guitar player(her and him)")   
+5   1964          "blue train (of the heartbreak line)"   
+6   1964                                     "th' wife"   
+7   1965                               "that ain't all"   
+8   1966                   "silver cloud talkin' blues"   
+9   1967                                 "it's my time"   
+10  1969                                   "brown girl"   
+11  1971                              "lord have mercy"   
+12  1979   "every day i learn a little more about love"   
+
+   chart_positions_nus_country chart_positions_nus  \
+0                            —                  32   
+1                            —                  73   
+2                            —                  83   
+3                            —                  65   
+4                           23                   —   
+5                           44                 132   
+6                           45                   —   
+7                           20                   —   
+8                            —                   —   
+9                           51                   —   
+10                           —                   —   
+11                           —                   —   
+12                           —                   —   
+
+                                             album  
+0                                 language of love  
+1                                     singles only  
+2                                     singles only  
+3                                     twelve sides  
+4                                     singles only  
+5                                     singles only  
+6                                     singles only  
+7                                     singles only  
+8   a bizarre collection of the most unusual songs  
+9              suburban attitudes in country verse  
+10             the open mind of john d. loudermilk  
+11                                volume 1-elloree  
+12                            just passing through  
+Sample 3243 - Plan 1: Table after operation: [['year', 'single', 'chart_positions_nus_country', 'chart_positions_nus', 'album'], [1961, '"language of love"', '—', '32', 'language of love'], [1962, '"thou shalt not steal"', '—', '73', 'singles only'], [1962, '"callin\' dr. casey"', '—', '83', 'singles only'], [1962, '"road hog"', '—', '65', 'twelve sides'], [1963, '"bad news" (b/w "guitar player(her and him)")', '23', '—', 'singles only'], [1964, '"blue train (of the heartbreak line)"', '44', '132', 'singles only'], [1964, '"th\' wife"', '45', '—', 'singles only'], [1965, '"that ain\'t all"', '20', '—', 'singles only'], [1966, '"silver cloud talkin\' blues"', '—', '—', 'a bizarre collection of the most unusual songs'], [1967, '"it\'s my time"', '51', '—', 'suburban attitudes in country verse'], [1969, '"brown girl"', '—', '—', 'the open mind of john d. loudermilk'], [1971, '"lord have mercy"', '—', '—', 'volume 1-elloree'], [1979, '"every day i learn a little more about love"', '—', '—', 'just passing through']]
+########################################################################################################################
+Sample 3243 - Plan 1: Operation 2: Order the table by the 'year' column in ascending order.
+Sample 3243 - Plan 1: Selected indices: [[9, 0], [4, 0], [11, 0], [0, 0], [12, 0], [7, 0], [2, 0], [8, 0], [3, 0], [10, 0], [5, 0], [6, 0], [1, 0]]
+Sample 3243 - Plan 1: X-Table after operation df:
+    year                                         single  \
+0   1961                             "language of love"   
+1   1962                         "thou shalt not steal"   
+2   1962                            "callin' dr. casey"   
+3   1962                                     "road hog"   
+4   1963  "bad news" (b/w "guitar player(her and him)")   
+5   1964          "blue train (of the heartbreak line)"   
+6   1964                                     "th' wife"   
+7   1965                               "that ain't all"   
+8   1966                   "silver cloud talkin' blues"   
+9   1967                                 "it's my time"   
+10  1969                                   "brown girl"   
+11  1971                              "lord have mercy"   
+12  1979   "every day i learn a little more about love"   
+
+   chart_positions_nus_country chart_positions_nus  \
+0                            —                  32   
+1                            —                  73   
+2                            —                  83   
+3                            —                  65   
+4                           23                   —   
+5                           44                 132   
+6                           45                   —   
+7                           20                   —   
+8                            —                   —   
+9                           51                   —   
+10                           —                   —   
+11                           —                   —   
+12                           —                   —   
+
+                                             album  
+0                                 language of love  
+1                                     singles only  
+2                                     singles only  
+3                                     twelve sides  
+4                                     singles only  
+5                                     singles only  
+6                                     singles only  
+7                                     singles only  
+8   a bizarre collection of the most unusual songs  
+9              suburban attitudes in country verse  
+10             the open mind of john d. loudermilk  
+11                                volume 1-elloree  
+12                            just passing through  
+Sample 3243 - Plan 1: Table after operation: [['year', 'single', 'chart_positions_nus_country', 'chart_positions_nus', 'album'], [1961, '"language of love"', '—', '32', 'language of love'], [1962, '"thou shalt not steal"', '—', '73', 'singles only'], [1962, '"callin\' dr. casey"', '—', '83', 'singles only'], [1962, '"road hog"', '—', '65', 'twelve sides'], [1963, '"bad news" (b/w "guitar player(her and him)")', '23', '—', 'singles only'], [1964, '"blue train (of the heartbreak line)"', '44', '132', 'singles only'], [1964, '"th\' wife"', '45', '—', 'singles only'], [1965, '"that ain\'t all"', '20', '—', 'singles only'], [1966, '"silver cloud talkin\' blues"', '—', '—', 'a bizarre collection of the most unusual songs'], [1967, '"it\'s my time"', '51', '—', 'suburban attitudes in country verse'], [1969, '"brown girl"', '—', '—', 'the open mind of john d. loudermilk'], [1971, '"lord have mercy"', '—', '—', 'volume 1-elloree'], [1979, '"every day i learn a little more about love"', '—', '—', 'just passing through']]
+########################################################################################################################
+Sample 3243 - Plan 1: Operation 3: Select row number 1.
+Sample 3243 - Plan 1: Selected indices: []
+Sample 3243 - Plan 1: X-Table after operation df:
+   year              single chart_positions_nus_country  chart_positions_nus  \
+0  1961  "language of love"                           —                   32   
+
+              album  
+0  language of love  
+Sample 3243 - Plan 1: Table after operation: [['year', 'single', 'chart_positions_nus_country', 'chart_positions_nus', 'album'], [1961, '"language of love"', '—', '32', 'language of love']]
+########################################################################################################################
+Sample 3243 - Plan 1: Operation 4: Select the 'album' column.
+Sample 3243 - Plan 1: Selected indices: []
+Sample 3243 - Plan 1: X-Table after operation df:
+              album
+0  language of love
+Sample 3243 - Plan 1: Table after operation: [['album'], ['language of love']]
+Fall-back: FALSE
+Answer from plan 1: [['language of love']]
+Groundtruth: ['"Language of Love"']

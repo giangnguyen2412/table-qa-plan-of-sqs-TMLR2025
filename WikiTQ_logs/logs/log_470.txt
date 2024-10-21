@@ -1,0 +1,71 @@
+************************************************************************************************************************
+Sample 470 - Plan 1: Query: who was the color commentator the most?
+Sample 470 - Plan 1: Groundtruth: ['Bryan Field']
+Sample 470 - Plan 1: X-Original table pd: 
+   year network     race_caller                color_commentator  \
+0  1959     cbs  fred capossela   bryan field and chris schenkel   
+1  1958     cbs  fred capossela                      bryan field   
+2  1957     cbs  fred capossela                      bryan field   
+3  1956     cbs  fred capossela                      bryan field   
+4  1955     cbs  fred capossela  phil sutterfield and win elliot   
+5  1954     cbs     bryan field                        mel allen   
+6  1953     cbs     bryan field                        mel allen   
+7  1952     cbs     bryan field                       sam renick   
+
+          reporters trophy_presentation  
+0                        chris schenkel  
+1                                        
+2                                        
+3                                        
+4                                        
+5                            bill corum  
+6  phil sutterfield    phil sutterfield  
+7                                        
+Sample 470 - Plan 1: Caption: none
+Sample 470 - Plan 1: Original table: [['year', 'network', 'race_caller', 'color_commentator', 'reporters', 'trophy_presentation'], ['1959', 'cbs', 'fred capossela', 'bryan field and chris schenkel', '', 'chris schenkel'], ['1958', 'cbs', 'fred capossela', 'bryan field', '', ''], ['1957', 'cbs', 'fred capossela', 'bryan field', '', ''], ['1956', 'cbs', 'fred capossela', 'bryan field', '', ''], ['1955', 'cbs', 'fred capossela', 'phil sutterfield and win elliot', '', ''], ['1954', 'cbs', 'bryan field', 'mel allen', '', 'bill corum'], ['1953', 'cbs', 'bryan field', 'mel allen', 'phil sutterfield', 'phil sutterfield'], ['1952', 'cbs', 'bryan field', 'sam renick', '', '']]
+########################################################################################################################
+Sample 470 - Plan 1: Operation 1: Select the 'color_commentator' column.
+Sample 470 - Plan 1: Selected indices: []
+Sample 470 - Plan 1: X-Table after operation df:
+                 color_commentator
+0   bryan field and chris schenkel
+1                      bryan field
+2                      bryan field
+3                      bryan field
+4  phil sutterfield and win elliot
+5                        mel allen
+6                        mel allen
+7                       sam renick
+Sample 470 - Plan 1: Table after operation: [['color_commentator'], ['bryan field and chris schenkel'], ['bryan field'], ['bryan field'], ['bryan field'], ['phil sutterfield and win elliot'], ['mel allen'], ['mel allen'], ['sam renick']]
+########################################################################################################################
+Sample 470 - Plan 1: Operation 2: Count the occurrences of each commentator in the column.
+Sample 470 - Plan 1: Selected indices: [[0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]]
+Sample 470 - Plan 1: X-Table after operation df:
+                 color_commentator  commentator_count
+0                      bryan field                  3
+1   bryan field and chris schenkel                  1
+2                        mel allen                  2
+3  phil sutterfield and win elliot                  1
+4                       sam renick                  1
+Sample 470 - Plan 1: Table after operation: [['color_commentator', 'commentator_count'], ['bryan field', 3], ['bryan field and chris schenkel', 1], ['mel allen', 2], ['phil sutterfield and win elliot', 1], ['sam renick', 1]]
+########################################################################################################################
+Sample 470 - Plan 1: Operation 3: Order the counts in descending order.
+Sample 470 - Plan 1: Selected indices: [[0, 1], [2, 1], [3, 1], [1, 1], [4, 1]]
+Sample 470 - Plan 1: X-Table after operation df:
+                 color_commentator  commentator_count
+0                      bryan field                  3
+1                        mel allen                  2
+2   bryan field and chris schenkel                  1
+3  phil sutterfield and win elliot                  1
+4                       sam renick                  1
+Sample 470 - Plan 1: Table after operation: [['color_commentator', 'commentator_count'], ['bryan field', 3], ['mel allen', 2], ['bryan field and chris schenkel', 1], ['phil sutterfield and win elliot', 1], ['sam renick', 1]]
+########################################################################################################################
+Sample 470 - Plan 1: Operation 4: Select the commentator with the highest count.
+Sample 470 - Plan 1: Selected indices: []
+Sample 470 - Plan 1: X-Table after operation df:
+  color_commentator
+0       bryan field
+Sample 470 - Plan 1: Table after operation: [['color_commentator'], ['bryan field']]
+Fall-back: FALSE
+Answer from plan 1: [['bryan field']]
+Groundtruth: ['Bryan Field']

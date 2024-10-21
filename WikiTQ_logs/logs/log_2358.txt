@@ -1,0 +1,54 @@
+************************************************************************************************************************
+Sample 2358 - Plan 1: Query: which single had the most club play?
+Sample 2358 - Plan 1: Groundtruth: ['Thanks to You']
+Sample 2358 - Plan 1: X-Original table pd: 
+   year                        name        label hot_black_singles  \
+0  1982  "he's gonna take you home"       becket                 ―   
+1  1982             "thanks to you"       becket               #44   
+2  1983            "i need you now"         jive                 ―   
+3  1984                 "thin line"  power house                 ―   
+4  1986              "say it again"       spring                 ―   
+5  1986              "say it again"       spring                 ―   
+6  1987            "send it c.o.d."    new image                 ―   
+
+  club_play_singles  
+0                 ―  
+1                #1  
+2                 ―  
+3                 ―  
+4                 ―  
+5                 ―  
+6                 ―  
+Sample 2358 - Plan 1: Caption: none
+Sample 2358 - Plan 1: Original table: [['year', 'name', 'label', 'hot_black_singles', 'club_play_singles'], ['1982', '"he\'s gonna take you home"', 'becket', '―', '―'], ['1982', '"thanks to you"', 'becket', '#44', '#1'], ['1983', '"i need you now"', 'jive', '―', '―'], ['1984', '"thin line"', 'power house', '―', '―'], ['1986', '"say it again"', 'spring', '―', '―'], ['1986', '"say it again"', 'spring', '―', '―'], ['1987', '"send it c.o.d."', 'new image', '―', '―']]
+########################################################################################################################
+Sample 2358 - Plan 1: Operation 1: Select rows where the 'club_play_singles' column is not equal to '―'.
+Sample 2358 - Plan 1: Selected indices: [[1, 4]]
+Sample 2358 - Plan 1: X-Table after operation df:
+   year             name   label hot_black_singles club_play_singles
+0  1982  "thanks to you"  becket               #44                #1
+Sample 2358 - Plan 1: Table after operation: [['year', 'name', 'label', 'hot_black_singles', 'club_play_singles'], [1982, '"thanks to you"', 'becket', '#44', '#1']]
+########################################################################################################################
+Sample 2358 - Plan 1: Operation 2: Order the table by the 'club_play_singles' column in descending order.
+Sample 2358 - Plan 1: Selected indices: [[0, 4]]
+Sample 2358 - Plan 1: X-Table after operation df:
+   year             name   label hot_black_singles club_play_singles
+0  1982  "thanks to you"  becket               #44                #1
+Sample 2358 - Plan 1: Table after operation: [['year', 'name', 'label', 'hot_black_singles', 'club_play_singles'], [1982, '"thanks to you"', 'becket', '#44', '#1']]
+########################################################################################################################
+Sample 2358 - Plan 1: Operation 3: Select row number 1.
+Sample 2358 - Plan 1: Selected indices: []
+Sample 2358 - Plan 1: X-Table after operation df:
+   year             name   label hot_black_singles club_play_singles
+0  1982  "thanks to you"  becket               #44                #1
+Sample 2358 - Plan 1: Table after operation: [['year', 'name', 'label', 'hot_black_singles', 'club_play_singles'], [1982, '"thanks to you"', 'becket', '#44', '#1']]
+########################################################################################################################
+Sample 2358 - Plan 1: Operation 4: Select the 'name' column.
+Sample 2358 - Plan 1: Selected indices: []
+Sample 2358 - Plan 1: X-Table after operation df:
+              name
+0  "thanks to you"
+Sample 2358 - Plan 1: Table after operation: [['name'], ['"thanks to you"']]
+Fall-back: FALSE
+Answer from plan 1: [['"thanks to you"']]
+Groundtruth: ['Thanks to You']

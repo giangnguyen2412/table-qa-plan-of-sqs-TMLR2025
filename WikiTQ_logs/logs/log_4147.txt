@@ -1,0 +1,57 @@
+************************************************************************************************************************
+Sample 4147 - Plan 1: Query: which ship lost over 5 lives but was a barge?
+Sample 4147 - Plan 1: Groundtruth: ['Plymouth']
+Sample 4147 - Plan 1: X-Original table pd: 
+                ship type_of_vessel           lake  \
+0              argus        steamer     lake huron   
+1   james carruthers        steamer     lake huron   
+2             hydrus        steamer     lake huron   
+3           leafield        steamer  lake superior   
+4     john a. mcgean        steamer     lake huron   
+5           plymouth          barge  lake michigan   
+6   charles s. price        steamer     lake huron   
+7             regina        steamer     lake huron   
+8     issac m. scott        steamer     lake huron   
+9     henry b. smith        steamer  lake superior   
+10           wexford        steamer     lake huron   
+11  lightship no. 82      lightship      lake erie   
+
+                            location lives_lost  
+0   25 miles off kincardine, ontario    25 lost  
+1                    near kincardine    18 lost  
+2           near lexington, michigan    28 lost  
+3                                     all hands  
+4             near goderich, ontario    28 lost  
+5                                        7 lost  
+6          near port huron, michigan    28 lost  
+7        near harbor beach, michigan             
+8           near port elgin, ontario    28 lost  
+9                                     all hands  
+10      north of grand bend, ontario  all hands  
+11       point albino (near buffalo)     6 lost  
+Sample 4147 - Plan 1: Caption: none
+Sample 4147 - Plan 1: Original table: [['ship', 'type_of_vessel', 'lake', 'location', 'lives_lost'], ['argus', 'steamer', 'lake huron', '25 miles off kincardine, ontario', '25 lost'], ['james carruthers', 'steamer', 'lake huron', 'near kincardine', '18 lost'], ['hydrus', 'steamer', 'lake huron', 'near lexington, michigan', '28 lost'], ['leafield', 'steamer', 'lake superior', '', 'all hands'], ['john a. mcgean', 'steamer', 'lake huron', 'near goderich, ontario', '28 lost'], ['plymouth', 'barge', 'lake michigan', '', '7 lost'], ['charles s. price', 'steamer', 'lake huron', 'near port huron, michigan', '28 lost'], ['regina', 'steamer', 'lake huron', 'near harbor beach, michigan', ''], ['issac m. scott', 'steamer', 'lake huron', 'near port elgin, ontario', '28 lost'], ['henry b. smith', 'steamer', 'lake superior', '', 'all hands'], ['wexford', 'steamer', 'lake huron', 'north of grand bend, ontario', 'all hands'], ['lightship no. 82', 'lightship', 'lake erie', 'point albino (near buffalo)', '6 lost']]
+########################################################################################################################
+Sample 4147 - Plan 1: Operation 1: Select rows where the 'type_of_vessel' is 'barge'.
+Sample 4147 - Plan 1: Selected indices: [[5, 1]]
+Sample 4147 - Plan 1: X-Table after operation df:
+       ship type_of_vessel           lake  location lives_lost
+0  plymouth          barge  lake michigan       NaN     7 lost
+Sample 4147 - Plan 1: Table after operation: [['ship', 'type_of_vessel', 'lake', 'location', 'lives_lost'], ['plymouth', 'barge', 'lake michigan', '', '7 lost']]
+########################################################################################################################
+Sample 4147 - Plan 1: Operation 2: Select rows where the 'lives_lost' is greater than 5.
+Sample 4147 - Plan 1: Selected indices: []
+Sample 4147 - Plan 1: X-Table after operation df:
+       ship type_of_vessel           lake  location lives_lost
+0  plymouth          barge  lake michigan       NaN     7 lost
+Sample 4147 - Plan 1: Table after operation: [['ship', 'type_of_vessel', 'lake', 'location', 'lives_lost'], ['plymouth', 'barge', 'lake michigan', None, '7 lost']]
+########################################################################################################################
+Sample 4147 - Plan 1: Operation 3: Select the 'ship' column.
+Sample 4147 - Plan 1: Selected indices: []
+Sample 4147 - Plan 1: X-Table after operation df:
+       ship
+0  plymouth
+Sample 4147 - Plan 1: Table after operation: [['ship'], ['plymouth']]
+Fall-back: FALSE
+Answer from plan 1: [['plymouth']]
+Groundtruth: ['Plymouth']

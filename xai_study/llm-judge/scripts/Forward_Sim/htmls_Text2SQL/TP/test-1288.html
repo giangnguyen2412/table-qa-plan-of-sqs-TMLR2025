@@ -1,0 +1,41 @@
+
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+.sql-command { background-color: #f0f0f0; padding: 10px; border-left: 4px solid #4CAF50; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> there 's no countries that have 1 gold and a rank smaller then 2</h3>
+<h3>Input Table: 1967 world judo championships</h3>
+<div class="step">
+<table>
+<tr><td>rank</td><td>nation</td><td>gold</td><td>silver</td><td>bronze</td><td>total</td></tr><tr><td>1</td><td>japan</td><td>5</td><td>3</td><td>4</td><td>12</td></tr><tr><td>2</td><td>netherlands</td><td>1</td><td>1</td><td>1</td><td>3</td></tr><tr><td>3</td><td>germany</td><td>0</td><td>1</td><td>2</td><td>3</td></tr><tr><td>3</td><td>south korea</td><td>0</td><td>1</td><td>2</td><td>3</td></tr><tr><td>5</td><td>soviet union</td><td>0</td><td>0</td><td>2</td><td>2</td></tr><tr><td>6</td><td>great britain</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
+</table>
+</div>
+<h3>SQL Command:</h3>
+<div class="sql-command">SELECT 
+    CASE 
+        WHEN COUNT(*) = 0 THEN 'TRUE' 
+        ELSE 'FALSE' 
+    END 
+FROM table_sql 
+WHERE gold = 1 
+AND rank < 2;</div>
+</body></html>

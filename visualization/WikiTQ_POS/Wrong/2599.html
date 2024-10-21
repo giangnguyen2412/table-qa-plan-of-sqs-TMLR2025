@@ -1,0 +1,315 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which vehicle class has the highest price?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Extract the numerical values from the 'class_1__e_g__motorbike_', 'class_2__e_g__car_', 'class_3__e_g__car_with_trailer_', 'class_4__e_g__van_', and 'class_5__e_g__hgv_' columns and add columns 'num_class_1', 'num_class_2', 'num_class_3', 'num_class_4', and 'num_class_5' to the existing table.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>date_introduced</td>
+<td>class_1__e_g__motorbike_</td>
+<td>class_2__e_g__car_</td>
+<td>class_3__e_g__car_with_trailer_</td>
+<td>class_4__e_g__van_</td>
+<td>class_5__e_g__hgv_</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9 december 2003</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£1.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£2.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£5.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£5.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£10.00</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">23 july 2004</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£1.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£2.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£5.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£5.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£6.00</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">16 august 2004</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£2.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£3.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£6.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£6.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£6.00</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">14 june 2005</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£2.50</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£3.50</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£7.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£7.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£7.00</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1 january 2008</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£2.50</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£4.50</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£8.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£9.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£9.00</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1 january 2009</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£2.70</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£4.70</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£8.40</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£9.40</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£9.40</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1 march 2010</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£2.70</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£5.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£9.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£10.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£10.00</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1 march 2011</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£3.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£5.30</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£9.60</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£10.60</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£10.60</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1 march 2012</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£3.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£5.50</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£10.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£11.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">£11.00</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Calculate the maximum value among the 'num_class_1', 'num_class_2', 'num_class_3', 'num_class_4', and 'num_class_5' columns.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>date_introduced</td>
+<td>class_1__e_g__motorbike_</td>
+<td>class_2__e_g__car_</td>
+<td>class_3__e_g__car_with_trailer_</td>
+<td>class_4__e_g__van_</td>
+<td>class_5__e_g__hgv_</td>
+<td>num_class_1</td>
+<td>num_class_2</td>
+<td>num_class_3</td>
+<td>num_class_4</td>
+<td>num_class_5</td>
+</tr>
+<tr>
+<td>9 december 2003</td>
+<td>£1.00</td>
+<td>£2.00</td>
+<td>£5.00</td>
+<td>£5.00</td>
+<td>£10.00</td>
+<td>1.0</td>
+<td>2.0</td>
+<td>5.0</td>
+<td>5.0</td>
+<td>10.0</td>
+</tr>
+<tr>
+<td>23 july 2004</td>
+<td>£1.00</td>
+<td>£2.00</td>
+<td>£5.00</td>
+<td>£5.00</td>
+<td>£6.00</td>
+<td>1.0</td>
+<td>2.0</td>
+<td>5.0</td>
+<td>5.0</td>
+<td>6.0</td>
+</tr>
+<tr>
+<td>16 august 2004</td>
+<td>£2.00</td>
+<td>£3.00</td>
+<td>£6.00</td>
+<td>£6.00</td>
+<td>£6.00</td>
+<td>2.0</td>
+<td>3.0</td>
+<td>6.0</td>
+<td>6.0</td>
+<td>6.0</td>
+</tr>
+<tr>
+<td>14 june 2005</td>
+<td>£2.50</td>
+<td>£3.50</td>
+<td>£7.00</td>
+<td>£7.00</td>
+<td>£7.00</td>
+<td>2.5</td>
+<td>3.5</td>
+<td>7.0</td>
+<td>7.0</td>
+<td>7.0</td>
+</tr>
+<tr>
+<td>1 january 2008</td>
+<td>£2.50</td>
+<td>£4.50</td>
+<td>£8.00</td>
+<td>£9.00</td>
+<td>£9.00</td>
+<td>2.5</td>
+<td>4.5</td>
+<td>8.0</td>
+<td>9.0</td>
+<td>9.0</td>
+</tr>
+<tr>
+<td>1 january 2009</td>
+<td>£2.70</td>
+<td>£4.70</td>
+<td>£8.40</td>
+<td>£9.40</td>
+<td>£9.40</td>
+<td>2.7</td>
+<td>4.7</td>
+<td>8.4</td>
+<td>9.4</td>
+<td>9.4</td>
+</tr>
+<tr>
+<td>1 march 2010</td>
+<td>£2.70</td>
+<td>£5.00</td>
+<td>£9.00</td>
+<td>£10.00</td>
+<td>£10.00</td>
+<td>2.7</td>
+<td>5.0</td>
+<td>9.0</td>
+<td>10.0</td>
+<td>10.0</td>
+</tr>
+<tr>
+<td>1 march 2011</td>
+<td>£3.00</td>
+<td>£5.30</td>
+<td>£9.60</td>
+<td>£10.60</td>
+<td>£10.60</td>
+<td>3.0</td>
+<td>5.3</td>
+<td>9.6</td>
+<td>10.6</td>
+<td>10.6</td>
+</tr>
+<tr>
+<td>1 march 2012</td>
+<td>£3.00</td>
+<td>£5.50</td>
+<td>£10.00</td>
+<td>£11.00</td>
+<td>£11.00</td>
+<td>3.0</td>
+<td>5.5</td>
+<td>10.0</td>
+<td>11.0</td>
+<td>11.0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Identify the column with the maximum value.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>max_value</td>
+</tr>
+<tr>
+<td>10.0</td>
+</tr>
+<tr>
+<td>6.0</td>
+</tr>
+<tr>
+<td>6.0</td>
+</tr>
+<tr>
+<td>7.0</td>
+</tr>
+<tr>
+<td>9.0</td>
+</tr>
+<tr>
+<td>9.4</td>
+</tr>
+<tr>
+<td>10.0</td>
+</tr>
+<tr>
+<td>10.6</td>
+</tr>
+<tr>
+<td>11.0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Select the column name that corresponds to the column with the maximum value.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>max_value</td>
+</tr>
+<tr>
+<td>11.0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>column_name</td>
+</tr>
+<tr>
+<td>max_value</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['max_value']]</h3>
+</body></html>

@@ -1,0 +1,149 @@
+************************************************************************************************************************
+Sample 98 - Plan 1: Query: who finished immediately after danny osborne?
+Sample 98 - Plan 1: Groundtruth: ['Mike Imrie']
+Sample 98 - Plan 1: X-Original table pd: 
+    position           driver    no_                       car  \
+0        1.0      john briggs    9.0   honda prelude chevrolet   
+1        2.0      kerry baily   18.0    toyota supra chevrolet   
+2        3.0    james phillip   55.0   honda prelude chevrolet   
+3        4.0  mick monterosso    2.0        ford escort rs2000   
+4        5.0        bob jolly    3.0       holden vs commodore   
+5        6.0    danny osborne    NaN                mazda rx-7   
+6        7.0       mike imrie    4.0                      saab   
+7        8.0   mark trenoweth    NaN                    jaguar   
+8        9.0       ivan mikac   42.0                mazda rx-7   
+9       10.0         des wall    NaN              toyota supra   
+10      11.0      kevin clark  116.0           ford mustang gt   
+11      12.0    peter o'brien   17.0       holden vl commodore   
+12      13.0       chris fing    NaN           chevrolet monza   
+13      14.0      brian smith    NaN  alfa romeo gtv chevrolet   
+14      15.0        gary rowe   47.0             nissan stanza   
+15       NaN  domenic beninca    NaN                             
+16      17.0    phil crompton   49.0            ford ea falcon   
+17      18.0   allan mccarthy    NaN        alfa romeo alfetta   
+18      19.0   chris donnelly    NaN                             
+19       NaN     paul barrett    NaN                             
+20      21.0    brett francis    NaN                             
+21      22.0     shane eklund    NaN                             
+22       NaN  craig wildridge    NaN                             
+23       NaN      ron o'brien    NaN                             
+
+              entrant lak_ ora_ san_ phi_ total  
+0         john briggs   42   42   42   42   168  
+1         kerry baily   38   38   36   38   150  
+2       james phillip   26   28   28   30   112  
+3     mick monterosso    -   34   36   34   104  
+4           bob jolly    -   28   16   32    76  
+5                       26   10   30    -   66'  
+6   imrie motor sport   23   11    -   28    62  
+7                       33   24    -    -    57  
+8          ivan mikac    -    -   25   26    51  
+9                       15   32    -    -    47  
+10        kevin clark    -    -   23   23    46  
+11  o'brien aluminium    -   11   29    -    40  
+12                      29    -    -    -    29  
+13                       -   28    -    -    28  
+14          gary rowe    -    -   21    -    21  
+15                       -    -    -   21    21  
+16      phil crompton   17    -    -    -    17  
+17                      14    -    -    -    14  
+18                      12    -    -    -    12  
+19                       -    -    -   12    12  
+20                      11    -    -    -    11  
+21                      10    -    -    -    10  
+22                       -   10    -    -    10  
+23                       -    -    -   10    10  
+Sample 98 - Plan 1: Caption: none
+Sample 98 - Plan 1: Original table: [['position', 'driver', 'no_', 'car', 'entrant', 'lak_', 'ora_', 'san_', 'phi_', 'total'], ['1', 'john briggs', '9', 'honda prelude chevrolet', 'john briggs', '42', '42', '42', '42', '168'], ['2', 'kerry baily', '18', 'toyota supra chevrolet', 'kerry baily', '38', '38', '36', '38', '150'], ['3', 'james phillip', '55', 'honda prelude chevrolet', 'james phillip', '26', '28', '28', '30', '112'], ['4', 'mick monterosso', '2', 'ford escort rs2000', 'mick monterosso', '-', '34', '36', '34', '104'], ['5', 'bob jolly', '3', 'holden vs commodore', 'bob jolly', '-', '28', '16', '32', '76'], ['6', 'danny osborne', '', 'mazda rx-7', '', '26', '10', '30', '-', "66'"], ['7', 'mike imrie', '4', 'saab', 'imrie motor sport', '23', '11', '-', '28', '62'], ['8', 'mark trenoweth', '', 'jaguar', '', '33', '24', '-', '-', '57'], ['9', 'ivan mikac', '42', 'mazda rx-7', 'ivan mikac', '-', '-', '25', '26', '51'], ['10', 'des wall', '', 'toyota supra', '', '15', '32', '-', '-', '47'], ['11', 'kevin clark', '116', 'ford mustang gt', 'kevin clark', '-', '-', '23', '23', '46'], ['12', "peter o'brien", '17', 'holden vl commodore', "o'brien aluminium", '-', '11', '29', '-', '40'], ['13', 'chris fing', '', 'chevrolet monza', '', '29', '-', '-', '-', '29'], ['14', 'brian smith', '', 'alfa romeo gtv chevrolet', '', '-', '28', '-', '-', '28'], ['15', 'gary rowe', '47', 'nissan stanza', 'gary rowe', '-', '-', '21', '-', '21'], ['', 'domenic beninca', '', '', '', '-', '-', '-', '21', '21'], ['17', 'phil crompton', '49', 'ford ea falcon', 'phil crompton', '17', '-', '-', '-', '17'], ['18', 'allan mccarthy', '', 'alfa romeo alfetta', '', '14', '-', '-', '-', '14'], ['19', 'chris donnelly', '', '', '', '12', '-', '-', '-', '12'], ['', 'paul barrett', '', '', '', '-', '-', '-', '12', '12'], ['21', 'brett francis', '', '', '', '11', '-', '-', '-', '11'], ['22', 'shane eklund', '', '', '', '10', '-', '-', '-', '10'], ['', 'craig wildridge', '', '', '', '-', '10', '-', '-', '10'], ['', "ron o'brien", '', '', '', '-', '-', '-', '10', '10']]
+########################################################################################################################
+Sample 98 - Plan 1: Operation 1: Select rows where the 'position' is greater than 6.0.
+Sample 98 - Plan 1: Selected indices: [[9, 0], [21, 0], [16, 0], [11, 0], [17, 0], [12, 0], [7, 0], [18, 0], [13, 0], [8, 0], [14, 0], [20, 0], [10, 0], [6, 0]]
+Sample 98 - Plan 1: X-Table after operation df:
+    position          driver    no_                       car  \
+0        7.0      mike imrie    4.0                      saab   
+1        8.0  mark trenoweth    NaN                    jaguar   
+2        9.0      ivan mikac   42.0                mazda rx-7   
+3       10.0        des wall    NaN              toyota supra   
+4       11.0     kevin clark  116.0           ford mustang gt   
+5       12.0   peter o'brien   17.0       holden vl commodore   
+6       13.0      chris fing    NaN           chevrolet monza   
+7       14.0     brian smith    NaN  alfa romeo gtv chevrolet   
+8       15.0       gary rowe   47.0             nissan stanza   
+9       17.0   phil crompton   49.0            ford ea falcon   
+10      18.0  allan mccarthy    NaN        alfa romeo alfetta   
+11      19.0  chris donnelly    NaN                             
+12      21.0   brett francis    NaN                             
+13      22.0    shane eklund    NaN                             
+
+              entrant lak_ ora_ san_ phi_  total  
+0   imrie motor sport   23   11    -   28     62  
+1                       33   24    -    -     57  
+2          ivan mikac    -    -   25   26     51  
+3                       15   32    -    -     47  
+4         kevin clark    -    -   23   23     46  
+5   o'brien aluminium    -   11   29    -     40  
+6                       29    -    -    -     29  
+7                        -   28    -    -     28  
+8           gary rowe    -    -   21    -     21  
+9       phil crompton   17    -    -    -     17  
+10                      14    -    -    -     14  
+11                      12    -    -    -     12  
+12                      11    -    -    -     11  
+13                      10    -    -    -     10  
+Sample 98 - Plan 1: Table after operation: [['position', 'driver', 'no_', 'car', 'entrant', 'lak_', 'ora_', 'san_', 'phi_', 'total'], [7.0, 'mike imrie', 4.0, 'saab', 'imrie motor sport', '23', '11', '-', '28', '62'], [8.0, 'mark trenoweth', nan, 'jaguar', '', '33', '24', '-', '-', '57'], [9.0, 'ivan mikac', 42.0, 'mazda rx-7', 'ivan mikac', '-', '-', '25', '26', '51'], [10.0, 'des wall', nan, 'toyota supra', '', '15', '32', '-', '-', '47'], [11.0, 'kevin clark', 116.0, 'ford mustang gt', 'kevin clark', '-', '-', '23', '23', '46'], [12.0, "peter o'brien", 17.0, 'holden vl commodore', "o'brien aluminium", '-', '11', '29', '-', '40'], [13.0, 'chris fing', nan, 'chevrolet monza', '', '29', '-', '-', '-', '29'], [14.0, 'brian smith', nan, 'alfa romeo gtv chevrolet', '', '-', '28', '-', '-', '28'], [15.0, 'gary rowe', 47.0, 'nissan stanza', 'gary rowe', '-', '-', '21', '-', '21'], [17.0, 'phil crompton', 49.0, 'ford ea falcon', 'phil crompton', '17', '-', '-', '-', '17'], [18.0, 'allan mccarthy', nan, 'alfa romeo alfetta', '', '14', '-', '-', '-', '14'], [19.0, 'chris donnelly', nan, '', '', '12', '-', '-', '-', '12'], [21.0, 'brett francis', nan, '', '', '11', '-', '-', '-', '11'], [22.0, 'shane eklund', nan, '', '', '10', '-', '-', '-', '10']]
+########################################################################################################################
+Sample 98 - Plan 1: Operation 2: Order the table by 'position' in ascending order.
+Sample 98 - Plan 1: Selected indices: [[9, 0], [4, 0], [11, 0], [0, 0], [12, 0], [7, 0], [2, 0], [13, 0], [8, 0], [3, 0], [10, 0], [5, 0], [6, 0], [1, 0]]
+Sample 98 - Plan 1: X-Table after operation df:
+    position          driver    no_                       car  \
+0        7.0      mike imrie    4.0                      saab   
+1        8.0  mark trenoweth    NaN                    jaguar   
+2        9.0      ivan mikac   42.0                mazda rx-7   
+3       10.0        des wall    NaN              toyota supra   
+4       11.0     kevin clark  116.0           ford mustang gt   
+5       12.0   peter o'brien   17.0       holden vl commodore   
+6       13.0      chris fing    NaN           chevrolet monza   
+7       14.0     brian smith    NaN  alfa romeo gtv chevrolet   
+8       15.0       gary rowe   47.0             nissan stanza   
+9       17.0   phil crompton   49.0            ford ea falcon   
+10      18.0  allan mccarthy    NaN        alfa romeo alfetta   
+11      19.0  chris donnelly    NaN                             
+12      21.0   brett francis    NaN                             
+13      22.0    shane eklund    NaN                             
+
+              entrant lak_ ora_ san_ phi_  total  
+0   imrie motor sport   23   11    -   28     62  
+1                       33   24    -    -     57  
+2          ivan mikac    -    -   25   26     51  
+3                       15   32    -    -     47  
+4         kevin clark    -    -   23   23     46  
+5   o'brien aluminium    -   11   29    -     40  
+6                       29    -    -    -     29  
+7                        -   28    -    -     28  
+8           gary rowe    -    -   21    -     21  
+9       phil crompton   17    -    -    -     17  
+10                      14    -    -    -     14  
+11                      12    -    -    -     12  
+12                      11    -    -    -     11  
+13                      10    -    -    -     10  
+Sample 98 - Plan 1: Table after operation: [['position', 'driver', 'no_', 'car', 'entrant', 'lak_', 'ora_', 'san_', 'phi_', 'total'], [7.0, 'mike imrie', 4.0, 'saab', 'imrie motor sport', '23', '11', '-', '28', 62], [8.0, 'mark trenoweth', nan, 'jaguar', '', '33', '24', '-', '-', 57], [9.0, 'ivan mikac', 42.0, 'mazda rx-7', 'ivan mikac', '-', '-', '25', '26', 51], [10.0, 'des wall', nan, 'toyota supra', '', '15', '32', '-', '-', 47], [11.0, 'kevin clark', 116.0, 'ford mustang gt', 'kevin clark', '-', '-', '23', '23', 46], [12.0, "peter o'brien", 17.0, 'holden vl commodore', "o'brien aluminium", '-', '11', '29', '-', 40], [13.0, 'chris fing', nan, 'chevrolet monza', '', '29', '-', '-', '-', 29], [14.0, 'brian smith', nan, 'alfa romeo gtv chevrolet', '', '-', '28', '-', '-', 28], [15.0, 'gary rowe', 47.0, 'nissan stanza', 'gary rowe', '-', '-', '21', '-', 21], [17.0, 'phil crompton', 49.0, 'ford ea falcon', 'phil crompton', '17', '-', '-', '-', 17], [18.0, 'allan mccarthy', nan, 'alfa romeo alfetta', '', '14', '-', '-', '-', 14], [19.0, 'chris donnelly', nan, '', '', '12', '-', '-', '-', 12], [21.0, 'brett francis', nan, '', '', '11', '-', '-', '-', 11], [22.0, 'shane eklund', nan, '', '', '10', '-', '-', '-', 10]]
+########################################################################################################################
+Sample 98 - Plan 1: Operation 3: Select row number 1.
+Sample 98 - Plan 1: Selected indices: []
+Sample 98 - Plan 1: X-Table after operation df:
+   position      driver  no_   car            entrant  lak_  ora_ san_  phi_  \
+0       7.0  mike imrie  4.0  saab  imrie motor sport    23    11    -    28   
+
+   total  
+0     62  
+Sample 98 - Plan 1: Table after operation: [['position', 'driver', 'no_', 'car', 'entrant', 'lak_', 'ora_', 'san_', 'phi_', 'total'], [7.0, 'mike imrie', 4.0, 'saab', 'imrie motor sport', '23', '11', '-', '28', 62]]
+########################################################################################################################
+Sample 98 - Plan 1: Operation 4: Select the 'driver' column.
+Sample 98 - Plan 1: Selected indices: []
+Sample 98 - Plan 1: X-Table after operation df:
+       driver
+0  mike imrie
+Sample 98 - Plan 1: Table after operation: [['driver'], ['mike imrie']]
+Fall-back: FALSE
+Answer from plan 1: [['mike imrie']]
+Groundtruth: ['Mike Imrie']

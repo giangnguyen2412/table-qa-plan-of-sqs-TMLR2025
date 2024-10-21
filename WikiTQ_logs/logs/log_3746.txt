@@ -1,0 +1,86 @@
+************************************************************************************************************************
+Sample 3746 - Plan 1: Query: does st helen elementary school have a larger student/teacher ratio than good shepherd early childhood?
+Sample 3746 - Plan 1: Groundtruth: ['no']
+Sample 3746 - Plan 1: X-Original table pd: 
+                              school_name low_grade high_grade  \
+0                 bethany lutheran school        pk          8   
+1               bethlehem lutheran school        pk          8   
+2                  christ lutheran school         k          8   
+3      community baptist christian school        pk         12   
+4           good shepherd early childhood        pk          k   
+5                  grace christian school        pk         12   
+6              holy cross lutheran school        pk          8   
+7                immanuel lutheran school        pk          8   
+8              michigan lutheran seminary         9         12   
+9     nouvel catholic central high school         9         12   
+10                  peace lutheran school        pk          8   
+11         sheridan road christian school         k         12   
+12             st helen elementary school         k          8   
+13  st john's evangelical lutheran school         k          8   
+14               st pauls lutheran school        pk          8   
+15           st stephen elementary school        pk          8   
+16    st thomas aquinas elementary school         k          8   
+17  tri-city seventh-day adventist school         1          8   
+18            valley lutheran high school         9         12   
+19                                  notes                        
+
+    students__k_12_  fte_teachers  student_teacher_ratio  
+0              28.0           3.6                   7.78  
+1             182.0          10.0                  18.20  
+2              12.0           2.0                   6.00  
+3             120.0           9.8                  12.24  
+4              20.0           1.0                  20.00  
+5             117.0          13.0                   9.00  
+6             135.0           7.9                  17.09  
+7              82.0           5.6                  14.64  
+8             313.0          31.0                  10.10  
+9             505.0          37.0                  13.65  
+10            229.0           NaN                    NaN  
+11             42.0           5.9                   7.12  
+12            182.0          10.9                  16.70  
+13             32.0           3.0                  10.67  
+14            155.0           9.6                  16.15  
+15            364.0          23.1                  15.76  
+16            403.0          25.0                  16.12  
+17             18.0           2.1                   8.57  
+18            344.0          21.0                  16.38  
+19              NaN           NaN                    NaN  
+Sample 3746 - Plan 1: Caption: none
+Sample 3746 - Plan 1: Original table: [['school_name', 'low_grade', 'high_grade', 'students__k_12_', 'fte_teachers', 'student_teacher_ratio'], ['bethany lutheran school', 'pk', '8', '28', '3.6', '7.78'], ['bethlehem lutheran school', 'pk', '8', '182', '10', '18.2'], ['christ lutheran school', 'k', '8', '12', '2', '6'], ['community baptist christian school', 'pk', '12', '120', '9.8', '12.24'], ['good shepherd early childhood', 'pk', 'k', '20', '1', '20'], ['grace christian school', 'pk', '12', '117', '13', '9'], ['holy cross lutheran school', 'pk', '8', '135', '7.9', '17.09'], ['immanuel lutheran school', 'pk', '8', '82', '5.6', '14.64'], ['michigan lutheran seminary', '9', '12', '313', '31', '10.1'], ['nouvel catholic central high school', '9', '12', '505', '37', '13.65'], ['peace lutheran school', 'pk', '8', '229', '', ''], ['sheridan road christian school', 'k', '12', '42', '5.9', '7.12'], ['st helen elementary school', 'k', '8', '182', '10.9', '16.7'], ["st john's evangelical lutheran school", 'k', '8', '32', '3', '10.67'], ['st pauls lutheran school', 'pk', '8', '155', '9.6', '16.15'], ['st stephen elementary school', 'pk', '8', '364', '23.1', '15.76'], ['st thomas aquinas elementary school', 'k', '8', '403', '25', '16.12'], ['tri-city seventh-day adventist school', '1', '8', '18', '2.1', '8.57'], ['valley lutheran high school', '9', '12', '344', '21', '16.38'], ['notes', '', '', '', '', '']]
+########################################################################################################################
+Sample 3746 - Plan 1: Operation 1: Select rows where 'school_name' is 'st helen elementary school' and 'good shepherd early childhood'.
+Sample 3746 - Plan 1: Selected indices: [[12, 0], [4, 0]]
+Sample 3746 - Plan 1: X-Table after operation df:
+                     school_name low_grade high_grade  students__k_12_  \
+0  good shepherd early childhood        pk          k             20.0   
+1     st helen elementary school         k          8            182.0   
+
+   fte_teachers  student_teacher_ratio  
+0           1.0                   20.0  
+1          10.9                   16.7  
+Sample 3746 - Plan 1: Table after operation: [['school_name', 'low_grade', 'high_grade', 'students__k_12_', 'fte_teachers', 'student_teacher_ratio'], ['good shepherd early childhood', 'pk', 'k', 20.0, 1.0, 20.0], ['st helen elementary school', 'k', '8', 182.0, 10.9, 16.7]]
+########################################################################################################################
+Sample 3746 - Plan 1: Operation 2: Select the 'student_teacher_ratio' column for both rows.
+Sample 3746 - Plan 1: Selected indices: []
+Sample 3746 - Plan 1: X-Table after operation df:
+   student_teacher_ratio
+0                   20.0
+1                   16.7
+Sample 3746 - Plan 1: Table after operation: [['student_teacher_ratio'], [20.0], [16.7]]
+########################################################################################################################
+Sample 3746 - Plan 1: Operation 3: Compare the 'student_teacher_ratio' values for both schools.
+Sample 3746 - Plan 1: Selected indices: [[1, 0], [0, 0]]
+Sample 3746 - Plan 1: X-Table after operation df:
+   student_teacher_ratio
+0                   20.0
+1                   16.7
+Sample 3746 - Plan 1: Table after operation: [['student_teacher_ratio'], [20.0], [16.7]]
+########################################################################################################################
+Sample 3746 - Plan 1: Operation 4: Determine if the 'student_teacher_ratio' for st helen elementary school is larger than the 'student_teacher_ratio' for good shepherd early childhood.
+SQL execution error in operation 4: Execution failed on sql 'SELECT *
+FROM table_sql
+WHERE student_teacher_ratio > (SELECT student_teacher_ratio FROM table_sql WHERE school = 'st helen elementary school') AND school = 'good shepherd early childhood';': no such column: school
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['no']]
+Groundtruth: ['no']

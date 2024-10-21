@@ -1,0 +1,453 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> none of the athletes received medals in gymnastics</h3>
+<h3>Input Table: list of multiple olympic medalists</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where 'sport' is 'gymnastics'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>medal_count</td>
+<td>date</td>
+<td>athlete</td>
+<td>nation</td>
+<td>sport</td>
+<td>record_medal_event</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1896-04-06</td>
+<td>james connolly</td>
+<td>united states</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">athletics</span></td>
+<td>triple jump g</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1896-04-06</td>
+<td>alexandre tuffère</td>
+<td>france</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">athletics</span></td>
+<td>triple jump s</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1896-04-06</td>
+<td>ioannis persakis</td>
+<td>greece</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">athletics</span></td>
+<td>triple jump b</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1896-04-06</td>
+<td>robert garrett</td>
+<td>united states</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">athletics</span></td>
+<td>discus g</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1896-04-06</td>
+<td>panagiotis paraskevopoulos</td>
+<td>greece</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">athletics</span></td>
+<td>discus s</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1896-04-06</td>
+<td>sotirios versis</td>
+<td>greece</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">athletics</span></td>
+<td>discus b</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1896-04-07</td>
+<td>robert garrett</td>
+<td>united states</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">athletics</span></td>
+<td>long jump s</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1896-04-07</td>
+<td>james connolly</td>
+<td>united states</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">athletics</span></td>
+<td>long jump b</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1896-04-07</td>
+<td>robert garrett</td>
+<td>united states</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">athletics</span></td>
+<td>shot put g</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1896-04-09</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">carl schuhmann</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">germany</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">gymnastics</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">vault g</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1896-04-09</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">hermann weingärtner</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">germany</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">gymnastics</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">vault b</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1896-04-09</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">hermann weingärtner</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">germany</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">gymnastics</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pommel horse s</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1896-04-09</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">hermann weingärtner</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">germany</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">gymnastics</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rings s</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1896-04-09</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">hermann weingärtner</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">germany</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">gymnastics</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">horizontal bar g</span></td>
+</tr>
+<tr>
+<td>6</td>
+<td>1900-07-16</td>
+<td>robert garrett</td>
+<td>united states</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">athletics</span></td>
+<td>standing triple jump b</td>
+</tr>
+<tr>
+<td>6</td>
+<td>1904-09-03</td>
+<td>ray ewry</td>
+<td>united states</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">athletics</span></td>
+<td>standing triple jump g</td>
+</tr>
+<tr>
+<td>7</td>
+<td>1908-07-20</td>
+<td>ray ewry</td>
+<td>united states</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">athletics</span></td>
+<td>standing long jump g</td>
+</tr>
+<tr>
+<td>8</td>
+<td>1908-07-23</td>
+<td>ray ewry</td>
+<td>united states</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">athletics</span></td>
+<td>standing high jump g</td>
+</tr>
+<tr>
+<td>8</td>
+<td>1920-07-29</td>
+<td>carl osburn</td>
+<td>united states</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">shooting</span></td>
+<td>team 300 m / 600 m military rifle , prone g</td>
+</tr>
+<tr>
+<td>9</td>
+<td>1920-07-30</td>
+<td>carl osburn</td>
+<td>united states</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">shooting</span></td>
+<td>300 m military rifle , standing g</td>
+</tr>
+<tr>
+<td>10</td>
+<td>1920-07-31</td>
+<td>carl osburn</td>
+<td>united states</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">shooting</span></td>
+<td>team free rifle g</td>
+</tr>
+<tr>
+<td>11</td>
+<td>1924-06-27</td>
+<td>carl osburn</td>
+<td>united states</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">shooting</span></td>
+<td>600 m free rifle s</td>
+</tr>
+<tr>
+<td>11</td>
+<td>1928-08-03</td>
+<td>paavo nurmi</td>
+<td>finland</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">athletics</span></td>
+<td>5000 m s</td>
+</tr>
+<tr>
+<td>12</td>
+<td>1928-08-04</td>
+<td>paavo nurmi</td>
+<td>finland</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">athletics</span></td>
+<td>3000 m steeplechase s</td>
+</tr>
+<tr>
+<td>12</td>
+<td>1960-09-02</td>
+<td>edoardo mangiarotti</td>
+<td>italy</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fencing</span></td>
+<td>team foil s</td>
+</tr>
+<tr>
+<td>13</td>
+<td>1960-09-09</td>
+<td>edoardo mangiarotti</td>
+<td>italy</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fencing</span></td>
+<td>team épée g</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1964-10-21</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">larisa latynina</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">soviet union</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">gymnastics</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">team g</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">14</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1964-10-21</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">larisa latynina</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">soviet union</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">gymnastics</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">all - around s</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">15</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1964-10-22</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">larisa latynina</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">soviet union</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">gymnastics</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">vault s</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1964-10-22</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">larisa latynina</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">soviet union</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">gymnastics</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">uneven bars b</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1964-10-23</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">larisa latynina</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">soviet union</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">gymnastics</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">balance beam b</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">18</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1964-10-23</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">larisa latynina</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">soviet union</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">gymnastics</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">floor exercise g</span></td>
+</tr>
+<tr>
+<td>18</td>
+<td>2012-07-31</td>
+<td>michael phelps</td>
+<td>united states</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">swimming</span></td>
+<td>200 m butterfly s</td>
+</tr>
+<tr>
+<td>19</td>
+<td>2012-07-31</td>
+<td>michael phelps</td>
+<td>united states</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">swimming</span></td>
+<td>4 x 200 m freestyle g</td>
+</tr>
+<tr>
+<td>20</td>
+<td>2012-08-02</td>
+<td>michael phelps</td>
+<td>united states</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">swimming</span></td>
+<td>200 m individual medley g</td>
+</tr>
+<tr>
+<td>21</td>
+<td>2012-08-03</td>
+<td>michael phelps</td>
+<td>united states</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">swimming</span></td>
+<td>100 m butterfly g</td>
+</tr>
+<tr>
+<td>22</td>
+<td>2012-08-04</td>
+<td>michael phelps</td>
+<td>united states</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">swimming</span></td>
+<td>4 100 m medley relay g</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Use a `CASE` statement to return TRUE if the number of rows is equal to 0, otherwise return FALSE.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>medal_count</td>
+<td>date</td>
+<td>athlete</td>
+<td>nation</td>
+<td>sport</td>
+<td>record_medal_event</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1896-04-09</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">carl schuhmann</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">germany</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">gymnastics</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">vault g</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1896-04-09</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">hermann weingärtner</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">germany</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">gymnastics</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">vault b</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1896-04-09</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">hermann weingärtner</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">germany</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">gymnastics</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">pommel horse s</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1896-04-09</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">hermann weingärtner</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">germany</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">gymnastics</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">rings s</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1896-04-09</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">hermann weingärtner</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">germany</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">gymnastics</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">horizontal bar g</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1964-10-21</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">larisa latynina</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">soviet union</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">gymnastics</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">team g</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">14</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1964-10-21</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">larisa latynina</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">soviet union</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">gymnastics</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">all - around s</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">15</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1964-10-22</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">larisa latynina</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">soviet union</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">gymnastics</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">vault s</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1964-10-22</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">larisa latynina</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">soviet union</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">gymnastics</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">uneven bars b</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1964-10-23</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">larisa latynina</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">soviet union</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">gymnastics</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">balance beam b</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">18</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1964-10-23</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">larisa latynina</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">soviet union</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">gymnastics</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">floor exercise g</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>verification_result</td>
+</tr>
+<tr>
+<td>FALSE</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> FALSE</h3>
+</body></html>

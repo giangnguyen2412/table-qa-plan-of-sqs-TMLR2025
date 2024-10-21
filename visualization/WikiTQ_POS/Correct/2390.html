@@ -1,0 +1,481 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which driver finished in the last position?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Order the table by the 'pos' column in descending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>pos</td>
+<td>no</td>
+<td>driver</td>
+<td>team</td>
+<td>laps</td>
+<td>time_retired</td>
+<td>grid</td>
+<td>points</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">32</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">patrick carpentier</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">team player's</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">87</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1:48:11.023</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">22</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bruno junqueira</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">newman/haas racing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">87</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+0.8 secs</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">17</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">paul tracy</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">team player's</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">87</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+28.6 secs</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">14</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">michel jourdain, jr.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">team rahal</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">87</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+40.8 secs</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">34</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mario haberfeld</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mi-jack conquest racing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">87</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+42.1 secs</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">oriol servià</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">patrick racing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">87</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+1:00.2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">51</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">adrian fernández</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fernández racing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">87</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+1:01.4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jimmy vasser</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">american spirit team johansson</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">87</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+1:01.8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tiago monteiro</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fittipaldi-dingman racing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">86</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+ 1 lap</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">15</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">55</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mario domínguez</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">herdez competition</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">86</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+ 1 lap</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">11</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">27</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bryan herta</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pk racing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">86</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+ 1 lap</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">12</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">31</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ryan hunter-reay</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">american spirit team johansson</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">86</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+ 1 lap</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">joël camathias</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dale coyne racing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">85</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+ 2 laps</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">18</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">14</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">33</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">alex tagliani</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rocketsports racing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">85</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+ 2 laps</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">14</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">15</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">roberto moreno</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">herdez competition</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">85</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+ 2 laps</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">geoff boss</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dale coyne racing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">83</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mechanical</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sébastien bourdais</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">newman/haas racing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">77</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mechanical</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">18</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">15</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">darren manning</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">walker racing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mechanical</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">19</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rodolfo lavín</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">walker racing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mechanical</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select the last row.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>pos</td>
+<td>no</td>
+<td>driver</td>
+<td>team</td>
+<td>laps</td>
+<td>time_retired</td>
+<td>grid</td>
+<td>points</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">19</span></td>
+<td>5</td>
+<td>rodolfo lavín</td>
+<td>walker racing</td>
+<td>10</td>
+<td>mechanical</td>
+<td>16</td>
+<td>0</td>
+</tr>
+<tr>
+<td>18</td>
+<td>15</td>
+<td>darren manning</td>
+<td>walker racing</td>
+<td>12</td>
+<td>mechanical</td>
+<td>7</td>
+<td>0</td>
+</tr>
+<tr>
+<td>17</td>
+<td>2</td>
+<td>sébastien bourdais</td>
+<td>newman/haas racing</td>
+<td>77</td>
+<td>mechanical</td>
+<td>4</td>
+<td>0</td>
+</tr>
+<tr>
+<td>16</td>
+<td>11</td>
+<td>geoff boss</td>
+<td>dale coyne racing</td>
+<td>83</td>
+<td>mechanical</td>
+<td>19</td>
+<td>0</td>
+</tr>
+<tr>
+<td>15</td>
+<td>4</td>
+<td>roberto moreno</td>
+<td>herdez competition</td>
+<td>85</td>
+<td>+ 2 laps</td>
+<td>9</td>
+<td>0</td>
+</tr>
+<tr>
+<td>14</td>
+<td>33</td>
+<td>alex tagliani</td>
+<td>rocketsports racing</td>
+<td>85</td>
+<td>+ 2 laps</td>
+<td>14</td>
+<td>0</td>
+</tr>
+<tr>
+<td>13</td>
+<td>19</td>
+<td>joël camathias</td>
+<td>dale coyne racing</td>
+<td>85</td>
+<td>+ 2 laps</td>
+<td>18</td>
+<td>0</td>
+</tr>
+<tr>
+<td>12</td>
+<td>31</td>
+<td>ryan hunter-reay</td>
+<td>american spirit team johansson</td>
+<td>86</td>
+<td>+ 1 lap</td>
+<td>17</td>
+<td>1</td>
+</tr>
+<tr>
+<td>11</td>
+<td>27</td>
+<td>bryan herta</td>
+<td>pk racing</td>
+<td>86</td>
+<td>+ 1 lap</td>
+<td>12</td>
+<td>2</td>
+</tr>
+<tr>
+<td>10</td>
+<td>55</td>
+<td>mario domínguez</td>
+<td>herdez competition</td>
+<td>86</td>
+<td>+ 1 lap</td>
+<td>11</td>
+<td>3</td>
+</tr>
+<tr>
+<td>9</td>
+<td>7</td>
+<td>tiago monteiro</td>
+<td>fittipaldi-dingman racing</td>
+<td>86</td>
+<td>+ 1 lap</td>
+<td>15</td>
+<td>4</td>
+</tr>
+<tr>
+<td>8</td>
+<td>12</td>
+<td>jimmy vasser</td>
+<td>american spirit team johansson</td>
+<td>87</td>
+<td>+1:01.8</td>
+<td>8</td>
+<td>5</td>
+</tr>
+<tr>
+<td>7</td>
+<td>51</td>
+<td>adrian fernández</td>
+<td>fernández racing</td>
+<td>87</td>
+<td>+1:01.4</td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr>
+<td>6</td>
+<td>20</td>
+<td>oriol servià</td>
+<td>patrick racing</td>
+<td>87</td>
+<td>+1:00.2</td>
+<td>10</td>
+<td>8</td>
+</tr>
+<tr>
+<td>5</td>
+<td>34</td>
+<td>mario haberfeld</td>
+<td>mi-jack conquest racing</td>
+<td>87</td>
+<td>+42.1 secs</td>
+<td>6</td>
+<td>10</td>
+</tr>
+<tr>
+<td>4</td>
+<td>9</td>
+<td>michel jourdain, jr.</td>
+<td>team rahal</td>
+<td>87</td>
+<td>+40.8 secs</td>
+<td>13</td>
+<td>12</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3</td>
+<td>paul tracy</td>
+<td>team player's</td>
+<td>87</td>
+<td>+28.6 secs</td>
+<td>3</td>
+<td>14</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>bruno junqueira</td>
+<td>newman/haas racing</td>
+<td>87</td>
+<td>+0.8 secs</td>
+<td>2</td>
+<td>17</td>
+</tr>
+<tr>
+<td>1</td>
+<td>32</td>
+<td>patrick carpentier</td>
+<td>team player's</td>
+<td>87</td>
+<td>1:48:11.023</td>
+<td>1</td>
+<td>22</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select the 'driver' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>pos</td>
+<td>no</td>
+<td>driver</td>
+<td>team</td>
+<td>laps</td>
+<td>time_retired</td>
+<td>grid</td>
+<td>points</td>
+</tr>
+<tr>
+<td>19</td>
+<td>5</td>
+<td>rodolfo lavín</td>
+<td>walker racing</td>
+<td>10</td>
+<td>mechanical</td>
+<td>16</td>
+<td>0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>driver</td>
+</tr>
+<tr>
+<td>rodolfo lavín</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['rodolfo lavín']]</h3>
+</body></html>

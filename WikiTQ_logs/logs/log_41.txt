@@ -1,0 +1,58 @@
+************************************************************************************************************************
+Sample 41 - Plan 1: Query: who scored more goals: clint dempsey or eric wynalda?
+Sample 41 - Plan 1: Groundtruth: ['Clint Dempsey']
+Sample 41 - Plan 1: X-Original table pd: 
+    _            player  goals  caps        career
+0   1    landon donovan     57   155  2000–present
+1   2     clint dempsey     36   103  2004–present
+2   3      eric wynalda     34   106     1990–2000
+3   4     brian mcbride     30    95     1993–2006
+4   5     joe-max moore     24   100     1992–2002
+5  6t     jozy altidore     21    67  2007–present
+6  6t      bruce murray     21    86     1985–1993
+7   8     eddie johnson     19    62  2004–present
+8  9t    earnie stewart     17   101     1990–2004
+9  9t  damarcus beasley     17   114  2001–present
+Sample 41 - Plan 1: Caption: none
+Sample 41 - Plan 1: Original table: [['_', 'player', 'goals', 'caps', 'career'], ['1', 'landon donovan', '57', '155', '2000–present'], ['2', 'clint dempsey', '36', '103', '2004–present'], ['3', 'eric wynalda', '34', '106', '1990–2000'], ['4', 'brian mcbride', '30', '95', '1993–2006'], ['5', 'joe-max moore', '24', '100', '1992–2002'], ['6t', 'jozy altidore', '21', '67', '2007–present'], ['6t', 'bruce murray', '21', '86', '1985–1993'], ['8', 'eddie johnson', '19', '62', '2004–present'], ['9t', 'earnie stewart', '17', '101', '1990–2004'], ['9t', 'damarcus beasley', '17', '114', '2001–present']]
+########################################################################################################################
+Sample 41 - Plan 1: Operation 1: Select rows where the 'player' is 'clint dempsey' or 'eric wynalda'.
+Sample 41 - Plan 1: Selected indices: [[1, 1], [2, 1]]
+Sample 41 - Plan 1: X-Table after operation df:
+   _         player  goals  caps        career
+0  2  clint dempsey     36   103  2004–present
+1  3   eric wynalda     34   106     1990–2000
+Sample 41 - Plan 1: Table after operation: [['_', 'player', 'goals', 'caps', 'career'], ['2', 'clint dempsey', 36, 103, '2004–present'], ['3', 'eric wynalda', 34, 106, '1990–2000']]
+########################################################################################################################
+Sample 41 - Plan 1: Operation 2: Select the 'goals' column.
+Sample 41 - Plan 1: Selected indices: []
+Sample 41 - Plan 1: X-Table after operation df:
+   goals
+0     36
+1     34
+Sample 41 - Plan 1: Table after operation: [['goals'], [36], [34]]
+########################################################################################################################
+Sample 41 - Plan 1: Operation 3: Compare the values of the 'goals' column for 'clint dempsey' and 'eric wynalda'.
+Sample 41 - Plan 1: Selected indices: [[1, 0], [0, 0]]
+Sample 41 - Plan 1: X-Table after operation df:
+   goals
+0     36
+1     34
+Sample 41 - Plan 1: Table after operation: [['goals'], [36], [34]]
+########################################################################################################################
+Sample 41 - Plan 1: Operation 4: Determine which player has scored more goals based on the comparison.
+Sample 41 - Plan 1: Selected indices: [[0, 0]]
+Sample 41 - Plan 1: X-Table after operation df:
+   goals
+0     36
+Sample 41 - Plan 1: Table after operation: [['goals'], [36]]
+########################################################################################################################
+Sample 41 - Plan 1: Operation 5: Select the name of the player with more goals as the final answer.
+SQL execution error in operation 5: Execution failed on sql 'SELECT name
+FROM table_sql
+WHERE goals = (SELECT MAX(goals) FROM table_sql);
+-- Select the name of the player with more goals as the final answer.': no such column: name
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['clint dempsey']]
+Groundtruth: ['Clint Dempsey']

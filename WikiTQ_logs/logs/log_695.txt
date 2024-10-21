@@ -1,0 +1,65 @@
+************************************************************************************************************************
+Sample 695 - Plan 1: Query: how long did the competitions go on?
+Sample 695 - Plan 1: Groundtruth: ['8 years']
+Sample 695 - Plan 1: X-Original table pd: 
+   year                 competition                               venue  \
+0  2000  world junior championships                     santiago, chile   
+1  2003            all-africa games                      abuja, nigeria   
+2  2003            all-africa games                      abuja, nigeria   
+3  2004       african championships  brazzaville, republic of the congo   
+4  2004               olympic games                      athens, greece   
+5  2006          commonwealth games                melbourne, australia   
+6  2006          commonwealth games                melbourne, australia   
+7  2007            all-africa games                    algiers, algeria   
+8  2008       african championships               addis ababa, ethiopia   
+
+  position         event    notes  
+0      1st  discus throw  59.51 m  
+1      5th      shot put  17.76 m  
+2      2nd  discus throw  62.86 m  
+3      2nd  discus throw  63.50 m  
+4      8th  discus throw  62.58 m  
+5      7th      shot put  18.44 m  
+6      4th  discus throw  60.99 m  
+7      3rd  discus throw  57.79 m  
+8      2nd  discus throw  56.98 m  
+Sample 695 - Plan 1: Caption: none
+Sample 695 - Plan 1: Original table: [['year', 'competition', 'venue', 'position', 'event', 'notes'], ['2000', 'world junior championships', 'santiago, chile', '1st', 'discus throw', '59.51 m'], ['2003', 'all-africa games', 'abuja, nigeria', '5th', 'shot put', '17.76 m'], ['2003', 'all-africa games', 'abuja, nigeria', '2nd', 'discus throw', '62.86 m'], ['2004', 'african championships', 'brazzaville, republic of the congo', '2nd', 'discus throw', '63.50 m'], ['2004', 'olympic games', 'athens, greece', '8th', 'discus throw', '62.58 m'], ['2006', 'commonwealth games', 'melbourne, australia', '7th', 'shot put', '18.44 m'], ['2006', 'commonwealth games', 'melbourne, australia', '4th', 'discus throw', '60.99 m'], ['2007', 'all-africa games', 'algiers, algeria', '3rd', 'discus throw', '57.79 m'], ['2008', 'african championships', 'addis ababa, ethiopia', '2nd', 'discus throw', '56.98 m']]
+########################################################################################################################
+Sample 695 - Plan 1: Operation 1: Select the 'year' column.
+Sample 695 - Plan 1: Selected indices: []
+Sample 695 - Plan 1: X-Table after operation df:
+   year
+0  2000
+1  2003
+2  2003
+3  2004
+4  2004
+5  2006
+6  2006
+7  2007
+8  2008
+Sample 695 - Plan 1: Table after operation: [['year'], [2000], [2003], [2003], [2004], [2004], [2006], [2006], [2007], [2008]]
+########################################################################################################################
+Sample 695 - Plan 1: Operation 2: Calculate the minimum value from the 'year' column and assign it to a variable 'start_year'.
+Sample 695 - Plan 1: Selected indices: []
+Sample 695 - Plan 1: X-Table after operation df:
+   start_year
+0        2000
+Sample 695 - Plan 1: Table after operation: [['start_year'], [2000]]
+########################################################################################################################
+Sample 695 - Plan 1: Operation 3: Calculate the maximum value from the 'year' column and assign it to a variable 'end_year'.
+Sample 695 - Plan 1: Selected indices: []
+Sample 695 - Plan 1: X-Table after operation df:
+   end_year
+0      2000
+Sample 695 - Plan 1: Table after operation: [['end_year'], [2000]]
+########################################################################################################################
+Sample 695 - Plan 1: Operation 4: Subtract 'start_year' from 'end_year' to calculate the duration of the competitions.
+SQL execution error in operation 4: Execution failed on sql 'SELECT end_year - start_year AS duration
+FROM table_sql;
+-- Subtract 'start_year' from 'end_year' to calculate the duration of the competitions.': no such column: start_year
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['world junior championships', 'all-africa games', 'all-africa games', 'african championships', 'olympic games', 'commonwealth games', 'commonwealth games', 'all-africa games', 'african championships']]
+Groundtruth: ['8 years']

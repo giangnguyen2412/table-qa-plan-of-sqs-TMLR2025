@@ -1,0 +1,48 @@
+************************************************************************************************************************
+Sample 3702 - Plan 1: Query: how many years was eric wynalda's career?
+Sample 3702 - Plan 1: Groundtruth: ['10']
+Sample 3702 - Plan 1: X-Original table pd: 
+    _            player  goals  caps        career
+0   1    landon donovan     57   155  2000–present
+1   2     clint dempsey     36   103  2004–present
+2   3      eric wynalda     34   106     1990–2000
+3   4     brian mcbride     30    95     1993–2006
+4   5     joe-max moore     24   100     1992–2002
+5  6t     jozy altidore     21    67  2007–present
+6  6t      bruce murray     21    86     1985–1993
+7   8     eddie johnson     19    62  2004–present
+8  9t    earnie stewart     17   101     1990–2004
+9  9t  damarcus beasley     17   114  2001–present
+Sample 3702 - Plan 1: Caption: none
+Sample 3702 - Plan 1: Original table: [['_', 'player', 'goals', 'caps', 'career'], ['1', 'landon donovan', '57', '155', '2000–present'], ['2', 'clint dempsey', '36', '103', '2004–present'], ['3', 'eric wynalda', '34', '106', '1990–2000'], ['4', 'brian mcbride', '30', '95', '1993–2006'], ['5', 'joe-max moore', '24', '100', '1992–2002'], ['6t', 'jozy altidore', '21', '67', '2007–present'], ['6t', 'bruce murray', '21', '86', '1985–1993'], ['8', 'eddie johnson', '19', '62', '2004–present'], ['9t', 'earnie stewart', '17', '101', '1990–2004'], ['9t', 'damarcus beasley', '17', '114', '2001–present']]
+########################################################################################################################
+Sample 3702 - Plan 1: Operation 1: Select the row where the 'player' is 'eric wynalda'.
+Sample 3702 - Plan 1: Selected indices: [[2, 1]]
+Sample 3702 - Plan 1: X-Table after operation df:
+   _        player  goals  caps     career
+0  3  eric wynalda     34   106  1990–2000
+Sample 3702 - Plan 1: Table after operation: [['_', 'player', 'goals', 'caps', 'career'], ['3', 'eric wynalda', 34, 106, '1990–2000']]
+########################################################################################################################
+Sample 3702 - Plan 1: Operation 2: Extract the 'career' value from the selected row.
+Sample 3702 - Plan 1: Selected indices: []
+Sample 3702 - Plan 1: X-Table after operation df:
+      career
+0  1990–2000
+Sample 3702 - Plan 1: Table after operation: [['career'], ['1990–2000']]
+########################################################################################################################
+Sample 3702 - Plan 1: Operation 3: Calculate the number of years in the 'career' value by subtracting the start year from the end year.
+Sample 3702 - Plan 1: Selected indices: []
+Sample 3702 - Plan 1: X-Table after operation df:
+   num_years
+0      -1990
+Sample 3702 - Plan 1: Table after operation: [['num_years'], [-1990]]
+########################################################################################################################
+Sample 3702 - Plan 1: Operation 4: Return the calculated number of years as the answer to the question.
+Sample 3702 - Plan 1: Selected indices: []
+Sample 3702 - Plan 1: X-Table after operation df:
+   answer
+0    1990
+Sample 3702 - Plan 1: Table after operation: [['answer'], [1990]]
+Fall-back: FALSE
+Answer from plan 1: [[1990]]
+Groundtruth: ['10']

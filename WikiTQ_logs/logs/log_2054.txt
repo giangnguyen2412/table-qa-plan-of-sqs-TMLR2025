@@ -1,0 +1,69 @@
+************************************************************************************************************************
+Sample 2054 - Plan 1: Query: which lieutenant was the last to leave office?
+Sample 2054 - Plan 1: Groundtruth: ['André Bachand']
+Sample 2054 - Plan 1: X-Original table pd: 
+  political_lieutenant                                   district_n_area_  \
+0   georges-henri héon                          argenteuil\n(laurentides)   
+1          léon balcer                         trois-rivières\n(mauricie)   
+2     marcel faribault                                               none   
+3        claude wagner                      saint-hyacinthe\n(montérégie)   
+4      lucien bouchard          lac-saint-jean\n(saguenay-lac-saint-jean)   
+5      benoît bouchard                roberval\n(saguenay-lac-saint-jean)   
+6       monique landry           blainville—deux-montagnes\n(laurentides)   
+7        andré bachand  richmond—arthabaska\n(centre-du-québec &\neast...   
+
+   took_office  left_office                 party_leader  
+0         1949         1949               george a. drew  
+1         1957         1965      john george diefenbaker  
+2         1967         1968             robert stanfield  
+3         1972         1978  robert stanfield\njoe clark  
+4         1988         1990               brian mulroney  
+5         1990         1993               brian mulroney  
+6         1993         1993                 kim campbell  
+7         1998         2004      joe clark\npeter mackay  
+Sample 2054 - Plan 1: Caption: none
+Sample 2054 - Plan 1: Original table: [['political_lieutenant', 'district_n_area_', 'took_office', 'left_office', 'party_leader'], ['georges-henri héon', 'argenteuil\\n(laurentides)', '1949', '1949', 'george a. drew'], ['léon balcer', 'trois-rivières\\n(mauricie)', '1957', '1965', 'john george diefenbaker'], ['marcel faribault', 'none', '1967', '1968', 'robert stanfield'], ['claude wagner', 'saint-hyacinthe\\n(montérégie)', '1972', '1978', 'robert stanfield\\njoe clark'], ['lucien bouchard', 'lac-saint-jean\\n(saguenay-lac-saint-jean)', '1988', '1990', 'brian mulroney'], ['benoît bouchard', 'roberval\\n(saguenay-lac-saint-jean)', '1990', '1993', 'brian mulroney'], ['monique landry', 'blainville—deux-montagnes\\n(laurentides)', '1993', '1993', 'kim campbell'], ['andré bachand', 'richmond—arthabaska\\n(centre-du-québec &\\neastern townships)', '1998', '2004', 'joe clark\\npeter mackay']]
+########################################################################################################################
+Sample 2054 - Plan 1: Operation 1: Order the table by the 'left_office' column in descending order.
+Sample 2054 - Plan 1: Selected indices: [[4, 3], [0, 3], [7, 3], [2, 3], [3, 3], [5, 3], [6, 3], [1, 3]]
+Sample 2054 - Plan 1: X-Table after operation df:
+  political_lieutenant                                   district_n_area_  \
+0        andré bachand  richmond—arthabaska\n(centre-du-québec &\neast...   
+1      benoît bouchard                roberval\n(saguenay-lac-saint-jean)   
+2       monique landry           blainville—deux-montagnes\n(laurentides)   
+3      lucien bouchard          lac-saint-jean\n(saguenay-lac-saint-jean)   
+4        claude wagner                      saint-hyacinthe\n(montérégie)   
+5     marcel faribault                                               none   
+6          léon balcer                         trois-rivières\n(mauricie)   
+7   georges-henri héon                          argenteuil\n(laurentides)   
+
+   took_office  left_office                 party_leader  
+0         1998         2004      joe clark\npeter mackay  
+1         1990         1993               brian mulroney  
+2         1993         1993                 kim campbell  
+3         1988         1990               brian mulroney  
+4         1972         1978  robert stanfield\njoe clark  
+5         1967         1968             robert stanfield  
+6         1957         1965      john george diefenbaker  
+7         1949         1949               george a. drew  
+Sample 2054 - Plan 1: Table after operation: [['political_lieutenant', 'district_n_area_', 'took_office', 'left_office', 'party_leader'], ['andré bachand', 'richmond—arthabaska\\n(centre-du-québec &\\neastern townships)', 1998, 2004, 'joe clark\\npeter mackay'], ['benoît bouchard', 'roberval\\n(saguenay-lac-saint-jean)', 1990, 1993, 'brian mulroney'], ['monique landry', 'blainville—deux-montagnes\\n(laurentides)', 1993, 1993, 'kim campbell'], ['lucien bouchard', 'lac-saint-jean\\n(saguenay-lac-saint-jean)', 1988, 1990, 'brian mulroney'], ['claude wagner', 'saint-hyacinthe\\n(montérégie)', 1972, 1978, 'robert stanfield\\njoe clark'], ['marcel faribault', 'none', 1967, 1968, 'robert stanfield'], ['léon balcer', 'trois-rivières\\n(mauricie)', 1957, 1965, 'john george diefenbaker'], ['georges-henri héon', 'argenteuil\\n(laurentides)', 1949, 1949, 'george a. drew']]
+########################################################################################################################
+Sample 2054 - Plan 1: Operation 2: Select row number 1.
+Sample 2054 - Plan 1: Selected indices: []
+Sample 2054 - Plan 1: X-Table after operation df:
+  political_lieutenant                                   district_n_area_  \
+0        andré bachand  richmond—arthabaska\n(centre-du-québec &\neast...   
+
+   took_office  left_office             party_leader  
+0         1998         2004  joe clark\npeter mackay  
+Sample 2054 - Plan 1: Table after operation: [['political_lieutenant', 'district_n_area_', 'took_office', 'left_office', 'party_leader'], ['andré bachand', 'richmond—arthabaska\\n(centre-du-québec &\\neastern townships)', 1998, 2004, 'joe clark\\npeter mackay']]
+########################################################################################################################
+Sample 2054 - Plan 1: Operation 3: Select the 'political_lieutenant' column.
+Sample 2054 - Plan 1: Selected indices: []
+Sample 2054 - Plan 1: X-Table after operation df:
+  political_lieutenant
+0        andré bachand
+Sample 2054 - Plan 1: Table after operation: [['political_lieutenant'], ['andré bachand']]
+Fall-back: FALSE
+Answer from plan 1: [['andré bachand']]
+Groundtruth: ['André Bachand']

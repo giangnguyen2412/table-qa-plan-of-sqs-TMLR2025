@@ -1,0 +1,34 @@
+************************************************************************************************************************
+Sample 1663 - Plan 1: Query: how many times does downhill appear as the discipline?
+Sample 1663 - Plan 1: Groundtruth: ['4']
+Sample 1663 - Plan 1: X-Original table pd: 
+   season         date              location discipline place
+0    1993  27 feb 1993  whistler, bc, canada   downhill   2nd
+1    1994  12 dec 1993   val-d'isère, france    super g   3rd
+2    1994  29 dec 1993         bormio, italy   downhill   3rd
+3    1994  12 mar 1994  whistler, bc, canada   downhill   3rd
+4    1994  13 mar 1994  whistler, bc, canada    super g   1st
+5    1994  16 mar 1994         vail, co, usa   downhill   3rd
+6    1995  11 dec 1994        tignes, france    super g   2nd
+Sample 1663 - Plan 1: Caption: none
+Sample 1663 - Plan 1: Original table: [['season', 'date', 'location', 'discipline', 'place'], ['1993', '27 feb 1993', 'whistler, bc, canada', 'downhill', '2nd'], ['1994', '12 dec 1993', "val-d'isère, france", 'super g', '3rd'], ['1994', '29 dec 1993', 'bormio, italy', 'downhill', '3rd'], ['1994', '12 mar 1994', 'whistler, bc, canada', 'downhill', '3rd'], ['1994', '13 mar 1994', 'whistler, bc, canada', 'super g', '1st'], ['1994', '16 mar 1994', 'vail, co, usa', 'downhill', '3rd'], ['1995', '11 dec 1994', 'tignes, france', 'super g', '2nd']]
+########################################################################################################################
+Sample 1663 - Plan 1: Operation 1: Select rows where the 'discipline' is 'downhill'.
+Sample 1663 - Plan 1: Selected indices: [[2, 3], [5, 3], [0, 3], [3, 3]]
+Sample 1663 - Plan 1: X-Table after operation df:
+   season         date              location discipline place
+0    1993  27 feb 1993  whistler, bc, canada   downhill   2nd
+1    1994  29 dec 1993         bormio, italy   downhill   3rd
+2    1994  12 mar 1994  whistler, bc, canada   downhill   3rd
+3    1994  16 mar 1994         vail, co, usa   downhill   3rd
+Sample 1663 - Plan 1: Table after operation: [['season', 'date', 'location', 'discipline', 'place'], [1993, '27 feb 1993', 'whistler, bc, canada', 'downhill', '2nd'], [1994, '29 dec 1993', 'bormio, italy', 'downhill', '3rd'], [1994, '12 mar 1994', 'whistler, bc, canada', 'downhill', '3rd'], [1994, '16 mar 1994', 'vail, co, usa', 'downhill', '3rd']]
+########################################################################################################################
+Sample 1663 - Plan 1: Operation 2: Count the number of rows.
+Sample 1663 - Plan 1: Selected indices: []
+Sample 1663 - Plan 1: X-Table after operation df:
+   row_count
+0          4
+Sample 1663 - Plan 1: Table after operation: [['row_count'], [4]]
+Fall-back: FALSE
+Answer from plan 1: [[4]]
+Groundtruth: ['4']

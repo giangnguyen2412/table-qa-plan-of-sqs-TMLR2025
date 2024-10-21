@@ -1,0 +1,103 @@
+************************************************************************************************************************
+Sample 559 - Plan 1: Query: who has co-authored a publication with david cleevely more than once?
+Sample 559 - Plan 1: Groundtruth: ['Tim Hills']
+Sample 559 - Plan 1: X-Original table pd: 
+                                               title  year  \
+0  rural telecoms handbook: equipment and manufac...  1992   
+1  regional structure and telecommunications dema...  1982   
+2               the route to advanced communications  1991   
+3  global turf wars: re-inventing the telecoms op...  1999   
+4                   atm vendor & operator strategies  1993   
+5              the far reaching effects of broadband  2002   
+6  regulating the telecoms market: competition an...  2003   
+
+                                            authors  \
+0                         tim hills, david cleevely   
+1                                    d. d. cleevely   
+2  david cleevely, stefan stanislawski, ade ajibulu   
+3           tim hills, david cleevely, andrea smith   
+4           david cleevely, peter aknai, ian leslie   
+5                                    david cleevely   
+6               tim hills, david cleevely, ross pow   
+
+                                 publisher pages  
+0                    analysys publications     -  
+1                  university of cambridge     -  
+2                    analysys publications   178  
+3                    analysis publications   218  
+4                    analysis publications   180  
+5  institution of engineering & technology   415  
+6                    analysis publications    35  
+Sample 559 - Plan 1: Caption: none
+Sample 559 - Plan 1: Original table: [['title', 'year', 'authors', 'publisher', 'pages'], ['rural telecoms handbook: equipment and manufacturers', '1992', 'tim hills, david cleevely', 'analysys publications', '-'], ['regional structure and telecommunications demand: a case study of kenya (ph.d. thesis)', '1982', 'd. d. cleevely', 'university of cambridge', '-'], ['the route to advanced communications', '1991', 'david cleevely, stefan stanislawski, ade ajibulu', 'analysys publications', '178'], ['global turf wars: re-inventing the telecoms operator for the age of global competition', '1999', 'tim hills, david cleevely, andrea smith', 'analysis publications', '218'], ['atm vendor & operator strategies', '1993', 'david cleevely, peter aknai, ian leslie', 'analysis publications', '180'], ['the far reaching effects of broadband', '2002', 'david cleevely', 'institution of engineering & technology', '415'], ['regulating the telecoms market: competition and innovation in the broadband economy', '2003', 'tim hills, david cleevely, ross pow', 'analysis publications', '35']]
+########################################################################################################################
+Sample 559 - Plan 1: Operation 1: Select rows where the 'authors' column contains 'david cleevely'.
+Sample 559 - Plan 1: Selected indices: [[6, 2], [4, 2], [0, 2], [2, 2], [3, 2], [5, 2]]
+Sample 559 - Plan 1: X-Table after operation df:
+                                               title  year  \
+0  rural telecoms handbook: equipment and manufac...  1992   
+1               the route to advanced communications  1991   
+2  global turf wars: re-inventing the telecoms op...  1999   
+3                   atm vendor & operator strategies  1993   
+4              the far reaching effects of broadband  2002   
+5  regulating the telecoms market: competition an...  2003   
+
+                                            authors  \
+0                         tim hills, david cleevely   
+1  david cleevely, stefan stanislawski, ade ajibulu   
+2           tim hills, david cleevely, andrea smith   
+3           david cleevely, peter aknai, ian leslie   
+4                                    david cleevely   
+5               tim hills, david cleevely, ross pow   
+
+                                 publisher pages  
+0                    analysys publications     -  
+1                    analysys publications   178  
+2                    analysis publications   218  
+3                    analysis publications   180  
+4  institution of engineering & technology   415  
+5                    analysis publications    35  
+Sample 559 - Plan 1: Table after operation: [['title', 'year', 'authors', 'publisher', 'pages'], ['rural telecoms handbook: equipment and manufacturers', 1992, 'tim hills, david cleevely', 'analysys publications', '-'], ['the route to advanced communications', 1991, 'david cleevely, stefan stanislawski, ade ajibulu', 'analysys publications', '178'], ['global turf wars: re-inventing the telecoms operator for the age of global competition', 1999, 'tim hills, david cleevely, andrea smith', 'analysis publications', '218'], ['atm vendor & operator strategies', 1993, 'david cleevely, peter aknai, ian leslie', 'analysis publications', '180'], ['the far reaching effects of broadband', 2002, 'david cleevely', 'institution of engineering & technology', '415'], ['regulating the telecoms market: competition and innovation in the broadband economy', 2003, 'tim hills, david cleevely, ross pow', 'analysis publications', '35']]
+########################################################################################################################
+Sample 559 - Plan 1: Operation 2: Group the selected rows by the 'authors' column.
+Sample 559 - Plan 1: Selected indices: []
+Sample 559 - Plan 1: X-Table after operation df:
+                                            authors
+0                                    david cleevely
+1           david cleevely, peter aknai, ian leslie
+2  david cleevely, stefan stanislawski, ade ajibulu
+3                         tim hills, david cleevely
+4           tim hills, david cleevely, andrea smith
+5               tim hills, david cleevely, ross pow
+Sample 559 - Plan 1: Table after operation: [['authors'], ['david cleevely'], ['david cleevely, peter aknai, ian leslie'], ['david cleevely, stefan stanislawski, ade ajibulu'], ['tim hills, david cleevely'], ['tim hills, david cleevely, andrea smith'], ['tim hills, david cleevely, ross pow']]
+########################################################################################################################
+Sample 559 - Plan 1: Operation 3: Count the number of occurrences of each author in the grouped rows.
+Sample 559 - Plan 1: Selected indices: [[0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0]]
+Sample 559 - Plan 1: X-Table after operation df:
+                                            authors  count
+0                                    david cleevely      1
+1           david cleevely, peter aknai, ian leslie      1
+2  david cleevely, stefan stanislawski, ade ajibulu      1
+3                         tim hills, david cleevely      1
+4           tim hills, david cleevely, andrea smith      1
+5               tim hills, david cleevely, ross pow      1
+Sample 559 - Plan 1: Table after operation: [['authors', 'count'], ['david cleevely', 1], ['david cleevely, peter aknai, ian leslie', 1], ['david cleevely, stefan stanislawski, ade ajibulu', 1], ['tim hills, david cleevely', 1], ['tim hills, david cleevely, andrea smith', 1], ['tim hills, david cleevely, ross pow', 1]]
+########################################################################################################################
+Sample 559 - Plan 1: Operation 4: Select the authors who have a count greater than 1.
+Sample 559 - Plan 1: Selected indices: []
+Sample 559 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [authors]
+Index: []
+Sample 559 - Plan 1: Table after operation: [['authors']]
+########################################################################################################################
+Sample 559 - Plan 1: Operation 5: Select the 'authors' column for the selected authors.
+Sample 559 - Plan 1: Selected indices: []
+Sample 559 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [authors]
+Index: []
+Sample 559 - Plan 1: Table after operation: [['authors']]
+Fall-back: TRUE
+Answer from plan 1: [['tim hills', 'andrea smith', 'peter aknai', 'ian leslie', 'ross pow']]
+Groundtruth: ['Tim Hills']

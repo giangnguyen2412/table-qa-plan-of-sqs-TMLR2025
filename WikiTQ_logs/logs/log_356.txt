@@ -1,0 +1,61 @@
+************************************************************************************************************************
+Sample 356 - Plan 1: Query: which competition has more average match attendance, super rugby or national rugby league?
+Sample 356 - Plan 1: Groundtruth: ['Super Rugby']
+Sample 356 - Plan 1: X-Original table pd: 
+                          competition total_spectatorship  \
+0                            a-league           1,772,133   
+1          australian football league           6,931,085   
+2                     big bash league             550,262   
+3          national basketball league             547,021   
+4               national rugby league           3,345,248   
+5                         super rugby             773,940   
+6                  rugby championship             133,532   
+7              state of origin series             186,607   
+8  women's national basketball league              77,944   
+
+  average_match_attendance       year  
+0                   12,707  2012/2013  
+1                   33,484       2013  
+2                   17,750  2011/2012  
+3                    4,031  2010/2011  
+4                   16,643       2013  
+5                   19,348       2012  
+6                   44,511       2012  
+7                   62,202       2011  
+8                           2010/2011  
+Sample 356 - Plan 1: Caption: none
+Sample 356 - Plan 1: Original table: [['competition', 'total_spectatorship', 'average_match_attendance', 'year'], ['a-league', '1,772,133', '12,707', '2012/2013'], ['australian football league', '6,931,085', '33,484', '2013'], ['big bash league', '550,262', '17,750', '2011/2012'], ['national basketball league', '547,021', '4,031', '2010/2011'], ['national rugby league', '3,345,248', '16,643', '2013'], ['super rugby', '773,940', '19,348', '2012'], ['rugby championship', '133,532', '44,511', '2012'], ['state of origin series', '186,607', '62,202', '2011'], ["women's national basketball league", '77,944', '', '2010/2011']]
+########################################################################################################################
+Sample 356 - Plan 1: Operation 1: Select rows where the 'competition' is 'super rugby' or 'national rugby league'.
+Sample 356 - Plan 1: Selected indices: [[4, 0], [5, 0]]
+Sample 356 - Plan 1: X-Table after operation df:
+             competition total_spectatorship average_match_attendance  year
+0  national rugby league           3,345,248                   16,643  2013
+1            super rugby             773,940                   19,348  2012
+Sample 356 - Plan 1: Table after operation: [['competition', 'total_spectatorship', 'average_match_attendance', 'year'], ['national rugby league', '3,345,248', '16,643', '2013'], ['super rugby', '773,940', '19,348', '2012']]
+########################################################################################################################
+Sample 356 - Plan 1: Operation 2: Select the 'average_match_attendance' column.
+Sample 356 - Plan 1: Selected indices: []
+Sample 356 - Plan 1: X-Table after operation df:
+  average_match_attendance
+0                   16,643
+1                   19,348
+Sample 356 - Plan 1: Table after operation: [['average_match_attendance'], ['16,643'], ['19,348']]
+########################################################################################################################
+Sample 356 - Plan 1: Operation 3: Compare the values of the 'average_match_attendance' column for 'super rugby' and 'national rugby league'.
+Sample 356 - Plan 1: Selected indices: [[1, 0], [0, 0]]
+Sample 356 - Plan 1: X-Table after operation df:
+  average_match_attendance
+0                   16,643
+1                   19,348
+Sample 356 - Plan 1: Table after operation: [['average_match_attendance'], ['16,643'], ['19,348']]
+########################################################################################################################
+Sample 356 - Plan 1: Operation 4: Select the competition with the higher value of 'average_match_attendance'.
+Sample 356 - Plan 1: Selected indices: [[1, 0]]
+Sample 356 - Plan 1: X-Table after operation df:
+  average_match_attendance
+0                   19,348
+Sample 356 - Plan 1: Table after operation: [['average_match_attendance'], ['19,348']]
+Fall-back: FALSE
+Answer from plan 1: [['19,348']]
+Groundtruth: ['Super Rugby']

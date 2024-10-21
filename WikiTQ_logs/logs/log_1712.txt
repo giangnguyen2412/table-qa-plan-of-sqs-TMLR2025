@@ -1,0 +1,103 @@
+************************************************************************************************************************
+Sample 1712 - Plan 1: Query: what was the first album produced after 1970?
+Sample 1712 - Plan 1: Groundtruth: ['"Lord Have Mercy"']
+Sample 1712 - Plan 1: X-Original table pd: 
+    year                                         single  \
+0   1957                       "sittin' in the balcony"   
+1   1961                             "language of love"   
+2   1962                         "thou shalt not steal"   
+3   1962                            "callin' dr. casey"   
+4   1962                                     "road hog"   
+5   1963  "bad news" (b/w "guitar player(her and him)")   
+6   1964          "blue train (of the heartbreak line)"   
+7   1964                                     "th' wife"   
+8   1965                               "that ain't all"   
+9   1966                   "silver cloud talkin' blues"   
+10  1966                        "you're the guilty one"   
+11  1967                                 "it's my time"   
+12  1968                        "odd folks of okracoke"   
+13  1969                                   "brown girl"   
+14  1971                              "lord have mercy"   
+15  1979   "every day i learn a little more about love"   
+
+   chart_positions_nus_country chart_positions_nus  \
+0                            —                  38   
+1                            —                  32   
+2                            —                  73   
+3                            —                  83   
+4                            —                  65   
+5                           23                   —   
+6                           44                 132   
+7                           45                   —   
+8                           20                   —   
+9                            —                   —   
+10                           —                   —   
+11                          51                   —   
+12                           —                   —   
+13                           —                   —   
+14                           —                   —   
+15                           —                   —   
+
+                                             album  
+0                                      single only  
+1                                 language of love  
+2                                     singles only  
+3                                     singles only  
+4                                     twelve sides  
+5                                     singles only  
+6                                     singles only  
+7                                     singles only  
+8                                     singles only  
+9   a bizarre collection of the most unusual songs  
+10                                     single only  
+11             suburban attitudes in country verse  
+12                                     single only  
+13             the open mind of john d. loudermilk  
+14                                volume 1-elloree  
+15                            just passing through  
+Sample 1712 - Plan 1: Caption: none
+Sample 1712 - Plan 1: Original table: [['year', 'single', 'chart_positions_nus_country', 'chart_positions_nus', 'album'], ['1957', '"sittin\' in the balcony"', '—', '38', 'single only'], ['1961', '"language of love"', '—', '32', 'language of love'], ['1962', '"thou shalt not steal"', '—', '73', 'singles only'], ['1962', '"callin\' dr. casey"', '—', '83', 'singles only'], ['1962', '"road hog"', '—', '65', 'twelve sides'], ['1963', '"bad news" (b/w "guitar player(her and him)")', '23', '—', 'singles only'], ['1964', '"blue train (of the heartbreak line)"', '44', '132', 'singles only'], ['1964', '"th\' wife"', '45', '—', 'singles only'], ['1965', '"that ain\'t all"', '20', '—', 'singles only'], ['1966', '"silver cloud talkin\' blues"', '—', '—', 'a bizarre collection of the most unusual songs'], ['1966', '"you\'re the guilty one"', '—', '—', 'single only'], ['1967', '"it\'s my time"', '51', '—', 'suburban attitudes in country verse'], ['1968', '"odd folks of okracoke"', '—', '—', 'single only'], ['1969', '"brown girl"', '—', '—', 'the open mind of john d. loudermilk'], ['1971', '"lord have mercy"', '—', '—', 'volume 1-elloree'], ['1979', '"every day i learn a little more about love"', '—', '—', 'just passing through']]
+########################################################################################################################
+Sample 1712 - Plan 1: Operation 1: Select rows where the 'year' is greater than 1970.
+Sample 1712 - Plan 1: Selected indices: [[15, 0], [14, 0]]
+Sample 1712 - Plan 1: X-Table after operation df:
+   year                                        single  \
+0  1971                             "lord have mercy"   
+1  1979  "every day i learn a little more about love"   
+
+  chart_positions_nus_country chart_positions_nus                 album  
+0                           —                   —      volume 1-elloree  
+1                           —                   —  just passing through  
+Sample 1712 - Plan 1: Table after operation: [['year', 'single', 'chart_positions_nus_country', 'chart_positions_nus', 'album'], [1971, '"lord have mercy"', '—', '—', 'volume 1-elloree'], [1979, '"every day i learn a little more about love"', '—', '—', 'just passing through']]
+########################################################################################################################
+Sample 1712 - Plan 1: Operation 2: Order the table by 'year' in ascending order.
+Sample 1712 - Plan 1: Selected indices: [[1, 0], [0, 0]]
+Sample 1712 - Plan 1: X-Table after operation df:
+   year                                        single  \
+0  1971                             "lord have mercy"   
+1  1979  "every day i learn a little more about love"   
+
+  chart_positions_nus_country chart_positions_nus                 album  
+0                           —                   —      volume 1-elloree  
+1                           —                   —  just passing through  
+Sample 1712 - Plan 1: Table after operation: [['year', 'single', 'chart_positions_nus_country', 'chart_positions_nus', 'album'], [1971, '"lord have mercy"', '—', '—', 'volume 1-elloree'], [1979, '"every day i learn a little more about love"', '—', '—', 'just passing through']]
+########################################################################################################################
+Sample 1712 - Plan 1: Operation 3: Select row number 1.
+Sample 1712 - Plan 1: Selected indices: []
+Sample 1712 - Plan 1: X-Table after operation df:
+   year             single chart_positions_nus_country chart_positions_nus  \
+0  1971  "lord have mercy"                           —                   —   
+
+              album  
+0  volume 1-elloree  
+Sample 1712 - Plan 1: Table after operation: [['year', 'single', 'chart_positions_nus_country', 'chart_positions_nus', 'album'], [1971, '"lord have mercy"', '—', '—', 'volume 1-elloree']]
+########################################################################################################################
+Sample 1712 - Plan 1: Operation 4: Select the 'album' column.
+Sample 1712 - Plan 1: Selected indices: []
+Sample 1712 - Plan 1: X-Table after operation df:
+              album
+0  volume 1-elloree
+Sample 1712 - Plan 1: Table after operation: [['album'], ['volume 1-elloree']]
+Fall-back: FALSE
+Answer from plan 1: [['volume 1-elloree']]
+Groundtruth: ['"Lord Have Mercy"']

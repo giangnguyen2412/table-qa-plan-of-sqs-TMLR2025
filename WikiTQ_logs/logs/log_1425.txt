@@ -1,0 +1,59 @@
+************************************************************************************************************************
+Sample 1425 - Plan 1: Query: which countries have more wins than england?
+Sample 1425 - Plan 1: Groundtruth: ['Australia', 'United States']
+Sample 1425 - Plan 1: X-Original table pd: 
+           golfer           country  wins           match_play  \
+0     tiger woods     united states    18  3: 2003, 2004, 2008   
+1    geoff ogilvy         australia     3        2: 2006, 2009   
+2   darren clarke  northern ireland     2              1: 2000   
+3       ernie els      south africa     2                    —   
+4    hunter mahan     united states     2              1: 2012   
+5  phil mickelson     united states     2                    —   
+6     ian poulter           england     2              1: 2010   
+
+                                   championship  \
+0  7: 1999, 2002, 2003,\n2005, 2006, 2007, 2013   
+1                                       1: 2008   
+2                                             —   
+3                                 2: 2004, 2010   
+4                                             —   
+5                                       1: 2009   
+6                                             —   
+
+                                        invitational champions  
+0  8: 1999, 2000, 2001, 2005,\n2006, 2007, 2009, ...         —  
+1                                                  —         —  
+2                                            1: 2003         —  
+3                                                  —         —  
+4                                            1: 2010         —  
+5                                                  —   1: 2009  
+6                                                  —   1: 2012  
+Sample 1425 - Plan 1: Caption: none
+Sample 1425 - Plan 1: Original table: [['golfer', 'country', 'wins', 'match_play', 'championship', 'invitational', 'champions'], ['tiger woods', 'united states', '18', '3: 2003, 2004, 2008', '7: 1999, 2002, 2003,\\n2005, 2006, 2007, 2013', '8: 1999, 2000, 2001, 2005,\\n2006, 2007, 2009, 2013', '—'], ['geoff ogilvy', 'australia', '3', '2: 2006, 2009', '1: 2008', '—', '—'], ['darren clarke', 'northern ireland', '2', '1: 2000', '—', '1: 2003', '—'], ['ernie els', 'south africa', '2', '—', '2: 2004, 2010', '—', '—'], ['hunter mahan', 'united states', '2', '1: 2012', '—', '1: 2010', '—'], ['phil mickelson', 'united states', '2', '—', '1: 2009', '—', '1: 2009'], ['ian poulter', 'england', '2', '1: 2010', '—', '—', '1: 2012']]
+########################################################################################################################
+Sample 1425 - Plan 1: Operation 1: Select rows where the 'wins' column is greater than the number of wins for England.
+Sample 1425 - Plan 1: Selected indices: [[0, 1], [0, 2], [1, 2], [1, 1]]
+Sample 1425 - Plan 1: X-Table after operation df:
+         golfer        country  wins           match_play  \
+0   tiger woods  united states    18  3: 2003, 2004, 2008   
+1  geoff ogilvy      australia     3        2: 2006, 2009   
+
+                                   championship  \
+0  7: 1999, 2002, 2003,\n2005, 2006, 2007, 2013   
+1                                       1: 2008   
+
+                                        invitational champions  
+0  8: 1999, 2000, 2001, 2005,\n2006, 2007, 2009, ...         —  
+1                                                  —         —  
+Sample 1425 - Plan 1: Table after operation: [['golfer', 'country', 'wins', 'match_play', 'championship', 'invitational', 'champions'], ['tiger woods', 'united states', 18, '3: 2003, 2004, 2008', '7: 1999, 2002, 2003,\\n2005, 2006, 2007, 2013', '8: 1999, 2000, 2001, 2005,\\n2006, 2007, 2009, 2013', '—'], ['geoff ogilvy', 'australia', 3, '2: 2006, 2009', '1: 2008', '—', '—']]
+########################################################################################################################
+Sample 1425 - Plan 1: Operation 2: Select the 'country' column.
+Sample 1425 - Plan 1: Selected indices: []
+Sample 1425 - Plan 1: X-Table after operation df:
+         country
+0  united states
+1      australia
+Sample 1425 - Plan 1: Table after operation: [['country'], ['united states'], ['australia']]
+Fall-back: FALSE
+Answer from plan 1: [['united states'], ['australia']]
+Groundtruth: ['Australia', 'United States']

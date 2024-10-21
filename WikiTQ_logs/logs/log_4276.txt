@@ -1,0 +1,58 @@
+************************************************************************************************************************
+Sample 4276 - Plan 1: Query: position one is vacant, but who holds the officer position of number two?
+Sample 4276 - Plan 1: Groundtruth: ['The Rt Hon Chris Grayling, MP']
+Sample 4276 - Plan 1: X-Original table pd: 
+   position                        officer  \
+0         1              lord high steward   
+1         2           lord high chancellor   
+2         3            lord high treasurer   
+3         4  lord president of the council   
+4         5                lord privy seal   
+5         6         lord great chamberlain   
+6         7            lord high constable   
+7         8                   earl marshal   
+8         9              lord high admiral   
+
+                     current_officers        superseded_by  \
+0                              vacant            justiciar   
+1       the rt hon chris grayling, mp                        
+2                       in commission                        
+3           the rt hon nick clegg, mp                        
+4  the rt hon andrew lansley, cbe, mp                        
+5        the marquess of cholmondeley  lord high treasurer   
+6                              vacant         earl marshal   
+7                 the duke of norfolk                        
+8           hrh the duke of edinburgh                        
+
+       royal_household  
+0         lord steward  
+1                       
+2                       
+3                       
+4                       
+5     lord chamberlain  
+6  master of the horse  
+7  master of the horse  
+8                       
+Sample 4276 - Plan 1: Caption: none
+Sample 4276 - Plan 1: Original table: [['position', 'officer', 'current_officers', 'superseded_by', 'royal_household'], ['1', 'lord high steward', 'vacant', 'justiciar', 'lord steward'], ['2', 'lord high chancellor', 'the rt hon chris grayling, mp', '', ''], ['3', 'lord high treasurer', 'in commission', '', ''], ['4', 'lord president of the council', 'the rt hon nick clegg, mp', '', ''], ['5', 'lord privy seal', 'the rt hon andrew lansley, cbe, mp', '', ''], ['6', 'lord great chamberlain', 'the marquess of cholmondeley', 'lord high treasurer', 'lord chamberlain'], ['7', 'lord high constable', 'vacant', 'earl marshal', 'master of the horse'], ['8', 'earl marshal', 'the duke of norfolk', '', 'master of the horse'], ['9', 'lord high admiral', 'hrh the duke of edinburgh', '', '']]
+########################################################################################################################
+Sample 4276 - Plan 1: Operation 1: Select rows where 'position' is '2'.
+Sample 4276 - Plan 1: Selected indices: [[1, 0]]
+Sample 4276 - Plan 1: X-Table after operation df:
+   position               officer               current_officers  \
+0         2  lord high chancellor  the rt hon chris grayling, mp   
+
+   superseded_by  royal_household  
+0            NaN              NaN  
+Sample 4276 - Plan 1: Table after operation: [['position', 'officer', 'current_officers', 'superseded_by', 'royal_household'], [2, 'lord high chancellor', 'the rt hon chris grayling, mp', '', '']]
+########################################################################################################################
+Sample 4276 - Plan 1: Operation 2: Select the 'officer' column.
+Sample 4276 - Plan 1: Selected indices: []
+Sample 4276 - Plan 1: X-Table after operation df:
+                officer
+0  lord high chancellor
+Sample 4276 - Plan 1: Table after operation: [['officer'], ['lord high chancellor']]
+Fall-back: FALSE
+Answer from plan 1: [['lord high chancellor']]
+Groundtruth: ['The Rt Hon Chris Grayling, MP']

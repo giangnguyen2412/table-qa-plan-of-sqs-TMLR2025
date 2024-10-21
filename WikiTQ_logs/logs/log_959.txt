@@ -1,0 +1,72 @@
+************************************************************************************************************************
+Sample 959 - Plan 1: Query: what episode came next after "front page"?
+Sample 959 - Plan 1: Groundtruth: ['Special FX-Ation']
+Sample 959 - Plan 1: X-Original table pd: 
+    series_number  season_number          episode_title      premiere_date  \
+0               1              1              going up!   october 25, 1998   
+1               2              2          who's the man   november 1, 1998   
+2               3              3     vootle-muck-a-heev   november 8, 1998   
+3               4              4       close encounters  november 15, 1998   
+4               5              5        hurricane jules  november 22, 1998   
+5               6              6             switcheroo  november 29, 1998   
+6               7              7             front page   january 17, 1999   
+7               8              8       special fx-ation   january 24, 1999   
+8               9              9  the famous stone gold   january 31, 1999   
+9              10             10          kiss and tell   february 7, 1999   
+10             11             11         jb's big break  february 21, 1999   
+11             12             12            bottom's up      march 7, 1999   
+12             13             13                hot dog     march 14, 1999   
+
+    production_code  
+0               101  
+1               102  
+2               103  
+3               104  
+4               105  
+5               106  
+6               107  
+7               108  
+8               109  
+9               110  
+10              111  
+11              112  
+12              113  
+Sample 959 - Plan 1: Caption: none
+Sample 959 - Plan 1: Original table: [['series_number', 'season_number', 'episode_title', 'premiere_date', 'production_code'], ['1', '1', 'going up!', 'october 25, 1998', '101'], ['2', '2', "who's the man", 'november 1, 1998', '102'], ['3', '3', 'vootle-muck-a-heev', 'november 8, 1998', '103'], ['4', '4', 'close encounters', 'november 15, 1998', '104'], ['5', '5', 'hurricane jules', 'november 22, 1998', '105'], ['6', '6', 'switcheroo', 'november 29, 1998', '106'], ['7', '7', 'front page', 'january 17, 1999', '107'], ['8', '8', 'special fx-ation', 'january 24, 1999', '108'], ['9', '9', 'the famous stone gold', 'january 31, 1999', '109'], ['10', '10', 'kiss and tell', 'february 7, 1999', '110'], ['11', '11', "jb's big break", 'february 21, 1999', '111'], ['12', '12', "bottom's up", 'march 7, 1999', '112'], ['13', '13', 'hot dog', 'march 14, 1999', '113']]
+########################################################################################################################
+Sample 959 - Plan 1: Operation 1: Select the row where the 'episode_title' is 'front page'.
+Sample 959 - Plan 1: Selected indices: [[6, 2]]
+Sample 959 - Plan 1: X-Table after operation df:
+   series_number  season_number episode_title     premiere_date  \
+0              7              7    front page  january 17, 1999   
+
+   production_code  
+0              107  
+Sample 959 - Plan 1: Table after operation: [['series_number', 'season_number', 'episode_title', 'premiere_date', 'production_code'], [7, 7, 'front page', 'january 17, 1999', 107]]
+########################################################################################################################
+Sample 959 - Plan 1: Operation 2: Get the 'series_number' and 'season_number' from the selected row.
+Sample 959 - Plan 1: Selected indices: []
+Sample 959 - Plan 1: X-Table after operation df:
+   series_number  season_number
+0              7              7
+Sample 959 - Plan 1: Table after operation: [['series_number', 'season_number'], [7, 7]]
+########################################################################################################################
+Sample 959 - Plan 1: Operation 3: Calculate the next episode's 'series_number' by adding 1 to the current 'series_number'.
+Sample 959 - Plan 1: Selected indices: []
+Sample 959 - Plan 1: X-Table after operation df:
+   next_episode_series_number
+0                           8
+Sample 959 - Plan 1: Table after operation: [['next_episode_series_number'], [8]]
+########################################################################################################################
+Sample 959 - Plan 1: Operation 4: Calculate the next episode's 'season_number' by adding 1 to the current 'season_number' if the 'series_number' is 1, otherwise keep the current 'season_number'.
+SQL execution error in operation 4: Execution failed on sql 'SELECT 
+    CASE 
+        WHEN next_episode_series_number = 1 THEN season_number + 1
+        ELSE season_number
+    END AS next_season_number
+FROM table_sql;
+-- Calculate the next episode's 'season_number' by adding 1 to the current 'season_number' if the 'series_number' is 1, otherwise keep the current 'season_number'.': no such column: season_number
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['special fx-ation']]
+Groundtruth: ['Special FX-Ation']

@@ -1,0 +1,413 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how many jockeys were 13 years old?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'age' column is equal to 13.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>fence</td>
+<td>name</td>
+<td>jockey</td>
+<td>age</td>
+<td>handicap__st_lb_</td>
+<td>starting_price</td>
+<td>fate</td>
+</tr>
+<tr>
+<td>26</td>
+<td>rondetto</td>
+<td>jeff king</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+<td>11-6</td>
+<td>100/8</td>
+<td>fell</td>
+</tr>
+<tr>
+<td>06</td>
+<td>forgotten dreams</td>
+<td>r coonan</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11</span></td>
+<td>11-0</td>
+<td>22/1</td>
+<td>fell</td>
+</tr>
+<tr>
+<td>22</td>
+<td>kapeno</td>
+<td>david dick</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td>11-6</td>
+<td>100/8</td>
+<td>fell</td>
+</tr>
+<tr>
+<td>01</td>
+<td>ayala</td>
+<td>stan mellor</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11</span></td>
+<td>10-13</td>
+<td>50/1</td>
+<td>fell</td>
+</tr>
+<tr>
+<td>?</td>
+<td>time</td>
+<td>mr brough scott</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+<td>10-13</td>
+<td>40/1</td>
+<td>fell</td>
+</tr>
+<tr>
+<td>10</td>
+<td>dark venetian</td>
+<td>jim renfree</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+<td>10-13</td>
+<td>100/1</td>
+<td>fell</td>
+</tr>
+<tr>
+<td>04</td>
+<td>red tide</td>
+<td>johnny haine</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td>10-13</td>
+<td>33/1</td>
+<td>fell</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pontin-go</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">johnny lehane</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10-13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">50/1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fell</span></td>
+</tr>
+<tr>
+<td>18</td>
+<td>leedsy</td>
+<td>george robinson</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7</span></td>
+<td>10-13</td>
+<td>18/1</td>
+<td>fell</td>
+</tr>
+<tr>
+<td>03</td>
+<td>ronald's boy</td>
+<td>mr gay kindersley</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td>11-1</td>
+<td>100/1</td>
+<td>fell</td>
+</tr>
+<tr>
+<td>17</td>
+<td>bold biri</td>
+<td>michael scudamore</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+<td>10-13</td>
+<td>100/1</td>
+<td>fell</td>
+</tr>
+<tr>
+<td>09</td>
+<td>groomsman</td>
+<td>beltrán osorio</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+<td>10-13</td>
+<td>100/1</td>
+<td>fell</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">?</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">blonde warrior</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mr d crossley-cooke</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10-13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">100/1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fell</span></td>
+</tr>
+<tr>
+<td>06</td>
+<td>nedsmar</td>
+<td>john hudson</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11</span></td>
+<td>10-13</td>
+<td>100/1</td>
+<td>fell</td>
+</tr>
+<tr>
+<td>?</td>
+<td>black spot</td>
+<td>j gamble</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td>10-13</td>
+<td>100/1</td>
+<td>fell</td>
+</tr>
+<tr>
+<td>?</td>
+<td>lizawake</td>
+<td>mr george hartigan</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12</span></td>
+<td>10-13</td>
+<td>100/1</td>
+<td>pulled up</td>
+</tr>
+<tr>
+<td>?</td>
+<td>reproduction</td>
+<td>robin langley</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12</span></td>
+<td>10-13</td>
+<td>40/1</td>
+<td>pulled-up</td>
+</tr>
+<tr>
+<td>?</td>
+<td>leslie</td>
+<td>p jones</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+<td>10-13</td>
+<td>33/1</td>
+<td>pulled up</td>
+</tr>
+<tr>
+<td>?</td>
+<td>sword flash</td>
+<td>t ryan</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12</span></td>
+<td>10-13</td>
+<td>100/1</td>
+<td>pulled up</td>
+</tr>
+<tr>
+<td>?</td>
+<td>vulcano</td>
+<td>tommy carberry</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7</span></td>
+<td>10-13</td>
+<td>50/1</td>
+<td>pulled up</td>
+</tr>
+<tr>
+<td>?</td>
+<td>quintin bay</td>
+<td>pat taaffe</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+<td>10-13</td>
+<td>25/1</td>
+<td>pulled up</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">?</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">solonace</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rw jones</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10-13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">100/1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pulled up</span></td>
+</tr>
+<tr>
+<td>04</td>
+<td>cutlette</td>
+<td>m roberts</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td>10-13</td>
+<td>50/1</td>
+<td>pulled up</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">?</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mr mctaffy</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">t jackson</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10-13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">100/1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pulled up</span></td>
+</tr>
+<tr>
+<td>06</td>
+<td>barleycroft</td>
+<td>phil harvey</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+<td>10-13</td>
+<td>100/1</td>
+<td>brought down</td>
+</tr>
+<tr>
+<td>13</td>
+<td>phebu</td>
+<td>j morrissey</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td>10-13</td>
+<td>33/1</td>
+<td>brought down</td>
+</tr>
+<tr>
+<td>06</td>
+<td>ruby glen</td>
+<td>stephen davenport</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+<td>10-13</td>
+<td>33/1</td>
+<td>brought down</td>
+</tr>
+<tr>
+<td>06</td>
+<td>sizzle-on</td>
+<td>p hurley</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+<td>10/13</td>
+<td>100/1</td>
+<td>brought down</td>
+</tr>
+<tr>
+<td>06</td>
+<td>crobeg</td>
+<td>mr macer gifford</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12</span></td>
+<td>10-13</td>
+<td>100/1</td>
+<td>brought down</td>
+</tr>
+<tr>
+<td>08</td>
+<td>coleen star</td>
+<td>johnny leech</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11</span></td>
+<td>10-13</td>
+<td>100/1</td>
+<td>refused</td>
+</tr>
+<tr>
+<td>22</td>
+<td>ballygowan</td>
+<td>a redmond</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11</span></td>
+<td>10-13</td>
+<td>66/1</td>
+<td>refused</td>
+</tr>
+<tr>
+<td>?</td>
+<td>fearless cavalier</td>
+<td>r west</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">14</span></td>
+<td>10-13</td>
+<td>100/1</td>
+<td>refused</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">?</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">french cottage</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mr wa tellwright</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10-13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">100/1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">refused</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Count the number of rows selected.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>fence</td>
+<td>name</td>
+<td>jockey</td>
+<td>age</td>
+<td>handicap__st_lb_</td>
+<td>starting_price</td>
+<td>fate</td>
+</tr>
+<tr>
+<td>24</td>
+<td>pontin-go</td>
+<td>johnny lehane</td>
+<td>13</td>
+<td>10-13</td>
+<td>50/1</td>
+<td>fell</td>
+</tr>
+<tr>
+<td>?</td>
+<td>blonde warrior</td>
+<td>mr d crossley-cooke</td>
+<td>13</td>
+<td>10-13</td>
+<td>100/1</td>
+<td>fell</td>
+</tr>
+<tr>
+<td>?</td>
+<td>solonace</td>
+<td>rw jones</td>
+<td>13</td>
+<td>10-13</td>
+<td>100/1</td>
+<td>pulled up</td>
+</tr>
+<tr>
+<td>?</td>
+<td>mr mctaffy</td>
+<td>t jackson</td>
+<td>13</td>
+<td>10-13</td>
+<td>100/1</td>
+<td>pulled up</td>
+</tr>
+<tr>
+<td>?</td>
+<td>french cottage</td>
+<td>mr wa tellwright</td>
+<td>13</td>
+<td>10-13</td>
+<td>100/1</td>
+<td>refused</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>row_count</td>
+</tr>
+<tr>
+<td>5</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[5]]</h3>
+</body></html>

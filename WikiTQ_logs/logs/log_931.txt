@@ -1,0 +1,58 @@
+************************************************************************************************************************
+Sample 931 - Plan 1: Query: what is the highest amount of points scored in a game by an opponent?
+Sample 931 - Plan 1: Groundtruth: ['45']
+Sample 931 - Plan 1: X-Original table pd: 
+    week     date                 opponent  score result record
+0      1   aug 28     at toronto argonauts   13–6   loss    0–1
+1      2   sept 4    at montreal alouettes   21–2   loss    0–2
+2      2   sept 6   vs. montreal alouettes  20–11   loss    0–3
+3      3  sept 11     at toronto argonauts   12–5    win    1–3
+4      4  sept 18    vs. toronto argonauts   34–6   loss    1–4
+5      5  sept 25  vs. hamilton tiger-cats  38–12   loss    1–5
+6      6    oct 2   at hamilton tiger-cats   45–0   loss    1–6
+7      7    oct 9   vs. montreal alouettes  25–11   loss    1–7
+8      7   oct 11    at montreal alouettes   24–6   loss    1–8
+9      8   oct 16    vs. toronto argonauts  27–11   loss    1–9
+10     9   oct 23   at hamilton tiger-cats  25–17   loss   1–10
+11    10   oct 30  vs. hamilton tiger-cats   30–9   loss   1–11
+12    11    nov 6     at toronto argonauts  18–12   loss   1–12
+13    12   nov 13   vs. montreal alouettes  14–12    win   2–12
+Sample 931 - Plan 1: Caption: none
+Sample 931 - Plan 1: Original table: [['week', 'date', 'opponent', 'score', 'result', 'record'], ['1', 'aug 28', 'at toronto argonauts', '13–6', 'loss', '0–1'], ['2', 'sept 4', 'at montreal alouettes', '21–2', 'loss', '0–2'], ['2', 'sept 6', 'vs. montreal alouettes', '20–11', 'loss', '0–3'], ['3', 'sept 11', 'at toronto argonauts', '12–5', 'win', '1–3'], ['4', 'sept 18', 'vs. toronto argonauts', '34–6', 'loss', '1–4'], ['5', 'sept 25', 'vs. hamilton tiger-cats', '38–12', 'loss', '1–5'], ['6', 'oct 2', 'at hamilton tiger-cats', '45–0', 'loss', '1–6'], ['7', 'oct 9', 'vs. montreal alouettes', '25–11', 'loss', '1–7'], ['7', 'oct 11', 'at montreal alouettes', '24–6', 'loss', '1–8'], ['8', 'oct 16', 'vs. toronto argonauts', '27–11', 'loss', '1–9'], ['9', 'oct 23', 'at hamilton tiger-cats', '25–17', 'loss', '1–10'], ['10', 'oct 30', 'vs. hamilton tiger-cats', '30–9', 'loss', '1–11'], ['11', 'nov 6', 'at toronto argonauts', '18–12', 'loss', '1–12'], ['12', 'nov 13', 'vs. montreal alouettes', '14–12', 'win', '2–12']]
+########################################################################################################################
+Sample 931 - Plan 1: Operation 1: Extract the numerical value from the 'score' column then add column 'num_score' to existing table.
+Sample 931 - Plan 1: Selected indices: [[0, 3], [1, 3], [2, 3], [3, 3], [4, 3], [5, 3], [6, 3], [7, 3], [8, 3], [9, 3], [10, 3], [11, 3], [12, 3], [13, 3]]
+Sample 931 - Plan 1: X-Table after operation df:
+    week     date                 opponent  score result record  num_score
+0      1   aug 28     at toronto argonauts   13–6   loss    0–1          6
+1      2   sept 4    at montreal alouettes   21–2   loss    0–2          2
+2      2   sept 6   vs. montreal alouettes  20–11   loss    0–3         11
+3      3  sept 11     at toronto argonauts   12–5    win    1–3          5
+4      4  sept 18    vs. toronto argonauts   34–6   loss    1–4          6
+5      5  sept 25  vs. hamilton tiger-cats  38–12   loss    1–5         12
+6      6    oct 2   at hamilton tiger-cats   45–0   loss    1–6          0
+7      7    oct 9   vs. montreal alouettes  25–11   loss    1–7         11
+8      7   oct 11    at montreal alouettes   24–6   loss    1–8          6
+9      8   oct 16    vs. toronto argonauts  27–11   loss    1–9         11
+10     9   oct 23   at hamilton tiger-cats  25–17   loss   1–10         17
+11    10   oct 30  vs. hamilton tiger-cats   30–9   loss   1–11          9
+12    11    nov 6     at toronto argonauts  18–12   loss   1–12         12
+13    12   nov 13   vs. montreal alouettes  14–12    win   2–12         12
+Sample 931 - Plan 1: Table after operation: [['week', 'date', 'opponent', 'score', 'result', 'record', 'num_score'], [1, 'aug 28', 'at toronto argonauts', '13–6', 'loss', '0–1', 6], [2, 'sept 4', 'at montreal alouettes', '21–2', 'loss', '0–2', 2], [2, 'sept 6', 'vs. montreal alouettes', '20–11', 'loss', '0–3', 11], [3, 'sept 11', 'at toronto argonauts', '12–5', 'win', '1–3', 5], [4, 'sept 18', 'vs. toronto argonauts', '34–6', 'loss', '1–4', 6], [5, 'sept 25', 'vs. hamilton tiger-cats', '38–12', 'loss', '1–5', 12], [6, 'oct 2', 'at hamilton tiger-cats', '45–0', 'loss', '1–6', 0], [7, 'oct 9', 'vs. montreal alouettes', '25–11', 'loss', '1–7', 11], [7, 'oct 11', 'at montreal alouettes', '24–6', 'loss', '1–8', 6], [8, 'oct 16', 'vs. toronto argonauts', '27–11', 'loss', '1–9', 11], [9, 'oct 23', 'at hamilton tiger-cats', '25–17', 'loss', '1–10', 17], [10, 'oct 30', 'vs. hamilton tiger-cats', '30–9', 'loss', '1–11', 9], [11, 'nov 6', 'at toronto argonauts', '18–12', 'loss', '1–12', 12], [12, 'nov 13', 'vs. montreal alouettes', '14–12', 'win', '2–12', 12]]
+########################################################################################################################
+Sample 931 - Plan 1: Operation 2: Calculate the highest value from the 'num_score' column.
+Sample 931 - Plan 1: Selected indices: []
+Sample 931 - Plan 1: X-Table after operation df:
+   highest_num_score
+0                 17
+Sample 931 - Plan 1: Table after operation: [['highest_num_score'], [17]]
+########################################################################################################################
+Sample 931 - Plan 1: Operation 3: Select the highest value from the 'num_score' column.
+Sample 931 - Plan 1: Selected indices: []
+Sample 931 - Plan 1: X-Table after operation df:
+   highest_num_score
+0                 17
+Sample 931 - Plan 1: Table after operation: [['highest_num_score'], [17]]
+Fall-back: FALSE
+Answer from plan 1: [[17]]
+Groundtruth: ['45']

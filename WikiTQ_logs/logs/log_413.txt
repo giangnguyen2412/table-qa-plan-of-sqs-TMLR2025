@@ -1,0 +1,57 @@
+************************************************************************************************************************
+Sample 413 - Plan 1: Query: how many divisions have an area of more than 1000 km^2?
+Sample 413 - Plan 1: Groundtruth: ['5']
+Sample 413 - Plan 1: X-Original table pd: 
+    _               name hanzi   hanyu_pinyin population__2003_est__  \
+0   1     aimin district   爱民区       àimín qū                230,000   
+1   2   dong'an district   东安区     dōng'ān qū                180,000   
+2   3  yangming district   阳明区    yángmíng qū                160,000   
+3   4     xi'an district   西安区       xī'ān qū                210,000   
+4   5        muling city   穆棱市     mùlíng shì                330,000   
+5   6      suifenhe city  绥芬河市   suífēnhé shi                 60,000   
+6   7        hailin city   海林市     hǎilín shì                440,000   
+7   8       ning'an city   宁安市    níng'ān shì                440,000   
+8   9    dongning county   东宁县  dōngníng xiàn                210,000   
+9  10      linkou county   林口县    línkǒu xiàn                450,000   
+
+  area__km²_  density___km²_  
+0        359             641  
+1        566             318  
+2        358             447  
+3        325             646  
+4      6,094              54  
+5        427             141  
+6      9,877              45  
+7      7,870              56  
+8      7,368              29  
+9      7,191              63  
+Sample 413 - Plan 1: Caption: none
+Sample 413 - Plan 1: Original table: [['_', 'name', 'hanzi', 'hanyu_pinyin', 'population__2003_est__', 'area__km²_', 'density___km²_'], ['1', 'aimin district', '爱民区', 'àimín qū', '230,000', '359', '641'], ['2', "dong'an district", '东安区', "dōng'ān qū", '180,000', '566', '318'], ['3', 'yangming district', '阳明区', 'yángmíng qū', '160,000', '358', '447'], ['4', "xi'an district", '西安区', "xī'ān qū", '210,000', '325', '646'], ['5', 'muling city', '穆棱市', 'mùlíng shì', '330,000', '6,094', '54'], ['6', 'suifenhe city', '绥芬河市', 'suífēnhé shi', '60,000', '427', '141'], ['7', 'hailin city', '海林市', 'hǎilín shì', '440,000', '9,877', '45'], ['8', "ning'an city", '宁安市', "níng'ān shì", '440,000', '7,870', '56'], ['9', 'dongning county', '东宁县', 'dōngníng xiàn', '210,000', '7,368', '29'], ['10', 'linkou county', '林口县', 'línkǒu xiàn', '450,000', '7,191', '63']]
+########################################################################################################################
+Sample 413 - Plan 1: Operation 1: Select rows where the 'area__km²_' is greater than 1000.
+Sample 413 - Plan 1: Selected indices: []
+Sample 413 - Plan 1: X-Table after operation df:
+    _             name hanzi   hanyu_pinyin population__2003_est__ area__km²_  \
+0   5      muling city   穆棱市     mùlíng shì                330,000      6,094   
+1   7      hailin city   海林市     hǎilín shì                440,000      9,877   
+2   8     ning'an city   宁安市    níng'ān shì                440,000      7,870   
+3   9  dongning county   东宁县  dōngníng xiàn                210,000      7,368   
+4  10    linkou county   林口县    línkǒu xiàn                450,000      7,191   
+
+   density___km²_  
+0              54  
+1              45  
+2              56  
+3              29  
+4              63  
+Sample 413 - Plan 1: Table after operation: [['_', 'name', 'hanzi', 'hanyu_pinyin', 'population__2003_est__', 'area__km²_', 'density___km²_'], [5, 'muling city', '穆棱市', 'mùlíng shì', '330,000', '6,094', 54], [7, 'hailin city', '海林市', 'hǎilín shì', '440,000', '9,877', 45], [8, "ning'an city", '宁安市', "níng'ān shì", '440,000', '7,870', 56], [9, 'dongning county', '东宁县', 'dōngníng xiàn', '210,000', '7,368', 29], [10, 'linkou county', '林口县', 'línkǒu xiàn', '450,000', '7,191', 63]]
+########################################################################################################################
+Sample 413 - Plan 1: Operation 2: Count the number of rows.
+Sample 413 - Plan 1: Selected indices: []
+Sample 413 - Plan 1: X-Table after operation df:
+   row_count
+0          5
+Sample 413 - Plan 1: Table after operation: [['row_count'], [5]]
+Fall-back: FALSE
+Answer from plan 1: [[5]]
+Groundtruth: ['5']

@@ -1,0 +1,221 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which team has been listed the most in the table?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Count the number of occurrences of each team in the 'team' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>season</td>
+<td>team</td>
+<td>country</td>
+<td>division</td>
+<td>apps</td>
+<td>goals</td>
+</tr>
+<tr>
+<td>2004</td>
+<td>cska moscow</td>
+<td>russia</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2005</td>
+<td>cska moscow</td>
+<td>russia</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2006</td>
+<td>spartak nizhny novgorod</td>
+<td>russia</td>
+<td>2</td>
+<td>36</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2006/07</td>
+<td>dnipro dnipropetrovsk</td>
+<td>ukraine</td>
+<td>1</td>
+<td>12</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2007/08</td>
+<td>dnipro dnipropetrovsk</td>
+<td>ukraine</td>
+<td>1</td>
+<td>24</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2008/09</td>
+<td>dnipro dnipropetrovsk</td>
+<td>ukraine</td>
+<td>1</td>
+<td>22</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2009/10</td>
+<td>dnipro dnipropetrovsk</td>
+<td>ukraine</td>
+<td>1</td>
+<td>28</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2010/11</td>
+<td>dnipro dnipropetrovsk</td>
+<td>ukraine</td>
+<td>1</td>
+<td>23</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2011/12</td>
+<td>dnipro dnipropetrovsk</td>
+<td>ukraine</td>
+<td>1</td>
+<td>16</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2012/13</td>
+<td>dnipro dnipropetrovsk</td>
+<td>ukraine</td>
+<td>1</td>
+<td>10</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2012/13</td>
+<td>lokomotiv moscow</td>
+<td>russia</td>
+<td>1</td>
+<td>8</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2013/14</td>
+<td>lokomotiv moscow</td>
+<td>russia</td>
+<td>1</td>
+<td>14</td>
+<td>1</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Order the table by the count of occurrences in descending order.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>team</td>
+<td>team_count</td>
+</tr>
+<tr>
+<td>cska moscow</td>
+<td><span class="highlighted-cell" title="Used in transformation">2</span></td>
+</tr>
+<tr>
+<td>dnipro dnipropetrovsk</td>
+<td><span class="highlighted-cell" title="Used in transformation">7</span></td>
+</tr>
+<tr>
+<td>lokomotiv moscow</td>
+<td><span class="highlighted-cell" title="Used in transformation">2</span></td>
+</tr>
+<tr>
+<td>spartak nizhny novgorod</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select row number 1.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>team</td>
+<td>team_count</td>
+</tr>
+<tr>
+<td>dnipro dnipropetrovsk</td>
+<td>7</td>
+</tr>
+<tr>
+<td>cska moscow</td>
+<td>2</td>
+</tr>
+<tr>
+<td>lokomotiv moscow</td>
+<td>2</td>
+</tr>
+<tr>
+<td>spartak nizhny novgorod</td>
+<td>1</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Select the 'team' column.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>team</td>
+<td>team_count</td>
+</tr>
+<tr>
+<td>dnipro dnipropetrovsk</td>
+<td>7</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>team</td>
+</tr>
+<tr>
+<td>dnipro dnipropetrovsk</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['dnipro dnipropetrovsk']]</h3>
+</body></html>

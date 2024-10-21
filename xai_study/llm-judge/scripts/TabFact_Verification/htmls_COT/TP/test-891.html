@@ -1,0 +1,178 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> the teams with 3 losses have 0 ties</h3>
+<h3>Input Table: 1894 ahac season</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: f_select_row(row 0, row 1, row 2, row 3)</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>team</td>
+<td>games played</td>
+<td>wins</td>
+<td>losses</td>
+<td>ties</td>
+<td>goals for</td>
+<td>goals against</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">montreal hockey club</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">25</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">15</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">ottawa hockey club</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">24</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">16</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">montreal victorias</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">36</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">20</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">quebec hockey club</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">26</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">27</span></td>
+</tr>
+<tr>
+<td>montreal crystals</td>
+<td>8</td>
+<td>0</td>
+<td>8</td>
+<td>0</td>
+<td>10</td>
+<td>43</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: f_select_column(team, losses, ties)</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>team</td>
+<td>games played</td>
+<td>wins</td>
+<td>losses</td>
+<td>ties</td>
+<td>goals for</td>
+<td>goals against</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">montreal hockey club</span></td>
+<td>8</td>
+<td>5</td>
+<td><span class="highlighted-cell" title="Used in transformation">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+<td>25</td>
+<td>15</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">ottawa hockey club</span></td>
+<td>8</td>
+<td>5</td>
+<td><span class="highlighted-cell" title="Used in transformation">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+<td>24</td>
+<td>16</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">montreal victorias</span></td>
+<td>8</td>
+<td>5</td>
+<td><span class="highlighted-cell" title="Used in transformation">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+<td>36</td>
+<td>20</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">quebec hockey club</span></td>
+<td>8</td>
+<td>5</td>
+<td><span class="highlighted-cell" title="Used in transformation">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+<td>26</td>
+<td>27</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: simple_query()</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>team</td>
+<td>losses</td>
+<td>ties</td>
+</tr>
+<tr>
+<td>montreal hockey club</td>
+<td>3</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ottawa hockey club</td>
+<td>3</td>
+<td>0</td>
+</tr>
+<tr>
+<td>montreal victorias</td>
+<td>3</td>
+<td>0</td>
+</tr>
+<tr>
+<td>quebec hockey club</td>
+<td>3</td>
+<td>0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h2>Prompting LLM for the final answer... >>> </h2>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> TRUE</h3>
+</body></html>

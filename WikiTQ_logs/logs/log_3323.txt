@@ -1,0 +1,47 @@
+************************************************************************************************************************
+Sample 3323 - Plan 1: Query: how many networks does televisa own?
+Sample 3323 - Plan 1: Groundtruth: ['3']
+Sample 3323 - Plan 1: X-Original table pd: 
+             network_name flagship                      programming_type  \
+0  canal de las estrellas    xew 2  soap operas, retro movies and sports   
+1                 canal 5   xhgc 5          cartoons, movies, and series   
+2                azteca 7  xhimt 7            sports, series, and movies   
+3              galavisión    xeq 9          retro programming and sports   
+4           tv 10 chiapas    xhttg                           educational   
+5               azteca 13  xhdf 13         news, soap operas, and sports   
+6             independent                                         varies   
+
+                            owner  affiliates  
+0                        televisa          10  
+1                        televisa           4  
+2                       tv azteca           5  
+3                        televisa           1  
+4  gobierno del estado de chiapas           7  
+5                       tv azteca           4  
+6                     independent           3  
+Sample 3323 - Plan 1: Caption: none
+Sample 3323 - Plan 1: Original table: [['network_name', 'flagship', 'programming_type', 'owner', 'affiliates'], ['canal de las estrellas', 'xew 2', 'soap operas, retro movies and sports', 'televisa', '10'], ['canal 5', 'xhgc 5', 'cartoons, movies, and series', 'televisa', '4'], ['azteca 7', 'xhimt 7', 'sports, series, and movies', 'tv azteca', '5'], ['galavisión', 'xeq 9', 'retro programming and sports', 'televisa', '1'], ['tv 10 chiapas', 'xhttg', 'educational', 'gobierno del estado de chiapas', '7'], ['azteca 13', 'xhdf 13', 'news, soap operas, and sports', 'tv azteca', '4'], ['independent', '', 'varies', 'independent', '3']]
+########################################################################################################################
+Sample 3323 - Plan 1: Operation 1: Select rows where the 'owner' is 'televisa'.
+Sample 3323 - Plan 1: Selected indices: [[0, 3], [1, 3], [3, 3]]
+Sample 3323 - Plan 1: X-Table after operation df:
+             network_name flagship                      programming_type  \
+0  canal de las estrellas    xew 2  soap operas, retro movies and sports   
+1                 canal 5   xhgc 5          cartoons, movies, and series   
+2              galavisión    xeq 9          retro programming and sports   
+
+      owner  affiliates  
+0  televisa          10  
+1  televisa           4  
+2  televisa           1  
+Sample 3323 - Plan 1: Table after operation: [['network_name', 'flagship', 'programming_type', 'owner', 'affiliates'], ['canal de las estrellas', 'xew 2', 'soap operas, retro movies and sports', 'televisa', 10], ['canal 5', 'xhgc 5', 'cartoons, movies, and series', 'televisa', 4], ['galavisión', 'xeq 9', 'retro programming and sports', 'televisa', 1]]
+########################################################################################################################
+Sample 3323 - Plan 1: Operation 2: Count the number of rows.
+Sample 3323 - Plan 1: Selected indices: []
+Sample 3323 - Plan 1: X-Table after operation df:
+   row_count
+0          3
+Sample 3323 - Plan 1: Table after operation: [['row_count'], [3]]
+Fall-back: FALSE
+Answer from plan 1: [[3]]
+Groundtruth: ['3']

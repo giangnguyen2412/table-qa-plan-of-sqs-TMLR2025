@@ -1,0 +1,150 @@
+************************************************************************************************************************
+Sample 1227 - Plan 1: Query: which opponent played the most games?
+Sample 1227 - Plan 1: Groundtruth: ['Anderlecht']
+Sample 1227 - Plan 1: X-Original table pd: 
+            date            team       competition          round  \
+0         july 7            gent     intertoto cup        round 2   
+1        july 14            gent     intertoto cup        round 2   
+2        july 21            gent     intertoto cup        round 3   
+3        july 29            gent     intertoto cup        round 3   
+4        july 31            genk  champions league  qual. round 2   
+5       august 8            genk  champions league  qual. round 2   
+6      august 15      anderlecht  champions league  qual. round 3   
+7      august 16  standard liège          uefa cup  qual. round 2   
+8      august 29      anderlecht  champions league  qual. round 3   
+9      august 30  standard liège          uefa cup  qual. round 2   
+10  september 20      anderlecht          uefa cup        round 1   
+11  september 20     club brugge          uefa cup        round 1   
+12  september 20  standard liège          uefa cup        round 1   
+13     october 4      anderlecht          uefa cup        round 1   
+14     october 4     club brugge          uefa cup        round 1   
+15     october 4  standard liège          uefa cup        round 1   
+16    october 25      anderlecht          uefa cup    group stage   
+17    november 8      anderlecht          uefa cup    group stage   
+18    december 6      anderlecht          uefa cup    group stage   
+19   december 19      anderlecht          uefa cup    group stage   
+20   february 13      anderlecht          uefa cup    round of 32   
+21   february 21      anderlecht          uefa cup    round of 32   
+22       march 6      anderlecht          uefa cup    round of 16   
+23      march 12      anderlecht          uefa cup    round of 16   
+
+              leg              opponent  \
+0     leg 1, home          cliftonville   
+1     leg 2, away          cliftonville   
+2     leg 1, home               aalborg   
+3     leg 2, away               aalborg   
+4     leg 1, home              sarajevo   
+5     leg 2, away              sarajevo   
+6     leg 1, away            fenerbahçe   
+7     leg 1, away              käerjeng   
+8     leg 2, home            fenerbahçe   
+9     leg 2, home              käerjeng   
+10    leg 1, home            rapid wien   
+11    leg 1, away                 brann   
+12    leg 1, away  zenit st. petersburg   
+13    leg 2, away            rapid wien   
+14    leg 2, home                 brann   
+15    leg 2, home  zenit st. petersburg   
+16  match 1, home       hapoel tel aviv   
+17  match 2, away               aalborg   
+18  match 3, home     tottenham hotspur   
+19  match 4, away                getafe   
+20    leg 1, home              bordeaux   
+21    leg 2, away              bordeaux   
+22    leg 1, home         bayern munich   
+23    leg 2, away         bayern munich   
+
+                                     location score  
+0                   jules ottenstadion, ghent   2-0  
+1                       windsor park, belfast   4-0  
+2                   jules ottenstadion, ghent   1-1  
+3                  energi nord arena, aalborg   1-2  
+4                         cristal arena, genk   1-2  
+5      asim ferhatović hase stadium, sarajevo   1-0  
+6           şükrü saracoğlu stadium, istanbul   0-1  
+7              stade josy barthel, luxembourg   3-0  
+8   constant vanden stock stadium, anderlecht   0-2  
+9               stade maurice dufrasne, liège   1-0  
+10  constant vanden stock stadium, anderlecht   1-1  
+11                      brann stadion, bergen   1-0  
+12        petrovsky stadium, saint petersburg   0-3  
+13            gerhard hanappi stadium, vienna   1-0  
+14                jan breydel stadium, bruges   1-2  
+15              stade maurice dufrasne, liège   1-1  
+16  constant vanden stock stadium, anderlecht   2-0  
+17                 energi nord arena, aalborg   1-1  
+18  constant vanden stock stadium, anderlecht   1-1  
+19             coliseum alfonso pérez, getafe   1-2  
+20  constant vanden stock stadium, anderlecht   2-1  
+21              stade chaban-delmas, bordeaux   1-1  
+22  constant vanden stock stadium, anderlecht   0-5  
+23                      allianz arena, munich   2-1  
+Sample 1227 - Plan 1: Caption: none
+Sample 1227 - Plan 1: Original table: [['date', 'team', 'competition', 'round', 'leg', 'opponent', 'location', 'score'], ['july 7', 'gent', 'intertoto cup', 'round 2', 'leg 1, home', 'cliftonville', 'jules ottenstadion, ghent', '2-0'], ['july 14', 'gent', 'intertoto cup', 'round 2', 'leg 2, away', 'cliftonville', 'windsor park, belfast', '4-0'], ['july 21', 'gent', 'intertoto cup', 'round 3', 'leg 1, home', 'aalborg', 'jules ottenstadion, ghent', '1-1'], ['july 29', 'gent', 'intertoto cup', 'round 3', 'leg 2, away', 'aalborg', 'energi nord arena, aalborg', '1-2'], ['july 31', 'genk', 'champions league', 'qual. round 2', 'leg 1, home', 'sarajevo', 'cristal arena, genk', '1-2'], ['august 8', 'genk', 'champions league', 'qual. round 2', 'leg 2, away', 'sarajevo', 'asim ferhatović hase stadium, sarajevo', '1-0'], ['august 15', 'anderlecht', 'champions league', 'qual. round 3', 'leg 1, away', 'fenerbahçe', 'şükrü saracoğlu stadium, istanbul', '0-1'], ['august 16', 'standard liège', 'uefa cup', 'qual. round 2', 'leg 1, away', 'käerjeng', 'stade josy barthel, luxembourg', '3-0'], ['august 29', 'anderlecht', 'champions league', 'qual. round 3', 'leg 2, home', 'fenerbahçe', 'constant vanden stock stadium, anderlecht', '0-2'], ['august 30', 'standard liège', 'uefa cup', 'qual. round 2', 'leg 2, home', 'käerjeng', 'stade maurice dufrasne, liège', '1-0'], ['september 20', 'anderlecht', 'uefa cup', 'round 1', 'leg 1, home', 'rapid wien', 'constant vanden stock stadium, anderlecht', '1-1'], ['september 20', 'club brugge', 'uefa cup', 'round 1', 'leg 1, away', 'brann', 'brann stadion, bergen', '1-0'], ['september 20', 'standard liège', 'uefa cup', 'round 1', 'leg 1, away', 'zenit st. petersburg', 'petrovsky stadium, saint petersburg', '0-3'], ['october 4', 'anderlecht', 'uefa cup', 'round 1', 'leg 2, away', 'rapid wien', 'gerhard hanappi stadium, vienna', '1-0'], ['october 4', 'club brugge', 'uefa cup', 'round 1', 'leg 2, home', 'brann', 'jan breydel stadium, bruges', '1-2'], ['october 4', 'standard liège', 'uefa cup', 'round 1', 'leg 2, home', 'zenit st. petersburg', 'stade maurice dufrasne, liège', '1-1'], ['october 25', 'anderlecht', 'uefa cup', 'group stage', 'match 1, home', 'hapoel tel aviv', 'constant vanden stock stadium, anderlecht', '2-0'], ['november 8', 'anderlecht', 'uefa cup', 'group stage', 'match 2, away', 'aalborg', 'energi nord arena, aalborg', '1-1'], ['december 6', 'anderlecht', 'uefa cup', 'group stage', 'match 3, home', 'tottenham hotspur', 'constant vanden stock stadium, anderlecht', '1-1'], ['december 19', 'anderlecht', 'uefa cup', 'group stage', 'match 4, away', 'getafe', 'coliseum alfonso pérez, getafe', '1-2'], ['february 13', 'anderlecht', 'uefa cup', 'round of 32', 'leg 1, home', 'bordeaux', 'constant vanden stock stadium, anderlecht', '2-1'], ['february 21', 'anderlecht', 'uefa cup', 'round of 32', 'leg 2, away', 'bordeaux', 'stade chaban-delmas, bordeaux', '1-1'], ['march 6', 'anderlecht', 'uefa cup', 'round of 16', 'leg 1, home', 'bayern munich', 'constant vanden stock stadium, anderlecht', '0-5'], ['march 12', 'anderlecht', 'uefa cup', 'round of 16', 'leg 2, away', 'bayern munich', 'allianz arena, munich', '2-1']]
+########################################################################################################################
+Sample 1227 - Plan 1: Operation 1: Group the table by the 'opponent' column.
+Sample 1227 - Plan 1: Selected indices: []
+Sample 1227 - Plan 1: X-Table after operation df:
+                opponent
+0                aalborg
+1          bayern munich
+2               bordeaux
+3                  brann
+4           cliftonville
+5             fenerbahçe
+6                 getafe
+7        hapoel tel aviv
+8               käerjeng
+9             rapid wien
+10              sarajevo
+11     tottenham hotspur
+12  zenit st. petersburg
+Sample 1227 - Plan 1: Table after operation: [['opponent'], ['aalborg'], ['bayern munich'], ['bordeaux'], ['brann'], ['cliftonville'], ['fenerbahçe'], ['getafe'], ['hapoel tel aviv'], ['käerjeng'], ['rapid wien'], ['sarajevo'], ['tottenham hotspur'], ['zenit st. petersburg']]
+########################################################################################################################
+Sample 1227 - Plan 1: Operation 2: Count the number of games played by each opponent.
+Sample 1227 - Plan 1: Selected indices: [[0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0], [9, 0], [10, 0], [11, 0], [12, 0]]
+Sample 1227 - Plan 1: X-Table after operation df:
+                opponent  games_played
+0                aalborg             1
+1          bayern munich             1
+2               bordeaux             1
+3                  brann             1
+4           cliftonville             1
+5             fenerbahçe             1
+6                 getafe             1
+7        hapoel tel aviv             1
+8               käerjeng             1
+9             rapid wien             1
+10              sarajevo             1
+11     tottenham hotspur             1
+12  zenit st. petersburg             1
+Sample 1227 - Plan 1: Table after operation: [['opponent', 'games_played'], ['aalborg', 1], ['bayern munich', 1], ['bordeaux', 1], ['brann', 1], ['cliftonville', 1], ['fenerbahçe', 1], ['getafe', 1], ['hapoel tel aviv', 1], ['käerjeng', 1], ['rapid wien', 1], ['sarajevo', 1], ['tottenham hotspur', 1], ['zenit st. petersburg', 1]]
+########################################################################################################################
+Sample 1227 - Plan 1: Operation 3: Order the table by the count of games in descending order.
+Sample 1227 - Plan 1: Selected indices: [[0, 1], [11, 1], [12, 1], [7, 1], [2, 1], [8, 1], [3, 1], [6, 1], [1, 1], [10, 1], [5, 1], [9, 1], [4, 1]]
+Sample 1227 - Plan 1: X-Table after operation df:
+                opponent  games_played
+0                aalborg             1
+1          bayern munich             1
+2               bordeaux             1
+3                  brann             1
+4           cliftonville             1
+5             fenerbahçe             1
+6                 getafe             1
+7        hapoel tel aviv             1
+8               käerjeng             1
+9             rapid wien             1
+10              sarajevo             1
+11     tottenham hotspur             1
+12  zenit st. petersburg             1
+Sample 1227 - Plan 1: Table after operation: [['opponent', 'games_played'], ['aalborg', 1], ['bayern munich', 1], ['bordeaux', 1], ['brann', 1], ['cliftonville', 1], ['fenerbahçe', 1], ['getafe', 1], ['hapoel tel aviv', 1], ['käerjeng', 1], ['rapid wien', 1], ['sarajevo', 1], ['tottenham hotspur', 1], ['zenit st. petersburg', 1]]
+########################################################################################################################
+Sample 1227 - Plan 1: Operation 4: Select the opponent with the highest count of games played.
+Sample 1227 - Plan 1: Selected indices: []
+Sample 1227 - Plan 1: X-Table after operation df:
+  opponent  max_games_played
+0  aalborg                 1
+Sample 1227 - Plan 1: Table after operation: [['opponent', 'max_games_played'], ['aalborg', 1]]
+Fall-back: FALSE
+Answer from plan 1: [['aalborg', 1]]
+Groundtruth: ['Anderlecht']

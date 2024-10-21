@@ -1,0 +1,247 @@
+************************************************************************************************************************
+Sample 112 - Plan 1: Query: how many specifications have no active directory federation services?
+Sample 112 - Plan 1: Groundtruth: ['1']
+Sample 112 - Plan 1: X-Original table pd: 
+                                     specifications  \
+0                                      distribution   
+1                                   licensing model   
+2                              processor chip limit   
+3                                      memory limit   
+4                                        user limit   
+5                              file services limits   
+6         network policy and access services limits   
+7                    remote desktop services limits   
+8                             virtualization rights   
+9                                         dhcp role   
+10                                  dns server role   
+11                                  fax server role   
+12                                    uddi services   
+13                      print and document services   
+14     web services (internet information services)   
+15                      windows deployment services   
+16                   windows server update services   
+17  active directory lightweight directory services   
+18      active directory rights management services   
+19                          application server role   
+20                                   server manager   
+21                               windows powershell   
+22                 active directory domain services   
+23            active directory certificate services   
+24             active directory federation services   
+25                                 server core mode   
+26                                          hyper-v   
+
+                                    foundation  \
+0                                     oem only   
+1                                   per server   
+2                                            1   
+3                                        32 gb   
+4                                           15   
+5                        1 standalone dfs root   
+6   50 rras connections and 10 ias connections   
+7       50 remote desktop services connections   
+8                                          n/a   
+9                                          yes   
+10                                         yes   
+11                                         yes   
+12                                         yes   
+13                                         yes   
+14                                         yes   
+15                                         yes   
+16                                          no   
+17                                         yes   
+18                                         yes   
+19                                         yes   
+20                                         yes   
+21                                         yes   
+22           must be root of forest and domain   
+23                certificate authorities only   
+24                                         yes   
+25                                          no   
+26                                          no   
+
+                                           essentials  \
+0                       retail, volume licensing, oem   
+1                                          per server   
+2                                                   2   
+3                                               64 gb   
+4                                                  25   
+5                               1 standalone dfs root   
+6   250 rras connections, 50 ias connections, and ...   
+7                                        gateway only   
+8   either in 1 vm or 1 physical server, but not b...   
+9                                                 yes   
+10                                                yes   
+11                                                yes   
+12                                                yes   
+13                                                yes   
+14                                                yes   
+15                                                yes   
+16                                                yes   
+17                                                yes   
+18                                                yes   
+19                                                yes   
+20                                                yes   
+21                                                yes   
+22                  must be root of forest and domain   
+23                       certificate authorities only   
+24                                                 no   
+25                                                 no   
+26                                                 no   
+
+                         standard                datacenter  
+0   retail, volume licensing, oem  volume licensing and oem  
+1              per cpu pair + cal        per cpu pair + cal  
+2                              64                        64  
+3                            4 tb                      4 tb  
+4                       unlimited                 unlimited  
+5                       unlimited                 unlimited  
+6                       unlimited                 unlimited  
+7                       unlimited                 unlimited  
+8                           2 vms                 unlimited  
+9                             yes                       yes  
+10                            yes                       yes  
+11                            yes                       yes  
+12                            yes                       yes  
+13                            yes                       yes  
+14                            yes                       yes  
+15                            yes                       yes  
+16                            yes                       yes  
+17                            yes                       yes  
+18                            yes                       yes  
+19                            yes                       yes  
+20                            yes                       yes  
+21                            yes                       yes  
+22                            yes                       yes  
+23                            yes                       yes  
+24                            yes                       yes  
+25                            yes                       yes  
+26                            yes                       yes  
+Sample 112 - Plan 1: Caption: none
+Sample 112 - Plan 1: Original table: [['specifications', 'foundation', 'essentials', 'standard', 'datacenter'], ['distribution', 'oem only', 'retail, volume licensing, oem', 'retail, volume licensing, oem', 'volume licensing and oem'], ['licensing model', 'per server', 'per server', 'per cpu pair + cal', 'per cpu pair + cal'], ['processor chip limit', '1', '2', '64', '64'], ['memory limit', '32 gb', '64 gb', '4 tb', '4 tb'], ['user limit', '15', '25', 'unlimited', 'unlimited'], ['file services limits', '1 standalone dfs root', '1 standalone dfs root', 'unlimited', 'unlimited'], ['network policy and access services limits', '50 rras connections and 10 ias connections', '250 rras connections, 50 ias connections, and 2 ias server groups', 'unlimited', 'unlimited'], ['remote desktop services limits', '50 remote desktop services connections', 'gateway only', 'unlimited', 'unlimited'], ['virtualization rights', 'n/a', 'either in 1 vm or 1 physical server, but not both at once', '2 vms', 'unlimited'], ['dhcp role', 'yes', 'yes', 'yes', 'yes'], ['dns server role', 'yes', 'yes', 'yes', 'yes'], ['fax server role', 'yes', 'yes', 'yes', 'yes'], ['uddi services', 'yes', 'yes', 'yes', 'yes'], ['print and document services', 'yes', 'yes', 'yes', 'yes'], ['web services (internet information services)', 'yes', 'yes', 'yes', 'yes'], ['windows deployment services', 'yes', 'yes', 'yes', 'yes'], ['windows server update services', 'no', 'yes', 'yes', 'yes'], ['active directory lightweight directory services', 'yes', 'yes', 'yes', 'yes'], ['active directory rights management services', 'yes', 'yes', 'yes', 'yes'], ['application server role', 'yes', 'yes', 'yes', 'yes'], ['server manager', 'yes', 'yes', 'yes', 'yes'], ['windows powershell', 'yes', 'yes', 'yes', 'yes'], ['active directory domain services', 'must be root of forest and domain', 'must be root of forest and domain', 'yes', 'yes'], ['active directory certificate services', 'certificate authorities only', 'certificate authorities only', 'yes', 'yes'], ['active directory federation services', 'yes', 'no', 'yes', 'yes'], ['server core mode', 'no', 'no', 'yes', 'yes'], ['hyper-v', 'no', 'no', 'yes', 'yes']]
+########################################################################################################################
+Sample 112 - Plan 1: Operation 1: Select rows where the 'specifications' column does not contain the value 'yes' for 'active directory federation services'.
+Sample 112 - Plan 1: Selected indices: []
+Sample 112 - Plan 1: X-Table after operation df:
+                                     specifications  \
+0                                      distribution   
+1                                   licensing model   
+2                              processor chip limit   
+3                                      memory limit   
+4                                        user limit   
+5                              file services limits   
+6         network policy and access services limits   
+7                    remote desktop services limits   
+8                             virtualization rights   
+9                                         dhcp role   
+10                                  dns server role   
+11                                  fax server role   
+12                                    uddi services   
+13                      print and document services   
+14     web services (internet information services)   
+15                      windows deployment services   
+16                   windows server update services   
+17  active directory lightweight directory services   
+18      active directory rights management services   
+19                          application server role   
+20                                   server manager   
+21                               windows powershell   
+22                 active directory domain services   
+23            active directory certificate services   
+24                                 server core mode   
+25                                          hyper-v   
+
+                                    foundation  \
+0                                     oem only   
+1                                   per server   
+2                                            1   
+3                                        32 gb   
+4                                           15   
+5                        1 standalone dfs root   
+6   50 rras connections and 10 ias connections   
+7       50 remote desktop services connections   
+8                                          n/a   
+9                                          yes   
+10                                         yes   
+11                                         yes   
+12                                         yes   
+13                                         yes   
+14                                         yes   
+15                                         yes   
+16                                          no   
+17                                         yes   
+18                                         yes   
+19                                         yes   
+20                                         yes   
+21                                         yes   
+22           must be root of forest and domain   
+23                certificate authorities only   
+24                                          no   
+25                                          no   
+
+                                           essentials  \
+0                       retail, volume licensing, oem   
+1                                          per server   
+2                                                   2   
+3                                               64 gb   
+4                                                  25   
+5                               1 standalone dfs root   
+6   250 rras connections, 50 ias connections, and ...   
+7                                        gateway only   
+8   either in 1 vm or 1 physical server, but not b...   
+9                                                 yes   
+10                                                yes   
+11                                                yes   
+12                                                yes   
+13                                                yes   
+14                                                yes   
+15                                                yes   
+16                                                yes   
+17                                                yes   
+18                                                yes   
+19                                                yes   
+20                                                yes   
+21                                                yes   
+22                  must be root of forest and domain   
+23                       certificate authorities only   
+24                                                 no   
+25                                                 no   
+
+                         standard                datacenter  
+0   retail, volume licensing, oem  volume licensing and oem  
+1              per cpu pair + cal        per cpu pair + cal  
+2                              64                        64  
+3                            4 tb                      4 tb  
+4                       unlimited                 unlimited  
+5                       unlimited                 unlimited  
+6                       unlimited                 unlimited  
+7                       unlimited                 unlimited  
+8                           2 vms                 unlimited  
+9                             yes                       yes  
+10                            yes                       yes  
+11                            yes                       yes  
+12                            yes                       yes  
+13                            yes                       yes  
+14                            yes                       yes  
+15                            yes                       yes  
+16                            yes                       yes  
+17                            yes                       yes  
+18                            yes                       yes  
+19                            yes                       yes  
+20                            yes                       yes  
+21                            yes                       yes  
+22                            yes                       yes  
+23                            yes                       yes  
+24                            yes                       yes  
+25                            yes                       yes  
+Sample 112 - Plan 1: Table after operation: [['specifications', 'foundation', 'essentials', 'standard', 'datacenter'], ['distribution', 'oem only', 'retail, volume licensing, oem', 'retail, volume licensing, oem', 'volume licensing and oem'], ['licensing model', 'per server', 'per server', 'per cpu pair + cal', 'per cpu pair + cal'], ['processor chip limit', '1', '2', '64', '64'], ['memory limit', '32 gb', '64 gb', '4 tb', '4 tb'], ['user limit', '15', '25', 'unlimited', 'unlimited'], ['file services limits', '1 standalone dfs root', '1 standalone dfs root', 'unlimited', 'unlimited'], ['network policy and access services limits', '50 rras connections and 10 ias connections', '250 rras connections, 50 ias connections, and 2 ias server groups', 'unlimited', 'unlimited'], ['remote desktop services limits', '50 remote desktop services connections', 'gateway only', 'unlimited', 'unlimited'], ['virtualization rights', 'n/a', 'either in 1 vm or 1 physical server, but not both at once', '2 vms', 'unlimited'], ['dhcp role', 'yes', 'yes', 'yes', 'yes'], ['dns server role', 'yes', 'yes', 'yes', 'yes'], ['fax server role', 'yes', 'yes', 'yes', 'yes'], ['uddi services', 'yes', 'yes', 'yes', 'yes'], ['print and document services', 'yes', 'yes', 'yes', 'yes'], ['web services (internet information services)', 'yes', 'yes', 'yes', 'yes'], ['windows deployment services', 'yes', 'yes', 'yes', 'yes'], ['windows server update services', 'no', 'yes', 'yes', 'yes'], ['active directory lightweight directory services', 'yes', 'yes', 'yes', 'yes'], ['active directory rights management services', 'yes', 'yes', 'yes', 'yes'], ['application server role', 'yes', 'yes', 'yes', 'yes'], ['server manager', 'yes', 'yes', 'yes', 'yes'], ['windows powershell', 'yes', 'yes', 'yes', 'yes'], ['active directory domain services', 'must be root of forest and domain', 'must be root of forest and domain', 'yes', 'yes'], ['active directory certificate services', 'certificate authorities only', 'certificate authorities only', 'yes', 'yes'], ['server core mode', 'no', 'no', 'yes', 'yes'], ['hyper-v', 'no', 'no', 'yes', 'yes']]
+########################################################################################################################
+Sample 112 - Plan 1: Operation 2: Count the number of rows selected.
+Sample 112 - Plan 1: Selected indices: []
+Sample 112 - Plan 1: X-Table after operation df:
+   row_count
+0         26
+Sample 112 - Plan 1: Table after operation: [['row_count'], [26]]
+Fall-back: FALSE
+Answer from plan 1: [[26]]
+Groundtruth: ['1']

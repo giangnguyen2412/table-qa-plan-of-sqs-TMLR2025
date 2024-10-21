@@ -1,0 +1,89 @@
+************************************************************************************************************************
+Sample 1544 - Plan 1: Query: how much did the world make in box office revenue?
+Sample 1544 - Plan 1: Groundtruth: ['$34.7 billion']
+Sample 1544 - Plan 1: X-Original table pd: 
+   rank               country     box_office  year  \
+0     1  canada/united states  $10.8 billion  2012   
+1     2                 china   $3.6 billion  2013   
+2     3                 japan  $1.88 billion  2013   
+3     4        united kingdom   $1.7 billion  2012   
+4     5                france   $1.7 billion  2012   
+5     6           south korea  $1.47 billion  2013   
+6     7                 india   $1.4 billion  2012   
+7     8               germany   $1.3 billion  2012   
+8     9                russia   $1.2 billion  2012   
+9    10             australia   $1.2 billion  2012   
+10   11                 italy  $0.84 billion  2013   
+11   12                brazil  $0.72 billion  2013   
+12    -                 world  $34.7 billion  2012   
+
+   box_office_nfrom_national_films  
+0                                –  
+1                       59% (2013)  
+2                       61% (2013)  
+3                     36.1% (2011)  
+4                     33.3% (2013)  
+5                     59.7% (2013)  
+6                                –  
+7                                –  
+8                                –  
+9                      4.1% (2011)  
+10                      30% (2013)  
+11                      17% (2013)  
+12                               –  
+Sample 1544 - Plan 1: Caption: none
+Sample 1544 - Plan 1: Original table: [['rank', 'country', 'box_office', 'year', 'box_office_nfrom_national_films'], ['1', 'canada/united states', '$10.8 billion', '2012', '–'], ['2', 'china', '$3.6 billion', '2013', '59% (2013)'], ['3', 'japan', '$1.88 billion', '2013', '61% (2013)'], ['4', 'united kingdom', '$1.7 billion', '2012', '36.1% (2011)'], ['5', 'france', '$1.7 billion', '2012', '33.3% (2013)'], ['6', 'south korea', '$1.47 billion', '2013', '59.7% (2013)'], ['7', 'india', '$1.4 billion', '2012', '–'], ['8', 'germany', '$1.3 billion', '2012', '–'], ['9', 'russia', '$1.2 billion', '2012', '–'], ['10', 'australia', '$1.2 billion', '2012', '4.1% (2011)'], ['11', 'italy', '$0.84 billion', '2013', '30% (2013)'], ['12', 'brazil', '$0.72 billion', '2013', '17% (2013)'], ['-', 'world', '$34.7 billion', '2012', '–']]
+########################################################################################################################
+Sample 1544 - Plan 1: Operation 1: Extract the numerical value from the 'box_office' column then add column 'num_box_office' to the existing table.
+Sample 1544 - Plan 1: Selected indices: [[0, 2], [1, 2], [2, 2], [3, 2], [4, 2], [5, 2], [6, 2], [7, 2], [8, 2], [9, 2], [10, 2], [11, 2], [12, 2]]
+Sample 1544 - Plan 1: X-Table after operation df:
+   rank               country     box_office  year  \
+0     1  canada/united states  $10.8 billion  2012   
+1     2                 china   $3.6 billion  2013   
+2     3                 japan  $1.88 billion  2013   
+3     4        united kingdom   $1.7 billion  2012   
+4     5                france   $1.7 billion  2012   
+5     6           south korea  $1.47 billion  2013   
+6     7                 india   $1.4 billion  2012   
+7     8               germany   $1.3 billion  2012   
+8     9                russia   $1.2 billion  2012   
+9    10             australia   $1.2 billion  2012   
+10   11                 italy  $0.84 billion  2013   
+11   12                brazil  $0.72 billion  2013   
+12    -                 world  $34.7 billion  2012   
+
+   box_office_nfrom_national_films  num_box_office  
+0                                –           10.80  
+1                       59% (2013)            3.60  
+2                       61% (2013)            1.88  
+3                     36.1% (2011)            1.70  
+4                     33.3% (2013)            1.70  
+5                     59.7% (2013)            1.47  
+6                                –            1.40  
+7                                –            1.30  
+8                                –            1.20  
+9                      4.1% (2011)            1.20  
+10                      30% (2013)            0.84  
+11                      17% (2013)            0.72  
+12                               –           34.70  
+Sample 1544 - Plan 1: Table after operation: [['rank', 'country', 'box_office', 'year', 'box_office_nfrom_national_films', 'num_box_office'], ['1', 'canada/united states', '$10.8 billion', 2012, '–', 10.8], ['2', 'china', '$3.6 billion', 2013, '59% (2013)', 3.6], ['3', 'japan', '$1.88 billion', 2013, '61% (2013)', 1.88], ['4', 'united kingdom', '$1.7 billion', 2012, '36.1% (2011)', 1.7], ['5', 'france', '$1.7 billion', 2012, '33.3% (2013)', 1.7], ['6', 'south korea', '$1.47 billion', 2013, '59.7% (2013)', 1.47], ['7', 'india', '$1.4 billion', 2012, '–', 1.4], ['8', 'germany', '$1.3 billion', 2012, '–', 1.3], ['9', 'russia', '$1.2 billion', 2012, '–', 1.2], ['10', 'australia', '$1.2 billion', 2012, '4.1% (2011)', 1.2], ['11', 'italy', '$0.84 billion', 2013, '30% (2013)', 0.84], ['12', 'brazil', '$0.72 billion', 2013, '17% (2013)', 0.72], ['-', 'world', '$34.7 billion', 2012, '–', 34.7]]
+########################################################################################################################
+Sample 1544 - Plan 1: Operation 2: Select the row where 'country' is 'world'.
+Sample 1544 - Plan 1: Selected indices: [[12, 1]]
+Sample 1544 - Plan 1: X-Table after operation df:
+  rank country     box_office  year box_office_nfrom_national_films  \
+0    -   world  $34.7 billion  2012                               –   
+
+   num_box_office  
+0            34.7  
+Sample 1544 - Plan 1: Table after operation: [['rank', 'country', 'box_office', 'year', 'box_office_nfrom_national_films', 'num_box_office'], ['-', 'world', '$34.7 billion', 2012, '–', 34.7]]
+########################################################################################################################
+Sample 1544 - Plan 1: Operation 3: Select the 'num_box_office' column.
+Sample 1544 - Plan 1: Selected indices: []
+Sample 1544 - Plan 1: X-Table after operation df:
+   num_box_office
+0            34.7
+Sample 1544 - Plan 1: Table after operation: [['num_box_office'], [34.7]]
+Fall-back: FALSE
+Answer from plan 1: [[34.7]]
+Groundtruth: ['$34.7 billion']

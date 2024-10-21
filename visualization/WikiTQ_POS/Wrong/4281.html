@@ -1,0 +1,335 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> what was the average toll rate for class 3 vehicles before january 2009?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Convert the 'date_introduced' column to a date format that can be used for comparison.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>date_introduced</td>
+<td>class_1__e_g__motorbike_</td>
+<td>class_2__e_g__car_</td>
+<td>class_3__e_g__car_with_trailer_</td>
+<td>class_4__e_g__van_</td>
+<td>class_5__e_g__hgv_</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">9 december 2003</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£1.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£2.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£5.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£5.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£10.00</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">23 july 2004</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£1.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£2.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£5.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£5.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£6.00</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">16 august 2004</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£2.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£3.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£6.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£6.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£6.00</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">14 june 2005</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£2.50</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£3.50</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£7.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£7.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£7.00</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1 january 2008</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£2.50</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£4.50</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£8.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£9.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£9.00</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1 january 2009</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£2.70</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£4.70</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£8.40</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£9.40</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£9.40</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1 march 2010</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£2.70</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£5.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£9.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£10.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£10.00</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1 march 2011</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£3.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£5.30</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£9.60</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£10.60</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£10.60</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1 march 2012</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£3.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£5.50</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£10.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£11.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">£11.00</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Filter the rows where the 'date_introduced' is before January 2009.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>date_introduced</td>
+<td>class_1__e_g__motorbike_</td>
+<td>class_2__e_g__car_</td>
+<td>class_3__e_g__car_with_trailer_</td>
+<td>class_4__e_g__van_</td>
+<td>class_5__e_g__hgv_</td>
+<td>formatted_date</td>
+</tr>
+<tr>
+<td>9 december 2003</td>
+<td>£1.00</td>
+<td>£2.00</td>
+<td>£5.00</td>
+<td>£5.00</td>
+<td>£10.00</td>
+<td>None</td>
+</tr>
+<tr>
+<td>23 july 2004</td>
+<td>£1.00</td>
+<td>£2.00</td>
+<td>£5.00</td>
+<td>£5.00</td>
+<td>£6.00</td>
+<td>None</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">16 august 2004</span></td>
+<td>£2.00</td>
+<td>£3.00</td>
+<td>£6.00</td>
+<td>£6.00</td>
+<td>£6.00</td>
+<td>None</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">14 june 2005</span></td>
+<td>£2.50</td>
+<td>£3.50</td>
+<td>£7.00</td>
+<td>£7.00</td>
+<td>£7.00</td>
+<td>None</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1 january 2008</span></td>
+<td>£2.50</td>
+<td>£4.50</td>
+<td>£8.00</td>
+<td>£9.00</td>
+<td>£9.00</td>
+<td>None</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1 january 2009</span></td>
+<td>£2.70</td>
+<td>£4.70</td>
+<td>£8.40</td>
+<td>£9.40</td>
+<td>£9.40</td>
+<td>None</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1 march 2010</span></td>
+<td>£2.70</td>
+<td>£5.00</td>
+<td>£9.00</td>
+<td>£10.00</td>
+<td>£10.00</td>
+<td>None</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1 march 2011</span></td>
+<td>£3.00</td>
+<td>£5.30</td>
+<td>£9.60</td>
+<td>£10.60</td>
+<td>£10.60</td>
+<td>None</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1 march 2012</span></td>
+<td>£3.00</td>
+<td>£5.50</td>
+<td>£10.00</td>
+<td>£11.00</td>
+<td>£11.00</td>
+<td>None</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select the 'class_3__e_g__car_with_trailer_' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>date_introduced</td>
+<td>class_1__e_g__motorbike_</td>
+<td>class_2__e_g__car_</td>
+<td>class_3__e_g__car_with_trailer_</td>
+<td>class_4__e_g__van_</td>
+<td>class_5__e_g__hgv_</td>
+<td>formatted_date</td>
+</tr>
+<tr>
+<td>16 august 2004</td>
+<td>£2.00</td>
+<td>£3.00</td>
+<td>£6.00</td>
+<td>£6.00</td>
+<td>£6.00</td>
+<td>None</td>
+</tr>
+<tr>
+<td>14 june 2005</td>
+<td>£2.50</td>
+<td>£3.50</td>
+<td>£7.00</td>
+<td>£7.00</td>
+<td>£7.00</td>
+<td>None</td>
+</tr>
+<tr>
+<td>1 january 2008</td>
+<td>£2.50</td>
+<td>£4.50</td>
+<td>£8.00</td>
+<td>£9.00</td>
+<td>£9.00</td>
+<td>None</td>
+</tr>
+<tr>
+<td>1 january 2009</td>
+<td>£2.70</td>
+<td>£4.70</td>
+<td>£8.40</td>
+<td>£9.40</td>
+<td>£9.40</td>
+<td>None</td>
+</tr>
+<tr>
+<td>1 march 2010</td>
+<td>£2.70</td>
+<td>£5.00</td>
+<td>£9.00</td>
+<td>£10.00</td>
+<td>£10.00</td>
+<td>None</td>
+</tr>
+<tr>
+<td>1 march 2011</td>
+<td>£3.00</td>
+<td>£5.30</td>
+<td>£9.60</td>
+<td>£10.60</td>
+<td>£10.60</td>
+<td>None</td>
+</tr>
+<tr>
+<td>1 march 2012</td>
+<td>£3.00</td>
+<td>£5.50</td>
+<td>£10.00</td>
+<td>£11.00</td>
+<td>£11.00</td>
+<td>None</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Calculate the average toll rate from the selected column.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>class_3__e_g__car_with_trailer_</td>
+</tr>
+<tr>
+<td>£6.00</td>
+</tr>
+<tr>
+<td>£7.00</td>
+</tr>
+<tr>
+<td>£8.00</td>
+</tr>
+<tr>
+<td>£8.40</td>
+</tr>
+<tr>
+<td>£9.00</td>
+</tr>
+<tr>
+<td>£9.60</td>
+</tr>
+<tr>
+<td>£10.00</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>average_toll_rate</td>
+</tr>
+<tr>
+<td>8.285714285714286</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[8.285714285714286]]</h3>
+</body></html>

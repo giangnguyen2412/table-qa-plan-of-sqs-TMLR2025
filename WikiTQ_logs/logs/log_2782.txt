@@ -1,0 +1,31 @@
+************************************************************************************************************************
+Sample 2782 - Plan 1: Query: how many more gl-b matches are there than quarterfinals?
+Sample 2782 - Plan 1: Groundtruth: ['4']
+Sample 2782 - Plan 1: X-Original table pd: 
+             match    date venue opponents score
+0           gl-b-1  2008..  [[]]      [[]]     -
+1           gl-b-2  2008..  [[]]      [[]]     -
+2           gl-b-3  2008..  [[]]      [[]]     -
+3           gl-b-4  2008..  [[]]      [[]]     -
+4           gl-b-5  2008..  [[]]      [[]]     -
+5           gl-b-6  2008..  [[]]      [[]]     -
+6  quarterfinals-1  2008..  [[]]      [[]]     -
+7  quarterfinals-2  2008..  [[]]      [[]]     -
+Sample 2782 - Plan 1: Caption: none
+Sample 2782 - Plan 1: Original table: [['match', 'date', 'venue', 'opponents', 'score'], ['gl-b-1', '2008..', '[[]]', '[[]]', '-'], ['gl-b-2', '2008..', '[[]]', '[[]]', '-'], ['gl-b-3', '2008..', '[[]]', '[[]]', '-'], ['gl-b-4', '2008..', '[[]]', '[[]]', '-'], ['gl-b-5', '2008..', '[[]]', '[[]]', '-'], ['gl-b-6', '2008..', '[[]]', '[[]]', '-'], ['quarterfinals-1', '2008..', '[[]]', '[[]]', '-'], ['quarterfinals-2', '2008..', '[[]]', '[[]]', '-']]
+########################################################################################################################
+Sample 2782 - Plan 1: Operation 1: Count the number of rows where the 'match' column contains the substring 'gl-b'.
+Sample 2782 - Plan 1: Selected indices: []
+Sample 2782 - Plan 1: X-Table after operation df:
+   COUNT(*)
+0         6
+Sample 2782 - Plan 1: Table after operation: [['COUNT(*)'], [6]]
+########################################################################################################################
+Sample 2782 - Plan 1: Operation 2: Count the number of rows where the 'match' column contains the substring 'quarterfinals'.
+SQL execution error in operation 2: Execution failed on sql 'SELECT COUNT(*)
+FROM table_sql
+WHERE match LIKE '%quarterfinals%';': no such column: match
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['6']]
+Groundtruth: ['4']

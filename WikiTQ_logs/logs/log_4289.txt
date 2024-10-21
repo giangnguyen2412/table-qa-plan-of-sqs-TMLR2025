@@ -1,0 +1,119 @@
+************************************************************************************************************************
+Sample 4289 - Plan 1: Query: on what date was the last game at philsports arena?
+Sample 4289 - Plan 1: Groundtruth: ['October 24']
+Sample 4289 - Plan 1: X-Original table pd: 
+                           date      opponent   score  \
+0   february 7 all-filipino cup         shell   76-60   
+1                   february 11      mobiline   80-68   
+2                   february 16        alaska   73-72   
+3                   february 28    san miguel   78-76   
+4                       march 3  brgy.ginebra   79-72   
+5                       march 9         shell   65-58   
+6                       april 4     sta.lucia   87-84   
+7    june 10 commissioner's cup      mobiline   97-92   
+8                       june 15  brgy.ginebra  111-98   
+9                       june 24         shell   94-82   
+10                       july 1      pop cola   95-79   
+11                       july 8     sta.lucia   95-88   
+12                      july 13       tanduay  104-98   
+13  september 23 governor's cup       tanduay  108-93   
+14                 september 29  talk 'n text   99-85   
+15                   october 14         shell   68-62   
+16                   october 19     sta.lucia  101-94   
+17                   october 24  brgy.ginebra   93-72   
+18                   november 7    san miguel   86-81   
+
+   top_scorer__total_points_             venue  
+0                             philsports arena  
+1                             araneta coliseum  
+2           davonn harp (20)  philsports arena  
+3        lowell briones (21)  philsports arena  
+4                                  iloilo city  
+5                             philsports arena  
+6                             philsports arena  
+7             tony lang (29)  araneta coliseum  
+8                             philsports arena  
+9                             araneta coliseum  
+10                            araneta coliseum  
+11                            araneta coliseum  
+12                            philsports arena  
+13                            philsports arena  
+14                              dumaguete city  
+15                               ynares center  
+16                            cuneta astrodome  
+17                            philsports arena  
+18                            araneta coliseum  
+Sample 4289 - Plan 1: Caption: none
+Sample 4289 - Plan 1: Original table: [['date', 'opponent', 'score', 'top_scorer__total_points_', 'venue'], ['february 7 all-filipino cup', 'shell', '76-60', '', 'philsports arena'], ['february 11', 'mobiline', '80-68', '', 'araneta coliseum'], ['february 16', 'alaska', '73-72', 'davonn harp (20)', 'philsports arena'], ['february 28', 'san miguel', '78-76', 'lowell briones (21)', 'philsports arena'], ['march 3', 'brgy.ginebra', '79-72', '', 'iloilo city'], ['march 9', 'shell', '65-58', '', 'philsports arena'], ['april 4', 'sta.lucia', '87-84', '', 'philsports arena'], ["june 10 commissioner's cup", 'mobiline', '97-92', 'tony lang (29)', 'araneta coliseum'], ['june 15', 'brgy.ginebra', '111-98', '', 'philsports arena'], ['june 24', 'shell', '94-82', '', 'araneta coliseum'], ['july 1', 'pop cola', '95-79', '', 'araneta coliseum'], ['july 8', 'sta.lucia', '95-88', '', 'araneta coliseum'], ['july 13', 'tanduay', '104-98', '', 'philsports arena'], ["september 23 governor's cup", 'tanduay', '108-93', '', 'philsports arena'], ['september 29', "talk 'n text", '99-85', '', 'dumaguete city'], ['october 14', 'shell', '68-62', '', 'ynares center'], ['october 19', 'sta.lucia', '101-94', '', 'cuneta astrodome'], ['october 24', 'brgy.ginebra', '93-72', '', 'philsports arena'], ['november 7', 'san miguel', '86-81', '', 'araneta coliseum']]
+########################################################################################################################
+Sample 4289 - Plan 1: Operation 1: Select rows where the 'venue' is 'philsports arena'.
+Sample 4289 - Plan 1: Selected indices: [[12, 4], [2, 4], [13, 4], [0, 4], [3, 4], [8, 4], [5, 4], [6, 4], [17, 4]]
+Sample 4289 - Plan 1: X-Table after operation df:
+                          date      opponent   score  \
+0  february 7 all-filipino cup         shell   76-60   
+1                  february 16        alaska   73-72   
+2                  february 28    san miguel   78-76   
+3                      march 9         shell   65-58   
+4                      april 4     sta.lucia   87-84   
+5                      june 15  brgy.ginebra  111-98   
+6                      july 13       tanduay  104-98   
+7  september 23 governor's cup       tanduay  108-93   
+8                   october 24  brgy.ginebra   93-72   
+
+  top_scorer__total_points_             venue  
+0                            philsports arena  
+1          davonn harp (20)  philsports arena  
+2       lowell briones (21)  philsports arena  
+3                            philsports arena  
+4                            philsports arena  
+5                            philsports arena  
+6                            philsports arena  
+7                            philsports arena  
+8                            philsports arena  
+Sample 4289 - Plan 1: Table after operation: [['date', 'opponent', 'score', 'top_scorer__total_points_', 'venue'], ['february 7 all-filipino cup', 'shell', '76-60', '', 'philsports arena'], ['february 16', 'alaska', '73-72', 'davonn harp (20)', 'philsports arena'], ['february 28', 'san miguel', '78-76', 'lowell briones (21)', 'philsports arena'], ['march 9', 'shell', '65-58', '', 'philsports arena'], ['april 4', 'sta.lucia', '87-84', '', 'philsports arena'], ['june 15', 'brgy.ginebra', '111-98', '', 'philsports arena'], ['july 13', 'tanduay', '104-98', '', 'philsports arena'], ["september 23 governor's cup", 'tanduay', '108-93', '', 'philsports arena'], ['october 24', 'brgy.ginebra', '93-72', '', 'philsports arena']]
+########################################################################################################################
+Sample 4289 - Plan 1: Operation 2: Order the table by 'date' in descending order.
+Sample 4289 - Plan 1: Selected indices: [[4, 0], [0, 0], [7, 0], [2, 0], [8, 0], [3, 0], [5, 0], [6, 0], [1, 0]]
+Sample 4289 - Plan 1: X-Table after operation df:
+                          date      opponent   score  \
+0  september 23 governor's cup       tanduay  108-93   
+1                   october 24  brgy.ginebra   93-72   
+2                      march 9         shell   65-58   
+3                      june 15  brgy.ginebra  111-98   
+4                      july 13       tanduay  104-98   
+5  february 7 all-filipino cup         shell   76-60   
+6                  february 28    san miguel   78-76   
+7                  february 16        alaska   73-72   
+8                      april 4     sta.lucia   87-84   
+
+  top_scorer__total_points_             venue  
+0                            philsports arena  
+1                            philsports arena  
+2                            philsports arena  
+3                            philsports arena  
+4                            philsports arena  
+5                            philsports arena  
+6       lowell briones (21)  philsports arena  
+7          davonn harp (20)  philsports arena  
+8                            philsports arena  
+Sample 4289 - Plan 1: Table after operation: [['date', 'opponent', 'score', 'top_scorer__total_points_', 'venue'], ["september 23 governor's cup", 'tanduay', '108-93', '', 'philsports arena'], ['october 24', 'brgy.ginebra', '93-72', '', 'philsports arena'], ['march 9', 'shell', '65-58', '', 'philsports arena'], ['june 15', 'brgy.ginebra', '111-98', '', 'philsports arena'], ['july 13', 'tanduay', '104-98', '', 'philsports arena'], ['february 7 all-filipino cup', 'shell', '76-60', '', 'philsports arena'], ['february 28', 'san miguel', '78-76', 'lowell briones (21)', 'philsports arena'], ['february 16', 'alaska', '73-72', 'davonn harp (20)', 'philsports arena'], ['april 4', 'sta.lucia', '87-84', '', 'philsports arena']]
+########################################################################################################################
+Sample 4289 - Plan 1: Operation 3: Select row number 1.
+Sample 4289 - Plan 1: Selected indices: []
+Sample 4289 - Plan 1: X-Table after operation df:
+                          date opponent   score  top_scorer__total_points_  \
+0  september 23 governor's cup  tanduay  108-93                        NaN   
+
+              venue  
+0  philsports arena  
+Sample 4289 - Plan 1: Table after operation: [['date', 'opponent', 'score', 'top_scorer__total_points_', 'venue'], ["september 23 governor's cup", 'tanduay', '108-93', '', 'philsports arena']]
+########################################################################################################################
+Sample 4289 - Plan 1: Operation 4: Select the 'date' column.
+Sample 4289 - Plan 1: Selected indices: []
+Sample 4289 - Plan 1: X-Table after operation df:
+                          date
+0  september 23 governor's cup
+Sample 4289 - Plan 1: Table after operation: [['date'], ["september 23 governor's cup"]]
+Fall-back: FALSE
+Answer from plan 1: [["september 23 governor's cup"]]
+Groundtruth: ['October 24']

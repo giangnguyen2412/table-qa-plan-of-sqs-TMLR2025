@@ -1,0 +1,78 @@
+************************************************************************************************************************
+Sample 3530 - Plan 1: Query: which country had the highest ranked athlete cuba or france?
+Sample 3530 - Plan 1: Groundtruth: ['Cuba']
+Sample 3530 - Plan 1: X-Original table pd: 
+    rank             athlete     nationality c_2_15 c_2_20 c_2_24 c_2_27  \
+0    1.0    yaroslav rybakov          russia      o      o      o      o   
+1    1.0  andriy sokolovskyy         ukraine      o      o      o      o   
+2    1.0         stefan holm          sweden      o      o      o      o   
+3    1.0     andrey tereshin          russia      o      o      o      o   
+4    1.0         víctor moya            cuba      o      o      o      o   
+5    1.0     linus thörnblad          sweden      o      o      o      o   
+6    7.0       giulio ciotti           italy      o      o      o    xxx   
+7    8.0       robert wolski          poland     xo      o      o    xxx   
+8    9.0      ramsay carelse    south africa     xo     xo      o    xxx   
+9   10.0         tora harris   united states      o      o     xo    xxx   
+10  10.0       nicola ciotti           italy      o      o     xo    xxx   
+11  10.0    wojciech theiner          poland      o      o     xo    xxx   
+12  13.0         tomáš janku  czech republic      o      o    xxo    xxx   
+13  13.0     mustapha raifak          france      o      o    xxo    xxx   
+14  15.0       svatoslav ton  czech republic      o     xo    xxx          
+15  16.0          adam shunk   united states      o    xxx          2.15   
+16  16.0        roman fricke         germany      o    xxx          2.15   
+
+    result  notes  
+0     2.27      q  
+1     2.27      q  
+2     2.27      q  
+3     2.27      q  
+4     2.27  q, pb  
+5     2.27      q  
+6     2.24      q  
+7     2.24      q  
+8     2.24         
+9     2.24         
+10    2.24         
+11    2.24         
+12    2.24         
+13    2.24         
+14    2.20         
+15     NaN         
+16     NaN         
+Sample 3530 - Plan 1: Caption: none
+Sample 3530 - Plan 1: Original table: [['rank', 'athlete', 'nationality', 'c_2_15', 'c_2_20', 'c_2_24', 'c_2_27', 'result', 'notes'], ['1.', 'yaroslav rybakov', 'russia', 'o', 'o', 'o', 'o', '2.27', 'q'], ['1.', 'andriy sokolovskyy', 'ukraine', 'o', 'o', 'o', 'o', '2.27', 'q'], ['1.', 'stefan holm', 'sweden', 'o', 'o', 'o', 'o', '2.27', 'q'], ['1.', 'andrey tereshin', 'russia', 'o', 'o', 'o', 'o', '2.27', 'q'], ['1.', 'víctor moya', 'cuba', 'o', 'o', 'o', 'o', '2.27', 'q, pb'], ['1.', 'linus thörnblad', 'sweden', 'o', 'o', 'o', 'o', '2.27', 'q'], ['7.', 'giulio ciotti', 'italy', 'o', 'o', 'o', 'xxx', '2.24', 'q'], ['8.', 'robert wolski', 'poland', 'xo', 'o', 'o', 'xxx', '2.24', 'q'], ['9.', 'ramsay carelse', 'south africa', 'xo', 'xo', 'o', 'xxx', '2.24', ''], ['10.', 'tora harris', 'united states', 'o', 'o', 'xo', 'xxx', '2.24', ''], ['10.', 'nicola ciotti', 'italy', 'o', 'o', 'xo', 'xxx', '2.24', ''], ['10.', 'wojciech theiner', 'poland', 'o', 'o', 'xo', 'xxx', '2.24', ''], ['13.', 'tomáš janku', 'czech republic', 'o', 'o', 'xxo', 'xxx', '2.24', ''], ['13.', 'mustapha raifak', 'france', 'o', 'o', 'xxo', 'xxx', '2.24', ''], ['15.', 'svatoslav ton', 'czech republic', 'o', 'xo', 'xxx', '', '2.20', ''], ['16.', 'adam shunk', 'united states', 'o', 'xxx', '', '2.15', '', ''], ['16.', 'roman fricke', 'germany', 'o', 'xxx', '', '2.15', '', '']]
+########################################################################################################################
+Sample 3530 - Plan 1: Operation 1: Select rows where the 'athlete' is 'cuba' or 'france'.
+Sample 3530 - Plan 1: Selected indices: []
+Sample 3530 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [rank, athlete, nationality, c_2_15, c_2_20, c_2_24, c_2_27, result, notes]
+Index: []
+Sample 3530 - Plan 1: Table after operation: [['rank', 'athlete', 'nationality', 'c_2_15', 'c_2_20', 'c_2_24', 'c_2_27', 'result', 'notes']]
+########################################################################################################################
+Sample 3530 - Plan 1: Operation 2: Order the table by 'rank' in descending order.
+Sample 3530 - Plan 1: Selected indices: []
+Sample 3530 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [rank, athlete, nationality, c_2_15, c_2_20, c_2_24, c_2_27, result, notes]
+Index: []
+Sample 3530 - Plan 1: Table after operation: [['rank', 'athlete', 'nationality', 'c_2_15', 'c_2_20', 'c_2_24', 'c_2_27', 'result', 'notes']]
+########################################################################################################################
+Sample 3530 - Plan 1: Operation 3: Select row number 1.
+Sample 3530 - Plan 1: Selected indices: []
+Sample 3530 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [rank, athlete, nationality, c_2_15, c_2_20, c_2_24, c_2_27, result, notes]
+Index: []
+Sample 3530 - Plan 1: Table after operation: [['rank', 'athlete', 'nationality', 'c_2_15', 'c_2_20', 'c_2_24', 'c_2_27', 'result', 'notes']]
+########################################################################################################################
+Sample 3530 - Plan 1: Operation 4: Select the 'nationality' column.
+Sample 3530 - Plan 1: Selected indices: []
+Sample 3530 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [nationality]
+Index: []
+Sample 3530 - Plan 1: Table after operation: [['nationality']]
+Fall-back: TRUE
+Answer from plan 1: [['cuba']]
+Groundtruth: ['Cuba']

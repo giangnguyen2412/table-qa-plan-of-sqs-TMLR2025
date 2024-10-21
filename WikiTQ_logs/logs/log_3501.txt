@@ -1,0 +1,51 @@
+************************************************************************************************************************
+Sample 3501 - Plan 1: Query: how many of the films won an award?
+Sample 3501 - Plan 1: Groundtruth: ['2']
+Sample 3501 - Plan 1: X-Original table pd: 
+    year                    award                                film  \
+0   1976             best actress                          le sauvage   
+1   1981             best actress                    le dernier métro   
+2   1982             best actress                 hôtel des amériques   
+3   1988             best actress                       agent trouble   
+4   1989             best actress  drôle d'endroit pour une rencontre   
+5   1993             best actress                           indochine   
+6   1994             best actress                  ma saison préférée   
+7   1997             best actress                         les voleurs   
+8   1999             best actress                       place vendôme   
+9   2006  best supporting actress                       palais royal!   
+10  2011             best actress                             potiche   
+11  2014             best actress                           on my way   
+
+       result  
+0   nominated  
+1         won  
+2   nominated  
+3   nominated  
+4   nominated  
+5         won  
+6   nominated  
+7   nominated  
+8   nominated  
+9   nominated  
+10  nominated  
+11    pending  
+Sample 3501 - Plan 1: Caption: none
+Sample 3501 - Plan 1: Original table: [['year', 'award', 'film', 'result'], ['1976', 'best actress', 'le sauvage', 'nominated'], ['1981', 'best actress', 'le dernier métro', 'won'], ['1982', 'best actress', 'hôtel des amériques', 'nominated'], ['1988', 'best actress', 'agent trouble', 'nominated'], ['1989', 'best actress', "drôle d'endroit pour une rencontre", 'nominated'], ['1993', 'best actress', 'indochine', 'won'], ['1994', 'best actress', 'ma saison préférée', 'nominated'], ['1997', 'best actress', 'les voleurs', 'nominated'], ['1999', 'best actress', 'place vendôme', 'nominated'], ['2006', 'best supporting actress', 'palais royal!', 'nominated'], ['2011', 'best actress', 'potiche', 'nominated'], ['2014', 'best actress', 'on my way', 'pending']]
+########################################################################################################################
+Sample 3501 - Plan 1: Operation 1: Select rows where the 'result' column is 'won'.
+Sample 3501 - Plan 1: Selected indices: [[5, 3], [1, 3]]
+Sample 3501 - Plan 1: X-Table after operation df:
+   year         award              film result
+0  1981  best actress  le dernier métro    won
+1  1993  best actress         indochine    won
+Sample 3501 - Plan 1: Table after operation: [['year', 'award', 'film', 'result'], [1981, 'best actress', 'le dernier métro', 'won'], [1993, 'best actress', 'indochine', 'won']]
+########################################################################################################################
+Sample 3501 - Plan 1: Operation 2: Count the number of rows.
+Sample 3501 - Plan 1: Selected indices: []
+Sample 3501 - Plan 1: X-Table after operation df:
+   row_count
+0          2
+Sample 3501 - Plan 1: Table after operation: [['row_count'], [2]]
+Fall-back: FALSE
+Answer from plan 1: [[2]]
+Groundtruth: ['2']

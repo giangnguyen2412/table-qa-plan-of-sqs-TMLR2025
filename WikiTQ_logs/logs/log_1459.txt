@@ -1,0 +1,145 @@
+************************************************************************************************************************
+Sample 1459 - Plan 1: Query: which stadium seats the least amount of people?
+Sample 1459 - Plan 1: Groundtruth: ['Stade Sébastien Charléty']
+Sample 1459 - Plan 1: X-Original table pd: 
+     _                           stadium capacity               city  \
+0    1                   stade de france   81,338              paris   
+1    2                   stade vélodrome   60,013          marseille   
+2    3       grand stade lille métropole   50,186  villeneuve-d'ascq   
+3    4                  parc des princes   48,712              paris   
+4    5              stade félix bollaert   41,233               lens   
+5    6                     stade gerland   41,044               lyon   
+6    7             stade de la beaujoire   38,285             nantes   
+7    8           stade geoffroy-guichard   37,587      saint-étienne   
+8    9                   allianz riviera   35,624               nice   
+9   10                 stadium municipal   35,575           toulouse   
+10  11               stade chaban-delmas   34,462           bordeaux   
+11  12                stade de la mosson   32,939        montpellier   
+12  13      stade de la route de lorient   31,127             rennes   
+13  14                stade de la meinau   29,230         strasbourg   
+14  15  stade municipal saint-symphorien   26,700               metz   
+15  16              grand stade du havre   25,178           le havre   
+16  17                           mmarena   25,000            le mans   
+17  18                  stade du hainaut   24,926       valenciennes   
+18  19         stade de l'abbé-deschamps   23,467            auxerre   
+19  20             stade louis dugauguez   23,189              sedan   
+20  21             stade auguste-delaune   21,684              reims   
+21  22             stade michel d'ornano   21,500               caen   
+22  23                   stade de l'aube   20,400             troyes   
+23  24                stade marcel picot   20,087          tomblaine   
+24  25                   stade des alpes   20,068           grenoble   
+25  26               stade auguste bonal   20,025        montbéliard   
+26  27          stade sébastien charléty   20,000              paris   
+
+                        region                      home_team  opened  
+0                île-de-france  france national football team    1998  
+1   provence-alpes-côte d'azur         olympique de marseille    1937  
+2           nord-pas-de-calais                      lille osc    2012  
+3                île-de-france         paris saint-germain fc    1897  
+4           nord-pas-de-calais                        rc lens    1932  
+5                  rhône-alpes             olympique lyonnais    1926  
+6             pays de la loire           fc nantes atlantique    1984  
+7                  rhône-alpes               as saint-étienne    1931  
+8   provence-alpes-côte d'azur                       ogc nice    2013  
+9                midi-pyrénées                    toulouse fc    1937  
+10                   aquitaine       fc girondins de bordeaux    1938  
+11        languedoc-roussillon                montpellier hsc    1972  
+12                    brittany               stade rennais fc    1912  
+13                      alsace                  rc strasbourg    1914  
+14                    lorraine                        fc metz    1923  
+15              upper normandy                    le havre ac    2012  
+16            pays de la loire                     le mans uc    2011  
+17          nord-pas-de-calais                valenciennes fc    2011  
+18                   bourgogne                     aj auxerre    1918  
+19           champagne-ardenne    club sportif sedan ardennes    2000  
+20           champagne-ardenne                    stade reims    1935  
+21              lower normandy            stade malherbe caen    1993  
+22           champagne-ardenne                      troyes ac    1956  
+23                    lorraine                       as nancy    1926  
+24                 rhône-alpes               grenoble foot 38    2008  
+25               franche-comté         fc sochaux-montbéliard    2000  
+26               île-de-france                       paris fc    1938  
+Sample 1459 - Plan 1: Caption: none
+Sample 1459 - Plan 1: Original table: [['_', 'stadium', 'capacity', 'city', 'region', 'home_team', 'opened'], ['1', 'stade de france', '81,338', 'paris', 'île-de-france', 'france national football team', '1998'], ['2', 'stade vélodrome', '60,013', 'marseille', "provence-alpes-côte d'azur", 'olympique de marseille', '1937'], ['3', 'grand stade lille métropole', '50,186', "villeneuve-d'ascq", 'nord-pas-de-calais', 'lille osc', '2012'], ['4', 'parc des princes', '48,712', 'paris', 'île-de-france', 'paris saint-germain fc', '1897'], ['5', 'stade félix bollaert', '41,233', 'lens', 'nord-pas-de-calais', 'rc lens', '1932'], ['6', 'stade gerland', '41,044', 'lyon', 'rhône-alpes', 'olympique lyonnais', '1926'], ['7', 'stade de la beaujoire', '38,285', 'nantes', 'pays de la loire', 'fc nantes atlantique', '1984'], ['8', 'stade geoffroy-guichard', '37,587', 'saint-étienne', 'rhône-alpes', 'as saint-étienne', '1931'], ['9', 'allianz riviera', '35,624', 'nice', "provence-alpes-côte d'azur", 'ogc nice', '2013'], ['10', 'stadium municipal', '35,575', 'toulouse', 'midi-pyrénées', 'toulouse fc', '1937'], ['11', 'stade chaban-delmas', '34,462', 'bordeaux', 'aquitaine', 'fc girondins de bordeaux', '1938'], ['12', 'stade de la mosson', '32,939', 'montpellier', 'languedoc-roussillon', 'montpellier hsc', '1972'], ['13', 'stade de la route de lorient', '31,127', 'rennes', 'brittany', 'stade rennais fc', '1912'], ['14', 'stade de la meinau', '29,230', 'strasbourg', 'alsace', 'rc strasbourg', '1914'], ['15', 'stade municipal saint-symphorien', '26,700', 'metz', 'lorraine', 'fc metz', '1923'], ['16', 'grand stade du havre', '25,178', 'le havre', 'upper normandy', 'le havre ac', '2012'], ['17', 'mmarena', '25,000', 'le mans', 'pays de la loire', 'le mans uc', '2011'], ['18', 'stade du hainaut', '24,926', 'valenciennes', 'nord-pas-de-calais', 'valenciennes fc', '2011'], ['19', "stade de l'abbé-deschamps", '23,467', 'auxerre', 'bourgogne', 'aj auxerre', '1918'], ['20', 'stade louis dugauguez', '23,189', 'sedan', 'champagne-ardenne', 'club sportif sedan ardennes', '2000'], ['21', 'stade auguste-delaune', '21,684', 'reims', 'champagne-ardenne', 'stade reims', '1935'], ['22', "stade michel d'ornano", '21,500', 'caen', 'lower normandy', 'stade malherbe caen', '1993'], ['23', "stade de l'aube", '20,400', 'troyes', 'champagne-ardenne', 'troyes ac', '1956'], ['24', 'stade marcel picot', '20,087', 'tomblaine', 'lorraine', 'as nancy', '1926'], ['25', 'stade des alpes', '20,068', 'grenoble', 'rhône-alpes', 'grenoble foot 38', '2008'], ['26', 'stade auguste bonal', '20,025', 'montbéliard', 'franche-comté', 'fc sochaux-montbéliard', '2000'], ['27', 'stade sébastien charléty', '20,000', 'paris', 'île-de-france', 'paris fc', '1938']]
+########################################################################################################################
+Sample 1459 - Plan 1: Operation 1: Order the table by the 'capacity' column in ascending order.
+Sample 1459 - Plan 1: Selected indices: [[22, 2], [9, 2], [11, 2], [0, 2], [2, 2], [24, 2], [13, 2], [26, 2], [15, 2], [6, 2], [4, 2], [17, 2], [19, 2], [8, 2], [10, 2], [1, 2], [21, 2], [23, 2], [12, 2], [14, 2], [3, 2], [5, 2], [25, 2], [16, 2], [18, 2], [7, 2], [20, 2]]
+Sample 1459 - Plan 1: X-Table after operation df:
+     _                           stadium capacity               city  \
+0   27          stade sébastien charléty   20,000              paris   
+1   26               stade auguste bonal   20,025        montbéliard   
+2   25                   stade des alpes   20,068           grenoble   
+3   24                stade marcel picot   20,087          tomblaine   
+4   23                   stade de l'aube   20,400             troyes   
+5   22             stade michel d'ornano   21,500               caen   
+6   21             stade auguste-delaune   21,684              reims   
+7   20             stade louis dugauguez   23,189              sedan   
+8   19         stade de l'abbé-deschamps   23,467            auxerre   
+9   18                  stade du hainaut   24,926       valenciennes   
+10  17                           mmarena   25,000            le mans   
+11  16              grand stade du havre   25,178           le havre   
+12  15  stade municipal saint-symphorien   26,700               metz   
+13  14                stade de la meinau   29,230         strasbourg   
+14  13      stade de la route de lorient   31,127             rennes   
+15  12                stade de la mosson   32,939        montpellier   
+16  11               stade chaban-delmas   34,462           bordeaux   
+17  10                 stadium municipal   35,575           toulouse   
+18   9                   allianz riviera   35,624               nice   
+19   8           stade geoffroy-guichard   37,587      saint-étienne   
+20   7             stade de la beaujoire   38,285             nantes   
+21   6                     stade gerland   41,044               lyon   
+22   5              stade félix bollaert   41,233               lens   
+23   4                  parc des princes   48,712              paris   
+24   3       grand stade lille métropole   50,186  villeneuve-d'ascq   
+25   2                   stade vélodrome   60,013          marseille   
+26   1                   stade de france   81,338              paris   
+
+                        region                      home_team  opened  
+0                île-de-france                       paris fc    1938  
+1                franche-comté         fc sochaux-montbéliard    2000  
+2                  rhône-alpes               grenoble foot 38    2008  
+3                     lorraine                       as nancy    1926  
+4            champagne-ardenne                      troyes ac    1956  
+5               lower normandy            stade malherbe caen    1993  
+6            champagne-ardenne                    stade reims    1935  
+7            champagne-ardenne    club sportif sedan ardennes    2000  
+8                    bourgogne                     aj auxerre    1918  
+9           nord-pas-de-calais                valenciennes fc    2011  
+10            pays de la loire                     le mans uc    2011  
+11              upper normandy                    le havre ac    2012  
+12                    lorraine                        fc metz    1923  
+13                      alsace                  rc strasbourg    1914  
+14                    brittany               stade rennais fc    1912  
+15        languedoc-roussillon                montpellier hsc    1972  
+16                   aquitaine       fc girondins de bordeaux    1938  
+17               midi-pyrénées                    toulouse fc    1937  
+18  provence-alpes-côte d'azur                       ogc nice    2013  
+19                 rhône-alpes               as saint-étienne    1931  
+20            pays de la loire           fc nantes atlantique    1984  
+21                 rhône-alpes             olympique lyonnais    1926  
+22          nord-pas-de-calais                        rc lens    1932  
+23               île-de-france         paris saint-germain fc    1897  
+24          nord-pas-de-calais                      lille osc    2012  
+25  provence-alpes-côte d'azur         olympique de marseille    1937  
+26               île-de-france  france national football team    1998  
+Sample 1459 - Plan 1: Table after operation: [['_', 'stadium', 'capacity', 'city', 'region', 'home_team', 'opened'], [27, 'stade sébastien charléty', '20,000', 'paris', 'île-de-france', 'paris fc', 1938], [26, 'stade auguste bonal', '20,025', 'montbéliard', 'franche-comté', 'fc sochaux-montbéliard', 2000], [25, 'stade des alpes', '20,068', 'grenoble', 'rhône-alpes', 'grenoble foot 38', 2008], [24, 'stade marcel picot', '20,087', 'tomblaine', 'lorraine', 'as nancy', 1926], [23, "stade de l'aube", '20,400', 'troyes', 'champagne-ardenne', 'troyes ac', 1956], [22, "stade michel d'ornano", '21,500', 'caen', 'lower normandy', 'stade malherbe caen', 1993], [21, 'stade auguste-delaune', '21,684', 'reims', 'champagne-ardenne', 'stade reims', 1935], [20, 'stade louis dugauguez', '23,189', 'sedan', 'champagne-ardenne', 'club sportif sedan ardennes', 2000], [19, "stade de l'abbé-deschamps", '23,467', 'auxerre', 'bourgogne', 'aj auxerre', 1918], [18, 'stade du hainaut', '24,926', 'valenciennes', 'nord-pas-de-calais', 'valenciennes fc', 2011], [17, 'mmarena', '25,000', 'le mans', 'pays de la loire', 'le mans uc', 2011], [16, 'grand stade du havre', '25,178', 'le havre', 'upper normandy', 'le havre ac', 2012], [15, 'stade municipal saint-symphorien', '26,700', 'metz', 'lorraine', 'fc metz', 1923], [14, 'stade de la meinau', '29,230', 'strasbourg', 'alsace', 'rc strasbourg', 1914], [13, 'stade de la route de lorient', '31,127', 'rennes', 'brittany', 'stade rennais fc', 1912], [12, 'stade de la mosson', '32,939', 'montpellier', 'languedoc-roussillon', 'montpellier hsc', 1972], [11, 'stade chaban-delmas', '34,462', 'bordeaux', 'aquitaine', 'fc girondins de bordeaux', 1938], [10, 'stadium municipal', '35,575', 'toulouse', 'midi-pyrénées', 'toulouse fc', 1937], [9, 'allianz riviera', '35,624', 'nice', "provence-alpes-côte d'azur", 'ogc nice', 2013], [8, 'stade geoffroy-guichard', '37,587', 'saint-étienne', 'rhône-alpes', 'as saint-étienne', 1931], [7, 'stade de la beaujoire', '38,285', 'nantes', 'pays de la loire', 'fc nantes atlantique', 1984], [6, 'stade gerland', '41,044', 'lyon', 'rhône-alpes', 'olympique lyonnais', 1926], [5, 'stade félix bollaert', '41,233', 'lens', 'nord-pas-de-calais', 'rc lens', 1932], [4, 'parc des princes', '48,712', 'paris', 'île-de-france', 'paris saint-germain fc', 1897], [3, 'grand stade lille métropole', '50,186', "villeneuve-d'ascq", 'nord-pas-de-calais', 'lille osc', 2012], [2, 'stade vélodrome', '60,013', 'marseille', "provence-alpes-côte d'azur", 'olympique de marseille', 1937], [1, 'stade de france', '81,338', 'paris', 'île-de-france', 'france national football team', 1998]]
+########################################################################################################################
+Sample 1459 - Plan 1: Operation 2: Select row number 1.
+Sample 1459 - Plan 1: Selected indices: []
+Sample 1459 - Plan 1: X-Table after operation df:
+    _                   stadium capacity   city         region home_team  \
+0  27  stade sébastien charléty   20,000  paris  île-de-france  paris fc   
+
+   opened  
+0    1938  
+Sample 1459 - Plan 1: Table after operation: [['_', 'stadium', 'capacity', 'city', 'region', 'home_team', 'opened'], [27, 'stade sébastien charléty', '20,000', 'paris', 'île-de-france', 'paris fc', 1938]]
+########################################################################################################################
+Sample 1459 - Plan 1: Operation 3: Select the 'stadium' column.
+Sample 1459 - Plan 1: Selected indices: []
+Sample 1459 - Plan 1: X-Table after operation df:
+                    stadium
+0  stade sébastien charléty
+Sample 1459 - Plan 1: Table after operation: [['stadium'], ['stade sébastien charléty']]
+Fall-back: FALSE
+Answer from plan 1: [['stade sébastien charléty']]
+Groundtruth: ['Stade Sébastien Charléty']

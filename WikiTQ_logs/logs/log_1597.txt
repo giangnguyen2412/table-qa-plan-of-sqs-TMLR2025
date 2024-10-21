@@ -1,0 +1,55 @@
+************************************************************************************************************************
+Sample 1597 - Plan 1: Query: in what city is saint helen's school located?
+Sample 1597 - Plan 1: Groundtruth: ['Newbury, Ohio']
+Sample 1597 - Plan 1: X-Original table pd: 
+                                          district  \
+0                          agape christian academy   
+1                                    hawken school   
+2                   hershey montessori farm school   
+3                       notre dame-cathedral latin   
+4  solon/bainbridge montessori school of languages   
+5                              saint anselm school   
+6                             saint helen's school   
+7                              saint mary's school   
+
+                                        location  \
+0  burton township, ohio and troy township, ohio   
+1                              gates mills, ohio   
+2                       huntsburg township, ohio   
+3                          munson township, ohio   
+4                      bainbridge township, ohio   
+5                         chester township, ohio   
+6                                  newbury, ohio   
+7                                  chardon, ohio   
+
+                                  communities_served  
+0  accepts applications prior to the start of eac...  
+1  college preparatory day school: online applica...  
+2  parent-owned, and chartered by ohio department...  
+3  roman catholic diocese of cleveland: open to 8...  
+4  nonsectarian montessori school: quarterly enro...  
+5  roman catholic diocese of cleveland k - 8th gr...  
+6  roman catholic diocese of cleveland k - 8th gr...  
+7  roman catholic diocese of cleveland preschool ...  
+Sample 1597 - Plan 1: Caption: none
+Sample 1597 - Plan 1: Original table: [['district', 'location', 'communities_served'], ['agape christian academy', 'burton township, ohio and troy township, ohio', 'accepts applications prior to the start of each school year'], ['hawken school', 'gates mills, ohio', 'college preparatory day school: online application, site visit and testing'], ['hershey montessori farm school', 'huntsburg township, ohio', 'parent-owned, and chartered by ohio department of education: application deadline january each year'], ['notre dame-cathedral latin', 'munson township, ohio', 'roman catholic diocese of cleveland: open to 8th grade students who have attended a catholic elementary school and others who have not'], ['solon/bainbridge montessori school of languages', 'bainbridge township, ohio', 'nonsectarian montessori school: quarterly enrollment periods'], ['saint anselm school', 'chester township, ohio', 'roman catholic diocese of cleveland k - 8th grade; preschool'], ["saint helen's school", 'newbury, ohio', 'roman catholic diocese of cleveland k - 8th grade; parishioners and non-parishioners'], ["saint mary's school", 'chardon, ohio', 'roman catholic diocese of cleveland preschool - 8th grade; parishioners and non-parishioners']]
+########################################################################################################################
+Sample 1597 - Plan 1: Operation 1: Select rows where 'school' is 'saint helen's school'.
+Sample 1597 - Plan 1: Selected indices: [[6, 0]]
+Sample 1597 - Plan 1: X-Table after operation df:
+               district       location  \
+0  saint helen's school  newbury, ohio   
+
+                                  communities_served  
+0  roman catholic diocese of cleveland k - 8th gr...  
+Sample 1597 - Plan 1: Table after operation: [['district', 'location', 'communities_served'], ["saint helen's school", 'newbury, ohio', 'roman catholic diocese of cleveland k - 8th grade; parishioners and non-parishioners']]
+########################################################################################################################
+Sample 1597 - Plan 1: Operation 2: Select the 'city' column.
+Sample 1597 - Plan 1: Selected indices: []
+Sample 1597 - Plan 1: X-Table after operation df:
+            city
+0  newbury, ohio
+Sample 1597 - Plan 1: Table after operation: [['city'], ['newbury, ohio']]
+Fall-back: FALSE
+Answer from plan 1: [['newbury, ohio']]
+Groundtruth: ['Newbury, Ohio']

@@ -1,0 +1,52 @@
+************************************************************************************************************************
+Sample 2546 - Plan 1: Query: mel allen was the color commentator in 1953. who did the job the previous year?
+Sample 2546 - Plan 1: Groundtruth: ['Sam Renick']
+Sample 2546 - Plan 1: X-Original table pd: 
+   year network     race_caller                color_commentator  \
+0  1959     cbs  fred capossela   bryan field and chris schenkel   
+1  1958     cbs  fred capossela                      bryan field   
+2  1957     cbs  fred capossela                      bryan field   
+3  1956     cbs  fred capossela                      bryan field   
+4  1955     cbs  fred capossela  phil sutterfield and win elliot   
+5  1954     cbs     bryan field                        mel allen   
+6  1953     cbs     bryan field                        mel allen   
+7  1952     cbs     bryan field                       sam renick   
+
+          reporters trophy_presentation  
+0                        chris schenkel  
+1                                        
+2                                        
+3                                        
+4                                        
+5                            bill corum  
+6  phil sutterfield    phil sutterfield  
+7                                        
+Sample 2546 - Plan 1: Caption: none
+Sample 2546 - Plan 1: Original table: [['year', 'network', 'race_caller', 'color_commentator', 'reporters', 'trophy_presentation'], ['1959', 'cbs', 'fred capossela', 'bryan field and chris schenkel', '', 'chris schenkel'], ['1958', 'cbs', 'fred capossela', 'bryan field', '', ''], ['1957', 'cbs', 'fred capossela', 'bryan field', '', ''], ['1956', 'cbs', 'fred capossela', 'bryan field', '', ''], ['1955', 'cbs', 'fred capossela', 'phil sutterfield and win elliot', '', ''], ['1954', 'cbs', 'bryan field', 'mel allen', '', 'bill corum'], ['1953', 'cbs', 'bryan field', 'mel allen', 'phil sutterfield', 'phil sutterfield'], ['1952', 'cbs', 'bryan field', 'sam renick', '', '']]
+########################################################################################################################
+Sample 2546 - Plan 1: Operation 1: Select rows where the 'color_commentator' is 'mel allen'.
+Sample 2546 - Plan 1: Selected indices: [[5, 3], [6, 3]]
+Sample 2546 - Plan 1: X-Table after operation df:
+   year network  race_caller color_commentator         reporters  \
+0  1954     cbs  bryan field         mel allen                     
+1  1953     cbs  bryan field         mel allen  phil sutterfield   
+
+  trophy_presentation  
+0          bill corum  
+1    phil sutterfield  
+Sample 2546 - Plan 1: Table after operation: [['year', 'network', 'race_caller', 'color_commentator', 'reporters', 'trophy_presentation'], [1954, 'cbs', 'bryan field', 'mel allen', '', 'bill corum'], [1953, 'cbs', 'bryan field', 'mel allen', 'phil sutterfield', 'phil sutterfield']]
+########################################################################################################################
+Sample 2546 - Plan 1: Operation 2: Select the 'year' column for the selected rows.
+Sample 2546 - Plan 1: Selected indices: []
+Sample 2546 - Plan 1: X-Table after operation df:
+   year
+0  1954
+1  1953
+Sample 2546 - Plan 1: Table after operation: [['year'], [1954], [1953]]
+########################################################################################################################
+Sample 2546 - Plan 1: Operation 3: Subtract 1 from the values in the 'year' column.
+SQL execution error in operation 3: 'NoneType' object is not iterable
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['bryan field']]
+Groundtruth: ['Sam Renick']

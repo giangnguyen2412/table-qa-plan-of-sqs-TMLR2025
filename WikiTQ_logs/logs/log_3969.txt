@@ -1,0 +1,85 @@
+************************************************************************************************************************
+Sample 3969 - Plan 1: Query: which box has the most in box 5 between all three decimals?
+Sample 3969 - Plan 1: Groundtruth: ['decimal128']
+Sample 3969 - Plan 1: X-Original table pd: 
+  decimal32 decimal64 decimal128          decimal_32k_  \
+0         1         1          1                     1   
+1         5         5          5                     5   
+2         6         8         12           w = 2×k + 4   
+3        20        50        110           t = 30×k−10   
+4        32        64        128                  32×k   
+5         7        16         34  p = 3×t/10+1 = 9×k−2   
+6       192       768      12288          3×2w = 48×4k   
+7        96       384       6144         emax = 3×2w−1   
+8       −95      −383      −6143         emin = 1−emax   
+9      −101      −398      −6176      etiny = 2−p−emax   
+
+                                        format  
+0                            sign field (bits)  
+1                     combination field (bits)  
+2           exponent continuation field (bits)  
+3        coefficient continuation field (bits)  
+4                            total size (bits)  
+5            coefficient size (decimal digits)  
+6                               exponent range  
+7              largest value is 9.99...×10emax  
+8  smallest normalized value is 1.00...×10emin  
+9         smallest non-zero value is 1×10etiny  
+Sample 3969 - Plan 1: Caption: none
+Sample 3969 - Plan 1: Original table: [['decimal32', 'decimal64', 'decimal128', 'decimal_32k_', 'format'], ['1', '1', '1', '1', 'sign field (bits)'], ['5', '5', '5', '5', 'combination field (bits)'], ['6', '8', '12', 'w = 2×k + 4', 'exponent continuation field (bits)'], ['20', '50', '110', 't = 30×k−10', 'coefficient continuation field (bits)'], ['32', '64', '128', '32×k', 'total size (bits)'], ['7', '16', '34', 'p = 3×t/10+1 = 9×k−2', 'coefficient size (decimal digits)'], ['192', '768', '12288', '3×2w = 48×4k', 'exponent range'], ['96', '384', '6144', 'emax = 3×2w−1', 'largest value is 9.99...×10emax'], ['−95', '−383', '−6143', 'emin = 1−emax', 'smallest normalized value is 1.00...×10emin'], ['−101', '−398', '−6176', 'etiny = 2−p−emax', 'smallest non-zero value is 1×10etiny']]
+########################################################################################################################
+Sample 3969 - Plan 1: Operation 1: Select the 'decimal32', 'decimal64', and 'decimal128' columns from the Table.
+Sample 3969 - Plan 1: Selected indices: []
+Sample 3969 - Plan 1: X-Table after operation df:
+  decimal32 decimal64 decimal128
+0         1         1          1
+1         5         5          5
+2         6         8         12
+3        20        50        110
+4        32        64        128
+5         7        16         34
+6       192       768      12288
+7        96       384       6144
+8       −95      −383      −6143
+9      −101      −398      −6176
+Sample 3969 - Plan 1: Table after operation: [['decimal32', 'decimal64', 'decimal128'], ['1', '1', '1'], ['5', '5', '5'], ['6', '8', '12'], ['20', '50', '110'], ['32', '64', '128'], ['7', '16', '34'], ['192', '768', '12288'], ['96', '384', '6144'], ['−95', '−383', '−6143'], ['−101', '−398', '−6176']]
+########################################################################################################################
+Sample 3969 - Plan 1: Operation 2: Compare the values in each row of the 'decimal32' column with the corresponding values in the 'decimal64' and 'decimal128' columns.
+Sample 3969 - Plan 1: Selected indices: [[0, 0], [0, 1], [0, 2], [1, 0], [1, 1], [1, 2], [2, 0], [2, 1], [2, 2], [3, 0], [3, 1], [3, 2], [4, 0], [4, 1], [4, 2], [5, 0], [5, 1], [5, 2], [6, 0], [6, 1], [6, 2], [7, 0], [7, 1], [7, 2], [8, 0], [8, 1], [8, 2], [9, 0], [9, 1], [9, 2]]
+Sample 3969 - Plan 1: X-Table after operation df:
+  decimal32 decimal64 decimal128 comparison_result
+0         1         1          1             Equal
+1         5         5          5             Equal
+2         6         8         12         Less than
+3        20        50        110         Less than
+4        32        64        128         Less than
+5         7        16         34         Less than
+6       192       768      12288         Less than
+7        96       384       6144         Less than
+8       −95      −383      −6143             Equal
+9      −101      −398      −6176             Equal
+Sample 3969 - Plan 1: Table after operation: [['decimal32', 'decimal64', 'decimal128', 'comparison_result'], ['1', '1', '1', 'Equal'], ['5', '5', '5', 'Equal'], ['6', '8', '12', 'Less than'], ['20', '50', '110', 'Less than'], ['32', '64', '128', 'Less than'], ['7', '16', '34', 'Less than'], ['192', '768', '12288', 'Less than'], ['96', '384', '6144', 'Less than'], ['−95', '−383', '−6143', 'Equal'], ['−101', '−398', '−6176', 'Equal']]
+########################################################################################################################
+Sample 3969 - Plan 1: Operation 3: For each row, count the number of times the value in the 'decimal32' column is greater than or equal to the values in the 'decimal64' and 'decimal128' columns.
+Sample 3969 - Plan 1: Selected indices: []
+Sample 3969 - Plan 1: X-Table after operation df:
+   count
+0      4
+Sample 3969 - Plan 1: Table after operation: [['count'], [4]]
+########################################################################################################################
+Sample 3969 - Plan 1: Operation 4: Select the row with the highest count.
+Sample 3969 - Plan 1: Selected indices: [[0, 0]]
+Sample 3969 - Plan 1: X-Table after operation df:
+   count
+0      4
+Sample 3969 - Plan 1: Table after operation: [['count'], [4]]
+########################################################################################################################
+Sample 3969 - Plan 1: Operation 5: Select the corresponding box in the 'format' column.
+Sample 3969 - Plan 1: Selected indices: []
+Sample 3969 - Plan 1: X-Table after operation df:
+   format
+0       4
+Sample 3969 - Plan 1: Table after operation: [['format'], [4]]
+Fall-back: FALSE
+Answer from plan 1: [[4]]
+Groundtruth: ['decimal128']

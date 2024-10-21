@@ -1,0 +1,40 @@
+
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+.sql-command { background-color: #f0f0f0; padding: 10px; border-left: 4px solid #4CAF50; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> the match played on 7th january recorded a attendance grater than 70000</h3>
+<h3>Input Table: 2002 - 03 manchester united f.c. season</h3>
+<div class="step">
+<table>
+<tr><td>date</td><td>round</td><td>opponents</td><td>result_f_-_a</td><td>attendance</td></tr><tr><td>2002-11-05</td><td>round 3</td><td>leicester city</td><td>2 - 0</td><td>47848</td></tr><tr><td>2002-12-03</td><td>round 4</td><td>burnley</td><td>2 - 0</td><td>22034</td></tr><tr><td>2002-12-17</td><td>round 5</td><td>chelsea</td><td>1 - 0</td><td>57985</td></tr><tr><td>2003-01-07</td><td>semi - final first leg</td><td>blackburn rovers</td><td>1 - 1</td><td>62740</td></tr><tr><td>2003-01-22</td><td>semi - final second leg</td><td>blackburn rovers</td><td>3 - 1</td><td>29048</td></tr><tr><td>2003-03-02</td><td>final</td><td>liverpool</td><td>0 - 2</td><td>74500</td></tr>
+</table>
+</div>
+<h3>SQL Command:</h3>
+<div class="sql-command">SELECT 
+    CASE 
+        WHEN (SELECT attendance FROM table_sql WHERE date = '2003-01-07') > 70000 
+        THEN 'TRUE' 
+        ELSE 'FALSE' 
+    END;</div>
+<h3>Prediction: False</h3>
+</body></html>

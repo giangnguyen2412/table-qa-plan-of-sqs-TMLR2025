@@ -1,0 +1,608 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> who was he other team in the final?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'result' is 'win'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>date</td>
+<td>opponent</td>
+<td>score</td>
+<td>result</td>
+<td>location</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nov. 29, 1963</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">queen's</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9–5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">win</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">coliseum, ann arbor, mi</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nov. 30, 1963</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">queen's</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9–5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">win</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">coliseum, ann arbor, mi</span></td>
+</tr>
+<tr>
+<td>dec. 13, 1963</td>
+<td>toronto</td>
+<td>3–5</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">loss</span></td>
+<td>coliseum, ann arbor, mi</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dec. 14, 1963</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">toronto</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">win</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">coliseum, ann arbor, mi</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jan. 7, 1964</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">minn-duluth</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8–4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">win</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">duluth, mn</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jan. 8, 1964</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">minn-duluth</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7–2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">win</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">duluth, mn</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jan. 10, 1964</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">minnesota</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5–1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">win</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">minneapolis, mn</span></td>
+</tr>
+<tr>
+<td>jan. 11, 1964</td>
+<td>minnesota</td>
+<td>5–6</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">loss</span></td>
+<td>minneapolis, mn</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jan. 17, 1964</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">loyola (montreal)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12–1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">win</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">coliseum, ann arbor, mi</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jan. 18, 1964</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">loyola (montreal)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">14–2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">win</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">coliseum, ann arbor, mi</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jan. 24, 1964</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">michigan tech</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6–2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">win</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">coliseum, ann arbor, mi</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jan. 25, 1964</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">michigan tech</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5–3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">win</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">coliseum, ann arbor, mi</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jan. 31, 1964</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">colorado college</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">win</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">coliseum, ann arbor, mi</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">feb. 1, 1964</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">colorado college</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12–4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">win</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">coliseum, ann arbor, mi</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">feb. 7, 1964</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ohio</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">14–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">win</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">athens, oh</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">feb. 8, 1964</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ohio state</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">21–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">win</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">columbus, oh</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">feb. 14, 1964</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">michigan state</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">win</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">east lansing, mi</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">feb. 15, 1964</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">michigan state</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7–2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">win</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">coliseum, ann arbor, mi</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">feb. 21, 1964</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">minnesota</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6–3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">win</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">coliseum, ann arbor, mi</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">feb. 22, 1964</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">minnesota</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8–2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">win</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">coliseum, ann arbor, mi</span></td>
+</tr>
+<tr>
+<td>feb. 28, 1964</td>
+<td>michigan tech</td>
+<td>1–3</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">loss</span></td>
+<td>houghton, mi</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">feb. 29, 1964</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">michigan tech</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4–3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">win</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">houghton, mi</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">march 6, 1964</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">michigan state</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9–4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">win</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">east lansing, mi</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">march 7, 1964</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">michigan state</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13–4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">win</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">coliseum, ann arbor, mi</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">march 12, 1964</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">michigan tech</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4–3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">win</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">coliseum, ann arbor, mi</span></td>
+</tr>
+<tr>
+<td>march 13, 1964</td>
+<td>michigan tech</td>
+<td>5–5</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tie</span></td>
+<td>coliseum, ann arbor, mi</td>
+</tr>
+<tr>
+<td>march 14, 1964</td>
+<td>denver</td>
+<td>2–6</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">loss</span></td>
+<td>coliseum, ann arbor, mi</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">march 20, 1964</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">providence</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3–2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">win</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">denver, co</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">march 21, 1964</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">denver</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6–3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">win</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">denver, co</span></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>217–80</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24–4–1</span></td>
+<td></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select the 'opponent' column.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>date</td>
+<td>opponent</td>
+<td>score</td>
+<td>result</td>
+<td>location</td>
+</tr>
+<tr>
+<td>nov. 29, 1963</td>
+<td>queen's</td>
+<td>9–5</td>
+<td>win</td>
+<td>coliseum, ann arbor, mi</td>
+</tr>
+<tr>
+<td>nov. 30, 1963</td>
+<td>queen's</td>
+<td>9–5</td>
+<td>win</td>
+<td>coliseum, ann arbor, mi</td>
+</tr>
+<tr>
+<td>dec. 14, 1963</td>
+<td>toronto</td>
+<td>10–0</td>
+<td>win</td>
+<td>coliseum, ann arbor, mi</td>
+</tr>
+<tr>
+<td>jan. 7, 1964</td>
+<td>minn-duluth</td>
+<td>8–4</td>
+<td>win</td>
+<td>duluth, mn</td>
+</tr>
+<tr>
+<td>jan. 8, 1964</td>
+<td>minn-duluth</td>
+<td>7–2</td>
+<td>win</td>
+<td>duluth, mn</td>
+</tr>
+<tr>
+<td>jan. 10, 1964</td>
+<td>minnesota</td>
+<td>5–1</td>
+<td>win</td>
+<td>minneapolis, mn</td>
+</tr>
+<tr>
+<td>jan. 17, 1964</td>
+<td>loyola (montreal)</td>
+<td>12–1</td>
+<td>win</td>
+<td>coliseum, ann arbor, mi</td>
+</tr>
+<tr>
+<td>jan. 18, 1964</td>
+<td>loyola (montreal)</td>
+<td>14–2</td>
+<td>win</td>
+<td>coliseum, ann arbor, mi</td>
+</tr>
+<tr>
+<td>jan. 24, 1964</td>
+<td>michigan tech</td>
+<td>6–2</td>
+<td>win</td>
+<td>coliseum, ann arbor, mi</td>
+</tr>
+<tr>
+<td>jan. 25, 1964</td>
+<td>michigan tech</td>
+<td>5–3</td>
+<td>win</td>
+<td>coliseum, ann arbor, mi</td>
+</tr>
+<tr>
+<td>jan. 31, 1964</td>
+<td>colorado college</td>
+<td>7–0</td>
+<td>win</td>
+<td>coliseum, ann arbor, mi</td>
+</tr>
+<tr>
+<td>feb. 1, 1964</td>
+<td>colorado college</td>
+<td>12–4</td>
+<td>win</td>
+<td>coliseum, ann arbor, mi</td>
+</tr>
+<tr>
+<td>feb. 7, 1964</td>
+<td>ohio</td>
+<td>14–0</td>
+<td>win</td>
+<td>athens, oh</td>
+</tr>
+<tr>
+<td>feb. 8, 1964</td>
+<td>ohio state</td>
+<td>21–0</td>
+<td>win</td>
+<td>columbus, oh</td>
+</tr>
+<tr>
+<td>feb. 14, 1964</td>
+<td>michigan state</td>
+<td>2–0</td>
+<td>win</td>
+<td>east lansing, mi</td>
+</tr>
+<tr>
+<td>feb. 15, 1964</td>
+<td>michigan state</td>
+<td>7–2</td>
+<td>win</td>
+<td>coliseum, ann arbor, mi</td>
+</tr>
+<tr>
+<td>feb. 21, 1964</td>
+<td>minnesota</td>
+<td>6–3</td>
+<td>win</td>
+<td>coliseum, ann arbor, mi</td>
+</tr>
+<tr>
+<td>feb. 22, 1964</td>
+<td>minnesota</td>
+<td>8–2</td>
+<td>win</td>
+<td>coliseum, ann arbor, mi</td>
+</tr>
+<tr>
+<td>feb. 29, 1964</td>
+<td>michigan tech</td>
+<td>4–3</td>
+<td>win</td>
+<td>houghton, mi</td>
+</tr>
+<tr>
+<td>march 6, 1964</td>
+<td>michigan state</td>
+<td>9–4</td>
+<td>win</td>
+<td>east lansing, mi</td>
+</tr>
+<tr>
+<td>march 7, 1964</td>
+<td>michigan state</td>
+<td>13–4</td>
+<td>win</td>
+<td>coliseum, ann arbor, mi</td>
+</tr>
+<tr>
+<td>march 12, 1964</td>
+<td>michigan tech</td>
+<td>4–3</td>
+<td>win</td>
+<td>coliseum, ann arbor, mi</td>
+</tr>
+<tr>
+<td>march 20, 1964</td>
+<td>providence</td>
+<td>3–2</td>
+<td>win</td>
+<td>denver, co</td>
+</tr>
+<tr>
+<td>march 21, 1964</td>
+<td>denver</td>
+<td>6–3</td>
+<td>win</td>
+<td>denver, co</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Remove any duplicate values from the 'opponent' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>opponent</td>
+</tr>
+<tr>
+<td>queen's</td>
+</tr>
+<tr>
+<td>queen's</td>
+</tr>
+<tr>
+<td>toronto</td>
+</tr>
+<tr>
+<td>minn-duluth</td>
+</tr>
+<tr>
+<td>minn-duluth</td>
+</tr>
+<tr>
+<td>minnesota</td>
+</tr>
+<tr>
+<td>loyola (montreal)</td>
+</tr>
+<tr>
+<td>loyola (montreal)</td>
+</tr>
+<tr>
+<td>michigan tech</td>
+</tr>
+<tr>
+<td>michigan tech</td>
+</tr>
+<tr>
+<td>colorado college</td>
+</tr>
+<tr>
+<td>colorado college</td>
+</tr>
+<tr>
+<td>ohio</td>
+</tr>
+<tr>
+<td>ohio state</td>
+</tr>
+<tr>
+<td>michigan state</td>
+</tr>
+<tr>
+<td>michigan state</td>
+</tr>
+<tr>
+<td>minnesota</td>
+</tr>
+<tr>
+<td>minnesota</td>
+</tr>
+<tr>
+<td>michigan tech</td>
+</tr>
+<tr>
+<td>michigan state</td>
+</tr>
+<tr>
+<td>michigan state</td>
+</tr>
+<tr>
+<td>michigan tech</td>
+</tr>
+<tr>
+<td>providence</td>
+</tr>
+<tr>
+<td>denver</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Select the remaining value in the 'opponent' column.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>opponent</td>
+</tr>
+<tr>
+<td>queen's</td>
+</tr>
+<tr>
+<td>toronto</td>
+</tr>
+<tr>
+<td>minn-duluth</td>
+</tr>
+<tr>
+<td>minnesota</td>
+</tr>
+<tr>
+<td>loyola (montreal)</td>
+</tr>
+<tr>
+<td>michigan tech</td>
+</tr>
+<tr>
+<td>colorado college</td>
+</tr>
+<tr>
+<td>ohio</td>
+</tr>
+<tr>
+<td>ohio state</td>
+</tr>
+<tr>
+<td>michigan state</td>
+</tr>
+<tr>
+<td>providence</td>
+</tr>
+<tr>
+<td>denver</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>opponent</td>
+</tr>
+<tr>
+<td>queen's</td>
+</tr>
+<tr>
+<td>toronto</td>
+</tr>
+<tr>
+<td>minn-duluth</td>
+</tr>
+<tr>
+<td>minnesota</td>
+</tr>
+<tr>
+<td>loyola (montreal)</td>
+</tr>
+<tr>
+<td>michigan tech</td>
+</tr>
+<tr>
+<td>colorado college</td>
+</tr>
+<tr>
+<td>ohio</td>
+</tr>
+<tr>
+<td>ohio state</td>
+</tr>
+<tr>
+<td>michigan state</td>
+</tr>
+<tr>
+<td>providence</td>
+</tr>
+<tr>
+<td>denver</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [["queen's"], ['toronto'], ['minn-duluth'], ['minnesota'], ['loyola (montreal)'], ['michigan tech'], ['colorado college'], ['ohio'], ['ohio state'], ['michigan state'], ['providence'], ['denver']]</h3>
+</body></html>

@@ -1,0 +1,391 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which athlete set the most records in a country other than the united states?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'nationality' is not 'united states'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>time</td>
+<td>wind</td>
+<td>auto</td>
+<td>athlete</td>
+<td>nationality</td>
+<td>location_of_race</td>
+<td>date</td>
+</tr>
+<tr>
+<td>20.6y</td>
+<td></td>
+<td></td>
+<td>andy stanfield</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united states</span></td>
+<td>philadelphia, united states</td>
+<td>may 26, 1951</td>
+</tr>
+<tr>
+<td>20.6</td>
+<td></td>
+<td></td>
+<td>andy stanfield</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united states</span></td>
+<td>los angeles, united states</td>
+<td>june 28, 1952</td>
+</tr>
+<tr>
+<td>20.6</td>
+<td>0.0</td>
+<td></td>
+<td>thane baker</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united states</span></td>
+<td>bakersfield, united states</td>
+<td>june 23, 1956</td>
+</tr>
+<tr>
+<td>20.6</td>
+<td></td>
+<td>20.75</td>
+<td>bobby morrow</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united states</span></td>
+<td>melbourne, australia</td>
+<td>november 27, 1956</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20.6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">manfred germar</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">west germany</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wuppertal, germany</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">october 1, 1958</span></td>
+</tr>
+<tr>
+<td>20.6y</td>
+<td>−1.6</td>
+<td></td>
+<td>ray norton</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united states</span></td>
+<td>berkeley, united states</td>
+<td>march 19, 1960</td>
+</tr>
+<tr>
+<td>20.6</td>
+<td></td>
+<td></td>
+<td>ray norton</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united states</span></td>
+<td>philadelphia, united states</td>
+<td>april 30, 1960</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20.5y</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">peter radford</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">united kingdom</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wolverhampton, united kingdom</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">may 28, 1960</span></td>
+</tr>
+<tr>
+<td>20.5</td>
+<td>0.0</td>
+<td>20.75</td>
+<td>stone johnson</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united states</span></td>
+<td>stanford, united states</td>
+<td>july 2, 1960</td>
+</tr>
+<tr>
+<td>20.5</td>
+<td>0.0</td>
+<td></td>
+<td>ray norton</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united states</span></td>
+<td>stanford, united states</td>
+<td>july 2, 1960</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20.5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20.65</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">livio berruti</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">italy</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rome, italy</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">september 3, 1960</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20.5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20.62</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">livio berruti</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">italy</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rome, italy</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">september 3, 1960</span></td>
+</tr>
+<tr>
+<td>20.5y</td>
+<td>−1.1</td>
+<td>20.67</td>
+<td>paul drayton</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united states</span></td>
+<td>walnut, united states</td>
+<td>june 23, 1962</td>
+</tr>
+<tr>
+<td>20.3y</td>
+<td>−0.1</td>
+<td></td>
+<td>henry carr</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united states</span></td>
+<td>tempe, united states</td>
+<td>march 23, 1963</td>
+</tr>
+<tr>
+<td>20.2y</td>
+<td>0.5</td>
+<td></td>
+<td>henry carr</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united states</span></td>
+<td>tempe, united states</td>
+<td>april 4, 1964</td>
+</tr>
+<tr>
+<td>20.0y</td>
+<td>0.0</td>
+<td></td>
+<td>tommie smith</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united states</span></td>
+<td>sacramento, united states</td>
+<td>june 11, 1968</td>
+</tr>
+<tr>
+<td>19.8a</td>
+<td>0.9</td>
+<td>19.83a</td>
+<td>tommie smith</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united states</span></td>
+<td>mexico city, mexico</td>
+<td>october 16, 1968</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19.8a</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0.9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19.86a</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">donald quarrie</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">jamaica</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cali, colombia</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">august 3, 1971</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19.8+</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1.3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">donald quarrie</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">jamaica</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">eugene, oregon, united states</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">june 7, 1975</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Group the selected rows by 'athlete'.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>time</td>
+<td>wind</td>
+<td>auto</td>
+<td>athlete</td>
+<td>nationality</td>
+<td>location_of_race</td>
+<td>date</td>
+</tr>
+<tr>
+<td>20.6</td>
+<td></td>
+<td></td>
+<td>manfred germar</td>
+<td>west germany</td>
+<td>wuppertal, germany</td>
+<td>october 1, 1958</td>
+</tr>
+<tr>
+<td>20.5y</td>
+<td></td>
+<td></td>
+<td>peter radford</td>
+<td>united kingdom</td>
+<td>wolverhampton, united kingdom</td>
+<td>may 28, 1960</td>
+</tr>
+<tr>
+<td>20.5</td>
+<td></td>
+<td>20.65</td>
+<td>livio berruti</td>
+<td>italy</td>
+<td>rome, italy</td>
+<td>september 3, 1960</td>
+</tr>
+<tr>
+<td>20.5</td>
+<td></td>
+<td>20.62</td>
+<td>livio berruti</td>
+<td>italy</td>
+<td>rome, italy</td>
+<td>september 3, 1960</td>
+</tr>
+<tr>
+<td>19.8a</td>
+<td>0.9</td>
+<td>19.86a</td>
+<td>donald quarrie</td>
+<td>jamaica</td>
+<td>cali, colombia</td>
+<td>august 3, 1971</td>
+</tr>
+<tr>
+<td>19.8+</td>
+<td>1.3</td>
+<td></td>
+<td>donald quarrie</td>
+<td>jamaica</td>
+<td>eugene, oregon, united states</td>
+<td>june 7, 1975</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Count the number of records for each 'athlete'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>athlete</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">donald quarrie</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">livio berruti</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">manfred germar</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">peter radford</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Order the table by the count of records in descending order.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>athlete</td>
+<td>record_count</td>
+</tr>
+<tr>
+<td>donald quarrie</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>livio berruti</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>manfred germar</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>peter radford</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 5: Select row number 1.</div>
+<div id="step-3" class="content">
+<table>
+<tr>
+<td>athlete</td>
+<td>record_count</td>
+</tr>
+<tr>
+<td>donald quarrie</td>
+<td>1</td>
+</tr>
+<tr>
+<td>livio berruti</td>
+<td>1</td>
+</tr>
+<tr>
+<td>manfred germar</td>
+<td>1</td>
+</tr>
+<tr>
+<td>peter radford</td>
+<td>1</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 6: Select the 'athlete' column.</div>
+<div id="step-4" class="content">
+<table>
+<tr>
+<td>athlete</td>
+<td>record_count</td>
+</tr>
+<tr>
+<td>donald quarrie</td>
+<td>1</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>athlete</td>
+</tr>
+<tr>
+<td>donald quarrie</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['donald quarrie']]</h3>
+</body></html>

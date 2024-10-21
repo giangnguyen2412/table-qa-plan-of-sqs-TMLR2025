@@ -1,0 +1,67 @@
+************************************************************************************************************************
+Sample 1139 - Plan 1: Query: how many doubles tournaments did kristyna pliskova participate in before 2012?
+Sample 1139 - Plan 1: Groundtruth: ['5']
+Sample 1139 - Plan 1: X-Original table pd: 
+     outcome  no_               date                    tournament  \
+0  runner-up  1.0        16 may 2010                 kurume, japan   
+1     winner  1.0   13 february 2011  rancho mirage, united states   
+2     winner  2.0      7 august 2011             vancouver, canada   
+3  runner-up  2.0    6 november 2011              taipei 5, taiwan   
+4  runner-up  3.0   20 november 2011          bratislava, slovakia   
+5     winner  3.0    23 january 2012   andrézieux-bouthéon, france   
+6     winner  4.0    30 january 2012              grenoble, france   
+7  runner-up  4.0  17 september 2012    shrewsbury, united kingdom   
+8     winner  5.0   12 november 2012                zawada, poland   
+9     winner  6.0    28 october 2013    barnstaple, united kingdom   
+
+      surface            partner                               opponents  \
+0        clay  karolína plíšková                 sun shengnan\n xu yifan   
+1        hard  karolína plíšková      nadejda guskova\n sandra zaniewska   
+2        hard  karolína plíšková       jamie hampton\n n. lertcheewakarn   
+3        hard  karolína plíšková               chan yung-jan\n zheng jie   
+4        hard  karolína plíšková      naomi broady\n kristina mladenovic   
+5    hard (i)  karolína plíšková               julie coin\n eva hrdinová   
+6    hard (i)  karolína plíšková  valentyna ivakhnenko\n maryna zanevska   
+7    hard (i)  karolína plíšková          vesna dolonc\n stefanie vögele   
+8  carpet (i)  karolína plíšková  kristina barrois\n sandra klemenschits   
+9    hard (i)       naomi broady            raluca olaru\n tamira paszek   
+
+                    score  
+0                0–6, 3–6  
+1      6–7(6–8), 6–1, 6–4  
+2           5–7, 6–2, 6–4  
+3      6–7(5–7), 7–5, 3–6  
+4        7–5, 4–6, [2–10]  
+5        6–4, 4–6, [10–5]  
+6                6–1, 6–3  
+7  1–6, 7–6(7–3), [13–15]  
+8                6–3, 6–1  
+9        6–3, 3–6, [10–5]  
+Sample 1139 - Plan 1: Caption: none
+Sample 1139 - Plan 1: Original table: [['outcome', 'no_', 'date', 'tournament', 'surface', 'partner', 'opponents', 'score'], ['runner-up', '1.', '16 may 2010', 'kurume, japan', 'clay', 'karolína plíšková', 'sun shengnan\\n xu yifan', '0–6, 3–6'], ['winner', '1.', '13 february 2011', 'rancho mirage, united states', 'hard', 'karolína plíšková', 'nadejda guskova\\n sandra zaniewska', '6–7(6–8), 6–1, 6–4'], ['winner', '2.', '7 august 2011', 'vancouver, canada', 'hard', 'karolína plíšková', 'jamie hampton\\n n. lertcheewakarn', '5–7, 6–2, 6–4'], ['runner-up', '2.', '6 november 2011', 'taipei 5, taiwan', 'hard', 'karolína plíšková', 'chan yung-jan\\n zheng jie', '6–7(5–7), 7–5, 3–6'], ['runner-up', '3.', '20 november 2011', 'bratislava, slovakia', 'hard', 'karolína plíšková', 'naomi broady\\n kristina mladenovic', '7–5, 4–6, [2–10]'], ['winner', '3.', '23 january 2012', 'andrézieux-bouthéon, france', 'hard (i)', 'karolína plíšková', 'julie coin\\n eva hrdinová', '6–4, 4–6, [10–5]'], ['winner', '4.', '30 january 2012', 'grenoble, france', 'hard (i)', 'karolína plíšková', 'valentyna ivakhnenko\\n maryna zanevska', '6–1, 6–3'], ['runner-up', '4.', '17 september 2012', 'shrewsbury, united kingdom', 'hard (i)', 'karolína plíšková', 'vesna dolonc\\n stefanie vögele', '1–6, 7–6(7–3), [13–15]'], ['winner', '5.', '12 november 2012', 'zawada, poland', 'carpet (i)', 'karolína plíšková', 'kristina barrois\\n sandra klemenschits', '6–3, 6–1'], ['winner', '6.', '28 october 2013', 'barnstaple, united kingdom', 'hard (i)', 'naomi broady', 'raluca olaru\\n tamira paszek', '6–3, 3–6, [10–5]']]
+########################################################################################################################
+Sample 1139 - Plan 1: Operation 1: Select rows where 'partner' is 'kristyna pliskova'.
+Sample 1139 - Plan 1: Selected indices: []
+Sample 1139 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [outcome, no_, date, tournament, surface, partner, opponents, score]
+Index: []
+Sample 1139 - Plan 1: Table after operation: [['outcome', 'no_', 'date', 'tournament', 'surface', 'partner', 'opponents', 'score']]
+########################################################################################################################
+Sample 1139 - Plan 1: Operation 2: Select rows where 'date' is before 2012.
+Sample 1139 - Plan 1: Selected indices: []
+Sample 1139 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [outcome, no_, date, tournament, surface, partner, opponents, score]
+Index: []
+Sample 1139 - Plan 1: Table after operation: [['outcome', 'no_', 'date', 'tournament', 'surface', 'partner', 'opponents', 'score']]
+########################################################################################################################
+Sample 1139 - Plan 1: Operation 3: Count the number of rows.
+Sample 1139 - Plan 1: Selected indices: []
+Sample 1139 - Plan 1: X-Table after operation df:
+   row_count
+0          0
+Sample 1139 - Plan 1: Table after operation: [['row_count'], [0]]
+Fall-back: FALSE
+Answer from plan 1: [[0]]
+Groundtruth: ['5']

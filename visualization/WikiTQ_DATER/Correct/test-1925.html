@@ -1,0 +1,30 @@
+
+    <html>
+    <head>
+    <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { text-align: center; }
+    .cot-title { color: blue; }
+    .pos-title { color: green; }
+    h2 { color: black; text-align: left; }
+    h3 { color: black; text-align: left; }
+    h4 { color: darkslategray; }
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    table, th, td { border: 1px solid #ddd; padding: 8px; }
+    th { background-color: #f2f2f2; }
+    tr:nth-child(even) { background-color: #f9f9f9; }
+    .highlight { background-color: #ffffcc; }
+    .true { color: green; }
+    .false { color: red; }
+    .highlighted-text { background-color: yellow; }
+    .step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+    .step { display: block; }
+    .result-label { font-weight: bold; padding: 5px; margin-top: 20px; display: inline-block; }
+    .tp { background-color: lightgreen; }
+    .tn { background-color: lightblue; }
+    .fp { background-color: lightcoral; }
+    .fn { background-color: lightgoldenrodyellow; }
+    </style>
+    </head>
+    <body>
+    <hr><h3><span>Question:</span> what's the difference between the highest score in a game and the lowest score in a game?</h3><hr><h3><span>Input Table:</span></h3><div class="step"><div class="step-title">Step 1: Select Rows (row 6, row 16, row 9) and Select Columns ("TOP SCORER (Total points)", TOP SCORER (Total points), score, "SCORE", "VENUE", "DATE", "OPPONENT", SCORE)</div><div id="original-table" class="content"><table><tr><th>DATE</th><th>OPPONENT</th><th><span class='highlighted-text'>SCORE</span></th><th><span class='highlighted-text'>TOP SCORER (Total points)</span></th><th>VENUE</th></tr><tr><td>February 7 All-Filipino Cup</td><td>SHELL</td><td><span class="highlighted-text">76-60</span></td><td><span class="highlighted-text"></span></td><td>PHILSPORTS ARENA</td></tr><tr><td>February 11</td><td>MOBILINE</td><td><span class="highlighted-text">80-68</span></td><td><span class="highlighted-text"></span></td><td>ARANETA COLISEUM</td></tr><tr><td>February 16</td><td>ALASKA</td><td><span class="highlighted-text">73-72</span></td><td><span class="highlighted-text">Davonn Harp (20)</span></td><td>PHILSPORTS ARENA</td></tr><tr><td>February 28</td><td>SAN MIGUEL</td><td><span class="highlighted-text">78-76</span></td><td><span class="highlighted-text">Lowell Briones (21)</span></td><td>PHILSPORTS ARENA</td></tr><tr><td>March 3</td><td>BRGY.GINEBRA</td><td><span class="highlighted-text">79-72</span></td><td><span class="highlighted-text"></span></td><td>ILOILO CITY</td></tr><tr><td><span class="highlighted-text">March 9</span></td><td><span class="highlighted-text">SHELL</span></td><td><span class="highlighted-text">65-58</span></td><td><span class="highlighted-text"></span></td><td><span class="highlighted-text">PHILSPORTS ARENA</span></td></tr><tr><td>April 4</td><td>STA.LUCIA</td><td><span class="highlighted-text">87-84</span></td><td><span class="highlighted-text"></span></td><td>PHILSPORTS ARENA</td></tr><tr><td>June 10 Commissioner's Cup</td><td>MOBILINE</td><td><span class="highlighted-text">97-92</span></td><td><span class="highlighted-text">Tony Lang (29)</span></td><td>ARANETA COLISEUM</td></tr><tr><td><span class="highlighted-text">June 15</span></td><td><span class="highlighted-text">BRGY.GINEBRA</span></td><td><span class="highlighted-text">111-98</span></td><td><span class="highlighted-text"></span></td><td><span class="highlighted-text">PHILSPORTS ARENA</span></td></tr><tr><td>June 24</td><td>SHELL</td><td><span class="highlighted-text">94-82</span></td><td><span class="highlighted-text"></span></td><td>ARANETA COLISEUM</td></tr><tr><td>July 1</td><td>POP COLA</td><td><span class="highlighted-text">95-79</span></td><td><span class="highlighted-text"></span></td><td>ARANETA COLISEUM</td></tr><tr><td>July 8</td><td>STA.LUCIA</td><td><span class="highlighted-text">95-88</span></td><td><span class="highlighted-text"></span></td><td>ARANETA COLISEUM</td></tr><tr><td>July 13</td><td>TANDUAY</td><td><span class="highlighted-text">104-98</span></td><td><span class="highlighted-text"></span></td><td>PHILSPORTS ARENA</td></tr><tr><td>September 23 Governor's Cup</td><td>TANDUAY</td><td><span class="highlighted-text">108-93</span></td><td><span class="highlighted-text"></span></td><td>PHILSPORTS ARENA</td></tr><tr><td>September 29</td><td>TALK 'N TEXT</td><td><span class="highlighted-text">99-85</span></td><td><span class="highlighted-text"></span></td><td>DUMAGUETE CITY</td></tr><tr><td><span class="highlighted-text">October 14</span></td><td><span class="highlighted-text">SHELL</span></td><td><span class="highlighted-text">68-62</span></td><td><span class="highlighted-text"></span></td><td><span class="highlighted-text">YNARES CENTER</span></td></tr><tr><td>October 19</td><td>STA.LUCIA</td><td><span class="highlighted-text">101-94</span></td><td><span class="highlighted-text"></span></td><td>CUNETA ASTRODOME</td></tr><tr><td>October 24</td><td>BRGY.GINEBRA</td><td><span class="highlighted-text">93-72</span></td><td><span class="highlighted-text"></span></td><td>PHILSPORTS ARENA</td></tr><tr><td>November 7</td><td>SAN MIGUEL</td><td><span class="highlighted-text">86-81</span></td><td><span class="highlighted-text"></span></td><td>ARANETA COLISEUM</td></tr></table></div></div><hr><div class="step"><div class="step-title">Sub-table Selection</div><div id="sub-table-selection" class="content"><table><tr><th>TOP SCORER (Total points)</th><th>SCORE</th></tr><tr><td></td><td>65-58</td></tr><tr><td></td><td>111-98</td></tr><tr><td></td><td>68-62</td></tr></table></div></div><hr><div class="step"><div class="step-title">Factually-checked information: Not Available!</div><h2>Prompting LLM for the final answer... >>> </h2><hr><h3>Prediction: 53</h3></body></html>

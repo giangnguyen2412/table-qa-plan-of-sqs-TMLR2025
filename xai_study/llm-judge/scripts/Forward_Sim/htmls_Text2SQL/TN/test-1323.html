@@ -1,0 +1,40 @@
+
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+.sql-command { background-color: #f0f0f0; padding: 10px; border-left: 4px solid #4CAF50; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> maryland district 6 candidate elton r wampler succeeded incumbant candidate goodloe byron</h3>
+<h3>Input Table: united states house of representatives elections , 1974</h3>
+<div class="step">
+<table>
+<tr><td>district</td><td>incumbent</td><td>party</td><td>first_elected</td><td>result</td><td>candidates</td></tr><tr><td>maryland 1</td><td>robert bauman</td><td>republican</td><td>1973-01-01</td><td>re - elected</td><td>robert bauman (r) 53.0% thomas j hatem (d) 47.0%</td></tr><tr><td>maryland 2</td><td>clarence long</td><td>democratic</td><td>1962-01-01</td><td>re - elected</td><td>clarence long (d) 77.1% john m seney (r) 22.9%</td></tr><tr><td>maryland 4</td><td>marjorie holt</td><td>republican</td><td>1972-01-01</td><td>re - elected</td><td>marjorie holt (r) 58.1% fred l wineland (d) 41.9%</td></tr><tr><td>maryland 6</td><td>goodloe byron</td><td>democratic</td><td>1970-01-01</td><td>re - elected</td><td>goodloe byron (d) 73.7% elton r wampler (r) 26.3%</td></tr><tr><td>maryland 7</td><td>parren mitchell</td><td>democratic</td><td>1970-01-01</td><td>re - elected</td><td>parren mitchell (d) unopposed</td></tr>
+</table>
+</div>
+<h3>SQL Command:</h3>
+<div class="sql-command">SELECT 
+    CASE 
+        WHEN (SELECT result FROM table_sql WHERE district = 'maryland 6' AND candidates LIKE '%elton r wampler%') = 're - elected' 
+             AND (SELECT result FROM table_sql WHERE district = 'maryland 6' AND candidates LIKE '%goodloe byron%') = 're - elected' 
+        THEN 'FALSE' 
+        ELSE 'TRUE' 
+    END;</div>
+</body></html>

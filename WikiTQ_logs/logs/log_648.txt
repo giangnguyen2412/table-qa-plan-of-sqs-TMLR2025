@@ -1,0 +1,161 @@
+************************************************************************************************************************
+Sample 648 - Plan 1: Query: what is the last date on the list?
+Sample 648 - Plan 1: Groundtruth: ['1 November 2009']
+Sample 648 - Plan 1: X-Original table pd: 
+                date                     competition    location  \
+0    31 october 2008               2008–09 world cup  manchester   
+1    31 october 2008               2008–09 world cup  manchester   
+2    1 november 2008               2008–09 world cup  manchester   
+3    1 november 2008               2008–09 world cup  manchester   
+4    2 november 2008               2008–09 world cup  manchester   
+5    2 november 2008               2008–09 world cup  manchester   
+6    2 november 2008               2008–09 world cup  manchester   
+7    2 november 2008               2008–09 world cup  manchester   
+8    2 november 2008  5th international keirin event  manchester   
+9   13 february 2009               2008–09 world cup  copenhagen   
+10  13 february 2009               2008–09 world cup  copenhagen   
+11  13 february 2009               2008–09 world cup  copenhagen   
+12  13 february 2009               2008–09 world cup  copenhagen   
+13   30 october 2009               2009–10 world cup  manchester   
+14   30 october 2009               2009–10 world cup  manchester   
+15   30 october 2009               2009–10 world cup  manchester   
+16   30 october 2009               2009–10 world cup  manchester   
+17   1 november 2009               2009–10 world cup  manchester   
+18   1 november 2009               2009–10 world cup  manchester   
+19   1 november 2009               2009–10 world cup  manchester   
+
+           country                 event  placing               rider  \
+0   united kingdom                sprint        1  victoria pendleton   
+1   united kingdom                keirin        2         jason kenny   
+2   united kingdom                sprint        1         jason kenny   
+3   united kingdom      500 m time trial        1  victoria pendleton   
+4   united kingdom           team sprint        1          ross edgar   
+5   united kingdom           team sprint        1         jason kenny   
+6   united kingdom           team sprint        1         jamie staff   
+7   united kingdom                keirin        1  victoria pendleton   
+8   united kingdom  international keirin        2          ross edgar   
+9          denmark           team sprint        1           chris hoy   
+10         denmark           team sprint        1         jason kenny   
+11         denmark           team sprint        1         jamie staff   
+12         denmark                sprint        1  victoria pendleton   
+13  united kingdom                keirin        1           chris hoy   
+14  united kingdom                sprint        1  victoria pendleton   
+15  united kingdom                sprint        1           chris hoy   
+16  united kingdom      500 m time trial        2  victoria pendleton   
+17  united kingdom           team sprint        1          ross edgar   
+18  united kingdom           team sprint        1           chris hoy   
+19  united kingdom           team sprint        1         jamie staff   
+
+   nationality  
+0          gbr  
+1          gbr  
+2          gbr  
+3          gbr  
+4          gbr  
+5          gbr  
+6          gbr  
+7          gbr  
+8          gbr  
+9          gbr  
+10         gbr  
+11         gbr  
+12         gbr  
+13         gbr  
+14         gbr  
+15         gbr  
+16         gbr  
+17         gbr  
+18         gbr  
+19         gbr  
+Sample 648 - Plan 1: Caption: none
+Sample 648 - Plan 1: Original table: [['date', 'competition', 'location', 'country', 'event', 'placing', 'rider', 'nationality'], ['31 october 2008', '2008–09 world cup', 'manchester', 'united kingdom', 'sprint', '1', 'victoria pendleton', 'gbr'], ['31 october 2008', '2008–09 world cup', 'manchester', 'united kingdom', 'keirin', '2', 'jason kenny', 'gbr'], ['1 november 2008', '2008–09 world cup', 'manchester', 'united kingdom', 'sprint', '1', 'jason kenny', 'gbr'], ['1 november 2008', '2008–09 world cup', 'manchester', 'united kingdom', '500 m time trial', '1', 'victoria pendleton', 'gbr'], ['2 november 2008', '2008–09 world cup', 'manchester', 'united kingdom', 'team sprint', '1', 'ross edgar', 'gbr'], ['2 november 2008', '2008–09 world cup', 'manchester', 'united kingdom', 'team sprint', '1', 'jason kenny', 'gbr'], ['2 november 2008', '2008–09 world cup', 'manchester', 'united kingdom', 'team sprint', '1', 'jamie staff', 'gbr'], ['2 november 2008', '2008–09 world cup', 'manchester', 'united kingdom', 'keirin', '1', 'victoria pendleton', 'gbr'], ['2 november 2008', '5th international keirin event', 'manchester', 'united kingdom', 'international keirin', '2', 'ross edgar', 'gbr'], ['13 february 2009', '2008–09 world cup', 'copenhagen', 'denmark', 'team sprint', '1', 'chris hoy', 'gbr'], ['13 february 2009', '2008–09 world cup', 'copenhagen', 'denmark', 'team sprint', '1', 'jason kenny', 'gbr'], ['13 february 2009', '2008–09 world cup', 'copenhagen', 'denmark', 'team sprint', '1', 'jamie staff', 'gbr'], ['13 february 2009', '2008–09 world cup', 'copenhagen', 'denmark', 'sprint', '1', 'victoria pendleton', 'gbr'], ['30 october 2009', '2009–10 world cup', 'manchester', 'united kingdom', 'keirin', '1', 'chris hoy', 'gbr'], ['30 october 2009', '2009–10 world cup', 'manchester', 'united kingdom', 'sprint', '1', 'victoria pendleton', 'gbr'], ['30 october 2009', '2009–10 world cup', 'manchester', 'united kingdom', 'sprint', '1', 'chris hoy', 'gbr'], ['30 october 2009', '2009–10 world cup', 'manchester', 'united kingdom', '500 m time trial', '2', 'victoria pendleton', 'gbr'], ['1 november 2009', '2009–10 world cup', 'manchester', 'united kingdom', 'team sprint', '1', 'ross edgar', 'gbr'], ['1 november 2009', '2009–10 world cup', 'manchester', 'united kingdom', 'team sprint', '1', 'chris hoy', 'gbr'], ['1 november 2009', '2009–10 world cup', 'manchester', 'united kingdom', 'team sprint', '1', 'jamie staff', 'gbr']]
+########################################################################################################################
+Sample 648 - Plan 1: Operation 1: Order the table by the 'date' column in descending order.
+Sample 648 - Plan 1: Selected indices: [[4, 0], [17, 0], [8, 0], [19, 0], [10, 0], [1, 0], [12, 0], [14, 0], [3, 0], [5, 0], [16, 0], [7, 0], [18, 0], [9, 0], [0, 0], [11, 0], [2, 0], [13, 0], [15, 0], [6, 0]]
+Sample 648 - Plan 1: X-Table after operation df:
+                date                     competition    location  \
+0    31 october 2008               2008–09 world cup  manchester   
+1    31 october 2008               2008–09 world cup  manchester   
+2    30 october 2009               2009–10 world cup  manchester   
+3    30 october 2009               2009–10 world cup  manchester   
+4    30 october 2009               2009–10 world cup  manchester   
+5    30 october 2009               2009–10 world cup  manchester   
+6    2 november 2008               2008–09 world cup  manchester   
+7    2 november 2008               2008–09 world cup  manchester   
+8    2 november 2008               2008–09 world cup  manchester   
+9    2 november 2008               2008–09 world cup  manchester   
+10   2 november 2008  5th international keirin event  manchester   
+11  13 february 2009               2008–09 world cup  copenhagen   
+12  13 february 2009               2008–09 world cup  copenhagen   
+13  13 february 2009               2008–09 world cup  copenhagen   
+14  13 february 2009               2008–09 world cup  copenhagen   
+15   1 november 2009               2009–10 world cup  manchester   
+16   1 november 2009               2009–10 world cup  manchester   
+17   1 november 2009               2009–10 world cup  manchester   
+18   1 november 2008               2008–09 world cup  manchester   
+19   1 november 2008               2008–09 world cup  manchester   
+
+           country                 event  placing               rider  \
+0   united kingdom                sprint        1  victoria pendleton   
+1   united kingdom                keirin        2         jason kenny   
+2   united kingdom                keirin        1           chris hoy   
+3   united kingdom                sprint        1  victoria pendleton   
+4   united kingdom                sprint        1           chris hoy   
+5   united kingdom      500 m time trial        2  victoria pendleton   
+6   united kingdom           team sprint        1          ross edgar   
+7   united kingdom           team sprint        1         jason kenny   
+8   united kingdom           team sprint        1         jamie staff   
+9   united kingdom                keirin        1  victoria pendleton   
+10  united kingdom  international keirin        2          ross edgar   
+11         denmark           team sprint        1           chris hoy   
+12         denmark           team sprint        1         jason kenny   
+13         denmark           team sprint        1         jamie staff   
+14         denmark                sprint        1  victoria pendleton   
+15  united kingdom           team sprint        1          ross edgar   
+16  united kingdom           team sprint        1           chris hoy   
+17  united kingdom           team sprint        1         jamie staff   
+18  united kingdom                sprint        1         jason kenny   
+19  united kingdom      500 m time trial        1  victoria pendleton   
+
+   nationality  
+0          gbr  
+1          gbr  
+2          gbr  
+3          gbr  
+4          gbr  
+5          gbr  
+6          gbr  
+7          gbr  
+8          gbr  
+9          gbr  
+10         gbr  
+11         gbr  
+12         gbr  
+13         gbr  
+14         gbr  
+15         gbr  
+16         gbr  
+17         gbr  
+18         gbr  
+19         gbr  
+Sample 648 - Plan 1: Table after operation: [['date', 'competition', 'location', 'country', 'event', 'placing', 'rider', 'nationality'], ['31 october 2008', '2008–09 world cup', 'manchester', 'united kingdom', 'sprint', 1, 'victoria pendleton', 'gbr'], ['31 october 2008', '2008–09 world cup', 'manchester', 'united kingdom', 'keirin', 2, 'jason kenny', 'gbr'], ['30 october 2009', '2009–10 world cup', 'manchester', 'united kingdom', 'keirin', 1, 'chris hoy', 'gbr'], ['30 october 2009', '2009–10 world cup', 'manchester', 'united kingdom', 'sprint', 1, 'victoria pendleton', 'gbr'], ['30 october 2009', '2009–10 world cup', 'manchester', 'united kingdom', 'sprint', 1, 'chris hoy', 'gbr'], ['30 october 2009', '2009–10 world cup', 'manchester', 'united kingdom', '500 m time trial', 2, 'victoria pendleton', 'gbr'], ['2 november 2008', '2008–09 world cup', 'manchester', 'united kingdom', 'team sprint', 1, 'ross edgar', 'gbr'], ['2 november 2008', '2008–09 world cup', 'manchester', 'united kingdom', 'team sprint', 1, 'jason kenny', 'gbr'], ['2 november 2008', '2008–09 world cup', 'manchester', 'united kingdom', 'team sprint', 1, 'jamie staff', 'gbr'], ['2 november 2008', '2008–09 world cup', 'manchester', 'united kingdom', 'keirin', 1, 'victoria pendleton', 'gbr'], ['2 november 2008', '5th international keirin event', 'manchester', 'united kingdom', 'international keirin', 2, 'ross edgar', 'gbr'], ['13 february 2009', '2008–09 world cup', 'copenhagen', 'denmark', 'team sprint', 1, 'chris hoy', 'gbr'], ['13 february 2009', '2008–09 world cup', 'copenhagen', 'denmark', 'team sprint', 1, 'jason kenny', 'gbr'], ['13 february 2009', '2008–09 world cup', 'copenhagen', 'denmark', 'team sprint', 1, 'jamie staff', 'gbr'], ['13 february 2009', '2008–09 world cup', 'copenhagen', 'denmark', 'sprint', 1, 'victoria pendleton', 'gbr'], ['1 november 2009', '2009–10 world cup', 'manchester', 'united kingdom', 'team sprint', 1, 'ross edgar', 'gbr'], ['1 november 2009', '2009–10 world cup', 'manchester', 'united kingdom', 'team sprint', 1, 'chris hoy', 'gbr'], ['1 november 2009', '2009–10 world cup', 'manchester', 'united kingdom', 'team sprint', 1, 'jamie staff', 'gbr'], ['1 november 2008', '2008–09 world cup', 'manchester', 'united kingdom', 'sprint', 1, 'jason kenny', 'gbr'], ['1 november 2008', '2008–09 world cup', 'manchester', 'united kingdom', '500 m time trial', 1, 'victoria pendleton', 'gbr']]
+########################################################################################################################
+Sample 648 - Plan 1: Operation 2: Select the first row.
+Sample 648 - Plan 1: Selected indices: []
+Sample 648 - Plan 1: X-Table after operation df:
+              date        competition    location         country   event  \
+0  31 october 2008  2008–09 world cup  manchester  united kingdom  sprint   
+
+   placing               rider nationality  
+0        1  victoria pendleton         gbr  
+Sample 648 - Plan 1: Table after operation: [['date', 'competition', 'location', 'country', 'event', 'placing', 'rider', 'nationality'], ['31 october 2008', '2008–09 world cup', 'manchester', 'united kingdom', 'sprint', 1, 'victoria pendleton', 'gbr']]
+########################################################################################################################
+Sample 648 - Plan 1: Operation 3: Select the 'date' column.
+Sample 648 - Plan 1: Selected indices: []
+Sample 648 - Plan 1: X-Table after operation df:
+              date
+0  31 october 2008
+Sample 648 - Plan 1: Table after operation: [['date'], ['31 october 2008']]
+Fall-back: FALSE
+Answer from plan 1: [['31 october 2008']]
+Groundtruth: ['1 November 2009']

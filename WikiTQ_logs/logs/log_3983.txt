@@ -1,0 +1,76 @@
+************************************************************************************************************************
+Sample 3983 - Plan 1: Query: after 2002 when did team penske earn its next first place finish?
+Sample 3983 - Plan 1: Groundtruth: ['2009']
+Sample 3983 - Plan 1: X-Original table pd: 
+    year  chassis      engine  start  finish         team
+0   2001  dallara  oldsmobile     11       1  team penske
+1   2002  dallara   chevrolet     13       1  team penske
+2   2003  dallara      toyota      1       2  team penske
+3   2004  dallara      toyota      8       9  team penske
+4   2005  dallara      toyota      5       9  team penske
+5   2006  dallara       honda      2      25  team penske
+6   2007  dallara       honda      1       3  team penske
+7   2008  dallara       honda      4       4  team penske
+8   2009  dallara       honda      1       1  team penske
+9   2010  dallara       honda      1       9  team penske
+10  2011  dallara       honda     16      17  team penske
+11  2012  dallara   chevrolet      6      10  team penske
+12  2013  dallara   chevrolet      8       6  team penske
+Sample 3983 - Plan 1: Caption: none
+Sample 3983 - Plan 1: Original table: [['year', 'chassis', 'engine', 'start', 'finish', 'team'], ['2001', 'dallara', 'oldsmobile', '11', '1', 'team penske'], ['2002', 'dallara', 'chevrolet', '13', '1', 'team penske'], ['2003', 'dallara', 'toyota', '1', '2', 'team penske'], ['2004', 'dallara', 'toyota', '8', '9', 'team penske'], ['2005', 'dallara', 'toyota', '5', '9', 'team penske'], ['2006', 'dallara', 'honda', '2', '25', 'team penske'], ['2007', 'dallara', 'honda', '1', '3', 'team penske'], ['2008', 'dallara', 'honda', '4', '4', 'team penske'], ['2009', 'dallara', 'honda', '1', '1', 'team penske'], ['2010', 'dallara', 'honda', '1', '9', 'team penske'], ['2011', 'dallara', 'honda', '16', '17', 'team penske'], ['2012', 'dallara', 'chevrolet', '6', '10', 'team penske'], ['2013', 'dallara', 'chevrolet', '8', '6', 'team penske']]
+########################################################################################################################
+Sample 3983 - Plan 1: Operation 1: Select rows where 'team' is 'team penske'.
+Sample 3983 - Plan 1: Selected indices: [[10, 5], [5, 5], [6, 5], [1, 5], [9, 5], [4, 5], [0, 5], [11, 5], [12, 5], [7, 5], [2, 5], [8, 5], [3, 5]]
+Sample 3983 - Plan 1: X-Table after operation df:
+    year  chassis      engine  start  finish         team
+0   2001  dallara  oldsmobile     11       1  team penske
+1   2002  dallara   chevrolet     13       1  team penske
+2   2003  dallara      toyota      1       2  team penske
+3   2004  dallara      toyota      8       9  team penske
+4   2005  dallara      toyota      5       9  team penske
+5   2006  dallara       honda      2      25  team penske
+6   2007  dallara       honda      1       3  team penske
+7   2008  dallara       honda      4       4  team penske
+8   2009  dallara       honda      1       1  team penske
+9   2010  dallara       honda      1       9  team penske
+10  2011  dallara       honda     16      17  team penske
+11  2012  dallara   chevrolet      6      10  team penske
+12  2013  dallara   chevrolet      8       6  team penske
+Sample 3983 - Plan 1: Table after operation: [['year', 'chassis', 'engine', 'start', 'finish', 'team'], [2001, 'dallara', 'oldsmobile', 11, 1, 'team penske'], [2002, 'dallara', 'chevrolet', 13, 1, 'team penske'], [2003, 'dallara', 'toyota', 1, 2, 'team penske'], [2004, 'dallara', 'toyota', 8, 9, 'team penske'], [2005, 'dallara', 'toyota', 5, 9, 'team penske'], [2006, 'dallara', 'honda', 2, 25, 'team penske'], [2007, 'dallara', 'honda', 1, 3, 'team penske'], [2008, 'dallara', 'honda', 4, 4, 'team penske'], [2009, 'dallara', 'honda', 1, 1, 'team penske'], [2010, 'dallara', 'honda', 1, 9, 'team penske'], [2011, 'dallara', 'honda', 16, 17, 'team penske'], [2012, 'dallara', 'chevrolet', 6, 10, 'team penske'], [2013, 'dallara', 'chevrolet', 8, 6, 'team penske']]
+########################################################################################################################
+Sample 3983 - Plan 1: Operation 2: Select rows where 'finish' is '1'.
+Sample 3983 - Plan 1: Selected indices: [[8, 4], [1, 4], [0, 4]]
+Sample 3983 - Plan 1: X-Table after operation df:
+   year  chassis      engine  start  finish         team
+0  2001  dallara  oldsmobile     11       1  team penske
+1  2002  dallara   chevrolet     13       1  team penske
+2  2009  dallara       honda      1       1  team penske
+Sample 3983 - Plan 1: Table after operation: [['year', 'chassis', 'engine', 'start', 'finish', 'team'], [2001, 'dallara', 'oldsmobile', 11, 1, 'team penske'], [2002, 'dallara', 'chevrolet', 13, 1, 'team penske'], [2009, 'dallara', 'honda', 1, 1, 'team penske']]
+########################################################################################################################
+Sample 3983 - Plan 1: Operation 3: Order the table by 'year' in ascending order.
+Sample 3983 - Plan 1: Selected indices: [[1, 0], [2, 0], [0, 0]]
+Sample 3983 - Plan 1: X-Table after operation df:
+   year  chassis      engine  start  finish         team
+0  2001  dallara  oldsmobile     11       1  team penske
+1  2002  dallara   chevrolet     13       1  team penske
+2  2009  dallara       honda      1       1  team penske
+Sample 3983 - Plan 1: Table after operation: [['year', 'chassis', 'engine', 'start', 'finish', 'team'], [2001, 'dallara', 'oldsmobile', 11, 1, 'team penske'], [2002, 'dallara', 'chevrolet', 13, 1, 'team penske'], [2009, 'dallara', 'honda', 1, 1, 'team penske']]
+########################################################################################################################
+Sample 3983 - Plan 1: Operation 4: Select the 'year' column.
+Sample 3983 - Plan 1: Selected indices: []
+Sample 3983 - Plan 1: X-Table after operation df:
+   year
+0  2001
+1  2002
+2  2009
+Sample 3983 - Plan 1: Table after operation: [['year'], [2001], [2002], [2009]]
+########################################################################################################################
+Sample 3983 - Plan 1: Operation 5: Select row number 2.
+Sample 3983 - Plan 1: Selected indices: []
+Sample 3983 - Plan 1: X-Table after operation df:
+   year
+0  2002
+Sample 3983 - Plan 1: Table after operation: [['year'], [2002]]
+Fall-back: FALSE
+Answer from plan 1: [[2002]]
+Groundtruth: ['2009']

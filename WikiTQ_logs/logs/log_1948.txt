@@ -1,0 +1,68 @@
+************************************************************************************************************************
+Sample 1948 - Plan 1: Query: what was the total toy sales in 2003?
+Sample 1948 - Plan 1: Groundtruth: ['20.7']
+Sample 1948 - Plan 1: X-Original table pd: 
+    year injuries__us__000_  deaths__age__15_  \
+0   1994                154               NaN   
+1   1995                139               NaN   
+2   1996                130               NaN   
+3   1997                141               NaN   
+4   1998                153              14.0   
+5   1999                152              16.0   
+6   2000                191              17.0   
+7   2001                255              25.0   
+8   2002                212              13.0   
+9   2003                206              11.0   
+10  2004                210              16.0   
+11  2005     202 (estimate)              20.0   
+12  2006            no data              22.0   
+13  2007            no data              22.0   
+14  2008            no data              19.0   
+15  2009            no data              12.0   
+
+   cpsc_toy_safety_funding_n_us__millions_  toy_sales_n_us___billions_  
+0                                                                  NaN  
+1                                                                  NaN  
+2                                                                  NaN  
+3                                                                  NaN  
+4                                                                  NaN  
+5                                     13.6                         NaN  
+6                                     12.0                         NaN  
+7                                     12.4                         NaN  
+8                                     12.2                        21.3  
+9                                     12.8                        20.7  
+10                                    11.5                        22.4  
+11                                    11.0                        22.2  
+12                                no data†                        22.3  
+13                                 no data                         NaN  
+14                                 no data                         NaN  
+15                                 no data                         NaN  
+Sample 1948 - Plan 1: Caption: none
+Sample 1948 - Plan 1: Original table: [['year', 'injuries__us__000_', 'deaths__age__15_', 'cpsc_toy_safety_funding_n_us__millions_', 'toy_sales_n_us___billions_'], ['1994', '154', '', '', ''], ['1995', '139', '', '', ''], ['1996', '130', '', '', ''], ['1997', '141', '', '', ''], ['1998', '153', '14', '', ''], ['1999', '152', '16', '13.6', ''], ['2000', '191', '17', '12.0', ''], ['2001', '255', '25', '12.4', ''], ['2002', '212', '13', '12.2', '21.3'], ['2003', '206', '11', '12.8', '20.7'], ['2004', '210', '16', '11.5', '22.4'], ['2005', '202 (estimate)', '20', '11.0', '22.2'], ['2006', 'no data', '22', 'no data†', '22.3'], ['2007', 'no data', '22', 'no data', ''], ['2008', 'no data', '19', 'no data', ''], ['2009', 'no data', '12', 'no data', '']]
+########################################################################################################################
+Sample 1948 - Plan 1: Operation 1: Select rows where 'year' is 2003.
+Sample 1948 - Plan 1: Selected indices: [[9, 0]]
+Sample 1948 - Plan 1: X-Table after operation df:
+   year  injuries__us__000_  deaths__age__15_  \
+0  2003                 206              11.0   
+
+   cpsc_toy_safety_funding_n_us__millions_  toy_sales_n_us___billions_  
+0                                     12.8                        20.7  
+Sample 1948 - Plan 1: Table after operation: [['year', 'injuries__us__000_', 'deaths__age__15_', 'cpsc_toy_safety_funding_n_us__millions_', 'toy_sales_n_us___billions_'], [2003, '206', 11.0, '12.8', 20.7]]
+########################################################################################################################
+Sample 1948 - Plan 1: Operation 2: Select the 'toy_sales_n_us___billions_' column.
+Sample 1948 - Plan 1: Selected indices: []
+Sample 1948 - Plan 1: X-Table after operation df:
+   toy_sales_n_us___billions_
+0                        20.7
+Sample 1948 - Plan 1: Table after operation: [['toy_sales_n_us___billions_'], [20.7]]
+########################################################################################################################
+Sample 1948 - Plan 1: Operation 3: Calculate the sum of the values in the selected column.
+Sample 1948 - Plan 1: Selected indices: []
+Sample 1948 - Plan 1: X-Table after operation df:
+   total_toy_sales
+0             20.7
+Sample 1948 - Plan 1: Table after operation: [['total_toy_sales'], [20.7]]
+Fall-back: FALSE
+Answer from plan 1: [[20.7]]
+Groundtruth: ['20.7']

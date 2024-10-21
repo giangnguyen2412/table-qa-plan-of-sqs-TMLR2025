@@ -1,0 +1,50 @@
+************************************************************************************************************************
+Sample 1106 - Plan 1: Query: which singles are newer? "thin line" or "say it again"?
+Sample 1106 - Plan 1: Groundtruth: ['"Thin Line"']
+Sample 1106 - Plan 1: X-Original table pd: 
+   year                        name        label hot_black_singles  \
+0  1982  "he's gonna take you home"       becket                 ―   
+1  1982             "thanks to you"       becket               #44   
+2  1983            "i need you now"         jive                 ―   
+3  1984                 "thin line"  power house                 ―   
+4  1986              "say it again"       spring                 ―   
+5  1986              "say it again"       spring                 ―   
+6  1987            "send it c.o.d."    new image                 ―   
+
+  club_play_singles  
+0                 ―  
+1                #1  
+2                 ―  
+3                 ―  
+4                 ―  
+5                 ―  
+6                 ―  
+Sample 1106 - Plan 1: Caption: none
+Sample 1106 - Plan 1: Original table: [['year', 'name', 'label', 'hot_black_singles', 'club_play_singles'], ['1982', '"he\'s gonna take you home"', 'becket', '―', '―'], ['1982', '"thanks to you"', 'becket', '#44', '#1'], ['1983', '"i need you now"', 'jive', '―', '―'], ['1984', '"thin line"', 'power house', '―', '―'], ['1986', '"say it again"', 'spring', '―', '―'], ['1986', '"say it again"', 'spring', '―', '―'], ['1987', '"send it c.o.d."', 'new image', '―', '―']]
+########################################################################################################################
+Sample 1106 - Plan 1: Operation 1: Select rows where the 'name' column is either "thin line" or "say it again".
+Sample 1106 - Plan 1: Selected indices: []
+Sample 1106 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [year, name, label, hot_black_singles, club_play_singles]
+Index: []
+Sample 1106 - Plan 1: Table after operation: [['year', 'name', 'label', 'hot_black_singles', 'club_play_singles']]
+########################################################################################################################
+Sample 1106 - Plan 1: Operation 2: Order the table by the 'year' column in descending order.
+Sample 1106 - Plan 1: Selected indices: []
+Sample 1106 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [year, name, label, hot_black_singles, club_play_singles]
+Index: []
+Sample 1106 - Plan 1: Table after operation: [['year', 'name', 'label', 'hot_black_singles', 'club_play_singles']]
+########################################################################################################################
+Sample 1106 - Plan 1: Operation 3: Select the 'name' column.
+Sample 1106 - Plan 1: Selected indices: []
+Sample 1106 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [name]
+Index: []
+Sample 1106 - Plan 1: Table after operation: [['name']]
+Fall-back: TRUE
+Answer from plan 1: [['say it again']]
+Groundtruth: ['"Thin Line"']

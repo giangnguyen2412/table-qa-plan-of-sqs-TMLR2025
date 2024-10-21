@@ -1,0 +1,102 @@
+{'project_directory': '/opt/omniai/work/instance1/jupyter/tabular_grounding_llms', 'LLM': 'GPT3-5', 'test_dataset': 'TabFact', 'result_file_name': 'GPT3-5_TabFact_results.json', 'planning_log_path': 'logs/GPT3-5_log_TabFact_', 'wikitq_planning_log_path': 'logs/GPT3-5_log_WIKITQ', 'using_sql_for_COT': True, 'NATURAL_LANGUAGE_PLANNING': True, 'K_plans': 1, 'USING_SQL': True, 'VIS_STYLE': 6, 'VIS_PURPOSE': 'TEST', 'USING_SQL_HIST_FINAL_QUERY': True, 'USING_SQL_FOR_FINAL_QUERY': True, 'OTG_PLANNING': False, 'XAI_METHOD': None, 'SQL_EXECUTOR': 'SQLite', 'DEBUG': False}
+Samples tested: [0, 1, 2]
+[0, 1, 2]
+gpt-3.5-turbo-0613
+Loading preprocessed dataset...
+Model name: gpt-3.5-turbo-0613
+The number of samples being tested: 3
+SQL run:
+ SELECT *
+FROM table_sql
+ORDER BY opponents ASC;
+-- Order the table by 'opponents' in ascending order.
+SQL cols:
+ ['opponents']
+SQL run:
+ SELECT *
+FROM table_sql
+WHERE opponents = 0;
+-- Select rows where 'opponents' is 0.
+SQL cols:
+ ['opponents']
+SQL run:
+ SELECT CASE 
+         WHEN COUNT(*) = 4 THEN 'TRUE'
+         ELSE 'FALSE'
+       END AS verification_result
+FROM table_sql;
+-- Use a `CASE` statement to return TRUE if the number of rows is equal to 4, otherwise return FALSE.
+SQL cols:
+ []
+SQL run:
+ SELECT *
+FROM table_sql
+WHERE result = 'loss';
+-- Select rows where the 'result' is 'loss'.
+SQL cols:
+ ['result']
+SQL run:
+ SELECT *
+FROM table_sql
+WHERE wildcats_points > 7;
+-- Select rows where the 'wildcats_points' is greater than 7.
+SQL cols:
+ ['wildcats_points']
+SQL run:
+ SELECT CASE 
+         WHEN COUNT(*) = 0 THEN 'TRUE'
+         ELSE 'FALSE'
+       END AS verification_result
+FROM table_sql;
+-- Use a `CASE` statement to return TRUE if the number of rows is equal to 0, otherwise return FALSE.
+SQL cols:
+ []
+SQL run:
+ SELECT *
+FROM table_sql
+WHERE result = 'loss';
+-- Select rows where the 'result' is 'loss'.
+SQL cols:
+ ['result']
+SQL run:
+ SELECT *
+FROM table_sql
+WHERE date LIKE '%-09-%';
+-- Select rows where the 'date' is in September.
+SQL cols:
+ ['date']
+SQL run:
+ SELECT CASE 
+         WHEN COUNT(*) = 1 THEN 'TRUE'
+         ELSE 'FALSE'
+       END AS verification_result
+FROM table_sql;
+-- Use a `CASE` statement to return TRUE if the number of rows is equal to 1, otherwise return FALSE.
+SQL cols:
+ []
+Number of total samples tested: 3
+Final computation:
+
+{}
+Wrong Samples:
+ []
+
+
+Executability: 3 / 3
+Executability Rate: 100.0
+
+
+Fall-back Rate: 0.0
+
+
+PoS Rate: 100.0
+
+
+PoS Acc: 100.0
+
+
+Correct/Total:3/3
+Wrong/Total:0/3
+NA/Total:0/3
+POS Accuracy: 100.00
+Final Accuracy: 100.00

@@ -1,0 +1,110 @@
+************************************************************************************************************************
+Sample 2258 - Plan 1: Query: which team did the badgers play first this season?
+Sample 2258 - Plan 1: Groundtruth: ['Northern Iowa']
+Sample 2258 - Plan 1: X-Original table pd: 
+               date      time                opponent_ rank_  \
+0       september 1   2:30 pm  #9 (fcs) northern iowa*   #12   
+1       september 8   3:00 pm         at oregon state*   #13   
+2      september 15   7:00 pm              utah state*   #22   
+3      september 22  11:00 am                    utep*   #24   
+4      september 29   7:00 pm          at #20 nebraska   #23   
+5         october 6   2:30 pm                 illinois         
+6        october 13  11:00 am                at purdue         
+7        october 20  11:00 am                minnesota         
+8        october 27   2:30 pm           michigan state   #25   
+9       november 10  11:00 am               at indiana         
+10      november 17   2:30 pm               ohio state         
+11      november 24   2:30 pm            at penn state         
+12       december 1   7:00 pm         vs. #14 nebraska         
+13  january 1, 2013   4:10 pm          vs. #8 stanford   #23   
+
+                                                 site         tv      result  \
+0                  camp randall stadium • madison, wi        btn     w 26–21   
+1                       reser stadium • corvallis, or         fx      l 7–10   
+2                  camp randall stadium • madison, wi        btn     w 16–14   
+3                  camp randall stadium • madison, wi      espn2     w 37–26   
+4                      memorial stadium • lincoln, ne        abc     l 27–30   
+5                  camp randall stadium • madison, wi  abc/espn2     w 31–14   
+6               ross-ade stadium • west lafayette, in        btn     w 38–14   
+7   camp randall stadium • madison, wi (paul bunya...      espnu     w 38–13   
+8                  camp randall stadium • madison, wi  abc/espn2  l 13–16 ot   
+9                  memorial stadium • bloomington, in      espn2     w 62–14   
+10                 camp randall stadium • madison, wi  abc/espn2  l 14–21 ot   
+11               beaver stadium • university park, pa      espn2  l 21–24 ot   
+12  lucas oil stadium • indianapolis, in (big ten ...        fox     w 70–31   
+13               rose bowl • pasadena, ca (rose bowl)       espn     l 14–20   
+
+   attendance  
+0      79,568  
+1      42,189  
+2      79,332  
+3      79,806  
+4      85,962  
+5      80,096  
+6      46,007  
+7      80,587  
+8      80,538  
+9      43,240  
+10     80,112  
+11     93,505  
+12     41,260  
+13     93,259  
+Sample 2258 - Plan 1: Caption: none
+Sample 2258 - Plan 1: Original table: [['date', 'time', 'opponent_', 'rank_', 'site', 'tv', 'result', 'attendance'], ['september 1', '2:30 pm', '#9 (fcs)\xa0northern iowa*', '#12', 'camp randall stadium • madison, wi', 'btn', 'w\xa026–21', '79,568'], ['september 8', '3:00 pm', 'at\xa0oregon state*', '#13', 'reser stadium • corvallis, or', 'fx', 'l\xa07–10', '42,189'], ['september 15', '7:00 pm', 'utah state*', '#22', 'camp randall stadium • madison, wi', 'btn', 'w\xa016–14', '79,332'], ['september 22', '11:00 am', 'utep*', '#24', 'camp randall stadium • madison, wi', 'espn2', 'w\xa037–26', '79,806'], ['september 29', '7:00 pm', 'at\xa0#20\xa0nebraska', '#23', 'memorial stadium • lincoln, ne', 'abc', 'l\xa027–30', '85,962'], ['october 6', '2:30 pm', 'illinois', '', 'camp randall stadium • madison, wi', 'abc/espn2', 'w\xa031–14', '80,096'], ['october 13', '11:00 am', 'at\xa0purdue', '', 'ross-ade stadium • west lafayette, in', 'btn', 'w\xa038–14', '46,007'], ['october 20', '11:00 am', 'minnesota', '', "camp randall stadium • madison, wi (paul bunyan's axe)", 'espnu', 'w\xa038–13', '80,587'], ['october 27', '2:30 pm', 'michigan state', '#25', 'camp randall stadium • madison, wi', 'abc/espn2', 'l\xa013–16\xa0ot', '80,538'], ['november 10', '11:00 am', 'at\xa0indiana', '', 'memorial stadium • bloomington, in', 'espn2', 'w\xa062–14', '43,240'], ['november 17', '2:30 pm', 'ohio state', '', 'camp randall stadium • madison, wi', 'abc/espn2', 'l\xa014–21\xa0ot', '80,112'], ['november 24', '2:30 pm', 'at\xa0penn state', '', 'beaver stadium • university park, pa', 'espn2', 'l\xa021–24\xa0ot', '93,505'], ['december 1', '7:00 pm', 'vs.\xa0#14\xa0nebraska', '', 'lucas oil stadium • indianapolis, in (big ten championship game)', 'fox', 'w\xa070–31', '41,260'], ['january 1, 2013', '4:10 pm', 'vs.\xa0#8\xa0stanford', '#23', 'rose bowl • pasadena, ca (rose bowl)', 'espn', 'l\xa014–20', '93,259']]
+########################################################################################################################
+Sample 2258 - Plan 1: Operation 1: Select the 'opponent_' column.
+Sample 2258 - Plan 1: Selected indices: []
+Sample 2258 - Plan 1: X-Table after operation df:
+                  opponent_
+0   #9 (fcs) northern iowa*
+1          at oregon state*
+2               utah state*
+3                     utep*
+4           at #20 nebraska
+5                  illinois
+6                 at purdue
+7                 minnesota
+8            michigan state
+9                at indiana
+10               ohio state
+11            at penn state
+12         vs. #14 nebraska
+13          vs. #8 stanford
+Sample 2258 - Plan 1: Table after operation: [['opponent_'], ['#9 (fcs)\xa0northern iowa*'], ['at\xa0oregon state*'], ['utah state*'], ['utep*'], ['at\xa0#20\xa0nebraska'], ['illinois'], ['at\xa0purdue'], ['minnesota'], ['michigan state'], ['at\xa0indiana'], ['ohio state'], ['at\xa0penn state'], ['vs.\xa0#14\xa0nebraska'], ['vs.\xa0#8\xa0stanford']]
+########################################################################################################################
+Sample 2258 - Plan 1: Operation 2: Order the table by the 'date' column in ascending order.
+Sample 2258 - Plan 1: Selected indices: [[9, 0], [4, 0], [0, 0], [11, 0], [12, 0], [7, 0], [2, 0], [13, 0], [8, 0], [3, 0], [10, 0], [5, 0], [6, 0], [1, 0]]
+Sample 2258 - Plan 1: X-Table after operation df:
+                  opponent_
+0   #9 (fcs) northern iowa*
+1           at #20 nebraska
+2                at indiana
+3          at oregon state*
+4             at penn state
+5                 at purdue
+6                  illinois
+7            michigan state
+8                 minnesota
+9                ohio state
+10              utah state*
+11                    utep*
+12         vs. #14 nebraska
+13          vs. #8 stanford
+Sample 2258 - Plan 1: Table after operation: [['opponent_'], ['#9 (fcs)\xa0northern iowa*'], ['at\xa0#20\xa0nebraska'], ['at\xa0indiana'], ['at\xa0oregon state*'], ['at\xa0penn state'], ['at\xa0purdue'], ['illinois'], ['michigan state'], ['minnesota'], ['ohio state'], ['utah state*'], ['utep*'], ['vs.\xa0#14\xa0nebraska'], ['vs.\xa0#8\xa0stanford']]
+########################################################################################################################
+Sample 2258 - Plan 1: Operation 3: Select row number 1.
+Sample 2258 - Plan 1: Selected indices: []
+Sample 2258 - Plan 1: X-Table after operation df:
+                 opponent_
+0  #9 (fcs) northern iowa*
+Sample 2258 - Plan 1: Table after operation: [['opponent_'], ['#9 (fcs)\xa0northern iowa*']]
+########################################################################################################################
+Sample 2258 - Plan 1: Operation 4: Select the 'opponent_' column.
+Sample 2258 - Plan 1: Selected indices: []
+Sample 2258 - Plan 1: X-Table after operation df:
+                 opponent_
+0  #9 (fcs) northern iowa*
+Sample 2258 - Plan 1: Table after operation: [['opponent_'], ['#9 (fcs)\xa0northern iowa*']]
+Fall-back: FALSE
+Answer from plan 1: [['#9 (fcs)\xa0northern iowa*']]
+Groundtruth: ['Northern Iowa']

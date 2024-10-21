@@ -1,0 +1,1357 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> what is the total number of hospital beds at chatham hospital?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where 'name' is 'chatham hospital'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>name</td>
+<td>city</td>
+<td>hospital_beds</td>
+<td>operating_rooms</td>
+<td>total</td>
+<td>trauma_designation</td>
+<td>affiliation</td>
+<td>notes</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">alamance regional medical center</span></td>
+<td>burlington</td>
+<td>238</td>
+<td>15</td>
+<td>253</td>
+<td>-</td>
+<td>cone</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">albemarle hospital</span></td>
+<td>elizabeth city</td>
+<td>182</td>
+<td>13</td>
+<td>195</td>
+<td>-</td>
+<td>vidant</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">alexander hospital</span></td>
+<td>hickory</td>
+<td>25</td>
+<td>3</td>
+<td>28</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">alleghany memorial hospital</span></td>
+<td>sparta</td>
+<td>41</td>
+<td>2</td>
+<td>43</td>
+<td>-</td>
+<td>qhr</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">angel medical center</span></td>
+<td>franklin</td>
+<td>59</td>
+<td>7</td>
+<td>66</td>
+<td>-</td>
+<td>mission</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">annie penn hospital</span></td>
+<td>reidsville</td>
+<td>110</td>
+<td>6</td>
+<td>116</td>
+<td>-</td>
+<td>cone</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">anson community hospital</span></td>
+<td>wadesboro</td>
+<td>147</td>
+<td>3</td>
+<td>150</td>
+<td>-</td>
+<td>chs</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ashe memorial hospital</span></td>
+<td>jefferson</td>
+<td>136</td>
+<td>3</td>
+<td>139</td>
+<td>-</td>
+<td>novant</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">asheville specialty hospital</span></td>
+<td>asheville</td>
+<td>34</td>
+<td>0</td>
+<td>34</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">vidant beaufort hospital</span></td>
+<td>washington</td>
+<td>142</td>
+<td>7</td>
+<td>149</td>
+<td>-</td>
+<td>vidant</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">vidant bertie hospital</span></td>
+<td>windsor</td>
+<td>6</td>
+<td>2</td>
+<td>8</td>
+<td>-</td>
+<td>vidant</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">betsy johnson regional hospital</span></td>
+<td>dunn</td>
+<td>101</td>
+<td>6</td>
+<td>107</td>
+<td>-</td>
+<td>hhs</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">blowing rock hospital</span></td>
+<td>blowing rock</td>
+<td>100</td>
+<td>2</td>
+<td>102</td>
+<td>-</td>
+<td>arhs</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">blue ridge regional hospital</span></td>
+<td>spruce pine</td>
+<td>46</td>
+<td>4</td>
+<td>50</td>
+<td>-</td>
+<td>mission</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">novant health brunswick medical center</span></td>
+<td>supply</td>
+<td>60</td>
+<td>6</td>
+<td>66</td>
+<td>-</td>
+<td>novant</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">caldwell memorial hospital</span></td>
+<td>lenoir</td>
+<td>110</td>
+<td>10</td>
+<td>120</td>
+<td>-</td>
+<td>unc</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cape fear valley medical center</span></td>
+<td>fayetteville</td>
+<td>600</td>
+<td>22</td>
+<td>622</td>
+<td>-</td>
+<td>cape fear</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cape fear valley-bladen county hospital</span></td>
+<td>elizabethtown</td>
+<td>58</td>
+<td>2</td>
+<td>60</td>
+<td>-</td>
+<td>cape fear</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">carepartners rehabilitation hospital</span></td>
+<td>asheville</td>
+<td>80</td>
+<td>0</td>
+<td>80</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">carolinaeast medical center</span></td>
+<td>new bern</td>
+<td>350</td>
+<td>20</td>
+<td>370</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">carolinas medical center-pineville</span></td>
+<td>charlotte</td>
+<td>305</td>
+<td>26</td>
+<td>331</td>
+<td>-</td>
+<td>chs</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">carolinas medical center-lincoln</span></td>
+<td>lincolnton</td>
+<td>101</td>
+<td>6</td>
+<td>107</td>
+<td>-</td>
+<td>chs</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">carolinas medical center-northeast</span></td>
+<td>concord</td>
+<td>457</td>
+<td>25</td>
+<td>482</td>
+<td>level iii</td>
+<td>chs</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">carolinas medical center-union</span></td>
+<td>monroe</td>
+<td>227</td>
+<td>9</td>
+<td>236</td>
+<td>-</td>
+<td>chs</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">carolinas medical center-university</span></td>
+<td>charlotte</td>
+<td>130</td>
+<td>15</td>
+<td>145</td>
+<td>-</td>
+<td>chs</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">carolinas medical center/center for mental health</span></td>
+<td>charlotte</td>
+<td>874</td>
+<td>51</td>
+<td>925</td>
+<td>level i</td>
+<td>chs</td>
+<td>secondary campus of the university of north carolina school of medicine</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">carolinas rehabilitation</span></td>
+<td>charlotte</td>
+<td>119</td>
+<td>0</td>
+<td>119</td>
+<td>-</td>
+<td>chs</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">carolinas rehabilitation mt. holly</span></td>
+<td>belmont</td>
+<td>40</td>
+<td>0</td>
+<td>40</td>
+<td>-</td>
+<td>chs</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">carolinas specialty hospital</span></td>
+<td>charlotte</td>
+<td>40</td>
+<td>0</td>
+<td>40</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">carteret general hospital</span></td>
+<td>morehead city</td>
+<td>135</td>
+<td>8</td>
+<td>143</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">catawba valley medical center</span></td>
+<td>hickory</td>
+<td>258</td>
+<td>16</td>
+<td>274</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">central carolina hospital</span></td>
+<td>sanford</td>
+<td>137</td>
+<td>8</td>
+<td>145</td>
+<td>-</td>
+<td>tenet</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">charles a. cannon, jr. memorial hospital</span></td>
+<td>linville</td>
+<td>50</td>
+<td>3</td>
+<td>50</td>
+<td>-</td>
+<td>arhs</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">chatham hospital</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">siler city</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">25</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">28</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">-</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">unc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">-</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">vidant chowan hospital</span></td>
+<td>edenton</td>
+<td>89</td>
+<td>4</td>
+<td>93</td>
+<td>-</td>
+<td>vidant</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cleveland regional medical center</span></td>
+<td>shelby</td>
+<td>241</td>
+<td>11</td>
+<td>252</td>
+<td>level iii</td>
+<td>chs</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">columbus regional healthcare system</span></td>
+<td>whiteville</td>
+<td>154</td>
+<td>7</td>
+<td>161</td>
+<td>-</td>
+<td>chs</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cone health</span></td>
+<td>greensboro</td>
+<td>907</td>
+<td>62</td>
+<td>969</td>
+<td>level ii</td>
+<td>cone</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">crawley memorial hospital</span></td>
+<td>boiling springs</td>
+<td>50</td>
+<td>10</td>
+<td>60</td>
+<td>-</td>
+<td>chs</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">davie county hospital</span></td>
+<td>mocksville</td>
+<td>81</td>
+<td>3</td>
+<td>84</td>
+<td>-</td>
+<td>wfu</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">davis regional medical center</span></td>
+<td>statesville</td>
+<td>131</td>
+<td>8</td>
+<td>139</td>
+<td>-</td>
+<td>hma</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">duke health raleigh hospital</span></td>
+<td>raleigh</td>
+<td>186</td>
+<td>16</td>
+<td>202</td>
+<td>-</td>
+<td>duke</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">duke university hospital</span></td>
+<td>durham</td>
+<td>943</td>
+<td>59</td>
+<td>1002</td>
+<td>level i</td>
+<td>duke</td>
+<td>primary teaching hospital of duke university school of medicine</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">vidant duplin hospital</span></td>
+<td>kenansville</td>
+<td>101</td>
+<td>3</td>
+<td>104</td>
+<td>-</td>
+<td>vidant</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">durham regional hospital</span></td>
+<td>durham</td>
+<td>369</td>
+<td>19</td>
+<td>388</td>
+<td>-</td>
+<td>duke</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">firsthealth montgomery memorial hospital</span></td>
+<td>troy</td>
+<td>37</td>
+<td>2</td>
+<td>39</td>
+<td>-</td>
+<td>firsthealth</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">firsthealth moore regional hospital and pinehurst treatment</span></td>
+<td>pinehurst</td>
+<td>372</td>
+<td>19</td>
+<td>391</td>
+<td>-</td>
+<td>firsthealth</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">firsthealth moore regional hospital hoke campus</span></td>
+<td>pinehurst, north carolina</td>
+<td>8</td>
+<td>1</td>
+<td>9</td>
+<td>-</td>
+<td>firsthealth</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">firsthealth richmond memorial hospital</span></td>
+<td>rockingham</td>
+<td>150</td>
+<td>6</td>
+<td>156</td>
+<td>-</td>
+<td>firsthealth</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">novant health forsyth medical center</span></td>
+<td>winston-salem</td>
+<td>919</td>
+<td>38</td>
+<td>957</td>
+<td>-</td>
+<td>novant</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">novant health franklin regional medical center</span></td>
+<td>louisburg</td>
+<td>70</td>
+<td>4</td>
+<td>74</td>
+<td>-</td>
+<td>novant</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">frye regional medical center</span></td>
+<td>hickory</td>
+<td>355</td>
+<td>23</td>
+<td>378</td>
+<td>-</td>
+<td>tenet</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gaston memorial hospital</span></td>
+<td>gastonia</td>
+<td>435</td>
+<td>30</td>
+<td>465</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">grace hospital</span></td>
+<td>morganton</td>
+<td>184</td>
+<td>7</td>
+<td>191</td>
+<td>-</td>
+<td>chs</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">granville health system</span></td>
+<td>oxford</td>
+<td>142</td>
+<td>4</td>
+<td>146</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">halifax regional medical center</span></td>
+<td>roanoke rapids</td>
+<td>204</td>
+<td>7</td>
+<td>211</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">harris regional hospital</span></td>
+<td>sylva</td>
+<td>86</td>
+<td>7</td>
+<td>93</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">haywood regional medical center</span></td>
+<td>clyde</td>
+<td>189</td>
+<td>10</td>
+<td>199</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">vidant edgecombe hospital</span></td>
+<td>tarboro</td>
+<td>117</td>
+<td>8</td>
+<td>125</td>
+<td>-</td>
+<td>vidant</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">high point regional health system</span></td>
+<td>high point</td>
+<td>384</td>
+<td>15</td>
+<td>399</td>
+<td>level iii</td>
+<td>unc</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">highlands-cashiers hospital</span></td>
+<td>highlands</td>
+<td>108</td>
+<td>4</td>
+<td>112</td>
+<td>-</td>
+<td>mission</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">highsmith-rainey specialty hospital</span></td>
+<td>fayetteville</td>
+<td>66</td>
+<td>7</td>
+<td>73</td>
+<td>-</td>
+<td>cape fear</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">hoots memorial hospital</span></td>
+<td>yadkinville</td>
+<td>22</td>
+<td>3</td>
+<td>25</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">hugh chatham memorial hospital</span></td>
+<td>elkin</td>
+<td>220</td>
+<td>8</td>
+<td>228</td>
+<td>-</td>
+<td>qhr</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">iredell memorial hospital</span></td>
+<td>statesville</td>
+<td>247</td>
+<td>14</td>
+<td>261</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">j. arthur dosher memorial hospital</span></td>
+<td>southport</td>
+<td>100</td>
+<td>4</td>
+<td>104</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">johnston health</span></td>
+<td>smithfield</td>
+<td>177</td>
+<td>10</td>
+<td>187</td>
+<td>-</td>
+<td>unc</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">novant health kernersville medical center</span></td>
+<td>kernersville</td>
+<td>50</td>
+<td>4</td>
+<td>54</td>
+<td>-</td>
+<td>novant</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kindred hospital - greensboro</span></td>
+<td>greensboro</td>
+<td>124</td>
+<td>1</td>
+<td>125</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kings mountain hospital</span></td>
+<td>kings mountain</td>
+<td>102</td>
+<td>3</td>
+<td>105</td>
+<td>-</td>
+<td>chs</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lake norman regional medical center</span></td>
+<td>mooresville</td>
+<td>123</td>
+<td>11</td>
+<td>134</td>
+<td>-</td>
+<td>hma</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lenoir memorial hospital</span></td>
+<td>kinston</td>
+<td>261</td>
+<td>12</td>
+<td>273</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lexington memorial hospital</span></td>
+<td>lexington</td>
+<td>94</td>
+<td>6</td>
+<td>100</td>
+<td>-</td>
+<td>wfu</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lifecare hospitals of north carolina</span></td>
+<td>rocky mount</td>
+<td>50</td>
+<td>0</td>
+<td>50</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">margaret r. pardee memorial hospital</span></td>
+<td>hendersonville</td>
+<td>222</td>
+<td>13</td>
+<td>235</td>
+<td>-</td>
+<td>unc</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">maria parham medical center</span></td>
+<td>henderson</td>
+<td>102</td>
+<td>7</td>
+<td>109</td>
+<td>-</td>
+<td>dukelp</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">martin general hospital</span></td>
+<td>williamston</td>
+<td>49</td>
+<td>3</td>
+<td>52</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">novant health medical park hospital</span></td>
+<td>winston-salem</td>
+<td>22</td>
+<td>13</td>
+<td>35</td>
+<td>-</td>
+<td>novant</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">memorial mission hospital and asheville surgery center</span></td>
+<td>asheville</td>
+<td>730</td>
+<td>36</td>
+<td>766</td>
+<td>level ii</td>
+<td>mission</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">morehead memorial hospital</span></td>
+<td>eden</td>
+<td>229</td>
+<td>8</td>
+<td>237</td>
+<td>-</td>
+<td>qhr</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">murphy medical center</span></td>
+<td>murphy</td>
+<td>191</td>
+<td>6</td>
+<td>197</td>
+<td>-</td>
+<td>chs</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nash general hospital</span></td>
+<td>rocky mount</td>
+<td>353</td>
+<td>18</td>
+<td>371</td>
+<td>-</td>
+<td>nash</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new hanover regional medical center</span></td>
+<td>wilmington</td>
+<td>769</td>
+<td>37</td>
+<td>806</td>
+<td>level ii</td>
+<td>nhrmc</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">north carolina specialty hospital</span></td>
+<td>durham</td>
+<td>18</td>
+<td>4</td>
+<td>22</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">northern hospital of surry county</span></td>
+<td>mount airy</td>
+<td>133</td>
+<td>7</td>
+<td>140</td>
+<td>-</td>
+<td>qhr</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">onslow memorial hospital</span></td>
+<td>jacksonville</td>
+<td>162</td>
+<td>13</td>
+<td>175</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">our community hospital</span></td>
+<td>scotland neck</td>
+<td>100</td>
+<td>0</td>
+<td>100</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">park ridge health</span></td>
+<td>hendersonville</td>
+<td>103</td>
+<td>7</td>
+<td>110</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pender memorial hospital</span></td>
+<td>burgaw</td>
+<td>86</td>
+<td>3</td>
+<td>89</td>
+<td>-</td>
+<td>nhrmc</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">person memorial hospital</span></td>
+<td>roxboro</td>
+<td>110</td>
+<td>5</td>
+<td>115</td>
+<td>-</td>
+<td>dukelp</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">novant health presbyterian medical center</span></td>
+<td>charlotte</td>
+<td>531</td>
+<td>43</td>
+<td>574</td>
+<td>-</td>
+<td>novant</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">novant health huntersville medical center</span></td>
+<td>huntersville</td>
+<td>60</td>
+<td>8</td>
+<td>68</td>
+<td>-</td>
+<td>novant</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">novant health matthews medical center</span></td>
+<td>matthews</td>
+<td>102</td>
+<td>14</td>
+<td>116</td>
+<td>-</td>
+<td>novant</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">novant health charlotte orthopaedic hospital</span></td>
+<td>charlotte</td>
+<td>156</td>
+<td>12</td>
+<td>168</td>
+<td>-</td>
+<td>novant</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">vidant pungo hospital</span></td>
+<td>belhaven</td>
+<td>49</td>
+<td>2</td>
+<td>51</td>
+<td>-</td>
+<td>vidant</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">randolph hospital</span></td>
+<td>asheboro</td>
+<td>145</td>
+<td>8</td>
+<td>153</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rex healthcare</span></td>
+<td>raleigh</td>
+<td>665</td>
+<td>38</td>
+<td>703</td>
+<td>-</td>
+<td>unc</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">vidant roanoke-chowan hospital</span></td>
+<td>ahoskie</td>
+<td>114</td>
+<td>7</td>
+<td>121</td>
+<td>-</td>
+<td>vidant</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">novant health rowan medical center</span></td>
+<td>salisbury</td>
+<td>268</td>
+<td>17</td>
+<td>285</td>
+<td>-</td>
+<td>novant</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rutherford regional medical center</span></td>
+<td>rutherfordton</td>
+<td>143</td>
+<td>7</td>
+<td>150</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sampson regional medical center</span></td>
+<td>clinton</td>
+<td>146</td>
+<td>8</td>
+<td>154</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sandhills regional medical center</span></td>
+<td>hamlet</td>
+<td>64</td>
+<td>5</td>
+<td>69</td>
+<td>-</td>
+<td>hma</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">scotland memorial hospital and edwin morgan center</span></td>
+<td>laurinburg</td>
+<td>154</td>
+<td>8</td>
+<td>162</td>
+<td>-</td>
+<td>chs</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">select specialty hospital - durham</span></td>
+<td>durham</td>
+<td>30</td>
+<td>0</td>
+<td>30</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">select specialty hospital - winston-salem</span></td>
+<td>winston-salem</td>
+<td>42</td>
+<td>0</td>
+<td>42</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">select specialty hospital-greensboro</span></td>
+<td>greensboro</td>
+<td>30</td>
+<td>0</td>
+<td>30</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">southeastern regional medical center</span></td>
+<td>lumberton</td>
+<td>452</td>
+<td>15</td>
+<td>467</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">st. luke's hospital</span></td>
+<td>columbus</td>
+<td>55</td>
+<td>3</td>
+<td>58</td>
+<td>-</td>
+<td>chs</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stanly regional medical center</span></td>
+<td>albemarle</td>
+<td>119</td>
+<td>8</td>
+<td>127</td>
+<td>-</td>
+<td>chs</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stokes-reynolds memorial hospital</span></td>
+<td>danbury</td>
+<td>93</td>
+<td>5</td>
+<td>98</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">swain county hospital</span></td>
+<td>bryson city</td>
+<td>48</td>
+<td>2</td>
+<td>50</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the mcdowell hospital</span></td>
+<td>marion</td>
+<td>65</td>
+<td>4</td>
+<td>69</td>
+<td>-</td>
+<td>mission</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the outer banks hospital</span></td>
+<td>nags head</td>
+<td>21</td>
+<td>5</td>
+<td>26</td>
+<td>-</td>
+<td>vidant</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">thomasville medical center</span></td>
+<td>thomasville</td>
+<td>149</td>
+<td>7</td>
+<td>156</td>
+<td>-</td>
+<td>novant</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">transylvania regional hospital</span></td>
+<td>brevard</td>
+<td>92</td>
+<td>6</td>
+<td>98</td>
+<td>-</td>
+<td>mission</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">university of north carolina hospitals</span></td>
+<td>chapel hill</td>
+<td>778</td>
+<td>48</td>
+<td>826</td>
+<td>level i</td>
+<td>unc</td>
+<td>primary teaching hospital of university of north carolina at chapel hill school of medicine</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">valdese general hospital</span></td>
+<td>valdese</td>
+<td>131</td>
+<td>6</td>
+<td>137</td>
+<td>-</td>
+<td>chs</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">vidant medical center</span></td>
+<td>greenville</td>
+<td>861</td>
+<td>35</td>
+<td>896</td>
+<td>level i</td>
+<td>vidant</td>
+<td>primary teaching hospital of east carolina university brody school of medicine</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wake forest baptist medical center</span></td>
+<td>winston-salem</td>
+<td>885</td>
+<td>50</td>
+<td>935</td>
+<td>level i</td>
+<td>wfu</td>
+<td>primary teaching hospital of wake forest school of medicine</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wakemed</span></td>
+<td>raleigh</td>
+<td>618</td>
+<td>35</td>
+<td>653</td>
+<td>level i</td>
+<td>wakemed</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wakemed cary hospital</span></td>
+<td>cary</td>
+<td>192</td>
+<td>15</td>
+<td>207</td>
+<td>-</td>
+<td>wakemed</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">washington county hospital</span></td>
+<td>plymouth</td>
+<td>49</td>
+<td>2</td>
+<td>51</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">watauga medical center</span></td>
+<td>boone</td>
+<td>117</td>
+<td>9</td>
+<td>126</td>
+<td>-</td>
+<td>arhs</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wayne memorial hospital</span></td>
+<td>goldsboro</td>
+<td>316</td>
+<td>15</td>
+<td>331</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wilkes regional medical center</span></td>
+<td>north wilkesboro</td>
+<td>144</td>
+<td>9</td>
+<td>153</td>
+<td>-</td>
+<td>chs</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wilson medical center</span></td>
+<td>wilson</td>
+<td>294</td>
+<td>15</td>
+<td>309</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select the 'hospital_beds' column.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>name</td>
+<td>city</td>
+<td>hospital_beds</td>
+<td>operating_rooms</td>
+<td>total</td>
+<td>trauma_designation</td>
+<td>affiliation</td>
+<td>notes</td>
+</tr>
+<tr>
+<td>chatham hospital</td>
+<td>siler city</td>
+<td>25</td>
+<td>3</td>
+<td>28</td>
+<td>-</td>
+<td>unc</td>
+<td>-</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Sum the values in the 'hospital_beds' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>hospital_beds</td>
+</tr>
+<tr>
+<td>25</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>total_beds</td>
+</tr>
+<tr>
+<td>25</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[25]]</h3>
+</body></html>

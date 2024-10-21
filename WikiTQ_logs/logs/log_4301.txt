@@ -1,0 +1,389 @@
+************************************************************************************************************************
+Sample 4301 - Plan 1: Query: how long did they play before they won a game?
+Sample 4301 - Plan 1: Groundtruth: ['2 games']
+Sample 4301 - Plan 1: X-Original table pd: 
+           date                        opponents venue result  \
+0   19 aug 1950                nottingham forest     h    0–2   
+1   24 aug 1950                        port vale     a    0–1   
+2   26 aug 1950                   torquay united     a    4–3   
+3   31 aug 1950                        port vale     h    2–1   
+4    2 sep 1950                        aldershot     h    7–0   
+5    7 sep 1950                          watford     a    2–0   
+6    9 sep 1950                     swindon town     a    0–2   
+7   14 sep 1950                          watford     h    2–2   
+8   16 sep 1950                colchester united     h    2–0   
+9   21 sep 1950                 northampton town     h    2–2   
+10  23 sep 1950                   bristol rovers     a    0–1   
+11  30 sep 1950                   crystal palace     h    2–4   
+12   7 oct 1950                         millwall     h    2–3   
+13  14 oct 1950                     bristol city     a    1–2   
+14  21 oct 1950                       gillingham     h    1–0   
+15  28 oct 1950  bournemouth & boscombe athletic     a    0–2   
+16   4 nov 1950                      exeter city     h    0–3   
+17  11 nov 1950                  southend united     a    0–3   
+18  18 nov 1950                          reading     h    5–0   
+19   2 dec 1950                     ipswich town     h    1–2   
+20  23 dec 1950                   torquay united     h    2–1   
+21  25 dec 1950                          walsall     a    0–0   
+22  26 dec 1950                          walsall     h    3–0   
+23  30 dec 1950                        aldershot     a    1–3   
+24  13 jan 1951                     swindon town     h    2–1   
+25  20 jan 1951                colchester united     a    1–1   
+26   3 feb 1951                   bristol rovers     h    2–1   
+27  10 feb 1951                  plymouth argyle     a    1–1   
+28  17 feb 1951                   crystal palace     a    1–1   
+29  24 feb 1951                         millwall     a    4–2   
+30   3 mar 1951                     bristol city     h    0–1   
+31  10 mar 1951                       gillingham     a    1–0   
+32  24 mar 1951                      exeter city     a    2–2   
+33  26 mar 1951                     norwich city     a    1–2   
+34  31 mar 1951                  southend united     h    6–1   
+35   5 apr 1951                 northampton town     a    4–1   
+36   7 apr 1951                          reading     a    0–5   
+37  12 apr 1951                    leyton orient     a    3–0   
+38  14 apr 1951                  plymouth argyle     h    2–0   
+39  18 apr 1951           brighton & hove albion     a    1–9   
+40  21 apr 1951                     ipswich town     a    1–2   
+41  25 apr 1951                     norwich city     h    1–1   
+42  28 apr 1951                    leyton orient     h    0–0   
+43  30 apr 1951  bournemouth & boscombe athletic     h    1–0   
+44   2 may 1951                nottingham forest     a    1–2   
+45   5 may 1951           brighton & hove albion     h    3–0   
+
+                               scorers attendance  
+0                                          16,595  
+1                                          30,196  
+2      cowley, parker, roffi, shergold     10,276  
+3                        parker, moore     13,537  
+4          roffi 4, parker 2, m.haines     13,696  
+5                        parker, moore      9,451  
+6                                          14,021  
+7                     newall, m.haines     12,116  
+8                             parker 2     16,021  
+9                        parker, moore     13,845  
+10                                         19,816  
+11                       cowley, moore     10,114  
+12                      moore, beattie     13,129  
+13                              parker     22,930  
+14                            shergold      9,828  
+15                                         13,466  
+16                                         10,653  
+17                                          9,882  
+18    birch 2, parker, shergold, aston      8,529  
+19                             hayward     11,496  
+20                    parker, shergold      8,369  
+21                                          7,832  
+22                parker, moore, birch     13,160  
+23                               moore      6,291  
+24                     shergold, birch     12,485  
+25                               birch      8,230  
+26                             birch 2     11,802  
+27                              parker     13,408  
+28                            shergold      9,990  
+29    parker, moore, shergold, beattie     15,788  
+30                                         11,494  
+31                               birch      9,040  
+32                     parker, beattie      7,565  
+33                               birch     35,267  
+34  moore 2, shergold 2, parker, birch      9,544  
+35            moore 2, hayward, parker      6,425  
+36                                         12,939  
+37             parker, moore, shergold      8,270  
+38                       parker, moore     11,962  
+39                              parker     12,114  
+40                               moore     10,294  
+41                               moore     13,862  
+42                                          7,564  
+43                            shergold      5,563  
+44                              parker     21,468  
+45                parker, moore, birch      9,274  
+Sample 4301 - Plan 1: Caption: none
+Sample 4301 - Plan 1: Original table: [['date', 'opponents', 'venue', 'result', 'scorers', 'attendance'], ['19 aug 1950', 'nottingham forest', 'h', '0–2', '', '16,595'], ['24 aug 1950', 'port vale', 'a', '0–1', '', '30,196'], ['26 aug 1950', 'torquay united', 'a', '4–3', 'cowley, parker, roffi, shergold', '10,276'], ['31 aug 1950', 'port vale', 'h', '2–1', 'parker, moore', '13,537'], ['2 sep 1950', 'aldershot', 'h', '7–0', 'roffi 4, parker 2, m.haines', '13,696'], ['7 sep 1950', 'watford', 'a', '2–0', 'parker, moore', '9,451'], ['9 sep 1950', 'swindon town', 'a', '0–2', '', '14,021'], ['14 sep 1950', 'watford', 'h', '2–2', 'newall, m.haines', '12,116'], ['16 sep 1950', 'colchester united', 'h', '2–0', 'parker 2', '16,021'], ['21 sep 1950', 'northampton town', 'h', '2–2', 'parker, moore', '13,845'], ['23 sep 1950', 'bristol rovers', 'a', '0–1', '', '19,816'], ['30 sep 1950', 'crystal palace', 'h', '2–4', 'cowley, moore', '10,114'], ['7 oct 1950', 'millwall', 'h', '2–3', 'moore, beattie', '13,129'], ['14 oct 1950', 'bristol city', 'a', '1–2', 'parker', '22,930'], ['21 oct 1950', 'gillingham', 'h', '1–0', 'shergold', '9,828'], ['28 oct 1950', 'bournemouth & boscombe athletic', 'a', '0–2', '', '13,466'], ['4 nov 1950', 'exeter city', 'h', '0–3', '', '10,653'], ['11 nov 1950', 'southend united', 'a', '0–3', '', '9,882'], ['18 nov 1950', 'reading', 'h', '5–0', 'birch 2, parker, shergold, aston', '8,529'], ['2 dec 1950', 'ipswich town', 'h', '1–2', 'hayward', '11,496'], ['23 dec 1950', 'torquay united', 'h', '2–1', 'parker, shergold', '8,369'], ['25 dec 1950', 'walsall', 'a', '0–0', '', '7,832'], ['26 dec 1950', 'walsall', 'h', '3–0', 'parker, moore, birch', '13,160'], ['30 dec 1950', 'aldershot', 'a', '1–3', 'moore', '6,291'], ['13 jan 1951', 'swindon town', 'h', '2–1', 'shergold, birch', '12,485'], ['20 jan 1951', 'colchester united', 'a', '1–1', 'birch', '8,230'], ['3 feb 1951', 'bristol rovers', 'h', '2–1', 'birch 2', '11,802'], ['10 feb 1951', 'plymouth argyle', 'a', '1–1', 'parker', '13,408'], ['17 feb 1951', 'crystal palace', 'a', '1–1', 'shergold', '9,990'], ['24 feb 1951', 'millwall', 'a', '4–2', 'parker, moore, shergold, beattie', '15,788'], ['3 mar 1951', 'bristol city', 'h', '0–1', '', '11,494'], ['10 mar 1951', 'gillingham', 'a', '1–0', 'birch', '9,040'], ['24 mar 1951', 'exeter city', 'a', '2–2', 'parker, beattie', '7,565'], ['26 mar 1951', 'norwich city', 'a', '1–2', 'birch', '35,267'], ['31 mar 1951', 'southend united', 'h', '6–1', 'moore 2, shergold 2, parker, birch', '9,544'], ['5 apr 1951', 'northampton town', 'a', '4–1', 'moore 2, hayward, parker', '6,425'], ['7 apr 1951', 'reading', 'a', '0–5', '', '12,939'], ['12 apr 1951', 'leyton orient', 'a', '3–0', 'parker, moore, shergold', '8,270'], ['14 apr 1951', 'plymouth argyle', 'h', '2–0', 'parker, moore', '11,962'], ['18 apr 1951', 'brighton & hove albion', 'a', '1–9', 'parker', '12,114'], ['21 apr 1951', 'ipswich town', 'a', '1–2', 'moore', '10,294'], ['25 apr 1951', 'norwich city', 'h', '1–1', 'moore', '13,862'], ['28 apr 1951', 'leyton orient', 'h', '0–0', '', '7,564'], ['30 apr 1951', 'bournemouth & boscombe athletic', 'h', '1–0', 'shergold', '5,563'], ['2 may 1951', 'nottingham forest', 'a', '1–2', 'parker', '21,468'], ['5 may 1951', 'brighton & hove albion', 'h', '3–0', 'parker, moore, birch', '9,274']]
+########################################################################################################################
+Sample 4301 - Plan 1: Operation 1: Extract the rows where the 'result' column is not equal to '0–0' or '0–1'.
+Sample 4301 - Plan 1: Selected indices: []
+Sample 4301 - Plan 1: X-Table after operation df:
+           date                        opponents venue result  \
+0   19 aug 1950                nottingham forest     h    0–2   
+1   26 aug 1950                   torquay united     a    4–3   
+2   31 aug 1950                        port vale     h    2–1   
+3    2 sep 1950                        aldershot     h    7–0   
+4    7 sep 1950                          watford     a    2–0   
+5    9 sep 1950                     swindon town     a    0–2   
+6   14 sep 1950                          watford     h    2–2   
+7   16 sep 1950                colchester united     h    2–0   
+8   21 sep 1950                 northampton town     h    2–2   
+9   30 sep 1950                   crystal palace     h    2–4   
+10   7 oct 1950                         millwall     h    2–3   
+11  14 oct 1950                     bristol city     a    1–2   
+12  21 oct 1950                       gillingham     h    1–0   
+13  28 oct 1950  bournemouth & boscombe athletic     a    0–2   
+14   4 nov 1950                      exeter city     h    0–3   
+15  11 nov 1950                  southend united     a    0–3   
+16  18 nov 1950                          reading     h    5–0   
+17   2 dec 1950                     ipswich town     h    1–2   
+18  23 dec 1950                   torquay united     h    2–1   
+19  26 dec 1950                          walsall     h    3–0   
+20  30 dec 1950                        aldershot     a    1–3   
+21  13 jan 1951                     swindon town     h    2–1   
+22  20 jan 1951                colchester united     a    1–1   
+23   3 feb 1951                   bristol rovers     h    2–1   
+24  10 feb 1951                  plymouth argyle     a    1–1   
+25  17 feb 1951                   crystal palace     a    1–1   
+26  24 feb 1951                         millwall     a    4–2   
+27  10 mar 1951                       gillingham     a    1–0   
+28  24 mar 1951                      exeter city     a    2–2   
+29  26 mar 1951                     norwich city     a    1–2   
+30  31 mar 1951                  southend united     h    6–1   
+31   5 apr 1951                 northampton town     a    4–1   
+32   7 apr 1951                          reading     a    0–5   
+33  12 apr 1951                    leyton orient     a    3–0   
+34  14 apr 1951                  plymouth argyle     h    2–0   
+35  18 apr 1951           brighton & hove albion     a    1–9   
+36  21 apr 1951                     ipswich town     a    1–2   
+37  25 apr 1951                     norwich city     h    1–1   
+38  30 apr 1951  bournemouth & boscombe athletic     h    1–0   
+39   2 may 1951                nottingham forest     a    1–2   
+40   5 may 1951           brighton & hove albion     h    3–0   
+
+                               scorers attendance  
+0                                          16,595  
+1      cowley, parker, roffi, shergold     10,276  
+2                        parker, moore     13,537  
+3          roffi 4, parker 2, m.haines     13,696  
+4                        parker, moore      9,451  
+5                                          14,021  
+6                     newall, m.haines     12,116  
+7                             parker 2     16,021  
+8                        parker, moore     13,845  
+9                        cowley, moore     10,114  
+10                      moore, beattie     13,129  
+11                              parker     22,930  
+12                            shergold      9,828  
+13                                         13,466  
+14                                         10,653  
+15                                          9,882  
+16    birch 2, parker, shergold, aston      8,529  
+17                             hayward     11,496  
+18                    parker, shergold      8,369  
+19                parker, moore, birch     13,160  
+20                               moore      6,291  
+21                     shergold, birch     12,485  
+22                               birch      8,230  
+23                             birch 2     11,802  
+24                              parker     13,408  
+25                            shergold      9,990  
+26    parker, moore, shergold, beattie     15,788  
+27                               birch      9,040  
+28                     parker, beattie      7,565  
+29                               birch     35,267  
+30  moore 2, shergold 2, parker, birch      9,544  
+31            moore 2, hayward, parker      6,425  
+32                                         12,939  
+33             parker, moore, shergold      8,270  
+34                       parker, moore     11,962  
+35                              parker     12,114  
+36                               moore     10,294  
+37                               moore     13,862  
+38                            shergold      5,563  
+39                              parker     21,468  
+40                parker, moore, birch      9,274  
+Sample 4301 - Plan 1: Table after operation: [['date', 'opponents', 'venue', 'result', 'scorers', 'attendance'], ['19 aug 1950', 'nottingham forest', 'h', '0–2', '', '16,595'], ['26 aug 1950', 'torquay united', 'a', '4–3', 'cowley, parker, roffi, shergold', '10,276'], ['31 aug 1950', 'port vale', 'h', '2–1', 'parker, moore', '13,537'], ['2 sep 1950', 'aldershot', 'h', '7–0', 'roffi 4, parker 2, m.haines', '13,696'], ['7 sep 1950', 'watford', 'a', '2–0', 'parker, moore', '9,451'], ['9 sep 1950', 'swindon town', 'a', '0–2', '', '14,021'], ['14 sep 1950', 'watford', 'h', '2–2', 'newall, m.haines', '12,116'], ['16 sep 1950', 'colchester united', 'h', '2–0', 'parker 2', '16,021'], ['21 sep 1950', 'northampton town', 'h', '2–2', 'parker, moore', '13,845'], ['30 sep 1950', 'crystal palace', 'h', '2–4', 'cowley, moore', '10,114'], ['7 oct 1950', 'millwall', 'h', '2–3', 'moore, beattie', '13,129'], ['14 oct 1950', 'bristol city', 'a', '1–2', 'parker', '22,930'], ['21 oct 1950', 'gillingham', 'h', '1–0', 'shergold', '9,828'], ['28 oct 1950', 'bournemouth & boscombe athletic', 'a', '0–2', '', '13,466'], ['4 nov 1950', 'exeter city', 'h', '0–3', '', '10,653'], ['11 nov 1950', 'southend united', 'a', '0–3', '', '9,882'], ['18 nov 1950', 'reading', 'h', '5–0', 'birch 2, parker, shergold, aston', '8,529'], ['2 dec 1950', 'ipswich town', 'h', '1–2', 'hayward', '11,496'], ['23 dec 1950', 'torquay united', 'h', '2–1', 'parker, shergold', '8,369'], ['26 dec 1950', 'walsall', 'h', '3–0', 'parker, moore, birch', '13,160'], ['30 dec 1950', 'aldershot', 'a', '1–3', 'moore', '6,291'], ['13 jan 1951', 'swindon town', 'h', '2–1', 'shergold, birch', '12,485'], ['20 jan 1951', 'colchester united', 'a', '1–1', 'birch', '8,230'], ['3 feb 1951', 'bristol rovers', 'h', '2–1', 'birch 2', '11,802'], ['10 feb 1951', 'plymouth argyle', 'a', '1–1', 'parker', '13,408'], ['17 feb 1951', 'crystal palace', 'a', '1–1', 'shergold', '9,990'], ['24 feb 1951', 'millwall', 'a', '4–2', 'parker, moore, shergold, beattie', '15,788'], ['10 mar 1951', 'gillingham', 'a', '1–0', 'birch', '9,040'], ['24 mar 1951', 'exeter city', 'a', '2–2', 'parker, beattie', '7,565'], ['26 mar 1951', 'norwich city', 'a', '1–2', 'birch', '35,267'], ['31 mar 1951', 'southend united', 'h', '6–1', 'moore 2, shergold 2, parker, birch', '9,544'], ['5 apr 1951', 'northampton town', 'a', '4–1', 'moore 2, hayward, parker', '6,425'], ['7 apr 1951', 'reading', 'a', '0–5', '', '12,939'], ['12 apr 1951', 'leyton orient', 'a', '3–0', 'parker, moore, shergold', '8,270'], ['14 apr 1951', 'plymouth argyle', 'h', '2–0', 'parker, moore', '11,962'], ['18 apr 1951', 'brighton & hove albion', 'a', '1–9', 'parker', '12,114'], ['21 apr 1951', 'ipswich town', 'a', '1–2', 'moore', '10,294'], ['25 apr 1951', 'norwich city', 'h', '1–1', 'moore', '13,862'], ['30 apr 1951', 'bournemouth & boscombe athletic', 'h', '1–0', 'shergold', '5,563'], ['2 may 1951', 'nottingham forest', 'a', '1–2', 'parker', '21,468'], ['5 may 1951', 'brighton & hove albion', 'h', '3–0', 'parker, moore, birch', '9,274']]
+########################################################################################################################
+Sample 4301 - Plan 1: Operation 2: Order the table by the 'date' column in ascending order.
+Sample 4301 - Plan 1: Selected indices: [[4, 0], [37, 0], [17, 0], [28, 0], [8, 0], [19, 0], [30, 0], [10, 0], [32, 0], [1, 0], [21, 0], [12, 0], [34, 0], [23, 0], [3, 0], [36, 0], [14, 0], [5, 0], [27, 0], [25, 0], [16, 0], [38, 0], [7, 0], [18, 0], [29, 0], [40, 0], [20, 0], [31, 0], [22, 0], [9, 0], [11, 0], [33, 0], [0, 0], [2, 0], [24, 0], [35, 0], [13, 0], [15, 0], [26, 0], [6, 0], [39, 0]]
+Sample 4301 - Plan 1: X-Table after operation df:
+           date                        opponents venue result  \
+0   10 feb 1951                  plymouth argyle     a    1–1   
+1   10 mar 1951                       gillingham     a    1–0   
+2   11 nov 1950                  southend united     a    0–3   
+3   12 apr 1951                    leyton orient     a    3–0   
+4   13 jan 1951                     swindon town     h    2–1   
+5   14 apr 1951                  plymouth argyle     h    2–0   
+6   14 oct 1950                     bristol city     a    1–2   
+7   14 sep 1950                          watford     h    2–2   
+8   16 sep 1950                colchester united     h    2–0   
+9   17 feb 1951                   crystal palace     a    1–1   
+10  18 apr 1951           brighton & hove albion     a    1–9   
+11  18 nov 1950                          reading     h    5–0   
+12  19 aug 1950                nottingham forest     h    0–2   
+13   2 dec 1950                     ipswich town     h    1–2   
+14   2 may 1951                nottingham forest     a    1–2   
+15   2 sep 1950                        aldershot     h    7–0   
+16  20 jan 1951                colchester united     a    1–1   
+17  21 apr 1951                     ipswich town     a    1–2   
+18  21 oct 1950                       gillingham     h    1–0   
+19  21 sep 1950                 northampton town     h    2–2   
+20  23 dec 1950                   torquay united     h    2–1   
+21  24 feb 1951                         millwall     a    4–2   
+22  24 mar 1951                      exeter city     a    2–2   
+23  25 apr 1951                     norwich city     h    1–1   
+24  26 aug 1950                   torquay united     a    4–3   
+25  26 dec 1950                          walsall     h    3–0   
+26  26 mar 1951                     norwich city     a    1–2   
+27  28 oct 1950  bournemouth & boscombe athletic     a    0–2   
+28   3 feb 1951                   bristol rovers     h    2–1   
+29  30 apr 1951  bournemouth & boscombe athletic     h    1–0   
+30  30 dec 1950                        aldershot     a    1–3   
+31  30 sep 1950                   crystal palace     h    2–4   
+32  31 aug 1950                        port vale     h    2–1   
+33  31 mar 1951                  southend united     h    6–1   
+34   4 nov 1950                      exeter city     h    0–3   
+35   5 apr 1951                 northampton town     a    4–1   
+36   5 may 1951           brighton & hove albion     h    3–0   
+37   7 apr 1951                          reading     a    0–5   
+38   7 oct 1950                         millwall     h    2–3   
+39   7 sep 1950                          watford     a    2–0   
+40   9 sep 1950                     swindon town     a    0–2   
+
+                               scorers attendance  
+0                               parker     13,408  
+1                                birch      9,040  
+2                                           9,882  
+3              parker, moore, shergold      8,270  
+4                      shergold, birch     12,485  
+5                        parker, moore     11,962  
+6                               parker     22,930  
+7                     newall, m.haines     12,116  
+8                             parker 2     16,021  
+9                             shergold      9,990  
+10                              parker     12,114  
+11    birch 2, parker, shergold, aston      8,529  
+12                                         16,595  
+13                             hayward     11,496  
+14                              parker     21,468  
+15         roffi 4, parker 2, m.haines     13,696  
+16                               birch      8,230  
+17                               moore     10,294  
+18                            shergold      9,828  
+19                       parker, moore     13,845  
+20                    parker, shergold      8,369  
+21    parker, moore, shergold, beattie     15,788  
+22                     parker, beattie      7,565  
+23                               moore     13,862  
+24     cowley, parker, roffi, shergold     10,276  
+25                parker, moore, birch     13,160  
+26                               birch     35,267  
+27                                         13,466  
+28                             birch 2     11,802  
+29                            shergold      5,563  
+30                               moore      6,291  
+31                       cowley, moore     10,114  
+32                       parker, moore     13,537  
+33  moore 2, shergold 2, parker, birch      9,544  
+34                                         10,653  
+35            moore 2, hayward, parker      6,425  
+36                parker, moore, birch      9,274  
+37                                         12,939  
+38                      moore, beattie     13,129  
+39                       parker, moore      9,451  
+40                                         14,021  
+Sample 4301 - Plan 1: Table after operation: [['date', 'opponents', 'venue', 'result', 'scorers', 'attendance'], ['10 feb 1951', 'plymouth argyle', 'a', '1–1', 'parker', '13,408'], ['10 mar 1951', 'gillingham', 'a', '1–0', 'birch', '9,040'], ['11 nov 1950', 'southend united', 'a', '0–3', '', '9,882'], ['12 apr 1951', 'leyton orient', 'a', '3–0', 'parker, moore, shergold', '8,270'], ['13 jan 1951', 'swindon town', 'h', '2–1', 'shergold, birch', '12,485'], ['14 apr 1951', 'plymouth argyle', 'h', '2–0', 'parker, moore', '11,962'], ['14 oct 1950', 'bristol city', 'a', '1–2', 'parker', '22,930'], ['14 sep 1950', 'watford', 'h', '2–2', 'newall, m.haines', '12,116'], ['16 sep 1950', 'colchester united', 'h', '2–0', 'parker 2', '16,021'], ['17 feb 1951', 'crystal palace', 'a', '1–1', 'shergold', '9,990'], ['18 apr 1951', 'brighton & hove albion', 'a', '1–9', 'parker', '12,114'], ['18 nov 1950', 'reading', 'h', '5–0', 'birch 2, parker, shergold, aston', '8,529'], ['19 aug 1950', 'nottingham forest', 'h', '0–2', '', '16,595'], ['2 dec 1950', 'ipswich town', 'h', '1–2', 'hayward', '11,496'], ['2 may 1951', 'nottingham forest', 'a', '1–2', 'parker', '21,468'], ['2 sep 1950', 'aldershot', 'h', '7–0', 'roffi 4, parker 2, m.haines', '13,696'], ['20 jan 1951', 'colchester united', 'a', '1–1', 'birch', '8,230'], ['21 apr 1951', 'ipswich town', 'a', '1–2', 'moore', '10,294'], ['21 oct 1950', 'gillingham', 'h', '1–0', 'shergold', '9,828'], ['21 sep 1950', 'northampton town', 'h', '2–2', 'parker, moore', '13,845'], ['23 dec 1950', 'torquay united', 'h', '2–1', 'parker, shergold', '8,369'], ['24 feb 1951', 'millwall', 'a', '4–2', 'parker, moore, shergold, beattie', '15,788'], ['24 mar 1951', 'exeter city', 'a', '2–2', 'parker, beattie', '7,565'], ['25 apr 1951', 'norwich city', 'h', '1–1', 'moore', '13,862'], ['26 aug 1950', 'torquay united', 'a', '4–3', 'cowley, parker, roffi, shergold', '10,276'], ['26 dec 1950', 'walsall', 'h', '3–0', 'parker, moore, birch', '13,160'], ['26 mar 1951', 'norwich city', 'a', '1–2', 'birch', '35,267'], ['28 oct 1950', 'bournemouth & boscombe athletic', 'a', '0–2', '', '13,466'], ['3 feb 1951', 'bristol rovers', 'h', '2–1', 'birch 2', '11,802'], ['30 apr 1951', 'bournemouth & boscombe athletic', 'h', '1–0', 'shergold', '5,563'], ['30 dec 1950', 'aldershot', 'a', '1–3', 'moore', '6,291'], ['30 sep 1950', 'crystal palace', 'h', '2–4', 'cowley, moore', '10,114'], ['31 aug 1950', 'port vale', 'h', '2–1', 'parker, moore', '13,537'], ['31 mar 1951', 'southend united', 'h', '6–1', 'moore 2, shergold 2, parker, birch', '9,544'], ['4 nov 1950', 'exeter city', 'h', '0–3', '', '10,653'], ['5 apr 1951', 'northampton town', 'a', '4–1', 'moore 2, hayward, parker', '6,425'], ['5 may 1951', 'brighton & hove albion', 'h', '3–0', 'parker, moore, birch', '9,274'], ['7 apr 1951', 'reading', 'a', '0–5', '', '12,939'], ['7 oct 1950', 'millwall', 'h', '2–3', 'moore, beattie', '13,129'], ['7 sep 1950', 'watford', 'a', '2–0', 'parker, moore', '9,451'], ['9 sep 1950', 'swindon town', 'a', '0–2', '', '14,021']]
+########################################################################################################################
+Sample 4301 - Plan 1: Operation 3: Calculate the difference in days between each consecutive row's 'date' value.
+Sample 4301 - Plan 1: Selected indices: [[0, 0], [0, 1], [0, 3], [0, 2], [0, 5], [0, 4], [1, 0], [1, 1], [1, 3], [1, 2], [1, 5], [1, 4], [2, 0], [2, 1], [2, 3], [2, 2], [2, 5], [2, 4], [3, 0], [3, 1], [3, 3], [3, 2], [3, 5], [3, 4], [4, 0], [4, 1], [4, 3], [4, 2], [4, 5], [4, 4], [5, 0], [5, 1], [5, 3], [5, 2], [5, 5], [5, 4], [6, 0], [6, 1], [6, 3], [6, 2], [6, 5], [6, 4], [7, 0], [7, 1], [7, 3], [7, 2], [7, 5], [7, 4], [8, 0], [8, 1], [8, 3], [8, 2], [8, 5], [8, 4], [9, 0], [9, 1], [9, 3], [9, 2], [9, 5], [9, 4], [10, 0], [10, 1], [10, 3], [10, 2], [10, 5], [10, 4], [11, 0], [11, 1], [11, 3], [11, 2], [11, 5], [11, 4], [12, 0], [12, 1], [12, 3], [12, 2], [12, 5], [12, 4], [13, 0], [13, 1], [13, 3], [13, 2], [13, 5], [13, 4], [14, 0], [14, 1], [14, 3], [14, 2], [14, 5], [14, 4], [15, 0], [15, 1], [15, 3], [15, 2], [15, 5], [15, 4], [16, 0], [16, 1], [16, 3], [16, 2], [16, 5], [16, 4], [17, 0], [17, 1], [17, 3], [17, 2], [17, 5], [17, 4], [18, 0], [18, 1], [18, 3], [18, 2], [18, 5], [18, 4], [19, 0], [19, 1], [19, 3], [19, 2], [19, 5], [19, 4], [20, 0], [20, 1], [20, 3], [20, 2], [20, 5], [20, 4], [21, 0], [21, 1], [21, 3], [21, 2], [21, 5], [21, 4], [22, 0], [22, 1], [22, 3], [22, 2], [22, 5], [22, 4], [23, 0], [23, 1], [23, 3], [23, 2], [23, 5], [23, 4], [24, 0], [24, 1], [24, 3], [24, 2], [24, 5], [24, 4], [25, 0], [25, 1], [25, 3], [25, 2], [25, 5], [25, 4], [26, 0], [26, 1], [26, 3], [26, 2], [26, 5], [26, 4], [27, 0], [27, 1], [27, 3], [27, 2], [27, 5], [27, 4], [28, 0], [28, 1], [28, 3], [28, 2], [28, 5], [28, 4], [29, 0], [29, 1], [29, 3], [29, 2], [29, 5], [29, 4], [30, 0], [30, 1], [30, 3], [30, 2], [30, 5], [30, 4], [31, 0], [31, 1], [31, 3], [31, 2], [31, 5], [31, 4], [32, 0], [32, 1], [32, 3], [32, 2], [32, 5], [32, 4], [33, 0], [33, 1], [33, 3], [33, 2], [33, 5], [33, 4], [34, 0], [34, 1], [34, 3], [34, 2], [34, 5], [34, 4], [35, 0], [35, 1], [35, 3], [35, 2], [35, 5], [35, 4], [36, 0], [36, 1], [36, 3], [36, 2], [36, 5], [36, 4], [37, 0], [37, 1], [37, 3], [37, 2], [37, 5], [37, 4], [38, 0], [38, 1], [38, 3], [38, 2], [38, 5], [38, 4], [39, 0], [39, 1], [39, 3], [39, 2], [39, 5], [39, 4], [40, 0], [40, 1], [40, 3], [40, 2], [40, 5], [40, 4]]
+Sample 4301 - Plan 1: X-Table after operation df:
+    date                        opponents venue result  \
+0    NaN                  plymouth argyle     a    1–1   
+1    NaN                       gillingham     a    1–0   
+2    NaN                  southend united     a    0–3   
+3    NaN                    leyton orient     a    3–0   
+4    NaN                     swindon town     h    2–1   
+5    NaN                  plymouth argyle     h    2–0   
+6    NaN                     bristol city     a    1–2   
+7    NaN                          watford     h    2–2   
+8    NaN                colchester united     h    2–0   
+9    NaN                   crystal palace     a    1–1   
+10   NaN           brighton & hove albion     a    1–9   
+11   NaN                          reading     h    5–0   
+12   NaN                nottingham forest     h    0–2   
+13   NaN                     ipswich town     h    1–2   
+14   NaN                nottingham forest     a    1–2   
+15   NaN                        aldershot     h    7–0   
+16   NaN                colchester united     a    1–1   
+17   NaN                     ipswich town     a    1–2   
+18   NaN                       gillingham     h    1–0   
+19   NaN                 northampton town     h    2–2   
+20   NaN                   torquay united     h    2–1   
+21   NaN                         millwall     a    4–2   
+22   NaN                      exeter city     a    2–2   
+23   NaN                     norwich city     h    1–1   
+24   NaN                   torquay united     a    4–3   
+25   NaN                          walsall     h    3–0   
+26   NaN                     norwich city     a    1–2   
+27   NaN  bournemouth & boscombe athletic     a    0–2   
+28   NaN                   bristol rovers     h    2–1   
+29   NaN  bournemouth & boscombe athletic     h    1–0   
+30   NaN                        aldershot     a    1–3   
+31   NaN                   crystal palace     h    2–4   
+32   NaN                        port vale     h    2–1   
+33   NaN                  southend united     h    6–1   
+34   NaN                      exeter city     h    0–3   
+35   NaN                 northampton town     a    4–1   
+36   NaN           brighton & hove albion     h    3–0   
+37   NaN                          reading     a    0–5   
+38   NaN                         millwall     h    2–3   
+39   NaN                          watford     a    2–0   
+40   NaN                     swindon town     a    0–2   
+
+                               scorers attendance  date_difference  
+0                               parker     13,408              NaN  
+1                                birch      9,040              NaN  
+2                                           9,882              NaN  
+3              parker, moore, shergold      8,270              NaN  
+4                      shergold, birch     12,485              NaN  
+5                        parker, moore     11,962              NaN  
+6                               parker     22,930              NaN  
+7                     newall, m.haines     12,116              NaN  
+8                             parker 2     16,021              NaN  
+9                             shergold      9,990              NaN  
+10                              parker     12,114              NaN  
+11    birch 2, parker, shergold, aston      8,529              NaN  
+12                                         16,595              NaN  
+13                             hayward     11,496              NaN  
+14                              parker     21,468              NaN  
+15         roffi 4, parker 2, m.haines     13,696              NaN  
+16                               birch      8,230              NaN  
+17                               moore     10,294              NaN  
+18                            shergold      9,828              NaN  
+19                       parker, moore     13,845              NaN  
+20                    parker, shergold      8,369              NaN  
+21    parker, moore, shergold, beattie     15,788              NaN  
+22                     parker, beattie      7,565              NaN  
+23                               moore     13,862              NaN  
+24     cowley, parker, roffi, shergold     10,276              NaN  
+25                parker, moore, birch     13,160              NaN  
+26                               birch     35,267              NaN  
+27                                         13,466              NaN  
+28                             birch 2     11,802              NaN  
+29                            shergold      5,563              NaN  
+30                               moore      6,291              NaN  
+31                       cowley, moore     10,114              NaN  
+32                       parker, moore     13,537              NaN  
+33  moore 2, shergold 2, parker, birch      9,544              NaN  
+34                                         10,653              NaN  
+35            moore 2, hayward, parker      6,425              NaN  
+36                parker, moore, birch      9,274              NaN  
+37                                         12,939              NaN  
+38                      moore, beattie     13,129              NaN  
+39                       parker, moore      9,451              NaN  
+40                                         14,021              NaN  
+Sample 4301 - Plan 1: Table after operation: [['date', 'opponents', 'venue', 'result', 'scorers', 'attendance', 'date_difference'], [None, 'plymouth argyle', 'a', '1–1', 'parker', '13,408', None], [None, 'gillingham', 'a', '1–0', 'birch', '9,040', None], [None, 'southend united', 'a', '0–3', '', '9,882', None], [None, 'leyton orient', 'a', '3–0', 'parker, moore, shergold', '8,270', None], [None, 'swindon town', 'h', '2–1', 'shergold, birch', '12,485', None], [None, 'plymouth argyle', 'h', '2–0', 'parker, moore', '11,962', None], [None, 'bristol city', 'a', '1–2', 'parker', '22,930', None], [None, 'watford', 'h', '2–2', 'newall, m.haines', '12,116', None], [None, 'colchester united', 'h', '2–0', 'parker 2', '16,021', None], [None, 'crystal palace', 'a', '1–1', 'shergold', '9,990', None], [None, 'brighton & hove albion', 'a', '1–9', 'parker', '12,114', None], [None, 'reading', 'h', '5–0', 'birch 2, parker, shergold, aston', '8,529', None], [None, 'nottingham forest', 'h', '0–2', '', '16,595', None], [None, 'ipswich town', 'h', '1–2', 'hayward', '11,496', None], [None, 'nottingham forest', 'a', '1–2', 'parker', '21,468', None], [None, 'aldershot', 'h', '7–0', 'roffi 4, parker 2, m.haines', '13,696', None], [None, 'colchester united', 'a', '1–1', 'birch', '8,230', None], [None, 'ipswich town', 'a', '1–2', 'moore', '10,294', None], [None, 'gillingham', 'h', '1–0', 'shergold', '9,828', None], [None, 'northampton town', 'h', '2–2', 'parker, moore', '13,845', None], [None, 'torquay united', 'h', '2–1', 'parker, shergold', '8,369', None], [None, 'millwall', 'a', '4–2', 'parker, moore, shergold, beattie', '15,788', None], [None, 'exeter city', 'a', '2–2', 'parker, beattie', '7,565', None], [None, 'norwich city', 'h', '1–1', 'moore', '13,862', None], [None, 'torquay united', 'a', '4–3', 'cowley, parker, roffi, shergold', '10,276', None], [None, 'walsall', 'h', '3–0', 'parker, moore, birch', '13,160', None], [None, 'norwich city', 'a', '1–2', 'birch', '35,267', None], [None, 'bournemouth & boscombe athletic', 'a', '0–2', '', '13,466', None], [None, 'bristol rovers', 'h', '2–1', 'birch 2', '11,802', None], [None, 'bournemouth & boscombe athletic', 'h', '1–0', 'shergold', '5,563', None], [None, 'aldershot', 'a', '1–3', 'moore', '6,291', None], [None, 'crystal palace', 'h', '2–4', 'cowley, moore', '10,114', None], [None, 'port vale', 'h', '2–1', 'parker, moore', '13,537', None], [None, 'southend united', 'h', '6–1', 'moore 2, shergold 2, parker, birch', '9,544', None], [None, 'exeter city', 'h', '0–3', '', '10,653', None], [None, 'northampton town', 'a', '4–1', 'moore 2, hayward, parker', '6,425', None], [None, 'brighton & hove albion', 'h', '3–0', 'parker, moore, birch', '9,274', None], [None, 'reading', 'a', '0–5', '', '12,939', None], [None, 'millwall', 'h', '2–3', 'moore, beattie', '13,129', None], [None, 'watford', 'a', '2–0', 'parker, moore', '9,451', None], [None, 'swindon town', 'a', '0–2', '', '14,021', None]]
+########################################################################################################################
+Sample 4301 - Plan 1: Operation 4: Select the first row where the difference in days is greater than 0.
+Sample 4301 - Plan 1: Selected indices: []
+Sample 4301 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [date, opponents, venue, result, scorers, attendance, date_difference]
+Index: []
+Sample 4301 - Plan 1: Table after operation: [['date', 'opponents', 'venue', 'result', 'scorers', 'attendance', 'date_difference']]
+########################################################################################################################
+Sample 4301 - Plan 1: Operation 5: Calculate the total number of days between the first row's 'date' value and the initial row's 'date' value.
+Sample 4301 - Plan 1: Selected indices: []
+Sample 4301 - Plan 1: X-Table after operation df:
+   total_days
+0         NaN
+Sample 4301 - Plan 1: Table after operation: [['total_days'], [None]]
+Fall-back: TRUE
+Answer from plan 1: [['5']]
+Groundtruth: ['2 games']

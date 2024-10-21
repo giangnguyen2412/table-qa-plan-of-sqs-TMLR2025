@@ -1,0 +1,589 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how many passenger car models has a vmax above 70 km/h?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where 'vmax' is greater than 70 km/h.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>type</td>
+<td>construction_period</td>
+<td>cylinder</td>
+<td>capacity</td>
+<td>power</td>
+<td>vmax</td>
+</tr>
+<tr>
+<td>10 ps (7 kw; 10 hp)</td>
+<td>1901–1902</td>
+<td>straight-2</td>
+<td>1.527 cc</td>
+<td>18 ps (13,2 kw)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">50 km/h (31 mph)</span></td>
+</tr>
+<tr>
+<td>8/14 ps</td>
+<td>1902–1905</td>
+<td>straight-2</td>
+<td>1.527 cc</td>
+<td>14 ps (10,3 kw)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">50 km/h (31 mph)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20 ps (15 kw; 20 hp)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1904–1905</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">straight-4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7.946 cc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">45 ps (33 kw)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">85 km/h (53 mph)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">p4 (11/22 ps)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1905–1910</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">straight-4.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3.054 cc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">22 ps (16,2 kw)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">70 km/h (43 mph)</span></td>
+</tr>
+<tr>
+<td>p2 (9/12 ps)</td>
+<td>1906–1907</td>
+<td>straight-2</td>
+<td>2.281 cc</td>
+<td>16 ps (11,8 kw)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">55 km/h (34 mph)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">p4-1 (24/36 ps)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1906–1910</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">straight-4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5.880 cc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">40 ps (29 kw)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">80 km/h (50 mph)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">p6 (34/60 ps)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1906–1911</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">straight-6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8.820 cc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">60 ps (44 kw)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">95 km/h (59 mph)</span></td>
+</tr>
+<tr>
+<td>g4 (6/12 ps)</td>
+<td>1907–1911</td>
+<td>straight-4</td>
+<td>1.500 cc</td>
+<td>12 ps (8,8 kw)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">60 km/h (37 mph)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pk4 (11/20 ps)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1909–1912</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">straight-4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2.544 cc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20 ps (14,7 kw)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">70 km/h (43 mph)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">c1 (6/18 ps)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1909–1915</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">straight-4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1.546 cc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">18 ps (13,2 kw)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">70 km/h (43 mph)</span></td>
+</tr>
+<tr>
+<td>b1 (6/16 ps)</td>
+<td>1910–1912</td>
+<td>straight-4</td>
+<td>1.556 cc</td>
+<td>16 ps (11,8 kw)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">65 km/h (40 mph)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">b6 (9/22 ps)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1912–1914</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">straight-4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4.900 cc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">45 ps (33 kw)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">95 km/h (59 mph)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">c2 (10/28 ps)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1913–1914</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">straight-4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2.412 cc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">28 ps (20,6 kw)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">75 km/h (47 mph)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">c5 (6/18 ps)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1915–1919</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">straight-4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1.546 cc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">15 ps (11 kw)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">70 km/h (43 mph)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">d2 (6/18 ps)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1919–1920</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">straight-4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1.593 cc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">18 ps (13,2 kw)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">70 km/h (43 mph)</span></td>
+</tr>
+<tr>
+<td>d6 (19/55 ps)</td>
+<td>1919–1921</td>
+<td>straight-6</td>
+<td>4.960 cc</td>
+<td>55 ps (40 kw)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">100 km/h (62 mph)</span></td>
+</tr>
+<tr>
+<td>d7 (42/120 ps)</td>
+<td>1919–1921</td>
+<td>straight-6</td>
+<td>11.160 cc</td>
+<td>120 ps (88 kw)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">160 km/h (99 mph)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">d3 (8/24 ps)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1920–1923</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">straight-4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2.120 cc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24 ps (17,6 kw)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">70 km/h (43 mph)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">d5 (12/36 ps)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1920–1923</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">straight-6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3.107 cc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">36 ps (26,5 kw)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">80 km/h (50 mph)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">d9 (8/32 ps)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1923–1924</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">straight-4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2.290 cc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">32 ps (23,5 kw)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">90 km/h (56 mph)</span></td>
+</tr>
+<tr>
+<td>d12 (12/45 ps)</td>
+<td>1923–1924</td>
+<td>straight-6</td>
+<td>3.107 cc</td>
+<td>45 ps (33 kw)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">100 km/h (62 mph)</span></td>
+</tr>
+<tr>
+<td>d10 (10/50 ps)</td>
+<td>1924–1925</td>
+<td>straight-4</td>
+<td>2.580 cc</td>
+<td>50 ps (37 kw)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">120 km/h (75 mph)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">d9v (9/32 ps)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1925–1927</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">straight-4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2.290 cc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">32 ps (23,5 kw)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">90 km/h (56 mph)</span></td>
+</tr>
+<tr>
+<td>d12v (13/55 ps)</td>
+<td>1925–1928</td>
+<td>straight-6</td>
+<td>3.386 cc</td>
+<td>55 ps (40 kw)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">100 km/h (62 mph)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">f6 (6/30 ps)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1927–1928</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">straight-4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1.570 cc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">30 ps (22 kw)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">70 km/h (43 mph)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8 typ s 8 (8/45 ps)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1928</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">straight-8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1.999 cc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">45 ps (33 kw)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">85 km/h (53 mph)</span></td>
+</tr>
+<tr>
+<td>8 typ g 14 (14/70 ps)</td>
+<td>1928</td>
+<td>straight-8</td>
+<td>3.633 cc</td>
+<td>70 ps (51 kw)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">100 km/h (62 mph)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8 typ s 10 (10/50 ps)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1928–1930</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">straight-8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2.464 cc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">50 ps (37 kw)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">90 km/h (56 mph)</span></td>
+</tr>
+<tr>
+<td>gigant g 15 k (15/80 ps)</td>
+<td>1928–1933</td>
+<td>straight-8</td>
+<td>3.974 cc</td>
+<td>80 ps (59 kw)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">110 km/h (68 mph)</span></td>
+</tr>
+<tr>
+<td>gigant g 15 (15/80 ps)</td>
+<td>1928–1933</td>
+<td>straight-8</td>
+<td>3.974 cc</td>
+<td>80 ps (59 kw)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">100 km/h (62 mph)</span></td>
+</tr>
+<tr>
+<td>repräsentant p 20 (20/100 ps)</td>
+<td>1930–1933</td>
+<td>straight-8</td>
+<td>4.906 cc</td>
+<td>100 ps (74 kw)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">120 km/h (75 mph)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">marschall m 12 (12/60 ps)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1930–1934</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">straight-8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2.963 cc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">60 ps (44 kw)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">90 km/h (56 mph)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">v 5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1931–1932</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">v4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1.168 cc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">25 ps (18,4 kw)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">80 km/h (50 mph)</span></td>
+</tr>
+<tr>
+<td>v 5 sport</td>
+<td>1931–1932</td>
+<td>v4</td>
+<td>1.168 cc</td>
+<td>30 ps (22 kw)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">100 km/h (62 mph)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">r 140</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1932–1933</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">straight-4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1.355 cc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">30 ps (22 kw)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">85 km/h (53 mph)–105 km/h (65 mph)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">r 140</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1933–1934</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">straight-4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1.466 cc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">30 ps (22 kw)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">85 km/h (53 mph)–105 km/h (65 mph)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">r 150</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1934–1935</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">straight-4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1.466 cc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">35 ps (25,7 kw)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">90–110 km/h</span></td>
+</tr>
+<tr>
+<td>greif v8</td>
+<td>1934–1937</td>
+<td>v8</td>
+<td>2.489 cc</td>
+<td>55 ps (40 kw)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">110 km/h (68 mph)</span></td>
+</tr>
+<tr>
+<td>r 180</td>
+<td>1935</td>
+<td>straight-4</td>
+<td>1.769 cc</td>
+<td>45 ps (33 kw)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">105 km/h (65 mph)</span></td>
+</tr>
+<tr>
+<td>greif v8 sport</td>
+<td>1935–1937</td>
+<td>v8</td>
+<td>2.489 cc</td>
+<td>57 ps (42 kw)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">120 km/h (75 mph)</span></td>
+</tr>
+<tr>
+<td>greif junior</td>
+<td>1936–1939</td>
+<td>flat-4</td>
+<td>1.484 cc</td>
+<td>34 ps (25 kw)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">100 km/h (62 mph)</span></td>
+</tr>
+<tr>
+<td>sedina</td>
+<td>1937–1940</td>
+<td>straight-4</td>
+<td>2.406 cc</td>
+<td>55 ps (40 kw)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">110 km/h (68 mph)</span></td>
+</tr>
+<tr>
+<td>arkona</td>
+<td>1937–1940</td>
+<td>straight-6</td>
+<td>3.610 cc</td>
+<td>80 ps (59 kw)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">120 km/h (75 mph)–140 km/h (87 mph)</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Count the number of rows.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>type</td>
+<td>construction_period</td>
+<td>cylinder</td>
+<td>capacity</td>
+<td>power</td>
+<td>vmax</td>
+</tr>
+<tr>
+<td>20 ps (15 kw; 20 hp)</td>
+<td>1904–1905</td>
+<td>straight-4</td>
+<td>7.946 cc</td>
+<td>45 ps (33 kw)</td>
+<td>85 km/h (53 mph)</td>
+</tr>
+<tr>
+<td>p4 (11/22 ps)</td>
+<td>1905–1910</td>
+<td>straight-4.</td>
+<td>3.054 cc</td>
+<td>22 ps (16,2 kw)</td>
+<td>70 km/h (43 mph)</td>
+</tr>
+<tr>
+<td>p4-1 (24/36 ps)</td>
+<td>1906–1910</td>
+<td>straight-4</td>
+<td>5.880 cc</td>
+<td>40 ps (29 kw)</td>
+<td>80 km/h (50 mph)</td>
+</tr>
+<tr>
+<td>p6 (34/60 ps)</td>
+<td>1906–1911</td>
+<td>straight-6</td>
+<td>8.820 cc</td>
+<td>60 ps (44 kw)</td>
+<td>95 km/h (59 mph)</td>
+</tr>
+<tr>
+<td>pk4 (11/20 ps)</td>
+<td>1909–1912</td>
+<td>straight-4</td>
+<td>2.544 cc</td>
+<td>20 ps (14,7 kw)</td>
+<td>70 km/h (43 mph)</td>
+</tr>
+<tr>
+<td>c1 (6/18 ps)</td>
+<td>1909–1915</td>
+<td>straight-4</td>
+<td>1.546 cc</td>
+<td>18 ps (13,2 kw)</td>
+<td>70 km/h (43 mph)</td>
+</tr>
+<tr>
+<td>b6 (9/22 ps)</td>
+<td>1912–1914</td>
+<td>straight-4</td>
+<td>4.900 cc</td>
+<td>45 ps (33 kw)</td>
+<td>95 km/h (59 mph)</td>
+</tr>
+<tr>
+<td>c2 (10/28 ps)</td>
+<td>1913–1914</td>
+<td>straight-4</td>
+<td>2.412 cc</td>
+<td>28 ps (20,6 kw)</td>
+<td>75 km/h (47 mph)</td>
+</tr>
+<tr>
+<td>c5 (6/18 ps)</td>
+<td>1915–1919</td>
+<td>straight-4</td>
+<td>1.546 cc</td>
+<td>15 ps (11 kw)</td>
+<td>70 km/h (43 mph)</td>
+</tr>
+<tr>
+<td>d2 (6/18 ps)</td>
+<td>1919–1920</td>
+<td>straight-4</td>
+<td>1.593 cc</td>
+<td>18 ps (13,2 kw)</td>
+<td>70 km/h (43 mph)</td>
+</tr>
+<tr>
+<td>d3 (8/24 ps)</td>
+<td>1920–1923</td>
+<td>straight-4</td>
+<td>2.120 cc</td>
+<td>24 ps (17,6 kw)</td>
+<td>70 km/h (43 mph)</td>
+</tr>
+<tr>
+<td>d5 (12/36 ps)</td>
+<td>1920–1923</td>
+<td>straight-6</td>
+<td>3.107 cc</td>
+<td>36 ps (26,5 kw)</td>
+<td>80 km/h (50 mph)</td>
+</tr>
+<tr>
+<td>d9 (8/32 ps)</td>
+<td>1923–1924</td>
+<td>straight-4</td>
+<td>2.290 cc</td>
+<td>32 ps (23,5 kw)</td>
+<td>90 km/h (56 mph)</td>
+</tr>
+<tr>
+<td>d9v (9/32 ps)</td>
+<td>1925–1927</td>
+<td>straight-4</td>
+<td>2.290 cc</td>
+<td>32 ps (23,5 kw)</td>
+<td>90 km/h (56 mph)</td>
+</tr>
+<tr>
+<td>f6 (6/30 ps)</td>
+<td>1927–1928</td>
+<td>straight-4</td>
+<td>1.570 cc</td>
+<td>30 ps (22 kw)</td>
+<td>70 km/h (43 mph)</td>
+</tr>
+<tr>
+<td>8 typ s 8 (8/45 ps)</td>
+<td>1928</td>
+<td>straight-8</td>
+<td>1.999 cc</td>
+<td>45 ps (33 kw)</td>
+<td>85 km/h (53 mph)</td>
+</tr>
+<tr>
+<td>8 typ s 10 (10/50 ps)</td>
+<td>1928–1930</td>
+<td>straight-8</td>
+<td>2.464 cc</td>
+<td>50 ps (37 kw)</td>
+<td>90 km/h (56 mph)</td>
+</tr>
+<tr>
+<td>marschall m 12 (12/60 ps)</td>
+<td>1930–1934</td>
+<td>straight-8</td>
+<td>2.963 cc</td>
+<td>60 ps (44 kw)</td>
+<td>90 km/h (56 mph)</td>
+</tr>
+<tr>
+<td>v 5</td>
+<td>1931–1932</td>
+<td>v4</td>
+<td>1.168 cc</td>
+<td>25 ps (18,4 kw)</td>
+<td>80 km/h (50 mph)</td>
+</tr>
+<tr>
+<td>r 140</td>
+<td>1932–1933</td>
+<td>straight-4</td>
+<td>1.355 cc</td>
+<td>30 ps (22 kw)</td>
+<td>85 km/h (53 mph)–105 km/h (65 mph)</td>
+</tr>
+<tr>
+<td>r 140</td>
+<td>1933–1934</td>
+<td>straight-4</td>
+<td>1.466 cc</td>
+<td>30 ps (22 kw)</td>
+<td>85 km/h (53 mph)–105 km/h (65 mph)</td>
+</tr>
+<tr>
+<td>r 150</td>
+<td>1934–1935</td>
+<td>straight-4</td>
+<td>1.466 cc</td>
+<td>35 ps (25,7 kw)</td>
+<td>90–110 km/h</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>row_count</td>
+</tr>
+<tr>
+<td>22</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[22]]</h3>
+</body></html>

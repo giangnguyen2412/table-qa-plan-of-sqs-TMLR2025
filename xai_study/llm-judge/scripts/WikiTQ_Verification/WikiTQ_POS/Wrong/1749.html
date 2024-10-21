@@ -1,0 +1,229 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which contestant did not recieve any votes?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'total_votes' column is equal to 0.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>contestant</td>
+<td>original_tribe</td>
+<td>switched_tribe</td>
+<td>merged_tribe</td>
+<td>finish</td>
+<td>total_votes</td>
+</tr>
+<tr>
+<td>yelena kondulaynen\n44.the actress</td>
+<td>pelicans</td>
+<td></td>
+<td></td>
+<td>1st voted out\nday 3</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5</span></td>
+</tr>
+<tr>
+<td>kris kelmi\n47.the singer</td>
+<td>barracudas</td>
+<td></td>
+<td></td>
+<td>2nd voted out\nday 6</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+</tr>
+<tr>
+<td>aleksandr pashutin\n60.the actor</td>
+<td>barracudas</td>
+<td></td>
+<td></td>
+<td>3rd voted out\nday 9</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">igor' livanov\n49.the actor</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pelicans</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">eliminated\nday 11</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+</tr>
+<tr>
+<td>dana borisova\n26.the tv presenter</td>
+<td>pelicans</td>
+<td>barracudas</td>
+<td></td>
+<td>4th voted out\nday 12</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5</span></td>
+</tr>
+<tr>
+<td>aleksandr byalko\n50.the physicist</td>
+<td>pelicans</td>
+<td>barracudas</td>
+<td></td>
+<td>5th voted out\nday 15</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+</tr>
+<tr>
+<td>tatyana dogileva\n45.the actress</td>
+<td>pelicans</td>
+<td>barracudas</td>
+<td></td>
+<td>6th voted out\nday 18</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+</tr>
+<tr>
+<td>tat'yana ovsiyenko\n36.the singer</td>
+<td>barracudas</td>
+<td>pelicans</td>
+<td></td>
+<td>eliminated\nday 19</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+</tr>
+<tr>
+<td>viktor gusev\n47.the sport commentator</td>
+<td>pelicans</td>
+<td>pelicans</td>
+<td>crocodiles</td>
+<td>7th voted out\n1st jury member\nday 21</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+</tr>
+<tr>
+<td>ivan demidov\n39.the tv presenter</td>
+<td>barracudas</td>
+<td>pelicans</td>
+<td>crocodiles</td>
+<td>eliminated\n2nd jury member\nday 23</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+</tr>
+<tr>
+<td>yelena proklova\n49.the tv presenter</td>
+<td>pelicans</td>
+<td>barracudas</td>
+<td>crocodiles</td>
+<td>8th voted out\n3rd jury member\nday 24</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+</tr>
+<tr>
+<td>marina aleksandrova\n20.the actress</td>
+<td>barracudas</td>
+<td>pelicans</td>
+<td>crocodiles</td>
+<td>9th voted out\n4th jury member\nday 27</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+</tr>
+<tr>
+<td>ivar kalnynsh\n54.the actor</td>
+<td></td>
+<td></td>
+<td>crocodiles</td>
+<td>10th voted out\n5th jury member\nday 30</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+</tr>
+<tr>
+<td>vera glagoleva\n46.the actress</td>
+<td></td>
+<td></td>
+<td>crocodiles</td>
+<td>11th voted out\n6th jury member\nday 33</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+</tr>
+<tr>
+<td>larisa verbitskaya\n43.the tv presenter</td>
+<td>barracudas</td>
+<td>pelicans</td>
+<td>crocodiles</td>
+<td>12th voted out\n7th jury member\nday 36</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11</span></td>
+</tr>
+<tr>
+<td>aleksandr lykov\n41.the actor</td>
+<td>barracudas</td>
+<td>barracudas</td>
+<td>crocodiles</td>
+<td>13th voted out\n8th jury member\nday 37</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+</tr>
+<tr>
+<td>olga orlova\n25.the singer</td>
+<td>barracudas</td>
+<td>baracudas</td>
+<td>crocodiles</td>
+<td>eliminated\n9th jury member\nday 38</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+</tr>
+<tr>
+<td>yelena perova\n26.the singer</td>
+<td>pelicans</td>
+<td>pelicans</td>
+<td>crocodiles</td>
+<td>runner-up</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+</tr>
+<tr>
+<td>vladimir presnyakov, jr.\n34.the singer</td>
+<td>pelicans</td>
+<td>pelicans</td>
+<td>crocodiles</td>
+<td>sole survivor</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select the 'contestant' column.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>contestant</td>
+<td>original_tribe</td>
+<td>switched_tribe</td>
+<td>merged_tribe</td>
+<td>finish</td>
+<td>total_votes</td>
+</tr>
+<tr>
+<td>igor' livanov\n49.the actor</td>
+<td>pelicans</td>
+<td></td>
+<td></td>
+<td>eliminated\nday 11</td>
+<td>0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>contestant</td>
+</tr>
+<tr>
+<td>igor' livanov\n49.the actor</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [["igor' livanov\\n49.the actor"]]</h3>
+</body></html>

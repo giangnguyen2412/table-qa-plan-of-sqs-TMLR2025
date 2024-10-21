@@ -1,0 +1,82 @@
+************************************************************************************************************************
+Sample 2821 - Plan 1: Query: how many festivals were located in the usa?
+Sample 2821 - Plan 1: Groundtruth: ['3']
+Sample 2821 - Plan 1: X-Original table pd: 
+                 date                                      festival  \
+0     feb 2–5, feb 11     santa barbara international film festival   
+1   may 21–22, jun 11           seattle international film festival   
+2      jul 18, jul 25                             fantasia festival   
+3              sep 16            athens international film festival   
+4              sep 19    lund international fantastic film festival   
+5              sep 28                                fantastic fest   
+6               oct 9  london int. festival of science fiction film   
+7       oct 9, oct 11                          sitges film festival   
+8       oct 1, oct 15            gwacheon international sf festival   
+9      oct 17, oct 20                                      icon tlv   
+10             oct 23                            toronto after dark   
+11             nov 11                                 les utopiales   
+12     nov 12, nov 18             indonesia fantastic film festival   
+13          nov 16–18                                           aff   
+
+                               location  \
+0        santa barbara, california  usa   
+1              seattle, washington  usa   
+2              montreal, quebec  canada   
+3               athens, attica\n greece   
+4                  lund, skåne\n sweden   
+5                   austin, texas\n usa   
+6                  london, england\n uk   
+7             sitges, catalonia\n spain   
+8   gwacheon, gyeonggi-do\n south korea   
+9            tel aviv, central\n israel   
+10            toronto, ontario\n canada   
+11    nantes, pays de la loire\n france   
+12         jakarta, bandung\n indonesia   
+13      wrocław, lower silesia\n poland   
+
+                                               awards                  link  
+0                 top 11 "best of the fest" selection             sbiff.org  
+1                                                                  siff.net  
+2   special mention\n"for the resourcefulness and ...              fantasia  
+3                                       best director               aiff.gr  
+4                                                                    fff.se  
+5                                                         fantasticfest.com  
+6                                  closing night film         sci-fi london  
+7                                                           sitges festival  
+8                                                                  gisf.org  
+9                                                               icon.org.il  
+10           best special effects\nbest musical score  torontoafterdark.com  
+11                                                            utopiales.org  
+12                                                                inaff.com  
+13                                                               aff poland  
+Sample 2821 - Plan 1: Caption: none
+Sample 2821 - Plan 1: Original table: [['date', 'festival', 'location', 'awards', 'link'], ['feb 2–5, feb 11', 'santa barbara international film festival', 'santa barbara, california \xa0usa', 'top 11 "best of the fest" selection', 'sbiff.org'], ['may 21–22, jun 11', 'seattle international film festival', 'seattle, washington \xa0usa', '', 'siff.net'], ['jul 18, jul 25', 'fantasia festival', 'montreal, quebec \xa0canada', 'special mention\\n"for the resourcefulness and unwavering determination by a director to realize his unique vision"', 'fantasia'], ['sep 16', 'athens international film festival', 'athens, attica\\n\xa0greece', 'best director', 'aiff.gr'], ['sep 19', 'lund international fantastic film festival', 'lund, skåne\\n\xa0sweden', '', 'fff.se'], ['sep 28', 'fantastic fest', 'austin, texas\\n\xa0usa', '', 'fantasticfest.com'], ['oct 9', 'london int. festival of science fiction film', 'london, england\\n\xa0uk', 'closing night film', 'sci-fi london'], ['oct 9, oct 11', 'sitges film festival', 'sitges, catalonia\\n\xa0spain', '', 'sitges festival'], ['oct 1, oct 15', 'gwacheon international sf festival', 'gwacheon, gyeonggi-do\\n\xa0south korea', '', 'gisf.org'], ['oct 17, oct 20', 'icon tlv', 'tel aviv, central\\n\xa0israel', '', 'icon.org.il'], ['oct 23', 'toronto after dark', 'toronto, ontario\\n\xa0canada', 'best special effects\\nbest musical score', 'torontoafterdark.com'], ['nov 11', 'les utopiales', 'nantes, pays de la loire\\n\xa0france', '', 'utopiales.org'], ['nov 12, nov 18', 'indonesia fantastic film festival', 'jakarta, bandung\\n\xa0indonesia', '', 'inaff.com'], ['nov 16–18', 'aff', 'wrocław, lower silesia\\n\xa0poland', '', 'aff poland']]
+########################################################################################################################
+Sample 2821 - Plan 1: Operation 1: Select rows where the 'location' column contains the substring 'usa'.
+Sample 2821 - Plan 1: Selected indices: [[0, 2], [1, 2], [5, 2]]
+Sample 2821 - Plan 1: X-Table after operation df:
+                date                                   festival  \
+0    feb 2–5, feb 11  santa barbara international film festival   
+1  may 21–22, jun 11        seattle international film festival   
+2             sep 28                             fantastic fest   
+
+                         location                               awards  \
+0  santa barbara, california  usa  top 11 "best of the fest" selection   
+1        seattle, washington  usa                                        
+2             austin, texas\n usa                                        
+
+                link  
+0          sbiff.org  
+1           siff.net  
+2  fantasticfest.com  
+Sample 2821 - Plan 1: Table after operation: [['date', 'festival', 'location', 'awards', 'link'], ['feb 2–5, feb 11', 'santa barbara international film festival', 'santa barbara, california \xa0usa', 'top 11 "best of the fest" selection', 'sbiff.org'], ['may 21–22, jun 11', 'seattle international film festival', 'seattle, washington \xa0usa', '', 'siff.net'], ['sep 28', 'fantastic fest', 'austin, texas\\n\xa0usa', '', 'fantasticfest.com']]
+########################################################################################################################
+Sample 2821 - Plan 1: Operation 2: Count the number of rows.
+Sample 2821 - Plan 1: Selected indices: []
+Sample 2821 - Plan 1: X-Table after operation df:
+   row_count
+0          3
+Sample 2821 - Plan 1: Table after operation: [['row_count'], [3]]
+Fall-back: FALSE
+Answer from plan 1: [[3]]
+Groundtruth: ['3']

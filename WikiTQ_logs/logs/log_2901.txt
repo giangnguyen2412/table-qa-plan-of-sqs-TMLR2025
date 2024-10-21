@@ -1,0 +1,70 @@
+************************************************************************************************************************
+Sample 2901 - Plan 1: Query: when will 8:12-15 of the torah be read?
+Sample 2901 - Plan 1: Groundtruth: ['Year 2']
+Sample 2901 - Plan 1: X-Original table pd: 
+  _nreading year_1_n2013__2016__2019__2022_______n6_2_7_7  \
+0         1                                         6:2–5   
+1         2                                         6:6–9   
+2         3                                       6:10–13   
+3         4                                       6:14–19   
+4         5                                       6:20–25   
+5         6                                       6:26–28   
+6         7                                      6:29–7:7   
+7    maftir                                         7:5–7   
+
+  year_2_n2014__2017__2020__2023_______n7_8_8_15  \
+0                                         7:8–13   
+1                                        7:14–18   
+2                                        7:19–25   
+3                                        7:26–29   
+4                                          8:1–6   
+5                                         8:7–11   
+6                                        8:12–15   
+7                                        8:12–15   
+
+  year_3_n2015__2018__2021__2024_______n8_16_9_35  
+0                                         8:16–23  
+1                                         8:24–28  
+2                                           9:1–7  
+3                                          9:8–16  
+4                                         9:17–21  
+5                                         9:22–26  
+6                                         9:27–35  
+7                                         9:33–35  
+Sample 2901 - Plan 1: Caption: none
+Sample 2901 - Plan 1: Original table: [['_nreading', 'year_1_n2013__2016__2019__2022_______n6_2_7_7', 'year_2_n2014__2017__2020__2023_______n7_8_8_15', 'year_3_n2015__2018__2021__2024_______n8_16_9_35'], ['1', '6:2–5', '7:8–13', '8:16–23'], ['2', '6:6–9', '7:14–18', '8:24–28'], ['3', '6:10–13', '7:19–25', '9:1–7'], ['4', '6:14–19', '7:26–29', '9:8–16'], ['5', '6:20–25', '8:1–6', '9:17–21'], ['6', '6:26–28', '8:7–11', '9:22–26'], ['7', '6:29–7:7', '8:12–15', '9:27–35'], ['maftir', '7:5–7', '8:12–15', '9:33–35']]
+########################################################################################################################
+Sample 2901 - Plan 1: Operation 1: Select the row where the 'year_3_n2015__2018__2021__2024_______n8_16_9_35' column contains the range '8:12-15'.
+Sample 2901 - Plan 1: Selected indices: []
+Sample 2901 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [_nreading, year_1_n2013__2016__2019__2022_______n6_2_7_7, year_2_n2014__2017__2020__2023_______n7_8_8_15, year_3_n2015__2018__2021__2024_______n8_16_9_35]
+Index: []
+Sample 2901 - Plan 1: Table after operation: [['_nreading', 'year_1_n2013__2016__2019__2022_______n6_2_7_7', 'year_2_n2014__2017__2020__2023_______n7_8_8_15', 'year_3_n2015__2018__2021__2024_______n8_16_9_35']]
+########################################################################################################################
+Sample 2901 - Plan 1: Operation 2: Select the 'year_3_n2015__2018__2021__2024_______n8_16_9_35' column from the selected row.
+Sample 2901 - Plan 1: Selected indices: []
+Sample 2901 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [year_3_n2015__2018__2021__2024_______n8_16_9_35]
+Index: []
+Sample 2901 - Plan 1: Table after operation: [['year_3_n2015__2018__2021__2024_______n8_16_9_35']]
+########################################################################################################################
+Sample 2901 - Plan 1: Operation 3: Extract the range '8:12-15' from the 'year_3_n2015__2018__2021__2024_______n8_16_9_35' column.
+Sample 2901 - Plan 1: Selected indices: []
+Sample 2901 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [year_3_n2015__2018__2021__2024_______n8_16_9_35, range]
+Index: []
+Sample 2901 - Plan 1: Table after operation: [['year_3_n2015__2018__2021__2024_______n8_16_9_35', 'range']]
+########################################################################################################################
+Sample 2901 - Plan 1: Operation 4: Return the extracted range as the answer to the question.
+Sample 2901 - Plan 1: Selected indices: []
+Sample 2901 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [range]
+Index: []
+Sample 2901 - Plan 1: Table after operation: [['range']]
+Fall-back: TRUE
+Answer from plan 1: [['year_2_n2014__2017__2020__2023_______n7_8_8_15']]
+Groundtruth: ['Year 2']

@@ -1,0 +1,89 @@
+************************************************************************************************************************
+Sample 1130 - Plan 1: Query: what number of operas premiered in the stadttheater?
+Sample 1130 - Plan 1: Groundtruth: ['3']
+Sample 1130 - Plan 1: X-Original table pd: 
+   opus                                              title  \
+0     1                                    der bärenhäuter   
+1     2                                    herzog wildfang   
+2     3                                         der kobold   
+3     4                                      bruder lustig   
+4     5                                       sternengebot   
+5     6                                       banadietrich   
+6     7                               schwarzschwanenreich   
+7     8                                      sonnenflammen   
+8     9                                    der heidenkönig   
+9    10                                  der friedensengel   
+10   11                       an allem ist hütchen schuld!   
+11  12a  das liebesopfer (libretto only, no music compl...   
+12   13                         der schmied von marienburg   
+13   14                               rainulf und adelasia   
+14   15                                  die heilige linde   
+15   16                                          wahnopfer   
+16   17       walamund (libretto only, no music completed)   
+17   18                  das flüchlein, das jeder mitbekam   
+
+          sub_divisions  compo_sition     première_date  \
+0                3 acts          1898   22 january 1899   
+1                3 acts          1900     23 march 1901   
+2                3 acts          1903   29 january 1904   
+3                3 acts          1904   13 october 1905   
+4   prologue and 3 acts          1906   21 january 1908   
+5                3 acts          1909   23 january 1910   
+6                3 acts          1910   5 november 1918   
+7                3 acts          1912   30 october 1918   
+8   prologue and 3 acts          1913  16 december 1933   
+9                3 acts          1914      4 march 1926   
+10               3 acts          1915   6 december 1917   
+11               4 acts          1917                     
+12               3 acts          1920  16 december 1920   
+13               3 acts          1922              1923   
+14               3 acts          1927              2001   
+15               3 acts          1928              1994   
+16               3 acts          1928                     
+17               3 acts          1929     29 april 1984   
+
+                                       place__theatre  
+0                                    munich, hofopera  
+1                                    munich, hofopera  
+2                               hamburg, stadttheater  
+3                               hamburg, stadttheater  
+4                               hamburg, stadttheater  
+5                               karlsruhe, hoftheater  
+6                               karlsruhe, hoftheater  
+7                               darmstadt, hoftheater  
+8                          cologne, städtische bühnen  
+9                  karlsruhe, badisches landestheater  
+10                                stuttgart, hofopera  
+11                                                     
+12                         rostock, städtische bühnen  
+13                             rostock (prelude only)  
+14                              keulen (prelude only)  
+15  rudolstadt, heidecksburg only libretto and act...  
+16                                                     
+17                kiel (completed by hans peter mohr)  
+Sample 1130 - Plan 1: Caption: none
+Sample 1130 - Plan 1: Original table: [['opus', 'title', 'sub_divisions', 'compo_sition', 'première_date', 'place__theatre'], ['1', 'der bärenhäuter', '3 acts', '1898', '22 january 1899', 'munich, hofopera'], ['2', 'herzog wildfang', '3 acts', '1900', '23 march 1901', 'munich, hofopera'], ['3', 'der kobold', '3 acts', '1903', '29 january 1904', 'hamburg, stadttheater'], ['4', 'bruder lustig', '3 acts', '1904', '13 october 1905', 'hamburg, stadttheater'], ['5', 'sternengebot', 'prologue and 3\xa0acts', '1906', '21 january 1908', 'hamburg, stadttheater'], ['6', 'banadietrich', '3 acts', '1909', '23 january 1910', 'karlsruhe, hoftheater'], ['7', 'schwarzschwanenreich', '3 acts', '1910', '5 november 1918', 'karlsruhe, hoftheater'], ['8', 'sonnenflammen', '3 acts', '1912', '30 october 1918', 'darmstadt, hoftheater'], ['9', 'der heidenkönig', 'prologue and 3\xa0acts', '1913', '16 december 1933', 'cologne, städtische bühnen'], ['10', 'der friedensengel', '3 acts', '1914', '4 march 1926', 'karlsruhe, badisches landestheater'], ['11', 'an allem ist hütchen schuld!', '3 acts', '1915', '6 december 1917', 'stuttgart, hofopera'], ['12a', 'das liebesopfer (libretto only, no music completed)', '4 acts', '1917', '', ''], ['13', 'der schmied von marienburg', '3 acts', '1920', '16 december 1920', 'rostock, städtische bühnen'], ['14', 'rainulf und adelasia', '3 acts', '1922', '1923', 'rostock (prelude only)'], ['15', 'die heilige linde', '3 acts', '1927', '2001', 'keulen (prelude only)'], ['16', 'wahnopfer', '3 acts', '1928', '1994', 'rudolstadt, heidecksburg only libretto and act 1 finished'], ['17', 'walamund (libretto only, no music completed)', '3 acts', '1928', '', ''], ['18', 'das flüchlein, das jeder mitbekam', '3 acts', '1929', '29 april 1984', 'kiel (completed by hans peter mohr)']]
+########################################################################################################################
+Sample 1130 - Plan 1: Operation 1: Select rows where the 'place__theatre' column contains the string 'stadttheater'.
+Sample 1130 - Plan 1: Selected indices: [[4, 5], [2, 5], [3, 5]]
+Sample 1130 - Plan 1: X-Table after operation df:
+   opus          title        sub_divisions  compo_sition    première_date  \
+0     3     der kobold               3 acts          1903  29 january 1904   
+1     4  bruder lustig               3 acts          1904  13 october 1905   
+2     5   sternengebot  prologue and 3 acts          1906  21 january 1908   
+
+          place__theatre  
+0  hamburg, stadttheater  
+1  hamburg, stadttheater  
+2  hamburg, stadttheater  
+Sample 1130 - Plan 1: Table after operation: [['opus', 'title', 'sub_divisions', 'compo_sition', 'première_date', 'place__theatre'], ['3', 'der kobold', '3 acts', 1903, '29 january 1904', 'hamburg, stadttheater'], ['4', 'bruder lustig', '3 acts', 1904, '13 october 1905', 'hamburg, stadttheater'], ['5', 'sternengebot', 'prologue and 3\xa0acts', 1906, '21 january 1908', 'hamburg, stadttheater']]
+########################################################################################################################
+Sample 1130 - Plan 1: Operation 2: Count the number of rows selected.
+Sample 1130 - Plan 1: Selected indices: []
+Sample 1130 - Plan 1: X-Table after operation df:
+   row_count
+0          3
+Sample 1130 - Plan 1: Table after operation: [['row_count'], [3]]
+Fall-back: FALSE
+Answer from plan 1: [[3]]
+Groundtruth: ['3']

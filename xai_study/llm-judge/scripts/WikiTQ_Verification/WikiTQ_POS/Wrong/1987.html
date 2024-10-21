@@ -1,0 +1,398 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which country has the most patrol vessels?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Group the table by the 'nation' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>nation</td>
+<td>date</td>
+<td>quantity</td>
+<td>type</td>
+<td>notes</td>
+</tr>
+<tr>
+<td>netherlands</td>
+<td>2001</td>
+<td>2</td>
+<td>4207</td>
+<td>in 2001 the netherlands ordered two vessels to serve in the dutch customs' service. visarend commissioned in 2001, zeearend in 2002. now operated by the dutch coast guard</td>
+</tr>
+<tr>
+<td>united kingdom</td>
+<td>2001</td>
+<td>4</td>
+<td>4207</td>
+<td>the ukba 42m customs cutters seeker, searcher, vigilant and valiant are operated by the united kingdom border agency.</td>
+</tr>
+<tr>
+<td>honduras</td>
+<td>2013</td>
+<td>2</td>
+<td>4207</td>
+<td>honduran navy 2 patrol vessels 4207 (fnh 1401 lempira and fnh 1402 morazan) and 6 damen interceptor 1102 in service 2013</td>
+</tr>
+<tr>
+<td>jamaica</td>
+<td>2005</td>
+<td>3</td>
+<td>4207</td>
+<td>the three vessels which form the county-class are hmjs surrey, hmjs cornwall and hmjs middlesex. they were built in the netherlands, and the last vessel was delivered in december 2006.</td>
+</tr>
+<tr>
+<td>barbados</td>
+<td>2007</td>
+<td>3</td>
+<td>4207</td>
+<td>built for the barbados coast guard. hmbs leonard c banfield and hmbs rudyard lewis were scheduled to be delivered in 2008. hmbs trident was scheduled for delivery in 2009.</td>
+</tr>
+<tr>
+<td>albania</td>
+<td>2007</td>
+<td>4</td>
+<td>4207</td>
+<td>the iliria and three other vessels: oriku, lisus and butrindi operated by the albanian naval defense forces</td>
+</tr>
+<tr>
+<td>south africa</td>
+<td>2004</td>
+<td>3</td>
+<td>4708</td>
+<td>lillian ngoyi-class environmental inshore patrol vessels: lillian ngoyi, ruth first and victoria mxenge are employed by the department of agriculture, forestry and fisheries.</td>
+</tr>
+<tr>
+<td>netherlands antilles & aruba</td>
+<td>1998</td>
+<td>3</td>
+<td>4100</td>
+<td>jaguar, panter and poema employed by the netherlands antilles & aruba coast guard.</td>
+</tr>
+<tr>
+<td>vietnam</td>
+<td>2004</td>
+<td>3</td>
+<td>4100</td>
+<td>sar-411, sar-412 and sar-413 employed by vietnam coast guard search and rescue service.</td>
+</tr>
+<tr>
+<td>canada</td>
+<td>2009</td>
+<td>9</td>
+<td>4207</td>
+<td>in 2009 the department of fisheries and oceans announced it would be purchasing 9 patrol vessels for the canadian coast guard. the hero-class patrol vessels began entering service in 2011.</td>
+</tr>
+<tr>
+<td>mexico</td>
+<td>2012</td>
+<td>6</td>
+<td>4207</td>
+<td>the mexican navy – armada de méxico – inducted the first two of what could be several tenochtitlan-class coastal patrol boats.[citation needed] the two stanpatrol 4207 patrol boats – arm tenochtitlan (pc-331) and arm teotihuacan (pc-332) were built at a cost of $9 million usd each at astimar 1 in tampico, tamaulipas and completed in april and may 2012.</td>
+</tr>
+<tr>
+<td>united states</td>
+<td>2012</td>
+<td></td>
+<td>4708</td>
+<td>the united states coast guard is proposing the purchase of 24-34 cutters as the sentinel class.</td>
+</tr>
+<tr>
+<td>bulgaria</td>
+<td>2010</td>
+<td>1</td>
+<td>4207</td>
+<td>the bulgarian border police accepted delivery of the obzor on july 16, 2010.</td>
+</tr>
+<tr>
+<td>venezuela</td>
+<td>2014</td>
+<td>6</td>
+<td>4207</td>
+<td>the bolivarian armada of venezuela ordered 6 vessels together with 6 damen ocean patrol 5007 in march 2014. they are being built in ucocar shipyard with the assistance of damex shipbuilding & engineering, cuba.</td>
+</tr>
+<tr>
+<td>venezuela</td>
+<td>2014</td>
+<td>6</td>
+<td>5009</td>
+<td>the bolivarian armada of venezuela ordered 6 vessels together with 6 damen stan patrol 4207 in march 2014. they are being built in ucocar shipyard with the assistance of damex shipbuilding & engineering, cuba.</td>
+</tr>
+<tr>
+<td>bahama's</td>
+<td>2013</td>
+<td>4</td>
+<td>4207</td>
+<td>the royal bahamas defence forces ordered 4 vessels together with 4 x sea axe 3007 patrols and 1 x stan lander 5612 logistics support and landing craft in april 2013.</td>
+</tr>
+<tr>
+<td>qatar</td>
+<td>2014</td>
+<td>6</td>
+<td>5009</td>
+<td>the qatar armed forces ordered 6 vessels together with 1 x 52 meter diving support vessel on march 31st 2014. the vessels are to be build by nakilat damen shipyard qatar</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Count the number of rows for each group.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>nation</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">albania</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">bahama's</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">barbados</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">bulgaria</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">canada</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">honduras</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">jamaica</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">mexico</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">netherlands</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">netherlands antilles & aruba</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">qatar</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">south africa</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">united kingdom</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">united states</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">venezuela</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">vietnam</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Order the groups by the count in descending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>nation</td>
+<td>count</td>
+</tr>
+<tr>
+<td>albania</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>bahama's</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>barbados</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>bulgaria</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>canada</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>honduras</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>jamaica</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>mexico</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>netherlands</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>netherlands antilles & aruba</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>qatar</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>south africa</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>united kingdom</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>united states</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>venezuela</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>vietnam</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Select the first row from the ordered groups.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>nation</td>
+<td>count</td>
+</tr>
+<tr>
+<td>albania</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>bahama's</td>
+<td>1</td>
+</tr>
+<tr>
+<td>barbados</td>
+<td>1</td>
+</tr>
+<tr>
+<td>bulgaria</td>
+<td>1</td>
+</tr>
+<tr>
+<td>canada</td>
+<td>1</td>
+</tr>
+<tr>
+<td>honduras</td>
+<td>1</td>
+</tr>
+<tr>
+<td>jamaica</td>
+<td>1</td>
+</tr>
+<tr>
+<td>mexico</td>
+<td>1</td>
+</tr>
+<tr>
+<td>netherlands</td>
+<td>1</td>
+</tr>
+<tr>
+<td>netherlands antilles & aruba</td>
+<td>1</td>
+</tr>
+<tr>
+<td>qatar</td>
+<td>1</td>
+</tr>
+<tr>
+<td>south africa</td>
+<td>1</td>
+</tr>
+<tr>
+<td>united kingdom</td>
+<td>1</td>
+</tr>
+<tr>
+<td>united states</td>
+<td>1</td>
+</tr>
+<tr>
+<td>venezuela</td>
+<td>1</td>
+</tr>
+<tr>
+<td>vietnam</td>
+<td>1</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 5: Select the 'nation' column from the selected row.</div>
+<div id="step-3" class="content">
+<table>
+<tr>
+<td>nation</td>
+<td>count</td>
+</tr>
+<tr>
+<td>albania</td>
+<td>1</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>nation</td>
+</tr>
+<tr>
+<td>albania</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['albania']]</h3>
+</body></html>

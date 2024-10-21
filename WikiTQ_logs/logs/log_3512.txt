@@ -1,0 +1,76 @@
+************************************************************************************************************************
+Sample 3512 - Plan 1: Query: how many ranks about lord high treasurer is the lord high steward?
+Sample 3512 - Plan 1: Groundtruth: ['2']
+Sample 3512 - Plan 1: X-Original table pd: 
+   position                        officer  \
+0         1              lord high steward   
+1         2           lord high chancellor   
+2         3            lord high treasurer   
+3         4  lord president of the council   
+4         5                lord privy seal   
+5         6         lord great chamberlain   
+6         7            lord high constable   
+7         8                   earl marshal   
+8         9              lord high admiral   
+
+                     current_officers        superseded_by  \
+0                              vacant            justiciar   
+1       the rt hon chris grayling, mp                        
+2                       in commission                        
+3           the rt hon nick clegg, mp                        
+4  the rt hon andrew lansley, cbe, mp                        
+5        the marquess of cholmondeley  lord high treasurer   
+6                              vacant         earl marshal   
+7                 the duke of norfolk                        
+8           hrh the duke of edinburgh                        
+
+       royal_household  
+0         lord steward  
+1                       
+2                       
+3                       
+4                       
+5     lord chamberlain  
+6  master of the horse  
+7  master of the horse  
+8                       
+Sample 3512 - Plan 1: Caption: none
+Sample 3512 - Plan 1: Original table: [['position', 'officer', 'current_officers', 'superseded_by', 'royal_household'], ['1', 'lord high steward', 'vacant', 'justiciar', 'lord steward'], ['2', 'lord high chancellor', 'the rt hon chris grayling, mp', '', ''], ['3', 'lord high treasurer', 'in commission', '', ''], ['4', 'lord president of the council', 'the rt hon nick clegg, mp', '', ''], ['5', 'lord privy seal', 'the rt hon andrew lansley, cbe, mp', '', ''], ['6', 'lord great chamberlain', 'the marquess of cholmondeley', 'lord high treasurer', 'lord chamberlain'], ['7', 'lord high constable', 'vacant', 'earl marshal', 'master of the horse'], ['8', 'earl marshal', 'the duke of norfolk', '', 'master of the horse'], ['9', 'lord high admiral', 'hrh the duke of edinburgh', '', '']]
+########################################################################################################################
+Sample 3512 - Plan 1: Operation 1: Select rows where the 'position' is greater than the position of 'lord high treasurer'.
+Sample 3512 - Plan 1: Selected indices: [[4, 0], [7, 1], [8, 1], [3, 1], [6, 1], [7, 0], [5, 1], [8, 0], [3, 0], [5, 0], [6, 0], [4, 1]]
+Sample 3512 - Plan 1: X-Table after operation df:
+   position                        officer  \
+0         4  lord president of the council   
+1         5                lord privy seal   
+2         6         lord great chamberlain   
+3         7            lord high constable   
+4         8                   earl marshal   
+5         9              lord high admiral   
+
+                     current_officers        superseded_by  \
+0           the rt hon nick clegg, mp                        
+1  the rt hon andrew lansley, cbe, mp                        
+2        the marquess of cholmondeley  lord high treasurer   
+3                              vacant         earl marshal   
+4                 the duke of norfolk                        
+5           hrh the duke of edinburgh                        
+
+       royal_household  
+0                       
+1                       
+2     lord chamberlain  
+3  master of the horse  
+4  master of the horse  
+5                       
+Sample 3512 - Plan 1: Table after operation: [['position', 'officer', 'current_officers', 'superseded_by', 'royal_household'], [4, 'lord president of the council', 'the rt hon nick clegg, mp', '', ''], [5, 'lord privy seal', 'the rt hon andrew lansley, cbe, mp', '', ''], [6, 'lord great chamberlain', 'the marquess of cholmondeley', 'lord high treasurer', 'lord chamberlain'], [7, 'lord high constable', 'vacant', 'earl marshal', 'master of the horse'], [8, 'earl marshal', 'the duke of norfolk', '', 'master of the horse'], [9, 'lord high admiral', 'hrh the duke of edinburgh', '', '']]
+########################################################################################################################
+Sample 3512 - Plan 1: Operation 2: Count the number of rows.
+Sample 3512 - Plan 1: Selected indices: []
+Sample 3512 - Plan 1: X-Table after operation df:
+   row_count
+0          6
+Sample 3512 - Plan 1: Table after operation: [['row_count'], [6]]
+Fall-back: FALSE
+Answer from plan 1: [[6]]
+Groundtruth: ['2']

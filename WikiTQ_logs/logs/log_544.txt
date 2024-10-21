@@ -1,0 +1,142 @@
+************************************************************************************************************************
+Sample 544 - Plan 1: Query: how many jp trophies does each person have?
+Sample 544 - Plan 1: Groundtruth: ['0']
+Sample 544 - Plan 1: X-Original table pd: 
+             name  league  fa_cup  league_cup  jp_trophy  total
+0    scot bennett       5       0           0          0      5
+1     danny coles       3       0           0          0      3
+2   liam sercombe       1       0           0          0      1
+3        alan gow       4       0           0          0      4
+4    john o'flynn      11       0           1          0     12
+5   guillem bauza       2       0           0          0      2
+6   jimmy keohane       3       0           0          0      3
+7     pat baldwin       1       0           0          0      1
+8   jamie cureton      20       0           0          0     20
+9    arron davies       3       0           0          0      3
+10   jake gosling       1       0           0          0      1
+11      own goals       0       0           0          0      0
+12          total       0       0           0          0      0
+Sample 544 - Plan 1: Caption: none
+Sample 544 - Plan 1: Original table: [['name', 'league', 'fa_cup', 'league_cup', 'jp_trophy', 'total'], ['scot bennett', '5', '0', '0', '0', '5'], ['danny coles', '3', '0', '0', '0', '3'], ['liam sercombe', '1', '0', '0', '0', '1'], ['alan gow', '4', '0', '0', '0', '4'], ["john o'flynn", '11', '0', '1', '0', '12'], ['guillem bauza', '2', '0', '0', '0', '2'], ['jimmy keohane', '3', '0', '0', '0', '3'], ['pat baldwin', '1', '0', '0', '0', '1'], ['jamie cureton', '20', '0', '0', '0', '20'], ['arron davies', '3', '0', '0', '0', '3'], ['jake gosling', '1', '0', '0', '0', '1'], ['own goals', '0', '0', '0', '0', '0'], ['total', '0', '0', '0', '0', '0']]
+########################################################################################################################
+Sample 544 - Plan 1: Operation 1: Select rows where the 'name' is not 'total' and not 'own goals'.
+Sample 544 - Plan 1: Selected indices: []
+Sample 544 - Plan 1: X-Table after operation df:
+             name  league  fa_cup  league_cup  jp_trophy  total
+0    scot bennett       5       0           0          0      5
+1     danny coles       3       0           0          0      3
+2   liam sercombe       1       0           0          0      1
+3        alan gow       4       0           0          0      4
+4    john o'flynn      11       0           1          0     12
+5   guillem bauza       2       0           0          0      2
+6   jimmy keohane       3       0           0          0      3
+7     pat baldwin       1       0           0          0      1
+8   jamie cureton      20       0           0          0     20
+9    arron davies       3       0           0          0      3
+10   jake gosling       1       0           0          0      1
+Sample 544 - Plan 1: Table after operation: [['name', 'league', 'fa_cup', 'league_cup', 'jp_trophy', 'total'], ['scot bennett', 5, 0, 0, 0, 5], ['danny coles', 3, 0, 0, 0, 3], ['liam sercombe', 1, 0, 0, 0, 1], ['alan gow', 4, 0, 0, 0, 4], ["john o'flynn", 11, 0, 1, 0, 12], ['guillem bauza', 2, 0, 0, 0, 2], ['jimmy keohane', 3, 0, 0, 0, 3], ['pat baldwin', 1, 0, 0, 0, 1], ['jamie cureton', 20, 0, 0, 0, 20], ['arron davies', 3, 0, 0, 0, 3], ['jake gosling', 1, 0, 0, 0, 1]]
+########################################################################################################################
+Sample 544 - Plan 1: Operation 2: Select the 'name' and 'jp_trophy' columns.
+Sample 544 - Plan 1: Selected indices: []
+Sample 544 - Plan 1: X-Table after operation df:
+             name  jp_trophy
+0    scot bennett          0
+1     danny coles          0
+2   liam sercombe          0
+3        alan gow          0
+4    john o'flynn          0
+5   guillem bauza          0
+6   jimmy keohane          0
+7     pat baldwin          0
+8   jamie cureton          0
+9    arron davies          0
+10   jake gosling          0
+Sample 544 - Plan 1: Table after operation: [['name', 'jp_trophy'], ['scot bennett', 0], ['danny coles', 0], ['liam sercombe', 0], ['alan gow', 0], ["john o'flynn", 0], ['guillem bauza', 0], ['jimmy keohane', 0], ['pat baldwin', 0], ['jamie cureton', 0], ['arron davies', 0], ['jake gosling', 0]]
+########################################################################################################################
+Sample 544 - Plan 1: Operation 3: Exclude the row with the 'total' value in the 'name' column.
+Sample 544 - Plan 1: Selected indices: [[9, 0], [4, 0], [0, 0], [7, 0], [2, 0], [8, 0], [3, 0], [10, 0], [5, 0], [6, 0], [1, 0]]
+Sample 544 - Plan 1: X-Table after operation df:
+             name  jp_trophy
+0    scot bennett          0
+1     danny coles          0
+2   liam sercombe          0
+3        alan gow          0
+4    john o'flynn          0
+5   guillem bauza          0
+6   jimmy keohane          0
+7     pat baldwin          0
+8   jamie cureton          0
+9    arron davies          0
+10   jake gosling          0
+Sample 544 - Plan 1: Table after operation: [['name', 'jp_trophy'], ['scot bennett', 0], ['danny coles', 0], ['liam sercombe', 0], ['alan gow', 0], ["john o'flynn", 0], ['guillem bauza', 0], ['jimmy keohane', 0], ['pat baldwin', 0], ['jamie cureton', 0], ['arron davies', 0], ['jake gosling', 0]]
+########################################################################################################################
+Sample 544 - Plan 1: Operation 4: Exclude the row with the 'own goals' value in the 'name' column.
+Sample 544 - Plan 1: Selected indices: []
+Sample 544 - Plan 1: X-Table after operation df:
+             name  jp_trophy
+0    scot bennett          0
+1     danny coles          0
+2   liam sercombe          0
+3        alan gow          0
+4    john o'flynn          0
+5   guillem bauza          0
+6   jimmy keohane          0
+7     pat baldwin          0
+8   jamie cureton          0
+9    arron davies          0
+10   jake gosling          0
+Sample 544 - Plan 1: Table after operation: [['name', 'jp_trophy'], ['scot bennett', 0], ['danny coles', 0], ['liam sercombe', 0], ['alan gow', 0], ["john o'flynn", 0], ['guillem bauza', 0], ['jimmy keohane', 0], ['pat baldwin', 0], ['jamie cureton', 0], ['arron davies', 0], ['jake gosling', 0]]
+########################################################################################################################
+Sample 544 - Plan 1: Operation 5: Calculate the sum of the 'jp_trophy' column for each person.
+Sample 544 - Plan 1: Selected indices: []
+Sample 544 - Plan 1: X-Table after operation df:
+             name  total_jp_trophy
+0        alan gow                0
+1    arron davies                0
+2     danny coles                0
+3   guillem bauza                0
+4    jake gosling                0
+5   jamie cureton                0
+6   jimmy keohane                0
+7    john o'flynn                0
+8   liam sercombe                0
+9     pat baldwin                0
+10   scot bennett                0
+Sample 544 - Plan 1: Table after operation: [['name', 'total_jp_trophy'], ['alan gow', 0], ['arron davies', 0], ['danny coles', 0], ['guillem bauza', 0], ['jake gosling', 0], ['jamie cureton', 0], ['jimmy keohane', 0], ["john o'flynn", 0], ['liam sercombe', 0], ['pat baldwin', 0], ['scot bennett', 0]]
+########################################################################################################################
+Sample 544 - Plan 1: Operation 6: Rename the calculated column as 'jp_trophies'.
+Sample 544 - Plan 1: Selected indices: []
+Sample 544 - Plan 1: X-Table after operation df:
+             name  jp_trophies
+0        alan gow            0
+1    arron davies            0
+2     danny coles            0
+3   guillem bauza            0
+4    jake gosling            0
+5   jamie cureton            0
+6   jimmy keohane            0
+7    john o'flynn            0
+8   liam sercombe            0
+9     pat baldwin            0
+10   scot bennett            0
+Sample 544 - Plan 1: Table after operation: [['name', 'jp_trophies'], ['alan gow', 0], ['arron davies', 0], ['danny coles', 0], ['guillem bauza', 0], ['jake gosling', 0], ['jamie cureton', 0], ['jimmy keohane', 0], ["john o'flynn", 0], ['liam sercombe', 0], ['pat baldwin', 0], ['scot bennett', 0]]
+########################################################################################################################
+Sample 544 - Plan 1: Operation 7: Select the 'name' and 'jp_trophies' columns as the final result.
+Sample 544 - Plan 1: Selected indices: []
+Sample 544 - Plan 1: X-Table after operation df:
+             name  jp_trophies
+0        alan gow            0
+1    arron davies            0
+2     danny coles            0
+3   guillem bauza            0
+4    jake gosling            0
+5   jamie cureton            0
+6   jimmy keohane            0
+7    john o'flynn            0
+8   liam sercombe            0
+9     pat baldwin            0
+10   scot bennett            0
+Sample 544 - Plan 1: Table after operation: [['name', 'jp_trophies'], ['alan gow', 0], ['arron davies', 0], ['danny coles', 0], ['guillem bauza', 0], ['jake gosling', 0], ['jamie cureton', 0], ['jimmy keohane', 0], ["john o'flynn", 0], ['liam sercombe', 0], ['pat baldwin', 0], ['scot bennett', 0]]
+Fall-back: FALSE
+Answer from plan 1: [['alan gow', 0], ['arron davies', 0], ['danny coles', 0], ['guillem bauza', 0], ['jake gosling', 0], ['jamie cureton', 0], ['jimmy keohane', 0], ["john o'flynn", 0], ['liam sercombe', 0], ['pat baldwin', 0], ['scot bennett', 0]]
+Groundtruth: ['0']

@@ -1,0 +1,45 @@
+************************************************************************************************************************
+Sample 1376 - Plan 1: Query: name one nation that did not earn a gold medal.
+Sample 1376 - Plan 1: Groundtruth: ['Switzerland (SUI)']
+Sample 1376 - Plan 1: X-Original table pd: 
+   rank               nation  gold  silver  bronze  total
+0     1      australia (aus)     2       1       0      3
+1     2          italy (ita)     1       1       1      3
+2     3        germany (eua)     1       0       1      2
+3     4   soviet union (urs)     1       0       0      1
+4     5    switzerland (sui)     0       2       1      3
+5     6  united states (usa)     0       1       0      1
+6     7  great britain (gbr)     0       0       1      1
+7     7         france (fra)     0       0       1      1
+Sample 1376 - Plan 1: Caption: none
+Sample 1376 - Plan 1: Original table: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['1', 'australia\xa0(aus)', '2', '1', '0', '3'], ['2', 'italy\xa0(ita)', '1', '1', '1', '3'], ['3', 'germany\xa0(eua)', '1', '0', '1', '2'], ['4', 'soviet union\xa0(urs)', '1', '0', '0', '1'], ['5', 'switzerland\xa0(sui)', '0', '2', '1', '3'], ['6', 'united states\xa0(usa)', '0', '1', '0', '1'], ['7', 'great britain\xa0(gbr)', '0', '0', '1', '1'], ['7', 'france\xa0(fra)', '0', '0', '1', '1']]
+########################################################################################################################
+Sample 1376 - Plan 1: Operation 1: Select rows where the 'gold' column is equal to 0.
+Sample 1376 - Plan 1: Selected indices: [[4, 2], [6, 2], [7, 2], [5, 2]]
+Sample 1376 - Plan 1: X-Table after operation df:
+   rank               nation  gold  silver  bronze  total
+0     5    switzerland (sui)     0       2       1      3
+1     6  united states (usa)     0       1       0      1
+2     7  great britain (gbr)     0       0       1      1
+3     7         france (fra)     0       0       1      1
+Sample 1376 - Plan 1: Table after operation: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], [5, 'switzerland\xa0(sui)', 0, 2, 1, 3], [6, 'united states\xa0(usa)', 0, 1, 0, 1], [7, 'great britain\xa0(gbr)', 0, 0, 1, 1], [7, 'france\xa0(fra)', 0, 0, 1, 1]]
+########################################################################################################################
+Sample 1376 - Plan 1: Operation 2: Select the 'nation' column.
+Sample 1376 - Plan 1: Selected indices: []
+Sample 1376 - Plan 1: X-Table after operation df:
+                nation
+0    switzerland (sui)
+1  united states (usa)
+2  great britain (gbr)
+3         france (fra)
+Sample 1376 - Plan 1: Table after operation: [['nation'], ['switzerland\xa0(sui)'], ['united states\xa0(usa)'], ['great britain\xa0(gbr)'], ['france\xa0(fra)']]
+########################################################################################################################
+Sample 1376 - Plan 1: Operation 3: Select row number 1.
+Sample 1376 - Plan 1: Selected indices: []
+Sample 1376 - Plan 1: X-Table after operation df:
+              nation
+0  switzerland (sui)
+Sample 1376 - Plan 1: Table after operation: [['nation'], ['switzerland\xa0(sui)']]
+Fall-back: FALSE
+Answer from plan 1: [['switzerland\xa0(sui)']]
+Groundtruth: ['Switzerland (SUI)']

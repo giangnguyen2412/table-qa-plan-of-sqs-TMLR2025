@@ -1,0 +1,38 @@
+************************************************************************************************************************
+Sample 1876 - Plan 1: Query: how many plaers scored above 10 points this season?
+Sample 1876 - Plan 1: Groundtruth: ['2']
+Sample 1876 - Plan 1: X-Original table pd: 
+             name  league  fa_cup  league_cup  jp_trophy  total
+0    scot bennett       5       0           0          0      5
+1     danny coles       3       0           0          0      3
+2   liam sercombe       1       0           0          0      1
+3        alan gow       4       0           0          0      4
+4    john o'flynn      11       0           1          0     12
+5   guillem bauza       2       0           0          0      2
+6   jimmy keohane       3       0           0          0      3
+7     pat baldwin       1       0           0          0      1
+8   jamie cureton      20       0           0          0     20
+9    arron davies       3       0           0          0      3
+10   jake gosling       1       0           0          0      1
+11      own goals       0       0           0          0      0
+12          total       0       0           0          0      0
+Sample 1876 - Plan 1: Caption: none
+Sample 1876 - Plan 1: Original table: [['name', 'league', 'fa_cup', 'league_cup', 'jp_trophy', 'total'], ['scot bennett', '5', '0', '0', '0', '5'], ['danny coles', '3', '0', '0', '0', '3'], ['liam sercombe', '1', '0', '0', '0', '1'], ['alan gow', '4', '0', '0', '0', '4'], ["john o'flynn", '11', '0', '1', '0', '12'], ['guillem bauza', '2', '0', '0', '0', '2'], ['jimmy keohane', '3', '0', '0', '0', '3'], ['pat baldwin', '1', '0', '0', '0', '1'], ['jamie cureton', '20', '0', '0', '0', '20'], ['arron davies', '3', '0', '0', '0', '3'], ['jake gosling', '1', '0', '0', '0', '1'], ['own goals', '0', '0', '0', '0', '0'], ['total', '0', '0', '0', '0', '0']]
+########################################################################################################################
+Sample 1876 - Plan 1: Operation 1: Select rows where the 'total' column is greater than 10.
+Sample 1876 - Plan 1: Selected indices: [[4, 5], [8, 5]]
+Sample 1876 - Plan 1: X-Table after operation df:
+            name  league  fa_cup  league_cup  jp_trophy  total
+0   john o'flynn      11       0           1          0     12
+1  jamie cureton      20       0           0          0     20
+Sample 1876 - Plan 1: Table after operation: [['name', 'league', 'fa_cup', 'league_cup', 'jp_trophy', 'total'], ["john o'flynn", 11, 0, 1, 0, 12], ['jamie cureton', 20, 0, 0, 0, 20]]
+########################################################################################################################
+Sample 1876 - Plan 1: Operation 2: Count the number of rows.
+Sample 1876 - Plan 1: Selected indices: []
+Sample 1876 - Plan 1: X-Table after operation df:
+   row_count
+0          2
+Sample 1876 - Plan 1: Table after operation: [['row_count'], [2]]
+Fall-back: FALSE
+Answer from plan 1: [[2]]
+Groundtruth: ['2']

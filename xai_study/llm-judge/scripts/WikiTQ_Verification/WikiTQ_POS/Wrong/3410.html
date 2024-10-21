@@ -1,0 +1,251 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how many games were played where the audience turnout was greater than 20,000?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'location_nattendance' is greater than 20,000.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>game</td>
+<td>date</td>
+<td>team</td>
+<td>score</td>
+<td>high_points</td>
+<td>high_rebounds</td>
+<td>high_assists</td>
+<td>location_nattendance</td>
+<td>record</td>
+</tr>
+<tr>
+<td>33</td>
+<td>january 2</td>
+<td>@ detroit</td>
+<td>l 92–98</td>
+<td>brad miller (25)</td>
+<td>brad miller (16)</td>
+<td>john salmons (4)</td>
+<td>the palace of auburn hills\n22,076</td>
+<td>8–25</td>
+</tr>
+<tr>
+<td>34</td>
+<td>january 3</td>
+<td>@ indiana</td>
+<td>l 117–122</td>
+<td>kevin martin (45)</td>
+<td>bobby jackson (10)</td>
+<td>kevin martin, brad miller (6)</td>
+<td>conseco fieldhouse\n12,765</td>
+<td>8–26</td>
+</tr>
+<tr>
+<td>35</td>
+<td>january 5</td>
+<td>@ new jersey</td>
+<td>l 90–98</td>
+<td>kevin martin (36)</td>
+<td>kenny thomas (8)</td>
+<td>brad miller (8)</td>
+<td>izod center\n12,314</td>
+<td>8–27</td>
+</tr>
+<tr>
+<td>36</td>
+<td>january 6</td>
+<td>@ chicago</td>
+<td>l 94–99</td>
+<td>kevin martin (29)</td>
+<td>brad miller (12)</td>
+<td>beno udrih (5)</td>
+<td>united center\n18,060</td>
+<td>8–28</td>
+</tr>
+<tr>
+<td>37</td>
+<td>january 9</td>
+<td>miami</td>
+<td>l 115–119 (ot)</td>
+<td>john salmons (29)</td>
+<td>brad miller (16)</td>
+<td>john salmons, brad miller, bobby jackson (4)</td>
+<td>arco arena\n12,587</td>
+<td>8–29</td>
+</tr>
+<tr>
+<td>38</td>
+<td>january 11</td>
+<td>dallas</td>
+<td>w 102–95</td>
+<td>kevin martin (21)</td>
+<td>spencer hawes (8)</td>
+<td>beno udrih (6)</td>
+<td>arco arena\n12,294</td>
+<td>9–29</td>
+</tr>
+<tr>
+<td>39</td>
+<td>january 13</td>
+<td>orlando</td>
+<td>l 107–139</td>
+<td>kevin martin (30)</td>
+<td>francisco garcía (5)</td>
+<td>francisco garcía (5)</td>
+<td>arco arena\n11,168</td>
+<td>9–30</td>
+</tr>
+<tr>
+<td>40</td>
+<td>january 14</td>
+<td>@ golden state</td>
+<td>w 135–133 (3ot)</td>
+<td>brad miller (30)</td>
+<td>brad miller (22)</td>
+<td>john salmons, beno udrih (7)</td>
+<td>oracle arena\n19,122</td>
+<td>10–30</td>
+</tr>
+<tr>
+<td>41</td>
+<td>january 16</td>
+<td>milwaukee</td>
+<td>l 122–129</td>
+<td>john salmons, kevin martin (24)</td>
+<td>jason thompson (11)</td>
+<td>john salmons (6)</td>
+<td>arco arena\n11,663</td>
+<td>10–31</td>
+</tr>
+<tr>
+<td>42</td>
+<td>january 20</td>
+<td>@ denver</td>
+<td>l 99–118</td>
+<td>kevin martin (25)</td>
+<td>jason thompson (11)</td>
+<td>john salmons, beno udrih (5)</td>
+<td>pepsi center\n15,164</td>
+<td>10–32</td>
+</tr>
+<tr>
+<td>43</td>
+<td>january 21</td>
+<td>washington</td>
+<td>l 107–110</td>
+<td>john salmons, beno udrih (24)</td>
+<td>john salmons, shelden williams, jason thompson (5)</td>
+<td>john salmons (5)</td>
+<td>arco arena\n10,821</td>
+<td>10–33</td>
+</tr>
+<tr>
+<td>44</td>
+<td>january 24</td>
+<td>@ milwaukee</td>
+<td>l 104–106</td>
+<td>kevin martin (20)</td>
+<td>brad miller (13)</td>
+<td>brad miller (9)</td>
+<td>bradley center\n15,379</td>
+<td>10–34</td>
+</tr>
+<tr>
+<td>45</td>
+<td>january 25</td>
+<td>@ toronto</td>
+<td>l 97–113</td>
+<td>john salmons (21)</td>
+<td>john salmons (7)</td>
+<td>beno udrih (5)</td>
+<td>air canada centre\n18,127</td>
+<td>10–35</td>
+</tr>
+<tr>
+<td>46</td>
+<td>january 27</td>
+<td>@ cleveland</td>
+<td>l 110–117</td>
+<td>kevin martin (35)</td>
+<td>kevin martin (7)</td>
+<td>kevin martin (7)</td>
+<td>quicken loans arena\n20,562</td>
+<td>10–36</td>
+</tr>
+<tr>
+<td>47</td>
+<td>january 28</td>
+<td>@ boston</td>
+<td>l 100–119</td>
+<td>john salmons (22)</td>
+<td>jason thompson (11)</td>
+<td>john salmons (5)</td>
+<td>td banknorth garden\n18,624</td>
+<td>10–37</td>
+</tr>
+<tr>
+<td>48</td>
+<td>january 30</td>
+<td>chicago</td>
+<td>l 88–109</td>
+<td>kevin martin (27)</td>
+<td>jason thompson (12)</td>
+<td>spencer hawes, kevin martin (3)</td>
+<td>arco arena\n13,356</td>
+<td>10–38</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Count the number of rows.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>game</td>
+<td>date</td>
+<td>team</td>
+<td>score</td>
+<td>high_points</td>
+<td>high_rebounds</td>
+<td>high_assists</td>
+<td>location_nattendance</td>
+<td>record</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>row_count</td>
+</tr>
+<tr>
+<td>0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[0]]</h3>
+</body></html>

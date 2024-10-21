@@ -1,0 +1,40 @@
+************************************************************************************************************************
+Sample 3727 - Plan 1: Query: who started after 1960?
+Sample 3727 - Plan 1: Groundtruth: ['D. Lawrence Gunnels']
+Sample 3727 - Plan 1: X-Original table pd: 
+                   clerk  started  finished      school__year_  \
+0         kenneth w. dam     1957      1958     chicago (1957)   
+1           alan c. kohn     1957      1958      wash u (1955)   
+2  william c. canby, jr.     1958      1959   minnesota (1956)   
+3       heywood h. davis     1958      1959      kansas (1958)   
+4        jerome b. libin     1959      1960    michigan (1959)   
+5    patrick f. mccartan     1959      1960  notre dame (1959)   
+6    d. lawrence gunnels     1961      1962      wash u (1960)   
+
+  previous_clerkship  
+0               none  
+1               none  
+2               none  
+3               none  
+4               none  
+5               none  
+6               none  
+Sample 3727 - Plan 1: Caption: none
+Sample 3727 - Plan 1: Original table: [['clerk', 'started', 'finished', 'school__year_', 'previous_clerkship'], ['kenneth w. dam', '1957', '1958', 'chicago (1957)', 'none'], ['alan c. kohn', '1957', '1958', 'wash u (1955)', 'none'], ['william c. canby, jr.', '1958', '1959', 'minnesota (1956)', 'none'], ['heywood h. davis', '1958', '1959', 'kansas (1958)', 'none'], ['jerome b. libin', '1959', '1960', 'michigan (1959)', 'none'], ['patrick f. mccartan', '1959', '1960', 'notre dame (1959)', 'none'], ['d. lawrence gunnels', '1961', '1962', 'wash u (1960)', 'none']]
+########################################################################################################################
+Sample 3727 - Plan 1: Operation 1: Select rows where the 'started' column is greater than 1960.
+Sample 3727 - Plan 1: Selected indices: [[6, 1]]
+Sample 3727 - Plan 1: X-Table after operation df:
+                 clerk  started  finished  school__year_ previous_clerkship
+0  d. lawrence gunnels     1961      1962  wash u (1960)               none
+Sample 3727 - Plan 1: Table after operation: [['clerk', 'started', 'finished', 'school__year_', 'previous_clerkship'], ['d. lawrence gunnels', 1961, 1962, 'wash u (1960)', 'none']]
+########################################################################################################################
+Sample 3727 - Plan 1: Operation 2: Select the 'clerk' column.
+Sample 3727 - Plan 1: Selected indices: []
+Sample 3727 - Plan 1: X-Table after operation df:
+                 clerk
+0  d. lawrence gunnels
+Sample 3727 - Plan 1: Table after operation: [['clerk'], ['d. lawrence gunnels']]
+Fall-back: FALSE
+Answer from plan 1: [['d. lawrence gunnels']]
+Groundtruth: ['D. Lawrence Gunnels']

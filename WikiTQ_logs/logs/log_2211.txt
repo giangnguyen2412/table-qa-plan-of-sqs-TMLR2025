@@ -1,0 +1,36 @@
+************************************************************************************************************************
+Sample 2211 - Plan 1: Query: who are the only two representatives to not be democrats?
+Sample 2211 - Plan 1: Groundtruth: ['Joe Straus', 'Lyle Larson']
+Sample 2211 - Plan 1: X-Original table pd: 
+          representative party home_town_city  district
+0  trey martinez fischer     d    san antonio       116
+1          philip cortez     d    san antonio       117
+2             joe farias     d    san antonio       118
+3       roland gutierrez     d    san antonio       119
+4         ruth mcclendon     d    san antonio       120
+5             joe straus     r    san antonio       121
+6            lyle larson     r    san antonio       122
+7        mike villarreal     d    san antonio       123
+8          jose menendez     d    san antonio       124
+9       justin rodriguez     d    san antonio       125
+Sample 2211 - Plan 1: Caption: none
+Sample 2211 - Plan 1: Original table: [['representative', 'party', 'home_town_city', 'district'], ['trey martinez fischer', 'd', 'san antonio', '116'], ['philip cortez', 'd', 'san antonio', '117'], ['joe farias', 'd', 'san antonio', '118'], ['roland gutierrez', 'd', 'san antonio', '119'], ['ruth mcclendon', 'd', 'san antonio', '120'], ['joe straus', 'r', 'san antonio', '121'], ['lyle larson', 'r', 'san antonio', '122'], ['mike villarreal', 'd', 'san antonio', '123'], ['jose menendez', 'd', 'san antonio', '124'], ['justin rodriguez', 'd', 'san antonio', '125']]
+########################################################################################################################
+Sample 2211 - Plan 1: Operation 1: Select rows where the 'party' is not 'd'.
+Sample 2211 - Plan 1: Selected indices: [[6, 1], [5, 1]]
+Sample 2211 - Plan 1: X-Table after operation df:
+  representative party home_town_city  district
+0     joe straus     r    san antonio       121
+1    lyle larson     r    san antonio       122
+Sample 2211 - Plan 1: Table after operation: [['representative', 'party', 'home_town_city', 'district'], ['joe straus', 'r', 'san antonio', 121], ['lyle larson', 'r', 'san antonio', 122]]
+########################################################################################################################
+Sample 2211 - Plan 1: Operation 2: Select the 'representative' column.
+Sample 2211 - Plan 1: Selected indices: []
+Sample 2211 - Plan 1: X-Table after operation df:
+  representative
+0     joe straus
+1    lyle larson
+Sample 2211 - Plan 1: Table after operation: [['representative'], ['joe straus'], ['lyle larson']]
+Fall-back: FALSE
+Answer from plan 1: [['joe straus'], ['lyle larson']]
+Groundtruth: ['Joe Straus', 'Lyle Larson']

@@ -1,0 +1,54 @@
+************************************************************************************************************************
+Sample 1009 - Plan 1: Query: what is the difference in price from class 1 to class 3 on december 9 of 2003?
+Sample 1009 - Plan 1: Groundtruth: ['£4.00']
+Sample 1009 - Plan 1: X-Original table pd: 
+   date_introduced class_1__e_g__motorbike_ class_2__e_g__car_  \
+0  9 december 2003                    £1.00              £2.00   
+1     23 july 2004                    £1.00              £2.00   
+2   16 august 2004                    £2.00              £3.00   
+3     14 june 2005                    £2.50              £3.50   
+4   1 january 2008                    £2.50              £4.50   
+5   1 january 2009                    £2.70              £4.70   
+6     1 march 2010                    £2.70              £5.00   
+7     1 march 2011                    £3.00              £5.30   
+8     1 march 2012                    £3.00              £5.50   
+
+  class_3__e_g__car_with_trailer_ class_4__e_g__van_ class_5__e_g__hgv_  
+0                           £5.00              £5.00             £10.00  
+1                           £5.00              £5.00              £6.00  
+2                           £6.00              £6.00              £6.00  
+3                           £7.00              £7.00              £7.00  
+4                           £8.00              £9.00              £9.00  
+5                           £8.40              £9.40              £9.40  
+6                           £9.00             £10.00             £10.00  
+7                           £9.60             £10.60             £10.60  
+8                          £10.00             £11.00             £11.00  
+Sample 1009 - Plan 1: Caption: none
+Sample 1009 - Plan 1: Original table: [['date_introduced', 'class_1__e_g__motorbike_', 'class_2__e_g__car_', 'class_3__e_g__car_with_trailer_', 'class_4__e_g__van_', 'class_5__e_g__hgv_'], ['9 december 2003', '£1.00', '£2.00', '£5.00', '£5.00', '£10.00'], ['23 july 2004', '£1.00', '£2.00', '£5.00', '£5.00', '£6.00'], ['16 august 2004', '£2.00', '£3.00', '£6.00', '£6.00', '£6.00'], ['14 june 2005', '£2.50', '£3.50', '£7.00', '£7.00', '£7.00'], ['1 january 2008', '£2.50', '£4.50', '£8.00', '£9.00', '£9.00'], ['1 january 2009', '£2.70', '£4.70', '£8.40', '£9.40', '£9.40'], ['1 march 2010', '£2.70', '£5.00', '£9.00', '£10.00', '£10.00'], ['1 march 2011', '£3.00', '£5.30', '£9.60', '£10.60', '£10.60'], ['1 march 2012', '£3.00', '£5.50', '£10.00', '£11.00', '£11.00']]
+########################################################################################################################
+Sample 1009 - Plan 1: Operation 1: Select the row where the 'date_introduced' is '9 december 2003'.
+Sample 1009 - Plan 1: Selected indices: [[0, 0]]
+Sample 1009 - Plan 1: X-Table after operation df:
+   date_introduced class_1__e_g__motorbike_ class_2__e_g__car_  \
+0  9 december 2003                    £1.00              £2.00   
+
+  class_3__e_g__car_with_trailer_ class_4__e_g__van_ class_5__e_g__hgv_  
+0                           £5.00              £5.00             £10.00  
+Sample 1009 - Plan 1: Table after operation: [['date_introduced', 'class_1__e_g__motorbike_', 'class_2__e_g__car_', 'class_3__e_g__car_with_trailer_', 'class_4__e_g__van_', 'class_5__e_g__hgv_'], ['9 december 2003', '£1.00', '£2.00', '£5.00', '£5.00', '£10.00']]
+########################################################################################################################
+Sample 1009 - Plan 1: Operation 2: Select the 'class_1__e_g__motorbike_' and 'class_3__e_g__car_with_trailer_' columns.
+Sample 1009 - Plan 1: Selected indices: []
+Sample 1009 - Plan 1: X-Table after operation df:
+  class_1__e_g__motorbike_ class_3__e_g__car_with_trailer_
+0                    £1.00                           £5.00
+Sample 1009 - Plan 1: Table after operation: [['class_1__e_g__motorbike_', 'class_3__e_g__car_with_trailer_'], ['£1.00', '£5.00']]
+########################################################################################################################
+Sample 1009 - Plan 1: Operation 3: Calculate the difference in price between the selected cells from step 2.
+Sample 1009 - Plan 1: Selected indices: []
+Sample 1009 - Plan 1: X-Table after operation df:
+   price_difference
+0               4.0
+Sample 1009 - Plan 1: Table after operation: [['price_difference'], [4.0]]
+Fall-back: FALSE
+Answer from plan 1: [[4.0]]
+Groundtruth: ['£4.00']

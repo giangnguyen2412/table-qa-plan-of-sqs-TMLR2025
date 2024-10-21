@@ -1,0 +1,38 @@
+************************************************************************************************************************
+Sample 1275 - Plan 1: Query: give the total number of characters that do not have a glyph.
+Sample 1275 - Plan 1: Groundtruth: ['9']
+Sample 1275 - Plan 1: X-Original table pd: 
+               name glyph c_string unicode               unicode_name
+0               nul            \\0  u+0000                 null (nul)
+1             alert            \\a  u+0007                 bell (bel)
+2         backspace            \\b  u+0008             backspace (bs)
+3               tab            \\t  u+0009  character tabulation (ht)
+4   carriage-return            \\r  u+000d       carriage return (cr)
+..              ...   ...      ...     ...                        ...
+95                w     w        w  u+0077       latin small letter w
+96                x     x        x  u+0078       latin small letter x
+97                y     y        y  u+0079       latin small letter y
+98                z     z        z  u+007a       latin small letter z
+99       left-brace     {        {  u+007b         left curly bracket
+
+[100 rows x 5 columns]
+Sample 1275 - Plan 1: Caption: none
+Sample 1275 - Plan 1: Original table: [['name', 'glyph', 'c_string', 'unicode', 'unicode_name'], ['nul', '', '\\\\0', 'u+0000', 'null (nul)'], ['alert', '', '\\\\a', 'u+0007', 'bell (bel)'], ['backspace', '', '\\\\b', 'u+0008', 'backspace (bs)'], ['tab', '', '\\\\t', 'u+0009', 'character tabulation (ht)'], ['carriage-return', '', '\\\\r', 'u+000d', 'carriage return (cr)'], ['newline', '', '\\\\n', 'u+000a', 'line feed (lf)'], ['vertical-tab', '', '\\\\v', 'u+000b', 'line tabulation (vt)'], ['form-feed', '', '\\\\f', 'u+000c', 'form feed (ff)'], ['space', '', '', 'u+0020', 'space'], ['exclamation-mark', '!', '!', 'u+0021', 'exclamation mark'], ['quotation-mark', '"', '\\\\"', 'u+0022', 'quotation mark'], ['number-sign', '#', '#', 'u+0023', 'number sign'], ['dollar-sign', '$', '$', 'u+0024', 'dollar sign'], ['percent-sign', '%', '%', 'u+0025', 'percent sign'], ['ampersand', '&', '&', 'u+0026', 'ampersand'], ['apostrophe', "'", "\\\\'", 'u+0027', 'apostrophe'], ['left-parenthesis', '(', '(', 'u+0028', 'left parenthesis'], ['right-parenthesis', ')', ')', 'u+0029', 'right parenthesis'], ['asterisk', '*', '*', 'u+002a', 'asterisk'], ['plus-sign', '+', '+', 'u+002b', 'plus sign'], ['comma', ',', ',', 'u+002c', 'comma'], ['hyphen', '-', '-', 'u+002d', 'hyphen-minus'], ['period', '.', '.', 'u+002e', 'full stop'], ['slash', '/', '/', 'u+002f', 'solidus'], ['zero', '0', '0', 'u+0030', 'digit zero'], ['one', '1', '1', 'u+0031', 'digit one'], ['two', '2', '2', 'u+0032', 'digit two'], ['three', '3', '3', 'u+0033', 'digit three'], ['four', '4', '4', 'u+0034', 'digit four'], ['five', '5', '5', 'u+0035', 'digit five'], ['six', '6', '6', 'u+0036', 'digit six'], ['seven', '7', '7', 'u+0037', 'digit seven'], ['eight', '8', '8', 'u+0038', 'digit eight'], ['nine', '9', '9', 'u+0039', 'digit nine'], ['colon', ':', ':', 'u+003a', 'colon'], ['semicolon', ';', ';', 'u+003b', 'semicolon'], ['less-than-sign', '<', '<', 'u+003c', 'less-than sign'], ['equals-sign', '=', '=', 'u+003d', 'equals sign'], ['greater-than-sign', '>', '>', 'u+003e', 'greater-than sign'], ['question-mark', '?', '?', 'u+003f', 'question mark'], ['commercial-at', '@', '@', 'u+0040', 'commercial at'], ['a', 'a', 'a', 'u+0041', 'latin capital letter a'], ['b', 'b', 'b', 'u+0042', 'latin capital letter b'], ['c', 'c', 'c', 'u+0043', 'latin capital letter c'], ['d', 'd', 'd', 'u+0044', 'latin capital letter d'], ['e', 'e', 'e', 'u+0045', 'latin capital letter e'], ['f', 'f', 'f', 'u+0046', 'latin capital letter f'], ['g', 'g', 'g', 'u+0047', 'latin capital letter g'], ['h', 'h', 'h', 'u+0048', 'latin capital letter h'], ['i', 'i', 'i', 'u+0049', 'latin capital letter i'], ['j', 'j', 'j', 'u+004a', 'latin capital letter j'], ['k', 'k', 'k', 'u+004b', 'latin capital letter k'], ['l', 'l', 'l', 'u+004c', 'latin capital letter l'], ['m', 'm', 'm', 'u+004d', 'latin capital letter m'], ['n', 'n', 'n', 'u+004e', 'latin capital letter n'], ['o', 'o', 'o', 'u+004f', 'latin capital letter o'], ['p', 'p', 'p', 'u+0050', 'latin capital letter p'], ['q', 'q', 'q', 'u+0051', 'latin capital letter q'], ['r', 'r', 'r', 'u+0052', 'latin capital letter r'], ['s', 's', 's', 'u+0053', 'latin capital letter s'], ['t', 't', 't', 'u+0054', 'latin capital letter t'], ['u', 'u', 'u', 'u+0055', 'latin capital letter u'], ['v', 'v', 'v', 'u+0056', 'latin capital letter v'], ['w', 'w', 'w', 'u+0057', 'latin capital letter w'], ['x', 'x', 'x', 'u+0058', 'latin capital letter x'], ['y', 'y', 'y', 'u+0059', 'latin capital letter y'], ['z', 'z', 'z', 'u+005a', 'latin capital letter z'], ['left-square-bracket', '[', '[', 'u+005b', 'left square bracket'], ['backslash', '\\\\', '\\\\\\\\', 'u+005c', 'reverse solidus'], ['right-square-bracket', ']', ']', 'u+005d', 'right square bracket'], ['circumflex', '^', '^', 'u+005e', 'circumflex accent'], ['underscore', '_', '_', 'u+005f', 'low line'], ['grave-accent', '`', '`', 'u+0060', 'grave accent'], ['a', 'a', 'a', 'u+0061', 'latin small letter a'], ['b', 'b', 'b', 'u+0062', 'latin small letter b'], ['c', 'c', 'c', 'u+0063', 'latin small letter c'], ['d', 'd', 'd', 'u+0064', 'latin small letter d'], ['e', 'e', 'e', 'u+0065', 'latin small letter e'], ['f', 'f', 'f', 'u+0066', 'latin small letter f'], ['g', 'g', 'g', 'u+0067', 'latin small letter g'], ['h', 'h', 'h', 'u+0068', 'latin small letter h'], ['i', 'i', 'i', 'u+0069', 'latin small letter i'], ['j', 'j', 'j', 'u+006a', 'latin small letter j'], ['k', 'k', 'k', 'u+006b', 'latin small letter k'], ['l', 'l', 'l', 'u+006c', 'latin small letter l'], ['m', 'm', 'm', 'u+006d', 'latin small letter m'], ['n', 'n', 'n', 'u+006e', 'latin small letter n'], ['o', 'o', 'o', 'u+006f', 'latin small letter o'], ['p', 'p', 'p', 'u+0070', 'latin small letter p'], ['q', 'q', 'q', 'u+0071', 'latin small letter q'], ['r', 'r', 'r', 'u+0072', 'latin small letter r'], ['s', 's', 's', 'u+0073', 'latin small letter s'], ['t', 't', 't', 'u+0074', 'latin small letter t'], ['u', 'u', 'u', 'u+0075', 'latin small letter u'], ['v', 'v', 'v', 'u+0076', 'latin small letter v'], ['w', 'w', 'w', 'u+0077', 'latin small letter w'], ['x', 'x', 'x', 'u+0078', 'latin small letter x'], ['y', 'y', 'y', 'u+0079', 'latin small letter y'], ['z', 'z', 'z', 'u+007a', 'latin small letter z'], ['left-brace', '{', '{', 'u+007b', 'left curly bracket'], ['vertical-line', '\\p', '\\p', 'u+007c', 'vertical line'], ['right-brace', '}', '}', 'u+007d', 'right curly bracket'], ['tilde', '~', '~', 'u+007e', 'tilde']]
+########################################################################################################################
+Sample 1275 - Plan 1: Operation 1: Select rows where the 'glyph' column is empty.
+SQL execution error in operation 1: Execution failed on sql 'Given this table:
+/*
+col : name | glyph | c_string | unicode | unicode_name
+row 1 : nul |  | \\0 | u+0000 | null (nul)
+row 2 : alert |  | \\a | u+0007 | bell (bel)
+row 3 : backspace |  | \\b | u+0008 | backspace (bs)
+row 4 : tab |  | \\t | u+0009 | character tabulation (ht)
+row 5 : carriage-return |  | \\r | u+000d | carriage return (cr)
+row 6 : newline |  | \\n | u+000a | line feed (lf)
+row 7 : vertical-tab |  | \\v | u+000b | line tabulation (vt)
+row 8 : form-feed |  | \\f | u+000c | form feed (ff)
+row 9 : space |': near "Given": syntax error
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['nul', 'alert', 'backspace', 'tab', 'carriage-return', 'newline', 'vertical-tab', 'form-feed', 'space']]
+Groundtruth: ['9']

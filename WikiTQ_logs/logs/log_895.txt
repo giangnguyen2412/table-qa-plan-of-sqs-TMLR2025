@@ -1,0 +1,44 @@
+************************************************************************************************************************
+Sample 895 - Plan 1: Query: how many times have the colorado rapids women finished outside of the top 5 teams in the usl w-league western division 1?
+Sample 895 - Plan 1: Groundtruth: ['6']
+Sample 895 - Plan 1: X-Original table pd: 
+    year  division        league   reg__season         playoffs
+0   2003         2  usl w-league  5th, western                 
+1   2004         1  usl w-league  8th, western                 
+2   2005         1  usl w-league  6th, western                 
+3   2006         1  usl w-league  5th, western                 
+4   2007         1  usl w-league  5th, western                 
+5   2008         1  usl w-league  6th, western  did not qualify
+6   2009         1  usl w-league  7th, western  did not qualify
+7   2010         1  usl w-league  6th, western  did not qualify
+8   2011         1  usl w-league  7th, western  did not qualify
+9   2012         1  usl w-league  4th, western  did not qualify
+10  2013         1  usl w-league  4th, western  did not qualify
+Sample 895 - Plan 1: Caption: none
+Sample 895 - Plan 1: Original table: [['year', 'division', 'league', 'reg__season', 'playoffs'], ['2003', '2', 'usl w-league', '5th, western', ''], ['2004', '1', 'usl w-league', '8th, western', ''], ['2005', '1', 'usl w-league', '6th, western', ''], ['2006', '1', 'usl w-league', '5th, western', ''], ['2007', '1', 'usl w-league', '5th, western', ''], ['2008', '1', 'usl w-league', '6th, western', 'did not qualify'], ['2009', '1', 'usl w-league', '7th, western', 'did not qualify'], ['2010', '1', 'usl w-league', '6th, western', 'did not qualify'], ['2011', '1', 'usl w-league', '7th, western', 'did not qualify'], ['2012', '1', 'usl w-league', '4th, western', 'did not qualify'], ['2013', '1', 'usl w-league', '4th, western', 'did not qualify']]
+########################################################################################################################
+Sample 895 - Plan 1: Operation 1: Select rows where 'division' is 1, 'league' is 'usl w-league', and 'reg__season' does not contain the phrase 'did not qualify'.
+Sample 895 - Plan 1: Selected indices: [[3, 1], [9, 2], [5, 1], [2, 2], [6, 2], [7, 1], [4, 2], [8, 2], [9, 1], [10, 2], [1, 2], [2, 1], [6, 1], [3, 2], [4, 1], [5, 2], [8, 1], [1, 1], [10, 1], [7, 2]]
+Sample 895 - Plan 1: X-Table after operation df:
+   year  division        league   reg__season         playoffs
+0  2004         1  usl w-league  8th, western                 
+1  2005         1  usl w-league  6th, western                 
+2  2006         1  usl w-league  5th, western                 
+3  2007         1  usl w-league  5th, western                 
+4  2008         1  usl w-league  6th, western  did not qualify
+5  2009         1  usl w-league  7th, western  did not qualify
+6  2010         1  usl w-league  6th, western  did not qualify
+7  2011         1  usl w-league  7th, western  did not qualify
+8  2012         1  usl w-league  4th, western  did not qualify
+9  2013         1  usl w-league  4th, western  did not qualify
+Sample 895 - Plan 1: Table after operation: [['year', 'division', 'league', 'reg__season', 'playoffs'], [2004, 1, 'usl w-league', '8th, western', ''], [2005, 1, 'usl w-league', '6th, western', ''], [2006, 1, 'usl w-league', '5th, western', ''], [2007, 1, 'usl w-league', '5th, western', ''], [2008, 1, 'usl w-league', '6th, western', 'did not qualify'], [2009, 1, 'usl w-league', '7th, western', 'did not qualify'], [2010, 1, 'usl w-league', '6th, western', 'did not qualify'], [2011, 1, 'usl w-league', '7th, western', 'did not qualify'], [2012, 1, 'usl w-league', '4th, western', 'did not qualify'], [2013, 1, 'usl w-league', '4th, western', 'did not qualify']]
+########################################################################################################################
+Sample 895 - Plan 1: Operation 2: Count the number of rows that satisfy the above condition.
+Sample 895 - Plan 1: Selected indices: []
+Sample 895 - Plan 1: X-Table after operation df:
+   COUNT(*)
+0         0
+Sample 895 - Plan 1: Table after operation: [['COUNT(*)'], [0]]
+Fall-back: FALSE
+Answer from plan 1: [[0]]
+Groundtruth: ['6']

@@ -1,0 +1,30 @@
+
+    <html>
+    <head>
+    <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { text-align: center; }
+    .cot-title { color: blue; }
+    .pos-title { color: green; }
+    h2 { color: black; text-align: left; }
+    h3 { color: black; text-align: left; }
+    h4 { color: darkslategray; }
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    table, th, td { border: 1px solid #ddd; padding: 8px; }
+    th { background-color: #f2f2f2; }
+    tr:nth-child(even) { background-color: #f9f9f9; }
+    .highlight { background-color: #ffffcc; }
+    .true { color: green; }
+    .false { color: red; }
+    .highlighted-text { background-color: yellow; }
+    .step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+    .step { display: block; }
+    .result-label { font-weight: bold; padding: 5px; margin-top: 20px; display: inline-block; }
+    .tp { background-color: lightgreen; }
+    .tn { background-color: lightblue; }
+    .fp { background-color: lightcoral; }
+    .fn { background-color: lightgoldenrodyellow; }
+    </style>
+    </head>
+    <body>
+    <hr><h3><span>Question:</span> how many players are below 6 feet?</h3><hr><h3><span>Input Table:</span></h3><div class="step"><div class="step-title">Step 1: Select Rows (row 8, row 2, row 4) and Select Columns (Name, Height)</div><div id="original-table" class="content"><table><tr><th>#</th><th><span class='highlighted-text'>Name</span></th><th><span class='highlighted-text'>Height</span></th><th>Weight (lbs.)</th><th>Position</th><th>Class</th><th>Hometown</th><th>Previous Team(s)</th></tr><tr><td>0</td><td><span class="highlighted-text">Joel Smith</span></td><td><span class="highlighted-text">6'4"</span></td><td>210</td><td>G</td><td>RS Jr.</td><td>Lompoc, CA, U.S.</td><td>Brewster Academy</td></tr><tr><td><span class="highlighted-text">1</span></td><td><span class="highlighted-text">Venoy Overton</span></td><td><span class="highlighted-text">5'11"</span></td><td><span class="highlighted-text">180</span></td><td><span class="highlighted-text">G</span></td><td><span class="highlighted-text">Fr.</span></td><td><span class="highlighted-text">Seattle, WA, U.S.</span></td><td><span class="highlighted-text">Franklin HS</span></td></tr><tr><td>4</td><td><span class="highlighted-text">Tim Morris</span></td><td><span class="highlighted-text">6'4"</span></td><td>210</td><td>G</td><td>Sr.</td><td>Spokane Wa, U.S.</td><td>Central Valley HS</td></tr><tr><td><span class="highlighted-text">5</span></td><td><span class="highlighted-text">Justin Dentmon</span></td><td><span class="highlighted-text">5'11"</span></td><td><span class="highlighted-text">185</span></td><td><span class="highlighted-text">G</span></td><td><span class="highlighted-text">Jr.</span></td><td><span class="highlighted-text">Carbondale, IL, U.S.</span></td><td><span class="highlighted-text">Winchendon School</span></td></tr><tr><td>11</td><td><span class="highlighted-text">Matthew Bryan-Amaning</span></td><td><span class="highlighted-text">6'9"</span></td><td>235</td><td>F</td><td>Fr.</td><td>London, England, U.K.</td><td>South Kent School</td></tr><tr><td>20</td><td><span class="highlighted-text">Ryan Appleby</span></td><td><span class="highlighted-text">6'3"</span></td><td>170</td><td>G</td><td>Sr.</td><td>Stanwood, WA, U.S.</td><td>Florida</td></tr><tr><td>21</td><td><span class="highlighted-text">Artem Wallace</span></td><td><span class="highlighted-text">6'8"</span></td><td>250</td><td>C</td><td>Jr.</td><td>Toledo, WA, U.S.</td><td>Toledo HS</td></tr><tr><td><span class="highlighted-text">22</span></td><td><span class="highlighted-text">Justin Holiday</span></td><td><span class="highlighted-text">6'6"</span></td><td><span class="highlighted-text">170</span></td><td><span class="highlighted-text">F</span></td><td><span class="highlighted-text">Fr.</span></td><td><span class="highlighted-text">Chatsworth, CA, U.S.</span></td><td><span class="highlighted-text">Campbell Hall School</span></td></tr><tr><td>24</td><td><span class="highlighted-text">Quincy Pondexter</span></td><td><span class="highlighted-text">6'6"</span></td><td>210</td><td>F</td><td>So.</td><td>Fresno, CA, U.S.</td><td>San Joaquin Memorial HS</td></tr><tr><td>32</td><td><span class="highlighted-text">Joe Wolfinger</span></td><td><span class="highlighted-text">7'0"</span></td><td>255</td><td>C</td><td>RS So.</td><td>Portland, OR, U.S.</td><td>Northfield Mount Hermon School</td></tr><tr><td>40</td><td><span class="highlighted-text">Jon Brockman</span></td><td><span class="highlighted-text">6'7"</span></td><td>255</td><td>F</td><td>Jr.</td><td>Snohomish, WA, U.S.</td><td>Snohomish Sr. HS</td></tr><tr><td>44</td><td><span class="highlighted-text">Darnell Gant</span></td><td><span class="highlighted-text">6'8"</span></td><td>215</td><td>F</td><td>Fr.</td><td>Los Angeles, CA, U.S.</td><td>Crenshaw HS</td></tr></table></div></div><hr><div class="step"><div class="step-title">Sub-table Selection</div><div id="sub-table-selection" class="content"><table><tr><th>Name</th><th>Height</th></tr><tr><td>Venoy Overton</td><td>5'11"</td></tr><tr><td>Justin Dentmon</td><td>5'11"</td></tr><tr><td>Justin Holiday</td><td>6'6"</td></tr></table></div></div><hr><div class="step"><div class="step-title">Factually-checked information: Not Available!</div><h2>Prompting LLM for the final answer... >>> </h2><hr><h3>Prediction: 2</h3></body></html>

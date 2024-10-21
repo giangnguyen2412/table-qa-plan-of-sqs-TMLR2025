@@ -1,0 +1,565 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> who was the first oldest living president?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Order the table by the 'became_oldest_living_president' column in ascending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>president</td>
+<td>became_oldest_living_president</td>
+<td>ceased_to_be_oldest_living_president</td>
+<td>age_at_start_date</td>
+<td>age_at_end_date</td>
+<td>duration__years__days_</td>
+<td>duration__days_</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">george washington</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">april 30, 1789</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 14, 1799</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">57 years, 67 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">67 years, 295 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10 years, 228 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3,880 days</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">john adams</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">december 14, 1799</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">july 4, 1826</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">64 years, 45 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">90 years, 247 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">26 years, 202 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9,698 days</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">james madison</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">july 4, 1826</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">june 28, 1836</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">75 years, 110 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">85 years, 104 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9 years, 360 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3,647 days</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">andrew jackson</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">june 28, 1836</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">june 8, 1845</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">69 years, 105 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">78 years, 85 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8 years, 345 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3,267 days</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">john quincy adams</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">june 8, 1845</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">february 23, 1848</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">77 years, 332 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">80 years, 227 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2 years, 260 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">990 days</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">martin van buren</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">february 23, 1848</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">july 24, 1862</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">65 years, 80 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">79 years, 231 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">14 years, 151 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5,265 days</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">james buchanan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">july 24, 1862</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">june 1, 1868</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">71 years, 92 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">77 years, 39 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5 years, 313 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2,139 days</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">millard fillmore</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">june 1, 1868</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">march 8, 1874</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">68 years, 146 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">74 years, 60 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5 years, 280 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2,106 days</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">andrew johnson</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">march 8, 1874</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">july 31, 1875</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">65 years, 69 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">66 years, 214 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1 year, 145 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">510 days</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ulysses s. grant</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">july 31, 1875</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">july 23, 1885</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">53 years, 95 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">63 years, 87 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9 years, 357 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3,645 days</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rutherford b. hayes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">july 23, 1885</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">january 17, 1893</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">62 years, 292 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">70 years, 105 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7 years, 178 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2,735 days</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">benjamin harrison</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">january 17, 1893</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">march 13, 1901</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">59 years, 150 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">67 years, 205 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8 years, 55 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2,976 days</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">grover cleveland</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">march 13, 1901</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">june 24, 1908</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">63 years, 360 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">71 years, 98 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7 years, 103 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2,660 days</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">theodore roosevelt</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">june 24, 1908</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">march 4, 1909</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">49 years, 241 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">50 years, 128 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0 years, 253 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">253 days</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">william howard taft</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">march 4, 1909</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">march 4, 1913</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">51 years, 170 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">55 years, 170 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4 years, 0 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1,461 days</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">woodrow wilson</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">march 4, 1913</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">february 3, 1924</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">56 years, 66 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">67 years, 37 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10 years, 336 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3,988 days</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">william howard taft</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">february 3, 1924</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">march 8, 1930</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">66 years, 141 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">72 years, 174 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6 years, 33 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2,225 days</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">calvin coolidge</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">march 8, 1930</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">january 5, 1933</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">57 years, 247 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">60 years, 185 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2 years, 303 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1,034 days</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">herbert hoover</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">january 5, 1933</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">october 20, 1964</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">58 years, 148 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">90 years, 71 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">31 years, 289 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11,611 days</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">harry s. truman</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">october 20, 1964</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 26, 1972</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">80 years, 165 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">88 years, 232 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8 years, 67 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2,989 days</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lyndon b. johnson</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">december 26, 1972</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">january 22, 1973</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">64 years, 121 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">64 years, 148 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0 years, 27 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">27 days</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">richard nixon</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">january 22, 1973</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">january 20, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">60 years, 13 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">68 years, 11 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7 years, 364 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2,920 days</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ronald reagan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">january 20, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">june 5, 2004</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">69 years, 349 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">93 years, 120 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">23 years, 137 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8,537 days</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gerald ford</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">june 5, 2004</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 26, 2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">90 years, 327 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">93 years, 165 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2 years, 204 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">934 days</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">george h. w. bush</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">december 26, 2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">current oldest living president</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">82 years, 197 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">current oldest living president</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7 years, 173 days</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2,730 days</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">president</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">became oldest living president</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ceased to be oldest living president</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">age at start date</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">age at end date</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">duration (years, days)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">duration (days)</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select row number 1.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>president</td>
+<td>became_oldest_living_president</td>
+<td>ceased_to_be_oldest_living_president</td>
+<td>age_at_start_date</td>
+<td>age_at_end_date</td>
+<td>duration__years__days_</td>
+<td>duration__days_</td>
+</tr>
+<tr>
+<td>george washington</td>
+<td>april 30, 1789</td>
+<td>december 14, 1799</td>
+<td>57 years, 67 days</td>
+<td>67 years, 295 days</td>
+<td>10 years, 228 days</td>
+<td>3,880 days</td>
+</tr>
+<tr>
+<td>president</td>
+<td>became oldest living president</td>
+<td>ceased to be oldest living president</td>
+<td>age at start date</td>
+<td>age at end date</td>
+<td>duration (years, days)</td>
+<td>duration (days)</td>
+</tr>
+<tr>
+<td>john adams</td>
+<td>december 14, 1799</td>
+<td>july 4, 1826</td>
+<td>64 years, 45 days</td>
+<td>90 years, 247 days</td>
+<td>26 years, 202 days</td>
+<td>9,698 days</td>
+</tr>
+<tr>
+<td>lyndon b. johnson</td>
+<td>december 26, 1972</td>
+<td>january 22, 1973</td>
+<td>64 years, 121 days</td>
+<td>64 years, 148 days</td>
+<td>0 years, 27 days</td>
+<td>27 days</td>
+</tr>
+<tr>
+<td>george h. w. bush</td>
+<td>december 26, 2006</td>
+<td>current oldest living president</td>
+<td>82 years, 197 days</td>
+<td>current oldest living president</td>
+<td>7 years, 173 days</td>
+<td>2,730 days</td>
+</tr>
+<tr>
+<td>martin van buren</td>
+<td>february 23, 1848</td>
+<td>july 24, 1862</td>
+<td>65 years, 80 days</td>
+<td>79 years, 231 days</td>
+<td>14 years, 151 days</td>
+<td>5,265 days</td>
+</tr>
+<tr>
+<td>william howard taft</td>
+<td>february 3, 1924</td>
+<td>march 8, 1930</td>
+<td>66 years, 141 days</td>
+<td>72 years, 174 days</td>
+<td>6 years, 33 days</td>
+<td>2,225 days</td>
+</tr>
+<tr>
+<td>benjamin harrison</td>
+<td>january 17, 1893</td>
+<td>march 13, 1901</td>
+<td>59 years, 150 days</td>
+<td>67 years, 205 days</td>
+<td>8 years, 55 days</td>
+<td>2,976 days</td>
+</tr>
+<tr>
+<td>ronald reagan</td>
+<td>january 20, 1981</td>
+<td>june 5, 2004</td>
+<td>69 years, 349 days</td>
+<td>93 years, 120 days</td>
+<td>23 years, 137 days</td>
+<td>8,537 days</td>
+</tr>
+<tr>
+<td>richard nixon</td>
+<td>january 22, 1973</td>
+<td>january 20, 1981</td>
+<td>60 years, 13 days</td>
+<td>68 years, 11 days</td>
+<td>7 years, 364 days</td>
+<td>2,920 days</td>
+</tr>
+<tr>
+<td>herbert hoover</td>
+<td>january 5, 1933</td>
+<td>october 20, 1964</td>
+<td>58 years, 148 days</td>
+<td>90 years, 71 days</td>
+<td>31 years, 289 days</td>
+<td>11,611 days</td>
+</tr>
+<tr>
+<td>rutherford b. hayes</td>
+<td>july 23, 1885</td>
+<td>january 17, 1893</td>
+<td>62 years, 292 days</td>
+<td>70 years, 105 days</td>
+<td>7 years, 178 days</td>
+<td>2,735 days</td>
+</tr>
+<tr>
+<td>james buchanan</td>
+<td>july 24, 1862</td>
+<td>june 1, 1868</td>
+<td>71 years, 92 days</td>
+<td>77 years, 39 days</td>
+<td>5 years, 313 days</td>
+<td>2,139 days</td>
+</tr>
+<tr>
+<td>ulysses s. grant</td>
+<td>july 31, 1875</td>
+<td>july 23, 1885</td>
+<td>53 years, 95 days</td>
+<td>63 years, 87 days</td>
+<td>9 years, 357 days</td>
+<td>3,645 days</td>
+</tr>
+<tr>
+<td>james madison</td>
+<td>july 4, 1826</td>
+<td>june 28, 1836</td>
+<td>75 years, 110 days</td>
+<td>85 years, 104 days</td>
+<td>9 years, 360 days</td>
+<td>3,647 days</td>
+</tr>
+<tr>
+<td>millard fillmore</td>
+<td>june 1, 1868</td>
+<td>march 8, 1874</td>
+<td>68 years, 146 days</td>
+<td>74 years, 60 days</td>
+<td>5 years, 280 days</td>
+<td>2,106 days</td>
+</tr>
+<tr>
+<td>theodore roosevelt</td>
+<td>june 24, 1908</td>
+<td>march 4, 1909</td>
+<td>49 years, 241 days</td>
+<td>50 years, 128 days</td>
+<td>0 years, 253 days</td>
+<td>253 days</td>
+</tr>
+<tr>
+<td>andrew jackson</td>
+<td>june 28, 1836</td>
+<td>june 8, 1845</td>
+<td>69 years, 105 days</td>
+<td>78 years, 85 days</td>
+<td>8 years, 345 days</td>
+<td>3,267 days</td>
+</tr>
+<tr>
+<td>gerald ford</td>
+<td>june 5, 2004</td>
+<td>december 26, 2006</td>
+<td>90 years, 327 days</td>
+<td>93 years, 165 days</td>
+<td>2 years, 204 days</td>
+<td>934 days</td>
+</tr>
+<tr>
+<td>john quincy adams</td>
+<td>june 8, 1845</td>
+<td>february 23, 1848</td>
+<td>77 years, 332 days</td>
+<td>80 years, 227 days</td>
+<td>2 years, 260 days</td>
+<td>990 days</td>
+</tr>
+<tr>
+<td>grover cleveland</td>
+<td>march 13, 1901</td>
+<td>june 24, 1908</td>
+<td>63 years, 360 days</td>
+<td>71 years, 98 days</td>
+<td>7 years, 103 days</td>
+<td>2,660 days</td>
+</tr>
+<tr>
+<td>william howard taft</td>
+<td>march 4, 1909</td>
+<td>march 4, 1913</td>
+<td>51 years, 170 days</td>
+<td>55 years, 170 days</td>
+<td>4 years, 0 days</td>
+<td>1,461 days</td>
+</tr>
+<tr>
+<td>woodrow wilson</td>
+<td>march 4, 1913</td>
+<td>february 3, 1924</td>
+<td>56 years, 66 days</td>
+<td>67 years, 37 days</td>
+<td>10 years, 336 days</td>
+<td>3,988 days</td>
+</tr>
+<tr>
+<td>andrew johnson</td>
+<td>march 8, 1874</td>
+<td>july 31, 1875</td>
+<td>65 years, 69 days</td>
+<td>66 years, 214 days</td>
+<td>1 year, 145 days</td>
+<td>510 days</td>
+</tr>
+<tr>
+<td>calvin coolidge</td>
+<td>march 8, 1930</td>
+<td>january 5, 1933</td>
+<td>57 years, 247 days</td>
+<td>60 years, 185 days</td>
+<td>2 years, 303 days</td>
+<td>1,034 days</td>
+</tr>
+<tr>
+<td>harry s. truman</td>
+<td>october 20, 1964</td>
+<td>december 26, 1972</td>
+<td>80 years, 165 days</td>
+<td>88 years, 232 days</td>
+<td>8 years, 67 days</td>
+<td>2,989 days</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select the 'president' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>president</td>
+<td>became_oldest_living_president</td>
+<td>ceased_to_be_oldest_living_president</td>
+<td>age_at_start_date</td>
+<td>age_at_end_date</td>
+<td>duration__years__days_</td>
+<td>duration__days_</td>
+</tr>
+<tr>
+<td>george washington</td>
+<td>april 30, 1789</td>
+<td>december 14, 1799</td>
+<td>57 years, 67 days</td>
+<td>67 years, 295 days</td>
+<td>10 years, 228 days</td>
+<td>3,880 days</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>president</td>
+</tr>
+<tr>
+<td>george washington</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['george washington']]</h3>
+</body></html>

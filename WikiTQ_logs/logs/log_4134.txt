@@ -1,0 +1,73 @@
+************************************************************************************************************************
+Sample 4134 - Plan 1: Query: in which venue did the vikings play after they played in mile high stadium?
+Sample 4134 - Plan 1: Groundtruth: ['Soldier Field']
+Sample 4134 - Plan 1: X-Original table pd: 
+    week          date                opponent results_nfinal_score  \
+0      1  september 18     washington redskins              l 24–21   
+1      2  september 24        at detroit lions              w 34–10   
+2      3     october 1          miami dolphins              l 16–14   
+3      4     october 8     st. louis cardinals              l 19–17   
+4      5    october 15       at denver broncos              w 23–20   
+5      6    october 23        at chicago bears              l 13–10   
+6      7    october 29    at green bay packers              w 27–13   
+7      8    november 5      new orleans saints               w 37–6   
+8      9   november 12           detroit lions              w 16–14   
+9     10   november 19     at los angeles rams              w 45–41   
+10    11   november 26  at pittsburgh steelers              l 23–10   
+11    12    december 3           chicago bears              w 23–10   
+12    13   december 10       green bay packers               l 23–7   
+13    14   december 16  at san francisco 49ers              l 20–17   
+
+   results_nteam_record                          venue attendance  
+0                   0–1           metropolitan stadium     47,900  
+1                   1–1                  tiger stadium     54,418  
+2                   1–2           metropolitan stadium     47,900  
+3                   1–3           metropolitan stadium     49,687  
+4                   2–3              mile high stadium     51,656  
+5                   2–4                  soldier field     55,701  
+6                   3–4                  lambeau field     56,263  
+7                   4–4           metropolitan stadium     49,784  
+8                   5–4           metropolitan stadium     49,784  
+9                   6–4  los angeles memorial coliseum     77,982  
+10                  6–5           three rivers stadium     50,348  
+11                  7–5           metropolitan stadium     49,784  
+12                  7–6           metropolitan stadium     49,784  
+13                  7–7               candlestick park     61,214  
+Sample 4134 - Plan 1: Caption: none
+Sample 4134 - Plan 1: Original table: [['week', 'date', 'opponent', 'results_nfinal_score', 'results_nteam_record', 'venue', 'attendance'], ['1', 'september 18', 'washington redskins', 'l 24–21', '0–1', 'metropolitan stadium', '47,900'], ['2', 'september 24', 'at detroit lions', 'w 34–10', '1–1', 'tiger stadium', '54,418'], ['3', 'october 1', 'miami dolphins', 'l 16–14', '1–2', 'metropolitan stadium', '47,900'], ['4', 'october 8', 'st. louis cardinals', 'l 19–17', '1–3', 'metropolitan stadium', '49,687'], ['5', 'october 15', 'at denver broncos', 'w 23–20', '2–3', 'mile high stadium', '51,656'], ['6', 'october 23', 'at chicago bears', 'l 13–10', '2–4', 'soldier field', '55,701'], ['7', 'october 29', 'at green bay packers', 'w 27–13', '3–4', 'lambeau field', '56,263'], ['8', 'november 5', 'new orleans saints', 'w 37–6', '4–4', 'metropolitan stadium', '49,784'], ['9', 'november 12', 'detroit lions', 'w 16–14', '5–4', 'metropolitan stadium', '49,784'], ['10', 'november 19', 'at los angeles rams', 'w 45–41', '6–4', 'los angeles memorial coliseum', '77,982'], ['11', 'november 26', 'at pittsburgh steelers', 'l 23–10', '6–5', 'three rivers stadium', '50,348'], ['12', 'december 3', 'chicago bears', 'w 23–10', '7–5', 'metropolitan stadium', '49,784'], ['13', 'december 10', 'green bay packers', 'l 23–7', '7–6', 'metropolitan stadium', '49,784'], ['14', 'december 16', 'at san francisco 49ers', 'l 20–17', '7–7', 'candlestick park', '61,214']]
+########################################################################################################################
+Sample 4134 - Plan 1: Operation 1: Select rows where the 'venue' is 'mile high stadium'.
+Sample 4134 - Plan 1: Selected indices: [[4, 5]]
+Sample 4134 - Plan 1: X-Table after operation df:
+   week        date           opponent results_nfinal_score  \
+0     5  october 15  at denver broncos              w 23–20   
+
+  results_nteam_record              venue attendance  
+0                  2–3  mile high stadium     51,656  
+Sample 4134 - Plan 1: Table after operation: [['week', 'date', 'opponent', 'results_nfinal_score', 'results_nteam_record', 'venue', 'attendance'], [5, 'october 15', 'at denver broncos', 'w 23–20', '2–3', 'mile high stadium', '51,656']]
+########################################################################################################################
+Sample 4134 - Plan 1: Operation 2: Get the index of the last row selected in step 1.
+Sample 4134 - Plan 1: Selected indices: []
+Sample 4134 - Plan 1: X-Table after operation df:
+   last_row_index
+0               1
+Sample 4134 - Plan 1: Table after operation: [['last_row_index'], [1]]
+########################################################################################################################
+Sample 4134 - Plan 1: Operation 3: Select rows starting from the next row after the index obtained in step 2.
+Sample 4134 - Plan 1: Selected indices: []
+Sample 4134 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [last_row_index]
+Index: []
+Sample 4134 - Plan 1: Table after operation: [['last_row_index']]
+########################################################################################################################
+Sample 4134 - Plan 1: Operation 4: Select the 'venue' column.
+Sample 4134 - Plan 1: Selected indices: []
+Sample 4134 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [last_row_index]
+Index: []
+Sample 4134 - Plan 1: Table after operation: [['last_row_index']]
+Fall-back: TRUE
+Answer from plan 1: [['soldier field']]
+Groundtruth: ['Soldier Field']

@@ -1,0 +1,423 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> what year had 3 more matches than the previous year?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Calculate the number of matches for each year by adding a new column 'num_matches' to the existing table.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>matches</td>
+<td>winner</td>
+<td>results</td>
+<td>pakistan_ncaptain</td>
+<td>pakistan_ncoach</td>
+<td>india_ncaptain</td>
+<td>india_ncoach</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1978</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pakistan win</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3 - 1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">islahuddin siddique</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sayad a. hussain</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">v. j. philips</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">r. s. gentle</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pakistan win</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2 - 1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">akhtar rasool</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">zakauddin</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">surjeet singh</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">harmeek singh</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1986</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">india win</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3 - 2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">hassan sardar</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">anwar ahmad khan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mohmmad shaheed</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">m. p. ganesh</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1988</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">draw</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2 - 2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nasir ali</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">manzoor-ul-hasan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">m. m. somaya</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">m. p. ganesh</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1998</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pakistan win</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4 - 3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tahir zaman</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">islahuddin siddique</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dhanraj pillay</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">v bhaskaran</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1999</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pakistan win</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5 - 3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">atif bashir</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">shahnaz shaikh</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">anil aldrin</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">v bhaskaran</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2004</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pakistan win</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4 - 2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">waseem ahmad</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">roelant oltmans</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dileep tirkey</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gehard rach</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pakistan win</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3 - 1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mohammad saqlain</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">asif bajwa</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ignace tirkey</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rajinder singh jr.</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2013</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">tba</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tba</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tba</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tba</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tba</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tba</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tba</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Calculate the number of matches for the previous year by adding a new column 'prev_year_matches' to the existing table.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>matches</td>
+<td>winner</td>
+<td>results</td>
+<td>pakistan_ncaptain</td>
+<td>pakistan_ncoach</td>
+<td>india_ncaptain</td>
+<td>india_ncoach</td>
+<td>num_matches</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1978</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">4</span></td>
+<td>pakistan win</td>
+<td>3 - 1</td>
+<td>islahuddin siddique</td>
+<td>sayad a. hussain</td>
+<td>v. j. philips</td>
+<td>r. s. gentle</td>
+<td>4</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">4</span></td>
+<td>pakistan win</td>
+<td>2 - 1</td>
+<td>akhtar rasool</td>
+<td>zakauddin</td>
+<td>surjeet singh</td>
+<td>harmeek singh</td>
+<td>4</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1986</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">7</span></td>
+<td>india win</td>
+<td>3 - 2</td>
+<td>hassan sardar</td>
+<td>anwar ahmad khan</td>
+<td>mohmmad shaheed</td>
+<td>m. p. ganesh</td>
+<td>7</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1988</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">6</span></td>
+<td>draw</td>
+<td>2 - 2</td>
+<td>nasir ali</td>
+<td>manzoor-ul-hasan</td>
+<td>m. m. somaya</td>
+<td>m. p. ganesh</td>
+<td>6</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1998</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">8</span></td>
+<td>pakistan win</td>
+<td>4 - 3</td>
+<td>tahir zaman</td>
+<td>islahuddin siddique</td>
+<td>dhanraj pillay</td>
+<td>v bhaskaran</td>
+<td>8</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1999</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">9</span></td>
+<td>pakistan win</td>
+<td>5 - 3</td>
+<td>atif bashir</td>
+<td>shahnaz shaikh</td>
+<td>anil aldrin</td>
+<td>v bhaskaran</td>
+<td>9</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2004</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">8</span></td>
+<td>pakistan win</td>
+<td>4 - 2</td>
+<td>waseem ahmad</td>
+<td>roelant oltmans</td>
+<td>dileep tirkey</td>
+<td>gehard rach</td>
+<td>8</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">6</span></td>
+<td>pakistan win</td>
+<td>3 - 1</td>
+<td>mohammad saqlain</td>
+<td>asif bajwa</td>
+<td>ignace tirkey</td>
+<td>rajinder singh jr.</td>
+<td>6</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2013</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">tba</span></td>
+<td>tba</td>
+<td>tba</td>
+<td>tba</td>
+<td>tba</td>
+<td>tba</td>
+<td>tba</td>
+<td>0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select rows where the 'num_matches' is 3 more than the 'prev_year_matches'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>matches</td>
+<td>winner</td>
+<td>results</td>
+<td>pakistan_ncaptain</td>
+<td>pakistan_ncoach</td>
+<td>india_ncaptain</td>
+<td>india_ncoach</td>
+<td>num_matches</td>
+<td>prev_year_matches</td>
+</tr>
+<tr>
+<td>1978</td>
+<td>4</td>
+<td>pakistan win</td>
+<td>3 - 1</td>
+<td>islahuddin siddique</td>
+<td>sayad a. hussain</td>
+<td>v. j. philips</td>
+<td>r. s. gentle</td>
+<td>4</td>
+<td>None</td>
+</tr>
+<tr>
+<td>1981</td>
+<td>4</td>
+<td>pakistan win</td>
+<td>2 - 1</td>
+<td>akhtar rasool</td>
+<td>zakauddin</td>
+<td>surjeet singh</td>
+<td>harmeek singh</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>1986</td>
+<td>7</td>
+<td>india win</td>
+<td>3 - 2</td>
+<td>hassan sardar</td>
+<td>anwar ahmad khan</td>
+<td>mohmmad shaheed</td>
+<td>m. p. ganesh</td>
+<td><span class="highlighted-cell" title="Used in transformation">7</span></td>
+<td>4</td>
+</tr>
+<tr>
+<td>1988</td>
+<td>6</td>
+<td>draw</td>
+<td>2 - 2</td>
+<td>nasir ali</td>
+<td>manzoor-ul-hasan</td>
+<td>m. m. somaya</td>
+<td>m. p. ganesh</td>
+<td>6</td>
+<td>7</td>
+</tr>
+<tr>
+<td>1998</td>
+<td>8</td>
+<td>pakistan win</td>
+<td>4 - 3</td>
+<td>tahir zaman</td>
+<td>islahuddin siddique</td>
+<td>dhanraj pillay</td>
+<td>v bhaskaran</td>
+<td>8</td>
+<td>6</td>
+</tr>
+<tr>
+<td>1999</td>
+<td>9</td>
+<td>pakistan win</td>
+<td>5 - 3</td>
+<td>atif bashir</td>
+<td>shahnaz shaikh</td>
+<td>anil aldrin</td>
+<td>v bhaskaran</td>
+<td>9</td>
+<td>8</td>
+</tr>
+<tr>
+<td>2004</td>
+<td>8</td>
+<td>pakistan win</td>
+<td>4 - 2</td>
+<td>waseem ahmad</td>
+<td>roelant oltmans</td>
+<td>dileep tirkey</td>
+<td>gehard rach</td>
+<td>8</td>
+<td>9</td>
+</tr>
+<tr>
+<td>2006</td>
+<td>6</td>
+<td>pakistan win</td>
+<td>3 - 1</td>
+<td>mohammad saqlain</td>
+<td>asif bajwa</td>
+<td>ignace tirkey</td>
+<td>rajinder singh jr.</td>
+<td>6</td>
+<td>8</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>tba</td>
+<td>tba</td>
+<td>tba</td>
+<td>tba</td>
+<td>tba</td>
+<td>tba</td>
+<td>tba</td>
+<td>0</td>
+<td>6</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Select the 'year' column.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>matches</td>
+<td>winner</td>
+<td>results</td>
+<td>pakistan_ncaptain</td>
+<td>pakistan_ncoach</td>
+<td>india_ncaptain</td>
+<td>india_ncoach</td>
+<td>num_matches</td>
+<td>prev_year_matches</td>
+</tr>
+<tr>
+<td>1986</td>
+<td>7</td>
+<td>india win</td>
+<td>3 - 2</td>
+<td>hassan sardar</td>
+<td>anwar ahmad khan</td>
+<td>mohmmad shaheed</td>
+<td>m. p. ganesh</td>
+<td>7</td>
+<td>4.0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>year</td>
+</tr>
+<tr>
+<td>1986</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[1986]]</h3>
+</body></html>

@@ -1,0 +1,39 @@
+
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+.sql-command { background-color: #f0f0f0; padding: 10px; border-left: 4px solid #4CAF50; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> the game against new orleans didn't have the highest attendance</h3>
+<h3>Input Table: 2008 - 09 phoenix suns season</h3>
+<div class="step">
+<table>
+<tr><td>game</td><td>date</td><td>team</td><td>location_attendance</td><td>record</td></tr><tr><td>75</td><td>9999-04-01</td><td>houston</td><td>us airways center 18422</td><td>41 - 34</td></tr><tr><td>76</td><td>9999-04-03</td><td>sacramento</td><td>us airways center 18422</td><td>42 - 34</td></tr><tr><td>77</td><td>'9999-04-05'</td><td>dallas</td><td>american airlines center 20301</td><td>42 - 35</td></tr><tr><td>78</td><td>9999-04-08</td><td>new orleans</td><td>new orleans arena 17781</td><td>43 - 35</td></tr><tr><td>79</td><td>'9999-04-10'</td><td>memphis</td><td>fedexforum 15908</td><td>43 - 36</td></tr><tr><td>80</td><td>9999-04-11</td><td>minnesota</td><td>target center 18478</td><td>44 - 36</td></tr><tr><td>81</td><td>9999-04-13</td><td>memphis</td><td>us airways center 18422</td><td>45 - 36</td></tr><tr><td>82</td><td>'9999-04-15'</td><td>golden state</td><td>us airways center</td><td>46 - 36</td></tr>
+</table>
+</div>
+<h3>SQL Command:</h3>
+<div class="sql-command">SELECT 
+    CASE 
+        WHEN (SELECT MAX(location_attendance) FROM table_sql) = (SELECT location_attendance FROM table_sql WHERE game = 78) 
+        THEN 'FALSE' 
+        ELSE 'TRUE' 
+    END;</div>
+</body></html>

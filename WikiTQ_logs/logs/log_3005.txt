@@ -1,0 +1,32 @@
+************************************************************************************************************************
+Sample 3005 - Plan 1: Query: who had less points than adam malysz?
+Sample 3005 - Plan 1: Groundtruth: ['Andreas Kofler', 'Jakub Janda']
+Sample 3005 - Plan 1: X-Original table pd: 
+   rank             name nationality  c_1st__m_  c_2nd__m_  points
+0     1  matti hautamäki         fin      132.0      131.5   274.3
+1     2       tami kiuru         fin      128.5      130.5   264.7
+2     3     janne ahonen         fin      127.0      130.5   264.0
+3     4      adam małysz         pol      127.0      130.5   261.5
+4     5   andreas kofler         aut      126.5      132.0   261.3
+5    11      jakub janda         cze      123.5      128.5   252.6
+Sample 3005 - Plan 1: Caption: none
+Sample 3005 - Plan 1: Original table: [['rank', 'name', 'nationality', 'c_1st__m_', 'c_2nd__m_', 'points'], ['1', 'matti hautamäki', 'fin', '132.0', '131.5', '274.3'], ['2', 'tami kiuru', 'fin', '128.5', '130.5', '264.7'], ['3', 'janne ahonen', 'fin', '127.0', '130.5', '264.0'], ['4', 'adam małysz', 'pol', '127.0', '130.5', '261.5'], ['5', 'andreas kofler', 'aut', '126.5', '132.0', '261.3'], ['11', 'jakub janda', 'cze', '123.5', '128.5', '252.6']]
+########################################################################################################################
+Sample 3005 - Plan 1: Operation 1: Select rows where the 'points' column is less than the value in the 'points' column for the row where the 'name' is 'adam małysz'.
+Sample 3005 - Plan 1: Selected indices: [[4, 5], [5, 5], [4, 1], [5, 1]]
+Sample 3005 - Plan 1: X-Table after operation df:
+   rank            name nationality  c_1st__m_  c_2nd__m_  points
+0     5  andreas kofler         aut      126.5      132.0   261.3
+1    11     jakub janda         cze      123.5      128.5   252.6
+Sample 3005 - Plan 1: Table after operation: [['rank', 'name', 'nationality', 'c_1st__m_', 'c_2nd__m_', 'points'], [5, 'andreas kofler', 'aut', 126.5, 132.0, 261.3], [11, 'jakub janda', 'cze', 123.5, 128.5, 252.6]]
+########################################################################################################################
+Sample 3005 - Plan 1: Operation 2: Select the 'name' column from the resulting rows.
+Sample 3005 - Plan 1: Selected indices: []
+Sample 3005 - Plan 1: X-Table after operation df:
+             name
+0  andreas kofler
+1     jakub janda
+Sample 3005 - Plan 1: Table after operation: [['name'], ['andreas kofler'], ['jakub janda']]
+Fall-back: FALSE
+Answer from plan 1: [['andreas kofler'], ['jakub janda']]
+Groundtruth: ['Andreas Kofler', 'Jakub Janda']

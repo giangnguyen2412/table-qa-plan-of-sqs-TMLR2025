@@ -1,0 +1,44 @@
+************************************************************************************************************************
+Sample 3232 - Plan 1: Query: how many films were made before 2000?
+Sample 3232 - Plan 1: Groundtruth: ['6']
+Sample 3232 - Plan 1: X-Original table pd: 
+    year                     film rotten_tomatoes metacritic    imdb
+0   1982     images of liberation             n/a        n/a  5.1/10
+1   1984     the element of crime             77%        n/a  6.9/10
+2   1987                 epidemic             33%        66%  6.1/10
+3   1991                   europa             85%        66%  7.7/10
+4   1996       breaking the waves             86%        76%  7.9/10
+5   1998               the idiots             70%        47%  6.9/10
+6   2000       dancer in the dark             68%        61%  8.0/10
+7   2003    the five obstructions             88%        79%  7.5/10
+8   2003                 dogville             70%        59%  8.0/10
+9   2005                manderlay             51%        46%  7.4/10
+10  2006       the boss of it all             74%        71%  6.7/10
+11  2009               antichrist             48%        49%  6.6/10
+12  2011              melancholia             77%        80%  7.1/10
+13  2013   nymphomaniac: volume i             77%        63%  7.5/10
+14  2013  nymphomaniac: volume ii             79%        76%  7.2/10
+Sample 3232 - Plan 1: Caption: none
+Sample 3232 - Plan 1: Original table: [['year', 'film', 'rotten_tomatoes', 'metacritic', 'imdb'], ['1982', 'images of liberation', 'n/a', 'n/a', '5.1/10'], ['1984', 'the element of crime', '77%', 'n/a', '6.9/10'], ['1987', 'epidemic', '33%', '66%', '6.1/10'], ['1991', 'europa', '85%', '66%', '7.7/10'], ['1996', 'breaking the waves', '86%', '76%', '7.9/10'], ['1998', 'the idiots', '70%', '47%', '6.9/10'], ['2000', 'dancer in the dark', '68%', '61%', '8.0/10'], ['2003', 'the five obstructions', '88%', '79%', '7.5/10'], ['2003', 'dogville', '70%', '59%', '8.0/10'], ['2005', 'manderlay', '51%', '46%', '7.4/10'], ['2006', 'the boss of it all', '74%', '71%', '6.7/10'], ['2009', 'antichrist', '48%', '49%', '6.6/10'], ['2011', 'melancholia', '77%', '80%', '7.1/10'], ['2013', 'nymphomaniac: volume i', '77%', '63%', '7.5/10'], ['2013', 'nymphomaniac: volume ii', '79%', '76%', '7.2/10']]
+########################################################################################################################
+Sample 3232 - Plan 1: Operation 1: Select rows where the 'year' is less than 2000.
+Sample 3232 - Plan 1: Selected indices: [[4, 0], [0, 0], [2, 0], [3, 0], [5, 0], [1, 0]]
+Sample 3232 - Plan 1: X-Table after operation df:
+   year                  film rotten_tomatoes metacritic    imdb
+0  1982  images of liberation             n/a        n/a  5.1/10
+1  1984  the element of crime             77%        n/a  6.9/10
+2  1987              epidemic             33%        66%  6.1/10
+3  1991                europa             85%        66%  7.7/10
+4  1996    breaking the waves             86%        76%  7.9/10
+5  1998            the idiots             70%        47%  6.9/10
+Sample 3232 - Plan 1: Table after operation: [['year', 'film', 'rotten_tomatoes', 'metacritic', 'imdb'], [1982, 'images of liberation', 'n/a', 'n/a', '5.1/10'], [1984, 'the element of crime', '77%', 'n/a', '6.9/10'], [1987, 'epidemic', '33%', '66%', '6.1/10'], [1991, 'europa', '85%', '66%', '7.7/10'], [1996, 'breaking the waves', '86%', '76%', '7.9/10'], [1998, 'the idiots', '70%', '47%', '6.9/10']]
+########################################################################################################################
+Sample 3232 - Plan 1: Operation 2: Count the number of rows.
+Sample 3232 - Plan 1: Selected indices: []
+Sample 3232 - Plan 1: X-Table after operation df:
+   row_count
+0          6
+Sample 3232 - Plan 1: Table after operation: [['row_count'], [6]]
+Fall-back: FALSE
+Answer from plan 1: [[6]]
+Groundtruth: ['6']

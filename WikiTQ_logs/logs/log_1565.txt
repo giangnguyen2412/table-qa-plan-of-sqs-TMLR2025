@@ -1,0 +1,78 @@
+************************************************************************************************************************
+Sample 1565 - Plan 1: Query: who was the last draft pick of the 1980 season?
+Sample 1565 - Plan 1: Groundtruth: ['Steve Schall']
+Sample 1565 - Plan 1: X-Original table pd: 
+    round  pick          player position    nationality  \
+0       1    15  reggie johnson     pf/c  united states   
+1       2    39   michael miley           united states   
+2       3    60    lavon mercer           united states   
+3       3    61    rich yonakor           united states   
+4       4    83  calvin roberts           united states   
+5       5   107        gib hinz           united states   
+6       6   129     dean uthoff           united states   
+7       7   153      allan zahn           united states   
+8       8   172     bill bailey           united states   
+9       9   192     al williams           united states   
+10     10   209    steve schall           united states   
+
+               school_club_team  
+0                     tennessee  
+1   california state-long beach  
+2                       georgia  
+3                north carolina  
+4    california state-fullerton  
+5          wisconsin-eau claire  
+6                    iowa state  
+7                      arkansas  
+8            texas pan-american  
+9             north texas state  
+10                     arkansas  
+Sample 1565 - Plan 1: Caption: none
+Sample 1565 - Plan 1: Original table: [['round', 'pick', 'player', 'position', 'nationality', 'school_club_team'], ['1', '15', 'reggie johnson', 'pf/c', 'united states', 'tennessee'], ['2', '39', 'michael miley', '', 'united states', 'california state-long beach'], ['3', '60', 'lavon mercer', '', 'united states', 'georgia'], ['3', '61', 'rich yonakor', '', 'united states', 'north carolina'], ['4', '83', 'calvin roberts', '', 'united states', 'california state-fullerton'], ['5', '107', 'gib hinz', '', 'united states', 'wisconsin-eau claire'], ['6', '129', 'dean uthoff', '', 'united states', 'iowa state'], ['7', '153', 'allan zahn', '', 'united states', 'arkansas'], ['8', '172', 'bill bailey', '', 'united states', 'texas pan-american'], ['9', '192', 'al williams', '', 'united states', 'north texas state'], ['10', '209', 'steve schall', '', 'united states', 'arkansas']]
+########################################################################################################################
+Sample 1565 - Plan 1: Operation 1: Order the table by the 'round' column in descending order.
+Sample 1565 - Plan 1: Selected indices: [[9, 0], [4, 0], [0, 0], [7, 0], [2, 0], [8, 0], [3, 0], [10, 0], [5, 0], [6, 0], [1, 0]]
+Sample 1565 - Plan 1: X-Table after operation df:
+    round  pick          player position    nationality  \
+0      10   209    steve schall           united states   
+1       9   192     al williams           united states   
+2       8   172     bill bailey           united states   
+3       7   153      allan zahn           united states   
+4       6   129     dean uthoff           united states   
+5       5   107        gib hinz           united states   
+6       4    83  calvin roberts           united states   
+7       3    60    lavon mercer           united states   
+8       3    61    rich yonakor           united states   
+9       2    39   michael miley           united states   
+10      1    15  reggie johnson     pf/c  united states   
+
+               school_club_team  
+0                      arkansas  
+1             north texas state  
+2            texas pan-american  
+3                      arkansas  
+4                    iowa state  
+5          wisconsin-eau claire  
+6    california state-fullerton  
+7                       georgia  
+8                north carolina  
+9   california state-long beach  
+10                    tennessee  
+Sample 1565 - Plan 1: Table after operation: [['round', 'pick', 'player', 'position', 'nationality', 'school_club_team'], [10, 209, 'steve schall', '', 'united states', 'arkansas'], [9, 192, 'al williams', '', 'united states', 'north texas state'], [8, 172, 'bill bailey', '', 'united states', 'texas pan-american'], [7, 153, 'allan zahn', '', 'united states', 'arkansas'], [6, 129, 'dean uthoff', '', 'united states', 'iowa state'], [5, 107, 'gib hinz', '', 'united states', 'wisconsin-eau claire'], [4, 83, 'calvin roberts', '', 'united states', 'california state-fullerton'], [3, 60, 'lavon mercer', '', 'united states', 'georgia'], [3, 61, 'rich yonakor', '', 'united states', 'north carolina'], [2, 39, 'michael miley', '', 'united states', 'california state-long beach'], [1, 15, 'reggie johnson', 'pf/c', 'united states', 'tennessee']]
+########################################################################################################################
+Sample 1565 - Plan 1: Operation 2: Select the row number 1.
+Sample 1565 - Plan 1: Selected indices: []
+Sample 1565 - Plan 1: X-Table after operation df:
+   round  pick        player  position    nationality school_club_team
+0     10   209  steve schall       NaN  united states         arkansas
+Sample 1565 - Plan 1: Table after operation: [['round', 'pick', 'player', 'position', 'nationality', 'school_club_team'], [10, 209, 'steve schall', '', 'united states', 'arkansas']]
+########################################################################################################################
+Sample 1565 - Plan 1: Operation 3: Select the 'player' column.
+Sample 1565 - Plan 1: Selected indices: []
+Sample 1565 - Plan 1: X-Table after operation df:
+         player
+0  steve schall
+Sample 1565 - Plan 1: Table after operation: [['player'], ['steve schall']]
+Fall-back: FALSE
+Answer from plan 1: [['steve schall']]
+Groundtruth: ['Steve Schall']

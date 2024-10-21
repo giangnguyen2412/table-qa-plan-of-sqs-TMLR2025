@@ -1,0 +1,107 @@
+************************************************************************************************************************
+Sample 1429 - Plan 1: Query: which incumbent was the last democrat elected according to this chart?
+Sample 1429 - Plan 1: Groundtruth: ['Elijah Cummings']
+Sample 1429 - Plan 1: X-Original table pd: 
+     district        incumbent       party  first_nelected  \
+0  maryland 1  wayne gilchrest  republican            1990   
+1  maryland 2   robert ehrlich  republican            1994   
+2  maryland 3       ben cardin  democratic            1986   
+3  maryland 4      albert wynn  democratic            1992   
+4  maryland 5      steny hoyer  democratic            1981   
+5  maryland 6  roscoe bartlett  republican            1992   
+6  maryland 7  elijah cummings  democratic            1996   
+7  maryland 8   connie morella  republican            1986   
+
+                                         result  \
+0                                    re-elected   
+1  retired to run for governor\ndemocratic gain   
+2                                    re-elected   
+3                                    re-elected   
+4                                    re-elected   
+5                                    re-elected   
+6                                    re-elected   
+7             lost re-election\ndemocratic gain   
+
+                                          candidates  
+0  wayne gilchrest (r) 76.67%\nann tamlyn (d) 23.16%  
+1  dutch ruppersberger (d) 54.16%\nhelen bentley ...  
+2    ben cardin (d) 65.72%\nscott conwell (r) 34.18%  
+3     albert wynn (d) 78.57%\njohn kimble (r) 20.82%  
+4  steny hoyer (d) 69.27%\njoseph crawford (r) 30...  
+5  roscoe bartlett (r) 66.11%\ndonald dearmon (d)...  
+6  elijah cummings (d) 73.53%\njoseph ward (r) 26...  
+7  chris van hollen (d) 51.71%\nconnie morella (r...  
+Sample 1429 - Plan 1: Caption: none
+Sample 1429 - Plan 1: Original table: [['district', 'incumbent', 'party', 'first_nelected', 'result', 'candidates'], ['maryland 1', 'wayne gilchrest', 'republican', '1990', 're-elected', 'wayne gilchrest (r) 76.67%\\nann tamlyn (d) 23.16%'], ['maryland 2', 'robert ehrlich', 'republican', '1994', 'retired to run for governor\\ndemocratic gain', 'dutch ruppersberger (d) 54.16%\\nhelen bentley (r) 45.57%'], ['maryland 3', 'ben cardin', 'democratic', '1986', 're-elected', 'ben cardin (d) 65.72%\\nscott conwell (r) 34.18%'], ['maryland 4', 'albert wynn', 'democratic', '1992', 're-elected', 'albert wynn (d) 78.57%\\njohn kimble (r) 20.82%'], ['maryland 5', 'steny hoyer', 'democratic', '1981', 're-elected', 'steny hoyer (d) 69.27%\\njoseph crawford (r) 30.52%'], ['maryland 6', 'roscoe bartlett', 'republican', '1992', 're-elected', 'roscoe bartlett (r) 66.11%\\ndonald dearmon (d) 33.80%'], ['maryland 7', 'elijah cummings', 'democratic', '1996', 're-elected', 'elijah cummings (d) 73.53%\\njoseph ward (r) 26.38%'], ['maryland 8', 'connie morella', 'republican', '1986', 'lost re-election\\ndemocratic gain', 'chris van hollen (d) 51.71%\\nconnie morella (r) 47.49%\\nstephen bassett (un) 0.73%']]
+########################################################################################################################
+Sample 1429 - Plan 1: Operation 1: Select rows where the 'result' column is 're-elected'.
+Sample 1429 - Plan 1: Selected indices: [[4, 4], [2, 4], [0, 4], [3, 4], [5, 4], [6, 4]]
+Sample 1429 - Plan 1: X-Table after operation df:
+     district        incumbent       party  first_nelected      result  \
+0  maryland 1  wayne gilchrest  republican            1990  re-elected   
+1  maryland 3       ben cardin  democratic            1986  re-elected   
+2  maryland 4      albert wynn  democratic            1992  re-elected   
+3  maryland 5      steny hoyer  democratic            1981  re-elected   
+4  maryland 6  roscoe bartlett  republican            1992  re-elected   
+5  maryland 7  elijah cummings  democratic            1996  re-elected   
+
+                                          candidates  
+0  wayne gilchrest (r) 76.67%\nann tamlyn (d) 23.16%  
+1    ben cardin (d) 65.72%\nscott conwell (r) 34.18%  
+2     albert wynn (d) 78.57%\njohn kimble (r) 20.82%  
+3  steny hoyer (d) 69.27%\njoseph crawford (r) 30...  
+4  roscoe bartlett (r) 66.11%\ndonald dearmon (d)...  
+5  elijah cummings (d) 73.53%\njoseph ward (r) 26...  
+Sample 1429 - Plan 1: Table after operation: [['district', 'incumbent', 'party', 'first_nelected', 'result', 'candidates'], ['maryland 1', 'wayne gilchrest', 'republican', 1990, 're-elected', 'wayne gilchrest (r) 76.67%\\nann tamlyn (d) 23.16%'], ['maryland 3', 'ben cardin', 'democratic', 1986, 're-elected', 'ben cardin (d) 65.72%\\nscott conwell (r) 34.18%'], ['maryland 4', 'albert wynn', 'democratic', 1992, 're-elected', 'albert wynn (d) 78.57%\\njohn kimble (r) 20.82%'], ['maryland 5', 'steny hoyer', 'democratic', 1981, 're-elected', 'steny hoyer (d) 69.27%\\njoseph crawford (r) 30.52%'], ['maryland 6', 'roscoe bartlett', 'republican', 1992, 're-elected', 'roscoe bartlett (r) 66.11%\\ndonald dearmon (d) 33.80%'], ['maryland 7', 'elijah cummings', 'democratic', 1996, 're-elected', 'elijah cummings (d) 73.53%\\njoseph ward (r) 26.38%']]
+########################################################################################################################
+Sample 1429 - Plan 1: Operation 2: Select rows where the 'party' column is 'democratic'.
+Sample 1429 - Plan 1: Selected indices: [[3, 2], [1, 2], [2, 2], [5, 2]]
+Sample 1429 - Plan 1: X-Table after operation df:
+     district        incumbent       party  first_nelected      result  \
+0  maryland 3       ben cardin  democratic            1986  re-elected   
+1  maryland 4      albert wynn  democratic            1992  re-elected   
+2  maryland 5      steny hoyer  democratic            1981  re-elected   
+3  maryland 7  elijah cummings  democratic            1996  re-elected   
+
+                                          candidates  
+0    ben cardin (d) 65.72%\nscott conwell (r) 34.18%  
+1     albert wynn (d) 78.57%\njohn kimble (r) 20.82%  
+2  steny hoyer (d) 69.27%\njoseph crawford (r) 30...  
+3  elijah cummings (d) 73.53%\njoseph ward (r) 26...  
+Sample 1429 - Plan 1: Table after operation: [['district', 'incumbent', 'party', 'first_nelected', 'result', 'candidates'], ['maryland 3', 'ben cardin', 'democratic', 1986, 're-elected', 'ben cardin (d) 65.72%\\nscott conwell (r) 34.18%'], ['maryland 4', 'albert wynn', 'democratic', 1992, 're-elected', 'albert wynn (d) 78.57%\\njohn kimble (r) 20.82%'], ['maryland 5', 'steny hoyer', 'democratic', 1981, 're-elected', 'steny hoyer (d) 69.27%\\njoseph crawford (r) 30.52%'], ['maryland 7', 'elijah cummings', 'democratic', 1996, 're-elected', 'elijah cummings (d) 73.53%\\njoseph ward (r) 26.38%']]
+########################################################################################################################
+Sample 1429 - Plan 1: Operation 3: Order the table by the 'first_elected' column in descending order.
+Sample 1429 - Plan 1: Selected indices: [[2, 3], [3, 3], [1, 3], [0, 3]]
+Sample 1429 - Plan 1: X-Table after operation df:
+     district        incumbent       party  first_nelected      result  \
+0  maryland 7  elijah cummings  democratic            1996  re-elected   
+1  maryland 4      albert wynn  democratic            1992  re-elected   
+2  maryland 3       ben cardin  democratic            1986  re-elected   
+3  maryland 5      steny hoyer  democratic            1981  re-elected   
+
+                                          candidates  
+0  elijah cummings (d) 73.53%\njoseph ward (r) 26...  
+1     albert wynn (d) 78.57%\njohn kimble (r) 20.82%  
+2    ben cardin (d) 65.72%\nscott conwell (r) 34.18%  
+3  steny hoyer (d) 69.27%\njoseph crawford (r) 30...  
+Sample 1429 - Plan 1: Table after operation: [['district', 'incumbent', 'party', 'first_nelected', 'result', 'candidates'], ['maryland 7', 'elijah cummings', 'democratic', 1996, 're-elected', 'elijah cummings (d) 73.53%\\njoseph ward (r) 26.38%'], ['maryland 4', 'albert wynn', 'democratic', 1992, 're-elected', 'albert wynn (d) 78.57%\\njohn kimble (r) 20.82%'], ['maryland 3', 'ben cardin', 'democratic', 1986, 're-elected', 'ben cardin (d) 65.72%\\nscott conwell (r) 34.18%'], ['maryland 5', 'steny hoyer', 'democratic', 1981, 're-elected', 'steny hoyer (d) 69.27%\\njoseph crawford (r) 30.52%']]
+########################################################################################################################
+Sample 1429 - Plan 1: Operation 4: Select row number 1.
+Sample 1429 - Plan 1: Selected indices: []
+Sample 1429 - Plan 1: X-Table after operation df:
+     district        incumbent       party  first_nelected      result  \
+0  maryland 7  elijah cummings  democratic            1996  re-elected   
+
+                                          candidates  
+0  elijah cummings (d) 73.53%\njoseph ward (r) 26...  
+Sample 1429 - Plan 1: Table after operation: [['district', 'incumbent', 'party', 'first_nelected', 'result', 'candidates'], ['maryland 7', 'elijah cummings', 'democratic', 1996, 're-elected', 'elijah cummings (d) 73.53%\\njoseph ward (r) 26.38%']]
+########################################################################################################################
+Sample 1429 - Plan 1: Operation 5: Select the 'incumbent' column.
+Sample 1429 - Plan 1: Selected indices: []
+Sample 1429 - Plan 1: X-Table after operation df:
+         incumbent
+0  elijah cummings
+Sample 1429 - Plan 1: Table after operation: [['incumbent'], ['elijah cummings']]
+Fall-back: FALSE
+Answer from plan 1: [['elijah cummings']]
+Groundtruth: ['Elijah Cummings']

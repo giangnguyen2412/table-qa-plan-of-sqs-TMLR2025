@@ -1,0 +1,40 @@
+************************************************************************************************************************
+Sample 2762 - Plan 1: Query: which nations do not have more than twenty gold medals?
+Sample 2762 - Plan 1: Groundtruth: ['Germany', 'France', 'Japan']
+Sample 2762 - Plan 1: X-Original table pd: 
+   rank         nation  gold  silver  bronze  total
+0     1          china    63      46      32    141
+1     2  great britain    35      30      29     94
+2     3         canada    28      19      25     72
+3     4  united states    27      22      39     88
+4     5      australia    26      38      36    100
+5     6        ukraine    24      12      19     55
+6     7          spain    20      27      24     71
+7     8        germany    19      28      31     78
+8     9         france    18      26      30     74
+9    10          japan    17      16      20     53
+Sample 2762 - Plan 1: Caption: none
+Sample 2762 - Plan 1: Original table: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['1', 'china', '63', '46', '32', '141'], ['2', 'great britain', '35', '30', '29', '94'], ['3', 'canada', '28', '19', '25', '72'], ['4', 'united states', '27', '22', '39', '88'], ['5', 'australia', '26', '38', '36', '100'], ['6', 'ukraine', '24', '12', '19', '55'], ['7', 'spain', '20', '27', '24', '71'], ['8', 'germany', '19', '28', '31', '78'], ['9', 'france', '18', '26', '30', '74'], ['10', 'japan', '17', '16', '20', '53']]
+########################################################################################################################
+Sample 2762 - Plan 1: Operation 1: Select rows where the 'gold' column is less than or equal to 20.
+Sample 2762 - Plan 1: Selected indices: [[8, 2], [6, 2], [9, 2], [7, 2]]
+Sample 2762 - Plan 1: X-Table after operation df:
+   rank   nation  gold  silver  bronze  total
+0     7    spain    20      27      24     71
+1     8  germany    19      28      31     78
+2     9   france    18      26      30     74
+3    10    japan    17      16      20     53
+Sample 2762 - Plan 1: Table after operation: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], [7, 'spain', 20, 27, 24, 71], [8, 'germany', 19, 28, 31, 78], [9, 'france', 18, 26, 30, 74], [10, 'japan', 17, 16, 20, 53]]
+########################################################################################################################
+Sample 2762 - Plan 1: Operation 2: Select the 'nation' column.
+Sample 2762 - Plan 1: Selected indices: []
+Sample 2762 - Plan 1: X-Table after operation df:
+    nation
+0    spain
+1  germany
+2   france
+3    japan
+Sample 2762 - Plan 1: Table after operation: [['nation'], ['spain'], ['germany'], ['france'], ['japan']]
+Fall-back: FALSE
+Answer from plan 1: [['spain'], ['germany'], ['france'], ['japan']]
+Groundtruth: ['Germany', 'France', 'Japan']

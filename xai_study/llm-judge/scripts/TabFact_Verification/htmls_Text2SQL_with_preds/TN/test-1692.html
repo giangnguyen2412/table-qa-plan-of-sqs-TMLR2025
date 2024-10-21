@@ -1,0 +1,41 @@
+
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+.sql-command { background-color: #f0f0f0; padding: 10px; border-left: 4px solid #4CAF50; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> richie hearn held the qualifying time at 24.521 before september 2003</h3>
+<h3>Input Table: chicagoland speedway</h3>
+<div class="step">
+<table>
+<tr><td>record</td><td>date</td><td>driver</td><td>time</td><td>speed_/_avg_speed</td></tr><tr><td>nascar sprint cup series</td><td>9999-01-01</td><td>nascar sprint cup series</td><td>nascar sprint cup series</td><td>nascar sprint cup series</td></tr><tr><td>qualifying</td><td>2013-09-14</td><td>joey logano</td><td>28.509</td><td>-</td></tr><tr><td>race</td><td>2010-07-10</td><td>david reutimann</td><td>2:45:34</td><td>-</td></tr><tr><td>nascar nationwide series</td><td>9999-01-01</td><td>nascar nationwide series</td><td>nascar nationwide series</td><td>nascar nationwide series</td></tr><tr><td>qualifying</td><td>2005-07-08</td><td>ryan newman</td><td>28.964</td><td>-</td></tr><tr><td>race</td><td>2009-07-10</td><td>joey logano</td><td>2:02:10</td><td>-</td></tr><tr><td>nascar camping world truck series</td><td>9999-01-01</td><td>nascar camping world truck series</td><td>nascar camping world truck series</td><td>nascar camping world truck series</td></tr><tr><td>qualifying</td><td>2012-07-21</td><td>justin lofton</td><td>31.007</td><td>-</td></tr><tr><td>race</td><td>2010-08-27</td><td>kyle busch</td><td>1:44:31</td><td>-</td></tr><tr><td>izod indycar series</td><td>9999-01-01</td><td>izod indycar series</td><td>izod indycar series</td><td>izod indycar series</td></tr><tr><td>qualifying</td><td>2003-09-06</td><td>richie hearn</td><td>24.521</td><td>-</td></tr><tr><td>race</td><td>2006-09-10</td><td>dan wheldon</td><td>1:33:37</td><td>-</td></tr>
+</table>
+</div>
+<h3>SQL Command:</h3>
+<div class="sql-command">SELECT 
+    CASE 
+        WHEN (SELECT time FROM table_sql WHERE record = 'qualifying' AND driver = 'richie hearn') = 24.521 
+             AND (SELECT date FROM table_sql WHERE record = 'qualifying' AND driver = 'richie hearn') < '2003-09-01' 
+        THEN 'TRUE' 
+        ELSE 'FALSE' 
+    END;</div>
+<h3>Prediction: False</h3>
+</body></html>

@@ -1,0 +1,52 @@
+************************************************************************************************************************
+Sample 2002 - Plan 1: Query: which player has the most money?
+Sample 2002 - Plan 1: Groundtruth: ['Ralph Guldahl']
+Sample 2002 - Plan 1: X-Original table pd: 
+   place         player        country            score to_par money____
+0      1  ralph guldahl  united states  72-68-70-69=279     –9     1,500
+1      2      sam snead  united states  70-70-72-68=280     –8       800
+2     t3    billy burke  united states  69-72-71-70=282     –6       550
+3     t3  lawson little  united states  72-72-68-70=282     –6       550
+4      5   gene sarazen  united states  73-66-72-72=283     –5       400
+5      6     craig wood  united states  72-73-71-68=284     –4       300
+6      7   byron nelson  united states  71-69-72-75=287     –1       250
+7      8   henry picard  united states  71-71-76-71=289     +1       175
+8      9      ben hogan  united states  75-71-72-72=290     +2       125
+9    t10      ed dudley  united states  75-75-69-72=291     +3       100
+10   t10    toney penna  united states  72-75-72-72=291     +3       100
+Sample 2002 - Plan 1: Caption: none
+Sample 2002 - Plan 1: Original table: [['place', 'player', 'country', 'score', 'to_par', 'money____'], ['1', 'ralph guldahl', 'united states', '72-68-70-69=279', '–9', '1,500'], ['2', 'sam snead', 'united states', '70-70-72-68=280', '–8', '800'], ['t3', 'billy burke', 'united states', '69-72-71-70=282', '–6', '550'], ['t3', 'lawson little', 'united states', '72-72-68-70=282', '–6', '550'], ['5', 'gene sarazen', 'united states', '73-66-72-72=283', '–5', '400'], ['6', 'craig wood', 'united states', '72-73-71-68=284', '–4', '300'], ['7', 'byron nelson', 'united states', '71-69-72-75=287', '–1', '250'], ['8', 'henry picard', 'united states', '71-71-76-71=289', '+1', '175'], ['9', 'ben hogan', 'united states', '75-71-72-72=290', '+2', '125'], ['t10', 'ed dudley', 'united states', '75-75-69-72=291', '+3', '100'], ['t10', 'toney penna', 'united states', '72-75-72-72=291', '+3', '100']]
+########################################################################################################################
+Sample 2002 - Plan 1: Operation 1: Order the table by the 'money____' column in descending order.
+Sample 2002 - Plan 1: Selected indices: [[10, 5], [5, 5], [6, 5], [1, 5], [9, 5], [4, 5], [0, 5], [7, 5], [2, 5], [8, 5], [3, 5]]
+Sample 2002 - Plan 1: X-Table after operation df:
+   place         player        country            score to_par money____
+0      1  ralph guldahl  united states  72-68-70-69=279     –9     1,500
+1      2      sam snead  united states  70-70-72-68=280     –8       800
+2     t3    billy burke  united states  69-72-71-70=282     –6       550
+3     t3  lawson little  united states  72-72-68-70=282     –6       550
+4      5   gene sarazen  united states  73-66-72-72=283     –5       400
+5      6     craig wood  united states  72-73-71-68=284     –4       300
+6      7   byron nelson  united states  71-69-72-75=287     –1       250
+7      8   henry picard  united states  71-71-76-71=289     +1       175
+8      9      ben hogan  united states  75-71-72-72=290     +2       125
+9    t10      ed dudley  united states  75-75-69-72=291     +3       100
+10   t10    toney penna  united states  72-75-72-72=291     +3       100
+Sample 2002 - Plan 1: Table after operation: [['place', 'player', 'country', 'score', 'to_par', 'money____'], ['1', 'ralph guldahl', 'united states', '72-68-70-69=279', '–9', '1,500'], ['2', 'sam snead', 'united states', '70-70-72-68=280', '–8', '800'], ['t3', 'billy burke', 'united states', '69-72-71-70=282', '–6', '550'], ['t3', 'lawson little', 'united states', '72-72-68-70=282', '–6', '550'], ['5', 'gene sarazen', 'united states', '73-66-72-72=283', '–5', '400'], ['6', 'craig wood', 'united states', '72-73-71-68=284', '–4', '300'], ['7', 'byron nelson', 'united states', '71-69-72-75=287', '–1', '250'], ['8', 'henry picard', 'united states', '71-71-76-71=289', '+1', '175'], ['9', 'ben hogan', 'united states', '75-71-72-72=290', '+2', '125'], ['t10', 'ed dudley', 'united states', '75-75-69-72=291', '+3', '100'], ['t10', 'toney penna', 'united states', '72-75-72-72=291', '+3', '100']]
+########################################################################################################################
+Sample 2002 - Plan 1: Operation 2: Select row number 1.
+Sample 2002 - Plan 1: Selected indices: []
+Sample 2002 - Plan 1: X-Table after operation df:
+   place         player        country            score to_par money____
+0      1  ralph guldahl  united states  72-68-70-69=279     –9     1,500
+Sample 2002 - Plan 1: Table after operation: [['place', 'player', 'country', 'score', 'to_par', 'money____'], ['1', 'ralph guldahl', 'united states', '72-68-70-69=279', '–9', '1,500']]
+########################################################################################################################
+Sample 2002 - Plan 1: Operation 3: Select the 'player' column.
+Sample 2002 - Plan 1: Selected indices: []
+Sample 2002 - Plan 1: X-Table after operation df:
+          player
+0  ralph guldahl
+Sample 2002 - Plan 1: Table after operation: [['player'], ['ralph guldahl']]
+Fall-back: FALSE
+Answer from plan 1: [['ralph guldahl']]
+Groundtruth: ['Ralph Guldahl']

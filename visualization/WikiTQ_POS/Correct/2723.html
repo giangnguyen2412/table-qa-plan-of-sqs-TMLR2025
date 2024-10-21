@@ -1,0 +1,613 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> at how many games was attendance below 15,000?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where 'attendance' is less than 15,000.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>date</td>
+<td>opponent</td>
+<td>venue</td>
+<td>result</td>
+<td>attendance</td>
+<td>scorers</td>
+</tr>
+<tr>
+<td>15 august 1992</td>
+<td>chelsea</td>
+<td>a</td>
+<td>1–1</td>
+<td>20,699</td>
+<td>henry</td>
+</tr>
+<tr>
+<td>19 august 1992</td>
+<td>crystal palace</td>
+<td>h</td>
+<td>1–1</td>
+<td>11,063</td>
+<td>sharp</td>
+</tr>
+<tr>
+<td>22 august 1992</td>
+<td>nottingham forest</td>
+<td>h</td>
+<td>5–3</td>
+<td>11,632</td>
+<td>adams, sharp, henry, halle, bernard</td>
+</tr>
+<tr>
+<td>26 august 1992</td>
+<td>arsenal</td>
+<td>a</td>
+<td>0–2</td>
+<td>20,796</td>
+<td></td>
+</tr>
+<tr>
+<td>29 august 1992</td>
+<td>manchester city</td>
+<td>a</td>
+<td>3–3</td>
+<td>27,288</td>
+<td>jobson, milligan, halle</td>
+</tr>
+<tr>
+<td>1 september 1992</td>
+<td>leeds united</td>
+<td>h</td>
+<td>2–2</td>
+<td>13,848</td>
+<td>olney (2)</td>
+</tr>
+<tr>
+<td>5 september 1992</td>
+<td>coventry city</td>
+<td>h</td>
+<td>0–1</td>
+<td>11,254</td>
+<td></td>
+</tr>
+<tr>
+<td>12 september 1992</td>
+<td>crystal palace</td>
+<td>a</td>
+<td>2–2</td>
+<td>11,224</td>
+<td>olney, sharp</td>
+</tr>
+<tr>
+<td>19 september 1992</td>
+<td>ipswich town</td>
+<td>h</td>
+<td>4–2</td>
+<td>11,150</td>
+<td>marshall, sharp, halle, henry</td>
+</tr>
+<tr>
+<td>26 september 1992</td>
+<td>blackburn rovers</td>
+<td>a</td>
+<td>0–2</td>
+<td>18,393</td>
+<td></td>
+</tr>
+<tr>
+<td>4 october 1992</td>
+<td>everton</td>
+<td>h</td>
+<td>1–0</td>
+<td>13,013</td>
+<td>jobson</td>
+</tr>
+<tr>
+<td>17 october 1992</td>
+<td>sheffield wednesday</td>
+<td>a</td>
+<td>1–2</td>
+<td>24,485</td>
+<td>milligan</td>
+</tr>
+<tr>
+<td>24 october 1992</td>
+<td>aston villa</td>
+<td>h</td>
+<td>1–1</td>
+<td>13,457</td>
+<td>olney</td>
+</tr>
+<tr>
+<td>31 october 1992</td>
+<td>southampton</td>
+<td>a</td>
+<td>0–1</td>
+<td>10,827</td>
+<td></td>
+</tr>
+<tr>
+<td>9 november 1992</td>
+<td>norwich city</td>
+<td>h</td>
+<td>2–3</td>
+<td>11,081</td>
+<td>sharp, marshall</td>
+</tr>
+<tr>
+<td>21 november 1992</td>
+<td>manchester united</td>
+<td>a</td>
+<td>0–3</td>
+<td>33,497</td>
+<td></td>
+</tr>
+<tr>
+<td>28 november 1992</td>
+<td>middlesbrough</td>
+<td>h</td>
+<td>4–1</td>
+<td>12,401</td>
+<td>halle, pointon, sharp, adams</td>
+</tr>
+<tr>
+<td>5 december 1992</td>
+<td>queens park rangers</td>
+<td>a</td>
+<td>2–3</td>
+<td>11,804</td>
+<td>adams, olney</td>
+</tr>
+<tr>
+<td>12 december 1992</td>
+<td>wimbledon</td>
+<td>a</td>
+<td>2–5</td>
+<td>3,386</td>
+<td>brennan, milligan</td>
+</tr>
+<tr>
+<td>19 december 1992</td>
+<td>tottenham hotspur</td>
+<td>h</td>
+<td>2–1</td>
+<td>11,735</td>
+<td>sharp, olney</td>
+</tr>
+<tr>
+<td>9 january 1993</td>
+<td>ipswich town</td>
+<td>a</td>
+<td>2–1</td>
+<td>15,025</td>
+<td>brennan, bernard</td>
+</tr>
+<tr>
+<td>16 january 1993</td>
+<td>blackburn rovers</td>
+<td>h</td>
+<td>0–1</td>
+<td>13,742</td>
+<td></td>
+</tr>
+<tr>
+<td>23 january 1993</td>
+<td>coventry city</td>
+<td>a</td>
+<td>0–3</td>
+<td>10,544</td>
+<td></td>
+</tr>
+<tr>
+<td>26 january 1993</td>
+<td>manchester city</td>
+<td>h</td>
+<td>0–1</td>
+<td>14,903</td>
+<td></td>
+</tr>
+<tr>
+<td>30 january 1993</td>
+<td>nottingham forest</td>
+<td>a</td>
+<td>0–2</td>
+<td>21,240</td>
+<td></td>
+</tr>
+<tr>
+<td>6 february 1993</td>
+<td>chelsea</td>
+<td>h</td>
+<td>3–1</td>
+<td>11,772</td>
+<td>henry, adams, brennan</td>
+</tr>
+<tr>
+<td>13 february 1993</td>
+<td>leeds united</td>
+<td>a</td>
+<td>0–2</td>
+<td>27,654</td>
+<td></td>
+</tr>
+<tr>
+<td>20 february 1993</td>
+<td>arsenal</td>
+<td>h</td>
+<td>0–1</td>
+<td>12,311</td>
+<td></td>
+</tr>
+<tr>
+<td>22 february 1993</td>
+<td>sheffield united</td>
+<td>a</td>
+<td>0–2</td>
+<td>14,628</td>
+<td></td>
+</tr>
+<tr>
+<td>27 february 1993</td>
+<td>everton</td>
+<td>a</td>
+<td>2–2</td>
+<td>18,025</td>
+<td>adams (2, 1 pen)</td>
+</tr>
+<tr>
+<td>9 march 1993</td>
+<td>manchester united</td>
+<td>h</td>
+<td>1–0</td>
+<td>17,106</td>
+<td>adams</td>
+</tr>
+<tr>
+<td>13 march 1993</td>
+<td>norwich city</td>
+<td>a</td>
+<td>0–1</td>
+<td>19,597</td>
+<td></td>
+</tr>
+<tr>
+<td>20 march 1993</td>
+<td>queens park rangers</td>
+<td>h</td>
+<td>2–2</td>
+<td>10,946</td>
+<td>henry, adams</td>
+</tr>
+<tr>
+<td>22 march 1993</td>
+<td>middlesbrough</td>
+<td>a</td>
+<td>3–2</td>
+<td>12,290</td>
+<td>bernard, olney, ritchie</td>
+</tr>
+<tr>
+<td>3 april 1993</td>
+<td>wimbledon</td>
+<td>h</td>
+<td>6–2</td>
+<td>11,606</td>
+<td>fashanu (own goal), bernard, olney (2), adams, beckford</td>
+</tr>
+<tr>
+<td>7 april 1993</td>
+<td>sheffield wednesday</td>
+<td>h</td>
+<td>1–1</td>
+<td>12,312</td>
+<td>pointon</td>
+</tr>
+<tr>
+<td>10 april 1993</td>
+<td>liverpool</td>
+<td>a</td>
+<td>0–1</td>
+<td>36,129</td>
+<td></td>
+</tr>
+<tr>
+<td>13 april 1993</td>
+<td>sheffield united</td>
+<td>h</td>
+<td>1–1</td>
+<td>14,795</td>
+<td>ritchie</td>
+</tr>
+<tr>
+<td>17 april 1993</td>
+<td>tottenham hotspur</td>
+<td>a</td>
+<td>1–4</td>
+<td>26,663</td>
+<td>beckford</td>
+</tr>
+<tr>
+<td>2 may 1993</td>
+<td>aston villa</td>
+<td>a</td>
+<td>1–0</td>
+<td>37,247</td>
+<td>henry</td>
+</tr>
+<tr>
+<td>5 may 1993</td>
+<td>liverpool</td>
+<td>h</td>
+<td>3–2</td>
+<td>15,381</td>
+<td>beckford, olney (2)</td>
+</tr>
+<tr>
+<td>8 may 1993</td>
+<td>southampton</td>
+<td>h</td>
+<td>4–3</td>
+<td>14,597</td>
+<td>pointon, olney, ritchie, halle</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Count the number of rows.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>date</td>
+<td>opponent</td>
+<td>venue</td>
+<td>result</td>
+<td>attendance</td>
+<td>scorers</td>
+</tr>
+<tr>
+<td>19 august 1992</td>
+<td>crystal palace</td>
+<td>h</td>
+<td>1–1</td>
+<td>11,063</td>
+<td>sharp</td>
+</tr>
+<tr>
+<td>22 august 1992</td>
+<td>nottingham forest</td>
+<td>h</td>
+<td>5–3</td>
+<td>11,632</td>
+<td>adams, sharp, henry, halle, bernard</td>
+</tr>
+<tr>
+<td>1 september 1992</td>
+<td>leeds united</td>
+<td>h</td>
+<td>2–2</td>
+<td>13,848</td>
+<td>olney (2)</td>
+</tr>
+<tr>
+<td>5 september 1992</td>
+<td>coventry city</td>
+<td>h</td>
+<td>0–1</td>
+<td>11,254</td>
+<td></td>
+</tr>
+<tr>
+<td>12 september 1992</td>
+<td>crystal palace</td>
+<td>a</td>
+<td>2–2</td>
+<td>11,224</td>
+<td>olney, sharp</td>
+</tr>
+<tr>
+<td>19 september 1992</td>
+<td>ipswich town</td>
+<td>h</td>
+<td>4–2</td>
+<td>11,150</td>
+<td>marshall, sharp, halle, henry</td>
+</tr>
+<tr>
+<td>4 october 1992</td>
+<td>everton</td>
+<td>h</td>
+<td>1–0</td>
+<td>13,013</td>
+<td>jobson</td>
+</tr>
+<tr>
+<td>24 october 1992</td>
+<td>aston villa</td>
+<td>h</td>
+<td>1–1</td>
+<td>13,457</td>
+<td>olney</td>
+</tr>
+<tr>
+<td>31 october 1992</td>
+<td>southampton</td>
+<td>a</td>
+<td>0–1</td>
+<td>10,827</td>
+<td></td>
+</tr>
+<tr>
+<td>9 november 1992</td>
+<td>norwich city</td>
+<td>h</td>
+<td>2–3</td>
+<td>11,081</td>
+<td>sharp, marshall</td>
+</tr>
+<tr>
+<td>28 november 1992</td>
+<td>middlesbrough</td>
+<td>h</td>
+<td>4–1</td>
+<td>12,401</td>
+<td>halle, pointon, sharp, adams</td>
+</tr>
+<tr>
+<td>5 december 1992</td>
+<td>queens park rangers</td>
+<td>a</td>
+<td>2–3</td>
+<td>11,804</td>
+<td>adams, olney</td>
+</tr>
+<tr>
+<td>12 december 1992</td>
+<td>wimbledon</td>
+<td>a</td>
+<td>2–5</td>
+<td>3,386</td>
+<td>brennan, milligan</td>
+</tr>
+<tr>
+<td>19 december 1992</td>
+<td>tottenham hotspur</td>
+<td>h</td>
+<td>2–1</td>
+<td>11,735</td>
+<td>sharp, olney</td>
+</tr>
+<tr>
+<td>16 january 1993</td>
+<td>blackburn rovers</td>
+<td>h</td>
+<td>0–1</td>
+<td>13,742</td>
+<td></td>
+</tr>
+<tr>
+<td>23 january 1993</td>
+<td>coventry city</td>
+<td>a</td>
+<td>0–3</td>
+<td>10,544</td>
+<td></td>
+</tr>
+<tr>
+<td>26 january 1993</td>
+<td>manchester city</td>
+<td>h</td>
+<td>0–1</td>
+<td>14,903</td>
+<td></td>
+</tr>
+<tr>
+<td>6 february 1993</td>
+<td>chelsea</td>
+<td>h</td>
+<td>3–1</td>
+<td>11,772</td>
+<td>henry, adams, brennan</td>
+</tr>
+<tr>
+<td>20 february 1993</td>
+<td>arsenal</td>
+<td>h</td>
+<td>0–1</td>
+<td>12,311</td>
+<td></td>
+</tr>
+<tr>
+<td>22 february 1993</td>
+<td>sheffield united</td>
+<td>a</td>
+<td>0–2</td>
+<td>14,628</td>
+<td></td>
+</tr>
+<tr>
+<td>20 march 1993</td>
+<td>queens park rangers</td>
+<td>h</td>
+<td>2–2</td>
+<td>10,946</td>
+<td>henry, adams</td>
+</tr>
+<tr>
+<td>22 march 1993</td>
+<td>middlesbrough</td>
+<td>a</td>
+<td>3–2</td>
+<td>12,290</td>
+<td>bernard, olney, ritchie</td>
+</tr>
+<tr>
+<td>3 april 1993</td>
+<td>wimbledon</td>
+<td>h</td>
+<td>6–2</td>
+<td>11,606</td>
+<td>fashanu (own goal), bernard, olney (2), adams, beckford</td>
+</tr>
+<tr>
+<td>7 april 1993</td>
+<td>sheffield wednesday</td>
+<td>h</td>
+<td>1–1</td>
+<td>12,312</td>
+<td>pointon</td>
+</tr>
+<tr>
+<td>13 april 1993</td>
+<td>sheffield united</td>
+<td>h</td>
+<td>1–1</td>
+<td>14,795</td>
+<td>ritchie</td>
+</tr>
+<tr>
+<td>8 may 1993</td>
+<td>southampton</td>
+<td>h</td>
+<td>4–3</td>
+<td>14,597</td>
+<td>pointon, olney, ritchie, halle</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>row_count</td>
+</tr>
+<tr>
+<td>26</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[26]]</h3>
+</body></html>

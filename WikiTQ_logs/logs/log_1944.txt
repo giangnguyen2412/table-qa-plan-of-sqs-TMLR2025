@@ -1,0 +1,61 @@
+************************************************************************************************************************
+Sample 1944 - Plan 1: Query: what country comes after malaysia in the medal count?
+Sample 1944 - Plan 1: Groundtruth: ['Indonesia']
+Sample 1944 - Plan 1: X-Original table pd: 
+   rank          nation  gold  silver  bronze  total
+0     1        malaysia     3       0       1      4
+1     2       indonesia     1       3       2      6
+2     3           korea     1       1       2      4
+3     4        thailand     1       0       0      1
+4     5  chinese taipei     0       1       2      3
+5     6         denmark     0       1       0      1
+6     7           japan     0       0       2      2
+7     8           india     0       0       1      1
+8     9           spain     0       0       1      1
+Sample 1944 - Plan 1: Caption: none
+Sample 1944 - Plan 1: Original table: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['1', 'malaysia', '3', '0', '1', '4'], ['2', 'indonesia', '1', '3', '2', '6'], ['3', 'korea', '1', '1', '2', '4'], ['4', 'thailand', '1', '0', '0', '1'], ['5', 'chinese taipei', '0', '1', '2', '3'], ['6', 'denmark', '0', '1', '0', '1'], ['7', 'japan', '0', '0', '2', '2'], ['8', 'india', '0', '0', '1', '1'], ['9', 'spain', '0', '0', '1', '1']]
+########################################################################################################################
+Sample 1944 - Plan 1: Operation 1: Select rows where the 'rank' is greater than the rank of 'malaysia'.
+Sample 1944 - Plan 1: Selected indices: [[4, 0], [7, 1], [2, 1], [8, 1], [3, 1], [6, 1], [1, 1], [7, 0], [2, 0], [5, 1], [8, 0], [3, 0], [5, 0], [6, 0], [1, 0], [4, 1]]
+Sample 1944 - Plan 1: X-Table after operation df:
+   rank          nation  gold  silver  bronze  total
+0     2       indonesia     1       3       2      6
+1     3           korea     1       1       2      4
+2     4        thailand     1       0       0      1
+3     5  chinese taipei     0       1       2      3
+4     6         denmark     0       1       0      1
+5     7           japan     0       0       2      2
+6     8           india     0       0       1      1
+7     9           spain     0       0       1      1
+Sample 1944 - Plan 1: Table after operation: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], [2, 'indonesia', 1, 3, 2, 6], [3, 'korea', 1, 1, 2, 4], [4, 'thailand', 1, 0, 0, 1], [5, 'chinese taipei', 0, 1, 2, 3], [6, 'denmark', 0, 1, 0, 1], [7, 'japan', 0, 0, 2, 2], [8, 'india', 0, 0, 1, 1], [9, 'spain', 0, 0, 1, 1]]
+########################################################################################################################
+Sample 1944 - Plan 1: Operation 2: Order the table by 'rank' in ascending order.
+Sample 1944 - Plan 1: Selected indices: [[4, 0], [0, 0], [7, 0], [2, 0], [3, 0], [5, 0], [6, 0], [1, 0]]
+Sample 1944 - Plan 1: X-Table after operation df:
+   rank          nation  gold  silver  bronze  total
+0     2       indonesia     1       3       2      6
+1     3           korea     1       1       2      4
+2     4        thailand     1       0       0      1
+3     5  chinese taipei     0       1       2      3
+4     6         denmark     0       1       0      1
+5     7           japan     0       0       2      2
+6     8           india     0       0       1      1
+7     9           spain     0       0       1      1
+Sample 1944 - Plan 1: Table after operation: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], [2, 'indonesia', 1, 3, 2, 6], [3, 'korea', 1, 1, 2, 4], [4, 'thailand', 1, 0, 0, 1], [5, 'chinese taipei', 0, 1, 2, 3], [6, 'denmark', 0, 1, 0, 1], [7, 'japan', 0, 0, 2, 2], [8, 'india', 0, 0, 1, 1], [9, 'spain', 0, 0, 1, 1]]
+########################################################################################################################
+Sample 1944 - Plan 1: Operation 3: Select row number 1.
+Sample 1944 - Plan 1: Selected indices: []
+Sample 1944 - Plan 1: X-Table after operation df:
+   rank     nation  gold  silver  bronze  total
+0     2  indonesia     1       3       2      6
+Sample 1944 - Plan 1: Table after operation: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], [2, 'indonesia', 1, 3, 2, 6]]
+########################################################################################################################
+Sample 1944 - Plan 1: Operation 4: Select the 'nation' column.
+Sample 1944 - Plan 1: Selected indices: []
+Sample 1944 - Plan 1: X-Table after operation df:
+      nation
+0  indonesia
+Sample 1944 - Plan 1: Table after operation: [['nation'], ['indonesia']]
+Fall-back: FALSE
+Answer from plan 1: [['indonesia']]
+Groundtruth: ['Indonesia']

@@ -1,0 +1,91 @@
+************************************************************************************************************************
+Sample 671 - Plan 1: Query: what was the teams top finish in the regular season?
+Sample 671 - Plan 1: Groundtruth: ['1st']
+Sample 671 - Plan 1: X-Original table pd: 
+       year division league             reg__season               playoffs  \
+0   1934/35      n/a    asl                     6th             no playoff   
+1   1935/36      n/a    asl                     2nd             no playoff   
+2   1936/37      n/a    asl           2nd, american              1st round   
+3   1937/38      n/a    asl           4th, american        did not qualify   
+4   1938/39      n/a    asl           5th, american        did not qualify   
+5   1939/40      n/a    asl                  2nd(t)             no playoff   
+6   1940/41      n/a    asl                     3rd             no playoff   
+7   1941/42      n/a    asl                     5th             no playoff   
+8   1942/43      n/a    asl                     5th             no playoff   
+9   1943/44      n/a    asl                     3rd             no playoff   
+10  1944/45      n/a    asl                     4th             no playoff   
+11  1945/46      n/a    asl                     1st  champion (no playoff)   
+12  1946/47      n/a    asl                     4th             no playoff   
+13  1947/48      n/a    asl                     4th             no playoff   
+14  1948/49      n/a    asl  withdrew after 3 games                    n/a   
+
+   national_cup  
+0             ?  
+1             ?  
+2             ?  
+3             ?  
+4             ?  
+5   co-champion  
+6             ?  
+7             ?  
+8             ?  
+9             ?  
+10            ?  
+11            ?  
+12            ?  
+13            ?  
+14          n/a  
+Sample 671 - Plan 1: Caption: none
+Sample 671 - Plan 1: Original table: [['year', 'division', 'league', 'reg__season', 'playoffs', 'national_cup'], ['1934/35', 'n/a', 'asl', '6th', 'no playoff', '?'], ['1935/36', 'n/a', 'asl', '2nd', 'no playoff', '?'], ['1936/37', 'n/a', 'asl', '2nd, american', '1st round', '?'], ['1937/38', 'n/a', 'asl', '4th, american', 'did not qualify', '?'], ['1938/39', 'n/a', 'asl', '5th, american', 'did not qualify', '?'], ['1939/40', 'n/a', 'asl', '2nd(t)', 'no playoff', 'co-champion'], ['1940/41', 'n/a', 'asl', '3rd', 'no playoff', '?'], ['1941/42', 'n/a', 'asl', '5th', 'no playoff', '?'], ['1942/43', 'n/a', 'asl', '5th', 'no playoff', '?'], ['1943/44', 'n/a', 'asl', '3rd', 'no playoff', '?'], ['1944/45', 'n/a', 'asl', '4th', 'no playoff', '?'], ['1945/46', 'n/a', 'asl', '1st', 'champion (no playoff)', '?'], ['1946/47', 'n/a', 'asl', '4th', 'no playoff', '?'], ['1947/48', 'n/a', 'asl', '4th', 'no playoff', '?'], ['1948/49', 'n/a', 'asl', 'withdrew after 3 games', 'n/a', 'n/a']]
+########################################################################################################################
+Sample 671 - Plan 1: Operation 1: Select the 'reg__season' column.
+Sample 671 - Plan 1: Selected indices: []
+Sample 671 - Plan 1: X-Table after operation df:
+               reg__season
+0                      6th
+1                      2nd
+2            2nd, american
+3            4th, american
+4            5th, american
+5                   2nd(t)
+6                      3rd
+7                      5th
+8                      5th
+9                      3rd
+10                     4th
+11                     1st
+12                     4th
+13                     4th
+14  withdrew after 3 games
+Sample 671 - Plan 1: Table after operation: [['reg__season'], ['6th'], ['2nd'], ['2nd, american'], ['4th, american'], ['5th, american'], ['2nd(t)'], ['3rd'], ['5th'], ['5th'], ['3rd'], ['4th'], ['1st'], ['4th'], ['4th'], ['withdrew after 3 games']]
+########################################################################################################################
+Sample 671 - Plan 1: Operation 2: Identify the highest finish in the regular season for each row.
+Sample 671 - Plan 1: Selected indices: []
+Sample 671 - Plan 1: X-Table after operation df:
+   highest_finish
+0             6th
+1             2nd
+2             2nd
+3             4th
+4             5th
+5             2nd
+6             3rd
+7             5th
+8             5th
+9             3rd
+10            4th
+11            1st
+12            4th
+13            4th
+14        Unknown
+Sample 671 - Plan 1: Table after operation: [['highest_finish'], ['6th'], ['2nd'], ['2nd'], ['4th'], ['5th'], ['2nd'], ['3rd'], ['5th'], ['5th'], ['3rd'], ['4th'], ['1st'], ['4th'], ['4th'], ['Unknown']]
+########################################################################################################################
+Sample 671 - Plan 1: Operation 3: Select the highest finish from the 'reg__season' column.
+Sample 671 - Plan 1: Selected indices: []
+Sample 671 - Plan 1: X-Table after operation df:
+   highest_finish
+0               6
+Sample 671 - Plan 1: Table after operation: [['highest_finish'], [6]]
+Fall-back: FALSE
+Answer from plan 1: [[6]]
+Groundtruth: ['1st']

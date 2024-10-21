@@ -1,0 +1,59 @@
+************************************************************************************************************************
+Sample 386 - Plan 1: Query: whats the difference in win amounts between geoff ogilvy and ernie els?
+Sample 386 - Plan 1: Groundtruth: ['1']
+Sample 386 - Plan 1: X-Original table pd: 
+           golfer           country  wins           match_play  \
+0     tiger woods     united states    18  3: 2003, 2004, 2008   
+1    geoff ogilvy         australia     3        2: 2006, 2009   
+2   darren clarke  northern ireland     2              1: 2000   
+3       ernie els      south africa     2                    —   
+4    hunter mahan     united states     2              1: 2012   
+5  phil mickelson     united states     2                    —   
+6     ian poulter           england     2              1: 2010   
+
+                                   championship  \
+0  7: 1999, 2002, 2003,\n2005, 2006, 2007, 2013   
+1                                       1: 2008   
+2                                             —   
+3                                 2: 2004, 2010   
+4                                             —   
+5                                       1: 2009   
+6                                             —   
+
+                                        invitational champions  
+0  8: 1999, 2000, 2001, 2005,\n2006, 2007, 2009, ...         —  
+1                                                  —         —  
+2                                            1: 2003         —  
+3                                                  —         —  
+4                                            1: 2010         —  
+5                                                  —   1: 2009  
+6                                                  —   1: 2012  
+Sample 386 - Plan 1: Caption: none
+Sample 386 - Plan 1: Original table: [['golfer', 'country', 'wins', 'match_play', 'championship', 'invitational', 'champions'], ['tiger woods', 'united states', '18', '3: 2003, 2004, 2008', '7: 1999, 2002, 2003,\\n2005, 2006, 2007, 2013', '8: 1999, 2000, 2001, 2005,\\n2006, 2007, 2009, 2013', '—'], ['geoff ogilvy', 'australia', '3', '2: 2006, 2009', '1: 2008', '—', '—'], ['darren clarke', 'northern ireland', '2', '1: 2000', '—', '1: 2003', '—'], ['ernie els', 'south africa', '2', '—', '2: 2004, 2010', '—', '—'], ['hunter mahan', 'united states', '2', '1: 2012', '—', '1: 2010', '—'], ['phil mickelson', 'united states', '2', '—', '1: 2009', '—', '1: 2009'], ['ian poulter', 'england', '2', '1: 2010', '—', '—', '1: 2012']]
+########################################################################################################################
+Sample 386 - Plan 1: Operation 1: Select rows where 'golfer' is 'geoff ogilvy'.
+Sample 386 - Plan 1: Selected indices: [[1, 0]]
+Sample 386 - Plan 1: X-Table after operation df:
+         golfer    country  wins     match_play championship invitational  \
+0  geoff ogilvy  australia     3  2: 2006, 2009      1: 2008            —   
+
+  champions  
+0         —  
+Sample 386 - Plan 1: Table after operation: [['golfer', 'country', 'wins', 'match_play', 'championship', 'invitational', 'champions'], ['geoff ogilvy', 'australia', 3, '2: 2006, 2009', '1: 2008', '—', '—']]
+########################################################################################################################
+Sample 386 - Plan 1: Operation 2: Select the 'wins' column.
+Sample 386 - Plan 1: Selected indices: []
+Sample 386 - Plan 1: X-Table after operation df:
+   wins
+0     3
+Sample 386 - Plan 1: Table after operation: [['wins'], [3]]
+########################################################################################################################
+Sample 386 - Plan 1: Operation 3: Store the value of 'wins' for Geoff Ogilvy in a variable.
+SQL execution error in operation 3: Execution failed on sql 'SELECT wins
+FROM table_sql
+WHERE player = 'Geoff Ogilvy';
+-- Store the value of 'wins' for Geoff Ogilvy in a variable.': no such column: player
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['1']]
+Groundtruth: ['1']

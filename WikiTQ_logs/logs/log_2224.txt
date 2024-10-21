@@ -1,0 +1,39 @@
+************************************************************************************************************************
+Sample 2224 - Plan 1: Query: how many more bronze metals does hungary have than canada?
+Sample 2224 - Plan 1: Groundtruth: ['0']
+Sample 2224 - Plan 1: X-Original table pd: 
+   rank         nation gold silver  bronze  total
+0     1    netherlands    8      3       1     12
+1     2      australia    3      3       4     10
+2     3  united states    2      5       1      8
+3     4        hungary    1      1       3      5
+4     5         canada    1      –       3      4
+5     6          italy    –      2       1      3
+6     7         russia    –      1       1      2
+7     8          china    –      –       1      1
+Sample 2224 - Plan 1: Caption: none
+Sample 2224 - Plan 1: Original table: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['1', 'netherlands', '8', '3', '1', '12'], ['2', 'australia', '3', '3', '4', '10'], ['3', 'united states', '2', '5', '1', '8'], ['4', 'hungary', '1', '1', '3', '5'], ['5', 'canada', '1', '–', '3', '4'], ['6', 'italy', '–', '2', '1', '3'], ['7', 'russia', '–', '1', '1', '2'], ['8', 'china', '–', '–', '1', '1']]
+########################################################################################################################
+Sample 2224 - Plan 1: Operation 1: Select rows where 'nation' is 'hungary' and 'canada'.
+Sample 2224 - Plan 1: Selected indices: [[3, 1], [4, 1]]
+Sample 2224 - Plan 1: X-Table after operation df:
+   rank   nation  gold silver  bronze  total
+0     4  hungary     1      1       3      5
+1     5   canada     1      –       3      4
+Sample 2224 - Plan 1: Table after operation: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], [4, 'hungary', '1', '1', 3, 5], [5, 'canada', '1', '–', 3, 4]]
+########################################################################################################################
+Sample 2224 - Plan 1: Operation 2: Select the 'bronze' column for both rows.
+Sample 2224 - Plan 1: Selected indices: []
+Sample 2224 - Plan 1: X-Table after operation df:
+   bronze
+0       3
+1       3
+Sample 2224 - Plan 1: Table after operation: [['bronze'], [3], [3]]
+########################################################################################################################
+Sample 2224 - Plan 1: Operation 3: Calculate the difference between the 'bronze' value for Hungary and Canada.
+SQL execution error in operation 3: Execution failed on sql 'SELECT (SELECT bronze FROM table_sql WHERE country = 'Hungary') - (SELECT bronze FROM table_sql WHERE country = 'Canada') AS difference;
+-- Calculate the difference between the 'bronze' value for Hungary and Canada.': no such column: country
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['2']]
+Groundtruth: ['0']

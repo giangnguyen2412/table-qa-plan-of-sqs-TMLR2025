@@ -1,0 +1,151 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how many formats have the same value for all four decimal labels?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the values in the 'decimal32', 'decimal64', 'decimal128', and 'decimal_32k_' columns are equal.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>decimal32</td>
+<td>decimal64</td>
+<td>decimal128</td>
+<td>decimal_32k_</td>
+<td>format</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sign field (bits)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">combination field (bits)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12</span></td>
+<td>w = 2×k + 4</td>
+<td>exponent continuation field (bits)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">50</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">110</span></td>
+<td>t = 30×k−10</td>
+<td>coefficient continuation field (bits)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">32</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">64</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">128</span></td>
+<td>32×k</td>
+<td>total size (bits)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">34</span></td>
+<td>p = 3×t/10+1 = 9×k−2</td>
+<td>coefficient size (decimal digits)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">192</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">768</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12288</span></td>
+<td>3×2w = 48×4k</td>
+<td>exponent range</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">96</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">384</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6144</span></td>
+<td>emax = 3×2w−1</td>
+<td>largest value is 9.99...×10emax</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">−95</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">−383</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">−6143</span></td>
+<td>emin = 1−emax</td>
+<td>smallest normalized value is 1.00...×10emin</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">−101</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">−398</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">−6176</span></td>
+<td>etiny = 2−p−emax</td>
+<td>smallest non-zero value is 1×10etiny</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Count the number of rows selected.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>decimal32</td>
+<td>decimal64</td>
+<td>decimal128</td>
+<td>decimal_32k_</td>
+<td>format</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>sign field (bits)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>combination field (bits)</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>row_count</td>
+</tr>
+<tr>
+<td>2</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[2]]</h3>
+</body></html>

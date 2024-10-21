@@ -1,0 +1,43 @@
+************************************************************************************************************************
+Sample 2943 - Plan 1: Query: what is the next location listed after bormio, italy?
+Sample 2943 - Plan 1: Groundtruth: ['Whistler, BC, Canada']
+Sample 2943 - Plan 1: X-Original table pd: 
+   season         date              location discipline place
+0    1993  27 feb 1993  whistler, bc, canada   downhill   2nd
+1    1994  12 dec 1993   val-d'isère, france    super g   3rd
+2    1994  29 dec 1993         bormio, italy   downhill   3rd
+3    1994  12 mar 1994  whistler, bc, canada   downhill   3rd
+4    1994  13 mar 1994  whistler, bc, canada    super g   1st
+5    1994  16 mar 1994         vail, co, usa   downhill   3rd
+6    1995  11 dec 1994        tignes, france    super g   2nd
+Sample 2943 - Plan 1: Caption: none
+Sample 2943 - Plan 1: Original table: [['season', 'date', 'location', 'discipline', 'place'], ['1993', '27 feb 1993', 'whistler, bc, canada', 'downhill', '2nd'], ['1994', '12 dec 1993', "val-d'isère, france", 'super g', '3rd'], ['1994', '29 dec 1993', 'bormio, italy', 'downhill', '3rd'], ['1994', '12 mar 1994', 'whistler, bc, canada', 'downhill', '3rd'], ['1994', '13 mar 1994', 'whistler, bc, canada', 'super g', '1st'], ['1994', '16 mar 1994', 'vail, co, usa', 'downhill', '3rd'], ['1995', '11 dec 1994', 'tignes, france', 'super g', '2nd']]
+########################################################################################################################
+Sample 2943 - Plan 1: Operation 1: Select rows where the 'location' is 'bormio, italy'.
+Sample 2943 - Plan 1: Selected indices: [[2, 2]]
+Sample 2943 - Plan 1: X-Table after operation df:
+   season         date       location discipline place
+0    1994  29 dec 1993  bormio, italy   downhill   3rd
+Sample 2943 - Plan 1: Table after operation: [['season', 'date', 'location', 'discipline', 'place'], [1994, '29 dec 1993', 'bormio, italy', 'downhill', '3rd']]
+########################################################################################################################
+Sample 2943 - Plan 1: Operation 2: Order the table by 'date' in ascending order.
+Sample 2943 - Plan 1: Selected indices: [[0, 1]]
+Sample 2943 - Plan 1: X-Table after operation df:
+   season         date       location discipline place
+0    1994  29 dec 1993  bormio, italy   downhill   3rd
+Sample 2943 - Plan 1: Table after operation: [['season', 'date', 'location', 'discipline', 'place'], [1994, '29 dec 1993', 'bormio, italy', 'downhill', '3rd']]
+########################################################################################################################
+Sample 2943 - Plan 1: Operation 3: Select the next row after the row with 'location' as 'bormio, italy'.
+Sample 2943 - Plan 1: Selected indices: []
+Sample 2943 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [season, date, location, discipline, place]
+Index: []
+Sample 2943 - Plan 1: Table after operation: [['season', 'date', 'location', 'discipline', 'place']]
+########################################################################################################################
+Sample 2943 - Plan 1: Operation 4: Select the 'location' column from the selected row.
+SQL execution error in operation 4: Execution failed on sql 'Write a SQL command that: Select the 'location' column from the selected row.': near "Write": syntax error
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['vail, co, usa']]
+Groundtruth: ['Whistler, BC, Canada']

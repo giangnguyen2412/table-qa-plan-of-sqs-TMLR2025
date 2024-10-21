@@ -1,0 +1,119 @@
+************************************************************************************************************************
+Sample 3795 - Plan 1: Query: which series has the largest money prize?
+Sample 3795 - Plan 1: Groundtruth: ['Super Series Finals']
+Sample 3795 - Plan 1: X-Original table pd: 
+    tour              official_title  \
+0      1       malaysia super series   
+1      2     korea open super series   
+2      3    all england super series   
+3      4     swiss open super series   
+4      5      singapore super series   
+5      6      indonesia super series   
+6      7  china masters super series   
+7      8          japan super series   
+8      9        denmark super series   
+9     10         french super series   
+10    11     china open super series   
+11    12      hong kong super series   
+12    13         super series finals   
+
+                                                venue                  city  \
+0                      stadium badminton kuala lumpur          kuala lumpur   
+1                 seoul national university gymnasium                 seoul   
+2                               national indoor arena            birmingham   
+3                                     st. jakobshalle                 basel   
+4                            singapore indoor stadium             singapore   
+5                                  bung karno stadium               jakarta   
+6                        sichuan provincial gymnasium               chengdu   
+7                        tokyo metropolitan gymnasium                 tokyo   
+8                                           arena fyn                odense   
+9                           stade pierre de coubertin                 paris   
+10                                   tianhe gymnasium             guangzhou   
+11  ma on shan sports centre\nqueen elizabeth stadium  ma on shan\nwan chai   
+12                                          cancelled             cancelled   
+
+     date_nstart  date_nfinish prize_money_nusd  report  
+0     january 16    january 21          200,000  report  
+1     january 23    january 28          300,000  report  
+2        march 6      march 11          200,000  report  
+3       march 12      march 18          200,000  report  
+4          may 1         may 6          200,000  report  
+5          may 7        may 13          250,000  report  
+6        july 10       july 15          250,000  report  
+7   september 11  september 16          200,000  report  
+8     october 23    october 28          200,000  report  
+9     october 30    november 4          200,000  report  
+10   november 20   november 25          250,000  report  
+11   november 26    december 2          200,000  report  
+12     cancelled     cancelled          500,000  report  
+Sample 3795 - Plan 1: Caption: none
+Sample 3795 - Plan 1: Original table: [['tour', 'official_title', 'venue', 'city', 'date_nstart', 'date_nfinish', 'prize_money_nusd', 'report'], ['1', 'malaysia super series', 'stadium badminton kuala lumpur', 'kuala lumpur', 'january 16', 'january 21', '200,000', 'report'], ['2', 'korea open super series', 'seoul national university gymnasium', 'seoul', 'january 23', 'january 28', '300,000', 'report'], ['3', 'all england super series', 'national indoor arena', 'birmingham', 'march 6', 'march 11', '200,000', 'report'], ['4', 'swiss open super series', 'st. jakobshalle', 'basel', 'march 12', 'march 18', '200,000', 'report'], ['5', 'singapore super series', 'singapore indoor stadium', 'singapore', 'may 1', 'may 6', '200,000', 'report'], ['6', 'indonesia super series', 'bung karno stadium', 'jakarta', 'may 7', 'may 13', '250,000', 'report'], ['7', 'china masters super series', 'sichuan provincial gymnasium', 'chengdu', 'july 10', 'july 15', '250,000', 'report'], ['8', 'japan super series', 'tokyo metropolitan gymnasium', 'tokyo', 'september 11', 'september 16', '200,000', 'report'], ['9', 'denmark super series', 'arena fyn', 'odense', 'october 23', 'october 28', '200,000', 'report'], ['10', 'french super series', 'stade pierre de coubertin', 'paris', 'october 30', 'november 4', '200,000', 'report'], ['11', 'china open super series', 'tianhe gymnasium', 'guangzhou', 'november 20', 'november 25', '250,000', 'report'], ['12', 'hong kong super series', 'ma on shan sports centre\\nqueen elizabeth stadium', 'ma on shan\\nwan chai', 'november 26', 'december 2', '200,000', 'report'], ['13', 'super series finals', 'cancelled', 'cancelled', 'cancelled', 'cancelled', '500,000', 'report']]
+########################################################################################################################
+Sample 3795 - Plan 1: Operation 1: Order the table by 'prize_money_nusd' in descending order.
+Sample 3795 - Plan 1: Selected indices: [[9, 6], [4, 6], [11, 6], [0, 6], [12, 6], [7, 6], [10, 6], [5, 6], [2, 6], [3, 6], [6, 6], [1, 6], [8, 6]]
+Sample 3795 - Plan 1: X-Table after operation df:
+    tour              official_title  \
+0     13         super series finals   
+1      2     korea open super series   
+2      6      indonesia super series   
+3      7  china masters super series   
+4     11     china open super series   
+5      1       malaysia super series   
+6      3    all england super series   
+7      4     swiss open super series   
+8      5      singapore super series   
+9      8          japan super series   
+10     9        denmark super series   
+11    10         french super series   
+12    12      hong kong super series   
+
+                                                venue                  city  \
+0                                           cancelled             cancelled   
+1                 seoul national university gymnasium                 seoul   
+2                                  bung karno stadium               jakarta   
+3                        sichuan provincial gymnasium               chengdu   
+4                                    tianhe gymnasium             guangzhou   
+5                      stadium badminton kuala lumpur          kuala lumpur   
+6                               national indoor arena            birmingham   
+7                                     st. jakobshalle                 basel   
+8                            singapore indoor stadium             singapore   
+9                        tokyo metropolitan gymnasium                 tokyo   
+10                                          arena fyn                odense   
+11                          stade pierre de coubertin                 paris   
+12  ma on shan sports centre\nqueen elizabeth stadium  ma on shan\nwan chai   
+
+     date_nstart  date_nfinish prize_money_nusd  report  
+0      cancelled     cancelled          500,000  report  
+1     january 23    january 28          300,000  report  
+2          may 7        may 13          250,000  report  
+3        july 10       july 15          250,000  report  
+4    november 20   november 25          250,000  report  
+5     january 16    january 21          200,000  report  
+6        march 6      march 11          200,000  report  
+7       march 12      march 18          200,000  report  
+8          may 1         may 6          200,000  report  
+9   september 11  september 16          200,000  report  
+10    october 23    october 28          200,000  report  
+11    october 30    november 4          200,000  report  
+12   november 26    december 2          200,000  report  
+Sample 3795 - Plan 1: Table after operation: [['tour', 'official_title', 'venue', 'city', 'date_nstart', 'date_nfinish', 'prize_money_nusd', 'report'], [13, 'super series finals', 'cancelled', 'cancelled', 'cancelled', 'cancelled', '500,000', 'report'], [2, 'korea open super series', 'seoul national university gymnasium', 'seoul', 'january 23', 'january 28', '300,000', 'report'], [6, 'indonesia super series', 'bung karno stadium', 'jakarta', 'may 7', 'may 13', '250,000', 'report'], [7, 'china masters super series', 'sichuan provincial gymnasium', 'chengdu', 'july 10', 'july 15', '250,000', 'report'], [11, 'china open super series', 'tianhe gymnasium', 'guangzhou', 'november 20', 'november 25', '250,000', 'report'], [1, 'malaysia super series', 'stadium badminton kuala lumpur', 'kuala lumpur', 'january 16', 'january 21', '200,000', 'report'], [3, 'all england super series', 'national indoor arena', 'birmingham', 'march 6', 'march 11', '200,000', 'report'], [4, 'swiss open super series', 'st. jakobshalle', 'basel', 'march 12', 'march 18', '200,000', 'report'], [5, 'singapore super series', 'singapore indoor stadium', 'singapore', 'may 1', 'may 6', '200,000', 'report'], [8, 'japan super series', 'tokyo metropolitan gymnasium', 'tokyo', 'september 11', 'september 16', '200,000', 'report'], [9, 'denmark super series', 'arena fyn', 'odense', 'october 23', 'october 28', '200,000', 'report'], [10, 'french super series', 'stade pierre de coubertin', 'paris', 'october 30', 'november 4', '200,000', 'report'], [12, 'hong kong super series', 'ma on shan sports centre\\nqueen elizabeth stadium', 'ma on shan\\nwan chai', 'november 26', 'december 2', '200,000', 'report']]
+########################################################################################################################
+Sample 3795 - Plan 1: Operation 2: Select row number 1.
+Sample 3795 - Plan 1: Selected indices: []
+Sample 3795 - Plan 1: X-Table after operation df:
+   tour       official_title      venue       city date_nstart date_nfinish  \
+0    13  super series finals  cancelled  cancelled   cancelled    cancelled   
+
+  prize_money_nusd  report  
+0          500,000  report  
+Sample 3795 - Plan 1: Table after operation: [['tour', 'official_title', 'venue', 'city', 'date_nstart', 'date_nfinish', 'prize_money_nusd', 'report'], [13, 'super series finals', 'cancelled', 'cancelled', 'cancelled', 'cancelled', '500,000', 'report']]
+########################################################################################################################
+Sample 3795 - Plan 1: Operation 3: Select the 'tour' column.
+Sample 3795 - Plan 1: Selected indices: []
+Sample 3795 - Plan 1: X-Table after operation df:
+   tour
+0    13
+Sample 3795 - Plan 1: Table after operation: [['tour'], [13]]
+Fall-back: FALSE
+Answer from plan 1: [[13]]
+Groundtruth: ['Super Series Finals']

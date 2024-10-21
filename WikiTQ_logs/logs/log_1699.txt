@@ -1,0 +1,141 @@
+************************************************************************************************************************
+Sample 1699 - Plan 1: Query: what was their largest margin for a win?
+Sample 1699 - Plan 1: Groundtruth: ['9']
+Sample 1699 - Plan 1: X-Original table pd: 
+          date         venue             opponents score  \
+0     20 march   fukuoka (a)                 japan   2–0   
+1     20 march   fukuoka (a)              china pr   1–0   
+2     8 august    toyota (n)                brazil   0–0   
+3     9 august    toyota (a)                 japan   2–2   
+4    10 august    toyota (n)  united arab emirates   6–0   
+5    4 october  tashkent (n)                 india   5–2   
+6    6 october  tashkent (n)             indonesia   9–0   
+7    8 october  tashkent (n)                 syria   1–1   
+8   12 october  tashkent (a)            uzbekistan   3–0   
+9   15 october  tashkent (n)                 japan   2–1   
+10  18 october  tashkent (n)                  iran   1–2   
+
+                             competition  
+0                              sanix cup  
+1                              sanix cup  
+2                             toyota cup  
+3                             toyota cup  
+4                             toyota cup  
+5        afc u-16 championship (group b)  
+6        afc u-16 championship (group b)  
+7        afc u-16 championship (group b)  
+8   afc u-16 championship (quarterfinal)  
+9      afc u-16 championship (semifinal)  
+10         afc u-16 championship (final)  
+Sample 1699 - Plan 1: Caption: none
+Sample 1699 - Plan 1: Original table: [['date', 'venue', 'opponents', 'score', 'competition'], ['20 march', 'fukuoka (a)', 'japan', '2–0', 'sanix cup'], ['20 march', 'fukuoka (a)', 'china pr', '1–0', 'sanix cup'], ['8 august', 'toyota (n)', 'brazil', '0–0', 'toyota cup'], ['9 august', 'toyota (a)', 'japan', '2–2', 'toyota cup'], ['10 august', 'toyota (n)', 'united arab emirates', '6–0', 'toyota cup'], ['4 october', 'tashkent (n)', 'india', '5–2', 'afc u-16 championship (group b)'], ['6 october', 'tashkent (n)', 'indonesia', '9–0', 'afc u-16 championship (group b)'], ['8 october', 'tashkent (n)', 'syria', '1–1', 'afc u-16 championship (group b)'], ['12 october', 'tashkent (a)', 'uzbekistan', '3–0', 'afc u-16 championship (quarterfinal)'], ['15 october', 'tashkent (n)', 'japan', '2–1', 'afc u-16 championship (semifinal)'], ['18 october', 'tashkent (n)', 'iran', '1–2', 'afc u-16 championship (final)']]
+########################################################################################################################
+Sample 1699 - Plan 1: Operation 1: Extract the numerical values from the 'score' column and add a new column 'num_score' to the existing table.
+Sample 1699 - Plan 1: Selected indices: [[0, 3], [1, 3], [2, 3], [3, 3], [4, 3], [5, 3], [6, 3], [7, 3], [8, 3], [9, 3], [10, 3]]
+Sample 1699 - Plan 1: X-Table after operation df:
+          date         venue             opponents score  \
+0     20 march   fukuoka (a)                 japan   2–0   
+1     20 march   fukuoka (a)              china pr   1–0   
+2     8 august    toyota (n)                brazil   0–0   
+3     9 august    toyota (a)                 japan   2–2   
+4    10 august    toyota (n)  united arab emirates   6–0   
+5    4 october  tashkent (n)                 india   5–2   
+6    6 october  tashkent (n)             indonesia   9–0   
+7    8 october  tashkent (n)                 syria   1–1   
+8   12 october  tashkent (a)            uzbekistan   3–0   
+9   15 october  tashkent (n)                 japan   2–1   
+10  18 october  tashkent (n)                  iran   1–2   
+
+                             competition  num_score  
+0                              sanix cup          0  
+1                              sanix cup          0  
+2                             toyota cup          0  
+3                             toyota cup          2  
+4                             toyota cup          0  
+5        afc u-16 championship (group b)          2  
+6        afc u-16 championship (group b)          0  
+7        afc u-16 championship (group b)          1  
+8   afc u-16 championship (quarterfinal)          0  
+9      afc u-16 championship (semifinal)          1  
+10         afc u-16 championship (final)          2  
+Sample 1699 - Plan 1: Table after operation: [['date', 'venue', 'opponents', 'score', 'competition', 'num_score'], ['20 march', 'fukuoka (a)', 'japan', '2–0', 'sanix cup', 0], ['20 march', 'fukuoka (a)', 'china pr', '1–0', 'sanix cup', 0], ['8 august', 'toyota (n)', 'brazil', '0–0', 'toyota cup', 0], ['9 august', 'toyota (a)', 'japan', '2–2', 'toyota cup', 2], ['10 august', 'toyota (n)', 'united arab emirates', '6–0', 'toyota cup', 0], ['4 october', 'tashkent (n)', 'india', '5–2', 'afc u-16 championship (group b)', 2], ['6 october', 'tashkent (n)', 'indonesia', '9–0', 'afc u-16 championship (group b)', 0], ['8 october', 'tashkent (n)', 'syria', '1–1', 'afc u-16 championship (group b)', 1], ['12 october', 'tashkent (a)', 'uzbekistan', '3–0', 'afc u-16 championship (quarterfinal)', 0], ['15 october', 'tashkent (n)', 'japan', '2–1', 'afc u-16 championship (semifinal)', 1], ['18 october', 'tashkent (n)', 'iran', '1–2', 'afc u-16 championship (final)', 2]]
+########################################################################################################################
+Sample 1699 - Plan 1: Operation 2: Calculate the margin for each win by subtracting the opponent's score from their own score and add a new column 'margin' to the existing table.
+Sample 1699 - Plan 1: Selected indices: [[0, 3], [1, 3], [2, 3], [3, 3], [4, 3], [5, 3], [6, 3], [7, 3], [8, 3], [9, 3], [10, 3]]
+Sample 1699 - Plan 1: X-Table after operation df:
+          date         venue             opponents score  \
+0     20 march   fukuoka (a)                 japan   2–0   
+1     20 march   fukuoka (a)              china pr   1–0   
+2     8 august    toyota (n)                brazil   0–0   
+3     9 august    toyota (a)                 japan   2–2   
+4    10 august    toyota (n)  united arab emirates   6–0   
+5    4 october  tashkent (n)                 india   5–2   
+6    6 october  tashkent (n)             indonesia   9–0   
+7    8 october  tashkent (n)                 syria   1–1   
+8   12 october  tashkent (a)            uzbekistan   3–0   
+9   15 october  tashkent (n)                 japan   2–1   
+10  18 october  tashkent (n)                  iran   1–2   
+
+                             competition  num_score  margin  
+0                              sanix cup          0       2  
+1                              sanix cup          0       1  
+2                             toyota cup          0       0  
+3                             toyota cup          2       0  
+4                             toyota cup          0       6  
+5        afc u-16 championship (group b)          2       3  
+6        afc u-16 championship (group b)          0       9  
+7        afc u-16 championship (group b)          1       0  
+8   afc u-16 championship (quarterfinal)          0       3  
+9      afc u-16 championship (semifinal)          1       1  
+10         afc u-16 championship (final)          2      -1  
+Sample 1699 - Plan 1: Table after operation: [['date', 'venue', 'opponents', 'score', 'competition', 'num_score', 'margin'], ['20 march', 'fukuoka (a)', 'japan', '2–0', 'sanix cup', 0, 2], ['20 march', 'fukuoka (a)', 'china pr', '1–0', 'sanix cup', 0, 1], ['8 august', 'toyota (n)', 'brazil', '0–0', 'toyota cup', 0, 0], ['9 august', 'toyota (a)', 'japan', '2–2', 'toyota cup', 2, 0], ['10 august', 'toyota (n)', 'united arab emirates', '6–0', 'toyota cup', 0, 6], ['4 october', 'tashkent (n)', 'india', '5–2', 'afc u-16 championship (group b)', 2, 3], ['6 october', 'tashkent (n)', 'indonesia', '9–0', 'afc u-16 championship (group b)', 0, 9], ['8 october', 'tashkent (n)', 'syria', '1–1', 'afc u-16 championship (group b)', 1, 0], ['12 october', 'tashkent (a)', 'uzbekistan', '3–0', 'afc u-16 championship (quarterfinal)', 0, 3], ['15 october', 'tashkent (n)', 'japan', '2–1', 'afc u-16 championship (semifinal)', 1, 1], ['18 october', 'tashkent (n)', 'iran', '1–2', 'afc u-16 championship (final)', 2, -1]]
+########################################################################################################################
+Sample 1699 - Plan 1: Operation 3: Order the table by the 'margin' column in descending order.
+Sample 1699 - Plan 1: Selected indices: [[9, 6], [4, 6], [0, 6], [7, 6], [2, 6], [5, 6], [8, 6], [3, 6], [6, 6], [1, 6], [10, 6]]
+Sample 1699 - Plan 1: X-Table after operation df:
+          date         venue             opponents score  \
+0    6 october  tashkent (n)             indonesia   9–0   
+1    10 august    toyota (n)  united arab emirates   6–0   
+2    4 october  tashkent (n)                 india   5–2   
+3   12 october  tashkent (a)            uzbekistan   3–0   
+4     20 march   fukuoka (a)                 japan   2–0   
+5     20 march   fukuoka (a)              china pr   1–0   
+6   15 october  tashkent (n)                 japan   2–1   
+7     8 august    toyota (n)                brazil   0–0   
+8     9 august    toyota (a)                 japan   2–2   
+9    8 october  tashkent (n)                 syria   1–1   
+10  18 october  tashkent (n)                  iran   1–2   
+
+                             competition  num_score  margin  
+0        afc u-16 championship (group b)          0       9  
+1                             toyota cup          0       6  
+2        afc u-16 championship (group b)          2       3  
+3   afc u-16 championship (quarterfinal)          0       3  
+4                              sanix cup          0       2  
+5                              sanix cup          0       1  
+6      afc u-16 championship (semifinal)          1       1  
+7                             toyota cup          0       0  
+8                             toyota cup          2       0  
+9        afc u-16 championship (group b)          1       0  
+10         afc u-16 championship (final)          2      -1  
+Sample 1699 - Plan 1: Table after operation: [['date', 'venue', 'opponents', 'score', 'competition', 'num_score', 'margin'], ['6 october', 'tashkent (n)', 'indonesia', '9–0', 'afc u-16 championship (group b)', 0, 9], ['10 august', 'toyota (n)', 'united arab emirates', '6–0', 'toyota cup', 0, 6], ['4 october', 'tashkent (n)', 'india', '5–2', 'afc u-16 championship (group b)', 2, 3], ['12 october', 'tashkent (a)', 'uzbekistan', '3–0', 'afc u-16 championship (quarterfinal)', 0, 3], ['20 march', 'fukuoka (a)', 'japan', '2–0', 'sanix cup', 0, 2], ['20 march', 'fukuoka (a)', 'china pr', '1–0', 'sanix cup', 0, 1], ['15 october', 'tashkent (n)', 'japan', '2–1', 'afc u-16 championship (semifinal)', 1, 1], ['8 august', 'toyota (n)', 'brazil', '0–0', 'toyota cup', 0, 0], ['9 august', 'toyota (a)', 'japan', '2–2', 'toyota cup', 2, 0], ['8 october', 'tashkent (n)', 'syria', '1–1', 'afc u-16 championship (group b)', 1, 0], ['18 october', 'tashkent (n)', 'iran', '1–2', 'afc u-16 championship (final)', 2, -1]]
+########################################################################################################################
+Sample 1699 - Plan 1: Operation 4: Select the row with the largest margin.
+Sample 1699 - Plan 1: Selected indices: [[0, 6]]
+Sample 1699 - Plan 1: X-Table after operation df:
+        date         venue  opponents score                      competition  \
+0  6 october  tashkent (n)  indonesia   9–0  afc u-16 championship (group b)   
+
+   num_score  margin  
+0          0       9  
+Sample 1699 - Plan 1: Table after operation: [['date', 'venue', 'opponents', 'score', 'competition', 'num_score', 'margin'], ['6 october', 'tashkent (n)', 'indonesia', '9–0', 'afc u-16 championship (group b)', 0, 9]]
+########################################################################################################################
+Sample 1699 - Plan 1: Operation 5: Select the 'margin' column.
+Sample 1699 - Plan 1: Selected indices: []
+Sample 1699 - Plan 1: X-Table after operation df:
+   margin
+0       9
+Sample 1699 - Plan 1: Table after operation: [['margin'], [9]]
+Fall-back: FALSE
+Answer from plan 1: [[9]]
+Groundtruth: ['9']

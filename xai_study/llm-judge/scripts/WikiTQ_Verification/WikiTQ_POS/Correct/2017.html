@@ -1,0 +1,298 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how many routes have a calling location at billingborough & horbling?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'calling_at' column contains the value 'billingborough & horbling'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>departure</td>
+<td>going_to</td>
+<td>calling_at</td>
+<td>arrival</td>
+<td>operator</td>
+</tr>
+<tr>
+<td>07.00</td>
+<td>boston</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">heckington, swineshead, hubbert's bridge</span></td>
+<td>07.32</td>
+<td>gnr</td>
+</tr>
+<tr>
+<td>08.16</td>
+<td>lincoln</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ruskington, digby, scopwick & timberland, blankney & metheringham, nocton & dunston, potterhanworth, branston & heighington</span></td>
+<td>09.05</td>
+<td>gn&ge</td>
+</tr>
+<tr>
+<td>08.16</td>
+<td>march</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">helpringham, donington road, gosberton, pinckbeck, spalding, cowbit, postland, french drove, murrow, guyhirne</span></td>
+<td>09.38</td>
+<td>gn&ge</td>
+</tr>
+<tr>
+<td>08.17</td>
+<td>grantham</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rauceby, ancaster, barkston</span></td>
+<td>08.45</td>
+<td>gnr</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">08.20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bourne</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">aswarby & scredington, billingborough & horbling, rippingale, morton road</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">09.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gnr</span></td>
+</tr>
+<tr>
+<td>09.50</td>
+<td>grantham</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rauceby, ancaster, honington</span></td>
+<td>10.20</td>
+<td>gnr</td>
+</tr>
+<tr>
+<td>10.02</td>
+<td>boston</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">heckington, swineshead, hubbert's bridge</span></td>
+<td>10.33</td>
+<td>gnr</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10.05</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bourne</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">aswarby & scredington, billingborough & horbling, rippingale, morton road</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10.41</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gnr</span></td>
+</tr>
+<tr>
+<td>10.48</td>
+<td>march</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">helpringham, donington road, gosberton, pinckbeck, spalding, cowbit, postland, french drove, murrow, guyhirne</span></td>
+<td>12.12</td>
+<td>gn&ge</td>
+</tr>
+<tr>
+<td>11.01</td>
+<td>skegness / mablethorpe</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">boston, firsby: part to skegness. part to willoughby, sutton-on-sea, mablethorpe</span></td>
+<td>12.08 / 12.20</td>
+<td>gnr</td>
+</tr>
+<tr>
+<td>11.34</td>
+<td>boston</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">heckington, swineshead, hubbert's bridge</span></td>
+<td>12.07</td>
+<td>gnr</td>
+</tr>
+<tr>
+<td>11.34</td>
+<td>grantham</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rauceby, ancaster, barkston, honington</span></td>
+<td>12.05</td>
+<td>gnr</td>
+</tr>
+<tr>
+<td>11.37</td>
+<td>doncaster</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ruskington, digby, scopwick & timberland, blankney & metheringham, nocton & dunston, potterhanworth, branston & heighington, lincoln, saxilby, stow park, lea, gainsborough, beckingham, walkeringham, misterton, haxey & epworth, park drain, finningley</span></td>
+<td>09.05</td>
+<td>gn&ge</td>
+</tr>
+<tr>
+<td>12.43</td>
+<td>lowestoft</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">spalding, march, shippea hill, brandon, thetford, attleborough, wymondham, norwich, oulton broad</span></td>
+<td>16.10</td>
+<td>gn&ge</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13.48</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bourne</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">aswarby & scredington, billingborough & horbling, rippingale, morton road</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">14.24</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gnr</span></td>
+</tr>
+<tr>
+<td>13.48</td>
+<td>grantham</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rauceby, ancaster, honington</span></td>
+<td>14.21</td>
+<td>gnr</td>
+</tr>
+<tr>
+<td>13.49</td>
+<td>march</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">helpringham, donington road, gosberton, pinckbeck, spalding, cowbit, postland, french drove, murrow, guyhirne</span></td>
+<td>15.23</td>
+<td>gn&ge</td>
+</tr>
+<tr>
+<td>14.00</td>
+<td>york</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lincoln, gainsborough, doncaster, selby</span></td>
+<td>16.33</td>
+<td>gn&ge</td>
+</tr>
+<tr>
+<td>16.19</td>
+<td>boston</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">heckington, swineshead, hubbert's bridge</span></td>
+<td>16.51</td>
+<td>gnr</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">16.25</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bourne</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">aswarby & scredington, billingborough & horbling, rippingale, morton road</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">17.00</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gnr</span></td>
+</tr>
+<tr>
+<td>16.48</td>
+<td>lincoln</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ruskington, digby, scopwick & timberland, blankney & metheringham, nocton & dunston, potterhanworth, branston & heighington</span></td>
+<td>17.37</td>
+<td>gn&ge</td>
+</tr>
+<tr>
+<td>17.00</td>
+<td>march</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">helpringham, donington road, gosberton, pinckbeck, spalding, cowbit, postland, french drove, murrow, guyhirne</span></td>
+<td>18.27</td>
+<td>gn&ge</td>
+</tr>
+<tr>
+<td>17.55</td>
+<td>nottingham victoria</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>18.46</td>
+<td>gnr</td>
+</tr>
+<tr>
+<td>18.51</td>
+<td>grantham</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rauceby, ancaster, honington, barkston</span></td>
+<td>19.28</td>
+<td>gnr</td>
+</tr>
+<tr>
+<td>18.58</td>
+<td>march</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">helpringham, donington road, gosberton, pinckbeck, spalding, cowbit, postland, french drove, murrow, guyhirne</span></td>
+<td>20.20</td>
+<td>gn&ge</td>
+</tr>
+<tr>
+<td>19.22</td>
+<td>boston</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">heckington, swineshead, hubbert's bridge</span></td>
+<td>19.55</td>
+<td>gnr</td>
+</tr>
+<tr>
+<td>19.46</td>
+<td>doncaster</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">blankney & metheringham, lincoln, gainsborough</span></td>
+<td>21.22</td>
+<td>gn&ge</td>
+</tr>
+<tr>
+<td>21.54</td>
+<td>doncaster</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ruskington, digby, blankney & metheringham, nocton & dunston, potterhanworth, branston & heighington, lincoln, saxilby, gainsborough, misterton</span></td>
+<td>23.45</td>
+<td>gn&ge</td>
+</tr>
+<tr>
+<td>22.04</td>
+<td>grantham</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td>22.27</td>
+<td>gnr</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Count the number of rows selected.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>departure</td>
+<td>going_to</td>
+<td>calling_at</td>
+<td>arrival</td>
+<td>operator</td>
+</tr>
+<tr>
+<td>8.2</td>
+<td>bourne</td>
+<td>aswarby & scredington, billingborough & horbling, rippingale, morton road</td>
+<td>09.00</td>
+<td>gnr</td>
+</tr>
+<tr>
+<td>10.05</td>
+<td>bourne</td>
+<td>aswarby & scredington, billingborough & horbling, rippingale, morton road</td>
+<td>10.41</td>
+<td>gnr</td>
+</tr>
+<tr>
+<td>13.48</td>
+<td>bourne</td>
+<td>aswarby & scredington, billingborough & horbling, rippingale, morton road</td>
+<td>14.24</td>
+<td>gnr</td>
+</tr>
+<tr>
+<td>16.25</td>
+<td>bourne</td>
+<td>aswarby & scredington, billingborough & horbling, rippingale, morton road</td>
+<td>17.00</td>
+<td>gnr</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>row_count</td>
+</tr>
+<tr>
+<td>4</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[4]]</h3>
+</body></html>

@@ -1,0 +1,86 @@
+************************************************************************************************************************
+Sample 3282 - Plan 1: Query: which country has a high total of medals, but barely any gold medals won?
+Sample 3282 - Plan 1: Groundtruth: ['Spain']
+Sample 3282 - Plan 1: X-Original table pd: 
+    rank    nation  gold  silver  bronze  total
+0      1    france    14       7       7     28
+1      2     italy    12       8      10     30
+2      3  slovenia     5       4       3     12
+3      4     spain     4      14       6     24
+4      5    greece     3       4       9     16
+5      6   tunisia     3       0       0      3
+6      7   algeria     2       0       2      4
+7      8   croatia     0       3       3      6
+8      9     egypt     0       1       2      3
+9  total     total    43      41      42    126
+Sample 3282 - Plan 1: Caption: none
+Sample 3282 - Plan 1: Original table: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['1', 'france', '14', '7', '7', '28'], ['2', 'italy', '12', '8', '10', '30'], ['3', 'slovenia', '5', '4', '3', '12'], ['4', 'spain', '4', '14', '6', '24'], ['5', 'greece', '3', '4', '9', '16'], ['6', 'tunisia', '3', '0', '0', '3'], ['7', 'algeria', '2', '0', '2', '4'], ['8', 'croatia', '0', '3', '3', '6'], ['9', 'egypt', '0', '1', '2', '3'], ['total', 'total', '43', '41', '42', '126']]
+########################################################################################################################
+Sample 3282 - Plan 1: Operation 1: Select rows where the 'gold' column is less than or equal to 5.
+Sample 3282 - Plan 1: Selected indices: [[6, 2], [4, 2], [7, 2], [2, 2], [8, 2], [3, 2], [5, 2]]
+Sample 3282 - Plan 1: X-Table after operation df:
+   rank    nation  gold  silver  bronze  total
+0     3  slovenia     5       4       3     12
+1     4     spain     4      14       6     24
+2     5    greece     3       4       9     16
+3     6   tunisia     3       0       0      3
+4     7   algeria     2       0       2      4
+5     8   croatia     0       3       3      6
+6     9     egypt     0       1       2      3
+Sample 3282 - Plan 1: Table after operation: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['3', 'slovenia', 5, 4, 3, 12], ['4', 'spain', 4, 14, 6, 24], ['5', 'greece', 3, 4, 9, 16], ['6', 'tunisia', 3, 0, 0, 3], ['7', 'algeria', 2, 0, 2, 4], ['8', 'croatia', 0, 3, 3, 6], ['9', 'egypt', 0, 1, 2, 3]]
+########################################################################################################################
+Sample 3282 - Plan 1: Operation 2: Select the 'nation' column.
+Sample 3282 - Plan 1: Selected indices: []
+Sample 3282 - Plan 1: X-Table after operation df:
+     nation
+0  slovenia
+1     spain
+2    greece
+3   tunisia
+4   algeria
+5   croatia
+6     egypt
+Sample 3282 - Plan 1: Table after operation: [['nation'], ['slovenia'], ['spain'], ['greece'], ['tunisia'], ['algeria'], ['croatia'], ['egypt']]
+########################################################################################################################
+Sample 3282 - Plan 1: Operation 3: Select the 'total' column.
+Sample 3282 - Plan 1: Selected indices: []
+Sample 3282 - Plan 1: X-Table after operation df:
+      total
+0  slovenia
+1     spain
+2    greece
+3   tunisia
+4   algeria
+5   croatia
+6     egypt
+Sample 3282 - Plan 1: Table after operation: [['total'], ['slovenia'], ['spain'], ['greece'], ['tunisia'], ['algeria'], ['croatia'], ['egypt']]
+########################################################################################################################
+Sample 3282 - Plan 1: Operation 4: Order the table by the 'total' column in descending order.
+Sample 3282 - Plan 1: Selected indices: []
+Sample 3282 - Plan 1: X-Table after operation df:
+      total
+0   tunisia
+1     spain
+2  slovenia
+3    greece
+4     egypt
+5   croatia
+6   algeria
+Sample 3282 - Plan 1: Table after operation: [['total'], ['tunisia'], ['spain'], ['slovenia'], ['greece'], ['egypt'], ['croatia'], ['algeria']]
+########################################################################################################################
+Sample 3282 - Plan 1: Operation 5: Select the row number 1.
+Sample 3282 - Plan 1: Selected indices: []
+Sample 3282 - Plan 1: X-Table after operation df:
+     total
+0  tunisia
+Sample 3282 - Plan 1: Table after operation: [['total'], ['tunisia']]
+########################################################################################################################
+Sample 3282 - Plan 1: Operation 6: Select the 'nation' column.
+Sample 3282 - Plan 1: Selected indices: []
+Sample 3282 - Plan 1: X-Table after operation df:
+     total
+0  tunisia
+Sample 3282 - Plan 1: Table after operation: [['total'], ['tunisia']]
+Fall-back: FALSE
+Answer from plan 1: [['tunisia']]
+Groundtruth: ['Spain']

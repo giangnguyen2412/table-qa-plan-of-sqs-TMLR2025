@@ -1,0 +1,131 @@
+************************************************************************************************************************
+Sample 4072 - Plan 1: Query: which year has the most destroyed aircrafts?
+Sample 4072 - Plan 1: Groundtruth: ['1944']
+Sample 4072 - Plan 1: X-Original table pd: 
+                 date                                  location air_ground  \
+0        8 march 1944      near steinhuder meer (lake), germany        air   
+1       16 march 1944      20 miles south of stuttgart, germany        air   
+2       11 april 1944  20 miles northeast of magdeburg, germany        air   
+3       13 april 1944                 west of mannheim, germany        air   
+4       24 april 1944                  south of munich, germany        air   
+5         27 may 1944               north of strasbourg, france        air   
+6      18 august 1944       20 miles northeast of paris, france        air   
+7   13 september 1944              south of nordhausen, germany        air   
+8      6 october 1944     20 miles northwest of berlin, germany        air   
+9      6 october 1944     20 miles northwest of berlin, germany        air   
+10   27 november 1944               south of magdeburg, germany        air   
+11    14 january 1945     20 miles northwest of berlin, germany        air   
+12    25 january 1952                                     korea        air   
+
+    number    type     status  
+0      1.0  me-109  destroyed  
+1      1.0  me-110  destroyed  
+2      0.5  me-109  destroyed  
+3      1.0  fw-190  destroyed  
+4      3.0  me-110  destroyed  
+5      1.0  me-109    damaged  
+6      0.5  me-109  destroyed  
+7      2.5  me-109  destroyed  
+8      1.0  me-109    damaged  
+9      2.0  me-109  destroyed  
+10     4.0  fw-190  destroyed  
+11     1.0  me-109  destroyed  
+12     1.0  mig-15    damaged  
+Sample 4072 - Plan 1: Caption: none
+Sample 4072 - Plan 1: Original table: [['date', 'location', 'air_ground', 'number', 'type', 'status'], ['8 march 1944', 'near steinhuder meer (lake), germany', 'air', '1', 'me-109', 'destroyed'], ['16 march 1944', '20 miles south of stuttgart, germany', 'air', '1', 'me-110', 'destroyed'], ['11 april 1944', '20 miles northeast of magdeburg, germany', 'air', '0.5', 'me-109', 'destroyed'], ['13 april 1944', 'west of mannheim, germany', 'air', '1', 'fw-190', 'destroyed'], ['24 april 1944', 'south of munich, germany', 'air', '3', 'me-110', 'destroyed'], ['27 may 1944', 'north of strasbourg, france', 'air', '1', 'me-109', 'damaged'], ['18 august 1944', '20 miles northeast of paris, france', 'air', '0.5', 'me-109', 'destroyed'], ['13 september 1944', 'south of nordhausen, germany', 'air', '2.5', 'me-109', 'destroyed'], ['6 october 1944', '20 miles northwest of berlin, germany', 'air', '1', 'me-109', 'damaged'], ['6 october 1944', '20 miles northwest of berlin, germany', 'air', '2', 'me-109', 'destroyed'], ['27 november 1944', 'south of magdeburg, germany', 'air', '4', 'fw-190', 'destroyed'], ['14 january 1945', '20 miles northwest of berlin, germany', 'air', '1', 'me-109', 'destroyed'], ['25 january 1952', 'korea', 'air', '1', 'mig-15', 'damaged']]
+########################################################################################################################
+Sample 4072 - Plan 1: Operation 1: Extract the year from the 'date' column and add a new column 'year' to the existing table.
+Sample 4072 - Plan 1: Selected indices: [[0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0], [9, 0], [10, 0], [11, 0], [12, 0]]
+Sample 4072 - Plan 1: X-Table after operation df:
+                 date                                  location air_ground  \
+0        8 march 1944      near steinhuder meer (lake), germany        air   
+1       16 march 1944      20 miles south of stuttgart, germany        air   
+2       11 april 1944  20 miles northeast of magdeburg, germany        air   
+3       13 april 1944                 west of mannheim, germany        air   
+4       24 april 1944                  south of munich, germany        air   
+5         27 may 1944               north of strasbourg, france        air   
+6      18 august 1944       20 miles northeast of paris, france        air   
+7   13 september 1944              south of nordhausen, germany        air   
+8      6 october 1944     20 miles northwest of berlin, germany        air   
+9      6 october 1944     20 miles northwest of berlin, germany        air   
+10   27 november 1944               south of magdeburg, germany        air   
+11    14 january 1945     20 miles northwest of berlin, germany        air   
+12    25 january 1952                                     korea        air   
+
+    number    type     status  year  
+0      1.0  me-109  destroyed  1944  
+1      1.0  me-110  destroyed  1944  
+2      0.5  me-109  destroyed  1944  
+3      1.0  fw-190  destroyed  1944  
+4      3.0  me-110  destroyed  1944  
+5      1.0  me-109    damaged  1944  
+6      0.5  me-109  destroyed  1944  
+7      2.5  me-109  destroyed  1944  
+8      1.0  me-109    damaged  1944  
+9      2.0  me-109  destroyed  1944  
+10     4.0  fw-190  destroyed  1944  
+11     1.0  me-109  destroyed  1945  
+12     1.0  mig-15    damaged  1952  
+Sample 4072 - Plan 1: Table after operation: [['date', 'location', 'air_ground', 'number', 'type', 'status', 'year'], ['8 march 1944', 'near steinhuder meer (lake), germany', 'air', 1.0, 'me-109', 'destroyed', '1944'], ['16 march 1944', '20 miles south of stuttgart, germany', 'air', 1.0, 'me-110', 'destroyed', '1944'], ['11 april 1944', '20 miles northeast of magdeburg, germany', 'air', 0.5, 'me-109', 'destroyed', '1944'], ['13 april 1944', 'west of mannheim, germany', 'air', 1.0, 'fw-190', 'destroyed', '1944'], ['24 april 1944', 'south of munich, germany', 'air', 3.0, 'me-110', 'destroyed', '1944'], ['27 may 1944', 'north of strasbourg, france', 'air', 1.0, 'me-109', 'damaged', '1944'], ['18 august 1944', '20 miles northeast of paris, france', 'air', 0.5, 'me-109', 'destroyed', '1944'], ['13 september 1944', 'south of nordhausen, germany', 'air', 2.5, 'me-109', 'destroyed', '1944'], ['6 october 1944', '20 miles northwest of berlin, germany', 'air', 1.0, 'me-109', 'damaged', '1944'], ['6 october 1944', '20 miles northwest of berlin, germany', 'air', 2.0, 'me-109', 'destroyed', '1944'], ['27 november 1944', 'south of magdeburg, germany', 'air', 4.0, 'fw-190', 'destroyed', '1944'], ['14 january 1945', '20 miles northwest of berlin, germany', 'air', 1.0, 'me-109', 'destroyed', '1945'], ['25 january 1952', 'korea', 'air', 1.0, 'mig-15', 'damaged', '1952']]
+########################################################################################################################
+Sample 4072 - Plan 1: Operation 2: Select rows where the 'status' is 'destroyed'.
+Sample 4072 - Plan 1: Selected indices: [[10, 5], [6, 5], [1, 5], [9, 5], [4, 5], [0, 5], [11, 5], [7, 5], [2, 5], [3, 5]]
+Sample 4072 - Plan 1: X-Table after operation df:
+                date                                  location air_ground  \
+0       8 march 1944      near steinhuder meer (lake), germany        air   
+1      16 march 1944      20 miles south of stuttgart, germany        air   
+2      11 april 1944  20 miles northeast of magdeburg, germany        air   
+3      13 april 1944                 west of mannheim, germany        air   
+4      24 april 1944                  south of munich, germany        air   
+5     18 august 1944       20 miles northeast of paris, france        air   
+6  13 september 1944              south of nordhausen, germany        air   
+7     6 october 1944     20 miles northwest of berlin, germany        air   
+8   27 november 1944               south of magdeburg, germany        air   
+9    14 january 1945     20 miles northwest of berlin, germany        air   
+
+   number    type     status  year  
+0     1.0  me-109  destroyed  1944  
+1     1.0  me-110  destroyed  1944  
+2     0.5  me-109  destroyed  1944  
+3     1.0  fw-190  destroyed  1944  
+4     3.0  me-110  destroyed  1944  
+5     0.5  me-109  destroyed  1944  
+6     2.5  me-109  destroyed  1944  
+7     2.0  me-109  destroyed  1944  
+8     4.0  fw-190  destroyed  1944  
+9     1.0  me-109  destroyed  1945  
+Sample 4072 - Plan 1: Table after operation: [['date', 'location', 'air_ground', 'number', 'type', 'status', 'year'], ['8 march 1944', 'near steinhuder meer (lake), germany', 'air', 1.0, 'me-109', 'destroyed', 1944], ['16 march 1944', '20 miles south of stuttgart, germany', 'air', 1.0, 'me-110', 'destroyed', 1944], ['11 april 1944', '20 miles northeast of magdeburg, germany', 'air', 0.5, 'me-109', 'destroyed', 1944], ['13 april 1944', 'west of mannheim, germany', 'air', 1.0, 'fw-190', 'destroyed', 1944], ['24 april 1944', 'south of munich, germany', 'air', 3.0, 'me-110', 'destroyed', 1944], ['18 august 1944', '20 miles northeast of paris, france', 'air', 0.5, 'me-109', 'destroyed', 1944], ['13 september 1944', 'south of nordhausen, germany', 'air', 2.5, 'me-109', 'destroyed', 1944], ['6 october 1944', '20 miles northwest of berlin, germany', 'air', 2.0, 'me-109', 'destroyed', 1944], ['27 november 1944', 'south of magdeburg, germany', 'air', 4.0, 'fw-190', 'destroyed', 1944], ['14 january 1945', '20 miles northwest of berlin, germany', 'air', 1.0, 'me-109', 'destroyed', 1945]]
+########################################################################################################################
+Sample 4072 - Plan 1: Operation 3: Group the table by 'year'.
+Sample 4072 - Plan 1: Selected indices: []
+Sample 4072 - Plan 1: X-Table after operation df:
+   year
+0  1944
+1  1945
+Sample 4072 - Plan 1: Table after operation: [['year'], [1944], [1945]]
+########################################################################################################################
+Sample 4072 - Plan 1: Operation 4: Count the number of rows for each 'year'.
+Sample 4072 - Plan 1: Selected indices: [[0, 0], [1, 0]]
+Sample 4072 - Plan 1: X-Table after operation df:
+   year  count
+0  1944      1
+1  1945      1
+Sample 4072 - Plan 1: Table after operation: [['year', 'count'], [1944, 1], [1945, 1]]
+########################################################################################################################
+Sample 4072 - Plan 1: Operation 5: Order the table by the count of destroyed aircrafts in descending order.
+Sample 4072 - Plan 1: Selected indices: [[0, 1], [1, 1]]
+Sample 4072 - Plan 1: X-Table after operation df:
+   year  count
+0  1944      1
+1  1945      1
+Sample 4072 - Plan 1: Table after operation: [['year', 'count'], [1944, 1], [1945, 1]]
+########################################################################################################################
+Sample 4072 - Plan 1: Operation 6: Select the 'year' with the highest count of destroyed aircrafts.
+Sample 4072 - Plan 1: Selected indices: []
+Sample 4072 - Plan 1: X-Table after operation df:
+   year
+0  1944
+Sample 4072 - Plan 1: Table after operation: [['year'], [1944]]
+Fall-back: FALSE
+Answer from plan 1: [[1944]]
+Groundtruth: ['1944']

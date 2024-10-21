@@ -1,0 +1,55 @@
+************************************************************************************************************************
+Sample 792 - Plan 1: Query: what was the first game to score more than 10 apps?
+Sample 792 - Plan 1: Groundtruth: ['2008']
+Sample 792 - Plan 1: X-Original table pd: 
+    season             team country  division  apps  goals
+0     2003  shandong luneng   china         1     4      0
+1     2004  shandong luneng   china         1     0      0
+2     2005  shandong luneng   china         1     0      0
+3     2006    chengdu wuniu   china         2     1      0
+4     2007  shandong luneng   china         1     0      0
+5     2008   jiangsu sainty   china         2    24      0
+6     2009   jiangsu sainty   china         1    15      0
+7     2010   jiangsu sainty   china         1    17      0
+8     2011   jiangsu sainty   china         1     9      0
+9     2012   jiangsu sainty   china         1     0      0
+10    2013   jiangsu sainty   china         1    11      0
+Sample 792 - Plan 1: Caption: none
+Sample 792 - Plan 1: Original table: [['season', 'team', 'country', 'division', 'apps', 'goals'], ['2003', 'shandong luneng', 'china', '1', '4', '0'], ['2004', 'shandong luneng', 'china', '1', '0', '0'], ['2005', 'shandong luneng', 'china', '1', '0', '0'], ['2006', 'chengdu wuniu', 'china', '2', '1', '0'], ['2007', 'shandong luneng', 'china', '1', '0', '0'], ['2008', 'jiangsu sainty', 'china', '2', '24', '0'], ['2009', 'jiangsu sainty', 'china', '1', '15', '0'], ['2010', 'jiangsu sainty', 'china', '1', '17', '0'], ['2011', 'jiangsu sainty', 'china', '1', '9', '0'], ['2012', 'jiangsu sainty', 'china', '1', '0', '0'], ['2013', 'jiangsu sainty', 'china', '1', '11', '0']]
+########################################################################################################################
+Sample 792 - Plan 1: Operation 1: Select rows where 'apps' is greater than 10.
+Sample 792 - Plan 1: Selected indices: [[7, 4], [5, 4], [6, 4], [10, 4]]
+Sample 792 - Plan 1: X-Table after operation df:
+   season            team country  division  apps  goals
+0    2008  jiangsu sainty   china         2    24      0
+1    2009  jiangsu sainty   china         1    15      0
+2    2010  jiangsu sainty   china         1    17      0
+3    2013  jiangsu sainty   china         1    11      0
+Sample 792 - Plan 1: Table after operation: [['season', 'team', 'country', 'division', 'apps', 'goals'], [2008, 'jiangsu sainty', 'china', 2, 24, 0], [2009, 'jiangsu sainty', 'china', 1, 15, 0], [2010, 'jiangsu sainty', 'china', 1, 17, 0], [2013, 'jiangsu sainty', 'china', 1, 11, 0]]
+########################################################################################################################
+Sample 792 - Plan 1: Operation 2: Order the table by 'season' in ascending order.
+Sample 792 - Plan 1: Selected indices: [[1, 0], [2, 0], [0, 0], [3, 0]]
+Sample 792 - Plan 1: X-Table after operation df:
+   season            team country  division  apps  goals
+0    2008  jiangsu sainty   china         2    24      0
+1    2009  jiangsu sainty   china         1    15      0
+2    2010  jiangsu sainty   china         1    17      0
+3    2013  jiangsu sainty   china         1    11      0
+Sample 792 - Plan 1: Table after operation: [['season', 'team', 'country', 'division', 'apps', 'goals'], [2008, 'jiangsu sainty', 'china', 2, 24, 0], [2009, 'jiangsu sainty', 'china', 1, 15, 0], [2010, 'jiangsu sainty', 'china', 1, 17, 0], [2013, 'jiangsu sainty', 'china', 1, 11, 0]]
+########################################################################################################################
+Sample 792 - Plan 1: Operation 3: Select row number 1.
+Sample 792 - Plan 1: Selected indices: []
+Sample 792 - Plan 1: X-Table after operation df:
+   season            team country  division  apps  goals
+0    2008  jiangsu sainty   china         2    24      0
+Sample 792 - Plan 1: Table after operation: [['season', 'team', 'country', 'division', 'apps', 'goals'], [2008, 'jiangsu sainty', 'china', 2, 24, 0]]
+########################################################################################################################
+Sample 792 - Plan 1: Operation 4: Select the 'season' column.
+Sample 792 - Plan 1: Selected indices: []
+Sample 792 - Plan 1: X-Table after operation df:
+   season
+0    2008
+Sample 792 - Plan 1: Table after operation: [['season'], [2008]]
+Fall-back: FALSE
+Answer from plan 1: [[2008]]
+Groundtruth: ['2008']

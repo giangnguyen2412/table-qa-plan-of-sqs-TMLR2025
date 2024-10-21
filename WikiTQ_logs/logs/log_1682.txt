@@ -1,0 +1,47 @@
+************************************************************************************************************************
+Sample 1682 - Plan 1: Query: 82 its their name
+Sample 1682 - Plan 1: Groundtruth: ['Rasul Kudayev']
+Sample 1682 - Plan 1: X-Original table pd: 
+   isn                        name arrival_ndate departure_ndate  \
+0   82               rasul kudayev                    2004-02-27   
+1  203   ravil shafeyavich gumarov    2002-01-21      2004-02-27   
+2  209  almasm rabilavich sharipov    2002-01-21      2004-02-27   
+3  211  ruslan anatoloivich odijev    2002-06-14      2004-02-27   
+4  492     aiat nasimovich vahitov    2002-06-14      2004-02-27   
+5  573            rustam akhmyarov    2002-05-01      2004-02-27   
+6  672               zakirjan asam    2002-06-08      2006-11-17   
+7  674     timur ravilich ishmurat    2002-06-14      2004-02-27   
+8  702              ravil mingazov    2002-10-28                   
+
+                                               notes  
+0  repatriated to russia on january 3, 2004.[cita...  
+1  repatriated to russia on january 3, 2004.[cita...  
+2  repatriated to russia on january 3, 2004.[cita...  
+3  reported to have been repatriated on 24 februa...  
+4  repatriated to russia on january 3, 2004.[cita...  
+5  reported to have been repatriated on 24 februa...  
+6                                               nlec  
+7  repatriated to russia.\nreported to have been ...  
+8                                                     
+Sample 1682 - Plan 1: Caption: none
+Sample 1682 - Plan 1: Original table: [['isn', 'name', 'arrival_ndate', 'departure_ndate', 'notes'], ['82', 'rasul kudayev', '', '2004-02-27', 'repatriated to russia on january 3, 2004.[citation needed]\\nreported to have been repatriated on 24 february 2004 with six other russian men.\\nalso called "abdullah d. kafkas".'], ['203', 'ravil shafeyavich gumarov', '2002-01-21', '2004-02-27', 'repatriated to russia on january 3, 2004.[citation needed]\\nreported to have been repatriated on 24 february 2004 with six other russian men.\\nalleged to have played a role in a 2005 bombing.\\ndefense intelligence agency classifies him as a former detainee who "returned to terrorism".'], ['209', 'almasm rabilavich sharipov', '2002-01-21', '2004-02-27', 'repatriated to russia on january 3, 2004.[citation needed]\\nreported to have been repatriated on 24 february 2004 with six other russian men.\\ngranted asylum by the netherlands.'], ['211', 'ruslan anatoloivich odijev', '2002-06-14', '2004-02-27', 'reported to have been repatriated on 24 february 2004, as "ruslan anatolovich odijev", with six other russian men.\\ncharged with a role in bombing a gas pipeline in 2005.\\nshot by police in 2007.\\nhuman rights advocates argue he was falsely accused.\\ndefense intelligence agency classifies him as a former detainee who "returned to terrorism".'], ['492', 'aiat nasimovich vahitov', '2002-06-14', '2004-02-27', 'repatriated to russia on january 3, 2004.[citation needed]\\nreported to have been repatriated on 24 february 2004 with six other russian men.'], ['573', 'rustam akhmyarov', '2002-05-01', '2004-02-27', 'reported to have been repatriated on 24 february 2004 with six other russian men.'], ['672', 'zakirjan asam', '2002-06-08', '2006-11-17', 'nlec'], ['674', 'timur ravilich ishmurat', '2002-06-14', '2004-02-27', 'repatriated to russia.\\nreported to have been repatriated on 24 february 2004, as "timur ravilich ismurat", with six other russian men.\\nalleged to have played a role in a 2005 bombing.'], ['702', 'ravil mingazov', '2002-10-28', '', '']]
+########################################################################################################################
+Sample 1682 - Plan 1: Operation 1: Select the row where 'isn' is 82.
+Sample 1682 - Plan 1: Selected indices: [[0, 0]]
+Sample 1682 - Plan 1: X-Table after operation df:
+   isn           name  arrival_ndate departure_ndate  \
+0   82  rasul kudayev            NaN      2004-02-27   
+
+                                               notes  
+0  repatriated to russia on january 3, 2004.[cita...  
+Sample 1682 - Plan 1: Table after operation: [['isn', 'name', 'arrival_ndate', 'departure_ndate', 'notes'], [82, 'rasul kudayev', '', '2004-02-27', 'repatriated to russia on january 3, 2004.[citation needed]\\nreported to have been repatriated on 24 february 2004 with six other russian men.\\nalso called "abdullah d. kafkas".']]
+########################################################################################################################
+Sample 1682 - Plan 1: Operation 2: Select the 'name' column from the selected row.
+Sample 1682 - Plan 1: Selected indices: []
+Sample 1682 - Plan 1: X-Table after operation df:
+            name
+0  rasul kudayev
+Sample 1682 - Plan 1: Table after operation: [['name'], ['rasul kudayev']]
+Fall-back: FALSE
+Answer from plan 1: [['rasul kudayev']]
+Groundtruth: ['Rasul Kudayev']

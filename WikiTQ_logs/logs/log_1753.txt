@@ -1,0 +1,49 @@
+************************************************************************************************************************
+Sample 1753 - Plan 1: Query: which team had more players sent, balestier khalsa or geylang united?
+Sample 1753 - Plan 1: Groundtruth: ['Balestier Khalsa']
+Sample 1753 - Plan 1: X-Original table pd: 
+   position             player     transferred_from              date
+0        gk        fajar sarib       geylang united    1 january 2010
+1        gk       hafez mawasi     balestier khalsa    1 january 2010
+2        df        winston yap     sengkang punggol    1 january 2010
+3        df     kazuki yoshino  albirex niigata (s)    1 january 2010
+4        df      sahairi ramri     balestier khalsa    1 january 2010
+5        mf         syed karim                saffc    1 january 2010
+6        mf      mohd noor ali       geylang united    1 january 2010
+7        mf     guntur djafril                saffc    1 january 2010
+8        mf      sazali salleh     sengkang punggol    1 january 2010
+9        fw  laakkad abdelhadi        free transfer    1 january 2010
+10       fw   rizawan abdullah     balestier khalsa    1 january 2010
+11       mf      rachid lajane      raja al hoceima  26 february 2010
+Sample 1753 - Plan 1: Caption: none
+Sample 1753 - Plan 1: Original table: [['position', 'player', 'transferred_from', 'date'], ['gk', 'fajar sarib', 'geylang united', '1 january 2010'], ['gk', 'hafez mawasi', 'balestier khalsa', '1 january 2010'], ['df', 'winston yap', 'sengkang punggol', '1 january 2010'], ['df', 'kazuki yoshino', 'albirex niigata (s)', '1 january 2010'], ['df', 'sahairi ramri', 'balestier khalsa', '1 january 2010'], ['mf', 'syed karim', 'saffc', '1 january 2010'], ['mf', 'mohd noor ali', 'geylang united', '1 january 2010'], ['mf', 'guntur djafril', 'saffc', '1 january 2010'], ['mf', 'sazali salleh', 'sengkang punggol', '1 january 2010'], ['fw', 'laakkad abdelhadi', 'free transfer', '1 january 2010'], ['fw', 'rizawan abdullah', 'balestier khalsa', '1 january 2010'], ['mf', 'rachid lajane', 'raja al hoceima', '26 february 2010']]
+########################################################################################################################
+Sample 1753 - Plan 1: Operation 1: Select rows where 'transferred_from' is 'balestier khalsa' or 'geylang united'.
+Sample 1753 - Plan 1: Selected indices: [[6, 2], [1, 2], [4, 2], [0, 2], [10, 2]]
+Sample 1753 - Plan 1: X-Table after operation df:
+  position            player  transferred_from            date
+0       gk       fajar sarib    geylang united  1 january 2010
+1       gk      hafez mawasi  balestier khalsa  1 january 2010
+2       df     sahairi ramri  balestier khalsa  1 january 2010
+3       mf     mohd noor ali    geylang united  1 january 2010
+4       fw  rizawan abdullah  balestier khalsa  1 january 2010
+Sample 1753 - Plan 1: Table after operation: [['position', 'player', 'transferred_from', 'date'], ['gk', 'fajar sarib', 'geylang united', '1 january 2010'], ['gk', 'hafez mawasi', 'balestier khalsa', '1 january 2010'], ['df', 'sahairi ramri', 'balestier khalsa', '1 january 2010'], ['mf', 'mohd noor ali', 'geylang united', '1 january 2010'], ['fw', 'rizawan abdullah', 'balestier khalsa', '1 january 2010']]
+########################################################################################################################
+Sample 1753 - Plan 1: Operation 2: Count the number of rows for each team.
+Sample 1753 - Plan 1: Selected indices: []
+Sample 1753 - Plan 1: X-Table after operation df:
+   transferred_from  team_count
+0  balestier khalsa           3
+1    geylang united           2
+Sample 1753 - Plan 1: Table after operation: [['transferred_from', 'team_count'], ['balestier khalsa', 3], ['geylang united', 2]]
+########################################################################################################################
+Sample 1753 - Plan 1: Operation 3: Compare the counts to determine which team had more players sent.
+Sample 1753 - Plan 1: Selected indices: []
+Sample 1753 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [transferred_from, team_count]
+Index: []
+Sample 1753 - Plan 1: Table after operation: [['transferred_from', 'team_count']]
+Fall-back: TRUE
+Answer from plan 1: [['balestier khalsa']]
+Groundtruth: ['Balestier Khalsa']

@@ -1,0 +1,66 @@
+************************************************************************************************************************
+Sample 1375 - Plan 1: Query: which country has the most birds?
+Sample 1375 - Plan 1: Groundtruth: ['Panama']
+Sample 1375 - Plan 1: X-Original table pd: 
+       country  amphibians  birds  mammals  reptile  \
+0       belize          46    544      147      140   
+1   costa rica         183    838      232      258   
+2  el salvador          30    434      137      106   
+3    guatemala         133    684      193      236   
+4     honduras         101    699      201      213   
+5    nicaragua          61    632      181      178   
+6       panama         182    904      241      242   
+
+   total_terrestrial_vertebrates  vascular_plants  biodiversity  
+0                            877             2894          3771  
+1                           1511            12119         13630  
+2                            707             2911          3618  
+3                           1246             8681          9927  
+4                           1214             5680          6894  
+5                           1052             7590          8642  
+6                           1569             9915         11484  
+Sample 1375 - Plan 1: Caption: none
+Sample 1375 - Plan 1: Original table: [['country', 'amphibians', 'birds', 'mammals', 'reptile', 'total_terrestrial_vertebrates', 'vascular_plants', 'biodiversity'], ['belize', '46', '544', '147', '140', '877', '2894', '3771'], ['costa rica', '183', '838', '232', '258', '1511', '12119', '13630'], ['el salvador', '30', '434', '137', '106', '707', '2911', '3618'], ['guatemala', '133', '684', '193', '236', '1246', '8681', '9927'], ['honduras', '101', '699', '201', '213', '1214', '5680', '6894'], ['nicaragua', '61', '632', '181', '178', '1052', '7590', '8642'], ['panama', '182', '904', '241', '242', '1569', '9915', '11484']]
+########################################################################################################################
+Sample 1375 - Plan 1: Operation 1: Select the 'country' and 'birds' columns.
+Sample 1375 - Plan 1: Selected indices: []
+Sample 1375 - Plan 1: X-Table after operation df:
+       country  birds
+0       belize    544
+1   costa rica    838
+2  el salvador    434
+3    guatemala    684
+4     honduras    699
+5    nicaragua    632
+6       panama    904
+Sample 1375 - Plan 1: Table after operation: [['country', 'birds'], ['belize', 544], ['costa rica', 838], ['el salvador', 434], ['guatemala', 684], ['honduras', 699], ['nicaragua', 632], ['panama', 904]]
+########################################################################################################################
+Sample 1375 - Plan 1: Operation 2: Order the table by the 'birds' column in descending order.
+Sample 1375 - Plan 1: Selected indices: [[0, 1], [2, 1], [3, 1], [6, 1], [1, 1], [5, 1], [4, 1]]
+Sample 1375 - Plan 1: X-Table after operation df:
+       country  birds
+0       panama    904
+1   costa rica    838
+2     honduras    699
+3    guatemala    684
+4    nicaragua    632
+5       belize    544
+6  el salvador    434
+Sample 1375 - Plan 1: Table after operation: [['country', 'birds'], ['panama', 904], ['costa rica', 838], ['honduras', 699], ['guatemala', 684], ['nicaragua', 632], ['belize', 544], ['el salvador', 434]]
+########################################################################################################################
+Sample 1375 - Plan 1: Operation 3: Select the row number 1.
+Sample 1375 - Plan 1: Selected indices: []
+Sample 1375 - Plan 1: X-Table after operation df:
+  country  birds
+0  panama    904
+Sample 1375 - Plan 1: Table after operation: [['country', 'birds'], ['panama', 904]]
+########################################################################################################################
+Sample 1375 - Plan 1: Operation 4: Select the 'country' column.
+Sample 1375 - Plan 1: Selected indices: []
+Sample 1375 - Plan 1: X-Table after operation df:
+  country
+0  panama
+Sample 1375 - Plan 1: Table after operation: [['country'], ['panama']]
+Fall-back: FALSE
+Answer from plan 1: [['panama']]
+Groundtruth: ['Panama']

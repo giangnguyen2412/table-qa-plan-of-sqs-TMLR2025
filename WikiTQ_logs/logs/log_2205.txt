@@ -1,0 +1,67 @@
+************************************************************************************************************************
+Sample 2205 - Plan 1: Query: how many health officers are there in the region of ben-gumuz?
+Sample 2205 - Plan 1: Groundtruth: ['42']
+Sample 2205 - Plan 1: X-Original table pd: 
+         region  physician__gp___specialist_ physician __population_ratio  \
+0        tigray                          101                     1:44,880   
+1          afar                           15                     1:98,258   
+2        amhara                          304                     1:58,567   
+3        oromia                          378                     1:76,075   
+4       somalia                           71                     1:65,817   
+5     ben-gumuz                           12                     1:59,309   
+6         snnpr                          242                     1:65,817   
+7      gambella                           13                     1:25,585   
+8        harari                           29                      1:6,655   
+9   addis ababa                          934                      1:3,056   
+10     diredawa                           53                      1:6,796   
+
+    health_officer ho __population_ratio all_nurses nurse __population_ratio  \
+0              188              1:24,111      2,332                  1:1,944   
+1               29              1:50,823        185                  1:7,967   
+2              434              1:41,024      3,790                  1:4,698   
+3              448              1:64,189      5,040                  1:5,706   
+4               12             1:389,415        314                 1:14,882   
+5               42              1:16,945        452                  1:1,575   
+6              220              1:72,398      3,980                  1:4,002   
+7               13              1:25,585         91                  1:3,655   
+8               31               1:6,226        276                    1:699   
+9              170              1:16,791      3,377                    1:845   
+10              19              1:18,957        272                  1:1,324   
+
+   mid_wives mid_wife__population_ratio   hew_ hew __population_ratio  
+0        185                   1:24,502  1,433                1:3,163  
+1          −                          −    572                1:2,577  
+2        212                   1:83,983  7,471                1:2,383  
+3        287                  1:100,197  13856                1:2,075  
+4         45                  1:103,844  1,427                1:3,275  
+5         37                   1:19,235    499                1:1,426  
+6        316                   1:50,404  7,915                1:2,012  
+7          4                   1:83,150    457                  1:728  
+8         29                    1:6,655     47                1:4,106  
+9        244                   1:11,699     na                      -  
+10        20                   1:18,009    142                1:2,537  
+Sample 2205 - Plan 1: Caption: none
+Sample 2205 - Plan 1: Original table: [['region', 'physician__gp___specialist_', 'physician\xa0__population_ratio', 'health_officer', 'ho\xa0__population_ratio', 'all_nurses', 'nurse\xa0__population_ratio', 'mid_wives', 'mid_wife__population_ratio', 'hew_', 'hew\xa0__population_ratio'], ['tigray', '101', '1:44,880', '188', '1:24,111', '2,332', '1:1,944', '185', '1:24,502', '1,433', '1:3,163'], ['afar', '15', '1:98,258', '29', '1:50,823', '185', '1:7,967', '−', '−', '572', '1:2,577'], ['amhara', '304', '1:58,567', '434', '1:41,024', '3,790', '1:4,698', '212', '1:83,983', '7,471', '1:2,383'], ['oromia', '378', '1:76,075', '448', '1:64,189', '5,040', '1:5,706', '287', '1:100,197', '13856', '1:2,075'], ['somalia', '71', '1:65,817', '12', '1:389,415', '314', '1:14,882', '45', '1:103,844', '1,427', '1:3,275'], ['ben-gumuz', '12', '1:59,309', '42', '1:16,945', '452', '1:1,575', '37', '1:19,235', '499', '1:1,426'], ['snnpr', '242', '1:65,817', '220', '1:72,398', '3,980', '1:4,002', '316', '1:50,404', '7,915', '1:2,012'], ['gambella', '13', '1:25,585', '13', '1:25,585', '91', '1:3,655', '4', '1:83,150', '457', '1:728'], ['harari', '29', '1:6,655', '31', '1:6,226', '276', '1:699', '29', '1:6,655', '47', '1:4,106'], ['addis ababa', '934', '1:3,056', '170', '1:16,791', '3,377', '1:845', '244', '1:11,699', 'na', '-'], ['diredawa', '53', '1:6,796', '19', '1:18,957', '272', '1:1,324', '20', '1:18,009', '142', '1:2,537']]
+########################################################################################################################
+Sample 2205 - Plan 1: Operation 1: Select the row where the 'region' is 'ben-gumuz'.
+Sample 2205 - Plan 1: Selected indices: [[5, 0]]
+Sample 2205 - Plan 1: X-Table after operation df:
+      region  physician__gp___specialist_ physician __population_ratio  \
+0  ben-gumuz                           12                     1:59,309   
+
+   health_officer ho __population_ratio  all_nurses nurse __population_ratio  \
+0              42              1:16,945         452                  1:1,575   
+
+   mid_wives mid_wife__population_ratio  hew_ hew __population_ratio  
+0         37                   1:19,235   499                1:1,426  
+Sample 2205 - Plan 1: Table after operation: [['region', 'physician__gp___specialist_', 'physician\xa0__population_ratio', 'health_officer', 'ho\xa0__population_ratio', 'all_nurses', 'nurse\xa0__population_ratio', 'mid_wives', 'mid_wife__population_ratio', 'hew_', 'hew\xa0__population_ratio'], ['ben-gumuz', 12, '1:59,309', 42, '1:16,945', '452', '1:1,575', '37', '1:19,235', '499', '1:1,426']]
+########################################################################################################################
+Sample 2205 - Plan 1: Operation 2: Select the 'health_officer' column.
+Sample 2205 - Plan 1: Selected indices: []
+Sample 2205 - Plan 1: X-Table after operation df:
+   health_officer
+0              42
+Sample 2205 - Plan 1: Table after operation: [['health_officer'], [42]]
+Fall-back: FALSE
+Answer from plan 1: [[42]]
+Groundtruth: ['42']

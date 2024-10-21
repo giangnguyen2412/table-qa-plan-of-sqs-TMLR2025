@@ -1,0 +1,58 @@
+************************************************************************************************************************
+Sample 3658 - Plan 1: Query: who was the only player to score below par?
+Sample 3658 - Plan 1: Groundtruth: ['Retief Goosen']
+Sample 3658 - Plan 1: X-Original table pd: 
+  place            player        country         score to_par
+0     1     retief goosen   south africa  68-70-69=207     –3
+1    t2       olin browne  united states  67-71-72=210      e
+2    t2        jason gore  united states  71-67-72=210      e
+3    t4  michael campbell    new zealand  71-69-71=211     +1
+4    t4       mark hensby      australia  71-68-72=211     +1
+5     6        david toms  united states  70-72-70=212     +2
+6    t7        k. j. choi    south korea  69-70-74=213     +3
+7    t7     peter hedblom         sweden  77-66-70=213     +3
+8    t7      lee westwood        england  68-72-73=213     +3
+9    t7       tiger woods  united states  70-71-72=213     +3
+Sample 3658 - Plan 1: Caption: none
+Sample 3658 - Plan 1: Original table: [['place', 'player', 'country', 'score', 'to_par'], ['1', 'retief goosen', 'south africa', '68-70-69=207', '–3'], ['t2', 'olin browne', 'united states', '67-71-72=210', 'e'], ['t2', 'jason gore', 'united states', '71-67-72=210', 'e'], ['t4', 'michael campbell', 'new zealand', '71-69-71=211', '+1'], ['t4', 'mark hensby', 'australia', '71-68-72=211', '+1'], ['6', 'david toms', 'united states', '70-72-70=212', '+2'], ['t7', 'k. j. choi', 'south korea', '69-70-74=213', '+3'], ['t7', 'peter hedblom', 'sweden', '77-66-70=213', '+3'], ['t7', 'lee westwood', 'england', '68-72-73=213', '+3'], ['t7', 'tiger woods', 'united states', '70-71-72=213', '+3']]
+########################################################################################################################
+Sample 3658 - Plan 1: Operation 1: Extract the numerical value from the 'to_par' column then add column 'num_to_par' to the existing table.
+Sample 3658 - Plan 1: Selected indices: [[0, 4], [1, 4], [2, 4], [3, 4], [4, 4], [5, 4], [6, 4], [7, 4], [8, 4], [9, 4]]
+Sample 3658 - Plan 1: X-Table after operation df:
+  place            player        country         score to_par  num_to_par
+0     1     retief goosen   south africa  68-70-69=207     –3           3
+1    t2       olin browne  united states  67-71-72=210      e           0
+2    t2        jason gore  united states  71-67-72=210      e           0
+3    t4  michael campbell    new zealand  71-69-71=211     +1           1
+4    t4       mark hensby      australia  71-68-72=211     +1           1
+5     6        david toms  united states  70-72-70=212     +2           2
+6    t7        k. j. choi    south korea  69-70-74=213     +3           3
+7    t7     peter hedblom         sweden  77-66-70=213     +3           3
+8    t7      lee westwood        england  68-72-73=213     +3           3
+9    t7       tiger woods  united states  70-71-72=213     +3           3
+Sample 3658 - Plan 1: Table after operation: [['place', 'player', 'country', 'score', 'to_par', 'num_to_par'], ['1', 'retief goosen', 'south africa', '68-70-69=207', '–3', 3], ['t2', 'olin browne', 'united states', '67-71-72=210', 'e', 0], ['t2', 'jason gore', 'united states', '71-67-72=210', 'e', 0], ['t4', 'michael campbell', 'new zealand', '71-69-71=211', '+1', 1], ['t4', 'mark hensby', 'australia', '71-68-72=211', '+1', 1], ['6', 'david toms', 'united states', '70-72-70=212', '+2', 2], ['t7', 'k. j. choi', 'south korea', '69-70-74=213', '+3', 3], ['t7', 'peter hedblom', 'sweden', '77-66-70=213', '+3', 3], ['t7', 'lee westwood', 'england', '68-72-73=213', '+3', 3], ['t7', 'tiger woods', 'united states', '70-71-72=213', '+3', 3]]
+########################################################################################################################
+Sample 3658 - Plan 1: Operation 2: Select rows where the 'num_to_par' is less than 0.
+Sample 3658 - Plan 1: Selected indices: []
+Sample 3658 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [place, player, country, score, to_par, num_to_par]
+Index: []
+Sample 3658 - Plan 1: Table after operation: [['place', 'player', 'country', 'score', 'to_par', 'num_to_par']]
+########################################################################################################################
+Sample 3658 - Plan 1: Operation 3: Count the number of rows.
+Sample 3658 - Plan 1: Selected indices: []
+Sample 3658 - Plan 1: X-Table after operation df:
+   row_count
+0          0
+Sample 3658 - Plan 1: Table after operation: [['row_count'], [0]]
+########################################################################################################################
+Sample 3658 - Plan 1: Operation 4: Select the 'player' column from the resulting table.
+Sample 3658 - Plan 1: Selected indices: []
+Sample 3658 - Plan 1: X-Table after operation df:
+   player
+0       0
+Sample 3658 - Plan 1: Table after operation: [['player'], [0]]
+Fall-back: FALSE
+Answer from plan 1: [[0]]
+Groundtruth: ['Retief Goosen']

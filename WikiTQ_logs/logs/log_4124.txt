@@ -1,0 +1,91 @@
+************************************************************************************************************************
+Sample 4124 - Plan 1: Query: which station has a greater number of connetions, tampa or reseda?
+Sample 4124 - Plan 1: Groundtruth: ['Reseda']
+Sample 4124 - Plan 1: X-Original table pd: 
+           stations                                        connections  \
+0   north hollywood  metro red line  \nmetro local: 152, 154, 156, ...   
+1     laurel canyon                         metro local: 156, 230, 656   
+2    valley college  metro local: 156, 167, 656\nladot commuter exp...   
+3           woodman                               metro local:154, 158   
+4          van nuys  metro local:154, 156, 233, 237, 656\nmetro rap...   
+5         sepulveda                 metro local: 234\nmetro rapid: 734   
+6           woodley                               metro local:164, 237   
+7            balboa  metro local: 164, 236, 237\nladot commuter exp...   
+8            reseda                 metro rapid: 741\nmetro local: 240   
+9             tampa                                   metro local: 242   
+10   pierce college                              metro local: 164, 243   
+11          de soto  metro local: 164, 244\ncity of santa clarita t...   
+12           canoga  metro local:164, 165\ncity of santa clarita tr...   
+13    warner center  metro local: 150, 161, 164, 245, 645\nmetro ra...   
+14      sherman way                              metro local: 162, 163   
+15           roscoe                              metro local: 152, 353   
+16         nordhoff       metro local: 166, 364\nladot dash northridge   
+17       chatsworth  metro local: 158, 166, 167, 244, 245, 364\nlad...   
+
+   city__neighborhood           parking        date_opened  
+0     north hollywood        951 spaces   october 29, 2005  
+1      valley village              none   october 29, 2005  
+2         valley glen              none   october 29, 2005  
+3         valley glen              none   october 29, 2005  
+4            van nuys        776 spaces   october 29, 2005  
+5            van nuys      1,205 spaces   october 29, 2005  
+6            van nuys              none   october 29, 2005  
+7         lake balboa        270 spaces   october 29, 2005  
+8             tarzana        522 spaces   october 29, 2005  
+9             tarzana               n/a   october 29, 2005  
+10           winnetka        373 spaces   october 29, 2005  
+11           winnetka               n/a   october 29, 2005  
+12        canoga park        612 spaces  december 27, 2006  
+13     woodland hills               n/a   october 29, 2005  
+14        canoga park   park & ride lot      june 30, 2012  
+15        canoga park               n/a      june 30, 2012  
+16         chatsworth               n/a      june 30, 2012  
+17         chatsworth  parking expanded      june 30, 2012  
+Sample 4124 - Plan 1: Caption: none
+Sample 4124 - Plan 1: Original table: [['stations', 'connections', 'city__neighborhood', 'parking', 'date_opened'], ['north hollywood', 'metro red line\xa0\xa0\\nmetro local: 152, 154, 156, 162, 183, 224, 353, 656\\nladot commuter express: 549\\ncity of santa clarita transit: 757', 'north hollywood', '951 spaces', 'october 29, 2005'], ['laurel canyon', 'metro local: 156, 230, 656', 'valley village', 'none', 'october 29, 2005'], ['valley college', 'metro local: 156, 167, 656\\nladot commuter express: 549\\nladot dash: van nuys/studio city', 'valley glen', 'none', 'october 29, 2005'], ['woodman', 'metro local:154, 158', 'valley glen', 'none', 'october 29, 2005'], ['van nuys', 'metro local:154, 156, 233, 237, 656\\nmetro rapid: 761\\nladot dash: van nuys/studio city\\ncity of santa clarita transit: 793, 798', 'van nuys', '776 spaces', 'october 29, 2005'], ['sepulveda', 'metro local: 234\\nmetro rapid: 734', 'van nuys', '1,205 spaces', 'october 29, 2005'], ['woodley', 'metro local:164, 237', 'van nuys', 'none', 'october 29, 2005'], ['balboa', 'metro local: 164, 236, 237\\nladot commuter express: 573, 574', 'lake balboa', '270 spaces', 'october 29, 2005'], ['reseda', 'metro rapid: 741\\nmetro local: 240', 'tarzana', '522 spaces', 'october 29, 2005'], ['tampa', 'metro local: 242', 'tarzana', 'n/a', 'october 29, 2005'], ['pierce college', 'metro local: 164, 243', 'winnetka', '373 spaces', 'october 29, 2005'], ['de soto', 'metro local: 164, 244\\ncity of santa clarita transit: 796', 'winnetka', 'n/a', 'october 29, 2005'], ['canoga', 'metro local:164, 165\\ncity of santa clarita transit: 796', 'canoga park', '612 spaces', 'december 27, 2006'], ['warner center', 'metro local: 150, 161, 164, 245, 645\\nmetro rapid: 750\\nladot commuter express: 422\\ncity of santa clarita transit: 791, 796\\nventura intercity service transit authority: conejo connection', 'woodland hills', 'n/a', 'october 29, 2005'], ['sherman way', 'metro local: 162, 163', 'canoga park', 'park & ride lot', 'june 30, 2012'], ['roscoe', 'metro local: 152, 353', 'canoga park', 'n/a', 'june 30, 2012'], ['nordhoff', 'metro local: 166, 364\\nladot dash northridge', 'chatsworth', 'n/a', 'june 30, 2012'], ['chatsworth', 'metro local: 158, 166, 167, 244, 245, 364\\nladot commuter express: 419\\nsimi valley transit: c\\nsanta clarita transit: 791\\nmetrolink ventura county line\\namtrak pacific surfliner', 'chatsworth', 'parking expanded', 'june 30, 2012']]
+########################################################################################################################
+Sample 4124 - Plan 1: Operation 1: Select rows where the 'stations' column is 'tampa' or 'reseda'.
+Sample 4124 - Plan 1: Selected indices: [[9, 0], [8, 0]]
+Sample 4124 - Plan 1: X-Table after operation df:
+  stations                         connections city__neighborhood     parking  \
+0   reseda  metro rapid: 741\nmetro local: 240            tarzana  522 spaces   
+1    tampa                    metro local: 242            tarzana         n/a   
+
+        date_opened  
+0  october 29, 2005  
+1  october 29, 2005  
+Sample 4124 - Plan 1: Table after operation: [['stations', 'connections', 'city__neighborhood', 'parking', 'date_opened'], ['reseda', 'metro rapid: 741\\nmetro local: 240', 'tarzana', '522 spaces', 'october 29, 2005'], ['tampa', 'metro local: 242', 'tarzana', 'n/a', 'october 29, 2005']]
+########################################################################################################################
+Sample 4124 - Plan 1: Operation 2: Select the 'connections' column.
+Sample 4124 - Plan 1: Selected indices: []
+Sample 4124 - Plan 1: X-Table after operation df:
+                          connections
+0  metro rapid: 741\nmetro local: 240
+1                    metro local: 242
+Sample 4124 - Plan 1: Table after operation: [['connections'], ['metro rapid: 741\\nmetro local: 240'], ['metro local: 242']]
+########################################################################################################################
+Sample 4124 - Plan 1: Operation 3: Count the number of connections for each station.
+Sample 4124 - Plan 1: Selected indices: []
+Sample 4124 - Plan 1: X-Table after operation df:
+   num_connections
+0                3
+1                2
+Sample 4124 - Plan 1: Table after operation: [['num_connections'], [3], [2]]
+########################################################################################################################
+Sample 4124 - Plan 1: Operation 4: Compare the number of connections for 'tampa' and 'reseda'.
+Sample 4124 - Plan 1: Selected indices: [[1, 0], [0, 0]]
+Sample 4124 - Plan 1: X-Table after operation df:
+   num_connections
+0                3
+1                2
+Sample 4124 - Plan 1: Table after operation: [['num_connections'], [3], [2]]
+########################################################################################################################
+Sample 4124 - Plan 1: Operation 5: Select the station with the greater number of connections as the answer to the question.
+Sample 4124 - Plan 1: Selected indices: []
+Sample 4124 - Plan 1: X-Table after operation df:
+   max_connections
+0                3
+Sample 4124 - Plan 1: Table after operation: [['max_connections'], [3]]
+Fall-back: FALSE
+Answer from plan 1: [[3]]
+Groundtruth: ['Reseda']

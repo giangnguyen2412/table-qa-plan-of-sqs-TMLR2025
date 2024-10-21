@@ -1,0 +1,50 @@
+************************************************************************************************************************
+Sample 2515 - Plan 1: Query: name one other nation that accumulate the same number of gold medals as italy.
+Sample 2515 - Plan 1: Groundtruth: ['Germany (EUA)']
+Sample 2515 - Plan 1: X-Original table pd: 
+   rank               nation  gold  silver  bronze  total
+0     1      australia (aus)     2       1       0      3
+1     2          italy (ita)     1       1       1      3
+2     3        germany (eua)     1       0       1      2
+3     4   soviet union (urs)     1       0       0      1
+4     5    switzerland (sui)     0       2       1      3
+5     6  united states (usa)     0       1       0      1
+6     7  great britain (gbr)     0       0       1      1
+7     7         france (fra)     0       0       1      1
+Sample 2515 - Plan 1: Caption: none
+Sample 2515 - Plan 1: Original table: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['1', 'australia\xa0(aus)', '2', '1', '0', '3'], ['2', 'italy\xa0(ita)', '1', '1', '1', '3'], ['3', 'germany\xa0(eua)', '1', '0', '1', '2'], ['4', 'soviet union\xa0(urs)', '1', '0', '0', '1'], ['5', 'switzerland\xa0(sui)', '0', '2', '1', '3'], ['6', 'united states\xa0(usa)', '0', '1', '0', '1'], ['7', 'great britain\xa0(gbr)', '0', '0', '1', '1'], ['7', 'france\xa0(fra)', '0', '0', '1', '1']]
+########################################################################################################################
+Sample 2515 - Plan 1: Operation 1: Select rows where the 'gold' column is equal to the value in the 'gold' column for Italy.
+Sample 2515 - Plan 1: Selected indices: []
+Sample 2515 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [rank, nation, gold, silver, bronze, total]
+Index: []
+Sample 2515 - Plan 1: Table after operation: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total']]
+########################################################################################################################
+Sample 2515 - Plan 1: Operation 2: Exclude the row where the 'nation' column is equal to 'Italy'.
+Sample 2515 - Plan 1: Selected indices: []
+Sample 2515 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [rank, nation, gold, silver, bronze, total]
+Index: []
+Sample 2515 - Plan 1: Table after operation: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total']]
+########################################################################################################################
+Sample 2515 - Plan 1: Operation 3: Select the 'nation' column from the resulting table.
+Sample 2515 - Plan 1: Selected indices: []
+Sample 2515 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [nation]
+Index: []
+Sample 2515 - Plan 1: Table after operation: [['nation']]
+########################################################################################################################
+Sample 2515 - Plan 1: Operation 4: Select row number 1 from the resulting table.
+Sample 2515 - Plan 1: Selected indices: []
+Sample 2515 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [nation]
+Index: []
+Sample 2515 - Plan 1: Table after operation: [['nation']]
+Fall-back: TRUE
+Answer from plan 1: [['germany (eua)']]
+Groundtruth: ['Germany (EUA)']

@@ -1,0 +1,34 @@
+************************************************************************************************************************
+Sample 4272 - Plan 1: Query: which party was joe farias and what was his district?
+Sample 4272 - Plan 1: Groundtruth: ['D', '118']
+Sample 4272 - Plan 1: X-Original table pd: 
+          representative party home_town_city  district
+0  trey martinez fischer     d    san antonio       116
+1          philip cortez     d    san antonio       117
+2             joe farias     d    san antonio       118
+3       roland gutierrez     d    san antonio       119
+4         ruth mcclendon     d    san antonio       120
+5             joe straus     r    san antonio       121
+6            lyle larson     r    san antonio       122
+7        mike villarreal     d    san antonio       123
+8          jose menendez     d    san antonio       124
+9       justin rodriguez     d    san antonio       125
+Sample 4272 - Plan 1: Caption: none
+Sample 4272 - Plan 1: Original table: [['representative', 'party', 'home_town_city', 'district'], ['trey martinez fischer', 'd', 'san antonio', '116'], ['philip cortez', 'd', 'san antonio', '117'], ['joe farias', 'd', 'san antonio', '118'], ['roland gutierrez', 'd', 'san antonio', '119'], ['ruth mcclendon', 'd', 'san antonio', '120'], ['joe straus', 'r', 'san antonio', '121'], ['lyle larson', 'r', 'san antonio', '122'], ['mike villarreal', 'd', 'san antonio', '123'], ['jose menendez', 'd', 'san antonio', '124'], ['justin rodriguez', 'd', 'san antonio', '125']]
+########################################################################################################################
+Sample 4272 - Plan 1: Operation 1: Select rows where 'representative' is 'joe farias'.
+Sample 4272 - Plan 1: Selected indices: [[2, 0]]
+Sample 4272 - Plan 1: X-Table after operation df:
+  representative party home_town_city  district
+0     joe farias     d    san antonio       118
+Sample 4272 - Plan 1: Table after operation: [['representative', 'party', 'home_town_city', 'district'], ['joe farias', 'd', 'san antonio', 118]]
+########################################################################################################################
+Sample 4272 - Plan 1: Operation 2: Select the 'party' and 'district' columns.
+Sample 4272 - Plan 1: Selected indices: []
+Sample 4272 - Plan 1: X-Table after operation df:
+  party  district
+0     d       118
+Sample 4272 - Plan 1: Table after operation: [['party', 'district'], ['d', 118]]
+Fall-back: FALSE
+Answer from plan 1: [['d', 118]]
+Groundtruth: ['D', '118']

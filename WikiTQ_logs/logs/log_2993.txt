@@ -1,0 +1,54 @@
+************************************************************************************************************************
+Sample 2993 - Plan 1: Query: who was the last team to play the rough riders this season?
+Sample 2993 - Plan 1: Groundtruth: ['Montreal Alouettes']
+Sample 2993 - Plan 1: X-Original table pd: 
+    week     date                 opponent  score result record
+0      1   aug 28     at toronto argonauts   13–6   loss    0–1
+1      2   sept 4    at montreal alouettes   21–2   loss    0–2
+2      2   sept 6   vs. montreal alouettes  20–11   loss    0–3
+3      3  sept 11     at toronto argonauts   12–5    win    1–3
+4      4  sept 18    vs. toronto argonauts   34–6   loss    1–4
+5      5  sept 25  vs. hamilton tiger-cats  38–12   loss    1–5
+6      6    oct 2   at hamilton tiger-cats   45–0   loss    1–6
+7      7    oct 9   vs. montreal alouettes  25–11   loss    1–7
+8      7   oct 11    at montreal alouettes   24–6   loss    1–8
+9      8   oct 16    vs. toronto argonauts  27–11   loss    1–9
+10     9   oct 23   at hamilton tiger-cats  25–17   loss   1–10
+11    10   oct 30  vs. hamilton tiger-cats   30–9   loss   1–11
+12    11    nov 6     at toronto argonauts  18–12   loss   1–12
+13    12   nov 13   vs. montreal alouettes  14–12    win   2–12
+Sample 2993 - Plan 1: Caption: none
+Sample 2993 - Plan 1: Original table: [['week', 'date', 'opponent', 'score', 'result', 'record'], ['1', 'aug 28', 'at toronto argonauts', '13–6', 'loss', '0–1'], ['2', 'sept 4', 'at montreal alouettes', '21–2', 'loss', '0–2'], ['2', 'sept 6', 'vs. montreal alouettes', '20–11', 'loss', '0–3'], ['3', 'sept 11', 'at toronto argonauts', '12–5', 'win', '1–3'], ['4', 'sept 18', 'vs. toronto argonauts', '34–6', 'loss', '1–4'], ['5', 'sept 25', 'vs. hamilton tiger-cats', '38–12', 'loss', '1–5'], ['6', 'oct 2', 'at hamilton tiger-cats', '45–0', 'loss', '1–6'], ['7', 'oct 9', 'vs. montreal alouettes', '25–11', 'loss', '1–7'], ['7', 'oct 11', 'at montreal alouettes', '24–6', 'loss', '1–8'], ['8', 'oct 16', 'vs. toronto argonauts', '27–11', 'loss', '1–9'], ['9', 'oct 23', 'at hamilton tiger-cats', '25–17', 'loss', '1–10'], ['10', 'oct 30', 'vs. hamilton tiger-cats', '30–9', 'loss', '1–11'], ['11', 'nov 6', 'at toronto argonauts', '18–12', 'loss', '1–12'], ['12', 'nov 13', 'vs. montreal alouettes', '14–12', 'win', '2–12']]
+########################################################################################################################
+Sample 2993 - Plan 1: Operation 1: Select rows where the 'result' column is 'win'.
+Sample 2993 - Plan 1: Selected indices: [[13, 4], [3, 4]]
+Sample 2993 - Plan 1: X-Table after operation df:
+   week     date                opponent  score result record
+0     3  sept 11    at toronto argonauts   12–5    win    1–3
+1    12   nov 13  vs. montreal alouettes  14–12    win   2–12
+Sample 2993 - Plan 1: Table after operation: [['week', 'date', 'opponent', 'score', 'result', 'record'], [3, 'sept 11', 'at toronto argonauts', '12–5', 'win', '1–3'], [12, 'nov 13', 'vs. montreal alouettes', '14–12', 'win', '2–12']]
+########################################################################################################################
+Sample 2993 - Plan 1: Operation 2: Order the table by the 'week' column in descending order.
+Sample 2993 - Plan 1: Selected indices: [[1, 0], [0, 0]]
+Sample 2993 - Plan 1: X-Table after operation df:
+   week     date                opponent  score result record
+0    12   nov 13  vs. montreal alouettes  14–12    win   2–12
+1     3  sept 11    at toronto argonauts   12–5    win    1–3
+Sample 2993 - Plan 1: Table after operation: [['week', 'date', 'opponent', 'score', 'result', 'record'], [12, 'nov 13', 'vs. montreal alouettes', '14–12', 'win', '2–12'], [3, 'sept 11', 'at toronto argonauts', '12–5', 'win', '1–3']]
+########################################################################################################################
+Sample 2993 - Plan 1: Operation 3: Select row number 1.
+Sample 2993 - Plan 1: Selected indices: []
+Sample 2993 - Plan 1: X-Table after operation df:
+   week    date                opponent  score result record
+0    12  nov 13  vs. montreal alouettes  14–12    win   2–12
+Sample 2993 - Plan 1: Table after operation: [['week', 'date', 'opponent', 'score', 'result', 'record'], [12, 'nov 13', 'vs. montreal alouettes', '14–12', 'win', '2–12']]
+########################################################################################################################
+Sample 2993 - Plan 1: Operation 4: Select the 'opponent' column.
+Sample 2993 - Plan 1: Selected indices: []
+Sample 2993 - Plan 1: X-Table after operation df:
+                 opponent
+0  vs. montreal alouettes
+Sample 2993 - Plan 1: Table after operation: [['opponent'], ['vs. montreal alouettes']]
+Fall-back: FALSE
+Answer from plan 1: [['vs. montreal alouettes']]
+Groundtruth: ['Montreal Alouettes']

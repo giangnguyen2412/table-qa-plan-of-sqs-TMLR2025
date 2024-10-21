@@ -1,0 +1,44 @@
+************************************************************************************************************************
+Sample 3074 - Plan 1: Query: what two races are the longest?
+Sample 3074 - Plan 1: Groundtruth: ['Surround Stakes', 'Warwick Stakes']
+Sample 3074 - Plan 1: X-Original table pd: 
+   grp             race_name   age      sex weight  distance    date
+0    2  ajc challenge stakes  open     open    wfa      1000   march
+1    2       surround stakes   3yo  fillies     sw      1400   march
+2    2        warwick stakes  open     open    wfa      1400  august
+3    3    liverpool city cup  open     open   qlty      1300   march
+4    3  silver shadow stakes   3yo  fillies    swp      1200  august
+5    3  up and coming stakes   3yo      c&g    swp      1200  august
+Sample 3074 - Plan 1: Caption: none
+Sample 3074 - Plan 1: Original table: [['grp', 'race_name', 'age', 'sex', 'weight', 'distance', 'date'], ['2', 'ajc challenge stakes', 'open', 'open', 'wfa', '1000', 'march'], ['2', 'surround stakes', '3yo', 'fillies', 'sw', '1400', 'march'], ['2', 'warwick stakes', 'open', 'open', 'wfa', '1400', 'august'], ['3', 'liverpool city cup', 'open', 'open', 'qlty', '1300', 'march'], ['3', 'silver shadow stakes', '3yo', 'fillies', 'swp', '1200', 'august'], ['3', 'up and coming stakes', '3yo', 'c&g', 'swp', '1200', 'august']]
+########################################################################################################################
+Sample 3074 - Plan 1: Operation 1: Order the table by the 'distance' column in descending order.
+Sample 3074 - Plan 1: Selected indices: [[5, 5], [1, 5], [4, 5], [0, 5], [2, 5], [3, 5]]
+Sample 3074 - Plan 1: X-Table after operation df:
+   grp             race_name   age      sex weight  distance    date
+0    2       surround stakes   3yo  fillies     sw      1400   march
+1    2        warwick stakes  open     open    wfa      1400  august
+2    3    liverpool city cup  open     open   qlty      1300   march
+3    3  silver shadow stakes   3yo  fillies    swp      1200  august
+4    3  up and coming stakes   3yo      c&g    swp      1200  august
+5    2  ajc challenge stakes  open     open    wfa      1000   march
+Sample 3074 - Plan 1: Table after operation: [['grp', 'race_name', 'age', 'sex', 'weight', 'distance', 'date'], [2, 'surround stakes', '3yo', 'fillies', 'sw', 1400, 'march'], [2, 'warwick stakes', 'open', 'open', 'wfa', 1400, 'august'], [3, 'liverpool city cup', 'open', 'open', 'qlty', 1300, 'march'], [3, 'silver shadow stakes', '3yo', 'fillies', 'swp', 1200, 'august'], [3, 'up and coming stakes', '3yo', 'c&g', 'swp', 1200, 'august'], [2, 'ajc challenge stakes', 'open', 'open', 'wfa', 1000, 'march']]
+########################################################################################################################
+Sample 3074 - Plan 1: Operation 2: Select the top two rows.
+Sample 3074 - Plan 1: Selected indices: []
+Sample 3074 - Plan 1: X-Table after operation df:
+   grp        race_name   age      sex weight  distance    date
+0    2  surround stakes   3yo  fillies     sw      1400   march
+1    2   warwick stakes  open     open    wfa      1400  august
+Sample 3074 - Plan 1: Table after operation: [['grp', 'race_name', 'age', 'sex', 'weight', 'distance', 'date'], [2, 'surround stakes', '3yo', 'fillies', 'sw', 1400, 'march'], [2, 'warwick stakes', 'open', 'open', 'wfa', 1400, 'august']]
+########################################################################################################################
+Sample 3074 - Plan 1: Operation 3: Select the 'race_name' column.
+Sample 3074 - Plan 1: Selected indices: []
+Sample 3074 - Plan 1: X-Table after operation df:
+         race_name
+0  surround stakes
+1   warwick stakes
+Sample 3074 - Plan 1: Table after operation: [['race_name'], ['surround stakes'], ['warwick stakes']]
+Fall-back: FALSE
+Answer from plan 1: [['surround stakes'], ['warwick stakes']]
+Groundtruth: ['Surround Stakes', 'Warwick Stakes']

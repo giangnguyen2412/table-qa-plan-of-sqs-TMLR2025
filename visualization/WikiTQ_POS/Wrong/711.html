@@ -1,0 +1,253 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how many of the five largest flood on the river trent occurred after 1900?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Order the table by the 'date_n' column in descending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>rank_n</td>
+<td>date_n</td>
+<td>level_at_trent_bridge_nm</td>
+<td>level_at_trent_bridge_nft</td>
+<td>peak_flow_nm3_s</td>
+<td>peak_flow_ncfs</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">february 1795</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24.55</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">80.5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1,416</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">50,000</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">october 1875</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24.38</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">80.0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1,274</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">45,000</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">march 1947</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24.30</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">79.7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1,107</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">39,100</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">november 1852</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24.26</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">79.6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1,082</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">38,200</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">november 2000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">23.80</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">78.1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1,019</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">36,000</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">normal / avg flow</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20.7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">68</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">84</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3,000</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select the top five rows.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>rank_n</td>
+<td>date_n</td>
+<td>level_at_trent_bridge_nm</td>
+<td>level_at_trent_bridge_nft</td>
+<td>peak_flow_nm3_s</td>
+<td>peak_flow_ncfs</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>october 1875</td>
+<td>24.38</td>
+<td>80.0</td>
+<td>1,274</td>
+<td>45,000</td>
+</tr>
+<tr>
+<td>5.0</td>
+<td>november 2000</td>
+<td>23.8</td>
+<td>78.1</td>
+<td>1,019</td>
+<td>36,000</td>
+</tr>
+<tr>
+<td>4.0</td>
+<td>november 1852</td>
+<td>24.26</td>
+<td>79.6</td>
+<td>1,082</td>
+<td>38,200</td>
+</tr>
+<tr>
+<td>None</td>
+<td>normal / avg flow</td>
+<td>20.7</td>
+<td>68.0</td>
+<td>84</td>
+<td>3,000</td>
+</tr>
+<tr>
+<td>3.0</td>
+<td>march 1947</td>
+<td>24.3</td>
+<td>79.7</td>
+<td>1,107</td>
+<td>39,100</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>february 1795</td>
+<td>24.55</td>
+<td>80.5</td>
+<td>1,416</td>
+<td>50,000</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Filter the selected rows to include only those where the 'date_n' is after 1900.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>rank_n</td>
+<td>date_n</td>
+<td>level_at_trent_bridge_nm</td>
+<td>level_at_trent_bridge_nft</td>
+<td>peak_flow_nm3_s</td>
+<td>peak_flow_ncfs</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>october 1875</td>
+<td>24.38</td>
+<td>80.0</td>
+<td>1,274</td>
+<td>45,000</td>
+</tr>
+<tr>
+<td>5.0</td>
+<td>november 2000</td>
+<td>23.8</td>
+<td>78.1</td>
+<td>1,019</td>
+<td>36,000</td>
+</tr>
+<tr>
+<td>4.0</td>
+<td>november 1852</td>
+<td>24.26</td>
+<td>79.6</td>
+<td>1,082</td>
+<td>38,200</td>
+</tr>
+<tr>
+<td>None</td>
+<td>normal / avg flow</td>
+<td>20.7</td>
+<td>68.0</td>
+<td>84</td>
+<td>3,000</td>
+</tr>
+<tr>
+<td>3.0</td>
+<td>march 1947</td>
+<td>24.3</td>
+<td>79.7</td>
+<td>1,107</td>
+<td>39,100</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Count the number of rows that meet the above condition.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>rank_n</td>
+<td>date_n</td>
+<td>level_at_trent_bridge_nm</td>
+<td>level_at_trent_bridge_nft</td>
+<td>peak_flow_nm3_s</td>
+<td>peak_flow_ncfs</td>
+</tr>
+<tr>
+<td>5.0</td>
+<td>november 2000</td>
+<td>23.8</td>
+<td>78.1</td>
+<td>1,019</td>
+<td>36,000</td>
+</tr>
+<tr>
+<td>3.0</td>
+<td>march 1947</td>
+<td>24.3</td>
+<td>79.7</td>
+<td>1,107</td>
+<td>39,100</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>COUNT(*)</td>
+</tr>
+<tr>
+<td>1</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[1]]</h3>
+</body></html>

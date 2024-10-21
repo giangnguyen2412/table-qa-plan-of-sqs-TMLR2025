@@ -1,0 +1,83 @@
+************************************************************************************************************************
+Sample 1153 - Plan 1: Query: what are the total number of robots in the middle east?
+Sample 1153 - Plan 1: Groundtruth: ['3']
+Sample 1153 - Plan 1: X-Original table pd: 
+         subject                   robot_s_name                     who_  \
+0   solar system                      cosmo-bot               copernicus   
+1       olympics                   rhonda robot                   greeks   
+2     basketball              danny defrost-bot           james naismith   
+3        nursing                    dr. bug-bot     florence nightengale   
+4     scuba gear     flip the high-diving robot         jacques cousteau   
+5     helicopter                 amelia air-bot        leonardo da vinci   
+6    corn flakes                 chef boy-robot          william kellogg   
+7         radium               miss battery-bot              marie curie   
+8    chewing gum                     bubble-bot                   mayans   
+9       painting                     pierro-bot         stone-age humans   
+10    phonograph    slide the heavy-metal robot            thomas edison   
+11         paper                  noshi origami                ts'ai lun   
+12   round earth                 vasco da robot       ferdinand magellan   
+13      dynamite                    robby robot             alfred nobel   
+14    microscope                         slobot  antonie van leeuwenhoek   
+15       writing                     eraser-bot                sumerians   
+16       sausage                       sock-bot              babylonians   
+17       bicycle                    booster-bot           karl von drais   
+18         wheel               rollin' road-bot                sumerians   
+19         germs                      roast-bot            louis pasteur   
+20     boomerang       oswald the mailman robot               aborigines   
+21         coins             verna the vend-bot                  lydians   
+22         tools        hank the handyman robot         stone-age humans   
+23     saxophone  bongo-bot the six-armed robot       antoine-joseph sax   
+24        toilet        brunwella the bombshell                  minoans   
+
+                   when_                  where_             occupation  
+0                   1531                  poland              cosmonaut  
+1               776 b.c.                  greece           beauty queen  
+2                   1891           united states                snowman  
+3                   1860                 england                 doctor  
+4                   1946                  france                  diver  
+5                   1483                   italy                  pilot  
+6                   1894  battle creek, michigan                   cook  
+7                   1898                  france           battery lady  
+8                    400                  mexico             bubble man  
+9            35,000 b.c.                  europe           clown/artist  
+10                  1877              new jersey              rock star  
+11                   105                   china          origami maker  
+12                  1522                   spain           early sailor  
+13                  1866                  sweden              prankster  
+14                  1674         the netherlands           dirty person  
+15            3,500 b.c.             middle east             pencil man  
+16            3,000 b.c.             middle east               sock man  
+17                  1816                 germany             rocket man  
+18            3,000 b.c.             middle east           race starter  
+19                  1865                  france            firefighter  
+20      40,000 years ago               australia                mailman  
+21              600 b.c.                  turkey        vending machine  
+22  2½ million years ago                  africa               mechanic  
+23                  1846                  france  six-armed drum player  
+24             2000 b.c.                   crete             demolisher  
+Sample 1153 - Plan 1: Caption: none
+Sample 1153 - Plan 1: Original table: [['subject', 'robot_s_name', 'who_', 'when_', 'where_', 'occupation'], ['solar system', 'cosmo-bot', 'copernicus', '1531', 'poland', 'cosmonaut'], ['olympics', 'rhonda robot', 'greeks', '776 b.c.', 'greece', 'beauty queen'], ['basketball', 'danny defrost-bot', 'james naismith', '1891', 'united states', 'snowman'], ['nursing', 'dr. bug-bot', 'florence nightengale', '1860', 'england', 'doctor'], ['scuba gear', 'flip the high-diving robot', 'jacques cousteau', '1946', 'france', 'diver'], ['helicopter', 'amelia air-bot', 'leonardo da vinci', '1483', 'italy', 'pilot'], ['corn flakes', 'chef boy-robot', 'william kellogg', '1894', 'battle creek, michigan', 'cook'], ['radium', 'miss battery-bot', 'marie curie', '1898', 'france', 'battery lady'], ['chewing gum', 'bubble-bot', 'mayans', '400', 'mexico', 'bubble man'], ['painting', 'pierro-bot', 'stone-age humans', '35,000 b.c.', 'europe', 'clown/artist'], ['phonograph', 'slide the heavy-metal robot', 'thomas edison', '1877', 'new jersey', 'rock star'], ['paper', 'noshi origami', "ts'ai lun", '105', 'china', 'origami maker'], ['round earth', 'vasco da robot', 'ferdinand magellan', '1522', 'spain', 'early sailor'], ['dynamite', 'robby robot', 'alfred nobel', '1866', 'sweden', 'prankster'], ['microscope', 'slobot', 'antonie van leeuwenhoek', '1674', 'the netherlands', 'dirty person'], ['writing', 'eraser-bot', 'sumerians', '3,500 b.c.', 'middle east', 'pencil man'], ['sausage', 'sock-bot', 'babylonians', '3,000 b.c.', 'middle east', 'sock man'], ['bicycle', 'booster-bot', 'karl von drais', '1816', 'germany', 'rocket man'], ['wheel', "rollin' road-bot", 'sumerians', '3,000 b.c.', 'middle east', 'race starter'], ['germs', 'roast-bot', 'louis pasteur', '1865', 'france', 'firefighter'], ['boomerang', 'oswald the mailman robot', 'aborigines', '40,000 years ago', 'australia', 'mailman'], ['coins', 'verna the vend-bot', 'lydians', '600 b.c.', 'turkey', 'vending machine'], ['tools', 'hank the handyman robot', 'stone-age humans', '2½ million years ago', 'africa', 'mechanic'], ['saxophone', 'bongo-bot the six-armed robot', 'antoine-joseph sax', '1846', 'france', 'six-armed drum player'], ['toilet', 'brunwella the bombshell', 'minoans', '2000 b.c.', 'crete', 'demolisher']]
+########################################################################################################################
+Sample 1153 - Plan 1: Operation 1: Select rows where 'where_' is 'middle east'.
+Sample 1153 - Plan 1: Selected indices: [[15, 4], [18, 4], [16, 4]]
+Sample 1153 - Plan 1: X-Table after operation df:
+   subject      robot_s_name         who_       when_       where_  \
+0  writing        eraser-bot    sumerians  3,500 b.c.  middle east   
+1  sausage          sock-bot  babylonians  3,000 b.c.  middle east   
+2    wheel  rollin' road-bot    sumerians  3,000 b.c.  middle east   
+
+     occupation  
+0    pencil man  
+1      sock man  
+2  race starter  
+Sample 1153 - Plan 1: Table after operation: [['subject', 'robot_s_name', 'who_', 'when_', 'where_', 'occupation'], ['writing', 'eraser-bot', 'sumerians', '3,500 b.c.', 'middle east', 'pencil man'], ['sausage', 'sock-bot', 'babylonians', '3,000 b.c.', 'middle east', 'sock man'], ['wheel', "rollin' road-bot", 'sumerians', '3,000 b.c.', 'middle east', 'race starter']]
+########################################################################################################################
+Sample 1153 - Plan 1: Operation 2: Count the number of rows.
+Sample 1153 - Plan 1: Selected indices: []
+Sample 1153 - Plan 1: X-Table after operation df:
+   row_count
+0          3
+Sample 1153 - Plan 1: Table after operation: [['row_count'], [3]]
+Fall-back: FALSE
+Answer from plan 1: [[3]]
+Groundtruth: ['3']

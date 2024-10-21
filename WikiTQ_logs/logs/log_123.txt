@@ -1,0 +1,68 @@
+************************************************************************************************************************
+Sample 123 - Plan 1: Query: what were the most labels?
+Sample 123 - Plan 1: Groundtruth: ['Becket']
+Sample 123 - Plan 1: X-Original table pd: 
+   year                        name        label hot_black_singles  \
+0  1982  "he's gonna take you home"       becket                 ―   
+1  1982             "thanks to you"       becket               #44   
+2  1983            "i need you now"         jive                 ―   
+3  1984                 "thin line"  power house                 ―   
+4  1986              "say it again"       spring                 ―   
+5  1986              "say it again"       spring                 ―   
+6  1987            "send it c.o.d."    new image                 ―   
+
+  club_play_singles  
+0                 ―  
+1                #1  
+2                 ―  
+3                 ―  
+4                 ―  
+5                 ―  
+6                 ―  
+Sample 123 - Plan 1: Caption: none
+Sample 123 - Plan 1: Original table: [['year', 'name', 'label', 'hot_black_singles', 'club_play_singles'], ['1982', '"he\'s gonna take you home"', 'becket', '―', '―'], ['1982', '"thanks to you"', 'becket', '#44', '#1'], ['1983', '"i need you now"', 'jive', '―', '―'], ['1984', '"thin line"', 'power house', '―', '―'], ['1986', '"say it again"', 'spring', '―', '―'], ['1986', '"say it again"', 'spring', '―', '―'], ['1987', '"send it c.o.d."', 'new image', '―', '―']]
+########################################################################################################################
+Sample 123 - Plan 1: Operation 1: Select the 'label' column.
+Sample 123 - Plan 1: Selected indices: []
+Sample 123 - Plan 1: X-Table after operation df:
+         label
+0       becket
+1       becket
+2         jive
+3  power house
+4       spring
+5       spring
+6    new image
+Sample 123 - Plan 1: Table after operation: [['label'], ['becket'], ['becket'], ['jive'], ['power house'], ['spring'], ['spring'], ['new image']]
+########################################################################################################################
+Sample 123 - Plan 1: Operation 2: Count the occurrences of each label.
+Sample 123 - Plan 1: Selected indices: [[0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0]]
+Sample 123 - Plan 1: X-Table after operation df:
+         label  occurrences
+0       becket            2
+1         jive            1
+2    new image            1
+3  power house            1
+4       spring            2
+Sample 123 - Plan 1: Table after operation: [['label', 'occurrences'], ['becket', 2], ['jive', 1], ['new image', 1], ['power house', 1], ['spring', 2]]
+########################################################################################################################
+Sample 123 - Plan 1: Operation 3: Order the labels by the count in descending order.
+Sample 123 - Plan 1: Selected indices: []
+Sample 123 - Plan 1: X-Table after operation df:
+         label  occurrences
+0       becket            2
+1       spring            2
+2         jive            1
+3    new image            1
+4  power house            1
+Sample 123 - Plan 1: Table after operation: [['label', 'occurrences'], ['becket', 2], ['spring', 2], ['jive', 1], ['new image', 1], ['power house', 1]]
+########################################################################################################################
+Sample 123 - Plan 1: Operation 4: Select the label with the highest count.
+Sample 123 - Plan 1: Selected indices: []
+Sample 123 - Plan 1: X-Table after operation df:
+    label
+0  becket
+Sample 123 - Plan 1: Table after operation: [['label'], ['becket']]
+Fall-back: FALSE
+Answer from plan 1: [['becket']]
+Groundtruth: ['Becket']

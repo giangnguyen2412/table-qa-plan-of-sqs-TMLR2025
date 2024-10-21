@@ -1,0 +1,63 @@
+************************************************************************************************************************
+Sample 3370 - Plan 1: Query: how many races occurred in 2010 and 2012?
+Sample 3370 - Plan 1: Groundtruth: ['38']
+Sample 3370 - Plan 1: X-Original table pd: 
+    season                                     series                team  \
+0     2007            asian formula renault challenge   champ motorsports   
+1     2008            asian formula renault challenge   champ motorsports   
+2     2009            asian formula renault challenge    asia racing team   
+3     2009  formula renault 2.0 northern european cup   krenek motorsport   
+4     2010                           ats formel 3 cup      china sonangol   
+5     2010                      austria formula 3 cup   sonangol motopark   
+6     2011                       formula pilota china    asia racing team   
+7     2012                      formula 3 euro series  angola racing team   
+8     2012            59th macau grand prix formula 3  angola racing team   
+9     2012                       masters of formula 3  angola racing team   
+10    2012             british formula 3 championship  angola racing team   
+11    2013                                 gp3 series              carlin   
+
+    races  wins  poles  f_laps  podiums points position  
+0      12     0      0       0        1     64     14th  
+1      13     0      0       0        3    193      4th  
+2      12     6      2       4        7    287      2nd  
+3      14     0      0       0        0     44     21st  
+4       5     0      0       0        0      0     19th  
+5       4     1      2       3        2     35      9th  
+6      12     2      0       0        3    124      2nd  
+7      21     0      0       0        0     14     14th  
+8       2     0      0       0        0      —     23rd  
+9       1     0      0       0        0      —     18th  
+10      5     0      0       0        0      —        —  
+11     16     0      0       0        0      0     23rd  
+Sample 3370 - Plan 1: Caption: none
+Sample 3370 - Plan 1: Original table: [['season', 'series', 'team', 'races', 'wins', 'poles', 'f_laps', 'podiums', 'points', 'position'], ['2007', 'asian formula renault challenge', 'champ motorsports', '12', '0', '0', '0', '1', '64', '14th'], ['2008', 'asian formula renault challenge', 'champ motorsports', '13', '0', '0', '0', '3', '193', '4th'], ['2009', 'asian formula renault challenge', 'asia racing team', '12', '6', '2', '4', '7', '287', '2nd'], ['2009', 'formula renault 2.0 northern european cup', 'krenek motorsport', '14', '0', '0', '0', '0', '44', '21st'], ['2010', 'ats formel 3 cup', 'china sonangol', '5', '0', '0', '0', '0', '0', '19th'], ['2010', 'austria formula 3 cup', 'sonangol motopark', '4', '1', '2', '3', '2', '35', '9th'], ['2011', 'formula pilota china', 'asia racing team', '12', '2', '0', '0', '3', '124', '2nd'], ['2012', 'formula 3 euro series', 'angola racing team', '21', '0', '0', '0', '0', '14', '14th'], ['2012', '59th macau grand prix formula 3', 'angola racing team', '2', '0', '0', '0', '0', '—', '23rd'], ['2012', 'masters of formula 3', 'angola racing team', '1', '0', '0', '0', '0', '—', '18th'], ['2012', 'british formula 3 championship', 'angola racing team', '5', '0', '0', '0', '0', '—', '—'], ['2013', 'gp3 series', 'carlin', '16', '0', '0', '0', '0', '0', '23rd']]
+########################################################################################################################
+Sample 3370 - Plan 1: Operation 1: Select rows where 'season' is either '2010' or '2012'.
+Sample 3370 - Plan 1: Selected indices: [[9, 0], [4, 0], [7, 0], [8, 0], [10, 0], [5, 0]]
+Sample 3370 - Plan 1: X-Table after operation df:
+   season                           series                team  races  wins  \
+0    2010                 ats formel 3 cup      china sonangol      5     0   
+1    2010            austria formula 3 cup   sonangol motopark      4     1   
+2    2012            formula 3 euro series  angola racing team     21     0   
+3    2012  59th macau grand prix formula 3  angola racing team      2     0   
+4    2012             masters of formula 3  angola racing team      1     0   
+5    2012   british formula 3 championship  angola racing team      5     0   
+
+   poles  f_laps  podiums points position  
+0      0       0        0      0     19th  
+1      2       3        2     35      9th  
+2      0       0        0     14     14th  
+3      0       0        0      —     23rd  
+4      0       0        0      —     18th  
+5      0       0        0      —        —  
+Sample 3370 - Plan 1: Table after operation: [['season', 'series', 'team', 'races', 'wins', 'poles', 'f_laps', 'podiums', 'points', 'position'], [2010, 'ats formel 3 cup', 'china sonangol', 5, 0, 0, 0, 0, '0', '19th'], [2010, 'austria formula 3 cup', 'sonangol motopark', 4, 1, 2, 3, 2, '35', '9th'], [2012, 'formula 3 euro series', 'angola racing team', 21, 0, 0, 0, 0, '14', '14th'], [2012, '59th macau grand prix formula 3', 'angola racing team', 2, 0, 0, 0, 0, '—', '23rd'], [2012, 'masters of formula 3', 'angola racing team', 1, 0, 0, 0, 0, '—', '18th'], [2012, 'british formula 3 championship', 'angola racing team', 5, 0, 0, 0, 0, '—', '—']]
+########################################################################################################################
+Sample 3370 - Plan 1: Operation 2: Count the number of rows.
+Sample 3370 - Plan 1: Selected indices: []
+Sample 3370 - Plan 1: X-Table after operation df:
+   row_count
+0          6
+Sample 3370 - Plan 1: Table after operation: [['row_count'], [6]]
+Fall-back: FALSE
+Answer from plan 1: [[6]]
+Groundtruth: ['38']

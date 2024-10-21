@@ -1,0 +1,66 @@
+************************************************************************************************************************
+Sample 2183 - Plan 1: Query: who scored the most goals?
+Sample 2183 - Plan 1: Groundtruth: ['Spas Delev']
+Sample 2183 - Plan 1: X-Original table pd: 
+                 player  league  cup  europa_nleague  total
+0            spas delev      13    7               2     22
+1            marquinhos       9    1               3     13
+2        michel platini      10    0               0     10
+3      cillian sheridan       4    2               1      7
+4       giuseppe aquaro       3    0               2      5
+5        gregory nelson       3    0               1      4
+6        rumen trifonov       2    0               1      3
+7      aleksandar tonev       2    0               0      2
+8         apostol popov       2    0               0      2
+9         emil gargorov       2    0               0      2
+10        todor yanchev       0    1               1      2
+11     stanislav kostov       1    0               0      1
+12    kostadin stoyanov       1    0               0      1
+13        boris galchev       1    0               0      1
+14        pavel vidanov       0    0               1      1
+15  tomislav kostadinov       0    0               1      1
+16     christian tiboni       0    0               1      1
+17                total      53   11              14     78
+Sample 2183 - Plan 1: Caption: none
+Sample 2183 - Plan 1: Original table: [['player', 'league', 'cup', 'europa_nleague', 'total'], ['spas delev', '13', '7', '2', '22'], ['marquinhos', '9', '1', '3', '13'], ['michel platini', '10', '0', '0', '10'], ['cillian sheridan', '4', '2', '1', '7'], ['giuseppe aquaro', '3', '0', '2', '5'], ['gregory nelson', '3', '0', '1', '4'], ['rumen trifonov', '2', '0', '1', '3'], ['aleksandar tonev', '2', '0', '0', '2'], ['apostol popov', '2', '0', '0', '2'], ['emil gargorov', '2', '0', '0', '2'], ['todor yanchev', '0', '1', '1', '2'], ['stanislav kostov', '1', '0', '0', '1'], ['kostadin stoyanov', '1', '0', '0', '1'], ['boris galchev', '1', '0', '0', '1'], ['pavel vidanov', '0', '0', '1', '1'], ['tomislav kostadinov', '0', '0', '1', '1'], ['christian tiboni', '0', '0', '1', '1'], ['total', '53', '11', '14', '78']]
+########################################################################################################################
+Sample 2183 - Plan 1: Operation 1: Order the table by the 'total' column in descending order.
+Sample 2183 - Plan 1: Selected indices: [[4, 4], [7, 4], [2, 4], [12, 4], [0, 4], [3, 4], [8, 4], [13, 4], [14, 4], [10, 4], [5, 4], [15, 4], [6, 4], [1, 4], [17, 4], [16, 4], [11, 4], [9, 4]]
+Sample 2183 - Plan 1: X-Table after operation df:
+                 player  league  cup  europa_nleague  total
+0                 total      53   11              14     78
+1            spas delev      13    7               2     22
+2            marquinhos       9    1               3     13
+3        michel platini      10    0               0     10
+4      cillian sheridan       4    2               1      7
+5       giuseppe aquaro       3    0               2      5
+6        gregory nelson       3    0               1      4
+7        rumen trifonov       2    0               1      3
+8      aleksandar tonev       2    0               0      2
+9         apostol popov       2    0               0      2
+10        emil gargorov       2    0               0      2
+11        todor yanchev       0    1               1      2
+12     stanislav kostov       1    0               0      1
+13    kostadin stoyanov       1    0               0      1
+14        boris galchev       1    0               0      1
+15        pavel vidanov       0    0               1      1
+16  tomislav kostadinov       0    0               1      1
+17     christian tiboni       0    0               1      1
+Sample 2183 - Plan 1: Table after operation: [['player', 'league', 'cup', 'europa_nleague', 'total'], ['total', 53, 11, 14, 78], ['spas delev', 13, 7, 2, 22], ['marquinhos', 9, 1, 3, 13], ['michel platini', 10, 0, 0, 10], ['cillian sheridan', 4, 2, 1, 7], ['giuseppe aquaro', 3, 0, 2, 5], ['gregory nelson', 3, 0, 1, 4], ['rumen trifonov', 2, 0, 1, 3], ['aleksandar tonev', 2, 0, 0, 2], ['apostol popov', 2, 0, 0, 2], ['emil gargorov', 2, 0, 0, 2], ['todor yanchev', 0, 1, 1, 2], ['stanislav kostov', 1, 0, 0, 1], ['kostadin stoyanov', 1, 0, 0, 1], ['boris galchev', 1, 0, 0, 1], ['pavel vidanov', 0, 0, 1, 1], ['tomislav kostadinov', 0, 0, 1, 1], ['christian tiboni', 0, 0, 1, 1]]
+########################################################################################################################
+Sample 2183 - Plan 1: Operation 2: Select row number 1.
+Sample 2183 - Plan 1: Selected indices: []
+Sample 2183 - Plan 1: X-Table after operation df:
+  player  league  cup  europa_nleague  total
+0  total      53   11              14     78
+Sample 2183 - Plan 1: Table after operation: [['player', 'league', 'cup', 'europa_nleague', 'total'], ['total', 53, 11, 14, 78]]
+########################################################################################################################
+Sample 2183 - Plan 1: Operation 3: Select the 'player' column.
+Sample 2183 - Plan 1: Selected indices: []
+Sample 2183 - Plan 1: X-Table after operation df:
+  player
+0  total
+Sample 2183 - Plan 1: Table after operation: [['player'], ['total']]
+Fall-back: FALSE
+Answer from plan 1: [['total']]
+Groundtruth: ['Spas Delev']

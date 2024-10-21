@@ -1,0 +1,65 @@
+************************************************************************************************************************
+Sample 1298 - Plan 1: Query: when was the captain charles locomotive built?
+Sample 1298 - Plan 1: Groundtruth: ['1960']
+Sample 1298 - Plan 1: X-Original table pd: 
+  number                 name                                    type  \
+0                  brightside          yorkshire engine company 0-4-0   
+1      6     roger h. bennett  yorkshire engine company "janus" 0-6-0   
+2  d2334                                                     class 04   
+3  25322      tamworth castle                                class 25   
+4  33021      captain charles                                class 33   
+5  33102  sophie (unofficial)                                class 33   
+6  37407                                                     class 37   
+7  37424                                                     class 37   
+8  47524                                                     class 47   
+
+                 livery             status  \
+0                 black       under repair   
+1              ncb blue        operational   
+2                 green       under repair   
+3  "ice cream van" blue     static display   
+4                  blue        operational   
+5                  blue        operational   
+6        transrail grey             stored   
+7        transrail grey             stored   
+8  rail express systems  under restoration   
+
+                                               notes  
+0                  currently dismantled for overhaul  
+1                                                  ~  
+2      stopped at sep 2012 diesel gala after failure  
+3       built in 1967. cosmetically restored in 2008  
+4                 built in 1960. on loan from tysley  
+5  built in 1960. launched sep 2012 - restoration...  
+6                                                  ~  
+7                                                  ~  
+8                                                  ~  
+Sample 1298 - Plan 1: Caption: none
+Sample 1298 - Plan 1: Original table: [['number', 'name', 'type', 'livery', 'status', 'notes'], ['', 'brightside', 'yorkshire engine company 0-4-0', 'black', 'under repair', 'currently dismantled for overhaul'], ['6', 'roger h. bennett', 'yorkshire engine company "janus" 0-6-0', 'ncb blue', 'operational', '~'], ['d2334', '', 'class 04', 'green', 'under repair', 'stopped at sep 2012 diesel gala after failure'], ['25322', 'tamworth castle', 'class 25', '"ice cream van" blue', 'static display', 'built in 1967. cosmetically restored in 2008'], ['33021', 'captain charles', 'class 33', 'blue', 'operational', 'built in 1960. on loan from tysley'], ['33102', 'sophie (unofficial)', 'class 33', 'blue', 'operational', 'built in 1960. launched sep 2012 - restoration still being completed although the loco is now in service'], ['37407', '', 'class 37', 'transrail grey', 'stored', '~'], ['37424', '', 'class 37', 'transrail grey', 'stored', '~'], ['47524', '', 'class 47', 'rail express systems', 'under restoration', '~']]
+########################################################################################################################
+Sample 1298 - Plan 1: Operation 1: Select rows where the 'name' is 'captain charles'.
+Sample 1298 - Plan 1: Selected indices: [[4, 1]]
+Sample 1298 - Plan 1: X-Table after operation df:
+   number             name      type livery       status  \
+0   33021  captain charles  class 33   blue  operational   
+
+                                notes  
+0  built in 1960. on loan from tysley  
+Sample 1298 - Plan 1: Table after operation: [['number', 'name', 'type', 'livery', 'status', 'notes'], ['33021', 'captain charles', 'class 33', 'blue', 'operational', 'built in 1960. on loan from tysley']]
+########################################################################################################################
+Sample 1298 - Plan 1: Operation 2: Select the 'notes' column.
+Sample 1298 - Plan 1: Selected indices: []
+Sample 1298 - Plan 1: X-Table after operation df:
+                                notes
+0  built in 1960. on loan from tysley
+Sample 1298 - Plan 1: Table after operation: [['notes'], ['built in 1960. on loan from tysley']]
+########################################################################################################################
+Sample 1298 - Plan 1: Operation 3: Extract the information about the locomotive's build date from the 'notes' column.
+Sample 1298 - Plan 1: Selected indices: []
+Sample 1298 - Plan 1: X-Table after operation df:
+   build_date
+0        1960
+Sample 1298 - Plan 1: Table after operation: [['build_date'], ['1960']]
+Fall-back: FALSE
+Answer from plan 1: [['1960']]
+Groundtruth: ['1960']

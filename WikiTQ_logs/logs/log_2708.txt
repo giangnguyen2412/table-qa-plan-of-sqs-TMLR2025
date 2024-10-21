@@ -1,0 +1,73 @@
+************************************************************************************************************************
+Sample 2708 - Plan 1: Query: how many times were the winner of the state/territory men's division and the winner of the state/territory women's division both from new south wales?
+Sample 2708 - Plan 1: Groundtruth: ['2']
+Sample 2708 - Plan 1: X-Original table pd: 
+    year state_territory_men_s_division state_territory_women_s_division  \
+0   2012                     queensland                  new south wales   
+1   2012                new south wales                  new south wales   
+2   2011                new south wales                  new south wales   
+3   2010              western australia                                    
+4   2009                     queensland                                    
+5   2008                     queensland                                    
+6   2007                new south wales                                    
+7   2006                     queensland                                    
+8   2005                     queensland                                    
+9   2004                     queensland                                    
+10  2003                new south wales                                    
+11  2002             northern territory                                    
+12  2001                       tasmania                                    
+
+   major_centres_division community_division women_s_division  
+0                                                              
+1                  darwin   brothers in arms    bush potatoes  
+2          maranoa murris         gap angels    bush potatoes  
+3                                                              
+4               alkupitja        tangentyere  new south wales  
+5               katherine           cooktown  new south wales  
+6               alkupitja         cat tigers      cga cougars  
+7           alice springs    melville island           darwin  
+8           alice springs          alkupitja           darwin  
+9           alice springs          normanton    tennant creek  
+10                 darwin                                      
+11                 darwin                                      
+12                                                             
+Sample 2708 - Plan 1: Caption: none
+Sample 2708 - Plan 1: Original table: [['year', 'state_territory_men_s_division', 'state_territory_women_s_division', 'major_centres_division', 'community_division', 'women_s_division'], ['2012', 'queensland', 'new south wales', '', '', ''], ['2012', 'new south wales', 'new south wales', 'darwin', 'brothers in arms', 'bush potatoes'], ['2011', 'new south wales', 'new south wales', 'maranoa murris', 'gap angels', 'bush potatoes'], ['2010', 'western australia', '', '', '', ''], ['2009', 'queensland', '', 'alkupitja', 'tangentyere', 'new south wales'], ['2008', 'queensland', '', 'katherine', 'cooktown', 'new south wales'], ['2007', 'new south wales', '', 'alkupitja', 'cat tigers', 'cga cougars'], ['2006', 'queensland', '', 'alice springs', 'melville island', 'darwin'], ['2005', 'queensland', '', 'alice springs', 'alkupitja', 'darwin'], ['2004', 'queensland', '', 'alice springs', 'normanton', 'tennant creek'], ['2003', 'new south wales', '', 'darwin', '', ''], ['2002', 'northern territory', '', 'darwin', '', ''], ['2001', 'tasmania', '', '', '', '']]
+########################################################################################################################
+Sample 2708 - Plan 1: Operation 1: Select rows where the winner of the state/territory men's division is 'new south wales'.
+Sample 2708 - Plan 1: Selected indices: [[6, 1], [1, 1], [10, 1], [2, 1]]
+Sample 2708 - Plan 1: X-Table after operation df:
+   year state_territory_men_s_division state_territory_women_s_division  \
+0  2012                new south wales                  new south wales   
+1  2011                new south wales                  new south wales   
+2  2007                new south wales                                    
+3  2003                new south wales                                    
+
+  major_centres_division community_division women_s_division  
+0                 darwin   brothers in arms    bush potatoes  
+1         maranoa murris         gap angels    bush potatoes  
+2              alkupitja         cat tigers      cga cougars  
+3                 darwin                                      
+Sample 2708 - Plan 1: Table after operation: [['year', 'state_territory_men_s_division', 'state_territory_women_s_division', 'major_centres_division', 'community_division', 'women_s_division'], [2012, 'new south wales', 'new south wales', 'darwin', 'brothers in arms', 'bush potatoes'], [2011, 'new south wales', 'new south wales', 'maranoa murris', 'gap angels', 'bush potatoes'], [2007, 'new south wales', '', 'alkupitja', 'cat tigers', 'cga cougars'], [2003, 'new south wales', '', 'darwin', '', '']]
+########################################################################################################################
+Sample 2708 - Plan 1: Operation 2: Select rows where the winner of the state/territory women's division is also 'new south wales'.
+Sample 2708 - Plan 1: Selected indices: [[0, 2], [1, 2]]
+Sample 2708 - Plan 1: X-Table after operation df:
+   year state_territory_men_s_division state_territory_women_s_division  \
+0  2012                new south wales                  new south wales   
+1  2011                new south wales                  new south wales   
+
+  major_centres_division community_division women_s_division  
+0                 darwin   brothers in arms    bush potatoes  
+1         maranoa murris         gap angels    bush potatoes  
+Sample 2708 - Plan 1: Table after operation: [['year', 'state_territory_men_s_division', 'state_territory_women_s_division', 'major_centres_division', 'community_division', 'women_s_division'], [2012, 'new south wales', 'new south wales', 'darwin', 'brothers in arms', 'bush potatoes'], [2011, 'new south wales', 'new south wales', 'maranoa murris', 'gap angels', 'bush potatoes']]
+########################################################################################################################
+Sample 2708 - Plan 1: Operation 3: Count the number of rows that satisfy both conditions.
+Sample 2708 - Plan 1: Selected indices: []
+Sample 2708 - Plan 1: X-Table after operation df:
+   row_count
+0          1
+Sample 2708 - Plan 1: Table after operation: [['row_count'], [1]]
+Fall-back: FALSE
+Answer from plan 1: [[1]]
+Groundtruth: ['2']

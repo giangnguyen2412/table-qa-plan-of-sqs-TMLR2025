@@ -1,0 +1,50 @@
+************************************************************************************************************************
+Sample 2905 - Plan 1: Query: who reigned after randy savage in 1981?
+Sample 2905 - Plan 1: Groundtruth: ['Lanny Poffo']
+Sample 2905 - Plan 1: X-Original table pd: 
+      wrestler_  reigns_              date_                     place_  \
+0   lanny poffo        1       may 10, 1978  san francisco, california   
+1  randy savage        1     march 13, 1979       halifax, nova scotia   
+2   lanny poffo        2      july 21, 1979        lexington, kentucky   
+3  randy savage        2               1981                    unknown   
+4   lanny poffo        3               1981                    unknown   
+5  randy savage        3               1982                    unknown   
+6  paul christy        1  november 13, 1983      springfield, illinois   
+7   lanny poffo        4    january 1, 1984      springfield, illinois   
+
+                                            notes_  
+0  defeated joe banek to become the first champion  
+1                                                   
+2                                                   
+3                                                   
+4                                                   
+5                                                   
+6                                                   
+7                                                   
+Sample 2905 - Plan 1: Caption: none
+Sample 2905 - Plan 1: Original table: [['wrestler_', 'reigns_', 'date_', 'place_', 'notes_'], ['lanny poffo', '1', 'may 10, 1978', 'san francisco, california', 'defeated joe banek to become the first champion'], ['randy savage', '1', 'march 13, 1979', 'halifax, nova scotia', ''], ['lanny poffo', '2', 'july 21, 1979', 'lexington, kentucky', ''], ['randy savage', '2', '1981', 'unknown', ''], ['lanny poffo', '3', '1981', 'unknown', ''], ['randy savage', '3', '1982', 'unknown', ''], ['paul christy', '1', 'november 13, 1983', 'springfield, illinois', ''], ['lanny poffo', '4', 'january 1, 1984', 'springfield, illinois', '']]
+########################################################################################################################
+Sample 2905 - Plan 1: Operation 1: Select rows where 'date_' is '1981'.
+Sample 2905 - Plan 1: Selected indices: [[3, 2], [4, 2]]
+Sample 2905 - Plan 1: X-Table after operation df:
+      wrestler_  reigns_  date_   place_  notes_
+0  randy savage        2   1981  unknown     NaN
+1   lanny poffo        3   1981  unknown     NaN
+Sample 2905 - Plan 1: Table after operation: [['wrestler_', 'reigns_', 'date_', 'place_', 'notes_'], ['randy savage', 2, '1981', 'unknown', ''], ['lanny poffo', 3, '1981', 'unknown', '']]
+########################################################################################################################
+Sample 2905 - Plan 1: Operation 2: Select rows where 'reigns_' is greater than 2.
+Sample 2905 - Plan 1: Selected indices: [[1, 1]]
+Sample 2905 - Plan 1: X-Table after operation df:
+     wrestler_  reigns_  date_   place_  notes_
+0  lanny poffo        3   1981  unknown     NaN
+Sample 2905 - Plan 1: Table after operation: [['wrestler_', 'reigns_', 'date_', 'place_', 'notes_'], ['lanny poffo', 3, 1981, 'unknown', None]]
+########################################################################################################################
+Sample 2905 - Plan 1: Operation 3: Select the 'wrestler_' column.
+Sample 2905 - Plan 1: Selected indices: []
+Sample 2905 - Plan 1: X-Table after operation df:
+     wrestler_
+0  lanny poffo
+Sample 2905 - Plan 1: Table after operation: [['wrestler_'], ['lanny poffo']]
+Fall-back: FALSE
+Answer from plan 1: [['lanny poffo']]
+Groundtruth: ['Lanny Poffo']

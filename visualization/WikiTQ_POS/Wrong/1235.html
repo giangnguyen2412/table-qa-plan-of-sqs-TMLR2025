@@ -1,0 +1,288 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which college had the most picks?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Group the table by the 'college' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>pick__</td>
+<td>nfl_team</td>
+<td>player</td>
+<td>position</td>
+<td>college</td>
+</tr>
+<tr>
+<td>1</td>
+<td>baltimore colts (lottery bonus pick)</td>
+<td>george shaw</td>
+<td>quarterback</td>
+<td>oregon</td>
+</tr>
+<tr>
+<td>2</td>
+<td>chicago cardinals</td>
+<td>max boydston</td>
+<td>end</td>
+<td>oklahoma</td>
+</tr>
+<tr>
+<td>3</td>
+<td>baltimore colts</td>
+<td>alan ameche</td>
+<td>fullback</td>
+<td>wisconsin</td>
+</tr>
+<tr>
+<td>4</td>
+<td>washington redskins</td>
+<td>ralph guglielmi</td>
+<td>quarterback</td>
+<td>notre dame</td>
+</tr>
+<tr>
+<td>5</td>
+<td>green bay packers</td>
+<td>tom bettis</td>
+<td>guard</td>
+<td>purdue</td>
+</tr>
+<tr>
+<td>6</td>
+<td>pittsburgh steelers</td>
+<td>frank varrichione</td>
+<td>tackle</td>
+<td>notre dame</td>
+</tr>
+<tr>
+<td>7</td>
+<td>los angeles rams</td>
+<td>larry morris</td>
+<td>center</td>
+<td>georgia tech</td>
+</tr>
+<tr>
+<td>8</td>
+<td>new york giants</td>
+<td>joe heap</td>
+<td>halfback</td>
+<td>notre dame</td>
+</tr>
+<tr>
+<td>9</td>
+<td>philadelphia eagles</td>
+<td>dick bielski</td>
+<td>fullback</td>
+<td>maryland</td>
+</tr>
+<tr>
+<td>10</td>
+<td>san francisco 49ers</td>
+<td>dickey moegle</td>
+<td>halfback</td>
+<td>rice</td>
+</tr>
+<tr>
+<td>11</td>
+<td>chicago bears</td>
+<td>ron drzewiecki</td>
+<td>halfback</td>
+<td>marquette</td>
+</tr>
+<tr>
+<td>12</td>
+<td>detroit lions</td>
+<td>dave middleton</td>
+<td>halfback</td>
+<td>auburn</td>
+</tr>
+<tr>
+<td>13</td>
+<td>cleveland browns</td>
+<td>kurt burris</td>
+<td>center</td>
+<td>oklahoma</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Count the number of picks for each college.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>college</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">auburn</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">georgia tech</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">marquette</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">maryland</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">notre dame</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">oklahoma</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">oregon</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">purdue</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">rice</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">wisconsin</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Order the table by the count of picks in descending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>college</td>
+<td>pick_count</td>
+</tr>
+<tr>
+<td>auburn</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>georgia tech</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>marquette</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>maryland</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>notre dame</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>oklahoma</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>oregon</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>purdue</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>rice</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>wisconsin</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Select the college with the highest count of picks.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>college</td>
+<td>pick_count</td>
+</tr>
+<tr>
+<td>auburn</td>
+<td>1</td>
+</tr>
+<tr>
+<td>georgia tech</td>
+<td>1</td>
+</tr>
+<tr>
+<td>marquette</td>
+<td>1</td>
+</tr>
+<tr>
+<td>maryland</td>
+<td>1</td>
+</tr>
+<tr>
+<td>notre dame</td>
+<td>1</td>
+</tr>
+<tr>
+<td>oklahoma</td>
+<td>1</td>
+</tr>
+<tr>
+<td>oregon</td>
+<td>1</td>
+</tr>
+<tr>
+<td>purdue</td>
+<td>1</td>
+</tr>
+<tr>
+<td>rice</td>
+<td>1</td>
+</tr>
+<tr>
+<td>wisconsin</td>
+<td>1</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>college</td>
+</tr>
+<tr>
+<td>auburn</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['auburn']]</h3>
+</body></html>

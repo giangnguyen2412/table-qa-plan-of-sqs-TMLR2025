@@ -1,0 +1,349 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which tv show has the most episodes?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Order the table by the 'episodes' column in descending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>title</td>
+<td>role</td>
+<td>notes</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1991</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">flesh'n blood</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">penelope</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1 episode</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1992</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">true colors</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lorae</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1 episode</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1994</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the all-new mickey mouse (mmc)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">herself</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1 episode</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1994–1999</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sister, sister</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tamera campbell</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">119 episodes</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1995</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">are you afraid of the dark?</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">evil chameleon</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1 episode</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1995–1996</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the adventures of hyperman</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">emma c. squared</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">8 episodes</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1996</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">all that</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">herself</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1997</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">smart guy</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">roxanne</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1 episode</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1998</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">blues clues</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">herself</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1 episode</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1999</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">detention</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">orangejella labelle</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">13 episodes</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">how i loved a macho boy</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jamal santos</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">3 episodes</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2004–2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">strong medicine</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dr. kayla thorton</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">37 episodes</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2006–2007</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">family guy</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">esther</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">voice\n3 episodes</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2009</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">roommates</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">hope</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">13 episodes</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2009</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the super hero squad show</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">misty knight</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1 episode</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2011</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">things we do for love</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lourdes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">5 episodes</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2011</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">access hollywood live</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">herself</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">co-host</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2011</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chrisjayify</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">herself</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">episode: "drugs are bad"</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2011–2013</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tia & tamera</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">herself</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">executive producer</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2012</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">christmas angel</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">daphney</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2013</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the real</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">herself</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">host</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2014</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">melissa and joey</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gillian</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">season 3 episode 24 'to tell the truth'</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select row number 1.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>title</td>
+<td>role</td>
+<td>notes</td>
+</tr>
+<tr>
+<td>2014</td>
+<td>melissa and joey</td>
+<td>gillian</td>
+<td>season 3 episode 24 'to tell the truth'</td>
+</tr>
+<tr>
+<td>1991</td>
+<td>flesh'n blood</td>
+<td>penelope</td>
+<td>1 episode</td>
+</tr>
+<tr>
+<td>1992</td>
+<td>true colors</td>
+<td>lorae</td>
+<td>1 episode</td>
+</tr>
+<tr>
+<td>1994</td>
+<td>the all-new mickey mouse (mmc)</td>
+<td>herself</td>
+<td>1 episode</td>
+</tr>
+<tr>
+<td>1994–1999</td>
+<td>sister, sister</td>
+<td>tamera campbell</td>
+<td>119 episodes</td>
+</tr>
+<tr>
+<td>1995</td>
+<td>are you afraid of the dark?</td>
+<td>evil chameleon</td>
+<td>1 episode</td>
+</tr>
+<tr>
+<td>1995–1996</td>
+<td>the adventures of hyperman</td>
+<td>emma c. squared</td>
+<td>8 episodes</td>
+</tr>
+<tr>
+<td>1996</td>
+<td>all that</td>
+<td>herself</td>
+<td></td>
+</tr>
+<tr>
+<td>1997</td>
+<td>smart guy</td>
+<td>roxanne</td>
+<td>1 episode</td>
+</tr>
+<tr>
+<td>1998</td>
+<td>blues clues</td>
+<td>herself</td>
+<td>1 episode</td>
+</tr>
+<tr>
+<td>1999</td>
+<td>detention</td>
+<td>orangejella labelle</td>
+<td>13 episodes</td>
+</tr>
+<tr>
+<td>2000</td>
+<td>how i loved a macho boy</td>
+<td>jamal santos</td>
+<td>3 episodes</td>
+</tr>
+<tr>
+<td>2004–2006</td>
+<td>strong medicine</td>
+<td>dr. kayla thorton</td>
+<td>37 episodes</td>
+</tr>
+<tr>
+<td>2006–2007</td>
+<td>family guy</td>
+<td>esther</td>
+<td>voice\n3 episodes</td>
+</tr>
+<tr>
+<td>2009</td>
+<td>roommates</td>
+<td>hope</td>
+<td>13 episodes</td>
+</tr>
+<tr>
+<td>2009</td>
+<td>the super hero squad show</td>
+<td>misty knight</td>
+<td>1 episode</td>
+</tr>
+<tr>
+<td>2011</td>
+<td>things we do for love</td>
+<td>lourdes</td>
+<td>5 episodes</td>
+</tr>
+<tr>
+<td>2011</td>
+<td>access hollywood live</td>
+<td>herself</td>
+<td>co-host</td>
+</tr>
+<tr>
+<td>2011</td>
+<td>chrisjayify</td>
+<td>herself</td>
+<td>episode: "drugs are bad"</td>
+</tr>
+<tr>
+<td>2011–2013</td>
+<td>tia & tamera</td>
+<td>herself</td>
+<td>executive producer</td>
+</tr>
+<tr>
+<td>2012</td>
+<td>christmas angel</td>
+<td>daphney</td>
+<td></td>
+</tr>
+<tr>
+<td>2013</td>
+<td>the real</td>
+<td>herself</td>
+<td>host</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select the 'title' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>title</td>
+<td>role</td>
+<td>notes</td>
+</tr>
+<tr>
+<td>2014</td>
+<td>melissa and joey</td>
+<td>gillian</td>
+<td>season 3 episode 24 'to tell the truth'</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>title</td>
+</tr>
+<tr>
+<td>melissa and joey</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['melissa and joey']]</h3>
+</body></html>

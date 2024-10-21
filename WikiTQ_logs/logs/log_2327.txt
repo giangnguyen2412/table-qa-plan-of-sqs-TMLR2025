@@ -1,0 +1,50 @@
+************************************************************************************************************************
+Sample 2327 - Plan 1: Query: which airport has the most passengers?
+Sample 2327 - Plan 1: Groundtruth: ['Los Angeles, CA']
+Sample 2327 - Plan 1: X-Original table pd: 
+   rank                   city passengers              top_carriers
+0     1        los angeles, ca    700,000  american, spirit, united
+1     2            chicago, il    673,000  american, spirit, united
+2     3             denver, co    654,000  frontier, spirit, united
+3     4      san francisco, ca    492,000                    united
+4     5  dallas/fort worth, tx    488,000          american, united
+5     6             newark, nj    480,000                    united
+6     7          las vegas, nv    442,000            spirit, united
+7     8          charlotte, nc    441,000        united, us airways
+8     9            atlanta, ga    400,000             delta, united
+9    10            phoenix, az    393,000        united, us airways
+Sample 2327 - Plan 1: Caption: none
+Sample 2327 - Plan 1: Original table: [['rank', 'city', 'passengers', 'top_carriers'], ['1', 'los angeles, ca', '700,000', 'american, spirit, united'], ['2', 'chicago, il', '673,000', 'american, spirit, united'], ['3', 'denver, co', '654,000', 'frontier, spirit, united'], ['4', 'san francisco, ca', '492,000', 'united'], ['5', 'dallas/fort worth, tx', '488,000', 'american, united'], ['6', 'newark, nj', '480,000', 'united'], ['7', 'las vegas, nv', '442,000', 'spirit, united'], ['8', 'charlotte, nc', '441,000', 'united, us airways'], ['9', 'atlanta, ga', '400,000', 'delta, united'], ['10', 'phoenix, az', '393,000', 'united, us airways']]
+########################################################################################################################
+Sample 2327 - Plan 1: Operation 1: Order the table by 'passengers' in descending order.
+Sample 2327 - Plan 1: Selected indices: [[6, 2], [1, 2], [9, 2], [4, 2], [0, 2], [7, 2], [2, 2], [8, 2], [3, 2], [5, 2]]
+Sample 2327 - Plan 1: X-Table after operation df:
+   rank                   city passengers              top_carriers
+0     1        los angeles, ca    700,000  american, spirit, united
+1     2            chicago, il    673,000  american, spirit, united
+2     3             denver, co    654,000  frontier, spirit, united
+3     4      san francisco, ca    492,000                    united
+4     5  dallas/fort worth, tx    488,000          american, united
+5     6             newark, nj    480,000                    united
+6     7          las vegas, nv    442,000            spirit, united
+7     8          charlotte, nc    441,000        united, us airways
+8     9            atlanta, ga    400,000             delta, united
+9    10            phoenix, az    393,000        united, us airways
+Sample 2327 - Plan 1: Table after operation: [['rank', 'city', 'passengers', 'top_carriers'], [1, 'los angeles, ca', '700,000', 'american, spirit, united'], [2, 'chicago, il', '673,000', 'american, spirit, united'], [3, 'denver, co', '654,000', 'frontier, spirit, united'], [4, 'san francisco, ca', '492,000', 'united'], [5, 'dallas/fort worth, tx', '488,000', 'american, united'], [6, 'newark, nj', '480,000', 'united'], [7, 'las vegas, nv', '442,000', 'spirit, united'], [8, 'charlotte, nc', '441,000', 'united, us airways'], [9, 'atlanta, ga', '400,000', 'delta, united'], [10, 'phoenix, az', '393,000', 'united, us airways']]
+########################################################################################################################
+Sample 2327 - Plan 1: Operation 2: Select row number 1.
+Sample 2327 - Plan 1: Selected indices: []
+Sample 2327 - Plan 1: X-Table after operation df:
+   rank             city passengers              top_carriers
+0     1  los angeles, ca    700,000  american, spirit, united
+Sample 2327 - Plan 1: Table after operation: [['rank', 'city', 'passengers', 'top_carriers'], [1, 'los angeles, ca', '700,000', 'american, spirit, united']]
+########################################################################################################################
+Sample 2327 - Plan 1: Operation 3: Select the 'city' column.
+Sample 2327 - Plan 1: Selected indices: []
+Sample 2327 - Plan 1: X-Table after operation df:
+              city
+0  los angeles, ca
+Sample 2327 - Plan 1: Table after operation: [['city'], ['los angeles, ca']]
+Fall-back: FALSE
+Answer from plan 1: [['los angeles, ca']]
+Groundtruth: ['Los Angeles, CA']

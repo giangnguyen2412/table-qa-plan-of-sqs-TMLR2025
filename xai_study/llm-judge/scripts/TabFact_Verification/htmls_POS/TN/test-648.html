@@ -1,0 +1,218 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> there is a 5 mhz frequency change range</h3>
+<h3>Input Table: whlp</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Extract the numerical value from the 'frequency_mhz' column then add column 'num_frequency' to existing table.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>call_sign</td>
+<td>frequency_mhz</td>
+<td>city_of_license</td>
+<td>erp_w</td>
+<td>class</td>
+<td>fcc_info</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w221by</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">92.1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">elgin , illinois</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">38</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">d</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fcc</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w264bf</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">100.7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">englewood , illinois</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">d</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fcc</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w240bj</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">95.9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">crown point , indiana</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">d</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fcc</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w276bm</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">103.1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">park forest , illinois</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">d</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fcc</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w293al</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">106.5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rochester , indiana</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">80</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">d</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fcc</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w223au</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">92.5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">south bend , indiana</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">d</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fcc</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Calculate the difference between the maximum and minimum values of 'num_frequency' and add column 'frequency_range' to existing table.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>call_sign</td>
+<td>frequency_mhz</td>
+<td>city_of_license</td>
+<td>erp_w</td>
+<td>class</td>
+<td>fcc_info</td>
+<td>num_frequency</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w221by</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">92.1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">elgin , illinois</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">38</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">d</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fcc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">92.1</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w264bf</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">100.7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">englewood , illinois</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">d</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fcc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">100.7</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w240bj</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">95.9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">crown point , indiana</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">d</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fcc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">95.9</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w276bm</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">103.1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">park forest , illinois</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">d</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fcc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">103.1</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w293al</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">106.5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rochester , indiana</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">80</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">d</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fcc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">106.5</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w223au</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">92.5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">south bend , indiana</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">d</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fcc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">92.5</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select rows where 'frequency_range' is equal to 5.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>call_sign</td>
+<td>frequency_mhz</td>
+<td>city_of_license</td>
+<td>erp_w</td>
+<td>class</td>
+<td>fcc_info</td>
+<td>num_frequency</td>
+<td>frequency_range</td>
+</tr>
+<tr>
+<td>w221by</td>
+<td>92.1</td>
+<td>elgin , illinois</td>
+<td>38</td>
+<td>d</td>
+<td>fcc</td>
+<td>92.1</td>
+<td>14.400000000000006</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Use a `CASE` statement to return TRUE if the number of rows is greater than or equal to 1, otherwise return FALSE.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>call_sign</td>
+<td>frequency_mhz</td>
+<td>city_of_license</td>
+<td>erp_w</td>
+<td>class</td>
+<td>fcc_info</td>
+<td>num_frequency</td>
+<td>frequency_range</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>verification_result</td>
+</tr>
+<tr>
+<td>FALSE</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> FALSE</h3>
+</body></html>

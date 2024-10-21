@@ -1,0 +1,85 @@
+************************************************************************************************************************
+Sample 1025 - Plan 1: Query: how long of a year span does the chart entail?
+Sample 1025 - Plan 1: Groundtruth: ['11']
+Sample 1025 - Plan 1: X-Original table pd: 
+    year state_territory_men_s_division state_territory_women_s_division  \
+0   2012                     queensland                  new south wales   
+1   2012                new south wales                  new south wales   
+2   2011                new south wales                  new south wales   
+3   2010              western australia                                    
+4   2009                     queensland                                    
+5   2008                     queensland                                    
+6   2007                new south wales                                    
+7   2006                     queensland                                    
+8   2005                     queensland                                    
+9   2004                     queensland                                    
+10  2003                new south wales                                    
+11  2002             northern territory                                    
+12  2001                       tasmania                                    
+
+   major_centres_division community_division women_s_division  
+0                                                              
+1                  darwin   brothers in arms    bush potatoes  
+2          maranoa murris         gap angels    bush potatoes  
+3                                                              
+4               alkupitja        tangentyere  new south wales  
+5               katherine           cooktown  new south wales  
+6               alkupitja         cat tigers      cga cougars  
+7           alice springs    melville island           darwin  
+8           alice springs          alkupitja           darwin  
+9           alice springs          normanton    tennant creek  
+10                 darwin                                      
+11                 darwin                                      
+12                                                             
+Sample 1025 - Plan 1: Caption: none
+Sample 1025 - Plan 1: Original table: [['year', 'state_territory_men_s_division', 'state_territory_women_s_division', 'major_centres_division', 'community_division', 'women_s_division'], ['2012', 'queensland', 'new south wales', '', '', ''], ['2012', 'new south wales', 'new south wales', 'darwin', 'brothers in arms', 'bush potatoes'], ['2011', 'new south wales', 'new south wales', 'maranoa murris', 'gap angels', 'bush potatoes'], ['2010', 'western australia', '', '', '', ''], ['2009', 'queensland', '', 'alkupitja', 'tangentyere', 'new south wales'], ['2008', 'queensland', '', 'katherine', 'cooktown', 'new south wales'], ['2007', 'new south wales', '', 'alkupitja', 'cat tigers', 'cga cougars'], ['2006', 'queensland', '', 'alice springs', 'melville island', 'darwin'], ['2005', 'queensland', '', 'alice springs', 'alkupitja', 'darwin'], ['2004', 'queensland', '', 'alice springs', 'normanton', 'tennant creek'], ['2003', 'new south wales', '', 'darwin', '', ''], ['2002', 'northern territory', '', 'darwin', '', ''], ['2001', 'tasmania', '', '', '', '']]
+########################################################################################################################
+Sample 1025 - Plan 1: Operation 1: Select the 'year' column.
+Sample 1025 - Plan 1: Selected indices: []
+Sample 1025 - Plan 1: X-Table after operation df:
+    year
+0   2012
+1   2012
+2   2011
+3   2010
+4   2009
+5   2008
+6   2007
+7   2006
+8   2005
+9   2004
+10  2003
+11  2002
+12  2001
+Sample 1025 - Plan 1: Table after operation: [['year'], [2012], [2012], [2011], [2010], [2009], [2008], [2007], [2006], [2005], [2004], [2003], [2002], [2001]]
+########################################################################################################################
+Sample 1025 - Plan 1: Operation 2: Find the minimum value in the 'year' column.
+Sample 1025 - Plan 1: Selected indices: []
+Sample 1025 - Plan 1: X-Table after operation df:
+   min_year
+0      2001
+Sample 1025 - Plan 1: Table after operation: [['min_year'], [2001]]
+########################################################################################################################
+Sample 1025 - Plan 1: Operation 3: Find the maximum value in the 'year' column.
+Sample 1025 - Plan 1: Selected indices: []
+Sample 1025 - Plan 1: X-Table after operation df:
+   max_year
+0      2001
+Sample 1025 - Plan 1: Table after operation: [['max_year'], [2001]]
+########################################################################################################################
+Sample 1025 - Plan 1: Operation 4: Calculate the year span by subtracting the minimum value from the maximum value.
+Sample 1025 - Plan 1: Selected indices: []
+Sample 1025 - Plan 1: X-Table after operation df:
+   year_span
+0          0
+Sample 1025 - Plan 1: Table after operation: [['year_span'], [0]]
+########################################################################################################################
+Sample 1025 - Plan 1: Operation 5: Output the year span as the answer to the question.
+Sample 1025 - Plan 1: Selected indices: []
+Sample 1025 - Plan 1: X-Table after operation df:
+   answer
+0       0
+Sample 1025 - Plan 1: Table after operation: [['answer'], [0]]
+Fall-back: FALSE
+Answer from plan 1: [[0]]
+Groundtruth: ['11']

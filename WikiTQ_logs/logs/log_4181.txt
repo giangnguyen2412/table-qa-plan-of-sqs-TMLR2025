@@ -1,0 +1,155 @@
+************************************************************************************************************************
+Sample 4181 - Plan 1: Query: what is the name of the last series on the table?
+Sample 4181 - Plan 1: Groundtruth: ["L'affaire Dominici"]
+Sample 4181 - Plan 1: X-Original table pd: 
+                     series      years  volumes  \
+0              bruno brazil  1973–1977        5   
+1              ivan zourine       1979        2   
+2             steve severin  1981–2003        9   
+3                  l'iliade       1982        1   
+4           jacques le gall  1984–1985        2   
+5                  valhardi  1984–1986        2   
+6             alain brisant       1985        1   
+7               edmund bell  1987–1990        4   
+8                     daddy    1991-92        2   
+9                bob morane  1991–2000        3   
+10                harricana       1992        1   
+11       marshall blueberry       1994        1   
+12                     ikar  1995–1997        2   
+13  les autos de l'aventure  1996–1998        2   
+14                  terreur  2002–2004        2   
+15              les zingari  2004–2005        2   
+16                  shelena       2005        1   
+17       l'étoile du soldat       2007        1   
+18       l'affaire dominici       2010        1   
+
+                                       writer                        editor  \
+0                                        greg                   magic-strip   
+1                            jacques stoquart                   magic-strip   
+2          jacques stoquart and yvan delporte                        glénat   
+3                            jacques stoquart                        glénat   
+4                        jean-michel charlier                        dupuis   
+5   jacques stoquart and andré-paul duchâteau                        dupuis   
+6                            maurice tillieux                        dupuis   
+7        jacques stoquart and martin lodewijk                  cl. lefrancq   
+8                                 loup durand                  cl. lefrancq   
+9                                henri vernes  nautilus and claude lefrancq   
+10                   jean-claude de la royère               claude lefrancq   
+11                                jean giraud                         alpen   
+12                               pierre makyo                        glénat   
+13                               de la royère                       citroën   
+14                       andré-paul duchâteau                    le lombard   
+15                              yvan delporte                         hibou   
+16                           jéromine pasteur                     casterman   
+17                     christophe de ponfilly                     casterman   
+18                             pascal bresson                        glénat   
+
+                                              remarks  
+0   william vance drew the comics, follet provided...  
+1                                                      
+2                 3 in french - 6 additional in dutch  
+3                     adapted from the ilias by homer  
+4                         a collaboration with mitacq  
+5   continuation of the series after jijé and eddy...  
+6                                                      
+7    based on the stories by john flanders (jean ray)  
+8                                                      
+9   follet drew one story in 2000, and made the co...  
+10  drawn by denis mérezette, follet did the page ...  
+11  drawn by william vance, follet did the page la...  
+12                                                     
+13                                 promotional comics  
+14              fictional biography of madame tussaud  
+15                                                     
+16                                                     
+17                         announced (28 august 2007)  
+18                                                     
+Sample 4181 - Plan 1: Caption: none
+Sample 4181 - Plan 1: Original table: [['series', 'years', 'volumes', 'writer', 'editor', 'remarks'], ['bruno brazil', '1973–1977', '5', 'greg', 'magic-strip', 'william vance drew the comics, follet provided the page lay-out'], ['ivan zourine', '1979', '2', 'jacques stoquart', 'magic-strip', ''], ['steve severin', '1981–2003', '9', 'jacques stoquart and yvan delporte', 'glénat', '3 in french - 6 additional in dutch'], ["l'iliade", '1982', '1', 'jacques stoquart', 'glénat', 'adapted from the ilias by homer'], ['jacques le gall', '1984–1985', '2', 'jean-michel charlier', 'dupuis', 'a collaboration with mitacq'], ['valhardi', '1984–1986', '2', 'jacques stoquart and andré-paul duchâteau', 'dupuis', 'continuation of the series after jijé and eddy paape'], ['alain brisant', '1985', '1', 'maurice tillieux', 'dupuis', ''], ['edmund bell', '1987–1990', '4', 'jacques stoquart and martin lodewijk', 'cl. lefrancq', 'based on the stories by john flanders (jean ray)'], ['daddy', '1991-92', '2', 'loup durand', 'cl. lefrancq', ''], ['bob morane', '1991–2000', '3', 'henri vernes', 'nautilus and claude lefrancq', 'follet drew one story in 2000, and made the cover art for two others (drawn by gerald forton)'], ['harricana', '1992', '1', 'jean-claude de la royère', 'claude lefrancq', 'drawn by denis mérezette, follet did the page lay-out'], ['marshall blueberry', '1994', '1', 'jean giraud', 'alpen', 'drawn by william vance, follet did the page lay-out'], ['ikar', '1995–1997', '2', 'pierre makyo', 'glénat', ''], ["les autos de l'aventure", '1996–1998', '2', 'de la royère', 'citroën', 'promotional comics'], ['terreur', '2002–2004', '2', 'andré-paul duchâteau', 'le lombard', 'fictional biography of madame tussaud'], ['les zingari', '2004–2005', '2', 'yvan delporte', 'hibou', ''], ['shelena', '2005', '1', 'jéromine pasteur', 'casterman', ''], ["l'étoile du soldat", '2007', '1', 'christophe de ponfilly', 'casterman', 'announced (28 august 2007)'], ["l'affaire dominici", '2010', '1', 'pascal bresson', 'glénat', '']]
+########################################################################################################################
+Sample 4181 - Plan 1: Operation 1: Order the table by the 'series' column in descending order.
+Sample 4181 - Plan 1: Selected indices: [[4, 0], [17, 0], [8, 0], [10, 0], [1, 0], [12, 0], [14, 0], [3, 0], [5, 0], [16, 0], [18, 0], [7, 0], [9, 0], [11, 0], [0, 0], [2, 0], [13, 0], [15, 0], [6, 0]]
+Sample 4181 - Plan 1: X-Table after operation df:
+                     series      years  volumes  \
+0                  valhardi  1984–1986        2   
+1                   terreur  2002–2004        2   
+2             steve severin  1981–2003        9   
+3                   shelena       2005        1   
+4        marshall blueberry       1994        1   
+5               les zingari  2004–2005        2   
+6   les autos de l'aventure  1996–1998        2   
+7        l'étoile du soldat       2007        1   
+8                  l'iliade       1982        1   
+9        l'affaire dominici       2010        1   
+10          jacques le gall  1984–1985        2   
+11             ivan zourine       1979        2   
+12                     ikar  1995–1997        2   
+13                harricana       1992        1   
+14              edmund bell  1987–1990        4   
+15                    daddy    1991-92        2   
+16             bruno brazil  1973–1977        5   
+17               bob morane  1991–2000        3   
+18            alain brisant       1985        1   
+
+                                       writer                        editor  \
+0   jacques stoquart and andré-paul duchâteau                        dupuis   
+1                        andré-paul duchâteau                    le lombard   
+2          jacques stoquart and yvan delporte                        glénat   
+3                            jéromine pasteur                     casterman   
+4                                 jean giraud                         alpen   
+5                               yvan delporte                         hibou   
+6                                de la royère                       citroën   
+7                      christophe de ponfilly                     casterman   
+8                            jacques stoquart                        glénat   
+9                              pascal bresson                        glénat   
+10                       jean-michel charlier                        dupuis   
+11                           jacques stoquart                   magic-strip   
+12                               pierre makyo                        glénat   
+13                   jean-claude de la royère               claude lefrancq   
+14       jacques stoquart and martin lodewijk                  cl. lefrancq   
+15                                loup durand                  cl. lefrancq   
+16                                       greg                   magic-strip   
+17                               henri vernes  nautilus and claude lefrancq   
+18                           maurice tillieux                        dupuis   
+
+                                              remarks  
+0   continuation of the series after jijé and eddy...  
+1               fictional biography of madame tussaud  
+2                 3 in french - 6 additional in dutch  
+3                                                      
+4   drawn by william vance, follet did the page la...  
+5                                                      
+6                                  promotional comics  
+7                          announced (28 august 2007)  
+8                     adapted from the ilias by homer  
+9                                                      
+10                        a collaboration with mitacq  
+11                                                     
+12                                                     
+13  drawn by denis mérezette, follet did the page ...  
+14   based on the stories by john flanders (jean ray)  
+15                                                     
+16  william vance drew the comics, follet provided...  
+17  follet drew one story in 2000, and made the co...  
+18                                                     
+Sample 4181 - Plan 1: Table after operation: [['series', 'years', 'volumes', 'writer', 'editor', 'remarks'], ['valhardi', '1984–1986', 2, 'jacques stoquart and andré-paul duchâteau', 'dupuis', 'continuation of the series after jijé and eddy paape'], ['terreur', '2002–2004', 2, 'andré-paul duchâteau', 'le lombard', 'fictional biography of madame tussaud'], ['steve severin', '1981–2003', 9, 'jacques stoquart and yvan delporte', 'glénat', '3 in french - 6 additional in dutch'], ['shelena', '2005', 1, 'jéromine pasteur', 'casterman', ''], ['marshall blueberry', '1994', 1, 'jean giraud', 'alpen', 'drawn by william vance, follet did the page lay-out'], ['les zingari', '2004–2005', 2, 'yvan delporte', 'hibou', ''], ["les autos de l'aventure", '1996–1998', 2, 'de la royère', 'citroën', 'promotional comics'], ["l'étoile du soldat", '2007', 1, 'christophe de ponfilly', 'casterman', 'announced (28 august 2007)'], ["l'iliade", '1982', 1, 'jacques stoquart', 'glénat', 'adapted from the ilias by homer'], ["l'affaire dominici", '2010', 1, 'pascal bresson', 'glénat', ''], ['jacques le gall', '1984–1985', 2, 'jean-michel charlier', 'dupuis', 'a collaboration with mitacq'], ['ivan zourine', '1979', 2, 'jacques stoquart', 'magic-strip', ''], ['ikar', '1995–1997', 2, 'pierre makyo', 'glénat', ''], ['harricana', '1992', 1, 'jean-claude de la royère', 'claude lefrancq', 'drawn by denis mérezette, follet did the page lay-out'], ['edmund bell', '1987–1990', 4, 'jacques stoquart and martin lodewijk', 'cl. lefrancq', 'based on the stories by john flanders (jean ray)'], ['daddy', '1991-92', 2, 'loup durand', 'cl. lefrancq', ''], ['bruno brazil', '1973–1977', 5, 'greg', 'magic-strip', 'william vance drew the comics, follet provided the page lay-out'], ['bob morane', '1991–2000', 3, 'henri vernes', 'nautilus and claude lefrancq', 'follet drew one story in 2000, and made the cover art for two others (drawn by gerald forton)'], ['alain brisant', '1985', 1, 'maurice tillieux', 'dupuis', '']]
+########################################################################################################################
+Sample 4181 - Plan 1: Operation 2: Select row number 1.
+Sample 4181 - Plan 1: Selected indices: []
+Sample 4181 - Plan 1: X-Table after operation df:
+     series      years  volumes                                     writer  \
+0  valhardi  1984–1986        2  jacques stoquart and andré-paul duchâteau   
+
+   editor                                            remarks  
+0  dupuis  continuation of the series after jijé and eddy...  
+Sample 4181 - Plan 1: Table after operation: [['series', 'years', 'volumes', 'writer', 'editor', 'remarks'], ['valhardi', '1984–1986', 2, 'jacques stoquart and andré-paul duchâteau', 'dupuis', 'continuation of the series after jijé and eddy paape']]
+########################################################################################################################
+Sample 4181 - Plan 1: Operation 3: Select the 'series' column.
+Sample 4181 - Plan 1: Selected indices: []
+Sample 4181 - Plan 1: X-Table after operation df:
+     series
+0  valhardi
+Sample 4181 - Plan 1: Table after operation: [['series'], ['valhardi']]
+Fall-back: FALSE
+Answer from plan 1: [['valhardi']]
+Groundtruth: ["L'affaire Dominici"]

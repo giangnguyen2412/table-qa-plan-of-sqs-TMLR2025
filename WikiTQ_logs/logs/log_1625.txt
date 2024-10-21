@@ -1,0 +1,40 @@
+************************************************************************************************************************
+Sample 1625 - Plan 1: Query: aside from canada which other nation had 3 bronze medals?
+Sample 1625 - Plan 1: Groundtruth: ['Hungary']
+Sample 1625 - Plan 1: X-Original table pd: 
+   rank         nation gold silver  bronze  total
+0     1    netherlands    8      3       1     12
+1     2      australia    3      3       4     10
+2     3  united states    2      5       1      8
+3     4        hungary    1      1       3      5
+4     5         canada    1      –       3      4
+5     6          italy    –      2       1      3
+6     7         russia    –      1       1      2
+7     8          china    –      –       1      1
+Sample 1625 - Plan 1: Caption: none
+Sample 1625 - Plan 1: Original table: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['1', 'netherlands', '8', '3', '1', '12'], ['2', 'australia', '3', '3', '4', '10'], ['3', 'united states', '2', '5', '1', '8'], ['4', 'hungary', '1', '1', '3', '5'], ['5', 'canada', '1', '–', '3', '4'], ['6', 'italy', '–', '2', '1', '3'], ['7', 'russia', '–', '1', '1', '2'], ['8', 'china', '–', '–', '1', '1']]
+########################################################################################################################
+Sample 1625 - Plan 1: Operation 1: Select rows where the 'bronze' column is equal to 3.
+Sample 1625 - Plan 1: Selected indices: [[4, 4], [3, 4]]
+Sample 1625 - Plan 1: X-Table after operation df:
+   rank   nation  gold silver  bronze  total
+0     4  hungary     1      1       3      5
+1     5   canada     1      –       3      4
+Sample 1625 - Plan 1: Table after operation: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], [4, 'hungary', '1', '1', 3, 5], [5, 'canada', '1', '–', 3, 4]]
+########################################################################################################################
+Sample 1625 - Plan 1: Operation 2: Exclude the row where the 'nation' column is equal to 'canada'.
+Sample 1625 - Plan 1: Selected indices: [[0, 1]]
+Sample 1625 - Plan 1: X-Table after operation df:
+   rank   nation  gold  silver  bronze  total
+0     4  hungary     1       1       3      5
+Sample 1625 - Plan 1: Table after operation: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], [4, 'hungary', 1, '1', 3, 5]]
+########################################################################################################################
+Sample 1625 - Plan 1: Operation 3: Select the 'nation' column.
+Sample 1625 - Plan 1: Selected indices: []
+Sample 1625 - Plan 1: X-Table after operation df:
+    nation
+0  hungary
+Sample 1625 - Plan 1: Table after operation: [['nation'], ['hungary']]
+Fall-back: FALSE
+Answer from plan 1: [['hungary']]
+Groundtruth: ['Hungary']

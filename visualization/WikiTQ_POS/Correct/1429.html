@@ -1,0 +1,301 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which incumbent was the last democrat elected according to this chart?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'result' column is 're-elected'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>district</td>
+<td>incumbent</td>
+<td>party</td>
+<td>first_nelected</td>
+<td>result</td>
+<td>candidates</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">maryland 1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wayne gilchrest</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">republican</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1990</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">re-elected</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wayne gilchrest (r) 76.67%\nann tamlyn (d) 23.16%</span></td>
+</tr>
+<tr>
+<td>maryland 2</td>
+<td>robert ehrlich</td>
+<td>republican</td>
+<td>1994</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">retired to run for governor\ndemocratic gain</span></td>
+<td>dutch ruppersberger (d) 54.16%\nhelen bentley (r) 45.57%</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">maryland 3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ben cardin</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">democratic</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1986</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">re-elected</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ben cardin (d) 65.72%\nscott conwell (r) 34.18%</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">maryland 4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">albert wynn</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">democratic</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1992</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">re-elected</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">albert wynn (d) 78.57%\njohn kimble (r) 20.82%</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">maryland 5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">steny hoyer</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">democratic</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">re-elected</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">steny hoyer (d) 69.27%\njoseph crawford (r) 30.52%</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">maryland 6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">roscoe bartlett</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">republican</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1992</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">re-elected</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">roscoe bartlett (r) 66.11%\ndonald dearmon (d) 33.80%</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">maryland 7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">elijah cummings</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">democratic</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1996</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">re-elected</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">elijah cummings (d) 73.53%\njoseph ward (r) 26.38%</span></td>
+</tr>
+<tr>
+<td>maryland 8</td>
+<td>connie morella</td>
+<td>republican</td>
+<td>1986</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lost re-election\ndemocratic gain</span></td>
+<td>chris van hollen (d) 51.71%\nconnie morella (r) 47.49%\nstephen bassett (un) 0.73%</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select rows where the 'party' column is 'democratic'.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>district</td>
+<td>incumbent</td>
+<td>party</td>
+<td>first_nelected</td>
+<td>result</td>
+<td>candidates</td>
+</tr>
+<tr>
+<td>maryland 1</td>
+<td>wayne gilchrest</td>
+<td>republican</td>
+<td>1990</td>
+<td>re-elected</td>
+<td>wayne gilchrest (r) 76.67%\nann tamlyn (d) 23.16%</td>
+</tr>
+<tr>
+<td>maryland 3</td>
+<td>ben cardin</td>
+<td><span class="highlighted-cell" title="Used in transformation">democratic</span></td>
+<td>1986</td>
+<td>re-elected</td>
+<td>ben cardin (d) 65.72%\nscott conwell (r) 34.18%</td>
+</tr>
+<tr>
+<td>maryland 4</td>
+<td>albert wynn</td>
+<td><span class="highlighted-cell" title="Used in transformation">democratic</span></td>
+<td>1992</td>
+<td>re-elected</td>
+<td>albert wynn (d) 78.57%\njohn kimble (r) 20.82%</td>
+</tr>
+<tr>
+<td>maryland 5</td>
+<td>steny hoyer</td>
+<td><span class="highlighted-cell" title="Used in transformation">democratic</span></td>
+<td>1981</td>
+<td>re-elected</td>
+<td>steny hoyer (d) 69.27%\njoseph crawford (r) 30.52%</td>
+</tr>
+<tr>
+<td>maryland 6</td>
+<td>roscoe bartlett</td>
+<td>republican</td>
+<td>1992</td>
+<td>re-elected</td>
+<td>roscoe bartlett (r) 66.11%\ndonald dearmon (d) 33.80%</td>
+</tr>
+<tr>
+<td>maryland 7</td>
+<td>elijah cummings</td>
+<td><span class="highlighted-cell" title="Used in transformation">democratic</span></td>
+<td>1996</td>
+<td>re-elected</td>
+<td>elijah cummings (d) 73.53%\njoseph ward (r) 26.38%</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Order the table by the 'first_elected' column in descending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>district</td>
+<td>incumbent</td>
+<td>party</td>
+<td>first_nelected</td>
+<td>result</td>
+<td>candidates</td>
+</tr>
+<tr>
+<td>maryland 3</td>
+<td>ben cardin</td>
+<td>democratic</td>
+<td><span class="highlighted-cell" title="Used in transformation">1986</span></td>
+<td>re-elected</td>
+<td>ben cardin (d) 65.72%\nscott conwell (r) 34.18%</td>
+</tr>
+<tr>
+<td>maryland 4</td>
+<td>albert wynn</td>
+<td>democratic</td>
+<td><span class="highlighted-cell" title="Used in transformation">1992</span></td>
+<td>re-elected</td>
+<td>albert wynn (d) 78.57%\njohn kimble (r) 20.82%</td>
+</tr>
+<tr>
+<td>maryland 5</td>
+<td>steny hoyer</td>
+<td>democratic</td>
+<td><span class="highlighted-cell" title="Used in transformation">1981</span></td>
+<td>re-elected</td>
+<td>steny hoyer (d) 69.27%\njoseph crawford (r) 30.52%</td>
+</tr>
+<tr>
+<td>maryland 7</td>
+<td>elijah cummings</td>
+<td>democratic</td>
+<td><span class="highlighted-cell" title="Used in transformation">1996</span></td>
+<td>re-elected</td>
+<td>elijah cummings (d) 73.53%\njoseph ward (r) 26.38%</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Select row number 1.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>district</td>
+<td>incumbent</td>
+<td>party</td>
+<td>first_nelected</td>
+<td>result</td>
+<td>candidates</td>
+</tr>
+<tr>
+<td>maryland 7</td>
+<td>elijah cummings</td>
+<td>democratic</td>
+<td>1996</td>
+<td>re-elected</td>
+<td>elijah cummings (d) 73.53%\njoseph ward (r) 26.38%</td>
+</tr>
+<tr>
+<td>maryland 4</td>
+<td>albert wynn</td>
+<td>democratic</td>
+<td>1992</td>
+<td>re-elected</td>
+<td>albert wynn (d) 78.57%\njohn kimble (r) 20.82%</td>
+</tr>
+<tr>
+<td>maryland 3</td>
+<td>ben cardin</td>
+<td>democratic</td>
+<td>1986</td>
+<td>re-elected</td>
+<td>ben cardin (d) 65.72%\nscott conwell (r) 34.18%</td>
+</tr>
+<tr>
+<td>maryland 5</td>
+<td>steny hoyer</td>
+<td>democratic</td>
+<td>1981</td>
+<td>re-elected</td>
+<td>steny hoyer (d) 69.27%\njoseph crawford (r) 30.52%</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 5: Select the 'incumbent' column.</div>
+<div id="step-3" class="content">
+<table>
+<tr>
+<td>district</td>
+<td>incumbent</td>
+<td>party</td>
+<td>first_nelected</td>
+<td>result</td>
+<td>candidates</td>
+</tr>
+<tr>
+<td>maryland 7</td>
+<td>elijah cummings</td>
+<td>democratic</td>
+<td>1996</td>
+<td>re-elected</td>
+<td>elijah cummings (d) 73.53%\njoseph ward (r) 26.38%</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>incumbent</td>
+</tr>
+<tr>
+<td>elijah cummings</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['elijah cummings']]</h3>
+</body></html>

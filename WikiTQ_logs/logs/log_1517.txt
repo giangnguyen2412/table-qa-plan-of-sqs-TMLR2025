@@ -1,0 +1,49 @@
+************************************************************************************************************************
+Sample 1517 - Plan 1: Query: who did the team play before the montreal alouettes on november 13?
+Sample 1517 - Plan 1: Groundtruth: ['Toronto Argonauts']
+Sample 1517 - Plan 1: X-Original table pd: 
+    week     date                 opponent  score result record
+0      1   aug 28     at toronto argonauts   13–6   loss    0–1
+1      2   sept 4    at montreal alouettes   21–2   loss    0–2
+2      2   sept 6   vs. montreal alouettes  20–11   loss    0–3
+3      3  sept 11     at toronto argonauts   12–5    win    1–3
+4      4  sept 18    vs. toronto argonauts   34–6   loss    1–4
+5      5  sept 25  vs. hamilton tiger-cats  38–12   loss    1–5
+6      6    oct 2   at hamilton tiger-cats   45–0   loss    1–6
+7      7    oct 9   vs. montreal alouettes  25–11   loss    1–7
+8      7   oct 11    at montreal alouettes   24–6   loss    1–8
+9      8   oct 16    vs. toronto argonauts  27–11   loss    1–9
+10     9   oct 23   at hamilton tiger-cats  25–17   loss   1–10
+11    10   oct 30  vs. hamilton tiger-cats   30–9   loss   1–11
+12    11    nov 6     at toronto argonauts  18–12   loss   1–12
+13    12   nov 13   vs. montreal alouettes  14–12    win   2–12
+Sample 1517 - Plan 1: Caption: none
+Sample 1517 - Plan 1: Original table: [['week', 'date', 'opponent', 'score', 'result', 'record'], ['1', 'aug 28', 'at toronto argonauts', '13–6', 'loss', '0–1'], ['2', 'sept 4', 'at montreal alouettes', '21–2', 'loss', '0–2'], ['2', 'sept 6', 'vs. montreal alouettes', '20–11', 'loss', '0–3'], ['3', 'sept 11', 'at toronto argonauts', '12–5', 'win', '1–3'], ['4', 'sept 18', 'vs. toronto argonauts', '34–6', 'loss', '1–4'], ['5', 'sept 25', 'vs. hamilton tiger-cats', '38–12', 'loss', '1–5'], ['6', 'oct 2', 'at hamilton tiger-cats', '45–0', 'loss', '1–6'], ['7', 'oct 9', 'vs. montreal alouettes', '25–11', 'loss', '1–7'], ['7', 'oct 11', 'at montreal alouettes', '24–6', 'loss', '1–8'], ['8', 'oct 16', 'vs. toronto argonauts', '27–11', 'loss', '1–9'], ['9', 'oct 23', 'at hamilton tiger-cats', '25–17', 'loss', '1–10'], ['10', 'oct 30', 'vs. hamilton tiger-cats', '30–9', 'loss', '1–11'], ['11', 'nov 6', 'at toronto argonauts', '18–12', 'loss', '1–12'], ['12', 'nov 13', 'vs. montreal alouettes', '14–12', 'win', '2–12']]
+########################################################################################################################
+Sample 1517 - Plan 1: Operation 1: Select rows where the 'date' is before 'nov 13'.
+Sample 1517 - Plan 1: Selected indices: [[0, 1]]
+Sample 1517 - Plan 1: X-Table after operation df:
+   week    date              opponent score result record
+0     1  aug 28  at toronto argonauts  13–6   loss    0–1
+Sample 1517 - Plan 1: Table after operation: [['week', 'date', 'opponent', 'score', 'result', 'record'], [1, 'aug 28', 'at toronto argonauts', '13–6', 'loss', '0–1']]
+########################################################################################################################
+Sample 1517 - Plan 1: Operation 2: Select rows where the 'opponent' is not 'montreal alouettes'.
+Sample 1517 - Plan 1: Selected indices: [[0, 2]]
+Sample 1517 - Plan 1: X-Table after operation df:
+   week    date              opponent score result record
+0     1  aug 28  at toronto argonauts  13–6   loss    0–1
+Sample 1517 - Plan 1: Table after operation: [['week', 'date', 'opponent', 'score', 'result', 'record'], [1, 'aug 28', 'at toronto argonauts', '13–6', 'loss', '0–1']]
+########################################################################################################################
+Sample 1517 - Plan 1: Operation 3: Order the table by 'date' in descending order.
+Sample 1517 - Plan 1: Selected indices: [[0, 1]]
+Sample 1517 - Plan 1: X-Table after operation df:
+   week    date              opponent score result record
+0     1  aug 28  at toronto argonauts  13–6   loss    0–1
+Sample 1517 - Plan 1: Table after operation: [['week', 'date', 'opponent', 'score', 'result', 'record'], [1, 'aug 28', 'at toronto argonauts', '13–6', 'loss', '0–1']]
+########################################################################################################################
+Sample 1517 - Plan 1: Operation 4: Select row number 1.
+SQL execution error in operation 4: Execution failed on sql 'Write a SQL command that: Select row number 1.': near "Write": syntax error
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['at toronto argonauts']]
+Groundtruth: ['Toronto Argonauts']

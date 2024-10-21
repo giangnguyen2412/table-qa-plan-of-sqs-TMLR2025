@@ -1,0 +1,172 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which la metro green line station also connects to the silver line?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'station_connections' column contains the value 'silver line'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>station</td>
+<td>station_connections</td>
+<td>date_opened</td>
+<td>station_parking</td>
+<td>city__neighborhood</td>
+</tr>
+<tr>
+<td>redondo beach</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">metro local: 126, 215\nbeach cities transit 102\nladot commuter express: 574\nlawndale beat express, residential routes</span></td>
+<td>august 12, 1995</td>
+<td>403 spaces</td>
+<td>redondo beach</td>
+</tr>
+<tr>
+<td>douglas</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">metro local: 125\namtrak california thruway motorcoach: route 1c\nbeach cities transit: 109 (northbound only)</span></td>
+<td>august 12, 1995</td>
+<td>30 spaces</td>
+<td>el segundo</td>
+</tr>
+<tr>
+<td>el segundo</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gardena transit: 5\nladot commuter express: 574\nmunicipal area express: 2, 3, 3x\ntorrance transit: 8 (southbound)</span></td>
+<td>august 12, 1995</td>
+<td>90 spaces</td>
+<td>el segundo</td>
+</tr>
+<tr>
+<td>mariposa</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">metro local: 232\ntorrance transit: 8 (southbound)</span></td>
+<td>august 12, 1995</td>
+<td>no parking</td>
+<td>el segundo</td>
+</tr>
+<tr>
+<td>aviation/lax</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">metro local: 40 owl, 120, 625\nlax shuttle: route g (serves lax terminals 1-8 and the tom bradley international terminal)\nsanta monica transit: 3, rapid 3\nculver city transit: 6, rapid 6\nbeach cities transit: 109\nmunicipal area express: 2, 3, 3x</span></td>
+<td>august 12, 1995</td>
+<td>405 spaces</td>
+<td>el segundo</td>
+</tr>
+<tr>
+<td>hawthorne/lennox</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">metro local: 40, 126, 212, 312\nmetro express: 442\nmetro rapid: 740</span></td>
+<td>august 12, 1995</td>
+<td>623 spaces</td>
+<td>hawthorne</td>
+</tr>
+<tr>
+<td>crenshaw</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">metro local: 126, 207 (weekdays selected rush hour am/pm trips, & weekends only), 210\nmetro rapid: 710, 757\ntorrance transit: 5, 10</span></td>
+<td>august 12, 1995</td>
+<td>513 spaces</td>
+<td>hawthorne</td>
+</tr>
+<tr>
+<td>vermont/athens</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">metro local: 204, 206, 209\nmetro rapid: 754\ngardena transit:2</span></td>
+<td>august 12, 1995</td>
+<td>155 spaces</td>
+<td>athens</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">harbor freeway</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">metro silver line  \nmetro local: 45, 81, 120\nmetro express: 450 (weekdays rush hour am/pm trips, & sundays only), 550\nmetro rapid: 745\nladot commuter express: 448\norange county transportation authority: 721\ngardena transit: 1x\ntorrance transit: 1, 2, 4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">august 12, 1995</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">253 spaces</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">south los angeles</span></td>
+</tr>
+<tr>
+<td>avalon</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">metro local: 48, 51, 52, 53, 352\nladot dash: watts\nwillowbrook shuttle</span></td>
+<td>august 12, 1995</td>
+<td>158 spaces</td>
+<td>south los angeles</td>
+</tr>
+<tr>
+<td>willowbrook</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">metro blue line  \nmetro local: 55, 120, 205, 355, 612\ngardena transit: 5\nladot dash: watts\nlynwood breeze route d\nwillowbrook shuttle: a, b, king medical center</span></td>
+<td>august 12, 1995</td>
+<td>975 spaces</td>
+<td>willowbrook</td>
+</tr>
+<tr>
+<td>long beach boulevard</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">metro local: 60, 251\nmetro rapid: 760\nlynwood trolley: a</span></td>
+<td>august 12, 1995</td>
+<td>650 spaces</td>
+<td>lynwood</td>
+</tr>
+<tr>
+<td>lakewood boulevard</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">metro local: 117, 265, 266</span></td>
+<td>august 12, 1995</td>
+<td>545 spaces</td>
+<td>downey</td>
+</tr>
+<tr>
+<td>norwalk</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">metro local: 111, 115, 120, 125, 270, 311\nmetro express: 460, 577x\nnorwalk transit: 2, 4, 5\nlong beach transit: 172, 173</span></td>
+<td>august 12, 1995</td>
+<td>2050 spaces</td>
+<td>norwalk</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select the 'station' column.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>station</td>
+<td>station_connections</td>
+<td>date_opened</td>
+<td>station_parking</td>
+<td>city__neighborhood</td>
+</tr>
+<tr>
+<td>harbor freeway</td>
+<td>metro silver line  \nmetro local: 45, 81, 120\nmetro express: 450 (weekdays rush hour am/pm trips, & sundays only), 550\nmetro rapid: 745\nladot commuter express: 448\norange county transportation authority: 721\ngardena transit: 1x\ntorrance transit: 1, 2, 4</td>
+<td>august 12, 1995</td>
+<td>253 spaces</td>
+<td>south los angeles</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>station</td>
+</tr>
+<tr>
+<td>harbor freeway</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['harbor freeway']]</h3>
+</body></html>

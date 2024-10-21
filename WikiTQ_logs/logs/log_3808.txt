@@ -1,0 +1,81 @@
+************************************************************************************************************************
+Sample 3808 - Plan 1: Query: how many consecutive german cups did the team win?
+Sample 3808 - Plan 1: Groundtruth: ['3']
+Sample 3808 - Plan 1: X-Original table pd: 
+     season  tier      league  pos_           postseason       german_cup  \
+0   1991–92     1  bundesliga   2.0         semifinalist         champion   
+1   1992–93     1  bundesliga   1.0             finalist                –   
+2   1993–94     1  bundesliga   1.0         semifinalist     semifinalist   
+3   1994–95     1  bundesliga   1.0         semifinalist                –   
+4   1995–96     1  bundesliga   4.0         semifinalist     semifinalist   
+5   1996–97     1  bundesliga   3.0         semifinalist     semifinalist   
+6   1997–98     1  bundesliga   3.0         semifinalist                –   
+7   1998–99     1  bundesliga   6.0      quarterfinalist      third place   
+8   1999–00     1  bundesliga  10.0          round of 16                –   
+9   2000–01     1  bundesliga  10.0  relegation playoffs                –   
+10  2001–02     1  bundesliga   7.0      quarterfinalist                –   
+11  2002–03     1  bundesliga   2.0             finalist                –   
+12  2003–04     1  bundesliga   2.0             finalist                –   
+13  2004–05     1  bundesliga   1.0             champion                –   
+14  2005–06     1  bundesliga   3.0         semifinalist         finalist   
+15  2006–07     1  bundesliga   1.0             champion                –   
+16  2007–08     1  bundesliga   7.0      quarterfinalist                –   
+17  2008–09     1  bundesliga   4.0         semifinalist                –   
+18  2009–10     1  bundesliga   1.0             champion         champion   
+19  2010–11     1  bundesliga   1.0             champion         champion   
+20  2011–12     1  bundesliga   1.0             champion         champion   
+21  2012–13     1  bundesliga   1.0             champion  quarterfinalist   
+22  2013–14     1  bundesliga   NaN                           third place   
+
+                             european_competitions  
+0                                                –  
+1                                                –  
+2                                                –  
+3                               3 played korać cup  
+4                               3 played korać cup  
+5                               3 played korać cup  
+6                               3 played korać cup  
+7                               3 played korać cup  
+8                                                –  
+9                                                –  
+10                                               –  
+11                                               –  
+12                     3 played fiba europe league  
+13                               2 played uleb cup  
+14                             1 euroleague top 16  
+15                               2 played uleb cup  
+16                     1 euroleague regular season  
+17                                2 played eurocup  
+18                                2 played eurocup  
+19                     1 euroleague regular season  
+20                     1 euroleague regular season  
+21                             1 euroleague top 16  
+22  1 euroleague regular season\n2 eurocup last 32  
+Sample 3808 - Plan 1: Caption: none
+Sample 3808 - Plan 1: Original table: [['season', 'tier', 'league', 'pos_', 'postseason', 'german_cup', 'european_competitions'], ['1991–92', '1', 'bundesliga', '2', 'semifinalist', 'champion', '–'], ['1992–93', '1', 'bundesliga', '1', 'finalist', '–', '–'], ['1993–94', '1', 'bundesliga', '1', 'semifinalist', 'semifinalist', '–'], ['1994–95', '1', 'bundesliga', '1', 'semifinalist', '–', '3 played korać cup'], ['1995–96', '1', 'bundesliga', '4', 'semifinalist', 'semifinalist', '3 played korać cup'], ['1996–97', '1', 'bundesliga', '3', 'semifinalist', 'semifinalist', '3 played korać cup'], ['1997–98', '1', 'bundesliga', '3', 'semifinalist', '–', '3 played korać cup'], ['1998–99', '1', 'bundesliga', '6', 'quarterfinalist', 'third place', '3 played korać cup'], ['1999–00', '1', 'bundesliga', '10', 'round of 16', '–', '–'], ['2000–01', '1', 'bundesliga', '10', 'relegation playoffs', '–', '–'], ['2001–02', '1', 'bundesliga', '7', 'quarterfinalist', '–', '–'], ['2002–03', '1', 'bundesliga', '2', 'finalist', '–', '–'], ['2003–04', '1', 'bundesliga', '2', 'finalist', '–', '3 played fiba europe league'], ['2004–05', '1', 'bundesliga', '1', 'champion', '–', '2 played uleb cup'], ['2005–06', '1', 'bundesliga', '3', 'semifinalist', 'finalist', '1 euroleague top 16'], ['2006–07', '1', 'bundesliga', '1', 'champion', '–', '2 played uleb cup'], ['2007–08', '1', 'bundesliga', '7', 'quarterfinalist', '–', '1 euroleague regular season'], ['2008–09', '1', 'bundesliga', '4', 'semifinalist', '–', '2 played eurocup'], ['2009–10', '1', 'bundesliga', '1', 'champion', 'champion', '2 played eurocup'], ['2010–11', '1', 'bundesliga', '1', 'champion', 'champion', '1 euroleague regular season'], ['2011–12', '1', 'bundesliga', '1', 'champion', 'champion', '1 euroleague regular season'], ['2012–13', '1', 'bundesliga', '1', 'champion', 'quarterfinalist', '1 euroleague top 16'], ['2013–14', '1', 'bundesliga', '', '', 'third place', '1 euroleague regular season\\n2 eurocup last 32']]
+########################################################################################################################
+Sample 3808 - Plan 1: Operation 1: Select rows where the 'german_cup' column is 'champion'.
+Sample 3808 - Plan 1: Selected indices: [[20, 5], [18, 5], [19, 5], [0, 5]]
+Sample 3808 - Plan 1: X-Table after operation df:
+    season  tier      league  pos_    postseason german_cup  \
+0  1991–92     1  bundesliga   2.0  semifinalist   champion   
+1  2009–10     1  bundesliga   1.0      champion   champion   
+2  2010–11     1  bundesliga   1.0      champion   champion   
+3  2011–12     1  bundesliga   1.0      champion   champion   
+
+         european_competitions  
+0                            –  
+1             2 played eurocup  
+2  1 euroleague regular season  
+3  1 euroleague regular season  
+Sample 3808 - Plan 1: Table after operation: [['season', 'tier', 'league', 'pos_', 'postseason', 'german_cup', 'european_competitions'], ['1991–92', 1, 'bundesliga', 2.0, 'semifinalist', 'champion', '–'], ['2009–10', 1, 'bundesliga', 1.0, 'champion', 'champion', '2 played eurocup'], ['2010–11', 1, 'bundesliga', 1.0, 'champion', 'champion', '1 euroleague regular season'], ['2011–12', 1, 'bundesliga', 1.0, 'champion', 'champion', '1 euroleague regular season']]
+########################################################################################################################
+Sample 3808 - Plan 1: Operation 2: Count the number of rows.
+Sample 3808 - Plan 1: Selected indices: []
+Sample 3808 - Plan 1: X-Table after operation df:
+   row_count
+0          4
+Sample 3808 - Plan 1: Table after operation: [['row_count'], [4]]
+Fall-back: FALSE
+Answer from plan 1: [[4]]
+Groundtruth: ['3']

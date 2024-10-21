@@ -1,0 +1,62 @@
+************************************************************************************************************************
+Sample 4037 - Plan 1: Query: allan zahn and steve schall are each from which school?
+Sample 4037 - Plan 1: Groundtruth: ['Arkansas']
+Sample 4037 - Plan 1: X-Original table pd: 
+    round  pick          player position    nationality  \
+0       1    15  reggie johnson     pf/c  united states   
+1       2    39   michael miley           united states   
+2       3    60    lavon mercer           united states   
+3       3    61    rich yonakor           united states   
+4       4    83  calvin roberts           united states   
+5       5   107        gib hinz           united states   
+6       6   129     dean uthoff           united states   
+7       7   153      allan zahn           united states   
+8       8   172     bill bailey           united states   
+9       9   192     al williams           united states   
+10     10   209    steve schall           united states   
+
+               school_club_team  
+0                     tennessee  
+1   california state-long beach  
+2                       georgia  
+3                north carolina  
+4    california state-fullerton  
+5          wisconsin-eau claire  
+6                    iowa state  
+7                      arkansas  
+8            texas pan-american  
+9             north texas state  
+10                     arkansas  
+Sample 4037 - Plan 1: Caption: none
+Sample 4037 - Plan 1: Original table: [['round', 'pick', 'player', 'position', 'nationality', 'school_club_team'], ['1', '15', 'reggie johnson', 'pf/c', 'united states', 'tennessee'], ['2', '39', 'michael miley', '', 'united states', 'california state-long beach'], ['3', '60', 'lavon mercer', '', 'united states', 'georgia'], ['3', '61', 'rich yonakor', '', 'united states', 'north carolina'], ['4', '83', 'calvin roberts', '', 'united states', 'california state-fullerton'], ['5', '107', 'gib hinz', '', 'united states', 'wisconsin-eau claire'], ['6', '129', 'dean uthoff', '', 'united states', 'iowa state'], ['7', '153', 'allan zahn', '', 'united states', 'arkansas'], ['8', '172', 'bill bailey', '', 'united states', 'texas pan-american'], ['9', '192', 'al williams', '', 'united states', 'north texas state'], ['10', '209', 'steve schall', '', 'united states', 'arkansas']]
+########################################################################################################################
+Sample 4037 - Plan 1: Operation 1: Select rows where the 'player' column is 'allan zahn'.
+Sample 4037 - Plan 1: Selected indices: [[7, 2]]
+Sample 4037 - Plan 1: X-Table after operation df:
+   round  pick      player  position    nationality school_club_team
+0      7   153  allan zahn       NaN  united states         arkansas
+Sample 4037 - Plan 1: Table after operation: [['round', 'pick', 'player', 'position', 'nationality', 'school_club_team'], [7, 153, 'allan zahn', '', 'united states', 'arkansas']]
+########################################################################################################################
+Sample 4037 - Plan 1: Operation 2: Select the 'school_club_team' column for the selected rows.
+Sample 4037 - Plan 1: Selected indices: []
+Sample 4037 - Plan 1: X-Table after operation df:
+  school_club_team
+0         arkansas
+Sample 4037 - Plan 1: Table after operation: [['school_club_team'], ['arkansas']]
+########################################################################################################################
+Sample 4037 - Plan 1: Operation 3: Repeat steps 1 and 2 for rows where the 'player' column is 'steve schall'.
+Sample 4037 - Plan 1: Selected indices: [[0, 0]]
+Sample 4037 - Plan 1: X-Table after operation df:
+  school_club_team
+0         arkansas
+Sample 4037 - Plan 1: Table after operation: [['school_club_team'], ['arkansas']]
+########################################################################################################################
+Sample 4037 - Plan 1: Operation 4: Combine the results from steps 2 and 3 to obtain the schools for both players.
+Sample 4037 - Plan 1: Selected indices: []
+Sample 4037 - Plan 1: X-Table after operation df:
+  school_club_team
+0         arkansas
+Sample 4037 - Plan 1: Table after operation: [['school_club_team'], ['arkansas']]
+Fall-back: FALSE
+Answer from plan 1: [['arkansas']]
+Groundtruth: ['Arkansas']

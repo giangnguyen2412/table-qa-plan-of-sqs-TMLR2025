@@ -1,0 +1,140 @@
+************************************************************************************************************************
+Sample 3832 - Plan 1: Query: what topic cost the most?
+Sample 3832 - Plan 1: Groundtruth: ['Math']
+Sample 3832 - Plan 1: X-Original table pd: 
+                                   name  \
+0                       ask a biologist   
+1                    archimedes-lab.org   
+2                       awesome library   
+3                   bitesize by the bbc   
+4                              brainpop   
+5                          cut-the-knot   
+6                          fact monster   
+7   geometry from the land of the incas   
+8                          hackmath.net   
+9                          hyperphysics   
+10                                  ixl   
+11                            le patron   
+12                      learnalberta.ca   
+13                               nafham   
+14                         starfall.com   
+15                      smartygames.com   
+16                       watchknowlearn   
+
+                                                topic             cost  \
+0                                             biology             free   
+1                                         mathematics             free   
+2                                                 all             free   
+3   art & design, business studies, design & techn...             free   
+4   science, social studies, english, maths, art &...  from us$75/year   
+5                                               maths             free   
+6   world & news, u.s., people, english, science, ...             free   
+7                                            geometry             free   
+8                                         mathematics             free   
+9                                             physics             free   
+10                                               math         $80/year   
+11                                             french             free   
+12              everything (mainly aimed at teachers)             free   
+13  multidisciplinary 5-20min k-12 school video le...             free   
+14                                            reading             free   
+15  math games, reading, art, word scramble, spani...             free   
+16                                                all             free   
+
+    target_age      advertising  
+0           5+             none  
+1          10+    yes - limited  
+2          all      yes - large  
+3         5-16             none  
+4         4-17             none  
+5           8+  yes - extensive  
+6   4-14 (k-8)              yes  
+7          12+  yes - extensive  
+8         9-18             none  
+9          15+             none  
+10        4-12                ?  
+11         12+              yes  
+12        5-18               no  
+13        6-18              yes  
+14         2-9             none  
+15         2-9             none  
+16        2-17             none  
+Sample 3832 - Plan 1: Caption: none
+Sample 3832 - Plan 1: Original table: [['name', 'topic', 'cost', 'target_age', 'advertising'], ['ask a biologist', 'biology', 'free', '5+', 'none'], ['archimedes-lab.org', 'mathematics', 'free', '10+', 'yes - limited'], ['awesome library', 'all', 'free', 'all', 'yes - large'], ['bitesize by the bbc', 'art & design, business studies, design & technology, dida, drama, english, english literature, french, geography, german, history, ict, irish, maths, music, physical education, religious studies, science, spanish', 'free', '5-16', 'none'], ['brainpop', 'science, social studies, english, maths, art & music, health, technology', 'from us$75/year', '4-17', 'none'], ['cut-the-knot', 'maths', 'free', '8+', 'yes - extensive'], ['fact monster', 'world & news, u.s., people, english, science, math & money, sports', 'free', '4-14 (k-8)', 'yes'], ['geometry from the land of the incas', 'geometry', 'free', '12+', 'yes - extensive'], ['hackmath.net', 'mathematics', 'free', '9-18', 'none'], ['hyperphysics', 'physics', 'free', '15+', 'none'], ['ixl', 'math', '$80/year', '4-12', '?'], ['le patron', 'french', 'free', '12+', 'yes'], ['learnalberta.ca', 'everything (mainly aimed at teachers)', 'free', '5-18', 'no'], ['nafham', 'multidisciplinary 5-20min k-12 school video lessons for arabic students', 'free', '6-18', 'yes'], ['starfall.com', 'reading', 'free', '2-9', 'none'], ['smartygames.com', 'math games, reading, art, word scramble, spanish, puzzles, kids sudoku and more', 'free', '2-9', 'none'], ['watchknowlearn', 'all', 'free', '2-17', 'none']]
+########################################################################################################################
+Sample 3832 - Plan 1: Operation 1: Order the table by the 'cost' column in descending order.
+Sample 3832 - Plan 1: Selected indices: [[6, 2], [1, 2], [9, 2], [4, 2], [3, 2], [16, 2], [0, 2], [11, 2], [12, 2], [7, 2], [2, 2], [13, 2], [8, 2], [14, 2], [15, 2], [10, 2], [5, 2]]
+Sample 3832 - Plan 1: X-Table after operation df:
+                                   name  \
+0                                   ixl   
+1                       ask a biologist   
+2                    archimedes-lab.org   
+3                       awesome library   
+4                   bitesize by the bbc   
+5                              brainpop   
+6                          cut-the-knot   
+7                          fact monster   
+8   geometry from the land of the incas   
+9                          hackmath.net   
+10                         hyperphysics   
+11                            le patron   
+12                      learnalberta.ca   
+13                               nafham   
+14                         starfall.com   
+15                      smartygames.com   
+16                       watchknowlearn   
+
+                                                topic             cost  \
+0                                                math         $80/year   
+1                                             biology             free   
+2                                         mathematics             free   
+3                                                 all             free   
+4   art & design, business studies, design & techn...             free   
+5   science, social studies, english, maths, art &...  from us$75/year   
+6                                               maths             free   
+7   world & news, u.s., people, english, science, ...             free   
+8                                            geometry             free   
+9                                         mathematics             free   
+10                                            physics             free   
+11                                             french             free   
+12              everything (mainly aimed at teachers)             free   
+13  multidisciplinary 5-20min k-12 school video le...             free   
+14                                            reading             free   
+15  math games, reading, art, word scramble, spani...             free   
+16                                                all             free   
+
+    target_age      advertising  
+0         4-12                ?  
+1           5+             none  
+2          10+    yes - limited  
+3          all      yes - large  
+4         5-16             none  
+5         4-17             none  
+6           8+  yes - extensive  
+7   4-14 (k-8)              yes  
+8          12+  yes - extensive  
+9         9-18             none  
+10         15+             none  
+11         12+              yes  
+12        5-18               no  
+13        6-18              yes  
+14         2-9             none  
+15         2-9             none  
+16        2-17             none  
+Sample 3832 - Plan 1: Table after operation: [['name', 'topic', 'cost', 'target_age', 'advertising'], ['ixl', 'math', '$80/year', '4-12', '?'], ['ask a biologist', 'biology', 'free', '5+', 'none'], ['archimedes-lab.org', 'mathematics', 'free', '10+', 'yes - limited'], ['awesome library', 'all', 'free', 'all', 'yes - large'], ['bitesize by the bbc', 'art & design, business studies, design & technology, dida, drama, english, english literature, french, geography, german, history, ict, irish, maths, music, physical education, religious studies, science, spanish', 'free', '5-16', 'none'], ['brainpop', 'science, social studies, english, maths, art & music, health, technology', 'from us$75/year', '4-17', 'none'], ['cut-the-knot', 'maths', 'free', '8+', 'yes - extensive'], ['fact monster', 'world & news, u.s., people, english, science, math & money, sports', 'free', '4-14 (k-8)', 'yes'], ['geometry from the land of the incas', 'geometry', 'free', '12+', 'yes - extensive'], ['hackmath.net', 'mathematics', 'free', '9-18', 'none'], ['hyperphysics', 'physics', 'free', '15+', 'none'], ['le patron', 'french', 'free', '12+', 'yes'], ['learnalberta.ca', 'everything (mainly aimed at teachers)', 'free', '5-18', 'no'], ['nafham', 'multidisciplinary 5-20min k-12 school video lessons for arabic students', 'free', '6-18', 'yes'], ['starfall.com', 'reading', 'free', '2-9', 'none'], ['smartygames.com', 'math games, reading, art, word scramble, spanish, puzzles, kids sudoku and more', 'free', '2-9', 'none'], ['watchknowlearn', 'all', 'free', '2-17', 'none']]
+########################################################################################################################
+Sample 3832 - Plan 1: Operation 2: Select row number 1.
+Sample 3832 - Plan 1: Selected indices: []
+Sample 3832 - Plan 1: X-Table after operation df:
+  name topic      cost target_age advertising
+0  ixl  math  $80/year       4-12           ?
+Sample 3832 - Plan 1: Table after operation: [['name', 'topic', 'cost', 'target_age', 'advertising'], ['ixl', 'math', '$80/year', '4-12', '?']]
+########################################################################################################################
+Sample 3832 - Plan 1: Operation 3: Select the 'topic' column.
+Sample 3832 - Plan 1: Selected indices: []
+Sample 3832 - Plan 1: X-Table after operation df:
+  topic
+0  math
+Sample 3832 - Plan 1: Table after operation: [['topic'], ['math']]
+Fall-back: FALSE
+Answer from plan 1: [['math']]
+Groundtruth: ['Math']

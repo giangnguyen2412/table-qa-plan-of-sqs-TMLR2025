@@ -1,0 +1,67 @@
+************************************************************************************************************************
+Sample 151 - Plan 1: Query: how many years after the levanger church was built was the bamberg church built?
+Sample 151 - Plan 1: Groundtruth: ['96']
+Sample 151 - Plan 1: X-Original table pd: 
+       parish        church_name    location  year_built
+0  alstadhaug  alstadhaug church  alstadhaug        1180
+1        ekne        ekne church        ekne        1893
+2    levanger    levanger church    levanger        1902
+3    levanger     bamberg church    levanger        1998
+4   markabygd  markabygda church   markabygd        1887
+5   okkenhaug   okkenhaug chapel   okkenhaug        1893
+6     ytterøy     ytterøy church    ytterøya        1890
+7        åsen        åsen church        åsen        1904
+Sample 151 - Plan 1: Caption: none
+Sample 151 - Plan 1: Original table: [['parish', 'church_name', 'location', 'year_built'], ['alstadhaug', 'alstadhaug church', 'alstadhaug', '1180'], ['ekne', 'ekne church', 'ekne', '1893'], ['levanger', 'levanger church', 'levanger', '1902'], ['levanger', 'bamberg church', 'levanger', '1998'], ['markabygd', 'markabygda church', 'markabygd', '1887'], ['okkenhaug', 'okkenhaug chapel', 'okkenhaug', '1893'], ['ytterøy', 'ytterøy church', 'ytterøya', '1890'], ['åsen', 'åsen church', 'åsen', '1904']]
+########################################################################################################################
+Sample 151 - Plan 1: Operation 1: Select rows where 'church_name' is 'levanger church'.
+Sample 151 - Plan 1: Selected indices: [[2, 1]]
+Sample 151 - Plan 1: X-Table after operation df:
+     parish      church_name  location  year_built
+0  levanger  levanger church  levanger        1902
+Sample 151 - Plan 1: Table after operation: [['parish', 'church_name', 'location', 'year_built'], ['levanger', 'levanger church', 'levanger', 1902]]
+########################################################################################################################
+Sample 151 - Plan 1: Operation 2: Select the 'year_built' column for the selected rows.
+Sample 151 - Plan 1: Selected indices: []
+Sample 151 - Plan 1: X-Table after operation df:
+   year_built
+0        1902
+Sample 151 - Plan 1: Table after operation: [['year_built'], [1902]]
+########################################################################################################################
+Sample 151 - Plan 1: Operation 3: Store the value of 'year_built' for the levanger church in a variable.
+Sample 151 - Plan 1: Selected indices: []
+Sample 151 - Plan 1: X-Table after operation df:
+   levanger_church_year
+0                  1902
+Sample 151 - Plan 1: Table after operation: [['levanger_church_year'], [1902]]
+########################################################################################################################
+Sample 151 - Plan 1: Operation 4: Select rows where 'church_name' is 'bamberg church'.
+Sample 151 - Plan 1: Selected indices: [[0, 0]]
+Sample 151 - Plan 1: X-Table after operation df:
+   levanger_church_year
+0                  1902
+Sample 151 - Plan 1: Table after operation: [['levanger_church_year'], [1902]]
+########################################################################################################################
+Sample 151 - Plan 1: Operation 5: Select the 'year_built' column for the selected rows.
+Sample 151 - Plan 1: Selected indices: []
+Sample 151 - Plan 1: X-Table after operation df:
+   year_built
+0        1902
+Sample 151 - Plan 1: Table after operation: [['year_built'], [1902]]
+########################################################################################################################
+Sample 151 - Plan 1: Operation 6: Subtract the value of 'year_built' for the bamberg church from the value stored in the variable.
+Sample 151 - Plan 1: Selected indices: []
+Sample 151 - Plan 1: X-Table after operation df:
+   result
+0       0
+Sample 151 - Plan 1: Table after operation: [['result'], [0]]
+########################################################################################################################
+Sample 151 - Plan 1: Operation 7: The result of the subtraction is the number of years after the levanger church was built that the bamberg church was built.
+Sample 151 - Plan 1: Selected indices: []
+Sample 151 - Plan 1: X-Table after operation df:
+   years_after_levanger_built
+0                           0
+Sample 151 - Plan 1: Table after operation: [['years_after_levanger_built'], [0]]
+Fall-back: FALSE
+Answer from plan 1: [[0]]
+Groundtruth: ['96']

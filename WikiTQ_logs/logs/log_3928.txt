@@ -1,0 +1,69 @@
+************************************************************************************************************************
+Sample 3928 - Plan 1: Query: how many laps did felipe massa complete?
+Sample 3928 - Plan 1: Groundtruth: ['63']
+Sample 3928 - Plan 1: X-Original table pd: 
+    pos  no                driver        constructor  laps time_retired  grid  \
+0     1   9        kimi räikkönen   mclaren-mercedes    66  1:27:16.830     1   
+1     2   5       fernando alonso            renault    66      +27.652     3   
+2     3  16          jarno trulli             toyota    66      +45.947     5   
+3     4  17       ralf schumacher             toyota    66      +46.719     4   
+4     5   6  giancarlo fisichella            renault    66      +57.936     6   
+5     6   7           mark webber       williams-bmw    66    +1:08.542     2   
+6     7  10    juan pablo montoya   mclaren-mercedes    65       +1 lap     7   
+7     8  14       david coulthard  red bull-cosworth    65       +1 lap     9   
+8     9   2    rubens barrichello            ferrari    65       +1 lap    16   
+9    10   8         nick heidfeld       williams-bmw    65       +1 lap    17   
+10   11  12          felipe massa    sauber-petronas    63    wheel rim    10   
+11   12  18        tiago monteiro      jordan-toyota    63      +3 laps    18   
+12   13  19    narain karthikeyan      jordan-toyota    63      +3 laps    13   
+13  ret  11    jacques villeneuve    sauber-petronas    51       engine    12   
+14  ret   1    michael schumacher            ferrari    46     puncture     8   
+15  ret  21     christijan albers   minardi-cosworth    19      gearbox    14   
+16  ret  20    patrick friesacher   minardi-cosworth    11     spun off    15   
+17  ret  15     vitantonio liuzzi  red bull-cosworth     9     spun off    11   
+
+    points  
+0     10.0  
+1      8.0  
+2      6.0  
+3      5.0  
+4      4.0  
+5      3.0  
+6      2.0  
+7      1.0  
+8      NaN  
+9      NaN  
+10     NaN  
+11     NaN  
+12     NaN  
+13     NaN  
+14     NaN  
+15     NaN  
+16     NaN  
+17     NaN  
+Sample 3928 - Plan 1: Caption: none
+Sample 3928 - Plan 1: Original table: [['pos', 'no', 'driver', 'constructor', 'laps', 'time_retired', 'grid', 'points'], ['1', '9', 'kimi räikkönen', 'mclaren-mercedes', '66', '1:27:16.830', '1', '10'], ['2', '5', 'fernando alonso', 'renault', '66', '+27.652', '3', '8'], ['3', '16', 'jarno trulli', 'toyota', '66', '+45.947', '5', '6'], ['4', '17', 'ralf schumacher', 'toyota', '66', '+46.719', '4', '5'], ['5', '6', 'giancarlo fisichella', 'renault', '66', '+57.936', '6', '4'], ['6', '7', 'mark webber', 'williams-bmw', '66', '+1:08.542', '2', '3'], ['7', '10', 'juan pablo montoya', 'mclaren-mercedes', '65', '+1 lap', '7', '2'], ['8', '14', 'david coulthard', 'red bull-cosworth', '65', '+1 lap', '9', '1'], ['9', '2', 'rubens barrichello', 'ferrari', '65', '+1 lap', '16', ''], ['10', '8', 'nick heidfeld', 'williams-bmw', '65', '+1 lap', '17', ''], ['11', '12', 'felipe massa', 'sauber-petronas', '63', 'wheel rim', '10', ''], ['12', '18', 'tiago monteiro', 'jordan-toyota', '63', '+3 laps', '18', ''], ['13', '19', 'narain karthikeyan', 'jordan-toyota', '63', '+3 laps', '13', ''], ['ret', '11', 'jacques villeneuve', 'sauber-petronas', '51', 'engine', '12', ''], ['ret', '1', 'michael schumacher', 'ferrari', '46', 'puncture', '8', ''], ['ret', '21', 'christijan albers', 'minardi-cosworth', '19', 'gearbox', '14', ''], ['ret', '20', 'patrick friesacher', 'minardi-cosworth', '11', 'spun off', '15', ''], ['ret', '15', 'vitantonio liuzzi', 'red bull-cosworth', '9', 'spun off', '11', '']]
+########################################################################################################################
+Sample 3928 - Plan 1: Operation 1: Select rows where 'driver' is 'felipe massa'.
+Sample 3928 - Plan 1: Selected indices: [[10, 2]]
+Sample 3928 - Plan 1: X-Table after operation df:
+   pos  no        driver      constructor  laps time_retired  grid  points
+0   11  12  felipe massa  sauber-petronas    63    wheel rim    10     NaN
+Sample 3928 - Plan 1: Table after operation: [['pos', 'no', 'driver', 'constructor', 'laps', 'time_retired', 'grid', 'points'], ['11', 12, 'felipe massa', 'sauber-petronas', 63, 'wheel rim', 10, None]]
+########################################################################################################################
+Sample 3928 - Plan 1: Operation 2: Select the 'laps' column.
+Sample 3928 - Plan 1: Selected indices: []
+Sample 3928 - Plan 1: X-Table after operation df:
+   laps
+0    63
+Sample 3928 - Plan 1: Table after operation: [['laps'], [63]]
+########################################################################################################################
+Sample 3928 - Plan 1: Operation 3: Retrieve the value from the selected cell.
+Sample 3928 - Plan 1: Selected indices: []
+Sample 3928 - Plan 1: X-Table after operation df:
+   laps
+0    63
+Sample 3928 - Plan 1: Table after operation: [['laps'], [63]]
+Fall-back: FALSE
+Answer from plan 1: [[63]]
+Groundtruth: ['63']

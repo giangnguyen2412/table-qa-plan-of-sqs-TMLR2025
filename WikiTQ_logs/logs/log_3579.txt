@@ -1,0 +1,35 @@
+************************************************************************************************************************
+Sample 3579 - Plan 1: Query: who did the chicago bears draft in 2000 that attended the same college as fellow draftee dustin lyman?
+Sample 3579 - Plan 1: Groundtruth: ['Reggie Austin']
+Sample 3579 - Plan 1: X-Original table pd: 
+   round  pick            name position             college
+0      1     9  brian urlacher        s          new mexico
+1      2    39      mike brown        s            nebraska
+2      3    69       dez white       wr        georgia tech
+3      3    87    dustin lyman       te         wake forest
+4      4   125   reggie austin       db         wake forest
+5      6   170    frank murphy       wr        kansas state
+6      6   174    paul edinger        k      michigan state
+7      7   223    james cotton       de          ohio state
+8      7   254   michael green        s  northwestern state
+Sample 3579 - Plan 1: Caption: none
+Sample 3579 - Plan 1: Original table: [['round', 'pick', 'name', 'position', 'college'], ['1', '9', 'brian urlacher', 's', 'new mexico'], ['2', '39', 'mike brown', 's', 'nebraska'], ['3', '69', 'dez white', 'wr', 'georgia tech'], ['3', '87', 'dustin lyman', 'te', 'wake forest'], ['4', '125', 'reggie austin', 'db', 'wake forest'], ['6', '170', 'frank murphy', 'wr', 'kansas state'], ['6', '174', 'paul edinger', 'k', 'michigan state'], ['7', '223', 'james cotton', 'de', 'ohio state'], ['7', '254', 'michael green', 's', 'northwestern state']]
+########################################################################################################################
+Sample 3579 - Plan 1: Operation 1: Select rows where 'college' is the same as the college attended by 'dustin lyman'.
+Sample 3579 - Plan 1: Selected indices: [[4, 4], [3, 2], [3, 4], [4, 2]]
+Sample 3579 - Plan 1: X-Table after operation df:
+   round  pick           name position      college
+0      3    87   dustin lyman       te  wake forest
+1      4   125  reggie austin       db  wake forest
+Sample 3579 - Plan 1: Table after operation: [['round', 'pick', 'name', 'position', 'college'], [3, 87, 'dustin lyman', 'te', 'wake forest'], [4, 125, 'reggie austin', 'db', 'wake forest']]
+########################################################################################################################
+Sample 3579 - Plan 1: Operation 2: Select the 'name' column.
+Sample 3579 - Plan 1: Selected indices: []
+Sample 3579 - Plan 1: X-Table after operation df:
+            name
+0   dustin lyman
+1  reggie austin
+Sample 3579 - Plan 1: Table after operation: [['name'], ['dustin lyman'], ['reggie austin']]
+Fall-back: FALSE
+Answer from plan 1: [['dustin lyman'], ['reggie austin']]
+Groundtruth: ['Reggie Austin']

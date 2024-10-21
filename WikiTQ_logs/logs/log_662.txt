@@ -1,0 +1,96 @@
+************************************************************************************************************************
+Sample 662 - Plan 1: Query: what is the fastest rowing time in the world for a lm2x lightweight double scull boat?
+Sample 662 - Plan 1: Groundtruth: ['6:10.02']
+Sample 662 - Plan 1: X-Original table pd: 
+                               boat     time  \
+0                m1x\nsingle sculls  6:33.35   
+1                m2-\ncoxless pairs  6:08.50   
+2                  m2+\ncoxed pairs  6:42.16   
+3                m2x\ndouble sculls  6:03.25   
+4                 m4-\ncoxless four  5:37.86   
+5                   m4+\ncoxed four  5:58.96   
+6                  m4x\nquad sculls  5:33.15   
+7                        m8+\neight  5:19.35   
+8   lm1x\nlightweight single sculls  6:46.93   
+9   lm2-\nlightweight coxless pairs  6:26.21   
+10  lm2x\nlightweight double sculls  6:10.02   
+11   lm4-\nlightweight coxless four  5:45.60   
+12    lm4x\nlightweight quad sculls  5:45.18   
+13          lm8+\nlightweight eight  5:30.24   
+
+                                                 crew         nation  date  \
+0                                       mahé drysdale    new zealand  2009   
+1                            hamish bond\neric murray    new zealand  2012   
+2   igor boraska\ntihomir franković\nmilan razov (...        croatia  1994   
+3                 adrien hardy\njean-baptiste macquet         france  2006   
+4   andrew triggs-hodge\ntom james\npete reed\nale...  great britain  2012   
+5   matthias ungemach\narmin eichholz\narmin weyra...        germany  1991   
+6   vladislav ryabcev\nalexey svirin\nnikita morga...         russia  2012   
+7   gabriel bergen\ndouglas csima\nrobert gibson\n...         canada  2012   
+8                                        jeremie azou         france  2011   
+9                      tony o'connor\nneville maxwell        ireland  1994   
+10                       mads rasmussen\nrasmus quist        denmark  2007   
+11  thomas poulsen\nthomas ebert\neskild ebbesen\n...        denmark  1999   
+12  francesco esposito\nmassimo lana\nmichelangelo...          italy  1992   
+13  klaus altena\nchristian dahlke\nthomas melges\...        germany  1992   
+
+               meet                     location  
+0                                 poznań, poland  
+1   summer olympics         eton dorney, england  
+2                    indianapolis, united states  
+3                                 poznań, poland  
+4                           lucerne, switzerland  
+5                                vienna, austria  
+6                            lucerne,switzerland  
+7                           lucerne, switzerland  
+8                         amsterdam, netherlands  
+9                                  paris, france  
+10                        amsterdam, netherlands  
+11                          lucerne, switzerland  
+12                              montreal, canada  
+13                              montreal, canada  
+Sample 662 - Plan 1: Caption: none
+Sample 662 - Plan 1: Original table: [['boat', 'time', 'crew', 'nation', 'date', 'meet', 'location'], ['m1x\\nsingle sculls', '6:33.35', 'mahé drysdale', 'new zealand', '2009', '', 'poznań, poland'], ['m2-\\ncoxless pairs', '6:08.50', 'hamish bond\\neric murray', 'new zealand', '2012', 'summer olympics', 'eton dorney, england'], ['m2+\\ncoxed pairs', '6:42.16', 'igor boraska\\ntihomir franković\\nmilan razov (coxswain)', 'croatia', '1994', '', 'indianapolis, united states'], ['m2x\\ndouble sculls', '6:03.25', 'adrien hardy\\njean-baptiste macquet', 'france', '2006', '', 'poznań, poland'], ['m4-\\ncoxless four', '5:37.86', 'andrew triggs-hodge\\ntom james\\npete reed\\nalex gregory', 'great britain', '2012', '', 'lucerne, switzerland'], ['m4+\\ncoxed four', '5:58.96', 'matthias ungemach\\narmin eichholz\\narmin weyrauch\\nbahne rabe\\njoerg dederding (coxswain)', 'germany', '1991', '', 'vienna, austria'], ['m4x\\nquad sculls', '5:33.15', 'vladislav ryabcev\\nalexey svirin\\nnikita morgachev\\nsergei fedorovtsev', 'russia', '2012', '', 'lucerne,switzerland'], ['m8+\\neight', '5:19.35', 'gabriel bergen\\ndouglas csima\\nrobert gibson\\nconlin mccabe\\nmalcolm howard\\nandrew byrnes\\njeremiah brown\\nwill crothers\\nbrian price (coxswain)', 'canada', '2012', '', 'lucerne, switzerland'], ['lm1x\\nlightweight single sculls', '6:46.93', 'jeremie azou', 'france', '2011', '', 'amsterdam, netherlands'], ['lm2-\\nlightweight coxless pairs', '6:26.21', "tony o'connor\\nneville maxwell", 'ireland', '1994', '', 'paris, france'], ['lm2x\\nlightweight double sculls', '6:10.02', 'mads rasmussen\\nrasmus quist', 'denmark', '2007', '', 'amsterdam, netherlands'], ['lm4-\\nlightweight coxless four', '5:45.60', 'thomas poulsen\\nthomas ebert\\neskild ebbesen\\nvictor feddersen', 'denmark', '1999', '', 'lucerne, switzerland'], ['lm4x\\nlightweight quad sculls', '5:45.18', 'francesco esposito\\nmassimo lana\\nmichelangelo crispi\\nmassimo guglielmi', 'italy', '1992', '', 'montreal, canada'], ['lm8+\\nlightweight eight', '5:30.24', 'klaus altena\\nchristian dahlke\\nthomas melges\\nbernhard stomporowski\\nmichael kobor\\nuwe maerz\\nmichael buchheit\\nkai von warburg\\nolaf kaska (coxswain)', 'germany', '1992', '', 'montreal, canada']]
+########################################################################################################################
+Sample 662 - Plan 1: Operation 1: Select rows where the 'boat' column is 'lm2x\lightweight double sculls'.
+Sample 662 - Plan 1: Selected indices: []
+Sample 662 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [boat, time, crew, nation, date, meet, location]
+Index: []
+Sample 662 - Plan 1: Table after operation: [['boat', 'time', 'crew', 'nation', 'date', 'meet', 'location']]
+########################################################################################################################
+Sample 662 - Plan 1: Operation 2: Extract the numerical time value from the 'time' column and add a new column 'num_time' to the existing table.
+Sample 662 - Plan 1: Selected indices: []
+Sample 662 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [boat, time, crew, nation, date, meet, location, num_time]
+Index: []
+Sample 662 - Plan 1: Table after operation: [['boat', 'time', 'crew', 'nation', 'date', 'meet', 'location', 'num_time']]
+########################################################################################################################
+Sample 662 - Plan 1: Operation 3: Order the table by the 'num_time' column in ascending order.
+Sample 662 - Plan 1: Selected indices: []
+Sample 662 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [boat, time, crew, nation, date, meet, location, num_time]
+Index: []
+Sample 662 - Plan 1: Table after operation: [['boat', 'time', 'crew', 'nation', 'date', 'meet', 'location', 'num_time']]
+########################################################################################################################
+Sample 662 - Plan 1: Operation 4: Select row number 1.
+Sample 662 - Plan 1: Selected indices: []
+Sample 662 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [boat, time, crew, nation, date, meet, location, num_time]
+Index: []
+Sample 662 - Plan 1: Table after operation: [['boat', 'time', 'crew', 'nation', 'date', 'meet', 'location', 'num_time']]
+########################################################################################################################
+Sample 662 - Plan 1: Operation 5: Select the 'time' column.
+Sample 662 - Plan 1: Selected indices: []
+Sample 662 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [time]
+Index: []
+Sample 662 - Plan 1: Table after operation: [['time']]
+Fall-back: TRUE
+Answer from plan 1: [['6:10.02']]
+Groundtruth: ['6:10.02']

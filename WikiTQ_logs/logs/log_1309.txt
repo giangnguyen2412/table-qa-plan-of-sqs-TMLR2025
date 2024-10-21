@@ -1,0 +1,125 @@
+************************************************************************************************************************
+Sample 1309 - Plan 1: Query: what are the most points by a country with a rank less than 10?
+Sample 1309 - Plan 1: Groundtruth: ['8']
+Sample 1309 - Plan 1: X-Original table pd: 
+    rank                     name               club     nationality  points
+0      1                  eusébio            benfica        portugal      67
+1      2       giacinto facchetti     internazionale           italy      59
+2      3              luis suárez     internazionale           spain      45
+3      4           paul van himst         anderlecht         belgium      25
+4      5           bobby charlton  manchester united         england      19
+5      6           flórián albert       ferencvárosi         hungary      14
+6      7            gianni rivera              milan           italy      10
+7      8         georgi asparuhov       levski sofia        bulgaria       9
+8      8       alessandro mazzola     internazionale           italy       9
+9      8           valery voronin     torpedo moskva    soviet union       9
+10    11                denis law  manchester united        scotland       8
+11    12  karl-heinz schnellinger              milan    west germany       6
+12    13            ferenc puskás        real madrid           spain       5
+13    13               jim baxter         sunderland        scotland       5
+14    15              mario corso     internazionale           italy       3
+15    15               lev yashin      dynamo moscow    soviet union       3
+16    17             mário coluna            benfica        portugal       2
+17    17            amancio amaro        real madrid           spain       2
+18    17        franz beckenbauer      bayern munich    west germany       2
+19    17              milan galić   partizan beograd      yugoslavia       2
+20    17          philippe gondet             nantes          france       2
+21    17           andrej kvašňák       sparta praha  czechoslovakia       2
+22    17              ferenc bene       ujpest dozsa         hungary       2
+23    17          slava metreveli     dinamo tbilisi    soviet union       2
+24    25           ivor allchurch       cardiff city           wales       1
+25    25               jakob kühn             zürich     switzerland       1
+26    25            sigfried held  borussia dortmund    west germany       1
+Sample 1309 - Plan 1: Caption: none
+Sample 1309 - Plan 1: Original table: [['rank', 'name', 'club', 'nationality', 'points'], ['1', 'eusébio', 'benfica', 'portugal', '67'], ['2', 'giacinto facchetti', 'internazionale', 'italy', '59'], ['3', 'luis suárez', 'internazionale', 'spain', '45'], ['4', 'paul van himst', 'anderlecht', 'belgium', '25'], ['5', 'bobby charlton', 'manchester united', 'england', '19'], ['6', 'flórián albert', 'ferencvárosi', 'hungary', '14'], ['7', 'gianni rivera', 'milan', 'italy', '10'], ['8', 'georgi asparuhov', 'levski sofia', 'bulgaria', '9'], ['8', 'alessandro mazzola', 'internazionale', 'italy', '9'], ['8', 'valery voronin', 'torpedo moskva', 'soviet union', '9'], ['11', 'denis law', 'manchester united', 'scotland', '8'], ['12', 'karl-heinz schnellinger', 'milan', 'west germany', '6'], ['13', 'ferenc puskás', 'real madrid', 'spain', '5'], ['13', 'jim baxter', 'sunderland', 'scotland', '5'], ['15', 'mario corso', 'internazionale', 'italy', '3'], ['15', 'lev yashin', 'dynamo moscow', 'soviet union', '3'], ['17', 'mário coluna', 'benfica', 'portugal', '2'], ['17', 'amancio amaro', 'real madrid', 'spain', '2'], ['17', 'franz beckenbauer', 'bayern munich', 'west germany', '2'], ['17', 'milan galić', 'partizan beograd', 'yugoslavia', '2'], ['17', 'philippe gondet', 'nantes', 'france', '2'], ['17', 'andrej kvašňák', 'sparta praha', 'czechoslovakia', '2'], ['17', 'ferenc bene', 'ujpest dozsa', 'hungary', '2'], ['17', 'slava metreveli', 'dinamo tbilisi', 'soviet union', '2'], ['25', 'ivor allchurch', 'cardiff city', 'wales', '1'], ['25', 'jakob kühn', 'zürich', 'switzerland', '1'], ['25', 'sigfried held', 'borussia dortmund', 'west germany', '1']]
+########################################################################################################################
+Sample 1309 - Plan 1: Operation 1: Select rows where the 'rank' is less than 10.
+Sample 1309 - Plan 1: Selected indices: [[9, 0], [4, 0], [0, 0], [7, 0], [2, 0], [8, 0], [3, 0], [5, 0], [6, 0], [1, 0]]
+Sample 1309 - Plan 1: X-Table after operation df:
+   rank                name               club   nationality  points
+0     1             eusébio            benfica      portugal      67
+1     2  giacinto facchetti     internazionale         italy      59
+2     3         luis suárez     internazionale         spain      45
+3     4      paul van himst         anderlecht       belgium      25
+4     5      bobby charlton  manchester united       england      19
+5     6      flórián albert       ferencvárosi       hungary      14
+6     7       gianni rivera              milan         italy      10
+7     8    georgi asparuhov       levski sofia      bulgaria       9
+8     8  alessandro mazzola     internazionale         italy       9
+9     8      valery voronin     torpedo moskva  soviet union       9
+Sample 1309 - Plan 1: Table after operation: [['rank', 'name', 'club', 'nationality', 'points'], [1, 'eusébio', 'benfica', 'portugal', 67], [2, 'giacinto facchetti', 'internazionale', 'italy', 59], [3, 'luis suárez', 'internazionale', 'spain', 45], [4, 'paul van himst', 'anderlecht', 'belgium', 25], [5, 'bobby charlton', 'manchester united', 'england', 19], [6, 'flórián albert', 'ferencvárosi', 'hungary', 14], [7, 'gianni rivera', 'milan', 'italy', 10], [8, 'georgi asparuhov', 'levski sofia', 'bulgaria', 9], [8, 'alessandro mazzola', 'internazionale', 'italy', 9], [8, 'valery voronin', 'torpedo moskva', 'soviet union', 9]]
+########################################################################################################################
+Sample 1309 - Plan 1: Operation 2: Select the 'country' and 'points' columns.
+Sample 1309 - Plan 1: Selected indices: []
+Sample 1309 - Plan 1: X-Table after operation df:
+    nationality  points
+0      portugal      67
+1         italy      59
+2         spain      45
+3       belgium      25
+4       england      19
+5       hungary      14
+6         italy      10
+7      bulgaria       9
+8         italy       9
+9  soviet union       9
+Sample 1309 - Plan 1: Table after operation: [['nationality', 'points'], ['portugal', 67], ['italy', 59], ['spain', 45], ['belgium', 25], ['england', 19], ['hungary', 14], ['italy', 10], ['bulgaria', 9], ['italy', 9], ['soviet union', 9]]
+########################################################################################################################
+Sample 1309 - Plan 1: Operation 3: Group the table by 'country'.
+Sample 1309 - Plan 1: Selected indices: []
+Sample 1309 - Plan 1: X-Table after operation df:
+    nationality  total_points
+0       belgium            25
+1      bulgaria             9
+2       england            19
+3       hungary            14
+4         italy            78
+5      portugal            67
+6  soviet union             9
+7         spain            45
+Sample 1309 - Plan 1: Table after operation: [['nationality', 'total_points'], ['belgium', 25], ['bulgaria', 9], ['england', 19], ['hungary', 14], ['italy', 78], ['portugal', 67], ['soviet union', 9], ['spain', 45]]
+########################################################################################################################
+Sample 1309 - Plan 1: Operation 4: Calculate the sum of 'points' for each country.
+Sample 1309 - Plan 1: Selected indices: []
+Sample 1309 - Plan 1: X-Table after operation df:
+    nationality  points
+0       belgium      25
+1      bulgaria       9
+2       england      19
+3       hungary      14
+4         italy      78
+5      portugal      67
+6  soviet union       9
+7         spain      45
+Sample 1309 - Plan 1: Table after operation: [['nationality', 'points'], ['belgium', 25], ['bulgaria', 9], ['england', 19], ['hungary', 14], ['italy', 78], ['portugal', 67], ['soviet union', 9], ['spain', 45]]
+########################################################################################################################
+Sample 1309 - Plan 1: Operation 5: Order the table by the sum of 'points' in descending order.
+Sample 1309 - Plan 1: Selected indices: [[0, 1], [7, 1], [2, 1], [3, 1], [6, 1], [1, 1], [5, 1], [4, 1]]
+Sample 1309 - Plan 1: X-Table after operation df:
+    nationality  points
+0         italy      78
+1      portugal      67
+2         spain      45
+3       belgium      25
+4       england      19
+5       hungary      14
+6      bulgaria       9
+7  soviet union       9
+Sample 1309 - Plan 1: Table after operation: [['nationality', 'points'], ['italy', 78], ['portugal', 67], ['spain', 45], ['belgium', 25], ['england', 19], ['hungary', 14], ['bulgaria', 9], ['soviet union', 9]]
+########################################################################################################################
+Sample 1309 - Plan 1: Operation 6: Select the row with the highest sum of 'points'.
+Sample 1309 - Plan 1: Selected indices: [[0, 1]]
+Sample 1309 - Plan 1: X-Table after operation df:
+  nationality  points
+0       italy      78
+Sample 1309 - Plan 1: Table after operation: [['nationality', 'points'], ['italy', 78]]
+########################################################################################################################
+Sample 1309 - Plan 1: Operation 7: Select the 'country' column.
+Sample 1309 - Plan 1: Selected indices: []
+Sample 1309 - Plan 1: X-Table after operation df:
+  nationality
+0       italy
+Sample 1309 - Plan 1: Table after operation: [['nationality'], ['italy']]
+Fall-back: FALSE
+Answer from plan 1: [['italy']]
+Groundtruth: ['8']

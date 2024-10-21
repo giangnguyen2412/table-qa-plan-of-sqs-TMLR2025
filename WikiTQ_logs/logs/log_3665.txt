@@ -1,0 +1,117 @@
+************************************************************************************************************************
+Sample 3665 - Plan 1: Query: what is the longest publication?
+Sample 3665 - Plan 1: Groundtruth: ['The Far Reaching Effects of Broadband']
+Sample 3665 - Plan 1: X-Original table pd: 
+                                               title  year  \
+0  rural telecoms handbook: equipment and manufac...  1992   
+1  regional structure and telecommunications dema...  1982   
+2               the route to advanced communications  1991   
+3  global turf wars: re-inventing the telecoms op...  1999   
+4                   atm vendor & operator strategies  1993   
+5              the far reaching effects of broadband  2002   
+6  regulating the telecoms market: competition an...  2003   
+
+                                            authors  \
+0                         tim hills, david cleevely   
+1                                    d. d. cleevely   
+2  david cleevely, stefan stanislawski, ade ajibulu   
+3           tim hills, david cleevely, andrea smith   
+4           david cleevely, peter aknai, ian leslie   
+5                                    david cleevely   
+6               tim hills, david cleevely, ross pow   
+
+                                 publisher pages  
+0                    analysys publications     -  
+1                  university of cambridge     -  
+2                    analysys publications   178  
+3                    analysis publications   218  
+4                    analysis publications   180  
+5  institution of engineering & technology   415  
+6                    analysis publications    35  
+Sample 3665 - Plan 1: Caption: none
+Sample 3665 - Plan 1: Original table: [['title', 'year', 'authors', 'publisher', 'pages'], ['rural telecoms handbook: equipment and manufacturers', '1992', 'tim hills, david cleevely', 'analysys publications', '-'], ['regional structure and telecommunications demand: a case study of kenya (ph.d. thesis)', '1982', 'd. d. cleevely', 'university of cambridge', '-'], ['the route to advanced communications', '1991', 'david cleevely, stefan stanislawski, ade ajibulu', 'analysys publications', '178'], ['global turf wars: re-inventing the telecoms operator for the age of global competition', '1999', 'tim hills, david cleevely, andrea smith', 'analysis publications', '218'], ['atm vendor & operator strategies', '1993', 'david cleevely, peter aknai, ian leslie', 'analysis publications', '180'], ['the far reaching effects of broadband', '2002', 'david cleevely', 'institution of engineering & technology', '415'], ['regulating the telecoms market: competition and innovation in the broadband economy', '2003', 'tim hills, david cleevely, ross pow', 'analysis publications', '35']]
+########################################################################################################################
+Sample 3665 - Plan 1: Operation 1: Calculate the length of the 'pages' column and add a new column 'page_length' to the existing table.
+Sample 3665 - Plan 1: Selected indices: [[0, 4], [1, 4], [2, 4], [3, 4], [4, 4], [5, 4], [6, 4]]
+Sample 3665 - Plan 1: X-Table after operation df:
+                                               title  year  \
+0  rural telecoms handbook: equipment and manufac...  1992   
+1  regional structure and telecommunications dema...  1982   
+2               the route to advanced communications  1991   
+3  global turf wars: re-inventing the telecoms op...  1999   
+4                   atm vendor & operator strategies  1993   
+5              the far reaching effects of broadband  2002   
+6  regulating the telecoms market: competition an...  2003   
+
+                                            authors  \
+0                         tim hills, david cleevely   
+1                                    d. d. cleevely   
+2  david cleevely, stefan stanislawski, ade ajibulu   
+3           tim hills, david cleevely, andrea smith   
+4           david cleevely, peter aknai, ian leslie   
+5                                    david cleevely   
+6               tim hills, david cleevely, ross pow   
+
+                                 publisher pages  page_length  
+0                    analysys publications     -            1  
+1                  university of cambridge     -            1  
+2                    analysys publications   178            3  
+3                    analysis publications   218            3  
+4                    analysis publications   180            3  
+5  institution of engineering & technology   415            3  
+6                    analysis publications    35            2  
+Sample 3665 - Plan 1: Table after operation: [['title', 'year', 'authors', 'publisher', 'pages', 'page_length'], ['rural telecoms handbook: equipment and manufacturers', 1992, 'tim hills, david cleevely', 'analysys publications', '-', 1], ['regional structure and telecommunications demand: a case study of kenya (ph.d. thesis)', 1982, 'd. d. cleevely', 'university of cambridge', '-', 1], ['the route to advanced communications', 1991, 'david cleevely, stefan stanislawski, ade ajibulu', 'analysys publications', '178', 3], ['global turf wars: re-inventing the telecoms operator for the age of global competition', 1999, 'tim hills, david cleevely, andrea smith', 'analysis publications', '218', 3], ['atm vendor & operator strategies', 1993, 'david cleevely, peter aknai, ian leslie', 'analysis publications', '180', 3], ['the far reaching effects of broadband', 2002, 'david cleevely', 'institution of engineering & technology', '415', 3], ['regulating the telecoms market: competition and innovation in the broadband economy', 2003, 'tim hills, david cleevely, ross pow', 'analysis publications', '35', 2]]
+########################################################################################################################
+Sample 3665 - Plan 1: Operation 2: Order the table by 'page_length' in descending order.
+Sample 3665 - Plan 1: Selected indices: [[5, 5], [6, 5], [1, 5], [4, 5], [0, 5], [2, 5], [3, 5]]
+Sample 3665 - Plan 1: X-Table after operation df:
+                                               title  year  \
+0               the route to advanced communications  1991   
+1  global turf wars: re-inventing the telecoms op...  1999   
+2                   atm vendor & operator strategies  1993   
+3              the far reaching effects of broadband  2002   
+4  regulating the telecoms market: competition an...  2003   
+5  rural telecoms handbook: equipment and manufac...  1992   
+6  regional structure and telecommunications dema...  1982   
+
+                                            authors  \
+0  david cleevely, stefan stanislawski, ade ajibulu   
+1           tim hills, david cleevely, andrea smith   
+2           david cleevely, peter aknai, ian leslie   
+3                                    david cleevely   
+4               tim hills, david cleevely, ross pow   
+5                         tim hills, david cleevely   
+6                                    d. d. cleevely   
+
+                                 publisher pages  page_length  
+0                    analysys publications   178            3  
+1                    analysis publications   218            3  
+2                    analysis publications   180            3  
+3  institution of engineering & technology   415            3  
+4                    analysis publications    35            2  
+5                    analysys publications     -            1  
+6                  university of cambridge     -            1  
+Sample 3665 - Plan 1: Table after operation: [['title', 'year', 'authors', 'publisher', 'pages', 'page_length'], ['the route to advanced communications', 1991, 'david cleevely, stefan stanislawski, ade ajibulu', 'analysys publications', '178', 3], ['global turf wars: re-inventing the telecoms operator for the age of global competition', 1999, 'tim hills, david cleevely, andrea smith', 'analysis publications', '218', 3], ['atm vendor & operator strategies', 1993, 'david cleevely, peter aknai, ian leslie', 'analysis publications', '180', 3], ['the far reaching effects of broadband', 2002, 'david cleevely', 'institution of engineering & technology', '415', 3], ['regulating the telecoms market: competition and innovation in the broadband economy', 2003, 'tim hills, david cleevely, ross pow', 'analysis publications', '35', 2], ['rural telecoms handbook: equipment and manufacturers', 1992, 'tim hills, david cleevely', 'analysys publications', '-', 1], ['regional structure and telecommunications demand: a case study of kenya (ph.d. thesis)', 1982, 'd. d. cleevely', 'university of cambridge', '-', 1]]
+########################################################################################################################
+Sample 3665 - Plan 1: Operation 3: Select row number 1.
+Sample 3665 - Plan 1: Selected indices: []
+Sample 3665 - Plan 1: X-Table after operation df:
+                                  title  year  \
+0  the route to advanced communications  1991   
+
+                                            authors              publisher  \
+0  david cleevely, stefan stanislawski, ade ajibulu  analysys publications   
+
+   pages  page_length  
+0    178            3  
+Sample 3665 - Plan 1: Table after operation: [['title', 'year', 'authors', 'publisher', 'pages', 'page_length'], ['the route to advanced communications', 1991, 'david cleevely, stefan stanislawski, ade ajibulu', 'analysys publications', '178', 3]]
+########################################################################################################################
+Sample 3665 - Plan 1: Operation 4: Select the 'title' column.
+Sample 3665 - Plan 1: Selected indices: []
+Sample 3665 - Plan 1: X-Table after operation df:
+                                  title
+0  the route to advanced communications
+Sample 3665 - Plan 1: Table after operation: [['title'], ['the route to advanced communications']]
+Fall-back: FALSE
+Answer from plan 1: [['the route to advanced communications']]
+Groundtruth: ['The Far Reaching Effects of Broadband']

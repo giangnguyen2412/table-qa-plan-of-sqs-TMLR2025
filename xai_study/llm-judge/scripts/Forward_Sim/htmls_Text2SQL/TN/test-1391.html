@@ -1,0 +1,40 @@
+
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+.sql-command { background-color: #f0f0f0; padding: 10px; border-left: 4px solid #4CAF50; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> galloway & upper nithsdal winning party 2003 is liberal democrats while that of paisley south is labour</h3>
+<h3>Input Table: scottish parliament general election , 2007</h3>
+<div class="step">
+<table>
+<tr><td>rank</td><td>constituency</td><td>winning_party_2003</td><td>swing_to_gain</td><td>snp_'s_place_2003</td><td>result</td></tr><tr><td>1</td><td>galloway & upper nithsdale</td><td>conservative</td><td>0.17</td><td>2nd</td><td>con hold</td></tr><tr><td>2</td><td>tweeddale , ettrick & lauderdale</td><td>liberal democrats</td><td>1.01</td><td>2nd</td><td>ld hold</td></tr><tr><td>3</td><td>cumbernauld & kilsyth</td><td>labour</td><td>1.07</td><td>2nd</td><td>lab hold</td></tr><tr><td>4</td><td>kilmarnock & loudoun</td><td>labour</td><td>1.92</td><td>2nd</td><td>snp gain</td></tr><tr><td>5</td><td>dundee west</td><td>labour</td><td>2.13</td><td>2nd</td><td>snp gain</td></tr><tr><td>6</td><td>western isles</td><td>labour</td><td>2.91</td><td>2nd</td><td>snp gain</td></tr><tr><td>7</td><td>glasgow govan</td><td>labour</td><td>2.92</td><td>2nd</td><td>snp gain</td></tr><tr><td>8</td><td>aberdeen central</td><td>labour</td><td>2.96</td><td>2nd</td><td>lab hold</td></tr><tr><td>9</td><td>linlithgow</td><td>labour</td><td>3.56</td><td>2nd</td><td>lab hold</td></tr><tr><td>10</td><td>west renfrewshire</td><td>labour</td><td>4.41</td><td>2nd</td><td>lab hold</td></tr><tr><td>11</td><td>paisley south</td><td>labour</td><td>4.91</td><td>2nd</td><td>lab hold</td></tr>
+</table>
+</div>
+<h3>SQL Command:</h3>
+<div class="sql-command">SELECT 
+    CASE 
+        WHEN (SELECT winning_party_2003 FROM table_sql WHERE constituency = 'galloway & upper nithsdale') = 'liberal democrats' 
+             AND (SELECT winning_party_2003 FROM table_sql WHERE constituency = 'paisley south') = 'labour' 
+        THEN 'TRUE' 
+        ELSE 'FALSE' 
+    END;</div>
+</body></html>

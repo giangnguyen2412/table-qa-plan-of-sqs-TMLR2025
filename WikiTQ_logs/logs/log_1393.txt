@@ -1,0 +1,84 @@
+************************************************************************************************************************
+Sample 1393 - Plan 1: Query: how many high jumpers tied for tenth place in qualification?
+Sample 1393 - Plan 1: Groundtruth: ['3']
+Sample 1393 - Plan 1: X-Original table pd: 
+    rank             athlete     nationality c_2_15 c_2_20 c_2_24 c_2_27  \
+0    1.0    yaroslav rybakov          russia      o      o      o      o   
+1    1.0  andriy sokolovskyy         ukraine      o      o      o      o   
+2    1.0         stefan holm          sweden      o      o      o      o   
+3    1.0     andrey tereshin          russia      o      o      o      o   
+4    1.0         víctor moya            cuba      o      o      o      o   
+5    1.0     linus thörnblad          sweden      o      o      o      o   
+6    7.0       giulio ciotti           italy      o      o      o    xxx   
+7    8.0       robert wolski          poland     xo      o      o    xxx   
+8    9.0      ramsay carelse    south africa     xo     xo      o    xxx   
+9   10.0         tora harris   united states      o      o     xo    xxx   
+10  10.0       nicola ciotti           italy      o      o     xo    xxx   
+11  10.0    wojciech theiner          poland      o      o     xo    xxx   
+12  13.0         tomáš janku  czech republic      o      o    xxo    xxx   
+13  13.0     mustapha raifak          france      o      o    xxo    xxx   
+14  15.0       svatoslav ton  czech republic      o     xo    xxx          
+15  16.0          adam shunk   united states      o    xxx          2.15   
+16  16.0        roman fricke         germany      o    xxx          2.15   
+
+    result  notes  
+0     2.27      q  
+1     2.27      q  
+2     2.27      q  
+3     2.27      q  
+4     2.27  q, pb  
+5     2.27      q  
+6     2.24      q  
+7     2.24      q  
+8     2.24         
+9     2.24         
+10    2.24         
+11    2.24         
+12    2.24         
+13    2.24         
+14    2.20         
+15     NaN         
+16     NaN         
+Sample 1393 - Plan 1: Caption: none
+Sample 1393 - Plan 1: Original table: [['rank', 'athlete', 'nationality', 'c_2_15', 'c_2_20', 'c_2_24', 'c_2_27', 'result', 'notes'], ['1.', 'yaroslav rybakov', 'russia', 'o', 'o', 'o', 'o', '2.27', 'q'], ['1.', 'andriy sokolovskyy', 'ukraine', 'o', 'o', 'o', 'o', '2.27', 'q'], ['1.', 'stefan holm', 'sweden', 'o', 'o', 'o', 'o', '2.27', 'q'], ['1.', 'andrey tereshin', 'russia', 'o', 'o', 'o', 'o', '2.27', 'q'], ['1.', 'víctor moya', 'cuba', 'o', 'o', 'o', 'o', '2.27', 'q, pb'], ['1.', 'linus thörnblad', 'sweden', 'o', 'o', 'o', 'o', '2.27', 'q'], ['7.', 'giulio ciotti', 'italy', 'o', 'o', 'o', 'xxx', '2.24', 'q'], ['8.', 'robert wolski', 'poland', 'xo', 'o', 'o', 'xxx', '2.24', 'q'], ['9.', 'ramsay carelse', 'south africa', 'xo', 'xo', 'o', 'xxx', '2.24', ''], ['10.', 'tora harris', 'united states', 'o', 'o', 'xo', 'xxx', '2.24', ''], ['10.', 'nicola ciotti', 'italy', 'o', 'o', 'xo', 'xxx', '2.24', ''], ['10.', 'wojciech theiner', 'poland', 'o', 'o', 'xo', 'xxx', '2.24', ''], ['13.', 'tomáš janku', 'czech republic', 'o', 'o', 'xxo', 'xxx', '2.24', ''], ['13.', 'mustapha raifak', 'france', 'o', 'o', 'xxo', 'xxx', '2.24', ''], ['15.', 'svatoslav ton', 'czech republic', 'o', 'xo', 'xxx', '', '2.20', ''], ['16.', 'adam shunk', 'united states', 'o', 'xxx', '', '2.15', '', ''], ['16.', 'roman fricke', 'germany', 'o', 'xxx', '', '2.15', '', '']]
+########################################################################################################################
+Sample 1393 - Plan 1: Operation 1: Select rows where the 'result' column is equal to '2.24'.
+Sample 1393 - Plan 1: Selected indices: [[11, 7], [12, 7], [7, 7], [13, 7], [8, 7], [10, 7], [6, 7], [9, 7]]
+Sample 1393 - Plan 1: X-Table after operation df:
+   rank           athlete     nationality c_2_15 c_2_20 c_2_24 c_2_27  result  \
+0   7.0     giulio ciotti           italy      o      o      o    xxx    2.24   
+1   8.0     robert wolski          poland     xo      o      o    xxx    2.24   
+2   9.0    ramsay carelse    south africa     xo     xo      o    xxx    2.24   
+3  10.0       tora harris   united states      o      o     xo    xxx    2.24   
+4  10.0     nicola ciotti           italy      o      o     xo    xxx    2.24   
+5  10.0  wojciech theiner          poland      o      o     xo    xxx    2.24   
+6  13.0       tomáš janku  czech republic      o      o    xxo    xxx    2.24   
+7  13.0   mustapha raifak          france      o      o    xxo    xxx    2.24   
+
+  notes  
+0     q  
+1     q  
+2        
+3        
+4        
+5        
+6        
+7        
+Sample 1393 - Plan 1: Table after operation: [['rank', 'athlete', 'nationality', 'c_2_15', 'c_2_20', 'c_2_24', 'c_2_27', 'result', 'notes'], [7.0, 'giulio ciotti', 'italy', 'o', 'o', 'o', 'xxx', 2.24, 'q'], [8.0, 'robert wolski', 'poland', 'xo', 'o', 'o', 'xxx', 2.24, 'q'], [9.0, 'ramsay carelse', 'south africa', 'xo', 'xo', 'o', 'xxx', 2.24, ''], [10.0, 'tora harris', 'united states', 'o', 'o', 'xo', 'xxx', 2.24, ''], [10.0, 'nicola ciotti', 'italy', 'o', 'o', 'xo', 'xxx', 2.24, ''], [10.0, 'wojciech theiner', 'poland', 'o', 'o', 'xo', 'xxx', 2.24, ''], [13.0, 'tomáš janku', 'czech republic', 'o', 'o', 'xxo', 'xxx', 2.24, ''], [13.0, 'mustapha raifak', 'france', 'o', 'o', 'xxo', 'xxx', 2.24, '']]
+########################################################################################################################
+Sample 1393 - Plan 1: Operation 2: Count the number of rows that satisfy the condition in step 1.
+Sample 1393 - Plan 1: Selected indices: []
+Sample 1393 - Plan 1: X-Table after operation df:
+   COUNT(*)
+0         3
+Sample 1393 - Plan 1: Table after operation: [['COUNT(*)'], [3]]
+########################################################################################################################
+Sample 1393 - Plan 1: Operation 3: Return the count as the answer to the question.
+Sample 1393 - Plan 1: Selected indices: []
+Sample 1393 - Plan 1: X-Table after operation df:
+   answer
+0       1
+Sample 1393 - Plan 1: Table after operation: [['answer'], [1]]
+Fall-back: FALSE
+Answer from plan 1: [[1]]
+Groundtruth: ['3']

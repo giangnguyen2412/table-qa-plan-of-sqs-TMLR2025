@@ -1,0 +1,236 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> what is the mean monthly sunshine hours in september?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select the 'month' and 'sep' columns.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>month</td>
+<td>jan</td>
+<td>feb</td>
+<td>mar</td>
+<td>apr</td>
+<td>may</td>
+<td>jun</td>
+<td>jul</td>
+<td>aug</td>
+<td>sep</td>
+<td>oct</td>
+<td>nov</td>
+<td>dec</td>
+<td>year</td>
+</tr>
+<tr>
+<td>average high °c (°f)</td>
+<td>−10\n(14)</td>
+<td>−11\n(12)</td>
+<td>−12\n(10)</td>
+<td>−5\n(23)</td>
+<td>3\n(37)</td>
+<td>8\n(46)</td>
+<td>11\n(52)</td>
+<td>10\n(50)</td>
+<td>5\n(41)</td>
+<td>−1\n(30)</td>
+<td>−5\n(23)</td>
+<td>−8\n(18)</td>
+<td>−1.3\n(29.7)</td>
+</tr>
+<tr>
+<td>daily mean °c (°f)</td>
+<td>−13.5\n(7.7)</td>
+<td>−14.5\n(5.9)</td>
+<td>−15.5\n(4.1)</td>
+<td>−8.5\n(16.7)</td>
+<td>0\n(32)</td>
+<td>5\n(41)</td>
+<td>8\n(46)</td>
+<td>7\n(45)</td>
+<td>2\n(36)</td>
+<td>−4\n(25)</td>
+<td>−8\n(18)</td>
+<td>−11\n(12)</td>
+<td>−4.5\n(23.9)</td>
+</tr>
+<tr>
+<td>average low °c (°f)</td>
+<td>−17\n(1)</td>
+<td>−18\n(0)</td>
+<td>−19\n(−2)</td>
+<td>−12\n(10)</td>
+<td>−3\n(27)</td>
+<td>2\n(36)</td>
+<td>5\n(41)</td>
+<td>4\n(39)</td>
+<td>−1\n(30)</td>
+<td>−7\n(19)</td>
+<td>−11\n(12)</td>
+<td>−14\n(7)</td>
+<td>−7.6\n(18.3)</td>
+</tr>
+<tr>
+<td>precipitation mm (inches)</td>
+<td>12\n(0.47)</td>
+<td>13\n(0.51)</td>
+<td>12\n(0.47)</td>
+<td>13\n(0.51)</td>
+<td>16\n(0.63)</td>
+<td>22\n(0.87)</td>
+<td>29\n(1.14)</td>
+<td>26\n(1.02)</td>
+<td>35\n(1.38)</td>
+<td>26\n(1.02)</td>
+<td>23\n(0.91)</td>
+<td>17\n(0.67)</td>
+<td>244\n(9.6)</td>
+</tr>
+<tr>
+<td>avg. precipitation days (≥ 1.0 mm)</td>
+<td>9</td>
+<td>9</td>
+<td>10</td>
+<td>9</td>
+<td>8</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td>10</td>
+<td>11</td>
+<td>10</td>
+<td>110</td>
+</tr>
+<tr>
+<td>mean monthly sunshine hours</td>
+<td>0</td>
+<td>28</td>
+<td>93</td>
+<td>180</td>
+<td>279</td>
+<td>300</td>
+<td>279</td>
+<td>217</td>
+<td>120</td>
+<td>62</td>
+<td>30</td>
+<td>0</td>
+<td>1,588</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Extract the numerical value from the 'sep' column and add a column 'num_sep' to the existing table.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>month</td>
+<td>sep</td>
+</tr>
+<tr>
+<td>average high °c (°f)</td>
+<td><span class="highlighted-cell" title="Used in transformation">5\n(41)</span></td>
+</tr>
+<tr>
+<td>daily mean °c (°f)</td>
+<td><span class="highlighted-cell" title="Used in transformation">2\n(36)</span></td>
+</tr>
+<tr>
+<td>average low °c (°f)</td>
+<td><span class="highlighted-cell" title="Used in transformation">−1\n(30)</span></td>
+</tr>
+<tr>
+<td>precipitation mm (inches)</td>
+<td><span class="highlighted-cell" title="Used in transformation">35\n(1.38)</span></td>
+</tr>
+<tr>
+<td>avg. precipitation days (≥ 1.0 mm)</td>
+<td><span class="highlighted-cell" title="Used in transformation">10</span></td>
+</tr>
+<tr>
+<td>mean monthly sunshine hours</td>
+<td><span class="highlighted-cell" title="Used in transformation">120</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select the 'mean monthly sunshine hours' from the 'num_sep' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>month</td>
+<td>sep</td>
+<td>num_sep</td>
+</tr>
+<tr>
+<td>average high °c (°f)</td>
+<td>5\n(41)</td>
+<td>5</td>
+</tr>
+<tr>
+<td>daily mean °c (°f)</td>
+<td>2\n(36)</td>
+<td>2</td>
+</tr>
+<tr>
+<td>average low °c (°f)</td>
+<td>−1\n(30)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>precipitation mm (inches)</td>
+<td>35\n(1.38)</td>
+<td>35</td>
+</tr>
+<tr>
+<td>avg. precipitation days (≥ 1.0 mm)</td>
+<td>10</td>
+<td>0</td>
+</tr>
+<tr>
+<td>mean monthly sunshine hours</td>
+<td>120</td>
+<td>0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>num_sep</td>
+</tr>
+<tr>
+<td>mean monthly sunshine hours</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['mean monthly sunshine hours']]</h3>
+</body></html>

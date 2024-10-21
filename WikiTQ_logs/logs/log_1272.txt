@@ -1,0 +1,51 @@
+************************************************************************************************************************
+Sample 1272 - Plan 1: Query: how many consecutive years was the team in division 1?
+Sample 1272 - Plan 1: Groundtruth: ['10']
+Sample 1272 - Plan 1: X-Original table pd: 
+    year  division        league   reg__season         playoffs
+0   2003         2  usl w-league  5th, western                 
+1   2004         1  usl w-league  8th, western                 
+2   2005         1  usl w-league  6th, western                 
+3   2006         1  usl w-league  5th, western                 
+4   2007         1  usl w-league  5th, western                 
+5   2008         1  usl w-league  6th, western  did not qualify
+6   2009         1  usl w-league  7th, western  did not qualify
+7   2010         1  usl w-league  6th, western  did not qualify
+8   2011         1  usl w-league  7th, western  did not qualify
+9   2012         1  usl w-league  4th, western  did not qualify
+10  2013         1  usl w-league  4th, western  did not qualify
+Sample 1272 - Plan 1: Caption: none
+Sample 1272 - Plan 1: Original table: [['year', 'division', 'league', 'reg__season', 'playoffs'], ['2003', '2', 'usl w-league', '5th, western', ''], ['2004', '1', 'usl w-league', '8th, western', ''], ['2005', '1', 'usl w-league', '6th, western', ''], ['2006', '1', 'usl w-league', '5th, western', ''], ['2007', '1', 'usl w-league', '5th, western', ''], ['2008', '1', 'usl w-league', '6th, western', 'did not qualify'], ['2009', '1', 'usl w-league', '7th, western', 'did not qualify'], ['2010', '1', 'usl w-league', '6th, western', 'did not qualify'], ['2011', '1', 'usl w-league', '7th, western', 'did not qualify'], ['2012', '1', 'usl w-league', '4th, western', 'did not qualify'], ['2013', '1', 'usl w-league', '4th, western', 'did not qualify']]
+########################################################################################################################
+Sample 1272 - Plan 1: Operation 1: Select rows where 'division' is 1.
+Sample 1272 - Plan 1: Selected indices: [[7, 1], [2, 1], [8, 1], [3, 1], [6, 1], [1, 1], [10, 1], [5, 1], [9, 1], [4, 1]]
+Sample 1272 - Plan 1: X-Table after operation df:
+   year  division        league   reg__season         playoffs
+0  2004         1  usl w-league  8th, western                 
+1  2005         1  usl w-league  6th, western                 
+2  2006         1  usl w-league  5th, western                 
+3  2007         1  usl w-league  5th, western                 
+4  2008         1  usl w-league  6th, western  did not qualify
+5  2009         1  usl w-league  7th, western  did not qualify
+6  2010         1  usl w-league  6th, western  did not qualify
+7  2011         1  usl w-league  7th, western  did not qualify
+8  2012         1  usl w-league  4th, western  did not qualify
+9  2013         1  usl w-league  4th, western  did not qualify
+Sample 1272 - Plan 1: Table after operation: [['year', 'division', 'league', 'reg__season', 'playoffs'], [2004, 1, 'usl w-league', '8th, western', ''], [2005, 1, 'usl w-league', '6th, western', ''], [2006, 1, 'usl w-league', '5th, western', ''], [2007, 1, 'usl w-league', '5th, western', ''], [2008, 1, 'usl w-league', '6th, western', 'did not qualify'], [2009, 1, 'usl w-league', '7th, western', 'did not qualify'], [2010, 1, 'usl w-league', '6th, western', 'did not qualify'], [2011, 1, 'usl w-league', '7th, western', 'did not qualify'], [2012, 1, 'usl w-league', '4th, western', 'did not qualify'], [2013, 1, 'usl w-league', '4th, western', 'did not qualify']]
+########################################################################################################################
+Sample 1272 - Plan 1: Operation 2: Count the number of consecutive years by checking if the 'year' column is consecutive without any gaps or missing years.
+Sample 1272 - Plan 1: Selected indices: []
+Sample 1272 - Plan 1: X-Table after operation df:
+   consecutive_years_count
+0                       10
+Sample 1272 - Plan 1: Table after operation: [['consecutive_years_count'], [10]]
+########################################################################################################################
+Sample 1272 - Plan 1: Operation 3: Return the count of consecutive years as the answer to the question.
+Sample 1272 - Plan 1: Selected indices: []
+Sample 1272 - Plan 1: X-Table after operation df:
+   count_of_consecutive_years
+0                          10
+Sample 1272 - Plan 1: Table after operation: [['count_of_consecutive_years'], [10]]
+Fall-back: FALSE
+Answer from plan 1: [[10]]
+Groundtruth: ['10']

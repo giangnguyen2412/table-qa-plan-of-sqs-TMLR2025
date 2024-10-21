@@ -1,0 +1,41 @@
+
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+.sql-command { background-color: #f0f0f0; padding: 10px; border-left: 4px solid #4CAF50; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> of the four players who played in the belgian cup , jonathan legear scored more goals than the other players combined</h3>
+<h3>Input Table: 2008 - 09 r.s.c. anderlecht season</h3>
+<div class="step">
+<table>
+<tr><td>player</td><td>league</td><td>title_playoff</td><td>super_cup</td><td>total</td></tr><tr><td>mbark boussoufa</td><td>11</td><td>0</td><td>0</td><td>11</td></tr><tr><td>tom de sutter</td><td>9</td><td>0</td><td>0</td><td>9</td></tr><tr><td>guillaume gillet</td><td>8</td><td>0</td><td>0</td><td>9</td></tr><tr><td>marcin wasilewski</td><td>8</td><td>0</td><td>0</td><td>8</td></tr><tr><td>jonathan legear</td><td>5</td><td>1</td><td>0</td><td>7</td></tr><tr><td>nicolás frutos</td><td>6</td><td>0</td><td>0</td><td>6</td></tr><tr><td>thomas chatelle</td><td>4</td><td>0</td><td>0</td><td>4</td></tr><tr><td>roland juhász</td><td>4</td><td>0</td><td>0</td><td>4</td></tr><tr><td>stanislav vlček</td><td>4</td><td>0</td><td>0</td><td>4</td></tr><tr><td>lucas biglia</td><td>2</td><td>0</td><td>0</td><td>3</td></tr><tr><td>dmitri bulykin</td><td>3</td><td>0</td><td>0</td><td>3</td></tr><tr><td>jan polák</td><td>2</td><td>0</td><td>0</td><td>3</td></tr><tr><td>matías suárez</td><td>1</td><td>0</td><td>1</td><td>3</td></tr><tr><td>jelle van damme</td><td>3</td><td>0</td><td>0</td><td>3</td></tr><tr><td>oleksandr iakovenko</td><td>2</td><td>0</td><td>0</td><td>2</td></tr><tr><td>hernán losada</td><td>1</td><td>0</td><td>0</td><td>2</td></tr><tr><td>víctor bernárdez</td><td>1</td><td>0</td><td>0</td><td>1</td></tr><tr><td>bart goor</td><td>1</td><td>0</td><td>0</td><td>1</td></tr><tr><td>nemanja rnić</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+</table>
+</div>
+<h3>SQL Command:</h3>
+<div class="sql-command">SELECT 
+    CASE 
+        WHEN (SELECT SUM(title_playoff) FROM table_sql WHERE league = 'belgian cup' AND player != 'jonathan legear') <
+             (SELECT title_playoff FROM table_sql WHERE league = 'belgian cup' AND player = 'jonathan legear') 
+        THEN 'TRUE' 
+        ELSE 'FALSE' 
+    END;</div>
+<h3>Prediction: False</h3>
+</body></html>

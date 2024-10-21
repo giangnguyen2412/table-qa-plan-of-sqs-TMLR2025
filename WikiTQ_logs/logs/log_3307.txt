@@ -1,0 +1,35 @@
+************************************************************************************************************************
+Sample 3307 - Plan 1: Query: how many incumbents are up for rel-election?
+Sample 3307 - Plan 1: Groundtruth: ['5']
+Sample 3307 - Plan 1: X-Original table pd: 
+   district         incumbent c_2008_status     democratic        republican
+0         1     diana degette   re-election  diana degette      george lilly
+1         2        mark udall          open    jared polis      scott starin
+2         3      john salazar   re-election   john salazar        wayne wolf
+3         4  marilyn musgrave   re-election   betsy markey  marilyn musgrave
+4         5      doug lamborn   re-election    hal bidlack      doug lamborn
+5         6      tom tancredo          open       hank eng      mike coffman
+6         7     ed perlmutter   re-election  ed perlmutter     john w. lerew
+Sample 3307 - Plan 1: Caption: none
+Sample 3307 - Plan 1: Original table: [['district', 'incumbent', 'c_2008_status', 'democratic', 'republican'], ['1', 'diana degette', 're-election', 'diana degette', 'george lilly'], ['2', 'mark udall', 'open', 'jared polis', 'scott starin'], ['3', 'john salazar', 're-election', 'john salazar', 'wayne wolf'], ['4', 'marilyn musgrave', 're-election', 'betsy markey', 'marilyn musgrave'], ['5', 'doug lamborn', 're-election', 'hal bidlack', 'doug lamborn'], ['6', 'tom tancredo', 'open', 'hank eng', 'mike coffman'], ['7', 'ed perlmutter', 're-election', 'ed perlmutter', 'john w. lerew']]
+########################################################################################################################
+Sample 3307 - Plan 1: Operation 1: Select rows where the 'c_2008_status' column is 're-election'.
+Sample 3307 - Plan 1: Selected indices: [[6, 2], [4, 2], [0, 2], [2, 2], [3, 2]]
+Sample 3307 - Plan 1: X-Table after operation df:
+   district         incumbent c_2008_status     democratic        republican
+0         1     diana degette   re-election  diana degette      george lilly
+1         3      john salazar   re-election   john salazar        wayne wolf
+2         4  marilyn musgrave   re-election   betsy markey  marilyn musgrave
+3         5      doug lamborn   re-election    hal bidlack      doug lamborn
+4         7     ed perlmutter   re-election  ed perlmutter     john w. lerew
+Sample 3307 - Plan 1: Table after operation: [['district', 'incumbent', 'c_2008_status', 'democratic', 'republican'], [1, 'diana degette', 're-election', 'diana degette', 'george lilly'], [3, 'john salazar', 're-election', 'john salazar', 'wayne wolf'], [4, 'marilyn musgrave', 're-election', 'betsy markey', 'marilyn musgrave'], [5, 'doug lamborn', 're-election', 'hal bidlack', 'doug lamborn'], [7, 'ed perlmutter', 're-election', 'ed perlmutter', 'john w. lerew']]
+########################################################################################################################
+Sample 3307 - Plan 1: Operation 2: Count the number of rows.
+Sample 3307 - Plan 1: Selected indices: []
+Sample 3307 - Plan 1: X-Table after operation df:
+   row_count
+0          5
+Sample 3307 - Plan 1: Table after operation: [['row_count'], [5]]
+Fall-back: FALSE
+Answer from plan 1: [[5]]
+Groundtruth: ['5']

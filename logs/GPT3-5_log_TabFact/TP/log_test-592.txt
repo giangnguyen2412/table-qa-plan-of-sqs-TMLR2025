@@ -1,0 +1,59 @@
+************************************************************************************************************************
+Sample test-592 - Plan 1: Statement: the only person to have a status of alive after existing in the cube is male
+Sample test-592 - Plan 1: Groundtruth: TRUE
+Sample test-592 - Plan 1: X-Original table pd: 
+                name           occupation  gender  \
+0              kazan      autistic savant    male   
+1        david worth            architect    male   
+2            quentin       police officer    male   
+3        joan leaven  mathematics student  female   
+4  dr helen holloway   free clinic doctor  female   
+5             rennes      prison escapist    male   
+
+                         prison_connection          played_by  \
+0                    kazan prison (russia)      andrew miller   
+1                 leavenworth prison (usa)      david hewlett   
+2           san quentin state prison (usa)  maurice dean wint   
+3                 leavenworth prison (usa)     nicole de boer   
+4            holloway women 's prison (uk)     nicky guadagni   
+5  centre pãnitentiaire de rennes (france)       wayne robson   
+
+                         status  
+0  alive after exiting the cube  
+1                          dead  
+2                          dead  
+3                          dead  
+4                          dead  
+5                          dead  
+Sample test-592 - Plan 1: Caption: cube (film series)
+Sample test-592 - Plan 1: Original table: [['name', 'occupation', 'gender', 'prison_connection', 'played_by', 'status'], ['kazan', 'autistic savant', 'male', 'kazan prison (russia)', 'andrew miller', 'alive after exiting the cube'], ['david worth', 'architect', 'male', 'leavenworth prison (usa)', 'david hewlett', 'dead'], ['quentin', 'police officer', 'male', 'san quentin state prison (usa)', 'maurice dean wint', 'dead'], ['joan leaven', 'mathematics student', 'female', 'leavenworth prison (usa)', 'nicole de boer', 'dead'], ['dr helen holloway', 'free clinic doctor', 'female', "holloway women 's prison (uk)", 'nicky guadagni', 'dead'], ['rennes', 'prison escapist', 'male', 'centre pãnitentiaire de rennes (france)', 'wayne robson', 'dead']]
+########################################################################################################################
+Sample test-592 - Plan 1: Operation 1: Select rows where the 'status' is 'alive after exiting the cube'.
+Sample test-592 - Plan 1: Selected indices: [[0, 5]]
+Sample test-592 - Plan 1: X-Table after operation df:
+    name       occupation gender      prison_connection      played_by  \
+0  kazan  autistic savant   male  kazan prison (russia)  andrew miller   
+
+                         status  
+0  alive after exiting the cube  
+Sample test-592 - Plan 1: Table after operation: [['name', 'occupation', 'gender', 'prison_connection', 'played_by', 'status'], ['kazan', 'autistic savant', 'male', 'kazan prison (russia)', 'andrew miller', 'alive after exiting the cube']]
+########################################################################################################################
+Sample test-592 - Plan 1: Operation 2: Select rows where the 'gender' is 'male'.
+Sample test-592 - Plan 1: Selected indices: [[0, 2]]
+Sample test-592 - Plan 1: X-Table after operation df:
+    name       occupation gender      prison_connection      played_by  \
+0  kazan  autistic savant   male  kazan prison (russia)  andrew miller   
+
+                         status  
+0  alive after exiting the cube  
+Sample test-592 - Plan 1: Table after operation: [['name', 'occupation', 'gender', 'prison_connection', 'played_by', 'status'], ['kazan', 'autistic savant', 'male', 'kazan prison (russia)', 'andrew miller', 'alive after exiting the cube']]
+########################################################################################################################
+Sample test-592 - Plan 1: Operation 3: Use a `CASE` statement to return TRUE if the number of rows is equal to 1, otherwise return FALSE.
+Sample test-592 - Plan 1: Selected indices: [[0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5]]
+Sample test-592 - Plan 1: X-Table after operation df:
+  verification_result
+0                TRUE
+Sample test-592 - Plan 1: Table after operation: [['verification_result'], ['TRUE']]
+Answer from plan 1: TRUE
+Groundtruth: TRUE
+Fall-back: FALSE

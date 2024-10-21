@@ -1,0 +1,102 @@
+************************************************************************************************************************
+Sample 2074 - Plan 1: Query: what was the top score?
+Sample 2074 - Plan 1: Groundtruth: ['54']
+Sample 2074 - Plan 1: X-Original table pd: 
+              date            opponent  \
+0     september 24           millsaps*   
+1        october 2       at vanderbilt   
+2        october 9  at mississippi a&m   
+3       october 16     at georgia tech   
+4       october 23             sewanee   
+5       october 30                 lsu   
+6       november 6            kentucky   
+7      november 13             florida   
+8      november 25             georgia   
+9  january 1, 1927       vs. stanford*   
+
+                                            site  result  
+0                   denny field • tuscaloosa, al  w 54–0  
+1                   dudley field • nashville, tn  w 19–7  
+2  meridian fairgrounds • meridian, ms (rivalry)  w 26–7  
+3                      grant field • atlanta, ga  w 21–0  
+4                rickwood field • birmingham, al   w 2–0  
+5         denny field • tuscaloosa, al (rivalry)  w 24–0  
+6                rickwood field • birmingham, al  w 14–0  
+7                  cramton bowl • montgomery, al  w 49–0  
+8                rickwood field • birmingham, al  w 33–6  
+9           rose bowl • pasadena, ca (rose bowl)   t 7–7  
+Sample 2074 - Plan 1: Caption: none
+Sample 2074 - Plan 1: Original table: [['date', 'opponent', 'site', 'result'], ['september 24', 'millsaps*', 'denny field • tuscaloosa, al', 'w\xa054–0'], ['october 2', 'at\xa0vanderbilt', 'dudley field • nashville, tn', 'w\xa019–7'], ['october 9', 'at\xa0mississippi a&m', 'meridian fairgrounds • meridian, ms (rivalry)', 'w\xa026–7'], ['october 16', 'at\xa0georgia tech', 'grant field • atlanta, ga', 'w\xa021–0'], ['october 23', 'sewanee', 'rickwood field • birmingham, al', 'w\xa02–0'], ['october 30', 'lsu', 'denny field • tuscaloosa, al (rivalry)', 'w\xa024–0'], ['november 6', 'kentucky', 'rickwood field • birmingham, al', 'w\xa014–0'], ['november 13', 'florida', 'cramton bowl • montgomery, al', 'w\xa049–0'], ['november 25', 'georgia', 'rickwood field • birmingham, al', 'w\xa033–6'], ['january 1, 1927', 'vs.\xa0stanford*', 'rose bowl • pasadena, ca (rose bowl)', 't\xa07–7']]
+########################################################################################################################
+Sample 2074 - Plan 1: Operation 1: Extract the numerical score from the 'result' column then add column 'num_score' to existing table.
+Sample 2074 - Plan 1: Selected indices: [[0, 3], [1, 3], [2, 3], [3, 3], [4, 3], [5, 3], [6, 3], [7, 3], [8, 3], [9, 3]]
+Sample 2074 - Plan 1: X-Table after operation df:
+              date            opponent  \
+0     september 24           millsaps*   
+1        october 2       at vanderbilt   
+2        october 9  at mississippi a&m   
+3       october 16     at georgia tech   
+4       october 23             sewanee   
+5       october 30                 lsu   
+6       november 6            kentucky   
+7      november 13             florida   
+8      november 25             georgia   
+9  january 1, 1927       vs. stanford*   
+
+                                            site  result  num_score  
+0                   denny field • tuscaloosa, al  w 54–0         54  
+1                   dudley field • nashville, tn  w 19–7         19  
+2  meridian fairgrounds • meridian, ms (rivalry)  w 26–7         26  
+3                      grant field • atlanta, ga  w 21–0         21  
+4                rickwood field • birmingham, al   w 2–0          2  
+5         denny field • tuscaloosa, al (rivalry)  w 24–0         24  
+6                rickwood field • birmingham, al  w 14–0         14  
+7                  cramton bowl • montgomery, al  w 49–0         49  
+8                rickwood field • birmingham, al  w 33–6         33  
+9           rose bowl • pasadena, ca (rose bowl)   t 7–7          0  
+Sample 2074 - Plan 1: Table after operation: [['date', 'opponent', 'site', 'result', 'num_score'], ['september 24', 'millsaps*', 'denny field • tuscaloosa, al', 'w\xa054–0', 54], ['october 2', 'at\xa0vanderbilt', 'dudley field • nashville, tn', 'w\xa019–7', 19], ['october 9', 'at\xa0mississippi a&m', 'meridian fairgrounds • meridian, ms (rivalry)', 'w\xa026–7', 26], ['october 16', 'at\xa0georgia tech', 'grant field • atlanta, ga', 'w\xa021–0', 21], ['october 23', 'sewanee', 'rickwood field • birmingham, al', 'w\xa02–0', 2], ['october 30', 'lsu', 'denny field • tuscaloosa, al (rivalry)', 'w\xa024–0', 24], ['november 6', 'kentucky', 'rickwood field • birmingham, al', 'w\xa014–0', 14], ['november 13', 'florida', 'cramton bowl • montgomery, al', 'w\xa049–0', 49], ['november 25', 'georgia', 'rickwood field • birmingham, al', 'w\xa033–6', 33], ['january 1, 1927', 'vs.\xa0stanford*', 'rose bowl • pasadena, ca (rose bowl)', 't\xa07–7', 0]]
+########################################################################################################################
+Sample 2074 - Plan 1: Operation 2: Order the table by 'num_score' in descending order.
+Sample 2074 - Plan 1: Selected indices: [[4, 4], [7, 4], [2, 4], [8, 4], [0, 4], [3, 4], [5, 4], [6, 4], [1, 4], [9, 4]]
+Sample 2074 - Plan 1: X-Table after operation df:
+              date            opponent  \
+0     september 24           millsaps*   
+1      november 13             florida   
+2      november 25             georgia   
+3        october 9  at mississippi a&m   
+4       october 30                 lsu   
+5       october 16     at georgia tech   
+6        october 2       at vanderbilt   
+7       november 6            kentucky   
+8       october 23             sewanee   
+9  january 1, 1927       vs. stanford*   
+
+                                            site  result  num_score  
+0                   denny field • tuscaloosa, al  w 54–0         54  
+1                  cramton bowl • montgomery, al  w 49–0         49  
+2                rickwood field • birmingham, al  w 33–6         33  
+3  meridian fairgrounds • meridian, ms (rivalry)  w 26–7         26  
+4         denny field • tuscaloosa, al (rivalry)  w 24–0         24  
+5                      grant field • atlanta, ga  w 21–0         21  
+6                   dudley field • nashville, tn  w 19–7         19  
+7                rickwood field • birmingham, al  w 14–0         14  
+8                rickwood field • birmingham, al   w 2–0          2  
+9           rose bowl • pasadena, ca (rose bowl)   t 7–7          0  
+Sample 2074 - Plan 1: Table after operation: [['date', 'opponent', 'site', 'result', 'num_score'], ['september 24', 'millsaps*', 'denny field • tuscaloosa, al', 'w\xa054–0', 54], ['november 13', 'florida', 'cramton bowl • montgomery, al', 'w\xa049–0', 49], ['november 25', 'georgia', 'rickwood field • birmingham, al', 'w\xa033–6', 33], ['october 9', 'at\xa0mississippi a&m', 'meridian fairgrounds • meridian, ms (rivalry)', 'w\xa026–7', 26], ['october 30', 'lsu', 'denny field • tuscaloosa, al (rivalry)', 'w\xa024–0', 24], ['october 16', 'at\xa0georgia tech', 'grant field • atlanta, ga', 'w\xa021–0', 21], ['october 2', 'at\xa0vanderbilt', 'dudley field • nashville, tn', 'w\xa019–7', 19], ['november 6', 'kentucky', 'rickwood field • birmingham, al', 'w\xa014–0', 14], ['october 23', 'sewanee', 'rickwood field • birmingham, al', 'w\xa02–0', 2], ['january 1, 1927', 'vs.\xa0stanford*', 'rose bowl • pasadena, ca (rose bowl)', 't\xa07–7', 0]]
+########################################################################################################################
+Sample 2074 - Plan 1: Operation 3: Select row number 1.
+Sample 2074 - Plan 1: Selected indices: []
+Sample 2074 - Plan 1: X-Table after operation df:
+           date   opponent                          site  result  num_score
+0  september 24  millsaps*  denny field • tuscaloosa, al  w 54–0         54
+Sample 2074 - Plan 1: Table after operation: [['date', 'opponent', 'site', 'result', 'num_score'], ['september 24', 'millsaps*', 'denny field • tuscaloosa, al', 'w\xa054–0', 54]]
+########################################################################################################################
+Sample 2074 - Plan 1: Operation 4: Select the 'num_score' column.
+Sample 2074 - Plan 1: Selected indices: []
+Sample 2074 - Plan 1: X-Table after operation df:
+   num_score
+0         54
+Sample 2074 - Plan 1: Table after operation: [['num_score'], [54]]
+Fall-back: FALSE
+Answer from plan 1: [[54]]
+Groundtruth: ['54']

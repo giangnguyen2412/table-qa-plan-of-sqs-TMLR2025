@@ -1,0 +1,34 @@
+************************************************************************************************************************
+Sample 195 - Plan 1: Query: which nation earned more medals than austria?
+Sample 195 - Plan 1: Groundtruth: ['Soviet Union']
+Sample 195 - Plan 1: X-Original table pd: 
+   rank         nation gold  silver  bronze  total
+0     1   soviet union  *7*       3       6     16
+1     2        austria    4       3       4     11
+2     3        finland    3       3       1      7
+3     4    switzerland    3       2       1      6
+4     5         sweden    2       4       4     10
+5     6  united states    2       3       2      7
+6     7         norway    2       1       1      4
+7     8          italy    1       2       0      3
+8     9        germany    1       0       1      2
+9    10         canada    0       1       2      3
+Sample 195 - Plan 1: Caption: none
+Sample 195 - Plan 1: Original table: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['1', 'soviet union', '*7*', '3', '6', '16'], ['2', 'austria', '4', '3', '4', '11'], ['3', 'finland', '3', '3', '1', '7'], ['4', 'switzerland', '3', '2', '1', '6'], ['5', 'sweden', '2', '4', '4', '10'], ['6', 'united states', '2', '3', '2', '7'], ['7', 'norway', '2', '1', '1', '4'], ['8', 'italy', '1', '2', '0', '3'], ['9', 'germany', '1', '0', '1', '2'], ['10', 'canada', '0', '1', '2', '3']]
+########################################################################################################################
+Sample 195 - Plan 1: Operation 1: Select rows where the 'total' column is greater than the 'total' value of Austria.
+Sample 195 - Plan 1: Selected indices: [[0, 1], [0, 5]]
+Sample 195 - Plan 1: X-Table after operation df:
+   rank        nation gold  silver  bronze  total
+0     1  soviet union  *7*       3       6     16
+Sample 195 - Plan 1: Table after operation: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], [1, 'soviet union', '*7*', 3, 6, 16]]
+########################################################################################################################
+Sample 195 - Plan 1: Operation 2: Select the 'nation' column.
+Sample 195 - Plan 1: Selected indices: []
+Sample 195 - Plan 1: X-Table after operation df:
+         nation
+0  soviet union
+Sample 195 - Plan 1: Table after operation: [['nation'], ['soviet union']]
+Fall-back: FALSE
+Answer from plan 1: [['soviet union']]
+Groundtruth: ['Soviet Union']

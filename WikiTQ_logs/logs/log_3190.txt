@@ -1,0 +1,47 @@
+************************************************************************************************************************
+Sample 3190 - Plan 1: Query: for how many consecutive years did the team have a winning record?
+Sample 3190 - Plan 1: Groundtruth: ['4']
+Sample 3190 - Plan 1: X-Original table pd: 
+   year  team_record_nw  team_record_nl                 playoffs
+0  2001               7               2  3rd qualifier, region 2
+1  2002               8               1  2nd qualifier, region 2
+2  2003               8               1  2nd qualifier, region 2
+3  2004               7               2  2nd qualifier, region 2
+4  2005               3               5    did not make playoffs
+5  2006               5               4  4th qualifier, region 2
+6  2007              13               1  1st qualifier, region 2
+7  2008               7               4  2nd qualifier, region 2
+8  2009               5               5    did not make playoffs
+9  2010               5               5    did not make playoffs
+Sample 3190 - Plan 1: Caption: none
+Sample 3190 - Plan 1: Original table: [['year', 'team_record_nw', 'team_record_nl', 'playoffs'], ['2001', '7', '2', '3rd qualifier, region 2'], ['2002', '8', '1', '2nd qualifier, region 2'], ['2003', '8', '1', '2nd qualifier, region 2'], ['2004', '7', '2', '2nd qualifier, region 2'], ['2005', '3', '5', 'did not make playoffs'], ['2006', '5', '4', '4th qualifier, region 2'], ['2007', '13', '1', '1st qualifier, region 2'], ['2008', '7', '4', '2nd qualifier, region 2'], ['2009', '5', '5', 'did not make playoffs'], ['2010', '5', '5', 'did not make playoffs']]
+########################################################################################################################
+Sample 3190 - Plan 1: Operation 1: Select rows where 'team_record_nw' is greater than 'team_record_nl'.
+Sample 3190 - Plan 1: Selected indices: [[0, 1], [7, 1], [2, 1], [3, 1], [6, 1], [1, 1], [5, 1]]
+Sample 3190 - Plan 1: X-Table after operation df:
+   year  team_record_nw  team_record_nl                 playoffs
+0  2001               7               2  3rd qualifier, region 2
+1  2002               8               1  2nd qualifier, region 2
+2  2003               8               1  2nd qualifier, region 2
+3  2004               7               2  2nd qualifier, region 2
+4  2006               5               4  4th qualifier, region 2
+5  2007              13               1  1st qualifier, region 2
+6  2008               7               4  2nd qualifier, region 2
+Sample 3190 - Plan 1: Table after operation: [['year', 'team_record_nw', 'team_record_nl', 'playoffs'], [2001, 7, 2, '3rd qualifier, region 2'], [2002, 8, 1, '2nd qualifier, region 2'], [2003, 8, 1, '2nd qualifier, region 2'], [2004, 7, 2, '2nd qualifier, region 2'], [2006, 5, 4, '4th qualifier, region 2'], [2007, 13, 1, '1st qualifier, region 2'], [2008, 7, 4, '2nd qualifier, region 2']]
+########################################################################################################################
+Sample 3190 - Plan 1: Operation 2: Calculate the consecutive years by counting the number of rows from the previous step.
+Sample 3190 - Plan 1: Selected indices: []
+Sample 3190 - Plan 1: X-Table after operation df:
+   consecutive_years
+0                  7
+Sample 3190 - Plan 1: Table after operation: [['consecutive_years'], [7]]
+########################################################################################################################
+Sample 3190 - Plan 1: Operation 3: Return the count of consecutive years as the answer to the question.
+Sample 3190 - Plan 1: Selected indices: []
+Sample 3190 - Plan 1: X-Table after operation df:
+   count_consecutive_years
+0                        1
+Sample 3190 - Plan 1: Table after operation: [['count_consecutive_years'], [1]]
+Fall-back: FALSE
+Answer from plan 1: [[1]]
+Groundtruth: ['4']

@@ -1,0 +1,35 @@
+************************************************************************************************************************
+Sample 1581 - Plan 1: Query: what was the only year that the team was division 2?
+Sample 1581 - Plan 1: Groundtruth: ['2003']
+Sample 1581 - Plan 1: X-Original table pd: 
+    year  division        league   reg__season         playoffs
+0   2003         2  usl w-league  5th, western                 
+1   2004         1  usl w-league  8th, western                 
+2   2005         1  usl w-league  6th, western                 
+3   2006         1  usl w-league  5th, western                 
+4   2007         1  usl w-league  5th, western                 
+5   2008         1  usl w-league  6th, western  did not qualify
+6   2009         1  usl w-league  7th, western  did not qualify
+7   2010         1  usl w-league  6th, western  did not qualify
+8   2011         1  usl w-league  7th, western  did not qualify
+9   2012         1  usl w-league  4th, western  did not qualify
+10  2013         1  usl w-league  4th, western  did not qualify
+Sample 1581 - Plan 1: Caption: none
+Sample 1581 - Plan 1: Original table: [['year', 'division', 'league', 'reg__season', 'playoffs'], ['2003', '2', 'usl w-league', '5th, western', ''], ['2004', '1', 'usl w-league', '8th, western', ''], ['2005', '1', 'usl w-league', '6th, western', ''], ['2006', '1', 'usl w-league', '5th, western', ''], ['2007', '1', 'usl w-league', '5th, western', ''], ['2008', '1', 'usl w-league', '6th, western', 'did not qualify'], ['2009', '1', 'usl w-league', '7th, western', 'did not qualify'], ['2010', '1', 'usl w-league', '6th, western', 'did not qualify'], ['2011', '1', 'usl w-league', '7th, western', 'did not qualify'], ['2012', '1', 'usl w-league', '4th, western', 'did not qualify'], ['2013', '1', 'usl w-league', '4th, western', 'did not qualify']]
+########################################################################################################################
+Sample 1581 - Plan 1: Operation 1: Select rows where the 'division' is '2'.
+Sample 1581 - Plan 1: Selected indices: [[0, 1]]
+Sample 1581 - Plan 1: X-Table after operation df:
+   year  division        league   reg__season  playoffs
+0  2003         2  usl w-league  5th, western       NaN
+Sample 1581 - Plan 1: Table after operation: [['year', 'division', 'league', 'reg__season', 'playoffs'], [2003, 2, 'usl w-league', '5th, western', '']]
+########################################################################################################################
+Sample 1581 - Plan 1: Operation 2: Select the 'year' column.
+Sample 1581 - Plan 1: Selected indices: []
+Sample 1581 - Plan 1: X-Table after operation df:
+   year
+0  2003
+Sample 1581 - Plan 1: Table after operation: [['year'], [2003]]
+Fall-back: FALSE
+Answer from plan 1: [[2003]]
+Groundtruth: ['2003']

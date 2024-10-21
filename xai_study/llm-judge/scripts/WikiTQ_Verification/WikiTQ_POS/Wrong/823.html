@@ -1,0 +1,380 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> who directed the greatest number of episodes in the first season?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'no__in_nseason' is 1 to filter the first season.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>no__in_nseries</td>
+<td>no__in_nseason</td>
+<td>title</td>
+<td>directed_by</td>
+<td>written_by</td>
+<td>original_air_date</td>
+<td>prod__ncode</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">"so long, patrick henry"</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">leo penn</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">robert culp</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">september 15, 1965</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">101</span></td>
+</tr>
+<tr>
+<td>5</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td>"a cup of kindness"</td>
+<td>leo penn</td>
+<td>morton fine & david friedkin</td>
+<td>september 22, 1965</td>
+<td>102</td>
+</tr>
+<tr>
+<td>2</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td>"carry me back to old tsing-tao"</td>
+<td>mark rydell</td>
+<td>david karp</td>
+<td>september 29, 1965</td>
+<td>103</td>
+</tr>
+<tr>
+<td>6</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td>"chrysanthemum"</td>
+<td>david friedkin</td>
+<td>edward j. lakso</td>
+<td>october 6, 1965</td>
+<td>104</td>
+</tr>
+<tr>
+<td>7</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5</span></td>
+<td>"dragon's teeth"</td>
+<td>leo penn</td>
+<td>gilbert ralston</td>
+<td>october 13, 1965</td>
+<td>105</td>
+</tr>
+<tr>
+<td>8</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+<td>"the loser"</td>
+<td>mark rydell</td>
+<td>robert culp</td>
+<td>october 20, 1965</td>
+<td>106</td>
+</tr>
+<tr>
+<td>4</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7</span></td>
+<td>"danny was a million laughs"</td>
+<td>mark rydell</td>
+<td>arthur dales</td>
+<td>october 27, 1965</td>
+<td>107</td>
+</tr>
+<tr>
+<td>10</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td>"the time of the knife"</td>
+<td>paul wendkos</td>
+<td>gilbert ralston</td>
+<td>november 3, 1965</td>
+<td>108</td>
+</tr>
+<tr>
+<td>9</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+<td>"no exchange on damaged merchandise"</td>
+<td>leo penn</td>
+<td>gary marshall & jerry belson</td>
+<td>november 10, 1965</td>
+<td>109</td>
+</tr>
+<tr>
+<td>11</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+<td>"tatia"</td>
+<td>david friedkin</td>
+<td>robert lewin</td>
+<td>november 17, 1965</td>
+<td>110</td>
+</tr>
+<tr>
+<td>12</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11</span></td>
+<td>"weight of the world"</td>
+<td>paul wendkos</td>
+<td>robert lewin</td>
+<td>december 1, 1965</td>
+<td>111</td>
+</tr>
+<tr>
+<td>14</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12</span></td>
+<td>"three hours on a sunday"</td>
+<td>paul wendkos</td>
+<td>morton fine & david friedkin</td>
+<td>december 8, 1965</td>
+<td>112</td>
+</tr>
+<tr>
+<td>13</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13</span></td>
+<td>"tigers of heaven"</td>
+<td>allen reisner</td>
+<td>morton fine & david friedkin</td>
+<td>december 15, 1965</td>
+<td>113</td>
+</tr>
+<tr>
+<td>1</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">14</span></td>
+<td>"affair in t'sien cha"</td>
+<td>sheldon leonard</td>
+<td>morton fine & david friedkin</td>
+<td>december 29, 1965</td>
+<td>114</td>
+</tr>
+<tr>
+<td>16</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">15</span></td>
+<td>"the tiger"</td>
+<td>paul wendkos</td>
+<td>robert culp</td>
+<td>january 5, 1966</td>
+<td>115</td>
+</tr>
+<tr>
+<td>17</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">16</span></td>
+<td>"the barter"</td>
+<td>allen reisner</td>
+<td>harvey bullock & p.s. allen</td>
+<td>january 12, 1966</td>
+<td>116</td>
+</tr>
+<tr>
+<td>15</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">17</span></td>
+<td>"always say goodbye"</td>
+<td>allen reisner</td>
+<td>robert c. dennis & earl barrett</td>
+<td>january 26, 1966</td>
+<td>117</td>
+</tr>
+<tr>
+<td>18</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">18</span></td>
+<td>"court of the lion"</td>
+<td>robert culp</td>
+<td>robert culp</td>
+<td>february 2, 1966</td>
+<td>118</td>
+</tr>
+<tr>
+<td>19</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td>"turkish delight"</td>
+<td>paul wendkos</td>
+<td>eric bercovici</td>
+<td>february 9, 1966</td>
+<td>119</td>
+</tr>
+<tr>
+<td>20</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td>"bet me a dollar"</td>
+<td>richard sarafian</td>
+<td>david friedkin & morton fine</td>
+<td>february 16, 1966</td>
+<td>120</td>
+</tr>
+<tr>
+<td>21</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">21</span></td>
+<td>"return to glory"</td>
+<td>robert sarafian</td>
+<td>david friedkin & morton fine</td>
+<td>february 23, 1966</td>
+<td>121</td>
+</tr>
+<tr>
+<td>22</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">22</span></td>
+<td>"the conquest of maude murdock"</td>
+<td>paul wendkos</td>
+<td>robert c. dennis & earl barrett</td>
+<td>march 2, 1966</td>
+<td>122</td>
+</tr>
+<tr>
+<td>23</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">23</span></td>
+<td>"a day called 4 jaguar"</td>
+<td>richard sarafian</td>
+<td>michael zagar</td>
+<td>march 9, 1966</td>
+<td>123</td>
+</tr>
+<tr>
+<td>25</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24</span></td>
+<td>"crusade to limbo"</td>
+<td>richard sarafian</td>
+<td>teleplay by: morton fine & david freidkin & jack turley story by: jack turley</td>
+<td>march 23, 1966</td>
+<td>124</td>
+</tr>
+<tr>
+<td>26</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">25</span></td>
+<td>"my mother, the spy"</td>
+<td>richard benedict</td>
+<td>howard gast</td>
+<td>march 30, 1966</td>
+<td>125</td>
+</tr>
+<tr>
+<td>27</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">26</span></td>
+<td>"there was a little girl"</td>
+<td>john rich</td>
+<td>teleplay by: stephen kandell story by: robert bloch</td>
+<td>april 6, 1966</td>
+<td>126</td>
+</tr>
+<tr>
+<td>28</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">27</span></td>
+<td>"it's all done with mirrors"</td>
+<td>robert butler</td>
+<td>stephen kandell</td>
+<td>april 13, 1966</td>
+<td>127</td>
+</tr>
+<tr>
+<td>24</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">28</span></td>
+<td>"one thousand fine"</td>
+<td>paul wendkos</td>
+<td>eric bercovici</td>
+<td>april 27, 1966</td>
+<td>128</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Count the number of occurrences of each 'directed_by' value in the filtered rows.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>no__in_nseries</td>
+<td>no__in_nseason</td>
+<td>title</td>
+<td>directed_by</td>
+<td>written_by</td>
+<td>original_air_date</td>
+<td>prod__ncode</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+<td>"so long, patrick henry"</td>
+<td>leo penn</td>
+<td>robert culp</td>
+<td>september 15, 1965</td>
+<td>101</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Order the table by the count of 'directed_by' in descending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>directed_by</td>
+<td>occurrences</td>
+</tr>
+<tr>
+<td>leo penn</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Select row number 1.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>directed_by</td>
+<td>occurrences</td>
+</tr>
+<tr>
+<td>leo penn</td>
+<td>1</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 5: Select the 'directed_by' column.</div>
+<div id="step-3" class="content">
+<table>
+<tr>
+<td>directed_by</td>
+<td>occurrences</td>
+</tr>
+<tr>
+<td>leo penn</td>
+<td>1</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>directed_by</td>
+</tr>
+<tr>
+<td>leo penn</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['leo penn']]</h3>
+</body></html>

@@ -1,0 +1,98 @@
+************************************************************************************************************************
+Sample 91 - Plan 1: Query: which country has the larger number of circuits?
+Sample 91 - Plan 1: Groundtruth: ['USA']
+Sample 91 - Plan 1: X-Original table pd: 
+   round         date         circuit           winning_driver__ta2_  \
+0      1       may 21     sears point                   greg pickett   
+1      2       june 4        westwood                ludwig heimrath   
+2      3      june 11        portland                    tuck thomas   
+3      4      june 25  mont-tremblant                  monte sheldon   
+4      5       july 8   watkins glen‡  hal shaw, jr.\n monte shelton   
+5      6    august 13        brainerd                   jerry hansen   
+6      7    august 19         mosport                   greg pickett   
+7      8  september 4    road america                   greg pickett   
+8      9    october 8     laguna seca                   greg pickett   
+9     10   november 5     mexico city                ludwig heimrath   
+
+  winning_vehicle__ta2_            winning_driver__ta1_ winning_vehicle__ta1_  
+0    chevrolet corvette                   gene bothello    chevrolet corvette  
+1           porsche 935                     nick engels    chevrolet corvette  
+2       chevrolet monza                  bob matkowitch    chevrolet corvette  
+3           porsche 935                     bob tullius            jaguar xjs  
+4           porsche 935  brian fuerstenau\n bob tullius            jaguar xjs  
+5       chevrolet monza                     bob tullius            jaguar xjs  
+6    chevrolet corvette                     bob tullius            jaguar xjs  
+7    chevrolet corvette                     bob tullius            jaguar xjs  
+8    chevrolet corvette                     bob tullius            jaguar xjs  
+9           porsche 935                     bob tullius            jaguar xjs  
+Sample 91 - Plan 1: Caption: none
+Sample 91 - Plan 1: Original table: [['round', 'date', 'circuit', 'winning_driver__ta2_', 'winning_vehicle__ta2_', 'winning_driver__ta1_', 'winning_vehicle__ta1_'], ['1', 'may 21', 'sears point', 'greg pickett', 'chevrolet corvette', 'gene bothello', 'chevrolet corvette'], ['2', 'june 4', 'westwood', 'ludwig heimrath', 'porsche 935', 'nick engels', 'chevrolet corvette'], ['3', 'june 11', 'portland', 'tuck thomas', 'chevrolet monza', 'bob matkowitch', 'chevrolet corvette'], ['4', 'june 25', 'mont-tremblant', 'monte sheldon', 'porsche 935', 'bob tullius', 'jaguar xjs'], ['5', 'july 8', 'watkins glen‡', 'hal shaw, jr.\\n monte shelton', 'porsche 935', 'brian fuerstenau\\n bob tullius', 'jaguar xjs'], ['6', 'august 13', 'brainerd', 'jerry hansen', 'chevrolet monza', 'bob tullius', 'jaguar xjs'], ['7', 'august 19', 'mosport', 'greg pickett', 'chevrolet corvette', 'bob tullius', 'jaguar xjs'], ['8', 'september 4', 'road america', 'greg pickett', 'chevrolet corvette', 'bob tullius', 'jaguar xjs'], ['9', 'october 8', 'laguna seca', 'greg pickett', 'chevrolet corvette', 'bob tullius', 'jaguar xjs'], ['10', 'november 5', 'mexico city', 'ludwig heimrath', 'porsche 935', 'bob tullius', 'jaguar xjs']]
+########################################################################################################################
+Sample 91 - Plan 1: Operation 1: Select the 'circuit' and 'winning_driver__ta2_' columns.
+Sample 91 - Plan 1: Selected indices: []
+Sample 91 - Plan 1: X-Table after operation df:
+          circuit           winning_driver__ta2_
+0     sears point                   greg pickett
+1        westwood                ludwig heimrath
+2        portland                    tuck thomas
+3  mont-tremblant                  monte sheldon
+4   watkins glen‡  hal shaw, jr.\n monte shelton
+5        brainerd                   jerry hansen
+6         mosport                   greg pickett
+7    road america                   greg pickett
+8     laguna seca                   greg pickett
+9     mexico city                ludwig heimrath
+Sample 91 - Plan 1: Table after operation: [['circuit', 'winning_driver__ta2_'], ['sears point', 'greg pickett'], ['westwood', 'ludwig heimrath'], ['portland', 'tuck thomas'], ['mont-tremblant', 'monte sheldon'], ['watkins glen‡', 'hal shaw, jr.\\n monte shelton'], ['brainerd', 'jerry hansen'], ['mosport', 'greg pickett'], ['road america', 'greg pickett'], ['laguna seca', 'greg pickett'], ['mexico city', 'ludwig heimrath']]
+########################################################################################################################
+Sample 91 - Plan 1: Operation 2: Extract the country from the 'circuit' column and add a new column 'country' to the existing table.
+Sample 91 - Plan 1: Selected indices: [[0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0], [9, 0]]
+Sample 91 - Plan 1: X-Table after operation df:
+          circuit           winning_driver__ta2_  country
+0     sears point                   greg pickett      USA
+1        westwood                ludwig heimrath   Canada
+2        portland                    tuck thomas      USA
+3  mont-tremblant                  monte sheldon   Canada
+4   watkins glen‡  hal shaw, jr.\n monte shelton  Unknown
+5        brainerd                   jerry hansen      USA
+6         mosport                   greg pickett   Canada
+7    road america                   greg pickett      USA
+8     laguna seca                   greg pickett      USA
+9     mexico city                ludwig heimrath   Mexico
+Sample 91 - Plan 1: Table after operation: [['circuit', 'winning_driver__ta2_', 'country'], ['sears point', 'greg pickett', 'USA'], ['westwood', 'ludwig heimrath', 'Canada'], ['portland', 'tuck thomas', 'USA'], ['mont-tremblant', 'monte sheldon', 'Canada'], ['watkins glen‡', 'hal shaw, jr.\\n monte shelton', 'Unknown'], ['brainerd', 'jerry hansen', 'USA'], ['mosport', 'greg pickett', 'Canada'], ['road america', 'greg pickett', 'USA'], ['laguna seca', 'greg pickett', 'USA'], ['mexico city', 'ludwig heimrath', 'Mexico']]
+########################################################################################################################
+Sample 91 - Plan 1: Operation 3: Count the number of unique circuits for each country and add a new column 'num_circuits' to the existing table.
+Sample 91 - Plan 1: Selected indices: []
+Sample 91 - Plan 1: X-Table after operation df:
+   country  num_circuits
+0   Canada             3
+1   Mexico             1
+2      USA             5
+3  Unknown             1
+Sample 91 - Plan 1: Table after operation: [['country', 'num_circuits'], ['Canada', 3], ['Mexico', 1], ['USA', 5], ['Unknown', 1]]
+########################################################################################################################
+Sample 91 - Plan 1: Operation 4: Order the table by 'num_circuits' in descending order.
+Sample 91 - Plan 1: Selected indices: [[0, 1], [1, 1], [2, 1], [3, 1]]
+Sample 91 - Plan 1: X-Table after operation df:
+   country  num_circuits
+0      USA             5
+1   Canada             3
+2   Mexico             1
+3  Unknown             1
+Sample 91 - Plan 1: Table after operation: [['country', 'num_circuits'], ['USA', 5], ['Canada', 3], ['Mexico', 1], ['Unknown', 1]]
+########################################################################################################################
+Sample 91 - Plan 1: Operation 5: Select row number 1.
+Sample 91 - Plan 1: Selected indices: []
+Sample 91 - Plan 1: X-Table after operation df:
+  country  num_circuits
+0     USA             5
+Sample 91 - Plan 1: Table after operation: [['country', 'num_circuits'], ['USA', 5]]
+########################################################################################################################
+Sample 91 - Plan 1: Operation 6: Select the 'country' column.
+Sample 91 - Plan 1: Selected indices: []
+Sample 91 - Plan 1: X-Table after operation df:
+  country
+0     USA
+Sample 91 - Plan 1: Table after operation: [['country'], ['USA']]
+Fall-back: FALSE
+Answer from plan 1: [['USA']]
+Groundtruth: ['USA']

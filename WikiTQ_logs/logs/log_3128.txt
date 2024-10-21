@@ -1,0 +1,47 @@
+************************************************************************************************************************
+Sample 3128 - Plan 1: Query: who won after byron nelson?
+Sample 3128 - Plan 1: Groundtruth: ['Henry Picard']
+Sample 3128 - Plan 1: X-Original table pd: 
+   place         player        country            score to_par money____
+0      1  ralph guldahl  united states  72-68-70-69=279     –9     1,500
+1      2      sam snead  united states  70-70-72-68=280     –8       800
+2     t3    billy burke  united states  69-72-71-70=282     –6       550
+3     t3  lawson little  united states  72-72-68-70=282     –6       550
+4      5   gene sarazen  united states  73-66-72-72=283     –5       400
+5      6     craig wood  united states  72-73-71-68=284     –4       300
+6      7   byron nelson  united states  71-69-72-75=287     –1       250
+7      8   henry picard  united states  71-71-76-71=289     +1       175
+8      9      ben hogan  united states  75-71-72-72=290     +2       125
+9    t10      ed dudley  united states  75-75-69-72=291     +3       100
+10   t10    toney penna  united states  72-75-72-72=291     +3       100
+Sample 3128 - Plan 1: Caption: none
+Sample 3128 - Plan 1: Original table: [['place', 'player', 'country', 'score', 'to_par', 'money____'], ['1', 'ralph guldahl', 'united states', '72-68-70-69=279', '–9', '1,500'], ['2', 'sam snead', 'united states', '70-70-72-68=280', '–8', '800'], ['t3', 'billy burke', 'united states', '69-72-71-70=282', '–6', '550'], ['t3', 'lawson little', 'united states', '72-72-68-70=282', '–6', '550'], ['5', 'gene sarazen', 'united states', '73-66-72-72=283', '–5', '400'], ['6', 'craig wood', 'united states', '72-73-71-68=284', '–4', '300'], ['7', 'byron nelson', 'united states', '71-69-72-75=287', '–1', '250'], ['8', 'henry picard', 'united states', '71-71-76-71=289', '+1', '175'], ['9', 'ben hogan', 'united states', '75-71-72-72=290', '+2', '125'], ['t10', 'ed dudley', 'united states', '75-75-69-72=291', '+3', '100'], ['t10', 'toney penna', 'united states', '72-75-72-72=291', '+3', '100']]
+########################################################################################################################
+Sample 3128 - Plan 1: Operation 1: Select rows where 'player' is 'byron nelson'.
+Sample 3128 - Plan 1: Selected indices: [[6, 1]]
+Sample 3128 - Plan 1: X-Table after operation df:
+   place        player        country            score to_par  money____
+0      7  byron nelson  united states  71-69-72-75=287     –1        250
+Sample 3128 - Plan 1: Table after operation: [['place', 'player', 'country', 'score', 'to_par', 'money____'], ['7', 'byron nelson', 'united states', '71-69-72-75=287', '–1', '250']]
+########################################################################################################################
+Sample 3128 - Plan 1: Operation 2: Get the row number of the selected row.
+Sample 3128 - Plan 1: Selected indices: []
+Sample 3128 - Plan 1: X-Table after operation df:
+   row_number
+0           1
+Sample 3128 - Plan 1: Table after operation: [['row_number'], [1]]
+########################################################################################################################
+Sample 3128 - Plan 1: Operation 3: Select the row with the row number + 1.
+Sample 3128 - Plan 1: Selected indices: []
+Sample 3128 - Plan 1: X-Table after operation df:
+   next_row_number
+0                2
+Sample 3128 - Plan 1: Table after operation: [['next_row_number'], [2]]
+########################################################################################################################
+Sample 3128 - Plan 1: Operation 4: Select the 'player' column.
+SQL execution error in operation 4: Execution failed on sql 'SELECT player
+FROM table_sql;': no such column: player
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['henry picard']]
+Groundtruth: ['Henry Picard']

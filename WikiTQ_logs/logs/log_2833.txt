@@ -1,0 +1,100 @@
+************************************************************************************************************************
+Sample 2833 - Plan 1: Query: can you list each of the writer's last names in alphabetical order?
+Sample 2833 - Plan 1: Groundtruth: ['Carroll', 'Humphries', 'McKay', 'Sharkey']
+Sample 2833 - Plan 1: X-Original table pd: 
+     _        directed_by        written_by   original_air_date
+0    1     frank w. smith  simon j. sharkey  september 14, 1997
+1    2     frank w. smith  simon j. sharkey  september 28, 1997
+2    3      gerry poulson   david humphries     october 5, 1997
+3    4      gerry poulson   david humphries    october 12, 1997
+4    5       john reardon        neil mckay    october 26, 1997
+5    6       john reardon        neil mckay    november 2, 1997
+6    7     frank w. smith      fran carroll    november 9, 1997
+7    8  douglas mackinnon        neil mckay   november 16, 1997
+8    9  douglas mackinnon        neil mckay   november 23, 1997
+9   10       john reardon  simon j. sharkey   november 30, 1997
+10  11       john reardon  simon j. sharkey     january 4, 1998
+11  12           ken horn   david humphries    january 11, 1998
+12  13       john reardon  simon j. sharkey    january 18, 1998
+13  14           ken horn        neil mckay    january 25, 1998
+14  15     frank w. smith    dave humphries    february 1, 1998
+15  16  douglas mackinnon        neil mckay    february 8, 1998
+16  17       graham moore  simon j. sharkey   february 15, 1998
+17  18       john reardon  simon j. sharkey   february 22, 1998
+Sample 2833 - Plan 1: Caption: none
+Sample 2833 - Plan 1: Original table: [['_', 'directed_by', 'written_by', 'original_air_date'], ['1', 'frank w. smith', 'simon j. sharkey', 'september\xa014,\xa01997'], ['2', 'frank w. smith', 'simon j. sharkey', 'september\xa028,\xa01997'], ['3', 'gerry poulson', 'david humphries', 'october\xa05,\xa01997'], ['4', 'gerry poulson', 'david humphries', 'october\xa012,\xa01997'], ['5', 'john reardon', 'neil mckay', 'october\xa026,\xa01997'], ['6', 'john reardon', 'neil mckay', 'november\xa02,\xa01997'], ['7', 'frank w. smith', 'fran carroll', 'november\xa09,\xa01997'], ['8', 'douglas mackinnon', 'neil mckay', 'november\xa016,\xa01997'], ['9', 'douglas mackinnon', 'neil mckay', 'november\xa023,\xa01997'], ['10', 'john reardon', 'simon j. sharkey', 'november\xa030,\xa01997'], ['11', 'john reardon', 'simon j. sharkey', 'january\xa04,\xa01998'], ['12', 'ken horn', 'david humphries', 'january\xa011,\xa01998'], ['13', 'john reardon', 'simon j. sharkey', 'january\xa018,\xa01998'], ['14', 'ken horn', 'neil mckay', 'january\xa025,\xa01998'], ['15', 'frank w. smith', 'dave humphries', 'february\xa01,\xa01998'], ['16', 'douglas mackinnon', 'neil mckay', 'february\xa08,\xa01998'], ['17', 'graham moore', 'simon j. sharkey', 'february\xa015,\xa01998'], ['18', 'john reardon', 'simon j. sharkey', 'february\xa022,\xa01998']]
+########################################################################################################################
+Sample 2833 - Plan 1: Operation 1: Extract the last name from the 'written_by' column and add a new column 'last_name' to the existing table.
+Sample 2833 - Plan 1: Selected indices: [[0, 2], [1, 2], [2, 2], [3, 2], [4, 2], [5, 2], [6, 2], [7, 2], [8, 2], [9, 2], [10, 2], [11, 2], [12, 2], [13, 2], [14, 2], [15, 2], [16, 2], [17, 2]]
+Sample 2833 - Plan 1: X-Table after operation df:
+     _        directed_by        written_by   original_air_date   last_name
+0    1     frank w. smith  simon j. sharkey  september 14, 1997  j. sharkey
+1    2     frank w. smith  simon j. sharkey  september 28, 1997  j. sharkey
+2    3      gerry poulson   david humphries     october 5, 1997   humphries
+3    4      gerry poulson   david humphries    october 12, 1997   humphries
+4    5       john reardon        neil mckay    october 26, 1997       mckay
+5    6       john reardon        neil mckay    november 2, 1997       mckay
+6    7     frank w. smith      fran carroll    november 9, 1997     carroll
+7    8  douglas mackinnon        neil mckay   november 16, 1997       mckay
+8    9  douglas mackinnon        neil mckay   november 23, 1997       mckay
+9   10       john reardon  simon j. sharkey   november 30, 1997  j. sharkey
+10  11       john reardon  simon j. sharkey     january 4, 1998  j. sharkey
+11  12           ken horn   david humphries    january 11, 1998   humphries
+12  13       john reardon  simon j. sharkey    january 18, 1998  j. sharkey
+13  14           ken horn        neil mckay    january 25, 1998       mckay
+14  15     frank w. smith    dave humphries    february 1, 1998   humphries
+15  16  douglas mackinnon        neil mckay    february 8, 1998       mckay
+16  17       graham moore  simon j. sharkey   february 15, 1998  j. sharkey
+17  18       john reardon  simon j. sharkey   february 22, 1998  j. sharkey
+Sample 2833 - Plan 1: Table after operation: [['_', 'directed_by', 'written_by', 'original_air_date', 'last_name'], [1, 'frank w. smith', 'simon j. sharkey', 'september\xa014,\xa01997', 'j. sharkey'], [2, 'frank w. smith', 'simon j. sharkey', 'september\xa028,\xa01997', 'j. sharkey'], [3, 'gerry poulson', 'david humphries', 'october\xa05,\xa01997', 'humphries'], [4, 'gerry poulson', 'david humphries', 'october\xa012,\xa01997', 'humphries'], [5, 'john reardon', 'neil mckay', 'october\xa026,\xa01997', 'mckay'], [6, 'john reardon', 'neil mckay', 'november\xa02,\xa01997', 'mckay'], [7, 'frank w. smith', 'fran carroll', 'november\xa09,\xa01997', 'carroll'], [8, 'douglas mackinnon', 'neil mckay', 'november\xa016,\xa01997', 'mckay'], [9, 'douglas mackinnon', 'neil mckay', 'november\xa023,\xa01997', 'mckay'], [10, 'john reardon', 'simon j. sharkey', 'november\xa030,\xa01997', 'j. sharkey'], [11, 'john reardon', 'simon j. sharkey', 'january\xa04,\xa01998', 'j. sharkey'], [12, 'ken horn', 'david humphries', 'january\xa011,\xa01998', 'humphries'], [13, 'john reardon', 'simon j. sharkey', 'january\xa018,\xa01998', 'j. sharkey'], [14, 'ken horn', 'neil mckay', 'january\xa025,\xa01998', 'mckay'], [15, 'frank w. smith', 'dave humphries', 'february\xa01,\xa01998', 'humphries'], [16, 'douglas mackinnon', 'neil mckay', 'february\xa08,\xa01998', 'mckay'], [17, 'graham moore', 'simon j. sharkey', 'february\xa015,\xa01998', 'j. sharkey'], [18, 'john reardon', 'simon j. sharkey', 'february\xa022,\xa01998', 'j. sharkey']]
+########################################################################################################################
+Sample 2833 - Plan 1: Operation 2: Order the table by the 'last_name' column in alphabetical order.
+Sample 2833 - Plan 1: Selected indices: [[12, 4], [7, 4], [2, 4], [4, 4], [0, 4], [14, 4], [3, 4], [8, 4], [13, 4], [10, 4], [5, 4], [15, 4], [9, 4], [6, 4], [1, 4], [16, 4], [11, 4], [17, 4]]
+Sample 2833 - Plan 1: X-Table after operation df:
+     _        directed_by        written_by   original_air_date   last_name
+0    7     frank w. smith      fran carroll    november 9, 1997     carroll
+1    3      gerry poulson   david humphries     october 5, 1997   humphries
+2    4      gerry poulson   david humphries    october 12, 1997   humphries
+3   12           ken horn   david humphries    january 11, 1998   humphries
+4   15     frank w. smith    dave humphries    february 1, 1998   humphries
+5    1     frank w. smith  simon j. sharkey  september 14, 1997  j. sharkey
+6    2     frank w. smith  simon j. sharkey  september 28, 1997  j. sharkey
+7   10       john reardon  simon j. sharkey   november 30, 1997  j. sharkey
+8   11       john reardon  simon j. sharkey     january 4, 1998  j. sharkey
+9   13       john reardon  simon j. sharkey    january 18, 1998  j. sharkey
+10  17       graham moore  simon j. sharkey   february 15, 1998  j. sharkey
+11  18       john reardon  simon j. sharkey   february 22, 1998  j. sharkey
+12   5       john reardon        neil mckay    october 26, 1997       mckay
+13   6       john reardon        neil mckay    november 2, 1997       mckay
+14   8  douglas mackinnon        neil mckay   november 16, 1997       mckay
+15   9  douglas mackinnon        neil mckay   november 23, 1997       mckay
+16  14           ken horn        neil mckay    january 25, 1998       mckay
+17  16  douglas mackinnon        neil mckay    february 8, 1998       mckay
+Sample 2833 - Plan 1: Table after operation: [['_', 'directed_by', 'written_by', 'original_air_date', 'last_name'], [7, 'frank w. smith', 'fran carroll', 'november\xa09,\xa01997', 'carroll'], [3, 'gerry poulson', 'david humphries', 'october\xa05,\xa01997', 'humphries'], [4, 'gerry poulson', 'david humphries', 'october\xa012,\xa01997', 'humphries'], [12, 'ken horn', 'david humphries', 'january\xa011,\xa01998', 'humphries'], [15, 'frank w. smith', 'dave humphries', 'february\xa01,\xa01998', 'humphries'], [1, 'frank w. smith', 'simon j. sharkey', 'september\xa014,\xa01997', 'j. sharkey'], [2, 'frank w. smith', 'simon j. sharkey', 'september\xa028,\xa01997', 'j. sharkey'], [10, 'john reardon', 'simon j. sharkey', 'november\xa030,\xa01997', 'j. sharkey'], [11, 'john reardon', 'simon j. sharkey', 'january\xa04,\xa01998', 'j. sharkey'], [13, 'john reardon', 'simon j. sharkey', 'january\xa018,\xa01998', 'j. sharkey'], [17, 'graham moore', 'simon j. sharkey', 'february\xa015,\xa01998', 'j. sharkey'], [18, 'john reardon', 'simon j. sharkey', 'february\xa022,\xa01998', 'j. sharkey'], [5, 'john reardon', 'neil mckay', 'october\xa026,\xa01997', 'mckay'], [6, 'john reardon', 'neil mckay', 'november\xa02,\xa01997', 'mckay'], [8, 'douglas mackinnon', 'neil mckay', 'november\xa016,\xa01997', 'mckay'], [9, 'douglas mackinnon', 'neil mckay', 'november\xa023,\xa01997', 'mckay'], [14, 'ken horn', 'neil mckay', 'january\xa025,\xa01998', 'mckay'], [16, 'douglas mackinnon', 'neil mckay', 'february\xa08,\xa01998', 'mckay']]
+########################################################################################################################
+Sample 2833 - Plan 1: Operation 3: Select the 'last_name' column.
+Sample 2833 - Plan 1: Selected indices: []
+Sample 2833 - Plan 1: X-Table after operation df:
+     last_name
+0      carroll
+1    humphries
+2    humphries
+3    humphries
+4    humphries
+5   j. sharkey
+6   j. sharkey
+7   j. sharkey
+8   j. sharkey
+9   j. sharkey
+10  j. sharkey
+11  j. sharkey
+12       mckay
+13       mckay
+14       mckay
+15       mckay
+16       mckay
+17       mckay
+Sample 2833 - Plan 1: Table after operation: [['last_name'], ['carroll'], ['humphries'], ['humphries'], ['humphries'], ['humphries'], ['j. sharkey'], ['j. sharkey'], ['j. sharkey'], ['j. sharkey'], ['j. sharkey'], ['j. sharkey'], ['j. sharkey'], ['mckay'], ['mckay'], ['mckay'], ['mckay'], ['mckay'], ['mckay']]
+Fall-back: FALSE
+Answer from plan 1: [['carroll'], ['humphries'], ['humphries'], ['humphries'], ['humphries'], ['j. sharkey'], ['j. sharkey'], ['j. sharkey'], ['j. sharkey'], ['j. sharkey'], ['j. sharkey'], ['j. sharkey'], ['mckay'], ['mckay'], ['mckay'], ['mckay'], ['mckay'], ['mckay']]
+Groundtruth: ['Carroll', 'Humphries', 'McKay', 'Sharkey']

@@ -1,0 +1,43 @@
+************************************************************************************************************************
+Sample 656 - Plan 1: Query: which country would be best to visit for someone who likes birds?
+Sample 656 - Plan 1: Groundtruth: ['Panama']
+Sample 656 - Plan 1: X-Original table pd: 
+       country  amphibians  birds  mammals  reptile  \
+0       belize          46    544      147      140   
+1   costa rica         183    838      232      258   
+2  el salvador          30    434      137      106   
+3    guatemala         133    684      193      236   
+4     honduras         101    699      201      213   
+5    nicaragua          61    632      181      178   
+6       panama         182    904      241      242   
+
+   total_terrestrial_vertebrates  vascular_plants  biodiversity  
+0                            877             2894          3771  
+1                           1511            12119         13630  
+2                            707             2911          3618  
+3                           1246             8681          9927  
+4                           1214             5680          6894  
+5                           1052             7590          8642  
+6                           1569             9915         11484  
+Sample 656 - Plan 1: Caption: none
+Sample 656 - Plan 1: Original table: [['country', 'amphibians', 'birds', 'mammals', 'reptile', 'total_terrestrial_vertebrates', 'vascular_plants', 'biodiversity'], ['belize', '46', '544', '147', '140', '877', '2894', '3771'], ['costa rica', '183', '838', '232', '258', '1511', '12119', '13630'], ['el salvador', '30', '434', '137', '106', '707', '2911', '3618'], ['guatemala', '133', '684', '193', '236', '1246', '8681', '9927'], ['honduras', '101', '699', '201', '213', '1214', '5680', '6894'], ['nicaragua', '61', '632', '181', '178', '1052', '7590', '8642'], ['panama', '182', '904', '241', '242', '1569', '9915', '11484']]
+########################################################################################################################
+Sample 656 - Plan 1: Operation 1: Select rows where the 'birds' column is the highest value.
+Sample 656 - Plan 1: Selected indices: [[6, 2]]
+Sample 656 - Plan 1: X-Table after operation df:
+  country  amphibians  birds  mammals  reptile  total_terrestrial_vertebrates  \
+0  panama         182    904      241      242                           1569   
+
+   vascular_plants  biodiversity  
+0             9915         11484  
+Sample 656 - Plan 1: Table after operation: [['country', 'amphibians', 'birds', 'mammals', 'reptile', 'total_terrestrial_vertebrates', 'vascular_plants', 'biodiversity'], ['panama', 182, 904, 241, 242, 1569, 9915, 11484]]
+########################################################################################################################
+Sample 656 - Plan 1: Operation 2: Select the 'country' column.
+Sample 656 - Plan 1: Selected indices: []
+Sample 656 - Plan 1: X-Table after operation df:
+  country
+0  panama
+Sample 656 - Plan 1: Table after operation: [['country'], ['panama']]
+Fall-back: FALSE
+Answer from plan 1: [['panama']]
+Groundtruth: ['Panama']

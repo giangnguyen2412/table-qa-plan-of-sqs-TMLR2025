@@ -1,0 +1,73 @@
+************************************************************************************************************************
+Sample test-1654 - Plan 1: Statement: kansas city had no post - season record in 2013
+Sample test-1654 - Plan 1: Groundtruth: TRUE
+Sample test-1654 - Plan 1: X-Original table pd: 
+    season         manager   record  win__ post___season_record  \
+0     2001      joe cannon  92 - 48    657                4 - 0   
+1     2002      joe cannon  81 - 59    579                    -   
+2   2003 ♦      russ nixon  75 - 63    543                0 - 2   
+3     2004    iván dejesús  68 - 72    486                    -   
+4     2005       tim bogar  81 - 58    583                    -   
+5   2006 ♦       jack lind  75 - 63    543                0 - 2   
+6     2007  gregg langbehn  59 - 81    421                    -   
+7     2008  gregg langbehn  45 - 93    326                    -   
+8     2009     tom lawless  68 - 72    486                    -   
+9     2010  rodney linares  71 - 68    511                    -   
+10    2011  rodney linares  59 - 79    428                    -   
+11    2012    iván dejesús  69 - 69    500                    -   
+12    2013  brian buchanan  44 - 42    512                    -   
+
+   post___season_win__ mlb_affiliate  
+0                1.000       houston  
+1                    -       houston  
+2                  000       houston  
+3                    -       houston  
+4                    -       houston  
+5                  000       houston  
+6                    -       houston  
+7                    -       houston  
+8                    -       houston  
+9                    -       houston  
+10                   -       houston  
+11                   -       houston  
+12                   -   kansas city  
+Sample test-1654 - Plan 1: Caption: lexington legends
+Sample test-1654 - Plan 1: Original table: [['season', 'manager', 'record', 'win__', 'post___season_record', 'post___season_win__', 'mlb_affiliate'], ['2001', 'joe cannon', '92 - 48', '657', '4 - 0', '1.000', 'houston'], ['2002', 'joe cannon', '81 - 59', '579', '-', '-', 'houston'], ['2003 ♦', 'russ nixon', '75 - 63', '543', '0 - 2', '000', 'houston'], ['2004', 'iván dejesús', '68 - 72', '486', '-', '-', 'houston'], ['2005', 'tim bogar', '81 - 58', '583', '-', '-', 'houston'], ['2006 ♦', 'jack lind', '75 - 63', '543', '0 - 2', '000', 'houston'], ['2007', 'gregg langbehn', '59 - 81', '421', '-', '-', 'houston'], ['2008', 'gregg langbehn', '45 - 93', '326', '-', '-', 'houston'], ['2009', 'tom lawless', '68 - 72', '486', '-', '-', 'houston'], ['2010', 'rodney linares', '71 - 68', '511', '-', '-', 'houston'], ['2011', 'rodney linares', '59 - 79', '428', '-', '-', 'houston'], ['2012', 'iván dejesús', '69 - 69', '500', '-', '-', 'houston'], ['2013', 'brian buchanan', '44 - 42', '512', '-', '-', 'kansas city']]
+########################################################################################################################
+Sample test-1654 - Plan 1: Operation 1: Select rows where 'mlb_affiliate' is 'kansas city'.
+Sample test-1654 - Plan 1: Selected indices: [[12, 6]]
+Sample test-1654 - Plan 1: X-Table after operation df:
+   season         manager   record  win__ post___season_record  \
+0    2013  brian buchanan  44 - 42    512                    -   
+
+  post___season_win__ mlb_affiliate  
+0                   -   kansas city  
+Sample test-1654 - Plan 1: Table after operation: [['season', 'manager', 'record', 'win__', 'post___season_record', 'post___season_win__', 'mlb_affiliate'], ['2013', 'brian buchanan', '44 - 42', 512, '-', '-', 'kansas city']]
+########################################################################################################################
+Sample test-1654 - Plan 1: Operation 2: Select rows where 'season' is 2013.
+Sample test-1654 - Plan 1: Selected indices: [[0, 0]]
+Sample test-1654 - Plan 1: X-Table after operation df:
+   season         manager   record  win__ post___season_record  \
+0    2013  brian buchanan  44 - 42    512                    -   
+
+  post___season_win__ mlb_affiliate  
+0                   -   kansas city  
+Sample test-1654 - Plan 1: Table after operation: [['season', 'manager', 'record', 'win__', 'post___season_record', 'post___season_win__', 'mlb_affiliate'], [2013, 'brian buchanan', '44 - 42', 512, '-', '-', 'kansas city']]
+########################################################################################################################
+Sample test-1654 - Plan 1: Operation 3: Select rows where 'post___season_record' is not '-'.
+Sample test-1654 - Plan 1: Selected indices: []
+Sample test-1654 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [season, manager, record, win__, post___season_record, post___season_win__, mlb_affiliate]
+Index: []
+Sample test-1654 - Plan 1: Table after operation: [['season', 'manager', 'record', 'win__', 'post___season_record', 'post___season_win__', 'mlb_affiliate']]
+########################################################################################################################
+Sample test-1654 - Plan 1: Operation 4: Use a `CASE` statement to return TRUE if the number of rows is equal to 0, otherwise return FALSE.
+Sample test-1654 - Plan 1: Selected indices: []
+Sample test-1654 - Plan 1: X-Table after operation df:
+  verification_result
+0                TRUE
+Sample test-1654 - Plan 1: Table after operation: [['verification_result'], ['TRUE']]
+Answer from plan 1: TRUE
+Groundtruth: TRUE
+Fall-back: FALSE

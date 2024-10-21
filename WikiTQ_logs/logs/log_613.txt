@@ -1,0 +1,102 @@
+************************************************************************************************************************
+Sample 613 - Plan 1: Query: nameeach of the formats in the table.
+Sample 613 - Plan 1: Groundtruth: ['Telenovela', 'Serie', 'Short Film', 'Feature Film', 'Capsulas']
+Sample 613 - Plan 1: X-Original table pd: 
+         year                           title  \
+0        2010          niñas mal (telenovela)   
+1        2010             soy tu fan (méxico)   
+2        2010           yo te estaré cuidando   
+3        2009                        infinito   
+4        2009          me mueves 2° temporada   
+5        2008          me mueves 1° temporada   
+6        2008  la carretera es blanca y llana   
+7        2007                         la zona   
+8   2006–2008                           skimo   
+9        2006                  la vida inmune   
+10       2005                cuentos de pelos   
+11       2005                     quinceañera   
+12       2004           el divan de valentina   
+13       2001              perros patinadores   
+14  1997–2001                       bizbirije   
+
+                                                  rol        format  \
+0                                                piti    telenovela   
+1                                               actor         serie   
+2                                              camilo    short film   
+3                                                        short film   
+4                                              arturo         serie   
+5                                              arturo         serie   
+6                                                peru    short film   
+7                                           alejandro  feature film   
+8                                                fito         serie   
+9                                             malhora  feature film   
+10                                                            serie   
+11                                                     feature film   
+12                                                 dj         serie   
+13                                                       short film   
+14  differentes personajes en "no es justo" y "pon...      capsulas   
+
+                                        related_links  
+0                           http://www.novelamtv.com/  
+1         https://www.youtube.com/watch?v=hncb5gg0e2u  
+2                                                      
+3                                                      
+4   https://www.youtube.com/watch?v=fne5whz_tt8&fe...  
+5         https://www.youtube.com/watch?v=lj2q6rrok1k  
+6         https://www.youtube.com/watch?v=gkehxhz16rs  
+7         https://www.youtube.com/watch?v=w5szxje-nmk  
+8   https://www.youtube.com/watch?v=w_6cn3baje0&fe...  
+9         https://www.youtube.com/watch?v=pqt4ru3usnw  
+10                                                     
+11                                                     
+12                                                     
+13                                                     
+14        https://www.youtube.com/watch?v=m7ycuvfbfj0  
+Sample 613 - Plan 1: Caption: none
+Sample 613 - Plan 1: Original table: [['year', 'title', 'rol', 'format', 'related_links'], ['2010', 'niñas mal (telenovela)', 'piti', 'telenovela', 'http://www.novelamtv.com/'], ['2010', 'soy tu fan (méxico)', 'actor', 'serie', 'https://www.youtube.com/watch?v=hncb5gg0e2u'], ['2010', 'yo te estaré cuidando', 'camilo', 'short film', ''], ['2009', 'infinito', '', 'short film', ''], ['2009', 'me mueves 2° temporada', 'arturo', 'serie', 'https://www.youtube.com/watch?v=fne5whz_tt8&feature=related'], ['2008', 'me mueves 1° temporada', 'arturo', 'serie', 'https://www.youtube.com/watch?v=lj2q6rrok1k'], ['2008', 'la carretera es blanca y llana', 'peru', 'short film', 'https://www.youtube.com/watch?v=gkehxhz16rs'], ['2007', 'la zona', 'alejandro', 'feature film', 'https://www.youtube.com/watch?v=w5szxje-nmk'], ['2006–2008', 'skimo', 'fito', 'serie', 'https://www.youtube.com/watch?v=w_6cn3baje0&feature=related'], ['2006', 'la vida inmune', 'malhora', 'feature film', 'https://www.youtube.com/watch?v=pqt4ru3usnw'], ['2005', 'cuentos de pelos', '', 'serie', ''], ['2005', 'quinceañera', '', 'feature film', ''], ['2004', 'el divan de valentina', 'dj', 'serie', ''], ['2001', 'perros patinadores', '', 'short film', ''], ['1997–2001', 'bizbirije', 'differentes personajes en "no es justo" y "ponte bizbo"', 'capsulas', 'https://www.youtube.com/watch?v=m7ycuvfbfj0']]
+########################################################################################################################
+Sample 613 - Plan 1: Operation 1: Select the 'format' column from the given Table.
+Sample 613 - Plan 1: Selected indices: []
+Sample 613 - Plan 1: X-Table after operation df:
+          format
+0     telenovela
+1          serie
+2     short film
+3     short film
+4          serie
+5          serie
+6     short film
+7   feature film
+8          serie
+9   feature film
+10         serie
+11  feature film
+12         serie
+13    short film
+14      capsulas
+Sample 613 - Plan 1: Table after operation: [['format'], ['telenovela'], ['serie'], ['short film'], ['short film'], ['serie'], ['serie'], ['short film'], ['feature film'], ['serie'], ['feature film'], ['serie'], ['feature film'], ['serie'], ['short film'], ['capsulas']]
+########################################################################################################################
+Sample 613 - Plan 1: Operation 2: Remove any duplicate values from the 'format' column.
+Sample 613 - Plan 1: Selected indices: []
+Sample 613 - Plan 1: X-Table after operation df:
+         format
+0    telenovela
+1         serie
+2    short film
+3  feature film
+4      capsulas
+Sample 613 - Plan 1: Table after operation: [['format'], ['telenovela'], ['serie'], ['short film'], ['feature film'], ['capsulas']]
+########################################################################################################################
+Sample 613 - Plan 1: Operation 3: Display the unique values from the 'format' column.
+Sample 613 - Plan 1: Selected indices: []
+Sample 613 - Plan 1: X-Table after operation df:
+         format
+0    telenovela
+1         serie
+2    short film
+3  feature film
+4      capsulas
+Sample 613 - Plan 1: Table after operation: [['format'], ['telenovela'], ['serie'], ['short film'], ['feature film'], ['capsulas']]
+Fall-back: FALSE
+Answer from plan 1: [['telenovela'], ['serie'], ['short film'], ['feature film'], ['capsulas']]
+Groundtruth: ['Telenovela', 'Serie', 'Short Film', 'Feature Film', 'Capsulas']

@@ -1,0 +1,64 @@
+************************************************************************************************************************
+Sample 3458 - Plan 1: Query: who was the first contestant to be eliminated?
+Sample 3458 - Plan 1: Groundtruth: ['Isabelle Raisa']
+Sample 3458 - Plan 1: X-Original table pd: 
+                   contestant  age                  height  \
+0              isabelle raisa   16      170 cm (5 ft 7 in)   
+1             alina chlebecek   18      170 cm (5 ft 7 in)   
+2    sabrina angelika rauch †   21      175 cm (5 ft 9 in)   
+3         katharina mihalović   23   179 cm (5 ft 10.5 in)   
+4                nataša marić   16      175 cm (5 ft 9 in)   
+5             michaela schopf   21    172 cm (5 ft 7.5 in)   
+6            christine riener   20  181 cm (5 ft 11.25 in)   
+7   teodora-mădălina andreica   17    177 cm (5 ft 9.5 in)   
+8               yemisi rieger   17    177 cm (5 ft 9.5 in)   
+9          izabela pop kostić   20      170 cm (5 ft 7 in)   
+10         bianca ebelsberger   24   179 cm (5 ft 10.5 in)   
+11             nadine trinker   21      183 cm (6 ft 0 in)   
+12     dzejlana "lana" baltić   20   179 cm (5 ft 10.5 in)   
+13           melisa popanicić   16      175 cm (5 ft 9 in)   
+14           gina zeneb adamu   17      175 cm (5 ft 9 in)   
+15     antonia maria hausmair   16      175 cm (5 ft 9 in)   
+
+                             home_city                          rank  
+0                               vienna       eliminated in episode 1  
+1                       deutsch-wagram       eliminated in episode 1  
+2                                 graz       eliminated in episode 2  
+3                               vienna       eliminated in episode 2  
+4   liefering (originally from serbia)       eliminated in episode 3  
+5   salzburg (originally from germany)             quit in episode 4  
+6                              bludenz       eliminated in episode 4  
+7                              romania       eliminated in episode 6  
+8                               vienna       eliminated in episode 7  
+9      vienna (originally from bosnia)       eliminated in episode 8  
+10                    aurach am hongar       eliminated in episode 9  
+11                          bodensdorf       eliminated in episode 9  
+12       graz (originally from bosnia)  1st eliminated in episode 10  
+13                               wörgl  2nd eliminated in episode 10  
+14                          bad vöslau                     runner-up  
+15                          siegendorf                        winner  
+Sample 3458 - Plan 1: Caption: none
+Sample 3458 - Plan 1: Original table: [['contestant', 'age', 'height', 'home_city', 'rank'], ['isabelle raisa', '16', '170\xa0cm (5\xa0ft 7 in)', 'vienna', 'eliminated in episode 1'], ['alina chlebecek', '18', '170\xa0cm (5\xa0ft 7 in)', 'deutsch-wagram', 'eliminated in episode 1'], ['sabrina angelika rauch †', '21', '175\xa0cm (5\xa0ft 9 in)', 'graz', 'eliminated in episode 2'], ['katharina mihalović', '23', '179\xa0cm (5\xa0ft 10.5 in)', 'vienna', 'eliminated in episode 2'], ['nataša marić', '16', '175\xa0cm (5\xa0ft 9 in)', 'liefering (originally from serbia)', 'eliminated in episode 3'], ['michaela schopf', '21', '172\xa0cm (5\xa0ft 7.5 in)', 'salzburg (originally from germany)', 'quit in episode 4'], ['christine riener', '20', '181\xa0cm (5\xa0ft 11.25 in)', 'bludenz', 'eliminated in episode 4'], ['teodora-mădălina andreica', '17', '177\xa0cm (5\xa0ft 9.5 in)', 'romania', 'eliminated in episode 6'], ['yemisi rieger', '17', '177\xa0cm (5\xa0ft 9.5 in)', 'vienna', 'eliminated in episode 7'], ['izabela pop kostić', '20', '170\xa0cm (5\xa0ft 7 in)', 'vienna (originally from bosnia)', 'eliminated in episode 8'], ['bianca ebelsberger', '24', '179\xa0cm (5\xa0ft 10.5 in)', 'aurach am hongar', 'eliminated in episode 9'], ['nadine trinker', '21', '183\xa0cm (6\xa0ft 0 in)', 'bodensdorf', 'eliminated in episode 9'], ['dzejlana "lana" baltić', '20', '179\xa0cm (5\xa0ft 10.5 in)', 'graz (originally from bosnia)', '1st eliminated in episode 10'], ['melisa popanicić', '16', '175\xa0cm (5\xa0ft 9 in)', 'wörgl', '2nd eliminated in episode 10'], ['gina zeneb adamu', '17', '175\xa0cm (5\xa0ft 9 in)', 'bad vöslau', 'runner-up'], ['antonia maria hausmair', '16', '175\xa0cm (5\xa0ft 9 in)', 'siegendorf', 'winner']]
+########################################################################################################################
+Sample 3458 - Plan 1: Operation 1: Select the row where the 'rank' column is 'eliminated in episode 1'.
+Sample 3458 - Plan 1: Selected indices: [[0, 4], [1, 4]]
+Sample 3458 - Plan 1: X-Table after operation df:
+        contestant  age              height       home_city  \
+0   isabelle raisa   16  170 cm (5 ft 7 in)          vienna   
+1  alina chlebecek   18  170 cm (5 ft 7 in)  deutsch-wagram   
+
+                      rank  
+0  eliminated in episode 1  
+1  eliminated in episode 1  
+Sample 3458 - Plan 1: Table after operation: [['contestant', 'age', 'height', 'home_city', 'rank'], ['isabelle raisa', 16, '170\xa0cm (5\xa0ft 7 in)', 'vienna', 'eliminated in episode 1'], ['alina chlebecek', 18, '170\xa0cm (5\xa0ft 7 in)', 'deutsch-wagram', 'eliminated in episode 1']]
+########################################################################################################################
+Sample 3458 - Plan 1: Operation 2: Select the 'contestant' column from the resulting row.
+Sample 3458 - Plan 1: Selected indices: []
+Sample 3458 - Plan 1: X-Table after operation df:
+        contestant
+0   isabelle raisa
+1  alina chlebecek
+Sample 3458 - Plan 1: Table after operation: [['contestant'], ['isabelle raisa'], ['alina chlebecek']]
+Fall-back: FALSE
+Answer from plan 1: [['isabelle raisa'], ['alina chlebecek']]
+Groundtruth: ['Isabelle Raisa']

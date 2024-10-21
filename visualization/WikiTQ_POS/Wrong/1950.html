@@ -1,0 +1,205 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how many months have an average high temperature over 70.0 degrees fahrenheit?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select the 'month' and 'jan' columns.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>month</td>
+<td>jan</td>
+<td>feb</td>
+<td>mar</td>
+<td>apr</td>
+<td>may</td>
+<td>jun</td>
+<td>jul</td>
+<td>aug</td>
+<td>sep</td>
+<td>oct</td>
+<td>nov</td>
+<td>dec</td>
+<td>year</td>
+</tr>
+<tr>
+<td>average high °f (°c)</td>
+<td>37.1\n(2.8)</td>
+<td>39.7\n(4.3)</td>
+<td>47.2\n(8.4)</td>
+<td>57.6\n(14.2)</td>
+<td>67.6\n(19.8)</td>
+<td>77.0\n(25)</td>
+<td>82.1\n(27.8)</td>
+<td>80.8\n(27.1)</td>
+<td>74.0\n(23.3)</td>
+<td>63.2\n(17.3)</td>
+<td>53.1\n(11.7)</td>
+<td>42.3\n(5.7)</td>
+<td>60.1\n(15.6)</td>
+</tr>
+<tr>
+<td>average low °f (°c)</td>
+<td>23.1\n(−4.9)</td>
+<td>25.2\n(−3.8)</td>
+<td>31.4\n(−0.3)</td>
+<td>41.0\n(5)</td>
+<td>50.5\n(10.3)</td>
+<td>60.2\n(15.7)</td>
+<td>66.3\n(19.1)</td>
+<td>65.6\n(18.7)</td>
+<td>58.0\n(14.4)</td>
+<td>46.4\n(8)</td>
+<td>37.9\n(3.3)</td>
+<td>28.4\n(−2)</td>
+<td>44.5\n(6.9)</td>
+</tr>
+<tr>
+<td>precipitation inches (mm)</td>
+<td>3.10\n(78.7)</td>
+<td>2.79\n(70.9)</td>
+<td>4.04\n(102.6)</td>
+<td>4.13\n(104.9)</td>
+<td>3.80\n(96.5)</td>
+<td>3.64\n(92.5)</td>
+<td>3.46\n(87.9)</td>
+<td>3.96\n(100.6)</td>
+<td>3.48\n(88.4)</td>
+<td>3.64\n(92.5)</td>
+<td>3.39\n(86.1)</td>
+<td>3.33\n(84.6)</td>
+<td>42.75\n(1,085.9)</td>
+</tr>
+<tr>
+<td>snowfall inches (cm)</td>
+<td>6.8\n(17.3)</td>
+<td>5.7\n(14.5)</td>
+<td>3.2\n(8.1)</td>
+<td>.8\n(2)</td>
+<td>0\n(0)</td>
+<td>0\n(0)</td>
+<td>0\n(0)</td>
+<td>0\n(0)</td>
+<td>0\n(0)</td>
+<td>0\n(0)</td>
+<td>.2\n(0.5)</td>
+<td>4.8\n(12.2)</td>
+<td>21.4\n(54.4)</td>
+</tr>
+<tr>
+<td>avg. precipitation days (≥ 0.01 inch)</td>
+<td>10.9</td>
+<td>9.7</td>
+<td>11.3</td>
+<td>11.0</td>
+<td>11.8</td>
+<td>11.1</td>
+<td>8.9</td>
+<td>8.9</td>
+<td>8.2</td>
+<td>8.8</td>
+<td>10.0</td>
+<td>11.1</td>
+<td>121.7</td>
+</tr>
+<tr>
+<td>avg. snowy days (≥ 0.1 inch)</td>
+<td>5.0</td>
+<td>3.6</td>
+<td>2.4</td>
+<td>.3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>.5</td>
+<td>3.1</td>
+<td>15.0</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Filter the table to include only rows where the value in the 'jan' column is greater than 70.0.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>month</td>
+<td>jan</td>
+</tr>
+<tr>
+<td>average high °f (°c)</td>
+<td>37.1\n(2.8)</td>
+</tr>
+<tr>
+<td>average low °f (°c)</td>
+<td>23.1\n(−4.9)</td>
+</tr>
+<tr>
+<td>precipitation inches (mm)</td>
+<td>3.10\n(78.7)</td>
+</tr>
+<tr>
+<td>snowfall inches (cm)</td>
+<td>6.8\n(17.3)</td>
+</tr>
+<tr>
+<td>avg. precipitation days (≥ 0.01 inch)</td>
+<td>10.9</td>
+</tr>
+<tr>
+<td>avg. snowy days (≥ 0.1 inch)</td>
+<td>5.0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Count the number of rows in the filtered table.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>month</td>
+<td>jan</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>row_count</td>
+</tr>
+<tr>
+<td>0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[0]]</h3>
+</body></html>

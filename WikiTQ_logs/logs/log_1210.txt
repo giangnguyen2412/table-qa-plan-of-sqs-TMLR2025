@@ -1,0 +1,130 @@
+************************************************************************************************************************
+Sample 1210 - Plan 1: Query: which movie came out in 1993 and has the role of elizabeth?
+Sample 1210 - Plan 1: Groundtruth: ['Kung Fu: The Legend Continues']
+Sample 1210 - Plan 1: X-Original table pd: 
+    year                                         title  \
+0   1986                                  street legal   
+1   1986                                desiree's wish   
+2   1988                                     t. and t.   
+3   1989                                 mosquito lake   
+4   1991                                 married to it   
+5   1992                             a town torn apart   
+6   1992                                     the judge   
+7   1992                                forever knight   
+8   1993                               family pictures   
+9   1993                 kung fu: the legend continues   
+10  1993                                  ready or not   
+11  1994                            reform school girl   
+12  1994  thicker than blood: the larry mclinden story   
+13  1995                                     skin deep   
+14  1995                                 party of five   
+15  1996                         3rd rock from the sun   
+16  1998                          sabrina goes to rome   
+17  1999                           sabrina, down under   
+18  1999                           touched by an angel   
+19  1999                                    black mask   
+20  1999                                 candid camera   
+21  1999                      1997 kids' choice awards   
+22  1999                      1998 kids' choice awards   
+23  1999                      1999 kids' choice awards   
+24  2004                         comic book: the movie   
+25  2006                                take home chef   
+26  2007                            the bad girls club   
+27  2008                              according to jim   
+28  2010                                 big time rush   
+29  2013                               super fun night   
+30  2014                                         arrow   
+
+                             role  \
+0                          angela   
+1                        waitress   
+2                          sydney   
+3                   tara harrison   
+4              student in pageant   
+5                                   
+6                   millie waters   
+7                                   
+8                                   
+9                       elizabeth   
+10                                  
+11                        lucille   
+12                 terra (age 16)   
+13                           tina   
+14                          lorna   
+15                      yoga lady   
+16                           gwen   
+17                           gwen   
+18                                  
+19              additional voices   
+20                                  
+21                        herself   
+22                        herself   
+23                        herself   
+24                                  
+25                        herself   
+26              season 2 narrator   
+27                          kayla   
+28                   miss collins   
+29                   young pamela   
+30  deranged squad female (voice)   
+
+                                                notes  
+0                                                      
+1                                                      
+2                                                      
+3                                                      
+4                                                      
+5                                                      
+6                                                      
+7                                                      
+8                                                      
+9                                                      
+10                                                     
+11                                                     
+12                                                     
+13                                                     
+14                                                     
+15                     episode: "my mother the alien"  
+16                                                     
+17                                                     
+18                                                     
+19                                                     
+20                                                     
+21  winner (with the cast of rugrats) for favorite...  
+22  winner (with the cast of rugrats) for favorite...  
+23  presenter, winner (with the cast of rugrats) f...  
+24                                                     
+25                                                     
+26                                                     
+27                                                     
+28                                     recurring role  
+29                                                     
+30                           episode: "suicide squad"  
+Sample 1210 - Plan 1: Caption: none
+Sample 1210 - Plan 1: Original table: [['year', 'title', 'role', 'notes'], ['1986', 'street legal', 'angela', ''], ['1986', "desiree's wish", 'waitress', ''], ['1988', 't. and t.', 'sydney', ''], ['1989', 'mosquito lake', 'tara harrison', ''], ['1991', 'married to it', 'student in pageant', ''], ['1992', 'a town torn apart', '', ''], ['1992', 'the judge', 'millie waters', ''], ['1992', 'forever knight', '', ''], ['1993', 'family pictures', '', ''], ['1993', 'kung fu: the legend continues', 'elizabeth', ''], ['1993', 'ready or not', '', ''], ['1994', 'reform school girl', 'lucille', ''], ['1994', 'thicker than blood: the larry mclinden story', 'terra (age 16)', ''], ['1995', 'skin deep', 'tina', ''], ['1995', 'party of five', 'lorna', ''], ['1996', '3rd rock from the sun', 'yoga lady', 'episode: "my mother the alien"'], ['1998', 'sabrina goes to rome', 'gwen', ''], ['1999', 'sabrina, down under', 'gwen', ''], ['1999', 'touched by an angel', '', ''], ['1999', 'black mask', 'additional voices', ''], ['1999', 'candid camera', '', ''], ['1999', "1997 kids' choice awards", 'herself', 'winner (with the cast of rugrats) for favorite cartoon'], ['1999', "1998 kids' choice awards", 'herself', 'winner (with the cast of rugrats) for favorite cartoon'], ['1999', "1999 kids' choice awards", 'herself', 'presenter, winner (with the cast of rugrats) for favorite cartoon, winner (with the cast of the rugrats movie) for favorite movie'], ['2004', 'comic book: the movie', '', ''], ['2006', 'take home chef', 'herself', ''], ['2007', 'the bad girls club', 'season 2 narrator', ''], ['2008', 'according to jim', 'kayla', ''], ['2010', 'big time rush', 'miss collins', 'recurring role'], ['2013', 'super fun night', 'young pamela', ''], ['2014', 'arrow', 'deranged squad female (voice)', 'episode: "suicide squad"']]
+########################################################################################################################
+Sample 1210 - Plan 1: Operation 1: Select rows where 'year' is 1993.
+Sample 1210 - Plan 1: Selected indices: [[9, 0], [10, 0], [8, 0]]
+Sample 1210 - Plan 1: X-Table after operation df:
+   year                          title       role  notes
+0  1993                family pictures               NaN
+1  1993  kung fu: the legend continues  elizabeth    NaN
+2  1993                   ready or not               NaN
+Sample 1210 - Plan 1: Table after operation: [['year', 'title', 'role', 'notes'], [1993, 'family pictures', '', ''], [1993, 'kung fu: the legend continues', 'elizabeth', ''], [1993, 'ready or not', '', '']]
+########################################################################################################################
+Sample 1210 - Plan 1: Operation 2: Select rows where 'role' is 'elizabeth'.
+Sample 1210 - Plan 1: Selected indices: [[1, 2]]
+Sample 1210 - Plan 1: X-Table after operation df:
+   year                          title       role  notes
+0  1993  kung fu: the legend continues  elizabeth    NaN
+Sample 1210 - Plan 1: Table after operation: [['year', 'title', 'role', 'notes'], [1993, 'kung fu: the legend continues', 'elizabeth', None]]
+########################################################################################################################
+Sample 1210 - Plan 1: Operation 3: Select the 'title' column.
+Sample 1210 - Plan 1: Selected indices: []
+Sample 1210 - Plan 1: X-Table after operation df:
+                           title
+0  kung fu: the legend continues
+Sample 1210 - Plan 1: Table after operation: [['title'], ['kung fu: the legend continues']]
+Fall-back: FALSE
+Answer from plan 1: [['kung fu: the legend continues']]
+Groundtruth: ['Kung Fu: The Legend Continues']

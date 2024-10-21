@@ -1,0 +1,44 @@
+************************************************************************************************************************
+Sample 3038 - Plan 1: Query: how many players from orlando city scored above 8 goals?
+Sample 3038 - Plan 1: Groundtruth: ['1']
+Sample 3038 - Plan 1: X-Original table pd: 
+    rank            player nation                       club  goals
+0      1    jhonny arteaga    col                fc new york     13
+1      2  matthew delicâte    eng           richmond kickers     10
+2      3       josé angulo    usa  harrisburg city islanders      9
+3      3   maxwell griffin    usa               orlando city      9
+4      3   luke mulholland    eng     wilmington hammerheads      9
+5      6     andriy budnyy    ukr     wilmington hammerheads      8
+6      6      jamie watson    usa               orlando city      8
+7      6     andrew welker    usa  harrisburg city islanders      8
+8      9       chris banks    usa     wilmington hammerheads      7
+9      9     sallieu bundu    sle           charlotte eagles      7
+10     9   george davis iv    usa         dayton dutch lions      7
+11     9     sainey touray    gam  harrisburg city islanders      7
+Sample 3038 - Plan 1: Caption: none
+Sample 3038 - Plan 1: Original table: [['rank', 'player', 'nation', 'club', 'goals'], ['1', 'jhonny arteaga', 'col', 'fc new york', '13'], ['2', 'matthew delicâte', 'eng', 'richmond kickers', '10'], ['3', 'josé angulo', 'usa', 'harrisburg city islanders', '9'], ['3', 'maxwell griffin', 'usa', 'orlando city', '9'], ['3', 'luke mulholland', 'eng', 'wilmington hammerheads', '9'], ['6', 'andriy budnyy', 'ukr', 'wilmington hammerheads', '8'], ['6', 'jamie watson', 'usa', 'orlando city', '8'], ['6', 'andrew welker', 'usa', 'harrisburg city islanders', '8'], ['9', 'chris banks', 'usa', 'wilmington hammerheads', '7'], ['9', 'sallieu bundu', 'sle', 'charlotte eagles', '7'], ['9', 'george davis iv', 'usa', 'dayton dutch lions', '7'], ['9', 'sainey touray', 'gam', 'harrisburg city islanders', '7']]
+########################################################################################################################
+Sample 3038 - Plan 1: Operation 1: Select rows where the 'club' is 'orlando city'.
+Sample 3038 - Plan 1: Selected indices: [[3, 3], [6, 3]]
+Sample 3038 - Plan 1: X-Table after operation df:
+   rank           player nation          club  goals
+0     3  maxwell griffin    usa  orlando city      9
+1     6     jamie watson    usa  orlando city      8
+Sample 3038 - Plan 1: Table after operation: [['rank', 'player', 'nation', 'club', 'goals'], [3, 'maxwell griffin', 'usa', 'orlando city', 9], [6, 'jamie watson', 'usa', 'orlando city', 8]]
+########################################################################################################################
+Sample 3038 - Plan 1: Operation 2: Select rows where the 'goals' is greater than 8.
+Sample 3038 - Plan 1: Selected indices: [[0, 4]]
+Sample 3038 - Plan 1: X-Table after operation df:
+   rank           player nation          club  goals
+0     3  maxwell griffin    usa  orlando city      9
+Sample 3038 - Plan 1: Table after operation: [['rank', 'player', 'nation', 'club', 'goals'], [3, 'maxwell griffin', 'usa', 'orlando city', 9]]
+########################################################################################################################
+Sample 3038 - Plan 1: Operation 3: Count the number of rows.
+Sample 3038 - Plan 1: Selected indices: []
+Sample 3038 - Plan 1: X-Table after operation df:
+   row_count
+0          1
+Sample 3038 - Plan 1: Table after operation: [['row_count'], [1]]
+Fall-back: FALSE
+Answer from plan 1: [[1]]
+Groundtruth: ['1']

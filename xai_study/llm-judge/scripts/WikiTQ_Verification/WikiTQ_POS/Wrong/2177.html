@@ -1,0 +1,533 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how many other belgian teams played the same number of european club matches as club brugge?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'team' is not 'club brugge'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>date</td>
+<td>team</td>
+<td>competition</td>
+<td>round</td>
+<td>leg</td>
+<td>opponent</td>
+<td>location</td>
+<td>score</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">july 7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">gent</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">intertoto cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">round 2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">leg 1, home</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cliftonville</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jules ottenstadion, ghent</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2-0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">july 14</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">gent</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">intertoto cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">round 2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">leg 2, away</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cliftonville</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">windsor park, belfast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4-0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">july 21</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">gent</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">intertoto cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">round 3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">leg 1, home</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">aalborg</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jules ottenstadion, ghent</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1-1</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">july 29</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">gent</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">intertoto cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">round 3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">leg 2, away</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">aalborg</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">energi nord arena, aalborg</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1-2</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">july 31</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">genk</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">champions league</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">qual. round 2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">leg 1, home</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sarajevo</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cristal arena, genk</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1-2</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">august 8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">genk</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">champions league</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">qual. round 2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">leg 2, away</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sarajevo</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">asim ferhatović hase stadium, sarajevo</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1-0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">august 15</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">anderlecht</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">champions league</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">qual. round 3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">leg 1, away</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fenerbahçe</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">şükrü saracoğlu stadium, istanbul</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0-1</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">august 16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">standard liège</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">uefa cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">qual. round 2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">leg 1, away</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">käerjeng</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stade josy barthel, luxembourg</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3-0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">august 29</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">anderlecht</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">champions league</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">qual. round 3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">leg 2, home</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fenerbahçe</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">constant vanden stock stadium, anderlecht</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0-2</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">august 30</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">standard liège</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">uefa cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">qual. round 2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">leg 2, home</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">käerjeng</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stade maurice dufrasne, liège</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1-0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">september 20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">anderlecht</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">uefa cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">round 1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">leg 1, home</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rapid wien</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">constant vanden stock stadium, anderlecht</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1-1</span></td>
+</tr>
+<tr>
+<td>september 20</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">club brugge</span></td>
+<td>uefa cup</td>
+<td>round 1</td>
+<td>leg 1, away</td>
+<td>brann</td>
+<td>brann stadion, bergen</td>
+<td>1-0</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">september 20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">standard liège</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">uefa cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">round 1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">leg 1, away</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">zenit st. petersburg</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">petrovsky stadium, saint petersburg</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0-3</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">october 4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">anderlecht</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">uefa cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">round 1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">leg 2, away</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rapid wien</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gerhard hanappi stadium, vienna</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1-0</span></td>
+</tr>
+<tr>
+<td>october 4</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">club brugge</span></td>
+<td>uefa cup</td>
+<td>round 1</td>
+<td>leg 2, home</td>
+<td>brann</td>
+<td>jan breydel stadium, bruges</td>
+<td>1-2</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">october 4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">standard liège</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">uefa cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">round 1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">leg 2, home</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">zenit st. petersburg</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stade maurice dufrasne, liège</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1-1</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">october 25</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">anderlecht</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">uefa cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">group stage</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">match 1, home</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">hapoel tel aviv</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">constant vanden stock stadium, anderlecht</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2-0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">november 8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">anderlecht</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">uefa cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">group stage</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">match 2, away</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">aalborg</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">energi nord arena, aalborg</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1-1</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">anderlecht</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">uefa cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">group stage</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">match 3, home</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tottenham hotspur</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">constant vanden stock stadium, anderlecht</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1-1</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 19</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">anderlecht</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">uefa cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">group stage</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">match 4, away</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">getafe</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">coliseum alfonso pérez, getafe</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1-2</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">february 13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">anderlecht</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">uefa cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">round of 32</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">leg 1, home</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bordeaux</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">constant vanden stock stadium, anderlecht</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2-1</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">february 21</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">anderlecht</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">uefa cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">round of 32</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">leg 2, away</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bordeaux</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stade chaban-delmas, bordeaux</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1-1</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">march 6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">anderlecht</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">uefa cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">round of 16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">leg 1, home</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bayern munich</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">constant vanden stock stadium, anderlecht</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0-5</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">march 12</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">anderlecht</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">uefa cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">round of 16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">leg 2, away</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bayern munich</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">allianz arena, munich</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2-1</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Count the number of rows.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>date</td>
+<td>team</td>
+<td>competition</td>
+<td>round</td>
+<td>leg</td>
+<td>opponent</td>
+<td>location</td>
+<td>score</td>
+</tr>
+<tr>
+<td>july 7</td>
+<td>gent</td>
+<td>intertoto cup</td>
+<td>round 2</td>
+<td>leg 1, home</td>
+<td>cliftonville</td>
+<td>jules ottenstadion, ghent</td>
+<td>2-0</td>
+</tr>
+<tr>
+<td>july 14</td>
+<td>gent</td>
+<td>intertoto cup</td>
+<td>round 2</td>
+<td>leg 2, away</td>
+<td>cliftonville</td>
+<td>windsor park, belfast</td>
+<td>4-0</td>
+</tr>
+<tr>
+<td>july 21</td>
+<td>gent</td>
+<td>intertoto cup</td>
+<td>round 3</td>
+<td>leg 1, home</td>
+<td>aalborg</td>
+<td>jules ottenstadion, ghent</td>
+<td>1-1</td>
+</tr>
+<tr>
+<td>july 29</td>
+<td>gent</td>
+<td>intertoto cup</td>
+<td>round 3</td>
+<td>leg 2, away</td>
+<td>aalborg</td>
+<td>energi nord arena, aalborg</td>
+<td>1-2</td>
+</tr>
+<tr>
+<td>july 31</td>
+<td>genk</td>
+<td>champions league</td>
+<td>qual. round 2</td>
+<td>leg 1, home</td>
+<td>sarajevo</td>
+<td>cristal arena, genk</td>
+<td>1-2</td>
+</tr>
+<tr>
+<td>august 8</td>
+<td>genk</td>
+<td>champions league</td>
+<td>qual. round 2</td>
+<td>leg 2, away</td>
+<td>sarajevo</td>
+<td>asim ferhatović hase stadium, sarajevo</td>
+<td>1-0</td>
+</tr>
+<tr>
+<td>august 15</td>
+<td>anderlecht</td>
+<td>champions league</td>
+<td>qual. round 3</td>
+<td>leg 1, away</td>
+<td>fenerbahçe</td>
+<td>şükrü saracoğlu stadium, istanbul</td>
+<td>0-1</td>
+</tr>
+<tr>
+<td>august 16</td>
+<td>standard liège</td>
+<td>uefa cup</td>
+<td>qual. round 2</td>
+<td>leg 1, away</td>
+<td>käerjeng</td>
+<td>stade josy barthel, luxembourg</td>
+<td>3-0</td>
+</tr>
+<tr>
+<td>august 29</td>
+<td>anderlecht</td>
+<td>champions league</td>
+<td>qual. round 3</td>
+<td>leg 2, home</td>
+<td>fenerbahçe</td>
+<td>constant vanden stock stadium, anderlecht</td>
+<td>0-2</td>
+</tr>
+<tr>
+<td>august 30</td>
+<td>standard liège</td>
+<td>uefa cup</td>
+<td>qual. round 2</td>
+<td>leg 2, home</td>
+<td>käerjeng</td>
+<td>stade maurice dufrasne, liège</td>
+<td>1-0</td>
+</tr>
+<tr>
+<td>september 20</td>
+<td>anderlecht</td>
+<td>uefa cup</td>
+<td>round 1</td>
+<td>leg 1, home</td>
+<td>rapid wien</td>
+<td>constant vanden stock stadium, anderlecht</td>
+<td>1-1</td>
+</tr>
+<tr>
+<td>september 20</td>
+<td>standard liège</td>
+<td>uefa cup</td>
+<td>round 1</td>
+<td>leg 1, away</td>
+<td>zenit st. petersburg</td>
+<td>petrovsky stadium, saint petersburg</td>
+<td>0-3</td>
+</tr>
+<tr>
+<td>october 4</td>
+<td>anderlecht</td>
+<td>uefa cup</td>
+<td>round 1</td>
+<td>leg 2, away</td>
+<td>rapid wien</td>
+<td>gerhard hanappi stadium, vienna</td>
+<td>1-0</td>
+</tr>
+<tr>
+<td>october 4</td>
+<td>standard liège</td>
+<td>uefa cup</td>
+<td>round 1</td>
+<td>leg 2, home</td>
+<td>zenit st. petersburg</td>
+<td>stade maurice dufrasne, liège</td>
+<td>1-1</td>
+</tr>
+<tr>
+<td>october 25</td>
+<td>anderlecht</td>
+<td>uefa cup</td>
+<td>group stage</td>
+<td>match 1, home</td>
+<td>hapoel tel aviv</td>
+<td>constant vanden stock stadium, anderlecht</td>
+<td>2-0</td>
+</tr>
+<tr>
+<td>november 8</td>
+<td>anderlecht</td>
+<td>uefa cup</td>
+<td>group stage</td>
+<td>match 2, away</td>
+<td>aalborg</td>
+<td>energi nord arena, aalborg</td>
+<td>1-1</td>
+</tr>
+<tr>
+<td>december 6</td>
+<td>anderlecht</td>
+<td>uefa cup</td>
+<td>group stage</td>
+<td>match 3, home</td>
+<td>tottenham hotspur</td>
+<td>constant vanden stock stadium, anderlecht</td>
+<td>1-1</td>
+</tr>
+<tr>
+<td>december 19</td>
+<td>anderlecht</td>
+<td>uefa cup</td>
+<td>group stage</td>
+<td>match 4, away</td>
+<td>getafe</td>
+<td>coliseum alfonso pérez, getafe</td>
+<td>1-2</td>
+</tr>
+<tr>
+<td>february 13</td>
+<td>anderlecht</td>
+<td>uefa cup</td>
+<td>round of 32</td>
+<td>leg 1, home</td>
+<td>bordeaux</td>
+<td>constant vanden stock stadium, anderlecht</td>
+<td>2-1</td>
+</tr>
+<tr>
+<td>february 21</td>
+<td>anderlecht</td>
+<td>uefa cup</td>
+<td>round of 32</td>
+<td>leg 2, away</td>
+<td>bordeaux</td>
+<td>stade chaban-delmas, bordeaux</td>
+<td>1-1</td>
+</tr>
+<tr>
+<td>march 6</td>
+<td>anderlecht</td>
+<td>uefa cup</td>
+<td>round of 16</td>
+<td>leg 1, home</td>
+<td>bayern munich</td>
+<td>constant vanden stock stadium, anderlecht</td>
+<td>0-5</td>
+</tr>
+<tr>
+<td>march 12</td>
+<td>anderlecht</td>
+<td>uefa cup</td>
+<td>round of 16</td>
+<td>leg 2, away</td>
+<td>bayern munich</td>
+<td>allianz arena, munich</td>
+<td>2-1</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>row_count</td>
+</tr>
+<tr>
+<td>22</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[22]]</h3>
+</body></html>

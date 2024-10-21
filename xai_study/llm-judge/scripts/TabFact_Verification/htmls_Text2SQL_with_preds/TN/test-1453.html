@@ -1,0 +1,43 @@
+
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+.sql-command { background-color: #f0f0f0; padding: 10px; border-left: 4px solid #4CAF50; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> cardiss collins was first elected as democrat in 1969</h3>
+<h3>Input Table: united states house of representatives elections , 1980</h3>
+<div class="step">
+<table>
+<tr><td>district</td><td>incumbent</td><td>party</td><td>first_elected</td><td>result</td><td>candidates</td></tr><tr><td>illinois 2</td><td>morgan f murphy</td><td>democratic</td><td>1970-01-01</td><td>retired democratic hold</td><td>gus savage (d) 88.2% marsha a harris (r) 11.8%</td></tr><tr><td>illinois 6</td><td>henry hyde</td><td>republican</td><td>1974-01-01</td><td>re - elected</td><td>henry hyde (r) 67.0% mario reymond reda (d) 33.0%</td></tr><tr><td>illinois 7</td><td>cardiss collins</td><td>democratic</td><td>1973-01-01</td><td>re - elected</td><td>cardiss collins (d) 85.1% ruth r hooper (r) 14.9%</td></tr><tr><td>illinois 12</td><td>phil crane</td><td>republican</td><td>1969-01-01</td><td>re - elected</td><td>phil crane (r) 74.1% david mccartney (d) 25.9%</td></tr><tr><td>illinois 13</td><td>robert mcclory</td><td>republican</td><td>1962-01-01</td><td>re - elected</td><td>robert mcclory (r) 71.7% michael reese (d) 28.3%</td></tr><tr><td>illinois 15</td><td>tom corcoran</td><td>republican</td><td>1976-01-01</td><td>re - elected</td><td>tom corcoran (r) 76.7% john p quillin (d) 23.3%</td></tr><tr><td>illinois 19</td><td>tom railsback</td><td>republican</td><td>1966-01-01</td><td>re - elected</td><td>tom railsback (r) 73.4% thomas j hand (d) 26.6%</td></tr><tr><td>illinois 20</td><td>paul findley</td><td>republican</td><td>1960-01-01</td><td>re - elected</td><td>paul findley (r) 56.0% david robinson (d) 44.0%</td></tr>
+</table>
+</div>
+<h3>SQL Command:</h3>
+<div class="sql-command">SELECT 
+    CASE 
+        WHEN COUNT(*) = 0 THEN 'FALSE' 
+        ELSE 'TRUE' 
+    END 
+FROM table_sql 
+WHERE first_elected = '1969-01-01' 
+AND incumbent = 'cardiss collins' 
+AND party = 'democratic';</div>
+<h3>Prediction: False</h3>
+</body></html>

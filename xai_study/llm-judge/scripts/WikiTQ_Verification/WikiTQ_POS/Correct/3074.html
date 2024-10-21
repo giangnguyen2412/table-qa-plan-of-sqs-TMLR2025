@@ -1,0 +1,217 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> what two races are the longest?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Order the table by the 'distance' column in descending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>grp</td>
+<td>race_name</td>
+<td>age</td>
+<td>sex</td>
+<td>weight</td>
+<td>distance</td>
+<td>date</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ajc challenge stakes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">open</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">open</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wfa</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">march</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">surround stakes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3yo</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fillies</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sw</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1400</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">march</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">warwick stakes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">open</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">open</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wfa</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1400</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">august</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">liverpool city cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">open</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">open</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">qlty</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1300</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">march</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">silver shadow stakes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3yo</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fillies</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">swp</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1200</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">august</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">up and coming stakes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3yo</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">c&g</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">swp</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1200</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">august</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select the top two rows.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>grp</td>
+<td>race_name</td>
+<td>age</td>
+<td>sex</td>
+<td>weight</td>
+<td>distance</td>
+<td>date</td>
+</tr>
+<tr>
+<td>2</td>
+<td>surround stakes</td>
+<td>3yo</td>
+<td>fillies</td>
+<td>sw</td>
+<td>1400</td>
+<td>march</td>
+</tr>
+<tr>
+<td>2</td>
+<td>warwick stakes</td>
+<td>open</td>
+<td>open</td>
+<td>wfa</td>
+<td>1400</td>
+<td>august</td>
+</tr>
+<tr>
+<td>3</td>
+<td>liverpool city cup</td>
+<td>open</td>
+<td>open</td>
+<td>qlty</td>
+<td>1300</td>
+<td>march</td>
+</tr>
+<tr>
+<td>3</td>
+<td>silver shadow stakes</td>
+<td>3yo</td>
+<td>fillies</td>
+<td>swp</td>
+<td>1200</td>
+<td>august</td>
+</tr>
+<tr>
+<td>3</td>
+<td>up and coming stakes</td>
+<td>3yo</td>
+<td>c&g</td>
+<td>swp</td>
+<td>1200</td>
+<td>august</td>
+</tr>
+<tr>
+<td>2</td>
+<td>ajc challenge stakes</td>
+<td>open</td>
+<td>open</td>
+<td>wfa</td>
+<td>1000</td>
+<td>march</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select the 'race_name' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>grp</td>
+<td>race_name</td>
+<td>age</td>
+<td>sex</td>
+<td>weight</td>
+<td>distance</td>
+<td>date</td>
+</tr>
+<tr>
+<td>2</td>
+<td>surround stakes</td>
+<td>3yo</td>
+<td>fillies</td>
+<td>sw</td>
+<td>1400</td>
+<td>march</td>
+</tr>
+<tr>
+<td>2</td>
+<td>warwick stakes</td>
+<td>open</td>
+<td>open</td>
+<td>wfa</td>
+<td>1400</td>
+<td>august</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>race_name</td>
+</tr>
+<tr>
+<td>surround stakes</td>
+</tr>
+<tr>
+<td>warwick stakes</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['surround stakes'], ['warwick stakes']]</h3>
+</body></html>

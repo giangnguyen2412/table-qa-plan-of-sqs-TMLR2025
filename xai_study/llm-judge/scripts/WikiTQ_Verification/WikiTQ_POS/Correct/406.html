@@ -1,0 +1,493 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> what is the oldest subject listed?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Order the table by the 'when_' column in ascending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>subject</td>
+<td>robot_s_name</td>
+<td>who_</td>
+<td>when_</td>
+<td>where_</td>
+<td>occupation</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">solar system</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cosmo-bot</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">copernicus</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1531</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">poland</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cosmonaut</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">olympics</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rhonda robot</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">greeks</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">776 b.c.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">greece</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">beauty queen</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">basketball</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">danny defrost-bot</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">james naismith</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1891</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united states</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">snowman</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nursing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dr. bug-bot</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">florence nightengale</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1860</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">england</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">doctor</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">scuba gear</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">flip the high-diving robot</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jacques cousteau</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1946</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">france</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">diver</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">helicopter</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">amelia air-bot</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">leonardo da vinci</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1483</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">italy</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pilot</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">corn flakes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chef boy-robot</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">william kellogg</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1894</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">battle creek, michigan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cook</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">radium</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">miss battery-bot</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">marie curie</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1898</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">france</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">battery lady</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chewing gum</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bubble-bot</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mayans</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">400</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mexico</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bubble man</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">painting</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pierro-bot</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stone-age humans</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">35,000 b.c.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">europe</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">clown/artist</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">phonograph</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">slide the heavy-metal robot</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">thomas edison</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1877</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new jersey</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rock star</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">paper</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">noshi origami</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ts'ai lun</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">105</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">china</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">origami maker</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">round earth</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">vasco da robot</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ferdinand magellan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1522</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">spain</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">early sailor</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dynamite</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">robby robot</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">alfred nobel</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1866</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sweden</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">prankster</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">microscope</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">slobot</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">antonie van leeuwenhoek</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1674</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the netherlands</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dirty person</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">writing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">eraser-bot</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sumerians</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">3,500 b.c.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">middle east</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pencil man</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sausage</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sock-bot</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">babylonians</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">3,000 b.c.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">middle east</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sock man</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bicycle</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">booster-bot</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">karl von drais</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1816</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">germany</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rocket man</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wheel</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rollin' road-bot</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sumerians</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">3,000 b.c.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">middle east</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">race starter</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">germs</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">roast-bot</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">louis pasteur</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1865</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">france</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">firefighter</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">boomerang</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">oswald the mailman robot</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">aborigines</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">40,000 years ago</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">australia</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mailman</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">coins</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">verna the vend-bot</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lydians</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">600 b.c.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">turkey</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">vending machine</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tools</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">hank the handyman robot</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stone-age humans</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2½ million years ago</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">africa</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mechanic</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">saxophone</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bongo-bot the six-armed robot</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">antoine-joseph sax</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1846</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">france</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">six-armed drum player</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">toilet</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">brunwella the bombshell</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">minoans</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2000 b.c.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">crete</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">demolisher</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select row number 1.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>subject</td>
+<td>robot_s_name</td>
+<td>who_</td>
+<td>when_</td>
+<td>where_</td>
+<td>occupation</td>
+</tr>
+<tr>
+<td>tools</td>
+<td>hank the handyman robot</td>
+<td>stone-age humans</td>
+<td>2½ million years ago</td>
+<td>africa</td>
+<td>mechanic</td>
+</tr>
+<tr>
+<td>writing</td>
+<td>eraser-bot</td>
+<td>sumerians</td>
+<td>3,500 b.c.</td>
+<td>middle east</td>
+<td>pencil man</td>
+</tr>
+<tr>
+<td>sausage</td>
+<td>sock-bot</td>
+<td>babylonians</td>
+<td>3,000 b.c.</td>
+<td>middle east</td>
+<td>sock man</td>
+</tr>
+<tr>
+<td>wheel</td>
+<td>rollin' road-bot</td>
+<td>sumerians</td>
+<td>3,000 b.c.</td>
+<td>middle east</td>
+<td>race starter</td>
+</tr>
+<tr>
+<td>painting</td>
+<td>pierro-bot</td>
+<td>stone-age humans</td>
+<td>35,000 b.c.</td>
+<td>europe</td>
+<td>clown/artist</td>
+</tr>
+<tr>
+<td>boomerang</td>
+<td>oswald the mailman robot</td>
+<td>aborigines</td>
+<td>40,000 years ago</td>
+<td>australia</td>
+<td>mailman</td>
+</tr>
+<tr>
+<td>paper</td>
+<td>noshi origami</td>
+<td>ts'ai lun</td>
+<td>105</td>
+<td>china</td>
+<td>origami maker</td>
+</tr>
+<tr>
+<td>chewing gum</td>
+<td>bubble-bot</td>
+<td>mayans</td>
+<td>400</td>
+<td>mexico</td>
+<td>bubble man</td>
+</tr>
+<tr>
+<td>coins</td>
+<td>verna the vend-bot</td>
+<td>lydians</td>
+<td>600 b.c.</td>
+<td>turkey</td>
+<td>vending machine</td>
+</tr>
+<tr>
+<td>olympics</td>
+<td>rhonda robot</td>
+<td>greeks</td>
+<td>776 b.c.</td>
+<td>greece</td>
+<td>beauty queen</td>
+</tr>
+<tr>
+<td>helicopter</td>
+<td>amelia air-bot</td>
+<td>leonardo da vinci</td>
+<td>1483</td>
+<td>italy</td>
+<td>pilot</td>
+</tr>
+<tr>
+<td>round earth</td>
+<td>vasco da robot</td>
+<td>ferdinand magellan</td>
+<td>1522</td>
+<td>spain</td>
+<td>early sailor</td>
+</tr>
+<tr>
+<td>solar system</td>
+<td>cosmo-bot</td>
+<td>copernicus</td>
+<td>1531</td>
+<td>poland</td>
+<td>cosmonaut</td>
+</tr>
+<tr>
+<td>microscope</td>
+<td>slobot</td>
+<td>antonie van leeuwenhoek</td>
+<td>1674</td>
+<td>the netherlands</td>
+<td>dirty person</td>
+</tr>
+<tr>
+<td>bicycle</td>
+<td>booster-bot</td>
+<td>karl von drais</td>
+<td>1816</td>
+<td>germany</td>
+<td>rocket man</td>
+</tr>
+<tr>
+<td>saxophone</td>
+<td>bongo-bot the six-armed robot</td>
+<td>antoine-joseph sax</td>
+<td>1846</td>
+<td>france</td>
+<td>six-armed drum player</td>
+</tr>
+<tr>
+<td>nursing</td>
+<td>dr. bug-bot</td>
+<td>florence nightengale</td>
+<td>1860</td>
+<td>england</td>
+<td>doctor</td>
+</tr>
+<tr>
+<td>germs</td>
+<td>roast-bot</td>
+<td>louis pasteur</td>
+<td>1865</td>
+<td>france</td>
+<td>firefighter</td>
+</tr>
+<tr>
+<td>dynamite</td>
+<td>robby robot</td>
+<td>alfred nobel</td>
+<td>1866</td>
+<td>sweden</td>
+<td>prankster</td>
+</tr>
+<tr>
+<td>phonograph</td>
+<td>slide the heavy-metal robot</td>
+<td>thomas edison</td>
+<td>1877</td>
+<td>new jersey</td>
+<td>rock star</td>
+</tr>
+<tr>
+<td>basketball</td>
+<td>danny defrost-bot</td>
+<td>james naismith</td>
+<td>1891</td>
+<td>united states</td>
+<td>snowman</td>
+</tr>
+<tr>
+<td>corn flakes</td>
+<td>chef boy-robot</td>
+<td>william kellogg</td>
+<td>1894</td>
+<td>battle creek, michigan</td>
+<td>cook</td>
+</tr>
+<tr>
+<td>radium</td>
+<td>miss battery-bot</td>
+<td>marie curie</td>
+<td>1898</td>
+<td>france</td>
+<td>battery lady</td>
+</tr>
+<tr>
+<td>scuba gear</td>
+<td>flip the high-diving robot</td>
+<td>jacques cousteau</td>
+<td>1946</td>
+<td>france</td>
+<td>diver</td>
+</tr>
+<tr>
+<td>toilet</td>
+<td>brunwella the bombshell</td>
+<td>minoans</td>
+<td>2000 b.c.</td>
+<td>crete</td>
+<td>demolisher</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select the 'subject' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>subject</td>
+<td>robot_s_name</td>
+<td>who_</td>
+<td>when_</td>
+<td>where_</td>
+<td>occupation</td>
+</tr>
+<tr>
+<td>tools</td>
+<td>hank the handyman robot</td>
+<td>stone-age humans</td>
+<td>2½ million years ago</td>
+<td>africa</td>
+<td>mechanic</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>subject</td>
+</tr>
+<tr>
+<td>tools</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['tools']]</h3>
+</body></html>

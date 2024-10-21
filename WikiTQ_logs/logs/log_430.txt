@@ -1,0 +1,61 @@
+************************************************************************************************************************
+Sample 430 - Plan 1: Query: what is the total number of square miles in sandy bay and longwood?
+Sample 430 - Plan 1: Groundtruth: ['18.8']
+Sample 430 - Plan 1: X-Original table pd: 
+            district_nbalance_n_clarification_needed_ area_nkm2 area_nsq_mi  \
+0                                        alarm forest       5.9         2.3   
+1                                           blue hill      36.5        14.1   
+2                                    half tree hollow       1.6         0.6   
+3                                           jamestown       3.6         1.4   
+4                                           levelwood      14.0         5.4   
+5                                            longwood      33.4        12.9   
+6                                           sandy bay      15.3         5.9   
+7                                        saint paul's      11.4         4.4   
+8   royal mail ship\nst. helena[clarification needed]         –           –   
+9                                  jamestown\nharbour         –           –   
+10                                              total     121.7        47.0   
+
+   pop__n1998 pop__n2008 pop__km²_n2008  
+0         289        276           46.8  
+1         177        153            4.2  
+2       1,140        901          563.1  
+3         884        714          198.3  
+4         376        316           22.6  
+5         960        715           21.4  
+6         254        205           13.4  
+7         908        795           69.7  
+8         149        171              –  
+9          20          9              –  
+10      5,157      4,255           35.0  
+Sample 430 - Plan 1: Caption: none
+Sample 430 - Plan 1: Original table: [['district_nbalance_n_clarification_needed_', 'area_nkm2', 'area_nsq_mi', 'pop__n1998', 'pop__n2008', 'pop__km²_n2008'], ['alarm forest', '5.9', '2.3', '289', '276', '46.8'], ['blue hill', '36.5', '14.1', '177', '153', '4.2'], ['half tree hollow', '1.6', '0.6', '1,140', '901', '563.1'], ['jamestown', '3.6', '1.4', '884', '714', '198.3'], ['levelwood', '14.0', '5.4', '376', '316', '22.6'], ['longwood', '33.4', '12.9', '960', '715', '21.4'], ['sandy bay', '15.3', '5.9', '254', '205', '13.4'], ["saint paul's", '11.4', '4.4', '908', '795', '69.7'], ['royal mail ship\\nst. helena[clarification needed]', '–', '–', '149', '171', '–'], ['jamestown\\nharbour', '–', '–', '20', '9', '–'], ['total', '121.7', '47.0', '5,157', '4,255', '35.0']]
+########################################################################################################################
+Sample 430 - Plan 1: Operation 1: Select rows where the 'district_nbalance_n_clarification_needed_' is 'sandy bay' or 'longwood'.
+Sample 430 - Plan 1: Selected indices: [[5, 0], [6, 0]]
+Sample 430 - Plan 1: X-Table after operation df:
+  district_nbalance_n_clarification_needed_  area_nkm2  area_nsq_mi  \
+0                                  longwood       33.4         12.9   
+1                                 sandy bay       15.3          5.9   
+
+   pop__n1998  pop__n2008  pop__km²_n2008  
+0         960         715            21.4  
+1         254         205            13.4  
+Sample 430 - Plan 1: Table after operation: [['district_nbalance_n_clarification_needed_', 'area_nkm2', 'area_nsq_mi', 'pop__n1998', 'pop__n2008', 'pop__km²_n2008'], ['longwood', '33.4', '12.9', '960', '715', '21.4'], ['sandy bay', '15.3', '5.9', '254', '205', '13.4']]
+########################################################################################################################
+Sample 430 - Plan 1: Operation 2: Select the 'area_nsq_mi' column.
+Sample 430 - Plan 1: Selected indices: []
+Sample 430 - Plan 1: X-Table after operation df:
+   area_nsq_mi
+0         12.9
+1          5.9
+Sample 430 - Plan 1: Table after operation: [['area_nsq_mi'], [12.9], [5.9]]
+########################################################################################################################
+Sample 430 - Plan 1: Operation 3: Sum the values from the 'area_nsq_mi' column.
+Sample 430 - Plan 1: Selected indices: []
+Sample 430 - Plan 1: X-Table after operation df:
+   total_area
+0        18.8
+Sample 430 - Plan 1: Table after operation: [['total_area'], [18.8]]
+Fall-back: FALSE
+Answer from plan 1: [[18.8]]
+Groundtruth: ['18.8']

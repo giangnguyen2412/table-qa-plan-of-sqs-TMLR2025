@@ -1,0 +1,92 @@
+************************************************************************************************************************
+Sample 2255 - Plan 1: Query: which team scored the least, but still won?
+Sample 2255 - Plan 1: Groundtruth: ['India']
+Sample 2255 - Plan 1: X-Original table pd: 
+    no_ score              player          team  balls  inns_ opposing_team  \
+0     1   123      kris srikkanth         india    103      1      pakistan   
+1     2  107*      desmond haynes   west indies    137      1      pakistan   
+2     3  100*    sachin tendulkar         india    103      2         kenya   
+3     4   121  marcus trescothick       england    109      2         india   
+4     5  108*         salman butt      pakistan    130      2         india   
+5     6  134*        graeme smith  south africa    124      2         india   
+6     7   118       upul tharanga     sri lanka    128      1         india   
+7     8  150*      gautam gambhir         india    137      2     sri lanka   
+8     9   107         virat kohli         india    114      2     sri lanka   
+9    10   106  ryan ten doeschate   netherlands    108      1       ireland   
+10   11   101       paul stirling       ireland     72      2   netherlands   
+11   12   106       nasir jamshed      pakistan    124      1         india   
+
+                date result  
+0   18 february 1987   lost  
+1    1 november 1989   lost  
+2        31 may 1998    won  
+3    19 january 2002   lost  
+4   13 november 2004    won  
+5   25 november 2005    won  
+6   24 december 2009   lost  
+7   24 december 2009    won  
+8   24 december 2009    won  
+9      18 march 2011   lost  
+10     18 march 2011    won  
+11    3 january 2013    won  
+Sample 2255 - Plan 1: Caption: none
+Sample 2255 - Plan 1: Original table: [['no_', 'score', 'player', 'team', 'balls', 'inns_', 'opposing_team', 'date', 'result'], ['1', '123', 'kris srikkanth', 'india', '103', '1', 'pakistan', '18 february 1987', 'lost'], ['2', '107*', 'desmond haynes', 'west indies', '137', '1', 'pakistan', '1 november 1989', 'lost'], ['3', '100*', 'sachin tendulkar', 'india', '103', '2', 'kenya', '31 may 1998', 'won'], ['4', '121', 'marcus trescothick', 'england', '109', '2', 'india', '19 january 2002', 'lost'], ['5', '108*', 'salman butt', 'pakistan', '130', '2', 'india', '13 november 2004', 'won'], ['6', '134*', 'graeme smith', 'south africa', '124', '2', 'india', '25 november 2005', 'won'], ['7', '118', 'upul tharanga', 'sri lanka', '128', '1', 'india', '24 december 2009', 'lost'], ['8', '150*', 'gautam gambhir', 'india', '137', '2', 'sri lanka', '24 december 2009', 'won'], ['9', '107', 'virat kohli', 'india', '114', '2', 'sri lanka', '24 december 2009', 'won'], ['10', '106', 'ryan ten doeschate', 'netherlands', '108', '1', 'ireland', '18 march 2011', 'lost'], ['11', '101', 'paul stirling', 'ireland', '72', '2', 'netherlands', '18 march 2011', 'won'], ['12', '106', 'nasir jamshed', 'pakistan', '124', '1', 'india', '3 january 2013', 'won']]
+########################################################################################################################
+Sample 2255 - Plan 1: Operation 1: Select rows where the 'result' is 'won'.
+Sample 2255 - Plan 1: Selected indices: [[8, 8], [10, 8], [5, 8], [4, 8], [11, 8], [7, 8], [2, 8]]
+Sample 2255 - Plan 1: X-Table after operation df:
+   no_ score            player          team  balls  inns_ opposing_team  \
+0    3  100*  sachin tendulkar         india    103      2         kenya   
+1    5  108*       salman butt      pakistan    130      2         india   
+2    6  134*      graeme smith  south africa    124      2         india   
+3    8  150*    gautam gambhir         india    137      2     sri lanka   
+4    9   107       virat kohli         india    114      2     sri lanka   
+5   11   101     paul stirling       ireland     72      2   netherlands   
+6   12   106     nasir jamshed      pakistan    124      1         india   
+
+               date result  
+0       31 may 1998    won  
+1  13 november 2004    won  
+2  25 november 2005    won  
+3  24 december 2009    won  
+4  24 december 2009    won  
+5     18 march 2011    won  
+6    3 january 2013    won  
+Sample 2255 - Plan 1: Table after operation: [['no_', 'score', 'player', 'team', 'balls', 'inns_', 'opposing_team', 'date', 'result'], [3, '100*', 'sachin tendulkar', 'india', 103, 2, 'kenya', '31 may 1998', 'won'], [5, '108*', 'salman butt', 'pakistan', 130, 2, 'india', '13 november 2004', 'won'], [6, '134*', 'graeme smith', 'south africa', 124, 2, 'india', '25 november 2005', 'won'], [8, '150*', 'gautam gambhir', 'india', 137, 2, 'sri lanka', '24 december 2009', 'won'], [9, '107', 'virat kohli', 'india', 114, 2, 'sri lanka', '24 december 2009', 'won'], [11, '101', 'paul stirling', 'ireland', 72, 2, 'netherlands', '18 march 2011', 'won'], [12, '106', 'nasir jamshed', 'pakistan', 124, 1, 'india', '3 january 2013', 'won']]
+########################################################################################################################
+Sample 2255 - Plan 1: Operation 2: Calculate the total score for each team by grouping the rows by 'team' and summing the 'score' column.
+Sample 2255 - Plan 1: Selected indices: []
+Sample 2255 - Plan 1: X-Table after operation df:
+           team  total_score
+0         india          357
+1       ireland          101
+2      pakistan          214
+3  south africa          134
+Sample 2255 - Plan 1: Table after operation: [['team', 'total_score'], ['india', 357], ['ireland', 101], ['pakistan', 214], ['south africa', 134]]
+########################################################################################################################
+Sample 2255 - Plan 1: Operation 3: Order the table by the total score in ascending order.
+Sample 2255 - Plan 1: Selected indices: [[3, 1], [1, 1], [2, 1], [0, 1]]
+Sample 2255 - Plan 1: X-Table after operation df:
+           team  total_score
+0       ireland          101
+1  south africa          134
+2      pakistan          214
+3         india          357
+Sample 2255 - Plan 1: Table after operation: [['team', 'total_score'], ['ireland', 101], ['south africa', 134], ['pakistan', 214], ['india', 357]]
+########################################################################################################################
+Sample 2255 - Plan 1: Operation 4: Select row number 1.
+Sample 2255 - Plan 1: Selected indices: []
+Sample 2255 - Plan 1: X-Table after operation df:
+      team  total_score
+0  ireland          101
+Sample 2255 - Plan 1: Table after operation: [['team', 'total_score'], ['ireland', 101]]
+########################################################################################################################
+Sample 2255 - Plan 1: Operation 5: Select the 'team' column.
+Sample 2255 - Plan 1: Selected indices: []
+Sample 2255 - Plan 1: X-Table after operation df:
+      team
+0  ireland
+Sample 2255 - Plan 1: Table after operation: [['team'], ['ireland']]
+Fall-back: FALSE
+Answer from plan 1: [['ireland']]
+Groundtruth: ['India']

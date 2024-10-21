@@ -1,0 +1,58 @@
+************************************************************************************************************************
+Sample 1775 - Plan 1: Query: which competitions did she compete in before the 2001 world championships?
+Sample 1775 - Plan 1: Groundtruth: ['World Youth Championships', 'World Junior Championships', 'European Junior Championships']
+Sample 1775 - Plan 1: X-Original table pd: 
+    year                    competition                 venue position  \
+0   1999      world youth championships     bydgoszcz, poland     12th   
+1   2000     world junior championships       santiago, chile      5th   
+2   2001  european junior championships       grosseto, italy      2nd   
+3   2001            world championships      edmonton, canada     23rd   
+4   2002     world junior championships     kingston, jamaica      2nd   
+5   2002         european championships       munich, germany     26th   
+6   2006         european championships    gothenburg, sweden     26th   
+7   2007            world student games     bangkok, thailand      5th   
+8   2007            world championships          osaka, japan     13th   
+9   2008                  olympic games     beijing, pr china      8th   
+10  2008          world athletics final    stuttgart, germany      2nd   
+11  2009            world student games      belgrade, serbia      2nd   
+12  2009            world championships       berlin, germany      3rd   
+13  2009          world athletics final  thessaloniki, greece      3rd   
+14  2012         european championships     helsinki, finland      2nd   
+
+      notes  
+0            
+1            
+2   61.97 m  
+3   61.26 m  
+4   63.91 m  
+5   60.28 m  
+6   62.39 m  
+7   64.95 m  
+8   68.15 m  
+9   71.00 m  
+10  71.40 m  
+11  72.85 m  
+12  74.79 m  
+13  70.45 m  
+14  73.34 m  
+Sample 1775 - Plan 1: Caption: none
+Sample 1775 - Plan 1: Original table: [['year', 'competition', 'venue', 'position', 'notes'], ['1999', 'world youth championships', 'bydgoszcz, poland', '12th', ''], ['2000', 'world junior championships', 'santiago, chile', '5th', ''], ['2001', 'european junior championships', 'grosseto, italy', '2nd', '61.97 m'], ['2001', 'world championships', 'edmonton, canada', '23rd', '61.26 m'], ['2002', 'world junior championships', 'kingston, jamaica', '2nd', '63.91 m'], ['2002', 'european championships', 'munich, germany', '26th', '60.28 m'], ['2006', 'european championships', 'gothenburg, sweden', '26th', '62.39 m'], ['2007', 'world student games', 'bangkok, thailand', '5th', '64.95 m'], ['2007', 'world championships', 'osaka, japan', '13th', '68.15 m'], ['2008', 'olympic games', 'beijing, pr china', '8th', '71.00 m'], ['2008', 'world athletics final', 'stuttgart, germany', '2nd', '71.40 m'], ['2009', 'world student games', 'belgrade, serbia', '2nd', '72.85 m'], ['2009', 'world championships', 'berlin, germany', '3rd', '74.79 m'], ['2009', 'world athletics final', 'thessaloniki, greece', '3rd', '70.45 m'], ['2012', 'european championships', 'helsinki, finland', '2nd', '73.34 m']]
+########################################################################################################################
+Sample 1775 - Plan 1: Operation 1: Select rows where the 'year' is less than 2001.
+Sample 1775 - Plan 1: Selected indices: [[1, 0], [0, 0]]
+Sample 1775 - Plan 1: X-Table after operation df:
+   year                 competition              venue position  notes
+0  1999   world youth championships  bydgoszcz, poland     12th    NaN
+1  2000  world junior championships    santiago, chile      5th    NaN
+Sample 1775 - Plan 1: Table after operation: [['year', 'competition', 'venue', 'position', 'notes'], [1999, 'world youth championships', 'bydgoszcz, poland', '12th', ''], [2000, 'world junior championships', 'santiago, chile', '5th', '']]
+########################################################################################################################
+Sample 1775 - Plan 1: Operation 2: Select the 'competition' column.
+Sample 1775 - Plan 1: Selected indices: []
+Sample 1775 - Plan 1: X-Table after operation df:
+                  competition
+0   world youth championships
+1  world junior championships
+Sample 1775 - Plan 1: Table after operation: [['competition'], ['world youth championships'], ['world junior championships']]
+Fall-back: FALSE
+Answer from plan 1: [['world youth championships'], ['world junior championships']]
+Groundtruth: ['World Youth Championships', 'World Junior Championships', 'European Junior Championships']

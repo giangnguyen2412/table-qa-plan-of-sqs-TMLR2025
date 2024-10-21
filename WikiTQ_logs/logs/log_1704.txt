@@ -1,0 +1,73 @@
+************************************************************************************************************************
+Sample 1704 - Plan 1: Query: how many wins did pakistan have between the years of 1981 and 2004?
+Sample 1704 - Plan 1: Groundtruth: ['4']
+Sample 1704 - Plan 1: X-Original table pd: 
+   year matches        winner results    pakistan_ncaptain  \
+0  1978       4  pakistan win   3 - 1  islahuddin siddique   
+1  1981       4  pakistan win   2 - 1        akhtar rasool   
+2  1986       7     india win   3 - 2        hassan sardar   
+3  1988       6          draw   2 - 2            nasir ali   
+4  1998       8  pakistan win   4 - 3          tahir zaman   
+5  1999       9  pakistan win   5 - 3          atif bashir   
+6  2004       8  pakistan win   4 - 2         waseem ahmad   
+7  2006       6  pakistan win   3 - 1     mohammad saqlain   
+8  2013     tba           tba     tba                  tba   
+
+       pakistan_ncoach   india_ncaptain        india_ncoach  
+0     sayad a. hussain    v. j. philips        r. s. gentle  
+1            zakauddin    surjeet singh       harmeek singh  
+2     anwar ahmad khan  mohmmad shaheed        m. p. ganesh  
+3     manzoor-ul-hasan     m. m. somaya        m. p. ganesh  
+4  islahuddin siddique   dhanraj pillay         v bhaskaran  
+5       shahnaz shaikh      anil aldrin         v bhaskaran  
+6      roelant oltmans    dileep tirkey         gehard rach  
+7           asif bajwa    ignace tirkey  rajinder singh jr.  
+8                  tba              tba                 tba  
+Sample 1704 - Plan 1: Caption: none
+Sample 1704 - Plan 1: Original table: [['year', 'matches', 'winner', 'results', 'pakistan_ncaptain', 'pakistan_ncoach', 'india_ncaptain', 'india_ncoach'], ['1978', '4', 'pakistan win', '3 - 1', 'islahuddin siddique', 'sayad a. hussain', 'v. j. philips', 'r. s. gentle'], ['1981', '4', 'pakistan win', '2 - 1', 'akhtar rasool', 'zakauddin', 'surjeet singh', 'harmeek singh'], ['1986', '7', 'india win', '3 - 2', 'hassan sardar', 'anwar ahmad khan', 'mohmmad shaheed', 'm. p. ganesh'], ['1988', '6', 'draw', '2 - 2', 'nasir ali', 'manzoor-ul-hasan', 'm. m. somaya', 'm. p. ganesh'], ['1998', '8', 'pakistan win', '4 - 3', 'tahir zaman', 'islahuddin siddique', 'dhanraj pillay', 'v bhaskaran'], ['1999', '9', 'pakistan win', '5 - 3', 'atif bashir', 'shahnaz shaikh', 'anil aldrin', 'v bhaskaran'], ['2004', '8', 'pakistan win', '4 - 2', 'waseem ahmad', 'roelant oltmans', 'dileep tirkey', 'gehard rach'], ['2006', '6', 'pakistan win', '3 - 1', 'mohammad saqlain', 'asif bajwa', 'ignace tirkey', 'rajinder singh jr.'], ['2013', 'tba', 'tba', 'tba', 'tba', 'tba', 'tba', 'tba']]
+########################################################################################################################
+Sample 1704 - Plan 1: Operation 1: Select rows where the 'winner' column is 'pakistan'.
+Sample 1704 - Plan 1: Selected indices: [[6, 2], [1, 2], [4, 2], [0, 2], [7, 2], [5, 2]]
+Sample 1704 - Plan 1: X-Table after operation df:
+   year  matches        winner results    pakistan_ncaptain  \
+0  1978        4  pakistan win   3 - 1  islahuddin siddique   
+1  1981        4  pakistan win   2 - 1        akhtar rasool   
+2  1998        8  pakistan win   4 - 3          tahir zaman   
+3  1999        9  pakistan win   5 - 3          atif bashir   
+4  2004        8  pakistan win   4 - 2         waseem ahmad   
+5  2006        6  pakistan win   3 - 1     mohammad saqlain   
+
+       pakistan_ncoach  india_ncaptain        india_ncoach  
+0     sayad a. hussain   v. j. philips        r. s. gentle  
+1            zakauddin   surjeet singh       harmeek singh  
+2  islahuddin siddique  dhanraj pillay         v bhaskaran  
+3       shahnaz shaikh     anil aldrin         v bhaskaran  
+4      roelant oltmans   dileep tirkey         gehard rach  
+5           asif bajwa   ignace tirkey  rajinder singh jr.  
+Sample 1704 - Plan 1: Table after operation: [['year', 'matches', 'winner', 'results', 'pakistan_ncaptain', 'pakistan_ncoach', 'india_ncaptain', 'india_ncoach'], [1978, '4', 'pakistan win', '3 - 1', 'islahuddin siddique', 'sayad a. hussain', 'v. j. philips', 'r. s. gentle'], [1981, '4', 'pakistan win', '2 - 1', 'akhtar rasool', 'zakauddin', 'surjeet singh', 'harmeek singh'], [1998, '8', 'pakistan win', '4 - 3', 'tahir zaman', 'islahuddin siddique', 'dhanraj pillay', 'v bhaskaran'], [1999, '9', 'pakistan win', '5 - 3', 'atif bashir', 'shahnaz shaikh', 'anil aldrin', 'v bhaskaran'], [2004, '8', 'pakistan win', '4 - 2', 'waseem ahmad', 'roelant oltmans', 'dileep tirkey', 'gehard rach'], [2006, '6', 'pakistan win', '3 - 1', 'mohammad saqlain', 'asif bajwa', 'ignace tirkey', 'rajinder singh jr.']]
+########################################################################################################################
+Sample 1704 - Plan 1: Operation 2: Select rows where the 'year' column is between 1981 and 2004 (inclusive).
+Sample 1704 - Plan 1: Selected indices: [[1, 0], [4, 0], [2, 0], [3, 0]]
+Sample 1704 - Plan 1: X-Table after operation df:
+   year  matches        winner results pakistan_ncaptain      pakistan_ncoach  \
+0  1981        4  pakistan win   2 - 1     akhtar rasool            zakauddin   
+1  1998        8  pakistan win   4 - 3       tahir zaman  islahuddin siddique   
+2  1999        9  pakistan win   5 - 3       atif bashir       shahnaz shaikh   
+3  2004        8  pakistan win   4 - 2      waseem ahmad      roelant oltmans   
+
+   india_ncaptain   india_ncoach  
+0   surjeet singh  harmeek singh  
+1  dhanraj pillay    v bhaskaran  
+2     anil aldrin    v bhaskaran  
+3   dileep tirkey    gehard rach  
+Sample 1704 - Plan 1: Table after operation: [['year', 'matches', 'winner', 'results', 'pakistan_ncaptain', 'pakistan_ncoach', 'india_ncaptain', 'india_ncoach'], [1981, 4, 'pakistan win', '2 - 1', 'akhtar rasool', 'zakauddin', 'surjeet singh', 'harmeek singh'], [1998, 8, 'pakistan win', '4 - 3', 'tahir zaman', 'islahuddin siddique', 'dhanraj pillay', 'v bhaskaran'], [1999, 9, 'pakistan win', '5 - 3', 'atif bashir', 'shahnaz shaikh', 'anil aldrin', 'v bhaskaran'], [2004, 8, 'pakistan win', '4 - 2', 'waseem ahmad', 'roelant oltmans', 'dileep tirkey', 'gehard rach']]
+########################################################################################################################
+Sample 1704 - Plan 1: Operation 3: Count the number of rows.
+Sample 1704 - Plan 1: Selected indices: []
+Sample 1704 - Plan 1: X-Table after operation df:
+   row_count
+0          4
+Sample 1704 - Plan 1: Table after operation: [['row_count'], [4]]
+Fall-back: FALSE
+Answer from plan 1: [[4]]
+Groundtruth: ['4']

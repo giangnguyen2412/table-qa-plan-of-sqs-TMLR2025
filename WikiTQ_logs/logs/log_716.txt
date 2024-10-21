@@ -1,0 +1,60 @@
+************************************************************************************************************************
+Sample 716 - Plan 1: Query: how high was przemyslaw's jump, at the 1999 world youth championships?
+Sample 716 - Plan 1: Groundtruth: ['4.60 m']
+Sample 716 - Plan 1: X-Original table pd: 
+    year                    competition                       venue  position  \
+0   1999      world youth championships           bydgoszcz, poland  13th (q)   
+1   2001  european junior championships             grosseto, italy       7th   
+2   2002     world junior championships           kingston, jamaica       8th   
+3   2003     european u23 championships           bydgoszcz, poland  13th (q)   
+4   2005     european u23 championships             erfurt, germany       7th   
+5   2005                    universiade               izmir, turkey       5th   
+6   2006     world indoor championships              moscow, russia  10th (q)   
+7   2006         european championships          gothenburg, sweden       5th   
+8   2007  european indoor championships  birmingham, united kingdom  16th (q)   
+9   2008                  olympic games              beijing, china      11th   
+10  2010         european championships            barcelona, spain       3rd   
+11  2012         european championships           helsinki, finland         –   
+
+     notes  
+0   4.60 m  
+1   5.15 m  
+2   5.30 m  
+3   5.20 m  
+4   5.50 m  
+5   5.50 m  
+6   5.65 m  
+7   5.65 m  
+8   5.40 m  
+9   5.45 m  
+10  5.75 m  
+11      nm  
+Sample 716 - Plan 1: Caption: none
+Sample 716 - Plan 1: Original table: [['year', 'competition', 'venue', 'position', 'notes'], ['1999', 'world youth championships', 'bydgoszcz, poland', '13th (q)', '4.60 m'], ['2001', 'european junior championships', 'grosseto, italy', '7th', '5.15 m'], ['2002', 'world junior championships', 'kingston, jamaica', '8th', '5.30 m'], ['2003', 'european u23 championships', 'bydgoszcz, poland', '13th (q)', '5.20 m'], ['2005', 'european u23 championships', 'erfurt, germany', '7th', '5.50 m'], ['2005', 'universiade', 'izmir, turkey', '5th', '5.50 m'], ['2006', 'world indoor championships', 'moscow, russia', '10th (q)', '5.65 m'], ['2006', 'european championships', 'gothenburg, sweden', '5th', '5.65 m'], ['2007', 'european indoor championships', 'birmingham, united kingdom', '16th (q)', '5.40 m'], ['2008', 'olympic games', 'beijing, china', '11th', '5.45 m'], ['2010', 'european championships', 'barcelona, spain', '3rd', '5.75 m'], ['2012', 'european championships', 'helsinki, finland', '–', 'nm']]
+########################################################################################################################
+Sample 716 - Plan 1: Operation 1: Select the row where the 'competition' is 'world youth championships' and the 'year' is 1999.
+Sample 716 - Plan 1: Selected indices: [[0, 1], [0, 0]]
+Sample 716 - Plan 1: X-Table after operation df:
+   year                competition              venue  position   notes
+0  1999  world youth championships  bydgoszcz, poland  13th (q)  4.60 m
+Sample 716 - Plan 1: Table after operation: [['year', 'competition', 'venue', 'position', 'notes'], [1999, 'world youth championships', 'bydgoszcz, poland', '13th (q)', '4.60 m']]
+########################################################################################################################
+Sample 716 - Plan 1: Operation 2: Extract the numerical value from the 'notes' column and add a new column 'jump_height' to the existing table.
+Sample 716 - Plan 1: Selected indices: [[0, 4]]
+Sample 716 - Plan 1: X-Table after operation df:
+   year                competition              venue  position   notes  \
+0  1999  world youth championships  bydgoszcz, poland  13th (q)  4.60 m   
+
+   jump_height  
+0          4.6  
+Sample 716 - Plan 1: Table after operation: [['year', 'competition', 'venue', 'position', 'notes', 'jump_height'], [1999, 'world youth championships', 'bydgoszcz, poland', '13th (q)', '4.60 m', 4.6]]
+########################################################################################################################
+Sample 716 - Plan 1: Operation 3: Select the 'jump_height' column.
+Sample 716 - Plan 1: Selected indices: []
+Sample 716 - Plan 1: X-Table after operation df:
+   jump_height
+0          4.6
+Sample 716 - Plan 1: Table after operation: [['jump_height'], [4.6]]
+Fall-back: FALSE
+Answer from plan 1: [[4.6]]
+Groundtruth: ['4.60 m']

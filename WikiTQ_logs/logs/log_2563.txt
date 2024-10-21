@@ -1,0 +1,145 @@
+************************************************************************************************************************
+Sample 2563 - Plan 1: Query: who is china's top scorer in friendly matches?
+Sample 2563 - Plan 1: Groundtruth: ['Zhu Ting']
+Sample 2563 - Plan 1: X-Original table pd: 
+         date        venue              opponent result scoreline  \
+0  january 10        dubai  united arab emirates  drawn       0-0   
+1  january 20    zhongshan               lebanon  drawn       0-0   
+2  january 27    zhongshan                 syria    won       2-1   
+3    march 15      kunming              thailand  drawn       3-3   
+4    april 16      seattle                mexico   lost       0-1   
+5    april 23  los angeles           el salvador  drawn       2-2   
+6      may 25      kunshan                jordan    won       2-0   
+7      dec 17       muscat                  oman   lost       1-3   
+8      dec 19       muscat                  iran   lost       0-2   
+9      dec 21        amman                jordan    won       1-0   
+
+                           china_scorers  
+0                                      —  
+1                                      —  
+2                qu bo 64'\nzhu ting 90'  
+3  qu bo 34'\nhan peng 67'\nzhu ting 90'  
+4                                      —  
+5         xiao zhanbo 62' pen\nqu bo 63'  
+6     hao junmin 23' pen\nli weifeng 48'  
+7                              qu bo 58'  
+8                                         
+9                           cao yang 77'  
+Sample 2563 - Plan 1: Caption: none
+Sample 2563 - Plan 1: Original table: [['date', 'venue', 'opponent', 'result', 'scoreline', 'china_scorers'], ['january 10', 'dubai', 'united arab emirates', 'drawn', '0-0', '—'], ['january 20', 'zhongshan', 'lebanon', 'drawn', '0-0', '—'], ['january 27', 'zhongshan', 'syria', 'won', '2-1', "qu bo 64'\\nzhu ting 90'"], ['march 15', 'kunming', 'thailand', 'drawn', '3-3', "qu bo 34'\\nhan peng 67'\\nzhu ting 90'"], ['april 16', 'seattle', 'mexico', 'lost', '0-1', '—'], ['april 23', 'los angeles', 'el salvador', 'drawn', '2-2', "xiao zhanbo 62' pen\\nqu bo 63'"], ['may 25', 'kunshan', 'jordan', 'won', '2-0', "hao junmin 23' pen\\nli weifeng 48'"], ['dec 17', 'muscat', 'oman', 'lost', '1-3', "qu bo 58'"], ['dec 19', 'muscat', 'iran', 'lost', '0-2', ''], ['dec 21', 'amman', 'jordan', 'won', '1-0', "cao yang 77'"]]
+########################################################################################################################
+Sample 2563 - Plan 1: Operation 1: Select rows where the 'china_scorers' column is not empty.
+Sample 2563 - Plan 1: Selected indices: [[5, 5], [6, 5], [1, 5], [9, 5], [4, 5], [0, 5], [7, 5], [2, 5], [3, 5]]
+Sample 2563 - Plan 1: X-Table after operation df:
+         date        venue              opponent result scoreline  \
+0  january 10        dubai  united arab emirates  drawn       0-0   
+1  january 20    zhongshan               lebanon  drawn       0-0   
+2  january 27    zhongshan                 syria    won       2-1   
+3    march 15      kunming              thailand  drawn       3-3   
+4    april 16      seattle                mexico   lost       0-1   
+5    april 23  los angeles           el salvador  drawn       2-2   
+6      may 25      kunshan                jordan    won       2-0   
+7      dec 17       muscat                  oman   lost       1-3   
+8      dec 21        amman                jordan    won       1-0   
+
+                           china_scorers  
+0                                      —  
+1                                      —  
+2                qu bo 64'\nzhu ting 90'  
+3  qu bo 34'\nhan peng 67'\nzhu ting 90'  
+4                                      —  
+5         xiao zhanbo 62' pen\nqu bo 63'  
+6     hao junmin 23' pen\nli weifeng 48'  
+7                              qu bo 58'  
+8                           cao yang 77'  
+Sample 2563 - Plan 1: Table after operation: [['date', 'venue', 'opponent', 'result', 'scoreline', 'china_scorers'], ['january 10', 'dubai', 'united arab emirates', 'drawn', '0-0', '—'], ['january 20', 'zhongshan', 'lebanon', 'drawn', '0-0', '—'], ['january 27', 'zhongshan', 'syria', 'won', '2-1', "qu bo 64'\\nzhu ting 90'"], ['march 15', 'kunming', 'thailand', 'drawn', '3-3', "qu bo 34'\\nhan peng 67'\\nzhu ting 90'"], ['april 16', 'seattle', 'mexico', 'lost', '0-1', '—'], ['april 23', 'los angeles', 'el salvador', 'drawn', '2-2', "xiao zhanbo 62' pen\\nqu bo 63'"], ['may 25', 'kunshan', 'jordan', 'won', '2-0', "hao junmin 23' pen\\nli weifeng 48'"], ['dec 17', 'muscat', 'oman', 'lost', '1-3', "qu bo 58'"], ['dec 21', 'amman', 'jordan', 'won', '1-0', "cao yang 77'"]]
+########################################################################################################################
+Sample 2563 - Plan 1: Operation 2: Split the 'china_scorers' column by the delimiter '\n' to separate multiple scorers.
+Sample 2563 - Plan 1: Selected indices: [[0, 5], [1, 5], [2, 5], [3, 5], [4, 5], [5, 5], [6, 5], [7, 5], [8, 5]]
+Sample 2563 - Plan 1: X-Table after operation df:
+         date        venue              opponent result scoreline  \
+0  january 10        dubai  united arab emirates  drawn       0-0   
+1  january 20    zhongshan               lebanon  drawn       0-0   
+2  january 27    zhongshan                 syria    won       2-1   
+3    march 15      kunming              thailand  drawn       3-3   
+4    april 16      seattle                mexico   lost       0-1   
+5    april 23  los angeles           el salvador  drawn       2-2   
+6      may 25      kunshan                jordan    won       2-0   
+7      dec 17       muscat                  oman   lost       1-3   
+8      dec 21        amman                jordan    won       1-0   
+
+                           china_scorers              scorer1  \
+0                                      —                        
+1                                      —                        
+2                qu bo 64'\nzhu ting 90'            qu bo 64'   
+3  qu bo 34'\nhan peng 67'\nzhu ting 90'            qu bo 34'   
+4                                      —                        
+5         xiao zhanbo 62' pen\nqu bo 63'  xiao zhanbo 62' pen   
+6     hao junmin 23' pen\nli weifeng 48'   hao junmin 23' pen   
+7                              qu bo 58'                        
+8                           cao yang 77'                        
+
+                       scorer2  
+0                            —  
+1                            —  
+2                nzhu ting 90'  
+3  nhan peng 67'\nzhu ting 90'  
+4                            —  
+5                   nqu bo 63'  
+6              nli weifeng 48'  
+7                    qu bo 58'  
+8                 cao yang 77'  
+Sample 2563 - Plan 1: Table after operation: [['date', 'venue', 'opponent', 'result', 'scoreline', 'china_scorers', 'scorer1', 'scorer2'], ['january 10', 'dubai', 'united arab emirates', 'drawn', '0-0', '—', '', '—'], ['january 20', 'zhongshan', 'lebanon', 'drawn', '0-0', '—', '', '—'], ['january 27', 'zhongshan', 'syria', 'won', '2-1', "qu bo 64'\\nzhu ting 90'", "qu bo 64'", "nzhu ting 90'"], ['march 15', 'kunming', 'thailand', 'drawn', '3-3', "qu bo 34'\\nhan peng 67'\\nzhu ting 90'", "qu bo 34'", "nhan peng 67'\\nzhu ting 90'"], ['april 16', 'seattle', 'mexico', 'lost', '0-1', '—', '', '—'], ['april 23', 'los angeles', 'el salvador', 'drawn', '2-2', "xiao zhanbo 62' pen\\nqu bo 63'", "xiao zhanbo 62' pen", "nqu bo 63'"], ['may 25', 'kunshan', 'jordan', 'won', '2-0', "hao junmin 23' pen\\nli weifeng 48'", "hao junmin 23' pen", "nli weifeng 48'"], ['dec 17', 'muscat', 'oman', 'lost', '1-3', "qu bo 58'", '', "qu bo 58'"], ['dec 21', 'amman', 'jordan', 'won', '1-0', "cao yang 77'", '', "cao yang 77'"]]
+########################################################################################################################
+Sample 2563 - Plan 1: Operation 3: Count the occurrences of each scorer using a group by clause.
+Sample 2563 - Plan 1: Selected indices: []
+Sample 2563 - Plan 1: X-Table after operation df:
+                         scorer  occurrences
+0                                          5
+1                  cao yang 77'            1
+2            hao junmin 23' pen            1
+3   nhan peng 67'\nzhu ting 90'            1
+4               nli weifeng 48'            1
+5                    nqu bo 63'            1
+6                 nzhu ting 90'            1
+7                     qu bo 34'            1
+8                     qu bo 58'            1
+9                     qu bo 64'            1
+10          xiao zhanbo 62' pen            1
+11                            —            3
+Sample 2563 - Plan 1: Table after operation: [['scorer', 'occurrences'], ['', 5], ["cao yang 77'", 1], ["hao junmin 23' pen", 1], ["nhan peng 67'\\nzhu ting 90'", 1], ["nli weifeng 48'", 1], ["nqu bo 63'", 1], ["nzhu ting 90'", 1], ["qu bo 34'", 1], ["qu bo 58'", 1], ["qu bo 64'", 1], ["xiao zhanbo 62' pen", 1], ['—', 3]]
+########################################################################################################################
+Sample 2563 - Plan 1: Operation 4: Order the table by the count of goals in descending order.
+Sample 2563 - Plan 1: Selected indices: []
+Sample 2563 - Plan 1: X-Table after operation df:
+                         scorer  occurrences
+0                                          5
+1                             —            3
+2                  cao yang 77'            1
+3            hao junmin 23' pen            1
+4   nhan peng 67'\nzhu ting 90'            1
+5               nli weifeng 48'            1
+6                    nqu bo 63'            1
+7                 nzhu ting 90'            1
+8                     qu bo 34'            1
+9                     qu bo 58'            1
+10                    qu bo 64'            1
+11          xiao zhanbo 62' pen            1
+Sample 2563 - Plan 1: Table after operation: [['scorer', 'occurrences'], ['', 5], ['—', 3], ["cao yang 77'", 1], ["hao junmin 23' pen", 1], ["nhan peng 67'\\nzhu ting 90'", 1], ["nli weifeng 48'", 1], ["nqu bo 63'", 1], ["nzhu ting 90'", 1], ["qu bo 34'", 1], ["qu bo 58'", 1], ["qu bo 64'", 1], ["xiao zhanbo 62' pen", 1]]
+########################################################################################################################
+Sample 2563 - Plan 1: Operation 5: Select the scorer with the highest count as the top scorer.
+Sample 2563 - Plan 1: Selected indices: []
+Sample 2563 - Plan 1: X-Table after operation df:
+   scorer  occurrences
+0     NaN            5
+Sample 2563 - Plan 1: Table after operation: [['scorer', 'occurrences'], ['', 5]]
+########################################################################################################################
+Sample 2563 - Plan 1: Operation 6: Select the 'china_scorers' column for the top scorer.
+Sample 2563 - Plan 1: Selected indices: []
+Sample 2563 - Plan 1: X-Table after operation df:
+   china_scorers
+0            NaN
+Sample 2563 - Plan 1: Table after operation: [['china_scorers'], [None]]
+Fall-back: TRUE
+Answer from plan 1: [['qu bo']]
+Groundtruth: ['Zhu Ting']

@@ -1,0 +1,561 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> what is the difference in games between sept 20 and sept 21?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Filter the table to include only the rows where the date_of_incident is either "september 20, 2011" or "september 21, 2011".</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>date_of_incident</td>
+<td>offender</td>
+<td>team</td>
+<td>offense</td>
+<td>date_of_action</td>
+<td>length</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">september 20, 2011</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pierre-luc letourneau-leblond</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">calgary flames</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">boarding matt clackson.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">september 22, 2011</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5 games† (4 pre-season, 1 regular season)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">september 21, 2011</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jody shelley</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">philadelphia flyers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">boarding darryl boyce.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">september 22, 2011</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10 games† (5 pre-season, 5 regular season)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">september 23, 2011</span></td>
+<td>james wisniewski</td>
+<td>columbus blue jackets</td>
+<td>illegal hit to the head of cal clutterbuck.</td>
+<td>september 24, 2011</td>
+<td>12 games† (4 pre-season, 8 regular season)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">september 23, 2011</span></td>
+<td>brad staubitz</td>
+<td>minnesota wild</td>
+<td>checking cody bass from behind.</td>
+<td>september 26, 2011</td>
+<td>7 games† (4 pre-season, 3 regular season)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">september 24, 2011</span></td>
+<td>brad boyes</td>
+<td>buffalo sabres</td>
+<td>illegal hit to the head of joe colborne.</td>
+<td>september 25, 2011</td>
+<td>2 games† (2 pre-season)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">september 24, 2011</span></td>
+<td>jean-francois jacques</td>
+<td>anaheim ducks</td>
+<td>leaving bench to initiate a fight with mike duco.</td>
+<td>september 27, 2011</td>
+<td>9 games† (4 pre-season, 5 regular season)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">september 26, 2011</span></td>
+<td>tom sestito</td>
+<td>philadelphia flyers</td>
+<td>checking andre deveaux from behind.</td>
+<td>september 28, 2011</td>
+<td>4 games† (2 pre-season, 2 regular season)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">september 28, 2011</span></td>
+<td>brendan smith</td>
+<td>detroit red wings</td>
+<td>illegal hit to the head of ben smith.</td>
+<td>september 30, 2011</td>
+<td>8 games† (3 pre-season, 5 regular season)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">september 30, 2011</span></td>
+<td>clarke macarthur</td>
+<td>toronto maple leafs</td>
+<td>illegal hit to the head of justin abdelkader.</td>
+<td>october 1, 2011</td>
+<td>3 games† (1 pre-season, 2 regular season)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">october 8, 2011</span></td>
+<td>pierre-marc bouchard</td>
+<td>minnesota wild</td>
+<td>high sticking matt calvert.</td>
+<td>october 9, 2011</td>
+<td>2 games</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">october 17, 2011</span></td>
+<td>kris letang</td>
+<td>pittsburgh penguins</td>
+<td>boarding alexander burmistrov.</td>
+<td>october 18, 2011</td>
+<td>2 games</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">october 28, 2011</span></td>
+<td>andy sutton</td>
+<td>edmonton oilers</td>
+<td>elbowing gabriel landeskog.</td>
+<td>november 1, 2011</td>
+<td>5 games</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">october 28, 2011</span></td>
+<td>daniel carcillo</td>
+<td>chicago blackhawks</td>
+<td>hit from behind on joni pitkanen.</td>
+<td>october 29, 2011</td>
+<td>2 games</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">november 2, 2011</span></td>
+<td>patrick kaleta</td>
+<td>buffalo sabres</td>
+<td>headbutt on jakub voracek.</td>
+<td>november 3, 2011</td>
+<td>4 games</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">november 17, 2011</span></td>
+<td>chris stewart</td>
+<td>st. louis blues</td>
+<td>checking niklas kronwall from behind.</td>
+<td>november 18, 2011</td>
+<td>3 games</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">november 23, 2011</span></td>
+<td>andre deveaux</td>
+<td>new york rangers</td>
+<td>illegal hit to the head of tomas fleischmann.</td>
+<td>november 23, 2011</td>
+<td>3 games</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">november 26, 2011</span></td>
+<td>max pacioretty</td>
+<td>montreal canadiens</td>
+<td>illegal hit to the head of kris letang.</td>
+<td>november 28, 2011</td>
+<td>3 games</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 3, 2011</span></td>
+<td>jordin tootoo</td>
+<td>nashville predators</td>
+<td>charging goaltender ryan miller.</td>
+<td>december 6, 2011</td>
+<td>2 games</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 3, 2011</span></td>
+<td>mark fistric</td>
+<td>dallas stars</td>
+<td>charging nino niederreiter.</td>
+<td>december 7, 2011</td>
+<td>3 games</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 6, 2011</span></td>
+<td>kevin porter</td>
+<td>colorado avalanche</td>
+<td>kneeing david booth.</td>
+<td>december 8, 2011</td>
+<td>4 games</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 7, 2011</span></td>
+<td>ville leino</td>
+<td>buffalo sabres</td>
+<td>elbowing matt read.</td>
+<td>december 8, 2011</td>
+<td>1 game</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 7, 2011</span></td>
+<td>andy sutton</td>
+<td>edmonton oilers</td>
+<td>charging alexei ponikarovsky.</td>
+<td>december 8, 2011</td>
+<td>8 games</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 17, 2011</span></td>
+<td>milan lucic</td>
+<td>boston bruins</td>
+<td>checking zac rinaldo from behind.</td>
+<td>december 19, 2011</td>
+<td>1 game</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 18, 2011</span></td>
+<td>rene bourque</td>
+<td>calgary flames</td>
+<td>checking brent seabrook from behind.</td>
+<td>december 19, 2011</td>
+<td>2 games</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 20, 2011</span></td>
+<td>deryk engelland</td>
+<td>pittsburgh penguins</td>
+<td>illegal hit to the head of marcus kruger.</td>
+<td>december 22, 2011</td>
+<td>3 games</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 31, 2011</span></td>
+<td>ian cole</td>
+<td>st. louis blues</td>
+<td>illegal hit to the head of justin abdelkader.</td>
+<td>january 1, 2012</td>
+<td>3 games</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 31, 2011</span></td>
+<td>krys barch</td>
+<td>florida panthers</td>
+<td>insensitive comments directed at p.k. subban</td>
+<td>january 5, 2012</td>
+<td>1 game</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 31, 2011</span></td>
+<td>raffi torres</td>
+<td>phoenix coyotes</td>
+<td>charging nate prosser</td>
+<td>january 2, 2012</td>
+<td>2 games</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">january 2, 2012</span></td>
+<td>daniel carcillo</td>
+<td>chicago blackhawks</td>
+<td>boarding tom gilbert</td>
+<td>january 4, 2012</td>
+<td>7 games</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">january 3, 2012</span></td>
+<td>rene bourque</td>
+<td>calgary flames</td>
+<td>elbowing nicklas backstrom.</td>
+<td>january 4, 2012</td>
+<td>5 games</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">january 7, 2012</span></td>
+<td>brad marchand</td>
+<td>boston bruins</td>
+<td>clipping sami salo.</td>
+<td>january 9, 2012</td>
+<td>5 games</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">january 8, 2012</span></td>
+<td>jean-francois jacques</td>
+<td>anaheim ducks</td>
+<td>illegal hit to the head of r.j. umberger.</td>
+<td>january 9, 2012</td>
+<td>3 games</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">january 14, 2012</span></td>
+<td>dane byers</td>
+<td>columbus blue jackets</td>
+<td>illegal hit to the head of andrew desjardins.</td>
+<td>january 16, 2012</td>
+<td>3 games</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">january 21, 2012</span></td>
+<td>andrew ference</td>
+<td>boston bruins</td>
+<td>boarding ryan mcdonagh.</td>
+<td>january 22, 2012</td>
+<td>3 games</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">january 22, 2012</span></td>
+<td>alex ovechkin</td>
+<td>washington capitals</td>
+<td>charging zbynek michalek.</td>
+<td>january 23, 2012</td>
+<td>3 games</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">february 12, 2012</span></td>
+<td>zac rinaldo</td>
+<td>philadelphia flyers</td>
+<td>charging jonathan ericsson.</td>
+<td>february 13, 2012</td>
+<td>2 games</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">february 18, 2012</span></td>
+<td>warren peters</td>
+<td>minnesota wild</td>
+<td>cross-checking david backes.</td>
+<td>february 19, 2012</td>
+<td>1 game</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">march 8, 2012</span></td>
+<td>mike green</td>
+<td>washington capitals</td>
+<td>illegal hit to the head of brett connolly.</td>
+<td>march 9, 2012</td>
+<td>3 games</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">march 12, 2012</span></td>
+<td>tyler myers</td>
+<td>buffalo sabres</td>
+<td>boarding scott gomez.</td>
+<td>march 13, 2012</td>
+<td>3 games</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">march 15, 2012</span></td>
+<td>jeff skinner</td>
+<td>carolina hurricanes</td>
+<td>kicking scott nichol.</td>
+<td>march 16, 2012</td>
+<td>2 games</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">march 20, 2012</span></td>
+<td>shane doan</td>
+<td>phoenix coyotes</td>
+<td>elbowing jamie benn.</td>
+<td>march 21, 2012</td>
+<td>3 games</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">march 21, 2012</span></td>
+<td>duncan keith</td>
+<td>chicago blackhawks</td>
+<td>elbowing daniel sedin.</td>
+<td>march 23, 2012</td>
+<td>5 games</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">april 1, 2012</span></td>
+<td>kyle quincey</td>
+<td>detroit red wings</td>
+<td>charging tomas kopecky.</td>
+<td>april 2, 2012</td>
+<td>1 game</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">april 5, 2012</span></td>
+<td>nate prosser</td>
+<td>minnesota wild</td>
+<td>head-butting jamal mayers.</td>
+<td>april 6, 2012</td>
+<td>1 game</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">april 11, 2012</span></td>
+<td>byron bitz</td>
+<td>vancouver canucks</td>
+<td>boarding kyle clifford.</td>
+<td>april 12, 2012</td>
+<td>2 games‡ (2 post-season)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">april 14, 2012</span></td>
+<td>carl hagelin</td>
+<td>new york rangers</td>
+<td>elbowing daniel alfredsson.</td>
+<td>april 15, 2012</td>
+<td>3 games‡ (3 post-season)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">april 14, 2012</span></td>
+<td>matt carkner</td>
+<td>ottawa senators</td>
+<td>aggressing an unwilling brian boyle.</td>
+<td>april 15, 2012</td>
+<td>1 game‡ (1 post-season)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">april 14, 2012</span></td>
+<td>andrew shaw</td>
+<td>chicago blackhawks</td>
+<td>charging goaltender mike smith.</td>
+<td>april 17, 2012</td>
+<td>3 games‡ (3 post-season)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">april 15, 2012</span></td>
+<td>craig adams</td>
+<td>pittsburgh penguins</td>
+<td>instigator penalty in the last five minutes of a game.</td>
+<td>april 16, 2012</td>
+<td>1 game‡ (1 post-season)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">april 15, 2012</span></td>
+<td>james neal</td>
+<td>pittsburgh penguins</td>
+<td>charging claude giroux.</td>
+<td>april 17, 2012</td>
+<td>1 game‡ (1 post-season)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">april 15, 2012</span></td>
+<td>arron asham</td>
+<td>pittsburgh penguins</td>
+<td>cross-checking brayden schenn.</td>
+<td>april 17, 2012</td>
+<td>4 games‡ (3 post-season)*</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">april 14, 2012</span></td>
+<td>nicklas backstrom</td>
+<td>washington capitals</td>
+<td>cross-checking rich peverley.</td>
+<td>april 17, 2012</td>
+<td>1 game‡ (1 post-season)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">april 17, 2012</span></td>
+<td>raffi torres</td>
+<td>phoenix coyotes</td>
+<td>late charge to the head of marian hossa.</td>
+<td>april 21, 2012</td>
+<td>25 games\nreduced to 21 games‡ (13 post-season)*</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">may 4, 2012</span></td>
+<td>rostislav klesla</td>
+<td>phoenix coyotes</td>
+<td>boarding matt halischuk.</td>
+<td>may 6, 2012</td>
+<td>1 game‡ (1 post-season)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">may 6, 2012</span></td>
+<td>claude giroux</td>
+<td>philadelphia flyers</td>
+<td>illegal hit to the head of dainius zubrus.</td>
+<td>may 7, 2012</td>
+<td>1 game‡ (1 post-season)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">may 15, 2012</span></td>
+<td>martin hanzal</td>
+<td>phoenix coyotes</td>
+<td>boarding dustin brown.</td>
+<td>may 16, 2012</td>
+<td>1 game‡ (1 post-season)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">may 20, 2012</span></td>
+<td>brandon prust</td>
+<td>new york rangers</td>
+<td>elbowing anton volchenkov.</td>
+<td>may 20, 2012</td>
+<td>1 game‡ (1 post-season)</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Calculate the difference in games between the two dates by subtracting the length value of the row with the date_of_incident "september 20, 2011" from the length value of the row with the date_of_incident "september 21, 2011".</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>date_of_incident</td>
+<td>offender</td>
+<td>team</td>
+<td>offense</td>
+<td>date_of_action</td>
+<td>length</td>
+</tr>
+<tr>
+<td>september 20, 2011</td>
+<td>pierre-luc letourneau-leblond</td>
+<td>calgary flames</td>
+<td>boarding matt clackson.</td>
+<td>september 22, 2011</td>
+<td>5 games† (4 pre-season, 1 regular season)</td>
+</tr>
+<tr>
+<td>september 21, 2011</td>
+<td>jody shelley</td>
+<td>philadelphia flyers</td>
+<td>boarding darryl boyce.</td>
+<td>september 22, 2011</td>
+<td>10 games† (5 pre-season, 5 regular season)</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select the calculated difference in games as the final answer to the question.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>game_difference</td>
+</tr>
+<tr>
+<td>-5</td>
+</tr>
+<tr>
+<td>-10</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>final_answer</td>
+</tr>
+<tr>
+<td>-5</td>
+</tr>
+<tr>
+<td>-10</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[-5], [-10]]</h3>
+</body></html>

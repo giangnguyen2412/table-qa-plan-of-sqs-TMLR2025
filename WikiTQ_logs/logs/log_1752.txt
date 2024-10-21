@@ -1,0 +1,48 @@
+************************************************************************************************************************
+Sample 1752 - Plan 1: Query: this country has a count of 13 total medals.
+Sample 1752 - Plan 1: Groundtruth: ['Venezuela']
+Sample 1752 - Plan 1: X-Original table pd: 
+     rank                nation  gold  silver  bronze  total
+0       1                brazil     7       5       3     15
+1       2             venezuela     3       2       8     13
+2       3              colombia     2       3       4      9
+3       4                 chile     2       0       2      4
+4       5             argentina     1       2       5      8
+5       6                  peru     1       1       2      4
+6       7               ecuador     0       2       2      4
+7       8                guyana     0       1       0      1
+8       9                 aruba     0       0       1      1
+9       9  netherlands antilles     0       0       1      1
+10      9                panama     0       0       1      1
+11      9               uruguay     0       0       1      1
+12  total                 total    16      16      30     62
+Sample 1752 - Plan 1: Caption: none
+Sample 1752 - Plan 1: Original table: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['1', 'brazil', '7', '5', '3', '15'], ['2', 'venezuela', '3', '2', '8', '13'], ['3', 'colombia', '2', '3', '4', '9'], ['4', 'chile', '2', '0', '2', '4'], ['5', 'argentina', '1', '2', '5', '8'], ['6', 'peru', '1', '1', '2', '4'], ['7', 'ecuador', '0', '2', '2', '4'], ['8', 'guyana', '0', '1', '0', '1'], ['9', 'aruba', '0', '0', '1', '1'], ['9', 'netherlands antilles', '0', '0', '1', '1'], ['9', 'panama', '0', '0', '1', '1'], ['9', 'uruguay', '0', '0', '1', '1'], ['total', 'total', '16', '16', '30', '62']]
+########################################################################################################################
+Sample 1752 - Plan 1: Operation 1: Select rows where 'nation' is not equal to 'total'.
+Sample 1752 - Plan 1: Selected indices: [[0, 1], [11, 1], [7, 1], [2, 1], [8, 1], [3, 1], [6, 1], [1, 1], [10, 1], [5, 1], [9, 1], [4, 1]]
+Sample 1752 - Plan 1: X-Table after operation df:
+    rank                nation  gold  silver  bronze  total
+0      1                brazil     7       5       3     15
+1      2             venezuela     3       2       8     13
+2      3              colombia     2       3       4      9
+3      4                 chile     2       0       2      4
+4      5             argentina     1       2       5      8
+5      6                  peru     1       1       2      4
+6      7               ecuador     0       2       2      4
+7      8                guyana     0       1       0      1
+8      9                 aruba     0       0       1      1
+9      9  netherlands antilles     0       0       1      1
+10     9                panama     0       0       1      1
+11     9               uruguay     0       0       1      1
+Sample 1752 - Plan 1: Table after operation: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['1', 'brazil', 7, 5, 3, 15], ['2', 'venezuela', 3, 2, 8, 13], ['3', 'colombia', 2, 3, 4, 9], ['4', 'chile', 2, 0, 2, 4], ['5', 'argentina', 1, 2, 5, 8], ['6', 'peru', 1, 1, 2, 4], ['7', 'ecuador', 0, 2, 2, 4], ['8', 'guyana', 0, 1, 0, 1], ['9', 'aruba', 0, 0, 1, 1], ['9', 'netherlands antilles', 0, 0, 1, 1], ['9', 'panama', 0, 0, 1, 1], ['9', 'uruguay', 0, 0, 1, 1]]
+########################################################################################################################
+Sample 1752 - Plan 1: Operation 2: Count the number of rows.
+Sample 1752 - Plan 1: Selected indices: []
+Sample 1752 - Plan 1: X-Table after operation df:
+   row_count
+0         12
+Sample 1752 - Plan 1: Table after operation: [['row_count'], [12]]
+Fall-back: FALSE
+Answer from plan 1: [[12]]
+Groundtruth: ['Venezuela']

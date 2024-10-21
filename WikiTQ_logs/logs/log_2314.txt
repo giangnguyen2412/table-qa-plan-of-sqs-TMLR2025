@@ -1,0 +1,94 @@
+************************************************************************************************************************
+Sample 2314 - Plan 1: Query: which massif has the least amount of land in its buffer zone?
+Sample 2314 - Plan 1: Groundtruth: ['Rožok']
+Sample 2314 - Plan 1: X-Original table pd: 
+     _                    massif                  region  \
+0    1                chornohora             zakarpattia   
+1    2      uholka / wide meadow             zakarpattia   
+2    3                 svydovets             zakarpattia   
+3    4                 maramoros             zakarpattia   
+4    5        kuziy / trybushany             zakarpattia   
+5    6        stuzhytsia / uzhok             zakarpattia   
+6    7  stužica / bukovské vrchy                  presov   
+7    8                     rožok                  presov   
+8    9                  vihorlat                  presov   
+9   10                  havešová                  presov   
+10  11                   jasmund  mecklenburg-vorpommern   
+11  12                   serrahn  mecklenburg-vorpommern   
+12  13          grumsiner forest             brandenburg   
+13  14                   hainich               thuringia   
+14  15                kellerwald                   hesse   
+
+              type_of_nature_reserve preserved_area buffer_zone  
+0       carpathian biosphere reserve      2476.8 ha    12925 ha  
+1       carpathian biosphere reserve       11860 ha     3301 ha  
+2       carpathian biosphere reserve      3030.5 ha   5639.5 ha  
+3       carpathian biosphere reserve      2243.6 ha   6230.4 ha  
+4       carpathian biosphere reserve      1369.6 ha   3163.4 ha  
+5           uzh national nature park        2532 ha     3615 ha  
+6             poloniny national park        2950 ha    11300 ha  
+7             presov preserved areas        67.1 ha     41.4 ha  
+8             presov preserved areas        2578 ha     2413 ha  
+9             presov preserved areas       171.3 ha     63.9 ha  
+10             jasmund national park       492.5 ha   2510.5 ha  
+11              müritz national park       268.1 ha     2568 ha  
+12   grumsiner forest nature reserve       590.1 ha    274.3 ha  
+13             hainich national park      1573.4 ha   4085.4 ha  
+14  kellerwald-edersee national park      1467.1 ha   4271.4 ha  
+Sample 2314 - Plan 1: Caption: none
+Sample 2314 - Plan 1: Original table: [['_', 'massif', 'region', 'type_of_nature_reserve', 'preserved_area', 'buffer_zone'], ['1', 'chornohora', 'zakarpattia', 'carpathian biosphere reserve', '2476.8 ha', '12925 ha'], ['2', 'uholka / wide meadow', 'zakarpattia', 'carpathian biosphere reserve', '11860 ha', '3301 ha'], ['3', 'svydovets', 'zakarpattia', 'carpathian biosphere reserve', '3030.5 ha', '5639.5 ha'], ['4', 'maramoros', 'zakarpattia', 'carpathian biosphere reserve', '2243.6 ha', '6230.4 ha'], ['5', 'kuziy / trybushany', 'zakarpattia', 'carpathian biosphere reserve', '1369.6 ha', '3163.4 ha'], ['6', 'stuzhytsia / uzhok', 'zakarpattia', 'uzh national nature park', '2532 ha', '3615 ha'], ['7', 'stužica / bukovské vrchy', 'presov', 'poloniny national park', '2950 ha', '11300 ha'], ['8', 'rožok', 'presov', 'presov preserved areas', '67.1 ha', '41.4 ha'], ['9', 'vihorlat', 'presov', 'presov preserved areas', '2578 ha', '2413 ha'], ['10', 'havešová', 'presov', 'presov preserved areas', '171.3 ha', '63.9 ha'], ['11', 'jasmund', 'mecklenburg-vorpommern', 'jasmund national park', '492.5 ha', '2510.5 ha'], ['12', 'serrahn', 'mecklenburg-vorpommern', 'müritz national park', '268.1 ha', '2568 ha'], ['13', 'grumsiner forest', 'brandenburg', 'grumsiner forest nature reserve', '590.1 ha', '274.3 ha'], ['14', 'hainich', 'thuringia', 'hainich national park', '1573.4 ha', '4085.4 ha'], ['15', 'kellerwald', 'hesse', 'kellerwald-edersee national park', '1467.1 ha', '4271.4 ha']]
+########################################################################################################################
+Sample 2314 - Plan 1: Operation 1: Order the table by the 'buffer_zone' column in ascending order.
+Sample 2314 - Plan 1: Selected indices: [[10, 5], [5, 5], [14, 5], [6, 5], [1, 5], [9, 5], [4, 5], [11, 5], [0, 5], [12, 5], [7, 5], [2, 5], [13, 5], [8, 5], [3, 5]]
+Sample 2314 - Plan 1: X-Table after operation df:
+     _                    massif                  region  \
+0    8                     rožok                  presov   
+1   10                  havešová                  presov   
+2   13          grumsiner forest             brandenburg   
+3    9                  vihorlat                  presov   
+4   11                   jasmund  mecklenburg-vorpommern   
+5   12                   serrahn  mecklenburg-vorpommern   
+6    5        kuziy / trybushany             zakarpattia   
+7    2      uholka / wide meadow             zakarpattia   
+8    6        stuzhytsia / uzhok             zakarpattia   
+9   14                   hainich               thuringia   
+10  15                kellerwald                   hesse   
+11   3                 svydovets             zakarpattia   
+12   4                 maramoros             zakarpattia   
+13   7  stužica / bukovské vrchy                  presov   
+14   1                chornohora             zakarpattia   
+
+              type_of_nature_reserve preserved_area buffer_zone  
+0             presov preserved areas        67.1 ha     41.4 ha  
+1             presov preserved areas       171.3 ha     63.9 ha  
+2    grumsiner forest nature reserve       590.1 ha    274.3 ha  
+3             presov preserved areas        2578 ha     2413 ha  
+4              jasmund national park       492.5 ha   2510.5 ha  
+5               müritz national park       268.1 ha     2568 ha  
+6       carpathian biosphere reserve      1369.6 ha   3163.4 ha  
+7       carpathian biosphere reserve       11860 ha     3301 ha  
+8           uzh national nature park        2532 ha     3615 ha  
+9              hainich national park      1573.4 ha   4085.4 ha  
+10  kellerwald-edersee national park      1467.1 ha   4271.4 ha  
+11      carpathian biosphere reserve      3030.5 ha   5639.5 ha  
+12      carpathian biosphere reserve      2243.6 ha   6230.4 ha  
+13            poloniny national park        2950 ha    11300 ha  
+14      carpathian biosphere reserve      2476.8 ha    12925 ha  
+Sample 2314 - Plan 1: Table after operation: [['_', 'massif', 'region', 'type_of_nature_reserve', 'preserved_area', 'buffer_zone'], [8, 'rožok', 'presov', 'presov preserved areas', '67.1 ha', '41.4 ha'], [10, 'havešová', 'presov', 'presov preserved areas', '171.3 ha', '63.9 ha'], [13, 'grumsiner forest', 'brandenburg', 'grumsiner forest nature reserve', '590.1 ha', '274.3 ha'], [9, 'vihorlat', 'presov', 'presov preserved areas', '2578 ha', '2413 ha'], [11, 'jasmund', 'mecklenburg-vorpommern', 'jasmund national park', '492.5 ha', '2510.5 ha'], [12, 'serrahn', 'mecklenburg-vorpommern', 'müritz national park', '268.1 ha', '2568 ha'], [5, 'kuziy / trybushany', 'zakarpattia', 'carpathian biosphere reserve', '1369.6 ha', '3163.4 ha'], [2, 'uholka / wide meadow', 'zakarpattia', 'carpathian biosphere reserve', '11860 ha', '3301 ha'], [6, 'stuzhytsia / uzhok', 'zakarpattia', 'uzh national nature park', '2532 ha', '3615 ha'], [14, 'hainich', 'thuringia', 'hainich national park', '1573.4 ha', '4085.4 ha'], [15, 'kellerwald', 'hesse', 'kellerwald-edersee national park', '1467.1 ha', '4271.4 ha'], [3, 'svydovets', 'zakarpattia', 'carpathian biosphere reserve', '3030.5 ha', '5639.5 ha'], [4, 'maramoros', 'zakarpattia', 'carpathian biosphere reserve', '2243.6 ha', '6230.4 ha'], [7, 'stužica / bukovské vrchy', 'presov', 'poloniny national park', '2950 ha', '11300 ha'], [1, 'chornohora', 'zakarpattia', 'carpathian biosphere reserve', '2476.8 ha', '12925 ha']]
+########################################################################################################################
+Sample 2314 - Plan 1: Operation 2: Select the row number 1.
+Sample 2314 - Plan 1: Selected indices: []
+Sample 2314 - Plan 1: X-Table after operation df:
+   _ massif  region  type_of_nature_reserve preserved_area buffer_zone
+0  8  rožok  presov  presov preserved areas        67.1 ha     41.4 ha
+Sample 2314 - Plan 1: Table after operation: [['_', 'massif', 'region', 'type_of_nature_reserve', 'preserved_area', 'buffer_zone'], [8, 'rožok', 'presov', 'presov preserved areas', '67.1 ha', '41.4 ha']]
+########################################################################################################################
+Sample 2314 - Plan 1: Operation 3: Select the 'massif' column.
+Sample 2314 - Plan 1: Selected indices: []
+Sample 2314 - Plan 1: X-Table after operation df:
+  massif
+0  rožok
+Sample 2314 - Plan 1: Table after operation: [['massif'], ['rožok']]
+Fall-back: FALSE
+Answer from plan 1: [['rožok']]
+Groundtruth: ['Rožok']

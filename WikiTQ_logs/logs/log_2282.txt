@@ -1,0 +1,52 @@
+************************************************************************************************************************
+Sample 2282 - Plan 1: Query: what is the next listed format after combination field?
+Sample 2282 - Plan 1: Groundtruth: ['Exponent continuation field (bits)']
+Sample 2282 - Plan 1: X-Original table pd: 
+  decimal32 decimal64 decimal128          decimal_32k_  \
+0         1         1          1                     1   
+1         5         5          5                     5   
+2         6         8         12           w = 2×k + 4   
+3        20        50        110           t = 30×k−10   
+4        32        64        128                  32×k   
+5         7        16         34  p = 3×t/10+1 = 9×k−2   
+6       192       768      12288          3×2w = 48×4k   
+7        96       384       6144         emax = 3×2w−1   
+8       −95      −383      −6143         emin = 1−emax   
+9      −101      −398      −6176      etiny = 2−p−emax   
+
+                                        format  
+0                            sign field (bits)  
+1                     combination field (bits)  
+2           exponent continuation field (bits)  
+3        coefficient continuation field (bits)  
+4                            total size (bits)  
+5            coefficient size (decimal digits)  
+6                               exponent range  
+7              largest value is 9.99...×10emax  
+8  smallest normalized value is 1.00...×10emin  
+9         smallest non-zero value is 1×10etiny  
+Sample 2282 - Plan 1: Caption: none
+Sample 2282 - Plan 1: Original table: [['decimal32', 'decimal64', 'decimal128', 'decimal_32k_', 'format'], ['1', '1', '1', '1', 'sign field (bits)'], ['5', '5', '5', '5', 'combination field (bits)'], ['6', '8', '12', 'w = 2×k + 4', 'exponent continuation field (bits)'], ['20', '50', '110', 't = 30×k−10', 'coefficient continuation field (bits)'], ['32', '64', '128', '32×k', 'total size (bits)'], ['7', '16', '34', 'p = 3×t/10+1 = 9×k−2', 'coefficient size (decimal digits)'], ['192', '768', '12288', '3×2w = 48×4k', 'exponent range'], ['96', '384', '6144', 'emax = 3×2w−1', 'largest value is 9.99...×10emax'], ['−95', '−383', '−6143', 'emin = 1−emax', 'smallest normalized value is 1.00...×10emin'], ['−101', '−398', '−6176', 'etiny = 2−p−emax', 'smallest non-zero value is 1×10etiny']]
+########################################################################################################################
+Sample 2282 - Plan 1: Operation 1: Select the row where the 'format' column is 'combination field'.
+Sample 2282 - Plan 1: Selected indices: []
+Sample 2282 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [decimal32, decimal64, decimal128, decimal_32k_, format]
+Index: []
+Sample 2282 - Plan 1: Table after operation: [['decimal32', 'decimal64', 'decimal128', 'decimal_32k_', 'format']]
+########################################################################################################################
+Sample 2282 - Plan 1: Operation 2: Select the next row in the table.
+Sample 2282 - Plan 1: Selected indices: []
+Sample 2282 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [decimal32, decimal64, decimal128, decimal_32k_, format]
+Index: []
+Sample 2282 - Plan 1: Table after operation: [['decimal32', 'decimal64', 'decimal128', 'decimal_32k_', 'format']]
+########################################################################################################################
+Sample 2282 - Plan 1: Operation 3: Select the 'format' column of the selected row.
+SQL execution error in operation 3: Execution failed on sql 'Write a SQL command that: Select the 'format' column of the selected row.': near "Write": syntax error
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['6']]
+Groundtruth: ['Exponent continuation field (bits)']

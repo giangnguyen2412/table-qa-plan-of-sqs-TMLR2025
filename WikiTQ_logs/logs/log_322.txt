@@ -1,0 +1,43 @@
+************************************************************************************************************************
+Sample 322 - Plan 1: Query: what was the total number of goals scored by johnson and stewart?
+Sample 322 - Plan 1: Groundtruth: ['36']
+Sample 322 - Plan 1: X-Original table pd: 
+    _            player  goals  caps        career
+0   1    landon donovan     57   155  2000–present
+1   2     clint dempsey     36   103  2004–present
+2   3      eric wynalda     34   106     1990–2000
+3   4     brian mcbride     30    95     1993–2006
+4   5     joe-max moore     24   100     1992–2002
+5  6t     jozy altidore     21    67  2007–present
+6  6t      bruce murray     21    86     1985–1993
+7   8     eddie johnson     19    62  2004–present
+8  9t    earnie stewart     17   101     1990–2004
+9  9t  damarcus beasley     17   114  2001–present
+Sample 322 - Plan 1: Caption: none
+Sample 322 - Plan 1: Original table: [['_', 'player', 'goals', 'caps', 'career'], ['1', 'landon donovan', '57', '155', '2000–present'], ['2', 'clint dempsey', '36', '103', '2004–present'], ['3', 'eric wynalda', '34', '106', '1990–2000'], ['4', 'brian mcbride', '30', '95', '1993–2006'], ['5', 'joe-max moore', '24', '100', '1992–2002'], ['6t', 'jozy altidore', '21', '67', '2007–present'], ['6t', 'bruce murray', '21', '86', '1985–1993'], ['8', 'eddie johnson', '19', '62', '2004–present'], ['9t', 'earnie stewart', '17', '101', '1990–2004'], ['9t', 'damarcus beasley', '17', '114', '2001–present']]
+########################################################################################################################
+Sample 322 - Plan 1: Operation 1: Select rows where 'player' is 'eddie johnson' or 'earnie stewart'.
+Sample 322 - Plan 1: Selected indices: [[7, 1], [8, 1]]
+Sample 322 - Plan 1: X-Table after operation df:
+    _          player  goals  caps        career
+0   8   eddie johnson     19    62  2004–present
+1  9t  earnie stewart     17   101     1990–2004
+Sample 322 - Plan 1: Table after operation: [['_', 'player', 'goals', 'caps', 'career'], ['8', 'eddie johnson', 19, 62, '2004–present'], ['9t', 'earnie stewart', 17, 101, '1990–2004']]
+########################################################################################################################
+Sample 322 - Plan 1: Operation 2: Select the 'goals' column.
+Sample 322 - Plan 1: Selected indices: []
+Sample 322 - Plan 1: X-Table after operation df:
+   goals
+0     19
+1     17
+Sample 322 - Plan 1: Table after operation: [['goals'], [19], [17]]
+########################################################################################################################
+Sample 322 - Plan 1: Operation 3: Sum the values in the 'goals' column.
+Sample 322 - Plan 1: Selected indices: []
+Sample 322 - Plan 1: X-Table after operation df:
+   total_goals
+0           36
+Sample 322 - Plan 1: Table after operation: [['total_goals'], [36]]
+Fall-back: FALSE
+Answer from plan 1: [[36]]
+Groundtruth: ['36']

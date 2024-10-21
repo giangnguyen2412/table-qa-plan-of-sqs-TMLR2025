@@ -1,0 +1,97 @@
+************************************************************************************************************************
+Sample 229 - Plan 1: Query: how many events featured a distance of at least 60 in the discus throw?
+Sample 229 - Plan 1: Groundtruth: ['4 events']
+Sample 229 - Plan 1: X-Original table pd: 
+   year                 competition                               venue  \
+0  2000  world junior championships                     santiago, chile   
+1  2003            all-africa games                      abuja, nigeria   
+2  2003            all-africa games                      abuja, nigeria   
+3  2004       african championships  brazzaville, republic of the congo   
+4  2004               olympic games                      athens, greece   
+5  2006          commonwealth games                melbourne, australia   
+6  2006          commonwealth games                melbourne, australia   
+7  2007            all-africa games                    algiers, algeria   
+8  2008       african championships               addis ababa, ethiopia   
+
+  position         event    notes  
+0      1st  discus throw  59.51 m  
+1      5th      shot put  17.76 m  
+2      2nd  discus throw  62.86 m  
+3      2nd  discus throw  63.50 m  
+4      8th  discus throw  62.58 m  
+5      7th      shot put  18.44 m  
+6      4th  discus throw  60.99 m  
+7      3rd  discus throw  57.79 m  
+8      2nd  discus throw  56.98 m  
+Sample 229 - Plan 1: Caption: none
+Sample 229 - Plan 1: Original table: [['year', 'competition', 'venue', 'position', 'event', 'notes'], ['2000', 'world junior championships', 'santiago, chile', '1st', 'discus throw', '59.51 m'], ['2003', 'all-africa games', 'abuja, nigeria', '5th', 'shot put', '17.76 m'], ['2003', 'all-africa games', 'abuja, nigeria', '2nd', 'discus throw', '62.86 m'], ['2004', 'african championships', 'brazzaville, republic of the congo', '2nd', 'discus throw', '63.50 m'], ['2004', 'olympic games', 'athens, greece', '8th', 'discus throw', '62.58 m'], ['2006', 'commonwealth games', 'melbourne, australia', '7th', 'shot put', '18.44 m'], ['2006', 'commonwealth games', 'melbourne, australia', '4th', 'discus throw', '60.99 m'], ['2007', 'all-africa games', 'algiers, algeria', '3rd', 'discus throw', '57.79 m'], ['2008', 'african championships', 'addis ababa, ethiopia', '2nd', 'discus throw', '56.98 m']]
+########################################################################################################################
+Sample 229 - Plan 1: Operation 1: Select rows where the 'event' is 'discus throw'.
+Sample 229 - Plan 1: Selected indices: [[4, 4], [7, 4], [2, 4], [0, 4], [3, 4], [8, 4], [6, 4]]
+Sample 229 - Plan 1: X-Table after operation df:
+   year                 competition                               venue  \
+0  2000  world junior championships                     santiago, chile   
+1  2003            all-africa games                      abuja, nigeria   
+2  2004       african championships  brazzaville, republic of the congo   
+3  2004               olympic games                      athens, greece   
+4  2006          commonwealth games                melbourne, australia   
+5  2007            all-africa games                    algiers, algeria   
+6  2008       african championships               addis ababa, ethiopia   
+
+  position         event    notes  
+0      1st  discus throw  59.51 m  
+1      2nd  discus throw  62.86 m  
+2      2nd  discus throw  63.50 m  
+3      8th  discus throw  62.58 m  
+4      4th  discus throw  60.99 m  
+5      3rd  discus throw  57.79 m  
+6      2nd  discus throw  56.98 m  
+Sample 229 - Plan 1: Table after operation: [['year', 'competition', 'venue', 'position', 'event', 'notes'], [2000, 'world junior championships', 'santiago, chile', '1st', 'discus throw', '59.51 m'], [2003, 'all-africa games', 'abuja, nigeria', '2nd', 'discus throw', '62.86 m'], [2004, 'african championships', 'brazzaville, republic of the congo', '2nd', 'discus throw', '63.50 m'], [2004, 'olympic games', 'athens, greece', '8th', 'discus throw', '62.58 m'], [2006, 'commonwealth games', 'melbourne, australia', '4th', 'discus throw', '60.99 m'], [2007, 'all-africa games', 'algiers, algeria', '3rd', 'discus throw', '57.79 m'], [2008, 'african championships', 'addis ababa, ethiopia', '2nd', 'discus throw', '56.98 m']]
+########################################################################################################################
+Sample 229 - Plan 1: Operation 2: Extract the numerical value from the 'notes' column then add column 'distance' to the existing table.
+Sample 229 - Plan 1: Selected indices: [[0, 5], [1, 5], [2, 5], [3, 5], [4, 5], [5, 5], [6, 5]]
+Sample 229 - Plan 1: X-Table after operation df:
+   year                 competition                               venue  \
+0  2000  world junior championships                     santiago, chile   
+1  2003            all-africa games                      abuja, nigeria   
+2  2004       african championships  brazzaville, republic of the congo   
+3  2004               olympic games                      athens, greece   
+4  2006          commonwealth games                melbourne, australia   
+5  2007            all-africa games                    algiers, algeria   
+6  2008       african championships               addis ababa, ethiopia   
+
+  position         event    notes  distance  
+0      1st  discus throw  59.51 m     59.51  
+1      2nd  discus throw  62.86 m     62.86  
+2      2nd  discus throw  63.50 m     63.50  
+3      8th  discus throw  62.58 m     62.58  
+4      4th  discus throw  60.99 m     60.99  
+5      3rd  discus throw  57.79 m     57.79  
+6      2nd  discus throw  56.98 m     56.98  
+Sample 229 - Plan 1: Table after operation: [['year', 'competition', 'venue', 'position', 'event', 'notes', 'distance'], [2000, 'world junior championships', 'santiago, chile', '1st', 'discus throw', '59.51 m', 59.51], [2003, 'all-africa games', 'abuja, nigeria', '2nd', 'discus throw', '62.86 m', 62.86], [2004, 'african championships', 'brazzaville, republic of the congo', '2nd', 'discus throw', '63.50 m', 63.5], [2004, 'olympic games', 'athens, greece', '8th', 'discus throw', '62.58 m', 62.58], [2006, 'commonwealth games', 'melbourne, australia', '4th', 'discus throw', '60.99 m', 60.99], [2007, 'all-africa games', 'algiers, algeria', '3rd', 'discus throw', '57.79 m', 57.79], [2008, 'african championships', 'addis ababa, ethiopia', '2nd', 'discus throw', '56.98 m', 56.98]]
+########################################################################################################################
+Sample 229 - Plan 1: Operation 3: Select rows where the 'distance' is greater than or equal to 60.
+Sample 229 - Plan 1: Selected indices: [[1, 6], [4, 6], [2, 6], [3, 6]]
+Sample 229 - Plan 1: X-Table after operation df:
+   year            competition                               venue position  \
+0  2003       all-africa games                      abuja, nigeria      2nd   
+1  2004  african championships  brazzaville, republic of the congo      2nd   
+2  2004          olympic games                      athens, greece      8th   
+3  2006     commonwealth games                melbourne, australia      4th   
+
+          event    notes  distance  
+0  discus throw  62.86 m     62.86  
+1  discus throw  63.50 m     63.50  
+2  discus throw  62.58 m     62.58  
+3  discus throw  60.99 m     60.99  
+Sample 229 - Plan 1: Table after operation: [['year', 'competition', 'venue', 'position', 'event', 'notes', 'distance'], [2003, 'all-africa games', 'abuja, nigeria', '2nd', 'discus throw', '62.86 m', 62.86], [2004, 'african championships', 'brazzaville, republic of the congo', '2nd', 'discus throw', '63.50 m', 63.5], [2004, 'olympic games', 'athens, greece', '8th', 'discus throw', '62.58 m', 62.58], [2006, 'commonwealth games', 'melbourne, australia', '4th', 'discus throw', '60.99 m', 60.99]]
+########################################################################################################################
+Sample 229 - Plan 1: Operation 4: Count the number of rows.
+Sample 229 - Plan 1: Selected indices: []
+Sample 229 - Plan 1: X-Table after operation df:
+   row_count
+0          4
+Sample 229 - Plan 1: Table after operation: [['row_count'], [4]]
+Fall-back: FALSE
+Answer from plan 1: [[4]]
+Groundtruth: ['4 events']

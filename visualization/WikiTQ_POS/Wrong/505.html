@@ -1,0 +1,383 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which team had the first pick this round?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select the 'pick__' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>pick__</td>
+<td>player</td>
+<td>position</td>
+<td>nationality</td>
+<td>nhl_team</td>
+<td>college_junior_club_team</td>
+</tr>
+<tr>
+<td>148</td>
+<td>dan mcfall</td>
+<td>defence</td>
+<td>united states</td>
+<td>winnipeg jets</td>
+<td>buffalo jr. sabres (najhl)</td>
+</tr>
+<tr>
+<td>149</td>
+<td>rick zombo</td>
+<td>defence</td>
+<td>united states</td>
+<td>detroit red wings</td>
+<td>austin mavericks (ushl)</td>
+</tr>
+<tr>
+<td>150</td>
+<td>tony arima</td>
+<td>left wing</td>
+<td>finland</td>
+<td>colorado rockies</td>
+<td>jokerit (finland)</td>
+</tr>
+<tr>
+<td>151</td>
+<td>denis dore</td>
+<td>right wing</td>
+<td>canada</td>
+<td>hartford whalers</td>
+<td>chicoutimi saguenéens (qmjhl)</td>
+</tr>
+<tr>
+<td>152</td>
+<td>gaetan duchesne</td>
+<td>left wing</td>
+<td>canada</td>
+<td>washington capitals</td>
+<td>quebec remparts (qmjhl)</td>
+</tr>
+<tr>
+<td>153</td>
+<td>richard turmel</td>
+<td>defence</td>
+<td>canada</td>
+<td>toronto maple leafs</td>
+<td>shawinigan cataractes (qmjhl)</td>
+</tr>
+<tr>
+<td>154</td>
+<td>mitch lamoureux</td>
+<td>centre</td>
+<td>canada</td>
+<td>pittsburgh penguins</td>
+<td>oshawa generals (omjhl)</td>
+</tr>
+<tr>
+<td>155</td>
+<td>mike sturgeon</td>
+<td>defence</td>
+<td>canada</td>
+<td>edmonton oilers</td>
+<td>kelowna buckaroos (bcjhl)</td>
+</tr>
+<tr>
+<td>156</td>
+<td>ari lahteenmaki</td>
+<td>right wing</td>
+<td>finland</td>
+<td>new york rangers</td>
+<td>hifk (finland)</td>
+</tr>
+<tr>
+<td>157</td>
+<td>petri skriko</td>
+<td>right wing</td>
+<td>finland</td>
+<td>vancouver canucks</td>
+<td>saipa (finland)</td>
+</tr>
+<tr>
+<td>158</td>
+<td>andre cote</td>
+<td>right wing</td>
+<td>canada</td>
+<td>quebec nordiques</td>
+<td>quebec remparts (qmjhl)</td>
+</tr>
+<tr>
+<td>159</td>
+<td>johan mellstrom</td>
+<td>left wing</td>
+<td>sweden</td>
+<td>chicago black hawks</td>
+<td>falun (sweden)</td>
+</tr>
+<tr>
+<td>160</td>
+<td>kari kanervo</td>
+<td>centre</td>
+<td>finland</td>
+<td>minnesota north stars</td>
+<td>tps (finland)</td>
+</tr>
+<tr>
+<td>161</td>
+<td>armel parisee</td>
+<td>defence</td>
+<td>canada</td>
+<td>boston bruins</td>
+<td>chicoutimi saguenéens (qmjhl)</td>
+</tr>
+<tr>
+<td>162</td>
+<td>dale degray</td>
+<td>defence</td>
+<td>canada</td>
+<td>calgary flames</td>
+<td>oshawa generals (omjhl)</td>
+</tr>
+<tr>
+<td>163</td>
+<td>steve taylor</td>
+<td>left wing</td>
+<td>united states</td>
+<td>philadelphia flyers</td>
+<td>providence college (ecac)</td>
+</tr>
+<tr>
+<td>164</td>
+<td>gates orlando</td>
+<td>centre</td>
+<td>canada</td>
+<td>buffalo sabres</td>
+<td>providence college (ecac)</td>
+</tr>
+<tr>
+<td>165</td>
+<td>dan brennan</td>
+<td>left wing</td>
+<td>canada</td>
+<td>los angeles kings</td>
+<td>university of north dakota (wcha)</td>
+</tr>
+<tr>
+<td>166</td>
+<td>paul gess</td>
+<td>left wing</td>
+<td>united states</td>
+<td>montreal canadiens</td>
+<td>bloomington jefferson high school (ushs-mn)</td>
+</tr>
+<tr>
+<td>167</td>
+<td>alain vigneault</td>
+<td>defence</td>
+<td>canada</td>
+<td>st. louis blues</td>
+<td>trois-rivières draveurs (qmjhl)</td>
+</tr>
+<tr>
+<td>168</td>
+<td>bill dowd</td>
+<td>defence</td>
+<td>canada</td>
+<td>new york islanders</td>
+<td>ottawa 67's (omjhl)</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Order the table by the 'pick__' column in ascending order.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>pick__</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">148</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">149</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">150</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">151</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">152</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">153</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">154</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">155</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">156</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">157</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">158</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">159</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">160</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">161</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">162</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">163</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">164</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">165</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">166</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">167</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">168</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select the first row.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>pick__</td>
+</tr>
+<tr>
+<td>148</td>
+</tr>
+<tr>
+<td>149</td>
+</tr>
+<tr>
+<td>150</td>
+</tr>
+<tr>
+<td>151</td>
+</tr>
+<tr>
+<td>152</td>
+</tr>
+<tr>
+<td>153</td>
+</tr>
+<tr>
+<td>154</td>
+</tr>
+<tr>
+<td>155</td>
+</tr>
+<tr>
+<td>156</td>
+</tr>
+<tr>
+<td>157</td>
+</tr>
+<tr>
+<td>158</td>
+</tr>
+<tr>
+<td>159</td>
+</tr>
+<tr>
+<td>160</td>
+</tr>
+<tr>
+<td>161</td>
+</tr>
+<tr>
+<td>162</td>
+</tr>
+<tr>
+<td>163</td>
+</tr>
+<tr>
+<td>164</td>
+</tr>
+<tr>
+<td>165</td>
+</tr>
+<tr>
+<td>166</td>
+</tr>
+<tr>
+<td>167</td>
+</tr>
+<tr>
+<td>168</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Select the 'nhl_team' column.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>pick__</td>
+</tr>
+<tr>
+<td>148</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>pick__</td>
+</tr>
+<tr>
+<td>148</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[148]]</h3>
+</body></html>

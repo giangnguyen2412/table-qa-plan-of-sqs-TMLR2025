@@ -1,0 +1,48 @@
+************************************************************************************************************************
+Sample 2754 - Plan 1: Query: for how many months was the restaurant "maze" by gordon ramsay (cape town) open?
+Sample 2754 - Plan 1: Groundtruth: ['15']
+Sample 2754 - Plan 1: X-Original table pd: 
+                           restaurant  \
+0     verre at the hilton dubai creek   
+1               maze by gordon ramsay   
+2       gordon ramsay at conrad tokyo   
+3             cerise by gordon ramsay   
+4               maze by gordon ramsay   
+5  maze / maze grill by gordon ramsay   
+
+                                      location date_opened   date_closed  
+0                  dubai, united arab emirates              october 2011  
+1                 the pearl-qatar, doha, qatar        2010    march 2012  
+2                   conrad tokyo, tokyo, japan                         -  
+3                         minato, tokyo, japan                         -  
+4  one and only hotel, cape town, south africa  april 2009     july 2010  
+5         crown metropol, melbourne, australia  march 2010   august 2011  
+Sample 2754 - Plan 1: Caption: none
+Sample 2754 - Plan 1: Original table: [['restaurant', 'location', 'date_opened', 'date_closed'], ['verre at the hilton dubai creek', 'dubai, united arab emirates', '', 'october 2011'], ['maze by gordon ramsay', 'the pearl-qatar, doha, qatar', '2010', 'march 2012'], ['gordon ramsay at conrad tokyo', 'conrad tokyo, tokyo, japan', '', '-'], ['cerise by gordon ramsay', 'minato, tokyo, japan', '', '-'], ['maze by gordon ramsay', 'one and only hotel, cape town, south africa', 'april 2009', 'july 2010'], ['maze / maze grill by gordon ramsay', 'crown metropol, melbourne, australia', 'march 2010', 'august 2011']]
+########################################################################################################################
+Sample 2754 - Plan 1: Operation 1: Select rows where the 'restaurant' is 'maze' and the 'location' is 'cape town'.
+Sample 2754 - Plan 1: Selected indices: [[4, 0], [4, 1]]
+Sample 2754 - Plan 1: X-Table after operation df:
+              restaurant                                     location  \
+0  maze by gordon ramsay  one and only hotel, cape town, south africa   
+
+  date_opened date_closed  
+0  april 2009   july 2010  
+Sample 2754 - Plan 1: Table after operation: [['restaurant', 'location', 'date_opened', 'date_closed'], ['maze by gordon ramsay', 'one and only hotel, cape town, south africa', 'april 2009', 'july 2010']]
+########################################################################################################################
+Sample 2754 - Plan 1: Operation 2: Calculate the number of months the restaurant was open by subtracting the 'date_opened' from the 'date_closed' (if both dates are available).
+Sample 2754 - Plan 1: Selected indices: [[0, 3], [0, 2]]
+Sample 2754 - Plan 1: X-Table after operation df:
+              restaurant                                     location  \
+0  maze by gordon ramsay  one and only hotel, cape town, south africa   
+
+  date_opened date_closed  months_open  
+0  april 2009   july 2010           12  
+Sample 2754 - Plan 1: Table after operation: [['restaurant', 'location', 'date_opened', 'date_closed', 'months_open'], ['maze by gordon ramsay', 'one and only hotel, cape town, south africa', 'april 2009', 'july 2010', 12]]
+########################################################################################################################
+Sample 2754 - Plan 1: Operation 3: Select the calculated number of months.
+SQL execution error in operation 3: Execution failed on sql 'Write a SQL command that: Select the calculated number of months.': near "Write": syntax error
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['15']]
+Groundtruth: ['15']

@@ -1,0 +1,491 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> what was their largest margin for a win?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Extract the numerical values from the 'score' column and add a new column 'num_score' to the existing table.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>date</td>
+<td>venue</td>
+<td>opponents</td>
+<td>score</td>
+<td>competition</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20 march</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fukuoka (a)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sanix cup</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20 march</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fukuoka (a)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">china pr</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sanix cup</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8 august</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">toyota (n)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">brazil</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">toyota cup</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9 august</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">toyota (a)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2–2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">toyota cup</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10 august</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">toyota (n)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united arab emirates</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">6–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">toyota cup</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4 october</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tashkent (n)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">india</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">5–2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">afc u-16 championship (group b)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6 october</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tashkent (n)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">indonesia</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">9–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">afc u-16 championship (group b)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8 october</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tashkent (n)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">syria</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1–1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">afc u-16 championship (group b)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12 october</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tashkent (a)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">uzbekistan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">3–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">afc u-16 championship (quarterfinal)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">15 october</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tashkent (n)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2–1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">afc u-16 championship (semifinal)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">18 october</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tashkent (n)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">iran</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1–2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">afc u-16 championship (final)</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Calculate the margin for each win by subtracting the opponent's score from their own score and add a new column 'margin' to the existing table.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>date</td>
+<td>venue</td>
+<td>opponents</td>
+<td>score</td>
+<td>competition</td>
+<td>num_score</td>
+</tr>
+<tr>
+<td>20 march</td>
+<td>fukuoka (a)</td>
+<td>japan</td>
+<td><span class="highlighted-cell" title="Used in transformation">2–0</span></td>
+<td>sanix cup</td>
+<td>0</td>
+</tr>
+<tr>
+<td>20 march</td>
+<td>fukuoka (a)</td>
+<td>china pr</td>
+<td><span class="highlighted-cell" title="Used in transformation">1–0</span></td>
+<td>sanix cup</td>
+<td>0</td>
+</tr>
+<tr>
+<td>8 august</td>
+<td>toyota (n)</td>
+<td>brazil</td>
+<td><span class="highlighted-cell" title="Used in transformation">0–0</span></td>
+<td>toyota cup</td>
+<td>0</td>
+</tr>
+<tr>
+<td>9 august</td>
+<td>toyota (a)</td>
+<td>japan</td>
+<td><span class="highlighted-cell" title="Used in transformation">2–2</span></td>
+<td>toyota cup</td>
+<td>2</td>
+</tr>
+<tr>
+<td>10 august</td>
+<td>toyota (n)</td>
+<td>united arab emirates</td>
+<td><span class="highlighted-cell" title="Used in transformation">6–0</span></td>
+<td>toyota cup</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4 october</td>
+<td>tashkent (n)</td>
+<td>india</td>
+<td><span class="highlighted-cell" title="Used in transformation">5–2</span></td>
+<td>afc u-16 championship (group b)</td>
+<td>2</td>
+</tr>
+<tr>
+<td>6 october</td>
+<td>tashkent (n)</td>
+<td>indonesia</td>
+<td><span class="highlighted-cell" title="Used in transformation">9–0</span></td>
+<td>afc u-16 championship (group b)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>8 october</td>
+<td>tashkent (n)</td>
+<td>syria</td>
+<td><span class="highlighted-cell" title="Used in transformation">1–1</span></td>
+<td>afc u-16 championship (group b)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>12 october</td>
+<td>tashkent (a)</td>
+<td>uzbekistan</td>
+<td><span class="highlighted-cell" title="Used in transformation">3–0</span></td>
+<td>afc u-16 championship (quarterfinal)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>15 october</td>
+<td>tashkent (n)</td>
+<td>japan</td>
+<td><span class="highlighted-cell" title="Used in transformation">2–1</span></td>
+<td>afc u-16 championship (semifinal)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>18 october</td>
+<td>tashkent (n)</td>
+<td>iran</td>
+<td><span class="highlighted-cell" title="Used in transformation">1–2</span></td>
+<td>afc u-16 championship (final)</td>
+<td>2</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Order the table by the 'margin' column in descending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>date</td>
+<td>venue</td>
+<td>opponents</td>
+<td>score</td>
+<td>competition</td>
+<td>num_score</td>
+<td>margin</td>
+</tr>
+<tr>
+<td>20 march</td>
+<td>fukuoka (a)</td>
+<td>japan</td>
+<td>2–0</td>
+<td>sanix cup</td>
+<td>0</td>
+<td><span class="highlighted-cell" title="Used in transformation">2</span></td>
+</tr>
+<tr>
+<td>20 march</td>
+<td>fukuoka (a)</td>
+<td>china pr</td>
+<td>1–0</td>
+<td>sanix cup</td>
+<td>0</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>8 august</td>
+<td>toyota (n)</td>
+<td>brazil</td>
+<td>0–0</td>
+<td>toyota cup</td>
+<td>0</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td>9 august</td>
+<td>toyota (a)</td>
+<td>japan</td>
+<td>2–2</td>
+<td>toyota cup</td>
+<td>2</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td>10 august</td>
+<td>toyota (n)</td>
+<td>united arab emirates</td>
+<td>6–0</td>
+<td>toyota cup</td>
+<td>0</td>
+<td><span class="highlighted-cell" title="Used in transformation">6</span></td>
+</tr>
+<tr>
+<td>4 october</td>
+<td>tashkent (n)</td>
+<td>india</td>
+<td>5–2</td>
+<td>afc u-16 championship (group b)</td>
+<td>2</td>
+<td><span class="highlighted-cell" title="Used in transformation">3</span></td>
+</tr>
+<tr>
+<td>6 october</td>
+<td>tashkent (n)</td>
+<td>indonesia</td>
+<td>9–0</td>
+<td>afc u-16 championship (group b)</td>
+<td>0</td>
+<td><span class="highlighted-cell" title="Used in transformation">9</span></td>
+</tr>
+<tr>
+<td>8 october</td>
+<td>tashkent (n)</td>
+<td>syria</td>
+<td>1–1</td>
+<td>afc u-16 championship (group b)</td>
+<td>1</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td>12 october</td>
+<td>tashkent (a)</td>
+<td>uzbekistan</td>
+<td>3–0</td>
+<td>afc u-16 championship (quarterfinal)</td>
+<td>0</td>
+<td><span class="highlighted-cell" title="Used in transformation">3</span></td>
+</tr>
+<tr>
+<td>15 october</td>
+<td>tashkent (n)</td>
+<td>japan</td>
+<td>2–1</td>
+<td>afc u-16 championship (semifinal)</td>
+<td>1</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>18 october</td>
+<td>tashkent (n)</td>
+<td>iran</td>
+<td>1–2</td>
+<td>afc u-16 championship (final)</td>
+<td>2</td>
+<td><span class="highlighted-cell" title="Used in transformation">-1</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Select the row with the largest margin.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>date</td>
+<td>venue</td>
+<td>opponents</td>
+<td>score</td>
+<td>competition</td>
+<td>num_score</td>
+<td>margin</td>
+</tr>
+<tr>
+<td>6 october</td>
+<td>tashkent (n)</td>
+<td>indonesia</td>
+<td>9–0</td>
+<td>afc u-16 championship (group b)</td>
+<td>0</td>
+<td><span class="highlighted-cell" title="Used in transformation">9</span></td>
+</tr>
+<tr>
+<td>10 august</td>
+<td>toyota (n)</td>
+<td>united arab emirates</td>
+<td>6–0</td>
+<td>toyota cup</td>
+<td>0</td>
+<td>6</td>
+</tr>
+<tr>
+<td>4 october</td>
+<td>tashkent (n)</td>
+<td>india</td>
+<td>5–2</td>
+<td>afc u-16 championship (group b)</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>12 october</td>
+<td>tashkent (a)</td>
+<td>uzbekistan</td>
+<td>3–0</td>
+<td>afc u-16 championship (quarterfinal)</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr>
+<td>20 march</td>
+<td>fukuoka (a)</td>
+<td>japan</td>
+<td>2–0</td>
+<td>sanix cup</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr>
+<td>20 march</td>
+<td>fukuoka (a)</td>
+<td>china pr</td>
+<td>1–0</td>
+<td>sanix cup</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>15 october</td>
+<td>tashkent (n)</td>
+<td>japan</td>
+<td>2–1</td>
+<td>afc u-16 championship (semifinal)</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>8 august</td>
+<td>toyota (n)</td>
+<td>brazil</td>
+<td>0–0</td>
+<td>toyota cup</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>9 august</td>
+<td>toyota (a)</td>
+<td>japan</td>
+<td>2–2</td>
+<td>toyota cup</td>
+<td>2</td>
+<td>0</td>
+</tr>
+<tr>
+<td>8 october</td>
+<td>tashkent (n)</td>
+<td>syria</td>
+<td>1–1</td>
+<td>afc u-16 championship (group b)</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>18 october</td>
+<td>tashkent (n)</td>
+<td>iran</td>
+<td>1–2</td>
+<td>afc u-16 championship (final)</td>
+<td>2</td>
+<td>-1</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 5: Select the 'margin' column.</div>
+<div id="step-3" class="content">
+<table>
+<tr>
+<td>date</td>
+<td>venue</td>
+<td>opponents</td>
+<td>score</td>
+<td>competition</td>
+<td>num_score</td>
+<td>margin</td>
+</tr>
+<tr>
+<td>6 october</td>
+<td>tashkent (n)</td>
+<td>indonesia</td>
+<td>9–0</td>
+<td>afc u-16 championship (group b)</td>
+<td>0</td>
+<td>9</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>margin</td>
+</tr>
+<tr>
+<td>9</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[9]]</h3>
+</body></html>

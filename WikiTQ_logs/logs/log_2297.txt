@@ -1,0 +1,110 @@
+************************************************************************************************************************
+Sample 2297 - Plan 1: Query: who scored the most points, harp, briones, or lang?
+Sample 2297 - Plan 1: Groundtruth: ['Lang']
+Sample 2297 - Plan 1: X-Original table pd: 
+                           date      opponent   score  \
+0   february 7 all-filipino cup         shell   76-60   
+1                   february 11      mobiline   80-68   
+2                   february 16        alaska   73-72   
+3                   february 28    san miguel   78-76   
+4                       march 3  brgy.ginebra   79-72   
+5                       march 9         shell   65-58   
+6                       april 4     sta.lucia   87-84   
+7    june 10 commissioner's cup      mobiline   97-92   
+8                       june 15  brgy.ginebra  111-98   
+9                       june 24         shell   94-82   
+10                       july 1      pop cola   95-79   
+11                       july 8     sta.lucia   95-88   
+12                      july 13       tanduay  104-98   
+13  september 23 governor's cup       tanduay  108-93   
+14                 september 29  talk 'n text   99-85   
+15                   october 14         shell   68-62   
+16                   october 19     sta.lucia  101-94   
+17                   october 24  brgy.ginebra   93-72   
+18                   november 7    san miguel   86-81   
+
+   top_scorer__total_points_             venue  
+0                             philsports arena  
+1                             araneta coliseum  
+2           davonn harp (20)  philsports arena  
+3        lowell briones (21)  philsports arena  
+4                                  iloilo city  
+5                             philsports arena  
+6                             philsports arena  
+7             tony lang (29)  araneta coliseum  
+8                             philsports arena  
+9                             araneta coliseum  
+10                            araneta coliseum  
+11                            araneta coliseum  
+12                            philsports arena  
+13                            philsports arena  
+14                              dumaguete city  
+15                               ynares center  
+16                            cuneta astrodome  
+17                            philsports arena  
+18                            araneta coliseum  
+Sample 2297 - Plan 1: Caption: none
+Sample 2297 - Plan 1: Original table: [['date', 'opponent', 'score', 'top_scorer__total_points_', 'venue'], ['february 7 all-filipino cup', 'shell', '76-60', '', 'philsports arena'], ['february 11', 'mobiline', '80-68', '', 'araneta coliseum'], ['february 16', 'alaska', '73-72', 'davonn harp (20)', 'philsports arena'], ['february 28', 'san miguel', '78-76', 'lowell briones (21)', 'philsports arena'], ['march 3', 'brgy.ginebra', '79-72', '', 'iloilo city'], ['march 9', 'shell', '65-58', '', 'philsports arena'], ['april 4', 'sta.lucia', '87-84', '', 'philsports arena'], ["june 10 commissioner's cup", 'mobiline', '97-92', 'tony lang (29)', 'araneta coliseum'], ['june 15', 'brgy.ginebra', '111-98', '', 'philsports arena'], ['june 24', 'shell', '94-82', '', 'araneta coliseum'], ['july 1', 'pop cola', '95-79', '', 'araneta coliseum'], ['july 8', 'sta.lucia', '95-88', '', 'araneta coliseum'], ['july 13', 'tanduay', '104-98', '', 'philsports arena'], ["september 23 governor's cup", 'tanduay', '108-93', '', 'philsports arena'], ['september 29', "talk 'n text", '99-85', '', 'dumaguete city'], ['october 14', 'shell', '68-62', '', 'ynares center'], ['october 19', 'sta.lucia', '101-94', '', 'cuneta astrodome'], ['october 24', 'brgy.ginebra', '93-72', '', 'philsports arena'], ['november 7', 'san miguel', '86-81', '', 'araneta coliseum']]
+########################################################################################################################
+Sample 2297 - Plan 1: Operation 1: Extract the numerical value from the 'top_scorer__total_points_' column then add column 'num_points' to the existing table.
+Sample 2297 - Plan 1: Selected indices: [[0, 3], [1, 3], [2, 3], [3, 3], [4, 3], [5, 3], [6, 3], [7, 3], [8, 3], [9, 3], [10, 3], [11, 3], [12, 3], [13, 3], [14, 3], [15, 3], [16, 3], [17, 3], [18, 3]]
+Sample 2297 - Plan 1: X-Table after operation df:
+                           date      opponent   score  \
+0   february 7 all-filipino cup         shell   76-60   
+1                   february 11      mobiline   80-68   
+2                   february 16        alaska   73-72   
+3                   february 28    san miguel   78-76   
+4                       march 3  brgy.ginebra   79-72   
+5                       march 9         shell   65-58   
+6                       april 4     sta.lucia   87-84   
+7    june 10 commissioner's cup      mobiline   97-92   
+8                       june 15  brgy.ginebra  111-98   
+9                       june 24         shell   94-82   
+10                       july 1      pop cola   95-79   
+11                       july 8     sta.lucia   95-88   
+12                      july 13       tanduay  104-98   
+13  september 23 governor's cup       tanduay  108-93   
+14                 september 29  talk 'n text   99-85   
+15                   october 14         shell   68-62   
+16                   october 19     sta.lucia  101-94   
+17                   october 24  brgy.ginebra   93-72   
+18                   november 7    san miguel   86-81   
+
+   top_scorer__total_points_             venue  num_points  
+0                             philsports arena           0  
+1                             araneta coliseum           0  
+2           davonn harp (20)  philsports arena          20  
+3        lowell briones (21)  philsports arena          21  
+4                                  iloilo city           0  
+5                             philsports arena           0  
+6                             philsports arena           0  
+7             tony lang (29)  araneta coliseum          29  
+8                             philsports arena           0  
+9                             araneta coliseum           0  
+10                            araneta coliseum           0  
+11                            araneta coliseum           0  
+12                            philsports arena           0  
+13                            philsports arena           0  
+14                              dumaguete city           0  
+15                               ynares center           0  
+16                            cuneta astrodome           0  
+17                            philsports arena           0  
+18                            araneta coliseum           0  
+Sample 2297 - Plan 1: Table after operation: [['date', 'opponent', 'score', 'top_scorer__total_points_', 'venue', 'num_points'], ['february 7 all-filipino cup', 'shell', '76-60', '', 'philsports arena', 0], ['february 11', 'mobiline', '80-68', '', 'araneta coliseum', 0], ['february 16', 'alaska', '73-72', 'davonn harp (20)', 'philsports arena', 20], ['february 28', 'san miguel', '78-76', 'lowell briones (21)', 'philsports arena', 21], ['march 3', 'brgy.ginebra', '79-72', '', 'iloilo city', 0], ['march 9', 'shell', '65-58', '', 'philsports arena', 0], ['april 4', 'sta.lucia', '87-84', '', 'philsports arena', 0], ["june 10 commissioner's cup", 'mobiline', '97-92', 'tony lang (29)', 'araneta coliseum', 29], ['june 15', 'brgy.ginebra', '111-98', '', 'philsports arena', 0], ['june 24', 'shell', '94-82', '', 'araneta coliseum', 0], ['july 1', 'pop cola', '95-79', '', 'araneta coliseum', 0], ['july 8', 'sta.lucia', '95-88', '', 'araneta coliseum', 0], ['july 13', 'tanduay', '104-98', '', 'philsports arena', 0], ["september 23 governor's cup", 'tanduay', '108-93', '', 'philsports arena', 0], ['september 29', "talk 'n text", '99-85', '', 'dumaguete city', 0], ['october 14', 'shell', '68-62', '', 'ynares center', 0], ['october 19', 'sta.lucia', '101-94', '', 'cuneta astrodome', 0], ['october 24', 'brgy.ginebra', '93-72', '', 'philsports arena', 0], ['november 7', 'san miguel', '86-81', '', 'araneta coliseum', 0]]
+########################################################################################################################
+Sample 2297 - Plan 1: Operation 2: Calculate the maximum value from the 'num_points' column.
+Sample 2297 - Plan 1: Selected indices: []
+Sample 2297 - Plan 1: X-Table after operation df:
+   maximum_num_points
+0                  29
+Sample 2297 - Plan 1: Table after operation: [['maximum_num_points'], [29]]
+########################################################################################################################
+Sample 2297 - Plan 1: Operation 3: Select rows where the 'num_points' is equal to the maximum value.
+SQL execution error in operation 3: Execution failed on sql 'SELECT *
+FROM table_sql
+WHERE num_points = (SELECT MAX(maximum_num_points) FROM table_sql);
+-- Select rows where the 'num_points' is equal to the maximum value.': no such column: num_points
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['davonn harp']]
+Groundtruth: ['Lang']

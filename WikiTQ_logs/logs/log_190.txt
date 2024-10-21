@@ -1,0 +1,74 @@
+************************************************************************************************************************
+Sample 190 - Plan 1: Query: what is the last film that lars von trier made?
+Sample 190 - Plan 1: Groundtruth: ['Nymphomaniac: Volume II']
+Sample 190 - Plan 1: X-Original table pd: 
+    year                     film rotten_tomatoes metacritic    imdb
+0   1982     images of liberation             n/a        n/a  5.1/10
+1   1984     the element of crime             77%        n/a  6.9/10
+2   1987                 epidemic             33%        66%  6.1/10
+3   1991                   europa             85%        66%  7.7/10
+4   1996       breaking the waves             86%        76%  7.9/10
+5   1998               the idiots             70%        47%  6.9/10
+6   2000       dancer in the dark             68%        61%  8.0/10
+7   2003    the five obstructions             88%        79%  7.5/10
+8   2003                 dogville             70%        59%  8.0/10
+9   2005                manderlay             51%        46%  7.4/10
+10  2006       the boss of it all             74%        71%  6.7/10
+11  2009               antichrist             48%        49%  6.6/10
+12  2011              melancholia             77%        80%  7.1/10
+13  2013   nymphomaniac: volume i             77%        63%  7.5/10
+14  2013  nymphomaniac: volume ii             79%        76%  7.2/10
+Sample 190 - Plan 1: Caption: none
+Sample 190 - Plan 1: Original table: [['year', 'film', 'rotten_tomatoes', 'metacritic', 'imdb'], ['1982', 'images of liberation', 'n/a', 'n/a', '5.1/10'], ['1984', 'the element of crime', '77%', 'n/a', '6.9/10'], ['1987', 'epidemic', '33%', '66%', '6.1/10'], ['1991', 'europa', '85%', '66%', '7.7/10'], ['1996', 'breaking the waves', '86%', '76%', '7.9/10'], ['1998', 'the idiots', '70%', '47%', '6.9/10'], ['2000', 'dancer in the dark', '68%', '61%', '8.0/10'], ['2003', 'the five obstructions', '88%', '79%', '7.5/10'], ['2003', 'dogville', '70%', '59%', '8.0/10'], ['2005', 'manderlay', '51%', '46%', '7.4/10'], ['2006', 'the boss of it all', '74%', '71%', '6.7/10'], ['2009', 'antichrist', '48%', '49%', '6.6/10'], ['2011', 'melancholia', '77%', '80%', '7.1/10'], ['2013', 'nymphomaniac: volume i', '77%', '63%', '7.5/10'], ['2013', 'nymphomaniac: volume ii', '79%', '76%', '7.2/10']]
+########################################################################################################################
+Sample 190 - Plan 1: Operation 1: Order the table by 'year' in descending order.
+Sample 190 - Plan 1: Selected indices: [[9, 0], [4, 0], [0, 0], [11, 0], [12, 0], [7, 0], [2, 0], [13, 0], [8, 0], [14, 0], [3, 0], [10, 0], [5, 0], [6, 0], [1, 0]]
+Sample 190 - Plan 1: X-Table after operation df:
+    year                     film rotten_tomatoes metacritic    imdb
+0   2013   nymphomaniac: volume i             77%        63%  7.5/10
+1   2013  nymphomaniac: volume ii             79%        76%  7.2/10
+2   2011              melancholia             77%        80%  7.1/10
+3   2009               antichrist             48%        49%  6.6/10
+4   2006       the boss of it all             74%        71%  6.7/10
+5   2005                manderlay             51%        46%  7.4/10
+6   2003    the five obstructions             88%        79%  7.5/10
+7   2003                 dogville             70%        59%  8.0/10
+8   2000       dancer in the dark             68%        61%  8.0/10
+9   1998               the idiots             70%        47%  6.9/10
+10  1996       breaking the waves             86%        76%  7.9/10
+11  1991                   europa             85%        66%  7.7/10
+12  1987                 epidemic             33%        66%  6.1/10
+13  1984     the element of crime             77%        n/a  6.9/10
+14  1982     images of liberation             n/a        n/a  5.1/10
+Sample 190 - Plan 1: Table after operation: [['year', 'film', 'rotten_tomatoes', 'metacritic', 'imdb'], [2013, 'nymphomaniac: volume i', '77%', '63%', '7.5/10'], [2013, 'nymphomaniac: volume ii', '79%', '76%', '7.2/10'], [2011, 'melancholia', '77%', '80%', '7.1/10'], [2009, 'antichrist', '48%', '49%', '6.6/10'], [2006, 'the boss of it all', '74%', '71%', '6.7/10'], [2005, 'manderlay', '51%', '46%', '7.4/10'], [2003, 'the five obstructions', '88%', '79%', '7.5/10'], [2003, 'dogville', '70%', '59%', '8.0/10'], [2000, 'dancer in the dark', '68%', '61%', '8.0/10'], [1998, 'the idiots', '70%', '47%', '6.9/10'], [1996, 'breaking the waves', '86%', '76%', '7.9/10'], [1991, 'europa', '85%', '66%', '7.7/10'], [1987, 'epidemic', '33%', '66%', '6.1/10'], [1984, 'the element of crime', '77%', 'n/a', '6.9/10'], [1982, 'images of liberation', 'n/a', 'n/a', '5.1/10']]
+########################################################################################################################
+Sample 190 - Plan 1: Operation 2: Select the 'film' column.
+Sample 190 - Plan 1: Selected indices: []
+Sample 190 - Plan 1: X-Table after operation df:
+                       film
+0    nymphomaniac: volume i
+1   nymphomaniac: volume ii
+2               melancholia
+3                antichrist
+4        the boss of it all
+5                 manderlay
+6     the five obstructions
+7                  dogville
+8        dancer in the dark
+9                the idiots
+10       breaking the waves
+11                   europa
+12                 epidemic
+13     the element of crime
+14     images of liberation
+Sample 190 - Plan 1: Table after operation: [['film'], ['nymphomaniac: volume i'], ['nymphomaniac: volume ii'], ['melancholia'], ['antichrist'], ['the boss of it all'], ['manderlay'], ['the five obstructions'], ['dogville'], ['dancer in the dark'], ['the idiots'], ['breaking the waves'], ['europa'], ['epidemic'], ['the element of crime'], ['images of liberation']]
+########################################################################################################################
+Sample 190 - Plan 1: Operation 3: Select row number 1.
+Sample 190 - Plan 1: Selected indices: []
+Sample 190 - Plan 1: X-Table after operation df:
+                     film
+0  nymphomaniac: volume i
+Sample 190 - Plan 1: Table after operation: [['film'], ['nymphomaniac: volume i']]
+Fall-back: FALSE
+Answer from plan 1: [['nymphomaniac: volume i']]
+Groundtruth: ['Nymphomaniac: Volume II']

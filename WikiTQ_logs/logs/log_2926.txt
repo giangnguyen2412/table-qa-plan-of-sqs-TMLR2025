@@ -1,0 +1,64 @@
+************************************************************************************************************************
+Sample 2926 - Plan 1: Query: how long did it take for patrick carpentier to finish the 2003 grand prix of montery?
+Sample 2926 - Plan 1: Groundtruth: ['1:48:11.023']
+Sample 2926 - Plan 1: X-Original table pd: 
+    pos  no                driver                            team  laps  \
+0     1  32    patrick carpentier                   team player's    87   
+1     2   1       bruno junqueira              newman/haas racing    87   
+2     3   3            paul tracy                   team player's    87   
+3     4   9  michel jourdain, jr.                      team rahal    87   
+4     5  34       mario haberfeld         mi-jack conquest racing    87   
+5     6  20          oriol servià                  patrick racing    87   
+6     7  51      adrian fernández                fernández racing    87   
+7     8  12          jimmy vasser  american spirit team johansson    87   
+8     9   7        tiago monteiro       fittipaldi-dingman racing    86   
+9    10  55       mario domínguez              herdez competition    86   
+10   11  27           bryan herta                       pk racing    86   
+11   12  31      ryan hunter-reay  american spirit team johansson    86   
+12   13  19        joël camathias               dale coyne racing    85   
+13   14  33         alex tagliani             rocketsports racing    85   
+14   15   4        roberto moreno              herdez competition    85   
+15   16  11            geoff boss               dale coyne racing    83   
+16   17   2    sébastien bourdais              newman/haas racing    77   
+17   18  15        darren manning                   walker racing    12   
+18   19   5         rodolfo lavín                   walker racing    10   
+
+   time_retired  grid  points  
+0   1:48:11.023     1      22  
+1     +0.8 secs     2      17  
+2    +28.6 secs     3      14  
+3    +40.8 secs    13      12  
+4    +42.1 secs     6      10  
+5       +1:00.2    10       8  
+6       +1:01.4     5       6  
+7       +1:01.8     8       5  
+8       + 1 lap    15       4  
+9       + 1 lap    11       3  
+10      + 1 lap    12       2  
+11      + 1 lap    17       1  
+12     + 2 laps    18       0  
+13     + 2 laps    14       0  
+14     + 2 laps     9       0  
+15   mechanical    19       0  
+16   mechanical     4       0  
+17   mechanical     7       0  
+18   mechanical    16       0  
+Sample 2926 - Plan 1: Caption: none
+Sample 2926 - Plan 1: Original table: [['pos', 'no', 'driver', 'team', 'laps', 'time_retired', 'grid', 'points'], ['1', '32', 'patrick carpentier', "team player's", '87', '1:48:11.023', '1', '22'], ['2', '1', 'bruno junqueira', 'newman/haas racing', '87', '+0.8 secs', '2', '17'], ['3', '3', 'paul tracy', "team player's", '87', '+28.6 secs', '3', '14'], ['4', '9', 'michel jourdain, jr.', 'team rahal', '87', '+40.8 secs', '13', '12'], ['5', '34', 'mario haberfeld', 'mi-jack conquest racing', '87', '+42.1 secs', '6', '10'], ['6', '20', 'oriol servià', 'patrick racing', '87', '+1:00.2', '10', '8'], ['7', '51', 'adrian fernández', 'fernández racing', '87', '+1:01.4', '5', '6'], ['8', '12', 'jimmy vasser', 'american spirit team johansson', '87', '+1:01.8', '8', '5'], ['9', '7', 'tiago monteiro', 'fittipaldi-dingman racing', '86', '+ 1 lap', '15', '4'], ['10', '55', 'mario domínguez', 'herdez competition', '86', '+ 1 lap', '11', '3'], ['11', '27', 'bryan herta', 'pk racing', '86', '+ 1 lap', '12', '2'], ['12', '31', 'ryan hunter-reay', 'american spirit team johansson', '86', '+ 1 lap', '17', '1'], ['13', '19', 'joël camathias', 'dale coyne racing', '85', '+ 2 laps', '18', '0'], ['14', '33', 'alex tagliani', 'rocketsports racing', '85', '+ 2 laps', '14', '0'], ['15', '4', 'roberto moreno', 'herdez competition', '85', '+ 2 laps', '9', '0'], ['16', '11', 'geoff boss', 'dale coyne racing', '83', 'mechanical', '19', '0'], ['17', '2', 'sébastien bourdais', 'newman/haas racing', '77', 'mechanical', '4', '0'], ['18', '15', 'darren manning', 'walker racing', '12', 'mechanical', '7', '0'], ['19', '5', 'rodolfo lavín', 'walker racing', '10', 'mechanical', '16', '0']]
+########################################################################################################################
+Sample 2926 - Plan 1: Operation 1: Select rows where 'driver' is 'patrick carpentier'.
+Sample 2926 - Plan 1: Selected indices: [[0, 2]]
+Sample 2926 - Plan 1: X-Table after operation df:
+   pos  no              driver           team  laps time_retired  grid  points
+0    1  32  patrick carpentier  team player's    87  1:48:11.023     1      22
+Sample 2926 - Plan 1: Table after operation: [['pos', 'no', 'driver', 'team', 'laps', 'time_retired', 'grid', 'points'], [1, 32, 'patrick carpentier', "team player's", 87, '1:48:11.023', 1, 22]]
+########################################################################################################################
+Sample 2926 - Plan 1: Operation 2: Select the 'time_retired' column.
+Sample 2926 - Plan 1: Selected indices: []
+Sample 2926 - Plan 1: X-Table after operation df:
+  time_retired
+0  1:48:11.023
+Sample 2926 - Plan 1: Table after operation: [['time_retired'], ['1:48:11.023']]
+Fall-back: FALSE
+Answer from plan 1: [['1:48:11.023']]
+Groundtruth: ['1:48:11.023']

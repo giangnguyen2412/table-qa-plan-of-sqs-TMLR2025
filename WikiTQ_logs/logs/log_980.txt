@@ -1,0 +1,75 @@
+************************************************************************************************************************
+Sample 980 - Plan 1: Query: who had more total victories troy corser or troy bayless?
+Sample 980 - Plan 1: Groundtruth: ['Troy Corser']
+Sample 980 - Plan 1: X-Original table pd: 
+   year            rider victories          bike manufacturer_s_championship
+0  1994     carl fogarty        11    ducati 916                      ducati
+1  1995     carl fogarty        13    ducati 916                      ducati
+2  1996      troy corser         7    ducati 916                      ducati
+3  1998     carl fogarty         3    ducati 916                      ducati
+4  1999     carl fogarty        11    ducati 996                      ducati
+5  2000  (colin edwards)       (7)  (honda rc51)                      ducati
+6  2001     troy bayliss         6    ducati 996                      ducati
+Sample 980 - Plan 1: Caption: none
+Sample 980 - Plan 1: Original table: [['year', 'rider', 'victories', 'bike', 'manufacturer_s_championship'], ['1994', 'carl fogarty', '11', 'ducati 916', 'ducati'], ['1995', 'carl fogarty', '13', 'ducati 916', 'ducati'], ['1996', 'troy corser', '7', 'ducati 916', 'ducati'], ['1998', 'carl fogarty', '3', 'ducati 916', 'ducati'], ['1999', 'carl fogarty', '11', 'ducati 996', 'ducati'], ['2000', '(colin edwards)', '(7)', '(honda rc51)', 'ducati'], ['2001', 'troy bayliss', '6', 'ducati 996', 'ducati']]
+########################################################################################################################
+Sample 980 - Plan 1: Operation 1: Select rows where the 'rider' is 'troy corser'.
+Sample 980 - Plan 1: Selected indices: [[2, 1]]
+Sample 980 - Plan 1: X-Table after operation df:
+   year        rider  victories        bike manufacturer_s_championship
+0  1996  troy corser          7  ducati 916                      ducati
+Sample 980 - Plan 1: Table after operation: [['year', 'rider', 'victories', 'bike', 'manufacturer_s_championship'], [1996, 'troy corser', '7', 'ducati 916', 'ducati']]
+########################################################################################################################
+Sample 980 - Plan 1: Operation 2: Sum the 'victories' column for the selected rows.
+Sample 980 - Plan 1: Selected indices: []
+Sample 980 - Plan 1: X-Table after operation df:
+   total_victories
+0                7
+Sample 980 - Plan 1: Table after operation: [['total_victories'], [7]]
+########################################################################################################################
+Sample 980 - Plan 1: Operation 3: Store the sum of victories for troy corser.
+Sample 980 - Plan 1: Selected indices: []
+Sample 980 - Plan 1: X-Table after operation df:
+   troy_corser_total_victories
+0                            7
+Sample 980 - Plan 1: Table after operation: [['troy_corser_total_victories'], [7]]
+########################################################################################################################
+Sample 980 - Plan 1: Operation 4: Select rows where the 'rider' is 'troy bayliss'.
+Sample 980 - Plan 1: Selected indices: [[0, 0]]
+Sample 980 - Plan 1: X-Table after operation df:
+   troy_corser_total_victories
+0                            7
+Sample 980 - Plan 1: Table after operation: [['troy_corser_total_victories'], [7]]
+########################################################################################################################
+Sample 980 - Plan 1: Operation 5: Sum the 'victories' column for the selected rows.
+Sample 980 - Plan 1: Selected indices: []
+Sample 980 - Plan 1: X-Table after operation df:
+   total_victories
+0                7
+Sample 980 - Plan 1: Table after operation: [['total_victories'], [7]]
+########################################################################################################################
+Sample 980 - Plan 1: Operation 6: Store the sum of victories for troy bayliss.
+Sample 980 - Plan 1: Selected indices: []
+Sample 980 - Plan 1: X-Table after operation df:
+   troy_bayliss_total_victories
+0                             7
+Sample 980 - Plan 1: Table after operation: [['troy_bayliss_total_victories'], [7]]
+########################################################################################################################
+Sample 980 - Plan 1: Operation 7: Compare the sums of victories for troy corser and troy bayliss.
+Sample 980 - Plan 1: Selected indices: []
+Sample 980 - Plan 1: X-Table after operation df:
+   troy_bayliss_total_victories_sum
+0                                 7
+Sample 980 - Plan 1: Table after operation: [['troy_bayliss_total_victories_sum'], [7]]
+########################################################################################################################
+Sample 980 - Plan 1: Operation 8: If the sum of victories for troy corser is greater, the answer is "troy corser".
+SQL execution error in operation 8: Execution failed on sql 'SELECT 
+    CASE 
+        WHEN troy_bayliss_total_victories_sum > (SELECT troy_corser_total_victories_sum FROM table_sql) THEN 'troy bayliss'
+        ELSE 'troy corser'
+    END AS answer
+FROM table_sql;': no such column: troy_corser_total_victories_sum
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['troy corser']]
+Groundtruth: ['Troy Corser']

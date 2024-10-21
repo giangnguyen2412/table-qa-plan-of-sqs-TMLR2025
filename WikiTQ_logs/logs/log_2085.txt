@@ -1,0 +1,72 @@
+************************************************************************************************************************
+Sample 2085 - Plan 1: Query: which popular gordon ramsey cape town, south africa restaurant also has branches in doha, qatar and melbourne, australia?
+Sample 2085 - Plan 1: Groundtruth: ['Maze']
+Sample 2085 - Plan 1: X-Original table pd: 
+                           restaurant  \
+0     verre at the hilton dubai creek   
+1               maze by gordon ramsay   
+2       gordon ramsay at conrad tokyo   
+3             cerise by gordon ramsay   
+4               maze by gordon ramsay   
+5  maze / maze grill by gordon ramsay   
+
+                                      location date_opened   date_closed  
+0                  dubai, united arab emirates              october 2011  
+1                 the pearl-qatar, doha, qatar        2010    march 2012  
+2                   conrad tokyo, tokyo, japan                         -  
+3                         minato, tokyo, japan                         -  
+4  one and only hotel, cape town, south africa  april 2009     july 2010  
+5         crown metropol, melbourne, australia  march 2010   august 2011  
+Sample 2085 - Plan 1: Caption: none
+Sample 2085 - Plan 1: Original table: [['restaurant', 'location', 'date_opened', 'date_closed'], ['verre at the hilton dubai creek', 'dubai, united arab emirates', '', 'october 2011'], ['maze by gordon ramsay', 'the pearl-qatar, doha, qatar', '2010', 'march 2012'], ['gordon ramsay at conrad tokyo', 'conrad tokyo, tokyo, japan', '', '-'], ['cerise by gordon ramsay', 'minato, tokyo, japan', '', '-'], ['maze by gordon ramsay', 'one and only hotel, cape town, south africa', 'april 2009', 'july 2010'], ['maze / maze grill by gordon ramsay', 'crown metropol, melbourne, australia', 'march 2010', 'august 2011']]
+########################################################################################################################
+Sample 2085 - Plan 1: Operation 1: Select rows where the 'restaurant' column contains the phrase 'gordon ramsay'.
+Sample 2085 - Plan 1: Selected indices: [[4, 0], [2, 0], [3, 0], [5, 0], [1, 0]]
+Sample 2085 - Plan 1: X-Table after operation df:
+                           restaurant  \
+0               maze by gordon ramsay   
+1       gordon ramsay at conrad tokyo   
+2             cerise by gordon ramsay   
+3               maze by gordon ramsay   
+4  maze / maze grill by gordon ramsay   
+
+                                      location date_opened  date_closed  
+0                 the pearl-qatar, doha, qatar        2010   march 2012  
+1                   conrad tokyo, tokyo, japan                        -  
+2                         minato, tokyo, japan                        -  
+3  one and only hotel, cape town, south africa  april 2009    july 2010  
+4         crown metropol, melbourne, australia  march 2010  august 2011  
+Sample 2085 - Plan 1: Table after operation: [['restaurant', 'location', 'date_opened', 'date_closed'], ['maze by gordon ramsay', 'the pearl-qatar, doha, qatar', '2010', 'march 2012'], ['gordon ramsay at conrad tokyo', 'conrad tokyo, tokyo, japan', '', '-'], ['cerise by gordon ramsay', 'minato, tokyo, japan', '', '-'], ['maze by gordon ramsay', 'one and only hotel, cape town, south africa', 'april 2009', 'july 2010'], ['maze / maze grill by gordon ramsay', 'crown metropol, melbourne, australia', 'march 2010', 'august 2011']]
+########################################################################################################################
+Sample 2085 - Plan 1: Operation 2: Select rows where the 'location' column contains the phrase 'cape town, south africa'.
+Sample 2085 - Plan 1: Selected indices: [[3, 1]]
+Sample 2085 - Plan 1: X-Table after operation df:
+              restaurant                                     location  \
+0  maze by gordon ramsay  one and only hotel, cape town, south africa   
+
+  date_opened date_closed  
+0  april 2009   july 2010  
+Sample 2085 - Plan 1: Table after operation: [['restaurant', 'location', 'date_opened', 'date_closed'], ['maze by gordon ramsay', 'one and only hotel, cape town, south africa', 'april 2009', 'july 2010']]
+########################################################################################################################
+Sample 2085 - Plan 1: Operation 3: Select rows where the 'location' column contains the phrase 'doha, qatar'.
+Sample 2085 - Plan 1: Selected indices: []
+Sample 2085 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [restaurant, location, date_opened, date_closed]
+Index: []
+Sample 2085 - Plan 1: Table after operation: [['restaurant', 'location', 'date_opened', 'date_closed']]
+########################################################################################################################
+Sample 2085 - Plan 1: Operation 4: Select rows where the 'location' column contains the phrase 'melbourne, australia'.
+Sample 2085 - Plan 1: Selected indices: []
+Sample 2085 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [restaurant, location, date_opened, date_closed]
+Index: []
+Sample 2085 - Plan 1: Table after operation: [['restaurant', 'location', 'date_opened', 'date_closed']]
+########################################################################################################################
+Sample 2085 - Plan 1: Operation 5: Combine the results from steps 2, 3, and 4 to find the common restaurants.
+SQL execution error in operation 5: Execution failed on sql 'Write a SQL command that: Combine the results from steps 2, 3, and 4 to find the common restaurants.': near "Write": syntax error
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['maze by gordon ramsay']]
+Groundtruth: ['Maze']

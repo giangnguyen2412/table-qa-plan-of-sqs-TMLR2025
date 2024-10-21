@@ -1,0 +1,66 @@
+************************************************************************************************************************
+Sample 3950 - Plan 1: Query: at which date was the population of banat bulgarians the largest?
+Sample 3950 - Plan 1: Groundtruth: ['1864']
+Sample 3950 - Plan 1: X-Original table pd: 
+                  source                              date  \
+0              jozu rill                              1864   
+1   hungarian statistics                              1880   
+2   hungarian statistics                              1900   
+3   hungarian statistics                              1910   
+4        various authors  second half\nof the 19th century   
+5        romanian census                              1930   
+6           dimo kazasov                              1936   
+7        romanian census                              1939   
+8         karol telbizov                              1940   
+9        mihail georgiev                              1942   
+10       romanian census                              1956   
+11       yugoslav census                              1971   
+12       romanian census                              1977   
+13       romanian census                              2002   
+14        serbian census                              2002   
+
+   population_nromania population_nserbia  \
+0        30,000–35,000      30,000–35,000   
+1               18,298             18,298   
+2               19,944             19,944   
+3               13,536             13,536   
+4        22,000–26,000      22,000–26,000   
+5               10,012                      
+6                                   3,200   
+7                9,951                      
+8               12,000                      
+9                             up to 4,500   
+10              12,040                      
+11                                  3,745   
+12               9,267                      
+13               6,486                      
+14                                  1,658   
+
+                                   notes  
+0                                         
+1                                         
+2                                         
+3             "evidently underestimated"  
+4   "sometimes including the krashovani"  
+5                    romanian banat only  
+6          serbian banat only; estimated  
+7                    romanian banat only  
+8         romanian banat only; estimated  
+9          serbian banat only; estimated  
+10                          romania only  
+11                    serbian banat only  
+12                          romania only  
+13                          romania only  
+14                           serbia only  
+Sample 3950 - Plan 1: Caption: none
+Sample 3950 - Plan 1: Original table: [['source', 'date', 'population_nromania', 'population_nserbia', 'notes'], ['jozu rill', '1864', '30,000–35,000', '30,000–35,000', ''], ['hungarian statistics', '1880', '18,298', '18,298', ''], ['hungarian statistics', '1900', '19,944', '19,944', ''], ['hungarian statistics', '1910', '13,536', '13,536', '"evidently underestimated"'], ['various authors', 'second half\\nof the 19th century', '22,000–26,000', '22,000–26,000', '"sometimes including the krashovani"'], ['romanian census', '1930', '10,012', '', 'romanian banat only'], ['dimo kazasov', '1936', '', '3,200', 'serbian banat only; estimated'], ['romanian census', '1939', '9,951', '', 'romanian banat only'], ['karol telbizov', '1940', '12,000', '', 'romanian banat only; estimated'], ['mihail georgiev', '1942', '', 'up to 4,500', 'serbian banat only; estimated'], ['romanian census', '1956', '12,040', '', 'romania only'], ['yugoslav census', '1971', '', '3,745', 'serbian banat only'], ['romanian census', '1977', '9,267', '', 'romania only'], ['romanian census', '2002', '6,486', '', 'romania only'], ['serbian census', '2002', '', '1,658', 'serbia only']]
+########################################################################################################################
+Sample 3950 - Plan 1: Operation 1: Select rows where 'population_nbanat bulgarians' is not empty.
+SQL execution error in operation 1: Execution failed on sql 'SELECT *
+FROM table_sql
+WHERE population_nbanat_bulgarians != '';
+-- Select rows where 'population_nbanat bulgarians' is not empty.': no such column: population_nbanat_bulgarians
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['1940']]
+Groundtruth: ['1864']

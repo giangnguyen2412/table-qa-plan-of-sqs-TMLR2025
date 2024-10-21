@@ -1,0 +1,825 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how many winners are listed?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Count the number of rows in the table where the 'winner' column is not null.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>winner</td>
+<td>age</td>
+<td>jockey</td>
+<td>trainer</td>
+<td>owner</td>
+<td>distance_n_miles_</td>
+<td>time</td>
+<td>purse</td>
+<td>gr</td>
+</tr>
+<tr>
+<td>2014</td>
+<td>constitution</td>
+<td>3</td>
+<td>javier castellano</td>
+<td>todd pletcher</td>
+<td>winstar farm</td>
+<td>1-1/8</td>
+<td>1:49.17</td>
+<td>$1,000,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>orb</td>
+<td>3</td>
+<td>john velazquez</td>
+<td>claude mcgaughey iii</td>
+<td>janney/phipps stable</td>
+<td>1-1/8</td>
+<td>1:50.87</td>
+<td>$1,000,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>2012</td>
+<td>take charge indy</td>
+<td>3</td>
+<td>calvin borel</td>
+<td>patrick b. byrne</td>
+<td>c & m sandford</td>
+<td>1-1/8</td>
+<td>1:48.79</td>
+<td>$1,000,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>2011</td>
+<td>dialed in</td>
+<td>3</td>
+<td>julien r. leparoux</td>
+<td>nick zito</td>
+<td>robert v. lapenta</td>
+<td>1-1/8</td>
+<td>1:50.74</td>
+<td>$1,000,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>2010</td>
+<td>ice box</td>
+<td>3</td>
+<td>jose lezcano</td>
+<td>nick zito</td>
+<td>robert v. lapenta</td>
+<td>1-1/8</td>
+<td>1:49.19</td>
+<td>$750,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>2009</td>
+<td>quality road</td>
+<td>3</td>
+<td>john velazquez</td>
+<td>james a. jerkens</td>
+<td>edward p. evans</td>
+<td>1-1/8</td>
+<td>1:47.72</td>
+<td>$750,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>2008</td>
+<td>big brown</td>
+<td>3</td>
+<td>kent desormeaux</td>
+<td>richard e. dutrow</td>
+<td>ieah stables/paul pompa</td>
+<td>1-1/8</td>
+<td>1:48.16</td>
+<td>$1,000,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>2007</td>
+<td>scat daddy</td>
+<td>3</td>
+<td>edgar prado</td>
+<td>todd a. pletcher</td>
+<td>j. scatuorchio / m. tabor</td>
+<td>1-1/8</td>
+<td>1:49.00</td>
+<td>$1,000,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>2006</td>
+<td>barbaro</td>
+<td>3</td>
+<td>edgar prado</td>
+<td>michael matz</td>
+<td>lael stables</td>
+<td>1-1/8</td>
+<td>1:49.01</td>
+<td>$1,000,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>2005</td>
+<td>high fly</td>
+<td>3</td>
+<td>jerry bailey</td>
+<td>nick zito</td>
+<td>live oak plantation</td>
+<td>1-1/8</td>
+<td>1:49.43</td>
+<td>$1,000,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>2004</td>
+<td>friends lake</td>
+<td>3</td>
+<td>richard migliore</td>
+<td>john c. kimmel</td>
+<td>chester & mary broman</td>
+<td>1-1/8</td>
+<td>1:51.38</td>
+<td>$1,000,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>2003</td>
+<td>empire maker</td>
+<td>3</td>
+<td>jerry bailey</td>
+<td>robert frankel</td>
+<td>juddmonte farms</td>
+<td>1-1/8</td>
+<td>1:49.05</td>
+<td>$1,000,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>2002</td>
+<td>harlan's holiday</td>
+<td>3</td>
+<td>edgar prado</td>
+<td>kenneth mcpeek</td>
+<td>starlight stable</td>
+<td>1-1/8</td>
+<td>1:48.80</td>
+<td>$1,000,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>2001</td>
+<td>monarchos</td>
+<td>3</td>
+<td>jorge chavez</td>
+<td>john t. ward, jr.</td>
+<td>john c. oxley</td>
+<td>1-1/8</td>
+<td>1:49.95</td>
+<td>$1,000,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>2000</td>
+<td>hal's hope</td>
+<td>3</td>
+<td>roger velez</td>
+<td>harold rose</td>
+<td>rose family stable</td>
+<td>1-1/8</td>
+<td>1:51.49</td>
+<td>$1,000,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>1999</td>
+<td>vicar</td>
+<td>3</td>
+<td>shane sellers</td>
+<td>carl nafzger</td>
+<td>james b. tafel</td>
+<td>1-1/8</td>
+<td>1:50.83</td>
+<td>$750,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>1998</td>
+<td>cape town †</td>
+<td>3</td>
+<td>shane sellers</td>
+<td>d. wayne lukas</td>
+<td>overbrook farm</td>
+<td>1-1/8</td>
+<td>1:49.21</td>
+<td>$750,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>1997</td>
+<td>captain bodgit</td>
+<td>3</td>
+<td>alex solis</td>
+<td>gary capuano</td>
+<td>team valor</td>
+<td>1-1/8</td>
+<td>1:50.60</td>
+<td>$750,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>1996</td>
+<td>unbridled's song</td>
+<td>3</td>
+<td>mike smith</td>
+<td>james t. ryerson</td>
+<td>paraneck stable</td>
+<td>1-1/8</td>
+<td>1:47.85</td>
+<td>$750,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>1995</td>
+<td>thunder gulch</td>
+<td>3</td>
+<td>mike smith</td>
+<td>d. wayne lukas</td>
+<td>michael tabor</td>
+<td>1-1/8</td>
+<td>1:49.70</td>
+<td>$500,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>1994</td>
+<td>holy bull</td>
+<td>3</td>
+<td>mike smith</td>
+<td>warren a. croll, jr.</td>
+<td>warren a. croll, jr.</td>
+<td>1-1/8</td>
+<td>1:47.66</td>
+<td>$500,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>1993</td>
+<td>bull in the heather</td>
+<td>3</td>
+<td>wigberto ramos</td>
+<td>howard m. tesher</td>
+<td>arthur klein</td>
+<td>1-1/8</td>
+<td>1:51.38</td>
+<td>$500,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>1992</td>
+<td>technology</td>
+<td>3</td>
+<td>jerry bailey</td>
+<td>hubert hine</td>
+<td>scott savin</td>
+<td>1-1/8</td>
+<td>1:50.72</td>
+<td>$500,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>1991</td>
+<td>fly so free</td>
+<td>3</td>
+<td>jose santos</td>
+<td>scotty schulhofer</td>
+<td>tommy valando</td>
+<td>1-1/8</td>
+<td>1:50.44</td>
+<td>$500,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>1990</td>
+<td>unbridled</td>
+<td>3</td>
+<td>pat day</td>
+<td>carl nafzger</td>
+<td>genter stable</td>
+<td>1-1/8</td>
+<td>1:52.00</td>
+<td>$500,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>1989</td>
+<td>mercedes won</td>
+<td>3</td>
+<td>earlie fires</td>
+<td>arnold fink</td>
+<td>christopher spencer</td>
+<td>1-1/8</td>
+<td>1:49.60</td>
+<td>$500,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>1988</td>
+<td>brian's time</td>
+<td>3</td>
+<td>randy romero</td>
+<td>john m. veitch</td>
+<td>james w. phillips</td>
+<td>1-1/8</td>
+<td>1:49.80</td>
+<td>$500,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>1987</td>
+<td>cryptoclearance</td>
+<td>3</td>
+<td>jose santos</td>
+<td>scotty schulhofer</td>
+<td>phil teinowitz</td>
+<td>1-1/8</td>
+<td>1:49.60</td>
+<td>$500,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>1986</td>
+<td>snow chief</td>
+<td>3</td>
+<td>alex solis</td>
+<td>melvin f. stute</td>
+<td>rochelle/grinstead</td>
+<td>1-1/8</td>
+<td>1:51.80</td>
+<td>$500,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>1985</td>
+<td>proud truth</td>
+<td>3</td>
+<td>jorge velasquez</td>
+<td>john m. veitch</td>
+<td>darby dan farm</td>
+<td>1-1/8</td>
+<td>1:50.00</td>
+<td>$500,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>1984</td>
+<td>swale</td>
+<td>3</td>
+<td>laffit pincay, jr.</td>
+<td>woody stephens</td>
+<td>claiborne farm</td>
+<td>1-1/8</td>
+<td>1:47.60</td>
+<td>$300,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>1983</td>
+<td>croeso</td>
+<td>3</td>
+<td>frank olivares</td>
+<td>jerry m. fanning</td>
+<td>joyce & roy fowler</td>
+<td>1-1/8</td>
+<td>1:49.80</td>
+<td>$300,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>1982</td>
+<td>timely writer</td>
+<td>3</td>
+<td>jeffrey fell</td>
+<td>dominic imprescia</td>
+<td>peter & francis martin</td>
+<td>1-1/8</td>
+<td>1:49.60</td>
+<td>$250,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>1981</td>
+<td>lord avie</td>
+<td>3</td>
+<td>chris mccarron</td>
+<td>daniel perlsweig</td>
+<td>david simon</td>
+<td>1-1/8</td>
+<td>1:50.40</td>
+<td>$250,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>1980</td>
+<td>plugged nickle</td>
+<td>3</td>
+<td>buck thornburg</td>
+<td>thomas j. kelly</td>
+<td>john m. schiff</td>
+<td>1-1/8</td>
+<td>1:50.20</td>
+<td>$250,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>1979</td>
+<td>spectacular bid</td>
+<td>3</td>
+<td>ronnie franklin</td>
+<td>bud delp</td>
+<td>hawksworth farm</td>
+<td>1-1/8</td>
+<td>1:48.80</td>
+<td>$200,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>1978</td>
+<td>alydar</td>
+<td>3</td>
+<td>jorge velasquez</td>
+<td>john m. veitch</td>
+<td>calumet farm</td>
+<td>1-1/8</td>
+<td>1:47.00</td>
+<td>$200,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>1977</td>
+<td>ruthie's native</td>
+<td>3</td>
+<td>craig perret</td>
+<td>eugene jacobs</td>
+<td>ruth a. perlmutter</td>
+<td>1-1/8</td>
+<td>1:50.20</td>
+<td>$125,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>1977</td>
+<td>coined silver</td>
+<td>3</td>
+<td>buck thornburg</td>
+<td>george t. poole iii</td>
+<td>c. v. whitney</td>
+<td>1-1/8</td>
+<td>1:48.80</td>
+<td>$125,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>1976</td>
+<td>honest pleasure</td>
+<td>3</td>
+<td>braulio baeza</td>
+<td>leroy jolley</td>
+<td>bertram r. firestone</td>
+<td>1-1/8</td>
+<td>1:47.80</td>
+<td>$125,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>1975</td>
+<td>prince thou art</td>
+<td>3</td>
+<td>braulio baeza</td>
+<td>lou rondinello</td>
+<td>darby dan farm</td>
+<td>1-1/8</td>
+<td>1:50.40</td>
+<td>$150,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>1974</td>
+<td>judger</td>
+<td>3</td>
+<td>laffit pincay, jr.</td>
+<td>woody stephens</td>
+<td>claiborne farm</td>
+<td>1-1/8</td>
+<td>1:49.00</td>
+<td>$150,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>1973</td>
+<td>royal and regal</td>
+<td>3</td>
+<td>walter blum</td>
+<td>warren a. croll, jr.</td>
+<td>aisco stable</td>
+<td>1-1/8</td>
+<td>1:47.40</td>
+<td>$130,000</td>
+<td>i</td>
+</tr>
+<tr>
+<td>1972</td>
+<td>upper case</td>
+<td>3</td>
+<td>ron turcotte</td>
+<td>lucien laurin</td>
+<td>meadow stable</td>
+<td>1-1/8</td>
+<td>1:50.00</td>
+<td>$130,000</td>
+<td></td>
+</tr>
+<tr>
+<td>1971</td>
+<td>eastern fleet</td>
+<td>3</td>
+<td>eddie maple</td>
+<td>reggie cornell</td>
+<td>calumet farm</td>
+<td>1-1/8</td>
+<td>1:47.40</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1970</td>
+<td>my dad george</td>
+<td>3</td>
+<td>ray broussard</td>
+<td>frank j. mcmanus</td>
+<td>raymond m. curtis</td>
+<td>1-1/8</td>
+<td>1:50.80</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1969</td>
+<td>top knight</td>
+<td>3</td>
+<td>manuel ycaza</td>
+<td>ray metcalf</td>
+<td>steven b. wilson</td>
+<td>1-1/8</td>
+<td>1:48.40</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1968</td>
+<td>forward pass</td>
+<td>3</td>
+<td>don brumfield</td>
+<td>henry forrest</td>
+<td>calumet farm</td>
+<td>1-1/8</td>
+<td>1:49.00</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1967</td>
+<td>in reality</td>
+<td>3</td>
+<td>earlie fires</td>
+<td>melvin calvert</td>
+<td>frances a. genter</td>
+<td>1-1/8</td>
+<td>1:50.20</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1966</td>
+<td>williamston kid †</td>
+<td>3</td>
+<td>robert stevenson</td>
+<td>james bartlett</td>
+<td>ternes & bartlett</td>
+<td>1-1/8</td>
+<td>1:50.60</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1965</td>
+<td>native charger</td>
+<td>3</td>
+<td>john l. rotz</td>
+<td>ray metcalf</td>
+<td>warner stable</td>
+<td>1-1/8</td>
+<td>1:51.20</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1964</td>
+<td>northern dancer</td>
+<td>3</td>
+<td>bill shoemaker</td>
+<td>horatio luro</td>
+<td>windfields farm</td>
+<td>1-1/8</td>
+<td>1:50.80</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1963</td>
+<td>candy spots</td>
+<td>3</td>
+<td>bill shoemaker</td>
+<td>mesh tenney</td>
+<td>rex c. ellsworth</td>
+<td>1-1/8</td>
+<td>1:50.60</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1962</td>
+<td>ridan</td>
+<td>3</td>
+<td>manuel ycaza</td>
+<td>leroy jolley</td>
+<td>jolley / woods / greer</td>
+<td>1-1/8</td>
+<td>1:50.40</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1961</td>
+<td>carry back</td>
+<td>3</td>
+<td>johnny sellers</td>
+<td>jack a. price</td>
+<td>mrs. katherine price</td>
+<td>1-1/8</td>
+<td>1:48.80</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1960</td>
+<td>bally ache</td>
+<td>3</td>
+<td>bobby ussery</td>
+<td>homer pitt</td>
+<td>edgehill farm</td>
+<td>1-1/8</td>
+<td>1:47.60</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1959</td>
+<td>easy spur</td>
+<td>3</td>
+<td>bill hartack</td>
+<td>paul l. kelley</td>
+<td>spring hill farm</td>
+<td>1-1/8</td>
+<td>1:47.20</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1958</td>
+<td>tim tam</td>
+<td>3</td>
+<td>bill hartack</td>
+<td>horace a. jones</td>
+<td>calumet farm</td>
+<td>1-1/8</td>
+<td>1:49.20</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1957</td>
+<td>gen. duke</td>
+<td>3</td>
+<td>bill hartack</td>
+<td>horace a. jones</td>
+<td>calumet farm</td>
+<td>1-1/8</td>
+<td>1:46.80</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1956</td>
+<td>needles</td>
+<td>3</td>
+<td>david erb</td>
+<td>hugh l. fontaine</td>
+<td>d & h stable</td>
+<td>1-1/8</td>
+<td>1:48.60</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1955</td>
+<td>nashua</td>
+<td>3</td>
+<td>eddie arcaro</td>
+<td>jim fitzsimmons</td>
+<td>belair stud</td>
+<td>1-1/8</td>
+<td>1:53.20</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1954</td>
+<td>correlation</td>
+<td>3</td>
+<td>bill shoemaker</td>
+<td>noble threewitt</td>
+<td>robert s. lytle</td>
+<td>1-1/8</td>
+<td>1:55.20</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1953</td>
+<td>money broker</td>
+<td>3</td>
+<td>alfred popara</td>
+<td>vester r. wright</td>
+<td>g. & g. stable</td>
+<td>1-1/8</td>
+<td>1:53.80</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1952</td>
+<td>sky ship</td>
+<td>3</td>
+<td>ronnie nash</td>
+<td>preston m. burch</td>
+<td>brookmeade stable</td>
+<td>1-1/8</td>
+<td>1:50.80</td>
+<td></td>
+<td></td>
+</tr>
+</table>
+</div>
+<hr>
+<table>
+<tr>
+<td>COUNT(*)</td>
+</tr>
+<tr>
+<td>64</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[64]]</h3>
+</body></html>

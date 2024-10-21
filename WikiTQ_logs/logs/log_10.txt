@@ -1,0 +1,310 @@
+************************************************************************************************************************
+Sample 10 - Plan 1: Query: in which three consecutive years was the record the same?
+Sample 10 - Plan 1: Groundtruth: ['2004', '2005', '2006']
+Sample 10 - Plan 1: X-Original table pd: 
+    season                   team  record      head_coach       quarterback  \
+0     1970         dallas cowboys    10–4     tom landry*      craig morton   
+1     1971        dallas cowboys†    11–3     tom landry*   roger staubach*   
+2     1972    washington redskins    11–3   george allen*      billy kilmer   
+3     1973      minnesota vikings    12–2      bud grant*   fran tarkenton*   
+4     1974      minnesota vikings    10–4      bud grant*   fran tarkenton*   
+5     1975         dallas cowboys    10–4     tom landry*   roger staubach*   
+6     1976      minnesota vikings  11–2–1      bud grant*   fran tarkenton*   
+7     1977        dallas cowboys†    12–2     tom landry*   roger staubach*   
+8     1978         dallas cowboys    12–4     tom landry*   roger staubach*   
+9     1979       los angeles rams     9–7    ray malavasi         pat haden   
+10    1980    philadelphia eagles    12–4    dick vermeil      ron jaworski   
+11    1981   san francisco 49ers†    13–3     bill walsh*      joe montana*   
+12    1982   washington redskins†     8–1      joe gibbs*     joe theismann   
+13    1983    washington redskins    14–2      joe gibbs*     joe theismann   
+14    1984   san francisco 49ers†    15–1     bill walsh*      joe montana*   
+15    1985         chicago bears†    15–1     mike ditka*       jim mcmahon   
+16    1986       new york giants†    14–2  bill parcells*        phil simms   
+17    1987   washington redskins†    11–4      joe gibbs*     jay schroeder   
+18    1988   san francisco 49ers†    10–6     bill walsh*      joe montana*   
+19    1989   san francisco 49ers†    14–2  george seifert      joe montana*   
+20    1990       new york giants†    13–3  bill parcells*        phil simms   
+21    1991   washington redskins†    14–2      joe gibbs*       mark rypien   
+22    1992        dallas cowboys†    13–3   jimmy johnson      troy aikman*   
+23    1993        dallas cowboys†    12–4   jimmy johnson      troy aikman*   
+24    1994   san francisco 49ers†    13–3  george seifert      steve young*   
+25    1995        dallas cowboys†    12–4   barry switzer      troy aikman*   
+26    1996     green bay packers†    13–3   mike holmgren       brett favre   
+27    1997      green bay packers    13–3   mike holmgren       brett favre   
+28    1998        atlanta falcons    14–2      dan reeves    chris chandler   
+29    1999        st. louis rams†    13–3    dick vermeil       kurt warner   
+30    2000        new york giants    12–4      jim fassel     kerry collins   
+31    2001         st. louis rams    14–2      mike martz       kurt warner   
+32    2002  tampa bay buccaneers†    12–4      jon gruden      brad johnson   
+33    2003      carolina panthers    11–5        john fox     jake delhomme   
+34    2004    philadelphia eagles    13–3       andy reid    donovan mcnabb   
+35    2005       seattle seahawks    13–3   mike holmgren   matt hasselbeck   
+36    2006          chicago bears    13–3     lovie smith      rex grossman   
+37    2007       new york giants†    10–6    tom coughlin       eli manning   
+38    2008      arizona cardinals     9–7  ken whisenhunt       kurt warner   
+39    2009    new orleans saints†    13–3     sean payton        drew brees   
+40    2010     green bay packers†    10–6   mike mccarthy     aaron rodgers   
+41    2011       new york giants†     9–7    tom coughlin       eli manning   
+42    2012    san francisco 49ers  11–4–1    jim harbaugh  colin kaepernick   
+43    2013      seattle seahawks†    13–3    pete carroll    russell wilson   
+
+        leading_rusher  leading_receiver  \
+0         duane thomas        bob hayes*   
+1         duane thomas        bob hayes*   
+2          larry brown   charley taylor*   
+3        chuck foreman      john gilliam   
+4        chuck foreman          jim lash   
+5      robert newhouse      drew pearson   
+6        chuck foreman       sammy white   
+7        tony dorsett*      drew pearson   
+8        tony dorsett*         tony hill   
+9        wendell tyler   preston dennard   
+10  wilbert montgomery     charlie smith   
+11        ricky patton      dwight clark   
+12       john riggins*     charlie brown   
+13       john riggins*     charlie brown   
+14       wendell tyler      dwight clark   
+15      walter payton*      willie gault   
+16          joe morris       mark bavaro   
+17       george rogers        gary clark   
+18         roger craig       jerry rice*   
+19         roger craig       jerry rice*   
+20      ottis anderson     stephen baker   
+21       earnest byner        gary clark   
+22       emmitt smith*    michael irvin*   
+23       emmitt smith*    michael irvin*   
+24       ricky watters       jerry rice*   
+25       emmitt smith*    michael irvin*   
+26       edgar bennett   antonio freeman   
+27       dorsey levens   antonio freeman   
+28      jamal anderson       tony martin   
+29     marshall faulk*       isaac bruce   
+30         tiki barber      amani toomer   
+31     marshall faulk*        torry holt   
+32     michael pittman  keyshawn johnson   
+33       stephen davis       steve smith   
+34     brian westbrook     terrell owens   
+35     shaun alexander      bobby engram   
+36        thomas jones   muhsin muhammad   
+37      brandon jacobs   plaxico burress   
+38      edgerrin james  larry fitzgerald   
+39       pierre thomas   marques colston   
+40     brandon jackson     greg jennings   
+41      ahmad bradshaw       victor cruz   
+42          frank gore  michael crabtree   
+43      marshawn lynch       golden tate   
+
+                                             all_pros             runner_up  
+0                                              howley   san francisco 49ers  
+1                             lilly*, niland, wright*   san francisco 49ers  
+2                                   brown, hanburger*        dallas cowboys  
+3                                eller*, page*, yary*        dallas cowboys  
+4                                        page*, yary*      los angeles rams  
+5                                                none      los angeles rams  
+6                                               yary*      los angeles rams  
+7                    harris, herrera, martin, pearson     minnesota vikings  
+8                                      harris, white*      los angeles rams  
+9                                 brooks, youngblood*  tampa bay buccaneers  
+10                                            johnson        dallas cowboys  
+11                                       dean*, lott*        dallas cowboys  
+12                                            moseley        dallas cowboys  
+13  butz, grimm*, jacoby, murphy, nelms, riggins*,...   san francisco 49ers  
+14                                          fahnhorst         chicago bears  
+15     covert, dent*, mcmichael, payton*, singletary*      los angeles rams  
+16                   bavaro, landeta, morris, taylor*   washington redskins  
+17                                     clark, wilburn     minnesota vikings  
+18                                       craig, rice*         chicago bears  
+19                     cofer, lott*, montana*, rice*,      los angeles rams  
+20                                   johnson, landeta   san francisco 49ers  
+21                                     green*, lachey         detroit lions  
+22                                    novacek, smith*   san francisco 49ers  
+23                                   smith*, williams   san francisco 49ers  
+24                            rice*, sanders*, young*        dallas cowboys  
+25                            newton, smith*, woodson     green bay packers  
+26                                      butler, favre     carolina panthers  
+27                                      butler, favre   san francisco 49ers  
+28                                           anderson     minnesota vikings  
+29                       carter, faulk*, pace, warner  tampa bay buccaneers  
+30                                               none     minnesota vikings  
+31                    faulk*, pace, warner, williams*   philadelphia eagles  
+32                               brooks*, rice, sapp*   philadelphia eagles  
+33                                            jenkins   philadelphia eagles  
+34                           dawkins, owens, sheppard       atlanta falcons  
+35              alexander, hutchinson, jones*, strong     carolina panthers  
+36                    gould, hester, kreutz, urlacher    new orleans saints  
+37                                               none     green bay packers  
+38                                         fitzgerald   philadelphia eagles  
+39                                              evans     minnesota vikings  
+40      clifton, collins, jennings, matthews, woodson         chicago bears  
+41                                        pierre-paul   san francisco 49ers  
+42        bowman, goldson, iupati, lee, smith, willis       atlanta falcons  
+43                                    sherman, thomas   san francisco 49ers  
+Sample 10 - Plan 1: Caption: none
+Sample 10 - Plan 1: Original table: [['season', 'team', 'record', 'head_coach', 'quarterback', 'leading_rusher', 'leading_receiver', 'all_pros', 'runner_up'], ['1970', 'dallas cowboys', '10–4', 'tom landry*', 'craig morton', 'duane thomas', 'bob hayes*', 'howley', 'san francisco 49ers'], ['1971', 'dallas cowboys†', '11–3', 'tom landry*', 'roger staubach*', 'duane thomas', 'bob hayes*', 'lilly*, niland, wright*', 'san francisco 49ers'], ['1972', 'washington redskins', '11–3', 'george allen*', 'billy kilmer', 'larry brown', 'charley taylor*', 'brown, hanburger*', 'dallas cowboys'], ['1973', 'minnesota vikings', '12–2', 'bud grant*', 'fran tarkenton*', 'chuck foreman', 'john gilliam', 'eller*, page*, yary*', 'dallas cowboys'], ['1974', 'minnesota vikings', '10–4', 'bud grant*', 'fran tarkenton*', 'chuck foreman', 'jim lash', 'page*, yary*', 'los angeles rams'], ['1975', 'dallas cowboys', '10–4', 'tom landry*', 'roger staubach*', 'robert newhouse', 'drew pearson', 'none', 'los angeles rams'], ['1976', 'minnesota vikings', '11–2–1', 'bud grant*', 'fran tarkenton*', 'chuck foreman', 'sammy white', 'yary*', 'los angeles rams'], ['1977', 'dallas cowboys†', '12–2', 'tom landry*', 'roger staubach*', 'tony dorsett*', 'drew pearson', 'harris, herrera, martin, pearson', 'minnesota vikings'], ['1978', 'dallas cowboys', '12–4', 'tom landry*', 'roger staubach*', 'tony dorsett*', 'tony hill', 'harris, white*', 'los angeles rams'], ['1979', 'los angeles rams', '9–7', 'ray malavasi', 'pat haden', 'wendell tyler', 'preston dennard', 'brooks, youngblood*', 'tampa bay buccaneers'], ['1980', 'philadelphia eagles', '12–4', 'dick vermeil', 'ron jaworski', 'wilbert montgomery', 'charlie smith', 'johnson', 'dallas cowboys'], ['1981', 'san francisco 49ers†', '13–3', 'bill walsh*', 'joe montana*', 'ricky patton', 'dwight clark', 'dean*, lott*', 'dallas cowboys'], ['1982', 'washington redskins†', '8–1', 'joe gibbs*', 'joe theismann', 'john riggins*', 'charlie brown', 'moseley', 'dallas cowboys'], ['1983', 'washington redskins', '14–2', 'joe gibbs*', 'joe theismann', 'john riggins*', 'charlie brown', 'butz, grimm*, jacoby, murphy, nelms, riggins*, theismann', 'san francisco 49ers'], ['1984', 'san francisco 49ers†', '15–1', 'bill walsh*', 'joe montana*', 'wendell tyler', 'dwight clark', 'fahnhorst', 'chicago bears'], ['1985', 'chicago bears†', '15–1', 'mike ditka*', 'jim mcmahon', 'walter payton*', 'willie gault', 'covert, dent*, mcmichael, payton*, singletary*', 'los angeles rams'], ['1986', 'new york giants†', '14–2', 'bill parcells*', 'phil simms', 'joe morris', 'mark bavaro', 'bavaro, landeta, morris, taylor*', 'washington redskins'], ['1987', 'washington redskins†', '11–4', 'joe gibbs*', 'jay schroeder', 'george rogers', 'gary clark', 'clark, wilburn', 'minnesota vikings'], ['1988', 'san francisco 49ers†', '10–6', 'bill walsh*', 'joe montana*', 'roger craig', 'jerry rice*', 'craig, rice*', 'chicago bears'], ['1989', 'san francisco 49ers†', '14–2', 'george seifert', 'joe montana*', 'roger craig', 'jerry rice*', 'cofer, lott*, montana*, rice*,', 'los angeles rams'], ['1990', 'new york giants†', '13–3', 'bill parcells*', 'phil simms', 'ottis anderson', 'stephen baker', 'johnson, landeta', 'san francisco 49ers'], ['1991', 'washington redskins†', '14–2', 'joe gibbs*', 'mark rypien', 'earnest byner', 'gary clark', 'green*, lachey', 'detroit lions'], ['1992', 'dallas cowboys†', '13–3', 'jimmy johnson', 'troy aikman*', 'emmitt smith*', 'michael irvin*', 'novacek, smith*', 'san francisco 49ers'], ['1993', 'dallas cowboys†', '12–4', 'jimmy johnson', 'troy aikman*', 'emmitt smith*', 'michael irvin*', 'smith*, williams', 'san francisco 49ers'], ['1994', 'san francisco 49ers†', '13–3', 'george seifert', 'steve young*', 'ricky watters', 'jerry rice*', 'rice*, sanders*, young*', 'dallas cowboys'], ['1995', 'dallas cowboys†', '12–4', 'barry switzer', 'troy aikman*', 'emmitt smith*', 'michael irvin*', 'newton, smith*, woodson', 'green bay packers'], ['1996', 'green bay packers†', '13–3', 'mike holmgren', 'brett favre', 'edgar bennett', 'antonio freeman', 'butler, favre', 'carolina panthers'], ['1997', 'green bay packers', '13–3', 'mike holmgren', 'brett favre', 'dorsey levens', 'antonio freeman', 'butler, favre', 'san francisco 49ers'], ['1998', 'atlanta falcons', '14–2', 'dan reeves', 'chris chandler', 'jamal anderson', 'tony martin', 'anderson', 'minnesota vikings'], ['1999', 'st. louis rams†', '13–3', 'dick vermeil', 'kurt warner', 'marshall faulk*', 'isaac bruce', 'carter, faulk*, pace, warner', 'tampa bay buccaneers'], ['2000', 'new york giants', '12–4', 'jim fassel', 'kerry collins', 'tiki barber', 'amani toomer', 'none', 'minnesota vikings'], ['2001', 'st. louis rams', '14–2', 'mike martz', 'kurt warner', 'marshall faulk*', 'torry holt', 'faulk*, pace, warner, williams*', 'philadelphia eagles'], ['2002', 'tampa bay buccaneers†', '12–4', 'jon gruden', 'brad johnson', 'michael pittman', 'keyshawn johnson', 'brooks*, rice, sapp*', 'philadelphia eagles'], ['2003', 'carolina panthers', '11–5', 'john fox', 'jake delhomme', 'stephen davis', 'steve smith', 'jenkins', 'philadelphia eagles'], ['2004', 'philadelphia eagles', '13–3', 'andy reid', 'donovan mcnabb', 'brian westbrook', 'terrell owens', 'dawkins, owens, sheppard', 'atlanta falcons'], ['2005', 'seattle seahawks', '13–3', 'mike holmgren', 'matt hasselbeck', 'shaun alexander', 'bobby engram', 'alexander, hutchinson, jones*, strong', 'carolina panthers'], ['2006', 'chicago bears', '13–3', 'lovie smith', 'rex grossman', 'thomas jones', 'muhsin muhammad', 'gould, hester, kreutz, urlacher', 'new orleans saints'], ['2007', 'new york giants†', '10–6', 'tom coughlin', 'eli manning', 'brandon jacobs', 'plaxico burress', 'none', 'green bay packers'], ['2008', 'arizona cardinals', '9–7', 'ken whisenhunt', 'kurt warner', 'edgerrin james', 'larry fitzgerald', 'fitzgerald', 'philadelphia eagles'], ['2009', 'new orleans saints†', '13–3', 'sean payton', 'drew brees', 'pierre thomas', 'marques colston', 'evans', 'minnesota vikings'], ['2010', 'green bay packers†', '10–6', 'mike mccarthy', 'aaron rodgers', 'brandon jackson', 'greg jennings', 'clifton, collins, jennings, matthews, woodson', 'chicago bears'], ['2011', 'new york giants†', '9–7', 'tom coughlin', 'eli manning', 'ahmad bradshaw', 'victor cruz', 'pierre-paul', 'san francisco 49ers'], ['2012', 'san francisco 49ers', '11–4–1', 'jim harbaugh', 'colin kaepernick', 'frank gore', 'michael crabtree', 'bowman, goldson, iupati, lee, smith, willis', 'atlanta falcons'], ['2013', 'seattle seahawks†', '13–3', 'pete carroll', 'russell wilson', 'marshawn lynch', 'golden tate', 'sherman, thomas', 'san francisco 49ers']]
+########################################################################################################################
+Sample 10 - Plan 1: Operation 1: Select the 'season', 'record', and 'team' columns.
+Sample 10 - Plan 1: Selected indices: []
+Sample 10 - Plan 1: X-Table after operation df:
+    season  record                   team
+0     1970    10–4         dallas cowboys
+1     1971    11–3        dallas cowboys†
+2     1972    11–3    washington redskins
+3     1973    12–2      minnesota vikings
+4     1974    10–4      minnesota vikings
+5     1975    10–4         dallas cowboys
+6     1976  11–2–1      minnesota vikings
+7     1977    12–2        dallas cowboys†
+8     1978    12–4         dallas cowboys
+9     1979     9–7       los angeles rams
+10    1980    12–4    philadelphia eagles
+11    1981    13–3   san francisco 49ers†
+12    1982     8–1   washington redskins†
+13    1983    14–2    washington redskins
+14    1984    15–1   san francisco 49ers†
+15    1985    15–1         chicago bears†
+16    1986    14–2       new york giants†
+17    1987    11–4   washington redskins†
+18    1988    10–6   san francisco 49ers†
+19    1989    14–2   san francisco 49ers†
+20    1990    13–3       new york giants†
+21    1991    14–2   washington redskins†
+22    1992    13–3        dallas cowboys†
+23    1993    12–4        dallas cowboys†
+24    1994    13–3   san francisco 49ers†
+25    1995    12–4        dallas cowboys†
+26    1996    13–3     green bay packers†
+27    1997    13–3      green bay packers
+28    1998    14–2        atlanta falcons
+29    1999    13–3        st. louis rams†
+30    2000    12–4        new york giants
+31    2001    14–2         st. louis rams
+32    2002    12–4  tampa bay buccaneers†
+33    2003    11–5      carolina panthers
+34    2004    13–3    philadelphia eagles
+35    2005    13–3       seattle seahawks
+36    2006    13–3          chicago bears
+37    2007    10–6       new york giants†
+38    2008     9–7      arizona cardinals
+39    2009    13–3    new orleans saints†
+40    2010    10–6     green bay packers†
+41    2011     9–7       new york giants†
+42    2012  11–4–1    san francisco 49ers
+43    2013    13–3      seattle seahawks†
+Sample 10 - Plan 1: Table after operation: [['season', 'record', 'team'], [1970, '10–4', 'dallas cowboys'], [1971, '11–3', 'dallas cowboys†'], [1972, '11–3', 'washington redskins'], [1973, '12–2', 'minnesota vikings'], [1974, '10–4', 'minnesota vikings'], [1975, '10–4', 'dallas cowboys'], [1976, '11–2–1', 'minnesota vikings'], [1977, '12–2', 'dallas cowboys†'], [1978, '12–4', 'dallas cowboys'], [1979, '9–7', 'los angeles rams'], [1980, '12–4', 'philadelphia eagles'], [1981, '13–3', 'san francisco 49ers†'], [1982, '8–1', 'washington redskins†'], [1983, '14–2', 'washington redskins'], [1984, '15–1', 'san francisco 49ers†'], [1985, '15–1', 'chicago bears†'], [1986, '14–2', 'new york giants†'], [1987, '11–4', 'washington redskins†'], [1988, '10–6', 'san francisco 49ers†'], [1989, '14–2', 'san francisco 49ers†'], [1990, '13–3', 'new york giants†'], [1991, '14–2', 'washington redskins†'], [1992, '13–3', 'dallas cowboys†'], [1993, '12–4', 'dallas cowboys†'], [1994, '13–3', 'san francisco 49ers†'], [1995, '12–4', 'dallas cowboys†'], [1996, '13–3', 'green bay packers†'], [1997, '13–3', 'green bay packers'], [1998, '14–2', 'atlanta falcons'], [1999, '13–3', 'st. louis rams†'], [2000, '12–4', 'new york giants'], [2001, '14–2', 'st. louis rams'], [2002, '12–4', 'tampa bay buccaneers†'], [2003, '11–5', 'carolina panthers'], [2004, '13–3', 'philadelphia eagles'], [2005, '13–3', 'seattle seahawks'], [2006, '13–3', 'chicago bears'], [2007, '10–6', 'new york giants†'], [2008, '9–7', 'arizona cardinals'], [2009, '13–3', 'new orleans saints†'], [2010, '10–6', 'green bay packers†'], [2011, '9–7', 'new york giants†'], [2012, '11–4–1', 'san francisco 49ers'], [2013, '13–3', 'seattle seahawks†']]
+########################################################################################################################
+Sample 10 - Plan 1: Operation 2: Create a new column 'prev_record' that contains the record from the previous row.
+Sample 10 - Plan 1: Selected indices: [[0, 1], [0, 2], [0, 0], [1, 1], [1, 2], [1, 0], [2, 1], [2, 2], [2, 0], [3, 1], [3, 2], [3, 0], [4, 1], [4, 2], [4, 0], [5, 1], [5, 2], [5, 0], [6, 1], [6, 2], [6, 0], [7, 1], [7, 2], [7, 0], [8, 1], [8, 2], [8, 0], [9, 1], [9, 2], [9, 0], [10, 1], [10, 2], [10, 0], [11, 1], [11, 2], [11, 0], [12, 1], [12, 2], [12, 0], [13, 1], [13, 2], [13, 0], [14, 1], [14, 2], [14, 0], [15, 1], [15, 2], [15, 0], [16, 1], [16, 2], [16, 0], [17, 1], [17, 2], [17, 0], [18, 1], [18, 2], [18, 0], [19, 1], [19, 2], [19, 0], [20, 1], [20, 2], [20, 0], [21, 1], [21, 2], [21, 0], [22, 1], [22, 2], [22, 0], [23, 1], [23, 2], [23, 0], [24, 1], [24, 2], [24, 0], [25, 1], [25, 2], [25, 0], [26, 1], [26, 2], [26, 0], [27, 1], [27, 2], [27, 0], [28, 1], [28, 2], [28, 0], [29, 1], [29, 2], [29, 0], [30, 1], [30, 2], [30, 0], [31, 1], [31, 2], [31, 0], [32, 1], [32, 2], [32, 0], [33, 1], [33, 2], [33, 0], [34, 1], [34, 2], [34, 0], [35, 1], [35, 2], [35, 0], [36, 1], [36, 2], [36, 0], [37, 1], [37, 2], [37, 0], [38, 1], [38, 2], [38, 0], [39, 1], [39, 2], [39, 0], [40, 1], [40, 2], [40, 0], [41, 1], [41, 2], [41, 0], [42, 1], [42, 2], [42, 0], [43, 1], [43, 2], [43, 0]]
+Sample 10 - Plan 1: X-Table after operation df:
+    season  record                   team prev_record
+0     1970    10–4         dallas cowboys        None
+1     1971    11–3        dallas cowboys†        10–4
+2     1972    11–3    washington redskins        11–3
+3     1973    12–2      minnesota vikings        11–3
+4     1974    10–4      minnesota vikings        12–2
+5     1975    10–4         dallas cowboys        10–4
+6     1976  11–2–1      minnesota vikings        10–4
+7     1977    12–2        dallas cowboys†      11–2–1
+8     1978    12–4         dallas cowboys        12–2
+9     1979     9–7       los angeles rams        12–4
+10    1980    12–4    philadelphia eagles         9–7
+11    1981    13–3   san francisco 49ers†        12–4
+12    1982     8–1   washington redskins†        13–3
+13    1983    14–2    washington redskins         8–1
+14    1984    15–1   san francisco 49ers†        14–2
+15    1985    15–1         chicago bears†        15–1
+16    1986    14–2       new york giants†        15–1
+17    1987    11–4   washington redskins†        14–2
+18    1988    10–6   san francisco 49ers†        11–4
+19    1989    14–2   san francisco 49ers†        10–6
+20    1990    13–3       new york giants†        14–2
+21    1991    14–2   washington redskins†        13–3
+22    1992    13–3        dallas cowboys†        14–2
+23    1993    12–4        dallas cowboys†        13–3
+24    1994    13–3   san francisco 49ers†        12–4
+25    1995    12–4        dallas cowboys†        13–3
+26    1996    13–3     green bay packers†        12–4
+27    1997    13–3      green bay packers        13–3
+28    1998    14–2        atlanta falcons        13–3
+29    1999    13–3        st. louis rams†        14–2
+30    2000    12–4        new york giants        13–3
+31    2001    14–2         st. louis rams        12–4
+32    2002    12–4  tampa bay buccaneers†        14–2
+33    2003    11–5      carolina panthers        12–4
+34    2004    13–3    philadelphia eagles        11–5
+35    2005    13–3       seattle seahawks        13–3
+36    2006    13–3          chicago bears        13–3
+37    2007    10–6       new york giants†        13–3
+38    2008     9–7      arizona cardinals        10–6
+39    2009    13–3    new orleans saints†         9–7
+40    2010    10–6     green bay packers†        13–3
+41    2011     9–7       new york giants†        10–6
+42    2012  11–4–1    san francisco 49ers         9–7
+43    2013    13–3      seattle seahawks†      11–4–1
+Sample 10 - Plan 1: Table after operation: [['season', 'record', 'team', 'prev_record'], [1970, '10–4', 'dallas cowboys', None], [1971, '11–3', 'dallas cowboys†', '10–4'], [1972, '11–3', 'washington redskins', '11–3'], [1973, '12–2', 'minnesota vikings', '11–3'], [1974, '10–4', 'minnesota vikings', '12–2'], [1975, '10–4', 'dallas cowboys', '10–4'], [1976, '11–2–1', 'minnesota vikings', '10–4'], [1977, '12–2', 'dallas cowboys†', '11–2–1'], [1978, '12–4', 'dallas cowboys', '12–2'], [1979, '9–7', 'los angeles rams', '12–4'], [1980, '12–4', 'philadelphia eagles', '9–7'], [1981, '13–3', 'san francisco 49ers†', '12–4'], [1982, '8–1', 'washington redskins†', '13–3'], [1983, '14–2', 'washington redskins', '8–1'], [1984, '15–1', 'san francisco 49ers†', '14–2'], [1985, '15–1', 'chicago bears†', '15–1'], [1986, '14–2', 'new york giants†', '15–1'], [1987, '11–4', 'washington redskins†', '14–2'], [1988, '10–6', 'san francisco 49ers†', '11–4'], [1989, '14–2', 'san francisco 49ers†', '10–6'], [1990, '13–3', 'new york giants†', '14–2'], [1991, '14–2', 'washington redskins†', '13–3'], [1992, '13–3', 'dallas cowboys†', '14–2'], [1993, '12–4', 'dallas cowboys†', '13–3'], [1994, '13–3', 'san francisco 49ers†', '12–4'], [1995, '12–4', 'dallas cowboys†', '13–3'], [1996, '13–3', 'green bay packers†', '12–4'], [1997, '13–3', 'green bay packers', '13–3'], [1998, '14–2', 'atlanta falcons', '13–3'], [1999, '13–3', 'st. louis rams†', '14–2'], [2000, '12–4', 'new york giants', '13–3'], [2001, '14–2', 'st. louis rams', '12–4'], [2002, '12–4', 'tampa bay buccaneers†', '14–2'], [2003, '11–5', 'carolina panthers', '12–4'], [2004, '13–3', 'philadelphia eagles', '11–5'], [2005, '13–3', 'seattle seahawks', '13–3'], [2006, '13–3', 'chicago bears', '13–3'], [2007, '10–6', 'new york giants†', '13–3'], [2008, '9–7', 'arizona cardinals', '10–6'], [2009, '13–3', 'new orleans saints†', '9–7'], [2010, '10–6', 'green bay packers†', '13–3'], [2011, '9–7', 'new york giants†', '10–6'], [2012, '11–4–1', 'san francisco 49ers', '9–7'], [2013, '13–3', 'seattle seahawks†', '11–4–1']]
+########################################################################################################################
+Sample 10 - Plan 1: Operation 3: Create a new column 'next_record' that contains the record from the next row.
+Sample 10 - Plan 1: Selected indices: [[0, 1], [0, 0], [1, 1], [1, 0], [2, 1], [2, 0], [3, 1], [3, 0], [4, 1], [4, 0], [5, 1], [5, 0], [6, 1], [6, 0], [7, 1], [7, 0], [8, 1], [8, 0], [9, 1], [9, 0], [10, 1], [10, 0], [11, 1], [11, 0], [12, 1], [12, 0], [13, 1], [13, 0], [14, 1], [14, 0], [15, 1], [15, 0], [16, 1], [16, 0], [17, 1], [17, 0], [18, 1], [18, 0], [19, 1], [19, 0], [20, 1], [20, 0], [21, 1], [21, 0], [22, 1], [22, 0], [23, 1], [23, 0], [24, 1], [24, 0], [25, 1], [25, 0], [26, 1], [26, 0], [27, 1], [27, 0], [28, 1], [28, 0], [29, 1], [29, 0], [30, 1], [30, 0], [31, 1], [31, 0], [32, 1], [32, 0], [33, 1], [33, 0], [34, 1], [34, 0], [35, 1], [35, 0], [36, 1], [36, 0], [37, 1], [37, 0], [38, 1], [38, 0], [39, 1], [39, 0], [40, 1], [40, 0], [41, 1], [41, 0], [42, 1], [42, 0], [43, 1], [43, 0]]
+Sample 10 - Plan 1: X-Table after operation df:
+    season  record                   team prev_record next_record
+0     1970    10–4         dallas cowboys        None        11–3
+1     1971    11–3        dallas cowboys†        10–4        11–3
+2     1972    11–3    washington redskins        11–3        12–2
+3     1973    12–2      minnesota vikings        11–3        10–4
+4     1974    10–4      minnesota vikings        12–2        10–4
+5     1975    10–4         dallas cowboys        10–4      11–2–1
+6     1976  11–2–1      minnesota vikings        10–4        12–2
+7     1977    12–2        dallas cowboys†      11–2–1        12–4
+8     1978    12–4         dallas cowboys        12–2         9–7
+9     1979     9–7       los angeles rams        12–4        12–4
+10    1980    12–4    philadelphia eagles         9–7        13–3
+11    1981    13–3   san francisco 49ers†        12–4         8–1
+12    1982     8–1   washington redskins†        13–3        14–2
+13    1983    14–2    washington redskins         8–1        15–1
+14    1984    15–1   san francisco 49ers†        14–2        15–1
+15    1985    15–1         chicago bears†        15–1        14–2
+16    1986    14–2       new york giants†        15–1        11–4
+17    1987    11–4   washington redskins†        14–2        10–6
+18    1988    10–6   san francisco 49ers†        11–4        14–2
+19    1989    14–2   san francisco 49ers†        10–6        13–3
+20    1990    13–3       new york giants†        14–2        14–2
+21    1991    14–2   washington redskins†        13–3        13–3
+22    1992    13–3        dallas cowboys†        14–2        12–4
+23    1993    12–4        dallas cowboys†        13–3        13–3
+24    1994    13–3   san francisco 49ers†        12–4        12–4
+25    1995    12–4        dallas cowboys†        13–3        13–3
+26    1996    13–3     green bay packers†        12–4        13–3
+27    1997    13–3      green bay packers        13–3        14–2
+28    1998    14–2        atlanta falcons        13–3        13–3
+29    1999    13–3        st. louis rams†        14–2        12–4
+30    2000    12–4        new york giants        13–3        14–2
+31    2001    14–2         st. louis rams        12–4        12–4
+32    2002    12–4  tampa bay buccaneers†        14–2        11–5
+33    2003    11–5      carolina panthers        12–4        13–3
+34    2004    13–3    philadelphia eagles        11–5        13–3
+35    2005    13–3       seattle seahawks        13–3        13–3
+36    2006    13–3          chicago bears        13–3        10–6
+37    2007    10–6       new york giants†        13–3         9–7
+38    2008     9–7      arizona cardinals        10–6        13–3
+39    2009    13–3    new orleans saints†         9–7        10–6
+40    2010    10–6     green bay packers†        13–3         9–7
+41    2011     9–7       new york giants†        10–6      11–4–1
+42    2012  11–4–1    san francisco 49ers         9–7        13–3
+43    2013    13–3      seattle seahawks†      11–4–1        None
+Sample 10 - Plan 1: Table after operation: [['season', 'record', 'team', 'prev_record', 'next_record'], [1970, '10–4', 'dallas cowboys', None, '11–3'], [1971, '11–3', 'dallas cowboys†', '10–4', '11–3'], [1972, '11–3', 'washington redskins', '11–3', '12–2'], [1973, '12–2', 'minnesota vikings', '11–3', '10–4'], [1974, '10–4', 'minnesota vikings', '12–2', '10–4'], [1975, '10–4', 'dallas cowboys', '10–4', '11–2–1'], [1976, '11–2–1', 'minnesota vikings', '10–4', '12–2'], [1977, '12–2', 'dallas cowboys†', '11–2–1', '12–4'], [1978, '12–4', 'dallas cowboys', '12–2', '9–7'], [1979, '9–7', 'los angeles rams', '12–4', '12–4'], [1980, '12–4', 'philadelphia eagles', '9–7', '13–3'], [1981, '13–3', 'san francisco 49ers†', '12–4', '8–1'], [1982, '8–1', 'washington redskins†', '13–3', '14–2'], [1983, '14–2', 'washington redskins', '8–1', '15–1'], [1984, '15–1', 'san francisco 49ers†', '14–2', '15–1'], [1985, '15–1', 'chicago bears†', '15–1', '14–2'], [1986, '14–2', 'new york giants†', '15–1', '11–4'], [1987, '11–4', 'washington redskins†', '14–2', '10–6'], [1988, '10–6', 'san francisco 49ers†', '11–4', '14–2'], [1989, '14–2', 'san francisco 49ers†', '10–6', '13–3'], [1990, '13–3', 'new york giants†', '14–2', '14–2'], [1991, '14–2', 'washington redskins†', '13–3', '13–3'], [1992, '13–3', 'dallas cowboys†', '14–2', '12–4'], [1993, '12–4', 'dallas cowboys†', '13–3', '13–3'], [1994, '13–3', 'san francisco 49ers†', '12–4', '12–4'], [1995, '12–4', 'dallas cowboys†', '13–3', '13–3'], [1996, '13–3', 'green bay packers†', '12–4', '13–3'], [1997, '13–3', 'green bay packers', '13–3', '14–2'], [1998, '14–2', 'atlanta falcons', '13–3', '13–3'], [1999, '13–3', 'st. louis rams†', '14–2', '12–4'], [2000, '12–4', 'new york giants', '13–3', '14–2'], [2001, '14–2', 'st. louis rams', '12–4', '12–4'], [2002, '12–4', 'tampa bay buccaneers†', '14–2', '11–5'], [2003, '11–5', 'carolina panthers', '12–4', '13–3'], [2004, '13–3', 'philadelphia eagles', '11–5', '13–3'], [2005, '13–3', 'seattle seahawks', '13–3', '13–3'], [2006, '13–3', 'chicago bears', '13–3', '10–6'], [2007, '10–6', 'new york giants†', '13–3', '9–7'], [2008, '9–7', 'arizona cardinals', '10–6', '13–3'], [2009, '13–3', 'new orleans saints†', '9–7', '10–6'], [2010, '10–6', 'green bay packers†', '13–3', '9–7'], [2011, '9–7', 'new york giants†', '10–6', '11–4–1'], [2012, '11–4–1', 'san francisco 49ers', '9–7', '13–3'], [2013, '13–3', 'seattle seahawks†', '11–4–1', None]]
+########################################################################################################################
+Sample 10 - Plan 1: Operation 4: Filter the table to include only rows where the 'record' is the same as both the 'prev_record' and 'next_record'.
+Sample 10 - Plan 1: Selected indices: [[35, 1]]
+Sample 10 - Plan 1: X-Table after operation df:
+   season record              team prev_record next_record
+0    2005   13–3  seattle seahawks        13–3        13–3
+Sample 10 - Plan 1: Table after operation: [['season', 'record', 'team', 'prev_record', 'next_record'], [2005, '13–3', 'seattle seahawks', '13–3', '13–3']]
+########################################################################################################################
+Sample 10 - Plan 1: Operation 5: Select the 'season', 'record', and 'team' columns from the filtered table.
+Sample 10 - Plan 1: Selected indices: []
+Sample 10 - Plan 1: X-Table after operation df:
+   season record              team
+0    2005   13–3  seattle seahawks
+Sample 10 - Plan 1: Table after operation: [['season', 'record', 'team'], [2005, '13–3', 'seattle seahawks']]
+Fall-back: FALSE
+Answer from plan 1: [[2005, '13–3', 'seattle seahawks']]
+Groundtruth: ['2004', '2005', '2006']

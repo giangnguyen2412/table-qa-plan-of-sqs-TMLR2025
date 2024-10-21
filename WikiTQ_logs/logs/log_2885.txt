@@ -1,0 +1,44 @@
+************************************************************************************************************************
+Sample 2885 - Plan 1: Query: which songs where not sung by lata mangeshkar?
+Sample 2885 - Plan 1: Groundtruth: ['"Dil Ka Haal Sune Dilwaala"', '"Mera Juta Hai Japani"']
+Sample 2885 - Plan 1: X-Original table pd: 
+   _                        title                               singer_s_  \
+0  1  "dil ka haal sune dilwaala"                               manna dey   
+1  2    "ichak dana beechak dana"                 mukesh, lata mangeshkar   
+2  3       "mera juta hai japani"                                  mukesh   
+3  4       "mudh mudh ke na dekh"              lata mangeshkar, manna dey   
+4  5                 "o janewale"                         lata mangeshkar   
+5  6         "pyar hua iqrar hua"              lata mangeshkar, manna dey   
+6  7         "ramaiya vastavaiya"  mohammed rafi, lata mangeshkar, mukesh   
+7  8        "sham gayi raat aayi"                         lata mangeshkar   
+
+         lyricist length  
+0      shailendra   5:36  
+1  hasrat jaipuri   5:08  
+2      shailendra   4:33  
+3      shailendra   6:34  
+4  hasrat jaipuri   2:20  
+5      shailendra   4:22  
+6      shailendra   6:10  
+7  hasrat jaipuri   4:00  
+Sample 2885 - Plan 1: Caption: none
+Sample 2885 - Plan 1: Original table: [['_', 'title', 'singer_s_', 'lyricist', 'length'], ['1', '"dil ka haal sune dilwaala"', 'manna dey', 'shailendra', '5:36'], ['2', '"ichak dana beechak dana"', 'mukesh, lata mangeshkar', 'hasrat jaipuri', '5:08'], ['3', '"mera juta hai japani"', 'mukesh', 'shailendra', '4:33'], ['4', '"mudh mudh ke na dekh"', 'lata mangeshkar, manna dey', 'shailendra', '6:34'], ['5', '"o janewale"', 'lata mangeshkar', 'hasrat jaipuri', '2:20'], ['6', '"pyar hua iqrar hua"', 'lata mangeshkar, manna dey', 'shailendra', '4:22'], ['7', '"ramaiya vastavaiya"', 'mohammed rafi, lata mangeshkar, mukesh', 'shailendra', '6:10'], ['8', '"sham gayi raat aayi"', 'lata mangeshkar', 'hasrat jaipuri', '4:00']]
+########################################################################################################################
+Sample 2885 - Plan 1: Operation 1: Select rows where the 'singer_s_' column does not contain 'lata mangeshkar'.
+Sample 2885 - Plan 1: Selected indices: []
+Sample 2885 - Plan 1: X-Table after operation df:
+   _                        title  singer_s_    lyricist length
+0  1  "dil ka haal sune dilwaala"  manna dey  shailendra   5:36
+1  3       "mera juta hai japani"     mukesh  shailendra   4:33
+Sample 2885 - Plan 1: Table after operation: [['_', 'title', 'singer_s_', 'lyricist', 'length'], [1, '"dil ka haal sune dilwaala"', 'manna dey', 'shailendra', '5:36'], [3, '"mera juta hai japani"', 'mukesh', 'shailendra', '4:33']]
+########################################################################################################################
+Sample 2885 - Plan 1: Operation 2: Select the 'title' column.
+Sample 2885 - Plan 1: Selected indices: []
+Sample 2885 - Plan 1: X-Table after operation df:
+                         title
+0  "dil ka haal sune dilwaala"
+1       "mera juta hai japani"
+Sample 2885 - Plan 1: Table after operation: [['title'], ['"dil ka haal sune dilwaala"'], ['"mera juta hai japani"']]
+Fall-back: FALSE
+Answer from plan 1: [['"dil ka haal sune dilwaala"'], ['"mera juta hai japani"']]
+Groundtruth: ['"Dil Ka Haal Sune Dilwaala"', '"Mera Juta Hai Japani"']

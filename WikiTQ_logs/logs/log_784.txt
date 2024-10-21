@@ -1,0 +1,47 @@
+************************************************************************************************************************
+Sample 784 - Plan 1: Query: how many players wore the number 25?
+Sample 784 - Plan 1: Groundtruth: ['2']
+Sample 784 - Plan 1: X-Original table pd: 
+           player  no_    nationality        position years_for_jazz  \
+0      jim farmer   30  united states           guard        1988-89   
+1  derrick favors   15  united states         forward   2011-present   
+2  kyrylo fesenko   44        ukraine          center        2007-11   
+3    derek fisher    2  united states           guard      2006-2007   
+4     greg foster   44  united states  center/forward        1995-99   
+5    bernie fryer   25  united states           guard        1975-76   
+6     todd fuller   52  united states          center        1998-99   
+7    terry furlow   25  united states   guard/forward        1979-80   
+
+             school_club_team  
+0                     alabama  
+1                georgia tech  
+2  cherkasy monkeys (ukraine)  
+3        arkansas-little rock  
+4                        utep  
+5                         byu  
+6        north carolina state  
+7              michigan state  
+Sample 784 - Plan 1: Caption: none
+Sample 784 - Plan 1: Original table: [['player', 'no_', 'nationality', 'position', 'years_for_jazz', 'school_club_team'], ['jim farmer', '30', 'united states', 'guard', '1988-89', 'alabama'], ['derrick favors', '15', 'united states', 'forward', '2011-present', 'georgia tech'], ['kyrylo fesenko', '44', 'ukraine', 'center', '2007-11', 'cherkasy monkeys (ukraine)'], ['derek fisher', '2', 'united states', 'guard', '2006-2007', 'arkansas-little rock'], ['greg foster', '44', 'united states', 'center/forward', '1995-99', 'utep'], ['bernie fryer', '25', 'united states', 'guard', '1975-76', 'byu'], ['todd fuller', '52', 'united states', 'center', '1998-99', 'north carolina state'], ['terry furlow', '25', 'united states', 'guard/forward', '1979-80', 'michigan state']]
+########################################################################################################################
+Sample 784 - Plan 1: Operation 1: Select rows where the 'no_' column is equal to 25.
+Sample 784 - Plan 1: Selected indices: [[7, 1], [5, 1]]
+Sample 784 - Plan 1: X-Table after operation df:
+         player  no_    nationality       position years_for_jazz  \
+0  bernie fryer   25  united states          guard        1975-76   
+1  terry furlow   25  united states  guard/forward        1979-80   
+
+  school_club_team  
+0              byu  
+1   michigan state  
+Sample 784 - Plan 1: Table after operation: [['player', 'no_', 'nationality', 'position', 'years_for_jazz', 'school_club_team'], ['bernie fryer', 25, 'united states', 'guard', '1975-76', 'byu'], ['terry furlow', 25, 'united states', 'guard/forward', '1979-80', 'michigan state']]
+########################################################################################################################
+Sample 784 - Plan 1: Operation 2: Count the number of rows selected.
+Sample 784 - Plan 1: Selected indices: []
+Sample 784 - Plan 1: X-Table after operation df:
+   row_count
+0          2
+Sample 784 - Plan 1: Table after operation: [['row_count'], [2]]
+Fall-back: FALSE
+Answer from plan 1: [[2]]
+Groundtruth: ['2']

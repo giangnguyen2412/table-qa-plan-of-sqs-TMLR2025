@@ -1,0 +1,155 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr/>
+<h3><span>Statement:</span> the exports for the country of sud - vest oltenia is 26557.8</h3>
+<h3>Input Table: list of romanian counties by foreign trade</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where 'county' is 'sud - vest oltenia'.</div>
+<div class="content" id="step-1">
+<table>
+<tr>
+<td>county</td>
+<td>exports__us_mil_</td>
+<td>percent_of_total_exports</td>
+<td>imports__us_mil_</td>
+<td>percent_of_total_imports</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">bucharest - ilfov</span></td>
+<td>8001.2</td>
+<td>19.2 %</td>
+<td>26557.8</td>
+<td>39.8 %</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">sud - muntenia</span></td>
+<td>6300 , 7</td>
+<td>15.1 %</td>
+<td>6785.5</td>
+<td>10.2 %</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">vest</span></td>
+<td>6270.2</td>
+<td>15.0 %</td>
+<td>6597.6</td>
+<td>9.9 %</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">sud - est</span></td>
+<td>5762</td>
+<td>13.8 %</td>
+<td>7501.9</td>
+<td>11.2 %</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">centru</span></td>
+<td>5338</td>
+<td>12.8 %</td>
+<td>7.879.4</td>
+<td>11.8 %</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">nord - vest</span></td>
+<td>4726.6</td>
+<td>11.3 %</td>
+<td>6999.1</td>
+<td>10.5 %</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">sud - vest oltenia</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">3226.2</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">7.7 %</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">2007.8</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">3.0 %</span></td>
+</tr>
+</table>
+</div>
+<hr/>
+<div class="step">
+<div class="step-title">Step 2: Extract the numerical value from the 'exports__us_mil_' column then add column 'exports' to existing table.</div>
+<div class="content" id="step-0">
+<table>
+<tr>
+<td>county</td>
+<td>exports__us_mil_</td>
+<td>percent_of_total_exports</td>
+<td>imports__us_mil_</td>
+<td>percent_of_total_imports</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">sud - vest oltenia</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">3226.2</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">7.7 %</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">2007.8</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">3.0 %</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr/>
+<div class="step">
+<div class="step-title">Step 3: Select rows where 'exports' is 26557.8.</div>
+<div class="content" id="step-1">
+<table>
+<tr>
+<td>county</td>
+<td>exports__us_mil_</td>
+<td>percent_of_total_exports</td>
+<td>imports__us_mil_</td>
+<td>percent_of_total_imports</td>
+<td>exports</td>
+</tr>
+<tr>
+<td>sud - vest oltenia</td>
+<td>3226.2</td>
+<td>7.7 %</td>
+<td>2007.8</td>
+<td>3.0 %</td>
+<td>3226.2</td>
+</tr>
+</table>
+</div>
+</div>
+<hr/>
+<div class="step">
+<div class="step-title">Step 4: Use a `CASE` statement to return TRUE if the number of rows is equal to 1, otherwise return FALSE.</div>
+<div class="content" id="step-2">
+<table>
+<tr>
+<td>county</td>
+<td>exports__us_mil_</td>
+<td>percent_of_total_exports</td>
+<td>imports__us_mil_</td>
+<td>percent_of_total_imports</td>
+<td>exports</td>
+</tr>
+</table>
+</div>
+</div>
+<hr/>
+
+</div>
+</div>
+<hr/>
+</body></html>

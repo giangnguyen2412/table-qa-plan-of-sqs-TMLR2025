@@ -1,0 +1,237 @@
+************************************************************************************************************************
+Sample 3787 - Plan 1: Query: which shooter scored the most 5 pointers?
+Sample 3787 - Plan 1: Groundtruth: ['Cyril Mackworth-Praed']
+Sample 3787 - Plan 1: X-Original table pd: 
+   place                shooter c_5_pts c_4_pts  c_3_pts c_2_pts c_1_pts  \
+0      1           norway (nor)      12      16       12       -       -   
+1      1       ole lilloe-olsen       4       5        1       -       -   
+2      1           einar liberg       5       2        3       -       -   
+3      1          harald natvig       2       4        4       -       -   
+4      1             otto olsen       1       5        4       -       -   
+5      2           sweden (swe)       8      19       12       1       -   
+6      2           alfred swahn       3       4        3       -       -   
+7      2      fredric landelius       2       5        3       -       -   
+8      2          otto hultberg       1       6        3       -       -   
+9      2      mauritz johansson       2       4        3       1       -   
+10     3    united states (usa)       7      17       13       3       -   
+11     3             john boles       3       5        2       -       -   
+12     3          walter stokes       1       6        3       -       -   
+13     3        raymond coulter       2       4        3       1       -   
+14     3          dennis fenton       1       2        5       2       -   
+15     4    great britain (gbr)       8       9       18       3       -   
+16     4  cyril mackworth-praed       6       -        3       1       -   
+17     4       alexander rogers       1       2        5       2       -   
+18     4        john faunthorpe       -       5        4       -       -   
+19     4           john o'leary       1       2        6       -       -   
+20     5          finland (fin)       7      10       15       5       -   
+21     5   karl magnus wegelius       2       6        2       -       -   
+22     5        martti liuttula       3       2        3       2       -   
+23     5           jalo autonen       1       1        5       2       -   
+24     5         toivo tikkanen       1       1        5       1       -   
+25     6          hungary (hun)       1       8       17       4       1   
+26     6        gusztáv szomjas       -       4        4       1       -   
+27     6            rezső velez       -       1        5       2       -   
+28     6          elemér takács       1       2        3       -       1   
+29     6         lászló szomjas       -       1        5       1       -   
+30     –   czechoslovakia (tch)       1       2        6       1       -   
+31     –        miloslav hlaváč       1       2        6       1       -   
+
+   c_0_pts  total  rank  
+0        -    160   NaN  
+1        -     43   1.0  
+2        -     42   2.0  
+3        -     38   8.0  
+4        -     37  11.0  
+5        -    154   NaN  
+6        -     40   5.0  
+7        -     39   7.0  
+8        -     38   8.0  
+9        -     37  11.0  
+10       -    148   NaN  
+11       -     41   3.0  
+12       -     38   8.0  
+13       -     37  11.0  
+14       -     32  16.0  
+15       2    136   NaN  
+16       -     41   3.0  
+17       -     32  16.0  
+18       1     32  16.0  
+19       1     31  19.0  
+20       3    130   NaN  
+21       -     40   5.0  
+22       -     36  14.0  
+23       1     28  21.0  
+24       2     26  22.0  
+25       9     97   NaN  
+26       1     30  20.0  
+27       2     23  23.0  
+28       3     23  23.0  
+29       3     21  25.0  
+30       -     33   NaN  
+31       -     33  15.0  
+Sample 3787 - Plan 1: Caption: none
+Sample 3787 - Plan 1: Original table: [['place', 'shooter', 'c_5_pts', 'c_4_pts', 'c_3_pts', 'c_2_pts', 'c_1_pts', 'c_0_pts', 'total', 'rank'], ['1', 'norway\xa0(nor)', '12', '16', '12', '-', '-', '-', '160', ''], ['1', 'ole lilloe-olsen', '4', '5', '1', '-', '-', '-', '43', '1'], ['1', 'einar liberg', '5', '2', '3', '-', '-', '-', '42', '2'], ['1', 'harald natvig', '2', '4', '4', '-', '-', '-', '38', '8'], ['1', 'otto olsen', '1', '5', '4', '-', '-', '-', '37', '11'], ['2', 'sweden\xa0(swe)', '8', '19', '12', '1', '-', '-', '154', ''], ['2', 'alfred swahn', '3', '4', '3', '-', '-', '-', '40', '5'], ['2', 'fredric landelius', '2', '5', '3', '-', '-', '-', '39', '7'], ['2', 'otto hultberg', '1', '6', '3', '-', '-', '-', '38', '8'], ['2', 'mauritz johansson', '2', '4', '3', '1', '-', '-', '37', '11'], ['3', 'united states\xa0(usa)', '7', '17', '13', '3', '-', '-', '148', ''], ['3', 'john boles', '3', '5', '2', '-', '-', '-', '41', '3'], ['3', 'walter stokes', '1', '6', '3', '-', '-', '-', '38', '8'], ['3', 'raymond coulter', '2', '4', '3', '1', '-', '-', '37', '11'], ['3', 'dennis fenton', '1', '2', '5', '2', '-', '-', '32', '16'], ['4', 'great britain\xa0(gbr)', '8', '9', '18', '3', '-', '2', '136', ''], ['4', 'cyril mackworth-praed', '6', '-', '3', '1', '-', '-', '41', '3'], ['4', 'alexander rogers', '1', '2', '5', '2', '-', '-', '32', '16'], ['4', 'john faunthorpe', '-', '5', '4', '-', '-', '1', '32', '16'], ['4', "john o'leary", '1', '2', '6', '-', '-', '1', '31', '19'], ['5', 'finland\xa0(fin)', '7', '10', '15', '5', '-', '3', '130', ''], ['5', 'karl magnus wegelius', '2', '6', '2', '-', '-', '-', '40', '5'], ['5', 'martti liuttula', '3', '2', '3', '2', '-', '-', '36', '14'], ['5', 'jalo autonen', '1', '1', '5', '2', '-', '1', '28', '21'], ['5', 'toivo tikkanen', '1', '1', '5', '1', '-', '2', '26', '22'], ['6', 'hungary\xa0(hun)', '1', '8', '17', '4', '1', '9', '97', ''], ['6', 'gusztáv szomjas', '-', '4', '4', '1', '-', '1', '30', '20'], ['6', 'rezső velez', '-', '1', '5', '2', '-', '2', '23', '23'], ['6', 'elemér takács', '1', '2', '3', '-', '1', '3', '23', '23'], ['6', 'lászló szomjas', '-', '1', '5', '1', '-', '3', '21', '25'], ['–', 'czechoslovakia\xa0(tch)', '1', '2', '6', '1', '-', '-', '33', ''], ['–', 'miloslav hlaváč', '1', '2', '6', '1', '-', '-', '33', '15']]
+########################################################################################################################
+Sample 3787 - Plan 1: Operation 1: Select rows where 'c_5_pts' is not null.
+Sample 3787 - Plan 1: Selected indices: []
+Sample 3787 - Plan 1: X-Table after operation df:
+   place                shooter c_5_pts c_4_pts  c_3_pts c_2_pts c_1_pts  \
+0      1           norway (nor)      12      16       12       -       -   
+1      1       ole lilloe-olsen       4       5        1       -       -   
+2      1           einar liberg       5       2        3       -       -   
+3      1          harald natvig       2       4        4       -       -   
+4      1             otto olsen       1       5        4       -       -   
+5      2           sweden (swe)       8      19       12       1       -   
+6      2           alfred swahn       3       4        3       -       -   
+7      2      fredric landelius       2       5        3       -       -   
+8      2          otto hultberg       1       6        3       -       -   
+9      2      mauritz johansson       2       4        3       1       -   
+10     3    united states (usa)       7      17       13       3       -   
+11     3             john boles       3       5        2       -       -   
+12     3          walter stokes       1       6        3       -       -   
+13     3        raymond coulter       2       4        3       1       -   
+14     3          dennis fenton       1       2        5       2       -   
+15     4    great britain (gbr)       8       9       18       3       -   
+16     4  cyril mackworth-praed       6       -        3       1       -   
+17     4       alexander rogers       1       2        5       2       -   
+18     4        john faunthorpe       -       5        4       -       -   
+19     4           john o'leary       1       2        6       -       -   
+20     5          finland (fin)       7      10       15       5       -   
+21     5   karl magnus wegelius       2       6        2       -       -   
+22     5        martti liuttula       3       2        3       2       -   
+23     5           jalo autonen       1       1        5       2       -   
+24     5         toivo tikkanen       1       1        5       1       -   
+25     6          hungary (hun)       1       8       17       4       1   
+26     6        gusztáv szomjas       -       4        4       1       -   
+27     6            rezső velez       -       1        5       2       -   
+28     6          elemér takács       1       2        3       -       1   
+29     6         lászló szomjas       -       1        5       1       -   
+30     –   czechoslovakia (tch)       1       2        6       1       -   
+31     –        miloslav hlaváč       1       2        6       1       -   
+
+   c_0_pts  total  rank  
+0        -    160   NaN  
+1        -     43   1.0  
+2        -     42   2.0  
+3        -     38   8.0  
+4        -     37  11.0  
+5        -    154   NaN  
+6        -     40   5.0  
+7        -     39   7.0  
+8        -     38   8.0  
+9        -     37  11.0  
+10       -    148   NaN  
+11       -     41   3.0  
+12       -     38   8.0  
+13       -     37  11.0  
+14       -     32  16.0  
+15       2    136   NaN  
+16       -     41   3.0  
+17       -     32  16.0  
+18       1     32  16.0  
+19       1     31  19.0  
+20       3    130   NaN  
+21       -     40   5.0  
+22       -     36  14.0  
+23       1     28  21.0  
+24       2     26  22.0  
+25       9     97   NaN  
+26       1     30  20.0  
+27       2     23  23.0  
+28       3     23  23.0  
+29       3     21  25.0  
+30       -     33   NaN  
+31       -     33  15.0  
+Sample 3787 - Plan 1: Table after operation: [['place', 'shooter', 'c_5_pts', 'c_4_pts', 'c_3_pts', 'c_2_pts', 'c_1_pts', 'c_0_pts', 'total', 'rank'], ['1', 'norway\xa0(nor)', '12', '16', 12, '-', '-', '-', 160, nan], ['1', 'ole lilloe-olsen', '4', '5', 1, '-', '-', '-', 43, 1.0], ['1', 'einar liberg', '5', '2', 3, '-', '-', '-', 42, 2.0], ['1', 'harald natvig', '2', '4', 4, '-', '-', '-', 38, 8.0], ['1', 'otto olsen', '1', '5', 4, '-', '-', '-', 37, 11.0], ['2', 'sweden\xa0(swe)', '8', '19', 12, '1', '-', '-', 154, nan], ['2', 'alfred swahn', '3', '4', 3, '-', '-', '-', 40, 5.0], ['2', 'fredric landelius', '2', '5', 3, '-', '-', '-', 39, 7.0], ['2', 'otto hultberg', '1', '6', 3, '-', '-', '-', 38, 8.0], ['2', 'mauritz johansson', '2', '4', 3, '1', '-', '-', 37, 11.0], ['3', 'united states\xa0(usa)', '7', '17', 13, '3', '-', '-', 148, nan], ['3', 'john boles', '3', '5', 2, '-', '-', '-', 41, 3.0], ['3', 'walter stokes', '1', '6', 3, '-', '-', '-', 38, 8.0], ['3', 'raymond coulter', '2', '4', 3, '1', '-', '-', 37, 11.0], ['3', 'dennis fenton', '1', '2', 5, '2', '-', '-', 32, 16.0], ['4', 'great britain\xa0(gbr)', '8', '9', 18, '3', '-', '2', 136, nan], ['4', 'cyril mackworth-praed', '6', '-', 3, '1', '-', '-', 41, 3.0], ['4', 'alexander rogers', '1', '2', 5, '2', '-', '-', 32, 16.0], ['4', 'john faunthorpe', '-', '5', 4, '-', '-', '1', 32, 16.0], ['4', "john o'leary", '1', '2', 6, '-', '-', '1', 31, 19.0], ['5', 'finland\xa0(fin)', '7', '10', 15, '5', '-', '3', 130, nan], ['5', 'karl magnus wegelius', '2', '6', 2, '-', '-', '-', 40, 5.0], ['5', 'martti liuttula', '3', '2', 3, '2', '-', '-', 36, 14.0], ['5', 'jalo autonen', '1', '1', 5, '2', '-', '1', 28, 21.0], ['5', 'toivo tikkanen', '1', '1', 5, '1', '-', '2', 26, 22.0], ['6', 'hungary\xa0(hun)', '1', '8', 17, '4', '1', '9', 97, nan], ['6', 'gusztáv szomjas', '-', '4', 4, '1', '-', '1', 30, 20.0], ['6', 'rezső velez', '-', '1', 5, '2', '-', '2', 23, 23.0], ['6', 'elemér takács', '1', '2', 3, '-', '1', '3', 23, 23.0], ['6', 'lászló szomjas', '-', '1', 5, '1', '-', '3', 21, 25.0], ['–', 'czechoslovakia\xa0(tch)', '1', '2', 6, '1', '-', '-', 33, nan], ['–', 'miloslav hlaváč', '1', '2', 6, '1', '-', '-', 33, 15.0]]
+########################################################################################################################
+Sample 3787 - Plan 1: Operation 2: Order the table by 'c_5_pts' in descending order.
+Sample 3787 - Plan 1: Selected indices: [[22, 2], [9, 2], [0, 2], [11, 2], [2, 2], [24, 2], [13, 2], [26, 2], [15, 2], [6, 2], [20, 2], [4, 2], [17, 2], [28, 2], [8, 2], [30, 2], [19, 2], [10, 2], [1, 2], [21, 2], [12, 2], [23, 2], [3, 2], [14, 2], [5, 2], [27, 2], [25, 2], [16, 2], [7, 2], [29, 2], [18, 2], [31, 2]]
+Sample 3787 - Plan 1: X-Table after operation df:
+   place                shooter c_5_pts c_4_pts  c_3_pts c_2_pts c_1_pts  \
+0      1           norway (nor)      12      16       12       -       -   
+1      2           sweden (swe)       8      19       12       1       -   
+2      4    great britain (gbr)       8       9       18       3       -   
+3      3    united states (usa)       7      17       13       3       -   
+4      5          finland (fin)       7      10       15       5       -   
+5      4  cyril mackworth-praed       6       -        3       1       -   
+6      1           einar liberg       5       2        3       -       -   
+7      1       ole lilloe-olsen       4       5        1       -       -   
+8      2           alfred swahn       3       4        3       -       -   
+9      3             john boles       3       5        2       -       -   
+10     5        martti liuttula       3       2        3       2       -   
+11     1          harald natvig       2       4        4       -       -   
+12     2      fredric landelius       2       5        3       -       -   
+13     2      mauritz johansson       2       4        3       1       -   
+14     3        raymond coulter       2       4        3       1       -   
+15     5   karl magnus wegelius       2       6        2       -       -   
+16     1             otto olsen       1       5        4       -       -   
+17     2          otto hultberg       1       6        3       -       -   
+18     3          walter stokes       1       6        3       -       -   
+19     3          dennis fenton       1       2        5       2       -   
+20     4       alexander rogers       1       2        5       2       -   
+21     4           john o'leary       1       2        6       -       -   
+22     5           jalo autonen       1       1        5       2       -   
+23     5         toivo tikkanen       1       1        5       1       -   
+24     6          hungary (hun)       1       8       17       4       1   
+25     6          elemér takács       1       2        3       -       1   
+26     –   czechoslovakia (tch)       1       2        6       1       -   
+27     –        miloslav hlaváč       1       2        6       1       -   
+28     4        john faunthorpe       -       5        4       -       -   
+29     6        gusztáv szomjas       -       4        4       1       -   
+30     6            rezső velez       -       1        5       2       -   
+31     6         lászló szomjas       -       1        5       1       -   
+
+   c_0_pts  total  rank  
+0        -    160   NaN  
+1        -    154   NaN  
+2        2    136   NaN  
+3        -    148   NaN  
+4        3    130   NaN  
+5        -     41   3.0  
+6        -     42   2.0  
+7        -     43   1.0  
+8        -     40   5.0  
+9        -     41   3.0  
+10       -     36  14.0  
+11       -     38   8.0  
+12       -     39   7.0  
+13       -     37  11.0  
+14       -     37  11.0  
+15       -     40   5.0  
+16       -     37  11.0  
+17       -     38   8.0  
+18       -     38   8.0  
+19       -     32  16.0  
+20       -     32  16.0  
+21       1     31  19.0  
+22       1     28  21.0  
+23       2     26  22.0  
+24       9     97   NaN  
+25       3     23  23.0  
+26       -     33   NaN  
+27       -     33  15.0  
+28       1     32  16.0  
+29       1     30  20.0  
+30       2     23  23.0  
+31       3     21  25.0  
+Sample 3787 - Plan 1: Table after operation: [['place', 'shooter', 'c_5_pts', 'c_4_pts', 'c_3_pts', 'c_2_pts', 'c_1_pts', 'c_0_pts', 'total', 'rank'], ['1', 'norway\xa0(nor)', '12', '16', 12, '-', '-', '-', 160, nan], ['2', 'sweden\xa0(swe)', '8', '19', 12, '1', '-', '-', 154, nan], ['4', 'great britain\xa0(gbr)', '8', '9', 18, '3', '-', '2', 136, nan], ['3', 'united states\xa0(usa)', '7', '17', 13, '3', '-', '-', 148, nan], ['5', 'finland\xa0(fin)', '7', '10', 15, '5', '-', '3', 130, nan], ['4', 'cyril mackworth-praed', '6', '-', 3, '1', '-', '-', 41, 3.0], ['1', 'einar liberg', '5', '2', 3, '-', '-', '-', 42, 2.0], ['1', 'ole lilloe-olsen', '4', '5', 1, '-', '-', '-', 43, 1.0], ['2', 'alfred swahn', '3', '4', 3, '-', '-', '-', 40, 5.0], ['3', 'john boles', '3', '5', 2, '-', '-', '-', 41, 3.0], ['5', 'martti liuttula', '3', '2', 3, '2', '-', '-', 36, 14.0], ['1', 'harald natvig', '2', '4', 4, '-', '-', '-', 38, 8.0], ['2', 'fredric landelius', '2', '5', 3, '-', '-', '-', 39, 7.0], ['2', 'mauritz johansson', '2', '4', 3, '1', '-', '-', 37, 11.0], ['3', 'raymond coulter', '2', '4', 3, '1', '-', '-', 37, 11.0], ['5', 'karl magnus wegelius', '2', '6', 2, '-', '-', '-', 40, 5.0], ['1', 'otto olsen', '1', '5', 4, '-', '-', '-', 37, 11.0], ['2', 'otto hultberg', '1', '6', 3, '-', '-', '-', 38, 8.0], ['3', 'walter stokes', '1', '6', 3, '-', '-', '-', 38, 8.0], ['3', 'dennis fenton', '1', '2', 5, '2', '-', '-', 32, 16.0], ['4', 'alexander rogers', '1', '2', 5, '2', '-', '-', 32, 16.0], ['4', "john o'leary", '1', '2', 6, '-', '-', '1', 31, 19.0], ['5', 'jalo autonen', '1', '1', 5, '2', '-', '1', 28, 21.0], ['5', 'toivo tikkanen', '1', '1', 5, '1', '-', '2', 26, 22.0], ['6', 'hungary\xa0(hun)', '1', '8', 17, '4', '1', '9', 97, nan], ['6', 'elemér takács', '1', '2', 3, '-', '1', '3', 23, 23.0], ['–', 'czechoslovakia\xa0(tch)', '1', '2', 6, '1', '-', '-', 33, nan], ['–', 'miloslav hlaváč', '1', '2', 6, '1', '-', '-', 33, 15.0], ['4', 'john faunthorpe', '-', '5', 4, '-', '-', '1', 32, 16.0], ['6', 'gusztáv szomjas', '-', '4', 4, '1', '-', '1', 30, 20.0], ['6', 'rezső velez', '-', '1', 5, '2', '-', '2', 23, 23.0], ['6', 'lászló szomjas', '-', '1', 5, '1', '-', '3', 21, 25.0]]
+########################################################################################################################
+Sample 3787 - Plan 1: Operation 3: Select row number 1.
+Sample 3787 - Plan 1: Selected indices: []
+Sample 3787 - Plan 1: X-Table after operation df:
+   place       shooter  c_5_pts  c_4_pts  c_3_pts c_2_pts c_1_pts c_0_pts  \
+0      1  norway (nor)       12       16       12       -       -       -   
+
+   total  rank  
+0    160   NaN  
+Sample 3787 - Plan 1: Table after operation: [['place', 'shooter', 'c_5_pts', 'c_4_pts', 'c_3_pts', 'c_2_pts', 'c_1_pts', 'c_0_pts', 'total', 'rank'], ['1', 'norway\xa0(nor)', '12', '16', 12, '-', '-', '-', 160, None]]
+########################################################################################################################
+Sample 3787 - Plan 1: Operation 4: Select the 'shooter' column.
+Sample 3787 - Plan 1: Selected indices: []
+Sample 3787 - Plan 1: X-Table after operation df:
+        shooter
+0  norway (nor)
+Sample 3787 - Plan 1: Table after operation: [['shooter'], ['norway\xa0(nor)']]
+Fall-back: FALSE
+Answer from plan 1: [['norway\xa0(nor)']]
+Groundtruth: ['Cyril Mackworth-Praed']

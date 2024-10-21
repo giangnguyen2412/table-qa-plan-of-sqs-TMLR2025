@@ -1,0 +1,53 @@
+************************************************************************************************************************
+Sample 3720 - Plan 1: Query: how many players went to oklahoma?
+Sample 3720 - Plan 1: Groundtruth: ['2']
+Sample 3720 - Plan 1: X-Original table pd: 
+    pick__                              nfl_team             player  \
+0        1  baltimore colts (lottery bonus pick)        george shaw   
+1        2                     chicago cardinals       max boydston   
+2        3                       baltimore colts        alan ameche   
+3        4                   washington redskins    ralph guglielmi   
+4        5                     green bay packers         tom bettis   
+5        6                   pittsburgh steelers  frank varrichione   
+6        7                      los angeles rams       larry morris   
+7        8                       new york giants           joe heap   
+8        9                   philadelphia eagles       dick bielski   
+9       10                   san francisco 49ers      dickey moegle   
+10      11                         chicago bears     ron drzewiecki   
+11      12                         detroit lions     dave middleton   
+12      13                      cleveland browns        kurt burris   
+
+       position       college  
+0   quarterback        oregon  
+1           end      oklahoma  
+2      fullback     wisconsin  
+3   quarterback    notre dame  
+4         guard        purdue  
+5        tackle    notre dame  
+6        center  georgia tech  
+7      halfback    notre dame  
+8      fullback      maryland  
+9      halfback          rice  
+10     halfback     marquette  
+11     halfback        auburn  
+12       center      oklahoma  
+Sample 3720 - Plan 1: Caption: none
+Sample 3720 - Plan 1: Original table: [['pick__', 'nfl_team', 'player', 'position', 'college'], ['1', 'baltimore colts (lottery bonus pick)', 'george shaw', 'quarterback', 'oregon'], ['2', 'chicago cardinals', 'max boydston', 'end', 'oklahoma'], ['3', 'baltimore colts', 'alan ameche', 'fullback', 'wisconsin'], ['4', 'washington redskins', 'ralph guglielmi', 'quarterback', 'notre dame'], ['5', 'green bay packers', 'tom bettis', 'guard', 'purdue'], ['6', 'pittsburgh steelers', 'frank varrichione', 'tackle', 'notre dame'], ['7', 'los angeles rams', 'larry morris', 'center', 'georgia tech'], ['8', 'new york giants', 'joe heap', 'halfback', 'notre dame'], ['9', 'philadelphia eagles', 'dick bielski', 'fullback', 'maryland'], ['10', 'san francisco 49ers', 'dickey moegle', 'halfback', 'rice'], ['11', 'chicago bears', 'ron drzewiecki', 'halfback', 'marquette'], ['12', 'detroit lions', 'dave middleton', 'halfback', 'auburn'], ['13', 'cleveland browns', 'kurt burris', 'center', 'oklahoma']]
+########################################################################################################################
+Sample 3720 - Plan 1: Operation 1: Select rows where the 'college' is 'oklahoma'.
+Sample 3720 - Plan 1: Selected indices: [[12, 4], [1, 4]]
+Sample 3720 - Plan 1: X-Table after operation df:
+   pick__           nfl_team        player position   college
+0       2  chicago cardinals  max boydston      end  oklahoma
+1      13   cleveland browns   kurt burris   center  oklahoma
+Sample 3720 - Plan 1: Table after operation: [['pick__', 'nfl_team', 'player', 'position', 'college'], [2, 'chicago cardinals', 'max boydston', 'end', 'oklahoma'], [13, 'cleveland browns', 'kurt burris', 'center', 'oklahoma']]
+########################################################################################################################
+Sample 3720 - Plan 1: Operation 2: Count the number of rows.
+Sample 3720 - Plan 1: Selected indices: []
+Sample 3720 - Plan 1: X-Table after operation df:
+   row_count
+0          2
+Sample 3720 - Plan 1: Table after operation: [['row_count'], [2]]
+Fall-back: FALSE
+Answer from plan 1: [[2]]
+Groundtruth: ['2']

@@ -1,0 +1,40 @@
+
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+.sql-command { background-color: #f0f0f0; padding: 10px; border-left: 4px solid #4CAF50; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> richmond , with the home team score of 9.10 (64) , was away team melbourne 's home team opponent</h3>
+<h3>Input Table: 1943 vfl season</h3>
+<div class="step">
+<table>
+<tr><td>home_team</td><td>home_team_score</td><td>away_team</td><td>away_team_score</td><td>venue</td><td>crowd</td><td>date</td></tr><tr><td>hawthorn</td><td>13.10 (88)</td><td>south melbourne</td><td>7.14 (56)</td><td>glenferrie oval</td><td>15000</td><td>1943-08-21</td></tr><tr><td>collingwood</td><td>16.17 (113)</td><td>fitzroy</td><td>9.9 (63)</td><td>victoria park</td><td>6500</td><td>1943-08-21</td></tr><tr><td>carlton</td><td>15.23 (113)</td><td>north melbourne</td><td>7.5 (47)</td><td>princes park</td><td>8000</td><td>1943-08-21</td></tr><tr><td>richmond</td><td>15.19 (109)</td><td>melbourne</td><td>12.13 (85)</td><td>punt road oval</td><td>9000</td><td>1943-08-21</td></tr><tr><td>footscray</td><td>9.10 (64)</td><td>essendon</td><td>6.15 (51)</td><td>western oval</td><td>6000</td><td>1943-08-21</td></tr>
+</table>
+</div>
+<h3>SQL Command:</h3>
+<div class="sql-command">SELECT 
+    CASE 
+        WHEN (SELECT home_team_score FROM table_sql WHERE home_team = 'richmond' AND away_team = 'melbourne') = '9.10 (64)' 
+             AND (SELECT venue FROM table_sql WHERE home_team = 'richmond' AND away_team = 'melbourne') = 'punt road oval' 
+        THEN 'TRUE' 
+        ELSE 'FALSE' 
+    END;</div>
+</body></html>

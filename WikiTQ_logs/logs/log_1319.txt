@@ -1,0 +1,51 @@
+************************************************************************************************************************
+Sample 1319 - Plan 1: Query: did izmir or busan host the asian games in 2002?
+Sample 1319 - Plan 1: Groundtruth: ['Busan']
+Sample 1319 - Plan 1: X-Original table pd: 
+   year                competition                 venue position  \
+0  2001  world youth championships     debrecen, hungary      4th   
+1  2002                asian games    busan, south korea      2nd   
+2  2005        asian championships  incheon, south korea      2nd   
+3  2005                universiade         izmir, turkey      6th   
+4  2006                asian games           doha, qatar      2nd   
+5  2006                asian games           doha, qatar      1st   
+6  2006                  world cup        athens, greece      7th   
+7  2007                universiade     bangkok, thailand      1st   
+8  2011                universiade       shenzhen, china        –   
+
+           event notes  
+0          400 m        
+1  4x400 m relay        
+2  4x400 m relay        
+3  4x400 m relay        
+4  4x400 m relay        
+5          400 m        
+6          400 m        
+7          400 m        
+8          400 m    dq  
+Sample 1319 - Plan 1: Caption: none
+Sample 1319 - Plan 1: Original table: [['year', 'competition', 'venue', 'position', 'event', 'notes'], ['2001', 'world youth championships', 'debrecen, hungary', '4th', '400 m', ''], ['2002', 'asian games', 'busan, south korea', '2nd', '4x400 m relay', ''], ['2005', 'asian championships', 'incheon, south korea', '2nd', '4x400 m relay', ''], ['2005', 'universiade', 'izmir, turkey', '6th', '4x400 m relay', ''], ['2006', 'asian games', 'doha, qatar', '2nd', '4x400 m relay', ''], ['2006', 'asian games', 'doha, qatar', '1st', '400 m', ''], ['2006', 'world cup', 'athens, greece', '7th', '400 m', ''], ['2007', 'universiade', 'bangkok, thailand', '1st', '400 m', ''], ['2011', 'universiade', 'shenzhen, china', '–', '400 m', 'dq']]
+########################################################################################################################
+Sample 1319 - Plan 1: Operation 1: Select rows where 'year' is 2002.
+Sample 1319 - Plan 1: Selected indices: [[1, 0]]
+Sample 1319 - Plan 1: X-Table after operation df:
+   year  competition               venue position          event  notes
+0  2002  asian games  busan, south korea      2nd  4x400 m relay    NaN
+Sample 1319 - Plan 1: Table after operation: [['year', 'competition', 'venue', 'position', 'event', 'notes'], [2002, 'asian games', 'busan, south korea', '2nd', '4x400 m relay', '']]
+########################################################################################################################
+Sample 1319 - Plan 1: Operation 2: Select rows where 'competition' is 'asian games'.
+Sample 1319 - Plan 1: Selected indices: [[0, 1]]
+Sample 1319 - Plan 1: X-Table after operation df:
+   year  competition               venue position          event  notes
+0  2002  asian games  busan, south korea      2nd  4x400 m relay    NaN
+Sample 1319 - Plan 1: Table after operation: [['year', 'competition', 'venue', 'position', 'event', 'notes'], [2002, 'asian games', 'busan, south korea', '2nd', '4x400 m relay', None]]
+########################################################################################################################
+Sample 1319 - Plan 1: Operation 3: Select the 'venue' column.
+Sample 1319 - Plan 1: Selected indices: []
+Sample 1319 - Plan 1: X-Table after operation df:
+                venue
+0  busan, south korea
+Sample 1319 - Plan 1: Table after operation: [['venue'], ['busan, south korea']]
+Fall-back: FALSE
+Answer from plan 1: [['busan, south korea']]
+Groundtruth: ['Busan']

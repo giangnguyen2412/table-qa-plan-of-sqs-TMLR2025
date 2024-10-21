@@ -1,0 +1,285 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which country won the largest amount of metals?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Order the table by the 'total' column in descending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>rank</td>
+<td>nation</td>
+<td>gold</td>
+<td>silver</td>
+<td>bronze</td>
+<td>total</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">brazil</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">21</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">42</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united states</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">18</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">china</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">18</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">australia</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">3</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">netherlands</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">3</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">estonia</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">germany</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">6</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">russia</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">5</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">argentina</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">switzerland</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">norway</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">austria</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select row number 1.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>rank</td>
+<td>nation</td>
+<td>gold</td>
+<td>silver</td>
+<td>bronze</td>
+<td>total</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>brazil</td>
+<td>21</td>
+<td>9</td>
+<td>12</td>
+<td>42</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>united states</td>
+<td>9</td>
+<td>3</td>
+<td>6</td>
+<td>18</td>
+</tr>
+<tr>
+<td>3.0</td>
+<td>china</td>
+<td>1</td>
+<td>9</td>
+<td>8</td>
+<td>18</td>
+</tr>
+<tr>
+<td>7.0</td>
+<td>germany</td>
+<td>0</td>
+<td>5</td>
+<td>1</td>
+<td>6</td>
+</tr>
+<tr>
+<td>8.0</td>
+<td>russia</td>
+<td>0</td>
+<td>2</td>
+<td>3</td>
+<td>5</td>
+</tr>
+<tr>
+<td>4.0</td>
+<td>australia</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>4.0</td>
+<td>netherlands</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>9.0</td>
+<td>argentina</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr>
+<td>10.0</td>
+<td>switzerland</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>6.0</td>
+<td>estonia</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>11.0</td>
+<td>norway</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>12.0</td>
+<td>austria</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select the 'nation' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>rank</td>
+<td>nation</td>
+<td>gold</td>
+<td>silver</td>
+<td>bronze</td>
+<td>total</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>brazil</td>
+<td>21</td>
+<td>9</td>
+<td>12</td>
+<td>42</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>nation</td>
+</tr>
+<tr>
+<td>brazil</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['brazil']]</h3>
+</body></html>

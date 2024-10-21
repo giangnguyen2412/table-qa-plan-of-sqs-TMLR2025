@@ -1,0 +1,357 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which year was the last year to not have any wins before 2013?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'w_l' column is not empty.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>tournament</td>
+<td>c_2007</td>
+<td>c_2008</td>
+<td>c_2009</td>
+<td>c_2010</td>
+<td>c_2011</td>
+<td>c_2012</td>
+<td>c_2013</td>
+<td>c_2014</td>
+<td>w_l</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">australian open</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1r</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1r</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2r</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1r</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3r</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2r</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1r</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">4–7</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">french open</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">q1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">q1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2r</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">q1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1r</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1r</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1–3</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wimbledon</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">q1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1r</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2r</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1r</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3r</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1r</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">3–5</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">us open</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">q3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">q2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">q3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1r</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1r</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1r</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1r</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0–4</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">win–loss</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3–4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4–4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1–4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">8–19</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">titles–finals</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0–1</span></td>
+</tr>
+<tr>
+<td>year-end ranking</td>
+<td>139</td>
+<td>325</td>
+<td>82</td>
+<td>89</td>
+<td>112</td>
+<td>51</td>
+<td>81</td>
+<td></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select the 'tournament' and 'w_l' columns.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>tournament</td>
+<td>c_2007</td>
+<td>c_2008</td>
+<td>c_2009</td>
+<td>c_2010</td>
+<td>c_2011</td>
+<td>c_2012</td>
+<td>c_2013</td>
+<td>c_2014</td>
+<td>w_l</td>
+</tr>
+<tr>
+<td>australian open</td>
+<td>1r</td>
+<td>1r</td>
+<td>a</td>
+<td>2r</td>
+<td>1r</td>
+<td>3r</td>
+<td>2r</td>
+<td>1r</td>
+<td>4–7</td>
+</tr>
+<tr>
+<td>french open</td>
+<td>q1</td>
+<td>q1</td>
+<td>a</td>
+<td>2r</td>
+<td>q1</td>
+<td>1r</td>
+<td>1r</td>
+<td></td>
+<td>1–3</td>
+</tr>
+<tr>
+<td>wimbledon</td>
+<td>q1</td>
+<td>a</td>
+<td>1r</td>
+<td>2r</td>
+<td>1r</td>
+<td>3r</td>
+<td>1r</td>
+<td></td>
+<td>3–5</td>
+</tr>
+<tr>
+<td>us open</td>
+<td>q3</td>
+<td>q2</td>
+<td>q3</td>
+<td>1r</td>
+<td>1r</td>
+<td>1r</td>
+<td>1r</td>
+<td></td>
+<td>0–4</td>
+</tr>
+<tr>
+<td>win–loss</td>
+<td>0–1</td>
+<td>0–1</td>
+<td>0–1</td>
+<td>3–4</td>
+<td>0–3</td>
+<td>4–4</td>
+<td>1–4</td>
+<td>0–1</td>
+<td>8–19</td>
+</tr>
+<tr>
+<td>titles–finals</td>
+<td>0–0</td>
+<td>0–0</td>
+<td>0–0</td>
+<td>0–0</td>
+<td>0–0</td>
+<td>0–1</td>
+<td>0–0</td>
+<td></td>
+<td>0–1</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Filter the table to include only rows where the 'w_l' value is before '2013'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>tournament</td>
+<td>w_l</td>
+</tr>
+<tr>
+<td>australian open</td>
+<td>4–7</td>
+</tr>
+<tr>
+<td>french open</td>
+<td><span class="highlighted-cell" title="Used in transformation">1–3</span></td>
+</tr>
+<tr>
+<td>wimbledon</td>
+<td>3–5</td>
+</tr>
+<tr>
+<td>us open</td>
+<td><span class="highlighted-cell" title="Used in transformation">0–4</span></td>
+</tr>
+<tr>
+<td>win–loss</td>
+<td>8–19</td>
+</tr>
+<tr>
+<td>titles–finals</td>
+<td><span class="highlighted-cell" title="Used in transformation">0–1</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Select the 'tournament' and 'w_l' columns.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>tournament</td>
+<td>w_l</td>
+</tr>
+<tr>
+<td>french open</td>
+<td>1–3</td>
+</tr>
+<tr>
+<td>us open</td>
+<td>0–4</td>
+</tr>
+<tr>
+<td>titles–finals</td>
+<td>0–1</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 5: Order the table by the 'w_l' column in ascending order.</div>
+<div id="step-3" class="content">
+<table>
+<tr>
+<td>tournament</td>
+<td>w_l</td>
+</tr>
+<tr>
+<td>french open</td>
+<td><span class="highlighted-cell" title="Used in transformation">1–3</span></td>
+</tr>
+<tr>
+<td>us open</td>
+<td><span class="highlighted-cell" title="Used in transformation">0–4</span></td>
+</tr>
+<tr>
+<td>titles–finals</td>
+<td><span class="highlighted-cell" title="Used in transformation">0–1</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 6: Select the first row.</div>
+<div id="step-4" class="content">
+<table>
+<tr>
+<td>tournament</td>
+<td>w_l</td>
+</tr>
+<tr>
+<td>titles–finals</td>
+<td>0–1</td>
+</tr>
+<tr>
+<td>us open</td>
+<td>0–4</td>
+</tr>
+<tr>
+<td>french open</td>
+<td>1–3</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 7: Select the 'tournament' column.</div>
+<div id="step-5" class="content">
+<table>
+<tr>
+<td>tournament</td>
+<td>w_l</td>
+</tr>
+<tr>
+<td>titles–finals</td>
+<td>0–1</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>tournament</td>
+</tr>
+<tr>
+<td>titles–finals</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['titles–finals']]</h3>
+</body></html>

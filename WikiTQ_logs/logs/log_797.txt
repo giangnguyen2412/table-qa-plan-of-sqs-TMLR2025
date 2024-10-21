@@ -1,0 +1,44 @@
+************************************************************************************************************************
+Sample 797 - Plan 1: Query: which country has the most number of gold medals?
+Sample 797 - Plan 1: Groundtruth: ['Netherlands (NED)']
+Sample 797 - Plan 1: X-Original table pd: 
+   rank               nation  gold  silver  bronze  total
+0   1.0    netherlands (ned)     4       3       2      9
+1   2.0  united states (usa)     2       1       1      4
+2   3.0   west germany (frg)     2       0       0      2
+3   4.0         norway (nor)     0       2       2      4
+4   5.0   soviet union (urs)     0       1       2      3
+5   6.0         sweden (swe)     0       1       1      2
+6   NaN                total     8       8       8     24
+Sample 797 - Plan 1: Caption: none
+Sample 797 - Plan 1: Original table: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['1', 'netherlands\xa0(ned)', '4', '3', '2', '9'], ['2', 'united states\xa0(usa)', '2', '1', '1', '4'], ['3', 'west germany\xa0(frg)', '2', '0', '0', '2'], ['4', 'norway\xa0(nor)', '0', '2', '2', '4'], ['5', 'soviet union\xa0(urs)', '0', '1', '2', '3'], ['6', 'sweden\xa0(swe)', '0', '1', '1', '2'], ['', 'total', '8', '8', '8', '24']]
+########################################################################################################################
+Sample 797 - Plan 1: Operation 1: Order the table by the 'gold' column in descending order.
+Sample 797 - Plan 1: Selected indices: [[6, 2], [1, 2], [4, 2], [0, 2], [2, 2], [3, 2], [5, 2]]
+Sample 797 - Plan 1: X-Table after operation df:
+   rank               nation  gold  silver  bronze  total
+0   NaN                total     8       8       8     24
+1   1.0    netherlands (ned)     4       3       2      9
+2   2.0  united states (usa)     2       1       1      4
+3   3.0   west germany (frg)     2       0       0      2
+4   4.0         norway (nor)     0       2       2      4
+5   5.0   soviet union (urs)     0       1       2      3
+6   6.0         sweden (swe)     0       1       1      2
+Sample 797 - Plan 1: Table after operation: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], [nan, 'total', 8, 8, 8, 24], [1.0, 'netherlands\xa0(ned)', 4, 3, 2, 9], [2.0, 'united states\xa0(usa)', 2, 1, 1, 4], [3.0, 'west germany\xa0(frg)', 2, 0, 0, 2], [4.0, 'norway\xa0(nor)', 0, 2, 2, 4], [5.0, 'soviet union\xa0(urs)', 0, 1, 2, 3], [6.0, 'sweden\xa0(swe)', 0, 1, 1, 2]]
+########################################################################################################################
+Sample 797 - Plan 1: Operation 2: Select row number 1.
+Sample 797 - Plan 1: Selected indices: []
+Sample 797 - Plan 1: X-Table after operation df:
+   rank nation  gold  silver  bronze  total
+0   NaN  total     8       8       8     24
+Sample 797 - Plan 1: Table after operation: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], [None, 'total', 8, 8, 8, 24]]
+########################################################################################################################
+Sample 797 - Plan 1: Operation 3: Select the 'nation' column.
+Sample 797 - Plan 1: Selected indices: []
+Sample 797 - Plan 1: X-Table after operation df:
+  nation
+0  total
+Sample 797 - Plan 1: Table after operation: [['nation'], ['total']]
+Fall-back: FALSE
+Answer from plan 1: [['total']]
+Groundtruth: ['Netherlands (NED)']

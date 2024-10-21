@@ -1,0 +1,60 @@
+************************************************************************************************************************
+Sample 4282 - Plan 1: Query: what is the number of years on the chart?
+Sample 4282 - Plan 1: Groundtruth: ['1']
+Sample 4282 - Plan 1: X-Original table pd: 
+             match    date venue opponents score
+0           gl-b-1  2008..  [[]]      [[]]     -
+1           gl-b-2  2008..  [[]]      [[]]     -
+2           gl-b-3  2008..  [[]]      [[]]     -
+3           gl-b-4  2008..  [[]]      [[]]     -
+4           gl-b-5  2008..  [[]]      [[]]     -
+5           gl-b-6  2008..  [[]]      [[]]     -
+6  quarterfinals-1  2008..  [[]]      [[]]     -
+7  quarterfinals-2  2008..  [[]]      [[]]     -
+Sample 4282 - Plan 1: Caption: none
+Sample 4282 - Plan 1: Original table: [['match', 'date', 'venue', 'opponents', 'score'], ['gl-b-1', '2008..', '[[]]', '[[]]', '-'], ['gl-b-2', '2008..', '[[]]', '[[]]', '-'], ['gl-b-3', '2008..', '[[]]', '[[]]', '-'], ['gl-b-4', '2008..', '[[]]', '[[]]', '-'], ['gl-b-5', '2008..', '[[]]', '[[]]', '-'], ['gl-b-6', '2008..', '[[]]', '[[]]', '-'], ['quarterfinals-1', '2008..', '[[]]', '[[]]', '-'], ['quarterfinals-2', '2008..', '[[]]', '[[]]', '-']]
+########################################################################################################################
+Sample 4282 - Plan 1: Operation 1: Extract the 'date' column from the table.
+Sample 4282 - Plan 1: Selected indices: []
+Sample 4282 - Plan 1: X-Table after operation df:
+     date
+0  2008..
+1  2008..
+2  2008..
+3  2008..
+4  2008..
+5  2008..
+6  2008..
+7  2008..
+Sample 4282 - Plan 1: Table after operation: [['date'], ['2008..'], ['2008..'], ['2008..'], ['2008..'], ['2008..'], ['2008..'], ['2008..'], ['2008..']]
+########################################################################################################################
+Sample 4282 - Plan 1: Operation 2: Extract the year from each date in the 'date' column.
+Sample 4282 - Plan 1: Selected indices: []
+Sample 4282 - Plan 1: X-Table after operation df:
+   year
+0  2008
+1  2008
+2  2008
+3  2008
+4  2008
+5  2008
+6  2008
+7  2008
+Sample 4282 - Plan 1: Table after operation: [['year'], ['2008'], ['2008'], ['2008'], ['2008'], ['2008'], ['2008'], ['2008'], ['2008']]
+########################################################################################################################
+Sample 4282 - Plan 1: Operation 3: Remove any duplicate years from the extracted years.
+Sample 4282 - Plan 1: Selected indices: []
+Sample 4282 - Plan 1: X-Table after operation df:
+   year
+0  2008
+Sample 4282 - Plan 1: Table after operation: [['year'], [2008]]
+########################################################################################################################
+Sample 4282 - Plan 1: Operation 4: Count the number of unique years.
+Sample 4282 - Plan 1: Selected indices: []
+Sample 4282 - Plan 1: X-Table after operation df:
+   unique_years
+0             1
+Sample 4282 - Plan 1: Table after operation: [['unique_years'], [1]]
+Fall-back: FALSE
+Answer from plan 1: [[1]]
+Groundtruth: ['1']

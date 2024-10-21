@@ -1,0 +1,81 @@
+************************************************************************************************************************
+Sample 2561 - Plan 1: Query: what is the next year to 1992?
+Sample 2561 - Plan 1: Groundtruth: ['1996']
+Sample 2561 - Plan 1: X-Original table pd: 
+   year                                              model denomination  \
+0  1992          re-establishment of kroon, 28 august 1992   100 krooni   
+1  1996  atlanta olympics, 100th anniversary of modern ...   100 krooni   
+2  1998  80th anniversary of declaration of independenc...   100 krooni   
+3  1992                re-establishment of krooni currency    10 krooni   
+4  1992                                 barcelona olympics    10 krooni   
+5  1998  80th anniversary of declaration of independenc...    10 krooni   
+6  2002  370th anniversary of the founding of tartu uni...    10 krooni   
+7  2004                         the flag of estonia – 2004    10 krooni   
+
+  metal_composition                                 dimensions  
+0       .900 silver  23 grams (0.81 oz)36 millimetres (1.4 in)  
+1       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)  
+2       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)  
+3       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)  
+4       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)  
+5       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)  
+6       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)  
+7       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)  
+Sample 2561 - Plan 1: Caption: none
+Sample 2561 - Plan 1: Original table: [['year', 'model', 'denomination', 'metal_composition', 'dimensions'], ['1992', 're-establishment of kroon, 28 august 1992', '100 krooni', '.900 silver', '23 grams (0.81\xa0oz)36 millimetres (1.4\xa0in)'], ['1996', 'atlanta olympics, 100th anniversary of modern olympiad', '100 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)'], ['1998', '80th anniversary of declaration of independence, 1918–1998', '100 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)'], ['1992', 're-establishment of krooni currency', '10 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)'], ['1992', 'barcelona olympics', '10 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)'], ['1998', '80th anniversary of declaration of independence, 1918–1998', '10 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)'], ['2002', '370th anniversary of the founding of tartu university', '10 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)'], ['2004', 'the flag of estonia – 2004', '10 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)']]
+########################################################################################################################
+Sample 2561 - Plan 1: Operation 1: Select rows where 'year' is greater than 1992.
+Sample 2561 - Plan 1: Selected indices: [[7, 0], [2, 0], [5, 0], [6, 0], [1, 0]]
+Sample 2561 - Plan 1: X-Table after operation df:
+   year                                              model denomination  \
+0  1996  atlanta olympics, 100th anniversary of modern ...   100 krooni   
+1  1998  80th anniversary of declaration of independenc...   100 krooni   
+2  1998  80th anniversary of declaration of independenc...    10 krooni   
+3  2002  370th anniversary of the founding of tartu uni...    10 krooni   
+4  2004                         the flag of estonia – 2004    10 krooni   
+
+  metal_composition                                 dimensions  
+0       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)  
+1       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)  
+2       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)  
+3       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)  
+4       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)  
+Sample 2561 - Plan 1: Table after operation: [['year', 'model', 'denomination', 'metal_composition', 'dimensions'], [1996, 'atlanta olympics, 100th anniversary of modern olympiad', '100 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)'], [1998, '80th anniversary of declaration of independence, 1918–1998', '100 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)'], [1998, '80th anniversary of declaration of independence, 1918–1998', '10 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)'], [2002, '370th anniversary of the founding of tartu university', '10 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)'], [2004, 'the flag of estonia – 2004', '10 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)']]
+########################################################################################################################
+Sample 2561 - Plan 1: Operation 2: Order the table by 'year' in ascending order.
+Sample 2561 - Plan 1: Selected indices: [[4, 0], [0, 0], [2, 0], [3, 0], [1, 0]]
+Sample 2561 - Plan 1: X-Table after operation df:
+   year                                              model denomination  \
+0  1996  atlanta olympics, 100th anniversary of modern ...   100 krooni   
+1  1998  80th anniversary of declaration of independenc...   100 krooni   
+2  1998  80th anniversary of declaration of independenc...    10 krooni   
+3  2002  370th anniversary of the founding of tartu uni...    10 krooni   
+4  2004                         the flag of estonia – 2004    10 krooni   
+
+  metal_composition                                 dimensions  
+0       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)  
+1       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)  
+2       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)  
+3       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)  
+4       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)  
+Sample 2561 - Plan 1: Table after operation: [['year', 'model', 'denomination', 'metal_composition', 'dimensions'], [1996, 'atlanta olympics, 100th anniversary of modern olympiad', '100 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)'], [1998, '80th anniversary of declaration of independence, 1918–1998', '100 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)'], [1998, '80th anniversary of declaration of independence, 1918–1998', '10 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)'], [2002, '370th anniversary of the founding of tartu university', '10 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)'], [2004, 'the flag of estonia – 2004', '10 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)']]
+########################################################################################################################
+Sample 2561 - Plan 1: Operation 3: Select row number 1.
+Sample 2561 - Plan 1: Selected indices: []
+Sample 2561 - Plan 1: X-Table after operation df:
+   year                                              model denomination  \
+0  1996  atlanta olympics, 100th anniversary of modern ...   100 krooni   
+
+  metal_composition                                 dimensions  
+0       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)  
+Sample 2561 - Plan 1: Table after operation: [['year', 'model', 'denomination', 'metal_composition', 'dimensions'], [1996, 'atlanta olympics, 100th anniversary of modern olympiad', '100 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)']]
+########################################################################################################################
+Sample 2561 - Plan 1: Operation 4: Select the 'year' column.
+Sample 2561 - Plan 1: Selected indices: []
+Sample 2561 - Plan 1: X-Table after operation df:
+   year
+0  1996
+Sample 2561 - Plan 1: Table after operation: [['year'], [1996]]
+Fall-back: FALSE
+Answer from plan 1: [[1996]]
+Groundtruth: ['1996']

@@ -1,0 +1,389 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which team has the most under the agg. column, fabril or celta?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'team_1' or 'team_2' is 'fabril' or 'celta'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>team_1</td>
+<td>agg_</td>
+<td>team_2</td>
+<td>c_1st_leg</td>
+<td>c_2nd_leg</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">valladolid promesas</span></td>
+<td>1–3</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">elche</span></td>
+<td>0–2</td>
+<td>1–1</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">peña sport</span></td>
+<td>0–4</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">valladolid</span></td>
+<td>0–2</td>
+<td>0–2</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">algeciras</span></td>
+<td>2–10</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">real madrid</span></td>
+<td>0–6</td>
+<td>2–4</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">real madrid castilla</span></td>
+<td>5–5 (3–4 p)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sabadell</span></td>
+<td>4–3</td>
+<td>1–2</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">leganés</span></td>
+<td>1–5</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">eldense</span></td>
+<td>1–2</td>
+<td>0–3</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ciempozuelos</span></td>
+<td>3–2</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lleida</span></td>
+<td>2–1</td>
+<td>1–1</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">alcalá</span></td>
+<td>1–10</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">valencia</span></td>
+<td>1–3</td>
+<td>0–7</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">burgos</span></td>
+<td>4–1</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">huesca</span></td>
+<td>2–0</td>
+<td>2–1</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ceuta</span></td>
+<td>1–6</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">espanyol</span></td>
+<td>1–1</td>
+<td>0–5</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">atlético baleares</span></td>
+<td>2–3</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cádiz</span></td>
+<td>1–0</td>
+<td>1–3</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tudelano</span></td>
+<td>3–6</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sporting gijón</span></td>
+<td>2–1</td>
+<td>1–5</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">figueres</span></td>
+<td>3–4</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">racing santander</span></td>
+<td>1–2</td>
+<td>2–2</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">carabanchel</span></td>
+<td>5–2</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">calvo sotelo</span></td>
+<td>4–1</td>
+<td>1–1</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">almansa</span></td>
+<td>1–4</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rayo vallecano</span></td>
+<td>0–2</td>
+<td>1–2</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">osasuna</span></td>
+<td>4–1</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">guadalajara</span></td>
+<td>2–0</td>
+<td>2–1</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">deportivo</span></td>
+<td>5–1</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">plasencia</span></td>
+<td>3–0</td>
+<td>2–1</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">europa</span></td>
+<td>3–8</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">málaga</span></td>
+<td>3–3</td>
+<td>0–5</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jaén</span></td>
+<td>1–4</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">real unión</span></td>
+<td>1–1</td>
+<td>0–3</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ontinyent</span></td>
+<td>1–0</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">torrejón</span></td>
+<td>1–0</td>
+<td>0–0</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">girona</span></td>
+<td>5–1</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">alcoyano</span></td>
+<td>3–0</td>
+<td>2–1</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">valencia mestalla</span></td>
+<td>4–2</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sevilla atlético</span></td>
+<td>3–0</td>
+<td>1–2</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">español raspeig</span></td>
+<td>0–1</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mirandés</span></td>
+<td>0–0</td>
+<td>0–1</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">toledo</span></td>
+<td>3–3 (4–3 p)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">badajoz</span></td>
+<td>2–0</td>
+<td>1–3</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">talavera</span></td>
+<td>2–0</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">arosa</span></td>
+<td>2–0</td>
+<td>0–0</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sariñena</span></td>
+<td>1–5</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rayo cantabria</span></td>
+<td>0–2</td>
+<td>1–3</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">san fernando</span></td>
+<td>5–1</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nàstic tarragona</span></td>
+<td>4–1</td>
+<td>1–0</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sevilla</span></td>
+<td>4–1</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sant andreu</span></td>
+<td>2–0</td>
+<td>2–1</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">orihuela</span></td>
+<td>0–3</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">alavés</span></td>
+<td>0–1</td>
+<td>0–2</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">oviedo</span></td>
+<td>4–1</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cultural leonesa</span></td>
+<td>2–0</td>
+<td>2–1</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">langreo</span></td>
+<td>1–3</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">granada</span></td>
+<td>1–0</td>
+<td>0–3</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">racing ferrol</span></td>
+<td>3–5</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">real murcia</span></td>
+<td>2–0</td>
+<td>1–5</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">levante</span></td>
+<td>9–2</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">moscardó</span></td>
+<td>5–0</td>
+<td>4–2</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">real sociedad</span></td>
+<td>3–3 (8–7 p)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">xerez</span></td>
+<td>1–1</td>
+<td>2–2</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">marbella</span></td>
+<td>4–3</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gimnástica torrelavega</span></td>
+<td>4–1</td>
+<td>0–2</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">córdoba</span></td>
+<td>3–1</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bilbao athletic</span></td>
+<td>1–0</td>
+<td>2–1</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">recreativo</span></td>
+<td>4–2</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">linense</span></td>
+<td>2–0</td>
+<td>2–2</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">reus</span></td>
+<td>0–5</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">zaragoza</span></td>
+<td>0–0</td>
+<td>0–5</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">celta</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2–1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">cartagena</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–1</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tenerife</span></td>
+<td>2–1</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">malgrat</span></td>
+<td>2–0</td>
+<td>0–1</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">la cava</span></td>
+<td>2–5</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">linares</span></td>
+<td>1–3</td>
+<td>1–2</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gavà</span></td>
+<td>2–3</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">castellón</span></td>
+<td>1–1</td>
+<td>1–2</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">fabril</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">hércules</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–4</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Calculate the total count of rows where the 'agg_' column is less than the other team's count.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>team_1</td>
+<td>agg_</td>
+<td>team_2</td>
+<td>c_1st_leg</td>
+<td>c_2nd_leg</td>
+</tr>
+<tr>
+<td>celta</td>
+<td>2–1</td>
+<td>cartagena</td>
+<td>2–0</td>
+<td>0–1</td>
+</tr>
+<tr>
+<td>fabril</td>
+<td>0–7</td>
+<td>hércules</td>
+<td>0–3</td>
+<td>0–4</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Compare the counts for 'fabril' and 'celta' and select the team with the highest count.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>COUNT(*)</td>
+</tr>
+<tr>
+<td>0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>team_with_highest_count</td>
+</tr>
+<tr>
+<td>fabril</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['fabril']]</h3>
+</body></html>

@@ -1,0 +1,55 @@
+************************************************************************************************************************
+Sample 3576 - Plan 1: Query: which is the busiest domestic route out of houston intercontinental airport that does not have an american flight?
+Sample 3576 - Plan 1: Groundtruth: ['Denver, CO']
+Sample 3576 - Plan 1: X-Original table pd: 
+   rank                   city passengers              top_carriers
+0     1        los angeles, ca    700,000  american, spirit, united
+1     2            chicago, il    673,000  american, spirit, united
+2     3             denver, co    654,000  frontier, spirit, united
+3     4      san francisco, ca    492,000                    united
+4     5  dallas/fort worth, tx    488,000          american, united
+5     6             newark, nj    480,000                    united
+6     7          las vegas, nv    442,000            spirit, united
+7     8          charlotte, nc    441,000        united, us airways
+8     9            atlanta, ga    400,000             delta, united
+9    10            phoenix, az    393,000        united, us airways
+Sample 3576 - Plan 1: Caption: none
+Sample 3576 - Plan 1: Original table: [['rank', 'city', 'passengers', 'top_carriers'], ['1', 'los angeles, ca', '700,000', 'american, spirit, united'], ['2', 'chicago, il', '673,000', 'american, spirit, united'], ['3', 'denver, co', '654,000', 'frontier, spirit, united'], ['4', 'san francisco, ca', '492,000', 'united'], ['5', 'dallas/fort worth, tx', '488,000', 'american, united'], ['6', 'newark, nj', '480,000', 'united'], ['7', 'las vegas, nv', '442,000', 'spirit, united'], ['8', 'charlotte, nc', '441,000', 'united, us airways'], ['9', 'atlanta, ga', '400,000', 'delta, united'], ['10', 'phoenix, az', '393,000', 'united, us airways']]
+########################################################################################################################
+Sample 3576 - Plan 1: Operation 1: Select rows where the 'city' column contains 'houston intercontinental' and the 'top_carriers' column does not contain 'american'.
+Sample 3576 - Plan 1: Selected indices: []
+Sample 3576 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [rank, city, passengers, top_carriers]
+Index: []
+Sample 3576 - Plan 1: Table after operation: [['rank', 'city', 'passengers', 'top_carriers']]
+########################################################################################################################
+Sample 3576 - Plan 1: Operation 2: Select the 'city' column.
+Sample 3576 - Plan 1: Selected indices: []
+Sample 3576 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [city]
+Index: []
+Sample 3576 - Plan 1: Table after operation: [['city']]
+########################################################################################################################
+Sample 3576 - Plan 1: Operation 3: Count the number of rows.
+Sample 3576 - Plan 1: Selected indices: []
+Sample 3576 - Plan 1: X-Table after operation df:
+   row_count
+0          0
+Sample 3576 - Plan 1: Table after operation: [['row_count'], [0]]
+########################################################################################################################
+Sample 3576 - Plan 1: Operation 4: Select the row with the highest count.
+Sample 3576 - Plan 1: Selected indices: [[0, 0]]
+Sample 3576 - Plan 1: X-Table after operation df:
+   row_count
+0          0
+Sample 3576 - Plan 1: Table after operation: [['row_count'], [0]]
+########################################################################################################################
+Sample 3576 - Plan 1: Operation 5: Select the 'city' column from the selected row.
+SQL execution error in operation 5: Execution failed on sql 'SELECT row_count, city
+FROM table_sql;': no such column: city
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['united']]
+Groundtruth: ['Denver, CO']

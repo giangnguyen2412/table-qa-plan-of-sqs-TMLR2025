@@ -1,0 +1,78 @@
+************************************************************************************************************************
+Sample 1019 - Plan 1: Query: what is the earliest year in the list?
+Sample 1019 - Plan 1: Groundtruth: ['2002']
+Sample 1019 - Plan 1: X-Original table pd: 
+                association joining_year                men_s_team  \
+0                  china pr         2002                     china   
+1                      guam         2002                      guam   
+2                 hong kong         2002                 hong kong   
+3                     japan         2002                     japan   
+4                 korea dpr         2002                 korea dpr   
+5            korea republic         2002            korea republic   
+6                     macau         2002                     macau   
+7                  mongolia         2002                  mongolia   
+8  northern mariana islands       2008 1  northern mariana islands   
+9            chinese taipei         2002            chinese taipei   
+
+               women_s_team                               league  
+0                     china                 chinese super league  
+1                      guam                          guam league  
+2                 hong kong      hong kong first division league  
+3                     japan                            j. league  
+4                 korea dpr                     dpr korea league  
+5            korea republic                             k-league  
+6                     macau  campeonato da 1ª divisão do futebol  
+7                  mongolia              mongolia premier league  
+8  northern mariana islands        northern mariana championship  
+9            chinese taipei            intercity football league  
+Sample 1019 - Plan 1: Caption: none
+Sample 1019 - Plan 1: Original table: [['association', 'joining_year', 'men_s_team', 'women_s_team', 'league'], ['china pr', '2002', 'china', 'china', 'chinese super league'], ['guam', '2002', 'guam', 'guam', 'guam league'], ['hong kong', '2002', 'hong kong', 'hong kong', 'hong kong first division league'], ['japan', '2002', 'japan', 'japan', 'j. league'], ['korea dpr', '2002', 'korea dpr', 'korea dpr', 'dpr korea league'], ['korea republic', '2002', 'korea republic', 'korea republic', 'k-league'], ['macau', '2002', 'macau', 'macau', 'campeonato da 1ª divisão do futebol'], ['mongolia', '2002', 'mongolia', 'mongolia', 'mongolia premier league'], ['northern mariana islands', '2008 1', 'northern mariana islands', 'northern mariana islands', 'northern mariana championship'], ['chinese taipei', '2002', 'chinese taipei', 'chinese taipei', 'intercity football league']]
+########################################################################################################################
+Sample 1019 - Plan 1: Operation 1: Select the 'joining_year' column.
+Sample 1019 - Plan 1: Selected indices: []
+Sample 1019 - Plan 1: X-Table after operation df:
+  joining_year
+0         2002
+1         2002
+2         2002
+3         2002
+4         2002
+5         2002
+6         2002
+7         2002
+8       2008 1
+9         2002
+Sample 1019 - Plan 1: Table after operation: [['joining_year'], ['2002'], ['2002'], ['2002'], ['2002'], ['2002'], ['2002'], ['2002'], ['2002'], ['2008 1'], ['2002']]
+########################################################################################################################
+Sample 1019 - Plan 1: Operation 2: Order the table by 'joining_year' in ascending order.
+Sample 1019 - Plan 1: Selected indices: [[9, 0], [4, 0], [0, 0], [7, 0], [2, 0], [8, 0], [3, 0], [5, 0], [6, 0], [1, 0]]
+Sample 1019 - Plan 1: X-Table after operation df:
+  joining_year
+0         2002
+1         2002
+2         2002
+3         2002
+4         2002
+5         2002
+6         2002
+7         2002
+8         2002
+9       2008 1
+Sample 1019 - Plan 1: Table after operation: [['joining_year'], ['2002'], ['2002'], ['2002'], ['2002'], ['2002'], ['2002'], ['2002'], ['2002'], ['2002'], ['2008 1']]
+########################################################################################################################
+Sample 1019 - Plan 1: Operation 3: Select row number 1.
+Sample 1019 - Plan 1: Selected indices: []
+Sample 1019 - Plan 1: X-Table after operation df:
+   joining_year
+0          2002
+Sample 1019 - Plan 1: Table after operation: [['joining_year'], ['2002']]
+########################################################################################################################
+Sample 1019 - Plan 1: Operation 4: Select the 'joining_year' value.
+Sample 1019 - Plan 1: Selected indices: []
+Sample 1019 - Plan 1: X-Table after operation df:
+   joining_year
+0          2002
+Sample 1019 - Plan 1: Table after operation: [['joining_year'], [2002]]
+Fall-back: FALSE
+Answer from plan 1: [[2002]]
+Groundtruth: ['2002']

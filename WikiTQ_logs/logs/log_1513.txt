@@ -1,0 +1,36 @@
+************************************************************************************************************************
+Sample 1513 - Plan 1: Query: how many countries have at least 5 silver medals?
+Sample 1513 - Plan 1: Groundtruth: ['3']
+Sample 1513 - Plan 1: X-Original table pd: 
+     rank      nation  gold  silver  bronze  total
+0       1      france    11       5       3     19
+1       2      greece     6       7       6     19
+2       3  yugoslavia     3       2       1      6
+3       4       spain     1       5       5     11
+4       5     morocco     1       1       0      2
+5       5      turkey     1       1       0      2
+6       7       egypt     0       1       7      8
+7       8     tunisia     0       1       0      1
+8  totaal      totaal    23      23      22     68
+Sample 1513 - Plan 1: Caption: none
+Sample 1513 - Plan 1: Original table: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['1', 'france', '11', '5', '3', '19'], ['2', 'greece', '6', '7', '6', '19'], ['3', 'yugoslavia', '3', '2', '1', '6'], ['4', 'spain', '1', '5', '5', '11'], ['5', 'morocco', '1', '1', '0', '2'], ['5', 'turkey', '1', '1', '0', '2'], ['7', 'egypt', '0', '1', '7', '8'], ['8', 'tunisia', '0', '1', '0', '1'], ['totaal', 'totaal', '23', '23', '22', '68']]
+########################################################################################################################
+Sample 1513 - Plan 1: Operation 1: Select rows where the 'silver' column is greater than or equal to 5.
+Sample 1513 - Plan 1: Selected indices: [[8, 3], [0, 3], [1, 3], [3, 3]]
+Sample 1513 - Plan 1: X-Table after operation df:
+     rank  nation  gold  silver  bronze  total
+0       1  france    11       5       3     19
+1       2  greece     6       7       6     19
+2       4   spain     1       5       5     11
+3  totaal  totaal    23      23      22     68
+Sample 1513 - Plan 1: Table after operation: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['1', 'france', 11, 5, 3, 19], ['2', 'greece', 6, 7, 6, 19], ['4', 'spain', 1, 5, 5, 11], ['totaal', 'totaal', 23, 23, 22, 68]]
+########################################################################################################################
+Sample 1513 - Plan 1: Operation 2: Count the number of rows.
+Sample 1513 - Plan 1: Selected indices: []
+Sample 1513 - Plan 1: X-Table after operation df:
+   row_count
+0          4
+Sample 1513 - Plan 1: Table after operation: [['row_count'], [4]]
+Fall-back: FALSE
+Answer from plan 1: [[4]]
+Groundtruth: ['3']

@@ -1,0 +1,313 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr/>
+<h3><span>Statement:</span> the yugoslavian national team scored 7 goals and allowed 3 against in the three 1982 world cup qualifying matches</h3>
+<h3>Input Table: yugoslavia national football team results</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where 'type_of_game' is '1982 wcq'.</div>
+<div class="content" id="step-1">
+<table>
+<tr>
+<td>date</td>
+<td>city</td>
+<td>opponent</td>
+<td>results</td>
+<td>type_of_game</td>
+</tr>
+<tr>
+<td>9999-03-22</td>
+<td>sarajevo</td>
+<td>uruguay</td>
+<td>2:1</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">friendly</span></td>
+</tr>
+<tr>
+<td>9999-03-30</td>
+<td>belgrade</td>
+<td>romania</td>
+<td>2:0</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">balkan cup</span></td>
+</tr>
+<tr>
+<td>9999-04-26</td>
+<td>borovo</td>
+<td>poland</td>
+<td>2:1</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">friendly</span></td>
+</tr>
+<tr>
+<td>9999-08-27</td>
+<td>bucharest , romania</td>
+<td>romania</td>
+<td>1:4</td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">balkan cup</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">9999-09-10</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">luxembourg</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">luxembourg</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">5:0</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">1982 wcq</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">9999-09-27</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">ljubljana</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">denmark</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">2:1</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">1982 wcq</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">9999-11-15</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">torino , italy</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">italy</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">0:2</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">1982 wcq</span></td>
+</tr>
+</table>
+</div>
+<hr/>
+<div class="step">
+<div class="step-title">Step 2: Extract the numerical goals scored from the 'results' column then add column 'goals_scored' to existing table.</div>
+<div class="content" id="step-0">
+<table>
+<tr>
+<td>date</td>
+<td>city</td>
+<td>opponent</td>
+<td>results</td>
+<td>type_of_game</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">9999-09-10</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">luxembourg</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">luxembourg</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">5:0</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">1982 wcq</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">9999-09-27</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">ljubljana</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">denmark</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">2:1</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">1982 wcq</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">9999-11-15</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">torino , italy</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">italy</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">0:2</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">1982 wcq</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr/>
+<div class="step">
+<div class="step-title">Step 3: Extract the numerical goals allowed from the 'results' column then add column 'goals_allowed' to existing table.</div>
+<div class="content" id="step-1">
+<table>
+<tr>
+<td>date</td>
+<td>city</td>
+<td>opponent</td>
+<td>results</td>
+<td>type_of_game</td>
+<td>goals_scored</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">9999-09-10</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">luxembourg</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">luxembourg</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">5:0</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">1982 wcq</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">5</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">9999-09-27</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">ljubljana</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">denmark</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">2:1</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">1982 wcq</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">2</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">9999-11-15</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">torino , italy</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">italy</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">0:2</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">1982 wcq</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">0</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr/>
+<div class="step">
+<div class="step-title">Step 4: Calculate the total goals scored by summing the 'goals_scored' column then add column 'total_goals_scored' to existing table.</div>
+<div class="content" id="step-2">
+<table>
+<tr>
+<td>date</td>
+<td>city</td>
+<td>opponent</td>
+<td>results</td>
+<td>type_of_game</td>
+<td>goals_scored</td>
+<td>goals_allowed</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">9999-09-10</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">luxembourg</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">luxembourg</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">5:0</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">1982 wcq</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">5</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">9999-09-27</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">ljubljana</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">denmark</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">2:1</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">1982 wcq</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">2</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">9999-11-15</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">torino , italy</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">italy</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">0:2</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">1982 wcq</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">0</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">2</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr/>
+<div class="step">
+<div class="step-title">Step 5: Calculate the total goals allowed by summing the 'goals_allowed' column then add column 'total_goals_allowed' to existing table.</div>
+<div class="content" id="step-3">
+<table>
+<tr>
+<td>date</td>
+<td>city</td>
+<td>opponent</td>
+<td>results</td>
+<td>type_of_game</td>
+<td>goals_scored</td>
+<td>goals_allowed</td>
+<td>total_goals_scored</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">9999-09-10</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">luxembourg</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">luxembourg</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">5:0</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">1982 wcq</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">5</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">0</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">7</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">9999-09-27</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">ljubljana</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">denmark</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">2:1</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">1982 wcq</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">2</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">1</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">7</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">9999-11-15</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">torino , italy</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">italy</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">0:2</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">1982 wcq</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">0</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">2</span></td>
+<td><span class="highlighted-cell" style="background-color:yellow;" title="Used in transformation">7</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr/>
+<div class="step">
+<div class="step-title">Step 6: Use a `CASE` statement to return TRUE if the 'total_goals_scored' is equal to 7 and 'total_goals_allowed' is equal to 3, otherwise return FALSE.</div>
+<div class="content" id="step-4">
+<table>
+<tr>
+<td>date</td>
+<td>city</td>
+<td>opponent</td>
+<td>results</td>
+<td>type_of_game</td>
+<td>goals_scored</td>
+<td>goals_allowed</td>
+<td>total_goals_scored</td>
+<td>total_goals_allowed</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">9999-09-10</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">luxembourg</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">luxembourg</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">5:0</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">1982 wcq</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">5</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">0</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">7</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">3</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">9999-09-27</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">ljubljana</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">denmark</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">2:1</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">1982 wcq</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">2</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">1</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">7</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">3</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">9999-11-15</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">torino , italy</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">italy</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">0:2</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">1982 wcq</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">0</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">2</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">7</span></td>
+<td><span class="highlighted-cell" style="background-color:#90EE90;" title="Used in transformation">3</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr/>
+
+</div>
+</div>
+<hr/>
+</body></html>

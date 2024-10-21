@@ -1,0 +1,66 @@
+************************************************************************************************************************
+Sample 935 - Plan 1: Query: connie morella ran for re-election, but lost to which candidate?
+Sample 935 - Plan 1: Groundtruth: ['Chris Van Hollen']
+Sample 935 - Plan 1: X-Original table pd: 
+     district        incumbent       party  first_nelected  \
+0  maryland 1  wayne gilchrest  republican            1990   
+1  maryland 2   robert ehrlich  republican            1994   
+2  maryland 3       ben cardin  democratic            1986   
+3  maryland 4      albert wynn  democratic            1992   
+4  maryland 5      steny hoyer  democratic            1981   
+5  maryland 6  roscoe bartlett  republican            1992   
+6  maryland 7  elijah cummings  democratic            1996   
+7  maryland 8   connie morella  republican            1986   
+
+                                         result  \
+0                                    re-elected   
+1  retired to run for governor\ndemocratic gain   
+2                                    re-elected   
+3                                    re-elected   
+4                                    re-elected   
+5                                    re-elected   
+6                                    re-elected   
+7             lost re-election\ndemocratic gain   
+
+                                          candidates  
+0  wayne gilchrest (r) 76.67%\nann tamlyn (d) 23.16%  
+1  dutch ruppersberger (d) 54.16%\nhelen bentley ...  
+2    ben cardin (d) 65.72%\nscott conwell (r) 34.18%  
+3     albert wynn (d) 78.57%\njohn kimble (r) 20.82%  
+4  steny hoyer (d) 69.27%\njoseph crawford (r) 30...  
+5  roscoe bartlett (r) 66.11%\ndonald dearmon (d)...  
+6  elijah cummings (d) 73.53%\njoseph ward (r) 26...  
+7  chris van hollen (d) 51.71%\nconnie morella (r...  
+Sample 935 - Plan 1: Caption: none
+Sample 935 - Plan 1: Original table: [['district', 'incumbent', 'party', 'first_nelected', 'result', 'candidates'], ['maryland 1', 'wayne gilchrest', 'republican', '1990', 're-elected', 'wayne gilchrest (r) 76.67%\\nann tamlyn (d) 23.16%'], ['maryland 2', 'robert ehrlich', 'republican', '1994', 'retired to run for governor\\ndemocratic gain', 'dutch ruppersberger (d) 54.16%\\nhelen bentley (r) 45.57%'], ['maryland 3', 'ben cardin', 'democratic', '1986', 're-elected', 'ben cardin (d) 65.72%\\nscott conwell (r) 34.18%'], ['maryland 4', 'albert wynn', 'democratic', '1992', 're-elected', 'albert wynn (d) 78.57%\\njohn kimble (r) 20.82%'], ['maryland 5', 'steny hoyer', 'democratic', '1981', 're-elected', 'steny hoyer (d) 69.27%\\njoseph crawford (r) 30.52%'], ['maryland 6', 'roscoe bartlett', 'republican', '1992', 're-elected', 'roscoe bartlett (r) 66.11%\\ndonald dearmon (d) 33.80%'], ['maryland 7', 'elijah cummings', 'democratic', '1996', 're-elected', 'elijah cummings (d) 73.53%\\njoseph ward (r) 26.38%'], ['maryland 8', 'connie morella', 'republican', '1986', 'lost re-election\\ndemocratic gain', 'chris van hollen (d) 51.71%\\nconnie morella (r) 47.49%\\nstephen bassett (un) 0.73%']]
+########################################################################################################################
+Sample 935 - Plan 1: Operation 1: Select rows where 'incumbent' is 'connie morella'.
+Sample 935 - Plan 1: Selected indices: [[7, 1]]
+Sample 935 - Plan 1: X-Table after operation df:
+     district       incumbent       party  first_nelected  \
+0  maryland 8  connie morella  republican            1986   
+
+                              result  \
+0  lost re-election\ndemocratic gain   
+
+                                          candidates  
+0  chris van hollen (d) 51.71%\nconnie morella (r...  
+Sample 935 - Plan 1: Table after operation: [['district', 'incumbent', 'party', 'first_nelected', 'result', 'candidates'], ['maryland 8', 'connie morella', 'republican', 1986, 'lost re-election\\ndemocratic gain', 'chris van hollen (d) 51.71%\\nconnie morella (r) 47.49%\\nstephen bassett (un) 0.73%']]
+########################################################################################################################
+Sample 935 - Plan 1: Operation 2: Select the 'candidates' column.
+Sample 935 - Plan 1: Selected indices: []
+Sample 935 - Plan 1: X-Table after operation df:
+                                          candidates
+0  chris van hollen (d) 51.71%\nconnie morella (r...
+Sample 935 - Plan 1: Table after operation: [['candidates'], ['chris van hollen (d) 51.71%\\nconnie morella (r) 47.49%\\nstephen bassett (un) 0.73%']]
+########################################################################################################################
+Sample 935 - Plan 1: Operation 3: Extract the name of the candidate who won the election against Connie Morella from the 'candidates' column.
+Sample 935 - Plan 1: Selected indices: []
+Sample 935 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [winner]
+Index: []
+Sample 935 - Plan 1: Table after operation: [['winner']]
+Fall-back: TRUE
+Answer from plan 1: [['chris van hollen']]
+Groundtruth: ['Chris Van Hollen']

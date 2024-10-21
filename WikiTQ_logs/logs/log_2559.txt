@@ -1,0 +1,143 @@
+************************************************************************************************************************
+Sample 2559 - Plan 1: Query: what is the average length of the festival as of 2012?
+Sample 2559 - Plan 1: Groundtruth: ['14 days']
+Sample 2559 - Plan 1: X-Original table pd: 
+   iteration  year                     dates                        location  \
+0        1st  1972              6 may-20 may                      suva, fiji   
+1        2nd  1976          6 march-13 march            rotorua, new zealand   
+2        3rd  1980           30 june-12 july  port moresby, papua new guinea   
+3        4th  1985           29 june-15 july        tahiti, french polynesia   
+4        5th  1988       14 august-24 august           townsville, australia   
+5        6th  1992     16 october-27 october         rarotonga, cook islands   
+6        7th  1996  8 september-23 september                     apia, sāmoa   
+7        8th  2000     23 october-3 november           nouméa, new caledonia   
+8        9th  2004           22 july-31 july                    koror, palau   
+9       10th  2008          20 july-2 august       pago pago, american samoa   
+10      11th  2012                 1–14 july        honiara, solomon islands   
+11      12th  2016                       tba                     tumon, guam   
+12      13th  2020                       tba                     tba, hawaii   
+
+                               theme  
+0               "preserving culture"  
+1                  "sharing culture"  
+2                "pacific awareness"  
+3                       "my pacific"  
+4             "cultural interchange"  
+5               "seafaring heritage"  
+6              "unveiling treasures"  
+7   "words of past, present, future"  
+8   "nurture, regenerate, celebrate"  
+9       "threading the oceania ‘ula"  
+10  "culture in harmony with nature"  
+11                             "tba"  
+12                             "tba"  
+Sample 2559 - Plan 1: Caption: none
+Sample 2559 - Plan 1: Original table: [['iteration', 'year', 'dates', 'location', 'theme'], ['1st', '1972', '6 may-20 may', 'suva, fiji', '"preserving culture"'], ['2nd', '1976', '6 march-13 march', 'rotorua, new zealand', '"sharing culture"'], ['3rd', '1980', '30 june-12 july', 'port moresby, papua new guinea', '"pacific awareness"'], ['4th', '1985', '29 june-15 july', 'tahiti, french polynesia', '"my pacific"'], ['5th', '1988', '14 august-24 august', 'townsville, australia', '"cultural interchange"'], ['6th', '1992', '16 october-27 october', 'rarotonga, cook islands', '"seafaring heritage"'], ['7th', '1996', '8 september-23 september', 'apia, sāmoa', '"unveiling treasures"'], ['8th', '2000', '23 october-3 november', 'nouméa, new caledonia', '"words of past, present, future"'], ['9th', '2004', '22 july-31 july', 'koror, palau', '"nurture, regenerate, celebrate"'], ['10th', '2008', '20 july-2 august', 'pago pago, american samoa', '"threading the oceania ‘ula"'], ['11th', '2012', '1–14 july', 'honiara, solomon islands', '"culture in harmony with nature"'], ['12th', '2016', 'tba', 'tumon, guam', '"tba"'], ['13th', '2020', 'tba', 'tba, hawaii', '"tba"']]
+########################################################################################################################
+Sample 2559 - Plan 1: Operation 1: Extract the start and end dates from the 'dates' column and add two new columns 'start_date' and 'end_date' to the existing table.
+Sample 2559 - Plan 1: Selected indices: [[0, 2], [1, 2], [2, 2], [3, 2], [4, 2], [5, 2], [6, 2], [7, 2], [8, 2], [9, 2], [10, 2], [11, 2], [12, 2]]
+Sample 2559 - Plan 1: X-Table after operation df:
+   iteration  year                     dates                        location  \
+0        1st  1972              6 may-20 may                      suva, fiji   
+1        2nd  1976          6 march-13 march            rotorua, new zealand   
+2        3rd  1980           30 june-12 july  port moresby, papua new guinea   
+3        4th  1985           29 june-15 july        tahiti, french polynesia   
+4        5th  1988       14 august-24 august           townsville, australia   
+5        6th  1992     16 october-27 october         rarotonga, cook islands   
+6        7th  1996  8 september-23 september                     apia, sāmoa   
+7        8th  2000     23 october-3 november           nouméa, new caledonia   
+8        9th  2004           22 july-31 july                    koror, palau   
+9       10th  2008          20 july-2 august       pago pago, american samoa   
+10      11th  2012                 1–14 july        honiara, solomon islands   
+11      12th  2016                       tba                     tumon, guam   
+12      13th  2020                       tba                     tba, hawaii   
+
+                               theme   start_date      end_date  
+0               "preserving culture"        6 may        20 may  
+1                  "sharing culture"      6 march      13 march  
+2                "pacific awareness"      30 june       12 july  
+3                       "my pacific"      29 june       15 july  
+4             "cultural interchange"    14 august     24 august  
+5               "seafaring heritage"   16 october    27 october  
+6              "unveiling treasures"  8 september  23 september  
+7   "words of past, present, future"   23 october    3 november  
+8   "nurture, regenerate, celebrate"      22 july       31 july  
+9       "threading the oceania ‘ula"      20 july      2 august  
+10  "culture in harmony with nature"                  1–14 july  
+11                             "tba"                        tba  
+12                             "tba"                        tba  
+Sample 2559 - Plan 1: Table after operation: [['iteration', 'year', 'dates', 'location', 'theme', 'start_date', 'end_date'], ['1st', 1972, '6 may-20 may', 'suva, fiji', '"preserving culture"', '6 may', '20 may'], ['2nd', 1976, '6 march-13 march', 'rotorua, new zealand', '"sharing culture"', '6 march', '13 march'], ['3rd', 1980, '30 june-12 july', 'port moresby, papua new guinea', '"pacific awareness"', '30 june', '12 july'], ['4th', 1985, '29 june-15 july', 'tahiti, french polynesia', '"my pacific"', '29 june', '15 july'], ['5th', 1988, '14 august-24 august', 'townsville, australia', '"cultural interchange"', '14 august', '24 august'], ['6th', 1992, '16 october-27 october', 'rarotonga, cook islands', '"seafaring heritage"', '16 october', '27 october'], ['7th', 1996, '8 september-23 september', 'apia, sāmoa', '"unveiling treasures"', '8 september', '23 september'], ['8th', 2000, '23 october-3 november', 'nouméa, new caledonia', '"words of past, present, future"', '23 october', '3 november'], ['9th', 2004, '22 july-31 july', 'koror, palau', '"nurture, regenerate, celebrate"', '22 july', '31 july'], ['10th', 2008, '20 july-2 august', 'pago pago, american samoa', '"threading the oceania ‘ula"', '20 july', '2 august'], ['11th', 2012, '1–14 july', 'honiara, solomon islands', '"culture in harmony with nature"', '', '1–14 july'], ['12th', 2016, 'tba', 'tumon, guam', '"tba"', '', 'tba'], ['13th', 2020, 'tba', 'tba, hawaii', '"tba"', '', 'tba']]
+########################################################################################################################
+Sample 2559 - Plan 1: Operation 2: Calculate the length of each festival by subtracting the start date from the end date and add a new column 'length' to the existing table.
+Sample 2559 - Plan 1: Selected indices: [[0, 6], [0, 5], [1, 6], [1, 5], [2, 6], [2, 5], [3, 6], [3, 5], [4, 6], [4, 5], [5, 6], [5, 5], [6, 6], [6, 5], [7, 6], [7, 5], [8, 6], [8, 5], [9, 6], [9, 5], [10, 6], [10, 5], [11, 6], [11, 5], [12, 6], [12, 5]]
+Sample 2559 - Plan 1: X-Table after operation df:
+   iteration  year                     dates                        location  \
+0        1st  1972              6 may-20 may                      suva, fiji   
+1        2nd  1976          6 march-13 march            rotorua, new zealand   
+2        3rd  1980           30 june-12 july  port moresby, papua new guinea   
+3        4th  1985           29 june-15 july        tahiti, french polynesia   
+4        5th  1988       14 august-24 august           townsville, australia   
+5        6th  1992     16 october-27 october         rarotonga, cook islands   
+6        7th  1996  8 september-23 september                     apia, sāmoa   
+7        8th  2000     23 october-3 november           nouméa, new caledonia   
+8        9th  2004           22 july-31 july                    koror, palau   
+9       10th  2008          20 july-2 august       pago pago, american samoa   
+10      11th  2012                 1–14 july        honiara, solomon islands   
+11      12th  2016                       tba                     tumon, guam   
+12      13th  2020                       tba                     tba, hawaii   
+
+                               theme   start_date      end_date  length  
+0               "preserving culture"        6 may        20 may     NaN  
+1                  "sharing culture"      6 march      13 march     NaN  
+2                "pacific awareness"      30 june       12 july     NaN  
+3                       "my pacific"      29 june       15 july     NaN  
+4             "cultural interchange"    14 august     24 august     NaN  
+5               "seafaring heritage"   16 october    27 october     NaN  
+6              "unveiling treasures"  8 september  23 september     NaN  
+7   "words of past, present, future"   23 october    3 november     NaN  
+8   "nurture, regenerate, celebrate"      22 july       31 july     NaN  
+9       "threading the oceania ‘ula"      20 july      2 august     NaN  
+10  "culture in harmony with nature"                  1–14 july     NaN  
+11                             "tba"                        tba     NaN  
+12                             "tba"                        tba     NaN  
+Sample 2559 - Plan 1: Table after operation: [['iteration', 'year', 'dates', 'location', 'theme', 'start_date', 'end_date', 'length'], ['1st', 1972, '6 may-20 may', 'suva, fiji', '"preserving culture"', '6 may', '20 may', None], ['2nd', 1976, '6 march-13 march', 'rotorua, new zealand', '"sharing culture"', '6 march', '13 march', None], ['3rd', 1980, '30 june-12 july', 'port moresby, papua new guinea', '"pacific awareness"', '30 june', '12 july', None], ['4th', 1985, '29 june-15 july', 'tahiti, french polynesia', '"my pacific"', '29 june', '15 july', None], ['5th', 1988, '14 august-24 august', 'townsville, australia', '"cultural interchange"', '14 august', '24 august', None], ['6th', 1992, '16 october-27 october', 'rarotonga, cook islands', '"seafaring heritage"', '16 october', '27 october', None], ['7th', 1996, '8 september-23 september', 'apia, sāmoa', '"unveiling treasures"', '8 september', '23 september', None], ['8th', 2000, '23 october-3 november', 'nouméa, new caledonia', '"words of past, present, future"', '23 october', '3 november', None], ['9th', 2004, '22 july-31 july', 'koror, palau', '"nurture, regenerate, celebrate"', '22 july', '31 july', None], ['10th', 2008, '20 july-2 august', 'pago pago, american samoa', '"threading the oceania ‘ula"', '20 july', '2 august', None], ['11th', 2012, '1–14 july', 'honiara, solomon islands', '"culture in harmony with nature"', '', '1–14 july', None], ['12th', 2016, 'tba', 'tumon, guam', '"tba"', '', 'tba', None], ['13th', 2020, 'tba', 'tba, hawaii', '"tba"', '', 'tba', None]]
+########################################################################################################################
+Sample 2559 - Plan 1: Operation 3: Select rows where the 'year' is less than or equal to 2012.
+Sample 2559 - Plan 1: Selected indices: [[0, 1], [7, 1], [2, 1], [8, 1], [3, 1], [6, 1], [1, 1], [10, 1], [5, 1], [9, 1], [4, 1]]
+Sample 2559 - Plan 1: X-Table after operation df:
+   iteration  year                     dates                        location  \
+0        1st  1972              6 may-20 may                      suva, fiji   
+1        2nd  1976          6 march-13 march            rotorua, new zealand   
+2        3rd  1980           30 june-12 july  port moresby, papua new guinea   
+3        4th  1985           29 june-15 july        tahiti, french polynesia   
+4        5th  1988       14 august-24 august           townsville, australia   
+5        6th  1992     16 october-27 october         rarotonga, cook islands   
+6        7th  1996  8 september-23 september                     apia, sāmoa   
+7        8th  2000     23 october-3 november           nouméa, new caledonia   
+8        9th  2004           22 july-31 july                    koror, palau   
+9       10th  2008          20 july-2 august       pago pago, american samoa   
+10      11th  2012                 1–14 july        honiara, solomon islands   
+
+                               theme   start_date      end_date  length  
+0               "preserving culture"        6 may        20 may     NaN  
+1                  "sharing culture"      6 march      13 march     NaN  
+2                "pacific awareness"      30 june       12 july     NaN  
+3                       "my pacific"      29 june       15 july     NaN  
+4             "cultural interchange"    14 august     24 august     NaN  
+5               "seafaring heritage"   16 october    27 october     NaN  
+6              "unveiling treasures"  8 september  23 september     NaN  
+7   "words of past, present, future"   23 october    3 november     NaN  
+8   "nurture, regenerate, celebrate"      22 july       31 july     NaN  
+9       "threading the oceania ‘ula"      20 july      2 august     NaN  
+10  "culture in harmony with nature"                  1–14 july     NaN  
+Sample 2559 - Plan 1: Table after operation: [['iteration', 'year', 'dates', 'location', 'theme', 'start_date', 'end_date', 'length'], ['1st', 1972, '6 may-20 may', 'suva, fiji', '"preserving culture"', '6 may', '20 may', None], ['2nd', 1976, '6 march-13 march', 'rotorua, new zealand', '"sharing culture"', '6 march', '13 march', None], ['3rd', 1980, '30 june-12 july', 'port moresby, papua new guinea', '"pacific awareness"', '30 june', '12 july', None], ['4th', 1985, '29 june-15 july', 'tahiti, french polynesia', '"my pacific"', '29 june', '15 july', None], ['5th', 1988, '14 august-24 august', 'townsville, australia', '"cultural interchange"', '14 august', '24 august', None], ['6th', 1992, '16 october-27 october', 'rarotonga, cook islands', '"seafaring heritage"', '16 october', '27 october', None], ['7th', 1996, '8 september-23 september', 'apia, sāmoa', '"unveiling treasures"', '8 september', '23 september', None], ['8th', 2000, '23 october-3 november', 'nouméa, new caledonia', '"words of past, present, future"', '23 october', '3 november', None], ['9th', 2004, '22 july-31 july', 'koror, palau', '"nurture, regenerate, celebrate"', '22 july', '31 july', None], ['10th', 2008, '20 july-2 august', 'pago pago, american samoa', '"threading the oceania ‘ula"', '20 july', '2 august', None], ['11th', 2012, '1–14 july', 'honiara, solomon islands', '"culture in harmony with nature"', '', '1–14 july', None]]
+########################################################################################################################
+Sample 2559 - Plan 1: Operation 4: Calculate the average length of the festivals from the 'length' column.
+Sample 2559 - Plan 1: Selected indices: []
+Sample 2559 - Plan 1: X-Table after operation df:
+   average_length
+0             NaN
+Sample 2559 - Plan 1: Table after operation: [['average_length'], [None]]
+Fall-back: TRUE
+Answer from plan 1: [['15 days']]
+Groundtruth: ['14 days']

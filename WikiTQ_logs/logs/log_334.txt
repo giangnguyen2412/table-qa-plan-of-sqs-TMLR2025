@@ -1,0 +1,114 @@
+************************************************************************************************************************
+Sample 334 - Plan 1: Query: congressmen re-elected with at least 60% of the vote
+Sample 334 - Plan 1: Groundtruth: ['Wayne Gilchrest', 'Ben Cardin', 'Albert Wynn', 'Steny Hoyer', 'Roscoe Bartlett', 'Elijah Cummings']
+Sample 334 - Plan 1: X-Original table pd: 
+     district        incumbent       party  first_nelected  \
+0  maryland 1  wayne gilchrest  republican            1990   
+1  maryland 2   robert ehrlich  republican            1994   
+2  maryland 3       ben cardin  democratic            1986   
+3  maryland 4      albert wynn  democratic            1992   
+4  maryland 5      steny hoyer  democratic            1981   
+5  maryland 6  roscoe bartlett  republican            1992   
+6  maryland 7  elijah cummings  democratic            1996   
+7  maryland 8   connie morella  republican            1986   
+
+                                         result  \
+0                                    re-elected   
+1  retired to run for governor\ndemocratic gain   
+2                                    re-elected   
+3                                    re-elected   
+4                                    re-elected   
+5                                    re-elected   
+6                                    re-elected   
+7             lost re-election\ndemocratic gain   
+
+                                          candidates  
+0  wayne gilchrest (r) 76.67%\nann tamlyn (d) 23.16%  
+1  dutch ruppersberger (d) 54.16%\nhelen bentley ...  
+2    ben cardin (d) 65.72%\nscott conwell (r) 34.18%  
+3     albert wynn (d) 78.57%\njohn kimble (r) 20.82%  
+4  steny hoyer (d) 69.27%\njoseph crawford (r) 30...  
+5  roscoe bartlett (r) 66.11%\ndonald dearmon (d)...  
+6  elijah cummings (d) 73.53%\njoseph ward (r) 26...  
+7  chris van hollen (d) 51.71%\nconnie morella (r...  
+Sample 334 - Plan 1: Caption: none
+Sample 334 - Plan 1: Original table: [['district', 'incumbent', 'party', 'first_nelected', 'result', 'candidates'], ['maryland 1', 'wayne gilchrest', 'republican', '1990', 're-elected', 'wayne gilchrest (r) 76.67%\\nann tamlyn (d) 23.16%'], ['maryland 2', 'robert ehrlich', 'republican', '1994', 'retired to run for governor\\ndemocratic gain', 'dutch ruppersberger (d) 54.16%\\nhelen bentley (r) 45.57%'], ['maryland 3', 'ben cardin', 'democratic', '1986', 're-elected', 'ben cardin (d) 65.72%\\nscott conwell (r) 34.18%'], ['maryland 4', 'albert wynn', 'democratic', '1992', 're-elected', 'albert wynn (d) 78.57%\\njohn kimble (r) 20.82%'], ['maryland 5', 'steny hoyer', 'democratic', '1981', 're-elected', 'steny hoyer (d) 69.27%\\njoseph crawford (r) 30.52%'], ['maryland 6', 'roscoe bartlett', 'republican', '1992', 're-elected', 'roscoe bartlett (r) 66.11%\\ndonald dearmon (d) 33.80%'], ['maryland 7', 'elijah cummings', 'democratic', '1996', 're-elected', 'elijah cummings (d) 73.53%\\njoseph ward (r) 26.38%'], ['maryland 8', 'connie morella', 'republican', '1986', 'lost re-election\\ndemocratic gain', 'chris van hollen (d) 51.71%\\nconnie morella (r) 47.49%\\nstephen bassett (un) 0.73%']]
+########################################################################################################################
+Sample 334 - Plan 1: Operation 1: Select rows where the 'result' column contains the substring 're-elected'.
+Sample 334 - Plan 1: Selected indices: [[4, 4], [2, 4], [0, 4], [3, 4], [5, 4], [6, 4]]
+Sample 334 - Plan 1: X-Table after operation df:
+     district        incumbent       party  first_nelected      result  \
+0  maryland 1  wayne gilchrest  republican            1990  re-elected   
+1  maryland 3       ben cardin  democratic            1986  re-elected   
+2  maryland 4      albert wynn  democratic            1992  re-elected   
+3  maryland 5      steny hoyer  democratic            1981  re-elected   
+4  maryland 6  roscoe bartlett  republican            1992  re-elected   
+5  maryland 7  elijah cummings  democratic            1996  re-elected   
+
+                                          candidates  
+0  wayne gilchrest (r) 76.67%\nann tamlyn (d) 23.16%  
+1    ben cardin (d) 65.72%\nscott conwell (r) 34.18%  
+2     albert wynn (d) 78.57%\njohn kimble (r) 20.82%  
+3  steny hoyer (d) 69.27%\njoseph crawford (r) 30...  
+4  roscoe bartlett (r) 66.11%\ndonald dearmon (d)...  
+5  elijah cummings (d) 73.53%\njoseph ward (r) 26...  
+Sample 334 - Plan 1: Table after operation: [['district', 'incumbent', 'party', 'first_nelected', 'result', 'candidates'], ['maryland 1', 'wayne gilchrest', 'republican', 1990, 're-elected', 'wayne gilchrest (r) 76.67%\\nann tamlyn (d) 23.16%'], ['maryland 3', 'ben cardin', 'democratic', 1986, 're-elected', 'ben cardin (d) 65.72%\\nscott conwell (r) 34.18%'], ['maryland 4', 'albert wynn', 'democratic', 1992, 're-elected', 'albert wynn (d) 78.57%\\njohn kimble (r) 20.82%'], ['maryland 5', 'steny hoyer', 'democratic', 1981, 're-elected', 'steny hoyer (d) 69.27%\\njoseph crawford (r) 30.52%'], ['maryland 6', 'roscoe bartlett', 'republican', 1992, 're-elected', 'roscoe bartlett (r) 66.11%\\ndonald dearmon (d) 33.80%'], ['maryland 7', 'elijah cummings', 'democratic', 1996, 're-elected', 'elijah cummings (d) 73.53%\\njoseph ward (r) 26.38%']]
+########################################################################################################################
+Sample 334 - Plan 1: Operation 2: Extract the numerical value from the 'candidates' column for each selected row.
+Sample 334 - Plan 1: Selected indices: [[0, 5], [1, 5], [2, 5], [3, 5], [4, 5], [5, 5]]
+Sample 334 - Plan 1: X-Table after operation df:
+     district        incumbent       party  first_nelected      result  \
+0  maryland 1  wayne gilchrest  republican            1990  re-elected   
+1  maryland 3       ben cardin  democratic            1986  re-elected   
+2  maryland 4      albert wynn  democratic            1992  re-elected   
+3  maryland 5      steny hoyer  democratic            1981  re-elected   
+4  maryland 6  roscoe bartlett  republican            1992  re-elected   
+5  maryland 7  elijah cummings  democratic            1996  re-elected   
+
+                                          candidates  numerical_value  
+0  wayne gilchrest (r) 76.67%\nann tamlyn (d) 23.16%              0.0  
+1    ben cardin (d) 65.72%\nscott conwell (r) 34.18%              0.0  
+2     albert wynn (d) 78.57%\njohn kimble (r) 20.82%              0.0  
+3  steny hoyer (d) 69.27%\njoseph crawford (r) 30...              0.0  
+4  roscoe bartlett (r) 66.11%\ndonald dearmon (d)...              0.0  
+5  elijah cummings (d) 73.53%\njoseph ward (r) 26...              0.0  
+Sample 334 - Plan 1: Table after operation: [['district', 'incumbent', 'party', 'first_nelected', 'result', 'candidates', 'numerical_value'], ['maryland 1', 'wayne gilchrest', 'republican', 1990, 're-elected', 'wayne gilchrest (r) 76.67%\\nann tamlyn (d) 23.16%', 0.0], ['maryland 3', 'ben cardin', 'democratic', 1986, 're-elected', 'ben cardin (d) 65.72%\\nscott conwell (r) 34.18%', 0.0], ['maryland 4', 'albert wynn', 'democratic', 1992, 're-elected', 'albert wynn (d) 78.57%\\njohn kimble (r) 20.82%', 0.0], ['maryland 5', 'steny hoyer', 'democratic', 1981, 're-elected', 'steny hoyer (d) 69.27%\\njoseph crawford (r) 30.52%', 0.0], ['maryland 6', 'roscoe bartlett', 'republican', 1992, 're-elected', 'roscoe bartlett (r) 66.11%\\ndonald dearmon (d) 33.80%', 0.0], ['maryland 7', 'elijah cummings', 'democratic', 1996, 're-elected', 'elijah cummings (d) 73.53%\\njoseph ward (r) 26.38%', 0.0]]
+########################################################################################################################
+Sample 334 - Plan 1: Operation 3: Calculate the percentage of votes received by each candidate.
+Sample 334 - Plan 1: Selected indices: []
+Sample 334 - Plan 1: X-Table after operation df:
+  candidate_percentage
+0             r) 76.67
+1             d) 65.72
+2             d) 78.57
+3             d) 69.27
+4             r) 66.11
+5             d) 73.53
+Sample 334 - Plan 1: Table after operation: [['candidate_percentage'], ['r) 76.67'], ['d) 65.72'], ['d) 78.57'], ['d) 69.27'], ['r) 66.11'], ['d) 73.53']]
+########################################################################################################################
+Sample 334 - Plan 1: Operation 4: Select rows where the percentage of votes received by the incumbent candidate is greater than or equal to 60%.
+Sample 334 - Plan 1: Selected indices: []
+Sample 334 - Plan 1: X-Table after operation df:
+  candidate_percentage
+0             r) 76.67
+1             d) 65.72
+2             d) 78.57
+3             d) 69.27
+4             r) 66.11
+5             d) 73.53
+Sample 334 - Plan 1: Table after operation: [['candidate_percentage'], ['r) 76.67'], ['d) 65.72'], ['d) 78.57'], ['d) 69.27'], ['r) 66.11'], ['d) 73.53']]
+########################################################################################################################
+Sample 334 - Plan 1: Operation 5: Select the 'district', 'incumbent', 'party', 'first_elected', and 'result' columns from the resulting table.
+Sample 334 - Plan 1: Selected indices: [[0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0]]
+Sample 334 - Plan 1: X-Table after operation df:
+   district incumbent party  first_elected  result
+0      6.67         r                  NaN     NaN
+1      5.72         d                  NaN     NaN
+2      8.57         d                  NaN     NaN
+3      9.27         d                  NaN     NaN
+4      6.11         r                  NaN     NaN
+5      3.53         d                  NaN     NaN
+Sample 334 - Plan 1: Table after operation: [['district', 'incumbent', 'party', 'first_elected', 'result'], ['6.67', 'r', ' ', None, None], ['5.72', 'd', ' ', None, None], ['8.57', 'd', ' ', None, None], ['9.27', 'd', ' ', None, None], ['6.11', 'r', ' ', None, None], ['3.53', 'd', ' ', None, None]]
+Fall-back: TRUE
+Answer from plan 1: [['wayne gilchrest (r) 76.67%', 'ben cardin (d) 65.72%', 'albert wynn (d) 78.57%', 'steny hoyer (d) 69.27%', 'roscoe bartlett (r) 66.11%', 'elijah cummings (d) 73.53%']]
+Groundtruth: ['Wayne Gilchrest', 'Ben Cardin', 'Albert Wynn', 'Steny Hoyer', 'Roscoe Bartlett', 'Elijah Cummings']

@@ -1,0 +1,38 @@
+************************************************************************************************************************
+Sample 4110 - Plan 1: Query: what's the average number of gold medals in the top 5 ranked countries?
+Sample 4110 - Plan 1: Groundtruth: ['35.8']
+Sample 4110 - Plan 1: X-Original table pd: 
+   rank         nation  gold  silver  bronze  total
+0     1          china    63      46      32    141
+1     2  great britain    35      30      29     94
+2     3         canada    28      19      25     72
+3     4  united states    27      22      39     88
+4     5      australia    26      38      36    100
+5     6        ukraine    24      12      19     55
+6     7          spain    20      27      24     71
+7     8        germany    19      28      31     78
+8     9         france    18      26      30     74
+9    10          japan    17      16      20     53
+Sample 4110 - Plan 1: Caption: none
+Sample 4110 - Plan 1: Original table: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['1', 'china', '63', '46', '32', '141'], ['2', 'great britain', '35', '30', '29', '94'], ['3', 'canada', '28', '19', '25', '72'], ['4', 'united states', '27', '22', '39', '88'], ['5', 'australia', '26', '38', '36', '100'], ['6', 'ukraine', '24', '12', '19', '55'], ['7', 'spain', '20', '27', '24', '71'], ['8', 'germany', '19', '28', '31', '78'], ['9', 'france', '18', '26', '30', '74'], ['10', 'japan', '17', '16', '20', '53']]
+########################################################################################################################
+Sample 4110 - Plan 1: Operation 1: Select the top 5 rows from the table based on the 'rank' column.
+Sample 4110 - Plan 1: Selected indices: [[4, 0], [0, 0], [2, 0], [3, 0], [1, 0]]
+Sample 4110 - Plan 1: X-Table after operation df:
+   rank         nation  gold  silver  bronze  total
+0     1          china    63      46      32    141
+1     2  great britain    35      30      29     94
+2     3         canada    28      19      25     72
+3     4  united states    27      22      39     88
+4     5      australia    26      38      36    100
+Sample 4110 - Plan 1: Table after operation: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], [1, 'china', 63, 46, 32, 141], [2, 'great britain', 35, 30, 29, 94], [3, 'canada', 28, 19, 25, 72], [4, 'united states', 27, 22, 39, 88], [5, 'australia', 26, 38, 36, 100]]
+########################################################################################################################
+Sample 4110 - Plan 1: Operation 2: Calculate the average of the 'gold' column from the selected rows.
+Sample 4110 - Plan 1: Selected indices: []
+Sample 4110 - Plan 1: X-Table after operation df:
+   average_gold
+0          35.8
+Sample 4110 - Plan 1: Table after operation: [['average_gold'], [35.8]]
+Fall-back: FALSE
+Answer from plan 1: [[35.8]]
+Groundtruth: ['35.8']

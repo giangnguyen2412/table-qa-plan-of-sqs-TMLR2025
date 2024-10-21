@@ -1,0 +1,93 @@
+************************************************************************************************************************
+Sample 2613 - Plan 1: Query: which stadium has the top capacity?
+Sample 2613 - Plan 1: Groundtruth: ['Provident Stadium']
+Sample 2613 - Plan 1: X-Original table pd: 
+                                        team                          stadium  \
+0               bradford bulls (2014 season)                provident stadium   
+1            castleford tigers (2014 season)  the wish communications stadium   
+2             catalans dragons (2014 season)             stade gilbert brutus   
+3          huddersfield giants (2014 season)             john smith's stadium   
+4                         hull (2014 season)  kingston communications stadium   
+5         hull kingston rovers (2014 season)                  ms3 craven park   
+6                 leeds rhinos (2014 season)      headingley carnegie stadium   
+7               london broncos (2014 season)                 twickenham stoop   
+8            salford city reds (2014 season)             salford city stadium   
+9               st helens rlfc (2014 season)                    langtree park   
+10  wakefield trinity wildcats (2014 season)         rapid solicitors stadium   
+11           warrington wolves (2014 season)          halliwell jones stadium   
+12              widnes vikings (2014 season)      the select security stadium   
+13              wigan warriors (2014 season)                       dw stadium   
+
+   capacity                                     city_area  
+0    27,000                      bradford, west yorkshire  
+1    11,750                    castleford, west yorkshire  
+2    14,000        perpignan, pyrénées-orientales, france  
+3    24,544                  huddersfield, west yorkshire  
+4    25,404  kingston upon hull, east riding of yorkshire  
+5     9,471  kingston upon hull, east riding of yorkshire  
+6    22,250                         leeds, west yorkshire  
+7    12,700                            twickenham, london  
+8    12,000                   salford, greater manchester  
+9    18,000                         st helens, merseyside  
+10   11,000                     wakefield, west yorkshire  
+11   15,500                          warrington, cheshire  
+12   13,500                     widnes, cheshire, england  
+13   25,138                     wigan, greater manchester  
+Sample 2613 - Plan 1: Caption: none
+Sample 2613 - Plan 1: Original table: [['team', 'stadium', 'capacity', 'city_area'], ['bradford bulls (2014 season)', 'provident stadium', '27,000', 'bradford, west yorkshire'], ['castleford tigers (2014 season)', 'the wish communications stadium', '11,750', 'castleford, west yorkshire'], ['catalans dragons (2014 season)', 'stade gilbert brutus', '14,000', 'perpignan, pyrénées-orientales, france'], ['huddersfield giants (2014 season)', "john smith's stadium", '24,544', 'huddersfield, west yorkshire'], ['hull (2014 season)', 'kingston communications stadium', '25,404', 'kingston upon hull, east riding of yorkshire'], ['hull kingston rovers (2014 season)', 'ms3 craven park', '9,471', 'kingston upon hull, east riding of yorkshire'], ['leeds rhinos (2014 season)', 'headingley carnegie stadium', '22,250', 'leeds, west yorkshire'], ['london broncos (2014 season)', 'twickenham stoop', '12,700', 'twickenham, london'], ['salford city reds (2014 season)', 'salford city stadium', '12,000', 'salford, greater manchester'], ['st helens rlfc (2014 season)', 'langtree park', '18,000', 'st helens, merseyside'], ['wakefield trinity wildcats (2014 season)', 'rapid solicitors stadium', '11,000', 'wakefield, west yorkshire'], ['warrington wolves (2014 season)', 'halliwell jones stadium', '15,500', 'warrington, cheshire'], ['widnes vikings (2014 season)', 'the select security stadium', '13,500', 'widnes, cheshire, england'], ['wigan warriors (2014 season)', 'dw stadium', '25,138', 'wigan, greater manchester']]
+########################################################################################################################
+Sample 2613 - Plan 1: Operation 1: Order the table by the 'capacity' column in descending order.
+Sample 2613 - Plan 1: Selected indices: [[6, 2], [1, 2], [9, 2], [4, 2], [0, 2], [11, 2], [12, 2], [7, 2], [2, 2], [13, 2], [8, 2], [3, 2], [10, 2], [5, 2]]
+Sample 2613 - Plan 1: X-Table after operation df:
+                                        team                          stadium  \
+0               bradford bulls (2014 season)                provident stadium   
+1                         hull (2014 season)  kingston communications stadium   
+2               wigan warriors (2014 season)                       dw stadium   
+3          huddersfield giants (2014 season)             john smith's stadium   
+4                 leeds rhinos (2014 season)      headingley carnegie stadium   
+5               st helens rlfc (2014 season)                    langtree park   
+6            warrington wolves (2014 season)          halliwell jones stadium   
+7             catalans dragons (2014 season)             stade gilbert brutus   
+8               widnes vikings (2014 season)      the select security stadium   
+9               london broncos (2014 season)                 twickenham stoop   
+10           salford city reds (2014 season)             salford city stadium   
+11           castleford tigers (2014 season)  the wish communications stadium   
+12  wakefield trinity wildcats (2014 season)         rapid solicitors stadium   
+13        hull kingston rovers (2014 season)                  ms3 craven park   
+
+   capacity                                     city_area  
+0    27,000                      bradford, west yorkshire  
+1    25,404  kingston upon hull, east riding of yorkshire  
+2    25,138                     wigan, greater manchester  
+3    24,544                  huddersfield, west yorkshire  
+4    22,250                         leeds, west yorkshire  
+5    18,000                         st helens, merseyside  
+6    15,500                          warrington, cheshire  
+7    14,000        perpignan, pyrénées-orientales, france  
+8    13,500                     widnes, cheshire, england  
+9    12,700                            twickenham, london  
+10   12,000                   salford, greater manchester  
+11   11,750                    castleford, west yorkshire  
+12   11,000                     wakefield, west yorkshire  
+13    9,471  kingston upon hull, east riding of yorkshire  
+Sample 2613 - Plan 1: Table after operation: [['team', 'stadium', 'capacity', 'city_area'], ['bradford bulls (2014 season)', 'provident stadium', '27,000', 'bradford, west yorkshire'], ['hull (2014 season)', 'kingston communications stadium', '25,404', 'kingston upon hull, east riding of yorkshire'], ['wigan warriors (2014 season)', 'dw stadium', '25,138', 'wigan, greater manchester'], ['huddersfield giants (2014 season)', "john smith's stadium", '24,544', 'huddersfield, west yorkshire'], ['leeds rhinos (2014 season)', 'headingley carnegie stadium', '22,250', 'leeds, west yorkshire'], ['st helens rlfc (2014 season)', 'langtree park', '18,000', 'st helens, merseyside'], ['warrington wolves (2014 season)', 'halliwell jones stadium', '15,500', 'warrington, cheshire'], ['catalans dragons (2014 season)', 'stade gilbert brutus', '14,000', 'perpignan, pyrénées-orientales, france'], ['widnes vikings (2014 season)', 'the select security stadium', '13,500', 'widnes, cheshire, england'], ['london broncos (2014 season)', 'twickenham stoop', '12,700', 'twickenham, london'], ['salford city reds (2014 season)', 'salford city stadium', '12,000', 'salford, greater manchester'], ['castleford tigers (2014 season)', 'the wish communications stadium', '11,750', 'castleford, west yorkshire'], ['wakefield trinity wildcats (2014 season)', 'rapid solicitors stadium', '11,000', 'wakefield, west yorkshire'], ['hull kingston rovers (2014 season)', 'ms3 craven park', '9,471', 'kingston upon hull, east riding of yorkshire']]
+########################################################################################################################
+Sample 2613 - Plan 1: Operation 2: Select row number 1.
+Sample 2613 - Plan 1: Selected indices: []
+Sample 2613 - Plan 1: X-Table after operation df:
+                           team            stadium capacity  \
+0  bradford bulls (2014 season)  provident stadium   27,000   
+
+                  city_area  
+0  bradford, west yorkshire  
+Sample 2613 - Plan 1: Table after operation: [['team', 'stadium', 'capacity', 'city_area'], ['bradford bulls (2014 season)', 'provident stadium', '27,000', 'bradford, west yorkshire']]
+########################################################################################################################
+Sample 2613 - Plan 1: Operation 3: Select the 'stadium' column.
+Sample 2613 - Plan 1: Selected indices: []
+Sample 2613 - Plan 1: X-Table after operation df:
+             stadium
+0  provident stadium
+Sample 2613 - Plan 1: Table after operation: [['stadium'], ['provident stadium']]
+Fall-back: FALSE
+Answer from plan 1: [['provident stadium']]
+Groundtruth: ['Provident Stadium']

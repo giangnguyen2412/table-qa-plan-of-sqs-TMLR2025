@@ -1,0 +1,38 @@
+************************************************************************************************************************
+Sample 2626 - Plan 1: Query: what is the game of the season to be canceled?
+Sample 2626 - Plan 1: Groundtruth: ['September 27, 1987']
+Sample 2626 - Plan 1: X-Original table pd: 
+   week                date                opponent    result attendance
+0     1  september 13, 1987      san diego chargers   w 20–13     56,940
+1     2  september 20, 1987     at seattle seahawks   l 43–14     61,667
+2     –  september 27, 1987       minnesota vikings  canceled           
+3     3     october 4, 1987  at los angeles raiders   l 35–17     10,708
+4     4    october 11, 1987       at miami dolphins    l 42–0     25,867
+5     5    october 18, 1987          denver broncos   l 26–17     20,296
+6     6    october 25, 1987   at san diego chargers   l 42–21     47,972
+7     7    november 1, 1987        at chicago bears   l 31–28     63,498
+8     8    november 8, 1987     pittsburgh steelers   l 17–16     45,249
+9     9   november 15, 1987           new york jets    l 16–9     40,718
+10   10   november 22, 1987       green bay packers    l 23–3     34,611
+11   11   november 26, 1987        at detroit lions   w 27–20     43,820
+12   12    december 6, 1987   at cincinnati bengals   l 30–27     46,489
+13   13   december 13, 1987     los angeles raiders   w 16–10     63,834
+14   14   december 19, 1987       at denver broncos   l 20–17     75,053
+15   15   december 27, 1987        seattle seahawks   w 41–20     20,370
+Sample 2626 - Plan 1: Caption: none
+Sample 2626 - Plan 1: Original table: [['week', 'date', 'opponent', 'result', 'attendance'], ['1', 'september 13, 1987', 'san diego chargers', 'w 20–13', '56,940'], ['2', 'september 20, 1987', 'at seattle seahawks', 'l 43–14', '61,667'], ['–', 'september 27, 1987', 'minnesota vikings', 'canceled', ''], ['3', 'october 4, 1987', 'at los angeles raiders', 'l 35–17', '10,708'], ['4', 'october 11, 1987', 'at miami dolphins', 'l 42–0', '25,867'], ['5', 'october 18, 1987', 'denver broncos', 'l 26–17', '20,296'], ['6', 'october 25, 1987', 'at san diego chargers', 'l 42–21', '47,972'], ['7', 'november 1, 1987', 'at chicago bears', 'l 31–28', '63,498'], ['8', 'november 8, 1987', 'pittsburgh steelers', 'l 17–16', '45,249'], ['9', 'november 15, 1987', 'new york jets', 'l 16–9', '40,718'], ['10', 'november 22, 1987', 'green bay packers', 'l 23–3', '34,611'], ['11', 'november 26, 1987', 'at detroit lions', 'w 27–20', '43,820'], ['12', 'december 6, 1987', 'at cincinnati bengals', 'l 30–27', '46,489'], ['13', 'december 13, 1987', 'los angeles raiders', 'w 16–10', '63,834'], ['14', 'december 19, 1987', 'at denver broncos', 'l 20–17', '75,053'], ['15', 'december 27, 1987', 'seattle seahawks', 'w 41–20', '20,370']]
+########################################################################################################################
+Sample 2626 - Plan 1: Operation 1: Select rows where the 'result' column is 'canceled'.
+Sample 2626 - Plan 1: Selected indices: [[2, 3]]
+Sample 2626 - Plan 1: X-Table after operation df:
+  week                date           opponent    result  attendance
+0    –  september 27, 1987  minnesota vikings  canceled         NaN
+Sample 2626 - Plan 1: Table after operation: [['week', 'date', 'opponent', 'result', 'attendance'], ['–', 'september 27, 1987', 'minnesota vikings', 'canceled', '']]
+########################################################################################################################
+Sample 2626 - Plan 1: Operation 2: Select the 'game' column.
+SQL execution error in operation 2: Execution failed on sql 'SELECT game
+FROM table_sql;': no such column: game
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['september 27, 1987', 'minnesota vikings', 'canceled']]
+Groundtruth: ['September 27, 1987']

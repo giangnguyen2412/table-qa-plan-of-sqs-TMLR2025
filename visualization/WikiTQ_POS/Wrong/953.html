@@ -1,0 +1,365 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> the game on which date had the least attendance?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Order the table by the 'attendance' column in ascending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>week</td>
+<td>date</td>
+<td>tv_time</td>
+<td>opponent</td>
+<td>result</td>
+<td>attendance</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">september 6, 1998</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fox 1:05 pm mt</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at dallas cowboys</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">l 38–10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">63,602</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">september 13, 1998</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fox 1:15 pm mt</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at seattle seahawks</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">l 33–14</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">57,678</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">september 20, 1998</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">espn 5:15 pm mt</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">philadelphia eagles</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w 17–3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">39,782</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">september 27, 1998</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fox 10:00 am mt</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at st. louis rams</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w 20–17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">55,832</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">october 4, 1998</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cbs 1:05 pm mt</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">oakland raiders</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">l 23–20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">53,240</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">october 11, 1998</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fox 1:05 pm mt</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chicago bears</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w 20–7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">50,495</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">october 18, 1998</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fox 10:00 am mt</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at new york giants</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">l 34–7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">70,456</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bye</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bye</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bye</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bye</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">november 1, 1998</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fox 11:00 am mt</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at detroit lions</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w 17–15</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">66,087</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">november 8, 1998</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fox 2:15 pm mt</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">washington redskins</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w 29–27</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">45,950</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">november 15, 1998</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fox 2:15 pm mt</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dallas cowboys</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">l 35–28</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">71,670</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">november 22, 1998</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fox 11:00 am mt</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at washington redskins</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w 45–42</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">63,435</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">november 29, 1998</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fox 11:00 am mt</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at kansas city chiefs</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">l 34–24</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">69,613</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">14</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 6, 1998</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fox 2:15 pm mt</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york giants</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">l 23–19</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">46,128</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">15</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 13, 1998</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fox 11:00 am mt</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at philadelphia eagles</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w 20–17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">62,176</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 20, 1998</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fox 2:05 pm mt</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new orleans saints</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w 19–17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">51,617</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 27, 1998</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cbs 2:05 pm mt</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">san diego chargers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w 16–13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">71,670</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select row number 1.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>week</td>
+<td>date</td>
+<td>tv_time</td>
+<td>opponent</td>
+<td>result</td>
+<td>attendance</td>
+</tr>
+<tr>
+<td>8</td>
+<td>bye</td>
+<td>bye</td>
+<td>bye</td>
+<td>bye</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>september 20, 1998</td>
+<td>espn 5:15 pm mt</td>
+<td>philadelphia eagles</td>
+<td>w 17–3</td>
+<td>39,782</td>
+</tr>
+<tr>
+<td>10</td>
+<td>november 8, 1998</td>
+<td>fox 2:15 pm mt</td>
+<td>washington redskins</td>
+<td>w 29–27</td>
+<td>45,950</td>
+</tr>
+<tr>
+<td>14</td>
+<td>december 6, 1998</td>
+<td>fox 2:15 pm mt</td>
+<td>new york giants</td>
+<td>l 23–19</td>
+<td>46,128</td>
+</tr>
+<tr>
+<td>6</td>
+<td>october 11, 1998</td>
+<td>fox 1:05 pm mt</td>
+<td>chicago bears</td>
+<td>w 20–7</td>
+<td>50,495</td>
+</tr>
+<tr>
+<td>16</td>
+<td>december 20, 1998</td>
+<td>fox 2:05 pm mt</td>
+<td>new orleans saints</td>
+<td>w 19–17</td>
+<td>51,617</td>
+</tr>
+<tr>
+<td>5</td>
+<td>october 4, 1998</td>
+<td>cbs 1:05 pm mt</td>
+<td>oakland raiders</td>
+<td>l 23–20</td>
+<td>53,240</td>
+</tr>
+<tr>
+<td>4</td>
+<td>september 27, 1998</td>
+<td>fox 10:00 am mt</td>
+<td>at st. louis rams</td>
+<td>w 20–17</td>
+<td>55,832</td>
+</tr>
+<tr>
+<td>2</td>
+<td>september 13, 1998</td>
+<td>fox 1:15 pm mt</td>
+<td>at seattle seahawks</td>
+<td>l 33–14</td>
+<td>57,678</td>
+</tr>
+<tr>
+<td>15</td>
+<td>december 13, 1998</td>
+<td>fox 11:00 am mt</td>
+<td>at philadelphia eagles</td>
+<td>w 20–17</td>
+<td>62,176</td>
+</tr>
+<tr>
+<td>12</td>
+<td>november 22, 1998</td>
+<td>fox 11:00 am mt</td>
+<td>at washington redskins</td>
+<td>w 45–42</td>
+<td>63,435</td>
+</tr>
+<tr>
+<td>1</td>
+<td>september 6, 1998</td>
+<td>fox 1:05 pm mt</td>
+<td>at dallas cowboys</td>
+<td>l 38–10</td>
+<td>63,602</td>
+</tr>
+<tr>
+<td>9</td>
+<td>november 1, 1998</td>
+<td>fox 11:00 am mt</td>
+<td>at detroit lions</td>
+<td>w 17–15</td>
+<td>66,087</td>
+</tr>
+<tr>
+<td>13</td>
+<td>november 29, 1998</td>
+<td>fox 11:00 am mt</td>
+<td>at kansas city chiefs</td>
+<td>l 34–24</td>
+<td>69,613</td>
+</tr>
+<tr>
+<td>7</td>
+<td>october 18, 1998</td>
+<td>fox 10:00 am mt</td>
+<td>at new york giants</td>
+<td>l 34–7</td>
+<td>70,456</td>
+</tr>
+<tr>
+<td>11</td>
+<td>november 15, 1998</td>
+<td>fox 2:15 pm mt</td>
+<td>dallas cowboys</td>
+<td>l 35–28</td>
+<td>71,670</td>
+</tr>
+<tr>
+<td>17</td>
+<td>december 27, 1998</td>
+<td>cbs 2:05 pm mt</td>
+<td>san diego chargers</td>
+<td>w 16–13</td>
+<td>71,670</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select the 'date' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>week</td>
+<td>date</td>
+<td>tv_time</td>
+<td>opponent</td>
+<td>result</td>
+<td>attendance</td>
+</tr>
+<tr>
+<td>8</td>
+<td>bye</td>
+<td>bye</td>
+<td>bye</td>
+<td>bye</td>
+<td></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>date</td>
+</tr>
+<tr>
+<td>bye</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['bye']]</h3>
+</body></html>

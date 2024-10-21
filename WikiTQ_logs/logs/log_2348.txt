@@ -1,0 +1,71 @@
+************************************************************************************************************************
+Sample 2348 - Plan 1: Query: during what year was the largest number of deaths recorded for ethnic poles outside of prisons & camps?
+Sample 2348 - Plan 1: Groundtruth: ['1943/44']
+Sample 2348 - Plan 1: X-Original table pd: 
+                  description_losses c_1939_40 c_1940_41 c_1941_42 c_1942_43  \
+0                  direct war losses   360,000                                 
+1                           murdered    75,000   100,000   116,000   133,000   
+2          deaths in prisons & camps    69,000   210,000   220,000   266,000   
+3  deaths outside of prisons & camps              42,000    71,000   142,000   
+4        murdered in eastern regions                                           
+5             deaths other countries                                           
+6                              total   504,000   352,000   407,000   541,000   
+
+  c_1943_44 c_1944_45      total  
+0             183,000    543,000  
+1    82,000              506,000  
+2   381,000            1,146,000  
+3   218,000              473,000  
+4             100,000    100,000  
+5                          2,000  
+6   681,000   270,000  2,770,000  
+Sample 2348 - Plan 1: Caption: none
+Sample 2348 - Plan 1: Original table: [['description_losses', 'c_1939_40', 'c_1940_41', 'c_1941_42', 'c_1942_43', 'c_1943_44', 'c_1944_45', 'total'], ['direct war losses', '360,000', '', '', '', '', '183,000', '543,000'], ['murdered', '75,000', '100,000', '116,000', '133,000', '82,000', '', '506,000'], ['deaths in prisons & camps', '69,000', '210,000', '220,000', '266,000', '381,000', '', '1,146,000'], ['deaths outside of prisons & camps', '', '42,000', '71,000', '142,000', '218,000', '', '473,000'], ['murdered in eastern regions', '', '', '', '', '', '100,000', '100,000'], ['deaths other countries', '', '', '', '', '', '', '2,000'], ['total', '504,000', '352,000', '407,000', '541,000', '681,000', '270,000', '2,770,000']]
+########################################################################################################################
+Sample 2348 - Plan 1: Operation 1: Select the row where the description is 'deaths outside of prisons & camps'.
+Sample 2348 - Plan 1: Selected indices: [[3, 0]]
+Sample 2348 - Plan 1: X-Table after operation df:
+                  description_losses  c_1939_40 c_1940_41 c_1941_42 c_1942_43  \
+0  deaths outside of prisons & camps        NaN    42,000    71,000   142,000   
+
+  c_1943_44  c_1944_45    total  
+0   218,000        NaN  473,000  
+Sample 2348 - Plan 1: Table after operation: [['description_losses', 'c_1939_40', 'c_1940_41', 'c_1941_42', 'c_1942_43', 'c_1943_44', 'c_1944_45', 'total'], ['deaths outside of prisons & camps', '', '42,000', '71,000', '142,000', '218,000', '', '473,000']]
+########################################################################################################################
+Sample 2348 - Plan 1: Operation 2: Select the columns 'c_1940_41', 'c_1941_42', 'c_1942_43', 'c_1943_44', and 'c_1944_45'.
+Sample 2348 - Plan 1: Selected indices: []
+Sample 2348 - Plan 1: X-Table after operation df:
+  c_1940_41 c_1941_42 c_1942_43 c_1943_44  c_1944_45
+0    42,000    71,000   142,000   218,000        NaN
+Sample 2348 - Plan 1: Table after operation: [['c_1940_41', 'c_1941_42', 'c_1942_43', 'c_1943_44', 'c_1944_45'], ['42,000', '71,000', '142,000', '218,000', None]]
+########################################################################################################################
+Sample 2348 - Plan 1: Operation 3: Calculate the maximum value among the selected columns.
+Sample 2348 - Plan 1: Selected indices: []
+Sample 2348 - Plan 1: X-Table after operation df:
+   MAX(CAST(REPLACE(REPLACE(c_1940_41, ',', ''), 'nan', '0') AS FLOAT))  \
+0                                            42000.0                      
+
+   MAX(CAST(REPLACE(REPLACE(c_1941_42, ',', ''), 'nan', '0') AS FLOAT))  \
+0                                            71000.0                      
+
+   MAX(CAST(REPLACE(REPLACE(c_1942_43, ',', ''), 'nan', '0') AS FLOAT))  \
+0                                           142000.0                      
+
+   MAX(CAST(REPLACE(REPLACE(c_1943_44, ',', ''), 'nan', '0') AS FLOAT))  \
+0                                           218000.0                      
+
+   max_value  
+0        NaN  
+Sample 2348 - Plan 1: Table after operation: [["MAX(CAST(REPLACE(REPLACE(c_1940_41, ',', ''), 'nan', '0') AS FLOAT))", "MAX(CAST(REPLACE(REPLACE(c_1941_42, ',', ''), 'nan', '0') AS FLOAT))", "MAX(CAST(REPLACE(REPLACE(c_1942_43, ',', ''), 'nan', '0') AS FLOAT))", "MAX(CAST(REPLACE(REPLACE(c_1943_44, ',', ''), 'nan', '0') AS FLOAT))", 'max_value'], [42000.0, 71000.0, 142000.0, 218000.0, None]]
+########################################################################################################################
+Sample 2348 - Plan 1: Operation 4: Identify the column with the maximum value.
+SQL execution error in operation 4: Execution failed on sql 'SELECT 
+    CASE 
+        WHEN MAX(CAST(REPLACE(REPLACE(c_1940_41, ',', ''), 'nan', '0') AS FLOAT)) > MAX(CAST(REPLACE(REPLACE(c_1941_42, ',', ''), 'nan', '0') AS FLOAT)) 
+            AND MAX(CAST(REPLACE(REPLACE(c_1940_41, ',', ''), 'nan', '0') AS FLOAT)) > MAX(CAST(REPLACE(REPLACE(c_1942_43, ',', ''), 'nan', '0') AS FLOAT)) 
+            AND MAX(CAST(REPLACE(REPLACE(c_1940_41, ',', ''), 'nan', '0') AS FLOAT)) > MAX(CAST(REPLACE(REPLACE(c_1943_44, ',', ''), 'nan', '0') AS FLOAT)) 
+            AND MAX(CAST(REPLACE(REPLACE(c_1940_41, ',', ''), 'nan', '0') AS FLOAT)) > max_value THEN 'MAX': unrecognized token: "'MAX"
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['1943']]
+Groundtruth: ['1943/44']

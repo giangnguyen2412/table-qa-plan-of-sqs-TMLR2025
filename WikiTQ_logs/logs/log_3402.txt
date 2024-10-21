@@ -1,0 +1,51 @@
+************************************************************************************************************************
+Sample 3402 - Plan 1: Query: how many total spectators did the national ruby league have during 2013?
+Sample 3402 - Plan 1: Groundtruth: ['3,345,248']
+Sample 3402 - Plan 1: X-Original table pd: 
+                          competition total_spectatorship  \
+0                            a-league           1,772,133   
+1          australian football league           6,931,085   
+2                     big bash league             550,262   
+3          national basketball league             547,021   
+4               national rugby league           3,345,248   
+5                         super rugby             773,940   
+6                  rugby championship             133,532   
+7              state of origin series             186,607   
+8  women's national basketball league              77,944   
+
+  average_match_attendance       year  
+0                   12,707  2012/2013  
+1                   33,484       2013  
+2                   17,750  2011/2012  
+3                    4,031  2010/2011  
+4                   16,643       2013  
+5                   19,348       2012  
+6                   44,511       2012  
+7                   62,202       2011  
+8                           2010/2011  
+Sample 3402 - Plan 1: Caption: none
+Sample 3402 - Plan 1: Original table: [['competition', 'total_spectatorship', 'average_match_attendance', 'year'], ['a-league', '1,772,133', '12,707', '2012/2013'], ['australian football league', '6,931,085', '33,484', '2013'], ['big bash league', '550,262', '17,750', '2011/2012'], ['national basketball league', '547,021', '4,031', '2010/2011'], ['national rugby league', '3,345,248', '16,643', '2013'], ['super rugby', '773,940', '19,348', '2012'], ['rugby championship', '133,532', '44,511', '2012'], ['state of origin series', '186,607', '62,202', '2011'], ["women's national basketball league", '77,944', '', '2010/2011']]
+########################################################################################################################
+Sample 3402 - Plan 1: Operation 1: Select rows where 'competition' is 'national rugby league' and 'year' is '2013'.
+Sample 3402 - Plan 1: Selected indices: [[4, 0], [4, 3]]
+Sample 3402 - Plan 1: X-Table after operation df:
+             competition total_spectatorship average_match_attendance  year
+0  national rugby league           3,345,248                   16,643  2013
+Sample 3402 - Plan 1: Table after operation: [['competition', 'total_spectatorship', 'average_match_attendance', 'year'], ['national rugby league', '3,345,248', '16,643', '2013']]
+########################################################################################################################
+Sample 3402 - Plan 1: Operation 2: Select the 'total_spectatorship' column.
+Sample 3402 - Plan 1: Selected indices: []
+Sample 3402 - Plan 1: X-Table after operation df:
+  total_spectatorship
+0           3,345,248
+Sample 3402 - Plan 1: Table after operation: [['total_spectatorship'], ['3,345,248']]
+########################################################################################################################
+Sample 3402 - Plan 1: Operation 3: Sum the values in the 'total_spectatorship' column.
+Sample 3402 - Plan 1: Selected indices: []
+Sample 3402 - Plan 1: X-Table after operation df:
+   total_spectatorship_sum
+0                  3345248
+Sample 3402 - Plan 1: Table after operation: [['total_spectatorship_sum'], [3345248]]
+Fall-back: FALSE
+Answer from plan 1: [[3345248]]
+Groundtruth: ['3,345,248']

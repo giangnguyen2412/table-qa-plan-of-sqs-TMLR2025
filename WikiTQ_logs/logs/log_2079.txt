@@ -1,0 +1,49 @@
+************************************************************************************************************************
+Sample 2079 - Plan 1: Query: who did he partner with in the last match?
+Sample 2079 - Plan 1: Groundtruth: ['Sergio Galdós']
+Sample 2079 - Plan 1: X-Original table pd: 
+    no_                date    tournament surface      partnering  \
+0   1.0  september 13, 2010    ecuador f2    hard  roberto quiroz   
+1   2.0       april 4, 2011      chile f2    clay   sergio galdós   
+2   3.0      april 11, 2011      chile f3    clay  roberto quiroz   
+3   4.0      august 8, 2011       peru f1    clay   sergio galdós   
+4   5.0      august 5, 2012         manta    hard     renzo olivo   
+5   6.0     august 20, 2012   colombia f2    clay     ariel behar   
+6   7.0     august 26, 2012    ecuador f3    clay   sergio galdós   
+7   8.0     october 8, 2012      chile f8    clay  gustavo sterin   
+8   9.0        may 13, 2013  argentina f6    clay   sergio galdós   
+9  10.0        may 27, 2013  argentina f8    clay   sergio galdós   
+
+                               opponent_in_the_final                score  
+0                     peter aarts\n christopher racz             6–4, 6–4  
+1               guillermo hormazábal\n rodrigo pérez  5–7, 7–6(5), [10–5]  
+2    luis david martínez\n miguel ángel reyes-varela             6–4, 7–5  
+3                        martín cuevas\n guido pella             6–4, 6–0  
+4                       víctor estrella\n joão souza             6–3, 6–0  
+5              nicolas barrientos\n michael quintero             2-1 ret.  
+6        mauricio echazú\n guillermo rivera-aránguiz             6-2, 6-1  
+7  cristóbal saavedra-corvalán\n guillermo rivera...             6-4, 7-5  
+8              franco agamenone\n jose angel carrizo     4-6, 6-4, [10–1]  
+9               daniel dutra da silva\n pablo galdón             6-0, 7-5  
+Sample 2079 - Plan 1: Caption: none
+Sample 2079 - Plan 1: Original table: [['no_', 'date', 'tournament', 'surface', 'partnering', 'opponent_in_the_final', 'score'], ['1.', 'september 13, 2010', 'ecuador f2', 'hard', 'roberto quiroz', 'peter aarts\\n christopher racz', '6–4, 6–4'], ['2.', 'april 4, 2011', 'chile f2', 'clay', 'sergio galdós', 'guillermo hormazábal\\n rodrigo pérez', '5–7, 7–6(5), [10–5]'], ['3.', 'april 11, 2011', 'chile f3', 'clay', 'roberto quiroz', 'luis david martínez\\n miguel ángel reyes-varela', '6–4, 7–5'], ['4.', 'august 8, 2011', 'peru f1', 'clay', 'sergio galdós', 'martín cuevas\\n guido pella', '6–4, 6–0'], ['5.', 'august 5, 2012', 'manta', 'hard', 'renzo olivo', 'víctor estrella\\n joão souza', '6–3, 6–0'], ['6.', 'august 20, 2012', 'colombia f2', 'clay', 'ariel behar', 'nicolas barrientos\\n michael quintero', '2-1 ret.'], ['7.', 'august 26, 2012', 'ecuador f3', 'clay', 'sergio galdós', 'mauricio echazú\\n guillermo rivera-aránguiz', '6-2, 6-1'], ['8.', 'october 8, 2012', 'chile f8', 'clay', 'gustavo sterin', 'cristóbal saavedra-corvalán\\n guillermo rivera-aránguiz', '6-4, 7-5'], ['9.', 'may 13, 2013', 'argentina f6', 'clay', 'sergio galdós', 'franco agamenone\\n jose angel carrizo', '4-6, 6-4, [10–1]'], ['10.', 'may 27, 2013', 'argentina f8', 'clay', 'sergio galdós', 'daniel dutra da silva\\n pablo galdón', '6-0, 7-5']]
+########################################################################################################################
+Sample 2079 - Plan 1: Operation 1: Select the row where the 'no_' column has the highest value.
+Sample 2079 - Plan 1: Selected indices: [[9, 0]]
+Sample 2079 - Plan 1: X-Table after operation df:
+    no_          date    tournament surface     partnering  \
+0  10.0  may 27, 2013  argentina f8    clay  sergio galdós   
+
+                  opponent_in_the_final     score  
+0  daniel dutra da silva\n pablo galdón  6-0, 7-5  
+Sample 2079 - Plan 1: Table after operation: [['no_', 'date', 'tournament', 'surface', 'partnering', 'opponent_in_the_final', 'score'], [10.0, 'may 27, 2013', 'argentina f8', 'clay', 'sergio galdós', 'daniel dutra da silva\\n pablo galdón', '6-0, 7-5']]
+########################################################################################################################
+Sample 2079 - Plan 1: Operation 2: Select the 'partnering' column from the selected row.
+Sample 2079 - Plan 1: Selected indices: []
+Sample 2079 - Plan 1: X-Table after operation df:
+      partnering
+0  sergio galdós
+Sample 2079 - Plan 1: Table after operation: [['partnering'], ['sergio galdós']]
+Fall-back: FALSE
+Answer from plan 1: [['sergio galdós']]
+Groundtruth: ['Sergio Galdós']

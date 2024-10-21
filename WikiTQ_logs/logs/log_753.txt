@@ -1,0 +1,553 @@
+************************************************************************************************************************
+Sample 753 - Plan 1: Query: in this race summary, which party has the most incumbents?
+Sample 753 - Plan 1: Groundtruth: ['Democratic']
+Sample 753 - Plan 1: X-Original table pd: 
+    state_n_linked_to_nsummaries_below_  incumbent_nsenator incumbent_nparty  \
+0                               arizona          jeff flake       republican   
+1                            california    dianne feinstein       democratic   
+2                           connecticut        chris murphy       democratic   
+3                              delaware          tom carper       democratic   
+4                               florida         bill nelson       democratic   
+5                                hawaii        mazie hirono       democratic   
+6                               indiana        joe donnelly       democratic   
+7                                 maine          angus king      independent   
+8                              maryland          ben cardin       democratic   
+9                         massachusetts    elizabeth warren       democratic   
+10                             michigan     debbie stabenow       democratic   
+11                            minnesota       amy klobuchar       democratic   
+12                          mississippi        roger wicker       republican   
+13                             missouri    claire mccaskill       democratic   
+14                              montana          jon tester       democratic   
+15                             nebraska         deb fischer       republican   
+16                               nevada         dean heller       republican   
+17                           new jersey        bob menendez       democratic   
+18                           new mexico     martin heinrich       democratic   
+19                             new york  kirsten gillibrand       democratic   
+20                         north dakota      heidi heitkamp       democratic   
+21                                 ohio       sherrod brown       democratic   
+22                         pennsylvania      bob casey, jr.       democratic   
+23                         rhode island  sheldon whitehouse       democratic   
+24                            tennessee          bob corker       republican   
+25                                texas            ted cruz       republican   
+26                                 utah         orrin hatch       republican   
+27                              vermont      bernie sanders      independent   
+28                             virginia           tim kaine       democratic   
+29                           washington      maria cantwell       democratic   
+30                        west virginia         joe manchin       democratic   
+31                            wisconsin       tammy baldwin       democratic   
+32                              wyoming       john barrasso       republican   
+33  state\n(linked to\nsummaries below)           incumbent        incumbent   
+34  state\n(linked to\nsummaries below)             senator            party   
+
+                        incumbent_nelectoral_nhistory  \
+0   jeff flake (r) 49.2%\nrichard carmona (d) 46.1...   
+1   dianne feinstein (d) 62.5%\nelizabeth emken (r...   
+2   chris murphy (d) 54.8%\nlinda mcmahon (r) 43.1...   
+3   tom carper (d) 66.4%\nkevin l. wade (r) 29.0%\...   
+4     bill nelson (d) 55.2%\nconnie mack iv (r) 42.2%   
+5      mazie hirono (d) 62.6%\nlinda lingle (r) 37.4%   
+6   joe donnelly (d) 50.0%\nrichard mourdock (r) 4...   
+7   angus king (i) 52.9%\ncharles e. summers, jr. ...   
+8   ben cardin (d) 56.0%\ndan bongino (r) 26.3%\ns...   
+9   elizabeth warren (d) 53.7%\nscott brown (r) 46.3%   
+10  debbie stabenow (d) 58.8%\npete hoekstra (r) 3...   
+11  amy klobuchar (d) 65.2%\nkurt bills (r) 30.5%\...   
+12  roger wicker (r) 57.2%\nalbert n. gore, jr. (d...   
+13  claire mccaskill (d) 54.8%\ntodd akin (r) 39.0...   
+14  jon tester (d) 48.6%\ndenny rehberg (r) 44.9%\...   
+15        deb fischer (r) 57.8%\nbob kerrey (d) 42.2%   
+16  dean heller (r) 45.9%\nshelley berkley (d) 44....   
+17     bob menendez (d) 58.9%\njoe kyrillos (r) 39.4%   
+18  martin heinrich (d) 51.0%\nheather wilson (r) ...   
+19  kirsten gillibrand (d) 71.6%\nwendy e. long (r...   
+20      heidi heitkamp (d) 50.2%\nrick berg (r) 49.3%   
+21  sherrod brown (d) 50.7%\njosh mandel (r) 44.7%...   
+22  bob casey, jr. (d) 53.7%\ntom smith (r) 44.6%\...   
+23  sheldon whitehouse (d) 64.8%\nbarry hinckley (...   
+24  bob corker (r) 64.9%\nmark e. clayton (d) 30.4...   
+25  ted cruz (r) 56.5%\npaul sadler (d) 40.7%\njoh...   
+26  orrin hatch (r) 65.3%\nscott howell (d) 30.0%\...   
+27  bernie sanders (i) 71%\njohn macgovern (r) 24....   
+28          tim kaine (d) 52.9%\ngeorge allen (r) 47%   
+29  maria cantwell (d) 60.5%\nmichael baumgartner ...   
+30  joe manchin (d) 60.6%\njohn raese (r) 36.5%\nb...   
+31  tammy baldwin (d) 51.4%\ntommy thompson (r) 45...   
+32  john barrasso (r) 75.7%\ntim chestnut (d) 21.7...   
+33                                          incumbent   
+34                                 electoral\nhistory   
+
+                most_recent_election_results  \
+0                                       2012   
+1     1992 (special)\n1994\n2000\n2006\n2012   
+2                                       2012   
+3                           2000\n2006\n2012   
+4                           2000\n2006\n2012   
+5                                       2012   
+6                                       2012   
+7                                       2012   
+8                                 2006\n2012   
+9                                       2012   
+10                          2000\n2006\n2012   
+11                                2006\n2012   
+12                      2008 (special)\n2012   
+13                                2006\n2012   
+14                                2006\n2012   
+15                                      2012   
+16                                      2012   
+17                                2006\n2012   
+18                                      2012   
+19                      2010 (special)\n2012   
+20                                      2012   
+21                                2006\n2012   
+22                                2006\n2012   
+23                                2006\n2012   
+24                                2006\n2012   
+25                                      2012   
+26  1976\n1982\n1988\n1994\n2000\n2006\n2012   
+27                                2006\n2012   
+28                                      2012   
+29                          2000\n2006\n2012   
+30                                2010\n2012   
+31                                      2012   
+32                      2008 (special)\n2012   
+33              most recent election results   
+34              most recent election results   
+
+                            c_2018_intent  \
+0   [data unknown/missing. you can help!]   
+1                                 running   
+2   [data unknown/missing. you can help!]   
+3   [data unknown/missing. you can help!]   
+4   [data unknown/missing. you can help!]   
+5   [data unknown/missing. you can help!]   
+6   [data unknown/missing. you can help!]   
+7   [data unknown/missing. you can help!]   
+8   [data unknown/missing. you can help!]   
+9   [data unknown/missing. you can help!]   
+10  [data unknown/missing. you can help!]   
+11  [data unknown/missing. you can help!]   
+12  [data unknown/missing. you can help!]   
+13  [data unknown/missing. you can help!]   
+14  [data unknown/missing. you can help!]   
+15  [data unknown/missing. you can help!]   
+16  [data unknown/missing. you can help!]   
+17  [data unknown/missing. you can help!]   
+18  [data unknown/missing. you can help!]   
+19  [data unknown/missing. you can help!]   
+20  [data unknown/missing. you can help!]   
+21  [data unknown/missing. you can help!]   
+22  [data unknown/missing. you can help!]   
+23  [data unknown/missing. you can help!]   
+24  [data unknown/missing. you can help!]   
+25  [data unknown/missing. you can help!]   
+26                               retiring   
+27  [data unknown/missing. you can help!]   
+28  [data unknown/missing. you can help!]   
+29  [data unknown/missing. you can help!]   
+30  [data unknown/missing. you can help!]   
+31  [data unknown/missing. you can help!]   
+32  [data unknown/missing. you can help!]   
+33                            2018 intent   
+34                            2018 intent   
+
+                               candidates  
+0   [data unknown/missing. you can help!]  
+1   [data unknown/missing. you can help!]  
+2   [data unknown/missing. you can help!]  
+3   [data unknown/missing. you can help!]  
+4   [data unknown/missing. you can help!]  
+5   [data unknown/missing. you can help!]  
+6   [data unknown/missing. you can help!]  
+7   [data unknown/missing. you can help!]  
+8   [data unknown/missing. you can help!]  
+9   [data unknown/missing. you can help!]  
+10  [data unknown/missing. you can help!]  
+11  [data unknown/missing. you can help!]  
+12  [data unknown/missing. you can help!]  
+13  [data unknown/missing. you can help!]  
+14  [data unknown/missing. you can help!]  
+15  [data unknown/missing. you can help!]  
+16  [data unknown/missing. you can help!]  
+17  [data unknown/missing. you can help!]  
+18  [data unknown/missing. you can help!]  
+19  [data unknown/missing. you can help!]  
+20  [data unknown/missing. you can help!]  
+21  [data unknown/missing. you can help!]  
+22  [data unknown/missing. you can help!]  
+23  [data unknown/missing. you can help!]  
+24  [data unknown/missing. you can help!]  
+25  [data unknown/missing. you can help!]  
+26  [data unknown/missing. you can help!]  
+27  [data unknown/missing. you can help!]  
+28  [data unknown/missing. you can help!]  
+29  [data unknown/missing. you can help!]  
+30  [data unknown/missing. you can help!]  
+31  [data unknown/missing. you can help!]  
+32  [data unknown/missing. you can help!]  
+33                             candidates  
+34                             candidates  
+Sample 753 - Plan 1: Caption: none
+Sample 753 - Plan 1: Original table: [['state_n_linked_to_nsummaries_below_', 'incumbent_nsenator', 'incumbent_nparty', 'incumbent_nelectoral_nhistory', 'most_recent_election_results', 'c_2018_intent', 'candidates'], ['arizona', 'jeff flake', 'republican', 'jeff flake (r) 49.2%\\nrichard carmona (d) 46.1%\\nmarc victor (l) 4.6%', '2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['california', 'dianne feinstein', 'democratic', 'dianne feinstein (d) 62.5%\\nelizabeth emken (r) 37.5%', '1992 (special)\\n1994\\n2000\\n2006\\n2012', 'running', '[data unknown/missing. you\xa0can\xa0help!]'], ['connecticut', 'chris murphy', 'democratic', 'chris murphy (d) 54.8%\\nlinda mcmahon (r) 43.1%\\npaul passarelli (l) 1.7%', '2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['delaware', 'tom carper', 'democratic', 'tom carper (d) 66.4%\\nkevin l. wade (r) 29.0%\\nalex pires (i) 3.8%', '2000\\n2006\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['florida', 'bill nelson', 'democratic', 'bill nelson (d) 55.2%\\nconnie mack iv (r) 42.2%', '2000\\n2006\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['hawaii', 'mazie hirono', 'democratic', 'mazie hirono (d) 62.6%\\nlinda lingle (r) 37.4%', '2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['indiana', 'joe donnelly', 'democratic', 'joe donnelly (d) 50.0%\\nrichard mourdock (r) 44.2%\\nandrew horning (l) 5.7%', '2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['maine', 'angus king', 'independent', 'angus king (i) 52.9%\\ncharles e. summers, jr. (r) 30.7%\\ncynthia dill (d) 13.3%', '2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['maryland', 'ben cardin', 'democratic', 'ben cardin (d) 56.0%\\ndan bongino (r) 26.3%\\ns. rob sobhani (i) 16.4%', '2006\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['massachusetts', 'elizabeth warren', 'democratic', 'elizabeth warren (d) 53.7%\\nscott brown (r) 46.3%', '2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['michigan', 'debbie stabenow', 'democratic', 'debbie stabenow (d) 58.8%\\npete hoekstra (r) 38.0%\\nscotty boman (l) 1.8%', '2000\\n2006\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['minnesota', 'amy klobuchar', 'democratic', 'amy klobuchar (d) 65.2%\\nkurt bills (r) 30.5%\\nstephen williams (independence) 2.6%', '2006\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['mississippi', 'roger wicker', 'republican', "roger wicker (r) 57.2%\\nalbert n. gore, jr. (d) 40.6%\\nthomas cramer (c) 1.2%\\nshawn o'hara (reform) 1%", '2008 (special)\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['missouri', 'claire mccaskill', 'democratic', 'claire mccaskill (d) 54.8%\\ntodd akin (r) 39.0%\\njonathan dine (l) 6.1%', '2006\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['montana', 'jon tester', 'democratic', 'jon tester (d) 48.6%\\ndenny rehberg (r) 44.9%\\ndan cox (l) 6.6%', '2006\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['nebraska', 'deb fischer', 'republican', 'deb fischer (r) 57.8%\\nbob kerrey (d) 42.2%', '2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['nevada', 'dean heller', 'republican', 'dean heller (r) 45.9%\\nshelley berkley (d) 44.7%\\ndavid lory vanderbeek (c) 4.9%\\nnone of these candidates 4.5%', '2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['new jersey', 'bob menendez', 'democratic', 'bob menendez (d) 58.9%\\njoe kyrillos (r) 39.4%', '2006\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['new mexico', 'martin heinrich', 'democratic', 'martin heinrich (d) 51.0%\\nheather wilson (r) 45.3%\\njon barrie (iap) 3.6%', '2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['new york', 'kirsten gillibrand', 'democratic', 'kirsten gillibrand (d) 71.6%\\nwendy e. long (r) 26.0%', '2010 (special)\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['north dakota', 'heidi heitkamp', 'democratic', 'heidi heitkamp (d) 50.2%\\nrick berg (r) 49.3%', '2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['ohio', 'sherrod brown', 'democratic', 'sherrod brown (d) 50.7%\\njosh mandel (r) 44.7%\\nscott a. rupert (i) 4.6%', '2006\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['pennsylvania', 'bob casey, jr.', 'democratic', 'bob casey, jr. (d) 53.7%\\ntom smith (r) 44.6%\\nrayburn douglas smith (l) 1.7%', '2006\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['rhode island', 'sheldon whitehouse', 'democratic', 'sheldon whitehouse (d) 64.8%\\nbarry hinckley (r) 35.0%', '2006\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['tennessee', 'bob corker', 'republican', 'bob corker (r) 64.9%\\nmark e. clayton (d) 30.4%\\nmartin pleasant (g) 1.7%', '2006\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['texas', 'ted cruz', 'republican', 'ted cruz (r) 56.5%\\npaul sadler (d) 40.7%\\njohn jay myers (l) 2.1%', '2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['utah', 'orrin hatch', 'republican', 'orrin hatch (r) 65.3%\\nscott howell (d) 30.0%\\nshaun mccausland (c) 3.2%', '1976\\n1982\\n1988\\n1994\\n2000\\n2006\\n2012', 'retiring', '[data unknown/missing. you\xa0can\xa0help!]'], ['vermont', 'bernie sanders', 'independent', 'bernie sanders (i) 71%\\njohn macgovern (r) 24.9%\\ncris ericson (marijuana party) 2%', '2006\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['virginia', 'tim kaine', 'democratic', 'tim kaine (d) 52.9%\\ngeorge allen (r) 47%', '2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['washington', 'maria cantwell', 'democratic', 'maria cantwell (d) 60.5%\\nmichael baumgartner (r) 39.5%', '2000\\n2006\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['west virginia', 'joe manchin', 'democratic', 'joe manchin (d) 60.6%\\njohn raese (r) 36.5%\\nbob henry baber (g) 3.0%', '2010\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['wisconsin', 'tammy baldwin', 'democratic', 'tammy baldwin (d) 51.4%\\ntommy thompson (r) 45.5%\\njoseph kexel (l) 2.1%', '2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['wyoming', 'john barrasso', 'republican', 'john barrasso (r) 75.7%\\ntim chestnut (d) 21.7%\\njoel otto (wyoming country) 2.6%', '2008 (special)\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['state\\n(linked to\\nsummaries below)', 'incumbent', 'incumbent', 'incumbent', 'most recent election results', '2018 intent', 'candidates'], ['state\\n(linked to\\nsummaries below)', 'senator', 'party', 'electoral\\nhistory', 'most recent election results', '2018 intent', 'candidates']]
+########################################################################################################################
+Sample 753 - Plan 1: Operation 1: Select rows where the 'incumbent' column is not empty.
+Sample 753 - Plan 1: Selected indices: [[23, 1], [12, 1], [34, 1], [27, 1], [3, 1], [14, 1], [5, 1], [25, 1], [16, 1], [7, 1], [18, 1], [29, 1], [22, 1], [20, 1], [31, 1], [9, 1], [0, 1], [11, 1], [33, 1], [26, 1], [2, 1], [13, 1], [24, 1], [6, 1], [15, 1], [4, 1], [17, 1], [28, 1], [32, 1], [8, 1], [19, 1], [30, 1], [1, 1], [10, 1], [21, 1]]
+Sample 753 - Plan 1: X-Table after operation df:
+    state_n_linked_to_nsummaries_below_  incumbent_nsenator incumbent_nparty  \
+0                               arizona          jeff flake       republican   
+1                            california    dianne feinstein       democratic   
+2                           connecticut        chris murphy       democratic   
+3                              delaware          tom carper       democratic   
+4                               florida         bill nelson       democratic   
+5                                hawaii        mazie hirono       democratic   
+6                               indiana        joe donnelly       democratic   
+7                                 maine          angus king      independent   
+8                              maryland          ben cardin       democratic   
+9                         massachusetts    elizabeth warren       democratic   
+10                             michigan     debbie stabenow       democratic   
+11                            minnesota       amy klobuchar       democratic   
+12                          mississippi        roger wicker       republican   
+13                             missouri    claire mccaskill       democratic   
+14                              montana          jon tester       democratic   
+15                             nebraska         deb fischer       republican   
+16                               nevada         dean heller       republican   
+17                           new jersey        bob menendez       democratic   
+18                           new mexico     martin heinrich       democratic   
+19                             new york  kirsten gillibrand       democratic   
+20                         north dakota      heidi heitkamp       democratic   
+21                                 ohio       sherrod brown       democratic   
+22                         pennsylvania      bob casey, jr.       democratic   
+23                         rhode island  sheldon whitehouse       democratic   
+24                            tennessee          bob corker       republican   
+25                                texas            ted cruz       republican   
+26                                 utah         orrin hatch       republican   
+27                              vermont      bernie sanders      independent   
+28                             virginia           tim kaine       democratic   
+29                           washington      maria cantwell       democratic   
+30                        west virginia         joe manchin       democratic   
+31                            wisconsin       tammy baldwin       democratic   
+32                              wyoming       john barrasso       republican   
+33  state\n(linked to\nsummaries below)           incumbent        incumbent   
+34  state\n(linked to\nsummaries below)             senator            party   
+
+                        incumbent_nelectoral_nhistory  \
+0   jeff flake (r) 49.2%\nrichard carmona (d) 46.1...   
+1   dianne feinstein (d) 62.5%\nelizabeth emken (r...   
+2   chris murphy (d) 54.8%\nlinda mcmahon (r) 43.1...   
+3   tom carper (d) 66.4%\nkevin l. wade (r) 29.0%\...   
+4     bill nelson (d) 55.2%\nconnie mack iv (r) 42.2%   
+5      mazie hirono (d) 62.6%\nlinda lingle (r) 37.4%   
+6   joe donnelly (d) 50.0%\nrichard mourdock (r) 4...   
+7   angus king (i) 52.9%\ncharles e. summers, jr. ...   
+8   ben cardin (d) 56.0%\ndan bongino (r) 26.3%\ns...   
+9   elizabeth warren (d) 53.7%\nscott brown (r) 46.3%   
+10  debbie stabenow (d) 58.8%\npete hoekstra (r) 3...   
+11  amy klobuchar (d) 65.2%\nkurt bills (r) 30.5%\...   
+12  roger wicker (r) 57.2%\nalbert n. gore, jr. (d...   
+13  claire mccaskill (d) 54.8%\ntodd akin (r) 39.0...   
+14  jon tester (d) 48.6%\ndenny rehberg (r) 44.9%\...   
+15        deb fischer (r) 57.8%\nbob kerrey (d) 42.2%   
+16  dean heller (r) 45.9%\nshelley berkley (d) 44....   
+17     bob menendez (d) 58.9%\njoe kyrillos (r) 39.4%   
+18  martin heinrich (d) 51.0%\nheather wilson (r) ...   
+19  kirsten gillibrand (d) 71.6%\nwendy e. long (r...   
+20      heidi heitkamp (d) 50.2%\nrick berg (r) 49.3%   
+21  sherrod brown (d) 50.7%\njosh mandel (r) 44.7%...   
+22  bob casey, jr. (d) 53.7%\ntom smith (r) 44.6%\...   
+23  sheldon whitehouse (d) 64.8%\nbarry hinckley (...   
+24  bob corker (r) 64.9%\nmark e. clayton (d) 30.4...   
+25  ted cruz (r) 56.5%\npaul sadler (d) 40.7%\njoh...   
+26  orrin hatch (r) 65.3%\nscott howell (d) 30.0%\...   
+27  bernie sanders (i) 71%\njohn macgovern (r) 24....   
+28          tim kaine (d) 52.9%\ngeorge allen (r) 47%   
+29  maria cantwell (d) 60.5%\nmichael baumgartner ...   
+30  joe manchin (d) 60.6%\njohn raese (r) 36.5%\nb...   
+31  tammy baldwin (d) 51.4%\ntommy thompson (r) 45...   
+32  john barrasso (r) 75.7%\ntim chestnut (d) 21.7...   
+33                                          incumbent   
+34                                 electoral\nhistory   
+
+                most_recent_election_results  \
+0                                       2012   
+1     1992 (special)\n1994\n2000\n2006\n2012   
+2                                       2012   
+3                           2000\n2006\n2012   
+4                           2000\n2006\n2012   
+5                                       2012   
+6                                       2012   
+7                                       2012   
+8                                 2006\n2012   
+9                                       2012   
+10                          2000\n2006\n2012   
+11                                2006\n2012   
+12                      2008 (special)\n2012   
+13                                2006\n2012   
+14                                2006\n2012   
+15                                      2012   
+16                                      2012   
+17                                2006\n2012   
+18                                      2012   
+19                      2010 (special)\n2012   
+20                                      2012   
+21                                2006\n2012   
+22                                2006\n2012   
+23                                2006\n2012   
+24                                2006\n2012   
+25                                      2012   
+26  1976\n1982\n1988\n1994\n2000\n2006\n2012   
+27                                2006\n2012   
+28                                      2012   
+29                          2000\n2006\n2012   
+30                                2010\n2012   
+31                                      2012   
+32                      2008 (special)\n2012   
+33              most recent election results   
+34              most recent election results   
+
+                            c_2018_intent  \
+0   [data unknown/missing. you can help!]   
+1                                 running   
+2   [data unknown/missing. you can help!]   
+3   [data unknown/missing. you can help!]   
+4   [data unknown/missing. you can help!]   
+5   [data unknown/missing. you can help!]   
+6   [data unknown/missing. you can help!]   
+7   [data unknown/missing. you can help!]   
+8   [data unknown/missing. you can help!]   
+9   [data unknown/missing. you can help!]   
+10  [data unknown/missing. you can help!]   
+11  [data unknown/missing. you can help!]   
+12  [data unknown/missing. you can help!]   
+13  [data unknown/missing. you can help!]   
+14  [data unknown/missing. you can help!]   
+15  [data unknown/missing. you can help!]   
+16  [data unknown/missing. you can help!]   
+17  [data unknown/missing. you can help!]   
+18  [data unknown/missing. you can help!]   
+19  [data unknown/missing. you can help!]   
+20  [data unknown/missing. you can help!]   
+21  [data unknown/missing. you can help!]   
+22  [data unknown/missing. you can help!]   
+23  [data unknown/missing. you can help!]   
+24  [data unknown/missing. you can help!]   
+25  [data unknown/missing. you can help!]   
+26                               retiring   
+27  [data unknown/missing. you can help!]   
+28  [data unknown/missing. you can help!]   
+29  [data unknown/missing. you can help!]   
+30  [data unknown/missing. you can help!]   
+31  [data unknown/missing. you can help!]   
+32  [data unknown/missing. you can help!]   
+33                            2018 intent   
+34                            2018 intent   
+
+                               candidates  
+0   [data unknown/missing. you can help!]  
+1   [data unknown/missing. you can help!]  
+2   [data unknown/missing. you can help!]  
+3   [data unknown/missing. you can help!]  
+4   [data unknown/missing. you can help!]  
+5   [data unknown/missing. you can help!]  
+6   [data unknown/missing. you can help!]  
+7   [data unknown/missing. you can help!]  
+8   [data unknown/missing. you can help!]  
+9   [data unknown/missing. you can help!]  
+10  [data unknown/missing. you can help!]  
+11  [data unknown/missing. you can help!]  
+12  [data unknown/missing. you can help!]  
+13  [data unknown/missing. you can help!]  
+14  [data unknown/missing. you can help!]  
+15  [data unknown/missing. you can help!]  
+16  [data unknown/missing. you can help!]  
+17  [data unknown/missing. you can help!]  
+18  [data unknown/missing. you can help!]  
+19  [data unknown/missing. you can help!]  
+20  [data unknown/missing. you can help!]  
+21  [data unknown/missing. you can help!]  
+22  [data unknown/missing. you can help!]  
+23  [data unknown/missing. you can help!]  
+24  [data unknown/missing. you can help!]  
+25  [data unknown/missing. you can help!]  
+26  [data unknown/missing. you can help!]  
+27  [data unknown/missing. you can help!]  
+28  [data unknown/missing. you can help!]  
+29  [data unknown/missing. you can help!]  
+30  [data unknown/missing. you can help!]  
+31  [data unknown/missing. you can help!]  
+32  [data unknown/missing. you can help!]  
+33                             candidates  
+34                             candidates  
+Sample 753 - Plan 1: Table after operation: [['state_n_linked_to_nsummaries_below_', 'incumbent_nsenator', 'incumbent_nparty', 'incumbent_nelectoral_nhistory', 'most_recent_election_results', 'c_2018_intent', 'candidates'], ['arizona', 'jeff flake', 'republican', 'jeff flake (r) 49.2%\\nrichard carmona (d) 46.1%\\nmarc victor (l) 4.6%', '2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['california', 'dianne feinstein', 'democratic', 'dianne feinstein (d) 62.5%\\nelizabeth emken (r) 37.5%', '1992 (special)\\n1994\\n2000\\n2006\\n2012', 'running', '[data unknown/missing. you\xa0can\xa0help!]'], ['connecticut', 'chris murphy', 'democratic', 'chris murphy (d) 54.8%\\nlinda mcmahon (r) 43.1%\\npaul passarelli (l) 1.7%', '2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['delaware', 'tom carper', 'democratic', 'tom carper (d) 66.4%\\nkevin l. wade (r) 29.0%\\nalex pires (i) 3.8%', '2000\\n2006\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['florida', 'bill nelson', 'democratic', 'bill nelson (d) 55.2%\\nconnie mack iv (r) 42.2%', '2000\\n2006\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['hawaii', 'mazie hirono', 'democratic', 'mazie hirono (d) 62.6%\\nlinda lingle (r) 37.4%', '2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['indiana', 'joe donnelly', 'democratic', 'joe donnelly (d) 50.0%\\nrichard mourdock (r) 44.2%\\nandrew horning (l) 5.7%', '2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['maine', 'angus king', 'independent', 'angus king (i) 52.9%\\ncharles e. summers, jr. (r) 30.7%\\ncynthia dill (d) 13.3%', '2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['maryland', 'ben cardin', 'democratic', 'ben cardin (d) 56.0%\\ndan bongino (r) 26.3%\\ns. rob sobhani (i) 16.4%', '2006\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['massachusetts', 'elizabeth warren', 'democratic', 'elizabeth warren (d) 53.7%\\nscott brown (r) 46.3%', '2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['michigan', 'debbie stabenow', 'democratic', 'debbie stabenow (d) 58.8%\\npete hoekstra (r) 38.0%\\nscotty boman (l) 1.8%', '2000\\n2006\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['minnesota', 'amy klobuchar', 'democratic', 'amy klobuchar (d) 65.2%\\nkurt bills (r) 30.5%\\nstephen williams (independence) 2.6%', '2006\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['mississippi', 'roger wicker', 'republican', "roger wicker (r) 57.2%\\nalbert n. gore, jr. (d) 40.6%\\nthomas cramer (c) 1.2%\\nshawn o'hara (reform) 1%", '2008 (special)\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['missouri', 'claire mccaskill', 'democratic', 'claire mccaskill (d) 54.8%\\ntodd akin (r) 39.0%\\njonathan dine (l) 6.1%', '2006\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['montana', 'jon tester', 'democratic', 'jon tester (d) 48.6%\\ndenny rehberg (r) 44.9%\\ndan cox (l) 6.6%', '2006\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['nebraska', 'deb fischer', 'republican', 'deb fischer (r) 57.8%\\nbob kerrey (d) 42.2%', '2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['nevada', 'dean heller', 'republican', 'dean heller (r) 45.9%\\nshelley berkley (d) 44.7%\\ndavid lory vanderbeek (c) 4.9%\\nnone of these candidates 4.5%', '2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['new jersey', 'bob menendez', 'democratic', 'bob menendez (d) 58.9%\\njoe kyrillos (r) 39.4%', '2006\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['new mexico', 'martin heinrich', 'democratic', 'martin heinrich (d) 51.0%\\nheather wilson (r) 45.3%\\njon barrie (iap) 3.6%', '2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['new york', 'kirsten gillibrand', 'democratic', 'kirsten gillibrand (d) 71.6%\\nwendy e. long (r) 26.0%', '2010 (special)\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['north dakota', 'heidi heitkamp', 'democratic', 'heidi heitkamp (d) 50.2%\\nrick berg (r) 49.3%', '2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['ohio', 'sherrod brown', 'democratic', 'sherrod brown (d) 50.7%\\njosh mandel (r) 44.7%\\nscott a. rupert (i) 4.6%', '2006\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['pennsylvania', 'bob casey, jr.', 'democratic', 'bob casey, jr. (d) 53.7%\\ntom smith (r) 44.6%\\nrayburn douglas smith (l) 1.7%', '2006\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['rhode island', 'sheldon whitehouse', 'democratic', 'sheldon whitehouse (d) 64.8%\\nbarry hinckley (r) 35.0%', '2006\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['tennessee', 'bob corker', 'republican', 'bob corker (r) 64.9%\\nmark e. clayton (d) 30.4%\\nmartin pleasant (g) 1.7%', '2006\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['texas', 'ted cruz', 'republican', 'ted cruz (r) 56.5%\\npaul sadler (d) 40.7%\\njohn jay myers (l) 2.1%', '2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['utah', 'orrin hatch', 'republican', 'orrin hatch (r) 65.3%\\nscott howell (d) 30.0%\\nshaun mccausland (c) 3.2%', '1976\\n1982\\n1988\\n1994\\n2000\\n2006\\n2012', 'retiring', '[data unknown/missing. you\xa0can\xa0help!]'], ['vermont', 'bernie sanders', 'independent', 'bernie sanders (i) 71%\\njohn macgovern (r) 24.9%\\ncris ericson (marijuana party) 2%', '2006\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['virginia', 'tim kaine', 'democratic', 'tim kaine (d) 52.9%\\ngeorge allen (r) 47%', '2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['washington', 'maria cantwell', 'democratic', 'maria cantwell (d) 60.5%\\nmichael baumgartner (r) 39.5%', '2000\\n2006\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['west virginia', 'joe manchin', 'democratic', 'joe manchin (d) 60.6%\\njohn raese (r) 36.5%\\nbob henry baber (g) 3.0%', '2010\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['wisconsin', 'tammy baldwin', 'democratic', 'tammy baldwin (d) 51.4%\\ntommy thompson (r) 45.5%\\njoseph kexel (l) 2.1%', '2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['wyoming', 'john barrasso', 'republican', 'john barrasso (r) 75.7%\\ntim chestnut (d) 21.7%\\njoel otto (wyoming country) 2.6%', '2008 (special)\\n2012', '[data unknown/missing. you\xa0can\xa0help!]', '[data unknown/missing. you\xa0can\xa0help!]'], ['state\\n(linked to\\nsummaries below)', 'incumbent', 'incumbent', 'incumbent', 'most recent election results', '2018 intent', 'candidates'], ['state\\n(linked to\\nsummaries below)', 'senator', 'party', 'electoral\\nhistory', 'most recent election results', '2018 intent', 'candidates']]
+########################################################################################################################
+Sample 753 - Plan 1: Operation 2: Group the selected rows by the 'incumbent' column.
+Sample 753 - Plan 1: Selected indices: []
+Sample 753 - Plan 1: X-Table after operation df:
+    incumbent_nsenator  count
+0        amy klobuchar      1
+1           angus king      1
+2           ben cardin      1
+3       bernie sanders      1
+4          bill nelson      1
+5       bob casey, jr.      1
+6           bob corker      1
+7         bob menendez      1
+8         chris murphy      1
+9     claire mccaskill      1
+10         dean heller      1
+11         deb fischer      1
+12     debbie stabenow      1
+13    dianne feinstein      1
+14    elizabeth warren      1
+15      heidi heitkamp      1
+16           incumbent      1
+17          jeff flake      1
+18        joe donnelly      1
+19         joe manchin      1
+20       john barrasso      1
+21          jon tester      1
+22  kirsten gillibrand      1
+23      maria cantwell      1
+24     martin heinrich      1
+25        mazie hirono      1
+26         orrin hatch      1
+27        roger wicker      1
+28             senator      1
+29  sheldon whitehouse      1
+30       sherrod brown      1
+31       tammy baldwin      1
+32            ted cruz      1
+33           tim kaine      1
+34          tom carper      1
+Sample 753 - Plan 1: Table after operation: [['incumbent_nsenator', 'count'], ['amy klobuchar', 1], ['angus king', 1], ['ben cardin', 1], ['bernie sanders', 1], ['bill nelson', 1], ['bob casey, jr.', 1], ['bob corker', 1], ['bob menendez', 1], ['chris murphy', 1], ['claire mccaskill', 1], ['dean heller', 1], ['deb fischer', 1], ['debbie stabenow', 1], ['dianne feinstein', 1], ['elizabeth warren', 1], ['heidi heitkamp', 1], ['incumbent', 1], ['jeff flake', 1], ['joe donnelly', 1], ['joe manchin', 1], ['john barrasso', 1], ['jon tester', 1], ['kirsten gillibrand', 1], ['maria cantwell', 1], ['martin heinrich', 1], ['mazie hirono', 1], ['orrin hatch', 1], ['roger wicker', 1], ['senator', 1], ['sheldon whitehouse', 1], ['sherrod brown', 1], ['tammy baldwin', 1], ['ted cruz', 1], ['tim kaine', 1], ['tom carper', 1]]
+########################################################################################################################
+Sample 753 - Plan 1: Operation 3: Count the number of rows in each group.
+Sample 753 - Plan 1: Selected indices: []
+Sample 753 - Plan 1: X-Table after operation df:
+    incumbent_nsenator  row_count
+0        amy klobuchar          1
+1           angus king          1
+2           ben cardin          1
+3       bernie sanders          1
+4          bill nelson          1
+5       bob casey, jr.          1
+6           bob corker          1
+7         bob menendez          1
+8         chris murphy          1
+9     claire mccaskill          1
+10         dean heller          1
+11         deb fischer          1
+12     debbie stabenow          1
+13    dianne feinstein          1
+14    elizabeth warren          1
+15      heidi heitkamp          1
+16           incumbent          1
+17          jeff flake          1
+18        joe donnelly          1
+19         joe manchin          1
+20       john barrasso          1
+21          jon tester          1
+22  kirsten gillibrand          1
+23      maria cantwell          1
+24     martin heinrich          1
+25        mazie hirono          1
+26         orrin hatch          1
+27        roger wicker          1
+28             senator          1
+29  sheldon whitehouse          1
+30       sherrod brown          1
+31       tammy baldwin          1
+32            ted cruz          1
+33           tim kaine          1
+34          tom carper          1
+Sample 753 - Plan 1: Table after operation: [['incumbent_nsenator', 'row_count'], ['amy klobuchar', 1], ['angus king', 1], ['ben cardin', 1], ['bernie sanders', 1], ['bill nelson', 1], ['bob casey, jr.', 1], ['bob corker', 1], ['bob menendez', 1], ['chris murphy', 1], ['claire mccaskill', 1], ['dean heller', 1], ['deb fischer', 1], ['debbie stabenow', 1], ['dianne feinstein', 1], ['elizabeth warren', 1], ['heidi heitkamp', 1], ['incumbent', 1], ['jeff flake', 1], ['joe donnelly', 1], ['joe manchin', 1], ['john barrasso', 1], ['jon tester', 1], ['kirsten gillibrand', 1], ['maria cantwell', 1], ['martin heinrich', 1], ['mazie hirono', 1], ['orrin hatch', 1], ['roger wicker', 1], ['senator', 1], ['sheldon whitehouse', 1], ['sherrod brown', 1], ['tammy baldwin', 1], ['ted cruz', 1], ['tim kaine', 1], ['tom carper', 1]]
+########################################################################################################################
+Sample 753 - Plan 1: Operation 4: Order the groups by the count in descending order.
+Sample 753 - Plan 1: Selected indices: []
+Sample 753 - Plan 1: X-Table after operation df:
+    incumbent_nsenator  row_count
+0        amy klobuchar          1
+1           angus king          1
+2           ben cardin          1
+3       bernie sanders          1
+4          bill nelson          1
+5       bob casey, jr.          1
+6           bob corker          1
+7         bob menendez          1
+8         chris murphy          1
+9     claire mccaskill          1
+10         dean heller          1
+11         deb fischer          1
+12     debbie stabenow          1
+13    dianne feinstein          1
+14    elizabeth warren          1
+15      heidi heitkamp          1
+16           incumbent          1
+17          jeff flake          1
+18        joe donnelly          1
+19         joe manchin          1
+20       john barrasso          1
+21          jon tester          1
+22  kirsten gillibrand          1
+23      maria cantwell          1
+24     martin heinrich          1
+25        mazie hirono          1
+26         orrin hatch          1
+27        roger wicker          1
+28             senator          1
+29  sheldon whitehouse          1
+30       sherrod brown          1
+31       tammy baldwin          1
+32            ted cruz          1
+33           tim kaine          1
+34          tom carper          1
+Sample 753 - Plan 1: Table after operation: [['incumbent_nsenator', 'row_count'], ['amy klobuchar', 1], ['angus king', 1], ['ben cardin', 1], ['bernie sanders', 1], ['bill nelson', 1], ['bob casey, jr.', 1], ['bob corker', 1], ['bob menendez', 1], ['chris murphy', 1], ['claire mccaskill', 1], ['dean heller', 1], ['deb fischer', 1], ['debbie stabenow', 1], ['dianne feinstein', 1], ['elizabeth warren', 1], ['heidi heitkamp', 1], ['incumbent', 1], ['jeff flake', 1], ['joe donnelly', 1], ['joe manchin', 1], ['john barrasso', 1], ['jon tester', 1], ['kirsten gillibrand', 1], ['maria cantwell', 1], ['martin heinrich', 1], ['mazie hirono', 1], ['orrin hatch', 1], ['roger wicker', 1], ['senator', 1], ['sheldon whitehouse', 1], ['sherrod brown', 1], ['tammy baldwin', 1], ['ted cruz', 1], ['tim kaine', 1], ['tom carper', 1]]
+########################################################################################################################
+Sample 753 - Plan 1: Operation 5: Select the first group.
+Sample 753 - Plan 1: Selected indices: [[23, 1], [12, 1], [34, 1], [27, 1], [3, 1], [14, 1], [5, 1], [25, 1], [16, 1], [7, 1], [18, 1], [29, 1], [22, 1], [20, 1], [31, 1], [9, 1], [0, 1], [11, 1], [33, 1], [26, 1], [2, 1], [13, 1], [24, 1], [6, 1], [15, 1], [4, 1], [17, 1], [28, 1], [32, 1], [8, 1], [19, 1], [30, 1], [1, 1], [10, 1], [21, 1]]
+Sample 753 - Plan 1: X-Table after operation df:
+    incumbent_nsenator  row_count
+0        amy klobuchar          1
+1           angus king          1
+2           ben cardin          1
+3       bernie sanders          1
+4          bill nelson          1
+5       bob casey, jr.          1
+6           bob corker          1
+7         bob menendez          1
+8         chris murphy          1
+9     claire mccaskill          1
+10         dean heller          1
+11         deb fischer          1
+12     debbie stabenow          1
+13    dianne feinstein          1
+14    elizabeth warren          1
+15      heidi heitkamp          1
+16           incumbent          1
+17          jeff flake          1
+18        joe donnelly          1
+19         joe manchin          1
+20       john barrasso          1
+21          jon tester          1
+22  kirsten gillibrand          1
+23      maria cantwell          1
+24     martin heinrich          1
+25        mazie hirono          1
+26         orrin hatch          1
+27        roger wicker          1
+28             senator          1
+29  sheldon whitehouse          1
+30       sherrod brown          1
+31       tammy baldwin          1
+32            ted cruz          1
+33           tim kaine          1
+34          tom carper          1
+Sample 753 - Plan 1: Table after operation: [['incumbent_nsenator', 'row_count'], ['amy klobuchar', 1], ['angus king', 1], ['ben cardin', 1], ['bernie sanders', 1], ['bill nelson', 1], ['bob casey, jr.', 1], ['bob corker', 1], ['bob menendez', 1], ['chris murphy', 1], ['claire mccaskill', 1], ['dean heller', 1], ['deb fischer', 1], ['debbie stabenow', 1], ['dianne feinstein', 1], ['elizabeth warren', 1], ['heidi heitkamp', 1], ['incumbent', 1], ['jeff flake', 1], ['joe donnelly', 1], ['joe manchin', 1], ['john barrasso', 1], ['jon tester', 1], ['kirsten gillibrand', 1], ['maria cantwell', 1], ['martin heinrich', 1], ['mazie hirono', 1], ['orrin hatch', 1], ['roger wicker', 1], ['senator', 1], ['sheldon whitehouse', 1], ['sherrod brown', 1], ['tammy baldwin', 1], ['ted cruz', 1], ['tim kaine', 1], ['tom carper', 1]]
+########################################################################################################################
+Sample 753 - Plan 1: Operation 6: Select the 'incumbent' column from the selected group.
+Sample 753 - Plan 1: Selected indices: []
+Sample 753 - Plan 1: X-Table after operation df:
+  incumbent_nsenator
+0          incumbent
+Sample 753 - Plan 1: Table after operation: [['incumbent_nsenator'], ['incumbent']]
+Fall-back: FALSE
+Answer from plan 1: [['incumbent']]
+Groundtruth: ['Democratic']

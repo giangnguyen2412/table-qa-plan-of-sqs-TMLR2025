@@ -1,0 +1,51 @@
+************************************************************************************************************************
+Sample 3610 - Plan 1: Query: name one nation that earned over 25 silver medals.
+Sample 3610 - Plan 1: Groundtruth: ['China']
+Sample 3610 - Plan 1: X-Original table pd: 
+   rank         nation  gold  silver  bronze  total
+0     1          china    63      46      32    141
+1     2  great britain    35      30      29     94
+2     3         canada    28      19      25     72
+3     4  united states    27      22      39     88
+4     5      australia    26      38      36    100
+5     6        ukraine    24      12      19     55
+6     7          spain    20      27      24     71
+7     8        germany    19      28      31     78
+8     9         france    18      26      30     74
+9    10          japan    17      16      20     53
+Sample 3610 - Plan 1: Caption: none
+Sample 3610 - Plan 1: Original table: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['1', 'china', '63', '46', '32', '141'], ['2', 'great britain', '35', '30', '29', '94'], ['3', 'canada', '28', '19', '25', '72'], ['4', 'united states', '27', '22', '39', '88'], ['5', 'australia', '26', '38', '36', '100'], ['6', 'ukraine', '24', '12', '19', '55'], ['7', 'spain', '20', '27', '24', '71'], ['8', 'germany', '19', '28', '31', '78'], ['9', 'france', '18', '26', '30', '74'], ['10', 'japan', '17', '16', '20', '53']]
+########################################################################################################################
+Sample 3610 - Plan 1: Operation 1: Select rows where the 'silver' column is greater than 25.
+Sample 3610 - Plan 1: Selected indices: [[4, 3], [0, 3], [7, 3], [8, 3], [6, 3], [1, 3]]
+Sample 3610 - Plan 1: X-Table after operation df:
+   rank         nation  gold  silver  bronze  total
+0     1          china    63      46      32    141
+1     2  great britain    35      30      29     94
+2     5      australia    26      38      36    100
+3     7          spain    20      27      24     71
+4     8        germany    19      28      31     78
+5     9         france    18      26      30     74
+Sample 3610 - Plan 1: Table after operation: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], [1, 'china', 63, 46, 32, 141], [2, 'great britain', 35, 30, 29, 94], [5, 'australia', 26, 38, 36, 100], [7, 'spain', 20, 27, 24, 71], [8, 'germany', 19, 28, 31, 78], [9, 'france', 18, 26, 30, 74]]
+########################################################################################################################
+Sample 3610 - Plan 1: Operation 2: Select the 'nation' column.
+Sample 3610 - Plan 1: Selected indices: []
+Sample 3610 - Plan 1: X-Table after operation df:
+          nation
+0          china
+1  great britain
+2      australia
+3          spain
+4        germany
+5         france
+Sample 3610 - Plan 1: Table after operation: [['nation'], ['china'], ['great britain'], ['australia'], ['spain'], ['germany'], ['france']]
+########################################################################################################################
+Sample 3610 - Plan 1: Operation 3: Select row number 1.
+Sample 3610 - Plan 1: Selected indices: []
+Sample 3610 - Plan 1: X-Table after operation df:
+  nation
+0  china
+Sample 3610 - Plan 1: Table after operation: [['nation'], ['china']]
+Fall-back: FALSE
+Answer from plan 1: [['china']]
+Groundtruth: ['China']

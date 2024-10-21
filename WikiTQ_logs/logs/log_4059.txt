@@ -1,0 +1,54 @@
+************************************************************************************************************************
+Sample 4059 - Plan 1: Query: who had more goals, griffin or banks?
+Sample 4059 - Plan 1: Groundtruth: ['Maxwell Griffin']
+Sample 4059 - Plan 1: X-Original table pd: 
+    rank            player nation                       club  goals
+0      1    jhonny arteaga    col                fc new york     13
+1      2  matthew delicâte    eng           richmond kickers     10
+2      3       josé angulo    usa  harrisburg city islanders      9
+3      3   maxwell griffin    usa               orlando city      9
+4      3   luke mulholland    eng     wilmington hammerheads      9
+5      6     andriy budnyy    ukr     wilmington hammerheads      8
+6      6      jamie watson    usa               orlando city      8
+7      6     andrew welker    usa  harrisburg city islanders      8
+8      9       chris banks    usa     wilmington hammerheads      7
+9      9     sallieu bundu    sle           charlotte eagles      7
+10     9   george davis iv    usa         dayton dutch lions      7
+11     9     sainey touray    gam  harrisburg city islanders      7
+Sample 4059 - Plan 1: Caption: none
+Sample 4059 - Plan 1: Original table: [['rank', 'player', 'nation', 'club', 'goals'], ['1', 'jhonny arteaga', 'col', 'fc new york', '13'], ['2', 'matthew delicâte', 'eng', 'richmond kickers', '10'], ['3', 'josé angulo', 'usa', 'harrisburg city islanders', '9'], ['3', 'maxwell griffin', 'usa', 'orlando city', '9'], ['3', 'luke mulholland', 'eng', 'wilmington hammerheads', '9'], ['6', 'andriy budnyy', 'ukr', 'wilmington hammerheads', '8'], ['6', 'jamie watson', 'usa', 'orlando city', '8'], ['6', 'andrew welker', 'usa', 'harrisburg city islanders', '8'], ['9', 'chris banks', 'usa', 'wilmington hammerheads', '7'], ['9', 'sallieu bundu', 'sle', 'charlotte eagles', '7'], ['9', 'george davis iv', 'usa', 'dayton dutch lions', '7'], ['9', 'sainey touray', 'gam', 'harrisburg city islanders', '7']]
+########################################################################################################################
+Sample 4059 - Plan 1: Operation 1: Select rows where the 'player' is 'griffin' or 'banks'.
+Sample 4059 - Plan 1: Selected indices: [[3, 1], [8, 1]]
+Sample 4059 - Plan 1: X-Table after operation df:
+   rank           player nation                    club  goals
+0     3  maxwell griffin    usa            orlando city      9
+1     9      chris banks    usa  wilmington hammerheads      7
+Sample 4059 - Plan 1: Table after operation: [['rank', 'player', 'nation', 'club', 'goals'], [3, 'maxwell griffin', 'usa', 'orlando city', 9], [9, 'chris banks', 'usa', 'wilmington hammerheads', 7]]
+########################################################################################################################
+Sample 4059 - Plan 1: Operation 2: Select the 'goals' column.
+Sample 4059 - Plan 1: Selected indices: []
+Sample 4059 - Plan 1: X-Table after operation df:
+   goals
+0      9
+1      7
+Sample 4059 - Plan 1: Table after operation: [['goals'], [9], [7]]
+########################################################################################################################
+Sample 4059 - Plan 1: Operation 3: Compare the values in the 'goals' column for 'griffin' and 'banks'.
+Sample 4059 - Plan 1: Selected indices: [[1, 0], [0, 0]]
+Sample 4059 - Plan 1: X-Table after operation df:
+   goals
+0      9
+1      7
+Sample 4059 - Plan 1: Table after operation: [['goals'], [9], [7]]
+########################################################################################################################
+Sample 4059 - Plan 1: Operation 4: Determine which player has more goals based on the comparison.
+Sample 4059 - Plan 1: Selected indices: []
+Sample 4059 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [goals]
+Index: []
+Sample 4059 - Plan 1: Table after operation: [['goals']]
+Fall-back: TRUE
+Answer from plan 1: [['maxwell griffin']]
+Groundtruth: ['Maxwell Griffin']

@@ -1,0 +1,413 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> who came in 10th?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select the row where the 'pos' column is 10.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>pos</td>
+<td>no_</td>
+<td>driver</td>
+<td>team</td>
+<td>engine</td>
+<td>laps</td>
+<td>time_retired</td>
+<td>grid</td>
+<td>laps_led</td>
+<td>points</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td>2</td>
+<td>ryan briscoe</td>
+<td>team penske</td>
+<td>chevrolet</td>
+<td>85</td>
+<td>2:07:02.8248</td>
+<td>2</td>
+<td>27</td>
+<td>50</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td>12</td>
+<td>will power</td>
+<td>team penske</td>
+<td>chevrolet</td>
+<td>85</td>
+<td>+ 0.4408</td>
+<td>1</td>
+<td>57</td>
+<td>43</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td>10</td>
+<td>dario franchitti</td>
+<td>chip ganassi racing</td>
+<td>honda</td>
+<td>85</td>
+<td>+ 1.0497</td>
+<td>6</td>
+<td>0</td>
+<td>35</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td>8</td>
+<td>rubens barrichello</td>
+<td>kv racing technology</td>
+<td>chevrolet</td>
+<td>85</td>
+<td>+ 8.8529</td>
+<td>11</td>
+<td>0</td>
+<td>32</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5</span></td>
+<td>38</td>
+<td>graham rahal</td>
+<td>chip ganassi racing</td>
+<td>honda</td>
+<td>85</td>
+<td>+ 9.4667</td>
+<td>13</td>
+<td>0</td>
+<td>30</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+<td>3</td>
+<td>hélio castroneves</td>
+<td>team penske</td>
+<td>chevrolet</td>
+<td>85</td>
+<td>+ 11.2575</td>
+<td>4</td>
+<td>0</td>
+<td>28</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7</span></td>
+<td>77</td>
+<td>simon pagenaud (r)</td>
+<td>schmidt hamilton motorsports</td>
+<td>honda</td>
+<td>85</td>
+<td>+ 12.3087</td>
+<td>9</td>
+<td>0</td>
+<td>26</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td>4</td>
+<td>j.r. hildebrand</td>
+<td>panther racing</td>
+<td>chevrolet</td>
+<td>85</td>
+<td>+ 22.8121</td>
+<td>15</td>
+<td>0</td>
+<td>24</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+<td>98</td>
+<td>alex tagliani</td>
+<td>team barracuda – bha</td>
+<td>honda</td>
+<td>85</td>
+<td>+ 39.6868</td>
+<td>8</td>
+<td>0</td>
+<td>22</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tony kanaan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kv racing technology</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chevrolet</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">84</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+ 1 lap</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11</span></td>
+<td>18</td>
+<td>justin wilson</td>
+<td>dale coyne racing</td>
+<td>honda</td>
+<td>84</td>
+<td>+ 1 lap</td>
+<td>20</td>
+<td>0</td>
+<td>19</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12</span></td>
+<td>19</td>
+<td>james jakes</td>
+<td>dale coyne racing</td>
+<td>honda</td>
+<td>84</td>
+<td>+ 1 lap</td>
+<td>24</td>
+<td>0</td>
+<td>18</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13</span></td>
+<td>9</td>
+<td>scott dixon</td>
+<td>chip ganassi racing</td>
+<td>honda</td>
+<td>84</td>
+<td>+ 1 lap</td>
+<td>5</td>
+<td>0</td>
+<td>17</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">14</span></td>
+<td>14</td>
+<td>mike conway</td>
+<td>a.j. foyt enterprises</td>
+<td>honda</td>
+<td>84</td>
+<td>+ 1 lap</td>
+<td>14</td>
+<td>0</td>
+<td>16</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">15</span></td>
+<td>17</td>
+<td>sebastián saavedra</td>
+<td>andretti autosport</td>
+<td>chevrolet</td>
+<td>84</td>
+<td>+ 1 lap</td>
+<td>23</td>
+<td>0</td>
+<td>15</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">16</span></td>
+<td>5</td>
+<td>e.j. viso</td>
+<td>kv racing technology</td>
+<td>chevrolet</td>
+<td>84</td>
+<td>+ 1 lap</td>
+<td>17</td>
+<td>0</td>
+<td>14</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">17</span></td>
+<td>78</td>
+<td>simona de silvestro</td>
+<td>hvm racing</td>
+<td>lotus</td>
+<td>84</td>
+<td>+ 1 lap</td>
+<td>27</td>
+<td>0</td>
+<td>13</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">18</span></td>
+<td>28</td>
+<td>ryan hunter-reay</td>
+<td>andretti autosport</td>
+<td>chevrolet</td>
+<td>84</td>
+<td>+ 1 lap</td>
+<td>7</td>
+<td>1</td>
+<td>12</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td>22</td>
+<td>oriol servià</td>
+<td>panther/dreyer & reinbold racing</td>
+<td>chevrolet</td>
+<td>84</td>
+<td>+ 1 lap</td>
+<td>18</td>
+<td>0</td>
+<td>12</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td>20</td>
+<td>ed carpenter</td>
+<td>ed carpenter racing</td>
+<td>chevrolet</td>
+<td>84</td>
+<td>+ 1 lap</td>
+<td>25</td>
+<td>0</td>
+<td>12</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">21</span></td>
+<td>83</td>
+<td>charlie kimball</td>
+<td>chip ganassi racing</td>
+<td>honda</td>
+<td>82</td>
+<td>+ 3 laps</td>
+<td>21</td>
+<td>0</td>
+<td>12</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">22</span></td>
+<td>7</td>
+<td>sebastien bourdais</td>
+<td>dragon racing</td>
+<td>chevrolet</td>
+<td>63</td>
+<td>contact</td>
+<td>3</td>
+<td>0</td>
+<td>12</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">23</span></td>
+<td>67</td>
+<td>josef newgarden (r)</td>
+<td>sarah fisher hartman racing</td>
+<td>honda</td>
+<td>62</td>
+<td>contact</td>
+<td>22</td>
+<td>0</td>
+<td>12</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24</span></td>
+<td>6</td>
+<td>katherine legge (r)</td>
+<td>dragon racing</td>
+<td>chevrolet</td>
+<td>48</td>
+<td>mechanical</td>
+<td>19</td>
+<td>0</td>
+<td>12</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">25</span></td>
+<td>26</td>
+<td>marco andretti</td>
+<td>andretti autosport</td>
+<td>chevrolet</td>
+<td>46</td>
+<td>mechanical</td>
+<td>12</td>
+<td>0</td>
+<td>10</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">26</span></td>
+<td>27</td>
+<td>james hinchcliffe</td>
+<td>andretti autosport</td>
+<td>chevrolet</td>
+<td>35</td>
+<td>mechanical</td>
+<td>10</td>
+<td>0</td>
+<td>10</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">27</span></td>
+<td>15</td>
+<td>takuma sato</td>
+<td>rahal letterman lanigan racing</td>
+<td>honda</td>
+<td>2</td>
+<td>mechanical</td>
+<td>26</td>
+<td>0</td>
+<td>10</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select the 'driver' column from the resulting row.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>pos</td>
+<td>no_</td>
+<td>driver</td>
+<td>team</td>
+<td>engine</td>
+<td>laps</td>
+<td>time_retired</td>
+<td>grid</td>
+<td>laps_led</td>
+<td>points</td>
+</tr>
+<tr>
+<td>10</td>
+<td>11</td>
+<td>tony kanaan</td>
+<td>kv racing technology</td>
+<td>chevrolet</td>
+<td>84</td>
+<td>+ 1 lap</td>
+<td>16</td>
+<td>0</td>
+<td>20</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>result</td>
+</tr>
+<tr>
+<td>tony kanaan</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['tony kanaan']]</h3>
+</body></html>

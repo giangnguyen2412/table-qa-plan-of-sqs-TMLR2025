@@ -1,0 +1,90 @@
+************************************************************************************************************************
+Sample 2290 - Plan 1: Query: who was picked higher, roberts or johnson?
+Sample 2290 - Plan 1: Groundtruth: ['Johnson']
+Sample 2290 - Plan 1: X-Original table pd: 
+    round  pick          player position    nationality  \
+0       1    15  reggie johnson     pf/c  united states   
+1       2    39   michael miley           united states   
+2       3    60    lavon mercer           united states   
+3       3    61    rich yonakor           united states   
+4       4    83  calvin roberts           united states   
+5       5   107        gib hinz           united states   
+6       6   129     dean uthoff           united states   
+7       7   153      allan zahn           united states   
+8       8   172     bill bailey           united states   
+9       9   192     al williams           united states   
+10     10   209    steve schall           united states   
+
+               school_club_team  
+0                     tennessee  
+1   california state-long beach  
+2                       georgia  
+3                north carolina  
+4    california state-fullerton  
+5          wisconsin-eau claire  
+6                    iowa state  
+7                      arkansas  
+8            texas pan-american  
+9             north texas state  
+10                     arkansas  
+Sample 2290 - Plan 1: Caption: none
+Sample 2290 - Plan 1: Original table: [['round', 'pick', 'player', 'position', 'nationality', 'school_club_team'], ['1', '15', 'reggie johnson', 'pf/c', 'united states', 'tennessee'], ['2', '39', 'michael miley', '', 'united states', 'california state-long beach'], ['3', '60', 'lavon mercer', '', 'united states', 'georgia'], ['3', '61', 'rich yonakor', '', 'united states', 'north carolina'], ['4', '83', 'calvin roberts', '', 'united states', 'california state-fullerton'], ['5', '107', 'gib hinz', '', 'united states', 'wisconsin-eau claire'], ['6', '129', 'dean uthoff', '', 'united states', 'iowa state'], ['7', '153', 'allan zahn', '', 'united states', 'arkansas'], ['8', '172', 'bill bailey', '', 'united states', 'texas pan-american'], ['9', '192', 'al williams', '', 'united states', 'north texas state'], ['10', '209', 'steve schall', '', 'united states', 'arkansas']]
+########################################################################################################################
+Sample 2290 - Plan 1: Operation 1: Select rows where the 'player' is 'roberts' or 'johnson'.
+Sample 2290 - Plan 1: Selected indices: [[0, 2], [4, 2]]
+Sample 2290 - Plan 1: X-Table after operation df:
+   round  pick          player position    nationality  \
+0      1    15  reggie johnson     pf/c  united states   
+1      4    83  calvin roberts           united states   
+
+             school_club_team  
+0                   tennessee  
+1  california state-fullerton  
+Sample 2290 - Plan 1: Table after operation: [['round', 'pick', 'player', 'position', 'nationality', 'school_club_team'], [1, 15, 'reggie johnson', 'pf/c', 'united states', 'tennessee'], [4, 83, 'calvin roberts', '', 'united states', 'california state-fullerton']]
+########################################################################################################################
+Sample 2290 - Plan 1: Operation 2: Order the table by 'pick' in ascending order.
+Sample 2290 - Plan 1: Selected indices: [[0, 1], [1, 1]]
+Sample 2290 - Plan 1: X-Table after operation df:
+   round  pick          player position    nationality  \
+0      1    15  reggie johnson     pf/c  united states   
+1      4    83  calvin roberts           united states   
+
+             school_club_team  
+0                   tennessee  
+1  california state-fullerton  
+Sample 2290 - Plan 1: Table after operation: [['round', 'pick', 'player', 'position', 'nationality', 'school_club_team'], [1, 15, 'reggie johnson', 'pf/c', 'united states', 'tennessee'], [4, 83, 'calvin roberts', '', 'united states', 'california state-fullerton']]
+########################################################################################################################
+Sample 2290 - Plan 1: Operation 3: Select the 'player' column.
+Sample 2290 - Plan 1: Selected indices: []
+Sample 2290 - Plan 1: X-Table after operation df:
+           player
+0  reggie johnson
+1  calvin roberts
+Sample 2290 - Plan 1: Table after operation: [['player'], ['reggie johnson'], ['calvin roberts']]
+########################################################################################################################
+Sample 2290 - Plan 1: Operation 4: Compare the positions of 'roberts' and 'johnson' in the sorted table.
+Sample 2290 - Plan 1: Selected indices: []
+Sample 2290 - Plan 1: X-Table after operation df:
+         position
+0  calvin roberts
+1  reggie johnson
+Sample 2290 - Plan 1: Table after operation: [['position'], ['calvin roberts'], ['reggie johnson']]
+########################################################################################################################
+Sample 2290 - Plan 1: Operation 5: If 'roberts' appears before 'johnson', then 'roberts' was picked higher.
+Sample 2290 - Plan 1: Selected indices: [[0, 0], [1, 0]]
+Sample 2290 - Plan 1: X-Table after operation df:
+         position higher_pick
+0  calvin roberts     johnson
+1  reggie johnson     roberts
+Sample 2290 - Plan 1: Table after operation: [['position', 'higher_pick'], ['calvin roberts', 'johnson'], ['reggie johnson', 'roberts']]
+########################################################################################################################
+Sample 2290 - Plan 1: Operation 6: If 'johnson' appears before 'roberts', then 'johnson' was picked higher.
+Sample 2290 - Plan 1: Selected indices: []
+Sample 2290 - Plan 1: X-Table after operation df:
+  higher_pick
+0     johnson
+1     roberts
+Sample 2290 - Plan 1: Table after operation: [['higher_pick'], ['johnson'], ['roberts']]
+Fall-back: FALSE
+Answer from plan 1: [['johnson'], ['roberts']]
+Groundtruth: ['Johnson']

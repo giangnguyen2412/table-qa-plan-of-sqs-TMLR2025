@@ -1,0 +1,115 @@
+************************************************************************************************************************
+Sample 4214 - Plan 1: Query: how long or how many days does the data display
+Sample 4214 - Plan 1: Groundtruth: ['12 days']
+Sample 4214 - Plan 1: X-Original table pd: 
+    tie_no                home_team  score             away_team  \
+0        1                 rochdale  2 – 0         coventry city   
+1        2              southampton  1 – 1              millwall   
+2   replay                 millwall  1 – 2           southampton   
+3        3                  watford  1 – 0  west bromwich albion   
+4        4                  walsall  2 – 0             wimbledon   
+5        5               gillingham  1 – 1          leeds united   
+6   replay             leeds united  2 – 1            gillingham   
+7        6         blackburn rovers  3 – 3            sunderland   
+8   replay               sunderland  2 – 2      blackburn rovers   
+9        7  wolverhampton wanderers  4 – 1        leicester city   
+10       8          shrewsbury town  0 – 4               chelsea   
+11       9         sheffield united  4 – 3          ipswich town   
+12      10                   fulham  3 – 0     charlton athletic   
+13      11                brentford  0 – 3               burnley   
+14      12        manchester united  6 – 0       west ham united   
+15      13             norwich city  1 – 0  dagenham & redbridge   
+16      14           crystal palace  0 – 0             liverpool   
+17  replay                liverpool  0 – 2        crystal palace   
+18      15         farnborough town  1 – 5               arsenal   
+19      16               stoke city  3 – 0           bournemouth   
+
+               date attendance  
+0   25 january 2003             
+1   25 january 2003     23,809  
+2   5 february 2003     10,197  
+3   25 january 2003     16,975  
+4   25 january 2003      6,693  
+5   25 january 2003     11,093  
+6   4 february 2003     29,359  
+7   25 january 2003     14,315  
+8   5 february 2003     15,745  
+9   25 january 2003     28,164  
+10  26 january 2003      7,950  
+11  25 january 2003     12,757  
+12  26 january 2003     12,203  
+13  25 january 2003      9,563  
+14  26 january 2003     67,181  
+15  25 january 2003     21,164  
+16  26 january 2003     26,054  
+17  5 february 2003     35,109  
+18  25 january 2003     35,108  
+19  26 january 2003     12,004  
+Sample 4214 - Plan 1: Caption: none
+Sample 4214 - Plan 1: Original table: [['tie_no', 'home_team', 'score', 'away_team', 'date', 'attendance'], ['1', 'rochdale', '2 – 0', 'coventry city', '25 january 2003', ''], ['2', 'southampton', '1 – 1', 'millwall', '25 january 2003', '23,809'], ['replay', 'millwall', '1 – 2', 'southampton', '5 february 2003', '10,197'], ['3', 'watford', '1 – 0', 'west bromwich albion', '25 january 2003', '16,975'], ['4', 'walsall', '2 – 0', 'wimbledon', '25 january 2003', '6,693'], ['5', 'gillingham', '1 – 1', 'leeds united', '25 january 2003', '11,093'], ['replay', 'leeds united', '2 – 1', 'gillingham', '4 february 2003', '29,359'], ['6', 'blackburn rovers', '3 – 3', 'sunderland', '25 january 2003', '14,315'], ['replay', 'sunderland', '2 – 2', 'blackburn rovers', '5 february 2003', '15,745'], ['7', 'wolverhampton wanderers', '4 – 1', 'leicester city', '25 january 2003', '28,164'], ['8', 'shrewsbury town', '0 – 4', 'chelsea', '26 january 2003', '7,950'], ['9', 'sheffield united', '4 – 3', 'ipswich town', '25 january 2003', '12,757'], ['10', 'fulham', '3 – 0', 'charlton athletic', '26 january 2003', '12,203'], ['11', 'brentford', '0 – 3', 'burnley', '25 january 2003', '9,563'], ['12', 'manchester united', '6 – 0', 'west ham united', '26 january 2003', '67,181'], ['13', 'norwich city', '1 – 0', 'dagenham & redbridge', '25 january 2003', '21,164'], ['14', 'crystal palace', '0 – 0', 'liverpool', '26 january 2003', '26,054'], ['replay', 'liverpool', '0 – 2', 'crystal palace', '5 february 2003', '35,109'], ['15', 'farnborough town', '1 – 5', 'arsenal', '25 january 2003', '35,108'], ['16', 'stoke city', '3 – 0', 'bournemouth', '26 january 2003', '12,004']]
+########################################################################################################################
+Sample 4214 - Plan 1: Operation 1: Extract the 'date' column from the table.
+Sample 4214 - Plan 1: Selected indices: []
+Sample 4214 - Plan 1: X-Table after operation df:
+               date
+0   25 january 2003
+1   25 january 2003
+2   5 february 2003
+3   25 january 2003
+4   25 january 2003
+5   25 january 2003
+6   4 february 2003
+7   25 january 2003
+8   5 february 2003
+9   25 january 2003
+10  26 january 2003
+11  25 january 2003
+12  26 january 2003
+13  25 january 2003
+14  26 january 2003
+15  25 january 2003
+16  26 january 2003
+17  5 february 2003
+18  25 january 2003
+19  26 january 2003
+Sample 4214 - Plan 1: Table after operation: [['date'], ['25 january 2003'], ['25 january 2003'], ['5 february 2003'], ['25 january 2003'], ['25 january 2003'], ['25 january 2003'], ['4 february 2003'], ['25 january 2003'], ['5 february 2003'], ['25 january 2003'], ['26 january 2003'], ['25 january 2003'], ['26 january 2003'], ['25 january 2003'], ['26 january 2003'], ['25 january 2003'], ['26 january 2003'], ['5 february 2003'], ['25 january 2003'], ['26 january 2003']]
+########################################################################################################################
+Sample 4214 - Plan 1: Operation 2: Convert the 'date' values to a date format.
+Sample 4214 - Plan 1: Selected indices: []
+Sample 4214 - Plan 1: X-Table after operation df:
+    converted_date
+0              NaN
+1              NaN
+2              NaN
+3              NaN
+4              NaN
+5              NaN
+6              NaN
+7              NaN
+8              NaN
+9              NaN
+10             NaN
+11             NaN
+12             NaN
+13             NaN
+14             NaN
+15             NaN
+16             NaN
+17             NaN
+18             NaN
+19             NaN
+Sample 4214 - Plan 1: Table after operation: [['converted_date'], [None], [None], [None], [None], [None], [None], [None], [None], [None], [None], [None], [None], [None], [None], [None], [None], [None], [None], [None], [None]]
+########################################################################################################################
+Sample 4214 - Plan 1: Operation 3: Find the minimum and maximum dates from the 'date' column.
+Sample 4214 - Plan 1: Selected indices: [[0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0], [9, 0], [10, 0], [11, 0], [12, 0], [13, 0], [14, 0], [15, 0], [16, 0], [17, 0], [18, 0], [19, 0]]
+Sample 4214 - Plan 1: X-Table after operation df:
+   min_date  max_date
+0       NaN       NaN
+Sample 4214 - Plan 1: Table after operation: [['min_date', 'max_date'], [None, None]]
+########################################################################################################################
+Sample 4214 - Plan 1: Operation 4: Calculate the difference between the maximum and minimum dates.
+SQL execution error in operation 4: Execution failed on sql 'Write a SQL command that: Calculate the difference between the maximum and minimum dates.': near "Write": syntax error
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['20 days']]
+Groundtruth: ['12 days']

@@ -1,0 +1,42 @@
+
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+.sql-command { background-color: #f0f0f0; padding: 10px; border-left: 4px solid #4CAF50; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> california 22 , a newly created district , resulted in a republican gain</h3>
+<h3>Input Table: united states house of representatives elections , 1942</h3>
+<div class="step">
+<table>
+<tr><td>district</td><td>incumbent</td><td>party</td><td>first_elected</td><td>result</td><td>candidates</td></tr><tr><td>california 2</td><td>harry lane englebright</td><td>republican</td><td>1926-01-01</td><td>re - elected</td><td>harry lane englebright (r) unopposed</td></tr><tr><td>california 4</td><td>thomas rolph</td><td>republican</td><td>1940-01-01</td><td>re - elected</td><td>thomas rolph (r) 98.3% archie brown ( w / i ) 1.7%</td></tr><tr><td>california 7</td><td>john h tolan</td><td>democratic</td><td>1934-01-01</td><td>re - elected</td><td>john h tolan (d) unopposed</td></tr><tr><td>california 9</td><td>bertrand w gearhart</td><td>republican</td><td>1934-01-01</td><td>re - elected</td><td>bertrand w gearhart (r) unopposed</td></tr><tr><td>california 10</td><td>alfred j elliott</td><td>democratic</td><td>1937-01-01</td><td>re - elected</td><td>alfred j elliott (d) unopposed</td></tr><tr><td>california 17</td><td>cecil r king</td><td>democratic</td><td>1942-08-25</td><td>re - elected</td><td>cecil r king (d) unopposed</td></tr><tr><td>california 22</td><td>none (district created)</td><td>none (district created)</td><td>9999-01-01</td><td>new seat republican gain</td><td>john j phillips (r) 57.6% n e west (d) 42.4%</td></tr>
+</table>
+</div>
+<h3>SQL Command:</h3>
+<div class="sql-command">SELECT 
+    CASE 
+        WHEN result = 'new seat republican gain' 
+        THEN 'TRUE' 
+        ELSE 'FALSE' 
+    END 
+FROM table_sql 
+WHERE district = 'california 22';</div>
+<h3>Prediction: True</h3>
+</body></html>

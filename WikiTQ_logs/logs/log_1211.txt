@@ -1,0 +1,84 @@
+************************************************************************************************************************
+Sample 1211 - Plan 1: Query: who was faster, dalziel or doornbos?
+Sample 1211 - Plan 1: Groundtruth: ['Ryan Dalziel']
+Sample 1211 - Plan 1: X-Original table pd: 
+    pos                name                       team  laps time_retired  \
+0     1       justin wilson                    rusport    69  1:46:02.236   
+1     2          jan heylen            conquest racing    69       +7.227   
+2     3     bruno junqueira          dale coyne racing    69       +8.419   
+3     4    tristan gommendy                 pkv racing    69       +9.037   
+4     5           neel jani                 pkv racing    69      +22.262   
+5     6      simon pagenaud             team australia    69      +22.698   
+6     7  sébastien bourdais               n/h/l racing    69      +22.955   
+7     8        oriol servià            forsythe racing    69      +23.406   
+8     9        graham rahal               n/h/l racing    69      +23.949   
+9    10        ryan dalziel  pacific coast motorsports    69      +29.554   
+10   11          dan clarke           minardi team usa    69      +38.903   
+11   12     katherine legge          dale coyne racing    69      +44.860   
+12   13     robert doornbos           minardi team usa    69    +1:00.638   
+13   14          will power             team australia    69    +1:01.204   
+14   15       alex tagliani               rocketsports    68      + 1 lap   
+15   16          alex figge  pacific coast motorsports    68      + 1 lap   
+16   17          paul tracy            forsythe racing    14   mechanical   
+
+    grid  points  
+0      2      32  
+1      7      27  
+2     11      26  
+3      3      23  
+4      4      21  
+5      5      19  
+6      1      18  
+7     13      15  
+8      6      13  
+9     15      11  
+10    10      11  
+11    14       9  
+12     9       8  
+13     8       7  
+14    12       6  
+15    16       5  
+16    17       4  
+Sample 1211 - Plan 1: Caption: none
+Sample 1211 - Plan 1: Original table: [['pos', 'name', 'team', 'laps', 'time_retired', 'grid', 'points'], ['1', 'justin wilson', 'rusport', '69', '1:46:02.236', '2', '32'], ['2', 'jan heylen', 'conquest racing', '69', '+7.227', '7', '27'], ['3', 'bruno junqueira', 'dale coyne racing', '69', '+8.419', '11', '26'], ['4', 'tristan gommendy', 'pkv racing', '69', '+9.037', '3', '23'], ['5', 'neel jani', 'pkv racing', '69', '+22.262', '4', '21'], ['6', 'simon pagenaud', 'team australia', '69', '+22.698', '5', '19'], ['7', 'sébastien bourdais', 'n/h/l racing', '69', '+22.955', '1', '18'], ['8', 'oriol servià', 'forsythe racing', '69', '+23.406', '13', '15'], ['9', 'graham rahal', 'n/h/l racing', '69', '+23.949', '6', '13'], ['10', 'ryan dalziel', 'pacific coast motorsports', '69', '+29.554', '15', '11'], ['11', 'dan clarke', 'minardi team usa', '69', '+38.903', '10', '11'], ['12', 'katherine legge', 'dale coyne racing', '69', '+44.860', '14', '9'], ['13', 'robert doornbos', 'minardi team usa', '69', '+1:00.638', '9', '8'], ['14', 'will power', 'team australia', '69', '+1:01.204', '8', '7'], ['15', 'alex tagliani', 'rocketsports', '68', '+ 1 lap', '12', '6'], ['16', 'alex figge', 'pacific coast motorsports', '68', '+ 1 lap', '16', '5'], ['17', 'paul tracy', 'forsythe racing', '14', 'mechanical', '17', '4']]
+########################################################################################################################
+Sample 1211 - Plan 1: Operation 1: Select rows where the 'name' is 'ryan dalziel' or 'robert doornbos'.
+Sample 1211 - Plan 1: Selected indices: [[9, 1], [12, 1]]
+Sample 1211 - Plan 1: X-Table after operation df:
+   pos             name                       team  laps time_retired  grid  \
+0   10     ryan dalziel  pacific coast motorsports    69      +29.554    15   
+1   13  robert doornbos           minardi team usa    69    +1:00.638     9   
+
+   points  
+0      11  
+1       8  
+Sample 1211 - Plan 1: Table after operation: [['pos', 'name', 'team', 'laps', 'time_retired', 'grid', 'points'], [10, 'ryan dalziel', 'pacific coast motorsports', 69, '+29.554', 15, 11], [13, 'robert doornbos', 'minardi team usa', 69, '+1:00.638', 9, 8]]
+########################################################################################################################
+Sample 1211 - Plan 1: Operation 2: Order the table by 'time_retired' in ascending order.
+Sample 1211 - Plan 1: Selected indices: [[0, 4], [1, 4]]
+Sample 1211 - Plan 1: X-Table after operation df:
+   pos             name                       team  laps time_retired  grid  \
+0   13  robert doornbos           minardi team usa    69    +1:00.638     9   
+1   10     ryan dalziel  pacific coast motorsports    69      +29.554    15   
+
+   points  
+0       8  
+1      11  
+Sample 1211 - Plan 1: Table after operation: [['pos', 'name', 'team', 'laps', 'time_retired', 'grid', 'points'], [13, 'robert doornbos', 'minardi team usa', 69, '+1:00.638', 9, 8], [10, 'ryan dalziel', 'pacific coast motorsports', 69, '+29.554', 15, 11]]
+########################################################################################################################
+Sample 1211 - Plan 1: Operation 3: Select row number 1.
+Sample 1211 - Plan 1: Selected indices: []
+Sample 1211 - Plan 1: X-Table after operation df:
+   pos             name              team  laps time_retired  grid  points
+0   13  robert doornbos  minardi team usa    69    +1:00.638     9       8
+Sample 1211 - Plan 1: Table after operation: [['pos', 'name', 'team', 'laps', 'time_retired', 'grid', 'points'], [13, 'robert doornbos', 'minardi team usa', 69, '+1:00.638', 9, 8]]
+########################################################################################################################
+Sample 1211 - Plan 1: Operation 4: Select the 'name' column.
+Sample 1211 - Plan 1: Selected indices: []
+Sample 1211 - Plan 1: X-Table after operation df:
+              name
+0  robert doornbos
+Sample 1211 - Plan 1: Table after operation: [['name'], ['robert doornbos']]
+Fall-back: FALSE
+Answer from plan 1: [['robert doornbos']]
+Groundtruth: ['Ryan Dalziel']

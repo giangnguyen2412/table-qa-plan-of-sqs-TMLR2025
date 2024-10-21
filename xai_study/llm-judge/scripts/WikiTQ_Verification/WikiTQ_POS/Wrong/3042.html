@@ -1,0 +1,1573 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how many books were not published by, whitman publishing between 1930 and 1940?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'publisher' is not 'whitman publishing'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>title</td>
+<td>genre</td>
+<td>publisher</td>
+<td>notes</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1903</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">betty zane</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">historical</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">charles francis press</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1906</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">spirit of the border</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">historical</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">a. l. burt & company</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sequel to betty zane</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1908</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the last of the plainsmen</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">outing publishing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">inspired by charles "buffalo" jones</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1909</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the last trail</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">outing publishing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sequel to spirit of the border</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1909</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the shortstop</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">baseball</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">a. c. mcclurg</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1910</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the heritage of the desert</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1910</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the young forester</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1911</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the young pitcher</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">baseball</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1911</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the young lion hunter</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1912</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">riders of the purple sage</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1912</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ken ward in the jungle</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1913</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">desert gold</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1914</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the light of western stars</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1915</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the lone star ranger</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1915</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the rainbow trail</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sequel to riders of the purple sage</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1916</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the border legion</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1917</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wildfire</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1918</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the up trail</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1919</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the desert of wheat</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1919</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tales of fishes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fishing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1920</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the man of the forest</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">grosset & dunlap</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1920</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the redheaded outfield and other baseball stories</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">baseball</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1921</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the mysterious rider</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1921</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">to the last man</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1922</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the day of the beast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fiction</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1922</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tales of lonely trails</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">adventure</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1923</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wanderer of the wasteland</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1923</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tappan's burro</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1924</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the call of the canyon</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1924</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">roping lions in the grand canyon</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">adventure</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1924</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tales of southern rivers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fishing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1925</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the thundering herd</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1925</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the vanishing american</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1925</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tales of fishing virgin seas</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fishing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1926</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">under the tonto rim</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1926</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tales of the angler's eldorado, new zealand</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fishing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1927</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">forlorn river</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1927</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tales of swordfish and tuna</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fishing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1928</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nevada</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sequel to forlorn river</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1928</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wild horse mesa</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1928</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">don, the story of a lion dog</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1928</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">avalanche</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1928</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tales of fresh water fishing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fishing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1929</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fighting caravans</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1929</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stairs of sand</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1930</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the wolf tracker</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1930</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the shepherd of guadaloupe</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1931</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sunset pass</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1931</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tales of tahitian waters</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fishing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1931</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">book of camps and trails</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">adventure</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">partial re-print of tales of lonely trails</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1932</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">arizona ames</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1932</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">robbers' roost</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1933</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the drift fence</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1933</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the hash knife outfit</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sequel to the drift fence</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1934</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the code of the west</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1935</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">thunder mountain</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td>1935</td>
+<td>the trail driver</td>
+<td>western</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">whitman publishing</span></td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1936</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the lost wagon train</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td>1937</td>
+<td>west of the pecos</td>
+<td>western</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">whitman publishing</span></td>
+<td></td>
+</tr>
+<tr>
+<td>1937</td>
+<td>an american angler in australia</td>
+<td>fishing</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">whitman publishing</span></td>
+<td></td>
+</tr>
+<tr>
+<td>1938</td>
+<td>raiders of spanish peaks</td>
+<td>western</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">whitman publishing</span></td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1939</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western union</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1939</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">knights of the range</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1940</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">thirty thousand on the hoof</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1940</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">twin sombreros</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sequel to knights of the range</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1942</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">majesty’s rancho</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sequel to light of western stars</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1943</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">omnibus</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1943</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stairs of sand</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sequel to wanderer of the wasteland</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1944</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the wilderness trek</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1946</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">shadow on the trail</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1947</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">valley of wild horses</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1948</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rogue river feud</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1949</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the deer stalker</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1950</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the maverick queen</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1951</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the dude ranger</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1952</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">captives of the desert</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1952</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">adventures in fishing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fishing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1953</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wyoming</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1954</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lost pueblo</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1955</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">black mesa</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1956</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stranger from the tonto</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1957</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the fugitive trail</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1958</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">arizona clan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1959</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">horse heaven hill</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & brothers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1960</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the ranger and other stories</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & row</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1961</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">blue feather and other stories</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & row</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1963</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">boulder dam</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">historical</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harpercollins</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1974</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the adventures of finspot</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fishing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">d-j books</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1975</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">zane grey's greatest indian stories</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">dorchester publishing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">includes original ending to the vanishing american (1925)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1977</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the reef girl</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fishing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">harper & row</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1978</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tales from a fisherman’s log</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fishing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">hodder & stoughton</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1979</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the camp robber and other stories</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">walter j. black</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the lord of lackawaxen creek</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">adventure</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">lime rock press</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1982</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">angler's eldorado: zane grey in new zealand</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fishing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">walter j. black</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">partial reprint of 1926 edition (first 10 chapters, plus additional content)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1994</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">george washington, frontiersman</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">historical</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">forge books</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1996</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">last of the duanes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">gunsmoke westerns</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">unabridged version of the lone star ranger (1915)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2003</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the desert crucible</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">leisure books</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">unabridged version of the rainbow trail (1915)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2004</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tonto basin</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">leisure books</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">unabridged version of to the last man (1921)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2007</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">shower of gold</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">leisure books</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">unabridged version of desert gold (1915)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the great trek</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">western</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">five star</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">unabridged version of the wilderness trek (1944)</span></td>
+</tr>
+<tr>
+<td>2009</td>
+<td>tales of the gladiator</td>
+<td>fishing</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">zg collections</span></td>
+<td></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select rows where the 'year' is between 1930 and 1940.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>title</td>
+<td>genre</td>
+<td>publisher</td>
+<td>notes</td>
+</tr>
+<tr>
+<td>1903</td>
+<td>betty zane</td>
+<td>historical</td>
+<td>charles francis press</td>
+<td></td>
+</tr>
+<tr>
+<td>1906</td>
+<td>spirit of the border</td>
+<td>historical</td>
+<td>a. l. burt & company</td>
+<td>sequel to betty zane</td>
+</tr>
+<tr>
+<td>1908</td>
+<td>the last of the plainsmen</td>
+<td>western</td>
+<td>outing publishing</td>
+<td>inspired by charles "buffalo" jones</td>
+</tr>
+<tr>
+<td>1909</td>
+<td>the last trail</td>
+<td>western</td>
+<td>outing publishing</td>
+<td>sequel to spirit of the border</td>
+</tr>
+<tr>
+<td>1909</td>
+<td>the shortstop</td>
+<td>baseball</td>
+<td>a. c. mcclurg</td>
+<td></td>
+</tr>
+<tr>
+<td>1910</td>
+<td>the heritage of the desert</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1910</td>
+<td>the young forester</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1911</td>
+<td>the young pitcher</td>
+<td>baseball</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1911</td>
+<td>the young lion hunter</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1912</td>
+<td>riders of the purple sage</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1912</td>
+<td>ken ward in the jungle</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1913</td>
+<td>desert gold</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1914</td>
+<td>the light of western stars</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1915</td>
+<td>the lone star ranger</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1915</td>
+<td>the rainbow trail</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td>sequel to riders of the purple sage</td>
+</tr>
+<tr>
+<td>1916</td>
+<td>the border legion</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1917</td>
+<td>wildfire</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1918</td>
+<td>the up trail</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1919</td>
+<td>the desert of wheat</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1919</td>
+<td>tales of fishes</td>
+<td>fishing</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1920</td>
+<td>the man of the forest</td>
+<td>western</td>
+<td>grosset & dunlap</td>
+<td></td>
+</tr>
+<tr>
+<td>1920</td>
+<td>the redheaded outfield and other baseball stories</td>
+<td>baseball</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1921</td>
+<td>the mysterious rider</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1921</td>
+<td>to the last man</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1922</td>
+<td>the day of the beast</td>
+<td>fiction</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1922</td>
+<td>tales of lonely trails</td>
+<td>adventure</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1923</td>
+<td>wanderer of the wasteland</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1923</td>
+<td>tappan's burro</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1924</td>
+<td>the call of the canyon</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1924</td>
+<td>roping lions in the grand canyon</td>
+<td>adventure</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1924</td>
+<td>tales of southern rivers</td>
+<td>fishing</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1925</td>
+<td>the thundering herd</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1925</td>
+<td>the vanishing american</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1925</td>
+<td>tales of fishing virgin seas</td>
+<td>fishing</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1926</td>
+<td>under the tonto rim</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1926</td>
+<td>tales of the angler's eldorado, new zealand</td>
+<td>fishing</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1927</td>
+<td>forlorn river</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1927</td>
+<td>tales of swordfish and tuna</td>
+<td>fishing</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1928</td>
+<td>nevada</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td>sequel to forlorn river</td>
+</tr>
+<tr>
+<td>1928</td>
+<td>wild horse mesa</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1928</td>
+<td>don, the story of a lion dog</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1928</td>
+<td>avalanche</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1928</td>
+<td>tales of fresh water fishing</td>
+<td>fishing</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1929</td>
+<td>fighting caravans</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1929</td>
+<td>stairs of sand</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1930</span></td>
+<td>the wolf tracker</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1930</span></td>
+<td>the shepherd of guadaloupe</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1931</span></td>
+<td>sunset pass</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1931</span></td>
+<td>tales of tahitian waters</td>
+<td>fishing</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1931</span></td>
+<td>book of camps and trails</td>
+<td>adventure</td>
+<td>harper & brothers</td>
+<td>partial re-print of tales of lonely trails</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1932</span></td>
+<td>arizona ames</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1932</span></td>
+<td>robbers' roost</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1933</span></td>
+<td>the drift fence</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1933</span></td>
+<td>the hash knife outfit</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td>sequel to the drift fence</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1934</span></td>
+<td>the code of the west</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1935</span></td>
+<td>thunder mountain</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1936</span></td>
+<td>the lost wagon train</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1939</span></td>
+<td>western union</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1939</span></td>
+<td>knights of the range</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1940</span></td>
+<td>thirty thousand on the hoof</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1940</span></td>
+<td>twin sombreros</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td>sequel to knights of the range</td>
+</tr>
+<tr>
+<td>1942</td>
+<td>majesty’s rancho</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td>sequel to light of western stars</td>
+</tr>
+<tr>
+<td>1943</td>
+<td>omnibus</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1943</td>
+<td>stairs of sand</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td>sequel to wanderer of the wasteland</td>
+</tr>
+<tr>
+<td>1944</td>
+<td>the wilderness trek</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1946</td>
+<td>shadow on the trail</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1947</td>
+<td>valley of wild horses</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1948</td>
+<td>rogue river feud</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1949</td>
+<td>the deer stalker</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1950</td>
+<td>the maverick queen</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1951</td>
+<td>the dude ranger</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1952</td>
+<td>captives of the desert</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1952</td>
+<td>adventures in fishing</td>
+<td>fishing</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1953</td>
+<td>wyoming</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1954</td>
+<td>lost pueblo</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1955</td>
+<td>black mesa</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1956</td>
+<td>stranger from the tonto</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1957</td>
+<td>the fugitive trail</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1958</td>
+<td>arizona clan</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1959</td>
+<td>horse heaven hill</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1960</td>
+<td>the ranger and other stories</td>
+<td>western</td>
+<td>harper & row</td>
+<td></td>
+</tr>
+<tr>
+<td>1961</td>
+<td>blue feather and other stories</td>
+<td>western</td>
+<td>harper & row</td>
+<td></td>
+</tr>
+<tr>
+<td>1963</td>
+<td>boulder dam</td>
+<td>historical</td>
+<td>harpercollins</td>
+<td></td>
+</tr>
+<tr>
+<td>1974</td>
+<td>the adventures of finspot</td>
+<td>fishing</td>
+<td>d-j books</td>
+<td></td>
+</tr>
+<tr>
+<td>1975</td>
+<td>zane grey's greatest indian stories</td>
+<td>western</td>
+<td>dorchester publishing</td>
+<td>includes original ending to the vanishing american (1925)</td>
+</tr>
+<tr>
+<td>1977</td>
+<td>the reef girl</td>
+<td>fishing</td>
+<td>harper & row</td>
+<td></td>
+</tr>
+<tr>
+<td>1978</td>
+<td>tales from a fisherman’s log</td>
+<td>fishing</td>
+<td>hodder & stoughton</td>
+<td></td>
+</tr>
+<tr>
+<td>1979</td>
+<td>the camp robber and other stories</td>
+<td>western</td>
+<td>walter j. black</td>
+<td></td>
+</tr>
+<tr>
+<td>1981</td>
+<td>the lord of lackawaxen creek</td>
+<td>adventure</td>
+<td>lime rock press</td>
+<td></td>
+</tr>
+<tr>
+<td>1982</td>
+<td>angler's eldorado: zane grey in new zealand</td>
+<td>fishing</td>
+<td>walter j. black</td>
+<td>partial reprint of 1926 edition (first 10 chapters, plus additional content)</td>
+</tr>
+<tr>
+<td>1994</td>
+<td>george washington, frontiersman</td>
+<td>historical</td>
+<td>forge books</td>
+<td></td>
+</tr>
+<tr>
+<td>1996</td>
+<td>last of the duanes</td>
+<td>western</td>
+<td>gunsmoke westerns</td>
+<td>unabridged version of the lone star ranger (1915)</td>
+</tr>
+<tr>
+<td>2003</td>
+<td>the desert crucible</td>
+<td>western</td>
+<td>leisure books</td>
+<td>unabridged version of the rainbow trail (1915)</td>
+</tr>
+<tr>
+<td>2004</td>
+<td>tonto basin</td>
+<td>western</td>
+<td>leisure books</td>
+<td>unabridged version of to the last man (1921)</td>
+</tr>
+<tr>
+<td>2007</td>
+<td>shower of gold</td>
+<td>western</td>
+<td>leisure books</td>
+<td>unabridged version of desert gold (1915)</td>
+</tr>
+<tr>
+<td>2008</td>
+<td>the great trek</td>
+<td>western</td>
+<td>five star</td>
+<td>unabridged version of the wilderness trek (1944)</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Count the number of rows.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>title</td>
+<td>genre</td>
+<td>publisher</td>
+<td>notes</td>
+</tr>
+<tr>
+<td>1930</td>
+<td>the wolf tracker</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1930</td>
+<td>the shepherd of guadaloupe</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1931</td>
+<td>sunset pass</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1931</td>
+<td>tales of tahitian waters</td>
+<td>fishing</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1931</td>
+<td>book of camps and trails</td>
+<td>adventure</td>
+<td>harper & brothers</td>
+<td>partial re-print of tales of lonely trails</td>
+</tr>
+<tr>
+<td>1932</td>
+<td>arizona ames</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1932</td>
+<td>robbers' roost</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1933</td>
+<td>the drift fence</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1933</td>
+<td>the hash knife outfit</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td>sequel to the drift fence</td>
+</tr>
+<tr>
+<td>1934</td>
+<td>the code of the west</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1935</td>
+<td>thunder mountain</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1936</td>
+<td>the lost wagon train</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1939</td>
+<td>western union</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1939</td>
+<td>knights of the range</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1940</td>
+<td>thirty thousand on the hoof</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1940</td>
+<td>twin sombreros</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td>sequel to knights of the range</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>row_count</td>
+</tr>
+<tr>
+<td>16</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[16]]</h3>
+</body></html>

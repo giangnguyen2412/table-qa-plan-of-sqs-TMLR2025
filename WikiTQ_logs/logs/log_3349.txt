@@ -1,0 +1,85 @@
+************************************************************************************************************************
+Sample 3349 - Plan 1: Query: what country had the most cyclists?
+Sample 3349 - Plan 1: Groundtruth: ['Italy']
+Sample 3349 - Plan 1: X-Original table pd: 
+   rank                   cyclist                team        time  \
+0     1  alejandro valverde (esp)    caisse d'epargne  5h 29' 10"   
+1     2   alexandr kolobnev (rus)  team csc saxo bank        s.t.   
+2     3     davide rebellin (ita)        gerolsteiner        s.t.   
+3     4       paolo bettini (ita)          quick step        s.t.   
+4     5   franco pellizotti (ita)            liquigas        s.t.   
+5     6       denis menchov (rus)            rabobank        s.t.   
+6     7      samuel sánchez (esp)   euskaltel-euskadi        s.t.   
+7     8    stéphane goubert (fra)    ag2r-la mondiale        + 2"   
+8     9     haimar zubeldia (esp)   euskaltel-euskadi        + 2"   
+9    10     david moncoutié (fra)             cofidis        + 2"   
+
+   uci_protour_npoints  
+0                   40  
+1                   30  
+2                   25  
+3                   20  
+4                   15  
+5                   11  
+6                    7  
+7                    5  
+8                    3  
+9                    1  
+Sample 3349 - Plan 1: Caption: none
+Sample 3349 - Plan 1: Original table: [['rank', 'cyclist', 'team', 'time', 'uci_protour_npoints'], ['1', 'alejandro valverde\xa0(esp)', "caisse d'epargne", '5h 29\' 10"', '40'], ['2', 'alexandr kolobnev\xa0(rus)', 'team csc saxo bank', 's.t.', '30'], ['3', 'davide rebellin\xa0(ita)', 'gerolsteiner', 's.t.', '25'], ['4', 'paolo bettini\xa0(ita)', 'quick step', 's.t.', '20'], ['5', 'franco pellizotti\xa0(ita)', 'liquigas', 's.t.', '15'], ['6', 'denis menchov\xa0(rus)', 'rabobank', 's.t.', '11'], ['7', 'samuel sánchez\xa0(esp)', 'euskaltel-euskadi', 's.t.', '7'], ['8', 'stéphane goubert\xa0(fra)', 'ag2r-la mondiale', '+ 2"', '5'], ['9', 'haimar zubeldia\xa0(esp)', 'euskaltel-euskadi', '+ 2"', '3'], ['10', 'david moncoutié\xa0(fra)', 'cofidis', '+ 2"', '1']]
+########################################################################################################################
+Sample 3349 - Plan 1: Operation 1: Select the 'cyclist' and 'team' columns.
+Sample 3349 - Plan 1: Selected indices: []
+Sample 3349 - Plan 1: X-Table after operation df:
+                    cyclist                team
+0  alejandro valverde (esp)    caisse d'epargne
+1   alexandr kolobnev (rus)  team csc saxo bank
+2     davide rebellin (ita)        gerolsteiner
+3       paolo bettini (ita)          quick step
+4   franco pellizotti (ita)            liquigas
+5       denis menchov (rus)            rabobank
+6      samuel sánchez (esp)   euskaltel-euskadi
+7    stéphane goubert (fra)    ag2r-la mondiale
+8     haimar zubeldia (esp)   euskaltel-euskadi
+9     david moncoutié (fra)             cofidis
+Sample 3349 - Plan 1: Table after operation: [['cyclist', 'team'], ['alejandro valverde\xa0(esp)', "caisse d'epargne"], ['alexandr kolobnev\xa0(rus)', 'team csc saxo bank'], ['davide rebellin\xa0(ita)', 'gerolsteiner'], ['paolo bettini\xa0(ita)', 'quick step'], ['franco pellizotti\xa0(ita)', 'liquigas'], ['denis menchov\xa0(rus)', 'rabobank'], ['samuel sánchez\xa0(esp)', 'euskaltel-euskadi'], ['stéphane goubert\xa0(fra)', 'ag2r-la mondiale'], ['haimar zubeldia\xa0(esp)', 'euskaltel-euskadi'], ['david moncoutié\xa0(fra)', 'cofidis']]
+########################################################################################################################
+Sample 3349 - Plan 1: Operation 2: Extract the country from the 'cyclist' column.
+Sample 3349 - Plan 1: Selected indices: []
+Sample 3349 - Plan 1: X-Table after operation df:
+  country
+0     esp
+1     rus
+2     ita
+3     ita
+4     ita
+5     rus
+6     esp
+7     fra
+8     esp
+9     fra
+Sample 3349 - Plan 1: Table after operation: [['country'], ['esp'], ['rus'], ['ita'], ['ita'], ['ita'], ['rus'], ['esp'], ['fra'], ['esp'], ['fra']]
+########################################################################################################################
+Sample 3349 - Plan 1: Operation 3: Count the number of unique countries.
+Sample 3349 - Plan 1: Selected indices: []
+Sample 3349 - Plan 1: X-Table after operation df:
+   unique_countries
+0                 4
+Sample 3349 - Plan 1: Table after operation: [['unique_countries'], [4]]
+########################################################################################################################
+Sample 3349 - Plan 1: Operation 4: Order the table by the count of cyclists in each country in descending order.
+Sample 3349 - Plan 1: Selected indices: [[0, 0]]
+Sample 3349 - Plan 1: X-Table after operation df:
+   unique_countries
+0                 4
+Sample 3349 - Plan 1: Table after operation: [['unique_countries'], [4]]
+########################################################################################################################
+Sample 3349 - Plan 1: Operation 5: Select the country with the highest count of cyclists.
+Sample 3349 - Plan 1: Selected indices: []
+Sample 3349 - Plan 1: X-Table after operation df:
+   highest_count
+0              4
+Sample 3349 - Plan 1: Table after operation: [['highest_count'], [4]]
+Fall-back: FALSE
+Answer from plan 1: [[4]]
+Groundtruth: ['Italy']

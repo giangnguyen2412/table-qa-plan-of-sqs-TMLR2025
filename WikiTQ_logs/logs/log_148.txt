@@ -1,0 +1,48 @@
+************************************************************************************************************************
+Sample 148 - Plan 1: Query: after the 2006 world junior championships what was the other competition held in beijing?
+Sample 148 - Plan 1: Groundtruth: ['Olympic Games']
+Sample 148 - Plan 1: X-Original table pd: 
+    year                    competition                   venue  position  \
+0   2005      world youth championships      marrakech, morocco       6th   
+1   2006     world junior championships          beijing, china       5th   
+2   2008                  olympic games          beijing, china      10th   
+3   2009     european u23 championships       kaunas, lithuania       8th   
+4   2009            world championships         berlin, germany  22nd (q)   
+5   2010         european championships        barcelona, spain      10th   
+6   2011            world championships      daegu, south korea       9th   
+7   2012         european championships       helsinki, finland       6th   
+8   2012                  olympic games  london, united kingdom       8th   
+9   2013  european indoor championships      gothenburg, sweden       5th   
+10  2014     world indoor championships           sopot, poland       3rd   
+
+     notes  
+0   5.05 m  
+1   5.30 m  
+2   5.45 m  
+3   5.15 m  
+4   5.40 m  
+5   5.60 m  
+6   5.65 m  
+7   5.60 m  
+8   5.65 m  
+9   5.71 m  
+10  5.80 m  
+Sample 148 - Plan 1: Caption: none
+Sample 148 - Plan 1: Original table: [['year', 'competition', 'venue', 'position', 'notes'], ['2005', 'world youth championships', 'marrakech, morocco', '6th', '5.05 m'], ['2006', 'world junior championships', 'beijing, china', '5th', '5.30 m'], ['2008', 'olympic games', 'beijing, china', '10th', '5.45 m'], ['2009', 'european u23 championships', 'kaunas, lithuania', '8th', '5.15 m'], ['2009', 'world championships', 'berlin, germany', '22nd (q)', '5.40 m'], ['2010', 'european championships', 'barcelona, spain', '10th', '5.60 m'], ['2011', 'world championships', 'daegu, south korea', '9th', '5.65 m'], ['2012', 'european championships', 'helsinki, finland', '6th', '5.60 m'], ['2012', 'olympic games', 'london, united kingdom', '8th', '5.65 m'], ['2013', 'european indoor championships', 'gothenburg, sweden', '5th', '5.71 m'], ['2014', 'world indoor championships', 'sopot, poland', '3rd', '5.80 m']]
+########################################################################################################################
+Sample 148 - Plan 1: Operation 1: Select rows where the 'competition' is not 'world junior championships' and the 'venue' is 'beijing'.
+Sample 148 - Plan 1: Selected indices: [[2, 1], [2, 2]]
+Sample 148 - Plan 1: X-Table after operation df:
+   year    competition           venue position   notes
+0  2008  olympic games  beijing, china     10th  5.45 m
+Sample 148 - Plan 1: Table after operation: [['year', 'competition', 'venue', 'position', 'notes'], [2008, 'olympic games', 'beijing, china', '10th', '5.45 m']]
+########################################################################################################################
+Sample 148 - Plan 1: Operation 2: Select the 'competition' column.
+Sample 148 - Plan 1: Selected indices: []
+Sample 148 - Plan 1: X-Table after operation df:
+     competition
+0  olympic games
+Sample 148 - Plan 1: Table after operation: [['competition'], ['olympic games']]
+Fall-back: FALSE
+Answer from plan 1: [['olympic games']]
+Groundtruth: ['Olympic Games']

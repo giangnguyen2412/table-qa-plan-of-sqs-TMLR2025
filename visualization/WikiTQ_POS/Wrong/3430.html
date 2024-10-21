@@ -1,0 +1,1287 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how many candidates are over 1.8 meters tall?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Extract the numerical value from the 'height' column then add column 'num_height' to existing table.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>represent</td>
+<td>candidate</td>
+<td>in_russian</td>
+<td>age</td>
+<td>height</td>
+<td>hometown</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">adygean republic</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">alissa joanndova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">алисса йоанндова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.83 m (6 ft 0 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tulsky</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">altai krai</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">anastasija nindova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">анастасия ниндова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">22</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.74 m (5 ft 8 1⁄2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">barnaul</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">altai republic</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kassandra melova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">кассандра мелова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">18</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.79 m (5 ft 10 1⁄2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kosh-agach</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">amur oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">myriam asfry</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">мыриам асфры</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">18</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.75 m (5 ft 9 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">blagoveshchensk</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">astrakhan oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">anastasija heldriova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">анастасия хелдриова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">18</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.74 m (5 ft 8 1⁄2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">astrakhan</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bashkortostan republic</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">aimee neosaranova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">аимее неосаранова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.77 m (5 ft 9 1⁄2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ufa</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">belgorod oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jahaira novgorodova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">яхаира новгородова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">25</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.80 m (5 ft 11 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">belgorod</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">buryatian republic</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">loise egiazarjan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">лоисе егиазарян</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.85 m (6 ft 1 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ulan-ude</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">capital city</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">natalia varnakova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">наталиа варнакова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.80 m (5 ft 11 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">moscow</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chechen republic</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">carmen jenockova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">цармен йеноцкова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.80 m (5 ft 11 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">urus-martan</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chelyabinsk oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tatiana abramenko</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">татиана абраменко</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">21</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.74 m (5 ft 8 1⁄2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chelyabinsk</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chukotka okrug</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mariesea mnesiču</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">мариесеа мнесичу</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.80 m (5 ft 11 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">anadyr</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chuvash republic</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">martha neosova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">мартха неосова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.78 m (5 ft 10 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cheboksary</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">irkutsk oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yulia samoylova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ыулиа самоылова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">21</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.77 m (5 ft 9 1⁄2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">irkutsk</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jewish autonomous oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">natalia melckenberger</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">наталиа мелцкенбергер</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.75 m (5 ft 9 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">birobidzhan</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kaluga oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tatiana semiletova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">татиана семилетова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.73 m (5 ft 8 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kaluga</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kamchatka oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">anastasija jackson</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">анастасия яцксон</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">23</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.76 m (5 ft 9 1⁄2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">petropavlovsk-kamchatsky</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">karachay-cherkess republic</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stephanie drjagina</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">степхание дрягина</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.81 m (5 ft 11 1⁄2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kaluga</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kemerovo oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ivette sarova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">иветте сарова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.82 m (5 ft 11 1⁄2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mezhdurechensk</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">khabarovsk krai</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">anastasija katriova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">анастасия катриова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">18</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.76 m (5 ft 9 1⁄2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">khabarovsk</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">khakassian republic</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">anastasija larekova-sin</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">анастасия ларекова-син</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">23</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.81 m (5 ft 11 1⁄2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">abakan</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">khanty–mansi okrug</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">alba šaršakova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">алба шаршакова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">18</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.76 m (5 ft 9 1⁄2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kogalym</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kostroma oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ekaterina protod’jakonova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">екатерина протодьяконова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">18</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.84 m (6 ft 1⁄2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kostroma</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">krasnodar krai</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">patricia valiahmetova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">патрициа валиахметова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.80 m (5 ft 11 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">krasnodar</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kurgan oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">irina mondroe</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ирина мондрое</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">25</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.79 m (5 ft 10 1⁄2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kurgan</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">leningrad oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mercedes laplsjfda</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">мерцедес лаплсйфда</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">18</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.79 m (5 ft 10 1⁄2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">leningrad</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">magadan oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ekaterina filimonova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">екатерина филимонова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.83 m (6 ft 0 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">magadan</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mari el republic</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">anna il’ina</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">анна ильина</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.88 m (6 ft 2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">medvedevo</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mordovian republic</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">olga stepančenko</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">олга степанченко</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.75 m (5 ft 9 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">saransk</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">moscow oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">anastasija rodriguez</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">анастасия родригуез</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.83 m (6 ft 0 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">khimki</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nenets okrug</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sofia meldemendev</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">софиа мелдемендев</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">25</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.85 m (6 ft 1 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">naryan-mar</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">north ossetian republic</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">emilianna ninn</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">емилианна нинн</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">22</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.76 m (5 ft 9 1⁄2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">vladikavkaz</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">novgorod oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ekaterina žuravleva</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">екатерина журавлева</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.81 m (5 ft 11 1⁄2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">novgorod</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">novosibirsk oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">orianna kleobova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">орианна клеобова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.73 m (5 ft 8 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">novosibirsk</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">omsk oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">vera korobejnikova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">вера коробейникова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.82 m (5 ft 11 1⁄2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">omsk</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">oryol oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">natalia pavšukova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">наталиа павшукова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.79 m (5 ft 10 1⁄2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">oryol</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">penza oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">anna milinzova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">анна милинзова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.86 m (6 ft 1 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">penza</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">perm krai</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">svetlana ninkova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">светлана нинкова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">22</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.73 m (5 ft 8 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">perm</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pskov oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">anastasija germonova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">анастасия гермонова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">22</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.75 m (5 ft 9 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pskov</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rostov oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tatiana kotova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">татиана котова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">21</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.81 m (5 ft 11 1⁄2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rostov-on-don</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ryazan oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">julia sandrova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">юлиа сандрова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.74 m (5 ft 8 1⁄2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ryazan</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">saint petersburg</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">maria hernasova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">мариа хернасова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.78 m (5 ft 10 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">saint petersburg</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sakha republic</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sardana syromyatnikova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">сардана сыромыатникова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.82 m (5 ft 11 1⁄2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yakutia</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sakhalin oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jeannette menova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">йеаннетте менова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">18</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.75 m (5 ft 9 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sakhalin</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">samara oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nadia gurina</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">надиа гурина</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.78 m (5 ft 10 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">samara</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">saratov oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">anastasija marnolova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">анастасия марнолова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">21</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.74 m (5 ft 8 1⁄2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">saratov</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">smolensk oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">viktoria ševšenko</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">викториа шевшенко</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.73 m (5 ft 8 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">smolensk</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sverdlovsk oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">julianna piskunova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">юлианна пискунова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">22</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.87 m (6 ft 1 1⁄2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sverdlovsk</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tambov oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jenna lerova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">йенна лерова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">21</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.77 m (5 ft 9 1⁄2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tambov</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tatarstan republic</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">anastasija muhammad</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">анастасия мухаммад</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.84 m (6 ft 1⁄2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kazan</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tomsk oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">anastasija tristova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">анастасия тристова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">23</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.78 m (5 ft 10 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tomsk</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tuva republic</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">azida levenok</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">азида левенок</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">18</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.81 m (5 ft 11 1⁄2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kyzyl</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tver oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">anastasija prače’vysky</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">анастасия прачеьвыскы</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.75 m (5 ft 9 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tver</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tyumen oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">andrea maksimova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">андреа максимова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.84 m (6 ft 1⁄2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tyumen</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">udmurt republic</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">monica zaharova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">моница захарова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.81 m (5 ft 11 1⁄2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">izhevsk</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">volgograd oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">indhira perlova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">индхира перлова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">21</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.78 m (5 ft 10 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">volgograd</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">vologda oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rosemary mironova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">росемары миронова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">21</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.74 m (5 ft 8 1⁄2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">vologda</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">voronezh oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">anastasija larkova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">анастасия ларкова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">22</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.80 m (5 ft 11 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">voronezh</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yamalo-nenets okrug</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ekaterina borzenkova</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">екатерина борзенкова</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.77 m (5 ft 9 1⁄2 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tarko-sale</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yaroslavl oblast</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">emely androlevy</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">емелы андролевы</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">23</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1.73 m (5 ft 8 in)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yaroslavl</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select rows where the 'num_height' is greater than 1.8.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>represent</td>
+<td>candidate</td>
+<td>in_russian</td>
+<td>age</td>
+<td>height</td>
+<td>hometown</td>
+<td>num_height</td>
+</tr>
+<tr>
+<td>adygean republic</td>
+<td>alissa joanndova</td>
+<td>алисса йоанндова</td>
+<td>19</td>
+<td>1.83 m (6 ft 0 in)</td>
+<td>tulsky</td>
+<td><span class="highlighted-cell" title="Used in transformation">1.83</span></td>
+</tr>
+<tr>
+<td>altai krai</td>
+<td>anastasija nindova</td>
+<td>анастасия ниндова</td>
+<td>22</td>
+<td>1.74 m (5 ft 8 1⁄2 in)</td>
+<td>barnaul</td>
+<td>1.74</td>
+</tr>
+<tr>
+<td>altai republic</td>
+<td>kassandra melova</td>
+<td>кассандра мелова</td>
+<td>18</td>
+<td>1.79 m (5 ft 10 1⁄2 in)</td>
+<td>kosh-agach</td>
+<td>1.79</td>
+</tr>
+<tr>
+<td>amur oblast</td>
+<td>myriam asfry</td>
+<td>мыриам асфры</td>
+<td>18</td>
+<td>1.75 m (5 ft 9 in)</td>
+<td>blagoveshchensk</td>
+<td>1.75</td>
+</tr>
+<tr>
+<td>astrakhan oblast</td>
+<td>anastasija heldriova</td>
+<td>анастасия хелдриова</td>
+<td>18</td>
+<td>1.74 m (5 ft 8 1⁄2 in)</td>
+<td>astrakhan</td>
+<td>1.74</td>
+</tr>
+<tr>
+<td>bashkortostan republic</td>
+<td>aimee neosaranova</td>
+<td>аимее неосаранова</td>
+<td>19</td>
+<td>1.77 m (5 ft 9 1⁄2 in)</td>
+<td>ufa</td>
+<td>1.77</td>
+</tr>
+<tr>
+<td>belgorod oblast</td>
+<td>jahaira novgorodova</td>
+<td>яхаира новгородова</td>
+<td>25</td>
+<td>1.80 m (5 ft 11 in)</td>
+<td>belgorod</td>
+<td>1.8</td>
+</tr>
+<tr>
+<td>buryatian republic</td>
+<td>loise egiazarjan</td>
+<td>лоисе егиазарян</td>
+<td>20</td>
+<td>1.85 m (6 ft 1 in)</td>
+<td>ulan-ude</td>
+<td><span class="highlighted-cell" title="Used in transformation">1.85</span></td>
+</tr>
+<tr>
+<td>capital city</td>
+<td>natalia varnakova</td>
+<td>наталиа варнакова</td>
+<td>19</td>
+<td>1.80 m (5 ft 11 in)</td>
+<td>moscow</td>
+<td>1.8</td>
+</tr>
+<tr>
+<td>chechen republic</td>
+<td>carmen jenockova</td>
+<td>цармен йеноцкова</td>
+<td>24</td>
+<td>1.80 m (5 ft 11 in)</td>
+<td>urus-martan</td>
+<td>1.8</td>
+</tr>
+<tr>
+<td>chelyabinsk oblast</td>
+<td>tatiana abramenko</td>
+<td>татиана абраменко</td>
+<td>21</td>
+<td>1.74 m (5 ft 8 1⁄2 in)</td>
+<td>chelyabinsk</td>
+<td>1.74</td>
+</tr>
+<tr>
+<td>chukotka okrug</td>
+<td>mariesea mnesiču</td>
+<td>мариесеа мнесичу</td>
+<td>19</td>
+<td>1.80 m (5 ft 11 in)</td>
+<td>anadyr</td>
+<td>1.8</td>
+</tr>
+<tr>
+<td>chuvash republic</td>
+<td>martha neosova</td>
+<td>мартха неосова</td>
+<td>19</td>
+<td>1.78 m (5 ft 10 in)</td>
+<td>cheboksary</td>
+<td>1.78</td>
+</tr>
+<tr>
+<td>irkutsk oblast</td>
+<td>yulia samoylova</td>
+<td>ыулиа самоылова</td>
+<td>21</td>
+<td>1.77 m (5 ft 9 1⁄2 in)</td>
+<td>irkutsk</td>
+<td>1.77</td>
+</tr>
+<tr>
+<td>jewish autonomous oblast</td>
+<td>natalia melckenberger</td>
+<td>наталиа мелцкенбергер</td>
+<td>20</td>
+<td>1.75 m (5 ft 9 in)</td>
+<td>birobidzhan</td>
+<td>1.75</td>
+</tr>
+<tr>
+<td>kaluga oblast</td>
+<td>tatiana semiletova</td>
+<td>татиана семилетова</td>
+<td>20</td>
+<td>1.73 m (5 ft 8 in)</td>
+<td>kaluga</td>
+<td>1.73</td>
+</tr>
+<tr>
+<td>kamchatka oblast</td>
+<td>anastasija jackson</td>
+<td>анастасия яцксон</td>
+<td>23</td>
+<td>1.76 m (5 ft 9 1⁄2 in)</td>
+<td>petropavlovsk-kamchatsky</td>
+<td>1.76</td>
+</tr>
+<tr>
+<td>karachay-cherkess republic</td>
+<td>stephanie drjagina</td>
+<td>степхание дрягина</td>
+<td>24</td>
+<td>1.81 m (5 ft 11 1⁄2 in)</td>
+<td>kaluga</td>
+<td><span class="highlighted-cell" title="Used in transformation">1.81</span></td>
+</tr>
+<tr>
+<td>kemerovo oblast</td>
+<td>ivette sarova</td>
+<td>иветте сарова</td>
+<td>20</td>
+<td>1.82 m (5 ft 11 1⁄2 in)</td>
+<td>mezhdurechensk</td>
+<td><span class="highlighted-cell" title="Used in transformation">1.82</span></td>
+</tr>
+<tr>
+<td>khabarovsk krai</td>
+<td>anastasija katriova</td>
+<td>анастасия катриова</td>
+<td>18</td>
+<td>1.76 m (5 ft 9 1⁄2 in)</td>
+<td>khabarovsk</td>
+<td>1.76</td>
+</tr>
+<tr>
+<td>khakassian republic</td>
+<td>anastasija larekova-sin</td>
+<td>анастасия ларекова-син</td>
+<td>23</td>
+<td>1.81 m (5 ft 11 1⁄2 in)</td>
+<td>abakan</td>
+<td><span class="highlighted-cell" title="Used in transformation">1.81</span></td>
+</tr>
+<tr>
+<td>khanty–mansi okrug</td>
+<td>alba šaršakova</td>
+<td>алба шаршакова</td>
+<td>18</td>
+<td>1.76 m (5 ft 9 1⁄2 in)</td>
+<td>kogalym</td>
+<td>1.76</td>
+</tr>
+<tr>
+<td>kostroma oblast</td>
+<td>ekaterina protod’jakonova</td>
+<td>екатерина протодьяконова</td>
+<td>18</td>
+<td>1.84 m (6 ft 1⁄2 in)</td>
+<td>kostroma</td>
+<td><span class="highlighted-cell" title="Used in transformation">1.84</span></td>
+</tr>
+<tr>
+<td>krasnodar krai</td>
+<td>patricia valiahmetova</td>
+<td>патрициа валиахметова</td>
+<td>20</td>
+<td>1.80 m (5 ft 11 in)</td>
+<td>krasnodar</td>
+<td>1.8</td>
+</tr>
+<tr>
+<td>kurgan oblast</td>
+<td>irina mondroe</td>
+<td>ирина мондрое</td>
+<td>25</td>
+<td>1.79 m (5 ft 10 1⁄2 in)</td>
+<td>kurgan</td>
+<td>1.79</td>
+</tr>
+<tr>
+<td>leningrad oblast</td>
+<td>mercedes laplsjfda</td>
+<td>мерцедес лаплсйфда</td>
+<td>18</td>
+<td>1.79 m (5 ft 10 1⁄2 in)</td>
+<td>leningrad</td>
+<td>1.79</td>
+</tr>
+<tr>
+<td>magadan oblast</td>
+<td>ekaterina filimonova</td>
+<td>екатерина филимонова</td>
+<td>20</td>
+<td>1.83 m (6 ft 0 in)</td>
+<td>magadan</td>
+<td><span class="highlighted-cell" title="Used in transformation">1.83</span></td>
+</tr>
+<tr>
+<td>mari el republic</td>
+<td>anna il’ina</td>
+<td>анна ильина</td>
+<td>19</td>
+<td>1.88 m (6 ft 2 in)</td>
+<td>medvedevo</td>
+<td><span class="highlighted-cell" title="Used in transformation">1.88</span></td>
+</tr>
+<tr>
+<td>mordovian republic</td>
+<td>olga stepančenko</td>
+<td>олга степанченко</td>
+<td>20</td>
+<td>1.75 m (5 ft 9 in)</td>
+<td>saransk</td>
+<td>1.75</td>
+</tr>
+<tr>
+<td>moscow oblast</td>
+<td>anastasija rodriguez</td>
+<td>анастасия родригуез</td>
+<td>20</td>
+<td>1.83 m (6 ft 0 in)</td>
+<td>khimki</td>
+<td><span class="highlighted-cell" title="Used in transformation">1.83</span></td>
+</tr>
+<tr>
+<td>nenets okrug</td>
+<td>sofia meldemendev</td>
+<td>софиа мелдемендев</td>
+<td>25</td>
+<td>1.85 m (6 ft 1 in)</td>
+<td>naryan-mar</td>
+<td><span class="highlighted-cell" title="Used in transformation">1.85</span></td>
+</tr>
+<tr>
+<td>north ossetian republic</td>
+<td>emilianna ninn</td>
+<td>емилианна нинн</td>
+<td>22</td>
+<td>1.76 m (5 ft 9 1⁄2 in)</td>
+<td>vladikavkaz</td>
+<td>1.76</td>
+</tr>
+<tr>
+<td>novgorod oblast</td>
+<td>ekaterina žuravleva</td>
+<td>екатерина журавлева</td>
+<td>20</td>
+<td>1.81 m (5 ft 11 1⁄2 in)</td>
+<td>novgorod</td>
+<td><span class="highlighted-cell" title="Used in transformation">1.81</span></td>
+</tr>
+<tr>
+<td>novosibirsk oblast</td>
+<td>orianna kleobova</td>
+<td>орианна клеобова</td>
+<td>19</td>
+<td>1.73 m (5 ft 8 in)</td>
+<td>novosibirsk</td>
+<td>1.73</td>
+</tr>
+<tr>
+<td>omsk oblast</td>
+<td>vera korobejnikova</td>
+<td>вера коробейникова</td>
+<td>20</td>
+<td>1.82 m (5 ft 11 1⁄2 in)</td>
+<td>omsk</td>
+<td><span class="highlighted-cell" title="Used in transformation">1.82</span></td>
+</tr>
+<tr>
+<td>oryol oblast</td>
+<td>natalia pavšukova</td>
+<td>наталиа павшукова</td>
+<td>19</td>
+<td>1.79 m (5 ft 10 1⁄2 in)</td>
+<td>oryol</td>
+<td>1.79</td>
+</tr>
+<tr>
+<td>penza oblast</td>
+<td>anna milinzova</td>
+<td>анна милинзова</td>
+<td>20</td>
+<td>1.86 m (6 ft 1 in)</td>
+<td>penza</td>
+<td><span class="highlighted-cell" title="Used in transformation">1.86</span></td>
+</tr>
+<tr>
+<td>perm krai</td>
+<td>svetlana ninkova</td>
+<td>светлана нинкова</td>
+<td>22</td>
+<td>1.73 m (5 ft 8 in)</td>
+<td>perm</td>
+<td>1.73</td>
+</tr>
+<tr>
+<td>pskov oblast</td>
+<td>anastasija germonova</td>
+<td>анастасия гермонова</td>
+<td>22</td>
+<td>1.75 m (5 ft 9 in)</td>
+<td>pskov</td>
+<td>1.75</td>
+</tr>
+<tr>
+<td>rostov oblast</td>
+<td>tatiana kotova</td>
+<td>татиана котова</td>
+<td>21</td>
+<td>1.81 m (5 ft 11 1⁄2 in)</td>
+<td>rostov-on-don</td>
+<td><span class="highlighted-cell" title="Used in transformation">1.81</span></td>
+</tr>
+<tr>
+<td>ryazan oblast</td>
+<td>julia sandrova</td>
+<td>юлиа сандрова</td>
+<td>20</td>
+<td>1.74 m (5 ft 8 1⁄2 in)</td>
+<td>ryazan</td>
+<td>1.74</td>
+</tr>
+<tr>
+<td>saint petersburg</td>
+<td>maria hernasova</td>
+<td>мариа хернасова</td>
+<td>20</td>
+<td>1.78 m (5 ft 10 in)</td>
+<td>saint petersburg</td>
+<td>1.78</td>
+</tr>
+<tr>
+<td>sakha republic</td>
+<td>sardana syromyatnikova</td>
+<td>сардана сыромыатникова</td>
+<td>19</td>
+<td>1.82 m (5 ft 11 1⁄2 in)</td>
+<td>yakutia</td>
+<td><span class="highlighted-cell" title="Used in transformation">1.82</span></td>
+</tr>
+<tr>
+<td>sakhalin oblast</td>
+<td>jeannette menova</td>
+<td>йеаннетте менова</td>
+<td>18</td>
+<td>1.75 m (5 ft 9 in)</td>
+<td>sakhalin</td>
+<td>1.75</td>
+</tr>
+<tr>
+<td>samara oblast</td>
+<td>nadia gurina</td>
+<td>надиа гурина</td>
+<td>20</td>
+<td>1.78 m (5 ft 10 in)</td>
+<td>samara</td>
+<td>1.78</td>
+</tr>
+<tr>
+<td>saratov oblast</td>
+<td>anastasija marnolova</td>
+<td>анастасия марнолова</td>
+<td>21</td>
+<td>1.74 m (5 ft 8 1⁄2 in)</td>
+<td>saratov</td>
+<td>1.74</td>
+</tr>
+<tr>
+<td>smolensk oblast</td>
+<td>viktoria ševšenko</td>
+<td>викториа шевшенко</td>
+<td>19</td>
+<td>1.73 m (5 ft 8 in)</td>
+<td>smolensk</td>
+<td>1.73</td>
+</tr>
+<tr>
+<td>sverdlovsk oblast</td>
+<td>julianna piskunova</td>
+<td>юлианна пискунова</td>
+<td>22</td>
+<td>1.87 m (6 ft 1 1⁄2 in)</td>
+<td>sverdlovsk</td>
+<td><span class="highlighted-cell" title="Used in transformation">1.87</span></td>
+</tr>
+<tr>
+<td>tambov oblast</td>
+<td>jenna lerova</td>
+<td>йенна лерова</td>
+<td>21</td>
+<td>1.77 m (5 ft 9 1⁄2 in)</td>
+<td>tambov</td>
+<td>1.77</td>
+</tr>
+<tr>
+<td>tatarstan republic</td>
+<td>anastasija muhammad</td>
+<td>анастасия мухаммад</td>
+<td>19</td>
+<td>1.84 m (6 ft 1⁄2 in)</td>
+<td>kazan</td>
+<td><span class="highlighted-cell" title="Used in transformation">1.84</span></td>
+</tr>
+<tr>
+<td>tomsk oblast</td>
+<td>anastasija tristova</td>
+<td>анастасия тристова</td>
+<td>23</td>
+<td>1.78 m (5 ft 10 in)</td>
+<td>tomsk</td>
+<td>1.78</td>
+</tr>
+<tr>
+<td>tuva republic</td>
+<td>azida levenok</td>
+<td>азида левенок</td>
+<td>18</td>
+<td>1.81 m (5 ft 11 1⁄2 in)</td>
+<td>kyzyl</td>
+<td><span class="highlighted-cell" title="Used in transformation">1.81</span></td>
+</tr>
+<tr>
+<td>tver oblast</td>
+<td>anastasija prače’vysky</td>
+<td>анастасия прачеьвыскы</td>
+<td>19</td>
+<td>1.75 m (5 ft 9 in)</td>
+<td>tver</td>
+<td>1.75</td>
+</tr>
+<tr>
+<td>tyumen oblast</td>
+<td>andrea maksimova</td>
+<td>андреа максимова</td>
+<td>24</td>
+<td>1.84 m (6 ft 1⁄2 in)</td>
+<td>tyumen</td>
+<td><span class="highlighted-cell" title="Used in transformation">1.84</span></td>
+</tr>
+<tr>
+<td>udmurt republic</td>
+<td>monica zaharova</td>
+<td>моница захарова</td>
+<td>24</td>
+<td>1.81 m (5 ft 11 1⁄2 in)</td>
+<td>izhevsk</td>
+<td><span class="highlighted-cell" title="Used in transformation">1.81</span></td>
+</tr>
+<tr>
+<td>volgograd oblast</td>
+<td>indhira perlova</td>
+<td>индхира перлова</td>
+<td>21</td>
+<td>1.78 m (5 ft 10 in)</td>
+<td>volgograd</td>
+<td>1.78</td>
+</tr>
+<tr>
+<td>vologda oblast</td>
+<td>rosemary mironova</td>
+<td>росемары миронова</td>
+<td>21</td>
+<td>1.74 m (5 ft 8 1⁄2 in)</td>
+<td>vologda</td>
+<td>1.74</td>
+</tr>
+<tr>
+<td>voronezh oblast</td>
+<td>anastasija larkova</td>
+<td>анастасия ларкова</td>
+<td>22</td>
+<td>1.80 m (5 ft 11 in)</td>
+<td>voronezh</td>
+<td>1.8</td>
+</tr>
+<tr>
+<td>yamalo-nenets okrug</td>
+<td>ekaterina borzenkova</td>
+<td>екатерина борзенкова</td>
+<td>19</td>
+<td>1.77 m (5 ft 9 1⁄2 in)</td>
+<td>tarko-sale</td>
+<td>1.77</td>
+</tr>
+<tr>
+<td>yaroslavl oblast</td>
+<td>emely androlevy</td>
+<td>емелы андролевы</td>
+<td>23</td>
+<td>1.73 m (5 ft 8 in)</td>
+<td>yaroslavl</td>
+<td>1.73</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Count the number of rows.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>represent</td>
+<td>candidate</td>
+<td>in_russian</td>
+<td>age</td>
+<td>height</td>
+<td>hometown</td>
+<td>num_height</td>
+</tr>
+<tr>
+<td>adygean republic</td>
+<td>alissa joanndova</td>
+<td>алисса йоанндова</td>
+<td>19</td>
+<td>1.83 m (6 ft 0 in)</td>
+<td>tulsky</td>
+<td>1.83</td>
+</tr>
+<tr>
+<td>buryatian republic</td>
+<td>loise egiazarjan</td>
+<td>лоисе егиазарян</td>
+<td>20</td>
+<td>1.85 m (6 ft 1 in)</td>
+<td>ulan-ude</td>
+<td>1.85</td>
+</tr>
+<tr>
+<td>karachay-cherkess republic</td>
+<td>stephanie drjagina</td>
+<td>степхание дрягина</td>
+<td>24</td>
+<td>1.81 m (5 ft 11 1⁄2 in)</td>
+<td>kaluga</td>
+<td>1.81</td>
+</tr>
+<tr>
+<td>kemerovo oblast</td>
+<td>ivette sarova</td>
+<td>иветте сарова</td>
+<td>20</td>
+<td>1.82 m (5 ft 11 1⁄2 in)</td>
+<td>mezhdurechensk</td>
+<td>1.82</td>
+</tr>
+<tr>
+<td>khakassian republic</td>
+<td>anastasija larekova-sin</td>
+<td>анастасия ларекова-син</td>
+<td>23</td>
+<td>1.81 m (5 ft 11 1⁄2 in)</td>
+<td>abakan</td>
+<td>1.81</td>
+</tr>
+<tr>
+<td>kostroma oblast</td>
+<td>ekaterina protod’jakonova</td>
+<td>екатерина протодьяконова</td>
+<td>18</td>
+<td>1.84 m (6 ft 1⁄2 in)</td>
+<td>kostroma</td>
+<td>1.84</td>
+</tr>
+<tr>
+<td>magadan oblast</td>
+<td>ekaterina filimonova</td>
+<td>екатерина филимонова</td>
+<td>20</td>
+<td>1.83 m (6 ft 0 in)</td>
+<td>magadan</td>
+<td>1.83</td>
+</tr>
+<tr>
+<td>mari el republic</td>
+<td>anna il’ina</td>
+<td>анна ильина</td>
+<td>19</td>
+<td>1.88 m (6 ft 2 in)</td>
+<td>medvedevo</td>
+<td>1.88</td>
+</tr>
+<tr>
+<td>moscow oblast</td>
+<td>anastasija rodriguez</td>
+<td>анастасия родригуез</td>
+<td>20</td>
+<td>1.83 m (6 ft 0 in)</td>
+<td>khimki</td>
+<td>1.83</td>
+</tr>
+<tr>
+<td>nenets okrug</td>
+<td>sofia meldemendev</td>
+<td>софиа мелдемендев</td>
+<td>25</td>
+<td>1.85 m (6 ft 1 in)</td>
+<td>naryan-mar</td>
+<td>1.85</td>
+</tr>
+<tr>
+<td>novgorod oblast</td>
+<td>ekaterina žuravleva</td>
+<td>екатерина журавлева</td>
+<td>20</td>
+<td>1.81 m (5 ft 11 1⁄2 in)</td>
+<td>novgorod</td>
+<td>1.81</td>
+</tr>
+<tr>
+<td>omsk oblast</td>
+<td>vera korobejnikova</td>
+<td>вера коробейникова</td>
+<td>20</td>
+<td>1.82 m (5 ft 11 1⁄2 in)</td>
+<td>omsk</td>
+<td>1.82</td>
+</tr>
+<tr>
+<td>penza oblast</td>
+<td>anna milinzova</td>
+<td>анна милинзова</td>
+<td>20</td>
+<td>1.86 m (6 ft 1 in)</td>
+<td>penza</td>
+<td>1.86</td>
+</tr>
+<tr>
+<td>rostov oblast</td>
+<td>tatiana kotova</td>
+<td>татиана котова</td>
+<td>21</td>
+<td>1.81 m (5 ft 11 1⁄2 in)</td>
+<td>rostov-on-don</td>
+<td>1.81</td>
+</tr>
+<tr>
+<td>sakha republic</td>
+<td>sardana syromyatnikova</td>
+<td>сардана сыромыатникова</td>
+<td>19</td>
+<td>1.82 m (5 ft 11 1⁄2 in)</td>
+<td>yakutia</td>
+<td>1.82</td>
+</tr>
+<tr>
+<td>sverdlovsk oblast</td>
+<td>julianna piskunova</td>
+<td>юлианна пискунова</td>
+<td>22</td>
+<td>1.87 m (6 ft 1 1⁄2 in)</td>
+<td>sverdlovsk</td>
+<td>1.87</td>
+</tr>
+<tr>
+<td>tatarstan republic</td>
+<td>anastasija muhammad</td>
+<td>анастасия мухаммад</td>
+<td>19</td>
+<td>1.84 m (6 ft 1⁄2 in)</td>
+<td>kazan</td>
+<td>1.84</td>
+</tr>
+<tr>
+<td>tuva republic</td>
+<td>azida levenok</td>
+<td>азида левенок</td>
+<td>18</td>
+<td>1.81 m (5 ft 11 1⁄2 in)</td>
+<td>kyzyl</td>
+<td>1.81</td>
+</tr>
+<tr>
+<td>tyumen oblast</td>
+<td>andrea maksimova</td>
+<td>андреа максимова</td>
+<td>24</td>
+<td>1.84 m (6 ft 1⁄2 in)</td>
+<td>tyumen</td>
+<td>1.84</td>
+</tr>
+<tr>
+<td>udmurt republic</td>
+<td>monica zaharova</td>
+<td>моница захарова</td>
+<td>24</td>
+<td>1.81 m (5 ft 11 1⁄2 in)</td>
+<td>izhevsk</td>
+<td>1.81</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>row_count</td>
+</tr>
+<tr>
+<td>20</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[20]]</h3>
+</body></html>

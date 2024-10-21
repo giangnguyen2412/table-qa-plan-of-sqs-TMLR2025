@@ -1,0 +1,44 @@
+************************************************************************************************************************
+Sample 2076 - Plan 1: Query: how many more votes did patrick mcloughlin receive than stephen clamp?
+Sample 2076 - Plan 1: Groundtruth: ['7370']
+Sample 2076 - Plan 1: X-Original table pd: 
+                  party                  candidate   votes     _    __
+0          conservative         patrick mcloughlin  24,280  48.0   5.9
+1                labour              stephen clamp  16,910  33.4  -0.1
+2      liberal democrat             jeremy beckett   7,922  15.7  -1.8
+3                  ukip            stuart bavester     672   1.3   0.5
+4  monster raving loony  "the flying brick" delves     472   0.9   0.4
+5           independent             robert goodall     333   0.7   0.5
+6              majority                   majority   7,370  14.6   NaN
+7               turnout                    turnout  50,589  67.8 -10.5
+8     conservative hold          conservative hold   swing   NaN   NaN
+Sample 2076 - Plan 1: Caption: none
+Sample 2076 - Plan 1: Original table: [['party', 'candidate', 'votes', '_', '__'], ['conservative', 'patrick mcloughlin', '24,280', '48.0', '+5.9'], ['labour', 'stephen clamp', '16,910', '33.4', '-0.1'], ['liberal democrat', 'jeremy beckett', '7,922', '15.7', '-1.8'], ['ukip', 'stuart bavester', '672', '1.3', '+0.5'], ['monster raving loony', '"the flying brick" delves', '472', '0.9', '+0.4'], ['independent', 'robert goodall', '333', '0.7', '+0.5'], ['majority', 'majority', '7,370', '14.6', ''], ['turnout', 'turnout', '50,589', '67.8', '-10.5'], ['conservative hold', 'conservative hold', 'swing', '', '']]
+########################################################################################################################
+Sample 2076 - Plan 1: Operation 1: Select the row where the 'candidate' is 'patrick mcloughlin'.
+Sample 2076 - Plan 1: Selected indices: [[0, 1]]
+Sample 2076 - Plan 1: X-Table after operation df:
+          party           candidate   votes     _   __
+0  conservative  patrick mcloughlin  24,280  48.0  5.9
+Sample 2076 - Plan 1: Table after operation: [['party', 'candidate', 'votes', '_', '__'], ['conservative', 'patrick mcloughlin', '24,280', 48.0, 5.9]]
+########################################################################################################################
+Sample 2076 - Plan 1: Operation 2: Select the 'votes' column.
+Sample 2076 - Plan 1: Selected indices: []
+Sample 2076 - Plan 1: X-Table after operation df:
+    votes
+0  24,280
+Sample 2076 - Plan 1: Table after operation: [['votes'], ['24,280']]
+########################################################################################################################
+Sample 2076 - Plan 1: Operation 3: Convert the 'votes' values from string to integer by removing the commas.
+Sample 2076 - Plan 1: Selected indices: []
+Sample 2076 - Plan 1: X-Table after operation df:
+   votes
+0  24280
+Sample 2076 - Plan 1: Table after operation: [['votes'], [24280]]
+########################################################################################################################
+Sample 2076 - Plan 1: Operation 4: Store the result in a new column named 'patrick_votes'.
+SQL execution error in operation 4: 'NoneType' object is not iterable
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['7,370']]
+Groundtruth: ['7370']

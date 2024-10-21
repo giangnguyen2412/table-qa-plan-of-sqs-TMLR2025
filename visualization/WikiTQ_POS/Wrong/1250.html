@@ -1,0 +1,897 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which year was davis loves best earning year?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where 'earnings____' is not equal to '-'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>wins__majors_</td>
+<td>earnings____</td>
+<td>rank</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1985</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">-</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1986</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">113,245</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">77</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1987</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">297,378</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">33</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1988</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">156,068</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">75</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1989</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">278,760</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">44</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1990</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">537,172</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1991</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">686,361</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1992</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1,191,630</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1993</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">777,059</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1994</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">474,219</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">33</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1995</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1,111,999</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1996</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1,211,139</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1997</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2 (1)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1,635,953</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1998</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1,541,152</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1999</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2,475,328</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2,337,765</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2001</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">3,169,463</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2002</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2,056,160</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">21</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2003</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">6,081,896</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2004</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">3,075,092</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2005</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2,658,779</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2,747,206</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">16</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2007</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1,016,489</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">96</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1,695,237</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">48</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2009</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1,622,401</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">52</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2010</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1,214,472</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">73</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2011</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1,056,300</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">88</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2012</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">989,753</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">100</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2013</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">303,470</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">165</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">career*</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20 (1)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">42,511,946</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Extract the numerical value from the 'earnings____' column then add column 'num_earnings' to the existing table.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>wins__majors_</td>
+<td>earnings____</td>
+<td>rank</td>
+</tr>
+<tr>
+<td>1985</td>
+<td>0</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+<td>-</td>
+</tr>
+<tr>
+<td>1986</td>
+<td>0</td>
+<td><span class="highlighted-cell" title="Used in transformation">113,245</span></td>
+<td>77</td>
+</tr>
+<tr>
+<td>1987</td>
+<td>1</td>
+<td><span class="highlighted-cell" title="Used in transformation">297,378</span></td>
+<td>33</td>
+</tr>
+<tr>
+<td>1988</td>
+<td>0</td>
+<td><span class="highlighted-cell" title="Used in transformation">156,068</span></td>
+<td>75</td>
+</tr>
+<tr>
+<td>1989</td>
+<td>0</td>
+<td><span class="highlighted-cell" title="Used in transformation">278,760</span></td>
+<td>44</td>
+</tr>
+<tr>
+<td>1990</td>
+<td>1</td>
+<td><span class="highlighted-cell" title="Used in transformation">537,172</span></td>
+<td>20</td>
+</tr>
+<tr>
+<td>1991</td>
+<td>1</td>
+<td><span class="highlighted-cell" title="Used in transformation">686,361</span></td>
+<td>8</td>
+</tr>
+<tr>
+<td>1992</td>
+<td>3</td>
+<td><span class="highlighted-cell" title="Used in transformation">1,191,630</span></td>
+<td>2</td>
+</tr>
+<tr>
+<td>1993</td>
+<td>2</td>
+<td><span class="highlighted-cell" title="Used in transformation">777,059</span></td>
+<td>12</td>
+</tr>
+<tr>
+<td>1994</td>
+<td>0</td>
+<td><span class="highlighted-cell" title="Used in transformation">474,219</span></td>
+<td>33</td>
+</tr>
+<tr>
+<td>1995</td>
+<td>1</td>
+<td><span class="highlighted-cell" title="Used in transformation">1,111,999</span></td>
+<td>6</td>
+</tr>
+<tr>
+<td>1996</td>
+<td>1</td>
+<td><span class="highlighted-cell" title="Used in transformation">1,211,139</span></td>
+<td>7</td>
+</tr>
+<tr>
+<td>1997</td>
+<td>2 (1)</td>
+<td><span class="highlighted-cell" title="Used in transformation">1,635,953</span></td>
+<td>3</td>
+</tr>
+<tr>
+<td>1998</td>
+<td>1</td>
+<td><span class="highlighted-cell" title="Used in transformation">1,541,152</span></td>
+<td>11</td>
+</tr>
+<tr>
+<td>1999</td>
+<td>0</td>
+<td><span class="highlighted-cell" title="Used in transformation">2,475,328</span></td>
+<td>3</td>
+</tr>
+<tr>
+<td>2000</td>
+<td>0</td>
+<td><span class="highlighted-cell" title="Used in transformation">2,337,765</span></td>
+<td>9</td>
+</tr>
+<tr>
+<td>2001</td>
+<td>1</td>
+<td><span class="highlighted-cell" title="Used in transformation">3,169,463</span></td>
+<td>5</td>
+</tr>
+<tr>
+<td>2002</td>
+<td>0</td>
+<td><span class="highlighted-cell" title="Used in transformation">2,056,160</span></td>
+<td>21</td>
+</tr>
+<tr>
+<td>2003</td>
+<td>4</td>
+<td><span class="highlighted-cell" title="Used in transformation">6,081,896</span></td>
+<td>3</td>
+</tr>
+<tr>
+<td>2004</td>
+<td>0</td>
+<td><span class="highlighted-cell" title="Used in transformation">3,075,092</span></td>
+<td>10</td>
+</tr>
+<tr>
+<td>2005</td>
+<td>0</td>
+<td><span class="highlighted-cell" title="Used in transformation">2,658,779</span></td>
+<td>13</td>
+</tr>
+<tr>
+<td>2006</td>
+<td>1</td>
+<td><span class="highlighted-cell" title="Used in transformation">2,747,206</span></td>
+<td>16</td>
+</tr>
+<tr>
+<td>2007</td>
+<td>0</td>
+<td><span class="highlighted-cell" title="Used in transformation">1,016,489</span></td>
+<td>96</td>
+</tr>
+<tr>
+<td>2008</td>
+<td>1</td>
+<td><span class="highlighted-cell" title="Used in transformation">1,695,237</span></td>
+<td>48</td>
+</tr>
+<tr>
+<td>2009</td>
+<td>0</td>
+<td><span class="highlighted-cell" title="Used in transformation">1,622,401</span></td>
+<td>52</td>
+</tr>
+<tr>
+<td>2010</td>
+<td>0</td>
+<td><span class="highlighted-cell" title="Used in transformation">1,214,472</span></td>
+<td>73</td>
+</tr>
+<tr>
+<td>2011</td>
+<td>0</td>
+<td><span class="highlighted-cell" title="Used in transformation">1,056,300</span></td>
+<td>88</td>
+</tr>
+<tr>
+<td>2012</td>
+<td>0</td>
+<td><span class="highlighted-cell" title="Used in transformation">989,753</span></td>
+<td>100</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>0</td>
+<td><span class="highlighted-cell" title="Used in transformation">303,470</span></td>
+<td>165</td>
+</tr>
+<tr>
+<td>career*</td>
+<td>20 (1)</td>
+<td><span class="highlighted-cell" title="Used in transformation">42,511,946</span></td>
+<td>6</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Order the table by 'num_earnings' in descending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>wins__majors_</td>
+<td>earnings____</td>
+<td>rank</td>
+<td>num_earnings</td>
+</tr>
+<tr>
+<td>1985</td>
+<td>0</td>
+<td>0</td>
+<td>-</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td>1986</td>
+<td>0</td>
+<td>113,245</td>
+<td>77</td>
+<td><span class="highlighted-cell" title="Used in transformation">113245</span></td>
+</tr>
+<tr>
+<td>1987</td>
+<td>1</td>
+<td>297,378</td>
+<td>33</td>
+<td><span class="highlighted-cell" title="Used in transformation">297378</span></td>
+</tr>
+<tr>
+<td>1988</td>
+<td>0</td>
+<td>156,068</td>
+<td>75</td>
+<td><span class="highlighted-cell" title="Used in transformation">156068</span></td>
+</tr>
+<tr>
+<td>1989</td>
+<td>0</td>
+<td>278,760</td>
+<td>44</td>
+<td><span class="highlighted-cell" title="Used in transformation">278760</span></td>
+</tr>
+<tr>
+<td>1990</td>
+<td>1</td>
+<td>537,172</td>
+<td>20</td>
+<td><span class="highlighted-cell" title="Used in transformation">537172</span></td>
+</tr>
+<tr>
+<td>1991</td>
+<td>1</td>
+<td>686,361</td>
+<td>8</td>
+<td><span class="highlighted-cell" title="Used in transformation">686361</span></td>
+</tr>
+<tr>
+<td>1992</td>
+<td>3</td>
+<td>1,191,630</td>
+<td>2</td>
+<td><span class="highlighted-cell" title="Used in transformation">1191630</span></td>
+</tr>
+<tr>
+<td>1993</td>
+<td>2</td>
+<td>777,059</td>
+<td>12</td>
+<td><span class="highlighted-cell" title="Used in transformation">777059</span></td>
+</tr>
+<tr>
+<td>1994</td>
+<td>0</td>
+<td>474,219</td>
+<td>33</td>
+<td><span class="highlighted-cell" title="Used in transformation">474219</span></td>
+</tr>
+<tr>
+<td>1995</td>
+<td>1</td>
+<td>1,111,999</td>
+<td>6</td>
+<td><span class="highlighted-cell" title="Used in transformation">1111999</span></td>
+</tr>
+<tr>
+<td>1996</td>
+<td>1</td>
+<td>1,211,139</td>
+<td>7</td>
+<td><span class="highlighted-cell" title="Used in transformation">1211139</span></td>
+</tr>
+<tr>
+<td>1997</td>
+<td>2 (1)</td>
+<td>1,635,953</td>
+<td>3</td>
+<td><span class="highlighted-cell" title="Used in transformation">1635953</span></td>
+</tr>
+<tr>
+<td>1998</td>
+<td>1</td>
+<td>1,541,152</td>
+<td>11</td>
+<td><span class="highlighted-cell" title="Used in transformation">1541152</span></td>
+</tr>
+<tr>
+<td>1999</td>
+<td>0</td>
+<td>2,475,328</td>
+<td>3</td>
+<td><span class="highlighted-cell" title="Used in transformation">2475328</span></td>
+</tr>
+<tr>
+<td>2000</td>
+<td>0</td>
+<td>2,337,765</td>
+<td>9</td>
+<td><span class="highlighted-cell" title="Used in transformation">2337765</span></td>
+</tr>
+<tr>
+<td>2001</td>
+<td>1</td>
+<td>3,169,463</td>
+<td>5</td>
+<td><span class="highlighted-cell" title="Used in transformation">3169463</span></td>
+</tr>
+<tr>
+<td>2002</td>
+<td>0</td>
+<td>2,056,160</td>
+<td>21</td>
+<td><span class="highlighted-cell" title="Used in transformation">2056160</span></td>
+</tr>
+<tr>
+<td>2003</td>
+<td>4</td>
+<td>6,081,896</td>
+<td>3</td>
+<td><span class="highlighted-cell" title="Used in transformation">6081896</span></td>
+</tr>
+<tr>
+<td>2004</td>
+<td>0</td>
+<td>3,075,092</td>
+<td>10</td>
+<td><span class="highlighted-cell" title="Used in transformation">3075092</span></td>
+</tr>
+<tr>
+<td>2005</td>
+<td>0</td>
+<td>2,658,779</td>
+<td>13</td>
+<td><span class="highlighted-cell" title="Used in transformation">2658779</span></td>
+</tr>
+<tr>
+<td>2006</td>
+<td>1</td>
+<td>2,747,206</td>
+<td>16</td>
+<td><span class="highlighted-cell" title="Used in transformation">2747206</span></td>
+</tr>
+<tr>
+<td>2007</td>
+<td>0</td>
+<td>1,016,489</td>
+<td>96</td>
+<td><span class="highlighted-cell" title="Used in transformation">1016489</span></td>
+</tr>
+<tr>
+<td>2008</td>
+<td>1</td>
+<td>1,695,237</td>
+<td>48</td>
+<td><span class="highlighted-cell" title="Used in transformation">1695237</span></td>
+</tr>
+<tr>
+<td>2009</td>
+<td>0</td>
+<td>1,622,401</td>
+<td>52</td>
+<td><span class="highlighted-cell" title="Used in transformation">1622401</span></td>
+</tr>
+<tr>
+<td>2010</td>
+<td>0</td>
+<td>1,214,472</td>
+<td>73</td>
+<td><span class="highlighted-cell" title="Used in transformation">1214472</span></td>
+</tr>
+<tr>
+<td>2011</td>
+<td>0</td>
+<td>1,056,300</td>
+<td>88</td>
+<td><span class="highlighted-cell" title="Used in transformation">1056300</span></td>
+</tr>
+<tr>
+<td>2012</td>
+<td>0</td>
+<td>989,753</td>
+<td>100</td>
+<td><span class="highlighted-cell" title="Used in transformation">989753</span></td>
+</tr>
+<tr>
+<td>2013</td>
+<td>0</td>
+<td>303,470</td>
+<td>165</td>
+<td><span class="highlighted-cell" title="Used in transformation">303470</span></td>
+</tr>
+<tr>
+<td>career*</td>
+<td>20 (1)</td>
+<td>42,511,946</td>
+<td>6</td>
+<td><span class="highlighted-cell" title="Used in transformation">42511946</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Select row number 1.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>wins__majors_</td>
+<td>earnings____</td>
+<td>rank</td>
+<td>num_earnings</td>
+</tr>
+<tr>
+<td>career*</td>
+<td>20 (1)</td>
+<td>42,511,946</td>
+<td>6</td>
+<td>42511946</td>
+</tr>
+<tr>
+<td>2003</td>
+<td>4</td>
+<td>6,081,896</td>
+<td>3</td>
+<td>6081896</td>
+</tr>
+<tr>
+<td>2001</td>
+<td>1</td>
+<td>3,169,463</td>
+<td>5</td>
+<td>3169463</td>
+</tr>
+<tr>
+<td>2004</td>
+<td>0</td>
+<td>3,075,092</td>
+<td>10</td>
+<td>3075092</td>
+</tr>
+<tr>
+<td>2006</td>
+<td>1</td>
+<td>2,747,206</td>
+<td>16</td>
+<td>2747206</td>
+</tr>
+<tr>
+<td>2005</td>
+<td>0</td>
+<td>2,658,779</td>
+<td>13</td>
+<td>2658779</td>
+</tr>
+<tr>
+<td>1999</td>
+<td>0</td>
+<td>2,475,328</td>
+<td>3</td>
+<td>2475328</td>
+</tr>
+<tr>
+<td>2000</td>
+<td>0</td>
+<td>2,337,765</td>
+<td>9</td>
+<td>2337765</td>
+</tr>
+<tr>
+<td>2002</td>
+<td>0</td>
+<td>2,056,160</td>
+<td>21</td>
+<td>2056160</td>
+</tr>
+<tr>
+<td>2008</td>
+<td>1</td>
+<td>1,695,237</td>
+<td>48</td>
+<td>1695237</td>
+</tr>
+<tr>
+<td>1997</td>
+<td>2 (1)</td>
+<td>1,635,953</td>
+<td>3</td>
+<td>1635953</td>
+</tr>
+<tr>
+<td>2009</td>
+<td>0</td>
+<td>1,622,401</td>
+<td>52</td>
+<td>1622401</td>
+</tr>
+<tr>
+<td>1998</td>
+<td>1</td>
+<td>1,541,152</td>
+<td>11</td>
+<td>1541152</td>
+</tr>
+<tr>
+<td>2010</td>
+<td>0</td>
+<td>1,214,472</td>
+<td>73</td>
+<td>1214472</td>
+</tr>
+<tr>
+<td>1996</td>
+<td>1</td>
+<td>1,211,139</td>
+<td>7</td>
+<td>1211139</td>
+</tr>
+<tr>
+<td>1992</td>
+<td>3</td>
+<td>1,191,630</td>
+<td>2</td>
+<td>1191630</td>
+</tr>
+<tr>
+<td>1995</td>
+<td>1</td>
+<td>1,111,999</td>
+<td>6</td>
+<td>1111999</td>
+</tr>
+<tr>
+<td>2011</td>
+<td>0</td>
+<td>1,056,300</td>
+<td>88</td>
+<td>1056300</td>
+</tr>
+<tr>
+<td>2007</td>
+<td>0</td>
+<td>1,016,489</td>
+<td>96</td>
+<td>1016489</td>
+</tr>
+<tr>
+<td>2012</td>
+<td>0</td>
+<td>989,753</td>
+<td>100</td>
+<td>989753</td>
+</tr>
+<tr>
+<td>1993</td>
+<td>2</td>
+<td>777,059</td>
+<td>12</td>
+<td>777059</td>
+</tr>
+<tr>
+<td>1991</td>
+<td>1</td>
+<td>686,361</td>
+<td>8</td>
+<td>686361</td>
+</tr>
+<tr>
+<td>1990</td>
+<td>1</td>
+<td>537,172</td>
+<td>20</td>
+<td>537172</td>
+</tr>
+<tr>
+<td>1994</td>
+<td>0</td>
+<td>474,219</td>
+<td>33</td>
+<td>474219</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>0</td>
+<td>303,470</td>
+<td>165</td>
+<td>303470</td>
+</tr>
+<tr>
+<td>1987</td>
+<td>1</td>
+<td>297,378</td>
+<td>33</td>
+<td>297378</td>
+</tr>
+<tr>
+<td>1989</td>
+<td>0</td>
+<td>278,760</td>
+<td>44</td>
+<td>278760</td>
+</tr>
+<tr>
+<td>1988</td>
+<td>0</td>
+<td>156,068</td>
+<td>75</td>
+<td>156068</td>
+</tr>
+<tr>
+<td>1986</td>
+<td>0</td>
+<td>113,245</td>
+<td>77</td>
+<td>113245</td>
+</tr>
+<tr>
+<td>1985</td>
+<td>0</td>
+<td>0</td>
+<td>-</td>
+<td>0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 5: Select the 'year' column.</div>
+<div id="step-3" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>wins__majors_</td>
+<td>earnings____</td>
+<td>rank</td>
+<td>num_earnings</td>
+</tr>
+<tr>
+<td>career*</td>
+<td>20 (1)</td>
+<td>42,511,946</td>
+<td>6</td>
+<td>42511946</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>year</td>
+</tr>
+<tr>
+<td>career*</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['career*']]</h3>
+</body></html>

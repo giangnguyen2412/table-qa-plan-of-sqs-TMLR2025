@@ -1,0 +1,64 @@
+************************************************************************************************************************
+Sample 1525 - Plan 1: Query: przemys&#322;aw czerwi&#324;ski beat his previous best pole vault of 5.65m in what year?
+Sample 1525 - Plan 1: Groundtruth: ['2010']
+Sample 1525 - Plan 1: X-Original table pd: 
+    year                    competition                       venue  position  \
+0   1999      world youth championships           bydgoszcz, poland  13th (q)   
+1   2001  european junior championships             grosseto, italy       7th   
+2   2002     world junior championships           kingston, jamaica       8th   
+3   2003     european u23 championships           bydgoszcz, poland  13th (q)   
+4   2005     european u23 championships             erfurt, germany       7th   
+5   2005                    universiade               izmir, turkey       5th   
+6   2006     world indoor championships              moscow, russia  10th (q)   
+7   2006         european championships          gothenburg, sweden       5th   
+8   2007  european indoor championships  birmingham, united kingdom  16th (q)   
+9   2008                  olympic games              beijing, china      11th   
+10  2010         european championships            barcelona, spain       3rd   
+11  2012         european championships           helsinki, finland         –   
+
+     notes  
+0   4.60 m  
+1   5.15 m  
+2   5.30 m  
+3   5.20 m  
+4   5.50 m  
+5   5.50 m  
+6   5.65 m  
+7   5.65 m  
+8   5.40 m  
+9   5.45 m  
+10  5.75 m  
+11      nm  
+Sample 1525 - Plan 1: Caption: none
+Sample 1525 - Plan 1: Original table: [['year', 'competition', 'venue', 'position', 'notes'], ['1999', 'world youth championships', 'bydgoszcz, poland', '13th (q)', '4.60 m'], ['2001', 'european junior championships', 'grosseto, italy', '7th', '5.15 m'], ['2002', 'world junior championships', 'kingston, jamaica', '8th', '5.30 m'], ['2003', 'european u23 championships', 'bydgoszcz, poland', '13th (q)', '5.20 m'], ['2005', 'european u23 championships', 'erfurt, germany', '7th', '5.50 m'], ['2005', 'universiade', 'izmir, turkey', '5th', '5.50 m'], ['2006', 'world indoor championships', 'moscow, russia', '10th (q)', '5.65 m'], ['2006', 'european championships', 'gothenburg, sweden', '5th', '5.65 m'], ['2007', 'european indoor championships', 'birmingham, united kingdom', '16th (q)', '5.40 m'], ['2008', 'olympic games', 'beijing, china', '11th', '5.45 m'], ['2010', 'european championships', 'barcelona, spain', '3rd', '5.75 m'], ['2012', 'european championships', 'helsinki, finland', '–', 'nm']]
+########################################################################################################################
+Sample 1525 - Plan 1: Operation 1: Select rows where the 'notes' column contains the value 'nm' (indicating a failed attempt).
+Sample 1525 - Plan 1: Selected indices: [[11, 4]]
+Sample 1525 - Plan 1: X-Table after operation df:
+   year             competition              venue position notes
+0  2012  european championships  helsinki, finland        –    nm
+Sample 1525 - Plan 1: Table after operation: [['year', 'competition', 'venue', 'position', 'notes'], [2012, 'european championships', 'helsinki, finland', '–', 'nm']]
+########################################################################################################################
+Sample 1525 - Plan 1: Operation 2: Order the table by 'year' in descending order.
+Sample 1525 - Plan 1: Selected indices: [[0, 0]]
+Sample 1525 - Plan 1: X-Table after operation df:
+   year             competition              venue position notes
+0  2012  european championships  helsinki, finland        –    nm
+Sample 1525 - Plan 1: Table after operation: [['year', 'competition', 'venue', 'position', 'notes'], [2012, 'european championships', 'helsinki, finland', '–', 'nm']]
+########################################################################################################################
+Sample 1525 - Plan 1: Operation 3: Select the 'year' column.
+Sample 1525 - Plan 1: Selected indices: []
+Sample 1525 - Plan 1: X-Table after operation df:
+   year
+0  2012
+Sample 1525 - Plan 1: Table after operation: [['year'], [2012]]
+########################################################################################################################
+Sample 1525 - Plan 1: Operation 4: Select row number 1.
+Sample 1525 - Plan 1: Selected indices: []
+Sample 1525 - Plan 1: X-Table after operation df:
+   year
+0  2012
+Sample 1525 - Plan 1: Table after operation: [['year'], [2012]]
+Fall-back: FALSE
+Answer from plan 1: [[2012]]
+Groundtruth: ['2010']

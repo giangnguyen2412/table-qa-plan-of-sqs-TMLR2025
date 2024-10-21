@@ -1,0 +1,125 @@
+************************************************************************************************************************
+Sample 1903 - Plan 1: Query: which nation had the fastest record?
+Sample 1903 - Plan 1: Groundtruth: ['Canada']
+Sample 1903 - Plan 1: X-Original table pd: 
+                               boat     time  \
+0                m1x\nsingle sculls  6:33.35   
+1                m2-\ncoxless pairs  6:08.50   
+2                  m2+\ncoxed pairs  6:42.16   
+3                m2x\ndouble sculls  6:03.25   
+4                 m4-\ncoxless four  5:37.86   
+5                   m4+\ncoxed four  5:58.96   
+6                  m4x\nquad sculls  5:33.15   
+7                        m8+\neight  5:19.35   
+8   lm1x\nlightweight single sculls  6:46.93   
+9   lm2-\nlightweight coxless pairs  6:26.21   
+10  lm2x\nlightweight double sculls  6:10.02   
+11   lm4-\nlightweight coxless four  5:45.60   
+12    lm4x\nlightweight quad sculls  5:45.18   
+13          lm8+\nlightweight eight  5:30.24   
+
+                                                 crew         nation  date  \
+0                                       mahé drysdale    new zealand  2009   
+1                            hamish bond\neric murray    new zealand  2012   
+2   igor boraska\ntihomir franković\nmilan razov (...        croatia  1994   
+3                 adrien hardy\njean-baptiste macquet         france  2006   
+4   andrew triggs-hodge\ntom james\npete reed\nale...  great britain  2012   
+5   matthias ungemach\narmin eichholz\narmin weyra...        germany  1991   
+6   vladislav ryabcev\nalexey svirin\nnikita morga...         russia  2012   
+7   gabriel bergen\ndouglas csima\nrobert gibson\n...         canada  2012   
+8                                        jeremie azou         france  2011   
+9                      tony o'connor\nneville maxwell        ireland  1994   
+10                       mads rasmussen\nrasmus quist        denmark  2007   
+11  thomas poulsen\nthomas ebert\neskild ebbesen\n...        denmark  1999   
+12  francesco esposito\nmassimo lana\nmichelangelo...          italy  1992   
+13  klaus altena\nchristian dahlke\nthomas melges\...        germany  1992   
+
+               meet                     location  
+0                                 poznań, poland  
+1   summer olympics         eton dorney, england  
+2                    indianapolis, united states  
+3                                 poznań, poland  
+4                           lucerne, switzerland  
+5                                vienna, austria  
+6                            lucerne,switzerland  
+7                           lucerne, switzerland  
+8                         amsterdam, netherlands  
+9                                  paris, france  
+10                        amsterdam, netherlands  
+11                          lucerne, switzerland  
+12                              montreal, canada  
+13                              montreal, canada  
+Sample 1903 - Plan 1: Caption: none
+Sample 1903 - Plan 1: Original table: [['boat', 'time', 'crew', 'nation', 'date', 'meet', 'location'], ['m1x\\nsingle sculls', '6:33.35', 'mahé drysdale', 'new zealand', '2009', '', 'poznań, poland'], ['m2-\\ncoxless pairs', '6:08.50', 'hamish bond\\neric murray', 'new zealand', '2012', 'summer olympics', 'eton dorney, england'], ['m2+\\ncoxed pairs', '6:42.16', 'igor boraska\\ntihomir franković\\nmilan razov (coxswain)', 'croatia', '1994', '', 'indianapolis, united states'], ['m2x\\ndouble sculls', '6:03.25', 'adrien hardy\\njean-baptiste macquet', 'france', '2006', '', 'poznań, poland'], ['m4-\\ncoxless four', '5:37.86', 'andrew triggs-hodge\\ntom james\\npete reed\\nalex gregory', 'great britain', '2012', '', 'lucerne, switzerland'], ['m4+\\ncoxed four', '5:58.96', 'matthias ungemach\\narmin eichholz\\narmin weyrauch\\nbahne rabe\\njoerg dederding (coxswain)', 'germany', '1991', '', 'vienna, austria'], ['m4x\\nquad sculls', '5:33.15', 'vladislav ryabcev\\nalexey svirin\\nnikita morgachev\\nsergei fedorovtsev', 'russia', '2012', '', 'lucerne,switzerland'], ['m8+\\neight', '5:19.35', 'gabriel bergen\\ndouglas csima\\nrobert gibson\\nconlin mccabe\\nmalcolm howard\\nandrew byrnes\\njeremiah brown\\nwill crothers\\nbrian price (coxswain)', 'canada', '2012', '', 'lucerne, switzerland'], ['lm1x\\nlightweight single sculls', '6:46.93', 'jeremie azou', 'france', '2011', '', 'amsterdam, netherlands'], ['lm2-\\nlightweight coxless pairs', '6:26.21', "tony o'connor\\nneville maxwell", 'ireland', '1994', '', 'paris, france'], ['lm2x\\nlightweight double sculls', '6:10.02', 'mads rasmussen\\nrasmus quist', 'denmark', '2007', '', 'amsterdam, netherlands'], ['lm4-\\nlightweight coxless four', '5:45.60', 'thomas poulsen\\nthomas ebert\\neskild ebbesen\\nvictor feddersen', 'denmark', '1999', '', 'lucerne, switzerland'], ['lm4x\\nlightweight quad sculls', '5:45.18', 'francesco esposito\\nmassimo lana\\nmichelangelo crispi\\nmassimo guglielmi', 'italy', '1992', '', 'montreal, canada'], ['lm8+\\nlightweight eight', '5:30.24', 'klaus altena\\nchristian dahlke\\nthomas melges\\nbernhard stomporowski\\nmichael kobor\\nuwe maerz\\nmichael buchheit\\nkai von warburg\\nolaf kaska (coxswain)', 'germany', '1992', '', 'montreal, canada']]
+########################################################################################################################
+Sample 1903 - Plan 1: Operation 1: Order the table by the 'time' column in ascending order.
+Sample 1903 - Plan 1: Selected indices: [[11, 1], [0, 1], [12, 1], [7, 1], [2, 1], [13, 1], [8, 1], [3, 1], [6, 1], [1, 1], [10, 1], [5, 1], [9, 1], [4, 1]]
+Sample 1903 - Plan 1: X-Table after operation df:
+                               boat     time  \
+0                        m8+\neight  5:19.35   
+1           lm8+\nlightweight eight  5:30.24   
+2                  m4x\nquad sculls  5:33.15   
+3                 m4-\ncoxless four  5:37.86   
+4     lm4x\nlightweight quad sculls  5:45.18   
+5    lm4-\nlightweight coxless four  5:45.60   
+6                   m4+\ncoxed four  5:58.96   
+7                m2x\ndouble sculls  6:03.25   
+8                m2-\ncoxless pairs  6:08.50   
+9   lm2x\nlightweight double sculls  6:10.02   
+10  lm2-\nlightweight coxless pairs  6:26.21   
+11               m1x\nsingle sculls  6:33.35   
+12                 m2+\ncoxed pairs  6:42.16   
+13  lm1x\nlightweight single sculls  6:46.93   
+
+                                                 crew         nation  date  \
+0   gabriel bergen\ndouglas csima\nrobert gibson\n...         canada  2012   
+1   klaus altena\nchristian dahlke\nthomas melges\...        germany  1992   
+2   vladislav ryabcev\nalexey svirin\nnikita morga...         russia  2012   
+3   andrew triggs-hodge\ntom james\npete reed\nale...  great britain  2012   
+4   francesco esposito\nmassimo lana\nmichelangelo...          italy  1992   
+5   thomas poulsen\nthomas ebert\neskild ebbesen\n...        denmark  1999   
+6   matthias ungemach\narmin eichholz\narmin weyra...        germany  1991   
+7                 adrien hardy\njean-baptiste macquet         france  2006   
+8                            hamish bond\neric murray    new zealand  2012   
+9                        mads rasmussen\nrasmus quist        denmark  2007   
+10                     tony o'connor\nneville maxwell        ireland  1994   
+11                                      mahé drysdale    new zealand  2009   
+12  igor boraska\ntihomir franković\nmilan razov (...        croatia  1994   
+13                                       jeremie azou         france  2011   
+
+               meet                     location  
+0                           lucerne, switzerland  
+1                               montreal, canada  
+2                            lucerne,switzerland  
+3                           lucerne, switzerland  
+4                               montreal, canada  
+5                           lucerne, switzerland  
+6                                vienna, austria  
+7                                 poznań, poland  
+8   summer olympics         eton dorney, england  
+9                         amsterdam, netherlands  
+10                                 paris, france  
+11                                poznań, poland  
+12                   indianapolis, united states  
+13                        amsterdam, netherlands  
+Sample 1903 - Plan 1: Table after operation: [['boat', 'time', 'crew', 'nation', 'date', 'meet', 'location'], ['m8+\\neight', '5:19.35', 'gabriel bergen\\ndouglas csima\\nrobert gibson\\nconlin mccabe\\nmalcolm howard\\nandrew byrnes\\njeremiah brown\\nwill crothers\\nbrian price (coxswain)', 'canada', 2012, '', 'lucerne, switzerland'], ['lm8+\\nlightweight eight', '5:30.24', 'klaus altena\\nchristian dahlke\\nthomas melges\\nbernhard stomporowski\\nmichael kobor\\nuwe maerz\\nmichael buchheit\\nkai von warburg\\nolaf kaska (coxswain)', 'germany', 1992, '', 'montreal, canada'], ['m4x\\nquad sculls', '5:33.15', 'vladislav ryabcev\\nalexey svirin\\nnikita morgachev\\nsergei fedorovtsev', 'russia', 2012, '', 'lucerne,switzerland'], ['m4-\\ncoxless four', '5:37.86', 'andrew triggs-hodge\\ntom james\\npete reed\\nalex gregory', 'great britain', 2012, '', 'lucerne, switzerland'], ['lm4x\\nlightweight quad sculls', '5:45.18', 'francesco esposito\\nmassimo lana\\nmichelangelo crispi\\nmassimo guglielmi', 'italy', 1992, '', 'montreal, canada'], ['lm4-\\nlightweight coxless four', '5:45.60', 'thomas poulsen\\nthomas ebert\\neskild ebbesen\\nvictor feddersen', 'denmark', 1999, '', 'lucerne, switzerland'], ['m4+\\ncoxed four', '5:58.96', 'matthias ungemach\\narmin eichholz\\narmin weyrauch\\nbahne rabe\\njoerg dederding (coxswain)', 'germany', 1991, '', 'vienna, austria'], ['m2x\\ndouble sculls', '6:03.25', 'adrien hardy\\njean-baptiste macquet', 'france', 2006, '', 'poznań, poland'], ['m2-\\ncoxless pairs', '6:08.50', 'hamish bond\\neric murray', 'new zealand', 2012, 'summer olympics', 'eton dorney, england'], ['lm2x\\nlightweight double sculls', '6:10.02', 'mads rasmussen\\nrasmus quist', 'denmark', 2007, '', 'amsterdam, netherlands'], ['lm2-\\nlightweight coxless pairs', '6:26.21', "tony o'connor\\nneville maxwell", 'ireland', 1994, '', 'paris, france'], ['m1x\\nsingle sculls', '6:33.35', 'mahé drysdale', 'new zealand', 2009, '', 'poznań, poland'], ['m2+\\ncoxed pairs', '6:42.16', 'igor boraska\\ntihomir franković\\nmilan razov (coxswain)', 'croatia', 1994, '', 'indianapolis, united states'], ['lm1x\\nlightweight single sculls', '6:46.93', 'jeremie azou', 'france', 2011, '', 'amsterdam, netherlands']]
+########################################################################################################################
+Sample 1903 - Plan 1: Operation 2: Select row number 1.
+Sample 1903 - Plan 1: Selected indices: []
+Sample 1903 - Plan 1: X-Table after operation df:
+         boat     time                                               crew  \
+0  m8+\neight  5:19.35  gabriel bergen\ndouglas csima\nrobert gibson\n...   
+
+   nation  date  meet              location  
+0  canada  2012   NaN  lucerne, switzerland  
+Sample 1903 - Plan 1: Table after operation: [['boat', 'time', 'crew', 'nation', 'date', 'meet', 'location'], ['m8+\\neight', '5:19.35', 'gabriel bergen\\ndouglas csima\\nrobert gibson\\nconlin mccabe\\nmalcolm howard\\nandrew byrnes\\njeremiah brown\\nwill crothers\\nbrian price (coxswain)', 'canada', 2012, '', 'lucerne, switzerland']]
+########################################################################################################################
+Sample 1903 - Plan 1: Operation 3: Select the 'nation' column.
+Sample 1903 - Plan 1: Selected indices: []
+Sample 1903 - Plan 1: X-Table after operation df:
+   nation
+0  canada
+Sample 1903 - Plan 1: Table after operation: [['nation'], ['canada']]
+Fall-back: FALSE
+Answer from plan 1: [['canada']]
+Groundtruth: ['Canada']

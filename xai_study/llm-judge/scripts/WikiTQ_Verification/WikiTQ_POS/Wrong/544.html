@@ -1,0 +1,583 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how many jp trophies does each person have?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'name' is not 'total' and not 'own goals'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>name</td>
+<td>league</td>
+<td>fa_cup</td>
+<td>league_cup</td>
+<td>jp_trophy</td>
+<td>total</td>
+</tr>
+<tr>
+<td>scot bennett</td>
+<td>5</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>5</td>
+</tr>
+<tr>
+<td>danny coles</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr>
+<td>liam sercombe</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>alan gow</td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>4</td>
+</tr>
+<tr>
+<td>john o'flynn</td>
+<td>11</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>12</td>
+</tr>
+<tr>
+<td>guillem bauza</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr>
+<td>jimmy keohane</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr>
+<td>pat baldwin</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>jamie cureton</td>
+<td>20</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>20</td>
+</tr>
+<tr>
+<td>arron davies</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr>
+<td>jake gosling</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>own goals</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>total</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select the 'name' and 'jp_trophy' columns.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>name</td>
+<td>league</td>
+<td>fa_cup</td>
+<td>league_cup</td>
+<td>jp_trophy</td>
+<td>total</td>
+</tr>
+<tr>
+<td>scot bennett</td>
+<td>5</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>5</td>
+</tr>
+<tr>
+<td>danny coles</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr>
+<td>liam sercombe</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>alan gow</td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>4</td>
+</tr>
+<tr>
+<td>john o'flynn</td>
+<td>11</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>12</td>
+</tr>
+<tr>
+<td>guillem bauza</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr>
+<td>jimmy keohane</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr>
+<td>pat baldwin</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>jamie cureton</td>
+<td>20</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>20</td>
+</tr>
+<tr>
+<td>arron davies</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr>
+<td>jake gosling</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Exclude the row with the 'total' value in the 'name' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>name</td>
+<td>jp_trophy</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">scot bennett</span></td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">danny coles</span></td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">liam sercombe</span></td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">alan gow</span></td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">john o'flynn</span></td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">guillem bauza</span></td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">jimmy keohane</span></td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">pat baldwin</span></td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">jamie cureton</span></td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">arron davies</span></td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">jake gosling</span></td>
+<td>0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Exclude the row with the 'own goals' value in the 'name' column.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>name</td>
+<td>jp_trophy</td>
+</tr>
+<tr>
+<td>scot bennett</td>
+<td>0</td>
+</tr>
+<tr>
+<td>danny coles</td>
+<td>0</td>
+</tr>
+<tr>
+<td>liam sercombe</td>
+<td>0</td>
+</tr>
+<tr>
+<td>alan gow</td>
+<td>0</td>
+</tr>
+<tr>
+<td>john o'flynn</td>
+<td>0</td>
+</tr>
+<tr>
+<td>guillem bauza</td>
+<td>0</td>
+</tr>
+<tr>
+<td>jimmy keohane</td>
+<td>0</td>
+</tr>
+<tr>
+<td>pat baldwin</td>
+<td>0</td>
+</tr>
+<tr>
+<td>jamie cureton</td>
+<td>0</td>
+</tr>
+<tr>
+<td>arron davies</td>
+<td>0</td>
+</tr>
+<tr>
+<td>jake gosling</td>
+<td>0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 5: Calculate the sum of the 'jp_trophy' column for each person.</div>
+<div id="step-3" class="content">
+<table>
+<tr>
+<td>name</td>
+<td>jp_trophy</td>
+</tr>
+<tr>
+<td>scot bennett</td>
+<td>0</td>
+</tr>
+<tr>
+<td>danny coles</td>
+<td>0</td>
+</tr>
+<tr>
+<td>liam sercombe</td>
+<td>0</td>
+</tr>
+<tr>
+<td>alan gow</td>
+<td>0</td>
+</tr>
+<tr>
+<td>john o'flynn</td>
+<td>0</td>
+</tr>
+<tr>
+<td>guillem bauza</td>
+<td>0</td>
+</tr>
+<tr>
+<td>jimmy keohane</td>
+<td>0</td>
+</tr>
+<tr>
+<td>pat baldwin</td>
+<td>0</td>
+</tr>
+<tr>
+<td>jamie cureton</td>
+<td>0</td>
+</tr>
+<tr>
+<td>arron davies</td>
+<td>0</td>
+</tr>
+<tr>
+<td>jake gosling</td>
+<td>0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 6: Rename the calculated column as 'jp_trophies'.</div>
+<div id="step-4" class="content">
+<table>
+<tr>
+<td>name</td>
+<td>total_jp_trophy</td>
+</tr>
+<tr>
+<td>alan gow</td>
+<td>0</td>
+</tr>
+<tr>
+<td>arron davies</td>
+<td>0</td>
+</tr>
+<tr>
+<td>danny coles</td>
+<td>0</td>
+</tr>
+<tr>
+<td>guillem bauza</td>
+<td>0</td>
+</tr>
+<tr>
+<td>jake gosling</td>
+<td>0</td>
+</tr>
+<tr>
+<td>jamie cureton</td>
+<td>0</td>
+</tr>
+<tr>
+<td>jimmy keohane</td>
+<td>0</td>
+</tr>
+<tr>
+<td>john o'flynn</td>
+<td>0</td>
+</tr>
+<tr>
+<td>liam sercombe</td>
+<td>0</td>
+</tr>
+<tr>
+<td>pat baldwin</td>
+<td>0</td>
+</tr>
+<tr>
+<td>scot bennett</td>
+<td>0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 7: Select the 'name' and 'jp_trophies' columns as the final result.</div>
+<div id="step-5" class="content">
+<table>
+<tr>
+<td>name</td>
+<td>jp_trophies</td>
+</tr>
+<tr>
+<td>alan gow</td>
+<td>0</td>
+</tr>
+<tr>
+<td>arron davies</td>
+<td>0</td>
+</tr>
+<tr>
+<td>danny coles</td>
+<td>0</td>
+</tr>
+<tr>
+<td>guillem bauza</td>
+<td>0</td>
+</tr>
+<tr>
+<td>jake gosling</td>
+<td>0</td>
+</tr>
+<tr>
+<td>jamie cureton</td>
+<td>0</td>
+</tr>
+<tr>
+<td>jimmy keohane</td>
+<td>0</td>
+</tr>
+<tr>
+<td>john o'flynn</td>
+<td>0</td>
+</tr>
+<tr>
+<td>liam sercombe</td>
+<td>0</td>
+</tr>
+<tr>
+<td>pat baldwin</td>
+<td>0</td>
+</tr>
+<tr>
+<td>scot bennett</td>
+<td>0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>name</td>
+<td>jp_trophies</td>
+</tr>
+<tr>
+<td>alan gow</td>
+<td>0</td>
+</tr>
+<tr>
+<td>arron davies</td>
+<td>0</td>
+</tr>
+<tr>
+<td>danny coles</td>
+<td>0</td>
+</tr>
+<tr>
+<td>guillem bauza</td>
+<td>0</td>
+</tr>
+<tr>
+<td>jake gosling</td>
+<td>0</td>
+</tr>
+<tr>
+<td>jamie cureton</td>
+<td>0</td>
+</tr>
+<tr>
+<td>jimmy keohane</td>
+<td>0</td>
+</tr>
+<tr>
+<td>john o'flynn</td>
+<td>0</td>
+</tr>
+<tr>
+<td>liam sercombe</td>
+<td>0</td>
+</tr>
+<tr>
+<td>pat baldwin</td>
+<td>0</td>
+</tr>
+<tr>
+<td>scot bennett</td>
+<td>0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['alan gow', 0], ['arron davies', 0], ['danny coles', 0], ['guillem bauza', 0], ['jake gosling', 0], ['jamie cureton', 0], ['jimmy keohane', 0], ["john o'flynn", 0], ['liam sercombe', 0], ['pat baldwin', 0], ['scot bennett', 0]]</h3>
+</body></html>

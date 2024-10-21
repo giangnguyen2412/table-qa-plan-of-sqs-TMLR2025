@@ -1,0 +1,502 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how many years was honda used in a row after 2005?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where 'engine' is 'honda' and 'year' is greater than 2005.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>chassis</td>
+<td>engine</td>
+<td>start</td>
+<td>finish</td>
+<td>team</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2001</span></td>
+<td>dallara</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">oldsmobile</span></td>
+<td>11</td>
+<td>1</td>
+<td>team penske</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2002</span></td>
+<td>dallara</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chevrolet</span></td>
+<td>13</td>
+<td>1</td>
+<td>team penske</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2003</span></td>
+<td>dallara</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">toyota</span></td>
+<td>1</td>
+<td>2</td>
+<td>team penske</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2004</span></td>
+<td>dallara</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">toyota</span></td>
+<td>8</td>
+<td>9</td>
+<td>team penske</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2005</span></td>
+<td>dallara</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">toyota</span></td>
+<td>5</td>
+<td>9</td>
+<td>team penske</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dallara</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">honda</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">25</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">team penske</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2007</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dallara</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">honda</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">team penske</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2008</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dallara</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">honda</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">team penske</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2009</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dallara</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">honda</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">team penske</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2010</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dallara</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">honda</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">team penske</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2011</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dallara</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">honda</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">team penske</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2012</span></td>
+<td>dallara</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chevrolet</span></td>
+<td>6</td>
+<td>10</td>
+<td>team penske</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2013</span></td>
+<td>dallara</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chevrolet</span></td>
+<td>8</td>
+<td>6</td>
+<td>team penske</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Order the table by 'year' in ascending order.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>chassis</td>
+<td>engine</td>
+<td>start</td>
+<td>finish</td>
+<td>team</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2006</span></td>
+<td>dallara</td>
+<td>honda</td>
+<td>2</td>
+<td>25</td>
+<td>team penske</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2007</span></td>
+<td>dallara</td>
+<td>honda</td>
+<td>1</td>
+<td>3</td>
+<td>team penske</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2008</span></td>
+<td>dallara</td>
+<td>honda</td>
+<td>4</td>
+<td>4</td>
+<td>team penske</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2009</span></td>
+<td>dallara</td>
+<td>honda</td>
+<td>1</td>
+<td>1</td>
+<td>team penske</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2010</span></td>
+<td>dallara</td>
+<td>honda</td>
+<td>1</td>
+<td>9</td>
+<td>team penske</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2011</span></td>
+<td>dallara</td>
+<td>honda</td>
+<td>16</td>
+<td>17</td>
+<td>team penske</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Create a new column 'row_number' that assigns a unique number to each row.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>chassis</td>
+<td>engine</td>
+<td>start</td>
+<td>finish</td>
+<td>team</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2006</span></td>
+<td>dallara</td>
+<td>honda</td>
+<td>2</td>
+<td>25</td>
+<td>team penske</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2007</span></td>
+<td>dallara</td>
+<td>honda</td>
+<td>1</td>
+<td>3</td>
+<td>team penske</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2008</span></td>
+<td>dallara</td>
+<td>honda</td>
+<td>4</td>
+<td>4</td>
+<td>team penske</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2009</span></td>
+<td>dallara</td>
+<td>honda</td>
+<td>1</td>
+<td>1</td>
+<td>team penske</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2010</span></td>
+<td>dallara</td>
+<td>honda</td>
+<td>1</td>
+<td>9</td>
+<td>team penske</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2011</span></td>
+<td>dallara</td>
+<td>honda</td>
+<td>16</td>
+<td>17</td>
+<td>team penske</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Create a new column 'row_number_diff' that calculates the difference between the 'row_number' of each row and the 'row_number' of the previous row.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>chassis</td>
+<td>engine</td>
+<td>start</td>
+<td>finish</td>
+<td>team</td>
+<td>row_number</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2006</span></td>
+<td>dallara</td>
+<td>honda</td>
+<td>2</td>
+<td>25</td>
+<td>team penske</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2007</span></td>
+<td>dallara</td>
+<td>honda</td>
+<td>1</td>
+<td>3</td>
+<td>team penske</td>
+<td><span class="highlighted-cell" title="Used in transformation">2</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2008</span></td>
+<td>dallara</td>
+<td>honda</td>
+<td>4</td>
+<td>4</td>
+<td>team penske</td>
+<td><span class="highlighted-cell" title="Used in transformation">3</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2009</span></td>
+<td>dallara</td>
+<td>honda</td>
+<td>1</td>
+<td>1</td>
+<td>team penske</td>
+<td><span class="highlighted-cell" title="Used in transformation">4</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2010</span></td>
+<td>dallara</td>
+<td>honda</td>
+<td>1</td>
+<td>9</td>
+<td>team penske</td>
+<td><span class="highlighted-cell" title="Used in transformation">5</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2011</span></td>
+<td>dallara</td>
+<td>honda</td>
+<td>16</td>
+<td>17</td>
+<td>team penske</td>
+<td><span class="highlighted-cell" title="Used in transformation">6</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 5: Select rows where 'row_number_diff' is 1.</div>
+<div id="step-3" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>chassis</td>
+<td>engine</td>
+<td>start</td>
+<td>finish</td>
+<td>team</td>
+<td>row_number</td>
+<td>row_number_diff</td>
+</tr>
+<tr>
+<td>2006</td>
+<td>dallara</td>
+<td>honda</td>
+<td>2</td>
+<td>25</td>
+<td>team penske</td>
+<td>1</td>
+<td>None</td>
+</tr>
+<tr>
+<td>2007</td>
+<td>dallara</td>
+<td>honda</td>
+<td>1</td>
+<td>3</td>
+<td>team penske</td>
+<td>2</td>
+<td><span class="highlighted-cell" title="Used in transformation">1.0</span></td>
+</tr>
+<tr>
+<td>2008</td>
+<td>dallara</td>
+<td>honda</td>
+<td>4</td>
+<td>4</td>
+<td>team penske</td>
+<td>3</td>
+<td><span class="highlighted-cell" title="Used in transformation">1.0</span></td>
+</tr>
+<tr>
+<td>2009</td>
+<td>dallara</td>
+<td>honda</td>
+<td>1</td>
+<td>1</td>
+<td>team penske</td>
+<td>4</td>
+<td><span class="highlighted-cell" title="Used in transformation">1.0</span></td>
+</tr>
+<tr>
+<td>2010</td>
+<td>dallara</td>
+<td>honda</td>
+<td>1</td>
+<td>9</td>
+<td>team penske</td>
+<td>5</td>
+<td><span class="highlighted-cell" title="Used in transformation">1.0</span></td>
+</tr>
+<tr>
+<td>2011</td>
+<td>dallara</td>
+<td>honda</td>
+<td>16</td>
+<td>17</td>
+<td>team penske</td>
+<td>6</td>
+<td><span class="highlighted-cell" title="Used in transformation">1.0</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 6: Count the number of rows.</div>
+<div id="step-4" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>chassis</td>
+<td>engine</td>
+<td>start</td>
+<td>finish</td>
+<td>team</td>
+<td>row_number</td>
+<td>row_number_diff</td>
+</tr>
+<tr>
+<td>2007</td>
+<td>dallara</td>
+<td>honda</td>
+<td>1</td>
+<td>3</td>
+<td>team penske</td>
+<td>2</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>2008</td>
+<td>dallara</td>
+<td>honda</td>
+<td>4</td>
+<td>4</td>
+<td>team penske</td>
+<td>3</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>2009</td>
+<td>dallara</td>
+<td>honda</td>
+<td>1</td>
+<td>1</td>
+<td>team penske</td>
+<td>4</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>2010</td>
+<td>dallara</td>
+<td>honda</td>
+<td>1</td>
+<td>9</td>
+<td>team penske</td>
+<td>5</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>2011</td>
+<td>dallara</td>
+<td>honda</td>
+<td>16</td>
+<td>17</td>
+<td>team penske</td>
+<td>6</td>
+<td>1.0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>row_count</td>
+</tr>
+<tr>
+<td>5</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[5]]</h3>
+</body></html>

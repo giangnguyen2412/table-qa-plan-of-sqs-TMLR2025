@@ -1,0 +1,571 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which defunct nba team had the highest win percentage?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Extract the win_loss_record column and split it into two separate columns</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>team</td>
+<td>city</td>
+<td>years_active</td>
+<td>seasons_played</td>
+<td>win_loss_record</td>
+<td>win_</td>
+<td>playoffs_appearances</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">anderson packers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">anderson, indiana</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1949–1950</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">37–27</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">.578</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">baa buffalo</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">buffalo, new york</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">never played</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">n/a</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">baa indianapolis</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">indianapolis, indiana</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">never played</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">n/a</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">baltimore bullets*</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">baltimore, maryland</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1947–1954</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">158–292</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">.351</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">3</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">chicago stags</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">chicago, illinois</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1946–1950</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">145–92</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">.612</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">4</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">cleveland rebels</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">cleveland, ohio</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1946–1947</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">30–30</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">.500</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">denver nuggets</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">denver, colorado</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1949–1950</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">11–51</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">.177</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">detroit falcons</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">detroit, michigan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1946–1947</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">20–40</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">.333</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">indianapolis jets</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">indianapolis, indiana</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1948–1949</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">18–42</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">.300</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">indianapolis olympians</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">indianapolis, indiana</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1949–1953</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">132–137</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">.491</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">4</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">pittsburgh ironmen</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">pittsburgh, pennsylvania</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1946–1947</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">15–45</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">.250</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">providence steamrollers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">providence, rhode island</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1946–1949</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">46–122</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">.274</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">sheboygan red skins</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">sheboygan, wisconsin</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1949–1950</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">22–40</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">.355</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">st. louis bombers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">st. louis, missouri</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1946–1950</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">122–115</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">.515</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">3</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">toronto huskies</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">toronto, ontario</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1946–1947</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">22–38</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">.367</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">washington capitols</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">washington, d.c.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1946–1951</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">157–114</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">.579</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">4</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">waterloo hawks</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">waterloo, iowa</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1949–1950</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">19–43</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">.306</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">0</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Calculate the win percentage by dividing the wins column by the sum of wins and losses columns and multiplying by 100.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>team</td>
+<td>city</td>
+<td>years_active</td>
+<td>seasons_played</td>
+<td>wins</td>
+<td>losses</td>
+<td>win_</td>
+<td>playoffs_appearances</td>
+</tr>
+<tr>
+<td>anderson packers</td>
+<td>anderson, indiana</td>
+<td>1949–1950</td>
+<td>1</td>
+<td></td>
+<td>37–27</td>
+<td>.578</td>
+<td>1</td>
+</tr>
+<tr>
+<td>baa buffalo</td>
+<td>buffalo, new york</td>
+<td>never played</td>
+<td>0</td>
+<td></td>
+<td>0–0</td>
+<td>n/a</td>
+<td>0</td>
+</tr>
+<tr>
+<td>baa indianapolis</td>
+<td>indianapolis, indiana</td>
+<td>never played</td>
+<td>0</td>
+<td></td>
+<td>0–0</td>
+<td>n/a</td>
+<td>0</td>
+</tr>
+<tr>
+<td>baltimore bullets*</td>
+<td>baltimore, maryland</td>
+<td>1947–1954</td>
+<td>8</td>
+<td></td>
+<td>158–292</td>
+<td>.351</td>
+<td>3</td>
+</tr>
+<tr>
+<td>chicago stags</td>
+<td>chicago, illinois</td>
+<td>1946–1950</td>
+<td>4</td>
+<td></td>
+<td>145–92</td>
+<td>.612</td>
+<td>4</td>
+</tr>
+<tr>
+<td>cleveland rebels</td>
+<td>cleveland, ohio</td>
+<td>1946–1947</td>
+<td>1</td>
+<td></td>
+<td>30–30</td>
+<td>.500</td>
+<td>1</td>
+</tr>
+<tr>
+<td>denver nuggets</td>
+<td>denver, colorado</td>
+<td>1949–1950</td>
+<td>1</td>
+<td></td>
+<td>11–51</td>
+<td>.177</td>
+<td>0</td>
+</tr>
+<tr>
+<td>detroit falcons</td>
+<td>detroit, michigan</td>
+<td>1946–1947</td>
+<td>1</td>
+<td></td>
+<td>20–40</td>
+<td>.333</td>
+<td>0</td>
+</tr>
+<tr>
+<td>indianapolis jets</td>
+<td>indianapolis, indiana</td>
+<td>1948–1949</td>
+<td>1</td>
+<td></td>
+<td>18–42</td>
+<td>.300</td>
+<td>0</td>
+</tr>
+<tr>
+<td>indianapolis olympians</td>
+<td>indianapolis, indiana</td>
+<td>1949–1953</td>
+<td>4</td>
+<td></td>
+<td>132–137</td>
+<td>.491</td>
+<td>4</td>
+</tr>
+<tr>
+<td>pittsburgh ironmen</td>
+<td>pittsburgh, pennsylvania</td>
+<td>1946–1947</td>
+<td>1</td>
+<td></td>
+<td>15–45</td>
+<td>.250</td>
+<td>0</td>
+</tr>
+<tr>
+<td>providence steamrollers</td>
+<td>providence, rhode island</td>
+<td>1946–1949</td>
+<td>3</td>
+<td></td>
+<td>46–122</td>
+<td>.274</td>
+<td>0</td>
+</tr>
+<tr>
+<td>sheboygan red skins</td>
+<td>sheboygan, wisconsin</td>
+<td>1949–1950</td>
+<td>1</td>
+<td></td>
+<td>22–40</td>
+<td>.355</td>
+<td>1</td>
+</tr>
+<tr>
+<td>st. louis bombers</td>
+<td>st. louis, missouri</td>
+<td>1946–1950</td>
+<td>4</td>
+<td></td>
+<td>122–115</td>
+<td>.515</td>
+<td>3</td>
+</tr>
+<tr>
+<td>toronto huskies</td>
+<td>toronto, ontario</td>
+<td>1946–1947</td>
+<td>1</td>
+<td></td>
+<td>22–38</td>
+<td>.367</td>
+<td>0</td>
+</tr>
+<tr>
+<td>washington capitols</td>
+<td>washington, d.c.</td>
+<td>1946–1951</td>
+<td>5</td>
+<td></td>
+<td>157–114</td>
+<td>.579</td>
+<td>4</td>
+</tr>
+<tr>
+<td>waterloo hawks</td>
+<td>waterloo, iowa</td>
+<td>1949–1950</td>
+<td>1</td>
+<td></td>
+<td>19–43</td>
+<td>.306</td>
+<td>0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Order the table by win percentage in descending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>team</td>
+<td>win_percentage</td>
+</tr>
+<tr>
+<td>anderson packers</td>
+<td><span class="highlighted-cell" title="Used in transformation">None</span></td>
+</tr>
+<tr>
+<td>baa buffalo</td>
+<td><span class="highlighted-cell" title="Used in transformation">None</span></td>
+</tr>
+<tr>
+<td>baa indianapolis</td>
+<td><span class="highlighted-cell" title="Used in transformation">None</span></td>
+</tr>
+<tr>
+<td>baltimore bullets*</td>
+<td><span class="highlighted-cell" title="Used in transformation">None</span></td>
+</tr>
+<tr>
+<td>chicago stags</td>
+<td><span class="highlighted-cell" title="Used in transformation">None</span></td>
+</tr>
+<tr>
+<td>cleveland rebels</td>
+<td><span class="highlighted-cell" title="Used in transformation">None</span></td>
+</tr>
+<tr>
+<td>denver nuggets</td>
+<td><span class="highlighted-cell" title="Used in transformation">None</span></td>
+</tr>
+<tr>
+<td>detroit falcons</td>
+<td><span class="highlighted-cell" title="Used in transformation">None</span></td>
+</tr>
+<tr>
+<td>indianapolis jets</td>
+<td><span class="highlighted-cell" title="Used in transformation">None</span></td>
+</tr>
+<tr>
+<td>indianapolis olympians</td>
+<td><span class="highlighted-cell" title="Used in transformation">None</span></td>
+</tr>
+<tr>
+<td>pittsburgh ironmen</td>
+<td><span class="highlighted-cell" title="Used in transformation">None</span></td>
+</tr>
+<tr>
+<td>providence steamrollers</td>
+<td><span class="highlighted-cell" title="Used in transformation">None</span></td>
+</tr>
+<tr>
+<td>sheboygan red skins</td>
+<td><span class="highlighted-cell" title="Used in transformation">None</span></td>
+</tr>
+<tr>
+<td>st. louis bombers</td>
+<td><span class="highlighted-cell" title="Used in transformation">None</span></td>
+</tr>
+<tr>
+<td>toronto huskies</td>
+<td><span class="highlighted-cell" title="Used in transformation">None</span></td>
+</tr>
+<tr>
+<td>washington capitols</td>
+<td><span class="highlighted-cell" title="Used in transformation">None</span></td>
+</tr>
+<tr>
+<td>waterloo hawks</td>
+<td><span class="highlighted-cell" title="Used in transformation">None</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Select row number 1.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>team</td>
+<td>win_percentage</td>
+</tr>
+<tr>
+<td>anderson packers</td>
+<td>None</td>
+</tr>
+<tr>
+<td>baa buffalo</td>
+<td>None</td>
+</tr>
+<tr>
+<td>baa indianapolis</td>
+<td>None</td>
+</tr>
+<tr>
+<td>baltimore bullets*</td>
+<td>None</td>
+</tr>
+<tr>
+<td>chicago stags</td>
+<td>None</td>
+</tr>
+<tr>
+<td>cleveland rebels</td>
+<td>None</td>
+</tr>
+<tr>
+<td>denver nuggets</td>
+<td>None</td>
+</tr>
+<tr>
+<td>detroit falcons</td>
+<td>None</td>
+</tr>
+<tr>
+<td>indianapolis jets</td>
+<td>None</td>
+</tr>
+<tr>
+<td>indianapolis olympians</td>
+<td>None</td>
+</tr>
+<tr>
+<td>pittsburgh ironmen</td>
+<td>None</td>
+</tr>
+<tr>
+<td>providence steamrollers</td>
+<td>None</td>
+</tr>
+<tr>
+<td>sheboygan red skins</td>
+<td>None</td>
+</tr>
+<tr>
+<td>st. louis bombers</td>
+<td>None</td>
+</tr>
+<tr>
+<td>toronto huskies</td>
+<td>None</td>
+</tr>
+<tr>
+<td>washington capitols</td>
+<td>None</td>
+</tr>
+<tr>
+<td>waterloo hawks</td>
+<td>None</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 5: Select the team column.</div>
+<div id="step-3" class="content">
+<table>
+<tr>
+<td>team</td>
+<td>win_percentage</td>
+</tr>
+<tr>
+<td>anderson packers</td>
+<td>None</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>team</td>
+</tr>
+<tr>
+<td>anderson packers</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['anderson packers']]</h3>
+</body></html>

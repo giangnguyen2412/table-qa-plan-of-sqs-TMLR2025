@@ -1,0 +1,65 @@
+************************************************************************************************************************
+Sample 3062 - Plan 1: Query: which country won more bronze medals, romania or yugoslavia?
+Sample 3062 - Plan 1: Groundtruth: ['Romania']
+Sample 3062 - Plan 1: X-Original table pd: 
+     rank          nation  gold  silver  bronze  total
+0       1    soviet union    26      17      15     58
+1       2   united states    22      18      11     51
+2       3    east germany     8       3       4     15
+3       4           italy     4       4       6     14
+4       5           japan     3       7       5     15
+5       6         hungary     3       6       6     15
+6       7    west germany     3       6       4     13
+7       8  united kingdom     3       4       7     14
+8       9          poland     3       1       5      9
+9      10      yugoslavia     3       1       1      5
+10     11     netherlands     1       1       2      4
+11     12         austria     1       1       1      3
+12     12        bulgaria     1       1       1      3
+13     14          france     1       0       4      5
+14     15         romania     0       4       2      6
+15     16            cuba     0       2       2      4
+16     17       australia     0       1       0      1
+17     17  czechoslovakia     0       1       0      1
+18     17          greece     0       1       0      1
+19     17          sweden     0       1       0      1
+20     21          canada     0       0       1      1
+21     21     south korea     0       0       1      1
+22     21      madagascar     0       0       1      1
+23     21          panama     0       0       1      1
+24  total           total    82      80      80    242
+Sample 3062 - Plan 1: Caption: none
+Sample 3062 - Plan 1: Original table: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['1', 'soviet union', '26', '17', '15', '58'], ['2', 'united states', '22', '18', '11', '51'], ['3', 'east germany', '8', '3', '4', '15'], ['4', 'italy', '4', '4', '6', '14'], ['5', 'japan', '3', '7', '5', '15'], ['6', 'hungary', '3', '6', '6', '15'], ['7', 'west germany', '3', '6', '4', '13'], ['8', 'united kingdom', '3', '4', '7', '14'], ['9', 'poland', '3', '1', '5', '9'], ['10', 'yugoslavia', '3', '1', '1', '5'], ['11', 'netherlands', '1', '1', '2', '4'], ['12', 'austria', '1', '1', '1', '3'], ['12', 'bulgaria', '1', '1', '1', '3'], ['14', 'france', '1', '0', '4', '5'], ['15', 'romania', '0', '4', '2', '6'], ['16', 'cuba', '0', '2', '2', '4'], ['17', 'australia', '0', '1', '0', '1'], ['17', 'czechoslovakia', '0', '1', '0', '1'], ['17', 'greece', '0', '1', '0', '1'], ['17', 'sweden', '0', '1', '0', '1'], ['21', 'canada', '0', '0', '1', '1'], ['21', 'south korea', '0', '0', '1', '1'], ['21', 'madagascar', '0', '0', '1', '1'], ['21', 'panama', '0', '0', '1', '1'], ['total', 'total', '82', '80', '80', '242']]
+########################################################################################################################
+Sample 3062 - Plan 1: Operation 1: Select rows where 'nation' is 'romania' or 'yugoslavia'.
+Sample 3062 - Plan 1: Selected indices: [[14, 1], [9, 1]]
+Sample 3062 - Plan 1: X-Table after operation df:
+   rank      nation  gold  silver  bronze  total
+0    10  yugoslavia     3       1       1      5
+1    15     romania     0       4       2      6
+Sample 3062 - Plan 1: Table after operation: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['10', 'yugoslavia', 3, 1, 1, 5], ['15', 'romania', 0, 4, 2, 6]]
+########################################################################################################################
+Sample 3062 - Plan 1: Operation 2: Select the 'bronze' column.
+Sample 3062 - Plan 1: Selected indices: []
+Sample 3062 - Plan 1: X-Table after operation df:
+   bronze
+0       1
+1       2
+Sample 3062 - Plan 1: Table after operation: [['bronze'], [1], [2]]
+########################################################################################################################
+Sample 3062 - Plan 1: Operation 3: Compare the number of bronze medals for romania and yugoslavia.
+Sample 3062 - Plan 1: Selected indices: [[0, 0], [1, 0]]
+Sample 3062 - Plan 1: X-Table after operation df:
+   romania_bronze  yugoslavia_bronze
+0               1                  1
+Sample 3062 - Plan 1: Table after operation: [['romania_bronze', 'yugoslavia_bronze'], [1, 1]]
+########################################################################################################################
+Sample 3062 - Plan 1: Operation 4: Select the country with the higher number of bronze medals as the answer to the question.
+Sample 3062 - Plan 1: Selected indices: []
+Sample 3062 - Plan 1: X-Table after operation df:
+  country_with_higher_bronze_medals
+0                             equal
+Sample 3062 - Plan 1: Table after operation: [['country_with_higher_bronze_medals'], ['equal']]
+Fall-back: FALSE
+Answer from plan 1: [['equal']]
+Groundtruth: ['Romania']

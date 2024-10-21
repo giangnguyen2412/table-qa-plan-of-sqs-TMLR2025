@@ -1,0 +1,77 @@
+************************************************************************************************************************
+Sample 1870 - Plan 1: Query: in the beginning of the show thee were only 3 judges, but what series did the show change to 4 judges?
+Sample 1870 - Plan 1: Groundtruth: ['Five']
+Sample 1870 - Plan 1: X-Original table pd: 
+  series       premiere        finale               winner  \
+0    one    9 june 2007  17 june 2007           paul potts   
+1    two  12 april 2008   31 may 2008       george sampson   
+2  three  11 april 2009   30 may 2009            diversity   
+3   four  17 april 2010   5 june 2010            spelbound   
+4   five  16 april 2011   4 june 2011         jai mcdowall   
+5    six  24 march 2012   12 may 2012  ashleigh and pudsey   
+6  seven  13 april 2013   8 june 2013           attraction   
+7  eight  12 april 2014   31 may 2014                  tba   
+8   nine           2015          2015                  tba   
+
+                runner_up      third_place    host_s_  \
+0             damon scott    connie talbot  ant & dec   
+1               signature  andrew johnston  ant & dec   
+2             susan boyle     julian smith  ant & dec   
+3         twist and pulse   kieran gaffney  ant & dec   
+4             ronan parke       new bounce  ant & dec   
+5  jonathan and charlotte  only boys aloud  ant & dec   
+6            jack carroll   richard & adam  ant & dec   
+7                     tba              tba  ant & dec   
+8                     tba              tba  ant & dec   
+
+                                       judging_panel  guest_judge_s_  
+0          simon cowell\namanda holden\npiers morgan             n/a  
+1          simon cowell\namanda holden\npiers morgan             n/a  
+2          simon cowell\namanda holden\npiers morgan     kelly brook  
+3          simon cowell\namanda holden\npiers morgan     louis walsh  
+4  simon cowell\namanda holden\ndavid hasselhoff\...     louis walsh  
+5  simon cowell\namanda holden\nalesha dixon\ndav...  carmen electra  
+6  simon cowell\namanda holden\nalesha dixon\ndav...             n/a  
+7  simon cowell\namanda holden\nalesha dixon\ndav...       ant & dec  
+8                                                tba             tba  
+Sample 1870 - Plan 1: Caption: none
+Sample 1870 - Plan 1: Original table: [['series', 'premiere', 'finale', 'winner', 'runner_up', 'third_place', 'host_s_', 'judging_panel', 'guest_judge_s_'], ['one', '9 june 2007', '17 june 2007', 'paul potts', 'damon scott', 'connie talbot', 'ant & dec', 'simon cowell\\namanda holden\\npiers morgan', 'n/a'], ['two', '12 april 2008', '31 may 2008', 'george sampson', 'signature', 'andrew johnston', 'ant & dec', 'simon cowell\\namanda holden\\npiers morgan', 'n/a'], ['three', '11 april 2009', '30 may 2009', 'diversity', 'susan boyle', 'julian smith', 'ant & dec', 'simon cowell\\namanda holden\\npiers morgan', 'kelly brook'], ['four', '17 april 2010', '5 june 2010', 'spelbound', 'twist and pulse', 'kieran gaffney', 'ant & dec', 'simon cowell\\namanda holden\\npiers morgan', 'louis walsh'], ['five', '16 april 2011', '4 june 2011', 'jai mcdowall', 'ronan parke', 'new bounce', 'ant & dec', 'simon cowell\\namanda holden\\ndavid hasselhoff\\nmichael mcintyre', 'louis walsh'], ['six', '24 march 2012', '12 may 2012', 'ashleigh and pudsey', 'jonathan and charlotte', 'only boys aloud', 'ant & dec', 'simon cowell\\namanda holden\\nalesha dixon\\ndavid walliams', 'carmen electra'], ['seven', '13 april 2013', '8 june 2013', 'attraction', 'jack carroll', 'richard & adam', 'ant & dec', 'simon cowell\\namanda holden\\nalesha dixon\\ndavid walliams', 'n/a'], ['eight', '12 april 2014', '31 may 2014', 'tba', 'tba', 'tba', 'ant & dec', 'simon cowell\\namanda holden\\nalesha dixon\\ndavid walliams', 'ant & dec'], ['nine', '2015', '2015', 'tba', 'tba', 'tba', 'ant & dec', 'tba', 'tba']]
+########################################################################################################################
+Sample 1870 - Plan 1: Operation 1: Select rows where the number of judges in the 'judging_panel' column is equal to 3.
+Sample 1870 - Plan 1: Selected indices: []
+Sample 1870 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [series, premiere, finale, winner, runner_up, third_place, host_s_, judging_panel, guest_judge_s_]
+Index: []
+Sample 1870 - Plan 1: Table after operation: [['series', 'premiere', 'finale', 'winner', 'runner_up', 'third_place', 'host_s_', 'judging_panel', 'guest_judge_s_']]
+########################################################################################################################
+Sample 1870 - Plan 1: Operation 2: Select the 'series' column for the selected rows.
+Sample 1870 - Plan 1: Selected indices: []
+Sample 1870 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [series]
+Index: []
+Sample 1870 - Plan 1: Table after operation: [['series']]
+########################################################################################################################
+Sample 1870 - Plan 1: Operation 3: Order the table by the 'series' column in ascending order.
+Sample 1870 - Plan 1: Selected indices: []
+Sample 1870 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [series]
+Index: []
+Sample 1870 - Plan 1: Table after operation: [['series']]
+########################################################################################################################
+Sample 1870 - Plan 1: Operation 4: Select the first row.
+Sample 1870 - Plan 1: Selected indices: []
+Sample 1870 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [series]
+Index: []
+Sample 1870 - Plan 1: Table after operation: [['series']]
+########################################################################################################################
+Sample 1870 - Plan 1: Operation 5: Select the 'series' value from the selected row.
+SQL execution error in operation 5: Execution failed on sql 'Write a SQL command that: Select the 'series' value from the selected row.': near "Write": syntax error
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['eight']]
+Groundtruth: ['Five']

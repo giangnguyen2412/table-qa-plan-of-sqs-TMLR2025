@@ -1,0 +1,69 @@
+************************************************************************************************************************
+Sample 2825 - Plan 1: Query: what is the number of winners in the community division?
+Sample 2825 - Plan 1: Groundtruth: ['8']
+Sample 2825 - Plan 1: X-Original table pd: 
+    year state_territory_men_s_division state_territory_women_s_division  \
+0   2012                     queensland                  new south wales   
+1   2012                new south wales                  new south wales   
+2   2011                new south wales                  new south wales   
+3   2010              western australia                                    
+4   2009                     queensland                                    
+5   2008                     queensland                                    
+6   2007                new south wales                                    
+7   2006                     queensland                                    
+8   2005                     queensland                                    
+9   2004                     queensland                                    
+10  2003                new south wales                                    
+11  2002             northern territory                                    
+12  2001                       tasmania                                    
+
+   major_centres_division community_division women_s_division  
+0                                                              
+1                  darwin   brothers in arms    bush potatoes  
+2          maranoa murris         gap angels    bush potatoes  
+3                                                              
+4               alkupitja        tangentyere  new south wales  
+5               katherine           cooktown  new south wales  
+6               alkupitja         cat tigers      cga cougars  
+7           alice springs    melville island           darwin  
+8           alice springs          alkupitja           darwin  
+9           alice springs          normanton    tennant creek  
+10                 darwin                                      
+11                 darwin                                      
+12                                                             
+Sample 2825 - Plan 1: Caption: none
+Sample 2825 - Plan 1: Original table: [['year', 'state_territory_men_s_division', 'state_territory_women_s_division', 'major_centres_division', 'community_division', 'women_s_division'], ['2012', 'queensland', 'new south wales', '', '', ''], ['2012', 'new south wales', 'new south wales', 'darwin', 'brothers in arms', 'bush potatoes'], ['2011', 'new south wales', 'new south wales', 'maranoa murris', 'gap angels', 'bush potatoes'], ['2010', 'western australia', '', '', '', ''], ['2009', 'queensland', '', 'alkupitja', 'tangentyere', 'new south wales'], ['2008', 'queensland', '', 'katherine', 'cooktown', 'new south wales'], ['2007', 'new south wales', '', 'alkupitja', 'cat tigers', 'cga cougars'], ['2006', 'queensland', '', 'alice springs', 'melville island', 'darwin'], ['2005', 'queensland', '', 'alice springs', 'alkupitja', 'darwin'], ['2004', 'queensland', '', 'alice springs', 'normanton', 'tennant creek'], ['2003', 'new south wales', '', 'darwin', '', ''], ['2002', 'northern territory', '', 'darwin', '', ''], ['2001', 'tasmania', '', '', '', '']]
+########################################################################################################################
+Sample 2825 - Plan 1: Operation 1: Select rows where the 'community_division' is not empty.
+Sample 2825 - Plan 1: Selected indices: [[4, 4], [7, 4], [2, 4], [8, 4], [5, 4], [6, 4], [1, 4], [9, 4]]
+Sample 2825 - Plan 1: X-Table after operation df:
+   year state_territory_men_s_division state_territory_women_s_division  \
+0  2012                new south wales                  new south wales   
+1  2011                new south wales                  new south wales   
+2  2009                     queensland                                    
+3  2008                     queensland                                    
+4  2007                new south wales                                    
+5  2006                     queensland                                    
+6  2005                     queensland                                    
+7  2004                     queensland                                    
+
+  major_centres_division community_division women_s_division  
+0                 darwin   brothers in arms    bush potatoes  
+1         maranoa murris         gap angels    bush potatoes  
+2              alkupitja        tangentyere  new south wales  
+3              katherine           cooktown  new south wales  
+4              alkupitja         cat tigers      cga cougars  
+5          alice springs    melville island           darwin  
+6          alice springs          alkupitja           darwin  
+7          alice springs          normanton    tennant creek  
+Sample 2825 - Plan 1: Table after operation: [['year', 'state_territory_men_s_division', 'state_territory_women_s_division', 'major_centres_division', 'community_division', 'women_s_division'], [2012, 'new south wales', 'new south wales', 'darwin', 'brothers in arms', 'bush potatoes'], [2011, 'new south wales', 'new south wales', 'maranoa murris', 'gap angels', 'bush potatoes'], [2009, 'queensland', '', 'alkupitja', 'tangentyere', 'new south wales'], [2008, 'queensland', '', 'katherine', 'cooktown', 'new south wales'], [2007, 'new south wales', '', 'alkupitja', 'cat tigers', 'cga cougars'], [2006, 'queensland', '', 'alice springs', 'melville island', 'darwin'], [2005, 'queensland', '', 'alice springs', 'alkupitja', 'darwin'], [2004, 'queensland', '', 'alice springs', 'normanton', 'tennant creek']]
+########################################################################################################################
+Sample 2825 - Plan 1: Operation 2: Count the number of rows.
+Sample 2825 - Plan 1: Selected indices: []
+Sample 2825 - Plan 1: X-Table after operation df:
+   row_count
+0          8
+Sample 2825 - Plan 1: Table after operation: [['row_count'], [8]]
+Fall-back: FALSE
+Answer from plan 1: [[8]]
+Groundtruth: ['8']

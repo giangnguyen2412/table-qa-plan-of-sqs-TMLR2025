@@ -1,0 +1,64 @@
+************************************************************************************************************************
+Sample 3995 - Plan 1: Query: which game was the closest: 1978 or 1998?
+Sample 3995 - Plan 1: Groundtruth: ['1998']
+Sample 3995 - Plan 1: X-Original table pd: 
+   year matches        winner results    pakistan_ncaptain  \
+0  1978       4  pakistan win   3 - 1  islahuddin siddique   
+1  1981       4  pakistan win   2 - 1        akhtar rasool   
+2  1986       7     india win   3 - 2        hassan sardar   
+3  1988       6          draw   2 - 2            nasir ali   
+4  1998       8  pakistan win   4 - 3          tahir zaman   
+5  1999       9  pakistan win   5 - 3          atif bashir   
+6  2004       8  pakistan win   4 - 2         waseem ahmad   
+7  2006       6  pakistan win   3 - 1     mohammad saqlain   
+8  2013     tba           tba     tba                  tba   
+
+       pakistan_ncoach   india_ncaptain        india_ncoach  
+0     sayad a. hussain    v. j. philips        r. s. gentle  
+1            zakauddin    surjeet singh       harmeek singh  
+2     anwar ahmad khan  mohmmad shaheed        m. p. ganesh  
+3     manzoor-ul-hasan     m. m. somaya        m. p. ganesh  
+4  islahuddin siddique   dhanraj pillay         v bhaskaran  
+5       shahnaz shaikh      anil aldrin         v bhaskaran  
+6      roelant oltmans    dileep tirkey         gehard rach  
+7           asif bajwa    ignace tirkey  rajinder singh jr.  
+8                  tba              tba                 tba  
+Sample 3995 - Plan 1: Caption: none
+Sample 3995 - Plan 1: Original table: [['year', 'matches', 'winner', 'results', 'pakistan_ncaptain', 'pakistan_ncoach', 'india_ncaptain', 'india_ncoach'], ['1978', '4', 'pakistan win', '3 - 1', 'islahuddin siddique', 'sayad a. hussain', 'v. j. philips', 'r. s. gentle'], ['1981', '4', 'pakistan win', '2 - 1', 'akhtar rasool', 'zakauddin', 'surjeet singh', 'harmeek singh'], ['1986', '7', 'india win', '3 - 2', 'hassan sardar', 'anwar ahmad khan', 'mohmmad shaheed', 'm. p. ganesh'], ['1988', '6', 'draw', '2 - 2', 'nasir ali', 'manzoor-ul-hasan', 'm. m. somaya', 'm. p. ganesh'], ['1998', '8', 'pakistan win', '4 - 3', 'tahir zaman', 'islahuddin siddique', 'dhanraj pillay', 'v bhaskaran'], ['1999', '9', 'pakistan win', '5 - 3', 'atif bashir', 'shahnaz shaikh', 'anil aldrin', 'v bhaskaran'], ['2004', '8', 'pakistan win', '4 - 2', 'waseem ahmad', 'roelant oltmans', 'dileep tirkey', 'gehard rach'], ['2006', '6', 'pakistan win', '3 - 1', 'mohammad saqlain', 'asif bajwa', 'ignace tirkey', 'rajinder singh jr.'], ['2013', 'tba', 'tba', 'tba', 'tba', 'tba', 'tba', 'tba']]
+########################################################################################################################
+Sample 3995 - Plan 1: Operation 1: Select rows where the 'year' is either 1978 or 1998.
+Sample 3995 - Plan 1: Selected indices: [[4, 0], [0, 0]]
+Sample 3995 - Plan 1: X-Table after operation df:
+   year  matches        winner results    pakistan_ncaptain  \
+0  1978        4  pakistan win   3 - 1  islahuddin siddique   
+1  1998        8  pakistan win   4 - 3          tahir zaman   
+
+       pakistan_ncoach  india_ncaptain  india_ncoach  
+0     sayad a. hussain   v. j. philips  r. s. gentle  
+1  islahuddin siddique  dhanraj pillay   v bhaskaran  
+Sample 3995 - Plan 1: Table after operation: [['year', 'matches', 'winner', 'results', 'pakistan_ncaptain', 'pakistan_ncoach', 'india_ncaptain', 'india_ncoach'], [1978, '4', 'pakistan win', '3 - 1', 'islahuddin siddique', 'sayad a. hussain', 'v. j. philips', 'r. s. gentle'], [1998, '8', 'pakistan win', '4 - 3', 'tahir zaman', 'islahuddin siddique', 'dhanraj pillay', 'v bhaskaran']]
+########################################################################################################################
+Sample 3995 - Plan 1: Operation 2: Calculate the absolute difference between the 'matches' column for each selected row and the maximum value of the 'matches' column.
+Sample 3995 - Plan 1: Selected indices: []
+Sample 3995 - Plan 1: X-Table after operation df:
+   diff_matches
+0             4
+1             0
+Sample 3995 - Plan 1: Table after operation: [['diff_matches'], [4], [0]]
+########################################################################################################################
+Sample 3995 - Plan 1: Operation 3: Select the row with the minimum absolute difference.
+Sample 3995 - Plan 1: Selected indices: [[1, 0]]
+Sample 3995 - Plan 1: X-Table after operation df:
+   diff_matches
+0             0
+Sample 3995 - Plan 1: Table after operation: [['diff_matches'], [0]]
+########################################################################################################################
+Sample 3995 - Plan 1: Operation 4: Select the 'year' column for the selected row.
+Sample 3995 - Plan 1: Selected indices: []
+Sample 3995 - Plan 1: X-Table after operation df:
+   year
+0     0
+Sample 3995 - Plan 1: Table after operation: [['year'], [0]]
+Fall-back: FALSE
+Answer from plan 1: [[0]]
+Groundtruth: ['1998']

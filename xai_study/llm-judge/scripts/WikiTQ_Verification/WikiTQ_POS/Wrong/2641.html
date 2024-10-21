@@ -1,0 +1,393 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how many years was he at least in the top 20 overall?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Filter the table to include only the rows where the 'overall' column is less than or equal to 20.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>season</td>
+<td>age</td>
+<td>overall</td>
+<td>slalom</td>
+<td>giant_nslalom</td>
+<td>super_g</td>
+<td>downhill</td>
+<td>combined</td>
+</tr>
+<tr>
+<td>2007</td>
+<td>20</td>
+<td>130</td>
+<td>–</td>
+<td>40</td>
+<td>–</td>
+<td>–</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2008</td>
+<td>21</td>
+<td>64</td>
+<td>–</td>
+<td>28</td>
+<td>46</td>
+<td>46</td>
+<td>31</td>
+</tr>
+<tr>
+<td>2009</td>
+<td>22</td>
+<td>7</td>
+<td>–</td>
+<td>6</td>
+<td>16</td>
+<td>16</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2010</td>
+<td>23</td>
+<td>1</td>
+<td>–</td>
+<td>2</td>
+<td>6</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2011</td>
+<td>24</td>
+<td>3</td>
+<td>–</td>
+<td>5</td>
+<td>6</td>
+<td>9</td>
+<td>6</td>
+</tr>
+<tr>
+<td>2012</td>
+<td>25</td>
+<td>24</td>
+<td>–</td>
+<td>16</td>
+<td>28</td>
+<td>17</td>
+<td>19</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>26</td>
+<td>48</td>
+<td>–</td>
+<td>48</td>
+<td>27</td>
+<td>38</td>
+<td>4</td>
+</tr>
+<tr>
+<td>2014</td>
+<td>27</td>
+<td>18</td>
+<td>–</td>
+<td>25</td>
+<td>14</td>
+<td>20</td>
+<td>11</td>
+</tr>
+<tr>
+<td>season</td>
+<td>date</td>
+<td>location</td>
+<td>race</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2009</td>
+<td>13 dec 2008</td>
+<td>val d'isère, france</td>
+<td>giant slalom</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2009</td>
+<td>16 jan 2009</td>
+<td>wengen, switzerland</td>
+<td>super combined</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2010</td>
+<td>4 dec 2009</td>
+<td>beaver creek, usa</td>
+<td>super combined</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2010</td>
+<td>5 dec 2009</td>
+<td>beaver creek, usa</td>
+<td>downhill</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2010</td>
+<td>6 dec 2009</td>
+<td>beaver creek, usa</td>
+<td>giant slalom</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2010</td>
+<td>16 jan 2010</td>
+<td>wengen, switzerland</td>
+<td>downhill</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2010</td>
+<td>10 mar 2010</td>
+<td>garmisch, germany</td>
+<td>downhill</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2010</td>
+<td>12 mar 2010</td>
+<td>garmisch, germany</td>
+<td>giant slalom</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2011</td>
+<td>5 mar 2011</td>
+<td>kranjska gora, slovenia</td>
+<td>giant slalom</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Count the number of unique values in the 'season' column.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>season</td>
+<td>age</td>
+<td>overall</td>
+<td>slalom</td>
+<td>giant_nslalom</td>
+<td>super_g</td>
+<td>downhill</td>
+<td>combined</td>
+</tr>
+<tr>
+<td>2009</td>
+<td>22</td>
+<td>7</td>
+<td>–</td>
+<td>6.0</td>
+<td>16</td>
+<td>16</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2010</td>
+<td>23</td>
+<td>1</td>
+<td>–</td>
+<td>2.0</td>
+<td>6</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2011</td>
+<td>24</td>
+<td>3</td>
+<td>–</td>
+<td>5.0</td>
+<td>6</td>
+<td>9</td>
+<td>6</td>
+</tr>
+<tr>
+<td>2014</td>
+<td>27</td>
+<td>18</td>
+<td>–</td>
+<td>25.0</td>
+<td>14</td>
+<td>20</td>
+<td>11</td>
+</tr>
+<tr>
+<td>season</td>
+<td>date</td>
+<td>location</td>
+<td>race</td>
+<td>None</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2009</td>
+<td>13 dec 2008</td>
+<td>val d'isère, france</td>
+<td>giant slalom</td>
+<td>None</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2009</td>
+<td>16 jan 2009</td>
+<td>wengen, switzerland</td>
+<td>super combined</td>
+<td>None</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2010</td>
+<td>4 dec 2009</td>
+<td>beaver creek, usa</td>
+<td>super combined</td>
+<td>None</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2010</td>
+<td>5 dec 2009</td>
+<td>beaver creek, usa</td>
+<td>downhill</td>
+<td>None</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2010</td>
+<td>6 dec 2009</td>
+<td>beaver creek, usa</td>
+<td>giant slalom</td>
+<td>None</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2010</td>
+<td>16 jan 2010</td>
+<td>wengen, switzerland</td>
+<td>downhill</td>
+<td>None</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2010</td>
+<td>10 mar 2010</td>
+<td>garmisch, germany</td>
+<td>downhill</td>
+<td>None</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2010</td>
+<td>12 mar 2010</td>
+<td>garmisch, germany</td>
+<td>giant slalom</td>
+<td>None</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2011</td>
+<td>5 mar 2011</td>
+<td>kranjska gora, slovenia</td>
+<td>giant slalom</td>
+<td>None</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>unique_season_count</td>
+</tr>
+<tr>
+<td>5</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[5]]</h3>
+</body></html>

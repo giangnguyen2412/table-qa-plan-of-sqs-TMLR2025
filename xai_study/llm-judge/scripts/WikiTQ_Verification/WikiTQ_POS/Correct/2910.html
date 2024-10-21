@@ -1,0 +1,251 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how many times was attendance below 50,000?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where 'attendance' is less than 50,000.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>week</td>
+<td>date</td>
+<td>result</td>
+<td>record</td>
+<td>opponent</td>
+<td>points_for</td>
+<td>points_against</td>
+<td>first_downs</td>
+<td>attendance</td>
+</tr>
+<tr>
+<td>1</td>
+<td>september 18</td>
+<td>win</td>
+<td>1–0</td>
+<td>at minnesota vikings</td>
+<td>16</td>
+<td>10</td>
+<td>16</td>
+<td>47,678</td>
+</tr>
+<tr>
+<td>2</td>
+<td>september 25</td>
+<td>win</td>
+<td>2–0</td>
+<td>new york giants</td>
+<td>41</td>
+<td>21</td>
+<td>25</td>
+<td>64,215</td>
+</tr>
+<tr>
+<td>3</td>
+<td>october 2</td>
+<td>win</td>
+<td>3–0</td>
+<td>tampa bay buccaneers</td>
+<td>23</td>
+<td>7</td>
+<td>23</td>
+<td>55,316</td>
+</tr>
+<tr>
+<td>4</td>
+<td>october 9</td>
+<td>win</td>
+<td>4–0</td>
+<td>at st. louis cardinals</td>
+<td>30</td>
+<td>24</td>
+<td>22</td>
+<td>50,129</td>
+</tr>
+<tr>
+<td>5</td>
+<td>october 16</td>
+<td>win</td>
+<td>5–0</td>
+<td>washington redskins</td>
+<td>34</td>
+<td>16</td>
+<td>23</td>
+<td>62,115</td>
+</tr>
+<tr>
+<td>6</td>
+<td>october 23</td>
+<td>win</td>
+<td>6–0</td>
+<td>at philadelphia eagles</td>
+<td>16</td>
+<td>10</td>
+<td>17</td>
+<td>65,507</td>
+</tr>
+<tr>
+<td>7</td>
+<td>october 30</td>
+<td>win</td>
+<td>7–0</td>
+<td>detroit lions</td>
+<td>37</td>
+<td>0</td>
+<td>20</td>
+<td>63,160</td>
+</tr>
+<tr>
+<td>8</td>
+<td>november 6</td>
+<td>win</td>
+<td>8–0</td>
+<td>at new york giants</td>
+<td>24</td>
+<td>10</td>
+<td>13</td>
+<td>74,532</td>
+</tr>
+<tr>
+<td>9</td>
+<td>november 14</td>
+<td>loss</td>
+<td>8–1</td>
+<td>st. louis cardinals</td>
+<td>17</td>
+<td>24</td>
+<td>16</td>
+<td>64,038</td>
+</tr>
+<tr>
+<td>10</td>
+<td>november 20</td>
+<td>loss</td>
+<td>8–2</td>
+<td>at pittsburgh steelers</td>
+<td>13</td>
+<td>28</td>
+<td>20</td>
+<td>49,761</td>
+</tr>
+<tr>
+<td>11</td>
+<td>november 27</td>
+<td>win</td>
+<td>9–2</td>
+<td>at washington redskins</td>
+<td>14</td>
+<td>7</td>
+<td>19</td>
+<td>55,031</td>
+</tr>
+<tr>
+<td>12</td>
+<td>december 4</td>
+<td>win</td>
+<td>10–2</td>
+<td>philadelphia eagles</td>
+<td>24</td>
+<td>14</td>
+<td>19</td>
+<td>60,289</td>
+</tr>
+<tr>
+<td>13</td>
+<td>december 12</td>
+<td>win</td>
+<td>11–2</td>
+<td>at san francisco 49ers</td>
+<td>42</td>
+<td>35</td>
+<td>24</td>
+<td>55,851</td>
+</tr>
+<tr>
+<td>14</td>
+<td>december 18</td>
+<td>win</td>
+<td>12–2</td>
+<td>denver broncos</td>
+<td>14</td>
+<td>6</td>
+<td>15</td>
+<td>63,752</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Count the number of rows.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>week</td>
+<td>date</td>
+<td>result</td>
+<td>record</td>
+<td>opponent</td>
+<td>points_for</td>
+<td>points_against</td>
+<td>first_downs</td>
+<td>attendance</td>
+</tr>
+<tr>
+<td>1</td>
+<td>september 18</td>
+<td>win</td>
+<td>1–0</td>
+<td>at minnesota vikings</td>
+<td>16</td>
+<td>10</td>
+<td>16</td>
+<td>47,678</td>
+</tr>
+<tr>
+<td>10</td>
+<td>november 20</td>
+<td>loss</td>
+<td>8–2</td>
+<td>at pittsburgh steelers</td>
+<td>13</td>
+<td>28</td>
+<td>20</td>
+<td>49,761</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>row_count</td>
+</tr>
+<tr>
+<td>2</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[2]]</h3>
+</body></html>

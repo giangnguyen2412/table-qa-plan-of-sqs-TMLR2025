@@ -1,0 +1,40 @@
+
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+.sql-command { background-color: #f0f0f0; padding: 10px; border-left: 4px solid #4CAF50; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> spiral galaxy has two ngc numbers in the list</h3>
+<h3>Input Table: list of ngc objects (5001 - 6000)</h3>
+<div class="step">
+<table>
+<tr><td>ngc_number</td><td>object_type</td><td>constellation</td><td>right_ascension_(_j2000_)</td><td>declination_(_j2000_)</td><td>apparent_magnitude</td></tr><tr><td>5408</td><td>irregular galaxy</td><td>centaurus</td><td>14h03 m21.0s</td><td> degree22′44″</td><td>14.0</td></tr><tr><td>5457</td><td>spiral galaxy</td><td>ursa major</td><td>14h03 m12.5s</td><td> degree20′53″</td><td>8.7</td></tr><tr><td>5466</td><td>globular cluster</td><td>boötes</td><td>14h05 m27.4s</td><td> degree32′04″</td><td>10.5</td></tr><tr><td>5474</td><td>spiral galaxy</td><td>ursa major</td><td>14h05 m01.5s</td><td> degree39′45″</td><td>11.9</td></tr><tr><td>5477</td><td>irregular galaxy</td><td>ursa major</td><td>14h05 m33.1s</td><td> degree27′40″</td><td>14.5</td></tr>
+</table>
+</div>
+<h3>SQL Command:</h3>
+<div class="sql-command">SELECT 
+    CASE 
+        WHEN COUNT(*) = 2 THEN 'TRUE' 
+        ELSE 'FALSE' 
+    END 
+FROM table_sql 
+WHERE object_type = 'spiral galaxy';</div>
+</body></html>

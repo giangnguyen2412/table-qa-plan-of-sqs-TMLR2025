@@ -1,0 +1,56 @@
+************************************************************************************************************************
+Sample 3395 - Plan 1: Query: what is the difference in balls between the first and fourth players?
+Sample 3395 - Plan 1: Groundtruth: ['6']
+Sample 3395 - Plan 1: X-Original table pd: 
+    no_ score              player          team  balls  inns_ opposing_team  \
+0     1   123      kris srikkanth         india    103      1      pakistan   
+1     2  107*      desmond haynes   west indies    137      1      pakistan   
+2     3  100*    sachin tendulkar         india    103      2         kenya   
+3     4   121  marcus trescothick       england    109      2         india   
+4     5  108*         salman butt      pakistan    130      2         india   
+5     6  134*        graeme smith  south africa    124      2         india   
+6     7   118       upul tharanga     sri lanka    128      1         india   
+7     8  150*      gautam gambhir         india    137      2     sri lanka   
+8     9   107         virat kohli         india    114      2     sri lanka   
+9    10   106  ryan ten doeschate   netherlands    108      1       ireland   
+10   11   101       paul stirling       ireland     72      2   netherlands   
+11   12   106       nasir jamshed      pakistan    124      1         india   
+
+                date result  
+0   18 february 1987   lost  
+1    1 november 1989   lost  
+2        31 may 1998    won  
+3    19 january 2002   lost  
+4   13 november 2004    won  
+5   25 november 2005    won  
+6   24 december 2009   lost  
+7   24 december 2009    won  
+8   24 december 2009    won  
+9      18 march 2011   lost  
+10     18 march 2011    won  
+11    3 january 2013    won  
+Sample 3395 - Plan 1: Caption: none
+Sample 3395 - Plan 1: Original table: [['no_', 'score', 'player', 'team', 'balls', 'inns_', 'opposing_team', 'date', 'result'], ['1', '123', 'kris srikkanth', 'india', '103', '1', 'pakistan', '18 february 1987', 'lost'], ['2', '107*', 'desmond haynes', 'west indies', '137', '1', 'pakistan', '1 november 1989', 'lost'], ['3', '100*', 'sachin tendulkar', 'india', '103', '2', 'kenya', '31 may 1998', 'won'], ['4', '121', 'marcus trescothick', 'england', '109', '2', 'india', '19 january 2002', 'lost'], ['5', '108*', 'salman butt', 'pakistan', '130', '2', 'india', '13 november 2004', 'won'], ['6', '134*', 'graeme smith', 'south africa', '124', '2', 'india', '25 november 2005', 'won'], ['7', '118', 'upul tharanga', 'sri lanka', '128', '1', 'india', '24 december 2009', 'lost'], ['8', '150*', 'gautam gambhir', 'india', '137', '2', 'sri lanka', '24 december 2009', 'won'], ['9', '107', 'virat kohli', 'india', '114', '2', 'sri lanka', '24 december 2009', 'won'], ['10', '106', 'ryan ten doeschate', 'netherlands', '108', '1', 'ireland', '18 march 2011', 'lost'], ['11', '101', 'paul stirling', 'ireland', '72', '2', 'netherlands', '18 march 2011', 'won'], ['12', '106', 'nasir jamshed', 'pakistan', '124', '1', 'india', '3 january 2013', 'won']]
+########################################################################################################################
+Sample 3395 - Plan 1: Operation 1: Select the 'balls' column for the first player.
+Sample 3395 - Plan 1: Selected indices: []
+Sample 3395 - Plan 1: X-Table after operation df:
+   balls
+0    103
+Sample 3395 - Plan 1: Table after operation: [['balls'], [103]]
+########################################################################################################################
+Sample 3395 - Plan 1: Operation 2: Select the 'balls' column for the fourth player.
+Sample 3395 - Plan 1: Selected indices: []
+Sample 3395 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [balls]
+Index: []
+Sample 3395 - Plan 1: Table after operation: [['balls']]
+########################################################################################################################
+Sample 3395 - Plan 1: Operation 3: Calculate the difference between the two selected values.
+SQL execution error in operation 3: Execution failed on sql 'SELECT balls AS value1, balls AS value2, (CAST(value1 AS INTEGER) - CAST(value2 AS INTEGER)) AS difference
+FROM table_sql;': no such column: value1
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['6']]
+Groundtruth: ['6']

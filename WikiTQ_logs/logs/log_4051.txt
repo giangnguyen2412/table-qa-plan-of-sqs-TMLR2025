@@ -1,0 +1,91 @@
+************************************************************************************************************************
+Sample 4051 - Plan 1: Query: which team did the korean under-17 team play before they played china pr in 2008?
+Sample 4051 - Plan 1: Groundtruth: ['Japan']
+Sample 4051 - Plan 1: X-Original table pd: 
+          date         venue             opponents score  \
+0     20 march   fukuoka (a)                 japan   2–0   
+1     20 march   fukuoka (a)              china pr   1–0   
+2     8 august    toyota (n)                brazil   0–0   
+3     9 august    toyota (a)                 japan   2–2   
+4    10 august    toyota (n)  united arab emirates   6–0   
+5    4 october  tashkent (n)                 india   5–2   
+6    6 october  tashkent (n)             indonesia   9–0   
+7    8 october  tashkent (n)                 syria   1–1   
+8   12 october  tashkent (a)            uzbekistan   3–0   
+9   15 october  tashkent (n)                 japan   2–1   
+10  18 october  tashkent (n)                  iran   1–2   
+
+                             competition  
+0                              sanix cup  
+1                              sanix cup  
+2                             toyota cup  
+3                             toyota cup  
+4                             toyota cup  
+5        afc u-16 championship (group b)  
+6        afc u-16 championship (group b)  
+7        afc u-16 championship (group b)  
+8   afc u-16 championship (quarterfinal)  
+9      afc u-16 championship (semifinal)  
+10         afc u-16 championship (final)  
+Sample 4051 - Plan 1: Caption: none
+Sample 4051 - Plan 1: Original table: [['date', 'venue', 'opponents', 'score', 'competition'], ['20 march', 'fukuoka (a)', 'japan', '2–0', 'sanix cup'], ['20 march', 'fukuoka (a)', 'china pr', '1–0', 'sanix cup'], ['8 august', 'toyota (n)', 'brazil', '0–0', 'toyota cup'], ['9 august', 'toyota (a)', 'japan', '2–2', 'toyota cup'], ['10 august', 'toyota (n)', 'united arab emirates', '6–0', 'toyota cup'], ['4 october', 'tashkent (n)', 'india', '5–2', 'afc u-16 championship (group b)'], ['6 october', 'tashkent (n)', 'indonesia', '9–0', 'afc u-16 championship (group b)'], ['8 october', 'tashkent (n)', 'syria', '1–1', 'afc u-16 championship (group b)'], ['12 october', 'tashkent (a)', 'uzbekistan', '3–0', 'afc u-16 championship (quarterfinal)'], ['15 october', 'tashkent (n)', 'japan', '2–1', 'afc u-16 championship (semifinal)'], ['18 october', 'tashkent (n)', 'iran', '1–2', 'afc u-16 championship (final)']]
+########################################################################################################################
+Sample 4051 - Plan 1: Operation 1: Select rows where the 'opponents' column is not equal to 'china pr'.
+Sample 4051 - Plan 1: Selected indices: [[6, 2], [9, 2], [4, 2], [0, 2], [7, 2], [2, 2], [8, 2], [3, 2], [10, 2], [5, 2]]
+Sample 4051 - Plan 1: X-Table after operation df:
+         date         venue             opponents score  \
+0    20 march   fukuoka (a)                 japan   2–0   
+1    8 august    toyota (n)                brazil   0–0   
+2    9 august    toyota (a)                 japan   2–2   
+3   10 august    toyota (n)  united arab emirates   6–0   
+4   4 october  tashkent (n)                 india   5–2   
+5   6 october  tashkent (n)             indonesia   9–0   
+6   8 october  tashkent (n)                 syria   1–1   
+7  12 october  tashkent (a)            uzbekistan   3–0   
+8  15 october  tashkent (n)                 japan   2–1   
+9  18 october  tashkent (n)                  iran   1–2   
+
+                            competition  
+0                             sanix cup  
+1                            toyota cup  
+2                            toyota cup  
+3                            toyota cup  
+4       afc u-16 championship (group b)  
+5       afc u-16 championship (group b)  
+6       afc u-16 championship (group b)  
+7  afc u-16 championship (quarterfinal)  
+8     afc u-16 championship (semifinal)  
+9         afc u-16 championship (final)  
+Sample 4051 - Plan 1: Table after operation: [['date', 'venue', 'opponents', 'score', 'competition'], ['20 march', 'fukuoka (a)', 'japan', '2–0', 'sanix cup'], ['8 august', 'toyota (n)', 'brazil', '0–0', 'toyota cup'], ['9 august', 'toyota (a)', 'japan', '2–2', 'toyota cup'], ['10 august', 'toyota (n)', 'united arab emirates', '6–0', 'toyota cup'], ['4 october', 'tashkent (n)', 'india', '5–2', 'afc u-16 championship (group b)'], ['6 october', 'tashkent (n)', 'indonesia', '9–0', 'afc u-16 championship (group b)'], ['8 october', 'tashkent (n)', 'syria', '1–1', 'afc u-16 championship (group b)'], ['12 october', 'tashkent (a)', 'uzbekistan', '3–0', 'afc u-16 championship (quarterfinal)'], ['15 october', 'tashkent (n)', 'japan', '2–1', 'afc u-16 championship (semifinal)'], ['18 october', 'tashkent (n)', 'iran', '1–2', 'afc u-16 championship (final)']]
+########################################################################################################################
+Sample 4051 - Plan 1: Operation 2: Select rows where the 'date' column is before '20 march 2008'.
+Sample 4051 - Plan 1: Selected indices: [[9, 0], [0, 0], [7, 0], [8, 0], [3, 0]]
+Sample 4051 - Plan 1: X-Table after operation df:
+         date         venue             opponents score  \
+0    20 march   fukuoka (a)                 japan   2–0   
+1   10 august    toyota (n)  united arab emirates   6–0   
+2  12 october  tashkent (a)            uzbekistan   3–0   
+3  15 october  tashkent (n)                 japan   2–1   
+4  18 october  tashkent (n)                  iran   1–2   
+
+                            competition  
+0                             sanix cup  
+1                            toyota cup  
+2  afc u-16 championship (quarterfinal)  
+3     afc u-16 championship (semifinal)  
+4         afc u-16 championship (final)  
+Sample 4051 - Plan 1: Table after operation: [['date', 'venue', 'opponents', 'score', 'competition'], ['20 march', 'fukuoka (a)', 'japan', '2–0', 'sanix cup'], ['10 august', 'toyota (n)', 'united arab emirates', '6–0', 'toyota cup'], ['12 october', 'tashkent (a)', 'uzbekistan', '3–0', 'afc u-16 championship (quarterfinal)'], ['15 october', 'tashkent (n)', 'japan', '2–1', 'afc u-16 championship (semifinal)'], ['18 october', 'tashkent (n)', 'iran', '1–2', 'afc u-16 championship (final)']]
+########################################################################################################################
+Sample 4051 - Plan 1: Operation 3: Select the 'opponents' column.
+Sample 4051 - Plan 1: Selected indices: []
+Sample 4051 - Plan 1: X-Table after operation df:
+              opponents
+0                 japan
+1  united arab emirates
+2            uzbekistan
+3                 japan
+4                  iran
+Sample 4051 - Plan 1: Table after operation: [['opponents'], ['japan'], ['united arab emirates'], ['uzbekistan'], ['japan'], ['iran']]
+Fall-back: FALSE
+Answer from plan 1: [['japan'], ['united arab emirates'], ['uzbekistan'], ['japan'], ['iran']]
+Groundtruth: ['Japan']

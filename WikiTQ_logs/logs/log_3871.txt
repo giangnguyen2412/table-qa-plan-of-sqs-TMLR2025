@@ -1,0 +1,59 @@
+************************************************************************************************************************
+Sample 3871 - Plan 1: Query: which parish had the most churches built.
+Sample 3871 - Plan 1: Groundtruth: ['Levanger']
+Sample 3871 - Plan 1: X-Original table pd: 
+       parish        church_name    location  year_built
+0  alstadhaug  alstadhaug church  alstadhaug        1180
+1        ekne        ekne church        ekne        1893
+2    levanger    levanger church    levanger        1902
+3    levanger     bamberg church    levanger        1998
+4   markabygd  markabygda church   markabygd        1887
+5   okkenhaug   okkenhaug chapel   okkenhaug        1893
+6     ytterøy     ytterøy church    ytterøya        1890
+7        åsen        åsen church        åsen        1904
+Sample 3871 - Plan 1: Caption: none
+Sample 3871 - Plan 1: Original table: [['parish', 'church_name', 'location', 'year_built'], ['alstadhaug', 'alstadhaug church', 'alstadhaug', '1180'], ['ekne', 'ekne church', 'ekne', '1893'], ['levanger', 'levanger church', 'levanger', '1902'], ['levanger', 'bamberg church', 'levanger', '1998'], ['markabygd', 'markabygda church', 'markabygd', '1887'], ['okkenhaug', 'okkenhaug chapel', 'okkenhaug', '1893'], ['ytterøy', 'ytterøy church', 'ytterøya', '1890'], ['åsen', 'åsen church', 'åsen', '1904']]
+########################################################################################################################
+Sample 3871 - Plan 1: Operation 1: Group the table by the 'parish' column.
+Sample 3871 - Plan 1: Selected indices: []
+Sample 3871 - Plan 1: X-Table after operation df:
+       parish
+0  alstadhaug
+1        ekne
+2    levanger
+3   markabygd
+4   okkenhaug
+5     ytterøy
+6        åsen
+Sample 3871 - Plan 1: Table after operation: [['parish'], ['alstadhaug'], ['ekne'], ['levanger'], ['markabygd'], ['okkenhaug'], ['ytterøy'], ['åsen']]
+########################################################################################################################
+Sample 3871 - Plan 1: Operation 2: Count the number of unique values in the 'church_name' column for each group.
+Sample 3871 - Plan 1: Selected indices: []
+Sample 3871 - Plan 1: X-Table after operation df:
+   unique_church_names
+0                    7
+Sample 3871 - Plan 1: Table after operation: [['unique_church_names'], [7]]
+########################################################################################################################
+Sample 3871 - Plan 1: Operation 3: Order the groups by the count of 'church_name' in descending order.
+Sample 3871 - Plan 1: Selected indices: []
+Sample 3871 - Plan 1: X-Table after operation df:
+   unique_church_names
+0                    7
+Sample 3871 - Plan 1: Table after operation: [['unique_church_names'], [7]]
+########################################################################################################################
+Sample 3871 - Plan 1: Operation 4: Select the first group.
+Sample 3871 - Plan 1: Selected indices: []
+Sample 3871 - Plan 1: X-Table after operation df:
+   unique_church_names
+0                    7
+Sample 3871 - Plan 1: Table after operation: [['unique_church_names'], [7]]
+########################################################################################################################
+Sample 3871 - Plan 1: Operation 5: Select the 'parish' column from the selected group.
+Sample 3871 - Plan 1: Selected indices: []
+Sample 3871 - Plan 1: X-Table after operation df:
+   parish
+0       7
+Sample 3871 - Plan 1: Table after operation: [['parish'], [7]]
+Fall-back: FALSE
+Answer from plan 1: [[7]]
+Groundtruth: ['Levanger']

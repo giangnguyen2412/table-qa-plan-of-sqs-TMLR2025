@@ -1,0 +1,116 @@
+************************************************************************************************************************
+Sample 850 - Plan 1: Query: which train leaves the earliest on mondays?
+Sample 850 - Plan 1: Groundtruth: ['Chhatisgarh Express']
+Sample 850 - Plan 1: X-Original table pd: 
+    sr__no_  train_no_                   name_of_the_train arrival departure  \
+0       1.0      18238                 chhatisgarh express   01:23     01:25   
+1       2.0      12160                jabalpur-amravati sf   04:51     04:53   
+2       3.0      51294                    amla-nagpur pass   06:39     06:40   
+3       4.0      12913                 indore-nag tri. exp   06:49     06:51   
+4       5.0      19301              indore-yashwantpur exp   07:20     07:25   
+5       6.0      12406    nizamuddin-bhusaval gondwana exp   07:25     07:27   
+6       7.0      12410     nizamuddin-raigarh gondwana exp   07:25     07:27   
+7       8.0      51151           new amravati-narkhed pass   08:30       n/a   
+8       9.0      22112                  nagpur-bhusaval sf   08:37     08:39   
+9      10.0      11045                   dikshsabhoomi exp   08:53     08:55   
+10     11.0      16359                 ernakulam-patna exp   08:53     08:55   
+11     12.0      51829                    nagpur-agra pass   09:41     09:42   
+12     13.0      12861             visakapatnam-nizamuddin   10:43     10:44   
+13     14.0      12721                     dakshin express   10:43     10:44   
+14     15.0      12616                 grand trunk(gt) exp   10:49     10:51   
+15     16.0      19714                      sec-jaipur exp   11:58     12:00   
+16     17.0      11203        nagpur-jaipur weekly express   13:03     13:05   
+17     18.0      12615                 grand trunk(gt) exp   13:30     13:32   
+18     19.0      12405  bhusaval-h.nizamuddin gondwana exp   14:08     14:10   
+19     20.0      12409  raigarh-h.nizamuddin- gondwana exp   14:08     14:10   
+20     21.0      16360                 patna-ernakulam exp   14:08     14:10   
+21     22.0      11046                   dikshsabhoomi exp   14:09     14:10   
+22     23.0      22111                  bhusaval_nagpur sf   14:36     14:38   
+23     24.0      19713                      jaipur-sec exp   15:48     15:50   
+24     25.0      12722                     dakshin express   16:00     16:02   
+25     26.0      51183               bhusaval-narkhed pass   16:00       n/a   
+26     27.0      11204                   jaipur-nagpur exp   17:24     17:25   
+27     28.0      19302              yashwantpur-indore exp   17:35     17:40   
+28     29.0      51830                    agra-nagpur pass   18:04     18:05   
+29     30.0      51293                    nagpur-amla pass   19:55     20:00   
+30     31.0      12914              nagpur-indore tri. exp   20:08     20:10   
+31     32.0      12159                amravati-jabalpur sf   22:30     22:32   
+32     33.0      18237                 chhatisgarh express   23:09     23:10   
+33     34.0      51152           narkhed-new amravati pass     n/a     18:00   
+34     35.0      51184               bhusaval-narkhed pass     n/a     09:00   
+
+             day  
+0          daily  
+1          daily  
+2          daily  
+3              m  
+4              m  
+5           m,st  
+6   s,m,tu,w,t,f  
+7          daily  
+8         m,t,st  
+9             st  
+10             m  
+11         daily  
+12         daily  
+13         daily  
+14         daily  
+15            tu  
+16             t  
+17         daily  
+18         s,tu,  
+19    m,w,t,f,st  
+20             w  
+21            tu  
+22         s,w,f  
+23            tu  
+24         daily  
+25         daily  
+26            st  
+27             w  
+28         daily  
+29         daily  
+30             m  
+31         daily  
+32         daily  
+33         daily  
+34         daily  
+Sample 850 - Plan 1: Caption: none
+Sample 850 - Plan 1: Original table: [['sr__no_', 'train_no_', 'name_of_the_train', 'arrival', 'departure', 'day'], ['1.', '18238', 'chhatisgarh express', '01:23', '01:25', 'daily'], ['2.', '12160', 'jabalpur-amravati sf', '04:51', '04:53', 'daily'], ['3.', '51294', 'amla-nagpur pass', '06:39', '06:40', 'daily'], ['4.', '12913', 'indore-nag tri. exp', '06:49', '06:51', 'm'], ['5.', '19301', 'indore-yashwantpur exp', '07:20', '07:25', 'm'], ['6.', '12406', 'nizamuddin-bhusaval gondwana exp', '07:25', '07:27', 'm,st'], ['7.', '12410', 'nizamuddin-raigarh gondwana exp', '07:25', '07:27', 's,m,tu,w,t,f'], ['8.', '51151', 'new amravati-narkhed pass', '08:30', 'n/a', 'daily'], ['9.', '22112', 'nagpur-bhusaval sf', '08:37', '08:39', 'm,t,st'], ['10.', '11045', 'dikshsabhoomi exp', '08:53', '08:55', 'st'], ['11.', '16359', 'ernakulam-patna exp', '08:53', '08:55', 'm'], ['12.', '51829', 'nagpur-agra pass', '09:41', '09:42', 'daily'], ['13.', '12861', 'visakapatnam-nizamuddin', '10:43', '10:44', 'daily'], ['14.', '12721', 'dakshin express', '10:43', '10:44', 'daily'], ['15.', '12616', 'grand trunk(gt) exp', '10:49', '10:51', 'daily'], ['16.', '19714', 'sec-jaipur exp', '11:58', '12:00', 'tu'], ['17.', '11203', 'nagpur-jaipur weekly express', '13:03', '13:05', 't'], ['18.', '12615', 'grand trunk(gt) exp', '13:30', '13:32', 'daily'], ['19.', '12405', 'bhusaval-h.nizamuddin gondwana exp', '14:08', '14:10', 's,tu,'], ['20.', '12409', 'raigarh-h.nizamuddin- gondwana exp', '14:08', '14:10', 'm,w,t,f,st'], ['21.', '16360', 'patna-ernakulam exp', '14:08', '14:10', 'w'], ['22.', '11046', 'dikshsabhoomi exp', '14:09', '14:10', 'tu'], ['23.', '22111', 'bhusaval_nagpur sf', '14:36', '14:38', 's,w,f'], ['24.', '19713', 'jaipur-sec exp', '15:48', '15:50', 'tu'], ['25.', '12722', 'dakshin express', '16:00', '16:02', 'daily'], ['26.', '51183', 'bhusaval-narkhed pass', '16:00', 'n/a', 'daily'], ['27.', '11204', 'jaipur-nagpur exp', '17:24', '17:25', 'st'], ['28.', '19302', 'yashwantpur-indore exp', '17:35', '17:40', 'w'], ['29.', '51830', 'agra-nagpur pass', '18:04', '18:05', 'daily'], ['30.', '51293', 'nagpur-amla pass', '19:55', '20:00', 'daily'], ['31.', '12914', 'nagpur-indore tri. exp', '20:08', '20:10', 'm'], ['32.', '12159', 'amravati-jabalpur sf', '22:30', '22:32', 'daily'], ['33.', '18237', 'chhatisgarh express', '23:09', '23:10', 'daily'], ['34.', '51152', 'narkhed-new amravati pass', 'n/a', '18:00', 'daily'], ['35.', '51184', 'bhusaval-narkhed pass', 'n/a', '09:00', 'daily']]
+########################################################################################################################
+Sample 850 - Plan 1: Operation 1: Select rows where the 'day' column is 'm'.
+Sample 850 - Plan 1: Selected indices: [[4, 5], [10, 5], [3, 5], [30, 5]]
+Sample 850 - Plan 1: X-Table after operation df:
+   sr__no_  train_no_       name_of_the_train arrival departure day
+0      4.0      12913     indore-nag tri. exp   06:49     06:51   m
+1      5.0      19301  indore-yashwantpur exp   07:20     07:25   m
+2     11.0      16359     ernakulam-patna exp   08:53     08:55   m
+3     31.0      12914  nagpur-indore tri. exp   20:08     20:10   m
+Sample 850 - Plan 1: Table after operation: [['sr__no_', 'train_no_', 'name_of_the_train', 'arrival', 'departure', 'day'], [4.0, 12913, 'indore-nag tri. exp', '06:49', '06:51', 'm'], [5.0, 19301, 'indore-yashwantpur exp', '07:20', '07:25', 'm'], [11.0, 16359, 'ernakulam-patna exp', '08:53', '08:55', 'm'], [31.0, 12914, 'nagpur-indore tri. exp', '20:08', '20:10', 'm']]
+########################################################################################################################
+Sample 850 - Plan 1: Operation 2: Order the table by the 'departure' column in ascending order.
+Sample 850 - Plan 1: Selected indices: [[2, 4], [0, 4], [3, 4], [1, 4]]
+Sample 850 - Plan 1: X-Table after operation df:
+   sr__no_  train_no_       name_of_the_train arrival departure day
+0      4.0      12913     indore-nag tri. exp   06:49     06:51   m
+1      5.0      19301  indore-yashwantpur exp   07:20     07:25   m
+2     11.0      16359     ernakulam-patna exp   08:53     08:55   m
+3     31.0      12914  nagpur-indore tri. exp   20:08     20:10   m
+Sample 850 - Plan 1: Table after operation: [['sr__no_', 'train_no_', 'name_of_the_train', 'arrival', 'departure', 'day'], [4.0, 12913, 'indore-nag tri. exp', '06:49', '06:51', 'm'], [5.0, 19301, 'indore-yashwantpur exp', '07:20', '07:25', 'm'], [11.0, 16359, 'ernakulam-patna exp', '08:53', '08:55', 'm'], [31.0, 12914, 'nagpur-indore tri. exp', '20:08', '20:10', 'm']]
+########################################################################################################################
+Sample 850 - Plan 1: Operation 3: Select row number 1.
+Sample 850 - Plan 1: Selected indices: []
+Sample 850 - Plan 1: X-Table after operation df:
+   sr__no_  train_no_    name_of_the_train arrival departure day
+0      4.0      12913  indore-nag tri. exp   06:49     06:51   m
+Sample 850 - Plan 1: Table after operation: [['sr__no_', 'train_no_', 'name_of_the_train', 'arrival', 'departure', 'day'], [4.0, 12913, 'indore-nag tri. exp', '06:49', '06:51', 'm']]
+########################################################################################################################
+Sample 850 - Plan 1: Operation 4: Select the 'name_of_the_train' column.
+Sample 850 - Plan 1: Selected indices: []
+Sample 850 - Plan 1: X-Table after operation df:
+     name_of_the_train
+0  indore-nag tri. exp
+Sample 850 - Plan 1: Table after operation: [['name_of_the_train'], ['indore-nag tri. exp']]
+Fall-back: FALSE
+Answer from plan 1: [['indore-nag tri. exp']]
+Groundtruth: ['Chhatisgarh Express']

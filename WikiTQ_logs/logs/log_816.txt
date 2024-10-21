@@ -1,0 +1,61 @@
+************************************************************************************************************************
+Sample 816 - Plan 1: Query: how many coins are valued at more than 10 seniti?
+Sample 816 - Plan 1: Groundtruth: ['2']
+Sample 816 - Plan 1: X-Original table pd: 
+       value  diameter  composition c_1975_1979_nobverse  \
+0   1 seniti     18 mm       bronze                maize   
+1   2 seniti     21 mm       bronze              marrows   
+2   5 seniti     19 mm  cupronickel  chicken with chicks   
+3  10 seniti     24 mm  cupronickel                 king   
+4  20 seniti     29 mm  cupronickel                 king   
+5  50 seniti  32–33 mm  cupronickel                 king   
+
+                                c_1975_1979_nreverse     c_1981__nobverse  \
+0                                                pig                maize   
+1  planned families food for all, six people hold...                 taro   
+2                                            bananas  chicken with chicks   
+3                                     grazing cattle                 king   
+4                                      bees and hive                 king   
+5                             fishes around a vortex                 king   
+
+                                    c_1981__nreverse  
+0                                            vanilla  
+1  planned families food for all, six people hold...  
+2                                           coconuts  
+3                                    bananas on tree  
+4                                               yams  
+5                                           tomatoes  
+Sample 816 - Plan 1: Caption: none
+Sample 816 - Plan 1: Original table: [['value', 'diameter', 'composition', 'c_1975_1979_nobverse', 'c_1975_1979_nreverse', 'c_1981__nobverse', 'c_1981__nreverse'], ['1 seniti', '18\xa0mm', 'bronze', 'maize', 'pig', 'maize', 'vanilla'], ['2 seniti', '21\xa0mm', 'bronze', 'marrows', 'planned families food for all, six people holding hands', 'taro', 'planned families food for all, six people holding hands'], ['5 seniti', '19\xa0mm', 'cupronickel', 'chicken with chicks', 'bananas', 'chicken with chicks', 'coconuts'], ['10 seniti', '24\xa0mm', 'cupronickel', 'king', 'grazing cattle', 'king', 'bananas on tree'], ['20 seniti', '29\xa0mm', 'cupronickel', 'king', 'bees and hive', 'king', 'yams'], ['50 seniti', '32–33\xa0mm', 'cupronickel', 'king', 'fishes around a vortex', 'king', 'tomatoes']]
+########################################################################################################################
+Sample 816 - Plan 1: Operation 1: Select rows where the 'value' is greater than '10 seniti'.
+Sample 816 - Plan 1: Selected indices: [[1, 0], [4, 0], [5, 0], [2, 0]]
+Sample 816 - Plan 1: X-Table after operation df:
+       value  diameter  composition c_1975_1979_nobverse  \
+0   2 seniti     21 mm       bronze              marrows   
+1   5 seniti     19 mm  cupronickel  chicken with chicks   
+2  20 seniti     29 mm  cupronickel                 king   
+3  50 seniti  32–33 mm  cupronickel                 king   
+
+                                c_1975_1979_nreverse     c_1981__nobverse  \
+0  planned families food for all, six people hold...                 taro   
+1                                            bananas  chicken with chicks   
+2                                      bees and hive                 king   
+3                             fishes around a vortex                 king   
+
+                                    c_1981__nreverse  
+0  planned families food for all, six people hold...  
+1                                           coconuts  
+2                                               yams  
+3                                           tomatoes  
+Sample 816 - Plan 1: Table after operation: [['value', 'diameter', 'composition', 'c_1975_1979_nobverse', 'c_1975_1979_nreverse', 'c_1981__nobverse', 'c_1981__nreverse'], ['2 seniti', '21\xa0mm', 'bronze', 'marrows', 'planned families food for all, six people holding hands', 'taro', 'planned families food for all, six people holding hands'], ['5 seniti', '19\xa0mm', 'cupronickel', 'chicken with chicks', 'bananas', 'chicken with chicks', 'coconuts'], ['20 seniti', '29\xa0mm', 'cupronickel', 'king', 'bees and hive', 'king', 'yams'], ['50 seniti', '32–33\xa0mm', 'cupronickel', 'king', 'fishes around a vortex', 'king', 'tomatoes']]
+########################################################################################################################
+Sample 816 - Plan 1: Operation 2: Count the number of rows.
+Sample 816 - Plan 1: Selected indices: []
+Sample 816 - Plan 1: X-Table after operation df:
+   row_count
+0          4
+Sample 816 - Plan 1: Table after operation: [['row_count'], [4]]
+Fall-back: FALSE
+Answer from plan 1: [[4]]
+Groundtruth: ['2']

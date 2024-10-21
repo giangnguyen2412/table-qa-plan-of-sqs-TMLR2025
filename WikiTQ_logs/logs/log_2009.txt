@@ -1,0 +1,165 @@
+************************************************************************************************************************
+Sample 2009 - Plan 1: Query: who had the most world records from 1951-1976?
+Sample 2009 - Plan 1: Groundtruth: ['Ray Norton']
+Sample 2009 - Plan 1: X-Original table pd: 
+     time  wind    auto         athlete     nationality  \
+0   20.6y                andy stanfield   united states   
+1    20.6                andy stanfield   united states   
+2    20.6   0.0             thane baker   united states   
+3    20.6         20.75    bobby morrow   united states   
+4    20.6                manfred germar    west germany   
+5   20.6y  −1.6              ray norton   united states   
+6    20.6                    ray norton   united states   
+7   20.5y                 peter radford  united kingdom   
+8    20.5   0.0   20.75   stone johnson   united states   
+9    20.5   0.0              ray norton   united states   
+10   20.5         20.65   livio berruti           italy   
+11   20.5         20.62   livio berruti           italy   
+12  20.5y  −1.1   20.67    paul drayton   united states   
+13  20.3y  −0.1              henry carr   united states   
+14  20.2y   0.5              henry carr   united states   
+15  20.0y   0.0            tommie smith   united states   
+16  19.8a   0.9  19.83a    tommie smith   united states   
+17  19.8a   0.9  19.86a  donald quarrie         jamaica   
+18  19.8+   1.3          donald quarrie         jamaica   
+
+                 location_of_race               date  
+0     philadelphia, united states       may 26, 1951  
+1      los angeles, united states      june 28, 1952  
+2      bakersfield, united states      june 23, 1956  
+3            melbourne, australia  november 27, 1956  
+4              wuppertal, germany    october 1, 1958  
+5         berkeley, united states     march 19, 1960  
+6     philadelphia, united states     april 30, 1960  
+7   wolverhampton, united kingdom       may 28, 1960  
+8         stanford, united states       july 2, 1960  
+9         stanford, united states       july 2, 1960  
+10                    rome, italy  september 3, 1960  
+11                    rome, italy  september 3, 1960  
+12          walnut, united states      june 23, 1962  
+13           tempe, united states     march 23, 1963  
+14           tempe, united states      april 4, 1964  
+15      sacramento, united states      june 11, 1968  
+16            mexico city, mexico   october 16, 1968  
+17                 cali, colombia     august 3, 1971  
+18  eugene, oregon, united states       june 7, 1975  
+Sample 2009 - Plan 1: Caption: none
+Sample 2009 - Plan 1: Original table: [['time', 'wind', 'auto', 'athlete', 'nationality', 'location_of_race', 'date'], ['20.6y', '', '', 'andy stanfield', 'united states', 'philadelphia, united states', 'may 26, 1951'], ['20.6', '', '', 'andy stanfield', 'united states', 'los angeles, united states', 'june 28, 1952'], ['20.6', '0.0', '', 'thane baker', 'united states', 'bakersfield, united states', 'june 23, 1956'], ['20.6', '', '20.75', 'bobby morrow', 'united states', 'melbourne, australia', 'november 27, 1956'], ['20.6', '', '', 'manfred germar', 'west germany', 'wuppertal, germany', 'october 1, 1958'], ['20.6y', '−1.6', '', 'ray norton', 'united states', 'berkeley, united states', 'march 19, 1960'], ['20.6', '', '', 'ray norton', 'united states', 'philadelphia, united states', 'april 30, 1960'], ['20.5y', '', '', 'peter radford', 'united kingdom', 'wolverhampton, united kingdom', 'may 28, 1960'], ['20.5', '0.0', '20.75', 'stone johnson', 'united states', 'stanford, united states', 'july 2, 1960'], ['20.5', '0.0', '', 'ray norton', 'united states', 'stanford, united states', 'july 2, 1960'], ['20.5', '', '20.65', 'livio berruti', 'italy', 'rome, italy', 'september 3, 1960'], ['20.5', '', '20.62', 'livio berruti', 'italy', 'rome, italy', 'september 3, 1960'], ['20.5y', '−1.1', '20.67', 'paul drayton', 'united states', 'walnut, united states', 'june 23, 1962'], ['20.3y', '−0.1', '', 'henry carr', 'united states', 'tempe, united states', 'march 23, 1963'], ['20.2y', '0.5', '', 'henry carr', 'united states', 'tempe, united states', 'april 4, 1964'], ['20.0y', '0.0', '', 'tommie smith', 'united states', 'sacramento, united states', 'june 11, 1968'], ['19.8a', '0.9', '19.83a', 'tommie smith', 'united states', 'mexico city, mexico', 'october 16, 1968'], ['19.8a', '0.9', '19.86a', 'donald quarrie', 'jamaica', 'cali, colombia', 'august 3, 1971'], ['19.8+', '1.3', '', 'donald quarrie', 'jamaica', 'eugene, oregon, united states', 'june 7, 1975']]
+########################################################################################################################
+Sample 2009 - Plan 1: Operation 1: Filter the table to include only the rows where a world record was set.
+Sample 2009 - Plan 1: Selected indices: [[12, 1], [3, 1], [17, 0], [14, 1], [5, 1], [8, 0], [9, 2], [0, 2], [10, 0], [11, 2], [2, 2], [13, 2], [15, 2], [16, 1], [7, 1], [18, 1], [12, 0], [3, 0], [14, 0], [5, 0], [17, 2], [8, 2], [9, 1], [10, 2], [0, 1], [11, 1], [2, 1], [13, 1], [16, 0], [7, 0], [15, 1], [18, 0], [12, 2], [3, 2], [14, 2], [5, 2], [9, 0], [17, 1], [0, 0], [8, 1], [11, 0], [2, 0], [10, 1], [13, 0], [16, 2], [15, 0], [7, 2], [18, 2]]
+Sample 2009 - Plan 1: X-Table after operation df:
+     time  wind    auto         athlete     nationality  \
+0   20.6y                andy stanfield   united states   
+1    20.6   0.0             thane baker   united states   
+2    20.6         20.75    bobby morrow   united states   
+3   20.6y  −1.6              ray norton   united states   
+4   20.5y                 peter radford  united kingdom   
+5    20.5   0.0   20.75   stone johnson   united states   
+6    20.5   0.0              ray norton   united states   
+7    20.5         20.65   livio berruti           italy   
+8    20.5         20.62   livio berruti           italy   
+9   20.5y  −1.1   20.67    paul drayton   united states   
+10  20.3y  −0.1              henry carr   united states   
+11  20.2y   0.5              henry carr   united states   
+12  20.0y   0.0            tommie smith   united states   
+13  19.8a   0.9  19.83a    tommie smith   united states   
+14  19.8a   0.9  19.86a  donald quarrie         jamaica   
+15  19.8+   1.3          donald quarrie         jamaica   
+
+                 location_of_race               date  
+0     philadelphia, united states       may 26, 1951  
+1      bakersfield, united states      june 23, 1956  
+2            melbourne, australia  november 27, 1956  
+3         berkeley, united states     march 19, 1960  
+4   wolverhampton, united kingdom       may 28, 1960  
+5         stanford, united states       july 2, 1960  
+6         stanford, united states       july 2, 1960  
+7                     rome, italy  september 3, 1960  
+8                     rome, italy  september 3, 1960  
+9           walnut, united states      june 23, 1962  
+10           tempe, united states     march 23, 1963  
+11           tempe, united states      april 4, 1964  
+12      sacramento, united states      june 11, 1968  
+13            mexico city, mexico   october 16, 1968  
+14                 cali, colombia     august 3, 1971  
+15  eugene, oregon, united states       june 7, 1975  
+Sample 2009 - Plan 1: Table after operation: [['time', 'wind', 'auto', 'athlete', 'nationality', 'location_of_race', 'date'], ['20.6y', '', '', 'andy stanfield', 'united states', 'philadelphia, united states', 'may 26, 1951'], ['20.6', '0.0', '', 'thane baker', 'united states', 'bakersfield, united states', 'june 23, 1956'], ['20.6', '', '20.75', 'bobby morrow', 'united states', 'melbourne, australia', 'november 27, 1956'], ['20.6y', '−1.6', '', 'ray norton', 'united states', 'berkeley, united states', 'march 19, 1960'], ['20.5y', '', '', 'peter radford', 'united kingdom', 'wolverhampton, united kingdom', 'may 28, 1960'], ['20.5', '0.0', '20.75', 'stone johnson', 'united states', 'stanford, united states', 'july 2, 1960'], ['20.5', '0.0', '', 'ray norton', 'united states', 'stanford, united states', 'july 2, 1960'], ['20.5', '', '20.65', 'livio berruti', 'italy', 'rome, italy', 'september 3, 1960'], ['20.5', '', '20.62', 'livio berruti', 'italy', 'rome, italy', 'september 3, 1960'], ['20.5y', '−1.1', '20.67', 'paul drayton', 'united states', 'walnut, united states', 'june 23, 1962'], ['20.3y', '−0.1', '', 'henry carr', 'united states', 'tempe, united states', 'march 23, 1963'], ['20.2y', '0.5', '', 'henry carr', 'united states', 'tempe, united states', 'april 4, 1964'], ['20.0y', '0.0', '', 'tommie smith', 'united states', 'sacramento, united states', 'june 11, 1968'], ['19.8a', '0.9', '19.83a', 'tommie smith', 'united states', 'mexico city, mexico', 'october 16, 1968'], ['19.8a', '0.9', '19.86a', 'donald quarrie', 'jamaica', 'cali, colombia', 'august 3, 1971'], ['19.8+', '1.3', '', 'donald quarrie', 'jamaica', 'eugene, oregon, united states', 'june 7, 1975']]
+########################################################################################################################
+Sample 2009 - Plan 1: Operation 2: Group the filtered table by the 'athlete' column.
+Sample 2009 - Plan 1: Selected indices: []
+Sample 2009 - Plan 1: X-Table after operation df:
+           athlete
+0   andy stanfield
+1     bobby morrow
+2   donald quarrie
+3       henry carr
+4    livio berruti
+5     paul drayton
+6    peter radford
+7       ray norton
+8    stone johnson
+9      thane baker
+10    tommie smith
+Sample 2009 - Plan 1: Table after operation: [['athlete'], ['andy stanfield'], ['bobby morrow'], ['donald quarrie'], ['henry carr'], ['livio berruti'], ['paul drayton'], ['peter radford'], ['ray norton'], ['stone johnson'], ['thane baker'], ['tommie smith']]
+########################################################################################################################
+Sample 2009 - Plan 1: Operation 3: Count the number of world records for each athlete.
+Sample 2009 - Plan 1: Selected indices: [[0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0], [9, 0], [10, 0]]
+Sample 2009 - Plan 1: X-Table after operation df:
+           athlete  num_world_records
+0   andy stanfield                  1
+1     bobby morrow                  1
+2   donald quarrie                  1
+3       henry carr                  1
+4    livio berruti                  1
+5     paul drayton                  1
+6    peter radford                  1
+7       ray norton                  1
+8    stone johnson                  1
+9      thane baker                  1
+10    tommie smith                  1
+Sample 2009 - Plan 1: Table after operation: [['athlete', 'num_world_records'], ['andy stanfield', 1], ['bobby morrow', 1], ['donald quarrie', 1], ['henry carr', 1], ['livio berruti', 1], ['paul drayton', 1], ['peter radford', 1], ['ray norton', 1], ['stone johnson', 1], ['thane baker', 1], ['tommie smith', 1]]
+########################################################################################################################
+Sample 2009 - Plan 1: Operation 4: Order the table by the count of world records in descending order.
+Sample 2009 - Plan 1: Selected indices: [[0, 1], [7, 1], [2, 1], [8, 1], [3, 1], [6, 1], [1, 1], [10, 1], [5, 1], [9, 1], [4, 1]]
+Sample 2009 - Plan 1: X-Table after operation df:
+           athlete  num_world_records
+0   andy stanfield                  1
+1     bobby morrow                  1
+2   donald quarrie                  1
+3       henry carr                  1
+4    livio berruti                  1
+5     paul drayton                  1
+6    peter radford                  1
+7       ray norton                  1
+8    stone johnson                  1
+9      thane baker                  1
+10    tommie smith                  1
+Sample 2009 - Plan 1: Table after operation: [['athlete', 'num_world_records'], ['andy stanfield', 1], ['bobby morrow', 1], ['donald quarrie', 1], ['henry carr', 1], ['livio berruti', 1], ['paul drayton', 1], ['peter radford', 1], ['ray norton', 1], ['stone johnson', 1], ['thane baker', 1], ['tommie smith', 1]]
+########################################################################################################################
+Sample 2009 - Plan 1: Operation 5: Select the row with the highest count of world records.
+Sample 2009 - Plan 1: Selected indices: [[0, 1], [7, 1], [2, 1], [8, 1], [3, 1], [6, 1], [1, 1], [10, 1], [5, 1], [9, 1], [4, 1]]
+Sample 2009 - Plan 1: X-Table after operation df:
+           athlete  num_world_records
+0   andy stanfield                  1
+1     bobby morrow                  1
+2   donald quarrie                  1
+3       henry carr                  1
+4    livio berruti                  1
+5     paul drayton                  1
+6    peter radford                  1
+7       ray norton                  1
+8    stone johnson                  1
+9      thane baker                  1
+10    tommie smith                  1
+Sample 2009 - Plan 1: Table after operation: [['athlete', 'num_world_records'], ['andy stanfield', 1], ['bobby morrow', 1], ['donald quarrie', 1], ['henry carr', 1], ['livio berruti', 1], ['paul drayton', 1], ['peter radford', 1], ['ray norton', 1], ['stone johnson', 1], ['thane baker', 1], ['tommie smith', 1]]
+########################################################################################################################
+Sample 2009 - Plan 1: Operation 6: Select the 'athlete' column from the selected row.
+Sample 2009 - Plan 1: Selected indices: []
+Sample 2009 - Plan 1: X-Table after operation df:
+          athlete
+0  andy stanfield
+Sample 2009 - Plan 1: Table after operation: [['athlete'], ['andy stanfield']]
+Fall-back: FALSE
+Answer from plan 1: [['andy stanfield']]
+Groundtruth: ['Ray Norton']

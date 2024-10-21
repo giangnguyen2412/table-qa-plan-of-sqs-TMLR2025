@@ -1,0 +1,34 @@
+************************************************************************************************************************
+Sample 2388 - Plan 1: Query: list the races that are open to all sexes.
+Sample 2388 - Plan 1: Groundtruth: ['AJC Challenge Stakes', 'Warwick Stakes', 'Liverpool City Cup']
+Sample 2388 - Plan 1: X-Original table pd: 
+   grp             race_name   age      sex weight  distance    date
+0    2  ajc challenge stakes  open     open    wfa      1000   march
+1    2       surround stakes   3yo  fillies     sw      1400   march
+2    2        warwick stakes  open     open    wfa      1400  august
+3    3    liverpool city cup  open     open   qlty      1300   march
+4    3  silver shadow stakes   3yo  fillies    swp      1200  august
+5    3  up and coming stakes   3yo      c&g    swp      1200  august
+Sample 2388 - Plan 1: Caption: none
+Sample 2388 - Plan 1: Original table: [['grp', 'race_name', 'age', 'sex', 'weight', 'distance', 'date'], ['2', 'ajc challenge stakes', 'open', 'open', 'wfa', '1000', 'march'], ['2', 'surround stakes', '3yo', 'fillies', 'sw', '1400', 'march'], ['2', 'warwick stakes', 'open', 'open', 'wfa', '1400', 'august'], ['3', 'liverpool city cup', 'open', 'open', 'qlty', '1300', 'march'], ['3', 'silver shadow stakes', '3yo', 'fillies', 'swp', '1200', 'august'], ['3', 'up and coming stakes', '3yo', 'c&g', 'swp', '1200', 'august']]
+########################################################################################################################
+Sample 2388 - Plan 1: Operation 1: Select rows where the 'sex' column is 'open'.
+Sample 2388 - Plan 1: Selected indices: [[2, 3], [0, 3], [3, 3]]
+Sample 2388 - Plan 1: X-Table after operation df:
+   grp             race_name   age   sex weight  distance    date
+0    2  ajc challenge stakes  open  open    wfa      1000   march
+1    2        warwick stakes  open  open    wfa      1400  august
+2    3    liverpool city cup  open  open   qlty      1300   march
+Sample 2388 - Plan 1: Table after operation: [['grp', 'race_name', 'age', 'sex', 'weight', 'distance', 'date'], [2, 'ajc challenge stakes', 'open', 'open', 'wfa', 1000, 'march'], [2, 'warwick stakes', 'open', 'open', 'wfa', 1400, 'august'], [3, 'liverpool city cup', 'open', 'open', 'qlty', 1300, 'march']]
+########################################################################################################################
+Sample 2388 - Plan 1: Operation 2: Select the 'race_name' column.
+Sample 2388 - Plan 1: Selected indices: []
+Sample 2388 - Plan 1: X-Table after operation df:
+              race_name
+0  ajc challenge stakes
+1        warwick stakes
+2    liverpool city cup
+Sample 2388 - Plan 1: Table after operation: [['race_name'], ['ajc challenge stakes'], ['warwick stakes'], ['liverpool city cup']]
+Fall-back: FALSE
+Answer from plan 1: [['ajc challenge stakes'], ['warwick stakes'], ['liverpool city cup']]
+Groundtruth: ['AJC Challenge Stakes', 'Warwick Stakes', 'Liverpool City Cup']

@@ -1,0 +1,51 @@
+************************************************************************************************************************
+Sample 2134 - Plan 1: Query: in how many games were at least three goals scored?
+Sample 2134 - Plan 1: Groundtruth: ['2']
+Sample 2134 - Plan 1: X-Original table pd: 
+   goal        date                                              venue  \
+0     1   2008-5-28                 sheriff stadium, tiraspol, moldova   
+1     2  2010-10-12             hanrapetakan stadium, yerevan, armenia   
+2     3    2011-6-4        petrovsky stadium, saint petersburg, russia   
+3     4    2011-9-2  estadi comunal d'aixovall, andorra la vella, a...   
+4     5   2011-10-7             hanrapetakan stadium, yerevan, armenia   
+5     6   2012-2-29                  tsirion stadium, limassol, cyprus   
+6     7   2012-2-29                  tsirion stadium, limassol, cyprus   
+
+    opponent score result     competition  
+0    moldova   0-1    2–2  friendly match  
+1    andorra   4–0    4–0     euro 2012 q  
+2     russia   0-1    3–1     euro 2012 q  
+3    andorra   0-1    0-3     euro 2012 q  
+4  macedonia   1-0    4-1     euro 2012 q  
+5     canada   1-1    1-3  friendly match  
+6     canada   1-2    1-3  friendly match  
+Sample 2134 - Plan 1: Caption: none
+Sample 2134 - Plan 1: Original table: [['goal', 'date', 'venue', 'opponent', 'score', 'result', 'competition'], ['1', '2008-5-28', 'sheriff stadium, tiraspol, moldova', 'moldova', '0-1', '2–2', 'friendly match'], ['2', '2010-10-12', 'hanrapetakan stadium, yerevan, armenia', 'andorra', '4–0', '4–0', 'euro 2012 q'], ['3', '2011-6-4', 'petrovsky stadium, saint petersburg, russia', 'russia', '0-1', '3–1', 'euro 2012 q'], ['4', '2011-9-2', "estadi comunal d'aixovall, andorra la vella, andorra", 'andorra', '0-1', '0-3', 'euro 2012 q'], ['5', '2011-10-7', 'hanrapetakan stadium, yerevan, armenia', 'macedonia', '1-0', '4-1', 'euro 2012 q'], ['6', '2012-2-29', 'tsirion stadium, limassol, cyprus', 'canada', '1-1', '1-3', 'friendly match'], ['7', '2012-2-29', 'tsirion stadium, limassol, cyprus', 'canada', '1-2', '1-3', 'friendly match']]
+########################################################################################################################
+Sample 2134 - Plan 1: Operation 1: Select rows where the 'goal' column is greater than or equal to 3.
+Sample 2134 - Plan 1: Selected indices: [[4, 0], [2, 0], [3, 0], [5, 0], [6, 0]]
+Sample 2134 - Plan 1: X-Table after operation df:
+   goal       date                                              venue  \
+0     3   2011-6-4        petrovsky stadium, saint petersburg, russia   
+1     4   2011-9-2  estadi comunal d'aixovall, andorra la vella, a...   
+2     5  2011-10-7             hanrapetakan stadium, yerevan, armenia   
+3     6  2012-2-29                  tsirion stadium, limassol, cyprus   
+4     7  2012-2-29                  tsirion stadium, limassol, cyprus   
+
+    opponent score result     competition  
+0     russia   0-1    3–1     euro 2012 q  
+1    andorra   0-1    0-3     euro 2012 q  
+2  macedonia   1-0    4-1     euro 2012 q  
+3     canada   1-1    1-3  friendly match  
+4     canada   1-2    1-3  friendly match  
+Sample 2134 - Plan 1: Table after operation: [['goal', 'date', 'venue', 'opponent', 'score', 'result', 'competition'], [3, '2011-6-4', 'petrovsky stadium, saint petersburg, russia', 'russia', '0-1', '3–1', 'euro 2012 q'], [4, '2011-9-2', "estadi comunal d'aixovall, andorra la vella, andorra", 'andorra', '0-1', '0-3', 'euro 2012 q'], [5, '2011-10-7', 'hanrapetakan stadium, yerevan, armenia', 'macedonia', '1-0', '4-1', 'euro 2012 q'], [6, '2012-2-29', 'tsirion stadium, limassol, cyprus', 'canada', '1-1', '1-3', 'friendly match'], [7, '2012-2-29', 'tsirion stadium, limassol, cyprus', 'canada', '1-2', '1-3', 'friendly match']]
+########################################################################################################################
+Sample 2134 - Plan 1: Operation 2: Count the number of rows.
+Sample 2134 - Plan 1: Selected indices: []
+Sample 2134 - Plan 1: X-Table after operation df:
+   row_count
+0          5
+Sample 2134 - Plan 1: Table after operation: [['row_count'], [5]]
+Fall-back: FALSE
+Answer from plan 1: [[5]]
+Groundtruth: ['2']

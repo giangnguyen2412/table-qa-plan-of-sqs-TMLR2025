@@ -1,0 +1,62 @@
+************************************************************************************************************************
+Sample 1097 - Plan 1: Query: how many nationalities share the rank of "25"?
+Sample 1097 - Plan 1: Groundtruth: ['3']
+Sample 1097 - Plan 1: X-Original table pd: 
+    rank                     name               club     nationality  points
+0      1                  eusébio            benfica        portugal      67
+1      2       giacinto facchetti     internazionale           italy      59
+2      3              luis suárez     internazionale           spain      45
+3      4           paul van himst         anderlecht         belgium      25
+4      5           bobby charlton  manchester united         england      19
+5      6           flórián albert       ferencvárosi         hungary      14
+6      7            gianni rivera              milan           italy      10
+7      8         georgi asparuhov       levski sofia        bulgaria       9
+8      8       alessandro mazzola     internazionale           italy       9
+9      8           valery voronin     torpedo moskva    soviet union       9
+10    11                denis law  manchester united        scotland       8
+11    12  karl-heinz schnellinger              milan    west germany       6
+12    13            ferenc puskás        real madrid           spain       5
+13    13               jim baxter         sunderland        scotland       5
+14    15              mario corso     internazionale           italy       3
+15    15               lev yashin      dynamo moscow    soviet union       3
+16    17             mário coluna            benfica        portugal       2
+17    17            amancio amaro        real madrid           spain       2
+18    17        franz beckenbauer      bayern munich    west germany       2
+19    17              milan galić   partizan beograd      yugoslavia       2
+20    17          philippe gondet             nantes          france       2
+21    17           andrej kvašňák       sparta praha  czechoslovakia       2
+22    17              ferenc bene       ujpest dozsa         hungary       2
+23    17          slava metreveli     dinamo tbilisi    soviet union       2
+24    25           ivor allchurch       cardiff city           wales       1
+25    25               jakob kühn             zürich     switzerland       1
+26    25            sigfried held  borussia dortmund    west germany       1
+Sample 1097 - Plan 1: Caption: none
+Sample 1097 - Plan 1: Original table: [['rank', 'name', 'club', 'nationality', 'points'], ['1', 'eusébio', 'benfica', 'portugal', '67'], ['2', 'giacinto facchetti', 'internazionale', 'italy', '59'], ['3', 'luis suárez', 'internazionale', 'spain', '45'], ['4', 'paul van himst', 'anderlecht', 'belgium', '25'], ['5', 'bobby charlton', 'manchester united', 'england', '19'], ['6', 'flórián albert', 'ferencvárosi', 'hungary', '14'], ['7', 'gianni rivera', 'milan', 'italy', '10'], ['8', 'georgi asparuhov', 'levski sofia', 'bulgaria', '9'], ['8', 'alessandro mazzola', 'internazionale', 'italy', '9'], ['8', 'valery voronin', 'torpedo moskva', 'soviet union', '9'], ['11', 'denis law', 'manchester united', 'scotland', '8'], ['12', 'karl-heinz schnellinger', 'milan', 'west germany', '6'], ['13', 'ferenc puskás', 'real madrid', 'spain', '5'], ['13', 'jim baxter', 'sunderland', 'scotland', '5'], ['15', 'mario corso', 'internazionale', 'italy', '3'], ['15', 'lev yashin', 'dynamo moscow', 'soviet union', '3'], ['17', 'mário coluna', 'benfica', 'portugal', '2'], ['17', 'amancio amaro', 'real madrid', 'spain', '2'], ['17', 'franz beckenbauer', 'bayern munich', 'west germany', '2'], ['17', 'milan galić', 'partizan beograd', 'yugoslavia', '2'], ['17', 'philippe gondet', 'nantes', 'france', '2'], ['17', 'andrej kvašňák', 'sparta praha', 'czechoslovakia', '2'], ['17', 'ferenc bene', 'ujpest dozsa', 'hungary', '2'], ['17', 'slava metreveli', 'dinamo tbilisi', 'soviet union', '2'], ['25', 'ivor allchurch', 'cardiff city', 'wales', '1'], ['25', 'jakob kühn', 'zürich', 'switzerland', '1'], ['25', 'sigfried held', 'borussia dortmund', 'west germany', '1']]
+########################################################################################################################
+Sample 1097 - Plan 1: Operation 1: Select rows where the 'rank' is '25'.
+Sample 1097 - Plan 1: Selected indices: [[25, 0], [26, 0], [24, 0]]
+Sample 1097 - Plan 1: X-Table after operation df:
+   rank            name               club   nationality  points
+0    25  ivor allchurch       cardiff city         wales       1
+1    25      jakob kühn             zürich   switzerland       1
+2    25   sigfried held  borussia dortmund  west germany       1
+Sample 1097 - Plan 1: Table after operation: [['rank', 'name', 'club', 'nationality', 'points'], [25, 'ivor allchurch', 'cardiff city', 'wales', 1], [25, 'jakob kühn', 'zürich', 'switzerland', 1], [25, 'sigfried held', 'borussia dortmund', 'west germany', 1]]
+########################################################################################################################
+Sample 1097 - Plan 1: Operation 2: Select the 'nationality' column.
+Sample 1097 - Plan 1: Selected indices: []
+Sample 1097 - Plan 1: X-Table after operation df:
+    nationality
+0         wales
+1   switzerland
+2  west germany
+Sample 1097 - Plan 1: Table after operation: [['nationality'], ['wales'], ['switzerland'], ['west germany']]
+########################################################################################################################
+Sample 1097 - Plan 1: Operation 3: Count the number of distinct nationalities in the selected rows.
+Sample 1097 - Plan 1: Selected indices: []
+Sample 1097 - Plan 1: X-Table after operation df:
+   distinct_nationalities
+0                       3
+Sample 1097 - Plan 1: Table after operation: [['distinct_nationalities'], [3]]
+Fall-back: FALSE
+Answer from plan 1: [[3]]
+Groundtruth: ['3']

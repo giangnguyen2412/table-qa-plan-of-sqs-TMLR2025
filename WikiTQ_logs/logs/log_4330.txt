@@ -1,0 +1,61 @@
+************************************************************************************************************************
+Sample 4330 - Plan 1: Query: who was the first person to get evicted?
+Sample 4330 - Plan 1: Groundtruth: ['Regina Do Santos']
+Sample 4330 - Plan 1: X-Original table pd: 
+                      celebrity          residence  \
+0                 nagore robles             bilbao   
+1                  raquel bollo            seville   
+2              blanca de borbón   oviedo, asturias   
+3              regina do santos             brazil   
+4    liberto lópez de la franca             madrid   
+5            mª ángeles delgado         valladolid   
+6                úrsula aguilar             málaga   
+7          álvaro muñoz-escassi            seville   
+8          pedro reche, "reche"  langreo, asturias   
+9   dionisio rodríguez, "dioni"             madrid   
+10         antonio david flores             madrid   
+11                 raúl hidalgo         valladolid   
+12              leticia sabater          barcelona   
+13                 brenda cerdá           valencia   
+14                   sonia baby    elche, valencia   
+15                  bárbara rey     totana, murcia   
+
+                       famous_for____occupation  age              status  
+0                     gran hermano 11 housemate   28              winner  
+1               tv host & ex-wife of chiquetete   43           runner-up  
+2     alfonso xiii's illegitimate granddaughter   55        3rd finalist  
+3                               singer & dancer   58  1st / 14th evicted  
+4                           good manner teacher   40        13th evicted  
+5        mother of reality-show star aída nízar   57  8th / 12th evicted  
+6                              miss málaga 2011   24        11th evicted  
+7   horse rider & ex-boyfriend of lara dibildos   42        10th evicted  
+8                             reality show star   27         9th evicted  
+9      ex security guard, robbed a security van   62             ejected  
+10                ex-son-in-law of rocío jurado   36         7th evicted  
+11                            reality show star   29         6th evicted  
+12                                      tv host   45         5th evicted  
+13                            reality show star   19         4th evicted  
+14                                 porn actress   30         3rd evicted  
+15                    actress, vedette, tv host   61         2nd evicted  
+Sample 4330 - Plan 1: Caption: none
+Sample 4330 - Plan 1: Original table: [['celebrity', 'residence', 'famous_for____occupation', 'age', 'status'], ['nagore robles', 'bilbao', 'gran hermano 11 housemate', '28', 'winner'], ['raquel bollo', 'seville', 'tv host & ex-wife of chiquetete', '43', 'runner-up'], ['blanca de borbón', 'oviedo, asturias', "alfonso xiii's illegitimate granddaughter", '55', '3rd finalist'], ['regina do santos', 'brazil', 'singer & dancer', '58', '1st / 14th evicted'], ['liberto lópez de la franca', 'madrid', 'good manner teacher', '40', '13th evicted'], ['mª ángeles delgado', 'valladolid', 'mother of reality-show star aída nízar', '57', '8th / 12th evicted'], ['úrsula aguilar', 'málaga', 'miss málaga 2011', '24', '11th evicted'], ['álvaro muñoz-escassi', 'seville', 'horse rider & ex-boyfriend of lara dibildos', '42', '10th evicted'], ['pedro reche, "reche"', 'langreo, asturias', 'reality show star', '27', '9th evicted'], ['dionisio rodríguez, "dioni"', 'madrid', 'ex security guard, robbed a security van', '62', 'ejected'], ['antonio david flores', 'madrid', 'ex-son-in-law of rocío jurado', '36', '7th evicted'], ['raúl hidalgo', 'valladolid', 'reality show star', '29', '6th evicted'], ['leticia sabater', 'barcelona', 'tv host', '45', '5th evicted'], ['brenda cerdá', 'valencia', 'reality show star', '19', '4th evicted'], ['sonia baby', 'elche, valencia', 'porn actress', '30', '3rd evicted'], ['bárbara rey', 'totana, murcia', 'actress, vedette, tv host', '61', '2nd evicted']]
+########################################################################################################################
+Sample 4330 - Plan 1: Operation 1: Select the row where the 'status' column is '1st / 14th evicted'.
+Sample 4330 - Plan 1: Selected indices: [[3, 4]]
+Sample 4330 - Plan 1: X-Table after operation df:
+          celebrity residence famous_for____occupation  age  \
+0  regina do santos    brazil          singer & dancer   58   
+
+               status  
+0  1st / 14th evicted  
+Sample 4330 - Plan 1: Table after operation: [['celebrity', 'residence', 'famous_for____occupation', 'age', 'status'], ['regina do santos', 'brazil', 'singer & dancer', 58, '1st / 14th evicted']]
+########################################################################################################################
+Sample 4330 - Plan 1: Operation 2: Select the 'celebrity' column from the resulting row.
+Sample 4330 - Plan 1: Selected indices: []
+Sample 4330 - Plan 1: X-Table after operation df:
+          celebrity
+0  regina do santos
+Sample 4330 - Plan 1: Table after operation: [['celebrity'], ['regina do santos']]
+Fall-back: FALSE
+Answer from plan 1: [['regina do santos']]
+Groundtruth: ['Regina Do Santos']

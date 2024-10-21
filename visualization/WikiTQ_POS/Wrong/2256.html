@@ -1,0 +1,344 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which season(s)had at least 10 races?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'races' column is greater than or equal to 10.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>season</td>
+<td>class</td>
+<td>moto</td>
+<td>races</td>
+<td>win</td>
+<td>podiums</td>
+<td>pole</td>
+<td>pts</td>
+<td>position</td>
+</tr>
+<tr>
+<td>2004</td>
+<td>125cc</td>
+<td>aprilia</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>nc</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2005</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">125cc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">derbi</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">36th</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">125cc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">derbi</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">53</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">14th</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2007</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">125cc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">derbi</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">22nd</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">125cc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">aprilia</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">176</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5th</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2009</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">125cc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">aprilia</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">179.5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3rd</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2010</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">125cc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">aprilia</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">14</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">296</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2nd</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2011</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">125cc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">aprilia</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">302</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1st</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2012</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">moto2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">suter</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">37</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">17th</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2013</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">moto2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">suter</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">150</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7th</span></td>
+</tr>
+<tr>
+<td>2014</td>
+<td>moto2</td>
+<td>suter</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0*</td>
+<td>nc*</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">total</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">147</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">39</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1213.5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select the 'season' column.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>season</td>
+<td>class</td>
+<td>moto</td>
+<td>races</td>
+<td>win</td>
+<td>podiums</td>
+<td>pole</td>
+<td>pts</td>
+<td>position</td>
+</tr>
+<tr>
+<td>2005</td>
+<td>125cc</td>
+<td>derbi</td>
+<td>13</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>36th</td>
+</tr>
+<tr>
+<td>2006</td>
+<td>125cc</td>
+<td>derbi</td>
+<td>16</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>53</td>
+<td>14th</td>
+</tr>
+<tr>
+<td>2007</td>
+<td>125cc</td>
+<td>derbi</td>
+<td>17</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>19</td>
+<td>22nd</td>
+</tr>
+<tr>
+<td>2008</td>
+<td>125cc</td>
+<td>aprilia</td>
+<td>17</td>
+<td>1</td>
+<td>5</td>
+<td>0</td>
+<td>176</td>
+<td>5th</td>
+</tr>
+<tr>
+<td>2009</td>
+<td>125cc</td>
+<td>aprilia</td>
+<td>16</td>
+<td>1</td>
+<td>4</td>
+<td>0</td>
+<td>179.5</td>
+<td>3rd</td>
+</tr>
+<tr>
+<td>2010</td>
+<td>125cc</td>
+<td>aprilia</td>
+<td>16</td>
+<td>3</td>
+<td>14</td>
+<td>1</td>
+<td>296</td>
+<td>2nd</td>
+</tr>
+<tr>
+<td>2011</td>
+<td>125cc</td>
+<td>aprilia</td>
+<td>16</td>
+<td>8</td>
+<td>11</td>
+<td>7</td>
+<td>302</td>
+<td>1st</td>
+</tr>
+<tr>
+<td>2012</td>
+<td>moto2</td>
+<td>suter</td>
+<td>17</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>37</td>
+<td>17th</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>moto2</td>
+<td>suter</td>
+<td>17</td>
+<td>3</td>
+<td>4</td>
+<td>1</td>
+<td>150</td>
+<td>7th</td>
+</tr>
+<tr>
+<td>total</td>
+<td></td>
+<td></td>
+<td>147</td>
+<td>16</td>
+<td>39</td>
+<td>9</td>
+<td>1213.5</td>
+<td></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>season</td>
+</tr>
+<tr>
+<td>2005</td>
+</tr>
+<tr>
+<td>2006</td>
+</tr>
+<tr>
+<td>2007</td>
+</tr>
+<tr>
+<td>2008</td>
+</tr>
+<tr>
+<td>2009</td>
+</tr>
+<tr>
+<td>2010</td>
+</tr>
+<tr>
+<td>2011</td>
+</tr>
+<tr>
+<td>2012</td>
+</tr>
+<tr>
+<td>2013</td>
+</tr>
+<tr>
+<td>total</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['2005'], ['2006'], ['2007'], ['2008'], ['2009'], ['2010'], ['2011'], ['2012'], ['2013'], ['total']]</h3>
+</body></html>

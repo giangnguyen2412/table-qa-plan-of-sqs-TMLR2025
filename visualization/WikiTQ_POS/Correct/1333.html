@@ -1,0 +1,468 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how many times is there more than a 150 imr?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Extract the numerical value from the 'imr_' column and add a new column 'num_imr' to the existing table.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>period</td>
+<td>live_births_per_year</td>
+<td>deaths_per_year</td>
+<td>natural_change_per_year</td>
+<td>cbr_</td>
+<td>cdr_</td>
+<td>nc_</td>
+<td>tfr_</td>
+<td>imr_</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1950-1955</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">139 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">66 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">74 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">52.6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24.8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">27.8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6.86</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">174</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1955-1960</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">164 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">76 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">88 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">53.8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24.9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">29.0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6.96</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">171</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1960-1965</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">195 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">89 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">105 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">55.5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">25.5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">30.1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7.13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">167</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1965-1970</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">229 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">105 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">124 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">56.2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">25.8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">30.4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7.32</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">164</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1970-1975</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">263 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">121 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">142 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">55.8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">25.6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">30.2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7.52</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">162</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1975-1980</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">301 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">138 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">164 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">55.1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">25.1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">29.9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7.63</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">161</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1980-1985</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">350 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">157 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">193 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">55.4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24.8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">30.6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7.76</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">159</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1985-1990</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">406 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">179 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">227 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">55.9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24.6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">31.3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7.81</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">155</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1990-1995</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">471 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">192 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">279 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">55.5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">22.7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">32.8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7.78</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">146</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1995-2000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">538 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">194 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">344 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">53.5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19.3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">34.2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7.60</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">131</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2000-2005</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">614 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">194 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">420 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">51.3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">16.2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">35.1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7.40</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">113</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2005-2010</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">705 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">196 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">509 000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">49.5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13.8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">35.7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7.19</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">96</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select rows where the 'num_imr' is greater than 150.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>period</td>
+<td>live_births_per_year</td>
+<td>deaths_per_year</td>
+<td>natural_change_per_year</td>
+<td>cbr_</td>
+<td>cdr_</td>
+<td>nc_</td>
+<td>tfr_</td>
+<td>imr_</td>
+<td>num_imr</td>
+</tr>
+<tr>
+<td>1950-1955</td>
+<td>139 000</td>
+<td>66 000</td>
+<td>74 000</td>
+<td>52.6</td>
+<td>24.8</td>
+<td>27.8</td>
+<td>6.86</td>
+<td>174</td>
+<td><span class="highlighted-cell" title="Used in transformation">174</span></td>
+</tr>
+<tr>
+<td>1955-1960</td>
+<td>164 000</td>
+<td>76 000</td>
+<td>88 000</td>
+<td>53.8</td>
+<td>24.9</td>
+<td>29.0</td>
+<td>6.96</td>
+<td>171</td>
+<td><span class="highlighted-cell" title="Used in transformation">171</span></td>
+</tr>
+<tr>
+<td>1960-1965</td>
+<td>195 000</td>
+<td>89 000</td>
+<td>105 000</td>
+<td>55.5</td>
+<td>25.5</td>
+<td>30.1</td>
+<td>7.13</td>
+<td>167</td>
+<td><span class="highlighted-cell" title="Used in transformation">167</span></td>
+</tr>
+<tr>
+<td>1965-1970</td>
+<td>229 000</td>
+<td>105 000</td>
+<td>124 000</td>
+<td>56.2</td>
+<td>25.8</td>
+<td>30.4</td>
+<td>7.32</td>
+<td>164</td>
+<td><span class="highlighted-cell" title="Used in transformation">164</span></td>
+</tr>
+<tr>
+<td>1970-1975</td>
+<td>263 000</td>
+<td>121 000</td>
+<td>142 000</td>
+<td>55.8</td>
+<td>25.6</td>
+<td>30.2</td>
+<td>7.52</td>
+<td>162</td>
+<td><span class="highlighted-cell" title="Used in transformation">162</span></td>
+</tr>
+<tr>
+<td>1975-1980</td>
+<td>301 000</td>
+<td>138 000</td>
+<td>164 000</td>
+<td>55.1</td>
+<td>25.1</td>
+<td>29.9</td>
+<td>7.63</td>
+<td>161</td>
+<td><span class="highlighted-cell" title="Used in transformation">161</span></td>
+</tr>
+<tr>
+<td>1980-1985</td>
+<td>350 000</td>
+<td>157 000</td>
+<td>193 000</td>
+<td>55.4</td>
+<td>24.8</td>
+<td>30.6</td>
+<td>7.76</td>
+<td>159</td>
+<td><span class="highlighted-cell" title="Used in transformation">159</span></td>
+</tr>
+<tr>
+<td>1985-1990</td>
+<td>406 000</td>
+<td>179 000</td>
+<td>227 000</td>
+<td>55.9</td>
+<td>24.6</td>
+<td>31.3</td>
+<td>7.81</td>
+<td>155</td>
+<td><span class="highlighted-cell" title="Used in transformation">155</span></td>
+</tr>
+<tr>
+<td>1990-1995</td>
+<td>471 000</td>
+<td>192 000</td>
+<td>279 000</td>
+<td>55.5</td>
+<td>22.7</td>
+<td>32.8</td>
+<td>7.78</td>
+<td>146</td>
+<td>146</td>
+</tr>
+<tr>
+<td>1995-2000</td>
+<td>538 000</td>
+<td>194 000</td>
+<td>344 000</td>
+<td>53.5</td>
+<td>19.3</td>
+<td>34.2</td>
+<td>7.6</td>
+<td>131</td>
+<td>131</td>
+</tr>
+<tr>
+<td>2000-2005</td>
+<td>614 000</td>
+<td>194 000</td>
+<td>420 000</td>
+<td>51.3</td>
+<td>16.2</td>
+<td>35.1</td>
+<td>7.4</td>
+<td>113</td>
+<td>113</td>
+</tr>
+<tr>
+<td>2005-2010</td>
+<td>705 000</td>
+<td>196 000</td>
+<td>509 000</td>
+<td>49.5</td>
+<td>13.8</td>
+<td>35.7</td>
+<td>7.19</td>
+<td>96</td>
+<td>96</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Count the number of rows.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>period</td>
+<td>live_births_per_year</td>
+<td>deaths_per_year</td>
+<td>natural_change_per_year</td>
+<td>cbr_</td>
+<td>cdr_</td>
+<td>nc_</td>
+<td>tfr_</td>
+<td>imr_</td>
+<td>num_imr</td>
+</tr>
+<tr>
+<td>1950-1955</td>
+<td>139 000</td>
+<td>66 000</td>
+<td>74 000</td>
+<td>52.6</td>
+<td>24.8</td>
+<td>27.8</td>
+<td>6.86</td>
+<td>174</td>
+<td>174</td>
+</tr>
+<tr>
+<td>1955-1960</td>
+<td>164 000</td>
+<td>76 000</td>
+<td>88 000</td>
+<td>53.8</td>
+<td>24.9</td>
+<td>29.0</td>
+<td>6.96</td>
+<td>171</td>
+<td>171</td>
+</tr>
+<tr>
+<td>1960-1965</td>
+<td>195 000</td>
+<td>89 000</td>
+<td>105 000</td>
+<td>55.5</td>
+<td>25.5</td>
+<td>30.1</td>
+<td>7.13</td>
+<td>167</td>
+<td>167</td>
+</tr>
+<tr>
+<td>1965-1970</td>
+<td>229 000</td>
+<td>105 000</td>
+<td>124 000</td>
+<td>56.2</td>
+<td>25.8</td>
+<td>30.4</td>
+<td>7.32</td>
+<td>164</td>
+<td>164</td>
+</tr>
+<tr>
+<td>1970-1975</td>
+<td>263 000</td>
+<td>121 000</td>
+<td>142 000</td>
+<td>55.8</td>
+<td>25.6</td>
+<td>30.2</td>
+<td>7.52</td>
+<td>162</td>
+<td>162</td>
+</tr>
+<tr>
+<td>1975-1980</td>
+<td>301 000</td>
+<td>138 000</td>
+<td>164 000</td>
+<td>55.1</td>
+<td>25.1</td>
+<td>29.9</td>
+<td>7.63</td>
+<td>161</td>
+<td>161</td>
+</tr>
+<tr>
+<td>1980-1985</td>
+<td>350 000</td>
+<td>157 000</td>
+<td>193 000</td>
+<td>55.4</td>
+<td>24.8</td>
+<td>30.6</td>
+<td>7.76</td>
+<td>159</td>
+<td>159</td>
+</tr>
+<tr>
+<td>1985-1990</td>
+<td>406 000</td>
+<td>179 000</td>
+<td>227 000</td>
+<td>55.9</td>
+<td>24.6</td>
+<td>31.3</td>
+<td>7.81</td>
+<td>155</td>
+<td>155</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>row_count</td>
+</tr>
+<tr>
+<td>8</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[8]]</h3>
+</body></html>

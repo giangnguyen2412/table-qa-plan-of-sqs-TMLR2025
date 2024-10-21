@@ -1,0 +1,73 @@
+************************************************************************************************************************
+Sample 3097 - Plan 1: Query: what was the total amount of money awarded to the top 2 players?
+Sample 3097 - Plan 1: Groundtruth: ['$557,000']
+Sample 3097 - Plan 1: X-Original table pd: 
+   place          player        country            score to_par money____
+0      1     corey pavin  united states  72-69-71-68=280      e   350,000
+1      2     greg norman      australia  68-67-74-73=282     +2   207,000
+2      3      tom lehman  united states  70-72-67-74=283     +3   131,974
+3     t4    bill glasson  united states  69-70-76-69=284     +4    66,633
+4     t4        jay haas  united states  70-73-72-69=284     +4    66,633
+5     t4  neal lancaster  united states  70-72-77-65=284     +4    66,633
+6     t4  davis love iii  united states  72-68-73-71=284     +4    66,633
+7     t4    jeff maggert  united states  69-72-77-66=284     +4    66,633
+8     t4  phil mickelson  united states  68-70-72-74=284     +4    66,633
+9    t10    frank nobilo    new zealand  72-72-70-71=285     +5    44,184
+10   t10     vijay singh           fiji  70-71-72-72=285     +5    44,184
+11   t10        bob tway  united states  69-69-72-75=285     +5    44,184
+Sample 3097 - Plan 1: Caption: none
+Sample 3097 - Plan 1: Original table: [['place', 'player', 'country', 'score', 'to_par', 'money____'], ['1', 'corey pavin', 'united states', '72-69-71-68=280', 'e', '350,000'], ['2', 'greg norman', 'australia', '68-67-74-73=282', '+2', '207,000'], ['3', 'tom lehman', 'united states', '70-72-67-74=283', '+3', '131,974'], ['t4', 'bill glasson', 'united states', '69-70-76-69=284', '+4', '66,633'], ['t4', 'jay haas', 'united states', '70-73-72-69=284', '+4', '66,633'], ['t4', 'neal lancaster', 'united states', '70-72-77-65=284', '+4', '66,633'], ['t4', 'davis love iii', 'united states', '72-68-73-71=284', '+4', '66,633'], ['t4', 'jeff maggert', 'united states', '69-72-77-66=284', '+4', '66,633'], ['t4', 'phil mickelson', 'united states', '68-70-72-74=284', '+4', '66,633'], ['t10', 'frank nobilo', 'new zealand', '72-72-70-71=285', '+5', '44,184'], ['t10', 'vijay singh', 'fiji', '70-71-72-72=285', '+5', '44,184'], ['t10', 'bob tway', 'united states', '69-69-72-75=285', '+5', '44,184']]
+########################################################################################################################
+Sample 3097 - Plan 1: Operation 1: Select the 'money____' column.
+Sample 3097 - Plan 1: Selected indices: []
+Sample 3097 - Plan 1: X-Table after operation df:
+   money____
+0    350,000
+1    207,000
+2    131,974
+3     66,633
+4     66,633
+5     66,633
+6     66,633
+7     66,633
+8     66,633
+9     44,184
+10    44,184
+11    44,184
+Sample 3097 - Plan 1: Table after operation: [['money____'], ['350,000'], ['207,000'], ['131,974'], ['66,633'], ['66,633'], ['66,633'], ['66,633'], ['66,633'], ['66,633'], ['44,184'], ['44,184'], ['44,184']]
+########################################################################################################################
+Sample 3097 - Plan 1: Operation 2: Order the table by the 'money____' column in descending order.
+Sample 3097 - Plan 1: Selected indices: [[9, 0], [4, 0], [11, 0], [0, 0], [7, 0], [2, 0], [8, 0], [3, 0], [10, 0], [5, 0], [6, 0], [1, 0]]
+Sample 3097 - Plan 1: X-Table after operation df:
+   money____
+0    350,000
+1    207,000
+2    131,974
+3     66,633
+4     66,633
+5     66,633
+6     66,633
+7     66,633
+8     66,633
+9     44,184
+10    44,184
+11    44,184
+Sample 3097 - Plan 1: Table after operation: [['money____'], ['350,000'], ['207,000'], ['131,974'], ['66,633'], ['66,633'], ['66,633'], ['66,633'], ['66,633'], ['66,633'], ['44,184'], ['44,184'], ['44,184']]
+########################################################################################################################
+Sample 3097 - Plan 1: Operation 3: Select the top 2 rows.
+Sample 3097 - Plan 1: Selected indices: []
+Sample 3097 - Plan 1: X-Table after operation df:
+  money____
+0   350,000
+1   207,000
+Sample 3097 - Plan 1: Table after operation: [['money____'], ['350,000'], ['207,000']]
+########################################################################################################################
+Sample 3097 - Plan 1: Operation 4: Sum the values in the selected rows from the 'money____' column.
+Sample 3097 - Plan 1: Selected indices: []
+Sample 3097 - Plan 1: X-Table after operation df:
+   total_money
+0       557000
+Sample 3097 - Plan 1: Table after operation: [['total_money'], [557000]]
+Fall-back: FALSE
+Answer from plan 1: [[557000]]
+Groundtruth: ['$557,000']

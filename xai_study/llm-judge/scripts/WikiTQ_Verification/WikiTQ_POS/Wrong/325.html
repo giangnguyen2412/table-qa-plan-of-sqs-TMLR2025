@@ -1,0 +1,789 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> the island of sheppey is 36 sq miles, what is the name of their country?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'area_n_sq_mi_' column is equal to 36.0.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>rank</td>
+<td>island</td>
+<td>area_n_km²_</td>
+<td>area_n_sq_mi_</td>
+<td>country_countries_region</td>
+</tr>
+<tr>
+<td>209</td>
+<td>mljet</td>
+<td>100</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">39</span></td>
+<td>croatia</td>
+</tr>
+<tr>
+<td>210</td>
+<td>kythnos</td>
+<td>99</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">38</span></td>
+<td>greece</td>
+</tr>
+<tr>
+<td>211</td>
+<td>sylt</td>
+<td>99</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">38</span></td>
+<td>germany</td>
+</tr>
+<tr>
+<td>212</td>
+<td>askøy</td>
+<td>99</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">38</span></td>
+<td>norway</td>
+</tr>
+<tr>
+<td>213</td>
+<td>santa maria island</td>
+<td>97</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">37</span></td>
+<td>portugal</td>
+</tr>
+<tr>
+<td>214</td>
+<td>astypalaia</td>
+<td>97</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">38</span></td>
+<td>greece</td>
+</tr>
+<tr>
+<td>215</td>
+<td>amager</td>
+<td>96</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">37</span></td>
+<td>denmark</td>
+</tr>
+<tr>
+<td>216</td>
+<td>ithaki</td>
+<td>96</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">37</span></td>
+<td>greece</td>
+</tr>
+<tr>
+<td>217</td>
+<td>borðoy</td>
+<td>95</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">37</span></td>
+<td>faroe islands, an autonomous region of denmark</td>
+</tr>
+<tr>
+<td>218</td>
+<td>salamis</td>
+<td>95</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">37</span></td>
+<td>greece</td>
+</tr>
+<tr>
+<td>219</td>
+<td>skopelos</td>
+<td>95</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">37</span></td>
+<td>greece</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">220</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sheppey</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">94</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">36</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united kingdom</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">221</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gräsö</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">93</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">36</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sweden</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">222</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lemland</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">92</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">36</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">finland</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">223</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">vormsi</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">92</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">36</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">estonia</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">224</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rab</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">91</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">36</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">croatia</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">225</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">eckerö</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">91</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">36</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">finland</span></td>
+</tr>
+<tr>
+<td>226</td>
+<td>öja (island)</td>
+<td>90</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">35</span></td>
+<td>finland</td>
+</tr>
+<tr>
+<td>227</td>
+<td>vis</td>
+<td>90</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">35</span></td>
+<td>croatia</td>
+</tr>
+<tr>
+<td>228</td>
+<td>rolvsøy, finnmark</td>
+<td>89</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">34</span></td>
+<td>norway</td>
+</tr>
+<tr>
+<td>229</td>
+<td>tustna</td>
+<td>89</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">34</span></td>
+<td>norway</td>
+</tr>
+<tr>
+<td>230</td>
+<td>austra</td>
+<td>88</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">34</span></td>
+<td>norway</td>
+</tr>
+<tr>
+<td>231</td>
+<td>holsnøy</td>
+<td>88</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">34</span></td>
+<td>norway</td>
+</tr>
+<tr>
+<td>232</td>
+<td>terschelling</td>
+<td>88</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">34</span></td>
+<td>netherlands</td>
+</tr>
+<tr>
+<td>233</td>
+<td>ærø</td>
+<td>88</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">34</span></td>
+<td>denmark</td>
+</tr>
+<tr>
+<td>234</td>
+<td>belle île</td>
+<td>87</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">34</span></td>
+<td>france</td>
+</tr>
+<tr>
+<td>235</td>
+<td>mykonos</td>
+<td>86</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">34</span></td>
+<td>greece</td>
+</tr>
+<tr>
+<td>236</td>
+<td>kågen</td>
+<td>86</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">33</span></td>
+<td>norway</td>
+</tr>
+<tr>
+<td>237</td>
+<td>île de ré</td>
+<td>85</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">33</span></td>
+<td>france</td>
+</tr>
+<tr>
+<td>238</td>
+<td>nordkvaløya</td>
+<td>84</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">33</span></td>
+<td>norway</td>
+</tr>
+<tr>
+<td>239</td>
+<td>syros</td>
+<td>84</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">33</span></td>
+<td>greece</td>
+</tr>
+<tr>
+<td>240</td>
+<td>aegina</td>
+<td>83</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">32</span></td>
+<td>greece</td>
+</tr>
+<tr>
+<td>241</td>
+<td>formentera</td>
+<td>83</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">32</span></td>
+<td>spain</td>
+</tr>
+<tr>
+<td>242</td>
+<td>pantelleria</td>
+<td>83</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">32</span></td>
+<td>italy</td>
+</tr>
+<tr>
+<td>243</td>
+<td>ytre vikna (outer island of vikna archipelago)</td>
+<td>83</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">32</span></td>
+<td>norway</td>
+</tr>
+<tr>
+<td>244</td>
+<td>benbecula</td>
+<td>82</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">32</span></td>
+<td>united kingdom</td>
+</tr>
+<tr>
+<td>245</td>
+<td>rebbenesøya</td>
+<td>82</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">32</span></td>
+<td>norway</td>
+</tr>
+<tr>
+<td>246</td>
+<td>föhr</td>
+<td>82</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">32</span></td>
+<td>germany</td>
+</tr>
+<tr>
+<td>247</td>
+<td>tiree</td>
+<td>78</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">30</span></td>
+<td>united kingdom</td>
+</tr>
+<tr>
+<td>248</td>
+<td>uløya</td>
+<td>78</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">30</span></td>
+<td>norway</td>
+</tr>
+<tr>
+<td>249</td>
+<td>coll</td>
+<td>77</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">30</span></td>
+<td>united kingdom</td>
+</tr>
+<tr>
+<td>250</td>
+<td>otrøy (in møre og romsdal)</td>
+<td>76</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">29</span></td>
+<td>norway</td>
+</tr>
+<tr>
+<td>251</td>
+<td>santorini</td>
+<td>76</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">29</span></td>
+<td>greece</td>
+</tr>
+<tr>
+<td>252</td>
+<td>lošinj</td>
+<td>75</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">29</span></td>
+<td>croatia</td>
+</tr>
+<tr>
+<td>253</td>
+<td>hertsön</td>
+<td>73</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">28</span></td>
+<td>sweden</td>
+</tr>
+<tr>
+<td>254</td>
+<td>serifos</td>
+<td>73</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">29</span></td>
+<td>greece</td>
+</tr>
+<tr>
+<td>255</td>
+<td>sifnos</td>
+<td>73</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">29</span></td>
+<td>greece</td>
+</tr>
+<tr>
+<td>256</td>
+<td>storlandet (finnish: iso-nauvo) (nagu/nauvo main island)</td>
+<td>72</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">29</span></td>
+<td>finland</td>
+</tr>
+<tr>
+<td>257</td>
+<td>tåsinge</td>
+<td>70</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">27</span></td>
+<td>denmark</td>
+</tr>
+<tr>
+<td>258</td>
+<td>ålön (in pargas/parainen)</td>
+<td>70</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">27</span></td>
+<td>finland</td>
+</tr>
+<tr>
+<td>259</td>
+<td>engeløya</td>
+<td>68</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">26</span></td>
+<td>norway</td>
+</tr>
+<tr>
+<td>260</td>
+<td>finnøya (in nordland)</td>
+<td>68</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">26</span></td>
+<td>norway</td>
+</tr>
+<tr>
+<td>261</td>
+<td>alnön</td>
+<td>68</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">26</span></td>
+<td>sweden</td>
+</tr>
+<tr>
+<td>262</td>
+<td>gozo</td>
+<td>67</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">26</span></td>
+<td>malta</td>
+</tr>
+<tr>
+<td>263</td>
+<td>kasos</td>
+<td>66</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">26</span></td>
+<td>greece</td>
+</tr>
+<tr>
+<td>264</td>
+<td>kyrklandet (in korpo/korppoo)</td>
+<td>64</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">25</span></td>
+<td>finland</td>
+</tr>
+<tr>
+<td>265</td>
+<td>alonissos</td>
+<td>64</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">25</span></td>
+<td>greece</td>
+</tr>
+<tr>
+<td>266</td>
+<td>vågsøy</td>
+<td>64</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">25</span></td>
+<td>norway</td>
+</tr>
+<tr>
+<td>267</td>
+<td>frei</td>
+<td>63</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24</span></td>
+<td>norway</td>
+</tr>
+<tr>
+<td>268</td>
+<td>guernsey</td>
+<td>63</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24</span></td>
+<td>guernsey, british crown dependency</td>
+</tr>
+<tr>
+<td>269</td>
+<td>ingarö</td>
+<td>63</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24</span></td>
+<td>sweden</td>
+</tr>
+<tr>
+<td>270</td>
+<td>pašman</td>
+<td>63</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24</span></td>
+<td>croatia</td>
+</tr>
+<tr>
+<td>271</td>
+<td>tilos</td>
+<td>63</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24</span></td>
+<td>greece</td>
+</tr>
+<tr>
+<td>272</td>
+<td>raasay</td>
+<td>62</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24</span></td>
+<td>united kingdom</td>
+</tr>
+<tr>
+<td>273</td>
+<td>graciosa island</td>
+<td>62</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24</span></td>
+<td>portugal</td>
+</tr>
+<tr>
+<td>274</td>
+<td>ljusterö</td>
+<td>62</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24</span></td>
+<td>sweden</td>
+</tr>
+<tr>
+<td>275</td>
+<td>bolshoy berezovy (in beryozovye islands, gulf of finland)</td>
+<td>60</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">23</span></td>
+<td>russia</td>
+</tr>
+<tr>
+<td>276</td>
+<td>leka</td>
+<td>60</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">23</span></td>
+<td>norway</td>
+</tr>
+<tr>
+<td>277</td>
+<td>sula (in møre og romsdal)</td>
+<td>59</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">23</span></td>
+<td>norway</td>
+</tr>
+<tr>
+<td>278</td>
+<td>barra</td>
+<td>59</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">23</span></td>
+<td>united kingdom</td>
+</tr>
+<tr>
+<td>279</td>
+<td>šolta</td>
+<td>59</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">23</span></td>
+<td>croatia</td>
+</tr>
+<tr>
+<td>280</td>
+<td>ombo</td>
+<td>58</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">22</span></td>
+<td>norway</td>
+</tr>
+<tr>
+<td>281</td>
+<td>ameland</td>
+<td>58</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">22</span></td>
+<td>netherlands</td>
+</tr>
+<tr>
+<td>282</td>
+<td>symi</td>
+<td>58</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">22</span></td>
+<td>greece</td>
+</tr>
+<tr>
+<td>283</td>
+<td>kivimaa (in gustavs/kustavi)</td>
+<td>57</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">22</span></td>
+<td>finland</td>
+</tr>
+<tr>
+<td>284</td>
+<td>fanø</td>
+<td>56</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">21.5</span></td>
+<td>denmark</td>
+</tr>
+<tr>
+<td>285</td>
+<td>dzharylgach</td>
+<td>56</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">21.5</span></td>
+<td>ukraine</td>
+</tr>
+<tr>
+<td>286</td>
+<td>île de noirmoutier</td>
+<td>55.5</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">21.5</span></td>
+<td>france</td>
+</tr>
+<tr>
+<td>287</td>
+<td>jøa</td>
+<td>55</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">21</span></td>
+<td>norway</td>
+</tr>
+<tr>
+<td>288</td>
+<td>inner-vikna (inner island of vikna archipelago)</td>
+<td>55</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">21</span></td>
+<td>norway</td>
+</tr>
+<tr>
+<td>289</td>
+<td>hemsön</td>
+<td>54</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">21</span></td>
+<td>sweden</td>
+</tr>
+<tr>
+<td>290</td>
+<td>dyrøya</td>
+<td>53</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td>norway</td>
+</tr>
+<tr>
+<td>291</td>
+<td>leros</td>
+<td>53</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td>greece</td>
+</tr>
+<tr>
+<td>292</td>
+<td>pyhämaa (in nystad/uusikaupunki)</td>
+<td>53</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td>finland</td>
+</tr>
+<tr>
+<td>293</td>
+<td>vessölandet (in borgå/porvoo)</td>
+<td>52</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td>finland</td>
+</tr>
+<tr>
+<td>294</td>
+<td>mörkön</td>
+<td>52</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td>sweden</td>
+</tr>
+<tr>
+<td>295</td>
+<td>san pietro island</td>
+<td>51</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td>italy</td>
+</tr>
+<tr>
+<td>296</td>
+<td>asinara</td>
+<td>51</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td>italy</td>
+</tr>
+<tr>
+<td>297</td>
+<td>hydra</td>
+<td>50</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td>greece</td>
+</tr>
+<tr>
+<td>298</td>
+<td>sanday, orkney</td>
+<td>50</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td>united kingdom</td>
+</tr>
+<tr>
+<td>299</td>
+<td>ugljan</td>
+<td>50</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td>croatia</td>
+</tr>
+<tr>
+<td>300</td>
+<td>huftarøy</td>
+<td>50</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td>norway</td>
+</tr>
+<tr>
+<td>301</td>
+<td>storøya</td>
+<td>50</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td>svalbard,  norway</td>
+</tr>
+<tr>
+<td>302</td>
+<td>wahlbergøya</td>
+<td>50</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td>svalbard,  norway</td>
+</tr>
+<tr>
+<td>303</td>
+<td>south ronaldsay</td>
+<td>50</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td>united kingdom</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select the 'country_countries_region' column.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>rank</td>
+<td>island</td>
+<td>area_n_km²_</td>
+<td>area_n_sq_mi_</td>
+<td>country_countries_region</td>
+</tr>
+<tr>
+<td>220</td>
+<td>sheppey</td>
+<td>94.0</td>
+<td>36.0</td>
+<td>united kingdom</td>
+</tr>
+<tr>
+<td>221</td>
+<td>gräsö</td>
+<td>93.0</td>
+<td>36.0</td>
+<td>sweden</td>
+</tr>
+<tr>
+<td>222</td>
+<td>lemland</td>
+<td>92.0</td>
+<td>36.0</td>
+<td>finland</td>
+</tr>
+<tr>
+<td>223</td>
+<td>vormsi</td>
+<td>92.0</td>
+<td>36.0</td>
+<td>estonia</td>
+</tr>
+<tr>
+<td>224</td>
+<td>rab</td>
+<td>91.0</td>
+<td>36.0</td>
+<td>croatia</td>
+</tr>
+<tr>
+<td>225</td>
+<td>eckerö</td>
+<td>91.0</td>
+<td>36.0</td>
+<td>finland</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>country_countries_region</td>
+</tr>
+<tr>
+<td>united kingdom</td>
+</tr>
+<tr>
+<td>sweden</td>
+</tr>
+<tr>
+<td>finland</td>
+</tr>
+<tr>
+<td>estonia</td>
+</tr>
+<tr>
+<td>croatia</td>
+</tr>
+<tr>
+<td>finland</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['united kingdom'], ['sweden'], ['finland'], ['estonia'], ['croatia'], ['finland']]</h3>
+</body></html>

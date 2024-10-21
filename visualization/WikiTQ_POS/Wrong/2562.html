@@ -1,0 +1,316 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which contestant was evicted before the the final 3 were left?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'status' is not equal to 'winner' or 'runner-up'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>celebrity</td>
+<td>residence</td>
+<td>famous_for____occupation</td>
+<td>age</td>
+<td>status</td>
+</tr>
+<tr>
+<td>nagore robles</td>
+<td>bilbao</td>
+<td>gran hermano 11 housemate</td>
+<td>28</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">winner</span></td>
+</tr>
+<tr>
+<td>raquel bollo</td>
+<td>seville</td>
+<td>tv host & ex-wife of chiquetete</td>
+<td>43</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">runner-up</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">blanca de borbón</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">oviedo, asturias</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">alfonso xiii's illegitimate granddaughter</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">55</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">3rd finalist</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">regina do santos</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">brazil</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">singer & dancer</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">58</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1st / 14th evicted</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">liberto lópez de la franca</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">madrid</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">good manner teacher</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">40</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">13th evicted</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mª ángeles delgado</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">valladolid</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mother of reality-show star aída nízar</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">57</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">8th / 12th evicted</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">úrsula aguilar</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">málaga</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">miss málaga 2011</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">11th evicted</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">álvaro muñoz-escassi</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">seville</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">horse rider & ex-boyfriend of lara dibildos</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">42</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">10th evicted</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pedro reche, "reche"</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">langreo, asturias</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">reality show star</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">27</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">9th evicted</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dionisio rodríguez, "dioni"</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">madrid</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ex security guard, robbed a security van</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">62</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">ejected</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">antonio david flores</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">madrid</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ex-son-in-law of rocío jurado</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">36</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">7th evicted</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">raúl hidalgo</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">valladolid</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">reality show star</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">29</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">6th evicted</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">leticia sabater</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">barcelona</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tv host</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">45</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">5th evicted</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">brenda cerdá</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">valencia</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">reality show star</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">4th evicted</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sonia baby</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">elche, valencia</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">porn actress</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">30</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">3rd evicted</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bárbara rey</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">totana, murcia</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">actress, vedette, tv host</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">61</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2nd evicted</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select the 'contestant' column.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>celebrity</td>
+<td>residence</td>
+<td>famous_for____occupation</td>
+<td>age</td>
+<td>status</td>
+</tr>
+<tr>
+<td>blanca de borbón</td>
+<td>oviedo, asturias</td>
+<td>alfonso xiii's illegitimate granddaughter</td>
+<td>55</td>
+<td>3rd finalist</td>
+</tr>
+<tr>
+<td>regina do santos</td>
+<td>brazil</td>
+<td>singer & dancer</td>
+<td>58</td>
+<td>1st / 14th evicted</td>
+</tr>
+<tr>
+<td>liberto lópez de la franca</td>
+<td>madrid</td>
+<td>good manner teacher</td>
+<td>40</td>
+<td>13th evicted</td>
+</tr>
+<tr>
+<td>mª ángeles delgado</td>
+<td>valladolid</td>
+<td>mother of reality-show star aída nízar</td>
+<td>57</td>
+<td>8th / 12th evicted</td>
+</tr>
+<tr>
+<td>úrsula aguilar</td>
+<td>málaga</td>
+<td>miss málaga 2011</td>
+<td>24</td>
+<td>11th evicted</td>
+</tr>
+<tr>
+<td>álvaro muñoz-escassi</td>
+<td>seville</td>
+<td>horse rider & ex-boyfriend of lara dibildos</td>
+<td>42</td>
+<td>10th evicted</td>
+</tr>
+<tr>
+<td>pedro reche, "reche"</td>
+<td>langreo, asturias</td>
+<td>reality show star</td>
+<td>27</td>
+<td>9th evicted</td>
+</tr>
+<tr>
+<td>dionisio rodríguez, "dioni"</td>
+<td>madrid</td>
+<td>ex security guard, robbed a security van</td>
+<td>62</td>
+<td>ejected</td>
+</tr>
+<tr>
+<td>antonio david flores</td>
+<td>madrid</td>
+<td>ex-son-in-law of rocío jurado</td>
+<td>36</td>
+<td>7th evicted</td>
+</tr>
+<tr>
+<td>raúl hidalgo</td>
+<td>valladolid</td>
+<td>reality show star</td>
+<td>29</td>
+<td>6th evicted</td>
+</tr>
+<tr>
+<td>leticia sabater</td>
+<td>barcelona</td>
+<td>tv host</td>
+<td>45</td>
+<td>5th evicted</td>
+</tr>
+<tr>
+<td>brenda cerdá</td>
+<td>valencia</td>
+<td>reality show star</td>
+<td>19</td>
+<td>4th evicted</td>
+</tr>
+<tr>
+<td>sonia baby</td>
+<td>elche, valencia</td>
+<td>porn actress</td>
+<td>30</td>
+<td>3rd evicted</td>
+</tr>
+<tr>
+<td>bárbara rey</td>
+<td>totana, murcia</td>
+<td>actress, vedette, tv host</td>
+<td>61</td>
+<td>2nd evicted</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>celebrity</td>
+</tr>
+<tr>
+<td>blanca de borbón</td>
+</tr>
+<tr>
+<td>regina do santos</td>
+</tr>
+<tr>
+<td>liberto lópez de la franca</td>
+</tr>
+<tr>
+<td>mª ángeles delgado</td>
+</tr>
+<tr>
+<td>úrsula aguilar</td>
+</tr>
+<tr>
+<td>álvaro muñoz-escassi</td>
+</tr>
+<tr>
+<td>pedro reche, "reche"</td>
+</tr>
+<tr>
+<td>dionisio rodríguez, "dioni"</td>
+</tr>
+<tr>
+<td>antonio david flores</td>
+</tr>
+<tr>
+<td>raúl hidalgo</td>
+</tr>
+<tr>
+<td>leticia sabater</td>
+</tr>
+<tr>
+<td>brenda cerdá</td>
+</tr>
+<tr>
+<td>sonia baby</td>
+</tr>
+<tr>
+<td>bárbara rey</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['blanca de borbón'], ['regina do santos'], ['liberto lópez de la franca'], ['mª ángeles delgado'], ['úrsula aguilar'], ['álvaro muñoz-escassi'], ['pedro reche, "reche"'], ['dionisio rodríguez, "dioni"'], ['antonio david flores'], ['raúl hidalgo'], ['leticia sabater'], ['brenda cerdá'], ['sonia baby'], ['bárbara rey']]</h3>
+</body></html>

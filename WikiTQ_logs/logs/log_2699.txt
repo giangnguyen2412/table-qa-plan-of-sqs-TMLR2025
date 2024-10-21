@@ -1,0 +1,135 @@
+************************************************************************************************************************
+Sample 2699 - Plan 1: Query: who is the only player to win mvp and defensive player of the year in the same year?
+Sample 2699 - Plan 1: Groundtruth: ['Philippe Billy']
+Sample 2699 - Plan 1: X-Original table pd: 
+    year                  mvp defensive_player_of_the_year        unsung_hero  \
+0   1993        patrice ferri                            –                  –   
+1   1994          jean harbor                            –                  –   
+2   1995         lloyd barker                            –                  –   
+3   1996     paolo ceccarelli                            –                  –   
+4   1997         mauro biello                            –                  –   
+5   1998         mauro biello                            –                  –   
+6   1999                  n/a                            –                  –   
+7   2000           jim larkin                            –                  –   
+8   2001         mauro biello                            –                  –   
+9   2002     eduardo sebrango              gabriel gervais     jason ditullio   
+10  2003          greg sutton              gabriel gervais   david fronimadis   
+11  2004      gabriel gervais                  greg sutton         zé roberto   
+12  2005         mauro biello             nevio pizzolitto  mauricio vincello   
+13  2006    mauricio vincello              gabriel gervais       andrew weber   
+14  2007  leonardo di lorenzo            mauricio vincello        simon gatti   
+15  2008          matt jordan             nevio pizzolitto      joey gjertsen   
+16  2009          david testo             nevio pizzolitto          adam braz   
+17  2010       philippe billy               philippe billy     tony donatelli   
+18  2011       hassoun camara                    evan bush        simon gatti   
+
+                  newcomer_of_the_year  
+0                                    –  
+1                                    –  
+2                                    –  
+3                                    –  
+4                                    –  
+5                                    –  
+6                                    –  
+7                                    –  
+8                                    –  
+9                           zé roberto  
+10                         martin nash  
+11                       sandro grande  
+12                   masahiro fukazawa  
+13                 leonardo di lorenzo  
+14                         matt jordan  
+15                      stefano pesoli  
+16                      stephen deroux  
+17                           ali gerba  
+18  ian westlake / sinisa ubiparipovic  
+Sample 2699 - Plan 1: Caption: none
+Sample 2699 - Plan 1: Original table: [['year', 'mvp', 'defensive_player_of_the_year', 'unsung_hero', 'newcomer_of_the_year'], ['1993', 'patrice ferri', '–', '–', '–'], ['1994', 'jean harbor', '–', '–', '–'], ['1995', 'lloyd barker', '–', '–', '–'], ['1996', 'paolo ceccarelli', '–', '–', '–'], ['1997', 'mauro biello', '–', '–', '–'], ['1998', 'mauro biello', '–', '–', '–'], ['1999', 'n/a', '–', '–', '–'], ['2000', 'jim larkin', '–', '–', '–'], ['2001', 'mauro biello', '–', '–', '–'], ['2002', 'eduardo sebrango', 'gabriel gervais', 'jason ditullio', 'zé roberto'], ['2003', 'greg sutton', 'gabriel gervais', 'david fronimadis', 'martin nash'], ['2004', 'gabriel gervais', 'greg sutton', 'zé roberto', 'sandro grande'], ['2005', 'mauro biello', 'nevio pizzolitto', 'mauricio vincello', 'masahiro fukazawa'], ['2006', 'mauricio vincello', 'gabriel gervais', 'andrew weber', 'leonardo di lorenzo'], ['2007', 'leonardo di lorenzo', 'mauricio vincello', 'simon gatti', 'matt jordan'], ['2008', 'matt jordan', 'nevio pizzolitto', 'joey gjertsen', 'stefano pesoli'], ['2009', 'david testo', 'nevio pizzolitto', 'adam braz', 'stephen deroux'], ['2010', 'philippe billy', 'philippe billy', 'tony donatelli', 'ali gerba'], ['2011', 'hassoun camara', 'evan bush', 'simon gatti', 'ian westlake / sinisa ubiparipovic']]
+########################################################################################################################
+Sample 2699 - Plan 1: Operation 1: Select rows where the 'mvp' and 'defensive_player_of_the_year' columns are not empty.
+Sample 2699 - Plan 1: Selected indices: [[12, 1], [3, 1], [14, 1], [5, 1], [9, 2], [0, 2], [11, 2], [2, 2], [13, 2], [15, 2], [16, 1], [6, 2], [7, 1], [18, 1], [4, 2], [17, 2], [8, 2], [9, 1], [10, 2], [0, 1], [11, 1], [1, 2], [2, 1], [13, 1], [6, 1], [15, 1], [12, 2], [3, 2], [14, 2], [4, 1], [5, 2], [17, 1], [8, 1], [1, 1], [10, 1], [16, 2], [7, 2], [18, 2]]
+Sample 2699 - Plan 1: X-Table after operation df:
+    year                  mvp defensive_player_of_the_year        unsung_hero  \
+0   1993        patrice ferri                            –                  –   
+1   1994          jean harbor                            –                  –   
+2   1995         lloyd barker                            –                  –   
+3   1996     paolo ceccarelli                            –                  –   
+4   1997         mauro biello                            –                  –   
+5   1998         mauro biello                            –                  –   
+6   1999                  n/a                            –                  –   
+7   2000           jim larkin                            –                  –   
+8   2001         mauro biello                            –                  –   
+9   2002     eduardo sebrango              gabriel gervais     jason ditullio   
+10  2003          greg sutton              gabriel gervais   david fronimadis   
+11  2004      gabriel gervais                  greg sutton         zé roberto   
+12  2005         mauro biello             nevio pizzolitto  mauricio vincello   
+13  2006    mauricio vincello              gabriel gervais       andrew weber   
+14  2007  leonardo di lorenzo            mauricio vincello        simon gatti   
+15  2008          matt jordan             nevio pizzolitto      joey gjertsen   
+16  2009          david testo             nevio pizzolitto          adam braz   
+17  2010       philippe billy               philippe billy     tony donatelli   
+18  2011       hassoun camara                    evan bush        simon gatti   
+
+                  newcomer_of_the_year  
+0                                    –  
+1                                    –  
+2                                    –  
+3                                    –  
+4                                    –  
+5                                    –  
+6                                    –  
+7                                    –  
+8                                    –  
+9                           zé roberto  
+10                         martin nash  
+11                       sandro grande  
+12                   masahiro fukazawa  
+13                 leonardo di lorenzo  
+14                         matt jordan  
+15                      stefano pesoli  
+16                      stephen deroux  
+17                           ali gerba  
+18  ian westlake / sinisa ubiparipovic  
+Sample 2699 - Plan 1: Table after operation: [['year', 'mvp', 'defensive_player_of_the_year', 'unsung_hero', 'newcomer_of_the_year'], [1993, 'patrice ferri', '–', '–', '–'], [1994, 'jean harbor', '–', '–', '–'], [1995, 'lloyd barker', '–', '–', '–'], [1996, 'paolo ceccarelli', '–', '–', '–'], [1997, 'mauro biello', '–', '–', '–'], [1998, 'mauro biello', '–', '–', '–'], [1999, 'n/a', '–', '–', '–'], [2000, 'jim larkin', '–', '–', '–'], [2001, 'mauro biello', '–', '–', '–'], [2002, 'eduardo sebrango', 'gabriel gervais', 'jason ditullio', 'zé roberto'], [2003, 'greg sutton', 'gabriel gervais', 'david fronimadis', 'martin nash'], [2004, 'gabriel gervais', 'greg sutton', 'zé roberto', 'sandro grande'], [2005, 'mauro biello', 'nevio pizzolitto', 'mauricio vincello', 'masahiro fukazawa'], [2006, 'mauricio vincello', 'gabriel gervais', 'andrew weber', 'leonardo di lorenzo'], [2007, 'leonardo di lorenzo', 'mauricio vincello', 'simon gatti', 'matt jordan'], [2008, 'matt jordan', 'nevio pizzolitto', 'joey gjertsen', 'stefano pesoli'], [2009, 'david testo', 'nevio pizzolitto', 'adam braz', 'stephen deroux'], [2010, 'philippe billy', 'philippe billy', 'tony donatelli', 'ali gerba'], [2011, 'hassoun camara', 'evan bush', 'simon gatti', 'ian westlake / sinisa ubiparipovic']]
+########################################################################################################################
+Sample 2699 - Plan 1: Operation 2: Select the 'mvp' and 'defensive_player_of_the_year' columns.
+Sample 2699 - Plan 1: Selected indices: []
+Sample 2699 - Plan 1: X-Table after operation df:
+                    mvp defensive_player_of_the_year
+0         patrice ferri                            –
+1           jean harbor                            –
+2          lloyd barker                            –
+3      paolo ceccarelli                            –
+4          mauro biello                            –
+5          mauro biello                            –
+6                   n/a                            –
+7            jim larkin                            –
+8          mauro biello                            –
+9      eduardo sebrango              gabriel gervais
+10          greg sutton              gabriel gervais
+11      gabriel gervais                  greg sutton
+12         mauro biello             nevio pizzolitto
+13    mauricio vincello              gabriel gervais
+14  leonardo di lorenzo            mauricio vincello
+15          matt jordan             nevio pizzolitto
+16          david testo             nevio pizzolitto
+17       philippe billy               philippe billy
+18       hassoun camara                    evan bush
+Sample 2699 - Plan 1: Table after operation: [['mvp', 'defensive_player_of_the_year'], ['patrice ferri', '–'], ['jean harbor', '–'], ['lloyd barker', '–'], ['paolo ceccarelli', '–'], ['mauro biello', '–'], ['mauro biello', '–'], ['n/a', '–'], ['jim larkin', '–'], ['mauro biello', '–'], ['eduardo sebrango', 'gabriel gervais'], ['greg sutton', 'gabriel gervais'], ['gabriel gervais', 'greg sutton'], ['mauro biello', 'nevio pizzolitto'], ['mauricio vincello', 'gabriel gervais'], ['leonardo di lorenzo', 'mauricio vincello'], ['matt jordan', 'nevio pizzolitto'], ['david testo', 'nevio pizzolitto'], ['philippe billy', 'philippe billy'], ['hassoun camara', 'evan bush']]
+########################################################################################################################
+Sample 2699 - Plan 1: Operation 3: Select rows where the values in the 'mvp' and 'defensive_player_of_the_year' columns are the same.
+Sample 2699 - Plan 1: Selected indices: [[17, 0]]
+Sample 2699 - Plan 1: X-Table after operation df:
+              mvp defensive_player_of_the_year
+0  philippe billy               philippe billy
+Sample 2699 - Plan 1: Table after operation: [['mvp', 'defensive_player_of_the_year'], ['philippe billy', 'philippe billy']]
+########################################################################################################################
+Sample 2699 - Plan 1: Operation 4: Select the 'mvp' column.
+Sample 2699 - Plan 1: Selected indices: []
+Sample 2699 - Plan 1: X-Table after operation df:
+              mvp
+0  philippe billy
+Sample 2699 - Plan 1: Table after operation: [['mvp'], ['philippe billy']]
+Fall-back: FALSE
+Answer from plan 1: [['philippe billy']]
+Groundtruth: ['Philippe Billy']

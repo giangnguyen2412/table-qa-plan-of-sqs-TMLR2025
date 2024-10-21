@@ -1,0 +1,86 @@
+************************************************************************************************************************
+Sample 1256 - Plan 1: Query: what was the top position on the list?
+Sample 1256 - Plan 1: Groundtruth: ['1st']
+Sample 1256 - Plan 1: X-Original table pd: 
+    year                 competition               venue   position    event  \
+0   2007              pan arab games        cairo, egypt        4th    200 m   
+1   2008  asian indoor championships         doha, qatar        4th     60 m   
+2   2008  world indoor championships     valencia, spain   28th (h)     60 m   
+3   2008  world junior championships   bydgoszcz, poland        7th    200 m   
+4   2008               olympic games      beijing, china   40th (h)    200 m   
+5   2009          asian indoor games      hanoi, vietnam        4th     60 m   
+6   2009         world championships     berlin, germany  25th (qf)    200 m   
+7   2009         asian championships    guangzhou, china        1st    200 m   
+8   2010                 asian games    guangzhou, china        3rd    200 m   
+9   2011         asian championships          kobe, jpan        3rd    200 m   
+10  2011         world championships  daegu, south korea   48th (h)    200 m   
+11  2011              pan arab games         doha, qatar        5th    100 m   
+12  2011              pan arab games         doha, qatar        3rd  4x100 m   
+
+         notes  
+0   20.94 (nr)  
+1         6.81  
+2         6.88  
+3        21.10  
+4        21.00  
+5    6.72 (nr)  
+6        20.97  
+7        21.07  
+8        20.83  
+9        20.97  
+10       21.45  
+11       21.59  
+12       40.15  
+Sample 1256 - Plan 1: Caption: none
+Sample 1256 - Plan 1: Original table: [['year', 'competition', 'venue', 'position', 'event', 'notes'], ['2007', 'pan arab games', 'cairo, egypt', '4th', '200 m', '20.94 (nr)'], ['2008', 'asian indoor championships', 'doha, qatar', '4th', '60 m', '6.81'], ['2008', 'world indoor championships', 'valencia, spain', '28th (h)', '60 m', '6.88'], ['2008', 'world junior championships', 'bydgoszcz, poland', '7th', '200 m', '21.10'], ['2008', 'olympic games', 'beijing, china', '40th (h)', '200 m', '21.00'], ['2009', 'asian indoor games', 'hanoi, vietnam', '4th', '60 m', '6.72 (nr)'], ['2009', 'world championships', 'berlin, germany', '25th (qf)', '200 m', '20.97'], ['2009', 'asian championships', 'guangzhou, china', '1st', '200 m', '21.07'], ['2010', 'asian games', 'guangzhou, china', '3rd', '200 m', '20.83'], ['2011', 'asian championships', 'kobe, jpan', '3rd', '200 m', '20.97'], ['2011', 'world championships', 'daegu, south korea', '48th (h)', '200 m', '21.45'], ['2011', 'pan arab games', 'doha, qatar', '5th', '100 m', '21.59'], ['2011', 'pan arab games', 'doha, qatar', '3rd', '4x100 m', '40.15']]
+########################################################################################################################
+Sample 1256 - Plan 1: Operation 1: Order the table by the 'position' column in ascending order.
+Sample 1256 - Plan 1: Selected indices: [[9, 3], [4, 3], [0, 3], [11, 3], [12, 3], [7, 3], [2, 3], [8, 3], [3, 3], [10, 3], [5, 3], [6, 3], [1, 3]]
+Sample 1256 - Plan 1: X-Table after operation df:
+    year                 competition               venue   position    event  \
+0   2009         asian championships    guangzhou, china        1st    200 m   
+1   2009         world championships     berlin, germany  25th (qf)    200 m   
+2   2008  world indoor championships     valencia, spain   28th (h)     60 m   
+3   2010                 asian games    guangzhou, china        3rd    200 m   
+4   2011         asian championships          kobe, jpan        3rd    200 m   
+5   2011              pan arab games         doha, qatar        3rd  4x100 m   
+6   2008               olympic games      beijing, china   40th (h)    200 m   
+7   2011         world championships  daegu, south korea   48th (h)    200 m   
+8   2007              pan arab games        cairo, egypt        4th    200 m   
+9   2008  asian indoor championships         doha, qatar        4th     60 m   
+10  2009          asian indoor games      hanoi, vietnam        4th     60 m   
+11  2011              pan arab games         doha, qatar        5th    100 m   
+12  2008  world junior championships   bydgoszcz, poland        7th    200 m   
+
+         notes  
+0        21.07  
+1        20.97  
+2         6.88  
+3        20.83  
+4        20.97  
+5        40.15  
+6        21.00  
+7        21.45  
+8   20.94 (nr)  
+9         6.81  
+10   6.72 (nr)  
+11       21.59  
+12       21.10  
+Sample 1256 - Plan 1: Table after operation: [['year', 'competition', 'venue', 'position', 'event', 'notes'], [2009, 'asian championships', 'guangzhou, china', '1st', '200 m', '21.07'], [2009, 'world championships', 'berlin, germany', '25th (qf)', '200 m', '20.97'], [2008, 'world indoor championships', 'valencia, spain', '28th (h)', '60 m', '6.88'], [2010, 'asian games', 'guangzhou, china', '3rd', '200 m', '20.83'], [2011, 'asian championships', 'kobe, jpan', '3rd', '200 m', '20.97'], [2011, 'pan arab games', 'doha, qatar', '3rd', '4x100 m', '40.15'], [2008, 'olympic games', 'beijing, china', '40th (h)', '200 m', '21.00'], [2011, 'world championships', 'daegu, south korea', '48th (h)', '200 m', '21.45'], [2007, 'pan arab games', 'cairo, egypt', '4th', '200 m', '20.94 (nr)'], [2008, 'asian indoor championships', 'doha, qatar', '4th', '60 m', '6.81'], [2009, 'asian indoor games', 'hanoi, vietnam', '4th', '60 m', '6.72 (nr)'], [2011, 'pan arab games', 'doha, qatar', '5th', '100 m', '21.59'], [2008, 'world junior championships', 'bydgoszcz, poland', '7th', '200 m', '21.10']]
+########################################################################################################################
+Sample 1256 - Plan 1: Operation 2: Select row number 1.
+Sample 1256 - Plan 1: Selected indices: []
+Sample 1256 - Plan 1: X-Table after operation df:
+   year          competition             venue position  event  notes
+0  2009  asian championships  guangzhou, china      1st  200 m  21.07
+Sample 1256 - Plan 1: Table after operation: [['year', 'competition', 'venue', 'position', 'event', 'notes'], [2009, 'asian championships', 'guangzhou, china', '1st', '200 m', '21.07']]
+########################################################################################################################
+Sample 1256 - Plan 1: Operation 3: Select the 'position' column.
+Sample 1256 - Plan 1: Selected indices: []
+Sample 1256 - Plan 1: X-Table after operation df:
+  position
+0      1st
+Sample 1256 - Plan 1: Table after operation: [['position'], ['1st']]
+Fall-back: FALSE
+Answer from plan 1: [['1st']]
+Groundtruth: ['1st']

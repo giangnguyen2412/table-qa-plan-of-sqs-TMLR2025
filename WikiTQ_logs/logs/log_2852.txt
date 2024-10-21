@@ -1,0 +1,68 @@
+************************************************************************************************************************
+Sample 2852 - Plan 1: Query: are more losses because of death ins in prisons & camps or deaths outside of prisons & camps?
+Sample 2852 - Plan 1: Groundtruth: ['Deaths In Prisons & Camps']
+Sample 2852 - Plan 1: X-Original table pd: 
+                  description_losses c_1939_40 c_1940_41 c_1941_42 c_1942_43  \
+0                  direct war losses   360,000                                 
+1                           murdered    75,000   100,000   116,000   133,000   
+2          deaths in prisons & camps    69,000   210,000   220,000   266,000   
+3  deaths outside of prisons & camps              42,000    71,000   142,000   
+4        murdered in eastern regions                                           
+5             deaths other countries                                           
+6                              total   504,000   352,000   407,000   541,000   
+
+  c_1943_44 c_1944_45      total  
+0             183,000    543,000  
+1    82,000              506,000  
+2   381,000            1,146,000  
+3   218,000              473,000  
+4             100,000    100,000  
+5                          2,000  
+6   681,000   270,000  2,770,000  
+Sample 2852 - Plan 1: Caption: none
+Sample 2852 - Plan 1: Original table: [['description_losses', 'c_1939_40', 'c_1940_41', 'c_1941_42', 'c_1942_43', 'c_1943_44', 'c_1944_45', 'total'], ['direct war losses', '360,000', '', '', '', '', '183,000', '543,000'], ['murdered', '75,000', '100,000', '116,000', '133,000', '82,000', '', '506,000'], ['deaths in prisons & camps', '69,000', '210,000', '220,000', '266,000', '381,000', '', '1,146,000'], ['deaths outside of prisons & camps', '', '42,000', '71,000', '142,000', '218,000', '', '473,000'], ['murdered in eastern regions', '', '', '', '', '', '100,000', '100,000'], ['deaths other countries', '', '', '', '', '', '', '2,000'], ['total', '504,000', '352,000', '407,000', '541,000', '681,000', '270,000', '2,770,000']]
+########################################################################################################################
+Sample 2852 - Plan 1: Operation 1: Select the rows where the 'description_losses' column is either 'deaths in prisons & camps' or 'deaths outside of prisons & camps'.
+Sample 2852 - Plan 1: Selected indices: [[2, 0], [3, 0]]
+Sample 2852 - Plan 1: X-Table after operation df:
+                  description_losses c_1939_40 c_1940_41 c_1941_42 c_1942_43  \
+0          deaths in prisons & camps    69,000   210,000   220,000   266,000   
+1  deaths outside of prisons & camps              42,000    71,000   142,000   
+
+  c_1943_44  c_1944_45      total  
+0   381,000        NaN  1,146,000  
+1   218,000        NaN    473,000  
+Sample 2852 - Plan 1: Table after operation: [['description_losses', 'c_1939_40', 'c_1940_41', 'c_1941_42', 'c_1942_43', 'c_1943_44', 'c_1944_45', 'total'], ['deaths in prisons & camps', '69,000', '210,000', '220,000', '266,000', '381,000', '', '1,146,000'], ['deaths outside of prisons & camps', '', '42,000', '71,000', '142,000', '218,000', '', '473,000']]
+########################################################################################################################
+Sample 2852 - Plan 1: Operation 2: Sum the values in the 'total' column for the selected rows.
+Sample 2852 - Plan 1: Selected indices: []
+Sample 2852 - Plan 1: X-Table after operation df:
+   total_sum
+0  1619000.0
+Sample 2852 - Plan 1: Table after operation: [['total_sum'], [1619000.0]]
+########################################################################################################################
+Sample 2852 - Plan 1: Operation 3: Compare the sum of deaths in prisons & camps with the sum of deaths outside of prisons & camps.
+Sample 2852 - Plan 1: Selected indices: [[0, 0]]
+Sample 2852 - Plan 1: X-Table after operation df:
+   deaths_in_prisons_camps  deaths_outside_prisons_camps
+0                1619000.0                           0.0
+Sample 2852 - Plan 1: Table after operation: [['deaths_in_prisons_camps', 'deaths_outside_prisons_camps'], [1619000.0, 0.0]]
+########################################################################################################################
+Sample 2852 - Plan 1: Operation 4: If the sum of deaths in prisons & camps is greater, the answer is "more losses because of deaths in prisons & camps".
+Sample 2852 - Plan 1: Selected indices: []
+Sample 2852 - Plan 1: X-Table after operation df:
+                                             result
+0  more losses because of deaths in prisons & camps
+Sample 2852 - Plan 1: Table after operation: [['result'], ['more losses because of deaths in prisons & camps']]
+########################################################################################################################
+Sample 2852 - Plan 1: Operation 5: If the sum of deaths outside of prisons & camps is greater, the answer is "more losses because of deaths outside of prisons & camps".
+SQL execution error in operation 5: Execution failed on sql 'SELECT 
+    CASE 
+        WHEN (SELECT SUM(deaths) FROM table_sql WHERE location != 'prisons & camps') > (SELECT SUM(deaths) FROM table_sql WHERE location = 'prisons & camps') THEN 'more losses because of deaths outside of prisons & camps'
+    END AS result
+FROM table_sql;
+-- If the sum of deaths outside of prisons & camps is greater, the answer is "more losses because of deaths outside of prisons & camps".': no such column: deaths
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['deaths in prisons & camps']]
+Groundtruth: ['Deaths In Prisons & Camps']

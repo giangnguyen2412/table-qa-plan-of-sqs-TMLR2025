@@ -1,0 +1,41 @@
+************************************************************************************************************************
+Sample 3261 - Plan 1: Query: how much higher of a percentage of naturalisations does maghreb have than sub-saharan africa?
+Sample 3261 - Plan 1: Groundtruth: ['24.8']
+Sample 3261 - Plan 1: X-Original table pd: 
+      naturalisations_by_origin   c_2000   c_2005   c_2009  __total_2009
+0                        africa   84 182   98 453   85 144          62.7
+1                       maghreb   68 185   75 224   56 024          41.2
+2            sub-saharan africa   10 622   15 624   22 214          16.4
+3                  other africa    5 375    7 605    6 906           5.1
+4                          asia   27 941   26 286   19 494          14.4
+5               south-east asia    7 265    4 069    2 475           1.8
+6                     east asia    1 139    1 280    1 622           1.2
+7                    south asia    4 246    4 436    3 660           2.7
+8                    other asia   15 291   16 501   11 737           8.6
+9   europe (not including cis )   22 085   18 072   14 753          10.9
+10                          cis    1 181    2 108    4 704           3.5
+11                 cis (europe)    1 000    1 535    4 454           3.3
+12                   cis (asia)      181      573      250           0.2
+13                      america    5 668    6 352    6 677           4.9
+14                north america    1 048      854      747           0.5
+15    south and central america    4 620    5 498    5 930           4.4
+16                      oceania       87      127      108           0.1
+17                       others    8 882    3 245    4 962           3.7
+18                        total  150 026  154 643  135 842         100.0
+Sample 3261 - Plan 1: Caption: none
+Sample 3261 - Plan 1: Original table: [['naturalisations_by_origin', 'c_2000', 'c_2005', 'c_2009', '__total_2009'], ['africa', '84 182', '98 453', '85 144', '62.7'], ['maghreb', '68 185', '75 224', '56 024', '41.2'], ['sub-saharan africa', '10 622', '15 624', '22 214', '16.4'], ['other africa', '5 375', '7 605', '6 906', '5.1'], ['asia', '27 941', '26 286', '19 494', '14.4'], ['south-east asia', '7 265', '4 069', '2 475', '1.8'], ['east asia', '1 139', '1 280', '1 622', '1.2'], ['south asia', '4 246', '4 436', '3 660', '2.7'], ['other asia', '15 291', '16 501', '11 737', '8.6'], ['europe (not including cis )', '22 085', '18 072', '14 753', '10.9'], ['cis', '1 181', '2 108', '4 704', '3.5'], ['cis (europe)', '1 000', '1 535', '4 454', '3.3'], ['cis (asia)', '181', '573', '250', '0.2'], ['america', '5 668', '6 352', '6 677', '4.9'], ['north america', '1 048', '854', '747', '0.5'], ['south and central america', '4 620', '5 498', '5 930', '4.4'], ['oceania', '87', '127', '108', '0.1'], ['others', '8 882', '3 245', '4 962', '3.7'], ['total', '150 026', '154 643', '135 842', '100']]
+########################################################################################################################
+Sample 3261 - Plan 1: Operation 1: Calculate the percentage of naturalisations for maghreb by dividing the value in the 'maghreb' row of the '__total_2009' column by the value in the 'total' row of the '__total_2009' column and multiplying by 100.
+Sample 3261 - Plan 1: Selected indices: []
+Sample 3261 - Plan 1: X-Table after operation df:
+   percentage_of_naturalisations
+0                           41.2
+Sample 3261 - Plan 1: Table after operation: [['percentage_of_naturalisations'], [41.2]]
+########################################################################################################################
+Sample 3261 - Plan 1: Operation 2: Calculate the percentage of naturalisations for sub-saharan africa by dividing the value in the 'sub-saharan africa' row of the '__total_2009' column by the value in the 'total' row of the '__total_2009' column and multiplying by 100.
+SQL execution error in operation 2: Execution failed on sql 'SELECT (SELECT percentage_of_naturalisations FROM table_sql WHERE country = 'sub-saharan africa') / (SELECT percentage_of_naturalisations FROM table_sql WHERE country = 'total') * 100 AS percentage_of_naturalisations
+FROM table_sql;': no such column: country
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['15.2']]
+Groundtruth: ['24.8']

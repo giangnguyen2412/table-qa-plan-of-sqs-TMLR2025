@@ -1,0 +1,237 @@
+************************************************************************************************************************
+Sample 3311 - Plan 1: Query: which driver retired from the race after the smallest number of laps?
+Sample 3311 - Plan 1: Groundtruth: ['Graham Hill']
+Sample 3311 - Plan 1: X-Original table pd: 
+    pos  no                driver       constructor  laps   time_retired  \
+0     1  11        jackie stewart      tyrrell-ford  80.0      1:52:21.3   
+1     2  17       ronnie peterson        march-ford  80.0         + 25.6   
+2     3   4            jacky ickx           ferrari  80.0         + 53.3   
+3     4   9           denny hulme      mclaren-ford  80.0       + 1:06.7   
+4     5   1    emerson fittipaldi        lotus-ford  79.0        + 1 lap   
+5     6  24        rolf stommelen      surtees-ford  79.0        + 1 lap   
+6     7  22          john surtees      surtees-ford  79.0        + 1 lap   
+7     8  27       henri pescarolo        march-ford  77.0       + 3 laps   
+8     9  15       pedro rodríguez               brm  76.0       + 4 laps   
+9    10   8          tim schenken      brabham-ford  76.0       + 4 laps   
+10  ret  14            jo siffert               brm  58.0       oil pipe   
+11  ret  21  jean-pierre beltoise             matra  47.0   differential   
+12  ret  20            chris amon             matra  45.0   differential   
+13  ret   5        clay regazzoni           ferrari  24.0       accident   
+14  ret  10          peter gethin      mclaren-ford  22.0       accident   
+15  ret   2          reine wisell        lotus-ford  21.0  wheel bearing   
+16  ret  12       françois cevert      tyrrell-ford   5.0       accident   
+17  ret   7           graham hill      brabham-ford   1.0       accident   
+18  dnq  16         howden ganley               brm   NaN                  
+19  dnq   6        mario andretti           ferrari   NaN                  
+20  dnq  19          nanni galli*  march-alfa-romeo   NaN                  
+21  dnq  18       alex soler-roig        march-ford   NaN                  
+22  dnq  28           skip barber        march-ford   NaN                  
+
+    grid  points  
+0    1.0     9.0  
+1    6.0     6.0  
+2    2.0     4.0  
+3    8.0     3.0  
+4   17.0     2.0  
+5   16.0     1.0  
+6   10.0     NaN  
+7   13.0     NaN  
+8    5.0     NaN  
+9   18.0     NaN  
+10   3.0     NaN  
+11   7.0     NaN  
+12   4.0     NaN  
+13  11.0     NaN  
+14  14.0     NaN  
+15  12.0     NaN  
+16  15.0     NaN  
+17   9.0     NaN  
+18   NaN     NaN  
+19   NaN     NaN  
+20   NaN     NaN  
+21   NaN     NaN  
+22   NaN     NaN  
+Sample 3311 - Plan 1: Caption: none
+Sample 3311 - Plan 1: Original table: [['pos', 'no', 'driver', 'constructor', 'laps', 'time_retired', 'grid', 'points'], ['1', '11', 'jackie stewart', 'tyrrell-ford', '80', '1:52:21.3', '1', '9'], ['2', '17', 'ronnie peterson', 'march-ford', '80', '+ 25.6', '6', '6'], ['3', '4', 'jacky ickx', 'ferrari', '80', '+ 53.3', '2', '4'], ['4', '9', 'denny hulme', 'mclaren-ford', '80', '+ 1:06.7', '8', '3'], ['5', '1', 'emerson fittipaldi', 'lotus-ford', '79', '+ 1 lap', '17', '2'], ['6', '24', 'rolf stommelen', 'surtees-ford', '79', '+ 1 lap', '16', '1'], ['7', '22', 'john surtees', 'surtees-ford', '79', '+ 1 lap', '10', ''], ['8', '27', 'henri pescarolo', 'march-ford', '77', '+ 3 laps', '13', ''], ['9', '15', 'pedro rodríguez', 'brm', '76', '+ 4 laps', '5', ''], ['10', '8', 'tim schenken', 'brabham-ford', '76', '+ 4 laps', '18', ''], ['ret', '14', 'jo siffert', 'brm', '58', 'oil pipe', '3', ''], ['ret', '21', 'jean-pierre beltoise', 'matra', '47', 'differential', '7', ''], ['ret', '20', 'chris amon', 'matra', '45', 'differential', '4', ''], ['ret', '5', 'clay regazzoni', 'ferrari', '24', 'accident', '11', ''], ['ret', '10', 'peter gethin', 'mclaren-ford', '22', 'accident', '14', ''], ['ret', '2', 'reine wisell', 'lotus-ford', '21', 'wheel bearing', '12', ''], ['ret', '12', 'françois cevert', 'tyrrell-ford', '5', 'accident', '15', ''], ['ret', '7', 'graham hill', 'brabham-ford', '1', 'accident', '9', ''], ['dnq', '16', 'howden ganley', 'brm', '', '', '', ''], ['dnq', '6', 'mario andretti', 'ferrari', '', '', '', ''], ['dnq', '19', 'nanni galli*', 'march-alfa-romeo', '', '', '', ''], ['dnq', '18', 'alex soler-roig', 'march-ford', '', '', '', ''], ['dnq', '28', 'skip barber', 'march-ford', '', '', '', '']]
+########################################################################################################################
+Sample 3311 - Plan 1: Operation 1: Select rows where the 'time_retired' column is not null.
+Sample 3311 - Plan 1: Selected indices: []
+Sample 3311 - Plan 1: X-Table after operation df:
+    pos  no                driver       constructor  laps   time_retired  \
+0     1  11        jackie stewart      tyrrell-ford  80.0      1:52:21.3   
+1     2  17       ronnie peterson        march-ford  80.0         + 25.6   
+2     3   4            jacky ickx           ferrari  80.0         + 53.3   
+3     4   9           denny hulme      mclaren-ford  80.0       + 1:06.7   
+4     5   1    emerson fittipaldi        lotus-ford  79.0        + 1 lap   
+5     6  24        rolf stommelen      surtees-ford  79.0        + 1 lap   
+6     7  22          john surtees      surtees-ford  79.0        + 1 lap   
+7     8  27       henri pescarolo        march-ford  77.0       + 3 laps   
+8     9  15       pedro rodríguez               brm  76.0       + 4 laps   
+9    10   8          tim schenken      brabham-ford  76.0       + 4 laps   
+10  ret  14            jo siffert               brm  58.0       oil pipe   
+11  ret  21  jean-pierre beltoise             matra  47.0   differential   
+12  ret  20            chris amon             matra  45.0   differential   
+13  ret   5        clay regazzoni           ferrari  24.0       accident   
+14  ret  10          peter gethin      mclaren-ford  22.0       accident   
+15  ret   2          reine wisell        lotus-ford  21.0  wheel bearing   
+16  ret  12       françois cevert      tyrrell-ford   5.0       accident   
+17  ret   7           graham hill      brabham-ford   1.0       accident   
+18  dnq  16         howden ganley               brm   NaN                  
+19  dnq   6        mario andretti           ferrari   NaN                  
+20  dnq  19          nanni galli*  march-alfa-romeo   NaN                  
+21  dnq  18       alex soler-roig        march-ford   NaN                  
+22  dnq  28           skip barber        march-ford   NaN                  
+
+    grid  points  
+0    1.0     9.0  
+1    6.0     6.0  
+2    2.0     4.0  
+3    8.0     3.0  
+4   17.0     2.0  
+5   16.0     1.0  
+6   10.0     NaN  
+7   13.0     NaN  
+8    5.0     NaN  
+9   18.0     NaN  
+10   3.0     NaN  
+11   7.0     NaN  
+12   4.0     NaN  
+13  11.0     NaN  
+14  14.0     NaN  
+15  12.0     NaN  
+16  15.0     NaN  
+17   9.0     NaN  
+18   NaN     NaN  
+19   NaN     NaN  
+20   NaN     NaN  
+21   NaN     NaN  
+22   NaN     NaN  
+Sample 3311 - Plan 1: Table after operation: [['pos', 'no', 'driver', 'constructor', 'laps', 'time_retired', 'grid', 'points'], ['1', 11, 'jackie stewart', 'tyrrell-ford', 80.0, '1:52:21.3', 1.0, 9.0], ['2', 17, 'ronnie peterson', 'march-ford', 80.0, '+ 25.6', 6.0, 6.0], ['3', 4, 'jacky ickx', 'ferrari', 80.0, '+ 53.3', 2.0, 4.0], ['4', 9, 'denny hulme', 'mclaren-ford', 80.0, '+ 1:06.7', 8.0, 3.0], ['5', 1, 'emerson fittipaldi', 'lotus-ford', 79.0, '+ 1 lap', 17.0, 2.0], ['6', 24, 'rolf stommelen', 'surtees-ford', 79.0, '+ 1 lap', 16.0, 1.0], ['7', 22, 'john surtees', 'surtees-ford', 79.0, '+ 1 lap', 10.0, nan], ['8', 27, 'henri pescarolo', 'march-ford', 77.0, '+ 3 laps', 13.0, nan], ['9', 15, 'pedro rodríguez', 'brm', 76.0, '+ 4 laps', 5.0, nan], ['10', 8, 'tim schenken', 'brabham-ford', 76.0, '+ 4 laps', 18.0, nan], ['ret', 14, 'jo siffert', 'brm', 58.0, 'oil pipe', 3.0, nan], ['ret', 21, 'jean-pierre beltoise', 'matra', 47.0, 'differential', 7.0, nan], ['ret', 20, 'chris amon', 'matra', 45.0, 'differential', 4.0, nan], ['ret', 5, 'clay regazzoni', 'ferrari', 24.0, 'accident', 11.0, nan], ['ret', 10, 'peter gethin', 'mclaren-ford', 22.0, 'accident', 14.0, nan], ['ret', 2, 'reine wisell', 'lotus-ford', 21.0, 'wheel bearing', 12.0, nan], ['ret', 12, 'françois cevert', 'tyrrell-ford', 5.0, 'accident', 15.0, nan], ['ret', 7, 'graham hill', 'brabham-ford', 1.0, 'accident', 9.0, nan], ['dnq', 16, 'howden ganley', 'brm', nan, '', nan, nan], ['dnq', 6, 'mario andretti', 'ferrari', nan, '', nan, nan], ['dnq', 19, 'nanni galli*', 'march-alfa-romeo', nan, '', nan, nan], ['dnq', 18, 'alex soler-roig', 'march-ford', nan, '', nan, nan], ['dnq', 28, 'skip barber', 'march-ford', nan, '', nan, nan]]
+########################################################################################################################
+Sample 3311 - Plan 1: Operation 2: Extract the numerical value from the 'laps' column then add column 'num_laps' to the existing table.
+Sample 3311 - Plan 1: Selected indices: [[0, 4], [1, 4], [2, 4], [3, 4], [4, 4], [5, 4], [6, 4], [7, 4], [8, 4], [9, 4], [10, 4], [11, 4], [12, 4], [13, 4], [14, 4], [15, 4], [16, 4], [17, 4], [18, 4], [19, 4], [20, 4], [21, 4], [22, 4]]
+Sample 3311 - Plan 1: X-Table after operation df:
+    pos  no                driver       constructor  laps   time_retired  \
+0     1  11        jackie stewart      tyrrell-ford  80.0      1:52:21.3   
+1     2  17       ronnie peterson        march-ford  80.0         + 25.6   
+2     3   4            jacky ickx           ferrari  80.0         + 53.3   
+3     4   9           denny hulme      mclaren-ford  80.0       + 1:06.7   
+4     5   1    emerson fittipaldi        lotus-ford  79.0        + 1 lap   
+5     6  24        rolf stommelen      surtees-ford  79.0        + 1 lap   
+6     7  22          john surtees      surtees-ford  79.0        + 1 lap   
+7     8  27       henri pescarolo        march-ford  77.0       + 3 laps   
+8     9  15       pedro rodríguez               brm  76.0       + 4 laps   
+9    10   8          tim schenken      brabham-ford  76.0       + 4 laps   
+10  ret  14            jo siffert               brm  58.0       oil pipe   
+11  ret  21  jean-pierre beltoise             matra  47.0   differential   
+12  ret  20            chris amon             matra  45.0   differential   
+13  ret   5        clay regazzoni           ferrari  24.0       accident   
+14  ret  10          peter gethin      mclaren-ford  22.0       accident   
+15  ret   2          reine wisell        lotus-ford  21.0  wheel bearing   
+16  ret  12       françois cevert      tyrrell-ford   5.0       accident   
+17  ret   7           graham hill      brabham-ford   1.0       accident   
+18  dnq  16         howden ganley               brm   NaN                  
+19  dnq   6        mario andretti           ferrari   NaN                  
+20  dnq  19          nanni galli*  march-alfa-romeo   NaN                  
+21  dnq  18       alex soler-roig        march-ford   NaN                  
+22  dnq  28           skip barber        march-ford   NaN                  
+
+    grid  points  num_laps  
+0    1.0     9.0      80.0  
+1    6.0     6.0      80.0  
+2    2.0     4.0      80.0  
+3    8.0     3.0      80.0  
+4   17.0     2.0      79.0  
+5   16.0     1.0      79.0  
+6   10.0     NaN      79.0  
+7   13.0     NaN      77.0  
+8    5.0     NaN      76.0  
+9   18.0     NaN      76.0  
+10   3.0     NaN      58.0  
+11   7.0     NaN      47.0  
+12   4.0     NaN      45.0  
+13  11.0     NaN      24.0  
+14  14.0     NaN      22.0  
+15  12.0     NaN      21.0  
+16  15.0     NaN       5.0  
+17   9.0     NaN       1.0  
+18   NaN     NaN       NaN  
+19   NaN     NaN       NaN  
+20   NaN     NaN       NaN  
+21   NaN     NaN       NaN  
+22   NaN     NaN       NaN  
+Sample 3311 - Plan 1: Table after operation: [['pos', 'no', 'driver', 'constructor', 'laps', 'time_retired', 'grid', 'points', 'num_laps'], ['1', 11, 'jackie stewart', 'tyrrell-ford', 80.0, '1:52:21.3', 1.0, 9.0, 80.0], ['2', 17, 'ronnie peterson', 'march-ford', 80.0, '+ 25.6', 6.0, 6.0, 80.0], ['3', 4, 'jacky ickx', 'ferrari', 80.0, '+ 53.3', 2.0, 4.0, 80.0], ['4', 9, 'denny hulme', 'mclaren-ford', 80.0, '+ 1:06.7', 8.0, 3.0, 80.0], ['5', 1, 'emerson fittipaldi', 'lotus-ford', 79.0, '+ 1 lap', 17.0, 2.0, 79.0], ['6', 24, 'rolf stommelen', 'surtees-ford', 79.0, '+ 1 lap', 16.0, 1.0, 79.0], ['7', 22, 'john surtees', 'surtees-ford', 79.0, '+ 1 lap', 10.0, nan, 79.0], ['8', 27, 'henri pescarolo', 'march-ford', 77.0, '+ 3 laps', 13.0, nan, 77.0], ['9', 15, 'pedro rodríguez', 'brm', 76.0, '+ 4 laps', 5.0, nan, 76.0], ['10', 8, 'tim schenken', 'brabham-ford', 76.0, '+ 4 laps', 18.0, nan, 76.0], ['ret', 14, 'jo siffert', 'brm', 58.0, 'oil pipe', 3.0, nan, 58.0], ['ret', 21, 'jean-pierre beltoise', 'matra', 47.0, 'differential', 7.0, nan, 47.0], ['ret', 20, 'chris amon', 'matra', 45.0, 'differential', 4.0, nan, 45.0], ['ret', 5, 'clay regazzoni', 'ferrari', 24.0, 'accident', 11.0, nan, 24.0], ['ret', 10, 'peter gethin', 'mclaren-ford', 22.0, 'accident', 14.0, nan, 22.0], ['ret', 2, 'reine wisell', 'lotus-ford', 21.0, 'wheel bearing', 12.0, nan, 21.0], ['ret', 12, 'françois cevert', 'tyrrell-ford', 5.0, 'accident', 15.0, nan, 5.0], ['ret', 7, 'graham hill', 'brabham-ford', 1.0, 'accident', 9.0, nan, 1.0], ['dnq', 16, 'howden ganley', 'brm', nan, '', nan, nan, nan], ['dnq', 6, 'mario andretti', 'ferrari', nan, '', nan, nan, nan], ['dnq', 19, 'nanni galli*', 'march-alfa-romeo', nan, '', nan, nan, nan], ['dnq', 18, 'alex soler-roig', 'march-ford', nan, '', nan, nan, nan], ['dnq', 28, 'skip barber', 'march-ford', nan, '', nan, nan, nan]]
+########################################################################################################################
+Sample 3311 - Plan 1: Operation 3: Order the table by 'num_laps' in ascending order.
+Sample 3311 - Plan 1: Selected indices: [[22, 8], [20, 8], [9, 8], [0, 8], [11, 8], [2, 8], [13, 8], [15, 8], [6, 8], [4, 8], [17, 8], [19, 8], [8, 8], [10, 8], [1, 8], [21, 8], [12, 8], [14, 8], [3, 8], [5, 8], [7, 8], [16, 8], [18, 8]]
+Sample 3311 - Plan 1: X-Table after operation df:
+    pos  no                driver       constructor  laps   time_retired  \
+0   dnq  16         howden ganley               brm   NaN                  
+1   dnq   6        mario andretti           ferrari   NaN                  
+2   dnq  19          nanni galli*  march-alfa-romeo   NaN                  
+3   dnq  18       alex soler-roig        march-ford   NaN                  
+4   dnq  28           skip barber        march-ford   NaN                  
+5   ret   7           graham hill      brabham-ford   1.0       accident   
+6   ret  12       françois cevert      tyrrell-ford   5.0       accident   
+7   ret   2          reine wisell        lotus-ford  21.0  wheel bearing   
+8   ret  10          peter gethin      mclaren-ford  22.0       accident   
+9   ret   5        clay regazzoni           ferrari  24.0       accident   
+10  ret  20            chris amon             matra  45.0   differential   
+11  ret  21  jean-pierre beltoise             matra  47.0   differential   
+12  ret  14            jo siffert               brm  58.0       oil pipe   
+13    9  15       pedro rodríguez               brm  76.0       + 4 laps   
+14   10   8          tim schenken      brabham-ford  76.0       + 4 laps   
+15    8  27       henri pescarolo        march-ford  77.0       + 3 laps   
+16    5   1    emerson fittipaldi        lotus-ford  79.0        + 1 lap   
+17    6  24        rolf stommelen      surtees-ford  79.0        + 1 lap   
+18    7  22          john surtees      surtees-ford  79.0        + 1 lap   
+19    1  11        jackie stewart      tyrrell-ford  80.0      1:52:21.3   
+20    2  17       ronnie peterson        march-ford  80.0         + 25.6   
+21    3   4            jacky ickx           ferrari  80.0         + 53.3   
+22    4   9           denny hulme      mclaren-ford  80.0       + 1:06.7   
+
+    grid  points  num_laps  
+0    NaN     NaN       NaN  
+1    NaN     NaN       NaN  
+2    NaN     NaN       NaN  
+3    NaN     NaN       NaN  
+4    NaN     NaN       NaN  
+5    9.0     NaN       1.0  
+6   15.0     NaN       5.0  
+7   12.0     NaN      21.0  
+8   14.0     NaN      22.0  
+9   11.0     NaN      24.0  
+10   4.0     NaN      45.0  
+11   7.0     NaN      47.0  
+12   3.0     NaN      58.0  
+13   5.0     NaN      76.0  
+14  18.0     NaN      76.0  
+15  13.0     NaN      77.0  
+16  17.0     2.0      79.0  
+17  16.0     1.0      79.0  
+18  10.0     NaN      79.0  
+19   1.0     9.0      80.0  
+20   6.0     6.0      80.0  
+21   2.0     4.0      80.0  
+22   8.0     3.0      80.0  
+Sample 3311 - Plan 1: Table after operation: [['pos', 'no', 'driver', 'constructor', 'laps', 'time_retired', 'grid', 'points', 'num_laps'], ['dnq', 16, 'howden ganley', 'brm', nan, '', nan, nan, nan], ['dnq', 6, 'mario andretti', 'ferrari', nan, '', nan, nan, nan], ['dnq', 19, 'nanni galli*', 'march-alfa-romeo', nan, '', nan, nan, nan], ['dnq', 18, 'alex soler-roig', 'march-ford', nan, '', nan, nan, nan], ['dnq', 28, 'skip barber', 'march-ford', nan, '', nan, nan, nan], ['ret', 7, 'graham hill', 'brabham-ford', 1.0, 'accident', 9.0, nan, 1.0], ['ret', 12, 'françois cevert', 'tyrrell-ford', 5.0, 'accident', 15.0, nan, 5.0], ['ret', 2, 'reine wisell', 'lotus-ford', 21.0, 'wheel bearing', 12.0, nan, 21.0], ['ret', 10, 'peter gethin', 'mclaren-ford', 22.0, 'accident', 14.0, nan, 22.0], ['ret', 5, 'clay regazzoni', 'ferrari', 24.0, 'accident', 11.0, nan, 24.0], ['ret', 20, 'chris amon', 'matra', 45.0, 'differential', 4.0, nan, 45.0], ['ret', 21, 'jean-pierre beltoise', 'matra', 47.0, 'differential', 7.0, nan, 47.0], ['ret', 14, 'jo siffert', 'brm', 58.0, 'oil pipe', 3.0, nan, 58.0], ['9', 15, 'pedro rodríguez', 'brm', 76.0, '+ 4 laps', 5.0, nan, 76.0], ['10', 8, 'tim schenken', 'brabham-ford', 76.0, '+ 4 laps', 18.0, nan, 76.0], ['8', 27, 'henri pescarolo', 'march-ford', 77.0, '+ 3 laps', 13.0, nan, 77.0], ['5', 1, 'emerson fittipaldi', 'lotus-ford', 79.0, '+ 1 lap', 17.0, 2.0, 79.0], ['6', 24, 'rolf stommelen', 'surtees-ford', 79.0, '+ 1 lap', 16.0, 1.0, 79.0], ['7', 22, 'john surtees', 'surtees-ford', 79.0, '+ 1 lap', 10.0, nan, 79.0], ['1', 11, 'jackie stewart', 'tyrrell-ford', 80.0, '1:52:21.3', 1.0, 9.0, 80.0], ['2', 17, 'ronnie peterson', 'march-ford', 80.0, '+ 25.6', 6.0, 6.0, 80.0], ['3', 4, 'jacky ickx', 'ferrari', 80.0, '+ 53.3', 2.0, 4.0, 80.0], ['4', 9, 'denny hulme', 'mclaren-ford', 80.0, '+ 1:06.7', 8.0, 3.0, 80.0]]
+########################################################################################################################
+Sample 3311 - Plan 1: Operation 4: Select row number 1.
+Sample 3311 - Plan 1: Selected indices: []
+Sample 3311 - Plan 1: X-Table after operation df:
+   pos  no         driver constructor  laps  time_retired  grid  points  \
+0  dnq  16  howden ganley         brm   NaN           NaN   NaN     NaN   
+
+   num_laps  
+0       NaN  
+Sample 3311 - Plan 1: Table after operation: [['pos', 'no', 'driver', 'constructor', 'laps', 'time_retired', 'grid', 'points', 'num_laps'], ['dnq', 16, 'howden ganley', 'brm', None, '', None, None, None]]
+########################################################################################################################
+Sample 3311 - Plan 1: Operation 5: Select the 'driver' column.
+Sample 3311 - Plan 1: Selected indices: []
+Sample 3311 - Plan 1: X-Table after operation df:
+          driver
+0  howden ganley
+Sample 3311 - Plan 1: Table after operation: [['driver'], ['howden ganley']]
+Fall-back: FALSE
+Answer from plan 1: [['howden ganley']]
+Groundtruth: ['Graham Hill']

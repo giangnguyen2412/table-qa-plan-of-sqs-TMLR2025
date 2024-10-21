@@ -1,0 +1,203 @@
+************************************************************************************************************************
+Sample 1655 - Plan 1: Query: on which date did they score the most points?
+Sample 1655 - Plan 1: Groundtruth: ['October 11, 1981']
+Sample 1655 - Plan 1: X-Original table pd: 
+    week                date                 opponent   result attendance
+0      1   september 6, 1981      at los angeles rams  w 27–20     63,198
+1      2  september 13, 1981      at cleveland browns    w 9–3     79,483
+2      3  september 20, 1981           miami dolphins  l 16–10     47,379
+3      4  september 27, 1981         at new york jets  l 33–17     50,309
+4      5     october 4, 1981       cincinnati bengals  w 17–10     44,350
+5      6    october 11, 1981         seattle seahawks  w 35–17     42,671
+6      7    october 18, 1981  at new england patriots  l 38–10     60,474
+7      8    october 26, 1981   at pittsburgh steelers  l 26–13     52,732
+8      9    november 1, 1981    at cincinnati bengals  l 34–21     54,736
+9     10    november 8, 1981          oakland raiders  w 17–16     45,519
+10    11   november 15, 1981    at kansas city chiefs  l 23–10     73,984
+11    12   november 22, 1981       new orleans saints  l 27–24     49,581
+12    13   november 29, 1981          atlanta falcons  l 31–27     40,201
+13    14    december 3, 1981         cleveland browns  w 17–13     44,502
+14    15   december 13, 1981   at san francisco 49ers   l 28–6     55,707
+15    16   december 20, 1981      pittsburgh steelers  w 21–20     41,056
+Sample 1655 - Plan 1: Caption: none
+Sample 1655 - Plan 1: Original table: [['week', 'date', 'opponent', 'result', 'attendance'], ['1', 'september 6, 1981', 'at los angeles rams', 'w 27–20', '63,198'], ['2', 'september 13, 1981', 'at cleveland browns', 'w 9–3', '79,483'], ['3', 'september 20, 1981', 'miami dolphins', 'l 16–10', '47,379'], ['4', 'september 27, 1981', 'at new york jets', 'l 33–17', '50,309'], ['5', 'october 4, 1981', 'cincinnati bengals', 'w 17–10', '44,350'], ['6', 'october 11, 1981', 'seattle seahawks', 'w 35–17', '42,671'], ['7', 'october 18, 1981', 'at new england patriots', 'l 38–10', '60,474'], ['8', 'october 26, 1981', 'at pittsburgh steelers', 'l 26–13', '52,732'], ['9', 'november 1, 1981', 'at cincinnati bengals', 'l 34–21', '54,736'], ['10', 'november 8, 1981', 'oakland raiders', 'w 17–16', '45,519'], ['11', 'november 15, 1981', 'at kansas city chiefs', 'l 23–10', '73,984'], ['12', 'november 22, 1981', 'new orleans saints', 'l 27–24', '49,581'], ['13', 'november 29, 1981', 'atlanta falcons', 'l 31–27', '40,201'], ['14', 'december 3, 1981', 'cleveland browns', 'w 17–13', '44,502'], ['15', 'december 13, 1981', 'at san francisco 49ers', 'l 28–6', '55,707'], ['16', 'december 20, 1981', 'pittsburgh steelers', 'w 21–20', '41,056']]
+########################################################################################################################
+Sample 1655 - Plan 1: Operation 1: Extract the numerical score from the 'result' column then add column 'score' to the existing table.
+Sample 1655 - Plan 1: Selected indices: [[0, 3], [1, 3], [2, 3], [3, 3], [4, 3], [5, 3], [6, 3], [7, 3], [8, 3], [9, 3], [10, 3], [11, 3], [12, 3], [13, 3], [14, 3], [15, 3]]
+Sample 1655 - Plan 1: X-Table after operation df:
+    week                date                 opponent   result attendance  \
+0      1   september 6, 1981      at los angeles rams  w 27–20     63,198   
+1      2  september 13, 1981      at cleveland browns    w 9–3     79,483   
+2      3  september 20, 1981           miami dolphins  l 16–10     47,379   
+3      4  september 27, 1981         at new york jets  l 33–17     50,309   
+4      5     october 4, 1981       cincinnati bengals  w 17–10     44,350   
+5      6    october 11, 1981         seattle seahawks  w 35–17     42,671   
+6      7    october 18, 1981  at new england patriots  l 38–10     60,474   
+7      8    october 26, 1981   at pittsburgh steelers  l 26–13     52,732   
+8      9    november 1, 1981    at cincinnati bengals  l 34–21     54,736   
+9     10    november 8, 1981          oakland raiders  w 17–16     45,519   
+10    11   november 15, 1981    at kansas city chiefs  l 23–10     73,984   
+11    12   november 22, 1981       new orleans saints  l 27–24     49,581   
+12    13   november 29, 1981          atlanta falcons  l 31–27     40,201   
+13    14    december 3, 1981         cleveland browns  w 17–13     44,502   
+14    15   december 13, 1981   at san francisco 49ers   l 28–6     55,707   
+15    16   december 20, 1981      pittsburgh steelers  w 21–20     41,056   
+
+    score  
+0      27  
+1       9  
+2      16  
+3      33  
+4      17  
+5      35  
+6      38  
+7      26  
+8      34  
+9      17  
+10     23  
+11     27  
+12     31  
+13     17  
+14     28  
+15     21  
+Sample 1655 - Plan 1: Table after operation: [['week', 'date', 'opponent', 'result', 'attendance', 'score'], [1, 'september 6, 1981', 'at los angeles rams', 'w 27–20', '63,198', 27], [2, 'september 13, 1981', 'at cleveland browns', 'w 9–3', '79,483', 9], [3, 'september 20, 1981', 'miami dolphins', 'l 16–10', '47,379', 16], [4, 'september 27, 1981', 'at new york jets', 'l 33–17', '50,309', 33], [5, 'october 4, 1981', 'cincinnati bengals', 'w 17–10', '44,350', 17], [6, 'october 11, 1981', 'seattle seahawks', 'w 35–17', '42,671', 35], [7, 'october 18, 1981', 'at new england patriots', 'l 38–10', '60,474', 38], [8, 'october 26, 1981', 'at pittsburgh steelers', 'l 26–13', '52,732', 26], [9, 'november 1, 1981', 'at cincinnati bengals', 'l 34–21', '54,736', 34], [10, 'november 8, 1981', 'oakland raiders', 'w 17–16', '45,519', 17], [11, 'november 15, 1981', 'at kansas city chiefs', 'l 23–10', '73,984', 23], [12, 'november 22, 1981', 'new orleans saints', 'l 27–24', '49,581', 27], [13, 'november 29, 1981', 'atlanta falcons', 'l 31–27', '40,201', 31], [14, 'december 3, 1981', 'cleveland browns', 'w 17–13', '44,502', 17], [15, 'december 13, 1981', 'at san francisco 49ers', 'l 28–6', '55,707', 28], [16, 'december 20, 1981', 'pittsburgh steelers', 'w 21–20', '41,056', 21]]
+########################################################################################################################
+Sample 1655 - Plan 1: Operation 2: Split the 'score' column into two separate columns, 'team_score' and 'opponent_score', using the delimiter '–'.
+Sample 1655 - Plan 1: Selected indices: [[0, 2], [0, 4], [0, 1], [0, 3], [0, 0], [0, 5], [1, 2], [1, 4], [1, 1], [1, 3], [1, 0], [1, 5], [2, 2], [2, 4], [2, 1], [2, 3], [2, 0], [2, 5], [3, 2], [3, 4], [3, 1], [3, 3], [3, 0], [3, 5], [4, 2], [4, 4], [4, 1], [4, 3], [4, 0], [4, 5], [5, 2], [5, 4], [5, 1], [5, 3], [5, 0], [5, 5], [6, 2], [6, 4], [6, 1], [6, 3], [6, 0], [6, 5], [7, 2], [7, 4], [7, 1], [7, 3], [7, 0], [7, 5], [8, 2], [8, 4], [8, 1], [8, 3], [8, 0], [8, 5], [9, 2], [9, 4], [9, 1], [9, 3], [9, 0], [9, 5], [10, 2], [10, 4], [10, 1], [10, 3], [10, 0], [10, 5], [11, 2], [11, 4], [11, 1], [11, 3], [11, 0], [11, 5], [12, 2], [12, 4], [12, 1], [12, 3], [12, 0], [12, 5], [13, 2], [13, 4], [13, 1], [13, 3], [13, 0], [13, 5], [14, 2], [14, 4], [14, 1], [14, 3], [14, 0], [14, 5], [15, 2], [15, 4], [15, 1], [15, 3], [15, 0], [15, 5]]
+Sample 1655 - Plan 1: X-Table after operation df:
+    week                date                 opponent   result attendance  \
+0      1   september 6, 1981      at los angeles rams  w 27–20     63,198   
+1      2  september 13, 1981      at cleveland browns    w 9–3     79,483   
+2      3  september 20, 1981           miami dolphins  l 16–10     47,379   
+3      4  september 27, 1981         at new york jets  l 33–17     50,309   
+4      5     october 4, 1981       cincinnati bengals  w 17–10     44,350   
+5      6    october 11, 1981         seattle seahawks  w 35–17     42,671   
+6      7    october 18, 1981  at new england patriots  l 38–10     60,474   
+7      8    october 26, 1981   at pittsburgh steelers  l 26–13     52,732   
+8      9    november 1, 1981    at cincinnati bengals  l 34–21     54,736   
+9     10    november 8, 1981          oakland raiders  w 17–16     45,519   
+10    11   november 15, 1981    at kansas city chiefs  l 23–10     73,984   
+11    12   november 22, 1981       new orleans saints  l 27–24     49,581   
+12    13   november 29, 1981          atlanta falcons  l 31–27     40,201   
+13    14    december 3, 1981         cleveland browns  w 17–13     44,502   
+14    15   december 13, 1981   at san francisco 49ers   l 28–6     55,707   
+15    16   december 20, 1981      pittsburgh steelers  w 21–20     41,056   
+
+    team_score  opponent_score  
+0            0              27  
+1            0               9  
+2            0              16  
+3            0              33  
+4            0              17  
+5            0              35  
+6            0              38  
+7            0              26  
+8            0              34  
+9            0              17  
+10           0              23  
+11           0              27  
+12           0              31  
+13           0              17  
+14           0              28  
+15           0              21  
+Sample 1655 - Plan 1: Table after operation: [['week', 'date', 'opponent', 'result', 'attendance', 'team_score', 'opponent_score'], [1, 'september 6, 1981', 'at los angeles rams', 'w 27–20', '63,198', 0, 27], [2, 'september 13, 1981', 'at cleveland browns', 'w 9–3', '79,483', 0, 9], [3, 'september 20, 1981', 'miami dolphins', 'l 16–10', '47,379', 0, 16], [4, 'september 27, 1981', 'at new york jets', 'l 33–17', '50,309', 0, 33], [5, 'october 4, 1981', 'cincinnati bengals', 'w 17–10', '44,350', 0, 17], [6, 'october 11, 1981', 'seattle seahawks', 'w 35–17', '42,671', 0, 35], [7, 'october 18, 1981', 'at new england patriots', 'l 38–10', '60,474', 0, 38], [8, 'october 26, 1981', 'at pittsburgh steelers', 'l 26–13', '52,732', 0, 26], [9, 'november 1, 1981', 'at cincinnati bengals', 'l 34–21', '54,736', 0, 34], [10, 'november 8, 1981', 'oakland raiders', 'w 17–16', '45,519', 0, 17], [11, 'november 15, 1981', 'at kansas city chiefs', 'l 23–10', '73,984', 0, 23], [12, 'november 22, 1981', 'new orleans saints', 'l 27–24', '49,581', 0, 27], [13, 'november 29, 1981', 'atlanta falcons', 'l 31–27', '40,201', 0, 31], [14, 'december 3, 1981', 'cleveland browns', 'w 17–13', '44,502', 0, 17], [15, 'december 13, 1981', 'at san francisco 49ers', 'l 28–6', '55,707', 0, 28], [16, 'december 20, 1981', 'pittsburgh steelers', 'w 21–20', '41,056', 0, 21]]
+########################################################################################################################
+Sample 1655 - Plan 1: Operation 3: Calculate the total points scored by the team in each game by summing the 'team_score' column and add a new column 'team_points' to the table.
+Sample 1655 - Plan 1: Selected indices: [[0, 5], [1, 5], [2, 5], [3, 5], [4, 5], [5, 5], [6, 5], [7, 5], [8, 5], [9, 5], [10, 5], [11, 5], [12, 5], [13, 5], [14, 5], [15, 5]]
+Sample 1655 - Plan 1: X-Table after operation df:
+    week                date                 opponent   result attendance  \
+0      1   september 6, 1981      at los angeles rams  w 27–20     63,198   
+1      2  september 13, 1981      at cleveland browns    w 9–3     79,483   
+2      3  september 20, 1981           miami dolphins  l 16–10     47,379   
+3      4  september 27, 1981         at new york jets  l 33–17     50,309   
+4      5     october 4, 1981       cincinnati bengals  w 17–10     44,350   
+5      6    october 11, 1981         seattle seahawks  w 35–17     42,671   
+6      7    october 18, 1981  at new england patriots  l 38–10     60,474   
+7      8    october 26, 1981   at pittsburgh steelers  l 26–13     52,732   
+8      9    november 1, 1981    at cincinnati bengals  l 34–21     54,736   
+9     10    november 8, 1981          oakland raiders  w 17–16     45,519   
+10    11   november 15, 1981    at kansas city chiefs  l 23–10     73,984   
+11    12   november 22, 1981       new orleans saints  l 27–24     49,581   
+12    13   november 29, 1981          atlanta falcons  l 31–27     40,201   
+13    14    december 3, 1981         cleveland browns  w 17–13     44,502   
+14    15   december 13, 1981   at san francisco 49ers   l 28–6     55,707   
+15    16   december 20, 1981      pittsburgh steelers  w 21–20     41,056   
+
+    team_score  opponent_score  team_points  
+0            0              27            0  
+1            0               9            0  
+2            0              16            0  
+3            0              33            0  
+4            0              17            0  
+5            0              35            0  
+6            0              38            0  
+7            0              26            0  
+8            0              34            0  
+9            0              17            0  
+10           0              23            0  
+11           0              27            0  
+12           0              31            0  
+13           0              17            0  
+14           0              28            0  
+15           0              21            0  
+Sample 1655 - Plan 1: Table after operation: [['week', 'date', 'opponent', 'result', 'attendance', 'team_score', 'opponent_score', 'team_points'], [1, 'september 6, 1981', 'at los angeles rams', 'w 27–20', '63,198', 0, 27, 0], [2, 'september 13, 1981', 'at cleveland browns', 'w 9–3', '79,483', 0, 9, 0], [3, 'september 20, 1981', 'miami dolphins', 'l 16–10', '47,379', 0, 16, 0], [4, 'september 27, 1981', 'at new york jets', 'l 33–17', '50,309', 0, 33, 0], [5, 'october 4, 1981', 'cincinnati bengals', 'w 17–10', '44,350', 0, 17, 0], [6, 'october 11, 1981', 'seattle seahawks', 'w 35–17', '42,671', 0, 35, 0], [7, 'october 18, 1981', 'at new england patriots', 'l 38–10', '60,474', 0, 38, 0], [8, 'october 26, 1981', 'at pittsburgh steelers', 'l 26–13', '52,732', 0, 26, 0], [9, 'november 1, 1981', 'at cincinnati bengals', 'l 34–21', '54,736', 0, 34, 0], [10, 'november 8, 1981', 'oakland raiders', 'w 17–16', '45,519', 0, 17, 0], [11, 'november 15, 1981', 'at kansas city chiefs', 'l 23–10', '73,984', 0, 23, 0], [12, 'november 22, 1981', 'new orleans saints', 'l 27–24', '49,581', 0, 27, 0], [13, 'november 29, 1981', 'atlanta falcons', 'l 31–27', '40,201', 0, 31, 0], [14, 'december 3, 1981', 'cleveland browns', 'w 17–13', '44,502', 0, 17, 0], [15, 'december 13, 1981', 'at san francisco 49ers', 'l 28–6', '55,707', 0, 28, 0], [16, 'december 20, 1981', 'pittsburgh steelers', 'w 21–20', '41,056', 0, 21, 0]]
+########################################################################################################################
+Sample 1655 - Plan 1: Operation 4: Order the table by 'team_points' in descending order.
+Sample 1655 - Plan 1: Selected indices: [[11, 7], [0, 7], [12, 7], [7, 7], [2, 7], [13, 7], [8, 7], [3, 7], [14, 7], [15, 7], [10, 7], [5, 7], [6, 7], [1, 7], [9, 7], [4, 7]]
+Sample 1655 - Plan 1: X-Table after operation df:
+    week                date                 opponent   result attendance  \
+0      1   september 6, 1981      at los angeles rams  w 27–20     63,198   
+1      2  september 13, 1981      at cleveland browns    w 9–3     79,483   
+2      3  september 20, 1981           miami dolphins  l 16–10     47,379   
+3      4  september 27, 1981         at new york jets  l 33–17     50,309   
+4      5     october 4, 1981       cincinnati bengals  w 17–10     44,350   
+5      6    october 11, 1981         seattle seahawks  w 35–17     42,671   
+6      7    october 18, 1981  at new england patriots  l 38–10     60,474   
+7      8    october 26, 1981   at pittsburgh steelers  l 26–13     52,732   
+8      9    november 1, 1981    at cincinnati bengals  l 34–21     54,736   
+9     10    november 8, 1981          oakland raiders  w 17–16     45,519   
+10    11   november 15, 1981    at kansas city chiefs  l 23–10     73,984   
+11    12   november 22, 1981       new orleans saints  l 27–24     49,581   
+12    13   november 29, 1981          atlanta falcons  l 31–27     40,201   
+13    14    december 3, 1981         cleveland browns  w 17–13     44,502   
+14    15   december 13, 1981   at san francisco 49ers   l 28–6     55,707   
+15    16   december 20, 1981      pittsburgh steelers  w 21–20     41,056   
+
+    team_score  opponent_score  team_points  
+0            0              27            0  
+1            0               9            0  
+2            0              16            0  
+3            0              33            0  
+4            0              17            0  
+5            0              35            0  
+6            0              38            0  
+7            0              26            0  
+8            0              34            0  
+9            0              17            0  
+10           0              23            0  
+11           0              27            0  
+12           0              31            0  
+13           0              17            0  
+14           0              28            0  
+15           0              21            0  
+Sample 1655 - Plan 1: Table after operation: [['week', 'date', 'opponent', 'result', 'attendance', 'team_score', 'opponent_score', 'team_points'], [1, 'september 6, 1981', 'at los angeles rams', 'w 27–20', '63,198', 0, 27, 0], [2, 'september 13, 1981', 'at cleveland browns', 'w 9–3', '79,483', 0, 9, 0], [3, 'september 20, 1981', 'miami dolphins', 'l 16–10', '47,379', 0, 16, 0], [4, 'september 27, 1981', 'at new york jets', 'l 33–17', '50,309', 0, 33, 0], [5, 'october 4, 1981', 'cincinnati bengals', 'w 17–10', '44,350', 0, 17, 0], [6, 'october 11, 1981', 'seattle seahawks', 'w 35–17', '42,671', 0, 35, 0], [7, 'october 18, 1981', 'at new england patriots', 'l 38–10', '60,474', 0, 38, 0], [8, 'october 26, 1981', 'at pittsburgh steelers', 'l 26–13', '52,732', 0, 26, 0], [9, 'november 1, 1981', 'at cincinnati bengals', 'l 34–21', '54,736', 0, 34, 0], [10, 'november 8, 1981', 'oakland raiders', 'w 17–16', '45,519', 0, 17, 0], [11, 'november 15, 1981', 'at kansas city chiefs', 'l 23–10', '73,984', 0, 23, 0], [12, 'november 22, 1981', 'new orleans saints', 'l 27–24', '49,581', 0, 27, 0], [13, 'november 29, 1981', 'atlanta falcons', 'l 31–27', '40,201', 0, 31, 0], [14, 'december 3, 1981', 'cleveland browns', 'w 17–13', '44,502', 0, 17, 0], [15, 'december 13, 1981', 'at san francisco 49ers', 'l 28–6', '55,707', 0, 28, 0], [16, 'december 20, 1981', 'pittsburgh steelers', 'w 21–20', '41,056', 0, 21, 0]]
+########################################################################################################################
+Sample 1655 - Plan 1: Operation 5: Select row number 1.
+Sample 1655 - Plan 1: Selected indices: []
+Sample 1655 - Plan 1: X-Table after operation df:
+   week               date             opponent   result attendance  \
+0     1  september 6, 1981  at los angeles rams  w 27–20     63,198   
+
+   team_score  opponent_score  team_points  
+0           0              27            0  
+Sample 1655 - Plan 1: Table after operation: [['week', 'date', 'opponent', 'result', 'attendance', 'team_score', 'opponent_score', 'team_points'], [1, 'september 6, 1981', 'at los angeles rams', 'w 27–20', '63,198', 0, 27, 0]]
+########################################################################################################################
+Sample 1655 - Plan 1: Operation 6: Select the 'date' column.
+Sample 1655 - Plan 1: Selected indices: []
+Sample 1655 - Plan 1: X-Table after operation df:
+                date
+0  september 6, 1981
+Sample 1655 - Plan 1: Table after operation: [['date'], ['september 6, 1981']]
+Fall-back: FALSE
+Answer from plan 1: [['september 6, 1981']]
+Groundtruth: ['October 11, 1981']

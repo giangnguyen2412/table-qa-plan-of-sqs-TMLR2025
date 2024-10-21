@@ -1,0 +1,78 @@
+************************************************************************************************************************
+Sample 644 - Plan 1: Query: what is the date listed for the last round?
+Sample 644 - Plan 1: Groundtruth: ['November 5']
+Sample 644 - Plan 1: X-Original table pd: 
+   round         date         circuit           winning_driver__ta2_  \
+0      1       may 21     sears point                   greg pickett   
+1      2       june 4        westwood                ludwig heimrath   
+2      3      june 11        portland                    tuck thomas   
+3      4      june 25  mont-tremblant                  monte sheldon   
+4      5       july 8   watkins glen‡  hal shaw, jr.\n monte shelton   
+5      6    august 13        brainerd                   jerry hansen   
+6      7    august 19         mosport                   greg pickett   
+7      8  september 4    road america                   greg pickett   
+8      9    october 8     laguna seca                   greg pickett   
+9     10   november 5     mexico city                ludwig heimrath   
+
+  winning_vehicle__ta2_            winning_driver__ta1_ winning_vehicle__ta1_  
+0    chevrolet corvette                   gene bothello    chevrolet corvette  
+1           porsche 935                     nick engels    chevrolet corvette  
+2       chevrolet monza                  bob matkowitch    chevrolet corvette  
+3           porsche 935                     bob tullius            jaguar xjs  
+4           porsche 935  brian fuerstenau\n bob tullius            jaguar xjs  
+5       chevrolet monza                     bob tullius            jaguar xjs  
+6    chevrolet corvette                     bob tullius            jaguar xjs  
+7    chevrolet corvette                     bob tullius            jaguar xjs  
+8    chevrolet corvette                     bob tullius            jaguar xjs  
+9           porsche 935                     bob tullius            jaguar xjs  
+Sample 644 - Plan 1: Caption: none
+Sample 644 - Plan 1: Original table: [['round', 'date', 'circuit', 'winning_driver__ta2_', 'winning_vehicle__ta2_', 'winning_driver__ta1_', 'winning_vehicle__ta1_'], ['1', 'may 21', 'sears point', 'greg pickett', 'chevrolet corvette', 'gene bothello', 'chevrolet corvette'], ['2', 'june 4', 'westwood', 'ludwig heimrath', 'porsche 935', 'nick engels', 'chevrolet corvette'], ['3', 'june 11', 'portland', 'tuck thomas', 'chevrolet monza', 'bob matkowitch', 'chevrolet corvette'], ['4', 'june 25', 'mont-tremblant', 'monte sheldon', 'porsche 935', 'bob tullius', 'jaguar xjs'], ['5', 'july 8', 'watkins glen‡', 'hal shaw, jr.\\n monte shelton', 'porsche 935', 'brian fuerstenau\\n bob tullius', 'jaguar xjs'], ['6', 'august 13', 'brainerd', 'jerry hansen', 'chevrolet monza', 'bob tullius', 'jaguar xjs'], ['7', 'august 19', 'mosport', 'greg pickett', 'chevrolet corvette', 'bob tullius', 'jaguar xjs'], ['8', 'september 4', 'road america', 'greg pickett', 'chevrolet corvette', 'bob tullius', 'jaguar xjs'], ['9', 'october 8', 'laguna seca', 'greg pickett', 'chevrolet corvette', 'bob tullius', 'jaguar xjs'], ['10', 'november 5', 'mexico city', 'ludwig heimrath', 'porsche 935', 'bob tullius', 'jaguar xjs']]
+########################################################################################################################
+Sample 644 - Plan 1: Operation 1: Select the 'date' column from the given Table.
+Sample 644 - Plan 1: Selected indices: []
+Sample 644 - Plan 1: X-Table after operation df:
+          date
+0       may 21
+1       june 4
+2      june 11
+3      june 25
+4       july 8
+5    august 13
+6    august 19
+7  september 4
+8    october 8
+9   november 5
+Sample 644 - Plan 1: Table after operation: [['date'], ['may 21'], ['june 4'], ['june 11'], ['june 25'], ['july 8'], ['august 13'], ['august 19'], ['september 4'], ['october 8'], ['november 5']]
+########################################################################################################################
+Sample 644 - Plan 1: Operation 2: Order the table by the 'round' column in descending order.
+Sample 644 - Plan 1: Selected indices: [[9, 0], [4, 0], [0, 0], [7, 0], [2, 0], [8, 0], [3, 0], [5, 0], [6, 0], [1, 0]]
+Sample 644 - Plan 1: X-Table after operation df:
+          date
+0  september 4
+1    october 8
+2   november 5
+3       may 21
+4       june 4
+5      june 25
+6      june 11
+7       july 8
+8    august 19
+9    august 13
+Sample 644 - Plan 1: Table after operation: [['date'], ['september 4'], ['october 8'], ['november 5'], ['may 21'], ['june 4'], ['june 25'], ['june 11'], ['july 8'], ['august 19'], ['august 13']]
+########################################################################################################################
+Sample 644 - Plan 1: Operation 3: Select the first row.
+Sample 644 - Plan 1: Selected indices: []
+Sample 644 - Plan 1: X-Table after operation df:
+          date
+0  september 4
+Sample 644 - Plan 1: Table after operation: [['date'], ['september 4']]
+########################################################################################################################
+Sample 644 - Plan 1: Operation 4: Select the 'date' value from the selected row.
+Sample 644 - Plan 1: Selected indices: []
+Sample 644 - Plan 1: X-Table after operation df:
+          date
+0  september 4
+Sample 644 - Plan 1: Table after operation: [['date'], ['september 4']]
+Fall-back: FALSE
+Answer from plan 1: [['september 4']]
+Groundtruth: ['November 5']

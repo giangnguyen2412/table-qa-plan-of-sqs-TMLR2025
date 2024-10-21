@@ -1,0 +1,82 @@
+************************************************************************************************************************
+Sample 1347 - Plan 1: Query: what is the consecutive date listed?
+Sample 1347 - Plan 1: Groundtruth: ['2008']
+Sample 1347 - Plan 1: X-Original table pd: 
+             match    date venue opponents score
+0           gl-b-1  2008..  [[]]      [[]]     -
+1           gl-b-2  2008..  [[]]      [[]]     -
+2           gl-b-3  2008..  [[]]      [[]]     -
+3           gl-b-4  2008..  [[]]      [[]]     -
+4           gl-b-5  2008..  [[]]      [[]]     -
+5           gl-b-6  2008..  [[]]      [[]]     -
+6  quarterfinals-1  2008..  [[]]      [[]]     -
+7  quarterfinals-2  2008..  [[]]      [[]]     -
+Sample 1347 - Plan 1: Caption: none
+Sample 1347 - Plan 1: Original table: [['match', 'date', 'venue', 'opponents', 'score'], ['gl-b-1', '2008..', '[[]]', '[[]]', '-'], ['gl-b-2', '2008..', '[[]]', '[[]]', '-'], ['gl-b-3', '2008..', '[[]]', '[[]]', '-'], ['gl-b-4', '2008..', '[[]]', '[[]]', '-'], ['gl-b-5', '2008..', '[[]]', '[[]]', '-'], ['gl-b-6', '2008..', '[[]]', '[[]]', '-'], ['quarterfinals-1', '2008..', '[[]]', '[[]]', '-'], ['quarterfinals-2', '2008..', '[[]]', '[[]]', '-']]
+########################################################################################################################
+Sample 1347 - Plan 1: Operation 1: Select the 'date' column from the given Table.
+Sample 1347 - Plan 1: Selected indices: []
+Sample 1347 - Plan 1: X-Table after operation df:
+     date
+0  2008..
+1  2008..
+2  2008..
+3  2008..
+4  2008..
+5  2008..
+6  2008..
+7  2008..
+Sample 1347 - Plan 1: Table after operation: [['date'], ['2008..'], ['2008..'], ['2008..'], ['2008..'], ['2008..'], ['2008..'], ['2008..'], ['2008..']]
+########################################################################################################################
+Sample 1347 - Plan 1: Operation 2: Remove any empty or missing values from the 'date' column.
+Sample 1347 - Plan 1: Selected indices: [[4, 0], [0, 0], [7, 0], [2, 0], [3, 0], [5, 0], [6, 0], [1, 0]]
+Sample 1347 - Plan 1: X-Table after operation df:
+     date
+0  2008..
+1  2008..
+2  2008..
+3  2008..
+4  2008..
+5  2008..
+6  2008..
+7  2008..
+Sample 1347 - Plan 1: Table after operation: [['date'], ['2008..'], ['2008..'], ['2008..'], ['2008..'], ['2008..'], ['2008..'], ['2008..'], ['2008..']]
+########################################################################################################################
+Sample 1347 - Plan 1: Operation 3: Arrange the 'date' column in ascending order.
+Sample 1347 - Plan 1: Selected indices: [[4, 0], [0, 0], [7, 0], [2, 0], [3, 0], [5, 0], [6, 0], [1, 0]]
+Sample 1347 - Plan 1: X-Table after operation df:
+     date
+0  2008..
+1  2008..
+2  2008..
+3  2008..
+4  2008..
+5  2008..
+6  2008..
+7  2008..
+Sample 1347 - Plan 1: Table after operation: [['date'], ['2008..'], ['2008..'], ['2008..'], ['2008..'], ['2008..'], ['2008..'], ['2008..'], ['2008..']]
+########################################################################################################################
+Sample 1347 - Plan 1: Operation 4: Identify the consecutive dates in the 'date' column.
+Sample 1347 - Plan 1: Selected indices: []
+Sample 1347 - Plan 1: X-Table after operation df:
+     date
+0  2008..
+1  2008..
+2  2008..
+3  2008..
+4  2008..
+5  2008..
+6  2008..
+7  2008..
+Sample 1347 - Plan 1: Table after operation: [['date'], ['2008..'], ['2008..'], ['2008..'], ['2008..'], ['2008..'], ['2008..'], ['2008..'], ['2008..']]
+########################################################################################################################
+Sample 1347 - Plan 1: Operation 5: Select the consecutive dates as the final answer to the Question.
+Sample 1347 - Plan 1: Selected indices: []
+Sample 1347 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [date]
+Index: []
+Sample 1347 - Plan 1: Table after operation: [['date']]
+Fall-back: TRUE
+Answer from plan 1: [['2008..']]
+Groundtruth: ['2008']

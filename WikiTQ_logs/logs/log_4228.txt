@@ -1,0 +1,83 @@
+************************************************************************************************************************
+Sample 4228 - Plan 1: Query: who is younger, aimeé elaine melo hernández, or catherine mabel ramírez rosario?
+Sample 4228 - Plan 1: Groundtruth: ['Catherine Mabel Ramírez Rosario']
+Sample 4228 - Plan 1: X-Original table pd: 
+          represented                         contestant  age  height  \
+0                azua        alicia fernández de la cruz   23    1.69   
+1            barahona    lucía magdalena alvarado suarez   20    1.71   
+2        com. dom. eu      sandra elisabeth tavares ruíz   19    1.80   
+3   distrito nacional        aimeé elaine melo hernández   23    1.73   
+4              duarte          paola saint-hilaire arias   20    1.79   
+5           espaillat           angela maría garcía ruíz   26    1.77   
+6       independencia         joany marleny sosa peralta   20    1.82   
+7       la altagracia         ana carolina viñas machado   22    1.84   
+8           la romana         alina charlin espinal luna   19    1.81   
+9             la vega    catherine mabel ramírez rosario   21    1.83   
+10       monte cristi       grace stephany mota grisanty   18    1.75   
+11            peravia    mariela joselin rosario jiménez   25    1.86   
+12       puerto plata  sheila massiel castíllo domínguez   18    1.83   
+13            salcedo             rossemely cruz logroño   26    1.76   
+14      san cristóbal       daniela teresa peguero brito   24    1.74   
+15           santiago      karina luisa betances cabrera   21    1.80   
+16      santo domingo        yisney lina lagrange méndez   19    1.82   
+17           valverde       fania miguelina marte lozada   22    1.73   
+
+                        hometown  
+0                  santo domingo  
+1                  santo domingo  
+2                         newark  
+3                  santo domingo  
+4     santiago de los caballeros  
+5                           moca  
+6                         jimaní  
+7     santiago de los caballeros  
+8                      la romana  
+9     santiago de los caballeros  
+10  san fernando de monte cristi  
+11                 santo domingo  
+12                      altamira  
+13                       salcedo  
+14                 santo domingo  
+15    santiago de los caballeros  
+16                   pedro brand  
+17                           mao  
+Sample 4228 - Plan 1: Caption: none
+Sample 4228 - Plan 1: Original table: [['represented', 'contestant', 'age', 'height', 'hometown'], ['azua', 'alicia fernández de la cruz', '23', '1.69', 'santo domingo'], ['barahona', 'lucía magdalena alvarado suarez', '20', '1.71', 'santo domingo'], ['com. dom. eu', 'sandra elisabeth tavares ruíz', '19', '1.80', 'newark'], ['distrito nacional', 'aimeé elaine melo hernández', '23', '1.73', 'santo domingo'], ['duarte', 'paola saint-hilaire arias', '20', '1.79', 'santiago de los caballeros'], ['espaillat', 'angela maría garcía ruíz', '26', '1.77', 'moca'], ['independencia', 'joany marleny sosa peralta', '20', '1.82', 'jimaní'], ['la altagracia', 'ana carolina viñas machado', '22', '1.84', 'santiago de los caballeros'], ['la romana', 'alina charlin espinal luna', '19', '1.81', 'la romana'], ['la vega', 'catherine mabel ramírez rosario', '21', '1.83', 'santiago de los caballeros'], ['monte cristi', 'grace stephany mota grisanty', '18', '1.75', 'san fernando de monte cristi'], ['peravia', 'mariela joselin rosario jiménez', '25', '1.86', 'santo domingo'], ['puerto plata', 'sheila massiel castíllo domínguez', '18', '1.83', 'altamira'], ['salcedo', 'rossemely cruz logroño', '26', '1.76', 'salcedo'], ['san cristóbal', 'daniela teresa peguero brito', '24', '1.74', 'santo domingo'], ['santiago', 'karina luisa betances cabrera', '21', '1.80', 'santiago de los caballeros'], ['santo domingo', 'yisney lina lagrange méndez', '19', '1.82', 'pedro brand'], ['valverde', 'fania miguelina marte lozada', '22', '1.73', 'mao']]
+########################################################################################################################
+Sample 4228 - Plan 1: Operation 1: Select rows where 'contestant' is 'aimeé elaine melo hernández' or 'catherine mabel ramírez rosario'.
+Sample 4228 - Plan 1: Selected indices: [[3, 1], [9, 1]]
+Sample 4228 - Plan 1: X-Table after operation df:
+         represented                       contestant  age  height  \
+0  distrito nacional      aimeé elaine melo hernández   23    1.73   
+1            la vega  catherine mabel ramírez rosario   21    1.83   
+
+                     hometown  
+0               santo domingo  
+1  santiago de los caballeros  
+Sample 4228 - Plan 1: Table after operation: [['represented', 'contestant', 'age', 'height', 'hometown'], ['distrito nacional', 'aimeé elaine melo hernández', 23, 1.73, 'santo domingo'], ['la vega', 'catherine mabel ramírez rosario', 21, 1.83, 'santiago de los caballeros']]
+########################################################################################################################
+Sample 4228 - Plan 1: Operation 2: Select the 'age' column for the selected rows.
+Sample 4228 - Plan 1: Selected indices: []
+Sample 4228 - Plan 1: X-Table after operation df:
+   age
+0   23
+1   21
+Sample 4228 - Plan 1: Table after operation: [['age'], [23], [21]]
+########################################################################################################################
+Sample 4228 - Plan 1: Operation 3: Compare the ages of aimeé elaine melo hernández and catherine mabel ramírez rosario.
+Sample 4228 - Plan 1: Selected indices: [[1, 0], [0, 0]]
+Sample 4228 - Plan 1: X-Table after operation df:
+   age
+0   23
+1   21
+Sample 4228 - Plan 1: Table after operation: [['age'], [23], [21]]
+########################################################################################################################
+Sample 4228 - Plan 1: Operation 4: Determine who is younger based on the comparison.
+Sample 4228 - Plan 1: Selected indices: []
+Sample 4228 - Plan 1: X-Table after operation df:
+   younger_age
+0           21
+Sample 4228 - Plan 1: Table after operation: [['younger_age'], [21]]
+Fall-back: FALSE
+Answer from plan 1: [[21]]
+Groundtruth: ['Catherine Mabel Ramírez Rosario']

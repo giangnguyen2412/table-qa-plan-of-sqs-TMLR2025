@@ -1,0 +1,101 @@
+************************************************************************************************************************
+Sample 268 - Plan 1: Query: who was the first and only member of team europe to beat team usa during the evening session of the third day of the 2007 weber cup?
+Sample 268 - Plan 1: Groundtruth: ['Paul Moor']
+Sample 268 - Plan 1: X-Original table pd: 
+   match_no_ match_type        team_europe      score      team_usa  \
+0         25    singles    mika koivuniemi  217 - 279  chris barnes   
+1         26    singles      osku palermaa  217 - 244   tommy jones   
+2         27    singles          paul moor  210 - 199      tim mack   
+3         28    singles     tore torgersen  206 - 275     doug kent   
+4         29    singles  tomas leandersson  176 - 258  bill hoffman   
+5         30      baker        team europe  202 - 203      team usa   
+6         31    singles     tore torgersen  202 - 264  chris barnes   
+7         32    singles      osku palermaa  196 - 235   tommy jones   
+
+  progressive_total  
+0           14 - 11  
+1           14 - 12  
+2           15 - 12  
+3           15 - 13  
+4           15 - 14  
+5           15 - 15  
+6           15 - 16  
+7           15 - 17  
+Sample 268 - Plan 1: Caption: none
+Sample 268 - Plan 1: Original table: [['match_no_', 'match_type', 'team_europe', 'score', 'team_usa', 'progressive_total'], ['25', 'singles', 'mika koivuniemi', '217 - 279', 'chris barnes', '14 - 11'], ['26', 'singles', 'osku palermaa', '217 - 244', 'tommy jones', '14 - 12'], ['27', 'singles', 'paul moor', '210 - 199', 'tim mack', '15 - 12'], ['28', 'singles', 'tore torgersen', '206 - 275', 'doug kent', '15 - 13'], ['29', 'singles', 'tomas leandersson', '176 - 258', 'bill hoffman', '15 - 14'], ['30', 'baker', 'team europe', '202 - 203', 'team usa', '15 - 15'], ['31', 'singles', 'tore torgersen', '202 - 264', 'chris barnes', '15 - 16'], ['32', 'singles', 'osku palermaa', '196 - 235', 'tommy jones', '15 - 17']]
+########################################################################################################################
+Sample 268 - Plan 1: Operation 1: Select rows where 'team_europe' is not equal to 'team usa'.
+Sample 268 - Plan 1: Selected indices: [[6, 2], [1, 2], [4, 2], [0, 2], [7, 2], [2, 2], [3, 2], [5, 2]]
+Sample 268 - Plan 1: X-Table after operation df:
+   match_no_ match_type        team_europe      score      team_usa  \
+0         25    singles    mika koivuniemi  217 - 279  chris barnes   
+1         26    singles      osku palermaa  217 - 244   tommy jones   
+2         27    singles          paul moor  210 - 199      tim mack   
+3         28    singles     tore torgersen  206 - 275     doug kent   
+4         29    singles  tomas leandersson  176 - 258  bill hoffman   
+5         30      baker        team europe  202 - 203      team usa   
+6         31    singles     tore torgersen  202 - 264  chris barnes   
+7         32    singles      osku palermaa  196 - 235   tommy jones   
+
+  progressive_total  
+0           14 - 11  
+1           14 - 12  
+2           15 - 12  
+3           15 - 13  
+4           15 - 14  
+5           15 - 15  
+6           15 - 16  
+7           15 - 17  
+Sample 268 - Plan 1: Table after operation: [['match_no_', 'match_type', 'team_europe', 'score', 'team_usa', 'progressive_total'], [25, 'singles', 'mika koivuniemi', '217 - 279', 'chris barnes', '14 - 11'], [26, 'singles', 'osku palermaa', '217 - 244', 'tommy jones', '14 - 12'], [27, 'singles', 'paul moor', '210 - 199', 'tim mack', '15 - 12'], [28, 'singles', 'tore torgersen', '206 - 275', 'doug kent', '15 - 13'], [29, 'singles', 'tomas leandersson', '176 - 258', 'bill hoffman', '15 - 14'], [30, 'baker', 'team europe', '202 - 203', 'team usa', '15 - 15'], [31, 'singles', 'tore torgersen', '202 - 264', 'chris barnes', '15 - 16'], [32, 'singles', 'osku palermaa', '196 - 235', 'tommy jones', '15 - 17']]
+########################################################################################################################
+Sample 268 - Plan 1: Operation 2: Select rows where 'match_type' is 'singles'.
+Sample 268 - Plan 1: Selected indices: [[0, 1], [7, 1], [2, 1], [3, 1], [6, 1], [1, 1], [4, 1]]
+Sample 268 - Plan 1: X-Table after operation df:
+   match_no_ match_type        team_europe      score      team_usa  \
+0         25    singles    mika koivuniemi  217 - 279  chris barnes   
+1         26    singles      osku palermaa  217 - 244   tommy jones   
+2         27    singles          paul moor  210 - 199      tim mack   
+3         28    singles     tore torgersen  206 - 275     doug kent   
+4         29    singles  tomas leandersson  176 - 258  bill hoffman   
+5         31    singles     tore torgersen  202 - 264  chris barnes   
+6         32    singles      osku palermaa  196 - 235   tommy jones   
+
+  progressive_total  
+0           14 - 11  
+1           14 - 12  
+2           15 - 12  
+3           15 - 13  
+4           15 - 14  
+5           15 - 16  
+6           15 - 17  
+Sample 268 - Plan 1: Table after operation: [['match_no_', 'match_type', 'team_europe', 'score', 'team_usa', 'progressive_total'], [25, 'singles', 'mika koivuniemi', '217 - 279', 'chris barnes', '14 - 11'], [26, 'singles', 'osku palermaa', '217 - 244', 'tommy jones', '14 - 12'], [27, 'singles', 'paul moor', '210 - 199', 'tim mack', '15 - 12'], [28, 'singles', 'tore torgersen', '206 - 275', 'doug kent', '15 - 13'], [29, 'singles', 'tomas leandersson', '176 - 258', 'bill hoffman', '15 - 14'], [31, 'singles', 'tore torgersen', '202 - 264', 'chris barnes', '15 - 16'], [32, 'singles', 'osku palermaa', '196 - 235', 'tommy jones', '15 - 17']]
+########################################################################################################################
+Sample 268 - Plan 1: Operation 3: Select rows where 'progressive_total' is greater than '15 - 14'.
+Sample 268 - Plan 1: Selected indices: [[5, 5], [6, 5]]
+Sample 268 - Plan 1: X-Table after operation df:
+   match_no_ match_type     team_europe      score      team_usa  \
+0         31    singles  tore torgersen  202 - 264  chris barnes   
+1         32    singles   osku palermaa  196 - 235   tommy jones   
+
+  progressive_total  
+0           15 - 16  
+1           15 - 17  
+Sample 268 - Plan 1: Table after operation: [['match_no_', 'match_type', 'team_europe', 'score', 'team_usa', 'progressive_total'], [31, 'singles', 'tore torgersen', '202 - 264', 'chris barnes', '15 - 16'], [32, 'singles', 'osku palermaa', '196 - 235', 'tommy jones', '15 - 17']]
+########################################################################################################################
+Sample 268 - Plan 1: Operation 4: Select the 'team_europe' column.
+Sample 268 - Plan 1: Selected indices: []
+Sample 268 - Plan 1: X-Table after operation df:
+      team_europe
+0  tore torgersen
+1   osku palermaa
+Sample 268 - Plan 1: Table after operation: [['team_europe'], ['tore torgersen'], ['osku palermaa']]
+########################################################################################################################
+Sample 268 - Plan 1: Operation 5: Select the first row.
+Sample 268 - Plan 1: Selected indices: []
+Sample 268 - Plan 1: X-Table after operation df:
+      team_europe
+0  tore torgersen
+Sample 268 - Plan 1: Table after operation: [['team_europe'], ['tore torgersen']]
+Fall-back: FALSE
+Answer from plan 1: [['tore torgersen']]
+Groundtruth: ['Paul Moor']

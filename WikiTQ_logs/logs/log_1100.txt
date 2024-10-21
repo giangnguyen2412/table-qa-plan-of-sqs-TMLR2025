@@ -1,0 +1,60 @@
+************************************************************************************************************************
+Sample 1100 - Plan 1: Query: were the 2007 world championships in japan or finland?
+Sample 1100 - Plan 1: Groundtruth: ['Japan']
+Sample 1100 - Plan 1: X-Original table pd: 
+   year                 competition                 venue   position  \
+0  2000  world junior championships       santiago, chile        2nd   
+1  2000  world junior championships       santiago, chile        4th   
+2  2005         world championships     helsinki, finland  17th (sf)   
+3  2005         world championships     helsinki, finland   13th (h)   
+4  2006          commonwealth games  melbourne, australia        7th   
+5  2006       african championships    bambous, mauritius        4th   
+6  2007            all-africa games      algiers, algeria        2nd   
+7  2007            all-africa games      algiers, algeria        8th   
+8  2007         world championships          osaka, japan  15th (sf)   
+9  2008               olympic games        beijing, china  12th (sf)   
+
+           event    notes  
+0  400 m hurdles    50.52  
+1  4x400 m relay  3:07.66  
+2  400 m hurdles    49.75  
+3  4x400 m relay  3:04.64  
+4  400 m hurdles    50.51  
+5  400 m hurdles    50.96  
+6  400 m hurdles    48.91  
+7  4x400 m relay      dnf  
+8  400 m hurdles    49.37  
+9  400 m hurdles    49.44  
+Sample 1100 - Plan 1: Caption: none
+Sample 1100 - Plan 1: Original table: [['year', 'competition', 'venue', 'position', 'event', 'notes'], ['2000', 'world junior championships', 'santiago, chile', '2nd', '400 m hurdles', '50.52'], ['2000', 'world junior championships', 'santiago, chile', '4th', '4x400 m relay', '3:07.66'], ['2005', 'world championships', 'helsinki, finland', '17th (sf)', '400 m hurdles', '49.75'], ['2005', 'world championships', 'helsinki, finland', '13th (h)', '4x400 m relay', '3:04.64'], ['2006', 'commonwealth games', 'melbourne, australia', '7th', '400 m hurdles', '50.51'], ['2006', 'african championships', 'bambous, mauritius', '4th', '400 m hurdles', '50.96'], ['2007', 'all-africa games', 'algiers, algeria', '2nd', '400 m hurdles', '48.91'], ['2007', 'all-africa games', 'algiers, algeria', '8th', '4x400 m relay', 'dnf'], ['2007', 'world championships', 'osaka, japan', '15th (sf)', '400 m hurdles', '49.37'], ['2008', 'olympic games', 'beijing, china', '12th (sf)', '400 m hurdles', '49.44']]
+########################################################################################################################
+Sample 1100 - Plan 1: Operation 1: Select rows where the 'year' is 2007.
+Sample 1100 - Plan 1: Selected indices: [[7, 0], [8, 0], [6, 0]]
+Sample 1100 - Plan 1: X-Table after operation df:
+   year          competition             venue   position          event  \
+0  2007     all-africa games  algiers, algeria        2nd  400 m hurdles   
+1  2007     all-africa games  algiers, algeria        8th  4x400 m relay   
+2  2007  world championships      osaka, japan  15th (sf)  400 m hurdles   
+
+   notes  
+0  48.91  
+1    dnf  
+2  49.37  
+Sample 1100 - Plan 1: Table after operation: [['year', 'competition', 'venue', 'position', 'event', 'notes'], [2007, 'all-africa games', 'algiers, algeria', '2nd', '400 m hurdles', '48.91'], [2007, 'all-africa games', 'algiers, algeria', '8th', '4x400 m relay', 'dnf'], [2007, 'world championships', 'osaka, japan', '15th (sf)', '400 m hurdles', '49.37']]
+########################################################################################################################
+Sample 1100 - Plan 1: Operation 2: Select rows where the 'competition' is 'world championships'.
+Sample 1100 - Plan 1: Selected indices: [[2, 1]]
+Sample 1100 - Plan 1: X-Table after operation df:
+   year          competition         venue   position          event  notes
+0  2007  world championships  osaka, japan  15th (sf)  400 m hurdles  49.37
+Sample 1100 - Plan 1: Table after operation: [['year', 'competition', 'venue', 'position', 'event', 'notes'], [2007, 'world championships', 'osaka, japan', '15th (sf)', '400 m hurdles', '49.37']]
+########################################################################################################################
+Sample 1100 - Plan 1: Operation 3: Select the 'venue' column.
+Sample 1100 - Plan 1: Selected indices: []
+Sample 1100 - Plan 1: X-Table after operation df:
+          venue
+0  osaka, japan
+Sample 1100 - Plan 1: Table after operation: [['venue'], ['osaka, japan']]
+Fall-back: FALSE
+Answer from plan 1: [['osaka, japan']]
+Groundtruth: ['Japan']

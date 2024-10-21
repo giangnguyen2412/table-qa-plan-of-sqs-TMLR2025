@@ -1,0 +1,198 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> the settlements titel and lok differ only in population</h3>
+<h3>Input Table: list of cities , towns and villages in vojvodina</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'settlement' is 'titel' or 'lok'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>settlement</td>
+<td>cyrillic_name</td>
+<td>type</td>
+<td>population__2011_</td>
+<td>largest_ethnic_group__2002_</td>
+<td>dominant_religion__2002_</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">titel</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">тител</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">town</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5294</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">serbs</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">orthodox christianity</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gardinovci</span></td>
+<td>гардиновци</td>
+<td>village</td>
+<td>1297</td>
+<td>serbs</td>
+<td>orthodox christianity</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">lok</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">лок</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">village</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1114</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">serbs</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">orthodox christianity</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mošorin</span></td>
+<td>мошорин</td>
+<td>village</td>
+<td>2569</td>
+<td>serbs</td>
+<td>orthodox christianity</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">šajkaš</span></td>
+<td>шајкаш</td>
+<td>village</td>
+<td>4374</td>
+<td>serbs</td>
+<td>orthodox christianity</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Extract the 'population__2011_' values from the selected rows and add a column 'population' to the existing table.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>settlement</td>
+<td>cyrillic_name</td>
+<td>type</td>
+<td>population__2011_</td>
+<td>largest_ethnic_group__2002_</td>
+<td>dominant_religion__2002_</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">titel</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">тител</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">town</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">5294</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">serbs</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">orthodox christianity</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lok</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">лок</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">village</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1114</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">serbs</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">orthodox christianity</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select rows where the 'population' values are different between 'titel' and 'lok'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>settlement</td>
+<td>cyrillic_name</td>
+<td>type</td>
+<td>population__2011_</td>
+<td>largest_ethnic_group__2002_</td>
+<td>dominant_religion__2002_</td>
+<td>population</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">titel</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">тител</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">town</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5294</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">serbs</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">orthodox christianity</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">5294</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">lok</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">лок</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">village</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1114</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">serbs</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">orthodox christianity</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1114</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Use a `CASE` statement to return TRUE if the number of rows is equal to 1, otherwise return FALSE.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>settlement</td>
+<td>cyrillic_name</td>
+<td>type</td>
+<td>population__2011_</td>
+<td>largest_ethnic_group__2002_</td>
+<td>dominant_religion__2002_</td>
+<td>population</td>
+<td>population_diff</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">titel</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">тител</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">town</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">5294</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">serbs</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">orthodox christianity</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">5294</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">5294</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">lok</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">лок</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">village</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1114</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">serbs</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">orthodox christianity</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1114</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1114</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>verification_result</td>
+</tr>
+<tr>
+<td>FALSE</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> FALSE</h3>
+</body></html>

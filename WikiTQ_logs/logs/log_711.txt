@@ -1,0 +1,81 @@
+************************************************************************************************************************
+Sample 711 - Plan 1: Query: how many of the five largest flood on the river trent occurred after 1900?
+Sample 711 - Plan 1: Groundtruth: ['2']
+Sample 711 - Plan 1: X-Original table pd: 
+   rank_n             date_n  level_at_trent_bridge_nm  \
+0     1.0      february 1795                     24.55   
+1     2.0       october 1875                     24.38   
+2     3.0         march 1947                     24.30   
+3     4.0      november 1852                     24.26   
+4     5.0      november 2000                     23.80   
+5     NaN  normal / avg flow                     20.70   
+
+   level_at_trent_bridge_nft peak_flow_nm3_s peak_flow_ncfs  
+0                       80.5           1,416         50,000  
+1                       80.0           1,274         45,000  
+2                       79.7           1,107         39,100  
+3                       79.6           1,082         38,200  
+4                       78.1           1,019         36,000  
+5                       68.0              84          3,000  
+Sample 711 - Plan 1: Caption: none
+Sample 711 - Plan 1: Original table: [['rank_n', 'date_n', 'level_at_trent_bridge_nm', 'level_at_trent_bridge_nft', 'peak_flow_nm3_s', 'peak_flow_ncfs'], ['1', 'february 1795', '24.55', '80.5', '1,416', '50,000'], ['2', 'october 1875', '24.38', '80.0', '1,274', '45,000'], ['3', 'march 1947', '24.30', '79.7', '1,107', '39,100'], ['4', 'november 1852', '24.26', '79.6', '1,082', '38,200'], ['5', 'november 2000', '23.80', '78.1', '1,019', '36,000'], ['', 'normal / avg flow', '20.7', '68', '84', '3,000']]
+########################################################################################################################
+Sample 711 - Plan 1: Operation 1: Order the table by the 'date_n' column in descending order.
+Sample 711 - Plan 1: Selected indices: [[0, 1], [2, 1], [3, 1], [1, 1], [5, 1], [4, 1]]
+Sample 711 - Plan 1: X-Table after operation df:
+   rank_n             date_n  level_at_trent_bridge_nm  \
+0     2.0       october 1875                     24.38   
+1     5.0      november 2000                     23.80   
+2     4.0      november 1852                     24.26   
+3     NaN  normal / avg flow                     20.70   
+4     3.0         march 1947                     24.30   
+5     1.0      february 1795                     24.55   
+
+   level_at_trent_bridge_nft peak_flow_nm3_s peak_flow_ncfs  
+0                       80.0           1,274         45,000  
+1                       78.1           1,019         36,000  
+2                       79.6           1,082         38,200  
+3                       68.0              84          3,000  
+4                       79.7           1,107         39,100  
+5                       80.5           1,416         50,000  
+Sample 711 - Plan 1: Table after operation: [['rank_n', 'date_n', 'level_at_trent_bridge_nm', 'level_at_trent_bridge_nft', 'peak_flow_nm3_s', 'peak_flow_ncfs'], [2.0, 'october 1875', 24.38, 80.0, '1,274', '45,000'], [5.0, 'november 2000', 23.8, 78.1, '1,019', '36,000'], [4.0, 'november 1852', 24.26, 79.6, '1,082', '38,200'], [nan, 'normal / avg flow', 20.7, 68.0, '84', '3,000'], [3.0, 'march 1947', 24.3, 79.7, '1,107', '39,100'], [1.0, 'february 1795', 24.55, 80.5, '1,416', '50,000']]
+########################################################################################################################
+Sample 711 - Plan 1: Operation 2: Select the top five rows.
+Sample 711 - Plan 1: Selected indices: []
+Sample 711 - Plan 1: X-Table after operation df:
+   rank_n             date_n  level_at_trent_bridge_nm  \
+0     2.0       october 1875                     24.38   
+1     5.0      november 2000                     23.80   
+2     4.0      november 1852                     24.26   
+3     NaN  normal / avg flow                     20.70   
+4     3.0         march 1947                     24.30   
+
+   level_at_trent_bridge_nft peak_flow_nm3_s peak_flow_ncfs  
+0                       80.0           1,274         45,000  
+1                       78.1           1,019         36,000  
+2                       79.6           1,082         38,200  
+3                       68.0              84          3,000  
+4                       79.7           1,107         39,100  
+Sample 711 - Plan 1: Table after operation: [['rank_n', 'date_n', 'level_at_trent_bridge_nm', 'level_at_trent_bridge_nft', 'peak_flow_nm3_s', 'peak_flow_ncfs'], [2.0, 'october 1875', 24.38, 80.0, '1,274', '45,000'], [5.0, 'november 2000', 23.8, 78.1, '1,019', '36,000'], [4.0, 'november 1852', 24.26, 79.6, '1,082', '38,200'], [nan, 'normal / avg flow', 20.7, 68.0, '84', '3,000'], [3.0, 'march 1947', 24.3, 79.7, '1,107', '39,100']]
+########################################################################################################################
+Sample 711 - Plan 1: Operation 3: Filter the selected rows to include only those where the 'date_n' is after 1900.
+Sample 711 - Plan 1: Selected indices: []
+Sample 711 - Plan 1: X-Table after operation df:
+   rank_n         date_n  level_at_trent_bridge_nm  level_at_trent_bridge_nft  \
+0     5.0  november 2000                      23.8                       78.1   
+1     3.0     march 1947                      24.3                       79.7   
+
+  peak_flow_nm3_s peak_flow_ncfs  
+0           1,019         36,000  
+1           1,107         39,100  
+Sample 711 - Plan 1: Table after operation: [['rank_n', 'date_n', 'level_at_trent_bridge_nm', 'level_at_trent_bridge_nft', 'peak_flow_nm3_s', 'peak_flow_ncfs'], [5.0, 'november 2000', 23.8, 78.1, '1,019', '36,000'], [3.0, 'march 1947', 24.3, 79.7, '1,107', '39,100']]
+########################################################################################################################
+Sample 711 - Plan 1: Operation 4: Count the number of rows that meet the above condition.
+Sample 711 - Plan 1: Selected indices: []
+Sample 711 - Plan 1: X-Table after operation df:
+   COUNT(*)
+0         1
+Sample 711 - Plan 1: Table after operation: [['COUNT(*)'], [1]]
+Fall-back: FALSE
+Answer from plan 1: [[1]]
+Groundtruth: ['2']

@@ -1,0 +1,313 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> what's the most number of people who showed up to watch regular season?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Order the table by the 'attendance' column in descending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>week</td>
+<td>date</td>
+<td>opponent</td>
+<td>result</td>
+<td>attendance</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">september 4, 1988</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at detroit lions</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">l 31–17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">31,075</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">september 11, 1988</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new orleans saints</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">l 29–21</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">48,901</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">september 18, 1988</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at san francisco 49ers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w 34–17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">60,168</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">september 25, 1988</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at dallas cowboys</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">l 26–20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">39,702</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">october 2, 1988</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">seattle seahawks</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">l 31–20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">28,619</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">october 9, 1988</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">los angeles rams</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">l 33–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">30,852</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">october 16, 1988</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at denver broncos</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">l 30–14</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">75,287</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">october 23, 1988</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york giants</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">l 23–16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">45,092</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">october 30, 1988</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at philadelphia eagles</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w 27–24</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">60,091</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">november 6, 1988</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">green bay packers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w 20–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">29,952</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">november 13, 1988</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">san diego chargers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">l 10–7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">26,329</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">november 20, 1988</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at los angeles raiders</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w 12–6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">40,967</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">november 27, 1988</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tampa bay buccaneers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w 17–10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">14,020</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">14</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 4, 1988</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">san francisco 49ers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">l 13–3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">44,048</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">15</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 11, 1988</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at los angeles rams</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">l 22–7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">42,828</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 18, 1988</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at new orleans saints</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">l 10–9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">60,566</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select the first row.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>week</td>
+<td>date</td>
+<td>opponent</td>
+<td>result</td>
+<td>attendance</td>
+</tr>
+<tr>
+<td>7</td>
+<td>october 16, 1988</td>
+<td>at denver broncos</td>
+<td>l 30–14</td>
+<td>75,287</td>
+</tr>
+<tr>
+<td>16</td>
+<td>december 18, 1988</td>
+<td>at new orleans saints</td>
+<td>l 10–9</td>
+<td>60,566</td>
+</tr>
+<tr>
+<td>3</td>
+<td>september 18, 1988</td>
+<td>at san francisco 49ers</td>
+<td>w 34–17</td>
+<td>60,168</td>
+</tr>
+<tr>
+<td>9</td>
+<td>october 30, 1988</td>
+<td>at philadelphia eagles</td>
+<td>w 27–24</td>
+<td>60,091</td>
+</tr>
+<tr>
+<td>2</td>
+<td>september 11, 1988</td>
+<td>new orleans saints</td>
+<td>l 29–21</td>
+<td>48,901</td>
+</tr>
+<tr>
+<td>8</td>
+<td>october 23, 1988</td>
+<td>new york giants</td>
+<td>l 23–16</td>
+<td>45,092</td>
+</tr>
+<tr>
+<td>14</td>
+<td>december 4, 1988</td>
+<td>san francisco 49ers</td>
+<td>l 13–3</td>
+<td>44,048</td>
+</tr>
+<tr>
+<td>15</td>
+<td>december 11, 1988</td>
+<td>at los angeles rams</td>
+<td>l 22–7</td>
+<td>42,828</td>
+</tr>
+<tr>
+<td>12</td>
+<td>november 20, 1988</td>
+<td>at los angeles raiders</td>
+<td>w 12–6</td>
+<td>40,967</td>
+</tr>
+<tr>
+<td>4</td>
+<td>september 25, 1988</td>
+<td>at dallas cowboys</td>
+<td>l 26–20</td>
+<td>39,702</td>
+</tr>
+<tr>
+<td>1</td>
+<td>september 4, 1988</td>
+<td>at detroit lions</td>
+<td>l 31–17</td>
+<td>31,075</td>
+</tr>
+<tr>
+<td>6</td>
+<td>october 9, 1988</td>
+<td>los angeles rams</td>
+<td>l 33–0</td>
+<td>30,852</td>
+</tr>
+<tr>
+<td>10</td>
+<td>november 6, 1988</td>
+<td>green bay packers</td>
+<td>w 20–0</td>
+<td>29,952</td>
+</tr>
+<tr>
+<td>5</td>
+<td>october 2, 1988</td>
+<td>seattle seahawks</td>
+<td>l 31–20</td>
+<td>28,619</td>
+</tr>
+<tr>
+<td>11</td>
+<td>november 13, 1988</td>
+<td>san diego chargers</td>
+<td>l 10–7</td>
+<td>26,329</td>
+</tr>
+<tr>
+<td>13</td>
+<td>november 27, 1988</td>
+<td>tampa bay buccaneers</td>
+<td>w 17–10</td>
+<td>14,020</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select the 'attendance' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>week</td>
+<td>date</td>
+<td>opponent</td>
+<td>result</td>
+<td>attendance</td>
+</tr>
+<tr>
+<td>7</td>
+<td>october 16, 1988</td>
+<td>at denver broncos</td>
+<td>l 30–14</td>
+<td>75,287</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>attendance</td>
+</tr>
+<tr>
+<td>75,287</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['75,287']]</h3>
+</body></html>

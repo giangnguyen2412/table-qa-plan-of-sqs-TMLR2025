@@ -1,0 +1,73 @@
+************************************************************************************************************************
+Sample 2438 - Plan 1: Query: japan joined the same year as which associations?
+Sample 2438 - Plan 1: Groundtruth: ['China PR', 'Guam', 'Hong Kong', 'Korea DPR', 'Korea Republic', 'Macau', 'Mongolia', 'Chinese Taipei']
+Sample 2438 - Plan 1: X-Original table pd: 
+                association joining_year                men_s_team  \
+0                  china pr         2002                     china   
+1                      guam         2002                      guam   
+2                 hong kong         2002                 hong kong   
+3                     japan         2002                     japan   
+4                 korea dpr         2002                 korea dpr   
+5            korea republic         2002            korea republic   
+6                     macau         2002                     macau   
+7                  mongolia         2002                  mongolia   
+8  northern mariana islands       2008 1  northern mariana islands   
+9            chinese taipei         2002            chinese taipei   
+
+               women_s_team                               league  
+0                     china                 chinese super league  
+1                      guam                          guam league  
+2                 hong kong      hong kong first division league  
+3                     japan                            j. league  
+4                 korea dpr                     dpr korea league  
+5            korea republic                             k-league  
+6                     macau  campeonato da 1ª divisão do futebol  
+7                  mongolia              mongolia premier league  
+8  northern mariana islands        northern mariana championship  
+9            chinese taipei            intercity football league  
+Sample 2438 - Plan 1: Caption: none
+Sample 2438 - Plan 1: Original table: [['association', 'joining_year', 'men_s_team', 'women_s_team', 'league'], ['china pr', '2002', 'china', 'china', 'chinese super league'], ['guam', '2002', 'guam', 'guam', 'guam league'], ['hong kong', '2002', 'hong kong', 'hong kong', 'hong kong first division league'], ['japan', '2002', 'japan', 'japan', 'j. league'], ['korea dpr', '2002', 'korea dpr', 'korea dpr', 'dpr korea league'], ['korea republic', '2002', 'korea republic', 'korea republic', 'k-league'], ['macau', '2002', 'macau', 'macau', 'campeonato da 1ª divisão do futebol'], ['mongolia', '2002', 'mongolia', 'mongolia', 'mongolia premier league'], ['northern mariana islands', '2008 1', 'northern mariana islands', 'northern mariana islands', 'northern mariana championship'], ['chinese taipei', '2002', 'chinese taipei', 'chinese taipei', 'intercity football league']]
+########################################################################################################################
+Sample 2438 - Plan 1: Operation 1: Select rows where 'joining_year' is the same as the joining year of Japan.
+Sample 2438 - Plan 1: Selected indices: [[0, 1], [7, 1], [2, 1], [3, 1], [6, 1], [1, 1], [5, 1], [9, 1], [4, 1]]
+Sample 2438 - Plan 1: X-Table after operation df:
+      association  joining_year      men_s_team    women_s_team  \
+0        china pr          2002           china           china   
+1            guam          2002            guam            guam   
+2       hong kong          2002       hong kong       hong kong   
+3           japan          2002           japan           japan   
+4       korea dpr          2002       korea dpr       korea dpr   
+5  korea republic          2002  korea republic  korea republic   
+6           macau          2002           macau           macau   
+7        mongolia          2002        mongolia        mongolia   
+8  chinese taipei          2002  chinese taipei  chinese taipei   
+
+                                league  
+0                 chinese super league  
+1                          guam league  
+2      hong kong first division league  
+3                            j. league  
+4                     dpr korea league  
+5                             k-league  
+6  campeonato da 1ª divisão do futebol  
+7              mongolia premier league  
+8            intercity football league  
+Sample 2438 - Plan 1: Table after operation: [['association', 'joining_year', 'men_s_team', 'women_s_team', 'league'], ['china pr', '2002', 'china', 'china', 'chinese super league'], ['guam', '2002', 'guam', 'guam', 'guam league'], ['hong kong', '2002', 'hong kong', 'hong kong', 'hong kong first division league'], ['japan', '2002', 'japan', 'japan', 'j. league'], ['korea dpr', '2002', 'korea dpr', 'korea dpr', 'dpr korea league'], ['korea republic', '2002', 'korea republic', 'korea republic', 'k-league'], ['macau', '2002', 'macau', 'macau', 'campeonato da 1ª divisão do futebol'], ['mongolia', '2002', 'mongolia', 'mongolia', 'mongolia premier league'], ['chinese taipei', '2002', 'chinese taipei', 'chinese taipei', 'intercity football league']]
+########################################################################################################################
+Sample 2438 - Plan 1: Operation 2: Select the 'association' column.
+Sample 2438 - Plan 1: Selected indices: []
+Sample 2438 - Plan 1: X-Table after operation df:
+      association
+0        china pr
+1            guam
+2       hong kong
+3           japan
+4       korea dpr
+5  korea republic
+6           macau
+7        mongolia
+8  chinese taipei
+Sample 2438 - Plan 1: Table after operation: [['association'], ['china pr'], ['guam'], ['hong kong'], ['japan'], ['korea dpr'], ['korea republic'], ['macau'], ['mongolia'], ['chinese taipei']]
+Fall-back: FALSE
+Answer from plan 1: [['china pr'], ['guam'], ['hong kong'], ['japan'], ['korea dpr'], ['korea republic'], ['macau'], ['mongolia'], ['chinese taipei']]
+Groundtruth: ['China PR', 'Guam', 'Hong Kong', 'Korea DPR', 'Korea Republic', 'Macau', 'Mongolia', 'Chinese Taipei']

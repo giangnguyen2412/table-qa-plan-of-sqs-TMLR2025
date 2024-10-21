@@ -1,0 +1,41 @@
+
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+.sql-command { background-color: #f0f0f0; padding: 10px; border-left: 4px solid #4CAF50; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> there were 24.8 points per game in the selection where rebounds per game were 17</h3>
+<h3>Input Table: list of career achievements by dwight howard</h3>
+<div class="step">
+<table>
+<tr><td>selection</td><td>month</td><td>season</td><td>team_record</td><td>points_per_game</td><td>field_goal_percentage</td><td>rebounds_per_game</td><td>blocks_per_game</td></tr><tr><td>9999-01-01</td><td>2006-04-01</td><td>2005-06-01</td><td>7-2</td><td>18.1</td><td>531</td><td>14.0</td><td>0.7</td></tr><tr><td>9999-01-02</td><td>2006-10-01</td><td>2006-07-01</td><td>12-4</td><td>17.1</td><td>576</td><td>13.6</td><td>1.9</td></tr><tr><td>9999-01-03</td><td>2007-10-01</td><td>2007-08-01</td><td>14-4</td><td>23.8</td><td>618</td><td>15.0</td><td>2.7</td></tr><tr><td>9999-01-04</td><td>2007-12-01</td><td>2007-08-01</td><td>8-7</td><td>21.7</td><td>598</td><td>16.1</td><td>2.9</td></tr><tr><td>9999-01-05</td><td>2010-10-01</td><td>2010-11-01</td><td>13-4</td><td>21.8 (5th)</td><td>594 (2nd)</td><td>12.1 (4th in league)</td><td>2.4</td></tr>
+</table>
+</div>
+<h3>SQL Command:</h3>
+<div class="sql-command">SELECT 
+    CASE 
+        WHEN COUNT(*) = 0 THEN 'FALSE' 
+        ELSE 'TRUE' 
+    END 
+FROM table_sql 
+WHERE points_per_game = 24.8 
+AND rebounds_per_game = 17;</div>
+</body></html>

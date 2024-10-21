@@ -1,0 +1,126 @@
+************************************************************************************************************************
+Sample 3350 - Plan 1: Query: in which year were the least number of deaths reported?
+Sample 3350 - Plan 1: Groundtruth: ['1996']
+Sample 3350 - Plan 1: X-Original table pd: 
+    year injuries__us__000_  deaths__age__15_  \
+0   1994                154               NaN   
+1   1995                139               NaN   
+2   1996                130               NaN   
+3   1997                141               NaN   
+4   1998                153              14.0   
+5   1999                152              16.0   
+6   2000                191              17.0   
+7   2001                255              25.0   
+8   2002                212              13.0   
+9   2003                206              11.0   
+10  2004                210              16.0   
+11  2005     202 (estimate)              20.0   
+12  2006            no data              22.0   
+13  2007            no data              22.0   
+14  2008            no data              19.0   
+15  2009            no data              12.0   
+
+   cpsc_toy_safety_funding_n_us__millions_  toy_sales_n_us___billions_  
+0                                                                  NaN  
+1                                                                  NaN  
+2                                                                  NaN  
+3                                                                  NaN  
+4                                                                  NaN  
+5                                     13.6                         NaN  
+6                                     12.0                         NaN  
+7                                     12.4                         NaN  
+8                                     12.2                        21.3  
+9                                     12.8                        20.7  
+10                                    11.5                        22.4  
+11                                    11.0                        22.2  
+12                                no data†                        22.3  
+13                                 no data                         NaN  
+14                                 no data                         NaN  
+15                                 no data                         NaN  
+Sample 3350 - Plan 1: Caption: none
+Sample 3350 - Plan 1: Original table: [['year', 'injuries__us__000_', 'deaths__age__15_', 'cpsc_toy_safety_funding_n_us__millions_', 'toy_sales_n_us___billions_'], ['1994', '154', '', '', ''], ['1995', '139', '', '', ''], ['1996', '130', '', '', ''], ['1997', '141', '', '', ''], ['1998', '153', '14', '', ''], ['1999', '152', '16', '13.6', ''], ['2000', '191', '17', '12.0', ''], ['2001', '255', '25', '12.4', ''], ['2002', '212', '13', '12.2', '21.3'], ['2003', '206', '11', '12.8', '20.7'], ['2004', '210', '16', '11.5', '22.4'], ['2005', '202 (estimate)', '20', '11.0', '22.2'], ['2006', 'no data', '22', 'no data†', '22.3'], ['2007', 'no data', '22', 'no data', ''], ['2008', 'no data', '19', 'no data', ''], ['2009', 'no data', '12', 'no data', '']]
+########################################################################################################################
+Sample 3350 - Plan 1: Operation 1: Select rows where the 'deaths__age__15_' column is not null.
+Sample 3350 - Plan 1: Selected indices: []
+Sample 3350 - Plan 1: X-Table after operation df:
+    year injuries__us__000_  deaths__age__15_  \
+0   1998                153              14.0   
+1   1999                152              16.0   
+2   2000                191              17.0   
+3   2001                255              25.0   
+4   2002                212              13.0   
+5   2003                206              11.0   
+6   2004                210              16.0   
+7   2005     202 (estimate)              20.0   
+8   2006            no data              22.0   
+9   2007            no data              22.0   
+10  2008            no data              19.0   
+11  2009            no data              12.0   
+
+   cpsc_toy_safety_funding_n_us__millions_  toy_sales_n_us___billions_  
+0                                                                  NaN  
+1                                     13.6                         NaN  
+2                                     12.0                         NaN  
+3                                     12.4                         NaN  
+4                                     12.2                        21.3  
+5                                     12.8                        20.7  
+6                                     11.5                        22.4  
+7                                     11.0                        22.2  
+8                                 no data†                        22.3  
+9                                  no data                         NaN  
+10                                 no data                         NaN  
+11                                 no data                         NaN  
+Sample 3350 - Plan 1: Table after operation: [['year', 'injuries__us__000_', 'deaths__age__15_', 'cpsc_toy_safety_funding_n_us__millions_', 'toy_sales_n_us___billions_'], [1998, '153', 14.0, '', nan], [1999, '152', 16.0, '13.6', nan], [2000, '191', 17.0, '12.0', nan], [2001, '255', 25.0, '12.4', nan], [2002, '212', 13.0, '12.2', 21.3], [2003, '206', 11.0, '12.8', 20.7], [2004, '210', 16.0, '11.5', 22.4], [2005, '202 (estimate)', 20.0, '11.0', 22.2], [2006, 'no data', 22.0, 'no data†', 22.3], [2007, 'no data', 22.0, 'no data', nan], [2008, 'no data', 19.0, 'no data', nan], [2009, 'no data', 12.0, 'no data', nan]]
+########################################################################################################################
+Sample 3350 - Plan 1: Operation 2: Select the 'year' and 'deaths__age__15_' columns.
+Sample 3350 - Plan 1: Selected indices: []
+Sample 3350 - Plan 1: X-Table after operation df:
+      year  deaths__age__15_
+0   1998.0              14.0
+1   1999.0              16.0
+2   2000.0              17.0
+3   2001.0              25.0
+4   2002.0              13.0
+5   2003.0              11.0
+6   2004.0              16.0
+7   2005.0              20.0
+8   2006.0              22.0
+9   2007.0              22.0
+10  2008.0              19.0
+11  2009.0              12.0
+Sample 3350 - Plan 1: Table after operation: [['year', 'deaths__age__15_'], [1998.0, 14.0], [1999.0, 16.0], [2000.0, 17.0], [2001.0, 25.0], [2002.0, 13.0], [2003.0, 11.0], [2004.0, 16.0], [2005.0, 20.0], [2006.0, 22.0], [2007.0, 22.0], [2008.0, 19.0], [2009.0, 12.0]]
+########################################################################################################################
+Sample 3350 - Plan 1: Operation 3: Order the table by the 'deaths__age__15_' column in ascending order.
+Sample 3350 - Plan 1: Selected indices: [[11, 1], [0, 1], [7, 1], [2, 1], [8, 1], [3, 1], [6, 1], [1, 1], [10, 1], [5, 1], [9, 1], [4, 1]]
+Sample 3350 - Plan 1: X-Table after operation df:
+      year  deaths__age__15_
+0   2003.0              11.0
+1   2009.0              12.0
+2   2002.0              13.0
+3   1998.0              14.0
+4   1999.0              16.0
+5   2004.0              16.0
+6   2000.0              17.0
+7   2008.0              19.0
+8   2005.0              20.0
+9   2006.0              22.0
+10  2007.0              22.0
+11  2001.0              25.0
+Sample 3350 - Plan 1: Table after operation: [['year', 'deaths__age__15_'], [2003.0, 11.0], [2009.0, 12.0], [2002.0, 13.0], [1998.0, 14.0], [1999.0, 16.0], [2004.0, 16.0], [2000.0, 17.0], [2008.0, 19.0], [2005.0, 20.0], [2006.0, 22.0], [2007.0, 22.0], [2001.0, 25.0]]
+########################################################################################################################
+Sample 3350 - Plan 1: Operation 4: Select the row number 1.
+Sample 3350 - Plan 1: Selected indices: []
+Sample 3350 - Plan 1: X-Table after operation df:
+     year  deaths__age__15_
+0  2003.0              11.0
+Sample 3350 - Plan 1: Table after operation: [['year', 'deaths__age__15_'], [2003.0, 11.0]]
+########################################################################################################################
+Sample 3350 - Plan 1: Operation 5: Select the 'year' column.
+Sample 3350 - Plan 1: Selected indices: []
+Sample 3350 - Plan 1: X-Table after operation df:
+     year
+0  2003.0
+Sample 3350 - Plan 1: Table after operation: [['year'], [2003.0]]
+Fall-back: FALSE
+Answer from plan 1: [[2003.0]]
+Groundtruth: ['1996']

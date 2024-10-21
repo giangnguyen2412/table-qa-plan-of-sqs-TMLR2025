@@ -1,0 +1,80 @@
+************************************************************************************************************************
+Sample 3482 - Plan 1: Query: who came in previous to jochen rindt?
+Sample 3482 - Plan 1: Groundtruth: ['Denny Hulme']
+Sample 3482 - Plan 1: X-Original table pd: 
+    pos  no           driver      constructor  laps    time_retired  grid  \
+0     1  12     jack brabham    brabham-repco  48.0       1:48:31.3     4   
+1     2  22      mike parkes          ferrari  48.0           + 9.5     3   
+2     3  14      denny hulme    brabham-repco  46.0        + 2 laps     9   
+3     4   6     jochen rindt  cooper-maserati  46.0        + 2 laps     5   
+4     5  26       dan gurney     eagle-climax  45.0        + 3 laps    14   
+5     6  44      john taylor      brabham-brm  45.0        + 3 laps    15   
+6     7  36     bob anderson   brabham-climax  44.0        + 4 laps    12   
+7     8   8       chris amon  cooper-maserati  44.0        + 4 laps     7   
+8    nc  42       guy ligier  cooper-maserati  42.0  not classified    11   
+9   ret   2  pedro rodríguez     lotus-climax  40.0        oil leak    13   
+10   nc  20  lorenzo bandini          ferrari  37.0  not classified     1   
+11   nc  30       jo bonnier   brabham-climax  32.0  not classified    17   
+12  ret  16      graham hill              brm  13.0          engine     8   
+13  ret  38       jo siffert  cooper-maserati  10.0     fuel system     6   
+14  ret  32      mike spence        lotus-brm   8.0          clutch    10   
+15  ret  10     john surtees  cooper-maserati   5.0     fuel system     2   
+16  ret   4   peter arundell        lotus-brm   3.0         gearbox    16   
+17  dns   2        jim clark     lotus-climax   NaN        accident  (18)   
+
+    points  
+0      9.0  
+1      6.0  
+2      4.0  
+3      3.0  
+4      2.0  
+5      1.0  
+6      NaN  
+7      NaN  
+8      NaN  
+9      NaN  
+10     NaN  
+11     NaN  
+12     NaN  
+13     NaN  
+14     NaN  
+15     NaN  
+16     NaN  
+17     NaN  
+Sample 3482 - Plan 1: Caption: none
+Sample 3482 - Plan 1: Original table: [['pos', 'no', 'driver', 'constructor', 'laps', 'time_retired', 'grid', 'points'], ['1', '12', 'jack brabham', 'brabham-repco', '48', '1:48:31.3', '4', '9'], ['2', '22', 'mike parkes', 'ferrari', '48', '+ 9.5', '3', '6'], ['3', '14', 'denny hulme', 'brabham-repco', '46', '+ 2 laps', '9', '4'], ['4', '6', 'jochen rindt', 'cooper-maserati', '46', '+ 2 laps', '5', '3'], ['5', '26', 'dan gurney', 'eagle-climax', '45', '+ 3 laps', '14', '2'], ['6', '44', 'john taylor', 'brabham-brm', '45', '+ 3 laps', '15', '1'], ['7', '36', 'bob anderson', 'brabham-climax', '44', '+ 4 laps', '12', ''], ['8', '8', 'chris amon', 'cooper-maserati', '44', '+ 4 laps', '7', ''], ['nc', '42', 'guy ligier', 'cooper-maserati', '42', 'not classified', '11', ''], ['ret', '2', 'pedro rodríguez', 'lotus-climax', '40', 'oil leak', '13', ''], ['nc', '20', 'lorenzo bandini', 'ferrari', '37', 'not classified', '1', ''], ['nc', '30', 'jo bonnier', 'brabham-climax', '32', 'not classified', '17', ''], ['ret', '16', 'graham hill', 'brm', '13', 'engine', '8', ''], ['ret', '38', 'jo siffert', 'cooper-maserati', '10', 'fuel system', '6', ''], ['ret', '32', 'mike spence', 'lotus-brm', '8', 'clutch', '10', ''], ['ret', '10', 'john surtees', 'cooper-maserati', '5', 'fuel system', '2', ''], ['ret', '4', 'peter arundell', 'lotus-brm', '3', 'gearbox', '16', ''], ['dns', '2', 'jim clark', 'lotus-climax', '', 'accident', '(18)', '']]
+########################################################################################################################
+Sample 3482 - Plan 1: Operation 1: Select rows where the 'pos' column is less than the position of Jochen Rindt.
+Sample 3482 - Plan 1: Selected indices: [[1, 2], [0, 0], [2, 0], [0, 2], [2, 2], [1, 0]]
+Sample 3482 - Plan 1: X-Table after operation df:
+   pos  no        driver    constructor  laps time_retired  grid  points
+0    1  12  jack brabham  brabham-repco  48.0    1:48:31.3     4     9.0
+1    2  22   mike parkes        ferrari  48.0        + 9.5     3     6.0
+2    3  14   denny hulme  brabham-repco  46.0     + 2 laps     9     4.0
+Sample 3482 - Plan 1: Table after operation: [['pos', 'no', 'driver', 'constructor', 'laps', 'time_retired', 'grid', 'points'], ['1', 12, 'jack brabham', 'brabham-repco', 48.0, '1:48:31.3', '4', 9.0], ['2', 22, 'mike parkes', 'ferrari', 48.0, '+ 9.5', '3', 6.0], ['3', 14, 'denny hulme', 'brabham-repco', 46.0, '+ 2 laps', '9', 4.0]]
+########################################################################################################################
+Sample 3482 - Plan 1: Operation 2: Order the table by the 'pos' column in descending order.
+Sample 3482 - Plan 1: Selected indices: [[1, 0], [2, 0], [0, 0]]
+Sample 3482 - Plan 1: X-Table after operation df:
+   pos  no        driver    constructor  laps time_retired  grid  points
+0    3  14   denny hulme  brabham-repco  46.0     + 2 laps     9     4.0
+1    2  22   mike parkes        ferrari  48.0        + 9.5     3     6.0
+2    1  12  jack brabham  brabham-repco  48.0    1:48:31.3     4     9.0
+Sample 3482 - Plan 1: Table after operation: [['pos', 'no', 'driver', 'constructor', 'laps', 'time_retired', 'grid', 'points'], [3, 14, 'denny hulme', 'brabham-repco', 46.0, '+ 2 laps', 9, 4.0], [2, 22, 'mike parkes', 'ferrari', 48.0, '+ 9.5', 3, 6.0], [1, 12, 'jack brabham', 'brabham-repco', 48.0, '1:48:31.3', 4, 9.0]]
+########################################################################################################################
+Sample 3482 - Plan 1: Operation 3: Select row number 1.
+Sample 3482 - Plan 1: Selected indices: []
+Sample 3482 - Plan 1: X-Table after operation df:
+   pos  no       driver    constructor  laps time_retired  grid  points
+0    3  14  denny hulme  brabham-repco  46.0     + 2 laps     9     4.0
+Sample 3482 - Plan 1: Table after operation: [['pos', 'no', 'driver', 'constructor', 'laps', 'time_retired', 'grid', 'points'], [3, 14, 'denny hulme', 'brabham-repco', 46.0, '+ 2 laps', 9, 4.0]]
+########################################################################################################################
+Sample 3482 - Plan 1: Operation 4: Select the 'driver' column.
+Sample 3482 - Plan 1: Selected indices: []
+Sample 3482 - Plan 1: X-Table after operation df:
+        driver
+0  denny hulme
+Sample 3482 - Plan 1: Table after operation: [['driver'], ['denny hulme']]
+Fall-back: FALSE
+Answer from plan 1: [['denny hulme']]
+Groundtruth: ['Denny Hulme']

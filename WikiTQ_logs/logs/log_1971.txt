@@ -1,0 +1,89 @@
+************************************************************************************************************************
+Sample 1971 - Plan 1: Query: what is the difference between przemyslaw's highest and lowest vault during his competition record?
+Sample 1971 - Plan 1: Groundtruth: ['1.15m']
+Sample 1971 - Plan 1: X-Original table pd: 
+    year                    competition                       venue  position  \
+0   1999      world youth championships           bydgoszcz, poland  13th (q)   
+1   2001  european junior championships             grosseto, italy       7th   
+2   2002     world junior championships           kingston, jamaica       8th   
+3   2003     european u23 championships           bydgoszcz, poland  13th (q)   
+4   2005     european u23 championships             erfurt, germany       7th   
+5   2005                    universiade               izmir, turkey       5th   
+6   2006     world indoor championships              moscow, russia  10th (q)   
+7   2006         european championships          gothenburg, sweden       5th   
+8   2007  european indoor championships  birmingham, united kingdom  16th (q)   
+9   2008                  olympic games              beijing, china      11th   
+10  2010         european championships            barcelona, spain       3rd   
+11  2012         european championships           helsinki, finland         –   
+
+     notes  
+0   4.60 m  
+1   5.15 m  
+2   5.30 m  
+3   5.20 m  
+4   5.50 m  
+5   5.50 m  
+6   5.65 m  
+7   5.65 m  
+8   5.40 m  
+9   5.45 m  
+10  5.75 m  
+11      nm  
+Sample 1971 - Plan 1: Caption: none
+Sample 1971 - Plan 1: Original table: [['year', 'competition', 'venue', 'position', 'notes'], ['1999', 'world youth championships', 'bydgoszcz, poland', '13th (q)', '4.60 m'], ['2001', 'european junior championships', 'grosseto, italy', '7th', '5.15 m'], ['2002', 'world junior championships', 'kingston, jamaica', '8th', '5.30 m'], ['2003', 'european u23 championships', 'bydgoszcz, poland', '13th (q)', '5.20 m'], ['2005', 'european u23 championships', 'erfurt, germany', '7th', '5.50 m'], ['2005', 'universiade', 'izmir, turkey', '5th', '5.50 m'], ['2006', 'world indoor championships', 'moscow, russia', '10th (q)', '5.65 m'], ['2006', 'european championships', 'gothenburg, sweden', '5th', '5.65 m'], ['2007', 'european indoor championships', 'birmingham, united kingdom', '16th (q)', '5.40 m'], ['2008', 'olympic games', 'beijing, china', '11th', '5.45 m'], ['2010', 'european championships', 'barcelona, spain', '3rd', '5.75 m'], ['2012', 'european championships', 'helsinki, finland', '–', 'nm']]
+########################################################################################################################
+Sample 1971 - Plan 1: Operation 1: Extract the numerical values from the 'notes' column and add a new column 'vault_height' to the existing table.
+Sample 1971 - Plan 1: Selected indices: [[0, 4], [1, 4], [2, 4], [3, 4], [4, 4], [5, 4], [6, 4], [7, 4], [8, 4], [9, 4], [10, 4], [11, 4]]
+Sample 1971 - Plan 1: X-Table after operation df:
+    year                    competition                       venue  position  \
+0   1999      world youth championships           bydgoszcz, poland  13th (q)   
+1   2001  european junior championships             grosseto, italy       7th   
+2   2002     world junior championships           kingston, jamaica       8th   
+3   2003     european u23 championships           bydgoszcz, poland  13th (q)   
+4   2005     european u23 championships             erfurt, germany       7th   
+5   2005                    universiade               izmir, turkey       5th   
+6   2006     world indoor championships              moscow, russia  10th (q)   
+7   2006         european championships          gothenburg, sweden       5th   
+8   2007  european indoor championships  birmingham, united kingdom  16th (q)   
+9   2008                  olympic games              beijing, china      11th   
+10  2010         european championships            barcelona, spain       3rd   
+11  2012         european championships           helsinki, finland         –   
+
+     notes  vault_height  
+0   4.60 m          4.60  
+1   5.15 m          5.15  
+2   5.30 m          5.30  
+3   5.20 m          5.20  
+4   5.50 m          5.50  
+5   5.50 m          5.50  
+6   5.65 m          5.65  
+7   5.65 m          5.65  
+8   5.40 m          5.40  
+9   5.45 m          5.45  
+10  5.75 m          5.75  
+11      nm          0.00  
+Sample 1971 - Plan 1: Table after operation: [['year', 'competition', 'venue', 'position', 'notes', 'vault_height'], [1999, 'world youth championships', 'bydgoszcz, poland', '13th (q)', '4.60 m', 4.6], [2001, 'european junior championships', 'grosseto, italy', '7th', '5.15 m', 5.15], [2002, 'world junior championships', 'kingston, jamaica', '8th', '5.30 m', 5.3], [2003, 'european u23 championships', 'bydgoszcz, poland', '13th (q)', '5.20 m', 5.2], [2005, 'european u23 championships', 'erfurt, germany', '7th', '5.50 m', 5.5], [2005, 'universiade', 'izmir, turkey', '5th', '5.50 m', 5.5], [2006, 'world indoor championships', 'moscow, russia', '10th (q)', '5.65 m', 5.65], [2006, 'european championships', 'gothenburg, sweden', '5th', '5.65 m', 5.65], [2007, 'european indoor championships', 'birmingham, united kingdom', '16th (q)', '5.40 m', 5.4], [2008, 'olympic games', 'beijing, china', '11th', '5.45 m', 5.45], [2010, 'european championships', 'barcelona, spain', '3rd', '5.75 m', 5.75], [2012, 'european championships', 'helsinki, finland', '–', 'nm', 0.0]]
+########################################################################################################################
+Sample 1971 - Plan 1: Operation 2: Calculate the highest vault height by selecting the maximum value from the 'vault_height' column.
+Sample 1971 - Plan 1: Selected indices: []
+Sample 1971 - Plan 1: X-Table after operation df:
+   highest_vault_height
+0                  5.75
+Sample 1971 - Plan 1: Table after operation: [['highest_vault_height'], [5.75]]
+########################################################################################################################
+Sample 1971 - Plan 1: Operation 3: Calculate the lowest vault height by selecting the minimum value from the 'vault_height' column.
+Sample 1971 - Plan 1: Selected indices: []
+Sample 1971 - Plan 1: X-Table after operation df:
+   lowest_vault_height
+0                 5.75
+Sample 1971 - Plan 1: Table after operation: [['lowest_vault_height'], [5.75]]
+########################################################################################################################
+Sample 1971 - Plan 1: Operation 4: Calculate the difference between the highest and lowest vault heights.
+Sample 1971 - Plan 1: Selected indices: []
+Sample 1971 - Plan 1: X-Table after operation df:
+   height_difference
+0                0.0
+Sample 1971 - Plan 1: Table after operation: [['height_difference'], [0.0]]
+Fall-back: FALSE
+Answer from plan 1: [[0.0]]
+Groundtruth: ['1.15m']

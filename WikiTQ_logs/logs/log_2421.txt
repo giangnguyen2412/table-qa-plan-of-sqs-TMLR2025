@@ -1,0 +1,72 @@
+************************************************************************************************************************
+Sample 2421 - Plan 1: Query: which track in this table was the first to fall below 5 minutes in length?
+Sample 2421 - Plan 1: Groundtruth: ['Mera Juta Hai Japani']
+Sample 2421 - Plan 1: X-Original table pd: 
+   _                        title                               singer_s_  \
+0  1  "dil ka haal sune dilwaala"                               manna dey   
+1  2    "ichak dana beechak dana"                 mukesh, lata mangeshkar   
+2  3       "mera juta hai japani"                                  mukesh   
+3  4       "mudh mudh ke na dekh"              lata mangeshkar, manna dey   
+4  5                 "o janewale"                         lata mangeshkar   
+5  6         "pyar hua iqrar hua"              lata mangeshkar, manna dey   
+6  7         "ramaiya vastavaiya"  mohammed rafi, lata mangeshkar, mukesh   
+7  8        "sham gayi raat aayi"                         lata mangeshkar   
+
+         lyricist length  
+0      shailendra   5:36  
+1  hasrat jaipuri   5:08  
+2      shailendra   4:33  
+3      shailendra   6:34  
+4  hasrat jaipuri   2:20  
+5      shailendra   4:22  
+6      shailendra   6:10  
+7  hasrat jaipuri   4:00  
+Sample 2421 - Plan 1: Caption: none
+Sample 2421 - Plan 1: Original table: [['_', 'title', 'singer_s_', 'lyricist', 'length'], ['1', '"dil ka haal sune dilwaala"', 'manna dey', 'shailendra', '5:36'], ['2', '"ichak dana beechak dana"', 'mukesh, lata mangeshkar', 'hasrat jaipuri', '5:08'], ['3', '"mera juta hai japani"', 'mukesh', 'shailendra', '4:33'], ['4', '"mudh mudh ke na dekh"', 'lata mangeshkar, manna dey', 'shailendra', '6:34'], ['5', '"o janewale"', 'lata mangeshkar', 'hasrat jaipuri', '2:20'], ['6', '"pyar hua iqrar hua"', 'lata mangeshkar, manna dey', 'shailendra', '4:22'], ['7', '"ramaiya vastavaiya"', 'mohammed rafi, lata mangeshkar, mukesh', 'shailendra', '6:10'], ['8', '"sham gayi raat aayi"', 'lata mangeshkar', 'hasrat jaipuri', '4:00']]
+########################################################################################################################
+Sample 2421 - Plan 1: Operation 1: Extract the numerical value from the 'length' column then add column 'num_length' to the existing table.
+Sample 2421 - Plan 1: Selected indices: [[0, 4], [1, 4], [2, 4], [3, 4], [4, 4], [5, 4], [6, 4], [7, 4]]
+Sample 2421 - Plan 1: X-Table after operation df:
+   _                        title                               singer_s_  \
+0  1  "dil ka haal sune dilwaala"                               manna dey   
+1  2    "ichak dana beechak dana"                 mukesh, lata mangeshkar   
+2  3       "mera juta hai japani"                                  mukesh   
+3  4       "mudh mudh ke na dekh"              lata mangeshkar, manna dey   
+4  5                 "o janewale"                         lata mangeshkar   
+5  6         "pyar hua iqrar hua"              lata mangeshkar, manna dey   
+6  7         "ramaiya vastavaiya"  mohammed rafi, lata mangeshkar, mukesh   
+7  8        "sham gayi raat aayi"                         lata mangeshkar   
+
+         lyricist length  num_length  
+0      shailendra   5:36         336  
+1  hasrat jaipuri   5:08         308  
+2      shailendra   4:33         273  
+3      shailendra   6:34         394  
+4  hasrat jaipuri   2:20         140  
+5      shailendra   4:22         262  
+6      shailendra   6:10         370  
+7  hasrat jaipuri   4:00         240  
+Sample 2421 - Plan 1: Table after operation: [['_', 'title', 'singer_s_', 'lyricist', 'length', 'num_length'], [1, '"dil ka haal sune dilwaala"', 'manna dey', 'shailendra', '5:36', 336], [2, '"ichak dana beechak dana"', 'mukesh, lata mangeshkar', 'hasrat jaipuri', '5:08', 308], [3, '"mera juta hai japani"', 'mukesh', 'shailendra', '4:33', 273], [4, '"mudh mudh ke na dekh"', 'lata mangeshkar, manna dey', 'shailendra', '6:34', 394], [5, '"o janewale"', 'lata mangeshkar', 'hasrat jaipuri', '2:20', 140], [6, '"pyar hua iqrar hua"', 'lata mangeshkar, manna dey', 'shailendra', '4:22', 262], [7, '"ramaiya vastavaiya"', 'mohammed rafi, lata mangeshkar, mukesh', 'shailendra', '6:10', 370], [8, '"sham gayi raat aayi"', 'lata mangeshkar', 'hasrat jaipuri', '4:00', 240]]
+########################################################################################################################
+Sample 2421 - Plan 1: Operation 2: Select rows where the 'num_length' is less than 5.
+Sample 2421 - Plan 1: Selected indices: []
+Sample 2421 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [_, title, singer_s_, lyricist, length, num_length]
+Index: []
+Sample 2421 - Plan 1: Table after operation: [['_', 'title', 'singer_s_', 'lyricist', 'length', 'num_length']]
+########################################################################################################################
+Sample 2421 - Plan 1: Operation 3: Order the table by the 'num_length' in ascending order.
+Sample 2421 - Plan 1: Selected indices: []
+Sample 2421 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [_, title, singer_s_, lyricist, length, num_length]
+Index: []
+Sample 2421 - Plan 1: Table after operation: [['_', 'title', 'singer_s_', 'lyricist', 'length', 'num_length']]
+########################################################################################################################
+Sample 2421 - Plan 1: Operation 4: Select row number 1.
+SQL execution error in operation 4: Execution failed on sql 'Write a SQL command that: Select rows where the 'title' is 'song A'.': near "Write": syntax error
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['mera juta hai japani']]
+Groundtruth: ['Mera Juta Hai Japani']

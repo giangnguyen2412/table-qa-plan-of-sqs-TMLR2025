@@ -1,0 +1,389 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how many reactors only have a gross capacity of 1000 or below?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'gross_ncapacity_n_mwe_' is 1000 or below.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>location</td>
+<td>reactor_type</td>
+<td>status</td>
+<td>net_ncapacity_n_mwe_</td>
+<td>gross_ncapacity_n_mwe_</td>
+</tr>
+<tr>
+<td>chernobyl-1</td>
+<td>rbmk-1000</td>
+<td>shut down in 1996</td>
+<td>740</td>
+<td>800</td>
+</tr>
+<tr>
+<td>chernobyl-2</td>
+<td>rbmk-1000</td>
+<td>shut down in 1991</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>chernobyl-3</td>
+<td>rbmk-1000</td>
+<td>shut down in 2000</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>chernobyl-4</td>
+<td>rbmk-1000</td>
+<td>destroyed in the 1986 accident</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>chernobyl-5</td>
+<td>rbmk-1000</td>
+<td>construction cancelled in 1988</td>
+<td>950</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>chernobyl-6</td>
+<td>rbmk-1000</td>
+<td>construction cancelled in 1988</td>
+<td>950</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>ignalina-1</td>
+<td>rbmk-1500</td>
+<td>shut down in 2004</td>
+<td>1,185</td>
+<td>1,300</td>
+</tr>
+<tr>
+<td>ignalina-2</td>
+<td>rbmk-1500</td>
+<td>shut down in 2009</td>
+<td>1,185</td>
+<td>1,300</td>
+</tr>
+<tr>
+<td>ignalina-3</td>
+<td>rbmk-1500</td>
+<td>construction cancelled in 1988</td>
+<td>1,380</td>
+<td>1,500</td>
+</tr>
+<tr>
+<td>ignalina-4</td>
+<td>rbmk-1500</td>
+<td>plan cancelled in 1988</td>
+<td>1,380</td>
+<td>1,500</td>
+</tr>
+<tr>
+<td>kostroma-1</td>
+<td>rbmk-1500</td>
+<td>construction cancelled in 1980s</td>
+<td>1,380</td>
+<td>1,500</td>
+</tr>
+<tr>
+<td>kostroma-2</td>
+<td>rbmk-1500</td>
+<td>construction cancelled in 1980s</td>
+<td>1,380</td>
+<td>1,500</td>
+</tr>
+<tr>
+<td>kursk-1</td>
+<td>rbmk-1000</td>
+<td>operational until 2021</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>kursk-2</td>
+<td>rbmk-1000</td>
+<td>operational until 2024</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>kursk-3</td>
+<td>rbmk-1000</td>
+<td>operational until march 2014</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>kursk-4</td>
+<td>rbmk-1000</td>
+<td>operational until february 2016</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>kursk-5</td>
+<td>mker-1000</td>
+<td>construction begin was 1985, since then shelved</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>kursk-6</td>
+<td>rbmk-1000</td>
+<td>construction cancelled in 1993</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>leningrad-1</td>
+<td>rbmk-1000</td>
+<td>operational</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>leningrad-2</td>
+<td>rbmk-1000</td>
+<td>operational until 2021</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>leningrad-3</td>
+<td>rbmk-1000</td>
+<td>operational until june 2025</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>leningrad-4</td>
+<td>rbmk-1000</td>
+<td>operational until august 2026</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>smolensk-1</td>
+<td>rbmk-1000</td>
+<td>operational until december 2022</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>smolensk-2</td>
+<td>rbmk-1000</td>
+<td>operational until july 2015</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>smolensk-3</td>
+<td>rbmk-1000</td>
+<td>operational until july 2023</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>smolensk-4</td>
+<td>rbmk-1000</td>
+<td>construction cancelled in 1993</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Count the number of rows.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>location</td>
+<td>reactor_type</td>
+<td>status</td>
+<td>net_ncapacity_n_mwe_</td>
+<td>gross_ncapacity_n_mwe_</td>
+</tr>
+<tr>
+<td>chernobyl-1</td>
+<td>rbmk-1000</td>
+<td>shut down in 1996</td>
+<td>740</td>
+<td>800</td>
+</tr>
+<tr>
+<td>chernobyl-2</td>
+<td>rbmk-1000</td>
+<td>shut down in 1991</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>chernobyl-3</td>
+<td>rbmk-1000</td>
+<td>shut down in 2000</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>chernobyl-4</td>
+<td>rbmk-1000</td>
+<td>destroyed in the 1986 accident</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>chernobyl-5</td>
+<td>rbmk-1000</td>
+<td>construction cancelled in 1988</td>
+<td>950</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>chernobyl-6</td>
+<td>rbmk-1000</td>
+<td>construction cancelled in 1988</td>
+<td>950</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>kursk-1</td>
+<td>rbmk-1000</td>
+<td>operational until 2021</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>kursk-2</td>
+<td>rbmk-1000</td>
+<td>operational until 2024</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>kursk-3</td>
+<td>rbmk-1000</td>
+<td>operational until march 2014</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>kursk-4</td>
+<td>rbmk-1000</td>
+<td>operational until february 2016</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>kursk-5</td>
+<td>mker-1000</td>
+<td>construction begin was 1985, since then shelved</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>kursk-6</td>
+<td>rbmk-1000</td>
+<td>construction cancelled in 1993</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>leningrad-1</td>
+<td>rbmk-1000</td>
+<td>operational</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>leningrad-2</td>
+<td>rbmk-1000</td>
+<td>operational until 2021</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>leningrad-3</td>
+<td>rbmk-1000</td>
+<td>operational until june 2025</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>leningrad-4</td>
+<td>rbmk-1000</td>
+<td>operational until august 2026</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>smolensk-1</td>
+<td>rbmk-1000</td>
+<td>operational until december 2022</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>smolensk-2</td>
+<td>rbmk-1000</td>
+<td>operational until july 2015</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>smolensk-3</td>
+<td>rbmk-1000</td>
+<td>operational until july 2023</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>smolensk-4</td>
+<td>rbmk-1000</td>
+<td>construction cancelled in 1993</td>
+<td>925</td>
+<td>1,000</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>row_count</td>
+</tr>
+<tr>
+<td>20</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[20]]</h3>
+</body></html>

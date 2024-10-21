@@ -1,0 +1,853 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> on which date did they score the most points?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Extract the numerical score from the 'result' column then add column 'score' to the existing table.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>week</td>
+<td>date</td>
+<td>opponent</td>
+<td>result</td>
+<td>attendance</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">september 6, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at los angeles rams</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">w 27–20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">63,198</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">september 13, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at cleveland browns</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">w 9–3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">79,483</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">september 20, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">miami dolphins</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">l 16–10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">47,379</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">september 27, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at new york jets</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">l 33–17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">50,309</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">october 4, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cincinnati bengals</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">w 17–10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">44,350</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">october 11, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">seattle seahawks</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">w 35–17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">42,671</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">october 18, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at new england patriots</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">l 38–10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">60,474</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">october 26, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at pittsburgh steelers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">l 26–13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">52,732</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">november 1, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at cincinnati bengals</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">l 34–21</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">54,736</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">november 8, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">oakland raiders</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">w 17–16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">45,519</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">november 15, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at kansas city chiefs</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">l 23–10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">73,984</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">november 22, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new orleans saints</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">l 27–24</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">49,581</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">november 29, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">atlanta falcons</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">l 31–27</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">40,201</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">14</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 3, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cleveland browns</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">w 17–13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">44,502</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">15</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 13, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at san francisco 49ers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">l 28–6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">55,707</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 20, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pittsburgh steelers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">w 21–20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">41,056</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Split the 'score' column into two separate columns, 'team_score' and 'opponent_score', using the delimiter '–'.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>week</td>
+<td>date</td>
+<td>opponent</td>
+<td>result</td>
+<td>attendance</td>
+<td>score</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">september 6, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">at los angeles rams</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">w 27–20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">63,198</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">27</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">september 13, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">at cleveland browns</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">w 9–3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">79,483</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">9</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">september 20, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">miami dolphins</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">l 16–10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">47,379</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">16</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">september 27, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">at new york jets</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">l 33–17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">50,309</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">33</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">october 4, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">cincinnati bengals</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">w 17–10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">44,350</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">17</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">october 11, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">seattle seahawks</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">w 35–17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">42,671</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">35</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">october 18, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">at new england patriots</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">l 38–10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">60,474</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">38</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">october 26, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">at pittsburgh steelers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">l 26–13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">52,732</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">26</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">november 1, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">at cincinnati bengals</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">l 34–21</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">54,736</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">34</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">november 8, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">oakland raiders</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">w 17–16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">45,519</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">17</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">11</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">november 15, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">at kansas city chiefs</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">l 23–10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">73,984</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">23</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">12</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">november 22, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">new orleans saints</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">l 27–24</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">49,581</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">27</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">november 29, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">atlanta falcons</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">l 31–27</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">40,201</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">31</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">14</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">december 3, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">cleveland browns</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">w 17–13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">44,502</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">17</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">15</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">december 13, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">at san francisco 49ers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">l 28–6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">55,707</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">28</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">december 20, 1981</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">pittsburgh steelers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">w 21–20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">41,056</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">21</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Calculate the total points scored by the team in each game by summing the 'team_score' column and add a new column 'team_points' to the table.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>week</td>
+<td>date</td>
+<td>opponent</td>
+<td>result</td>
+<td>attendance</td>
+<td>team_score</td>
+<td>opponent_score</td>
+</tr>
+<tr>
+<td>1</td>
+<td>september 6, 1981</td>
+<td>at los angeles rams</td>
+<td>w 27–20</td>
+<td>63,198</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+<td>27</td>
+</tr>
+<tr>
+<td>2</td>
+<td>september 13, 1981</td>
+<td>at cleveland browns</td>
+<td>w 9–3</td>
+<td>79,483</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+<td>9</td>
+</tr>
+<tr>
+<td>3</td>
+<td>september 20, 1981</td>
+<td>miami dolphins</td>
+<td>l 16–10</td>
+<td>47,379</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+<td>16</td>
+</tr>
+<tr>
+<td>4</td>
+<td>september 27, 1981</td>
+<td>at new york jets</td>
+<td>l 33–17</td>
+<td>50,309</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+<td>33</td>
+</tr>
+<tr>
+<td>5</td>
+<td>october 4, 1981</td>
+<td>cincinnati bengals</td>
+<td>w 17–10</td>
+<td>44,350</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+<td>17</td>
+</tr>
+<tr>
+<td>6</td>
+<td>october 11, 1981</td>
+<td>seattle seahawks</td>
+<td>w 35–17</td>
+<td>42,671</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+<td>35</td>
+</tr>
+<tr>
+<td>7</td>
+<td>october 18, 1981</td>
+<td>at new england patriots</td>
+<td>l 38–10</td>
+<td>60,474</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+<td>38</td>
+</tr>
+<tr>
+<td>8</td>
+<td>october 26, 1981</td>
+<td>at pittsburgh steelers</td>
+<td>l 26–13</td>
+<td>52,732</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+<td>26</td>
+</tr>
+<tr>
+<td>9</td>
+<td>november 1, 1981</td>
+<td>at cincinnati bengals</td>
+<td>l 34–21</td>
+<td>54,736</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+<td>34</td>
+</tr>
+<tr>
+<td>10</td>
+<td>november 8, 1981</td>
+<td>oakland raiders</td>
+<td>w 17–16</td>
+<td>45,519</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+<td>17</td>
+</tr>
+<tr>
+<td>11</td>
+<td>november 15, 1981</td>
+<td>at kansas city chiefs</td>
+<td>l 23–10</td>
+<td>73,984</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+<td>23</td>
+</tr>
+<tr>
+<td>12</td>
+<td>november 22, 1981</td>
+<td>new orleans saints</td>
+<td>l 27–24</td>
+<td>49,581</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+<td>27</td>
+</tr>
+<tr>
+<td>13</td>
+<td>november 29, 1981</td>
+<td>atlanta falcons</td>
+<td>l 31–27</td>
+<td>40,201</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+<td>31</td>
+</tr>
+<tr>
+<td>14</td>
+<td>december 3, 1981</td>
+<td>cleveland browns</td>
+<td>w 17–13</td>
+<td>44,502</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+<td>17</td>
+</tr>
+<tr>
+<td>15</td>
+<td>december 13, 1981</td>
+<td>at san francisco 49ers</td>
+<td>l 28–6</td>
+<td>55,707</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+<td>28</td>
+</tr>
+<tr>
+<td>16</td>
+<td>december 20, 1981</td>
+<td>pittsburgh steelers</td>
+<td>w 21–20</td>
+<td>41,056</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+<td>21</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Order the table by 'team_points' in descending order.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>week</td>
+<td>date</td>
+<td>opponent</td>
+<td>result</td>
+<td>attendance</td>
+<td>team_score</td>
+<td>opponent_score</td>
+<td>team_points</td>
+</tr>
+<tr>
+<td>1</td>
+<td>september 6, 1981</td>
+<td>at los angeles rams</td>
+<td>w 27–20</td>
+<td>63,198</td>
+<td>0</td>
+<td>27</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td>2</td>
+<td>september 13, 1981</td>
+<td>at cleveland browns</td>
+<td>w 9–3</td>
+<td>79,483</td>
+<td>0</td>
+<td>9</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td>3</td>
+<td>september 20, 1981</td>
+<td>miami dolphins</td>
+<td>l 16–10</td>
+<td>47,379</td>
+<td>0</td>
+<td>16</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td>4</td>
+<td>september 27, 1981</td>
+<td>at new york jets</td>
+<td>l 33–17</td>
+<td>50,309</td>
+<td>0</td>
+<td>33</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td>5</td>
+<td>october 4, 1981</td>
+<td>cincinnati bengals</td>
+<td>w 17–10</td>
+<td>44,350</td>
+<td>0</td>
+<td>17</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td>6</td>
+<td>october 11, 1981</td>
+<td>seattle seahawks</td>
+<td>w 35–17</td>
+<td>42,671</td>
+<td>0</td>
+<td>35</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td>7</td>
+<td>october 18, 1981</td>
+<td>at new england patriots</td>
+<td>l 38–10</td>
+<td>60,474</td>
+<td>0</td>
+<td>38</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td>8</td>
+<td>october 26, 1981</td>
+<td>at pittsburgh steelers</td>
+<td>l 26–13</td>
+<td>52,732</td>
+<td>0</td>
+<td>26</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td>9</td>
+<td>november 1, 1981</td>
+<td>at cincinnati bengals</td>
+<td>l 34–21</td>
+<td>54,736</td>
+<td>0</td>
+<td>34</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td>10</td>
+<td>november 8, 1981</td>
+<td>oakland raiders</td>
+<td>w 17–16</td>
+<td>45,519</td>
+<td>0</td>
+<td>17</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td>11</td>
+<td>november 15, 1981</td>
+<td>at kansas city chiefs</td>
+<td>l 23–10</td>
+<td>73,984</td>
+<td>0</td>
+<td>23</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td>12</td>
+<td>november 22, 1981</td>
+<td>new orleans saints</td>
+<td>l 27–24</td>
+<td>49,581</td>
+<td>0</td>
+<td>27</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td>13</td>
+<td>november 29, 1981</td>
+<td>atlanta falcons</td>
+<td>l 31–27</td>
+<td>40,201</td>
+<td>0</td>
+<td>31</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td>14</td>
+<td>december 3, 1981</td>
+<td>cleveland browns</td>
+<td>w 17–13</td>
+<td>44,502</td>
+<td>0</td>
+<td>17</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td>15</td>
+<td>december 13, 1981</td>
+<td>at san francisco 49ers</td>
+<td>l 28–6</td>
+<td>55,707</td>
+<td>0</td>
+<td>28</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+<tr>
+<td>16</td>
+<td>december 20, 1981</td>
+<td>pittsburgh steelers</td>
+<td>w 21–20</td>
+<td>41,056</td>
+<td>0</td>
+<td>21</td>
+<td><span class="highlighted-cell" title="Used in transformation">0</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 5: Select row number 1.</div>
+<div id="step-3" class="content">
+<table>
+<tr>
+<td>week</td>
+<td>date</td>
+<td>opponent</td>
+<td>result</td>
+<td>attendance</td>
+<td>team_score</td>
+<td>opponent_score</td>
+<td>team_points</td>
+</tr>
+<tr>
+<td>1</td>
+<td>september 6, 1981</td>
+<td>at los angeles rams</td>
+<td>w 27–20</td>
+<td>63,198</td>
+<td>0</td>
+<td>27</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>september 13, 1981</td>
+<td>at cleveland browns</td>
+<td>w 9–3</td>
+<td>79,483</td>
+<td>0</td>
+<td>9</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>september 20, 1981</td>
+<td>miami dolphins</td>
+<td>l 16–10</td>
+<td>47,379</td>
+<td>0</td>
+<td>16</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>september 27, 1981</td>
+<td>at new york jets</td>
+<td>l 33–17</td>
+<td>50,309</td>
+<td>0</td>
+<td>33</td>
+<td>0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>october 4, 1981</td>
+<td>cincinnati bengals</td>
+<td>w 17–10</td>
+<td>44,350</td>
+<td>0</td>
+<td>17</td>
+<td>0</td>
+</tr>
+<tr>
+<td>6</td>
+<td>october 11, 1981</td>
+<td>seattle seahawks</td>
+<td>w 35–17</td>
+<td>42,671</td>
+<td>0</td>
+<td>35</td>
+<td>0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>october 18, 1981</td>
+<td>at new england patriots</td>
+<td>l 38–10</td>
+<td>60,474</td>
+<td>0</td>
+<td>38</td>
+<td>0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>october 26, 1981</td>
+<td>at pittsburgh steelers</td>
+<td>l 26–13</td>
+<td>52,732</td>
+<td>0</td>
+<td>26</td>
+<td>0</td>
+</tr>
+<tr>
+<td>9</td>
+<td>november 1, 1981</td>
+<td>at cincinnati bengals</td>
+<td>l 34–21</td>
+<td>54,736</td>
+<td>0</td>
+<td>34</td>
+<td>0</td>
+</tr>
+<tr>
+<td>10</td>
+<td>november 8, 1981</td>
+<td>oakland raiders</td>
+<td>w 17–16</td>
+<td>45,519</td>
+<td>0</td>
+<td>17</td>
+<td>0</td>
+</tr>
+<tr>
+<td>11</td>
+<td>november 15, 1981</td>
+<td>at kansas city chiefs</td>
+<td>l 23–10</td>
+<td>73,984</td>
+<td>0</td>
+<td>23</td>
+<td>0</td>
+</tr>
+<tr>
+<td>12</td>
+<td>november 22, 1981</td>
+<td>new orleans saints</td>
+<td>l 27–24</td>
+<td>49,581</td>
+<td>0</td>
+<td>27</td>
+<td>0</td>
+</tr>
+<tr>
+<td>13</td>
+<td>november 29, 1981</td>
+<td>atlanta falcons</td>
+<td>l 31–27</td>
+<td>40,201</td>
+<td>0</td>
+<td>31</td>
+<td>0</td>
+</tr>
+<tr>
+<td>14</td>
+<td>december 3, 1981</td>
+<td>cleveland browns</td>
+<td>w 17–13</td>
+<td>44,502</td>
+<td>0</td>
+<td>17</td>
+<td>0</td>
+</tr>
+<tr>
+<td>15</td>
+<td>december 13, 1981</td>
+<td>at san francisco 49ers</td>
+<td>l 28–6</td>
+<td>55,707</td>
+<td>0</td>
+<td>28</td>
+<td>0</td>
+</tr>
+<tr>
+<td>16</td>
+<td>december 20, 1981</td>
+<td>pittsburgh steelers</td>
+<td>w 21–20</td>
+<td>41,056</td>
+<td>0</td>
+<td>21</td>
+<td>0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 6: Select the 'date' column.</div>
+<div id="step-4" class="content">
+<table>
+<tr>
+<td>week</td>
+<td>date</td>
+<td>opponent</td>
+<td>result</td>
+<td>attendance</td>
+<td>team_score</td>
+<td>opponent_score</td>
+<td>team_points</td>
+</tr>
+<tr>
+<td>1</td>
+<td>september 6, 1981</td>
+<td>at los angeles rams</td>
+<td>w 27–20</td>
+<td>63,198</td>
+<td>0</td>
+<td>27</td>
+<td>0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>date</td>
+</tr>
+<tr>
+<td>september 6, 1981</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['september 6, 1981']]</h3>
+</body></html>

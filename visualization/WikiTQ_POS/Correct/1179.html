@@ -1,0 +1,735 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how many players are listed next to score 101?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'score' column is equal to 101.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>no_</td>
+<td>score</td>
+<td>player</td>
+<td>team</td>
+<td>balls</td>
+<td>inns_</td>
+<td>opposing_team</td>
+<td>date</td>
+<td>result</td>
+</tr>
+<tr>
+<td>1</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">152</span></td>
+<td>clyde walcott</td>
+<td>west indies</td>
+<td>nr</td>
+<td>1</td>
+<td>india</td>
+<td>10 november 1948</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">101</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gerry gomez</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">west indies</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nr</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">india</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10 november 1948</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">drawn</span></td>
+</tr>
+<tr>
+<td>3</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">128</span></td>
+<td>everton weekes</td>
+<td>west indies</td>
+<td>nr</td>
+<td>1</td>
+<td>india</td>
+<td>10 november 1948</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>4</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">107</span></td>
+<td>robert christiani</td>
+<td>west indies</td>
+<td>nr</td>
+<td>1</td>
+<td>india</td>
+<td>10 november 1948</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>5</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">114*</span></td>
+<td>hemu adhikari</td>
+<td>india</td>
+<td>nr</td>
+<td>2</td>
+<td>west indies</td>
+<td>10 november 1948</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>6</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">154</span></td>
+<td>vijay merchant</td>
+<td>india</td>
+<td>nr</td>
+<td>2</td>
+<td>england</td>
+<td>2 november 1951</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>7</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">164*</span></td>
+<td>vijay hazare</td>
+<td>india</td>
+<td>nr</td>
+<td>2</td>
+<td>england</td>
+<td>2 november 1951</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>8</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">137*</span></td>
+<td>allan watkins</td>
+<td>england</td>
+<td>nr</td>
+<td>3</td>
+<td>india</td>
+<td>2 november 1951</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>9</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">230*</span></td>
+<td>bert sutcliffe</td>
+<td>new zealand</td>
+<td>nr</td>
+<td>1</td>
+<td>india</td>
+<td>16 december 1955</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>10</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">119*</span></td>
+<td>john reid</td>
+<td>new zealand</td>
+<td>nr</td>
+<td>1</td>
+<td>india</td>
+<td>16 december 1955</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>11</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">177</span></td>
+<td>vijay manjrekar (1/2)</td>
+<td>india</td>
+<td>nr</td>
+<td>2</td>
+<td>new zealand</td>
+<td>16 december 1955</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>12</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">109</span></td>
+<td>chandu borde</td>
+<td>india</td>
+<td>nr</td>
+<td>1</td>
+<td>west indies</td>
+<td>6 february 1959</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>13</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">123</span></td>
+<td>john holt</td>
+<td>west indies</td>
+<td>nr</td>
+<td>2</td>
+<td>india</td>
+<td>6 february 1959</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>14</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">100</span></td>
+<td>collie smith</td>
+<td>west indies</td>
+<td>nr</td>
+<td>2</td>
+<td>india</td>
+<td>6 february 1959</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>15</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">100*</span></td>
+<td>joe solomon</td>
+<td>west indies</td>
+<td>nr</td>
+<td>2</td>
+<td>india</td>
+<td>6 february 1959</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>16</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">114</span></td>
+<td>neil harvey</td>
+<td>australia</td>
+<td>nr</td>
+<td>2</td>
+<td>india</td>
+<td>12 december 1959</td>
+<td>won</td>
+</tr>
+<tr>
+<td>17</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">112</span></td>
+<td>polly umrigar</td>
+<td>india</td>
+<td>nr</td>
+<td>1</td>
+<td>pakistan</td>
+<td>8 february 1961</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">18</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">101</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mushtaq mohammad</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pakistan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nr</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">india</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8 february 1961</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">drawn</span></td>
+</tr>
+<tr>
+<td>19</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">127</span></td>
+<td>motganhalli jaisimha</td>
+<td>india</td>
+<td>nr</td>
+<td>1</td>
+<td>england</td>
+<td>13 december 1961</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>20</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">189*</span></td>
+<td>vijay manjrekar (2/2)</td>
+<td>india</td>
+<td>nr</td>
+<td>1</td>
+<td>england</td>
+<td>13 december 1961</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>21</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">113*</span></td>
+<td>ken barrington</td>
+<td>england</td>
+<td>nr</td>
+<td>2</td>
+<td>india</td>
+<td>13 december 1961</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>22</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">105</span></td>
+<td>hanumant singh</td>
+<td>india</td>
+<td>nr</td>
+<td>1</td>
+<td>england</td>
+<td>8 february 1964</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>23</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">151</span></td>
+<td>colin cowdrey</td>
+<td>england</td>
+<td>nr</td>
+<td>2</td>
+<td>india</td>
+<td>8 february 1964</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>24</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">100</span></td>
+<td>budhi kunderan</td>
+<td>india</td>
+<td>nr</td>
+<td>3</td>
+<td>england</td>
+<td>8 february 1964</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>25</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">203*</span></td>
+<td>nawab of pataudi (1/2)</td>
+<td>india</td>
+<td>nr</td>
+<td>3</td>
+<td>england</td>
+<td>8 february 1964</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>26</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">106</span></td>
+<td>dilip sardesai</td>
+<td>india</td>
+<td>nr</td>
+<td>2</td>
+<td>new zealand</td>
+<td>19 march 1965</td>
+<td>won</td>
+</tr>
+<tr>
+<td>27</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">113</span></td>
+<td>nawab of pataudi (2/2)</td>
+<td>india</td>
+<td>nr</td>
+<td>2</td>
+<td>new zealand</td>
+<td>19 march 1965</td>
+<td>won</td>
+</tr>
+<tr>
+<td>28</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">138</span></td>
+<td>ian chappell</td>
+<td>australia</td>
+<td>nr</td>
+<td>1</td>
+<td>india</td>
+<td>28 november 1969</td>
+<td>lost</td>
+</tr>
+<tr>
+<td>29</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">192*</span></td>
+<td>viv richards (1/2)</td>
+<td>west indies</td>
+<td>nr</td>
+<td>2</td>
+<td>india</td>
+<td>11 december 1974</td>
+<td>won</td>
+</tr>
+<tr>
+<td>30</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">179</span></td>
+<td>dennis amiss</td>
+<td>england</td>
+<td>397</td>
+<td>1</td>
+<td>india</td>
+<td>17 december 1976</td>
+<td>won</td>
+</tr>
+<tr>
+<td>31</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">120</span></td>
+<td>sunil gavaskar (1/3)</td>
+<td>india</td>
+<td>nr</td>
+<td>1</td>
+<td>west indies</td>
+<td>24 january 1979</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>32</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">109</span></td>
+<td>dilip vengsarkar (1/4)</td>
+<td>india</td>
+<td>nr</td>
+<td>1</td>
+<td>west indies</td>
+<td>24 january 1979</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>33</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">126*</span></td>
+<td>kapil dev</td>
+<td>india</td>
+<td>124</td>
+<td>1</td>
+<td>west indies</td>
+<td>24 january 1979</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>34</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">115</span></td>
+<td>sunil gavaskar (2/3)</td>
+<td>india</td>
+<td>238</td>
+<td>1</td>
+<td>australia</td>
+<td>13 october 1979</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>35</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">131</span></td>
+<td>gundappa viswanath (1/2)</td>
+<td>india</td>
+<td>207</td>
+<td>1</td>
+<td>australia</td>
+<td>13 october 1979</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>36</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">100*</span></td>
+<td>yashpal sharma</td>
+<td>india</td>
+<td>239</td>
+<td>1</td>
+<td>australia</td>
+<td>13 october 1979</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>37</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">146*</span></td>
+<td>dilip vengsarkar (2/4)</td>
+<td>india</td>
+<td>370</td>
+<td>4</td>
+<td>pakistan</td>
+<td>4 december 1979</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>38</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">105</span></td>
+<td>geoff boycott</td>
+<td>england</td>
+<td>285</td>
+<td>1</td>
+<td>india</td>
+<td>23 december 1981</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>39</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">149</span></td>
+<td>chris tavaré</td>
+<td>england</td>
+<td>303</td>
+<td>1</td>
+<td>india</td>
+<td>23 december 1981</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>40</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">107</span></td>
+<td>gundappa viswanath (2/2)</td>
+<td>india</td>
+<td>200</td>
+<td>2</td>
+<td>england</td>
+<td>23 december 1981</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>41</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">121</span></td>
+<td>sunil gavaskar (3/3)</td>
+<td>india</td>
+<td>128</td>
+<td>1</td>
+<td>west indies</td>
+<td>29 october 1983</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>42</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">159</span></td>
+<td>dilip vengsarkar (3/4)</td>
+<td>india</td>
+<td>238</td>
+<td>1</td>
+<td>west indies</td>
+<td>29 october 1983</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>43</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">103</span></td>
+<td>clive lloyd</td>
+<td>west indies</td>
+<td>202</td>
+<td>2</td>
+<td>india</td>
+<td>29 october 1983</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>44</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">160</span></td>
+<td>tim robinson</td>
+<td>england</td>
+<td>390</td>
+<td>2</td>
+<td>india</td>
+<td>12 december 1984</td>
+<td>won</td>
+</tr>
+<tr>
+<td>45</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">102</span></td>
+<td>dilip vengsarkar (4/4)</td>
+<td>india</td>
+<td>257</td>
+<td>3</td>
+<td>west indies</td>
+<td>25 november 1987</td>
+<td>lost</td>
+</tr>
+<tr>
+<td>46</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">109*</span></td>
+<td>viv richards (2/2)</td>
+<td>west indies</td>
+<td>111</td>
+<td>4</td>
+<td>india</td>
+<td>25 november 1987</td>
+<td>won</td>
+</tr>
+<tr>
+<td>47</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">227</span></td>
+<td>vinod kambli</td>
+<td>india</td>
+<td>301</td>
+<td>1</td>
+<td>zimbabwe</td>
+<td>13 march 1993</td>
+<td>won</td>
+</tr>
+<tr>
+<td>48</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">115</span></td>
+<td>andy flower (1/2)</td>
+<td>zimbabwe</td>
+<td>236</td>
+<td>2</td>
+<td>india</td>
+<td>13 march 1993</td>
+<td>lost</td>
+</tr>
+<tr>
+<td>49</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">152</span></td>
+<td>nayan mongia</td>
+<td>india</td>
+<td>366</td>
+<td>2</td>
+<td>australia</td>
+<td>10 october 1996</td>
+<td>won</td>
+</tr>
+<tr>
+<td>50</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">183*</span></td>
+<td>andy flower (2/2)</td>
+<td>zimbabwe</td>
+<td>351</td>
+<td>1</td>
+<td>india</td>
+<td>18 november 2000</td>
+<td>lost</td>
+</tr>
+<tr>
+<td>51</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">200*</span></td>
+<td>rahul dravid</td>
+<td>india</td>
+<td>350</td>
+<td>2</td>
+<td>zimbabwe</td>
+<td>18 november 2000</td>
+<td>won</td>
+</tr>
+<tr>
+<td>52</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">122</span></td>
+<td>sachin tendulkar (1/2)</td>
+<td>india</td>
+<td>233</td>
+<td>2</td>
+<td>zimbabwe</td>
+<td>18 november 2000</td>
+<td>won</td>
+</tr>
+<tr>
+<td>53</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">136</span></td>
+<td>sourav ganguly</td>
+<td>india</td>
+<td>284</td>
+<td>2</td>
+<td>zimbabwe</td>
+<td>28 february 2002</td>
+<td>won</td>
+</tr>
+<tr>
+<td>54</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">109</span></td>
+<td>sachin tendulkar (2/2)</td>
+<td>india</td>
+<td>196</td>
+<td>1</td>
+<td>sri lanka</td>
+<td>10 december 2005</td>
+<td>won</td>
+</tr>
+<tr>
+<td>55</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">206</span></td>
+<td>gautam gambhir</td>
+<td>india</td>
+<td>380</td>
+<td>1</td>
+<td>australia</td>
+<td>29 october 2008</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>56</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">200*</span></td>
+<td>vvs laxman</td>
+<td>india</td>
+<td>301</td>
+<td>1</td>
+<td>australia</td>
+<td>29 october 2008</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>57</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">112</span></td>
+<td>michael clarke</td>
+<td>australia</td>
+<td>253</td>
+<td>2</td>
+<td>india</td>
+<td>29 october 2008</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>58</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">118</span></td>
+<td>shivnarine chanderpaul</td>
+<td>west indies</td>
+<td>196</td>
+<td>1</td>
+<td>india</td>
+<td>6 november 2011</td>
+<td>lost</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Count the number of rows selected.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>no_</td>
+<td>score</td>
+<td>player</td>
+<td>team</td>
+<td>balls</td>
+<td>inns_</td>
+<td>opposing_team</td>
+<td>date</td>
+<td>result</td>
+</tr>
+<tr>
+<td>2</td>
+<td>101</td>
+<td>gerry gomez</td>
+<td>west indies</td>
+<td>nr</td>
+<td>1</td>
+<td>india</td>
+<td>10 november 1948</td>
+<td>drawn</td>
+</tr>
+<tr>
+<td>18</td>
+<td>101</td>
+<td>mushtaq mohammad</td>
+<td>pakistan</td>
+<td>nr</td>
+<td>2</td>
+<td>india</td>
+<td>8 february 1961</td>
+<td>drawn</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>row_count</td>
+</tr>
+<tr>
+<td>2</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[2]]</h3>
+</body></html>

@@ -1,0 +1,75 @@
+************************************************************************************************************************
+Sample 3596 - Plan 1: Query: which educational website costs more than all of the others put together?
+Sample 3596 - Plan 1: Groundtruth: ['IXL']
+Sample 3596 - Plan 1: X-Original table pd: 
+                                   name  \
+0                       ask a biologist   
+1                    archimedes-lab.org   
+2                       awesome library   
+3                   bitesize by the bbc   
+4                              brainpop   
+5                          cut-the-knot   
+6                          fact monster   
+7   geometry from the land of the incas   
+8                          hackmath.net   
+9                          hyperphysics   
+10                                  ixl   
+11                            le patron   
+12                      learnalberta.ca   
+13                               nafham   
+14                         starfall.com   
+15                      smartygames.com   
+16                       watchknowlearn   
+
+                                                topic             cost  \
+0                                             biology             free   
+1                                         mathematics             free   
+2                                                 all             free   
+3   art & design, business studies, design & techn...             free   
+4   science, social studies, english, maths, art &...  from us$75/year   
+5                                               maths             free   
+6   world & news, u.s., people, english, science, ...             free   
+7                                            geometry             free   
+8                                         mathematics             free   
+9                                             physics             free   
+10                                               math         $80/year   
+11                                             french             free   
+12              everything (mainly aimed at teachers)             free   
+13  multidisciplinary 5-20min k-12 school video le...             free   
+14                                            reading             free   
+15  math games, reading, art, word scramble, spani...             free   
+16                                                all             free   
+
+    target_age      advertising  
+0           5+             none  
+1          10+    yes - limited  
+2          all      yes - large  
+3         5-16             none  
+4         4-17             none  
+5           8+  yes - extensive  
+6   4-14 (k-8)              yes  
+7          12+  yes - extensive  
+8         9-18             none  
+9          15+             none  
+10        4-12                ?  
+11         12+              yes  
+12        5-18               no  
+13        6-18              yes  
+14         2-9             none  
+15         2-9             none  
+16        2-17             none  
+Sample 3596 - Plan 1: Caption: none
+Sample 3596 - Plan 1: Original table: [['name', 'topic', 'cost', 'target_age', 'advertising'], ['ask a biologist', 'biology', 'free', '5+', 'none'], ['archimedes-lab.org', 'mathematics', 'free', '10+', 'yes - limited'], ['awesome library', 'all', 'free', 'all', 'yes - large'], ['bitesize by the bbc', 'art & design, business studies, design & technology, dida, drama, english, english literature, french, geography, german, history, ict, irish, maths, music, physical education, religious studies, science, spanish', 'free', '5-16', 'none'], ['brainpop', 'science, social studies, english, maths, art & music, health, technology', 'from us$75/year', '4-17', 'none'], ['cut-the-knot', 'maths', 'free', '8+', 'yes - extensive'], ['fact monster', 'world & news, u.s., people, english, science, math & money, sports', 'free', '4-14 (k-8)', 'yes'], ['geometry from the land of the incas', 'geometry', 'free', '12+', 'yes - extensive'], ['hackmath.net', 'mathematics', 'free', '9-18', 'none'], ['hyperphysics', 'physics', 'free', '15+', 'none'], ['ixl', 'math', '$80/year', '4-12', '?'], ['le patron', 'french', 'free', '12+', 'yes'], ['learnalberta.ca', 'everything (mainly aimed at teachers)', 'free', '5-18', 'no'], ['nafham', 'multidisciplinary 5-20min k-12 school video lessons for arabic students', 'free', '6-18', 'yes'], ['starfall.com', 'reading', 'free', '2-9', 'none'], ['smartygames.com', 'math games, reading, art, word scramble, spanish, puzzles, kids sudoku and more', 'free', '2-9', 'none'], ['watchknowlearn', 'all', 'free', '2-17', 'none']]
+########################################################################################################################
+Sample 3596 - Plan 1: Operation 1: Select rows where the 'cost' column is greater than the sum of the 'cost' column for all other rows.
+SQL execution error in operation 1: Execution failed on sql 'SELECT *
+FROM table_sql
+WHERE CAST(REPLACE(REPLACE(cost, '$', ''), ',', '') AS INTEGER) > 
+      (SELECT SUM(CAST(REPLACE(REPLACE(cost, '$', ''), ',', '') AS INTEGER))
+       FROM table_sql
+       WHERE id != table_sql.id);
+-- Select rows where the 'cost' column is greater than the sum of the 'cost' column for all other rows.': no such column: id
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['brainpop']]
+Groundtruth: ['IXL']

@@ -1,0 +1,79 @@
+************************************************************************************************************************
+Sample 3360 - Plan 1: Query: what number of teams participated in the madanda hockey fest of 2013?
+Sample 3360 - Plan 1: Groundtruth: ['225']
+Sample 3360 - Plan 1: X-Original table pd: 
+    no_  year              name       held_at  number_of_teams  \
+0     1  1997      pandanda cup        karada             60.0   
+1     2  1998        kodira cup       kadanga            116.0   
+2     3  1999   ballachanda cup  kakotparambu            140.0   
+3     4  2000    cheppudira cup     ponnampet            170.0   
+4     5  2001  nellamakkada cup       ammathi            220.0   
+5     6  2002      chekkera cup      hudikeri            252.0   
+6     7  2003     kaliyanda cup       napoklu            280.0   
+7     8  2004     maleyanda cup       madapur            235.0   
+8     9  2005      biddanda cup      madikeri            222.0   
+9    10  2006   kallichanda cup     ponnampet            217.0   
+10   11  2007    mandettira cup  kakotparambu            186.0   
+11   12  2008    alamengada cup     ponnampet            216.0   
+12   13  2009    mandepanda cup       ammathi            231.0   
+13   14  2010   maneyapanda cup     ponnampet            214.0   
+14   15  2011     machamada cup     ponnampet            228.0   
+15   16  2012     iychetira cup       ammathi            217.0   
+16   17  2013       madanda cup      balugodu            225.0   
+17   18  2014     thathanda cup      virajpet              NaN   
+
+                      winner        runners_up  
+0                  kaliyanda     anjaparavanda  
+1                 kullettira         koothanda  
+2   koothanda and kullettira                 -  
+3                  koothanda      nellamakkada  
+4                  koothanda        cheppudira  
+5                 kullettira      nellamakkada  
+6               nellamakkada          konerira  
+7                  koothanda      nellamakkada  
+8               nellamakkada         koothanda  
+9                 palanganda         machamada  
+10                mandepanda     anjaparavanda  
+11             anjaparavanda         koothanda  
+12              nellamakkada         koothanda  
+13                palanganda  mukkatira(bonda)  
+14                palanganda         kaliyanda  
+15                palanganda         kaliyanda  
+16             anjaparavanda        palanganda  
+17                                              
+Sample 3360 - Plan 1: Caption: none
+Sample 3360 - Plan 1: Original table: [['no_', 'year', 'name', 'held_at', 'number_of_teams', 'winner', 'runners_up'], ['1', '1997', 'pandanda cup', 'karada', '60', 'kaliyanda', 'anjaparavanda'], ['2', '1998', 'kodira cup', 'kadanga', '116', 'kullettira', 'koothanda'], ['3', '1999', 'ballachanda cup', 'kakotparambu', '140', 'koothanda and kullettira', '-'], ['4', '2000', 'cheppudira cup', 'ponnampet', '170', 'koothanda', 'nellamakkada'], ['5', '2001', 'nellamakkada cup', 'ammathi', '220', 'koothanda', 'cheppudira'], ['6', '2002', 'chekkera cup', 'hudikeri', '252', 'kullettira', 'nellamakkada'], ['7', '2003', 'kaliyanda cup', 'napoklu', '280', 'nellamakkada', 'konerira'], ['8', '2004', 'maleyanda cup', 'madapur', '235', 'koothanda', 'nellamakkada'], ['9', '2005', 'biddanda cup', 'madikeri', '222', 'nellamakkada', 'koothanda'], ['10', '2006', 'kallichanda cup', 'ponnampet', '217', 'palanganda', 'machamada'], ['11', '2007', 'mandettira cup', 'kakotparambu', '186', 'mandepanda', 'anjaparavanda'], ['12', '2008', 'alamengada cup', 'ponnampet', '216', 'anjaparavanda', 'koothanda'], ['13', '2009', 'mandepanda cup', 'ammathi', '231', 'nellamakkada', 'koothanda'], ['14', '2010', 'maneyapanda cup', 'ponnampet', '214', 'palanganda', 'mukkatira(bonda)'], ['15', '2011', 'machamada cup', 'ponnampet', '228', 'palanganda', 'kaliyanda'], ['16', '2012', 'iychetira cup', 'ammathi', '217', 'palanganda', 'kaliyanda'], ['17', '2013', 'madanda cup', 'balugodu', '225', 'anjaparavanda', 'palanganda'], ['18', '2014', 'thathanda cup', 'virajpet', '', '', '']]
+########################################################################################################################
+Sample 3360 - Plan 1: Operation 1: Select rows where 'year' is 2013.
+Sample 3360 - Plan 1: Selected indices: [[16, 1]]
+Sample 3360 - Plan 1: X-Table after operation df:
+   no_  year         name   held_at  number_of_teams         winner  \
+0   17  2013  madanda cup  balugodu            225.0  anjaparavanda   
+
+   runners_up  
+0  palanganda  
+Sample 3360 - Plan 1: Table after operation: [['no_', 'year', 'name', 'held_at', 'number_of_teams', 'winner', 'runners_up'], [17, 2013, 'madanda cup', 'balugodu', 225.0, 'anjaparavanda', 'palanganda']]
+########################################################################################################################
+Sample 3360 - Plan 1: Operation 2: Select the 'number_of_teams' column.
+Sample 3360 - Plan 1: Selected indices: []
+Sample 3360 - Plan 1: X-Table after operation df:
+   number_of_teams
+0            225.0
+Sample 3360 - Plan 1: Table after operation: [['number_of_teams'], [225.0]]
+########################################################################################################################
+Sample 3360 - Plan 1: Operation 3: Filter out any rows where the 'number_of_teams' is null or empty.
+Sample 3360 - Plan 1: Selected indices: [[0, 0]]
+Sample 3360 - Plan 1: X-Table after operation df:
+   number_of_teams
+0            225.0
+Sample 3360 - Plan 1: Table after operation: [['number_of_teams'], [225.0]]
+########################################################################################################################
+Sample 3360 - Plan 1: Operation 4: Count the number of rows in the filtered table.
+Sample 3360 - Plan 1: Selected indices: []
+Sample 3360 - Plan 1: X-Table after operation df:
+   row_count
+0          1
+Sample 3360 - Plan 1: Table after operation: [['row_count'], [1]]
+Fall-back: FALSE
+Answer from plan 1: [[1]]
+Groundtruth: ['225']

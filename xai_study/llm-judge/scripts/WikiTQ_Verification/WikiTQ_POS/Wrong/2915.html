@@ -1,0 +1,447 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how many laps did alain prost finished?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where 'driver' is 'alain prost'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>pos</td>
+<td>no</td>
+<td>driver</td>
+<td>constructor</td>
+<td>laps</td>
+<td>time_retired</td>
+<td>grid</td>
+<td>points</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">alain prost</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ferrari</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">64</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1:18:30.999</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+</tr>
+<tr>
+<td>2</td>
+<td>5</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">thierry boutsen</span></td>
+<td>williams-renault</td>
+<td>64</td>
+<td>+ 39.092</td>
+<td>4</td>
+<td>6</td>
+</tr>
+<tr>
+<td>3</td>
+<td>27</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ayrton senna</span></td>
+<td>mclaren-honda</td>
+<td>64</td>
+<td>+ 43.088</td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td>4</td>
+<td>29</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">éric bernard</span></td>
+<td>lola-lamborghini</td>
+<td>64</td>
+<td>+ 1:15.302</td>
+<td>8</td>
+<td>3</td>
+</tr>
+<tr>
+<td>5</td>
+<td>20</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nelson piquet</span></td>
+<td>benetton-ford</td>
+<td>64</td>
+<td>+ 1:24.003</td>
+<td>11</td>
+<td>2</td>
+</tr>
+<tr>
+<td>6</td>
+<td>30</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">aguri suzuki</span></td>
+<td>lola-lamborghini</td>
+<td>63</td>
+<td>+ 1 lap</td>
+<td>9</td>
+<td>1</td>
+</tr>
+<tr>
+<td>7</td>
+<td>10</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">alex caffi</span></td>
+<td>arrows-ford</td>
+<td>63</td>
+<td>+ 1 lap</td>
+<td>17</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>4</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jean alesi</span></td>
+<td>tyrrell-ford</td>
+<td>63</td>
+<td>+ 1 lap</td>
+<td>6</td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>8</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stefano modena</span></td>
+<td>brabham-judd</td>
+<td>62</td>
+<td>+ 2 laps</td>
+<td>20</td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td>25</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nicola larini</span></td>
+<td>ligier-ford</td>
+<td>62</td>
+<td>+ 2 laps</td>
+<td>21</td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>21</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">emanuele pirro</span></td>
+<td>dallara-ford</td>
+<td>62</td>
+<td>+ 2 laps</td>
+<td>19</td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td>24</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">paolo barilla</span></td>
+<td>minardi-ford</td>
+<td>62</td>
+<td>+ 2 laps</td>
+<td>24</td>
+<td></td>
+</tr>
+<tr>
+<td>13</td>
+<td>26</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">philippe alliot</span></td>
+<td>ligier-ford</td>
+<td>61</td>
+<td>+ 3 laps</td>
+<td>22</td>
+<td></td>
+</tr>
+<tr>
+<td>14</td>
+<td>28</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gerhard berger</span></td>
+<td>mclaren-honda</td>
+<td>60</td>
+<td>throttle</td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>ret</td>
+<td>2</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nigel mansell</span></td>
+<td>ferrari</td>
+<td>55</td>
+<td>gearbox</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>ret</td>
+<td>16</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ivan capelli</span></td>
+<td>leyton house-judd</td>
+<td>48</td>
+<td>fuel leak</td>
+<td>10</td>
+<td></td>
+</tr>
+<tr>
+<td>ret</td>
+<td>12</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">martin donnelly</span></td>
+<td>lotus-lamborghini</td>
+<td>48</td>
+<td>engine</td>
+<td>14</td>
+<td></td>
+</tr>
+<tr>
+<td>ret</td>
+<td>11</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">derek warwick</span></td>
+<td>lotus-lamborghini</td>
+<td>46</td>
+<td>engine</td>
+<td>16</td>
+<td></td>
+</tr>
+<tr>
+<td>ret</td>
+<td>17</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gabriele tarquini</span></td>
+<td>ags-ford</td>
+<td>41</td>
+<td>engine</td>
+<td>26</td>
+<td></td>
+</tr>
+<tr>
+<td>ret</td>
+<td>9</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">michele alboreto</span></td>
+<td>arrows-ford</td>
+<td>37</td>
+<td>engine</td>
+<td>25</td>
+<td></td>
+</tr>
+<tr>
+<td>ret</td>
+<td>6</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">riccardo patrese</span></td>
+<td>williams-renault</td>
+<td>26</td>
+<td>chassis</td>
+<td>7</td>
+<td></td>
+</tr>
+<tr>
+<td>ret</td>
+<td>3</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">satoru nakajima</span></td>
+<td>tyrrell-ford</td>
+<td>20</td>
+<td>electrical</td>
+<td>12</td>
+<td></td>
+</tr>
+<tr>
+<td>ret</td>
+<td>19</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">alessandro nannini</span></td>
+<td>benetton-ford</td>
+<td>15</td>
+<td>collision</td>
+<td>13</td>
+<td></td>
+</tr>
+<tr>
+<td>ret</td>
+<td>22</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">andrea de cesaris</span></td>
+<td>dallara-ford</td>
+<td>12</td>
+<td>fuel system</td>
+<td>23</td>
+<td></td>
+</tr>
+<tr>
+<td>ret</td>
+<td>23</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pierluigi martini</span></td>
+<td>minardi-ford</td>
+<td>3</td>
+<td>alternator</td>
+<td>18</td>
+<td></td>
+</tr>
+<tr>
+<td>dns</td>
+<td>15</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">maurício gugelmin</span></td>
+<td>leyton house-judd</td>
+<td>0</td>
+<td>fuel pump</td>
+<td>15</td>
+<td></td>
+</tr>
+<tr>
+<td>dnq</td>
+<td>14</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">olivier grouillard</span></td>
+<td>osella-ford</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>dnq</td>
+<td>7</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">david brabham</span></td>
+<td>brabham-judd</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>dnq</td>
+<td>36</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jj lehto</span></td>
+<td>onyx-ford</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>dnq</td>
+<td>35</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gregor foitek</span></td>
+<td>onyx-ford</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>dnpq</td>
+<td>33</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">roberto moreno</span></td>
+<td>eurobrun-judd</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>dnpq</td>
+<td>18</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yannick dalmas</span></td>
+<td>ags-ford</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>dnpq</td>
+<td>34</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">claudio langes</span></td>
+<td>eurobrun-judd</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>dnpq</td>
+<td>31</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bertrand gachot</span></td>
+<td>coloni-subaru</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>dnpq</td>
+<td>39</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bruno giacomelli</span></td>
+<td>life</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select the 'laps' column.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>pos</td>
+<td>no</td>
+<td>driver</td>
+<td>constructor</td>
+<td>laps</td>
+<td>time_retired</td>
+<td>grid</td>
+<td>points</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>alain prost</td>
+<td>ferrari</td>
+<td>64.0</td>
+<td>1:18:30.999</td>
+<td>5.0</td>
+<td>9.0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Calculate the sum of the values in the 'laps' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>laps</td>
+</tr>
+<tr>
+<td>64.0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>total_laps</td>
+</tr>
+<tr>
+<td>64.0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[64.0]]</h3>
+</body></html>

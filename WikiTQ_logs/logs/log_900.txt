@@ -1,0 +1,69 @@
+************************************************************************************************************************
+Sample 900 - Plan 1: Query: is retief goosen above or below k.j. choi in ranking?
+Sample 900 - Plan 1: Groundtruth: ['Above']
+Sample 900 - Plan 1: X-Original table pd: 
+  place            player        country         score to_par
+0     1     retief goosen   south africa  68-70-69=207     –3
+1    t2       olin browne  united states  67-71-72=210      e
+2    t2        jason gore  united states  71-67-72=210      e
+3    t4  michael campbell    new zealand  71-69-71=211     +1
+4    t4       mark hensby      australia  71-68-72=211     +1
+5     6        david toms  united states  70-72-70=212     +2
+6    t7        k. j. choi    south korea  69-70-74=213     +3
+7    t7     peter hedblom         sweden  77-66-70=213     +3
+8    t7      lee westwood        england  68-72-73=213     +3
+9    t7       tiger woods  united states  70-71-72=213     +3
+Sample 900 - Plan 1: Caption: none
+Sample 900 - Plan 1: Original table: [['place', 'player', 'country', 'score', 'to_par'], ['1', 'retief goosen', 'south africa', '68-70-69=207', '–3'], ['t2', 'olin browne', 'united states', '67-71-72=210', 'e'], ['t2', 'jason gore', 'united states', '71-67-72=210', 'e'], ['t4', 'michael campbell', 'new zealand', '71-69-71=211', '+1'], ['t4', 'mark hensby', 'australia', '71-68-72=211', '+1'], ['6', 'david toms', 'united states', '70-72-70=212', '+2'], ['t7', 'k. j. choi', 'south korea', '69-70-74=213', '+3'], ['t7', 'peter hedblom', 'sweden', '77-66-70=213', '+3'], ['t7', 'lee westwood', 'england', '68-72-73=213', '+3'], ['t7', 'tiger woods', 'united states', '70-71-72=213', '+3']]
+########################################################################################################################
+Sample 900 - Plan 1: Operation 1: Select rows where 'player' is 'retief goosen'.
+Sample 900 - Plan 1: Selected indices: [[0, 1]]
+Sample 900 - Plan 1: X-Table after operation df:
+   place         player       country         score to_par
+0      1  retief goosen  south africa  68-70-69=207     –3
+Sample 900 - Plan 1: Table after operation: [['place', 'player', 'country', 'score', 'to_par'], ['1', 'retief goosen', 'south africa', '68-70-69=207', '–3']]
+########################################################################################################################
+Sample 900 - Plan 1: Operation 2: Select the 'place' column for the selected rows.
+Sample 900 - Plan 1: Selected indices: []
+Sample 900 - Plan 1: X-Table after operation df:
+   place
+0      1
+Sample 900 - Plan 1: Table after operation: [['place'], [1]]
+########################################################################################################################
+Sample 900 - Plan 1: Operation 3: Store the value of 'place' for 'retief goosen' in a variable.
+Sample 900 - Plan 1: Selected indices: []
+Sample 900 - Plan 1: X-Table after operation df:
+   place
+0      1
+Sample 900 - Plan 1: Table after operation: [['place'], [1]]
+########################################################################################################################
+Sample 900 - Plan 1: Operation 4: Select rows where 'player' is 'k.j. choi'.
+Sample 900 - Plan 1: Selected indices: [[0, 0]]
+Sample 900 - Plan 1: X-Table after operation df:
+   place
+0      1
+Sample 900 - Plan 1: Table after operation: [['place'], [1]]
+########################################################################################################################
+Sample 900 - Plan 1: Operation 5: Select the 'place' column for the selected rows.
+Sample 900 - Plan 1: Selected indices: []
+Sample 900 - Plan 1: X-Table after operation df:
+   place
+0      1
+Sample 900 - Plan 1: Table after operation: [['place'], [1]]
+########################################################################################################################
+Sample 900 - Plan 1: Operation 6: Store the value of 'place' for 'k.j. choi' in a variable.
+Sample 900 - Plan 1: Selected indices: []
+Sample 900 - Plan 1: X-Table after operation df:
+   place
+0      1
+Sample 900 - Plan 1: Table after operation: [['place'], [1]]
+########################################################################################################################
+Sample 900 - Plan 1: Operation 7: Compare the values of the variables to determine if 'retief goosen' is above or below 'k.j. choi' in ranking.
+Sample 900 - Plan 1: Selected indices: [[0, 0]]
+Sample 900 - Plan 1: X-Table after operation df:
+   place
+0      1
+Sample 900 - Plan 1: Table after operation: [['place'], [1]]
+Fall-back: FALSE
+Answer from plan 1: [[1]]
+Groundtruth: ['Above']

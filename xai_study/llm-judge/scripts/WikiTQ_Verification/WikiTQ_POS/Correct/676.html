@@ -1,0 +1,767 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> who was the representative from the first district?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select the row where the 'district' is '1st district'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>district</td>
+<td>representative</td>
+<td>party</td>
+<td>home_town__county</td>
+<td>term_of_service</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1st district</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">charles r. blasdel</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">republican</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">east liverpool, columbiana</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2nd district</span></td>
+<td>jon m. peterson</td>
+<td>republican</td>
+<td>delaware, delaware</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3rd district</span></td>
+<td>jim carmichael</td>
+<td>republican</td>
+<td>wooster, wayne</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4th district</span></td>
+<td>john r. willamowski</td>
+<td>republican</td>
+<td>lima, allen</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5th district</span></td>
+<td>tim schaffer</td>
+<td>republican</td>
+<td>lancaster, fairfield</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6th district</span></td>
+<td>robert e. latta</td>
+<td>republican</td>
+<td>bowling green, wood</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7th district</span></td>
+<td>edward s. jerse</td>
+<td>democratic</td>
+<td>euclid, cuyahoga</td>
+<td>-2005</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8th district</span></td>
+<td>lance t. mason</td>
+<td>democratic</td>
+<td>shaker heights, cuyahoga</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9th district</span></td>
+<td>claudette j. woodard</td>
+<td>democratic</td>
+<td>cleveland heights, cuyahoga</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10th district</span></td>
+<td>shirley a. smith</td>
+<td>democratic</td>
+<td>cleveland, cuyahoga</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11th district</span></td>
+<td>annie l. key</td>
+<td>democratic</td>
+<td>cleveland, cuyahoga</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12th district</span></td>
+<td>michael debose</td>
+<td>democratic</td>
+<td>cleveland, cuyahoga</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13th district</span></td>
+<td>michael j. skindell</td>
+<td>democratic</td>
+<td>lakewood, cuyahoga</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">14th district</span></td>
+<td>dale miller</td>
+<td>democratic</td>
+<td>cleveland, cuyahoga</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">15th district</span></td>
+<td>timothy j. degeeter</td>
+<td>democratic</td>
+<td>parma, cuyahoga</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">16th district</span></td>
+<td>sally conway kilbane</td>
+<td>republican</td>
+<td>rocky river, cuyahoga</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">17th district</span></td>
+<td>james peter trakas</td>
+<td>republican</td>
+<td>independence, cuyahoga</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">18th district</span></td>
+<td>thomas f. patton</td>
+<td>republican</td>
+<td>strongsville, cuyahoga</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19th district</span></td>
+<td>larry l. flowers</td>
+<td>republican</td>
+<td>canal winchester, fairfield/franklin</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20th district</span></td>
+<td>jim mcgregor</td>
+<td>republican</td>
+<td>gahanna, franklin</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">21st district</span></td>
+<td>linda reidelbach</td>
+<td>republican</td>
+<td>columbus, franklin</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">22nd district</span></td>
+<td>jim hughes</td>
+<td>republican</td>
+<td>columbus, franklin</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">23rd district</span></td>
+<td>larry wolpert</td>
+<td>republican</td>
+<td>hilliard, franklin</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24th district</span></td>
+<td>geoffrey c. smith</td>
+<td>republican</td>
+<td>columbus, franklin</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">25th district</span></td>
+<td>daniel stewart</td>
+<td>democratic</td>
+<td>columbus, franklin</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">26th district</span></td>
+<td>larry price</td>
+<td>democratic</td>
+<td>columbus, franklin</td>
+<td>-2005</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">27th district</span></td>
+<td>joyce beatty</td>
+<td>democratic</td>
+<td>columbus, franklin</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">28th district</span></td>
+<td>jim raussen</td>
+<td>republican</td>
+<td>springdale, hamilton</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">29th district</span></td>
+<td>patricia m. clancy</td>
+<td>republican</td>
+<td>cincinnati, hamilton</td>
+<td>-2005</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">30th district</span></td>
+<td>william j. seitz</td>
+<td>republican</td>
+<td>cincinnati, hamilton</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">31st district</span></td>
+<td>steven l. driehaus</td>
+<td>democratic</td>
+<td>cincinnati, hamilton</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">32nd district</span></td>
+<td>catherine l. barrett</td>
+<td>democratic</td>
+<td>cincinnati, hamilton</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">33rd district</span></td>
+<td>tyrone k. yates</td>
+<td>democratic</td>
+<td>cincinnati, hamilton</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">34th district</span></td>
+<td>tom brinkman jr.</td>
+<td>republican</td>
+<td>cincinnati, hamilton</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">35th district</span></td>
+<td>michelle g. schneider</td>
+<td>republican</td>
+<td>cincinnati, hamilton</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">36th district</span></td>
+<td>arlene j. setzer</td>
+<td>republican</td>
+<td>vandalia, montgomery</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">37th district</span></td>
+<td>jon a. husted</td>
+<td>republican</td>
+<td>kettering, montgomery</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">38th district</span></td>
+<td>john j. white</td>
+<td>republican</td>
+<td>kettering, montgomery</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">39th district</span></td>
+<td>dixie j. allen</td>
+<td>republican</td>
+<td>dayton, montgomery</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">40th district</span></td>
+<td>fred strahorn</td>
+<td>democratic</td>
+<td>dayton, montgomery</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">41st district</span></td>
+<td>marilyn slaby</td>
+<td>republican</td>
+<td>akron, summit</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">42nd district</span></td>
+<td>john widowfield</td>
+<td>republican</td>
+<td>cuyahoga falls, summit</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">43rd district</span></td>
+<td>mary taylor</td>
+<td>republican</td>
+<td>green, summit</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">44th district</span></td>
+<td>barbara a. sykes</td>
+<td>democratic</td>
+<td>akron, summit</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">45th district</span></td>
+<td>robert j. otterman</td>
+<td>democratic</td>
+<td>akron, summit</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">46th district</span></td>
+<td>lynn e. olman</td>
+<td>republican</td>
+<td>maumee, lucas</td>
+<td>-2005</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">47th district</span></td>
+<td>peter ujvagi</td>
+<td>democratic</td>
+<td>toledo, lucas</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">48th district</span></td>
+<td>edna brown</td>
+<td>democratic</td>
+<td>toledo, lucas</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">49th district</span></td>
+<td>jeanine perry</td>
+<td>democratic</td>
+<td>toledo, lucas</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">50th district</span></td>
+<td>john p. hagan</td>
+<td>republican</td>
+<td>marlboro twp., stark</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">51st district</span></td>
+<td>w. scott oelslager</td>
+<td>republican</td>
+<td>canton, stark</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">52nd district</span></td>
+<td>mary m. cirelli</td>
+<td>democratic</td>
+<td>canton, stark</td>
+<td>-2005</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">53rd district</span></td>
+<td>shawn n. webster</td>
+<td>republican</td>
+<td>millville, butler</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">54th district</span></td>
+<td>courtney e. combs</td>
+<td>republican</td>
+<td>hamilton, butler</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">55th district</span></td>
+<td>gary w. cates</td>
+<td>republican</td>
+<td>west chester twp., butler</td>
+<td>-2005</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">56th district</span></td>
+<td>joseph f. koziura</td>
+<td>democratic</td>
+<td>lorain, lorain</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">57th district</span></td>
+<td>earl j. martin</td>
+<td>republican</td>
+<td>avon lake, lorain</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">58th district</span></td>
+<td>kathleen l. walcher</td>
+<td>republican</td>
+<td>norwalk, huron</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">59th district</span></td>
+<td>kenneth a. carano sr.</td>
+<td>democratic</td>
+<td>austintown, mahoning</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">60th district</span></td>
+<td>sylvester d. patton jr.</td>
+<td>democratic</td>
+<td>youngstown, mahoning</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">61st district</span></td>
+<td>john a. boccieri</td>
+<td>democratic</td>
+<td>new middletown, mahoning</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">62nd district</span></td>
+<td>jamie callender</td>
+<td>republican</td>
+<td>willowick, lake</td>
+<td>-2005</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">63rd district</span></td>
+<td>ron young</td>
+<td>republican</td>
+<td>leroy, geauga</td>
+<td>-2005</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">64th district</span></td>
+<td>daniel j. sferra</td>
+<td>democratic</td>
+<td>warren, trumbull</td>
+<td>2005-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">65th district</span></td>
+<td>sandra stabile harwood</td>
+<td>democratic</td>
+<td>niles, trumbull</td>
+<td>;</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">66th district</span></td>
+<td>jean schmidt</td>
+<td>republican</td>
+<td>miami township, clermont</td>
+<td>-2005</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">67th district</span></td>
+<td>tom raga</td>
+<td>republican</td>
+<td>deerfield township, warren</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">68th district</span></td>
+<td>kathleen chandler</td>
+<td>democratic</td>
+<td>kent, portage</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">69th district</span></td>
+<td>charles e. calvert</td>
+<td>republican</td>
+<td>medina, medina</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">70th district</span></td>
+<td>kevin dewine</td>
+<td>republican</td>
+<td>fairborn, greene</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">71st district</span></td>
+<td>david r. evans</td>
+<td>republican</td>
+<td>newark, licking</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">72nd district</span></td>
+<td>merle grace kearns</td>
+<td>republican</td>
+<td>springfield, clark</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">73rd district</span></td>
+<td>william j. hartnett</td>
+<td>democratic</td>
+<td>mansfield, richland</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">74th district</span></td>
+<td>stephen p. buehrer</td>
+<td>republican</td>
+<td>delta, fulton</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">75th district</span></td>
+<td>james m. hoops</td>
+<td>republican</td>
+<td>napoleon, henry</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">76th district</span></td>
+<td>michael e. gilb</td>
+<td>republican</td>
+<td>findlay, hancock</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">77th district</span></td>
+<td>keith l. faber</td>
+<td>republican</td>
+<td>celina, mercer</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">78th district</span></td>
+<td>derrick seaver</td>
+<td>democratic\n(switched to\nrepublican\non 11 zz18zz 2004)</td>
+<td>minster, auglaize</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">79th district</span></td>
+<td>diana m. fessler</td>
+<td>republican</td>
+<td>new carlisle, clark</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">80th district</span></td>
+<td>chris redfern</td>
+<td>democratic</td>
+<td>port clinton, ottawa</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">81st district</span></td>
+<td>jeff wagner</td>
+<td>republican</td>
+<td>sycamore, seneca</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">82nd district</span></td>
+<td>stephen reinhard</td>
+<td>republican</td>
+<td>bucyrus, crawford</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">83rd district</span></td>
+<td>anthony e. core</td>
+<td>republican</td>
+<td>rushsylvania, logan</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">84th district</span></td>
+<td>chris widener</td>
+<td>republican</td>
+<td>springfield, clark</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">85th district</span></td>
+<td>john m. schlichter</td>
+<td>republican</td>
+<td>washington court house, fayette</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">86th district</span></td>
+<td>david t. daniels</td>
+<td>republican</td>
+<td>greenfield, highland</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">87th district</span></td>
+<td>clyde evans</td>
+<td>republican</td>
+<td>rio grande, gallia</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">88th district</span></td>
+<td>tom niehaus</td>
+<td>republican</td>
+<td>new richmond, clermont</td>
+<td>-2005</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">89th district</span></td>
+<td>todd book</td>
+<td>democratic</td>
+<td>mcdermott, scioto</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">90th district</span></td>
+<td>thom collier</td>
+<td>republican</td>
+<td>mount vernon, knox</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">91st district</span></td>
+<td>larry householder</td>
+<td>republican</td>
+<td>glenford, perry</td>
+<td>-2005</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">92nd district</span></td>
+<td>jimmy stewart</td>
+<td>republican</td>
+<td>athens, athens</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">93rd district</span></td>
+<td>nancy p. hollister</td>
+<td>republican</td>
+<td>marietta, washington</td>
+<td>-2005</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">94th district</span></td>
+<td>james aslanides</td>
+<td>republican</td>
+<td>coshocton, coschocton</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">95th district</span></td>
+<td>john domenick</td>
+<td>democratic</td>
+<td>smithfield, jefferson</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">96th district</span></td>
+<td>charles a. wilson jr.</td>
+<td>democratic</td>
+<td>bridgeport, belmont</td>
+<td>-2005</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">97th district</span></td>
+<td>bob gibbs</td>
+<td>republican</td>
+<td>lakeville, holmes\n<</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">98th district</span></td>
+<td>timothy j. grendell</td>
+<td>republican</td>
+<td>chesterland, geauga</td>
+<td>-2005</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">99th district</span></td>
+<td>l. george distel</td>
+<td>democratic</td>
+<td>conneaut, ashtabula</td>
+<td></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select the 'representative' column.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>district</td>
+<td>representative</td>
+<td>party</td>
+<td>home_town__county</td>
+<td>term_of_service</td>
+</tr>
+<tr>
+<td>1st district</td>
+<td>charles r. blasdel</td>
+<td>republican</td>
+<td>east liverpool, columbiana</td>
+<td></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>representative</td>
+</tr>
+<tr>
+<td>charles r. blasdel</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['charles r. blasdel']]</h3>
+</body></html>

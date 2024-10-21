@@ -1,0 +1,66 @@
+************************************************************************************************************************
+Sample 1701 - Plan 1: Query: kiss the girl, under the sea, or what other song are all choices from the film "the little mermaid"?
+Sample 1701 - Plan 1: Groundtruth: ['"Part of Your World"']
+Sample 1701 - Plan 1: X-Original table pd: 
+     _                                 title            performer_s_  \
+0    1                   "once upon a dream"            emily osment   
+1    2                 "that's how you know"             demi lovato   
+2    3        "some day my prince will come"          ashley tisdale   
+3    4                  "colors of the wind"         vanessa hudgens   
+4    5                          "reflection"      christina aguilera   
+5    6                     "so this is love"       the cheetah girls   
+6    7                       "kiss the girl"          colbie caillat   
+7    8          "it's not just make believe"             kari kimmel   
+8    9                       "under the sea"            raven-symoné   
+9   10                     "ever ever after"           jordan pruitt   
+10  11                  "true to your heart"             keke palmer   
+11  12                  "happy working song"               amy adams   
+12  13                  "part of your world"  original broadway cast   
+13  14  "a dream is a wish your heart makes"    disney channel stars   
+
+                               film length  
+0                   sleeping beauty   3:32  
+1                         enchanted   3:12  
+2   snow white and the seven dwarfs   3:30  
+3                        pocahontas   3:58  
+4                             mulan   3:33  
+5                        cinderella   3:40  
+6                the little mermaid   3:16  
+7                    ella enchanted   3:06  
+8                the little mermaid   3:15  
+9                         enchanted   3:12  
+10                            mulan   3:22  
+11                        enchanted   2:09  
+12               the little mermaid   3:23  
+13                       cinderella   3:46  
+Sample 1701 - Plan 1: Caption: none
+Sample 1701 - Plan 1: Original table: [['_', 'title', 'performer_s_', 'film', 'length'], ['1', '"once upon a dream"', 'emily osment', 'sleeping beauty', '3:32'], ['2', '"that\'s how you know"', 'demi lovato', 'enchanted', '3:12'], ['3', '"some day my prince will come"', 'ashley tisdale', 'snow white and the seven dwarfs', '3:30'], ['4', '"colors of the wind"', 'vanessa hudgens', 'pocahontas', '3:58'], ['5', '"reflection"', 'christina aguilera', 'mulan', '3:33'], ['6', '"so this is love"', 'the cheetah girls', 'cinderella', '3:40'], ['7', '"kiss the girl"', 'colbie caillat', 'the little mermaid', '3:16'], ['8', '"it\'s not just make believe"', 'kari kimmel', 'ella enchanted', '3:06'], ['9', '"under the sea"', 'raven-symoné', 'the little mermaid', '3:15'], ['10', '"ever ever after"', 'jordan pruitt', 'enchanted', '3:12'], ['11', '"true to your heart"', 'keke palmer', 'mulan', '3:22'], ['12', '"happy working song"', 'amy adams', 'enchanted', '2:09'], ['13', '"part of your world"', 'original broadway cast', 'the little mermaid', '3:23'], ['14', '"a dream is a wish your heart makes"', 'disney channel stars', 'cinderella', '3:46']]
+########################################################################################################################
+Sample 1701 - Plan 1: Operation 1: Select rows where the 'film' column is 'the little mermaid'.
+Sample 1701 - Plan 1: Selected indices: [[8, 3], [6, 3], [12, 3]]
+Sample 1701 - Plan 1: X-Table after operation df:
+    _                 title            performer_s_                film length
+0   7       "kiss the girl"          colbie caillat  the little mermaid   3:16
+1   9       "under the sea"            raven-symoné  the little mermaid   3:15
+2  13  "part of your world"  original broadway cast  the little mermaid   3:23
+Sample 1701 - Plan 1: Table after operation: [['_', 'title', 'performer_s_', 'film', 'length'], [7, '"kiss the girl"', 'colbie caillat', 'the little mermaid', '3:16'], [9, '"under the sea"', 'raven-symoné', 'the little mermaid', '3:15'], [13, '"part of your world"', 'original broadway cast', 'the little mermaid', '3:23']]
+########################################################################################################################
+Sample 1701 - Plan 1: Operation 2: Select the 'title' column.
+Sample 1701 - Plan 1: Selected indices: []
+Sample 1701 - Plan 1: X-Table after operation df:
+                  title
+0       "kiss the girl"
+1       "under the sea"
+2  "part of your world"
+Sample 1701 - Plan 1: Table after operation: [['title'], ['"kiss the girl"'], ['"under the sea"'], ['"part of your world"']]
+########################################################################################################################
+Sample 1701 - Plan 1: Operation 3: Combine the selected titles from step 2 with the options 'kiss the girl' and 'under the sea'.
+Sample 1701 - Plan 1: Selected indices: []
+Sample 1701 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [title]
+Index: []
+Sample 1701 - Plan 1: Table after operation: [['title']]
+Fall-back: TRUE
+Answer from plan 1: [['kiss the girl', 'under the sea', 'part of your world']]
+Groundtruth: ['"Part of Your World"']

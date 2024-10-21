@@ -1,0 +1,41 @@
+
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+.sql-command { background-color: #f0f0f0; padding: 10px; border-left: 4px solid #4CAF50; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> miguel zapata had the fewest number of goals with 17</h3>
+<h3>Input Table: 2008 - 09 segunda división b</h3>
+<div class="step">
+<table>
+<tr><td>goalkeeper</td><td>goals</td><td>matches</td><td>average</td><td>team</td></tr><tr><td>miguel zapata</td><td>17</td><td>28</td><td>0.61</td><td>atlético ciudad</td></tr><tr><td>rubén martínez</td><td>24</td><td>32</td><td>0.75</td><td>cartagena</td></tr><tr><td>orlando quintana</td><td>29</td><td>34</td><td>0.85</td><td>lorca deportiva</td></tr><tr><td>álvaro campos</td><td>24</td><td>28</td><td>0.86</td><td>real murcia b</td></tr><tr><td>matías garavano</td><td>26</td><td>30</td><td>0.87</td><td>mérida</td></tr>
+</table>
+</div>
+<h3>SQL Command:</h3>
+<div class="sql-command">SELECT 
+    CASE 
+        WHEN (SELECT goals FROM table_sql WHERE goalkeeper = 'miguel zapata') = 
+             (SELECT MIN(goals) FROM table_sql) 
+        THEN 'TRUE' 
+        ELSE 'FALSE' 
+    END;</div>
+<h3>Prediction: True</h3>
+</body></html>

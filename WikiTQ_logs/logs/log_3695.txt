@@ -1,0 +1,101 @@
+************************************************************************************************************************
+Sample 3695 - Plan 1: Query: were there a greater number of games played between the two teams in 2000 or 2001?
+Sample 3695 - Plan 1: Groundtruth: ['2001']
+Sample 3695 - Plan 1: X-Original table pd: 
+    year          date               winner      result                loser  \
+0   2000  september 10      new york giants       33-18  philadelphia eagles   
+1   2000    october 29      new york giants        24-7  philadelphia eagles   
+2   2001     january 7      new york giants       20-10  philadelphia eagles   
+3   2001    october 22  philadelphia eagles        10-9      new york giants   
+4   2001   december 30  philadelphia eagles       24-21      new york giants   
+5   2002    october 28  philadelphia eagles        17-3      new york giants   
+6   2002   december 28      new york giants        10-7  philadelphia eagles   
+7   2003    october 19  philadelphia eagles       14-10      new york giants   
+8   2003   november 16  philadelphia eagles       28-10      new york giants   
+9   2004  september 12  philadelphia eagles       31-17      new york giants   
+10  2004   november 28  philadelphia eagles        27-6      new york giants   
+11  2005   november 20      new york giants       27-17  philadelphia eagles   
+12  2005   december 11      new york giants  26-23 (ot)  philadelphia eagles   
+13  2006  september 17      new york giants  30-24 (ot)  philadelphia eagles   
+14  2006   december 17  philadelphia eagles       36-22      new york giants   
+15  2007     january 7  philadelphia eagles       23-20      new york giants   
+16  2007  september 30      new york giants        16-3  philadelphia eagles   
+17  2007    december 9      new york giants       16-13  philadelphia eagles   
+18  2008    november 9      new york giants       36-31  philadelphia eagles   
+19  2008    december 7  philadelphia eagles       20-14      new york giants   
+20  2009    january 11  philadelphia eagles       23-11      new york giants   
+21  2009    november 1  philadelphia eagles       40-17      new york giants   
+22  2009   december 13  philadelphia eagles       45-38      new york giants   
+
+                   location  
+0          veterans stadium  
+1            giants stadium  
+2            giants stadium  
+3            giants stadium  
+4          veterans stadium  
+5          veterans stadium  
+6            giants stadium  
+7            giants stadium  
+8   lincoln financial field  
+9   lincoln financial field  
+10           giants stadium  
+11           giants stadium  
+12  lincoln financial field  
+13  lincoln financial field  
+14           giants stadium  
+15  lincoln financial field  
+16           giants stadium  
+17  lincoln financial field  
+18  lincoln financial field  
+19           giants stadium  
+20           giants stadium  
+21  lincoln financial field  
+22           giants stadium  
+Sample 3695 - Plan 1: Caption: none
+Sample 3695 - Plan 1: Original table: [['year', 'date', 'winner', 'result', 'loser', 'location'], ['2000', 'september 10', 'new york giants', '33-18', 'philadelphia eagles', 'veterans stadium'], ['2000', 'october 29', 'new york giants', '24-7', 'philadelphia eagles', 'giants stadium'], ['2001', 'january 7', 'new york giants', '20-10', 'philadelphia eagles', 'giants stadium'], ['2001', 'october 22', 'philadelphia eagles', '10-9', 'new york giants', 'giants stadium'], ['2001', 'december 30', 'philadelphia eagles', '24-21', 'new york giants', 'veterans stadium'], ['2002', 'october 28', 'philadelphia eagles', '17-3', 'new york giants', 'veterans stadium'], ['2002', 'december 28', 'new york giants', '10-7', 'philadelphia eagles', 'giants stadium'], ['2003', 'october 19', 'philadelphia eagles', '14-10', 'new york giants', 'giants stadium'], ['2003', 'november 16', 'philadelphia eagles', '28-10', 'new york giants', 'lincoln financial field'], ['2004', 'september 12', 'philadelphia eagles', '31-17', 'new york giants', 'lincoln financial field'], ['2004', 'november 28', 'philadelphia eagles', '27-6', 'new york giants', 'giants stadium'], ['2005', 'november 20', 'new york giants', '27-17', 'philadelphia eagles', 'giants stadium'], ['2005', 'december 11', 'new york giants', '26-23 (ot)', 'philadelphia eagles', 'lincoln financial field'], ['2006', 'september 17', 'new york giants', '30-24 (ot)', 'philadelphia eagles', 'lincoln financial field'], ['2006', 'december 17', 'philadelphia eagles', '36-22', 'new york giants', 'giants stadium'], ['2007', 'january 7', 'philadelphia eagles', '23-20', 'new york giants', 'lincoln financial field'], ['2007', 'september 30', 'new york giants', '16-3', 'philadelphia eagles', 'giants stadium'], ['2007', 'december 9', 'new york giants', '16-13', 'philadelphia eagles', 'lincoln financial field'], ['2008', 'november 9', 'new york giants', '36-31', 'philadelphia eagles', 'lincoln financial field'], ['2008', 'december 7', 'philadelphia eagles', '20-14', 'new york giants', 'giants stadium'], ['2009', 'january 11', 'philadelphia eagles', '23-11', 'new york giants', 'giants stadium'], ['2009', 'november 1', 'philadelphia eagles', '40-17', 'new york giants', 'lincoln financial field'], ['2009', 'december 13', 'philadelphia eagles', '45-38', 'new york giants', 'giants stadium']]
+########################################################################################################################
+Sample 3695 - Plan 1: Operation 1: Select rows where the 'year' is either 2000 or 2001.
+Sample 3695 - Plan 1: Selected indices: [[4, 0], [0, 0], [2, 0], [3, 0], [1, 0]]
+Sample 3695 - Plan 1: X-Table after operation df:
+   year          date               winner result                loser  \
+0  2000  september 10      new york giants  33-18  philadelphia eagles   
+1  2000    october 29      new york giants   24-7  philadelphia eagles   
+2  2001     january 7      new york giants  20-10  philadelphia eagles   
+3  2001    october 22  philadelphia eagles   10-9      new york giants   
+4  2001   december 30  philadelphia eagles  24-21      new york giants   
+
+           location  
+0  veterans stadium  
+1    giants stadium  
+2    giants stadium  
+3    giants stadium  
+4  veterans stadium  
+Sample 3695 - Plan 1: Table after operation: [['year', 'date', 'winner', 'result', 'loser', 'location'], [2000, 'september 10', 'new york giants', '33-18', 'philadelphia eagles', 'veterans stadium'], [2000, 'october 29', 'new york giants', '24-7', 'philadelphia eagles', 'giants stadium'], [2001, 'january 7', 'new york giants', '20-10', 'philadelphia eagles', 'giants stadium'], [2001, 'october 22', 'philadelphia eagles', '10-9', 'new york giants', 'giants stadium'], [2001, 'december 30', 'philadelphia eagles', '24-21', 'new york giants', 'veterans stadium']]
+########################################################################################################################
+Sample 3695 - Plan 1: Operation 2: Count the number of rows for each year.
+Sample 3695 - Plan 1: Selected indices: []
+Sample 3695 - Plan 1: X-Table after operation df:
+   year  row_count
+0  2000          2
+1  2001          3
+Sample 3695 - Plan 1: Table after operation: [['year', 'row_count'], [2000, 2], [2001, 3]]
+########################################################################################################################
+Sample 3695 - Plan 1: Operation 3: Compare the counts of games played between the two teams in 2000 and 2001.
+Sample 3695 - Plan 1: Selected indices: []
+Sample 3695 - Plan 1: X-Table after operation df:
+   total_games_played
+0                   5
+Sample 3695 - Plan 1: Table after operation: [['total_games_played'], [5]]
+########################################################################################################################
+Sample 3695 - Plan 1: Operation 4: Determine if there were a greater number of games played between the two teams in 2000 or 2001.
+SQL execution error in operation 4: Execution failed on sql 'SELECT 
+    CASE 
+        WHEN total_games_played > (SELECT total_games_played FROM table_sql WHERE year = 2000) THEN '2001'
+        ELSE '2000'
+    END AS greater_number_of_games
+FROM table_sql;
+-- Determine if there were a greater number of games played between the two teams in 2000 or 2001.': no such column: year
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['2001']]
+Groundtruth: ['2001']

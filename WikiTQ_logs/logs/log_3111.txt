@@ -1,0 +1,66 @@
+************************************************************************************************************************
+Sample 3111 - Plan 1: Query: what was the first year a competition was held in france?
+Sample 3111 - Plan 1: Groundtruth: ['1997']
+Sample 3111 - Plan 1: X-Original table pd: 
+    year                 competition                        venue position  \
+0   1997  world indoor championships                paris, france      5th   
+1   1997   usa outdoor championships  indianapolis, united states      1st   
+2   1998            grand prix final               moscow, russia      2nd   
+3   1998    usa indoor championships                                   1st   
+4   1999  world indoor championships              maebashi, japan      6th   
+5   2000               olympic games            sydney, australia      3rd   
+6   2000            grand prix final                  doha, qatar      4th   
+7   2002            grand prix final                paris, france      7th   
+8   2002    usa indoor championships                                   1st   
+9   2003  world indoor championships          birmingham, england      3rd   
+10  2003       world athletics final                       monaco      6th   
+11  2004               olympic games               athens, greece      3rd   
+
+            event  
+0    60 m hurdles  
+1   100 m hurdles  
+2   100 m hurdles  
+3    60 m hurdles  
+4    60 m hurdles  
+5   100 m hurdles  
+6   100 m hurdles  
+7   100 m hurdles  
+8    60 m hurdles  
+9    60 m hurdles  
+10  100 m hurdles  
+11  100 m hurdles  
+Sample 3111 - Plan 1: Caption: none
+Sample 3111 - Plan 1: Original table: [['year', 'competition', 'venue', 'position', 'event'], ['1997', 'world indoor championships', 'paris, france', '5th', '60 m hurdles'], ['1997', 'usa outdoor championships', 'indianapolis, united states', '1st', '100 m hurdles'], ['1998', 'grand prix final', 'moscow, russia', '2nd', '100 m hurdles'], ['1998', 'usa indoor championships', '', '1st', '60 m hurdles'], ['1999', 'world indoor championships', 'maebashi, japan', '6th', '60 m hurdles'], ['2000', 'olympic games', 'sydney, australia', '3rd', '100 m hurdles'], ['2000', 'grand prix final', 'doha, qatar', '4th', '100 m hurdles'], ['2002', 'grand prix final', 'paris, france', '7th', '100 m hurdles'], ['2002', 'usa indoor championships', '', '1st', '60 m hurdles'], ['2003', 'world indoor championships', 'birmingham, england', '3rd', '60 m hurdles'], ['2003', 'world athletics final', 'monaco', '6th', '100 m hurdles'], ['2004', 'olympic games', 'athens, greece', '3rd', '100 m hurdles']]
+########################################################################################################################
+Sample 3111 - Plan 1: Operation 1: Select rows where the 'venue' column contains the word 'france'.
+Sample 3111 - Plan 1: Selected indices: [[0, 2], [7, 2]]
+Sample 3111 - Plan 1: X-Table after operation df:
+   year                 competition          venue position          event
+0  1997  world indoor championships  paris, france      5th   60 m hurdles
+1  2002            grand prix final  paris, france      7th  100 m hurdles
+Sample 3111 - Plan 1: Table after operation: [['year', 'competition', 'venue', 'position', 'event'], [1997, 'world indoor championships', 'paris, france', '5th', '60 m hurdles'], [2002, 'grand prix final', 'paris, france', '7th', '100 m hurdles']]
+########################################################################################################################
+Sample 3111 - Plan 1: Operation 2: Order the table by the 'year' column in ascending order.
+Sample 3111 - Plan 1: Selected indices: [[1, 0], [0, 0]]
+Sample 3111 - Plan 1: X-Table after operation df:
+   year                 competition          venue position          event
+0  1997  world indoor championships  paris, france      5th   60 m hurdles
+1  2002            grand prix final  paris, france      7th  100 m hurdles
+Sample 3111 - Plan 1: Table after operation: [['year', 'competition', 'venue', 'position', 'event'], [1997, 'world indoor championships', 'paris, france', '5th', '60 m hurdles'], [2002, 'grand prix final', 'paris, france', '7th', '100 m hurdles']]
+########################################################################################################################
+Sample 3111 - Plan 1: Operation 3: Select the first row.
+Sample 3111 - Plan 1: Selected indices: []
+Sample 3111 - Plan 1: X-Table after operation df:
+   year                 competition          venue position         event
+0  1997  world indoor championships  paris, france      5th  60 m hurdles
+Sample 3111 - Plan 1: Table after operation: [['year', 'competition', 'venue', 'position', 'event'], [1997, 'world indoor championships', 'paris, france', '5th', '60 m hurdles']]
+########################################################################################################################
+Sample 3111 - Plan 1: Operation 4: Select the 'year' column.
+Sample 3111 - Plan 1: Selected indices: []
+Sample 3111 - Plan 1: X-Table after operation df:
+   year
+0  1997
+Sample 3111 - Plan 1: Table after operation: [['year'], [1997]]
+Fall-back: FALSE
+Answer from plan 1: [[1997]]
+Groundtruth: ['1997']

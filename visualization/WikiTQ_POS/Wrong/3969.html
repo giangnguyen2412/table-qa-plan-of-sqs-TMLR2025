@@ -1,0 +1,287 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which box has the most in box 5 between all three decimals?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select the 'decimal32', 'decimal64', and 'decimal128' columns from the Table.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>decimal32</td>
+<td>decimal64</td>
+<td>decimal128</td>
+<td>decimal_32k_</td>
+<td>format</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>sign field (bits)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>combination field (bits)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>8</td>
+<td>12</td>
+<td>w = 2×k + 4</td>
+<td>exponent continuation field (bits)</td>
+</tr>
+<tr>
+<td>20</td>
+<td>50</td>
+<td>110</td>
+<td>t = 30×k−10</td>
+<td>coefficient continuation field (bits)</td>
+</tr>
+<tr>
+<td>32</td>
+<td>64</td>
+<td>128</td>
+<td>32×k</td>
+<td>total size (bits)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>16</td>
+<td>34</td>
+<td>p = 3×t/10+1 = 9×k−2</td>
+<td>coefficient size (decimal digits)</td>
+</tr>
+<tr>
+<td>192</td>
+<td>768</td>
+<td>12288</td>
+<td>3×2w = 48×4k</td>
+<td>exponent range</td>
+</tr>
+<tr>
+<td>96</td>
+<td>384</td>
+<td>6144</td>
+<td>emax = 3×2w−1</td>
+<td>largest value is 9.99...×10emax</td>
+</tr>
+<tr>
+<td>−95</td>
+<td>−383</td>
+<td>−6143</td>
+<td>emin = 1−emax</td>
+<td>smallest normalized value is 1.00...×10emin</td>
+</tr>
+<tr>
+<td>−101</td>
+<td>−398</td>
+<td>−6176</td>
+<td>etiny = 2−p−emax</td>
+<td>smallest non-zero value is 1×10etiny</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Compare the values in each row of the 'decimal32' column with the corresponding values in the 'decimal64' and 'decimal128' columns.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>decimal32</td>
+<td>decimal64</td>
+<td>decimal128</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">5</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">12</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">50</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">110</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">32</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">64</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">128</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">34</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">192</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">768</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">12288</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">96</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">384</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">6144</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">−95</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">−383</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">−6143</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">−101</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">−398</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">−6176</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: For each row, count the number of times the value in the 'decimal32' column is greater than or equal to the values in the 'decimal64' and 'decimal128' columns.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>decimal32</td>
+<td>decimal64</td>
+<td>decimal128</td>
+<td>comparison_result</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>Equal</td>
+</tr>
+<tr>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>Equal</td>
+</tr>
+<tr>
+<td>6</td>
+<td>8</td>
+<td>12</td>
+<td>Less than</td>
+</tr>
+<tr>
+<td>20</td>
+<td>50</td>
+<td>110</td>
+<td>Less than</td>
+</tr>
+<tr>
+<td>32</td>
+<td>64</td>
+<td>128</td>
+<td>Less than</td>
+</tr>
+<tr>
+<td>7</td>
+<td>16</td>
+<td>34</td>
+<td>Less than</td>
+</tr>
+<tr>
+<td>192</td>
+<td>768</td>
+<td>12288</td>
+<td>Less than</td>
+</tr>
+<tr>
+<td>96</td>
+<td>384</td>
+<td>6144</td>
+<td>Less than</td>
+</tr>
+<tr>
+<td>−95</td>
+<td>−383</td>
+<td>−6143</td>
+<td>Equal</td>
+</tr>
+<tr>
+<td>−101</td>
+<td>−398</td>
+<td>−6176</td>
+<td>Equal</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Select the row with the highest count.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>count</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">4</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 5: Select the corresponding box in the 'format' column.</div>
+<div id="step-3" class="content">
+<table>
+<tr>
+<td>count</td>
+</tr>
+<tr>
+<td>4</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>format</td>
+</tr>
+<tr>
+<td>4</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[4]]</h3>
+</body></html>

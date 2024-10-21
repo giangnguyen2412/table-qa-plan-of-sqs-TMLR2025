@@ -1,0 +1,64 @@
+************************************************************************************************************************
+Sample 259 - Plan 1: Query: which tonga is the only one to feature chicken with chicks?
+Sample 259 - Plan 1: Groundtruth: ['5 seniti']
+Sample 259 - Plan 1: X-Original table pd: 
+       value  diameter  composition c_1975_1979_nobverse  \
+0   1 seniti     18 mm       bronze                maize   
+1   2 seniti     21 mm       bronze              marrows   
+2   5 seniti     19 mm  cupronickel  chicken with chicks   
+3  10 seniti     24 mm  cupronickel                 king   
+4  20 seniti     29 mm  cupronickel                 king   
+5  50 seniti  32–33 mm  cupronickel                 king   
+
+                                c_1975_1979_nreverse     c_1981__nobverse  \
+0                                                pig                maize   
+1  planned families food for all, six people hold...                 taro   
+2                                            bananas  chicken with chicks   
+3                                     grazing cattle                 king   
+4                                      bees and hive                 king   
+5                             fishes around a vortex                 king   
+
+                                    c_1981__nreverse  
+0                                            vanilla  
+1  planned families food for all, six people hold...  
+2                                           coconuts  
+3                                    bananas on tree  
+4                                               yams  
+5                                           tomatoes  
+Sample 259 - Plan 1: Caption: none
+Sample 259 - Plan 1: Original table: [['value', 'diameter', 'composition', 'c_1975_1979_nobverse', 'c_1975_1979_nreverse', 'c_1981__nobverse', 'c_1981__nreverse'], ['1 seniti', '18\xa0mm', 'bronze', 'maize', 'pig', 'maize', 'vanilla'], ['2 seniti', '21\xa0mm', 'bronze', 'marrows', 'planned families food for all, six people holding hands', 'taro', 'planned families food for all, six people holding hands'], ['5 seniti', '19\xa0mm', 'cupronickel', 'chicken with chicks', 'bananas', 'chicken with chicks', 'coconuts'], ['10 seniti', '24\xa0mm', 'cupronickel', 'king', 'grazing cattle', 'king', 'bananas on tree'], ['20 seniti', '29\xa0mm', 'cupronickel', 'king', 'bees and hive', 'king', 'yams'], ['50 seniti', '32–33\xa0mm', 'cupronickel', 'king', 'fishes around a vortex', 'king', 'tomatoes']]
+########################################################################################################################
+Sample 259 - Plan 1: Operation 1: Select rows where the 'composition' column is 'bronze'.
+Sample 259 - Plan 1: Selected indices: [[0, 2], [1, 2]]
+Sample 259 - Plan 1: X-Table after operation df:
+      value diameter composition c_1975_1979_nobverse  \
+0  1 seniti    18 mm      bronze                maize   
+1  2 seniti    21 mm      bronze              marrows   
+
+                                c_1975_1979_nreverse c_1981__nobverse  \
+0                                                pig            maize   
+1  planned families food for all, six people hold...             taro   
+
+                                    c_1981__nreverse  
+0                                            vanilla  
+1  planned families food for all, six people hold...  
+Sample 259 - Plan 1: Table after operation: [['value', 'diameter', 'composition', 'c_1975_1979_nobverse', 'c_1975_1979_nreverse', 'c_1981__nobverse', 'c_1981__nreverse'], ['1 seniti', '18\xa0mm', 'bronze', 'maize', 'pig', 'maize', 'vanilla'], ['2 seniti', '21\xa0mm', 'bronze', 'marrows', 'planned families food for all, six people holding hands', 'taro', 'planned families food for all, six people holding hands']]
+########################################################################################################################
+Sample 259 - Plan 1: Operation 2: Select rows where the 'c_1975_1979_nobverse' column is 'chicken with chicks'.
+Sample 259 - Plan 1: Selected indices: []
+Sample 259 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [value, diameter, composition, c_1975_1979_nobverse, c_1975_1979_nreverse, c_1981__nobverse, c_1981__nreverse]
+Index: []
+Sample 259 - Plan 1: Table after operation: [['value', 'diameter', 'composition', 'c_1975_1979_nobverse', 'c_1975_1979_nreverse', 'c_1981__nobverse', 'c_1981__nreverse']]
+########################################################################################################################
+Sample 259 - Plan 1: Operation 3: Select the 'tonga' column.
+Sample 259 - Plan 1: Selected indices: []
+Sample 259 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [tonga]
+Index: []
+Sample 259 - Plan 1: Table after operation: [['tonga']]
+Fall-back: TRUE
+Answer from plan 1: [['5 seniti']]
+Groundtruth: ['5 seniti']

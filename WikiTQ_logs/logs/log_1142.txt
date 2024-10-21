@@ -1,0 +1,92 @@
+************************************************************************************************************************
+Sample 1142 - Plan 1: Query: what was the rams' largest margin of victory during the season?
+Sample 1142 - Plan 1: Groundtruth: ['35']
+Sample 1142 - Plan 1: X-Original table pd: 
+    week                date                 opponent        result record  \
+0      1   september 9, 2001   at philadelphia eagles  w 20–17 (ot)    1–0   
+1      2  september 23, 2001   at san francisco 49ers       w 30–26    2–0   
+2      3  september 30, 2001           miami dolphins       w 42–10    3–0   
+3      4     october 8, 2001         at detroit lions        w 35–0    4–0   
+4      5    october 14, 2001          new york giants       w 15–14    5–0   
+5      6    october 21, 2001         at new york jets       w 34–14    6–0   
+6      7    october 28, 2001       new orleans saints       l 34–31    6–1   
+7      8                 bye                      bye           bye    bye   
+8      9   november 11, 2001        carolina panthers       w 48–14    7–1   
+9     10   november 18, 2001  at new england patriots       w 24–17    8–1   
+10    11   november 26, 2001     tampa bay buccaneers       l 24–17    8–2   
+11    12    december 2, 2001       at atlanta falcons        w 35–6    9–2   
+12    13    december 9, 2001      san francisco 49ers       w 27–14   10–2   
+13    14   december 17, 2001    at new orleans saints       w 34–21   11–2   
+14    15   december 23, 2001     at carolina panthers       w 38–32   12–2   
+15    16   december 30, 2001       indianapolis colts       w 42–17   13–2   
+16    17     january 6, 2002          atlanta falcons       w 31–13   14–2   
+
+        tv_time attendance  
+0    fox 3:15pm     66,243  
+1    fox 3:15pm     67,536  
+2   cbs 12:00pm     66,046  
+3    abc 8:00pm     77,765  
+4   fox 12:00pm     65,992  
+5   fox 12:00pm     78,766  
+6   fox 12:00pm     66,189  
+7           bye        bye  
+8   fox 12:00pm     66,069  
+9   espn 7:30pm     60,292  
+10   abc 8:00pm     66,198  
+11   fox 3:15pm     60,787  
+12  fox 12:00pm     66,218  
+13   abc 8:00pm     70,332  
+14  fox 12:00pm     72,438  
+15  cbs 12:00pm     66,084  
+16   fox 3:15pm     66,033  
+Sample 1142 - Plan 1: Caption: none
+Sample 1142 - Plan 1: Original table: [['week', 'date', 'opponent', 'result', 'record', 'tv_time', 'attendance'], ['1', 'september 9, 2001', 'at philadelphia eagles', 'w 20–17 (ot)', '1–0', 'fox 3:15pm', '66,243'], ['2', 'september 23, 2001', 'at san francisco 49ers', 'w 30–26', '2–0', 'fox 3:15pm', '67,536'], ['3', 'september 30, 2001', 'miami dolphins', 'w 42–10', '3–0', 'cbs 12:00pm', '66,046'], ['4', 'october 8, 2001', 'at detroit lions', 'w 35–0', '4–0', 'abc 8:00pm', '77,765'], ['5', 'october 14, 2001', 'new york giants', 'w 15–14', '5–0', 'fox 12:00pm', '65,992'], ['6', 'october 21, 2001', 'at new york jets', 'w 34–14', '6–0', 'fox 12:00pm', '78,766'], ['7', 'october 28, 2001', 'new orleans saints', 'l 34–31', '6–1', 'fox 12:00pm', '66,189'], ['8', 'bye', 'bye', 'bye', 'bye', 'bye', 'bye'], ['9', 'november 11, 2001', 'carolina panthers', 'w 48–14', '7–1', 'fox 12:00pm', '66,069'], ['10', 'november 18, 2001', 'at new england patriots', 'w 24–17', '8–1', 'espn 7:30pm', '60,292'], ['11', 'november 26, 2001', 'tampa bay buccaneers', 'l 24–17', '8–2', 'abc 8:00pm', '66,198'], ['12', 'december 2, 2001', 'at atlanta falcons', 'w 35–6', '9–2', 'fox 3:15pm', '60,787'], ['13', 'december 9, 2001', 'san francisco 49ers', 'w 27–14', '10–2', 'fox 12:00pm', '66,218'], ['14', 'december 17, 2001', 'at new orleans saints', 'w 34–21', '11–2', 'abc 8:00pm', '70,332'], ['15', 'december 23, 2001', 'at carolina panthers', 'w 38–32', '12–2', 'fox 12:00pm', '72,438'], ['16', 'december 30, 2001', 'indianapolis colts', 'w 42–17', '13–2', 'cbs 12:00pm', '66,084'], ['17', 'january 6, 2002', 'atlanta falcons', 'w 31–13', '14–2', 'fox 3:15pm', '66,033']]
+########################################################################################################################
+Sample 1142 - Plan 1: Operation 1: Extract the margin of victory from the 'result' column and add a new column 'margin' to the existing table.
+Sample 1142 - Plan 1: Selected indices: [[0, 3], [1, 3], [2, 3], [3, 3], [4, 3], [5, 3], [6, 3], [7, 3], [8, 3], [9, 3], [10, 3], [11, 3], [12, 3], [13, 3], [14, 3], [15, 3], [16, 3]]
+Sample 1142 - Plan 1: X-Table after operation df:
+    week                date                 opponent        result record  \
+0      1   september 9, 2001   at philadelphia eagles  w 20–17 (ot)    1–0   
+1      2  september 23, 2001   at san francisco 49ers       w 30–26    2–0   
+2      3  september 30, 2001           miami dolphins       w 42–10    3–0   
+3      4     october 8, 2001         at detroit lions        w 35–0    4–0   
+4      5    october 14, 2001          new york giants       w 15–14    5–0   
+5      6    october 21, 2001         at new york jets       w 34–14    6–0   
+6      7    october 28, 2001       new orleans saints       l 34–31    6–1   
+7      8                 bye                      bye           bye    bye   
+8      9   november 11, 2001        carolina panthers       w 48–14    7–1   
+9     10   november 18, 2001  at new england patriots       w 24–17    8–1   
+10    11   november 26, 2001     tampa bay buccaneers       l 24–17    8–2   
+11    12    december 2, 2001       at atlanta falcons        w 35–6    9–2   
+12    13    december 9, 2001      san francisco 49ers       w 27–14   10–2   
+13    14   december 17, 2001    at new orleans saints       w 34–21   11–2   
+14    15   december 23, 2001     at carolina panthers       w 38–32   12–2   
+15    16   december 30, 2001       indianapolis colts       w 42–17   13–2   
+16    17     january 6, 2002          atlanta falcons       w 31–13   14–2   
+
+        tv_time attendance  margin  
+0    fox 3:15pm     66,243     -13  
+1    fox 3:15pm     67,536     -24  
+2   cbs 12:00pm     66,046     -42  
+3    abc 8:00pm     77,765     -35  
+4   fox 12:00pm     65,992     -11  
+5   fox 12:00pm     78,766     -30  
+6   fox 12:00pm     66,189     -33  
+7           bye        bye       0  
+8   fox 12:00pm     66,069     -44  
+9   espn 7:30pm     60,292     -17  
+10   abc 8:00pm     66,198     -17  
+11   fox 3:15pm     60,787     -35  
+12  fox 12:00pm     66,218     -23  
+13   abc 8:00pm     70,332     -33  
+14  fox 12:00pm     72,438     -36  
+15  cbs 12:00pm     66,084     -35  
+16   fox 3:15pm     66,033     -28  
+Sample 1142 - Plan 1: Table after operation: [['week', 'date', 'opponent', 'result', 'record', 'tv_time', 'attendance', 'margin'], [1, 'september 9, 2001', 'at philadelphia eagles', 'w 20–17 (ot)', '1–0', 'fox 3:15pm', '66,243', -13], [2, 'september 23, 2001', 'at san francisco 49ers', 'w 30–26', '2–0', 'fox 3:15pm', '67,536', -24], [3, 'september 30, 2001', 'miami dolphins', 'w 42–10', '3–0', 'cbs 12:00pm', '66,046', -42], [4, 'october 8, 2001', 'at detroit lions', 'w 35–0', '4–0', 'abc 8:00pm', '77,765', -35], [5, 'october 14, 2001', 'new york giants', 'w 15–14', '5–0', 'fox 12:00pm', '65,992', -11], [6, 'october 21, 2001', 'at new york jets', 'w 34–14', '6–0', 'fox 12:00pm', '78,766', -30], [7, 'october 28, 2001', 'new orleans saints', 'l 34–31', '6–1', 'fox 12:00pm', '66,189', -33], [8, 'bye', 'bye', 'bye', 'bye', 'bye', 'bye', 0], [9, 'november 11, 2001', 'carolina panthers', 'w 48–14', '7–1', 'fox 12:00pm', '66,069', -44], [10, 'november 18, 2001', 'at new england patriots', 'w 24–17', '8–1', 'espn 7:30pm', '60,292', -17], [11, 'november 26, 2001', 'tampa bay buccaneers', 'l 24–17', '8–2', 'abc 8:00pm', '66,198', -17], [12, 'december 2, 2001', 'at atlanta falcons', 'w 35–6', '9–2', 'fox 3:15pm', '60,787', -35], [13, 'december 9, 2001', 'san francisco 49ers', 'w 27–14', '10–2', 'fox 12:00pm', '66,218', -23], [14, 'december 17, 2001', 'at new orleans saints', 'w 34–21', '11–2', 'abc 8:00pm', '70,332', -33], [15, 'december 23, 2001', 'at carolina panthers', 'w 38–32', '12–2', 'fox 12:00pm', '72,438', -36], [16, 'december 30, 2001', 'indianapolis colts', 'w 42–17', '13–2', 'cbs 12:00pm', '66,084', -35], [17, 'january 6, 2002', 'atlanta falcons', 'w 31–13', '14–2', 'fox 3:15pm', '66,033', -28]]
+########################################################################################################################
+Sample 1142 - Plan 1: Operation 2: Remove any non-numeric characters from the 'margin' column.
+SQL execution error in operation 2: Execution failed on sql 'Write a SQL command that: Remove any non-numeric characters from the 'margin' column.': near "Write": syntax error
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['35–0']]
+Groundtruth: ['35']

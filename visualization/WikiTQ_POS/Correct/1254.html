@@ -1,0 +1,400 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> compare different types of fuel and tell which is most used.</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select the 'fuel_propulsion' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>manufacturer</td>
+<td>model</td>
+<td>length__feet_</td>
+<td>quantity</td>
+<td>fleet_series</td>
+<td>fuel_propulsion</td>
+<td>powertrain</td>
+</tr>
+<tr>
+<td>1996</td>
+<td>new flyer</td>
+<td>d60</td>
+<td>60 (articulated)</td>
+<td>30</td>
+<td>1901-1930*</td>
+<td>diesel</td>
+<td>detroit diesel series 50\nallison b400r</td>
+</tr>
+<tr>
+<td>1998</td>
+<td>nabi</td>
+<td>416</td>
+<td>40</td>
+<td>133</td>
+<td>3001-3067, 3101-3166*</td>
+<td>diesel</td>
+<td>cummins m11e\nallison b400r</td>
+</tr>
+<tr>
+<td>1999</td>
+<td>nabi</td>
+<td>40-lfw</td>
+<td>40</td>
+<td>44</td>
+<td>4001-4044</td>
+<td>diesel</td>
+<td></td>
+</tr>
+<tr>
+<td>2000</td>
+<td>nabi</td>
+<td>40-lfw</td>
+<td>40</td>
+<td>23</td>
+<td>7201-7223</td>
+<td>diesel</td>
+<td>cummins ism\nallison b400r</td>
+</tr>
+<tr>
+<td>2000</td>
+<td>mci</td>
+<td>d4500</td>
+<td>45</td>
+<td>30</td>
+<td>6001-6030</td>
+<td>diesel</td>
+<td></td>
+</tr>
+<tr>
+<td>2001</td>
+<td>mci</td>
+<td>d4500</td>
+<td>45</td>
+<td>10</td>
+<td>6031-6040</td>
+<td>diesel</td>
+<td></td>
+</tr>
+<tr>
+<td>2003</td>
+<td>mci</td>
+<td>d4500</td>
+<td>45</td>
+<td>39</td>
+<td>6041-6079</td>
+<td>diesel</td>
+<td></td>
+</tr>
+<tr>
+<td>2003</td>
+<td>nabi</td>
+<td>40-lfw</td>
+<td>40</td>
+<td>46</td>
+<td>4051-4090</td>
+<td>diesel</td>
+<td>cummins isl\nallison b400r</td>
+</tr>
+<tr>
+<td>2003</td>
+<td>van hool</td>
+<td>a330</td>
+<td>40</td>
+<td>110</td>
+<td>1001-1110</td>
+<td>diesel</td>
+<td>cummins ism\nvoith d864.3e</td>
+</tr>
+<tr>
+<td>2003</td>
+<td>van hool</td>
+<td>ag300</td>
+<td>60</td>
+<td>57</td>
+<td>2001-2057</td>
+<td>diesel</td>
+<td>cummins ism\nvoith d864.3e</td>
+</tr>
+<tr>
+<td>2005</td>
+<td>van hool</td>
+<td>a300fc</td>
+<td>40</td>
+<td>3</td>
+<td>fc1-fc3</td>
+<td>hydrogen</td>
+<td></td>
+</tr>
+<tr>
+<td>2006</td>
+<td>van hool</td>
+<td>a300k</td>
+<td>30</td>
+<td>50</td>
+<td>5001-5050</td>
+<td>diesel</td>
+<td>cummins isb\nvoith d864.3e</td>
+</tr>
+<tr>
+<td>2007</td>
+<td>van hool</td>
+<td>ag300</td>
+<td>60</td>
+<td>10</td>
+<td>2101-2110</td>
+<td>diesel</td>
+<td>cummins isl\nvoith d864.3e</td>
+</tr>
+<tr>
+<td>2007</td>
+<td>van hool</td>
+<td>ag300</td>
+<td>60</td>
+<td>15</td>
+<td>2151-2165</td>
+<td>diesel</td>
+<td>cummins ism\nvoith d864.3e</td>
+</tr>
+<tr>
+<td>2008</td>
+<td>van hool</td>
+<td>a300l</td>
+<td>40</td>
+<td>27</td>
+<td>1201-1227</td>
+<td>diesel</td>
+<td>cummins isl\nvoith d864.5</td>
+</tr>
+<tr>
+<td>2008</td>
+<td>van hool</td>
+<td>a300k</td>
+<td>30</td>
+<td>1</td>
+<td>5099</td>
+<td>diesel-electric hybrid</td>
+<td></td>
+</tr>
+<tr>
+<td>2008</td>
+<td>van hool</td>
+<td>a300k</td>
+<td>30</td>
+<td>39</td>
+<td>5101-5139</td>
+<td>diesel</td>
+<td>cummins isb\nvoith d854.5</td>
+</tr>
+<tr>
+<td>2010</td>
+<td>van hool</td>
+<td>ag300</td>
+<td>60</td>
+<td>9</td>
+<td>2191-2199</td>
+<td>diesel</td>
+<td>cummins isl\nvoith d864.5</td>
+</tr>
+<tr>
+<td>2010</td>
+<td>van hool</td>
+<td>a300l fc</td>
+<td>40</td>
+<td>12</td>
+<td>fc4-fc16</td>
+<td>hydrogen</td>
+<td></td>
+</tr>
+<tr>
+<td>2013</td>
+<td>gillig</td>
+<td>low-floor advantage</td>
+<td>40</td>
+<td>65</td>
+<td>1301-1365</td>
+<td>diesel</td>
+<td>cummins isl 280 hp \nallison b400 6-speed</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>new flyer</td>
+<td>xcelsior d60</td>
+<td>60</td>
+<td>23</td>
+<td>2201-2223</td>
+<td>diesel</td>
+<td>cummins isl 330 hp\nallison b400 6-speed</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>gillig</td>
+<td>low-floor advantage</td>
+<td>40</td>
+<td>55</td>
+<td>6101-6155</td>
+<td>diesel</td>
+<td>cummins isl 280 hp\nallison b400 6-speed</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Count the occurrences of each fuel type.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>fuel_propulsion</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">diesel</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">diesel</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">diesel</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">diesel</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">diesel</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">diesel</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">diesel</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">diesel</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">diesel</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">diesel</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">hydrogen</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">diesel</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">diesel</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">diesel</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">diesel</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">diesel-electric hybrid</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">diesel</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">diesel</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">hydrogen</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">diesel</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">diesel</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">diesel</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Order the table by the count of fuel types in descending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>fuel_propulsion</td>
+<td>count</td>
+</tr>
+<tr>
+<td>diesel</td>
+<td><span class="highlighted-cell" title="Used in transformation">19</span></td>
+</tr>
+<tr>
+<td>diesel-electric hybrid</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>hydrogen</td>
+<td><span class="highlighted-cell" title="Used in transformation">2</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Select the fuel type with the highest count.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>fuel_propulsion</td>
+<td>count</td>
+</tr>
+<tr>
+<td>diesel</td>
+<td>19</td>
+</tr>
+<tr>
+<td>hydrogen</td>
+<td>2</td>
+</tr>
+<tr>
+<td>diesel-electric hybrid</td>
+<td>1</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>fuel_propulsion</td>
+</tr>
+<tr>
+<td>diesel</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['diesel']]</h3>
+</body></html>

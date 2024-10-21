@@ -1,0 +1,67 @@
+************************************************************************************************************************
+Sample 1165 - Plan 1: Query: where was the game played after the game played at rfk stadium?
+Sample 1165 - Plan 1: Groundtruth: ['Texas Stadium']
+Sample 1165 - Plan 1: X-Original table pd: 
+    week                date                opponent   result  \
+0      1   september 8, 1986         new york giants  w 31–28   
+1      2  september 14, 1986        at detroit lions   w 31–7   
+2      3  september 21, 1986         atlanta falcons  l 35–37   
+3      4  september 29, 1986  at st. louis cardinals   w 31–7   
+4      5     october 5, 1986       at denver broncos  l 14–29   
+5      6    october 12, 1986     washington redskins   w 30–6   
+6      7    october 19, 1986  at philadelphia eagles  w 17–14   
+7      8    october 26, 1986     st. louis cardinals   w 37–6   
+8      9    november 2, 1986      at new york giants  l 14–17   
+9     10    november 9, 1986     los angeles raiders  l 13–17   
+10    11   november 16, 1986   at san diego chargers  w 24–21   
+11    12   november 23, 1986  at washington redskins  l 14–41   
+12    13   november 27, 1986        seattle seahawks  l 14–31   
+13    14    december 7, 1986     at los angeles rams  l 10–29   
+14    15   december 14, 1986     philadelphia eagles  l 21–23   
+15    16   december 21, 1986           chicago bears  l 10–24   
+
+                 game_site nfl_recap attendance  
+0            texas stadium       [1]     59,804  
+1       pontiac silverdome       [2]     73,812  
+2            texas stadium       [3]     62,880  
+3   busch memorial stadium       [4]     49,077  
+4        mile high stadium       [5]     76,082  
+5            texas stadium       [6]     63,264  
+6         veterans stadium       [7]     68,572  
+7            texas stadium       [8]     60,756  
+8           giants stadium       [9]     74,871  
+9            texas stadium      [10]     61,706  
+10     jack murphy stadium      [11]     55,622  
+11             rfk stadium      [12]     55,642  
+12           texas stadium      [13]     58,020  
+13         anaheim stadium      [14]     64,949  
+14           texas stadium      [15]     46,117  
+15           texas stadium      [16]     57,256  
+Sample 1165 - Plan 1: Caption: none
+Sample 1165 - Plan 1: Original table: [['week', 'date', 'opponent', 'result', 'game_site', 'nfl_recap', 'attendance'], ['1', 'september 8, 1986', 'new york giants', 'w 31–28', 'texas stadium', '[1]', '59,804'], ['2', 'september 14, 1986', 'at detroit lions', 'w 31–7', 'pontiac silverdome', '[2]', '73,812'], ['3', 'september 21, 1986', 'atlanta falcons', 'l 35–37', 'texas stadium', '[3]', '62,880'], ['4', 'september 29, 1986', 'at st. louis cardinals', 'w 31–7', 'busch memorial stadium', '[4]', '49,077'], ['5', 'october 5, 1986', 'at denver broncos', 'l 14–29', 'mile high stadium', '[5]', '76,082'], ['6', 'october 12, 1986', 'washington redskins', 'w 30–6', 'texas stadium', '[6]', '63,264'], ['7', 'october 19, 1986', 'at philadelphia eagles', 'w 17–14', 'veterans stadium', '[7]', '68,572'], ['8', 'october 26, 1986', 'st. louis cardinals', 'w 37–6', 'texas stadium', '[8]', '60,756'], ['9', 'november 2, 1986', 'at new york giants', 'l 14–17', 'giants stadium', '[9]', '74,871'], ['10', 'november 9, 1986', 'los angeles raiders', 'l 13–17', 'texas stadium', '[10]', '61,706'], ['11', 'november 16, 1986', 'at san diego chargers', 'w 24–21', 'jack murphy stadium', '[11]', '55,622'], ['12', 'november 23, 1986', 'at washington redskins', 'l 14–41', 'rfk stadium', '[12]', '55,642'], ['13', 'november 27, 1986', 'seattle seahawks', 'l 14–31', 'texas stadium', '[13]', '58,020'], ['14', 'december 7, 1986', 'at los angeles rams', 'l 10–29', 'anaheim stadium', '[14]', '64,949'], ['15', 'december 14, 1986', 'philadelphia eagles', 'l 21–23', 'texas stadium', '[15]', '46,117'], ['16', 'december 21, 1986', 'chicago bears', 'l 10–24', 'texas stadium', '[16]', '57,256']]
+########################################################################################################################
+Sample 1165 - Plan 1: Operation 1: Select rows where the 'game_site' is 'rfk stadium'.
+Sample 1165 - Plan 1: Selected indices: [[11, 4]]
+Sample 1165 - Plan 1: X-Table after operation df:
+   week               date                opponent   result    game_site  \
+0    12  november 23, 1986  at washington redskins  l 14–41  rfk stadium   
+
+  nfl_recap attendance  
+0      [12]     55,642  
+Sample 1165 - Plan 1: Table after operation: [['week', 'date', 'opponent', 'result', 'game_site', 'nfl_recap', 'attendance'], [12, 'november 23, 1986', 'at washington redskins', 'l 14–41', 'rfk stadium', '[12]', '55,642']]
+########################################################################################################################
+Sample 1165 - Plan 1: Operation 2: Get the index of the row where the 'game_site' is 'rfk stadium'.
+Sample 1165 - Plan 1: Selected indices: []
+Sample 1165 - Plan 1: X-Table after operation df:
+   row_index
+0          1
+Sample 1165 - Plan 1: Table after operation: [['row_index'], [1]]
+########################################################################################################################
+Sample 1165 - Plan 1: Operation 3: Select the 'game_site' column starting from the index of the row found in step 2.
+SQL execution error in operation 3: Execution failed on sql 'SELECT row_index, game_site
+FROM table_sql
+WHERE row_index = 1;': no such column: game_site
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['texas stadium']]
+Groundtruth: ['Texas Stadium']

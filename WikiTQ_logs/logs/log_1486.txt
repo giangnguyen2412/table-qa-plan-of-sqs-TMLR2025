@@ -1,0 +1,75 @@
+************************************************************************************************************************
+Sample 1486 - Plan 1: Query: how many episodes aired before 1998?
+Sample 1486 - Plan 1: Groundtruth: ['10']
+Sample 1486 - Plan 1: X-Original table pd: 
+     _        directed_by        written_by   original_air_date
+0    1     frank w. smith  simon j. sharkey  september 14, 1997
+1    2     frank w. smith  simon j. sharkey  september 28, 1997
+2    3      gerry poulson   david humphries     october 5, 1997
+3    4      gerry poulson   david humphries    october 12, 1997
+4    5       john reardon        neil mckay    october 26, 1997
+5    6       john reardon        neil mckay    november 2, 1997
+6    7     frank w. smith      fran carroll    november 9, 1997
+7    8  douglas mackinnon        neil mckay   november 16, 1997
+8    9  douglas mackinnon        neil mckay   november 23, 1997
+9   10       john reardon  simon j. sharkey   november 30, 1997
+10  11       john reardon  simon j. sharkey     january 4, 1998
+11  12           ken horn   david humphries    january 11, 1998
+12  13       john reardon  simon j. sharkey    january 18, 1998
+13  14           ken horn        neil mckay    january 25, 1998
+14  15     frank w. smith    dave humphries    february 1, 1998
+15  16  douglas mackinnon        neil mckay    february 8, 1998
+16  17       graham moore  simon j. sharkey   february 15, 1998
+17  18       john reardon  simon j. sharkey   february 22, 1998
+Sample 1486 - Plan 1: Caption: none
+Sample 1486 - Plan 1: Original table: [['_', 'directed_by', 'written_by', 'original_air_date'], ['1', 'frank w. smith', 'simon j. sharkey', 'september\xa014,\xa01997'], ['2', 'frank w. smith', 'simon j. sharkey', 'september\xa028,\xa01997'], ['3', 'gerry poulson', 'david humphries', 'october\xa05,\xa01997'], ['4', 'gerry poulson', 'david humphries', 'october\xa012,\xa01997'], ['5', 'john reardon', 'neil mckay', 'october\xa026,\xa01997'], ['6', 'john reardon', 'neil mckay', 'november\xa02,\xa01997'], ['7', 'frank w. smith', 'fran carroll', 'november\xa09,\xa01997'], ['8', 'douglas mackinnon', 'neil mckay', 'november\xa016,\xa01997'], ['9', 'douglas mackinnon', 'neil mckay', 'november\xa023,\xa01997'], ['10', 'john reardon', 'simon j. sharkey', 'november\xa030,\xa01997'], ['11', 'john reardon', 'simon j. sharkey', 'january\xa04,\xa01998'], ['12', 'ken horn', 'david humphries', 'january\xa011,\xa01998'], ['13', 'john reardon', 'simon j. sharkey', 'january\xa018,\xa01998'], ['14', 'ken horn', 'neil mckay', 'january\xa025,\xa01998'], ['15', 'frank w. smith', 'dave humphries', 'february\xa01,\xa01998'], ['16', 'douglas mackinnon', 'neil mckay', 'february\xa08,\xa01998'], ['17', 'graham moore', 'simon j. sharkey', 'february\xa015,\xa01998'], ['18', 'john reardon', 'simon j. sharkey', 'february\xa022,\xa01998']]
+########################################################################################################################
+Sample 1486 - Plan 1: Operation 1: Extract the year from the 'original_air_date' column and add a new column 'air_year' to the existing table.
+Sample 1486 - Plan 1: Selected indices: [[0, 3], [1, 3], [2, 3], [3, 3], [4, 3], [5, 3], [6, 3], [7, 3], [8, 3], [9, 3], [10, 3], [11, 3], [12, 3], [13, 3], [14, 3], [15, 3], [16, 3], [17, 3]]
+Sample 1486 - Plan 1: X-Table after operation df:
+     _        directed_by        written_by   original_air_date  air_year
+0    1     frank w. smith  simon j. sharkey  september 14, 1997      1997
+1    2     frank w. smith  simon j. sharkey  september 28, 1997      1997
+2    3      gerry poulson   david humphries     october 5, 1997      1997
+3    4      gerry poulson   david humphries    october 12, 1997      1997
+4    5       john reardon        neil mckay    october 26, 1997      1997
+5    6       john reardon        neil mckay    november 2, 1997      1997
+6    7     frank w. smith      fran carroll    november 9, 1997      1997
+7    8  douglas mackinnon        neil mckay   november 16, 1997      1997
+8    9  douglas mackinnon        neil mckay   november 23, 1997      1997
+9   10       john reardon  simon j. sharkey   november 30, 1997      1997
+10  11       john reardon  simon j. sharkey     january 4, 1998      1998
+11  12           ken horn   david humphries    january 11, 1998      1998
+12  13       john reardon  simon j. sharkey    january 18, 1998      1998
+13  14           ken horn        neil mckay    january 25, 1998      1998
+14  15     frank w. smith    dave humphries    february 1, 1998      1998
+15  16  douglas mackinnon        neil mckay    february 8, 1998      1998
+16  17       graham moore  simon j. sharkey   february 15, 1998      1998
+17  18       john reardon  simon j. sharkey   february 22, 1998      1998
+Sample 1486 - Plan 1: Table after operation: [['_', 'directed_by', 'written_by', 'original_air_date', 'air_year'], [1, 'frank w. smith', 'simon j. sharkey', 'september\xa014,\xa01997', '1997'], [2, 'frank w. smith', 'simon j. sharkey', 'september\xa028,\xa01997', '1997'], [3, 'gerry poulson', 'david humphries', 'october\xa05,\xa01997', '1997'], [4, 'gerry poulson', 'david humphries', 'october\xa012,\xa01997', '1997'], [5, 'john reardon', 'neil mckay', 'october\xa026,\xa01997', '1997'], [6, 'john reardon', 'neil mckay', 'november\xa02,\xa01997', '1997'], [7, 'frank w. smith', 'fran carroll', 'november\xa09,\xa01997', '1997'], [8, 'douglas mackinnon', 'neil mckay', 'november\xa016,\xa01997', '1997'], [9, 'douglas mackinnon', 'neil mckay', 'november\xa023,\xa01997', '1997'], [10, 'john reardon', 'simon j. sharkey', 'november\xa030,\xa01997', '1997'], [11, 'john reardon', 'simon j. sharkey', 'january\xa04,\xa01998', '1998'], [12, 'ken horn', 'david humphries', 'january\xa011,\xa01998', '1998'], [13, 'john reardon', 'simon j. sharkey', 'january\xa018,\xa01998', '1998'], [14, 'ken horn', 'neil mckay', 'january\xa025,\xa01998', '1998'], [15, 'frank w. smith', 'dave humphries', 'february\xa01,\xa01998', '1998'], [16, 'douglas mackinnon', 'neil mckay', 'february\xa08,\xa01998', '1998'], [17, 'graham moore', 'simon j. sharkey', 'february\xa015,\xa01998', '1998'], [18, 'john reardon', 'simon j. sharkey', 'february\xa022,\xa01998', '1998']]
+########################################################################################################################
+Sample 1486 - Plan 1: Operation 2: Select rows where the 'air_year' is before 1998.
+Sample 1486 - Plan 1: Selected indices: [[4, 4], [7, 4], [2, 4], [0, 4], [3, 4], [8, 4], [5, 4], [6, 4], [1, 4], [9, 4]]
+Sample 1486 - Plan 1: X-Table after operation df:
+    _        directed_by        written_by   original_air_date  air_year
+0   1     frank w. smith  simon j. sharkey  september 14, 1997      1997
+1   2     frank w. smith  simon j. sharkey  september 28, 1997      1997
+2   3      gerry poulson   david humphries     october 5, 1997      1997
+3   4      gerry poulson   david humphries    october 12, 1997      1997
+4   5       john reardon        neil mckay    october 26, 1997      1997
+5   6       john reardon        neil mckay    november 2, 1997      1997
+6   7     frank w. smith      fran carroll    november 9, 1997      1997
+7   8  douglas mackinnon        neil mckay   november 16, 1997      1997
+8   9  douglas mackinnon        neil mckay   november 23, 1997      1997
+9  10       john reardon  simon j. sharkey   november 30, 1997      1997
+Sample 1486 - Plan 1: Table after operation: [['_', 'directed_by', 'written_by', 'original_air_date', 'air_year'], [1, 'frank w. smith', 'simon j. sharkey', 'september\xa014,\xa01997', 1997], [2, 'frank w. smith', 'simon j. sharkey', 'september\xa028,\xa01997', 1997], [3, 'gerry poulson', 'david humphries', 'october\xa05,\xa01997', 1997], [4, 'gerry poulson', 'david humphries', 'october\xa012,\xa01997', 1997], [5, 'john reardon', 'neil mckay', 'october\xa026,\xa01997', 1997], [6, 'john reardon', 'neil mckay', 'november\xa02,\xa01997', 1997], [7, 'frank w. smith', 'fran carroll', 'november\xa09,\xa01997', 1997], [8, 'douglas mackinnon', 'neil mckay', 'november\xa016,\xa01997', 1997], [9, 'douglas mackinnon', 'neil mckay', 'november\xa023,\xa01997', 1997], [10, 'john reardon', 'simon j. sharkey', 'november\xa030,\xa01997', 1997]]
+########################################################################################################################
+Sample 1486 - Plan 1: Operation 3: Count the number of rows.
+Sample 1486 - Plan 1: Selected indices: []
+Sample 1486 - Plan 1: X-Table after operation df:
+   row_count
+0         10
+Sample 1486 - Plan 1: Table after operation: [['row_count'], [10]]
+Fall-back: FALSE
+Answer from plan 1: [[10]]
+Groundtruth: ['10']

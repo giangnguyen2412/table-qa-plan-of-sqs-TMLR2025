@@ -1,0 +1,69 @@
+************************************************************************************************************************
+Sample 1212 - Plan 1: Query: did chinese tapei win more or les gold medals than macau?
+Sample 1212 - Plan 1: Groundtruth: ['More']
+Sample 1212 - Plan 1: X-Original table pd: 
+    rank                nation  gold  silver  bronze  total
+0      1           china (chn)   127      63      33    223
+1      2           japan (jpn)    46      56      77    179
+2      3     south korea (kor)    32      48      65    145
+3      4  chinese taipei (tpe)    12      34      26     72
+4      5           macau (mac)    11      16      17     44
+5      6     north korea (prk)     6      10      20     36
+6      7       hong kong (hkg)     2       2       9     13
+7      8        mongolia (mgl)     1       1       6      8
+8      9            guam (gum)     0       0       1      1
+9  total                 total   237     230     254    721
+Sample 1212 - Plan 1: Caption: none
+Sample 1212 - Plan 1: Original table: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['1', 'china\xa0(chn)', '127', '63', '33', '223'], ['2', 'japan\xa0(jpn)', '46', '56', '77', '179'], ['3', 'south korea\xa0(kor)', '32', '48', '65', '145'], ['4', 'chinese taipei\xa0(tpe)', '12', '34', '26', '72'], ['5', 'macau\xa0(mac)', '11', '16', '17', '44'], ['6', 'north korea\xa0(prk)', '6', '10', '20', '36'], ['7', 'hong kong\xa0(hkg)', '2', '2', '9', '13'], ['8', 'mongolia\xa0(mgl)', '1', '1', '6', '8'], ['9', 'guam\xa0(gum)', '0', '0', '1', '1'], ['total', 'total', '237', '230', '254', '721']]
+########################################################################################################################
+Sample 1212 - Plan 1: Operation 1: Select the row where the 'nation' is 'chinese taipei'.
+Sample 1212 - Plan 1: Selected indices: [[3, 1]]
+Sample 1212 - Plan 1: X-Table after operation df:
+   rank                nation  gold  silver  bronze  total
+0     4  chinese taipei (tpe)    12      34      26     72
+Sample 1212 - Plan 1: Table after operation: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['4', 'chinese taipei\xa0(tpe)', 12, 34, 26, 72]]
+########################################################################################################################
+Sample 1212 - Plan 1: Operation 2: Select the 'gold' column from the selected row.
+Sample 1212 - Plan 1: Selected indices: []
+Sample 1212 - Plan 1: X-Table after operation df:
+   gold
+0    12
+Sample 1212 - Plan 1: Table after operation: [['gold'], [12]]
+########################################################################################################################
+Sample 1212 - Plan 1: Operation 3: Store the value of 'gold' in a variable.
+Sample 1212 - Plan 1: Selected indices: []
+Sample 1212 - Plan 1: X-Table after operation df:
+   variable_name
+0             12
+Sample 1212 - Plan 1: Table after operation: [['variable_name'], [12]]
+########################################################################################################################
+Sample 1212 - Plan 1: Operation 4: Select the row where the 'nation' is 'macau'.
+Sample 1212 - Plan 1: Selected indices: [[0, 0]]
+Sample 1212 - Plan 1: X-Table after operation df:
+   variable_name
+0             12
+Sample 1212 - Plan 1: Table after operation: [['variable_name'], [12]]
+########################################################################################################################
+Sample 1212 - Plan 1: Operation 5: Select the 'gold' column from the selected row.
+Sample 1212 - Plan 1: Selected indices: []
+Sample 1212 - Plan 1: X-Table after operation df:
+   variable_name
+0             12
+Sample 1212 - Plan 1: Table after operation: [['variable_name'], [12]]
+########################################################################################################################
+Sample 1212 - Plan 1: Operation 6: Compare the value of 'gold' from Chinese Taipei with the value of 'gold' from Macau.
+Sample 1212 - Plan 1: Selected indices: [[0, 0]]
+Sample 1212 - Plan 1: X-Table after operation df:
+   variable_name
+0             12
+Sample 1212 - Plan 1: Table after operation: [['variable_name'], [12]]
+########################################################################################################################
+Sample 1212 - Plan 1: Operation 7: Based on the comparison, determine if Chinese Taipei won more or less gold medals than Macau.
+Sample 1212 - Plan 1: Selected indices: []
+Sample 1212 - Plan 1: X-Table after operation df:
+                                              result
+0  Chinese Taipei and Macau won the same number o...
+Sample 1212 - Plan 1: Table after operation: [['result'], ['Chinese Taipei and Macau won the same number of gold medals']]
+Fall-back: FALSE
+Answer from plan 1: [['Chinese Taipei and Macau won the same number of gold medals']]
+Groundtruth: ['More']

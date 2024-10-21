@@ -1,0 +1,34 @@
+************************************************************************************************************************
+Sample 4328 - Plan 1: Query: which country has the top number of silver medals won?
+Sample 4328 - Plan 1: Groundtruth: ['Spain']
+Sample 4328 - Plan 1: X-Original table pd: 
+    rank    nation  gold  silver  bronze  total
+0      1    france    14       7       7     28
+1      2     italy    12       8      10     30
+2      3  slovenia     5       4       3     12
+3      4     spain     4      14       6     24
+4      5    greece     3       4       9     16
+5      6   tunisia     3       0       0      3
+6      7   algeria     2       0       2      4
+7      8   croatia     0       3       3      6
+8      9     egypt     0       1       2      3
+9  total     total    43      41      42    126
+Sample 4328 - Plan 1: Caption: none
+Sample 4328 - Plan 1: Original table: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['1', 'france', '14', '7', '7', '28'], ['2', 'italy', '12', '8', '10', '30'], ['3', 'slovenia', '5', '4', '3', '12'], ['4', 'spain', '4', '14', '6', '24'], ['5', 'greece', '3', '4', '9', '16'], ['6', 'tunisia', '3', '0', '0', '3'], ['7', 'algeria', '2', '0', '2', '4'], ['8', 'croatia', '0', '3', '3', '6'], ['9', 'egypt', '0', '1', '2', '3'], ['total', 'total', '43', '41', '42', '126']]
+########################################################################################################################
+Sample 4328 - Plan 1: Operation 1: Select rows where the 'silver' column is the maximum value.
+Sample 4328 - Plan 1: Selected indices: [[9, 3]]
+Sample 4328 - Plan 1: X-Table after operation df:
+    rank nation  gold  silver  bronze  total
+0  total  total    43      41      42    126
+Sample 4328 - Plan 1: Table after operation: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['total', 'total', 43, 41, 42, 126]]
+########################################################################################################################
+Sample 4328 - Plan 1: Operation 2: Select the 'nation' column.
+Sample 4328 - Plan 1: Selected indices: []
+Sample 4328 - Plan 1: X-Table after operation df:
+  nation
+0  total
+Sample 4328 - Plan 1: Table after operation: [['nation'], ['total']]
+Fall-back: FALSE
+Answer from plan 1: [['total']]
+Groundtruth: ['Spain']

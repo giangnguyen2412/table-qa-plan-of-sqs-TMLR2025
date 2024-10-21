@@ -1,0 +1,94 @@
+************************************************************************************************************************
+Sample 750 - Plan 1: Query: which station has the most parking spaces?
+Sample 750 - Plan 1: Groundtruth: ['Norwalk']
+Sample 750 - Plan 1: X-Original table pd: 
+                 station                                station_connections  \
+0          redondo beach  metro local: 126, 215\nbeach cities transit 10...   
+1                douglas  metro local: 125\namtrak california thruway mo...   
+2             el segundo  gardena transit: 5\nladot commuter express: 57...   
+3               mariposa  metro local: 232\ntorrance transit: 8 (southbo...   
+4           aviation/lax  metro local: 40 owl, 120, 625\nlax shuttle: ro...   
+5       hawthorne/lennox  metro local: 40, 126, 212, 312\nmetro express:...   
+6               crenshaw  metro local: 126, 207 (weekdays selected rush ...   
+7         vermont/athens  metro local: 204, 206, 209\nmetro rapid: 754\n...   
+8         harbor freeway  metro silver line  \nmetro local: 45, 81, 120\...   
+9                 avalon  metro local: 48, 51, 52, 53, 352\nladot dash: ...   
+10           willowbrook  metro blue line  \nmetro local: 55, 120, 205, ...   
+11  long beach boulevard  metro local: 60, 251\nmetro rapid: 760\nlynwoo...   
+12    lakewood boulevard                         metro local: 117, 265, 266   
+13               norwalk  metro local: 111, 115, 120, 125, 270, 311\nmet...   
+
+        date_opened station_parking city__neighborhood  
+0   august 12, 1995      403 spaces      redondo beach  
+1   august 12, 1995       30 spaces         el segundo  
+2   august 12, 1995       90 spaces         el segundo  
+3   august 12, 1995      no parking         el segundo  
+4   august 12, 1995      405 spaces         el segundo  
+5   august 12, 1995      623 spaces          hawthorne  
+6   august 12, 1995      513 spaces          hawthorne  
+7   august 12, 1995      155 spaces             athens  
+8   august 12, 1995      253 spaces  south los angeles  
+9   august 12, 1995      158 spaces  south los angeles  
+10  august 12, 1995      975 spaces        willowbrook  
+11  august 12, 1995      650 spaces            lynwood  
+12  august 12, 1995      545 spaces             downey  
+13  august 12, 1995     2050 spaces            norwalk  
+Sample 750 - Plan 1: Caption: none
+Sample 750 - Plan 1: Original table: [['station', 'station_connections', 'date_opened', 'station_parking', 'city__neighborhood'], ['redondo beach', 'metro local: 126, 215\\nbeach cities transit 102\\nladot commuter express: 574\\nlawndale beat express, residential routes', 'august 12, 1995', '403 spaces', 'redondo beach'], ['douglas', 'metro local: 125\\namtrak california thruway motorcoach: route 1c\\nbeach cities transit: 109 (northbound only)', 'august 12, 1995', '30 spaces', 'el segundo'], ['el segundo', 'gardena transit: 5\\nladot commuter express: 574\\nmunicipal area express: 2, 3, 3x\\ntorrance transit: 8 (southbound)', 'august 12, 1995', '90 spaces', 'el segundo'], ['mariposa', 'metro local: 232\\ntorrance transit: 8 (southbound)', 'august 12, 1995', 'no parking', 'el segundo'], ['aviation/lax', 'metro local: 40 owl, 120, 625\\nlax shuttle: route g (serves lax terminals 1-8 and the tom bradley international terminal)\\nsanta monica transit: 3, rapid 3\\nculver city transit: 6, rapid 6\\nbeach cities transit: 109\\nmunicipal area express: 2, 3, 3x', 'august 12, 1995', '405 spaces', 'el segundo'], ['hawthorne/lennox', 'metro local: 40, 126, 212, 312\\nmetro express: 442\\nmetro rapid: 740', 'august 12, 1995', '623 spaces', 'hawthorne'], ['crenshaw', 'metro local: 126, 207 (weekdays selected rush hour am/pm trips, & weekends only), 210\\nmetro rapid: 710, 757\\ntorrance transit: 5, 10', 'august 12, 1995', '513 spaces', 'hawthorne'], ['vermont/athens', 'metro local: 204, 206, 209\\nmetro rapid: 754\\ngardena transit:2', 'august 12, 1995', '155 spaces', 'athens'], ['harbor freeway', 'metro silver line\xa0\xa0\\nmetro local: 45, 81, 120\\nmetro express: 450 (weekdays rush hour am/pm trips, & sundays only), 550\\nmetro rapid: 745\\nladot commuter express: 448\\norange county transportation authority: 721\\ngardena transit: 1x\\ntorrance transit: 1, 2, 4', 'august 12, 1995', '253 spaces', 'south los angeles'], ['avalon', 'metro local: 48, 51, 52, 53, 352\\nladot dash: watts\\nwillowbrook shuttle', 'august 12, 1995', '158 spaces', 'south los angeles'], ['willowbrook', 'metro blue line\xa0\xa0\\nmetro local: 55, 120, 205, 355, 612\\ngardena transit: 5\\nladot dash: watts\\nlynwood breeze route d\\nwillowbrook shuttle: a, b, king medical center', 'august 12, 1995', '975 spaces', 'willowbrook'], ['long beach boulevard', 'metro local: 60, 251\\nmetro rapid: 760\\nlynwood trolley: a', 'august 12, 1995', '650 spaces', 'lynwood'], ['lakewood boulevard', 'metro local: 117, 265, 266', 'august 12, 1995', '545 spaces', 'downey'], ['norwalk', 'metro local: 111, 115, 120, 125, 270, 311\\nmetro express: 460, 577x\\nnorwalk transit: 2, 4, 5\\nlong beach transit: 172, 173', 'august 12, 1995', '2050 spaces', 'norwalk']]
+########################################################################################################################
+Sample 750 - Plan 1: Operation 1: Select the 'station' and 'station_parking' columns from the table.
+Sample 750 - Plan 1: Selected indices: []
+Sample 750 - Plan 1: X-Table after operation df:
+                 station station_parking
+0          redondo beach      403 spaces
+1                douglas       30 spaces
+2             el segundo       90 spaces
+3               mariposa      no parking
+4           aviation/lax      405 spaces
+5       hawthorne/lennox      623 spaces
+6               crenshaw      513 spaces
+7         vermont/athens      155 spaces
+8         harbor freeway      253 spaces
+9                 avalon      158 spaces
+10           willowbrook      975 spaces
+11  long beach boulevard      650 spaces
+12    lakewood boulevard      545 spaces
+13               norwalk     2050 spaces
+Sample 750 - Plan 1: Table after operation: [['station', 'station_parking'], ['redondo beach', '403 spaces'], ['douglas', '30 spaces'], ['el segundo', '90 spaces'], ['mariposa', 'no parking'], ['aviation/lax', '405 spaces'], ['hawthorne/lennox', '623 spaces'], ['crenshaw', '513 spaces'], ['vermont/athens', '155 spaces'], ['harbor freeway', '253 spaces'], ['avalon', '158 spaces'], ['willowbrook', '975 spaces'], ['long beach boulevard', '650 spaces'], ['lakewood boulevard', '545 spaces'], ['norwalk', '2050 spaces']]
+########################################################################################################################
+Sample 750 - Plan 1: Operation 2: Order the table by the 'station_parking' column in descending order.
+Sample 750 - Plan 1: Selected indices: [[11, 1], [0, 1], [12, 1], [7, 1], [2, 1], [13, 1], [8, 1], [3, 1], [6, 1], [1, 1], [10, 1], [5, 1], [9, 1], [4, 1]]
+Sample 750 - Plan 1: X-Table after operation df:
+                 station station_parking
+0               mariposa      no parking
+1            willowbrook      975 spaces
+2             el segundo       90 spaces
+3   long beach boulevard      650 spaces
+4       hawthorne/lennox      623 spaces
+5     lakewood boulevard      545 spaces
+6               crenshaw      513 spaces
+7           aviation/lax      405 spaces
+8          redondo beach      403 spaces
+9                douglas       30 spaces
+10        harbor freeway      253 spaces
+11               norwalk     2050 spaces
+12                avalon      158 spaces
+13        vermont/athens      155 spaces
+Sample 750 - Plan 1: Table after operation: [['station', 'station_parking'], ['mariposa', 'no parking'], ['willowbrook', '975 spaces'], ['el segundo', '90 spaces'], ['long beach boulevard', '650 spaces'], ['hawthorne/lennox', '623 spaces'], ['lakewood boulevard', '545 spaces'], ['crenshaw', '513 spaces'], ['aviation/lax', '405 spaces'], ['redondo beach', '403 spaces'], ['douglas', '30 spaces'], ['harbor freeway', '253 spaces'], ['norwalk', '2050 spaces'], ['avalon', '158 spaces'], ['vermont/athens', '155 spaces']]
+########################################################################################################################
+Sample 750 - Plan 1: Operation 3: Select the row number 1.
+Sample 750 - Plan 1: Selected indices: []
+Sample 750 - Plan 1: X-Table after operation df:
+    station station_parking
+0  mariposa      no parking
+Sample 750 - Plan 1: Table after operation: [['station', 'station_parking'], ['mariposa', 'no parking']]
+########################################################################################################################
+Sample 750 - Plan 1: Operation 4: Select the 'station' column.
+Sample 750 - Plan 1: Selected indices: []
+Sample 750 - Plan 1: X-Table after operation df:
+    station
+0  mariposa
+Sample 750 - Plan 1: Table after operation: [['station'], ['mariposa']]
+Fall-back: FALSE
+Answer from plan 1: [['mariposa']]
+Groundtruth: ['Norwalk']

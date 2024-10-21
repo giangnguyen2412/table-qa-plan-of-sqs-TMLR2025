@@ -1,0 +1,61 @@
+************************************************************************************************************************
+Sample 2488 - Plan 1: Query: henri pescarolo and jean-louis ricci were this driver's co-drivers during which year?
+Sample 2488 - Plan 1: Groundtruth: ['1990']
+Sample 2488 - Plan 1: X-Original table pd: 
+   year    class  no tyres                                               car  \
+0  1972   s\n3.0  22                            ligier js2\nmaserati 3.0l v6   
+1  1973   s\n3.0  62                            ligier js2\nmaserati 3.0l v6   
+2  1974   s\n3.0  15                            ligier js2\nmaserati 3.0l v6   
+3  1977  s\n+2.0   8              renault alpine a442\nrenault 2.0l turbo v6   
+4  1978  s\n+2.0  10                        mirage m9\nrenault 2.0l turbo v6   
+5  1990       c1   6     g  porsche 962c\nporsche type-935 3.0l turbo flat-6   
+6  1993       gt  71     d         venturi 500lm\nrenault prv 3.0 l turbo v6   
+7  1994      gt2  49     p     porsche 911 carrera rsr\nporsche 3.8 l flat-6   
+8  1996      gt1  38     m                  mclaren f1 gtr\nbmw s70 6.1l v12   
+
+                      team                                  co_drivers  laps  \
+0       automobiles ligier                             pierre maublanc   195   
+1       automobiles ligier                                  guy ligier    24   
+2       automobiles ligier                              alain serpaggi   310   
+3            renault sport                           patrick depailler   289   
+4  grand touring cars inc.                   vern schuppan\n sam posey   293   
+5     joest porsche racing          henri pescarolo\n jean-louis ricci   328   
+6            jacadi racing  michel maisonneuve\n christophe dechavanne   210   
+7       larbre compétition        jacques alméras\n jean-marie alméras    94   
+8         team bigazzi srl                     steve soper\n marc duez   318   
+
+   pos_ class_npos_  
+0   dnf         dnf  
+1   dsq         dsq  
+2   8th         5th  
+3   dnf         dnf  
+4  10th         5th  
+5  14th        14th  
+6   dnf         dnf  
+7   dnf         dnf  
+8  11th         9th  
+Sample 2488 - Plan 1: Caption: none
+Sample 2488 - Plan 1: Original table: [['year', 'class', 'no', 'tyres', 'car', 'team', 'co_drivers', 'laps', 'pos_', 'class_npos_'], ['1972', 's\\n3.0', '22', '', 'ligier js2\\nmaserati 3.0l v6', 'automobiles ligier', 'pierre maublanc', '195', 'dnf', 'dnf'], ['1973', 's\\n3.0', '62', '', 'ligier js2\\nmaserati 3.0l v6', 'automobiles ligier', 'guy ligier', '24', 'dsq', 'dsq'], ['1974', 's\\n3.0', '15', '', 'ligier js2\\nmaserati 3.0l v6', 'automobiles ligier', 'alain serpaggi', '310', '8th', '5th'], ['1977', 's\\n+2.0', '8', '', 'renault alpine a442\\nrenault 2.0l turbo v6', 'renault sport', 'patrick depailler', '289', 'dnf', 'dnf'], ['1978', 's\\n+2.0', '10', '', 'mirage m9\\nrenault 2.0l turbo v6', 'grand touring cars inc.', 'vern schuppan\\n sam posey', '293', '10th', '5th'], ['1990', 'c1', '6', 'g', 'porsche 962c\\nporsche type-935 3.0l turbo flat-6', 'joest porsche racing', 'henri pescarolo\\n jean-louis ricci', '328', '14th', '14th'], ['1993', 'gt', '71', 'd', 'venturi 500lm\\nrenault prv 3.0 l turbo v6', 'jacadi racing', 'michel maisonneuve\\n christophe dechavanne', '210', 'dnf', 'dnf'], ['1994', 'gt2', '49', 'p', 'porsche 911 carrera rsr\\nporsche 3.8 l flat-6', 'larbre compétition', 'jacques alméras\\n jean-marie alméras', '94', 'dnf', 'dnf'], ['1996', 'gt1', '38', 'm', 'mclaren f1 gtr\\nbmw s70 6.1l v12', 'team bigazzi srl', 'steve soper\\n marc duez', '318', '11th', '9th']]
+########################################################################################################################
+Sample 2488 - Plan 1: Operation 1: Select rows where 'co_drivers' column contains 'henri pescarolo' and 'jean-louis ricci'.
+Sample 2488 - Plan 1: Selected indices: [[5, 6]]
+Sample 2488 - Plan 1: X-Table after operation df:
+   year class  no tyres                                               car  \
+0  1990    c1   6     g  porsche 962c\nporsche type-935 3.0l turbo flat-6   
+
+                   team                          co_drivers  laps  pos_  \
+0  joest porsche racing  henri pescarolo\n jean-louis ricci   328  14th   
+
+  class_npos_  
+0        14th  
+Sample 2488 - Plan 1: Table after operation: [['year', 'class', 'no', 'tyres', 'car', 'team', 'co_drivers', 'laps', 'pos_', 'class_npos_'], [1990, 'c1', 6, 'g', 'porsche 962c\\nporsche type-935 3.0l turbo flat-6', 'joest porsche racing', 'henri pescarolo\\n jean-louis ricci', 328, '14th', '14th']]
+########################################################################################################################
+Sample 2488 - Plan 1: Operation 2: Select the 'year' column.
+Sample 2488 - Plan 1: Selected indices: []
+Sample 2488 - Plan 1: X-Table after operation df:
+   year
+0  1990
+Sample 2488 - Plan 1: Table after operation: [['year'], [1990]]
+Fall-back: FALSE
+Answer from plan 1: [[1990]]
+Groundtruth: ['1990']

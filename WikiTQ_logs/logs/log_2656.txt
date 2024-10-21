@@ -1,0 +1,46 @@
+************************************************************************************************************************
+Sample 2656 - Plan 1: Query: what is the difference in total goals between cureton and gosling?
+Sample 2656 - Plan 1: Groundtruth: ['19']
+Sample 2656 - Plan 1: X-Original table pd: 
+             name  league  fa_cup  league_cup  jp_trophy  total
+0    scot bennett       5       0           0          0      5
+1     danny coles       3       0           0          0      3
+2   liam sercombe       1       0           0          0      1
+3        alan gow       4       0           0          0      4
+4    john o'flynn      11       0           1          0     12
+5   guillem bauza       2       0           0          0      2
+6   jimmy keohane       3       0           0          0      3
+7     pat baldwin       1       0           0          0      1
+8   jamie cureton      20       0           0          0     20
+9    arron davies       3       0           0          0      3
+10   jake gosling       1       0           0          0      1
+11      own goals       0       0           0          0      0
+12          total       0       0           0          0      0
+Sample 2656 - Plan 1: Caption: none
+Sample 2656 - Plan 1: Original table: [['name', 'league', 'fa_cup', 'league_cup', 'jp_trophy', 'total'], ['scot bennett', '5', '0', '0', '0', '5'], ['danny coles', '3', '0', '0', '0', '3'], ['liam sercombe', '1', '0', '0', '0', '1'], ['alan gow', '4', '0', '0', '0', '4'], ["john o'flynn", '11', '0', '1', '0', '12'], ['guillem bauza', '2', '0', '0', '0', '2'], ['jimmy keohane', '3', '0', '0', '0', '3'], ['pat baldwin', '1', '0', '0', '0', '1'], ['jamie cureton', '20', '0', '0', '0', '20'], ['arron davies', '3', '0', '0', '0', '3'], ['jake gosling', '1', '0', '0', '0', '1'], ['own goals', '0', '0', '0', '0', '0'], ['total', '0', '0', '0', '0', '0']]
+########################################################################################################################
+Sample 2656 - Plan 1: Operation 1: Select rows where the 'name' column is either 'jamie cureton' or 'jake gosling'.
+Sample 2656 - Plan 1: Selected indices: [[10, 0], [8, 0]]
+Sample 2656 - Plan 1: X-Table after operation df:
+            name  league  fa_cup  league_cup  jp_trophy  total
+0  jamie cureton      20       0           0          0     20
+1   jake gosling       1       0           0          0      1
+Sample 2656 - Plan 1: Table after operation: [['name', 'league', 'fa_cup', 'league_cup', 'jp_trophy', 'total'], ['jamie cureton', 20, 0, 0, 0, 20], ['jake gosling', 1, 0, 0, 0, 1]]
+########################################################################################################################
+Sample 2656 - Plan 1: Operation 2: Select the 'total' column for the selected rows.
+Sample 2656 - Plan 1: Selected indices: []
+Sample 2656 - Plan 1: X-Table after operation df:
+   total_column
+0            20
+1             1
+Sample 2656 - Plan 1: Table after operation: [['total_column'], [20], [1]]
+########################################################################################################################
+Sample 2656 - Plan 1: Operation 3: Calculate the difference between the 'total' value for 'jamie cureton' and 'jake gosling'.
+Sample 2656 - Plan 1: Selected indices: []
+Sample 2656 - Plan 1: X-Table after operation df:
+   difference
+0          19
+Sample 2656 - Plan 1: Table after operation: [['difference'], [19]]
+Fall-back: FALSE
+Answer from plan 1: [[19]]
+Groundtruth: ['19']

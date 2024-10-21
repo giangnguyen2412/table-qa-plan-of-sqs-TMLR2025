@@ -1,0 +1,61 @@
+************************************************************************************************************************
+Sample 2648 - Plan 1: Query: when was the last time peak flow was greater than 45,000 cfs?
+Sample 2648 - Plan 1: Groundtruth: ['February 1795']
+Sample 2648 - Plan 1: X-Original table pd: 
+   rank_n             date_n  level_at_trent_bridge_nm  \
+0     1.0      february 1795                     24.55   
+1     2.0       october 1875                     24.38   
+2     3.0         march 1947                     24.30   
+3     4.0      november 1852                     24.26   
+4     5.0      november 2000                     23.80   
+5     NaN  normal / avg flow                     20.70   
+
+   level_at_trent_bridge_nft peak_flow_nm3_s peak_flow_ncfs  
+0                       80.5           1,416         50,000  
+1                       80.0           1,274         45,000  
+2                       79.7           1,107         39,100  
+3                       79.6           1,082         38,200  
+4                       78.1           1,019         36,000  
+5                       68.0              84          3,000  
+Sample 2648 - Plan 1: Caption: none
+Sample 2648 - Plan 1: Original table: [['rank_n', 'date_n', 'level_at_trent_bridge_nm', 'level_at_trent_bridge_nft', 'peak_flow_nm3_s', 'peak_flow_ncfs'], ['1', 'february 1795', '24.55', '80.5', '1,416', '50,000'], ['2', 'october 1875', '24.38', '80.0', '1,274', '45,000'], ['3', 'march 1947', '24.30', '79.7', '1,107', '39,100'], ['4', 'november 1852', '24.26', '79.6', '1,082', '38,200'], ['5', 'november 2000', '23.80', '78.1', '1,019', '36,000'], ['', 'normal / avg flow', '20.7', '68', '84', '3,000']]
+########################################################################################################################
+Sample 2648 - Plan 1: Operation 1: Select rows where 'peak_flow_ncfs' is greater than 45,000.
+Sample 2648 - Plan 1: Selected indices: []
+Sample 2648 - Plan 1: X-Table after operation df:
+   rank_n         date_n  level_at_trent_bridge_nm  level_at_trent_bridge_nft  \
+0     1.0  february 1795                     24.55                       80.5   
+
+  peak_flow_nm3_s peak_flow_ncfs  
+0           1,416         50,000  
+Sample 2648 - Plan 1: Table after operation: [['rank_n', 'date_n', 'level_at_trent_bridge_nm', 'level_at_trent_bridge_nft', 'peak_flow_nm3_s', 'peak_flow_ncfs'], [1.0, 'february 1795', 24.55, 80.5, '1,416', '50,000']]
+########################################################################################################################
+Sample 2648 - Plan 1: Operation 2: Order the table by 'date_n' in descending order.
+Sample 2648 - Plan 1: Selected indices: [[0, 1]]
+Sample 2648 - Plan 1: X-Table after operation df:
+   rank_n         date_n  level_at_trent_bridge_nm  level_at_trent_bridge_nft  \
+0     1.0  february 1795                     24.55                       80.5   
+
+  peak_flow_nm3_s peak_flow_ncfs  
+0           1,416         50,000  
+Sample 2648 - Plan 1: Table after operation: [['rank_n', 'date_n', 'level_at_trent_bridge_nm', 'level_at_trent_bridge_nft', 'peak_flow_nm3_s', 'peak_flow_ncfs'], [1.0, 'february 1795', 24.55, 80.5, '1,416', '50,000']]
+########################################################################################################################
+Sample 2648 - Plan 1: Operation 3: Select row number 1.
+Sample 2648 - Plan 1: Selected indices: []
+Sample 2648 - Plan 1: X-Table after operation df:
+   rank_n         date_n  level_at_trent_bridge_nm  level_at_trent_bridge_nft  \
+0     1.0  february 1795                     24.55                       80.5   
+
+  peak_flow_nm3_s peak_flow_ncfs  
+0           1,416         50,000  
+Sample 2648 - Plan 1: Table after operation: [['rank_n', 'date_n', 'level_at_trent_bridge_nm', 'level_at_trent_bridge_nft', 'peak_flow_nm3_s', 'peak_flow_ncfs'], [1.0, 'february 1795', 24.55, 80.5, '1,416', '50,000']]
+########################################################################################################################
+Sample 2648 - Plan 1: Operation 4: Select the 'date_n' column.
+Sample 2648 - Plan 1: Selected indices: []
+Sample 2648 - Plan 1: X-Table after operation df:
+          date_n
+0  february 1795
+Sample 2648 - Plan 1: Table after operation: [['date_n'], ['february 1795']]
+Fall-back: FALSE
+Answer from plan 1: [['february 1795']]
+Groundtruth: ['February 1795']

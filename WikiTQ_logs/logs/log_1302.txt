@@ -1,0 +1,117 @@
+************************************************************************************************************************
+Sample 1302 - Plan 1: Query: during which day was the most points scored in a single match-up?
+Sample 1302 - Plan 1: Groundtruth: ['24 December 2009']
+Sample 1302 - Plan 1: X-Original table pd: 
+    no_ score              player          team  balls  inns_ opposing_team  \
+0     1   123      kris srikkanth         india    103      1      pakistan   
+1     2  107*      desmond haynes   west indies    137      1      pakistan   
+2     3  100*    sachin tendulkar         india    103      2         kenya   
+3     4   121  marcus trescothick       england    109      2         india   
+4     5  108*         salman butt      pakistan    130      2         india   
+5     6  134*        graeme smith  south africa    124      2         india   
+6     7   118       upul tharanga     sri lanka    128      1         india   
+7     8  150*      gautam gambhir         india    137      2     sri lanka   
+8     9   107         virat kohli         india    114      2     sri lanka   
+9    10   106  ryan ten doeschate   netherlands    108      1       ireland   
+10   11   101       paul stirling       ireland     72      2   netherlands   
+11   12   106       nasir jamshed      pakistan    124      1         india   
+
+                date result  
+0   18 february 1987   lost  
+1    1 november 1989   lost  
+2        31 may 1998    won  
+3    19 january 2002   lost  
+4   13 november 2004    won  
+5   25 november 2005    won  
+6   24 december 2009   lost  
+7   24 december 2009    won  
+8   24 december 2009    won  
+9      18 march 2011   lost  
+10     18 march 2011    won  
+11    3 january 2013    won  
+Sample 1302 - Plan 1: Caption: none
+Sample 1302 - Plan 1: Original table: [['no_', 'score', 'player', 'team', 'balls', 'inns_', 'opposing_team', 'date', 'result'], ['1', '123', 'kris srikkanth', 'india', '103', '1', 'pakistan', '18 february 1987', 'lost'], ['2', '107*', 'desmond haynes', 'west indies', '137', '1', 'pakistan', '1 november 1989', 'lost'], ['3', '100*', 'sachin tendulkar', 'india', '103', '2', 'kenya', '31 may 1998', 'won'], ['4', '121', 'marcus trescothick', 'england', '109', '2', 'india', '19 january 2002', 'lost'], ['5', '108*', 'salman butt', 'pakistan', '130', '2', 'india', '13 november 2004', 'won'], ['6', '134*', 'graeme smith', 'south africa', '124', '2', 'india', '25 november 2005', 'won'], ['7', '118', 'upul tharanga', 'sri lanka', '128', '1', 'india', '24 december 2009', 'lost'], ['8', '150*', 'gautam gambhir', 'india', '137', '2', 'sri lanka', '24 december 2009', 'won'], ['9', '107', 'virat kohli', 'india', '114', '2', 'sri lanka', '24 december 2009', 'won'], ['10', '106', 'ryan ten doeschate', 'netherlands', '108', '1', 'ireland', '18 march 2011', 'lost'], ['11', '101', 'paul stirling', 'ireland', '72', '2', 'netherlands', '18 march 2011', 'won'], ['12', '106', 'nasir jamshed', 'pakistan', '124', '1', 'india', '3 january 2013', 'won']]
+########################################################################################################################
+Sample 1302 - Plan 1: Operation 1: Extract the numerical value from the 'score' column then add column 'num_score' to the existing table.
+Sample 1302 - Plan 1: Selected indices: [[0, 1], [1, 1], [2, 1], [3, 1], [4, 1], [5, 1], [6, 1], [7, 1], [8, 1], [9, 1], [10, 1], [11, 1]]
+Sample 1302 - Plan 1: X-Table after operation df:
+    no_ score              player          team  balls  inns_ opposing_team  \
+0     1   123      kris srikkanth         india    103      1      pakistan   
+1     2  107*      desmond haynes   west indies    137      1      pakistan   
+2     3  100*    sachin tendulkar         india    103      2         kenya   
+3     4   121  marcus trescothick       england    109      2         india   
+4     5  108*         salman butt      pakistan    130      2         india   
+5     6  134*        graeme smith  south africa    124      2         india   
+6     7   118       upul tharanga     sri lanka    128      1         india   
+7     8  150*      gautam gambhir         india    137      2     sri lanka   
+8     9   107         virat kohli         india    114      2     sri lanka   
+9    10   106  ryan ten doeschate   netherlands    108      1       ireland   
+10   11   101       paul stirling       ireland     72      2   netherlands   
+11   12   106       nasir jamshed      pakistan    124      1         india   
+
+                date result  num_score  
+0   18 february 1987   lost          0  
+1    1 november 1989   lost        107  
+2        31 may 1998    won        100  
+3    19 january 2002   lost          0  
+4   13 november 2004    won        108  
+5   25 november 2005    won        134  
+6   24 december 2009   lost          0  
+7   24 december 2009    won        150  
+8   24 december 2009    won          0  
+9      18 march 2011   lost          0  
+10     18 march 2011    won          0  
+11    3 january 2013    won          0  
+Sample 1302 - Plan 1: Table after operation: [['no_', 'score', 'player', 'team', 'balls', 'inns_', 'opposing_team', 'date', 'result', 'num_score'], [1, '123', 'kris srikkanth', 'india', 103, 1, 'pakistan', '18 february 1987', 'lost', 0], [2, '107*', 'desmond haynes', 'west indies', 137, 1, 'pakistan', '1 november 1989', 'lost', 107], [3, '100*', 'sachin tendulkar', 'india', 103, 2, 'kenya', '31 may 1998', 'won', 100], [4, '121', 'marcus trescothick', 'england', 109, 2, 'india', '19 january 2002', 'lost', 0], [5, '108*', 'salman butt', 'pakistan', 130, 2, 'india', '13 november 2004', 'won', 108], [6, '134*', 'graeme smith', 'south africa', 124, 2, 'india', '25 november 2005', 'won', 134], [7, '118', 'upul tharanga', 'sri lanka', 128, 1, 'india', '24 december 2009', 'lost', 0], [8, '150*', 'gautam gambhir', 'india', 137, 2, 'sri lanka', '24 december 2009', 'won', 150], [9, '107', 'virat kohli', 'india', 114, 2, 'sri lanka', '24 december 2009', 'won', 0], [10, '106', 'ryan ten doeschate', 'netherlands', 108, 1, 'ireland', '18 march 2011', 'lost', 0], [11, '101', 'paul stirling', 'ireland', 72, 2, 'netherlands', '18 march 2011', 'won', 0], [12, '106', 'nasir jamshed', 'pakistan', 124, 1, 'india', '3 january 2013', 'won', 0]]
+########################################################################################################################
+Sample 1302 - Plan 1: Operation 2: Order the table by 'num_score' in descending order.
+Sample 1302 - Plan 1: Selected indices: [[9, 9], [4, 9], [0, 9], [11, 9], [7, 9], [2, 9], [8, 9], [3, 9], [10, 9], [5, 9], [6, 9], [1, 9]]
+Sample 1302 - Plan 1: X-Table after operation df:
+    no_ score              player          team  balls  inns_ opposing_team  \
+0     8  150*      gautam gambhir         india    137      2     sri lanka   
+1     6  134*        graeme smith  south africa    124      2         india   
+2     5  108*         salman butt      pakistan    130      2         india   
+3     2  107*      desmond haynes   west indies    137      1      pakistan   
+4     3  100*    sachin tendulkar         india    103      2         kenya   
+5     1   123      kris srikkanth         india    103      1      pakistan   
+6     4   121  marcus trescothick       england    109      2         india   
+7     7   118       upul tharanga     sri lanka    128      1         india   
+8     9   107         virat kohli         india    114      2     sri lanka   
+9    10   106  ryan ten doeschate   netherlands    108      1       ireland   
+10   11   101       paul stirling       ireland     72      2   netherlands   
+11   12   106       nasir jamshed      pakistan    124      1         india   
+
+                date result  num_score  
+0   24 december 2009    won        150  
+1   25 november 2005    won        134  
+2   13 november 2004    won        108  
+3    1 november 1989   lost        107  
+4        31 may 1998    won        100  
+5   18 february 1987   lost          0  
+6    19 january 2002   lost          0  
+7   24 december 2009   lost          0  
+8   24 december 2009    won          0  
+9      18 march 2011   lost          0  
+10     18 march 2011    won          0  
+11    3 january 2013    won          0  
+Sample 1302 - Plan 1: Table after operation: [['no_', 'score', 'player', 'team', 'balls', 'inns_', 'opposing_team', 'date', 'result', 'num_score'], [8, '150*', 'gautam gambhir', 'india', 137, 2, 'sri lanka', '24 december 2009', 'won', 150], [6, '134*', 'graeme smith', 'south africa', 124, 2, 'india', '25 november 2005', 'won', 134], [5, '108*', 'salman butt', 'pakistan', 130, 2, 'india', '13 november 2004', 'won', 108], [2, '107*', 'desmond haynes', 'west indies', 137, 1, 'pakistan', '1 november 1989', 'lost', 107], [3, '100*', 'sachin tendulkar', 'india', 103, 2, 'kenya', '31 may 1998', 'won', 100], [1, '123', 'kris srikkanth', 'india', 103, 1, 'pakistan', '18 february 1987', 'lost', 0], [4, '121', 'marcus trescothick', 'england', 109, 2, 'india', '19 january 2002', 'lost', 0], [7, '118', 'upul tharanga', 'sri lanka', 128, 1, 'india', '24 december 2009', 'lost', 0], [9, '107', 'virat kohli', 'india', 114, 2, 'sri lanka', '24 december 2009', 'won', 0], [10, '106', 'ryan ten doeschate', 'netherlands', 108, 1, 'ireland', '18 march 2011', 'lost', 0], [11, '101', 'paul stirling', 'ireland', 72, 2, 'netherlands', '18 march 2011', 'won', 0], [12, '106', 'nasir jamshed', 'pakistan', 124, 1, 'india', '3 january 2013', 'won', 0]]
+########################################################################################################################
+Sample 1302 - Plan 1: Operation 3: Select row number 1.
+Sample 1302 - Plan 1: Selected indices: []
+Sample 1302 - Plan 1: X-Table after operation df:
+   no_ score          player   team  balls  inns_ opposing_team  \
+0    8  150*  gautam gambhir  india    137      2     sri lanka   
+
+               date result  num_score  
+0  24 december 2009    won        150  
+Sample 1302 - Plan 1: Table after operation: [['no_', 'score', 'player', 'team', 'balls', 'inns_', 'opposing_team', 'date', 'result', 'num_score'], [8, '150*', 'gautam gambhir', 'india', 137, 2, 'sri lanka', '24 december 2009', 'won', 150]]
+########################################################################################################################
+Sample 1302 - Plan 1: Operation 4: Select the 'date' column.
+Sample 1302 - Plan 1: Selected indices: []
+Sample 1302 - Plan 1: X-Table after operation df:
+               date
+0  24 december 2009
+Sample 1302 - Plan 1: Table after operation: [['date'], ['24 december 2009']]
+Fall-back: FALSE
+Answer from plan 1: [['24 december 2009']]
+Groundtruth: ['24 December 2009']

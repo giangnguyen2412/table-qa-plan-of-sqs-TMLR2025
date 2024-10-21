@@ -1,0 +1,67 @@
+************************************************************************************************************************
+Sample 88 - Plan 1: Query: kremlin cup and st petersburg open are in what country?
+Sample 88 - Plan 1: Groundtruth: ['Russia']
+Sample 88 - Plan 1: X-Original table pd: 
+      outcome  no_              date  \
+0   runner-up  1.0   25 october 2009   
+1   runner-up  2.0      19 june 2010   
+2   runner-up  3.0  27 february 2011   
+3   runner-up  4.0      18 june 2011   
+4      winner  1.0    2 october 2011   
+5      winner  2.0   23 october 2011   
+6   runner-up  5.0   30 october 2011   
+7   runner-up  6.0    8 january 2012   
+8      winner  3.0      15 july 2012   
+9   runner-up  7.0      22 july 2012   
+10     winner  4.0    6 january 2013   
+
+                                           tournament   surface  \
+0                                 kremlin cup, russia  hard (i)   
+1                            unicef open, netherlands     grass   
+2   international tennis championships, united states      hard   
+3                 aegon international, united kingdom     grass   
+4                            malaysian open, malaysia  hard (i)   
+5                                 kremlin cup, russia  hard (i)   
+6                         st. petersburg open, russia  hard (i)   
+7                                 chennai open, india      hard   
+8                             stuttgart open, germany      clay   
+9                             swiss open, switzerland      clay   
+10                                chennai open, india      hard   
+
+                 opponent                         score  
+0         mikhail youzhny            7–6(7–5), 0–6, 4–6  
+1       sergiy stakhovsky                      3–6, 0–6  
+2   juan martín del potro                      4–6, 4–6  
+3           andreas seppi       6–7(5–7), 6–3, 3–5 ret.  
+4        marcos baghdatis                      6–4, 7–5  
+5          viktor troicki                      6–4, 6–2  
+6             marin čilić                 3–6, 6–3, 2–6  
+7            milos raonic  7–6(7–4), 6–7(4–7), 6–7(4–7)  
+8             juan mónaco                 6–4, 5–7, 6–3  
+9         thomaz bellucci            7–6(8–6), 4–6, 2–6  
+10  roberto bautista-agut                 3–6, 6–1, 6–3  
+Sample 88 - Plan 1: Caption: none
+Sample 88 - Plan 1: Original table: [['outcome', 'no_', 'date', 'tournament', 'surface', 'opponent', 'score'], ['runner-up', '1.', '25 october 2009', 'kremlin cup, russia', 'hard (i)', 'mikhail youzhny', '7–6(7–5), 0–6, 4–6'], ['runner-up', '2.', '19 june 2010', 'unicef open, netherlands', 'grass', 'sergiy stakhovsky', '3–6, 0–6'], ['runner-up', '3.', '27 february 2011', 'international tennis championships, united states', 'hard', 'juan martín del potro', '4–6, 4–6'], ['runner-up', '4.', '18 june 2011', 'aegon international, united kingdom', 'grass', 'andreas seppi', '6–7(5–7), 6–3, 3–5 ret.'], ['winner', '1.', '2 october 2011', 'malaysian open, malaysia', 'hard (i)', 'marcos baghdatis', '6–4, 7–5'], ['winner', '2.', '23 october 2011', 'kremlin cup, russia', 'hard (i)', 'viktor troicki', '6–4, 6–2'], ['runner-up', '5.', '30 october 2011', 'st. petersburg open, russia', 'hard (i)', 'marin čilić', '3–6, 6–3, 2–6'], ['runner-up', '6.', '8 january 2012', 'chennai open, india', 'hard', 'milos raonic', '7–6(7–4), 6–7(4–7), 6–7(4–7)'], ['winner', '3.', '15 july 2012', 'stuttgart open, germany', 'clay', 'juan mónaco', '6–4, 5–7, 6–3'], ['runner-up', '7.', '22 july 2012', 'swiss open, switzerland', 'clay', 'thomaz bellucci', '7–6(8–6), 4–6, 2–6'], ['winner', '4.', '6 january 2013', 'chennai open, india', 'hard', 'roberto bautista-agut', '3–6, 6–1, 6–3']]
+########################################################################################################################
+Sample 88 - Plan 1: Operation 1: Select rows where the 'tournament' column contains 'kremlin cup' or 'st petersburg open'.
+Sample 88 - Plan 1: Selected indices: [[5, 3], [0, 3]]
+Sample 88 - Plan 1: X-Table after operation df:
+     outcome  no_             date           tournament   surface  \
+0  runner-up  1.0  25 october 2009  kremlin cup, russia  hard (i)   
+1     winner  2.0  23 october 2011  kremlin cup, russia  hard (i)   
+
+          opponent               score  
+0  mikhail youzhny  7–6(7–5), 0–6, 4–6  
+1   viktor troicki            6–4, 6–2  
+Sample 88 - Plan 1: Table after operation: [['outcome', 'no_', 'date', 'tournament', 'surface', 'opponent', 'score'], ['runner-up', 1.0, '25 october 2009', 'kremlin cup, russia', 'hard (i)', 'mikhail youzhny', '7–6(7–5), 0–6, 4–6'], ['winner', 2.0, '23 october 2011', 'kremlin cup, russia', 'hard (i)', 'viktor troicki', '6–4, 6–2']]
+########################################################################################################################
+Sample 88 - Plan 1: Operation 2: Select the 'tournament' and 'date' columns.
+Sample 88 - Plan 1: Selected indices: []
+Sample 88 - Plan 1: X-Table after operation df:
+            tournament             date
+0  kremlin cup, russia  25 october 2009
+1  kremlin cup, russia  23 october 2011
+Sample 88 - Plan 1: Table after operation: [['tournament', 'date'], ['kremlin cup, russia', '25 october 2009'], ['kremlin cup, russia', '23 october 2011']]
+Fall-back: FALSE
+Answer from plan 1: [['kremlin cup, russia', '25 october 2009'], ['kremlin cup, russia', '23 october 2011']]
+Groundtruth: ['Russia']

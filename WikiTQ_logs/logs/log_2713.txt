@@ -1,0 +1,44 @@
+************************************************************************************************************************
+Sample 2713 - Plan 1: Query: how many times did he compete in australia?
+Sample 2713 - Plan 1: Groundtruth: ['2']
+Sample 2713 - Plan 1: X-Original table pd: 
+     year                        competition                       venue  \
+0  1996.0         world junior championships           sydney, australia   
+1  1998.0  world cross country championships          marrakech, morocco   
+2     NaN                 commonwealth games      kuala lumpur, malaysia   
+3  1999.0                   all-africa games  johannesburg, south africa   
+4     NaN              iaaf grand prix final             munich, germany   
+5  2001.0              iaaf grand prix final        melbourne, australia   
+6  2004.0              world athletics final         monte carlo, monaco   
+7  2005.0              world athletics final         monte carlo, monaco   
+
+  position       event  
+0      2nd  3000 m st.  
+1      8th  short race  
+2      3rd  3000 m st.  
+3      1st  3000 m st.  
+4      4th  3000 m st.  
+5      4th  3000 m st.  
+6      4th  3000 m st.  
+7      8th  3000 m st.  
+Sample 2713 - Plan 1: Caption: none
+Sample 2713 - Plan 1: Original table: [['year', 'competition', 'venue', 'position', 'event'], ['1996', 'world junior championships', 'sydney, australia', '2nd', '3000 m st.'], ['1998', 'world cross country championships', 'marrakech, morocco', '8th', 'short race'], ['', 'commonwealth games', 'kuala lumpur, malaysia', '3rd', '3000 m st.'], ['1999', 'all-africa games', 'johannesburg, south africa', '1st', '3000 m st.'], ['', 'iaaf grand prix final', 'munich, germany', '4th', '3000 m st.'], ['2001', 'iaaf grand prix final', 'melbourne, australia', '4th', '3000 m st.'], ['2004', 'world athletics final', 'monte carlo, monaco', '4th', '3000 m st.'], ['2005', 'world athletics final', 'monte carlo, monaco', '8th', '3000 m st.']]
+########################################################################################################################
+Sample 2713 - Plan 1: Operation 1: Select rows where the 'venue' column contains the word 'australia'.
+Sample 2713 - Plan 1: Selected indices: [[0, 2], [5, 2]]
+Sample 2713 - Plan 1: X-Table after operation df:
+     year                 competition                 venue position  \
+0  1996.0  world junior championships     sydney, australia      2nd   
+1  2001.0       iaaf grand prix final  melbourne, australia      4th   
+
+        event  
+0  3000 m st.  
+1  3000 m st.  
+Sample 2713 - Plan 1: Table after operation: [['year', 'competition', 'venue', 'position', 'event'], [1996.0, 'world junior championships', 'sydney, australia', '2nd', '3000 m st.'], [2001.0, 'iaaf grand prix final', 'melbourne, australia', '4th', '3000 m st.']]
+########################################################################################################################
+Sample 2713 - Plan 1: Operation 2: Count the number of rows selected.
+SQL execution error in operation 2: Execution failed on sql 'Write a SQL command that: Count the number of rows selected.': near "Write": syntax error
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['2']]
+Groundtruth: ['2']

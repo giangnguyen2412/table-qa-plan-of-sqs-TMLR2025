@@ -1,0 +1,71 @@
+************************************************************************************************************************
+Sample 2012 - Plan 1: Query: which album has the most sales?
+Sample 2012 - Plan 1: Groundtruth: ['The Remixes']
+Sample 2012 - Plan 1: X-Original table pd: 
+                                             title  \
+0                                      the remixes   
+1                                   the remixes ii   
+2  super eurobeat presents euro every little thing   
+3             the remixes iii: mix rice plantation   
+4                 cyber trance presents elt trance   
+
+                                       album_details  peak_positions_njpn  \
+0  released: september 17, 1997\nlabel: avex trax...                    2   
+1  released: november 18, 1998\nlabel: avex trax\...                    5   
+2  released: september 5, 2001\nlabel: avex trax\...                    3   
+3  released: february 27, 2002\nlabel: avex trax\...                   19   
+4  released: february 27, 2002\nlabel: avex trax\...                   16   
+
+     sales  
+0  640,000  
+1  300,000  
+2  200,000  
+3   35,000  
+4   60,000  
+Sample 2012 - Plan 1: Caption: none
+Sample 2012 - Plan 1: Original table: [['title', 'album_details', 'peak_positions_njpn', 'sales'], ['the remixes', 'released: september 17, 1997\\nlabel: avex trax\\nformats: cd', '2', '640,000'], ['the remixes ii', 'released: november 18, 1998\\nlabel: avex trax\\nformats: cd', '5', '300,000'], ['super eurobeat presents euro every little thing', 'released: september 5, 2001\\nlabel: avex trax\\nformats: cd', '3', '200,000'], ['the remixes iii: mix rice plantation', 'released: february 27, 2002\\nlabel: avex trax\\nformats: cd', '19', '35,000'], ['cyber trance presents elt trance', 'released: february 27, 2002\\nlabel: avex trax\\nformats: cd', '16', '60,000']]
+########################################################################################################################
+Sample 2012 - Plan 1: Operation 1: Order the table by 'sales' in descending order.
+Sample 2012 - Plan 1: Selected indices: [[4, 3], [0, 3], [2, 3], [3, 3], [1, 3]]
+Sample 2012 - Plan 1: X-Table after operation df:
+                                             title  \
+0                                      the remixes   
+1                                   the remixes ii   
+2  super eurobeat presents euro every little thing   
+3                 cyber trance presents elt trance   
+4             the remixes iii: mix rice plantation   
+
+                                       album_details  peak_positions_njpn  \
+0  released: september 17, 1997\nlabel: avex trax...                    2   
+1  released: november 18, 1998\nlabel: avex trax\...                    5   
+2  released: september 5, 2001\nlabel: avex trax\...                    3   
+3  released: february 27, 2002\nlabel: avex trax\...                   16   
+4  released: february 27, 2002\nlabel: avex trax\...                   19   
+
+     sales  
+0  640,000  
+1  300,000  
+2  200,000  
+3   60,000  
+4   35,000  
+Sample 2012 - Plan 1: Table after operation: [['title', 'album_details', 'peak_positions_njpn', 'sales'], ['the remixes', 'released: september 17, 1997\\nlabel: avex trax\\nformats: cd', 2, '640,000'], ['the remixes ii', 'released: november 18, 1998\\nlabel: avex trax\\nformats: cd', 5, '300,000'], ['super eurobeat presents euro every little thing', 'released: september 5, 2001\\nlabel: avex trax\\nformats: cd', 3, '200,000'], ['cyber trance presents elt trance', 'released: february 27, 2002\\nlabel: avex trax\\nformats: cd', 16, '60,000'], ['the remixes iii: mix rice plantation', 'released: february 27, 2002\\nlabel: avex trax\\nformats: cd', 19, '35,000']]
+########################################################################################################################
+Sample 2012 - Plan 1: Operation 2: Select row number 1.
+Sample 2012 - Plan 1: Selected indices: []
+Sample 2012 - Plan 1: X-Table after operation df:
+         title                                      album_details  \
+0  the remixes  released: september 17, 1997\nlabel: avex trax...   
+
+   peak_positions_njpn    sales  
+0                    2  640,000  
+Sample 2012 - Plan 1: Table after operation: [['title', 'album_details', 'peak_positions_njpn', 'sales'], ['the remixes', 'released: september 17, 1997\\nlabel: avex trax\\nformats: cd', 2, '640,000']]
+########################################################################################################################
+Sample 2012 - Plan 1: Operation 3: Select the 'album_details' column.
+Sample 2012 - Plan 1: Selected indices: []
+Sample 2012 - Plan 1: X-Table after operation df:
+                                       album_details
+0  released: september 17, 1997\nlabel: avex trax...
+Sample 2012 - Plan 1: Table after operation: [['album_details'], ['released: september 17, 1997\\nlabel: avex trax\\nformats: cd']]
+Fall-back: FALSE
+Answer from plan 1: [['released: september 17, 1997\\nlabel: avex trax\\nformats: cd']]
+Groundtruth: ['The Remixes']

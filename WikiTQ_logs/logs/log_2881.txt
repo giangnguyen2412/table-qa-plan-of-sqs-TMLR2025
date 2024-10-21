@@ -1,0 +1,65 @@
+************************************************************************************************************************
+Sample 2881 - Plan 1: Query: what was the distance of each of hannes hopley' throws?
+Sample 2881 - Plan 1: Groundtruth: ['59.51 m', '17.76 m', '62.86 m', '63.50 m', '62.58 m', '18.44 m', '60.99 m', '57.79 m', '56.98 m']
+Sample 2881 - Plan 1: X-Original table pd: 
+   year                 competition                               venue  \
+0  2000  world junior championships                     santiago, chile   
+1  2003            all-africa games                      abuja, nigeria   
+2  2003            all-africa games                      abuja, nigeria   
+3  2004       african championships  brazzaville, republic of the congo   
+4  2004               olympic games                      athens, greece   
+5  2006          commonwealth games                melbourne, australia   
+6  2006          commonwealth games                melbourne, australia   
+7  2007            all-africa games                    algiers, algeria   
+8  2008       african championships               addis ababa, ethiopia   
+
+  position         event    notes  
+0      1st  discus throw  59.51 m  
+1      5th      shot put  17.76 m  
+2      2nd  discus throw  62.86 m  
+3      2nd  discus throw  63.50 m  
+4      8th  discus throw  62.58 m  
+5      7th      shot put  18.44 m  
+6      4th  discus throw  60.99 m  
+7      3rd  discus throw  57.79 m  
+8      2nd  discus throw  56.98 m  
+Sample 2881 - Plan 1: Caption: none
+Sample 2881 - Plan 1: Original table: [['year', 'competition', 'venue', 'position', 'event', 'notes'], ['2000', 'world junior championships', 'santiago, chile', '1st', 'discus throw', '59.51 m'], ['2003', 'all-africa games', 'abuja, nigeria', '5th', 'shot put', '17.76 m'], ['2003', 'all-africa games', 'abuja, nigeria', '2nd', 'discus throw', '62.86 m'], ['2004', 'african championships', 'brazzaville, republic of the congo', '2nd', 'discus throw', '63.50 m'], ['2004', 'olympic games', 'athens, greece', '8th', 'discus throw', '62.58 m'], ['2006', 'commonwealth games', 'melbourne, australia', '7th', 'shot put', '18.44 m'], ['2006', 'commonwealth games', 'melbourne, australia', '4th', 'discus throw', '60.99 m'], ['2007', 'all-africa games', 'algiers, algeria', '3rd', 'discus throw', '57.79 m'], ['2008', 'african championships', 'addis ababa, ethiopia', '2nd', 'discus throw', '56.98 m']]
+########################################################################################################################
+Sample 2881 - Plan 1: Operation 1: Select rows where the 'event' column is 'discus throw'.
+Sample 2881 - Plan 1: Selected indices: [[4, 4], [7, 4], [2, 4], [0, 4], [3, 4], [8, 4], [6, 4]]
+Sample 2881 - Plan 1: X-Table after operation df:
+   year                 competition                               venue  \
+0  2000  world junior championships                     santiago, chile   
+1  2003            all-africa games                      abuja, nigeria   
+2  2004       african championships  brazzaville, republic of the congo   
+3  2004               olympic games                      athens, greece   
+4  2006          commonwealth games                melbourne, australia   
+5  2007            all-africa games                    algiers, algeria   
+6  2008       african championships               addis ababa, ethiopia   
+
+  position         event    notes  
+0      1st  discus throw  59.51 m  
+1      2nd  discus throw  62.86 m  
+2      2nd  discus throw  63.50 m  
+3      8th  discus throw  62.58 m  
+4      4th  discus throw  60.99 m  
+5      3rd  discus throw  57.79 m  
+6      2nd  discus throw  56.98 m  
+Sample 2881 - Plan 1: Table after operation: [['year', 'competition', 'venue', 'position', 'event', 'notes'], [2000, 'world junior championships', 'santiago, chile', '1st', 'discus throw', '59.51 m'], [2003, 'all-africa games', 'abuja, nigeria', '2nd', 'discus throw', '62.86 m'], [2004, 'african championships', 'brazzaville, republic of the congo', '2nd', 'discus throw', '63.50 m'], [2004, 'olympic games', 'athens, greece', '8th', 'discus throw', '62.58 m'], [2006, 'commonwealth games', 'melbourne, australia', '4th', 'discus throw', '60.99 m'], [2007, 'all-africa games', 'algiers, algeria', '3rd', 'discus throw', '57.79 m'], [2008, 'african championships', 'addis ababa, ethiopia', '2nd', 'discus throw', '56.98 m']]
+########################################################################################################################
+Sample 2881 - Plan 1: Operation 2: Select the 'notes' column.
+Sample 2881 - Plan 1: Selected indices: []
+Sample 2881 - Plan 1: X-Table after operation df:
+     notes
+0  59.51 m
+1  62.86 m
+2  63.50 m
+3  62.58 m
+4  60.99 m
+5  57.79 m
+6  56.98 m
+Sample 2881 - Plan 1: Table after operation: [['notes'], ['59.51 m'], ['62.86 m'], ['63.50 m'], ['62.58 m'], ['60.99 m'], ['57.79 m'], ['56.98 m']]
+Fall-back: FALSE
+Answer from plan 1: [['59.51 m'], ['62.86 m'], ['63.50 m'], ['62.58 m'], ['60.99 m'], ['57.79 m'], ['56.98 m']]
+Groundtruth: ['59.51 m', '17.76 m', '62.86 m', '63.50 m', '62.58 m', '18.44 m', '60.99 m', '57.79 m', '56.98 m']

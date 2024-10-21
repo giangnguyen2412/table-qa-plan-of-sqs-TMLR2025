@@ -1,0 +1,36 @@
+************************************************************************************************************************
+Sample 2370 - Plan 1: Query: did he drive a moto2 class or 125cc class in 2007?
+Sample 2370 - Plan 1: Groundtruth: ['125cc']
+Sample 2370 - Plan 1: X-Original table pd: 
+   season  class     moto  races  win  podiums  pole     pts position
+0    2004  125cc  aprilia      1    0        0     0       0       nc
+1    2005  125cc    derbi     13    0        0     0       1     36th
+2    2006  125cc    derbi     16    0        0     0      53     14th
+3    2007  125cc    derbi     17    0        0     0      19     22nd
+4    2008  125cc  aprilia     17    1        5     0     176      5th
+5    2009  125cc  aprilia     16    1        4     0   179.5      3rd
+6    2010  125cc  aprilia     16    3       14     1     296      2nd
+7    2011  125cc  aprilia     16    8       11     7     302      1st
+8    2012  moto2    suter     17    0        1     0      37     17th
+9    2013  moto2    suter     17    3        4     1     150      7th
+10   2014  moto2    suter      1    0        0     0      0*      nc*
+11  total                    147   16       39     9  1213.5         
+Sample 2370 - Plan 1: Caption: none
+Sample 2370 - Plan 1: Original table: [['season', 'class', 'moto', 'races', 'win', 'podiums', 'pole', 'pts', 'position'], ['2004', '125cc', 'aprilia', '1', '0', '0', '0', '0', 'nc'], ['2005', '125cc', 'derbi', '13', '0', '0', '0', '1', '36th'], ['2006', '125cc', 'derbi', '16', '0', '0', '0', '53', '14th'], ['2007', '125cc', 'derbi', '17', '0', '0', '0', '19', '22nd'], ['2008', '125cc', 'aprilia', '17', '1', '5', '0', '176', '5th'], ['2009', '125cc', 'aprilia', '16', '1', '4', '0', '179.5', '3rd'], ['2010', '125cc', 'aprilia', '16', '3', '14', '1', '296', '2nd'], ['2011', '125cc', 'aprilia', '16', '8', '11', '7', '302', '1st'], ['2012', 'moto2', 'suter', '17', '0', '1', '0', '37', '17th'], ['2013', 'moto2', 'suter', '17', '3', '4', '1', '150', '7th'], ['2014', 'moto2', 'suter', '1', '0', '0', '0', '0*', 'nc*'], ['total', '', '', '147', '16', '39', '9', '1213.5', '']]
+########################################################################################################################
+Sample 2370 - Plan 1: Operation 1: Select rows where the 'season' is '2007'.
+Sample 2370 - Plan 1: Selected indices: [[3, 0]]
+Sample 2370 - Plan 1: X-Table after operation df:
+   season  class   moto  races  win  podiums  pole  pts position
+0    2007  125cc  derbi     17    0        0     0   19     22nd
+Sample 2370 - Plan 1: Table after operation: [['season', 'class', 'moto', 'races', 'win', 'podiums', 'pole', 'pts', 'position'], ['2007', '125cc', 'derbi', 17, 0, 0, 0, '19', '22nd']]
+########################################################################################################################
+Sample 2370 - Plan 1: Operation 2: Select the 'class' column.
+Sample 2370 - Plan 1: Selected indices: []
+Sample 2370 - Plan 1: X-Table after operation df:
+   class
+0  125cc
+Sample 2370 - Plan 1: Table after operation: [['class'], ['125cc']]
+Fall-back: FALSE
+Answer from plan 1: [['125cc']]
+Groundtruth: ['125cc']

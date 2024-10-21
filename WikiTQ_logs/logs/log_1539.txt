@@ -1,0 +1,83 @@
+************************************************************************************************************************
+Sample 1539 - Plan 1: Query: which retired result was listed the most?
+Sample 1539 - Plan 1: Groundtruth: ['Running']
+Sample 1539 - Plan 1: X-Original table pd: 
+      year     car   start     qual    rank  finish  laps  led       retired
+0     1926      31      12  102.789      13      11   142    0       flagged
+1     1927      27      27  107.765      22       3   200    0       running
+2     1928       8       4  117.031       4      10   200   33       running
+3     1929      23      11  112.146      15      17    91    0  supercharger
+4     1930       9      20  100.033      18      20    79    0         valve
+5     1931      37      19  111.725       6      18   167    0      crash t4
+6     1932      25      20  108.896      34      13   184    0       flagged
+7     1933      34      12  113.578      15       7   200    0       running
+8     1934       8       7  113.733      13      17    94    0           rod
+9     1935      44       6  115.459      11      21   102    0       magneto
+10    1937      38       7  118.788      16       8   200    0       running
+11    1938      17       4  122.499       6      17   130    0           rod
+12    1939      62      27  121.749      24      11   200    0       running
+13  totals  totals  totals   totals  totals  totals  1989   33              
+Sample 1539 - Plan 1: Caption: none
+Sample 1539 - Plan 1: Original table: [['year', 'car', 'start', 'qual', 'rank', 'finish', 'laps', 'led', 'retired'], ['1926', '31', '12', '102.789', '13', '11', '142', '0', 'flagged'], ['1927', '27', '27', '107.765', '22', '3', '200', '0', 'running'], ['1928', '8', '4', '117.031', '4', '10', '200', '33', 'running'], ['1929', '23', '11', '112.146', '15', '17', '91', '0', 'supercharger'], ['1930', '9', '20', '100.033', '18', '20', '79', '0', 'valve'], ['1931', '37', '19', '111.725', '6', '18', '167', '0', 'crash t4'], ['1932', '25', '20', '108.896', '34', '13', '184', '0', 'flagged'], ['1933', '34', '12', '113.578', '15', '7', '200', '0', 'running'], ['1934', '8', '7', '113.733', '13', '17', '94', '0', 'rod'], ['1935', '44', '6', '115.459', '11', '21', '102', '0', 'magneto'], ['1937', '38', '7', '118.788', '16', '8', '200', '0', 'running'], ['1938', '17', '4', '122.499', '6', '17', '130', '0', 'rod'], ['1939', '62', '27', '121.749', '24', '11', '200', '0', 'running'], ['totals', 'totals', 'totals', 'totals', 'totals', 'totals', '1989', '33', '']]
+########################################################################################################################
+Sample 1539 - Plan 1: Operation 1: Select rows where the 'retired' column is not empty.
+Sample 1539 - Plan 1: Selected indices: [[8, 8], [3, 8], [2, 8], [10, 8], [5, 8], [6, 8], [1, 8], [9, 8], [4, 8], [11, 8], [12, 8], [7, 8], [0, 8]]
+Sample 1539 - Plan 1: X-Table after operation df:
+    year  car  start     qual  rank  finish  laps  led       retired
+0   1926   31     12  102.789    13      11   142    0       flagged
+1   1927   27     27  107.765    22       3   200    0       running
+2   1928    8      4  117.031     4      10   200   33       running
+3   1929   23     11  112.146    15      17    91    0  supercharger
+4   1930    9     20  100.033    18      20    79    0         valve
+5   1931   37     19  111.725     6      18   167    0      crash t4
+6   1932   25     20  108.896    34      13   184    0       flagged
+7   1933   34     12  113.578    15       7   200    0       running
+8   1934    8      7  113.733    13      17    94    0           rod
+9   1935   44      6  115.459    11      21   102    0       magneto
+10  1937   38      7  118.788    16       8   200    0       running
+11  1938   17      4  122.499     6      17   130    0           rod
+12  1939   62     27  121.749    24      11   200    0       running
+Sample 1539 - Plan 1: Table after operation: [['year', 'car', 'start', 'qual', 'rank', 'finish', 'laps', 'led', 'retired'], ['1926', '31', '12', '102.789', '13', '11', 142, 0, 'flagged'], ['1927', '27', '27', '107.765', '22', '3', 200, 0, 'running'], ['1928', '8', '4', '117.031', '4', '10', 200, 33, 'running'], ['1929', '23', '11', '112.146', '15', '17', 91, 0, 'supercharger'], ['1930', '9', '20', '100.033', '18', '20', 79, 0, 'valve'], ['1931', '37', '19', '111.725', '6', '18', 167, 0, 'crash t4'], ['1932', '25', '20', '108.896', '34', '13', 184, 0, 'flagged'], ['1933', '34', '12', '113.578', '15', '7', 200, 0, 'running'], ['1934', '8', '7', '113.733', '13', '17', 94, 0, 'rod'], ['1935', '44', '6', '115.459', '11', '21', 102, 0, 'magneto'], ['1937', '38', '7', '118.788', '16', '8', 200, 0, 'running'], ['1938', '17', '4', '122.499', '6', '17', 130, 0, 'rod'], ['1939', '62', '27', '121.749', '24', '11', 200, 0, 'running']]
+########################################################################################################################
+Sample 1539 - Plan 1: Operation 2: Count the occurrences of each unique value in the 'retired' column.
+Sample 1539 - Plan 1: Selected indices: []
+Sample 1539 - Plan 1: X-Table after operation df:
+        retired  count
+0      crash t4      1
+1       flagged      2
+2       magneto      1
+3           rod      2
+4       running      5
+5  supercharger      1
+6         valve      1
+Sample 1539 - Plan 1: Table after operation: [['retired', 'count'], ['crash t4', 1], ['flagged', 2], ['magneto', 1], ['rod', 2], ['running', 5], ['supercharger', 1], ['valve', 1]]
+########################################################################################################################
+Sample 1539 - Plan 1: Operation 3: Order the table by the count of each unique value in descending order.
+Sample 1539 - Plan 1: Selected indices: [[0, 1], [2, 1], [3, 1], [6, 1], [1, 1], [5, 1], [4, 1]]
+Sample 1539 - Plan 1: X-Table after operation df:
+        retired  count
+0       running      5
+1       flagged      2
+2           rod      2
+3      crash t4      1
+4       magneto      1
+5  supercharger      1
+6         valve      1
+Sample 1539 - Plan 1: Table after operation: [['retired', 'count'], ['running', 5], ['flagged', 2], ['rod', 2], ['crash t4', 1], ['magneto', 1], ['supercharger', 1], ['valve', 1]]
+########################################################################################################################
+Sample 1539 - Plan 1: Operation 4: Select the row with the highest count.
+Sample 1539 - Plan 1: Selected indices: [[0, 1]]
+Sample 1539 - Plan 1: X-Table after operation df:
+   retired  count
+0  running      5
+Sample 1539 - Plan 1: Table after operation: [['retired', 'count'], ['running', 5]]
+########################################################################################################################
+Sample 1539 - Plan 1: Operation 5: Select the 'retired' column from the selected row.
+Sample 1539 - Plan 1: Selected indices: []
+Sample 1539 - Plan 1: X-Table after operation df:
+   retired
+0  running
+Sample 1539 - Plan 1: Table after operation: [['retired'], ['running']]
+Fall-back: FALSE
+Answer from plan 1: [['running']]
+Groundtruth: ['Running']

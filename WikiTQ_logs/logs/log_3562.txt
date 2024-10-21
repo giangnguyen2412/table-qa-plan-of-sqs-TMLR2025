@@ -1,0 +1,235 @@
+************************************************************************************************************************
+Sample 3562 - Plan 1: Query: which manager was previous to george case?
+Sample 3562 - Plan 1: Groundtruth: ['Bob Lemon']
+Sample 3562 - Plan 1: X-Original table pd: 
+    year record   finish                                         manager  \
+0   1961  68-86      6th                        tommy heath / bill werle   
+1   1962  77-76      5th                                       irv noren   
+2   1963  81-77      4th                                       irv noren   
+3   1964  60-98     10th                                       bob lemon   
+4   1965  75-72  6th (t)                                     george case   
+5   1966  63-84     10th                                     george case   
+6   1967  60-87     12th                               wayne terwilliger   
+7   1968  78-69      3rd                                      bill adair   
+8   1969  74-72      4th                                    chuck tanner   
+9   1970  98-48      1st                                    chuck tanner   
+10  1971  73-73  4th (t)                                      bill adair   
+11  1972  74-74      5th                                   rocky bridges   
+12  1973  70-74      5th  rocky bridges / warren hacker / roy hartsfield   
+13  1974  67-77      6th                                  roy hartsfield   
+14  1975  88-56      1st                                  roy hartsfield   
+15  1976  77-68      2nd                                  roy hartsfield   
+16  1977  79-67      2nd                                   dick phillips   
+17  1978  56-82      8th                                   dick phillips   
+18  1979  72-76      8th                                   dick phillips   
+19  1980  76-65      5th                                      doug rader   
+20  1981  72-65  3rd (t)                                      doug rader   
+21  1982  73-71      5th                                      doug rader   
+22  1983  72-71      5th                                  tom trebelhorn   
+23  1984  87-53      1st                                     tommy sandt   
+24  1985  84-59      1st                                     tommy sandt   
+25  1986  65-79      9th                                     tommy sandt   
+26  1987  65-75      9th                                      bob bailey   
+
+              playoffs  
+0                 none  
+1                 none  
+2                       
+3                       
+4                       
+5                       
+6                       
+7                       
+8                       
+9   lost league finals  
+10                      
+11                      
+12                      
+13                      
+14       league champs  
+15       league champs  
+16  lost league finals  
+17                      
+18  lost league finals  
+19  lost league finals  
+20   lost in 1st round  
+21                      
+22                      
+23  lost league finals  
+24   lost in 1st round  
+25                      
+26                      
+Sample 3562 - Plan 1: Caption: none
+Sample 3562 - Plan 1: Original table: [['year', 'record', 'finish', 'manager', 'playoffs'], ['1961', '68-86', '6th', 'tommy heath / bill werle', 'none'], ['1962', '77-76', '5th', 'irv noren', 'none'], ['1963', '81-77', '4th', 'irv noren', ''], ['1964', '60-98', '10th', 'bob lemon', ''], ['1965', '75-72', '6th (t)', 'george case', ''], ['1966', '63-84', '10th', 'george case', ''], ['1967', '60-87', '12th', 'wayne terwilliger', ''], ['1968', '78-69', '3rd', 'bill adair', ''], ['1969', '74-72', '4th', 'chuck tanner', ''], ['1970', '98-48', '1st', 'chuck tanner', 'lost league finals'], ['1971', '73-73', '4th (t)', 'bill adair', ''], ['1972', '74-74', '5th', 'rocky bridges', ''], ['1973', '70-74', '5th', 'rocky bridges / warren hacker / roy hartsfield', ''], ['1974', '67-77', '6th', 'roy hartsfield', ''], ['1975', '88-56', '1st', 'roy hartsfield', 'league champs'], ['1976', '77-68', '2nd', 'roy hartsfield', 'league champs'], ['1977', '79-67', '2nd', 'dick phillips', 'lost league finals'], ['1978', '56-82', '8th', 'dick phillips', ''], ['1979', '72-76', '8th', 'dick phillips', 'lost league finals'], ['1980', '76-65', '5th', 'doug rader', 'lost league finals'], ['1981', '72-65', '3rd (t)', 'doug rader', 'lost in 1st round'], ['1982', '73-71', '5th', 'doug rader', ''], ['1983', '72-71', '5th', 'tom trebelhorn', ''], ['1984', '87-53', '1st', 'tommy sandt', 'lost league finals'], ['1985', '84-59', '1st', 'tommy sandt', 'lost in 1st round'], ['1986', '65-79', '9th', 'tommy sandt', ''], ['1987', '65-75', '9th', 'bob bailey', '']]
+########################################################################################################################
+Sample 3562 - Plan 1: Operation 1: Select rows where the 'manager' is not empty.
+Sample 3562 - Plan 1: Selected indices: [[4, 3], [17, 3], [19, 3], [8, 3], [10, 3], [1, 3], [21, 3], [12, 3], [23, 3], [3, 3], [14, 3], [5, 3], [25, 3], [16, 3], [7, 3], [18, 3], [20, 3], [22, 3], [9, 3], [0, 3], [11, 3], [2, 3], [13, 3], [24, 3], [15, 3], [26, 3], [6, 3]]
+Sample 3562 - Plan 1: X-Table after operation df:
+    year record   finish                                         manager  \
+0   1961  68-86      6th                        tommy heath / bill werle   
+1   1962  77-76      5th                                       irv noren   
+2   1963  81-77      4th                                       irv noren   
+3   1964  60-98     10th                                       bob lemon   
+4   1965  75-72  6th (t)                                     george case   
+5   1966  63-84     10th                                     george case   
+6   1967  60-87     12th                               wayne terwilliger   
+7   1968  78-69      3rd                                      bill adair   
+8   1969  74-72      4th                                    chuck tanner   
+9   1970  98-48      1st                                    chuck tanner   
+10  1971  73-73  4th (t)                                      bill adair   
+11  1972  74-74      5th                                   rocky bridges   
+12  1973  70-74      5th  rocky bridges / warren hacker / roy hartsfield   
+13  1974  67-77      6th                                  roy hartsfield   
+14  1975  88-56      1st                                  roy hartsfield   
+15  1976  77-68      2nd                                  roy hartsfield   
+16  1977  79-67      2nd                                   dick phillips   
+17  1978  56-82      8th                                   dick phillips   
+18  1979  72-76      8th                                   dick phillips   
+19  1980  76-65      5th                                      doug rader   
+20  1981  72-65  3rd (t)                                      doug rader   
+21  1982  73-71      5th                                      doug rader   
+22  1983  72-71      5th                                  tom trebelhorn   
+23  1984  87-53      1st                                     tommy sandt   
+24  1985  84-59      1st                                     tommy sandt   
+25  1986  65-79      9th                                     tommy sandt   
+26  1987  65-75      9th                                      bob bailey   
+
+              playoffs  
+0                 none  
+1                 none  
+2                       
+3                       
+4                       
+5                       
+6                       
+7                       
+8                       
+9   lost league finals  
+10                      
+11                      
+12                      
+13                      
+14       league champs  
+15       league champs  
+16  lost league finals  
+17                      
+18  lost league finals  
+19  lost league finals  
+20   lost in 1st round  
+21                      
+22                      
+23  lost league finals  
+24   lost in 1st round  
+25                      
+26                      
+Sample 3562 - Plan 1: Table after operation: [['year', 'record', 'finish', 'manager', 'playoffs'], [1961, '68-86', '6th', 'tommy heath / bill werle', 'none'], [1962, '77-76', '5th', 'irv noren', 'none'], [1963, '81-77', '4th', 'irv noren', ''], [1964, '60-98', '10th', 'bob lemon', ''], [1965, '75-72', '6th (t)', 'george case', ''], [1966, '63-84', '10th', 'george case', ''], [1967, '60-87', '12th', 'wayne terwilliger', ''], [1968, '78-69', '3rd', 'bill adair', ''], [1969, '74-72', '4th', 'chuck tanner', ''], [1970, '98-48', '1st', 'chuck tanner', 'lost league finals'], [1971, '73-73', '4th (t)', 'bill adair', ''], [1972, '74-74', '5th', 'rocky bridges', ''], [1973, '70-74', '5th', 'rocky bridges / warren hacker / roy hartsfield', ''], [1974, '67-77', '6th', 'roy hartsfield', ''], [1975, '88-56', '1st', 'roy hartsfield', 'league champs'], [1976, '77-68', '2nd', 'roy hartsfield', 'league champs'], [1977, '79-67', '2nd', 'dick phillips', 'lost league finals'], [1978, '56-82', '8th', 'dick phillips', ''], [1979, '72-76', '8th', 'dick phillips', 'lost league finals'], [1980, '76-65', '5th', 'doug rader', 'lost league finals'], [1981, '72-65', '3rd (t)', 'doug rader', 'lost in 1st round'], [1982, '73-71', '5th', 'doug rader', ''], [1983, '72-71', '5th', 'tom trebelhorn', ''], [1984, '87-53', '1st', 'tommy sandt', 'lost league finals'], [1985, '84-59', '1st', 'tommy sandt', 'lost in 1st round'], [1986, '65-79', '9th', 'tommy sandt', ''], [1987, '65-75', '9th', 'bob bailey', '']]
+########################################################################################################################
+Sample 3562 - Plan 1: Operation 2: Order the table by 'year' in ascending order.
+Sample 3562 - Plan 1: Selected indices: [[4, 0], [17, 0], [8, 0], [19, 0], [10, 0], [1, 0], [21, 0], [12, 0], [23, 0], [3, 0], [14, 0], [5, 0], [25, 0], [16, 0], [7, 0], [18, 0], [20, 0], [22, 0], [9, 0], [0, 0], [11, 0], [2, 0], [13, 0], [24, 0], [15, 0], [26, 0], [6, 0]]
+Sample 3562 - Plan 1: X-Table after operation df:
+    year record   finish                                         manager  \
+0   1961  68-86      6th                        tommy heath / bill werle   
+1   1962  77-76      5th                                       irv noren   
+2   1963  81-77      4th                                       irv noren   
+3   1964  60-98     10th                                       bob lemon   
+4   1965  75-72  6th (t)                                     george case   
+5   1966  63-84     10th                                     george case   
+6   1967  60-87     12th                               wayne terwilliger   
+7   1968  78-69      3rd                                      bill adair   
+8   1969  74-72      4th                                    chuck tanner   
+9   1970  98-48      1st                                    chuck tanner   
+10  1971  73-73  4th (t)                                      bill adair   
+11  1972  74-74      5th                                   rocky bridges   
+12  1973  70-74      5th  rocky bridges / warren hacker / roy hartsfield   
+13  1974  67-77      6th                                  roy hartsfield   
+14  1975  88-56      1st                                  roy hartsfield   
+15  1976  77-68      2nd                                  roy hartsfield   
+16  1977  79-67      2nd                                   dick phillips   
+17  1978  56-82      8th                                   dick phillips   
+18  1979  72-76      8th                                   dick phillips   
+19  1980  76-65      5th                                      doug rader   
+20  1981  72-65  3rd (t)                                      doug rader   
+21  1982  73-71      5th                                      doug rader   
+22  1983  72-71      5th                                  tom trebelhorn   
+23  1984  87-53      1st                                     tommy sandt   
+24  1985  84-59      1st                                     tommy sandt   
+25  1986  65-79      9th                                     tommy sandt   
+26  1987  65-75      9th                                      bob bailey   
+
+              playoffs  
+0                 none  
+1                 none  
+2                       
+3                       
+4                       
+5                       
+6                       
+7                       
+8                       
+9   lost league finals  
+10                      
+11                      
+12                      
+13                      
+14       league champs  
+15       league champs  
+16  lost league finals  
+17                      
+18  lost league finals  
+19  lost league finals  
+20   lost in 1st round  
+21                      
+22                      
+23  lost league finals  
+24   lost in 1st round  
+25                      
+26                      
+Sample 3562 - Plan 1: Table after operation: [['year', 'record', 'finish', 'manager', 'playoffs'], [1961, '68-86', '6th', 'tommy heath / bill werle', 'none'], [1962, '77-76', '5th', 'irv noren', 'none'], [1963, '81-77', '4th', 'irv noren', ''], [1964, '60-98', '10th', 'bob lemon', ''], [1965, '75-72', '6th (t)', 'george case', ''], [1966, '63-84', '10th', 'george case', ''], [1967, '60-87', '12th', 'wayne terwilliger', ''], [1968, '78-69', '3rd', 'bill adair', ''], [1969, '74-72', '4th', 'chuck tanner', ''], [1970, '98-48', '1st', 'chuck tanner', 'lost league finals'], [1971, '73-73', '4th (t)', 'bill adair', ''], [1972, '74-74', '5th', 'rocky bridges', ''], [1973, '70-74', '5th', 'rocky bridges / warren hacker / roy hartsfield', ''], [1974, '67-77', '6th', 'roy hartsfield', ''], [1975, '88-56', '1st', 'roy hartsfield', 'league champs'], [1976, '77-68', '2nd', 'roy hartsfield', 'league champs'], [1977, '79-67', '2nd', 'dick phillips', 'lost league finals'], [1978, '56-82', '8th', 'dick phillips', ''], [1979, '72-76', '8th', 'dick phillips', 'lost league finals'], [1980, '76-65', '5th', 'doug rader', 'lost league finals'], [1981, '72-65', '3rd (t)', 'doug rader', 'lost in 1st round'], [1982, '73-71', '5th', 'doug rader', ''], [1983, '72-71', '5th', 'tom trebelhorn', ''], [1984, '87-53', '1st', 'tommy sandt', 'lost league finals'], [1985, '84-59', '1st', 'tommy sandt', 'lost in 1st round'], [1986, '65-79', '9th', 'tommy sandt', ''], [1987, '65-75', '9th', 'bob bailey', '']]
+########################################################################################################################
+Sample 3562 - Plan 1: Operation 3: Select the 'manager' column.
+Sample 3562 - Plan 1: Selected indices: []
+Sample 3562 - Plan 1: X-Table after operation df:
+                                           manager
+0                         tommy heath / bill werle
+1                                        irv noren
+2                                        irv noren
+3                                        bob lemon
+4                                      george case
+5                                      george case
+6                                wayne terwilliger
+7                                       bill adair
+8                                     chuck tanner
+9                                     chuck tanner
+10                                      bill adair
+11                                   rocky bridges
+12  rocky bridges / warren hacker / roy hartsfield
+13                                  roy hartsfield
+14                                  roy hartsfield
+15                                  roy hartsfield
+16                                   dick phillips
+17                                   dick phillips
+18                                   dick phillips
+19                                      doug rader
+20                                      doug rader
+21                                      doug rader
+22                                  tom trebelhorn
+23                                     tommy sandt
+24                                     tommy sandt
+25                                     tommy sandt
+26                                      bob bailey
+Sample 3562 - Plan 1: Table after operation: [['manager'], ['tommy heath / bill werle'], ['irv noren'], ['irv noren'], ['bob lemon'], ['george case'], ['george case'], ['wayne terwilliger'], ['bill adair'], ['chuck tanner'], ['chuck tanner'], ['bill adair'], ['rocky bridges'], ['rocky bridges / warren hacker / roy hartsfield'], ['roy hartsfield'], ['roy hartsfield'], ['roy hartsfield'], ['dick phillips'], ['dick phillips'], ['dick phillips'], ['doug rader'], ['doug rader'], ['doug rader'], ['tom trebelhorn'], ['tommy sandt'], ['tommy sandt'], ['tommy sandt'], ['bob bailey']]
+########################################################################################################################
+Sample 3562 - Plan 1: Operation 4: Find the row number where 'manager' is 'george case'.
+Sample 3562 - Plan 1: Selected indices: []
+Sample 3562 - Plan 1: X-Table after operation df:
+   row_number
+0           1
+1           2
+Sample 3562 - Plan 1: Table after operation: [['row_number'], [1], [2]]
+########################################################################################################################
+Sample 3562 - Plan 1: Operation 5: Subtract 1 from the row number to get the previous row number.
+SQL execution error in operation 5: Execution failed on sql 'Write a SQL command that: Subtract 1 from the row number to get the previous row number.': near "Write": syntax error
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['wayne terwilliger']]
+Groundtruth: ['Bob Lemon']

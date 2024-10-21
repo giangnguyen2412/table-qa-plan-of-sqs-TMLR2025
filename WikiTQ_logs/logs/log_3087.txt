@@ -1,0 +1,62 @@
+************************************************************************************************************************
+Sample 3087 - Plan 1: Query: how many more songs are listed for "the little mermaid" than for "sleeping beauty"?
+Sample 3087 - Plan 1: Groundtruth: ['2']
+Sample 3087 - Plan 1: X-Original table pd: 
+     _                                 title            performer_s_  \
+0    1                   "once upon a dream"            emily osment   
+1    2                 "that's how you know"             demi lovato   
+2    3        "some day my prince will come"          ashley tisdale   
+3    4                  "colors of the wind"         vanessa hudgens   
+4    5                          "reflection"      christina aguilera   
+5    6                     "so this is love"       the cheetah girls   
+6    7                       "kiss the girl"          colbie caillat   
+7    8          "it's not just make believe"             kari kimmel   
+8    9                       "under the sea"            raven-symoné   
+9   10                     "ever ever after"           jordan pruitt   
+10  11                  "true to your heart"             keke palmer   
+11  12                  "happy working song"               amy adams   
+12  13                  "part of your world"  original broadway cast   
+13  14  "a dream is a wish your heart makes"    disney channel stars   
+
+                               film length  
+0                   sleeping beauty   3:32  
+1                         enchanted   3:12  
+2   snow white and the seven dwarfs   3:30  
+3                        pocahontas   3:58  
+4                             mulan   3:33  
+5                        cinderella   3:40  
+6                the little mermaid   3:16  
+7                    ella enchanted   3:06  
+8                the little mermaid   3:15  
+9                         enchanted   3:12  
+10                            mulan   3:22  
+11                        enchanted   2:09  
+12               the little mermaid   3:23  
+13                       cinderella   3:46  
+Sample 3087 - Plan 1: Caption: none
+Sample 3087 - Plan 1: Original table: [['_', 'title', 'performer_s_', 'film', 'length'], ['1', '"once upon a dream"', 'emily osment', 'sleeping beauty', '3:32'], ['2', '"that\'s how you know"', 'demi lovato', 'enchanted', '3:12'], ['3', '"some day my prince will come"', 'ashley tisdale', 'snow white and the seven dwarfs', '3:30'], ['4', '"colors of the wind"', 'vanessa hudgens', 'pocahontas', '3:58'], ['5', '"reflection"', 'christina aguilera', 'mulan', '3:33'], ['6', '"so this is love"', 'the cheetah girls', 'cinderella', '3:40'], ['7', '"kiss the girl"', 'colbie caillat', 'the little mermaid', '3:16'], ['8', '"it\'s not just make believe"', 'kari kimmel', 'ella enchanted', '3:06'], ['9', '"under the sea"', 'raven-symoné', 'the little mermaid', '3:15'], ['10', '"ever ever after"', 'jordan pruitt', 'enchanted', '3:12'], ['11', '"true to your heart"', 'keke palmer', 'mulan', '3:22'], ['12', '"happy working song"', 'amy adams', 'enchanted', '2:09'], ['13', '"part of your world"', 'original broadway cast', 'the little mermaid', '3:23'], ['14', '"a dream is a wish your heart makes"', 'disney channel stars', 'cinderella', '3:46']]
+########################################################################################################################
+Sample 3087 - Plan 1: Operation 1: Select rows where the 'film' is 'the little mermaid'.
+Sample 3087 - Plan 1: Selected indices: [[8, 3], [6, 3], [12, 3]]
+Sample 3087 - Plan 1: X-Table after operation df:
+    _                 title            performer_s_                film length
+0   7       "kiss the girl"          colbie caillat  the little mermaid   3:16
+1   9       "under the sea"            raven-symoné  the little mermaid   3:15
+2  13  "part of your world"  original broadway cast  the little mermaid   3:23
+Sample 3087 - Plan 1: Table after operation: [['_', 'title', 'performer_s_', 'film', 'length'], [7, '"kiss the girl"', 'colbie caillat', 'the little mermaid', '3:16'], [9, '"under the sea"', 'raven-symoné', 'the little mermaid', '3:15'], [13, '"part of your world"', 'original broadway cast', 'the little mermaid', '3:23']]
+########################################################################################################################
+Sample 3087 - Plan 1: Operation 2: Count the number of rows.
+Sample 3087 - Plan 1: Selected indices: []
+Sample 3087 - Plan 1: X-Table after operation df:
+   row_count
+0          3
+Sample 3087 - Plan 1: Table after operation: [['row_count'], [3]]
+########################################################################################################################
+Sample 3087 - Plan 1: Operation 3: Select rows where the 'film' is 'sleeping beauty'.
+SQL execution error in operation 3: Execution failed on sql 'SELECT *
+FROM table_sql
+WHERE film = 'sleeping beauty';': no such column: film
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['2']]
+Groundtruth: ['2']

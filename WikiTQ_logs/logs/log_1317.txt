@@ -1,0 +1,36 @@
+************************************************************************************************************************
+Sample 1317 - Plan 1: Query: both olin browne and jason gore are from what country?
+Sample 1317 - Plan 1: Groundtruth: ['United States']
+Sample 1317 - Plan 1: X-Original table pd: 
+  place            player        country         score to_par
+0     1     retief goosen   south africa  68-70-69=207     –3
+1    t2       olin browne  united states  67-71-72=210      e
+2    t2        jason gore  united states  71-67-72=210      e
+3    t4  michael campbell    new zealand  71-69-71=211     +1
+4    t4       mark hensby      australia  71-68-72=211     +1
+5     6        david toms  united states  70-72-70=212     +2
+6    t7        k. j. choi    south korea  69-70-74=213     +3
+7    t7     peter hedblom         sweden  77-66-70=213     +3
+8    t7      lee westwood        england  68-72-73=213     +3
+9    t7       tiger woods  united states  70-71-72=213     +3
+Sample 1317 - Plan 1: Caption: none
+Sample 1317 - Plan 1: Original table: [['place', 'player', 'country', 'score', 'to_par'], ['1', 'retief goosen', 'south africa', '68-70-69=207', '–3'], ['t2', 'olin browne', 'united states', '67-71-72=210', 'e'], ['t2', 'jason gore', 'united states', '71-67-72=210', 'e'], ['t4', 'michael campbell', 'new zealand', '71-69-71=211', '+1'], ['t4', 'mark hensby', 'australia', '71-68-72=211', '+1'], ['6', 'david toms', 'united states', '70-72-70=212', '+2'], ['t7', 'k. j. choi', 'south korea', '69-70-74=213', '+3'], ['t7', 'peter hedblom', 'sweden', '77-66-70=213', '+3'], ['t7', 'lee westwood', 'england', '68-72-73=213', '+3'], ['t7', 'tiger woods', 'united states', '70-71-72=213', '+3']]
+########################################################################################################################
+Sample 1317 - Plan 1: Operation 1: Select rows where 'player' is 'olin browne' or 'jason gore'.
+Sample 1317 - Plan 1: Selected indices: [[1, 1], [2, 1]]
+Sample 1317 - Plan 1: X-Table after operation df:
+  place       player        country         score to_par
+0    t2  olin browne  united states  67-71-72=210      e
+1    t2   jason gore  united states  71-67-72=210      e
+Sample 1317 - Plan 1: Table after operation: [['place', 'player', 'country', 'score', 'to_par'], ['t2', 'olin browne', 'united states', '67-71-72=210', 'e'], ['t2', 'jason gore', 'united states', '71-67-72=210', 'e']]
+########################################################################################################################
+Sample 1317 - Plan 1: Operation 2: Select the 'country' column.
+Sample 1317 - Plan 1: Selected indices: []
+Sample 1317 - Plan 1: X-Table after operation df:
+         country
+0  united states
+1  united states
+Sample 1317 - Plan 1: Table after operation: [['country'], ['united states'], ['united states']]
+Fall-back: FALSE
+Answer from plan 1: [['united states'], ['united states']]
+Groundtruth: ['United States']

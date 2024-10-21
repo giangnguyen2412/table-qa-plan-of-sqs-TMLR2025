@@ -1,0 +1,39 @@
+************************************************************************************************************************
+Sample 2153 - Plan 1: Query: what is the average number of gold medals won?
+Sample 2153 - Plan 1: Groundtruth: ['4.7']
+Sample 2153 - Plan 1: X-Original table pd: 
+    rank    nation  gold  silver  bronze  total
+0      1    france    14       7       7     28
+1      2     italy    12       8      10     30
+2      3  slovenia     5       4       3     12
+3      4     spain     4      14       6     24
+4      5    greece     3       4       9     16
+5      6   tunisia     3       0       0      3
+6      7   algeria     2       0       2      4
+7      8   croatia     0       3       3      6
+8      9     egypt     0       1       2      3
+9  total     total    43      41      42    126
+Sample 2153 - Plan 1: Caption: none
+Sample 2153 - Plan 1: Original table: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['1', 'france', '14', '7', '7', '28'], ['2', 'italy', '12', '8', '10', '30'], ['3', 'slovenia', '5', '4', '3', '12'], ['4', 'spain', '4', '14', '6', '24'], ['5', 'greece', '3', '4', '9', '16'], ['6', 'tunisia', '3', '0', '0', '3'], ['7', 'algeria', '2', '0', '2', '4'], ['8', 'croatia', '0', '3', '3', '6'], ['9', 'egypt', '0', '1', '2', '3'], ['total', 'total', '43', '41', '42', '126']]
+########################################################################################################################
+Sample 2153 - Plan 1: Operation 1: Calculate the sum of the 'gold' column and store it in a new column called 'total_gold'.
+Sample 2153 - Plan 1: Selected indices: []
+Sample 2153 - Plan 1: X-Table after operation df:
+   total_gold
+0          86
+Sample 2153 - Plan 1: Table after operation: [['total_gold'], [86]]
+########################################################################################################################
+Sample 2153 - Plan 1: Operation 2: Calculate the total number of rows in the table (excluding the 'total' row) and store it in a variable called 'num_rows'.
+Sample 2153 - Plan 1: Selected indices: []
+Sample 2153 - Plan 1: X-Table after operation df:
+   num_rows
+0         1
+Sample 2153 - Plan 1: Table after operation: [['num_rows'], [1]]
+########################################################################################################################
+Sample 2153 - Plan 1: Operation 3: Divide the value in the 'total_gold' column by the 'num_rows' variable to calculate the average number of gold medals won.
+SQL execution error in operation 3: Execution failed on sql 'SELECT AVG(total_gold / num_rows) AS average_gold_medals
+FROM table_sql;': no such column: total_gold
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['3.86']]
+Groundtruth: ['4.7']

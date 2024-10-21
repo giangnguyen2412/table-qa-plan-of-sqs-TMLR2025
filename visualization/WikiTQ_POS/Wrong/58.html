@@ -1,0 +1,482 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> who was the top placing competitor?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'placing' column is not empty.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>name</td>
+<td>sport</td>
+<td>event</td>
+<td>placing</td>
+<td>performance</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">shaul ladani</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">athletics</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">men's 50 km walk</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">19</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4:24:38.6\n(also entered for 20 km walk, but did not start)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">esther shahamorov</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">athletics</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">women's 100 m</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">semifinal (5th)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11.49</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">esther shahamorov</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">athletics</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">women's 100 m hurdles</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">semifinal</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">did not start (left munich before the semifinal)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dan alon</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fencing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">men's foil</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">second round</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w5–l5 (1r 3-2, 2r 2-3)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yehuda weissenstein</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fencing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">men's foil</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">second round</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w2–l8 (1r 2-3, 2r 0-5)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yair michaeli</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sailing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">flying dutchman</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">23</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">28-22-22-19-25-19-dns = 171 pts\n(left kiel before 7th race)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">itzhak nir</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sailing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">flying dutchman</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">23</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">28-22-22-19-25-19-dns = 171 pts\n(left kiel before 7th race)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">henry hershkowitz</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">shooting</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">50 metre rifle prone</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">23</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">593/600</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">henry hershkowitz</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">shooting</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">50 metre rifle three positions</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">46</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1114/1200</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">zelig stroch</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">shooting</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">50 metre rifle prone</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">57</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">589/600</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">shlomit nir</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">swimming</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">women's 100 m breaststroke</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">heats (8th)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1:20.90</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">shlomit nir</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">swimming</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">women's 200 m breaststroke</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">heats (6th)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2:53.60</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">david berger</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">weightlifting</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">light-heavyweight <82.5 kg</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">—</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">j:132.5 c:122.5 s:— t:—</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ze'ev friedman</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">weightlifting</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bantamweight <56 kg</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">12</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">j:102.5 c:102.5 s:125 t:330</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yossef romano</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">weightlifting</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">middleweight <75 kg</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">—</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">(retired injured on third attempt to press 137.5kg)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gad tsobari</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wrestling</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">freestyle — light flyweight <48 kg</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">group stage</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0w–2l</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">eliezer halfin</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wrestling</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">freestyle — lightweight <68 kg</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">group stage</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1w–2l</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mark slavin</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wrestling</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">greco-roman — middleweight <82 kg</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">—</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">(taken hostage before his scheduled event)</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Order the table by the 'placing' column in ascending order.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>name</td>
+<td>sport</td>
+<td>event</td>
+<td>placing</td>
+<td>performance</td>
+</tr>
+<tr>
+<td>shaul ladani</td>
+<td>athletics</td>
+<td>men's 50 km walk</td>
+<td><span class="highlighted-cell" title="Used in transformation">19</span></td>
+<td>4:24:38.6\n(also entered for 20 km walk, but did not start)</td>
+</tr>
+<tr>
+<td>esther shahamorov</td>
+<td>athletics</td>
+<td>women's 100 m</td>
+<td><span class="highlighted-cell" title="Used in transformation">semifinal (5th)</span></td>
+<td>11.49</td>
+</tr>
+<tr>
+<td>esther shahamorov</td>
+<td>athletics</td>
+<td>women's 100 m hurdles</td>
+<td><span class="highlighted-cell" title="Used in transformation">semifinal</span></td>
+<td>did not start (left munich before the semifinal)</td>
+</tr>
+<tr>
+<td>dan alon</td>
+<td>fencing</td>
+<td>men's foil</td>
+<td><span class="highlighted-cell" title="Used in transformation">second round</span></td>
+<td>w5–l5 (1r 3-2, 2r 2-3)</td>
+</tr>
+<tr>
+<td>yehuda weissenstein</td>
+<td>fencing</td>
+<td>men's foil</td>
+<td><span class="highlighted-cell" title="Used in transformation">second round</span></td>
+<td>w2–l8 (1r 2-3, 2r 0-5)</td>
+</tr>
+<tr>
+<td>yair michaeli</td>
+<td>sailing</td>
+<td>flying dutchman</td>
+<td><span class="highlighted-cell" title="Used in transformation">23</span></td>
+<td>28-22-22-19-25-19-dns = 171 pts\n(left kiel before 7th race)</td>
+</tr>
+<tr>
+<td>itzhak nir</td>
+<td>sailing</td>
+<td>flying dutchman</td>
+<td><span class="highlighted-cell" title="Used in transformation">23</span></td>
+<td>28-22-22-19-25-19-dns = 171 pts\n(left kiel before 7th race)</td>
+</tr>
+<tr>
+<td>henry hershkowitz</td>
+<td>shooting</td>
+<td>50 metre rifle prone</td>
+<td><span class="highlighted-cell" title="Used in transformation">23</span></td>
+<td>593/600</td>
+</tr>
+<tr>
+<td>henry hershkowitz</td>
+<td>shooting</td>
+<td>50 metre rifle three positions</td>
+<td><span class="highlighted-cell" title="Used in transformation">46</span></td>
+<td>1114/1200</td>
+</tr>
+<tr>
+<td>zelig stroch</td>
+<td>shooting</td>
+<td>50 metre rifle prone</td>
+<td><span class="highlighted-cell" title="Used in transformation">57</span></td>
+<td>589/600</td>
+</tr>
+<tr>
+<td>shlomit nir</td>
+<td>swimming</td>
+<td>women's 100 m breaststroke</td>
+<td><span class="highlighted-cell" title="Used in transformation">heats (8th)</span></td>
+<td>1:20.90</td>
+</tr>
+<tr>
+<td>shlomit nir</td>
+<td>swimming</td>
+<td>women's 200 m breaststroke</td>
+<td><span class="highlighted-cell" title="Used in transformation">heats (6th)</span></td>
+<td>2:53.60</td>
+</tr>
+<tr>
+<td>david berger</td>
+<td>weightlifting</td>
+<td>light-heavyweight <82.5 kg</td>
+<td><span class="highlighted-cell" title="Used in transformation">—</span></td>
+<td>j:132.5 c:122.5 s:— t:—</td>
+</tr>
+<tr>
+<td>ze'ev friedman</td>
+<td>weightlifting</td>
+<td>bantamweight <56 kg</td>
+<td><span class="highlighted-cell" title="Used in transformation">12</span></td>
+<td>j:102.5 c:102.5 s:125 t:330</td>
+</tr>
+<tr>
+<td>yossef romano</td>
+<td>weightlifting</td>
+<td>middleweight <75 kg</td>
+<td><span class="highlighted-cell" title="Used in transformation">—</span></td>
+<td>(retired injured on third attempt to press 137.5kg)</td>
+</tr>
+<tr>
+<td>gad tsobari</td>
+<td>wrestling</td>
+<td>freestyle — light flyweight <48 kg</td>
+<td><span class="highlighted-cell" title="Used in transformation">group stage</span></td>
+<td>0w–2l</td>
+</tr>
+<tr>
+<td>eliezer halfin</td>
+<td>wrestling</td>
+<td>freestyle — lightweight <68 kg</td>
+<td><span class="highlighted-cell" title="Used in transformation">group stage</span></td>
+<td>1w–2l</td>
+</tr>
+<tr>
+<td>mark slavin</td>
+<td>wrestling</td>
+<td>greco-roman — middleweight <82 kg</td>
+<td><span class="highlighted-cell" title="Used in transformation">—</span></td>
+<td>(taken hostage before his scheduled event)</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select row number 1.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>name</td>
+<td>sport</td>
+<td>event</td>
+<td>placing</td>
+<td>performance</td>
+</tr>
+<tr>
+<td>ze'ev friedman</td>
+<td>weightlifting</td>
+<td>bantamweight <56 kg</td>
+<td>12</td>
+<td>j:102.5 c:102.5 s:125 t:330</td>
+</tr>
+<tr>
+<td>shaul ladani</td>
+<td>athletics</td>
+<td>men's 50 km walk</td>
+<td>19</td>
+<td>4:24:38.6\n(also entered for 20 km walk, but did not start)</td>
+</tr>
+<tr>
+<td>yair michaeli</td>
+<td>sailing</td>
+<td>flying dutchman</td>
+<td>23</td>
+<td>28-22-22-19-25-19-dns = 171 pts\n(left kiel before 7th race)</td>
+</tr>
+<tr>
+<td>itzhak nir</td>
+<td>sailing</td>
+<td>flying dutchman</td>
+<td>23</td>
+<td>28-22-22-19-25-19-dns = 171 pts\n(left kiel before 7th race)</td>
+</tr>
+<tr>
+<td>henry hershkowitz</td>
+<td>shooting</td>
+<td>50 metre rifle prone</td>
+<td>23</td>
+<td>593/600</td>
+</tr>
+<tr>
+<td>henry hershkowitz</td>
+<td>shooting</td>
+<td>50 metre rifle three positions</td>
+<td>46</td>
+<td>1114/1200</td>
+</tr>
+<tr>
+<td>zelig stroch</td>
+<td>shooting</td>
+<td>50 metre rifle prone</td>
+<td>57</td>
+<td>589/600</td>
+</tr>
+<tr>
+<td>gad tsobari</td>
+<td>wrestling</td>
+<td>freestyle — light flyweight <48 kg</td>
+<td>group stage</td>
+<td>0w–2l</td>
+</tr>
+<tr>
+<td>eliezer halfin</td>
+<td>wrestling</td>
+<td>freestyle — lightweight <68 kg</td>
+<td>group stage</td>
+<td>1w–2l</td>
+</tr>
+<tr>
+<td>shlomit nir</td>
+<td>swimming</td>
+<td>women's 200 m breaststroke</td>
+<td>heats (6th)</td>
+<td>2:53.60</td>
+</tr>
+<tr>
+<td>shlomit nir</td>
+<td>swimming</td>
+<td>women's 100 m breaststroke</td>
+<td>heats (8th)</td>
+<td>1:20.90</td>
+</tr>
+<tr>
+<td>dan alon</td>
+<td>fencing</td>
+<td>men's foil</td>
+<td>second round</td>
+<td>w5–l5 (1r 3-2, 2r 2-3)</td>
+</tr>
+<tr>
+<td>yehuda weissenstein</td>
+<td>fencing</td>
+<td>men's foil</td>
+<td>second round</td>
+<td>w2–l8 (1r 2-3, 2r 0-5)</td>
+</tr>
+<tr>
+<td>esther shahamorov</td>
+<td>athletics</td>
+<td>women's 100 m hurdles</td>
+<td>semifinal</td>
+<td>did not start (left munich before the semifinal)</td>
+</tr>
+<tr>
+<td>esther shahamorov</td>
+<td>athletics</td>
+<td>women's 100 m</td>
+<td>semifinal (5th)</td>
+<td>11.49</td>
+</tr>
+<tr>
+<td>david berger</td>
+<td>weightlifting</td>
+<td>light-heavyweight <82.5 kg</td>
+<td>—</td>
+<td>j:132.5 c:122.5 s:— t:—</td>
+</tr>
+<tr>
+<td>yossef romano</td>
+<td>weightlifting</td>
+<td>middleweight <75 kg</td>
+<td>—</td>
+<td>(retired injured on third attempt to press 137.5kg)</td>
+</tr>
+<tr>
+<td>mark slavin</td>
+<td>wrestling</td>
+<td>greco-roman — middleweight <82 kg</td>
+<td>—</td>
+<td>(taken hostage before his scheduled event)</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Select the 'name' column.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>name</td>
+<td>sport</td>
+<td>event</td>
+<td>placing</td>
+<td>performance</td>
+</tr>
+<tr>
+<td>ze'ev friedman</td>
+<td>weightlifting</td>
+<td>bantamweight <56 kg</td>
+<td>12</td>
+<td>j:102.5 c:102.5 s:125 t:330</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>name</td>
+</tr>
+<tr>
+<td>ze'ev friedman</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [["ze'ev friedman"]]</h3>
+</body></html>

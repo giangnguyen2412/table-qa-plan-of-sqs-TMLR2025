@@ -1,0 +1,233 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> what's the total number of freshmen that are on the roster?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'class' is 'fr.'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>_</td>
+<td>name</td>
+<td>height</td>
+<td>weight__lbs__</td>
+<td>position</td>
+<td>class</td>
+<td>hometown</td>
+<td>previous_team_s_</td>
+</tr>
+<tr>
+<td>0</td>
+<td>joel smith</td>
+<td>6'4"</td>
+<td>210</td>
+<td>g</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rs jr.</span></td>
+<td>lompoc, ca, u.s.</td>
+<td>brewster academy</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">venoy overton</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5'11"</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">180</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">g</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">fr.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">seattle, wa, u.s.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">franklin hs</span></td>
+</tr>
+<tr>
+<td>4</td>
+<td>tim morris</td>
+<td>6'4"</td>
+<td>210</td>
+<td>g</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sr.</span></td>
+<td>spokane wa, u.s.</td>
+<td>central valley hs</td>
+</tr>
+<tr>
+<td>5</td>
+<td>justin dentmon</td>
+<td>5'11"</td>
+<td>185</td>
+<td>g</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jr.</span></td>
+<td>carbondale, il, u.s.</td>
+<td>winchendon school</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">matthew bryan-amaning</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6'9"</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">235</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">f</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">fr.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">london, england, u.k.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">south kent school</span></td>
+</tr>
+<tr>
+<td>20</td>
+<td>ryan appleby</td>
+<td>6'3"</td>
+<td>170</td>
+<td>g</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sr.</span></td>
+<td>stanwood, wa, u.s.</td>
+<td>florida</td>
+</tr>
+<tr>
+<td>21</td>
+<td>artem wallace</td>
+<td>6'8"</td>
+<td>250</td>
+<td>c</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jr.</span></td>
+<td>toledo, wa, u.s.</td>
+<td>toledo hs</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">22</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">justin holiday</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6'6"</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">170</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">f</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">fr.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chatsworth, ca, u.s.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">campbell hall school</span></td>
+</tr>
+<tr>
+<td>24</td>
+<td>quincy pondexter</td>
+<td>6'6"</td>
+<td>210</td>
+<td>f</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">so.</span></td>
+<td>fresno, ca, u.s.</td>
+<td>san joaquin memorial hs</td>
+</tr>
+<tr>
+<td>32</td>
+<td>joe wolfinger</td>
+<td>7'0"</td>
+<td>255</td>
+<td>c</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rs so.</span></td>
+<td>portland, or, u.s.</td>
+<td>northfield mount hermon school</td>
+</tr>
+<tr>
+<td>40</td>
+<td>jon brockman</td>
+<td>6'7"</td>
+<td>255</td>
+<td>f</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jr.</span></td>
+<td>snohomish, wa, u.s.</td>
+<td>snohomish sr. hs</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">44</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">darnell gant</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6'8"</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">215</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">f</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">fr.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">los angeles, ca, u.s.</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">crenshaw hs</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Count the number of rows.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>_</td>
+<td>name</td>
+<td>height</td>
+<td>weight__lbs__</td>
+<td>position</td>
+<td>class</td>
+<td>hometown</td>
+<td>previous_team_s_</td>
+</tr>
+<tr>
+<td>1</td>
+<td>venoy overton</td>
+<td>5'11"</td>
+<td>180</td>
+<td>g</td>
+<td>fr.</td>
+<td>seattle, wa, u.s.</td>
+<td>franklin hs</td>
+</tr>
+<tr>
+<td>11</td>
+<td>matthew bryan-amaning</td>
+<td>6'9"</td>
+<td>235</td>
+<td>f</td>
+<td>fr.</td>
+<td>london, england, u.k.</td>
+<td>south kent school</td>
+</tr>
+<tr>
+<td>22</td>
+<td>justin holiday</td>
+<td>6'6"</td>
+<td>170</td>
+<td>f</td>
+<td>fr.</td>
+<td>chatsworth, ca, u.s.</td>
+<td>campbell hall school</td>
+</tr>
+<tr>
+<td>44</td>
+<td>darnell gant</td>
+<td>6'8"</td>
+<td>215</td>
+<td>f</td>
+<td>fr.</td>
+<td>los angeles, ca, u.s.</td>
+<td>crenshaw hs</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>row_count</td>
+</tr>
+<tr>
+<td>4</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[4]]</h3>
+</body></html>

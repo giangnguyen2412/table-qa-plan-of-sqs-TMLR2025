@@ -1,0 +1,56 @@
+************************************************************************************************************************
+Sample 2628 - Plan 1: Query: what is the name of the first driver to win the first round from group ta2?
+Sample 2628 - Plan 1: Groundtruth: ['Greg Pickett']
+Sample 2628 - Plan 1: X-Original table pd: 
+   round         date         circuit           winning_driver__ta2_  \
+0      1       may 21     sears point                   greg pickett   
+1      2       june 4        westwood                ludwig heimrath   
+2      3      june 11        portland                    tuck thomas   
+3      4      june 25  mont-tremblant                  monte sheldon   
+4      5       july 8   watkins glen‡  hal shaw, jr.\n monte shelton   
+5      6    august 13        brainerd                   jerry hansen   
+6      7    august 19         mosport                   greg pickett   
+7      8  september 4    road america                   greg pickett   
+8      9    october 8     laguna seca                   greg pickett   
+9     10   november 5     mexico city                ludwig heimrath   
+
+  winning_vehicle__ta2_            winning_driver__ta1_ winning_vehicle__ta1_  
+0    chevrolet corvette                   gene bothello    chevrolet corvette  
+1           porsche 935                     nick engels    chevrolet corvette  
+2       chevrolet monza                  bob matkowitch    chevrolet corvette  
+3           porsche 935                     bob tullius            jaguar xjs  
+4           porsche 935  brian fuerstenau\n bob tullius            jaguar xjs  
+5       chevrolet monza                     bob tullius            jaguar xjs  
+6    chevrolet corvette                     bob tullius            jaguar xjs  
+7    chevrolet corvette                     bob tullius            jaguar xjs  
+8    chevrolet corvette                     bob tullius            jaguar xjs  
+9           porsche 935                     bob tullius            jaguar xjs  
+Sample 2628 - Plan 1: Caption: none
+Sample 2628 - Plan 1: Original table: [['round', 'date', 'circuit', 'winning_driver__ta2_', 'winning_vehicle__ta2_', 'winning_driver__ta1_', 'winning_vehicle__ta1_'], ['1', 'may 21', 'sears point', 'greg pickett', 'chevrolet corvette', 'gene bothello', 'chevrolet corvette'], ['2', 'june 4', 'westwood', 'ludwig heimrath', 'porsche 935', 'nick engels', 'chevrolet corvette'], ['3', 'june 11', 'portland', 'tuck thomas', 'chevrolet monza', 'bob matkowitch', 'chevrolet corvette'], ['4', 'june 25', 'mont-tremblant', 'monte sheldon', 'porsche 935', 'bob tullius', 'jaguar xjs'], ['5', 'july 8', 'watkins glen‡', 'hal shaw, jr.\\n monte shelton', 'porsche 935', 'brian fuerstenau\\n bob tullius', 'jaguar xjs'], ['6', 'august 13', 'brainerd', 'jerry hansen', 'chevrolet monza', 'bob tullius', 'jaguar xjs'], ['7', 'august 19', 'mosport', 'greg pickett', 'chevrolet corvette', 'bob tullius', 'jaguar xjs'], ['8', 'september 4', 'road america', 'greg pickett', 'chevrolet corvette', 'bob tullius', 'jaguar xjs'], ['9', 'october 8', 'laguna seca', 'greg pickett', 'chevrolet corvette', 'bob tullius', 'jaguar xjs'], ['10', 'november 5', 'mexico city', 'ludwig heimrath', 'porsche 935', 'bob tullius', 'jaguar xjs']]
+########################################################################################################################
+Sample 2628 - Plan 1: Operation 1: Select rows where 'round' is 1.
+Sample 2628 - Plan 1: Selected indices: [[0, 0]]
+Sample 2628 - Plan 1: X-Table after operation df:
+   round    date      circuit winning_driver__ta2_ winning_vehicle__ta2_  \
+0      1  may 21  sears point         greg pickett    chevrolet corvette   
+
+  winning_driver__ta1_ winning_vehicle__ta1_  
+0        gene bothello    chevrolet corvette  
+Sample 2628 - Plan 1: Table after operation: [['round', 'date', 'circuit', 'winning_driver__ta2_', 'winning_vehicle__ta2_', 'winning_driver__ta1_', 'winning_vehicle__ta1_'], [1, 'may 21', 'sears point', 'greg pickett', 'chevrolet corvette', 'gene bothello', 'chevrolet corvette']]
+########################################################################################################################
+Sample 2628 - Plan 1: Operation 2: Select the 'winning_driver__ta2_' column.
+Sample 2628 - Plan 1: Selected indices: []
+Sample 2628 - Plan 1: X-Table after operation df:
+  winning_driver__ta2_
+0         greg pickett
+Sample 2628 - Plan 1: Table after operation: [['winning_driver__ta2_'], ['greg pickett']]
+########################################################################################################################
+Sample 2628 - Plan 1: Operation 3: Select row number 1.
+Sample 2628 - Plan 1: Selected indices: []
+Sample 2628 - Plan 1: X-Table after operation df:
+  winning_driver__ta2_
+0         greg pickett
+Sample 2628 - Plan 1: Table after operation: [['winning_driver__ta2_'], ['greg pickett']]
+Fall-back: FALSE
+Answer from plan 1: [['greg pickett']]
+Groundtruth: ['Greg Pickett']

@@ -1,0 +1,82 @@
+************************************************************************************************************************
+Sample 3569 - Plan 1: Query: what is the date of the first game listed?
+Sample 3569 - Plan 1: Groundtruth: ['January 19, 2013']
+Sample 3569 - Plan 1: X-Original table pd: 
+                 date                           location             opponent  \
+0    january 19, 2013                  concepción, chile                chile   
+1    february 6, 2013   santa cruz de la sierra, bolivia              bolivia   
+2      march 20, 2013                       muscat, oman                 oman   
+3      march 24, 2013  santo domingo, dominican republic   dominican republic   
+4        june 8, 2013               miami, united states                spain   
+5       june 11, 2013             rio de janeiro, brazil                italy   
+6        july 8, 2013            harrison, united states             honduras   
+7       july 12, 2013       miami gardens, united states  trinidad and tobago   
+8       july 15, 2013             houston, united states          el salvador   
+9   september 6, 2013               incheon, south korea          south korea   
+10      march 5, 2014                  mitrovica, kosovo               kosovo   
+
+   result competition  
+0     0–3           f  
+1     1–2           f  
+2     0–3           f  
+3     1–3           f  
+4     1–2           f  
+5     2–2           f  
+6     0–2          gc  
+7     2-0          gc  
+8     0-1          gc  
+9     1-4           f  
+10    0–0           f  
+Sample 3569 - Plan 1: Caption: none
+Sample 3569 - Plan 1: Original table: [['date', 'location', 'opponent', 'result', 'competition'], ['january 19, 2013', 'concepción, chile', 'chile', '0–3', 'f'], ['february 6, 2013', 'santa cruz de la sierra, bolivia', 'bolivia', '1–2', 'f'], ['march 20, 2013', 'muscat, oman', 'oman', '0–3', 'f'], ['march 24, 2013', 'santo domingo, dominican republic', 'dominican republic', '1–3', 'f'], ['june 8, 2013', 'miami, united states', 'spain', '1–2', 'f'], ['june 11, 2013', 'rio de janeiro, brazil', 'italy', '2–2', 'f'], ['july 8, 2013', 'harrison, united states', 'honduras', '0–2', 'gc'], ['july 12, 2013', 'miami gardens, united states', 'trinidad and tobago', '2-0', 'gc'], ['july 15, 2013', 'houston, united states', 'el salvador', '0-1', 'gc'], ['september 6, 2013', 'incheon, south korea', 'south korea', '1-4', 'f'], ['march 5, 2014', 'mitrovica, kosovo', 'kosovo', '0–0', 'f']]
+########################################################################################################################
+Sample 3569 - Plan 1: Operation 1: Select the 'date' column from the given Table.
+Sample 3569 - Plan 1: Selected indices: []
+Sample 3569 - Plan 1: X-Table after operation df:
+                 date
+0    january 19, 2013
+1    february 6, 2013
+2      march 20, 2013
+3      march 24, 2013
+4        june 8, 2013
+5       june 11, 2013
+6        july 8, 2013
+7       july 12, 2013
+8       july 15, 2013
+9   september 6, 2013
+10      march 5, 2014
+Sample 3569 - Plan 1: Table after operation: [['date'], ['january 19, 2013'], ['february 6, 2013'], ['march 20, 2013'], ['march 24, 2013'], ['june 8, 2013'], ['june 11, 2013'], ['july 8, 2013'], ['july 12, 2013'], ['july 15, 2013'], ['september 6, 2013'], ['march 5, 2014']]
+########################################################################################################################
+Sample 3569 - Plan 1: Operation 2: Order the table by the row number in ascending order.
+Sample 3569 - Plan 1: Selected indices: []
+Sample 3569 - Plan 1: X-Table after operation df:
+                 date
+0    february 6, 2013
+1    january 19, 2013
+2       july 12, 2013
+3       july 15, 2013
+4        july 8, 2013
+5       june 11, 2013
+6        june 8, 2013
+7      march 20, 2013
+8      march 24, 2013
+9       march 5, 2014
+10  september 6, 2013
+Sample 3569 - Plan 1: Table after operation: [['date'], ['february 6, 2013'], ['january 19, 2013'], ['july 12, 2013'], ['july 15, 2013'], ['july 8, 2013'], ['june 11, 2013'], ['june 8, 2013'], ['march 20, 2013'], ['march 24, 2013'], ['march 5, 2014'], ['september 6, 2013']]
+########################################################################################################################
+Sample 3569 - Plan 1: Operation 3: Select row number 1.
+Sample 3569 - Plan 1: Selected indices: []
+Sample 3569 - Plan 1: X-Table after operation df:
+               date
+0  february 6, 2013
+Sample 3569 - Plan 1: Table after operation: [['date'], ['february 6, 2013']]
+########################################################################################################################
+Sample 3569 - Plan 1: Operation 4: Select the 'date' value from the selected row.
+Sample 3569 - Plan 1: Selected indices: []
+Sample 3569 - Plan 1: X-Table after operation df:
+               date
+0  february 6, 2013
+Sample 3569 - Plan 1: Table after operation: [['date'], ['february 6, 2013']]
+Fall-back: FALSE
+Answer from plan 1: [['february 6, 2013']]
+Groundtruth: ['January 19, 2013']

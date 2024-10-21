@@ -1,0 +1,362 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which swimmer has the most letters in his/her name?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Extract the 'swimmers' column from the table.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>rank</td>
+<td>lane</td>
+<td>nation</td>
+<td>swimmers</td>
+<td>time</td>
+<td>time_behind</td>
+<td>notes</td>
+</tr>
+<tr>
+<td></td>
+<td>4</td>
+<td>united states</td>
+<td>michael phelps (1:46.49)\nryan lochte (1:47.52)\npeter vanderkaay (1:47.79)\nklete keller (1:45.53)</td>
+<td>7:07.33</td>
+<td></td>
+<td>am</td>
+</tr>
+<tr>
+<td></td>
+<td>5</td>
+<td>australia</td>
+<td>grant hackett (1:47.50)\nmichael klim (1:47.62)\nnicholas sprenger (1:48.16)\nian thorpe (1:44.18)</td>
+<td>7:07.46</td>
+<td>0.13</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>7</td>
+<td>italy</td>
+<td>emiliano brembilla (1:48.16)\nmassimiliano rosolino (1:46.24)\nsimone cercato (1:49.85)\nfilippo magnini (1:47.58)</td>
+<td>7:11.83</td>
+<td>4.50</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>6</td>
+<td>great britain</td>
+<td>simon burnett (1:47.90)\ngavin meadows (1:48.46)\ndavid o'brien (1:49.05)\nross davenport (1:47.19)</td>
+<td>7:12.60</td>
+<td>5.27</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>2</td>
+<td>canada</td>
+<td>brent hayden (1:49.08)\nbrian johns (1:49.15)\nandrew hurd (1:48.09)\nrick say (1:47.01)</td>
+<td>7:13.33</td>
+<td>6.00</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>3</td>
+<td>germany</td>
+<td>jens schreiber (1:49.08)\nheiko hell (1:49.15)\nlars conrad (1:48.23)\nchristian keller (1:50.05)</td>
+<td>7:16.51</td>
+<td>9.18</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>8</td>
+<td>france</td>
+<td>amaury leveaux (1:48.57)\nfabien horth (1:48.67)\nnicolas kintz (1:50.01)\nnicolas rostoucher (1:50.18)</td>
+<td>7:17.43</td>
+<td>10.10</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>1</td>
+<td>greece</td>
+<td>apostolos antonopoulos (1:50.34)\ndimitrios manganas (1:51.33)\nandreas zisimos (1:50.26)\nnikolaos xylouris (1:51.09)</td>
+<td>7:23.02</td>
+<td>15.67</td>
+<td></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Split the 'swimmers' column by the delimiter '(' to separate the names from the times.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>swimmers</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">michael phelps (1:46.49)\nryan lochte (1:47.52)\npeter vanderkaay (1:47.79)\nklete keller (1:45.53)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">grant hackett (1:47.50)\nmichael klim (1:47.62)\nnicholas sprenger (1:48.16)\nian thorpe (1:44.18)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">emiliano brembilla (1:48.16)\nmassimiliano rosolino (1:46.24)\nsimone cercato (1:49.85)\nfilippo magnini (1:47.58)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">simon burnett (1:47.90)\ngavin meadows (1:48.46)\ndavid o'brien (1:49.05)\nross davenport (1:47.19)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">brent hayden (1:49.08)\nbrian johns (1:49.15)\nandrew hurd (1:48.09)\nrick say (1:47.01)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">jens schreiber (1:49.08)\nheiko hell (1:49.15)\nlars conrad (1:48.23)\nchristian keller (1:50.05)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">amaury leveaux (1:48.57)\nfabien horth (1:48.67)\nnicolas kintz (1:50.01)\nnicolas rostoucher (1:50.18)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">apostolos antonopoulos (1:50.34)\ndimitrios manganas (1:51.33)\nandreas zisimos (1:50.26)\nnikolaos xylouris (1:51.09)</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Remove the ')' character from the resulting strings.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>swimmers</td>
+<td>names</td>
+<td>times</td>
+</tr>
+<tr>
+<td>michael phelps (1:46.49)\nryan lochte (1:47.52)\npeter vanderkaay (1:47.79)\nklete keller (1:45.53)</td>
+<td>michael phelps </td>
+<td>1:46.49)\nryan lochte (1:47.52)\npeter vanderkaay (1:47.79)\nklete keller (1:45.53</td>
+</tr>
+<tr>
+<td>grant hackett (1:47.50)\nmichael klim (1:47.62)\nnicholas sprenger (1:48.16)\nian thorpe (1:44.18)</td>
+<td>grant hackett </td>
+<td>1:47.50)\nmichael klim (1:47.62)\nnicholas sprenger (1:48.16)\nian thorpe (1:44.18</td>
+</tr>
+<tr>
+<td>emiliano brembilla (1:48.16)\nmassimiliano rosolino (1:46.24)\nsimone cercato (1:49.85)\nfilippo magnini (1:47.58)</td>
+<td>emiliano brembilla </td>
+<td>1:48.16)\nmassimiliano rosolino (1:46.24)\nsimone cercato (1:49.85)\nfilippo magnini (1:47.58</td>
+</tr>
+<tr>
+<td>simon burnett (1:47.90)\ngavin meadows (1:48.46)\ndavid o'brien (1:49.05)\nross davenport (1:47.19)</td>
+<td>simon burnett </td>
+<td>1:47.90)\ngavin meadows (1:48.46)\ndavid o'brien (1:49.05)\nross davenport (1:47.19</td>
+</tr>
+<tr>
+<td>brent hayden (1:49.08)\nbrian johns (1:49.15)\nandrew hurd (1:48.09)\nrick say (1:47.01)</td>
+<td>brent hayden </td>
+<td>1:49.08)\nbrian johns (1:49.15)\nandrew hurd (1:48.09)\nrick say (1:47.01</td>
+</tr>
+<tr>
+<td>jens schreiber (1:49.08)\nheiko hell (1:49.15)\nlars conrad (1:48.23)\nchristian keller (1:50.05)</td>
+<td>jens schreiber </td>
+<td>1:49.08)\nheiko hell (1:49.15)\nlars conrad (1:48.23)\nchristian keller (1:50.05</td>
+</tr>
+<tr>
+<td>amaury leveaux (1:48.57)\nfabien horth (1:48.67)\nnicolas kintz (1:50.01)\nnicolas rostoucher (1:50.18)</td>
+<td>amaury leveaux </td>
+<td>1:48.57)\nfabien horth (1:48.67)\nnicolas kintz (1:50.01)\nnicolas rostoucher (1:50.18</td>
+</tr>
+<tr>
+<td>apostolos antonopoulos (1:50.34)\ndimitrios manganas (1:51.33)\nandreas zisimos (1:50.26)\nnikolaos xylouris (1:51.09)</td>
+<td>apostolos antonopoulos </td>
+<td>1:50.34)\ndimitrios manganas (1:51.33)\nandreas zisimos (1:50.26)\nnikolaos xylouris (1:51.09</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Remove the time values from the strings, keeping only the names.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>swimmers</td>
+<td>names</td>
+<td>times</td>
+</tr>
+<tr>
+<td>michael phelps (1:46.49\nryan lochte (1:47.52\npeter vanderkaay (1:47.79\nklete keller (1:45.53</td>
+<td>michael phelps </td>
+<td>1:46.49\nryan lochte (1:47.52\npeter vanderkaay (1:47.79\nklete keller (1:45.53</td>
+</tr>
+<tr>
+<td>grant hackett (1:47.50\nmichael klim (1:47.62\nnicholas sprenger (1:48.16\nian thorpe (1:44.18</td>
+<td>grant hackett </td>
+<td>1:47.50\nmichael klim (1:47.62\nnicholas sprenger (1:48.16\nian thorpe (1:44.18</td>
+</tr>
+<tr>
+<td>emiliano brembilla (1:48.16\nmassimiliano rosolino (1:46.24\nsimone cercato (1:49.85\nfilippo magnini (1:47.58</td>
+<td>emiliano brembilla </td>
+<td>1:48.16\nmassimiliano rosolino (1:46.24\nsimone cercato (1:49.85\nfilippo magnini (1:47.58</td>
+</tr>
+<tr>
+<td>simon burnett (1:47.90\ngavin meadows (1:48.46\ndavid o'brien (1:49.05\nross davenport (1:47.19</td>
+<td>simon burnett </td>
+<td>1:47.90\ngavin meadows (1:48.46\ndavid o'brien (1:49.05\nross davenport (1:47.19</td>
+</tr>
+<tr>
+<td>brent hayden (1:49.08\nbrian johns (1:49.15\nandrew hurd (1:48.09\nrick say (1:47.01</td>
+<td>brent hayden </td>
+<td>1:49.08\nbrian johns (1:49.15\nandrew hurd (1:48.09\nrick say (1:47.01</td>
+</tr>
+<tr>
+<td>jens schreiber (1:49.08\nheiko hell (1:49.15\nlars conrad (1:48.23\nchristian keller (1:50.05</td>
+<td>jens schreiber </td>
+<td>1:49.08\nheiko hell (1:49.15\nlars conrad (1:48.23\nchristian keller (1:50.05</td>
+</tr>
+<tr>
+<td>amaury leveaux (1:48.57\nfabien horth (1:48.67\nnicolas kintz (1:50.01\nnicolas rostoucher (1:50.18</td>
+<td>amaury leveaux </td>
+<td>1:48.57\nfabien horth (1:48.67\nnicolas kintz (1:50.01\nnicolas rostoucher (1:50.18</td>
+</tr>
+<tr>
+<td>apostolos antonopoulos (1:50.34\ndimitrios manganas (1:51.33\nandreas zisimos (1:50.26\nnikolaos xylouris (1:51.09</td>
+<td>apostolos antonopoulos </td>
+<td>1:50.34\ndimitrios manganas (1:51.33\nandreas zisimos (1:50.26\nnikolaos xylouris (1:51.09</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 5: Calculate the length of each name in the resulting strings.</div>
+<div id="step-3" class="content">
+<table>
+<tr>
+<td>names</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">michael phelps 1:46.49\nryan lochte 1:47.52\npeter vanderkaay 1:47.79\nklete keller 1:45.53</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">grant hackett 1:47.50\nmichael klim 1:47.62\nnicholas sprenger 1:48.16\nian thorpe 1:44.18</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">emiliano brembilla 1:48.16\nmassimiliano rosolino 1:46.24\nsimone cercato 1:49.85\nfilippo magnini 1:47.58</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">simon burnett 1:47.90\ngavin meadows 1:48.46\ndavid o'brien 1:49.05\nross davenport 1:47.19</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">brent hayden 1:49.08\nbrian johns 1:49.15\nandrew hurd 1:48.09\nrick say 1:47.01</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">jens schreiber 1:49.08\nheiko hell 1:49.15\nlars conrad 1:48.23\nchristian keller 1:50.05</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">amaury leveaux 1:48.57\nfabien horth 1:48.67\nnicolas kintz 1:50.01\nnicolas rostoucher 1:50.18</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">apostolos antonopoulos 1:50.34\ndimitrios manganas 1:51.33\nandreas zisimos 1:50.26\nnikolaos xylouris 1:51.09</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 6: Select the row with the maximum length of the name.</div>
+<div id="step-4" class="content">
+<table>
+<tr>
+<td>names</td>
+<td>name_length</td>
+</tr>
+<tr>
+<td>michael phelps 1:46.49\nryan lochte 1:47.52\npeter vanderkaay 1:47.79\nklete keller 1:45.53</td>
+<td>91</td>
+</tr>
+<tr>
+<td>grant hackett 1:47.50\nmichael klim 1:47.62\nnicholas sprenger 1:48.16\nian thorpe 1:44.18</td>
+<td>90</td>
+</tr>
+<tr>
+<td>emiliano brembilla 1:48.16\nmassimiliano rosolino 1:46.24\nsimone cercato 1:49.85\nfilippo magnini 1:47.58</td>
+<td>106</td>
+</tr>
+<tr>
+<td>simon burnett 1:47.90\ngavin meadows 1:48.46\ndavid o'brien 1:49.05\nross davenport 1:47.19</td>
+<td>91</td>
+</tr>
+<tr>
+<td>brent hayden 1:49.08\nbrian johns 1:49.15\nandrew hurd 1:48.09\nrick say 1:47.01</td>
+<td>80</td>
+</tr>
+<tr>
+<td>jens schreiber 1:49.08\nheiko hell 1:49.15\nlars conrad 1:48.23\nchristian keller 1:50.05</td>
+<td>89</td>
+</tr>
+<tr>
+<td>amaury leveaux 1:48.57\nfabien horth 1:48.67\nnicolas kintz 1:50.01\nnicolas rostoucher 1:50.18</td>
+<td>95</td>
+</tr>
+<tr>
+<td>apostolos antonopoulos 1:50.34\ndimitrios manganas 1:51.33\nandreas zisimos 1:50.26\nnikolaos xylouris 1:51.09</td>
+<td><span class="highlighted-cell" title="Used in transformation">110</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 7: Select the name from the selected row.</div>
+<div id="step-5" class="content">
+<table>
+<tr>
+<td>names</td>
+<td>name_length</td>
+</tr>
+<tr>
+<td>apostolos antonopoulos 1:50.34\ndimitrios manganas 1:51.33\nandreas zisimos 1:50.26\nnikolaos xylouris 1:51.09</td>
+<td>110</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>names</td>
+</tr>
+<tr>
+<td>apostolos antonopoulos 1:50.34\ndimitrios manganas 1:51.33\nandreas zisimos 1:50.26\nnikolaos xylouris 1:51.09</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['apostolos antonopoulos 1:50.34\\ndimitrios manganas 1:51.33\\nandreas zisimos 1:50.26\\nnikolaos xylouris 1:51.09']]</h3>
+</body></html>

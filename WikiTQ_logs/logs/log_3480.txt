@@ -1,0 +1,56 @@
+************************************************************************************************************************
+Sample 3480 - Plan 1: Query: which cellulose ether has the longest group r = h or entry?
+Sample 3480 - Plan 1: Groundtruth: ['Hydroxyalkyl']
+Sample 3480 - Plan 1: X-Original table pd: 
+  cellulose_ethers                       reagent  \
+0            alkyl               halogenoalkanes   
+1                                                  
+2                                                  
+3     hydroxyalkyl                      epoxides   
+4                                                  
+5                                                  
+6                                                  
+7                                                  
+8     carboxyalkyl  halogenated carboxylic acids   
+
+                                 example                            reagent  \
+0                        methylcellulose                      chloromethane   
+1                         ethylcellulose                       chloroethane   
+2                 ethyl methyl cellulose     chloromethane and chloroethane   
+3                 hydroxyethyl cellulose                     ethylene oxide   
+4          hydroxypropyl cellulose (hpc)                    propylene oxide   
+5          hydroxyethyl methyl cellulose   chloromethane and ethylene oxide   
+6  hydroxypropyl methyl cellulose (hpmc)  chloromethane and propylene oxide   
+7           ethyl hydroxyethyl cellulose    chloroethane and ethylene oxide   
+8          carboxymethyl cellulose (cmc)                  chloroacetic acid   
+
+          group_r___h_or        water_solubility  \
+0                   -ch3      cold water soluble   
+1                -ch2ch3         water insoluble   
+2        -ch3 or -ch2ch3                           
+3              -ch2ch2oh  cold/hot water soluble   
+4          -ch2ch(oh)ch3      cold water soluble   
+5      -ch3 or -ch2ch2oh      cold water soluble   
+6  -ch3 or -ch2ch(oh)ch3      cold water soluble   
+7    -ch2ch3 or—ch2ch2oh                           
+8               -ch2cooh  cold/hot water soluble   
+
+                                         application e_number  
+0                                                        e461  
+1  a commercial thermoplastic used in coatings, i...     e462  
+2                                                        e465  
+3                       gelling and thickening agent           
+4                                                        e463  
+5                      production of cellulose films           
+6  viscosity modifier, gelling, foaming and bindi...     e464  
+7                                                        e467  
+8  often used as its sodium salt, sodium carboxym...     e466  
+Sample 3480 - Plan 1: Caption: none
+Sample 3480 - Plan 1: Original table: [['cellulose_ethers', 'reagent', 'example', 'reagent', 'group_r___h_or', 'water_solubility', 'application', 'e_number'], ['alkyl', 'halogenoalkanes', 'methylcellulose', 'chloromethane', '-ch3', 'cold water soluble', '', 'e461'], ['', '', 'ethylcellulose', 'chloroethane', '-ch2ch3', 'water insoluble', 'a commercial thermoplastic used in coatings, inks, binders, and controlled-release drug tablets', 'e462'], ['', '', 'ethyl methyl cellulose', 'chloromethane and chloroethane', '-ch3 or -ch2ch3', '', '', 'e465'], ['hydroxyalkyl', 'epoxides', 'hydroxyethyl cellulose', 'ethylene oxide', '-ch2ch2oh', 'cold/hot water soluble', 'gelling and thickening agent', ''], ['', '', 'hydroxypropyl cellulose (hpc)', 'propylene oxide', '-ch2ch(oh)ch3', 'cold water soluble', '', 'e463'], ['', '', 'hydroxyethyl methyl cellulose', 'chloromethane and ethylene oxide', '-ch3 or -ch2ch2oh', 'cold water soluble', 'production of cellulose films', ''], ['', '', 'hydroxypropyl methyl cellulose (hpmc)', 'chloromethane and propylene oxide', '-ch3 or -ch2ch(oh)ch3', 'cold water soluble', 'viscosity modifier, gelling, foaming and binding agent', 'e464'], ['', '', 'ethyl hydroxyethyl cellulose', 'chloroethane and ethylene oxide', '-ch2ch3 or—ch2ch2oh', '', '', 'e467'], ['carboxyalkyl', 'halogenated carboxylic acids', 'carboxymethyl cellulose (cmc)', 'chloroacetic acid', '-ch2cooh', 'cold/hot water soluble', 'often used as its sodium salt, sodium carboxymethyl cellulose (nacmc)', 'e466']]
+########################################################################################################################
+Sample 3480 - Plan 1: Operation 1: Select rows where the 'group_r___h_or' column is not empty.
+SQL execution error in operation 1: duplicate column name: reagent
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['ethylcellulose']]
+Groundtruth: ['Hydroxyalkyl']

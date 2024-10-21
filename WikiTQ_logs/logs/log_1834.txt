@@ -1,0 +1,49 @@
+************************************************************************************************************************
+Sample 1834 - Plan 1: Query: how many seasons after the 1999/2000 season did the team play at level 4?
+Sample 1834 - Plan 1: Groundtruth: ['8']
+Sample 1834 - Plan 1: X-Original table pd: 
+     season  level    division place
+0   1950–97    NaN    regional     —
+1   1997/98    7.0     2ª reg.   5th
+2   1998/99    7.0     2ª reg.   8th
+3   1999/00    7.0     2ª reg.  11th
+4   2000/01    7.0     2ª reg.   8th
+5   2001/02    7.0     2ª reg.   1st
+6   2002/03    6.0     1ª reg.   1st
+7   2003/04    5.0  reg. pref.   6th
+8   2004/05    5.0  reg. pref.  11th
+9   2005/06    5.0  reg. pref.   2nd
+10  2006/07    4.0          3ª   8th
+11  2007/08    4.0          3ª   5th
+12  2008/09    4.0          3ª   9th
+13  2009/10    4.0          3ª  14th
+14  2010/11    4.0          3ª  11th
+15  2011/12    4.0          3ª  10th
+16  2012/13    4.0          3ª   9th
+17  2013/14    4.0          3ª      
+Sample 1834 - Plan 1: Caption: none
+Sample 1834 - Plan 1: Original table: [['season', 'level', 'division', 'place'], ['1950–97', '', 'regional', '—'], ['1997/98', '7', '2ª reg.', '5th'], ['1998/99', '7', '2ª reg.', '8th'], ['1999/00', '7', '2ª reg.', '11th'], ['2000/01', '7', '2ª reg.', '8th'], ['2001/02', '7', '2ª reg.', '1st'], ['2002/03', '6', '1ª reg.', '1st'], ['2003/04', '5', 'reg. pref.', '6th'], ['2004/05', '5', 'reg. pref.', '11th'], ['2005/06', '5', 'reg. pref.', '2nd'], ['2006/07', '4', '3ª', '8th'], ['2007/08', '4', '3ª', '5th'], ['2008/09', '4', '3ª', '9th'], ['2009/10', '4', '3ª', '14th'], ['2010/11', '4', '3ª', '11th'], ['2011/12', '4', '3ª', '10th'], ['2012/13', '4', '3ª', '9th'], ['2013/14', '4', '3ª', '']]
+########################################################################################################################
+Sample 1834 - Plan 1: Operation 1: Select rows where the 'level' is '4.0' and the 'season' is after '1999/2000'.
+Sample 1834 - Plan 1: Selected indices: [[11, 1], [17, 1], [12, 1], [13, 1], [11, 0], [14, 1], [16, 0], [12, 0], [15, 1], [10, 1], [13, 0], [17, 0], [14, 0], [15, 0], [10, 0], [16, 1]]
+Sample 1834 - Plan 1: X-Table after operation df:
+    season  level division place
+0  2006/07    4.0       3ª   8th
+1  2007/08    4.0       3ª   5th
+2  2008/09    4.0       3ª   9th
+3  2009/10    4.0       3ª  14th
+4  2010/11    4.0       3ª  11th
+5  2011/12    4.0       3ª  10th
+6  2012/13    4.0       3ª   9th
+7  2013/14    4.0       3ª      
+Sample 1834 - Plan 1: Table after operation: [['season', 'level', 'division', 'place'], ['2006/07', 4.0, '3ª', '8th'], ['2007/08', 4.0, '3ª', '5th'], ['2008/09', 4.0, '3ª', '9th'], ['2009/10', 4.0, '3ª', '14th'], ['2010/11', 4.0, '3ª', '11th'], ['2011/12', 4.0, '3ª', '10th'], ['2012/13', 4.0, '3ª', '9th'], ['2013/14', 4.0, '3ª', '']]
+########################################################################################################################
+Sample 1834 - Plan 1: Operation 2: Count the number of rows.
+Sample 1834 - Plan 1: Selected indices: []
+Sample 1834 - Plan 1: X-Table after operation df:
+   row_count
+0          8
+Sample 1834 - Plan 1: Table after operation: [['row_count'], [8]]
+Fall-back: FALSE
+Answer from plan 1: [[8]]
+Groundtruth: ['8']

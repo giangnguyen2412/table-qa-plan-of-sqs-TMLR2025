@@ -1,0 +1,181 @@
+************************************************************************************************************************
+Sample 217 - Plan 1: Query: which year had the most titles?
+Sample 217 - Plan 1: Groundtruth: ['2011']
+Sample 217 - Plan 1: X-Original table pd: 
+         year                           title                 role  \
+0        1991                   flesh'n blood             penelope   
+1        1992                     true colors                lorae   
+2        1994  the all-new mickey mouse (mmc)              herself   
+3   1994–1999                  sister, sister      tamera campbell   
+4        1995     are you afraid of the dark?       evil chameleon   
+5   1995–1996      the adventures of hyperman      emma c. squared   
+6        1996                        all that              herself   
+7        1997                       smart guy              roxanne   
+8        1998                     blues clues              herself   
+9        1999                       detention  orangejella labelle   
+10       2000         how i loved a macho boy         jamal santos   
+11  2004–2006                 strong medicine    dr. kayla thorton   
+12  2006–2007                      family guy               esther   
+13       2009                       roommates                 hope   
+14       2009       the super hero squad show         misty knight   
+15       2011           things we do for love              lourdes   
+16       2011           access hollywood live              herself   
+17       2011                     chrisjayify              herself   
+18  2011–2013                    tia & tamera              herself   
+19       2012                 christmas angel              daphney   
+20       2013                        the real              herself   
+21       2014                melissa and joey              gillian   
+
+                                      notes  
+0                                 1 episode  
+1                                 1 episode  
+2                                 1 episode  
+3                              119 episodes  
+4                                 1 episode  
+5                                8 episodes  
+6                                            
+7                                 1 episode  
+8                                 1 episode  
+9                               13 episodes  
+10                               3 episodes  
+11                              37 episodes  
+12                        voice\n3 episodes  
+13                              13 episodes  
+14                                1 episode  
+15                               5 episodes  
+16                                  co-host  
+17                 episode: "drugs are bad"  
+18                       executive producer  
+19                                           
+20                                     host  
+21  season 3 episode 24 'to tell the truth'  
+Sample 217 - Plan 1: Caption: none
+Sample 217 - Plan 1: Original table: [['year', 'title', 'role', 'notes'], ['1991', "flesh'n blood", 'penelope', '1 episode'], ['1992', 'true colors', 'lorae', '1 episode'], ['1994', 'the all-new mickey mouse (mmc)', 'herself', '1 episode'], ['1994–1999', 'sister, sister', 'tamera campbell', '119 episodes'], ['1995', 'are you afraid of the dark?', 'evil chameleon', '1 episode'], ['1995–1996', 'the adventures of hyperman', 'emma c. squared', '8 episodes'], ['1996', 'all that', 'herself', ''], ['1997', 'smart guy', 'roxanne', '1 episode'], ['1998', 'blues clues', 'herself', '1 episode'], ['1999', 'detention', 'orangejella labelle', '13 episodes'], ['2000', 'how i loved a macho boy', 'jamal santos', '3 episodes'], ['2004–2006', 'strong medicine', 'dr. kayla thorton', '37 episodes'], ['2006–2007', 'family guy', 'esther', 'voice\\n3 episodes'], ['2009', 'roommates', 'hope', '13 episodes'], ['2009', 'the super hero squad show', 'misty knight', '1 episode'], ['2011', 'things we do for love', 'lourdes', '5 episodes'], ['2011', 'access hollywood live', 'herself', 'co-host'], ['2011', 'chrisjayify', 'herself', 'episode: "drugs are bad"'], ['2011–2013', 'tia & tamera', 'herself', 'executive producer'], ['2012', 'christmas angel', 'daphney', ''], ['2013', 'the real', 'herself', 'host'], ['2014', 'melissa and joey', 'gillian', "season 3 episode 24 'to tell the truth'"]]
+########################################################################################################################
+Sample 217 - Plan 1: Operation 1: Group the table by the 'year' column.
+Sample 217 - Plan 1: Selected indices: []
+Sample 217 - Plan 1: X-Table after operation df:
+         year  count
+0        1991      1
+1        1992      1
+2        1994      1
+3   1994–1999      1
+4        1995      1
+5   1995–1996      1
+6        1996      1
+7        1997      1
+8        1998      1
+9        1999      1
+10       2000      1
+11  2004–2006      1
+12  2006–2007      1
+13       2009      2
+14       2011      3
+15  2011–2013      1
+16       2012      1
+17       2013      1
+18       2014      1
+Sample 217 - Plan 1: Table after operation: [['year', 'count'], ['1991', 1], ['1992', 1], ['1994', 1], ['1994–1999', 1], ['1995', 1], ['1995–1996', 1], ['1996', 1], ['1997', 1], ['1998', 1], ['1999', 1], ['2000', 1], ['2004–2006', 1], ['2006–2007', 1], ['2009', 2], ['2011', 3], ['2011–2013', 1], ['2012', 1], ['2013', 1], ['2014', 1]]
+########################################################################################################################
+Sample 217 - Plan 1: Operation 2: Count the number of titles for each year.
+Sample 217 - Plan 1: Selected indices: []
+Sample 217 - Plan 1: X-Table after operation df:
+         year  title_count
+0        1991            1
+1        1992            1
+2        1994            1
+3   1994–1999            1
+4        1995            1
+5   1995–1996            1
+6        1996            1
+7        1997            1
+8        1998            1
+9        1999            1
+10       2000            1
+11  2004–2006            1
+12  2006–2007            1
+13       2009            1
+14       2011            1
+15  2011–2013            1
+16       2012            1
+17       2013            1
+18       2014            1
+Sample 217 - Plan 1: Table after operation: [['year', 'title_count'], ['1991', 1], ['1992', 1], ['1994', 1], ['1994–1999', 1], ['1995', 1], ['1995–1996', 1], ['1996', 1], ['1997', 1], ['1998', 1], ['1999', 1], ['2000', 1], ['2004–2006', 1], ['2006–2007', 1], ['2009', 1], ['2011', 1], ['2011–2013', 1], ['2012', 1], ['2013', 1], ['2014', 1]]
+########################################################################################################################
+Sample 217 - Plan 1: Operation 3: Order the table by the count of titles in descending order.
+Sample 217 - Plan 1: Selected indices: [[12, 1], [3, 1], [14, 1], [5, 1], [16, 1], [7, 1], [18, 1], [9, 1], [0, 1], [11, 1], [2, 1], [13, 1], [6, 1], [15, 1], [4, 1], [17, 1], [8, 1], [1, 1], [10, 1]]
+Sample 217 - Plan 1: X-Table after operation df:
+         year  title_count
+0        1991            1
+1        1992            1
+2        1994            1
+3   1994–1999            1
+4        1995            1
+5   1995–1996            1
+6        1996            1
+7        1997            1
+8        1998            1
+9        1999            1
+10       2000            1
+11  2004–2006            1
+12  2006–2007            1
+13       2009            1
+14       2011            1
+15  2011–2013            1
+16       2012            1
+17       2013            1
+18       2014            1
+Sample 217 - Plan 1: Table after operation: [['year', 'title_count'], ['1991', 1], ['1992', 1], ['1994', 1], ['1994–1999', 1], ['1995', 1], ['1995–1996', 1], ['1996', 1], ['1997', 1], ['1998', 1], ['1999', 1], ['2000', 1], ['2004–2006', 1], ['2006–2007', 1], ['2009', 1], ['2011', 1], ['2011–2013', 1], ['2012', 1], ['2013', 1], ['2014', 1]]
+########################################################################################################################
+Sample 217 - Plan 1: Operation 4: Select the row with the highest count of titles.
+Sample 217 - Plan 1: Selected indices: [[12, 1], [3, 1], [14, 1], [5, 1], [16, 1], [7, 1], [18, 1], [9, 1], [0, 1], [11, 1], [2, 1], [13, 1], [6, 1], [15, 1], [4, 1], [17, 1], [8, 1], [1, 1], [10, 1]]
+Sample 217 - Plan 1: X-Table after operation df:
+         year  title_count
+0        1991            1
+1        1992            1
+2        1994            1
+3   1994–1999            1
+4        1995            1
+5   1995–1996            1
+6        1996            1
+7        1997            1
+8        1998            1
+9        1999            1
+10       2000            1
+11  2004–2006            1
+12  2006–2007            1
+13       2009            1
+14       2011            1
+15  2011–2013            1
+16       2012            1
+17       2013            1
+18       2014            1
+Sample 217 - Plan 1: Table after operation: [['year', 'title_count'], ['1991', 1], ['1992', 1], ['1994', 1], ['1994–1999', 1], ['1995', 1], ['1995–1996', 1], ['1996', 1], ['1997', 1], ['1998', 1], ['1999', 1], ['2000', 1], ['2004–2006', 1], ['2006–2007', 1], ['2009', 1], ['2011', 1], ['2011–2013', 1], ['2012', 1], ['2013', 1], ['2014', 1]]
+########################################################################################################################
+Sample 217 - Plan 1: Operation 5: Select the 'year' column from the selected row.
+Sample 217 - Plan 1: Selected indices: []
+Sample 217 - Plan 1: X-Table after operation df:
+         year
+0        1991
+1        1992
+2        1994
+3   1994–1999
+4        1995
+5   1995–1996
+6        1996
+7        1997
+8        1998
+9        1999
+10       2000
+11  2004–2006
+12  2006–2007
+13       2009
+14       2011
+15  2011–2013
+16       2012
+17       2013
+18       2014
+Sample 217 - Plan 1: Table after operation: [['year'], ['1991'], ['1992'], ['1994'], ['1994–1999'], ['1995'], ['1995–1996'], ['1996'], ['1997'], ['1998'], ['1999'], ['2000'], ['2004–2006'], ['2006–2007'], ['2009'], ['2011'], ['2011–2013'], ['2012'], ['2013'], ['2014']]
+Fall-back: FALSE
+Answer from plan 1: [['1991'], ['1992'], ['1994'], ['1994–1999'], ['1995'], ['1995–1996'], ['1996'], ['1997'], ['1998'], ['1999'], ['2000'], ['2004–2006'], ['2006–2007'], ['2009'], ['2011'], ['2011–2013'], ['2012'], ['2013'], ['2014']]
+Groundtruth: ['2011']

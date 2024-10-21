@@ -1,0 +1,126 @@
+************************************************************************************************************************
+Sample 3831 - Plan 1: Query: after elie wiesel, who won the guardian of zion award?
+Sample 3831 - Plan 1: Groundtruth: ['Herman Wouk']
+Sample 3831 - Plan 1: X-Original table pd: 
+    year                                         recipient     nationality  \
+0   1997                                       elie wiesel   united states   
+1   1998                                       herman wouk   united states   
+2   1999                                    a.m. rosenthal   united states   
+3   2000                                sir martin gilbert  united kingdom   
+4   2001                                     cynthia ozick   united states   
+5   2002                               charles krauthammer   united states   
+6   2003                                ruth roskies wisse   united states   
+7   2004                                       arthur cohn     switzerland   
+8   2005                                    william safire   united states   
+9   2006                                      daniel pipes   united states   
+10  2007                                  norman podhoretz   united states   
+11  2008  david be'eri, mordechai eliav, rabbi yehuda maly          israel   
+12  2009                                    caroline glick          israel   
+13  2010                                  malcolm hoenlein   united states   
+
+                                           profession speech  
+0   professional writer\nwinner of the nobel peace...         
+1   professional writer and 1952 pulitzer prize wi...         
+2   former new york times editor\nformer new york ...         
+3                                historian and writer         
+4                                 professional writer         
+5                       the washington post columnist    [1]  
+6             yiddish professor of harvard university    [2]  
+7                                filmmaker and writer         
+8   author, journalist and speechwriter\n1978 puli...         
+9                                author and historian         
+10                                  author, columnist         
+11                                                            
+12                                         journalist         
+13  executive vice chairman of the conference of p...         
+Sample 3831 - Plan 1: Caption: none
+Sample 3831 - Plan 1: Original table: [['year', 'recipient', 'nationality', 'profession', 'speech'], ['1997', 'elie wiesel', 'united states', 'professional writer\\nwinner of the nobel peace prize (1986)', ''], ['1998', 'herman wouk', 'united states', 'professional writer and 1952 pulitzer prize winner', ''], ['1999', 'a.m. rosenthal', 'united states', 'former new york times editor\\nformer new york daily news columnist', ''], ['2000', 'sir martin gilbert', 'united kingdom', 'historian and writer', ''], ['2001', 'cynthia ozick', 'united states', 'professional writer', ''], ['2002', 'charles krauthammer', 'united states', 'the washington post columnist', '[1]'], ['2003', 'ruth roskies wisse', 'united states', 'yiddish professor of harvard university', '[2]'], ['2004', 'arthur cohn', 'switzerland', 'filmmaker and writer', ''], ['2005', 'william safire', 'united states', 'author, journalist and speechwriter\\n1978 pulitzer prize winner', ''], ['2006', 'daniel pipes', 'united states', 'author and historian', ''], ['2007', 'norman podhoretz', 'united states', 'author, columnist', ''], ['2008', "david be'eri, mordechai eliav, rabbi yehuda maly", 'israel', '', ''], ['2009', 'caroline glick', 'israel', 'journalist', ''], ['2010', 'malcolm hoenlein', 'united states', 'executive vice chairman of the conference of presidents of major american jewish organizations', '']]
+########################################################################################################################
+Sample 3831 - Plan 1: Operation 1: Select rows where 'year' is greater than 1997.
+Sample 3831 - Plan 1: Selected indices: [[9, 0], [4, 0], [11, 0], [12, 0], [7, 0], [2, 0], [13, 0], [8, 0], [3, 0], [10, 0], [5, 0], [6, 0], [1, 0]]
+Sample 3831 - Plan 1: X-Table after operation df:
+    year                                         recipient     nationality  \
+0   1998                                       herman wouk   united states   
+1   1999                                    a.m. rosenthal   united states   
+2   2000                                sir martin gilbert  united kingdom   
+3   2001                                     cynthia ozick   united states   
+4   2002                               charles krauthammer   united states   
+5   2003                                ruth roskies wisse   united states   
+6   2004                                       arthur cohn     switzerland   
+7   2005                                    william safire   united states   
+8   2006                                      daniel pipes   united states   
+9   2007                                  norman podhoretz   united states   
+10  2008  david be'eri, mordechai eliav, rabbi yehuda maly          israel   
+11  2009                                    caroline glick          israel   
+12  2010                                  malcolm hoenlein   united states   
+
+                                           profession speech  
+0   professional writer and 1952 pulitzer prize wi...         
+1   former new york times editor\nformer new york ...         
+2                                historian and writer         
+3                                 professional writer         
+4                       the washington post columnist    [1]  
+5             yiddish professor of harvard university    [2]  
+6                                filmmaker and writer         
+7   author, journalist and speechwriter\n1978 puli...         
+8                                author and historian         
+9                                   author, columnist         
+10                                                            
+11                                         journalist         
+12  executive vice chairman of the conference of p...         
+Sample 3831 - Plan 1: Table after operation: [['year', 'recipient', 'nationality', 'profession', 'speech'], [1998, 'herman wouk', 'united states', 'professional writer and 1952 pulitzer prize winner', ''], [1999, 'a.m. rosenthal', 'united states', 'former new york times editor\\nformer new york daily news columnist', ''], [2000, 'sir martin gilbert', 'united kingdom', 'historian and writer', ''], [2001, 'cynthia ozick', 'united states', 'professional writer', ''], [2002, 'charles krauthammer', 'united states', 'the washington post columnist', '[1]'], [2003, 'ruth roskies wisse', 'united states', 'yiddish professor of harvard university', '[2]'], [2004, 'arthur cohn', 'switzerland', 'filmmaker and writer', ''], [2005, 'william safire', 'united states', 'author, journalist and speechwriter\\n1978 pulitzer prize winner', ''], [2006, 'daniel pipes', 'united states', 'author and historian', ''], [2007, 'norman podhoretz', 'united states', 'author, columnist', ''], [2008, "david be'eri, mordechai eliav, rabbi yehuda maly", 'israel', '', ''], [2009, 'caroline glick', 'israel', 'journalist', ''], [2010, 'malcolm hoenlein', 'united states', 'executive vice chairman of the conference of presidents of major american jewish organizations', '']]
+########################################################################################################################
+Sample 3831 - Plan 1: Operation 2: Select the 'recipient' column.
+Sample 3831 - Plan 1: Selected indices: []
+Sample 3831 - Plan 1: X-Table after operation df:
+                                           recipient
+0                                        herman wouk
+1                                     a.m. rosenthal
+2                                 sir martin gilbert
+3                                      cynthia ozick
+4                                charles krauthammer
+5                                 ruth roskies wisse
+6                                        arthur cohn
+7                                     william safire
+8                                       daniel pipes
+9                                   norman podhoretz
+10  david be'eri, mordechai eliav, rabbi yehuda maly
+11                                    caroline glick
+12                                  malcolm hoenlein
+Sample 3831 - Plan 1: Table after operation: [['recipient'], ['herman wouk'], ['a.m. rosenthal'], ['sir martin gilbert'], ['cynthia ozick'], ['charles krauthammer'], ['ruth roskies wisse'], ['arthur cohn'], ['william safire'], ['daniel pipes'], ['norman podhoretz'], ["david be'eri, mordechai eliav, rabbi yehuda maly"], ['caroline glick'], ['malcolm hoenlein']]
+########################################################################################################################
+Sample 3831 - Plan 1: Operation 3: Order the table by 'year' in ascending order.
+Sample 3831 - Plan 1: Selected indices: []
+Sample 3831 - Plan 1: X-Table after operation df:
+                                           recipient
+0                                     a.m. rosenthal
+1                                        arthur cohn
+2                                     caroline glick
+3                                charles krauthammer
+4                                      cynthia ozick
+5                                       daniel pipes
+6   david be'eri, mordechai eliav, rabbi yehuda maly
+7                                        herman wouk
+8                                   malcolm hoenlein
+9                                   norman podhoretz
+10                                ruth roskies wisse
+11                                sir martin gilbert
+12                                    william safire
+Sample 3831 - Plan 1: Table after operation: [['recipient'], ['a.m. rosenthal'], ['arthur cohn'], ['caroline glick'], ['charles krauthammer'], ['cynthia ozick'], ['daniel pipes'], ["david be'eri, mordechai eliav, rabbi yehuda maly"], ['herman wouk'], ['malcolm hoenlein'], ['norman podhoretz'], ['ruth roskies wisse'], ['sir martin gilbert'], ['william safire']]
+########################################################################################################################
+Sample 3831 - Plan 1: Operation 4: Select row number 1.
+Sample 3831 - Plan 1: Selected indices: []
+Sample 3831 - Plan 1: X-Table after operation df:
+        recipient
+0  a.m. rosenthal
+Sample 3831 - Plan 1: Table after operation: [['recipient'], ['a.m. rosenthal']]
+########################################################################################################################
+Sample 3831 - Plan 1: Operation 5: Select the 'recipient' column.
+Sample 3831 - Plan 1: Selected indices: []
+Sample 3831 - Plan 1: X-Table after operation df:
+        recipient
+0  a.m. rosenthal
+Sample 3831 - Plan 1: Table after operation: [['recipient'], ['a.m. rosenthal']]
+Fall-back: FALSE
+Answer from plan 1: [['a.m. rosenthal']]
+Groundtruth: ['Herman Wouk']

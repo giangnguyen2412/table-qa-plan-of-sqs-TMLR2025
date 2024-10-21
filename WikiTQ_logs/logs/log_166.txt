@@ -1,0 +1,173 @@
+************************************************************************************************************************
+Sample 166 - Plan 1: Query: what was the first book published by harper & brothers between 1903-1923?
+Sample 166 - Plan 1: Groundtruth: ['The Heritage of the Desert']
+Sample 166 - Plan 1: X-Original table pd: 
+    year                      title       genre              publisher  \
+0   1903                 betty zane  historical  charles francis press   
+1   1906       spirit of the border  historical   a. l. burt & company   
+2   1908  the last of the plainsmen     western      outing publishing   
+3   1909             the last trail     western      outing publishing   
+4   1909              the shortstop    baseball          a. c. mcclurg   
+..   ...                        ...         ...                    ...   
+95  1996         last of the duanes     western      gunsmoke westerns   
+96  2003        the desert crucible     western          leisure books   
+97  2004                tonto basin     western          leisure books   
+98  2007             shower of gold     western          leisure books   
+99  2008             the great trek     western              five star   
+
+                                                notes  
+0                                                      
+1                                sequel to betty zane  
+2                 inspired by charles "buffalo" jones  
+3                      sequel to spirit of the border  
+4                                                      
+..                                                ...  
+95  unabridged version of the lone star ranger (1915)  
+96     unabridged version of the rainbow trail (1915)  
+97       unabridged version of to the last man (1921)  
+98           unabridged version of desert gold (1915)  
+99   unabridged version of the wilderness trek (1944)  
+
+[100 rows x 5 columns]
+Sample 166 - Plan 1: Caption: none
+Sample 166 - Plan 1: Original table: [['year', 'title', 'genre', 'publisher', 'notes'], ['1903', 'betty zane', 'historical', 'charles francis press', ''], ['1906', 'spirit of the border', 'historical', 'a. l. burt & company', 'sequel to betty zane'], ['1908', 'the last of the plainsmen', 'western', 'outing publishing', 'inspired by charles "buffalo" jones'], ['1909', 'the last trail', 'western', 'outing publishing', 'sequel to spirit of the border'], ['1909', 'the shortstop', 'baseball', 'a. c. mcclurg', ''], ['1910', 'the heritage of the desert', 'western', 'harper & brothers', ''], ['1910', 'the young forester', 'western', 'harper & brothers', ''], ['1911', 'the young pitcher', 'baseball', 'harper & brothers', ''], ['1911', 'the young lion hunter', 'western', 'harper & brothers', ''], ['1912', 'riders of the purple sage', 'western', 'harper & brothers', ''], ['1912', 'ken ward in the jungle', 'western', 'harper & brothers', ''], ['1913', 'desert gold', 'western', 'harper & brothers', ''], ['1914', 'the light of western stars', 'western', 'harper & brothers', ''], ['1915', 'the lone star ranger', 'western', 'harper & brothers', ''], ['1915', 'the rainbow trail', 'western', 'harper & brothers', 'sequel to riders of the purple sage'], ['1916', 'the border legion', 'western', 'harper & brothers', ''], ['1917', 'wildfire', 'western', 'harper & brothers', ''], ['1918', 'the up trail', 'western', 'harper & brothers', ''], ['1919', 'the desert of wheat', 'western', 'harper & brothers', ''], ['1919', 'tales of fishes', 'fishing', 'harper & brothers', ''], ['1920', 'the man of the forest', 'western', 'grosset & dunlap', ''], ['1920', 'the redheaded outfield and other baseball stories', 'baseball', 'harper & brothers', ''], ['1921', 'the mysterious rider', 'western', 'harper & brothers', ''], ['1921', 'to the last man', 'western', 'harper & brothers', ''], ['1922', 'the day of the beast', 'fiction', 'harper & brothers', ''], ['1922', 'tales of lonely trails', 'adventure', 'harper & brothers', ''], ['1923', 'wanderer of the wasteland', 'western', 'harper & brothers', ''], ['1923', "tappan's burro", 'western', 'harper & brothers', ''], ['1924', 'the call of the canyon', 'western', 'harper & brothers', ''], ['1924', 'roping lions in the grand canyon', 'adventure', 'harper & brothers', ''], ['1924', 'tales of southern rivers', 'fishing', 'harper & brothers', ''], ['1925', 'the thundering herd', 'western', 'harper & brothers', ''], ['1925', 'the vanishing american', 'western', 'harper & brothers', ''], ['1925', 'tales of fishing virgin seas', 'fishing', 'harper & brothers', ''], ['1926', 'under the tonto rim', 'western', 'harper & brothers', ''], ['1926', "tales of the angler's eldorado, new zealand", 'fishing', 'harper & brothers', ''], ['1927', 'forlorn river', 'western', 'harper & brothers', ''], ['1927', 'tales of swordfish and tuna', 'fishing', 'harper & brothers', ''], ['1928', 'nevada', 'western', 'harper & brothers', 'sequel to forlorn river'], ['1928', 'wild horse mesa', 'western', 'harper & brothers', ''], ['1928', 'don, the story of a lion dog', 'western', 'harper & brothers', ''], ['1928', 'avalanche', 'western', 'harper & brothers', ''], ['1928', 'tales of fresh water fishing', 'fishing', 'harper & brothers', ''], ['1929', 'fighting caravans', 'western', 'harper & brothers', ''], ['1929', 'stairs of sand', 'western', 'harper & brothers', ''], ['1930', 'the wolf tracker', 'western', 'harper & brothers', ''], ['1930', 'the shepherd of guadaloupe', 'western', 'harper & brothers', ''], ['1931', 'sunset pass', 'western', 'harper & brothers', ''], ['1931', 'tales of tahitian waters', 'fishing', 'harper & brothers', ''], ['1931', 'book of camps and trails', 'adventure', 'harper & brothers', 'partial re-print of tales of lonely trails'], ['1932', 'arizona ames', 'western', 'harper & brothers', ''], ['1932', "robbers' roost", 'western', 'harper & brothers', ''], ['1933', 'the drift fence', 'western', 'harper & brothers', ''], ['1933', 'the hash knife outfit', 'western', 'harper & brothers', 'sequel to the drift fence'], ['1934', 'the code of the west', 'western', 'harper & brothers', ''], ['1935', 'thunder mountain', 'western', 'harper & brothers', ''], ['1935', 'the trail driver', 'western', 'whitman publishing', ''], ['1936', 'the lost wagon train', 'western', 'harper & brothers', ''], ['1937', 'west of the pecos', 'western', 'whitman publishing', ''], ['1937', 'an american angler in australia', 'fishing', 'whitman publishing', ''], ['1938', 'raiders of spanish peaks', 'western', 'whitman publishing', ''], ['1939', 'western union', 'western', 'harper & brothers', ''], ['1939', 'knights of the range', 'western', 'harper & brothers', ''], ['1940', 'thirty thousand on the hoof', 'western', 'harper & brothers', ''], ['1940', 'twin sombreros', 'western', 'harper & brothers', 'sequel to knights of the range'], ['1942', 'majesty’s rancho', 'western', 'harper & brothers', 'sequel to light of western stars'], ['1943', 'omnibus', 'western', 'harper & brothers', ''], ['1943', 'stairs of sand', 'western', 'harper & brothers', 'sequel to wanderer of the wasteland'], ['1944', 'the wilderness trek', 'western', 'harper & brothers', ''], ['1946', 'shadow on the trail', 'western', 'harper & brothers', ''], ['1947', 'valley of wild horses', 'western', 'harper & brothers', ''], ['1948', 'rogue river feud', 'western', 'harper & brothers', ''], ['1949', 'the deer stalker', 'western', 'harper & brothers', ''], ['1950', 'the maverick queen', 'western', 'harper & brothers', ''], ['1951', 'the dude ranger', 'western', 'harper & brothers', ''], ['1952', 'captives of the desert', 'western', 'harper & brothers', ''], ['1952', 'adventures in fishing', 'fishing', 'harper & brothers', ''], ['1953', 'wyoming', 'western', 'harper & brothers', ''], ['1954', 'lost pueblo', 'western', 'harper & brothers', ''], ['1955', 'black mesa', 'western', 'harper & brothers', ''], ['1956', 'stranger from the tonto', 'western', 'harper & brothers', ''], ['1957', 'the fugitive trail', 'western', 'harper & brothers', ''], ['1958', 'arizona clan', 'western', 'harper & brothers', ''], ['1959', 'horse heaven hill', 'western', 'harper & brothers', ''], ['1960', 'the ranger and other stories', 'western', 'harper & row', ''], ['1961', 'blue feather and other stories', 'western', 'harper & row', ''], ['1963', 'boulder dam', 'historical', 'harpercollins', ''], ['1974', 'the adventures of finspot', 'fishing', 'd-j books', ''], ['1975', "zane grey's greatest indian stories", 'western', 'dorchester publishing', 'includes original ending to the vanishing american (1925)'], ['1977', 'the reef girl', 'fishing', 'harper & row', ''], ['1978', 'tales from a fisherman’s log', 'fishing', 'hodder & stoughton', ''], ['1979', 'the camp robber and other stories', 'western', 'walter j. black', ''], ['1981', 'the lord of lackawaxen creek', 'adventure', 'lime rock press', ''], ['1982', "angler's eldorado: zane grey in new zealand", 'fishing', 'walter j. black', 'partial reprint of 1926 edition (first 10 chapters, plus additional content)'], ['1994', 'george washington, frontiersman', 'historical', 'forge books', ''], ['1996', 'last of the duanes', 'western', 'gunsmoke westerns', 'unabridged version of the lone star ranger (1915)'], ['2003', 'the desert crucible', 'western', 'leisure books', 'unabridged version of the rainbow trail (1915)'], ['2004', 'tonto basin', 'western', 'leisure books', 'unabridged version of to the last man (1921)'], ['2007', 'shower of gold', 'western', 'leisure books', 'unabridged version of desert gold (1915)'], ['2008', 'the great trek', 'western', 'five star', 'unabridged version of the wilderness trek (1944)'], ['2009', 'tales of the gladiator', 'fishing', 'zg collections', '']]
+########################################################################################################################
+Sample 166 - Plan 1: Operation 1: Select rows where the 'publisher' is 'harper & brothers'.
+Sample 166 - Plan 1: Selected indices: [[37, 3], [70, 3], [28, 3], [17, 3], [50, 3], [61, 3], [83, 3], [8, 3], [19, 3], [30, 3], [41, 3], [52, 3], [10, 3], [43, 3], [32, 3], [65, 3], [74, 3], [76, 3], [63, 3], [21, 3], [54, 3], [12, 3], [23, 3], [34, 3], [45, 3], [67, 3], [14, 3], [36, 3], [47, 3], [69, 3], [78, 3], [5, 3], [27, 3], [51, 3], [25, 3], [80, 3], [16, 3], [38, 3], [49, 3], [71, 3], [82, 3], [7, 3], [18, 3], [29, 3], [40, 3], [62, 3], [55, 3], [31, 3], [53, 3], [64, 3], [73, 3], [77, 3], [22, 3], [6, 3], [39, 3], [9, 3], [42, 3], [75, 3], [11, 3], [33, 3], [44, 3], [66, 3], [81, 3], [13, 3], [24, 3], [35, 3], [46, 3], [57, 3], [48, 3], [15, 3], [26, 3], [68, 3], [72, 3], [79, 3]]
+Sample 166 - Plan 1: X-Table after operation df:
+    year                       title     genre          publisher notes
+0   1910  the heritage of the desert   western  harper & brothers      
+1   1910          the young forester   western  harper & brothers      
+2   1911           the young pitcher  baseball  harper & brothers      
+3   1911       the young lion hunter   western  harper & brothers      
+4   1912   riders of the purple sage   western  harper & brothers      
+..   ...                         ...       ...                ...   ...
+69  1955                  black mesa   western  harper & brothers      
+70  1956     stranger from the tonto   western  harper & brothers      
+71  1957          the fugitive trail   western  harper & brothers      
+72  1958                arizona clan   western  harper & brothers      
+73  1959           horse heaven hill   western  harper & brothers      
+
+[74 rows x 5 columns]
+Sample 166 - Plan 1: Table after operation: [['year', 'title', 'genre', 'publisher', 'notes'], [1910, 'the heritage of the desert', 'western', 'harper & brothers', ''], [1910, 'the young forester', 'western', 'harper & brothers', ''], [1911, 'the young pitcher', 'baseball', 'harper & brothers', ''], [1911, 'the young lion hunter', 'western', 'harper & brothers', ''], [1912, 'riders of the purple sage', 'western', 'harper & brothers', ''], [1912, 'ken ward in the jungle', 'western', 'harper & brothers', ''], [1913, 'desert gold', 'western', 'harper & brothers', ''], [1914, 'the light of western stars', 'western', 'harper & brothers', ''], [1915, 'the lone star ranger', 'western', 'harper & brothers', ''], [1915, 'the rainbow trail', 'western', 'harper & brothers', 'sequel to riders of the purple sage'], [1916, 'the border legion', 'western', 'harper & brothers', ''], [1917, 'wildfire', 'western', 'harper & brothers', ''], [1918, 'the up trail', 'western', 'harper & brothers', ''], [1919, 'the desert of wheat', 'western', 'harper & brothers', ''], [1919, 'tales of fishes', 'fishing', 'harper & brothers', ''], [1920, 'the redheaded outfield and other baseball stories', 'baseball', 'harper & brothers', ''], [1921, 'the mysterious rider', 'western', 'harper & brothers', ''], [1921, 'to the last man', 'western', 'harper & brothers', ''], [1922, 'the day of the beast', 'fiction', 'harper & brothers', ''], [1922, 'tales of lonely trails', 'adventure', 'harper & brothers', ''], [1923, 'wanderer of the wasteland', 'western', 'harper & brothers', ''], [1923, "tappan's burro", 'western', 'harper & brothers', ''], [1924, 'the call of the canyon', 'western', 'harper & brothers', ''], [1924, 'roping lions in the grand canyon', 'adventure', 'harper & brothers', ''], [1924, 'tales of southern rivers', 'fishing', 'harper & brothers', ''], [1925, 'the thundering herd', 'western', 'harper & brothers', ''], [1925, 'the vanishing american', 'western', 'harper & brothers', ''], [1925, 'tales of fishing virgin seas', 'fishing', 'harper & brothers', ''], [1926, 'under the tonto rim', 'western', 'harper & brothers', ''], [1926, "tales of the angler's eldorado, new zealand", 'fishing', 'harper & brothers', ''], [1927, 'forlorn river', 'western', 'harper & brothers', ''], [1927, 'tales of swordfish and tuna', 'fishing', 'harper & brothers', ''], [1928, 'nevada', 'western', 'harper & brothers', 'sequel to forlorn river'], [1928, 'wild horse mesa', 'western', 'harper & brothers', ''], [1928, 'don, the story of a lion dog', 'western', 'harper & brothers', ''], [1928, 'avalanche', 'western', 'harper & brothers', ''], [1928, 'tales of fresh water fishing', 'fishing', 'harper & brothers', ''], [1929, 'fighting caravans', 'western', 'harper & brothers', ''], [1929, 'stairs of sand', 'western', 'harper & brothers', ''], [1930, 'the wolf tracker', 'western', 'harper & brothers', ''], [1930, 'the shepherd of guadaloupe', 'western', 'harper & brothers', ''], [1931, 'sunset pass', 'western', 'harper & brothers', ''], [1931, 'tales of tahitian waters', 'fishing', 'harper & brothers', ''], [1931, 'book of camps and trails', 'adventure', 'harper & brothers', 'partial re-print of tales of lonely trails'], [1932, 'arizona ames', 'western', 'harper & brothers', ''], [1932, "robbers' roost", 'western', 'harper & brothers', ''], [1933, 'the drift fence', 'western', 'harper & brothers', ''], [1933, 'the hash knife outfit', 'western', 'harper & brothers', 'sequel to the drift fence'], [1934, 'the code of the west', 'western', 'harper & brothers', ''], [1935, 'thunder mountain', 'western', 'harper & brothers', ''], [1936, 'the lost wagon train', 'western', 'harper & brothers', ''], [1939, 'western union', 'western', 'harper & brothers', ''], [1939, 'knights of the range', 'western', 'harper & brothers', ''], [1940, 'thirty thousand on the hoof', 'western', 'harper & brothers', ''], [1940, 'twin sombreros', 'western', 'harper & brothers', 'sequel to knights of the range'], [1942, 'majesty’s rancho', 'western', 'harper & brothers', 'sequel to light of western stars'], [1943, 'omnibus', 'western', 'harper & brothers', ''], [1943, 'stairs of sand', 'western', 'harper & brothers', 'sequel to wanderer of the wasteland'], [1944, 'the wilderness trek', 'western', 'harper & brothers', ''], [1946, 'shadow on the trail', 'western', 'harper & brothers', ''], [1947, 'valley of wild horses', 'western', 'harper & brothers', ''], [1948, 'rogue river feud', 'western', 'harper & brothers', ''], [1949, 'the deer stalker', 'western', 'harper & brothers', ''], [1950, 'the maverick queen', 'western', 'harper & brothers', ''], [1951, 'the dude ranger', 'western', 'harper & brothers', ''], [1952, 'captives of the desert', 'western', 'harper & brothers', ''], [1952, 'adventures in fishing', 'fishing', 'harper & brothers', ''], [1953, 'wyoming', 'western', 'harper & brothers', ''], [1954, 'lost pueblo', 'western', 'harper & brothers', ''], [1955, 'black mesa', 'western', 'harper & brothers', ''], [1956, 'stranger from the tonto', 'western', 'harper & brothers', ''], [1957, 'the fugitive trail', 'western', 'harper & brothers', ''], [1958, 'arizona clan', 'western', 'harper & brothers', ''], [1959, 'horse heaven hill', 'western', 'harper & brothers', '']]
+########################################################################################################################
+Sample 166 - Plan 1: Operation 2: Select rows where the 'year' is between 1903 and 1923.
+Sample 166 - Plan 1: Selected indices: [[4, 0], [17, 0], [8, 0], [19, 0], [10, 0], [1, 0], [21, 0], [12, 0], [3, 0], [14, 0], [5, 0], [16, 0], [7, 0], [18, 0], [20, 0], [9, 0], [0, 0], [11, 0], [2, 0], [13, 0], [15, 0], [6, 0]]
+Sample 166 - Plan 1: X-Table after operation df:
+    year                                              title      genre  \
+0   1910                         the heritage of the desert    western   
+1   1910                                 the young forester    western   
+2   1911                                  the young pitcher   baseball   
+3   1911                              the young lion hunter    western   
+4   1912                          riders of the purple sage    western   
+5   1912                             ken ward in the jungle    western   
+6   1913                                        desert gold    western   
+7   1914                         the light of western stars    western   
+8   1915                               the lone star ranger    western   
+9   1915                                  the rainbow trail    western   
+10  1916                                  the border legion    western   
+11  1917                                           wildfire    western   
+12  1918                                       the up trail    western   
+13  1919                                the desert of wheat    western   
+14  1919                                    tales of fishes    fishing   
+15  1920  the redheaded outfield and other baseball stories   baseball   
+16  1921                               the mysterious rider    western   
+17  1921                                    to the last man    western   
+18  1922                               the day of the beast    fiction   
+19  1922                             tales of lonely trails  adventure   
+20  1923                          wanderer of the wasteland    western   
+21  1923                                     tappan's burro    western   
+
+            publisher                                notes  
+0   harper & brothers                                       
+1   harper & brothers                                       
+2   harper & brothers                                       
+3   harper & brothers                                       
+4   harper & brothers                                       
+5   harper & brothers                                       
+6   harper & brothers                                       
+7   harper & brothers                                       
+8   harper & brothers                                       
+9   harper & brothers  sequel to riders of the purple sage  
+10  harper & brothers                                       
+11  harper & brothers                                       
+12  harper & brothers                                       
+13  harper & brothers                                       
+14  harper & brothers                                       
+15  harper & brothers                                       
+16  harper & brothers                                       
+17  harper & brothers                                       
+18  harper & brothers                                       
+19  harper & brothers                                       
+20  harper & brothers                                       
+21  harper & brothers                                       
+Sample 166 - Plan 1: Table after operation: [['year', 'title', 'genre', 'publisher', 'notes'], [1910, 'the heritage of the desert', 'western', 'harper & brothers', ''], [1910, 'the young forester', 'western', 'harper & brothers', ''], [1911, 'the young pitcher', 'baseball', 'harper & brothers', ''], [1911, 'the young lion hunter', 'western', 'harper & brothers', ''], [1912, 'riders of the purple sage', 'western', 'harper & brothers', ''], [1912, 'ken ward in the jungle', 'western', 'harper & brothers', ''], [1913, 'desert gold', 'western', 'harper & brothers', ''], [1914, 'the light of western stars', 'western', 'harper & brothers', ''], [1915, 'the lone star ranger', 'western', 'harper & brothers', ''], [1915, 'the rainbow trail', 'western', 'harper & brothers', 'sequel to riders of the purple sage'], [1916, 'the border legion', 'western', 'harper & brothers', ''], [1917, 'wildfire', 'western', 'harper & brothers', ''], [1918, 'the up trail', 'western', 'harper & brothers', ''], [1919, 'the desert of wheat', 'western', 'harper & brothers', ''], [1919, 'tales of fishes', 'fishing', 'harper & brothers', ''], [1920, 'the redheaded outfield and other baseball stories', 'baseball', 'harper & brothers', ''], [1921, 'the mysterious rider', 'western', 'harper & brothers', ''], [1921, 'to the last man', 'western', 'harper & brothers', ''], [1922, 'the day of the beast', 'fiction', 'harper & brothers', ''], [1922, 'tales of lonely trails', 'adventure', 'harper & brothers', ''], [1923, 'wanderer of the wasteland', 'western', 'harper & brothers', ''], [1923, "tappan's burro", 'western', 'harper & brothers', '']]
+########################################################################################################################
+Sample 166 - Plan 1: Operation 3: Order the table by 'year' in ascending order.
+Sample 166 - Plan 1: Selected indices: [[4, 0], [17, 0], [8, 0], [19, 0], [10, 0], [1, 0], [21, 0], [12, 0], [3, 0], [14, 0], [5, 0], [16, 0], [7, 0], [18, 0], [20, 0], [9, 0], [0, 0], [11, 0], [2, 0], [13, 0], [15, 0], [6, 0]]
+Sample 166 - Plan 1: X-Table after operation df:
+    year                                              title      genre  \
+0   1910                         the heritage of the desert    western   
+1   1910                                 the young forester    western   
+2   1911                                  the young pitcher   baseball   
+3   1911                              the young lion hunter    western   
+4   1912                          riders of the purple sage    western   
+5   1912                             ken ward in the jungle    western   
+6   1913                                        desert gold    western   
+7   1914                         the light of western stars    western   
+8   1915                               the lone star ranger    western   
+9   1915                                  the rainbow trail    western   
+10  1916                                  the border legion    western   
+11  1917                                           wildfire    western   
+12  1918                                       the up trail    western   
+13  1919                                the desert of wheat    western   
+14  1919                                    tales of fishes    fishing   
+15  1920  the redheaded outfield and other baseball stories   baseball   
+16  1921                               the mysterious rider    western   
+17  1921                                    to the last man    western   
+18  1922                               the day of the beast    fiction   
+19  1922                             tales of lonely trails  adventure   
+20  1923                          wanderer of the wasteland    western   
+21  1923                                     tappan's burro    western   
+
+            publisher                                notes  
+0   harper & brothers                                       
+1   harper & brothers                                       
+2   harper & brothers                                       
+3   harper & brothers                                       
+4   harper & brothers                                       
+5   harper & brothers                                       
+6   harper & brothers                                       
+7   harper & brothers                                       
+8   harper & brothers                                       
+9   harper & brothers  sequel to riders of the purple sage  
+10  harper & brothers                                       
+11  harper & brothers                                       
+12  harper & brothers                                       
+13  harper & brothers                                       
+14  harper & brothers                                       
+15  harper & brothers                                       
+16  harper & brothers                                       
+17  harper & brothers                                       
+18  harper & brothers                                       
+19  harper & brothers                                       
+20  harper & brothers                                       
+21  harper & brothers                                       
+Sample 166 - Plan 1: Table after operation: [['year', 'title', 'genre', 'publisher', 'notes'], [1910, 'the heritage of the desert', 'western', 'harper & brothers', ''], [1910, 'the young forester', 'western', 'harper & brothers', ''], [1911, 'the young pitcher', 'baseball', 'harper & brothers', ''], [1911, 'the young lion hunter', 'western', 'harper & brothers', ''], [1912, 'riders of the purple sage', 'western', 'harper & brothers', ''], [1912, 'ken ward in the jungle', 'western', 'harper & brothers', ''], [1913, 'desert gold', 'western', 'harper & brothers', ''], [1914, 'the light of western stars', 'western', 'harper & brothers', ''], [1915, 'the lone star ranger', 'western', 'harper & brothers', ''], [1915, 'the rainbow trail', 'western', 'harper & brothers', 'sequel to riders of the purple sage'], [1916, 'the border legion', 'western', 'harper & brothers', ''], [1917, 'wildfire', 'western', 'harper & brothers', ''], [1918, 'the up trail', 'western', 'harper & brothers', ''], [1919, 'the desert of wheat', 'western', 'harper & brothers', ''], [1919, 'tales of fishes', 'fishing', 'harper & brothers', ''], [1920, 'the redheaded outfield and other baseball stories', 'baseball', 'harper & brothers', ''], [1921, 'the mysterious rider', 'western', 'harper & brothers', ''], [1921, 'to the last man', 'western', 'harper & brothers', ''], [1922, 'the day of the beast', 'fiction', 'harper & brothers', ''], [1922, 'tales of lonely trails', 'adventure', 'harper & brothers', ''], [1923, 'wanderer of the wasteland', 'western', 'harper & brothers', ''], [1923, "tappan's burro", 'western', 'harper & brothers', '']]
+########################################################################################################################
+Sample 166 - Plan 1: Operation 4: Select row number 1.
+Sample 166 - Plan 1: Selected indices: []
+Sample 166 - Plan 1: X-Table after operation df:
+   year                       title    genre          publisher  notes
+0  1910  the heritage of the desert  western  harper & brothers    NaN
+Sample 166 - Plan 1: Table after operation: [['year', 'title', 'genre', 'publisher', 'notes'], [1910, 'the heritage of the desert', 'western', 'harper & brothers', '']]
+########################################################################################################################
+Sample 166 - Plan 1: Operation 5: Select the 'title' column.
+Sample 166 - Plan 1: Selected indices: []
+Sample 166 - Plan 1: X-Table after operation df:
+                        title
+0  the heritage of the desert
+Sample 166 - Plan 1: Table after operation: [['title'], ['the heritage of the desert']]
+Fall-back: FALSE
+Answer from plan 1: [['the heritage of the desert']]
+Groundtruth: ['The Heritage of the Desert']

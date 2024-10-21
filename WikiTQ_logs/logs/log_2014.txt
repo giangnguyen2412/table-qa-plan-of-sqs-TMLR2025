@@ -1,0 +1,37 @@
+************************************************************************************************************************
+Sample 2014 - Plan 1: Query: which country was above uzbedistan in gold medals?
+Sample 2014 - Plan 1: Groundtruth: ['Japan']
+Sample 2014 - Plan 1: X-Original table pd: 
+    rank       nation  gold  silver  bronze  total
+0      1        china    13       9      13     35
+1      2        japan     7      10       7     24
+2      3   uzbekistan     1       2       3      6
+3      4   kazakhstan     2       2       0      4
+4      5  north korea     1       0       1      2
+5      6  south korea     0       0       2      2
+6  total        total    24      23      26     73
+Sample 2014 - Plan 1: Caption: none
+Sample 2014 - Plan 1: Original table: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['1', 'china', '13', '9', '13', '35'], ['2', 'japan', '7', '10', '7', '24'], ['3', 'uzbekistan', '1', '2', '3', '6'], ['4', 'kazakhstan', '2', '2', '0', '4'], ['5', 'north korea', '1', '0', '1', '2'], ['6', 'south korea', '0', '0', '2', '2'], ['total', 'total', '24', '23', '26', '73']]
+########################################################################################################################
+Sample 2014 - Plan 1: Operation 1: Select rows where the 'gold' column is greater than the value in the 'gold' column for Uzbekistan.
+Sample 2014 - Plan 1: Selected indices: [[0, 1], [6, 2], [1, 2], [3, 1], [6, 1], [1, 1], [0, 2], [3, 2]]
+Sample 2014 - Plan 1: X-Table after operation df:
+    rank      nation  gold  silver  bronze  total
+0      1       china    13       9      13     35
+1      2       japan     7      10       7     24
+2      4  kazakhstan     2       2       0      4
+3  total       total    24      23      26     73
+Sample 2014 - Plan 1: Table after operation: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['1', 'china', 13, 9, 13, 35], ['2', 'japan', 7, 10, 7, 24], ['4', 'kazakhstan', 2, 2, 0, 4], ['total', 'total', 24, 23, 26, 73]]
+########################################################################################################################
+Sample 2014 - Plan 1: Operation 2: Select the 'nation' column.
+Sample 2014 - Plan 1: Selected indices: []
+Sample 2014 - Plan 1: X-Table after operation df:
+       nation
+0       china
+1       japan
+2  kazakhstan
+3       total
+Sample 2014 - Plan 1: Table after operation: [['nation'], ['china'], ['japan'], ['kazakhstan'], ['total']]
+Fall-back: FALSE
+Answer from plan 1: [['china'], ['japan'], ['kazakhstan'], ['total']]
+Groundtruth: ['Japan']

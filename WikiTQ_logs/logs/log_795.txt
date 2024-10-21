@@ -1,0 +1,31 @@
+************************************************************************************************************************
+Sample 795 - Plan 1: Query: what party does diana deguette belong to?
+Sample 795 - Plan 1: Groundtruth: ['Democratic']
+Sample 795 - Plan 1: X-Original table pd: 
+   district         incumbent c_2008_status     democratic        republican
+0         1     diana degette   re-election  diana degette      george lilly
+1         2        mark udall          open    jared polis      scott starin
+2         3      john salazar   re-election   john salazar        wayne wolf
+3         4  marilyn musgrave   re-election   betsy markey  marilyn musgrave
+4         5      doug lamborn   re-election    hal bidlack      doug lamborn
+5         6      tom tancredo          open       hank eng      mike coffman
+6         7     ed perlmutter   re-election  ed perlmutter     john w. lerew
+Sample 795 - Plan 1: Caption: none
+Sample 795 - Plan 1: Original table: [['district', 'incumbent', 'c_2008_status', 'democratic', 'republican'], ['1', 'diana degette', 're-election', 'diana degette', 'george lilly'], ['2', 'mark udall', 'open', 'jared polis', 'scott starin'], ['3', 'john salazar', 're-election', 'john salazar', 'wayne wolf'], ['4', 'marilyn musgrave', 're-election', 'betsy markey', 'marilyn musgrave'], ['5', 'doug lamborn', 're-election', 'hal bidlack', 'doug lamborn'], ['6', 'tom tancredo', 'open', 'hank eng', 'mike coffman'], ['7', 'ed perlmutter', 're-election', 'ed perlmutter', 'john w. lerew']]
+########################################################################################################################
+Sample 795 - Plan 1: Operation 1: Select rows where the 'incumbent' column is 'diana degette'.
+Sample 795 - Plan 1: Selected indices: [[0, 1]]
+Sample 795 - Plan 1: X-Table after operation df:
+   district      incumbent c_2008_status     democratic    republican
+0         1  diana degette   re-election  diana degette  george lilly
+Sample 795 - Plan 1: Table after operation: [['district', 'incumbent', 'c_2008_status', 'democratic', 'republican'], [1, 'diana degette', 're-election', 'diana degette', 'george lilly']]
+########################################################################################################################
+Sample 795 - Plan 1: Operation 2: Select the 'democratic' column.
+Sample 795 - Plan 1: Selected indices: []
+Sample 795 - Plan 1: X-Table after operation df:
+      democratic
+0  diana degette
+Sample 795 - Plan 1: Table after operation: [['democratic'], ['diana degette']]
+Fall-back: FALSE
+Answer from plan 1: [['diana degette']]
+Groundtruth: ['Democratic']

@@ -1,0 +1,77 @@
+************************************************************************************************************************
+Sample 419 - Plan 1: Query: which division has the most area?
+Sample 419 - Plan 1: Groundtruth: ['Hailin City']
+Sample 419 - Plan 1: X-Original table pd: 
+    _               name hanzi   hanyu_pinyin population__2003_est__  \
+0   1     aimin district   爱民区       àimín qū                230,000   
+1   2   dong'an district   东安区     dōng'ān qū                180,000   
+2   3  yangming district   阳明区    yángmíng qū                160,000   
+3   4     xi'an district   西安区       xī'ān qū                210,000   
+4   5        muling city   穆棱市     mùlíng shì                330,000   
+5   6      suifenhe city  绥芬河市   suífēnhé shi                 60,000   
+6   7        hailin city   海林市     hǎilín shì                440,000   
+7   8       ning'an city   宁安市    níng'ān shì                440,000   
+8   9    dongning county   东宁县  dōngníng xiàn                210,000   
+9  10      linkou county   林口县    línkǒu xiàn                450,000   
+
+  area__km²_  density___km²_  
+0        359             641  
+1        566             318  
+2        358             447  
+3        325             646  
+4      6,094              54  
+5        427             141  
+6      9,877              45  
+7      7,870              56  
+8      7,368              29  
+9      7,191              63  
+Sample 419 - Plan 1: Caption: none
+Sample 419 - Plan 1: Original table: [['_', 'name', 'hanzi', 'hanyu_pinyin', 'population__2003_est__', 'area__km²_', 'density___km²_'], ['1', 'aimin district', '爱民区', 'àimín qū', '230,000', '359', '641'], ['2', "dong'an district", '东安区', "dōng'ān qū", '180,000', '566', '318'], ['3', 'yangming district', '阳明区', 'yángmíng qū', '160,000', '358', '447'], ['4', "xi'an district", '西安区', "xī'ān qū", '210,000', '325', '646'], ['5', 'muling city', '穆棱市', 'mùlíng shì', '330,000', '6,094', '54'], ['6', 'suifenhe city', '绥芬河市', 'suífēnhé shi', '60,000', '427', '141'], ['7', 'hailin city', '海林市', 'hǎilín shì', '440,000', '9,877', '45'], ['8', "ning'an city", '宁安市', "níng'ān shì", '440,000', '7,870', '56'], ['9', 'dongning county', '东宁县', 'dōngníng xiàn', '210,000', '7,368', '29'], ['10', 'linkou county', '林口县', 'línkǒu xiàn', '450,000', '7,191', '63']]
+########################################################################################################################
+Sample 419 - Plan 1: Operation 1: Order the table by the 'area__km²_' column in descending order.
+Sample 419 - Plan 1: Selected indices: [[5, 5], [6, 5], [1, 5], [9, 5], [4, 5], [0, 5], [7, 5], [2, 5], [8, 5], [3, 5]]
+Sample 419 - Plan 1: X-Table after operation df:
+    _               name hanzi   hanyu_pinyin population__2003_est__  \
+0   7        hailin city   海林市     hǎilín shì                440,000   
+1   8       ning'an city   宁安市    níng'ān shì                440,000   
+2   9    dongning county   东宁县  dōngníng xiàn                210,000   
+3  10      linkou county   林口县    línkǒu xiàn                450,000   
+4   5        muling city   穆棱市     mùlíng shì                330,000   
+5   2   dong'an district   东安区     dōng'ān qū                180,000   
+6   6      suifenhe city  绥芬河市   suífēnhé shi                 60,000   
+7   1     aimin district   爱民区       àimín qū                230,000   
+8   3  yangming district   阳明区    yángmíng qū                160,000   
+9   4     xi'an district   西安区       xī'ān qū                210,000   
+
+  area__km²_  density___km²_  
+0      9,877              45  
+1      7,870              56  
+2      7,368              29  
+3      7,191              63  
+4      6,094              54  
+5        566             318  
+6        427             141  
+7        359             641  
+8        358             447  
+9        325             646  
+Sample 419 - Plan 1: Table after operation: [['_', 'name', 'hanzi', 'hanyu_pinyin', 'population__2003_est__', 'area__km²_', 'density___km²_'], [7, 'hailin city', '海林市', 'hǎilín shì', '440,000', '9,877', 45], [8, "ning'an city", '宁安市', "níng'ān shì", '440,000', '7,870', 56], [9, 'dongning county', '东宁县', 'dōngníng xiàn', '210,000', '7,368', 29], [10, 'linkou county', '林口县', 'línkǒu xiàn', '450,000', '7,191', 63], [5, 'muling city', '穆棱市', 'mùlíng shì', '330,000', '6,094', 54], [2, "dong'an district", '东安区', "dōng'ān qū", '180,000', '566', 318], [6, 'suifenhe city', '绥芬河市', 'suífēnhé shi', '60,000', '427', 141], [1, 'aimin district', '爱民区', 'àimín qū', '230,000', '359', 641], [3, 'yangming district', '阳明区', 'yángmíng qū', '160,000', '358', 447], [4, "xi'an district", '西安区', "xī'ān qū", '210,000', '325', 646]]
+########################################################################################################################
+Sample 419 - Plan 1: Operation 2: Select row number 1.
+Sample 419 - Plan 1: Selected indices: []
+Sample 419 - Plan 1: X-Table after operation df:
+   _         name hanzi hanyu_pinyin population__2003_est__ area__km²_  \
+0  7  hailin city   海林市   hǎilín shì                440,000      9,877   
+
+   density___km²_  
+0              45  
+Sample 419 - Plan 1: Table after operation: [['_', 'name', 'hanzi', 'hanyu_pinyin', 'population__2003_est__', 'area__km²_', 'density___km²_'], [7, 'hailin city', '海林市', 'hǎilín shì', '440,000', '9,877', 45]]
+########################################################################################################################
+Sample 419 - Plan 1: Operation 3: Select the 'name' column.
+Sample 419 - Plan 1: Selected indices: []
+Sample 419 - Plan 1: X-Table after operation df:
+          name
+0  hailin city
+Sample 419 - Plan 1: Table after operation: [['name'], ['hailin city']]
+Fall-back: FALSE
+Answer from plan 1: [['hailin city']]
+Groundtruth: ['Hailin City']

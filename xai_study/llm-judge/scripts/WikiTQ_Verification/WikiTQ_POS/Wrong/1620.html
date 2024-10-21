@@ -1,0 +1,309 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> what was the last tour to offer a $250,000 prize?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'prize_money_nusd' is '$250,000'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>tour</td>
+<td>official_title</td>
+<td>venue</td>
+<td>city</td>
+<td>date_nstart</td>
+<td>date_nfinish</td>
+<td>prize_money_nusd</td>
+<td>report</td>
+</tr>
+<tr>
+<td>1</td>
+<td>malaysia super series</td>
+<td>stadium badminton kuala lumpur</td>
+<td>kuala lumpur</td>
+<td>january 16</td>
+<td>january 21</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">200,000</span></td>
+<td>report</td>
+</tr>
+<tr>
+<td>2</td>
+<td>korea open super series</td>
+<td>seoul national university gymnasium</td>
+<td>seoul</td>
+<td>january 23</td>
+<td>january 28</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">300,000</span></td>
+<td>report</td>
+</tr>
+<tr>
+<td>3</td>
+<td>all england super series</td>
+<td>national indoor arena</td>
+<td>birmingham</td>
+<td>march 6</td>
+<td>march 11</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">200,000</span></td>
+<td>report</td>
+</tr>
+<tr>
+<td>4</td>
+<td>swiss open super series</td>
+<td>st. jakobshalle</td>
+<td>basel</td>
+<td>march 12</td>
+<td>march 18</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">200,000</span></td>
+<td>report</td>
+</tr>
+<tr>
+<td>5</td>
+<td>singapore super series</td>
+<td>singapore indoor stadium</td>
+<td>singapore</td>
+<td>may 1</td>
+<td>may 6</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">200,000</span></td>
+<td>report</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">indonesia super series</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bung karno stadium</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jakarta</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">may 7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">may 13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">250,000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">report</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">china masters super series</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sichuan provincial gymnasium</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chengdu</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">july 10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">july 15</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">250,000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">report</span></td>
+</tr>
+<tr>
+<td>8</td>
+<td>japan super series</td>
+<td>tokyo metropolitan gymnasium</td>
+<td>tokyo</td>
+<td>september 11</td>
+<td>september 16</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">200,000</span></td>
+<td>report</td>
+</tr>
+<tr>
+<td>9</td>
+<td>denmark super series</td>
+<td>arena fyn</td>
+<td>odense</td>
+<td>october 23</td>
+<td>october 28</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">200,000</span></td>
+<td>report</td>
+</tr>
+<tr>
+<td>10</td>
+<td>french super series</td>
+<td>stade pierre de coubertin</td>
+<td>paris</td>
+<td>october 30</td>
+<td>november 4</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">200,000</span></td>
+<td>report</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">china open super series</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tianhe gymnasium</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">guangzhou</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">november 20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">november 25</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">250,000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">report</span></td>
+</tr>
+<tr>
+<td>12</td>
+<td>hong kong super series</td>
+<td>ma on shan sports centre\nqueen elizabeth stadium</td>
+<td>ma on shan\nwan chai</td>
+<td>november 26</td>
+<td>december 2</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">200,000</span></td>
+<td>report</td>
+</tr>
+<tr>
+<td>13</td>
+<td>super series finals</td>
+<td>cancelled</td>
+<td>cancelled</td>
+<td>cancelled</td>
+<td>cancelled</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">500,000</span></td>
+<td>report</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Order the table by 'date_nfinish' in descending order.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>tour</td>
+<td>official_title</td>
+<td>venue</td>
+<td>city</td>
+<td>date_nstart</td>
+<td>date_nfinish</td>
+<td>prize_money_nusd</td>
+<td>report</td>
+</tr>
+<tr>
+<td>6</td>
+<td>indonesia super series</td>
+<td>bung karno stadium</td>
+<td>jakarta</td>
+<td>may 7</td>
+<td><span class="highlighted-cell" title="Used in transformation">may 13</span></td>
+<td>250,000</td>
+<td>report</td>
+</tr>
+<tr>
+<td>7</td>
+<td>china masters super series</td>
+<td>sichuan provincial gymnasium</td>
+<td>chengdu</td>
+<td>july 10</td>
+<td><span class="highlighted-cell" title="Used in transformation">july 15</span></td>
+<td>250,000</td>
+<td>report</td>
+</tr>
+<tr>
+<td>11</td>
+<td>china open super series</td>
+<td>tianhe gymnasium</td>
+<td>guangzhou</td>
+<td>november 20</td>
+<td><span class="highlighted-cell" title="Used in transformation">november 25</span></td>
+<td>250,000</td>
+<td>report</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select row number 1.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>tour</td>
+<td>official_title</td>
+<td>venue</td>
+<td>city</td>
+<td>date_nstart</td>
+<td>date_nfinish</td>
+<td>prize_money_nusd</td>
+<td>report</td>
+</tr>
+<tr>
+<td>11</td>
+<td>china open super series</td>
+<td>tianhe gymnasium</td>
+<td>guangzhou</td>
+<td>november 20</td>
+<td>november 25</td>
+<td>250,000</td>
+<td>report</td>
+</tr>
+<tr>
+<td>6</td>
+<td>indonesia super series</td>
+<td>bung karno stadium</td>
+<td>jakarta</td>
+<td>may 7</td>
+<td>may 13</td>
+<td>250,000</td>
+<td>report</td>
+</tr>
+<tr>
+<td>7</td>
+<td>china masters super series</td>
+<td>sichuan provincial gymnasium</td>
+<td>chengdu</td>
+<td>july 10</td>
+<td>july 15</td>
+<td>250,000</td>
+<td>report</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Select the 'tour' column.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>tour</td>
+<td>official_title</td>
+<td>venue</td>
+<td>city</td>
+<td>date_nstart</td>
+<td>date_nfinish</td>
+<td>prize_money_nusd</td>
+<td>report</td>
+</tr>
+<tr>
+<td>11</td>
+<td>china open super series</td>
+<td>tianhe gymnasium</td>
+<td>guangzhou</td>
+<td>november 20</td>
+<td>november 25</td>
+<td>250,000</td>
+<td>report</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>tour</td>
+</tr>
+<tr>
+<td>11</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[11]]</h3>
+</body></html>

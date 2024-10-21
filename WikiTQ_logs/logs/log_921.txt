@@ -1,0 +1,35 @@
+************************************************************************************************************************
+Sample 921 - Plan 1: Query: how many swimmers qualified?
+Sample 921 - Plan 1: Groundtruth: ['4']
+Sample 921 - Plan 1: X-Original table pd: 
+   rank  lane                         name     nationality     time notes
+0     1     5          eskender mustafaiev         ukraine    38.77     q
+1     2     4              david smetanine          france    38.97     q
+2     3     3                kyunghyun kim     south korea    40.37     q
+3     4     6           christoffer lindhe          sweden    41.52     q
+4     5     7              arnost petracek  czech republic    43.12      
+5     6     2  ronystony cordeiro da silva          brazil    44.22      
+6     7     8              grant patterson       australia    55.49      
+7     8     1            arnulfo castorena          mexico  1:03.49      
+Sample 921 - Plan 1: Caption: none
+Sample 921 - Plan 1: Original table: [['rank', 'lane', 'name', 'nationality', 'time', 'notes'], ['1', '5', 'eskender mustafaiev', 'ukraine', '38.77', 'q'], ['2', '4', 'david smetanine', 'france', '38.97', 'q'], ['3', '3', 'kyunghyun kim', 'south korea', '40.37', 'q'], ['4', '6', 'christoffer lindhe', 'sweden', '41.52', 'q'], ['5', '7', 'arnost petracek', 'czech republic', '43.12', ''], ['6', '2', 'ronystony cordeiro da silva', 'brazil', '44.22', ''], ['7', '8', 'grant patterson', 'australia', '55.49', ''], ['8', '1', 'arnulfo castorena', 'mexico', '1:03.49', '']]
+########################################################################################################################
+Sample 921 - Plan 1: Operation 1: Select rows where the 'notes' column is 'q' to filter out the qualified swimmers.
+Sample 921 - Plan 1: Selected indices: [[1, 5], [2, 5], [3, 5], [0, 5]]
+Sample 921 - Plan 1: X-Table after operation df:
+   rank  lane                 name  nationality   time notes
+0     1     5  eskender mustafaiev      ukraine  38.77     q
+1     2     4      david smetanine       france  38.97     q
+2     3     3        kyunghyun kim  south korea  40.37     q
+3     4     6   christoffer lindhe       sweden  41.52     q
+Sample 921 - Plan 1: Table after operation: [['rank', 'lane', 'name', 'nationality', 'time', 'notes'], [1, 5, 'eskender mustafaiev', 'ukraine', '38.77', 'q'], [2, 4, 'david smetanine', 'france', '38.97', 'q'], [3, 3, 'kyunghyun kim', 'south korea', '40.37', 'q'], [4, 6, 'christoffer lindhe', 'sweden', '41.52', 'q']]
+########################################################################################################################
+Sample 921 - Plan 1: Operation 2: Count the number of rows to determine the total number of qualified swimmers.
+Sample 921 - Plan 1: Selected indices: []
+Sample 921 - Plan 1: X-Table after operation df:
+   total_qualified_swimmers
+0                         1
+Sample 921 - Plan 1: Table after operation: [['total_qualified_swimmers'], [1]]
+Fall-back: FALSE
+Answer from plan 1: [[1]]
+Groundtruth: ['4']

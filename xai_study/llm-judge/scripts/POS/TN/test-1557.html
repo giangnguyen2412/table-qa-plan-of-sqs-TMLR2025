@@ -1,0 +1,149 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> there were more than two zakspeed chassis made in the year 1987</h3>
+<h3>Input Table: zakspeed</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'year' is 1987.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>chassis</td>
+<td>engine__s_</td>
+<td>tyres</td>
+<td>points</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1985</span></td>
+<td>zakspeed 841</td>
+<td>zakspeed s4 t / c</td>
+<td>g</td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1986</span></td>
+<td>zakspeed 861</td>
+<td>zakspeed s4 t / c</td>
+<td>g</td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1987</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">zakspeed 861 zakspeed 871</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">zakspeed s4 t / c</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">g</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1988</span></td>
+<td>zakspeed 881</td>
+<td>zakspeed s4 t / c</td>
+<td>g</td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1989</span></td>
+<td>zakspeed 891</td>
+<td>yamaha v8</td>
+<td>p</td>
+<td>0</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Extract the number of zakspeed chassis from the 'chassis' column then add column 'chassis_cnt' to the existing table.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>chassis</td>
+<td>engine__s_</td>
+<td>tyres</td>
+<td>points</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1987</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">zakspeed 861 zakspeed 871</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">zakspeed s4 t / c</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">g</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select rows where 'chassis_cnt' is greater than 2.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>chassis</td>
+<td>engine__s_</td>
+<td>tyres</td>
+<td>points</td>
+<td>chassis_cnt</td>
+</tr>
+<tr>
+<td>1987</td>
+<td>zakspeed 861 zakspeed 871</td>
+<td>zakspeed s4 t / c</td>
+<td>g</td>
+<td>2</td>
+<td>1</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Use a `CASE` statement to return TRUE if the number of rows is greater than or equal to 1, otherwise return FALSE.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>chassis</td>
+<td>engine__s_</td>
+<td>tyres</td>
+<td>points</td>
+<td>chassis_cnt</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>verification_result</td>
+</tr>
+<tr>
+<td>FALSE</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> FALSE</h3>
+</body></html>

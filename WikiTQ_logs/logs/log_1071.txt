@@ -1,0 +1,84 @@
+************************************************************************************************************************
+Sample 1071 - Plan 1: Query: who was the first head coach of boldklubben frem?
+Sample 1071 - Plan 1: Groundtruth: ["John 'Tune' Kristiansen"]
+Sample 1071 - Plan 1: X-Original table pd: 
+                       name nationality             from                to  \
+0             henrik jensen     denmark      1 july 2012           present   
+1   john 'tune' kristiansen     denmark     18 june 2012      23 june 2012   
+2            peer f. hansen     denmark   1 january 2012      18 june 2012   
+3   john 'tune' kristiansen     denmark     27 july 2010  30 december 2011   
+4             rené heitmann     denmark     17 july 2010      27 july 2010   
+5        christian andersen     denmark     11 july 2009      19 june 2010   
+6              anders theil     denmark  7 november 2005       7 july 2009   
+7             ebbe skovdahl     denmark  11 october 2003   6 november 2005   
+8                  ole mørk     denmark  15 october 2001   10 october 2003   
+9           johnny petersen     denmark       5 may 1998   14 october 2001   
+10  john 'tune' kristiansen     denmark             1996        4 may 1998   
+
+                              honours  \
+0                                       
+1                                       
+2     won promotion to the third tier   
+3    won promotion to the fourth tier   
+4                                       
+5    team was relegated to third tier   
+6                                       
+7   team was relegated to second tier   
+8         won promotion to first tier   
+9                                       
+10       won promotion to second tier   
+
+                                     comments  
+0                                              
+1              caretaker for one league match  
+2                                              
+3   originally had contract until summer 2012  
+4           never coached the team in a match  
+5         club went bankrupt after the season  
+6   originally had contract until summer 2011  
+7   originally had contract until summer 2007  
+8   originally had contract until end of 2004  
+9   originally had contract until end of 2001  
+10                                             
+Sample 1071 - Plan 1: Caption: none
+Sample 1071 - Plan 1: Original table: [['name', 'nationality', 'from', 'to', 'honours', 'comments'], ['henrik jensen', 'denmark', '1 july 2012', 'present', '', ''], ["john 'tune' kristiansen", 'denmark', '18 june 2012', '23 june 2012', '', 'caretaker for one league match'], ['peer f. hansen', 'denmark', '1 january 2012', '18 june 2012', 'won promotion to the third tier', ''], ["john 'tune' kristiansen", 'denmark', '27 july 2010', '30 december 2011', 'won promotion to the fourth tier', 'originally had contract until summer 2012'], ['rené heitmann', 'denmark', '17 july 2010', '27 july 2010', '', 'never coached the team in a match'], ['christian andersen', 'denmark', '11 july 2009', '19 june 2010', 'team was relegated to third tier', 'club went bankrupt after the season'], ['anders theil', 'denmark', '7 november 2005', '7 july 2009', '', 'originally had contract until summer 2011'], ['ebbe skovdahl', 'denmark', '11 october 2003', '6 november 2005', 'team was relegated to second tier', 'originally had contract until summer 2007'], ['ole mørk', 'denmark', '15 october 2001', '10 october 2003', 'won promotion to first tier', 'originally had contract until end of 2004'], ['johnny petersen', 'denmark', '5 may 1998', '14 october 2001', '', 'originally had contract until end of 2001'], ["john 'tune' kristiansen", 'denmark', '1996', '4 may 1998', 'won promotion to second tier', '']]
+########################################################################################################################
+Sample 1071 - Plan 1: Operation 1: Select rows where the 'name' is 'boldklubben frem'.
+Sample 1071 - Plan 1: Selected indices: []
+Sample 1071 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [name, nationality, from, to, honours, comments]
+Index: []
+Sample 1071 - Plan 1: Table after operation: [['name', 'nationality', 'from', 'to', 'honours', 'comments']]
+########################################################################################################################
+Sample 1071 - Plan 1: Operation 2: Select the 'from' column.
+Sample 1071 - Plan 1: Selected indices: []
+Sample 1071 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [from]
+Index: []
+Sample 1071 - Plan 1: Table after operation: [['from']]
+########################################################################################################################
+Sample 1071 - Plan 1: Operation 3: Order the table by the 'from' column in ascending order.
+Sample 1071 - Plan 1: Selected indices: []
+Sample 1071 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [from]
+Index: []
+Sample 1071 - Plan 1: Table after operation: [['from']]
+########################################################################################################################
+Sample 1071 - Plan 1: Operation 4: Select row number 1.
+Sample 1071 - Plan 1: Selected indices: []
+Sample 1071 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [from]
+Index: []
+Sample 1071 - Plan 1: Table after operation: [['from']]
+########################################################################################################################
+Sample 1071 - Plan 1: Operation 5: Select the 'name' column.
+SQL execution error in operation 5: Execution failed on sql 'SELECT from
+FROM table_sql;': near "from": syntax error
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['henrik jensen']]
+Groundtruth: ["John 'Tune' Kristiansen"]

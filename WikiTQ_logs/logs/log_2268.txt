@@ -1,0 +1,140 @@
+************************************************************************************************************************
+Sample 2268 - Plan 1: Query: in total , which player has scored the most goals?
+Sample 2268 - Plan 1: Groundtruth: ['Qu Bo']
+Sample 2268 - Plan 1: X-Original table pd: 
+         date        venue              opponent result scoreline  \
+0  january 10        dubai  united arab emirates  drawn       0-0   
+1  january 20    zhongshan               lebanon  drawn       0-0   
+2  january 27    zhongshan                 syria    won       2-1   
+3    march 15      kunming              thailand  drawn       3-3   
+4    april 16      seattle                mexico   lost       0-1   
+5    april 23  los angeles           el salvador  drawn       2-2   
+6      may 25      kunshan                jordan    won       2-0   
+7      dec 17       muscat                  oman   lost       1-3   
+8      dec 19       muscat                  iran   lost       0-2   
+9      dec 21        amman                jordan    won       1-0   
+
+                           china_scorers  
+0                                      —  
+1                                      —  
+2                qu bo 64'\nzhu ting 90'  
+3  qu bo 34'\nhan peng 67'\nzhu ting 90'  
+4                                      —  
+5         xiao zhanbo 62' pen\nqu bo 63'  
+6     hao junmin 23' pen\nli weifeng 48'  
+7                              qu bo 58'  
+8                                         
+9                           cao yang 77'  
+Sample 2268 - Plan 1: Caption: none
+Sample 2268 - Plan 1: Original table: [['date', 'venue', 'opponent', 'result', 'scoreline', 'china_scorers'], ['january 10', 'dubai', 'united arab emirates', 'drawn', '0-0', '—'], ['january 20', 'zhongshan', 'lebanon', 'drawn', '0-0', '—'], ['january 27', 'zhongshan', 'syria', 'won', '2-1', "qu bo 64'\\nzhu ting 90'"], ['march 15', 'kunming', 'thailand', 'drawn', '3-3', "qu bo 34'\\nhan peng 67'\\nzhu ting 90'"], ['april 16', 'seattle', 'mexico', 'lost', '0-1', '—'], ['april 23', 'los angeles', 'el salvador', 'drawn', '2-2', "xiao zhanbo 62' pen\\nqu bo 63'"], ['may 25', 'kunshan', 'jordan', 'won', '2-0', "hao junmin 23' pen\\nli weifeng 48'"], ['dec 17', 'muscat', 'oman', 'lost', '1-3', "qu bo 58'"], ['dec 19', 'muscat', 'iran', 'lost', '0-2', ''], ['dec 21', 'amman', 'jordan', 'won', '1-0', "cao yang 77'"]]
+########################################################################################################################
+Sample 2268 - Plan 1: Operation 1: Extract the numerical values from the 'scoreline' column and add a new column 'goals_scored' to the existing table.
+Sample 2268 - Plan 1: Selected indices: [[0, 4], [1, 4], [2, 4], [3, 4], [4, 4], [5, 4], [6, 4], [7, 4], [8, 4], [9, 4]]
+Sample 2268 - Plan 1: X-Table after operation df:
+         date        venue              opponent result scoreline  \
+0  january 10        dubai  united arab emirates  drawn       0-0   
+1  january 20    zhongshan               lebanon  drawn       0-0   
+2  january 27    zhongshan                 syria    won       2-1   
+3    march 15      kunming              thailand  drawn       3-3   
+4    april 16      seattle                mexico   lost       0-1   
+5    april 23  los angeles           el salvador  drawn       2-2   
+6      may 25      kunshan                jordan    won       2-0   
+7      dec 17       muscat                  oman   lost       1-3   
+8      dec 19       muscat                  iran   lost       0-2   
+9      dec 21        amman                jordan    won       1-0   
+
+                           china_scorers  goals_scored  
+0                                      —             0  
+1                                      —             0  
+2                qu bo 64'\nzhu ting 90'             2  
+3  qu bo 34'\nhan peng 67'\nzhu ting 90'             3  
+4                                      —             0  
+5         xiao zhanbo 62' pen\nqu bo 63'             2  
+6     hao junmin 23' pen\nli weifeng 48'             2  
+7                              qu bo 58'             1  
+8                                                    0  
+9                           cao yang 77'             1  
+Sample 2268 - Plan 1: Table after operation: [['date', 'venue', 'opponent', 'result', 'scoreline', 'china_scorers', 'goals_scored'], ['january 10', 'dubai', 'united arab emirates', 'drawn', '0-0', '—', 0], ['january 20', 'zhongshan', 'lebanon', 'drawn', '0-0', '—', 0], ['january 27', 'zhongshan', 'syria', 'won', '2-1', "qu bo 64'\\nzhu ting 90'", 2], ['march 15', 'kunming', 'thailand', 'drawn', '3-3', "qu bo 34'\\nhan peng 67'\\nzhu ting 90'", 3], ['april 16', 'seattle', 'mexico', 'lost', '0-1', '—', 0], ['april 23', 'los angeles', 'el salvador', 'drawn', '2-2', "xiao zhanbo 62' pen\\nqu bo 63'", 2], ['may 25', 'kunshan', 'jordan', 'won', '2-0', "hao junmin 23' pen\\nli weifeng 48'", 2], ['dec 17', 'muscat', 'oman', 'lost', '1-3', "qu bo 58'", 1], ['dec 19', 'muscat', 'iran', 'lost', '0-2', '', 0], ['dec 21', 'amman', 'jordan', 'won', '1-0', "cao yang 77'", 1]]
+########################################################################################################################
+Sample 2268 - Plan 1: Operation 2: Split the 'goals_scored' column by the delimiter '-' to separate the scores of both teams.
+Sample 2268 - Plan 1: Selected indices: [[0, 6], [1, 6], [2, 6], [3, 6], [4, 6], [5, 6], [6, 6], [7, 6], [8, 6], [9, 6]]
+Sample 2268 - Plan 1: X-Table after operation df:
+         date        venue              opponent result scoreline  \
+0  january 10        dubai  united arab emirates  drawn       0-0   
+1  january 20    zhongshan               lebanon  drawn       0-0   
+2  january 27    zhongshan                 syria    won       2-1   
+3    march 15      kunming              thailand  drawn       3-3   
+4    april 16      seattle                mexico   lost       0-1   
+5    april 23  los angeles           el salvador  drawn       2-2   
+6      may 25      kunshan                jordan    won       2-0   
+7      dec 17       muscat                  oman   lost       1-3   
+8      dec 19       muscat                  iran   lost       0-2   
+9      dec 21        amman                jordan    won       1-0   
+
+                           china_scorers  goals_scored  china_score  \
+0                                      —             0            0   
+1                                      —             0            0   
+2                qu bo 64'\nzhu ting 90'             2            0   
+3  qu bo 34'\nhan peng 67'\nzhu ting 90'             3            0   
+4                                      —             0            0   
+5         xiao zhanbo 62' pen\nqu bo 63'             2            0   
+6     hao junmin 23' pen\nli weifeng 48'             2            0   
+7                              qu bo 58'             1            0   
+8                                                    0            0   
+9                           cao yang 77'             1            0   
+
+   opponent_score  
+0               0  
+1               0  
+2               2  
+3               3  
+4               0  
+5               2  
+6               2  
+7               1  
+8               0  
+9               1  
+Sample 2268 - Plan 1: Table after operation: [['date', 'venue', 'opponent', 'result', 'scoreline', 'china_scorers', 'goals_scored', 'china_score', 'opponent_score'], ['january 10', 'dubai', 'united arab emirates', 'drawn', '0-0', '—', 0, 0, 0], ['january 20', 'zhongshan', 'lebanon', 'drawn', '0-0', '—', 0, 0, 0], ['january 27', 'zhongshan', 'syria', 'won', '2-1', "qu bo 64'\\nzhu ting 90'", 2, 0, 2], ['march 15', 'kunming', 'thailand', 'drawn', '3-3', "qu bo 34'\\nhan peng 67'\\nzhu ting 90'", 3, 0, 3], ['april 16', 'seattle', 'mexico', 'lost', '0-1', '—', 0, 0, 0], ['april 23', 'los angeles', 'el salvador', 'drawn', '2-2', "xiao zhanbo 62' pen\\nqu bo 63'", 2, 0, 2], ['may 25', 'kunshan', 'jordan', 'won', '2-0', "hao junmin 23' pen\\nli weifeng 48'", 2, 0, 2], ['dec 17', 'muscat', 'oman', 'lost', '1-3', "qu bo 58'", 1, 0, 1], ['dec 19', 'muscat', 'iran', 'lost', '0-2', '', 0, 0, 0], ['dec 21', 'amman', 'jordan', 'won', '1-0', "cao yang 77'", 1, 0, 1]]
+########################################################################################################################
+Sample 2268 - Plan 1: Operation 3: Calculate the total number of goals scored by each player mentioned in the 'china_scorers' column.
+Sample 2268 - Plan 1: Selected indices: []
+Sample 2268 - Plan 1: X-Table after operation df:
+  player  goals_scored
+0                    1
+1    cao             1
+2    hao             1
+3     qu             3
+4   xiao             1
+Sample 2268 - Plan 1: Table after operation: [['player', 'goals_scored'], ['', 1], ['cao', 1], ['hao', 1], ['qu', 3], ['xiao', 1]]
+########################################################################################################################
+Sample 2268 - Plan 1: Operation 4: Group the table by player and sum the 'goals_scored' for each player.
+Sample 2268 - Plan 1: Selected indices: []
+Sample 2268 - Plan 1: X-Table after operation df:
+  player  total_goals_scored
+0                          1
+1    cao                   1
+2    hao                   1
+3     qu                   3
+4   xiao                   1
+Sample 2268 - Plan 1: Table after operation: [['player', 'total_goals_scored'], ['', 1], ['cao', 1], ['hao', 1], ['qu', 3], ['xiao', 1]]
+########################################################################################################################
+Sample 2268 - Plan 1: Operation 5: Order the table by the sum of 'goals_scored' in descending order.
+Sample 2268 - Plan 1: Selected indices: [[0, 1], [2, 1], [3, 1], [1, 1], [4, 1]]
+Sample 2268 - Plan 1: X-Table after operation df:
+  player  total_goals_scored
+0     qu                   3
+1                          1
+2    cao                   1
+3    hao                   1
+4   xiao                   1
+Sample 2268 - Plan 1: Table after operation: [['player', 'total_goals_scored'], ['qu', 3], ['', 1], ['cao', 1], ['hao', 1], ['xiao', 1]]
+########################################################################################################################
+Sample 2268 - Plan 1: Operation 6: Select the player with the highest sum of 'goals_scored' as the answer to the question.
+Sample 2268 - Plan 1: Selected indices: []
+Sample 2268 - Plan 1: X-Table after operation df:
+  player  total_goals
+0     qu            3
+Sample 2268 - Plan 1: Table after operation: [['player', 'total_goals'], ['qu', 3]]
+Fall-back: FALSE
+Answer from plan 1: [['qu', 3]]
+Groundtruth: ['Qu Bo']

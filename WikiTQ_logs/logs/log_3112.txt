@@ -1,0 +1,85 @@
+************************************************************************************************************************
+Sample 3112 - Plan 1: Query: burlington northern ordered 3 emd sd60s. what is their number range?
+Sample 3112 - Plan 1: Groundtruth: ['8300-8302']
+Sample 3112 - Plan 1: X-Original table pd: 
+                   railroad  qty_  \
+0       burlington northern     3   
+1   chicago & north western    55   
+2                   conrail    25   
+3        csx transportation    10   
+4                      emdx     4   
+5      kansas city southern    46   
+6          norfolk southern   151   
+7                    oakway   100   
+8                  soo line    58   
+9             union pacific    85   
+10        canadian national    64   
+11                  conrail    80   
+12      burlington northern   100   
+13                  conrail    75   
+14                 soo line     5   
+15            union pacific   281   
+16  carajás railroad (vale)     2   
+
+                                         road_numbers  \
+0                                           8300-8302   
+1                                           8001-8055   
+2                                           6843-6867   
+3                                           8700-8709   
+4                                                 1-4   
+5                                             714-759   
+6                                           6550-6700   
+7   9000-9099\n90 now owned by canadian national 1...   
+8                                           6000-6057   
+9                                           6000-6084   
+10                                          5500-5563   
+11                                          5575-5654   
+12                                    1991, 9200-9298   
+13                                          5500-5574   
+14                                          6058-6062   
+15                                          6085-6365   
+16                                            601-602   
+
+                                                notes  
+0   demonstrators owned by emd but painted for bn;...  
+1   built to soo line specifications; soo was unab...  
+2   after the 1999 conrail split; 12 units went to...  
+3                                                      
+4   demonstrators; emd 1,2,4 to cr 6840-6842; emd ...  
+5                                                      
+6   slowly rebuilding their sd60s to sd60es at jun...  
+7                                                      
+8   soo 6000-6020 returned to leaser, capital fina...  
+9   renumbered up 2155-2239 (except up 6014, wreck...  
+10  5500-5503 are pre-production sd60f's, original...  
+11  after the 1999 conrail split; 35 units went to...  
+12  renumbered bnsf 9200-9299, then renumbered bns...  
+13  after the 1999 conrail split; 30 units went to...  
+14  former soo 6058-6062/cp 6258-6262 have now bee...  
+15  renumbered to 2240-2520 except 6106 & 6165. 24...  
+16  manufactured by equipment villares s. a. (evsa...  
+Sample 3112 - Plan 1: Caption: none
+Sample 3112 - Plan 1: Original table: [['railroad', 'qty_', 'road_numbers', 'notes'], ['burlington northern', '3', '8300-8302', 'demonstrators owned by emd but painted for bn; now with csx'], ['chicago & north western', '55', '8001-8055', 'built to soo line specifications; soo was unable to take delivery due to financial conditions & the order was passed to c&nw'], ['conrail', '25', '6843-6867', 'after the 1999 conrail split; 12 units went to csx and were renumbered csxt 8710-8721, 8790; 15 units went to ns and were renumbered ns 6702-6716'], ['csx transportation', '10', '8700-8709', ''], ['emdx', '4', '1-4', 'demonstrators; emd 1,2,4 to cr 6840-6842; emd 3 leased to bnsf as replacement for emd 9041 (used at dot, pueblo, co)'], ['kansas city southern', '46', '714-759', ''], ['norfolk southern', '151', '6550-6700', 'slowly rebuilding their sd60s to sd60es at juniata shops'], ['oakway', '100', '9000-9099\\n90 now owned by canadian national 10 still owned by bnsf railway', ''], ['soo line', '58', '6000-6057', 'soo 6000-6020 returned to leaser, capital finance (cit group) former soo 6021-6057/cp 6221-6257 have now been put up for sale.'], ['union pacific', '85', '6000-6084', 'renumbered up 2155-2239 (except up 6014, wrecked & scrapped)'], ['canadian national', '64', '5500-5563', "5500-5503 are pre-production sd60f's, originally classified as sd50af & built as cn 9900-9903. they look like sd50f's, but internally are sd60f's."], ['conrail', '80', '5575-5654', 'after the 1999 conrail split; 35 units went to csx and were renumbered csxt 8722-8755, 8774; 46 units went to ns and were renumbered ns 6717-6762'], ['burlington northern', '100', '1991, 9200-9298', 'renumbered bnsf 9200-9299, then renumbered bnsf 8100-8199 in 2007-2008'], ['conrail', '75', '5500-5574', 'after the 1999 conrail split; 30 units went to csx and were renumbered csxt 8756-8773, 8775 - 8786; 44 units went to ns and were renumbered ns 6763-6806'], ['soo line', '5', '6058-6062', 'former soo 6058-6062/cp 6258-6262 have now been put up for sale.'], ['union pacific', '281', '6085-6365', 'renumbered to 2240-2520 except 6106 & 6165. 24 rebuilt into emd sd32ecos. up classifies these as sd59mxs. renumbered 9900-9923. all 24 have been delivered.'], ['carajás railroad (vale)', '2', '601-602', 'manufactured by equipment villares s. a. (evsa) in 1991. last locomotives manufactured by evsa before the merger with ge transportation in brazil, leading to gevisa.']]
+########################################################################################################################
+Sample 3112 - Plan 1: Operation 1: Select rows where the 'railroad' is 'burlington northern'.
+Sample 3112 - Plan 1: Selected indices: [[12, 0], [0, 0]]
+Sample 3112 - Plan 1: X-Table after operation df:
+              railroad  qty_     road_numbers  \
+0  burlington northern     3        8300-8302   
+1  burlington northern   100  1991, 9200-9298   
+
+                                               notes  
+0  demonstrators owned by emd but painted for bn;...  
+1  renumbered bnsf 9200-9299, then renumbered bns...  
+Sample 3112 - Plan 1: Table after operation: [['railroad', 'qty_', 'road_numbers', 'notes'], ['burlington northern', 3, '8300-8302', 'demonstrators owned by emd but painted for bn; now with csx'], ['burlington northern', 100, '1991, 9200-9298', 'renumbered bnsf 9200-9299, then renumbered bnsf 8100-8199 in 2007-2008']]
+########################################################################################################################
+Sample 3112 - Plan 1: Operation 2: Select the 'qty_' and 'road_numbers' columns.
+Sample 3112 - Plan 1: Selected indices: []
+Sample 3112 - Plan 1: X-Table after operation df:
+   qty_     road_numbers
+0     3        8300-8302
+1   100  1991, 9200-9298
+Sample 3112 - Plan 1: Table after operation: [['qty_', 'road_numbers'], [3, '8300-8302'], [100, '1991, 9200-9298']]
+Fall-back: FALSE
+Answer from plan 1: [[3, '8300-8302'], [100, '1991, 9200-9298']]
+Groundtruth: ['8300-8302']

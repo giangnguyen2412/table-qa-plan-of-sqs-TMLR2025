@@ -1,0 +1,74 @@
+************************************************************************************************************************
+Sample 2001 - Plan 1: Query: what other animal is named in a song title besides a jaguar?
+Sample 2001 - Plan 1: Groundtruth: ['Snakes']
+Sample 2001 - Plan 1: X-Original table pd: 
+     _                    title  time        lyrics  \
+0    1                  "intro"  1:16                 
+1    2                  "seven"  3:30       boondox   
+2    3               "out here"  3:18       boondox   
+3    4       "it ain't a thang"  3:45       boondox   
+4    5                "digging"  3:04       boondox   
+5    6     "lady in the jaguar"  3:55  boondox\nicp   
+6    7  "they pray with snakes"  3:56       boondox   
+7    8            "rollin hard"  4:07       boondox   
+8    9            "the harvest"  3:53  boondox\namb   
+9   10                 "sippin"  3:16       boondox   
+10  11           "lake of fire"  4:12       boondox   
+11  12               "red mist"  3:54       boondox   
+12  13             "angel like"  3:42       boondox   
+
+                         music   producer_s_  \
+0                                              
+1                mike e. clark       boondox   
+2   mike e. clark\ntino grosse       boondox   
+3                mike e. clark       boondox   
+4                         kuma       boondox   
+5                mike e. clark  boondox\nicp   
+6                         kuma       boondox   
+7                mike e. clark       boondox   
+8                         kuma  boondox\namb   
+9                mike e. clark       boondox   
+10               mike e. clark       boondox   
+11               mike e. clark       boondox   
+12               mike e. clark       boondox   
+
+                             performer_s_  
+0                                          
+1                                 boondox  
+2                                 boondox  
+3                                 boondox  
+4                                 boondox  
+5                            boondox\nicp  
+6                                 boondox  
+7                                 boondox  
+8                boondox\naxe murder boyz  
+9                                 boondox  
+10                                boondox  
+11  boondox\nblaze ya dead homie\ntwiztid  
+12                                boondox  
+Sample 2001 - Plan 1: Caption: none
+Sample 2001 - Plan 1: Original table: [['_', 'title', 'time', 'lyrics', 'music', 'producer_s_', 'performer_s_'], ['1', '"intro"', '1:16', '', '', '', ''], ['2', '"seven"', '3:30', 'boondox', 'mike e. clark', 'boondox', 'boondox'], ['3', '"out here"', '3:18', 'boondox', 'mike e. clark\\ntino grosse', 'boondox', 'boondox'], ['4', '"it ain\'t a thang"', '3:45', 'boondox', 'mike e. clark', 'boondox', 'boondox'], ['5', '"digging"', '3:04', 'boondox', 'kuma', 'boondox', 'boondox'], ['6', '"lady in the jaguar"', '3:55', 'boondox\\nicp', 'mike e. clark', 'boondox\\nicp', 'boondox\\nicp'], ['7', '"they pray with snakes"', '3:56', 'boondox', 'kuma', 'boondox', 'boondox'], ['8', '"rollin hard"', '4:07', 'boondox', 'mike e. clark', 'boondox', 'boondox'], ['9', '"the harvest"', '3:53', 'boondox\\namb', 'kuma', 'boondox\\namb', 'boondox\\naxe murder boyz'], ['10', '"sippin"', '3:16', 'boondox', 'mike e. clark', 'boondox', 'boondox'], ['11', '"lake of fire"', '4:12', 'boondox', 'mike e. clark', 'boondox', 'boondox'], ['12', '"red mist"', '3:54', 'boondox', 'mike e. clark', 'boondox', 'boondox\\nblaze ya dead homie\\ntwiztid'], ['13', '"angel like"', '3:42', 'boondox', 'mike e. clark', 'boondox', 'boondox']]
+########################################################################################################################
+Sample 2001 - Plan 1: Operation 1: Select rows where the 'title' column contains the word "jaguar".
+Sample 2001 - Plan 1: Selected indices: [[5, 1]]
+Sample 2001 - Plan 1: X-Table after operation df:
+   _                 title  time        lyrics          music   producer_s_  \
+0  6  "lady in the jaguar"  3:55  boondox\nicp  mike e. clark  boondox\nicp   
+
+   performer_s_  
+0  boondox\nicp  
+Sample 2001 - Plan 1: Table after operation: [['_', 'title', 'time', 'lyrics', 'music', 'producer_s_', 'performer_s_'], [6, '"lady in the jaguar"', '3:55', 'boondox\\nicp', 'mike e. clark', 'boondox\\nicp', 'boondox\\nicp']]
+########################################################################################################################
+Sample 2001 - Plan 1: Operation 2: Select the 'title' column.
+Sample 2001 - Plan 1: Selected indices: []
+Sample 2001 - Plan 1: X-Table after operation df:
+                  title
+0  "lady in the jaguar"
+Sample 2001 - Plan 1: Table after operation: [['title'], ['"lady in the jaguar"']]
+########################################################################################################################
+Sample 2001 - Plan 1: Operation 3: Remove the row where the 'title' is "lady in the jaguar".
+SQL execution error in operation 3: 'NoneType' object is not iterable
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['snake']]
+Groundtruth: ['Snakes']

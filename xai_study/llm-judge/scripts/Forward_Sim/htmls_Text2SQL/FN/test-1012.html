@@ -1,0 +1,42 @@
+
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+.sql-command { background-color: #f0f0f0; padding: 10px; border-left: 4px solid #4CAF50; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> the home team scored 17.5 (107) on sunday , january 30th</h3>
+<h3>Input Table: 2000 ansett australia cup</h3>
+<div class="step">
+<table>
+<tr><td>home_team</td><td>home_team_score</td><td>away_team</td><td>away_team_score</td><td>ground</td><td>crowd</td><td>date</td></tr><tr><td>adelaide</td><td>17.5 (107)</td><td>melbourne</td><td>19.11 (125)</td><td>football park</td><td>12239</td><td>9999-01-30</td></tr><tr><td>geelong</td><td>10.14 (74)</td><td>st kilda</td><td>11.12 (78)</td><td>waverley park</td><td>7394</td><td>9999-01-30</td></tr><tr><td>st kilda</td><td>9.12 (66)</td><td>melbourne</td><td>13.14 (92)</td><td>waverley park</td><td>10533</td><td>9999-02-05</td></tr><tr><td>adelaide</td><td>19.10 (124)</td><td>geelong</td><td>15.12 (102)</td><td>football park</td><td>11326</td><td>9999-02-06</td></tr><tr><td>adelaide</td><td>14.11 (95)</td><td>st kilda</td><td>15.12 (102)</td><td>football park</td><td>13086</td><td>9999-02-13</td></tr><tr><td>geelong</td><td>17.12 (114)</td><td>melbourne</td><td>11.16 (82)</td><td>waverley park</td><td>4952</td><td>01-14-9999</td></tr>
+</table>
+</div>
+<h3>SQL Command:</h3>
+<div class="sql-command">SELECT 
+    CASE 
+        WHEN COUNT(*) = 0 THEN 'FALSE' 
+        ELSE 'TRUE' 
+    END 
+FROM table_sql 
+WHERE home_team_score = '17.5 (107)' 
+AND date = '9999-01-30' 
+AND strftime('%w', date) = '0';</div>
+</body></html>

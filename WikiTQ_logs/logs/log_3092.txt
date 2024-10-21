@@ -1,0 +1,507 @@
+************************************************************************************************************************
+Sample 3092 - Plan 1: Query: how many names do not have images associated with them?
+Sample 3092 - Plan 1: Groundtruth: ['0']
+Sample 3092 - Plan 1: X-Original table pd: 
+                            name  \
+0                         acadia   
+1                 american samoa   
+2                         arches   
+3                       badlands   
+4                       big bend   
+5                       biscayne   
+6   black canyon of the gunnison   
+7                   bryce canyon   
+8                    canyonlands   
+9                   capitol reef   
+10              carlsbad caverns   
+11               channel islands   
+12                      congaree   
+13                   crater lake   
+14               cuyahoga valley   
+15                  death valley   
+16                        denali   
+17                  dry tortugas   
+18                    everglades   
+19           gates of the arctic   
+20                       glacier   
+21                   glacier bay   
+22                  grand canyon   
+23                   grand teton   
+24                   great basin   
+25              great sand dunes   
+26         great smoky mountains   
+27           guadalupe mountains   
+28                     haleakalā   
+29              hawaii volcanoes   
+30                   hot springs   
+31                   isle royale   
+32                   joshua tree   
+33                        katmai   
+34                  kenai fjords   
+35                  kings canyon   
+36                  kobuk valley   
+37                    lake clark   
+38               lassen volcanic   
+39                  mammoth cave   
+40                    mesa verde   
+41                 mount rainier   
+42                north cascades   
+43                       olympic   
+44              petrified forest   
+45                     pinnacles   
+46                       redwood   
+47                rocky mountain   
+48                       saguaro   
+49                       sequoia   
+50                    shenandoah   
+51            theodore roosevelt   
+52                virgin islands   
+53                     voyageurs   
+54                     wind cave   
+55           wrangell –st. elias   
+56                   yellowstone   
+57                      yosemite   
+58                          zion   
+
+                                             location    date_established  \
+0          maine\n44°21′n 68°13′w﻿ / ﻿44.35°n 68.21°w   february 26, 1919   
+1   american samoa\n14°15′s 170°41′w﻿ / ﻿14.25°s 1...    october 31, 1988   
+2         utah\n38°41′n 109°34′w﻿ / ﻿38.68°n 109.57°w   november 12, 1971   
+3   south dakota\n43°45′n 102°30′w﻿ / ﻿43.75°n 102...   november 10, 1978   
+4        texas\n29°15′n 103°15′w﻿ / ﻿29.25°n 103.25°w       june 12, 1944   
+5        florida\n25°39′n 80°05′w﻿ / ﻿25.65°n 80.08°w       june 28, 1980   
+6     colorado\n38°34′n 107°43′w﻿ / ﻿38.57°n 107.72°w    october 21, 1999   
+7         utah\n37°34′n 112°11′w﻿ / ﻿37.57°n 112.18°w   february 25, 1928   
+8          utah\n38°12′n 109°56′w﻿ / ﻿38.2°n 109.93°w  september 12, 1964   
+9         utah\n38°12′n 111°10′w﻿ / ﻿38.20°n 111.17°w   december 18, 1971   
+10  new mexico\n32°10′n 104°26′w﻿ / ﻿32.17°n 104.44°w        may 14, 1930   
+11  california\n34°01′n 119°25′w﻿ / ﻿34.01°n 119.42°w       march 5, 1980   
+12  south carolina\n33°47′n 80°47′w﻿ / ﻿33.78°n 80...   november 10, 2003   
+13       oregon\n42°56′n 122°06′w﻿ / ﻿42.94°n 122.1°w        may 22, 1902   
+14          ohio\n41°14′n 81°33′w﻿ / ﻿41.24°n 81.55°w    october 11, 2000   
+15  california, nevada\n36°14′n 116°49′w﻿ / ﻿36.24...    october 31, 1994   
+16      alaska\n63°20′n 150°30′w﻿ / ﻿63.33°n 150.50°w   february 26, 1917   
+17       florida\n24°38′n 82°52′w﻿ / ﻿24.63°n 82.87°w    october 26, 1992   
+18       florida\n25°19′n 80°56′w﻿ / ﻿25.32°n 80.93°w        may 30, 1934   
+19      alaska\n67°47′n 153°18′w﻿ / ﻿67.78°n 153.30°w    december 2, 1980   
+20     montana\n48°48′n 114°00′w﻿ / ﻿48.80°n 114.00°w        may 11, 1910   
+21      alaska\n58°30′n 137°00′w﻿ / ﻿58.50°n 137.00°w    december 2, 1980   
+22     arizona\n36°04′n 112°08′w﻿ / ﻿36.06°n 112.14°w   february 26, 1919   
+23     wyoming\n43°44′n 110°48′w﻿ / ﻿43.73°n 110.80°w   february 26, 1929   
+24      nevada\n38°59′n 114°18′w﻿ / ﻿38.98°n 114.30°w    october 27, 1986   
+25    colorado\n37°44′n 105°31′w﻿ / ﻿37.73°n 105.51°w  september 13, 2004   
+26  north carolina, tennessee\n35°41′n 83°32′w﻿ / ...       june 15, 1934   
+27       texas\n31°55′n 104°52′w﻿ / ﻿31.92°n 104.87°w    october 15, 1966   
+28      hawaii\n20°43′n 156°10′w﻿ / ﻿20.72°n 156.17°w      august 1, 1916   
+29      hawaii\n19°23′n 155°12′w﻿ / ﻿19.38°n 155.20°w      august 1, 1916   
+30      arkansas\n34°31′n 93°03′w﻿ / ﻿34.51°n 93.05°w       march 4, 1921   
+31      michigan\n48°06′n 88°33′w﻿ / ﻿48.10°n 88.55°w       march 3, 1931   
+32  california\n33°47′n 115°54′w﻿ / ﻿33.79°n 115.90°w    october 31, 1994   
+33      alaska\n58°30′n 155°00′w﻿ / ﻿58.50°n 155.00°w    december 2, 1980   
+34      alaska\n59°55′n 149°39′w﻿ / ﻿59.92°n 149.65°w    december 2, 1980   
+35  california\n36°48′n 118°33′w﻿ / ﻿36.80°n 118.55°w       march 4, 1940   
+36      alaska\n67°33′n 159°17′w﻿ / ﻿67.55°n 159.28°w    december 2, 1980   
+37      alaska\n60°58′n 153°25′w﻿ / ﻿60.97°n 153.42°w    december 2, 1980   
+38  california\n40°29′n 121°31′w﻿ / ﻿40.49°n 121.51°w      august 9, 1916   
+39      kentucky\n37°11′n 86°06′w﻿ / ﻿37.18°n 86.10°w        july 1, 1941   
+40    colorado\n37°11′n 108°29′w﻿ / ﻿37.18°n 108.49°w       june 29, 1906   
+41  washington\n46°51′n 121°45′w﻿ / ﻿46.85°n 121.75°w       march 2, 1899   
+42  washington\n48°42′n 121°12′w﻿ / ﻿48.70°n 121.20°w     october 2, 1968   
+43  washington\n47°58′n 123°30′w﻿ / ﻿47.97°n 123.50°w       june 29, 1938   
+44     arizona\n35°04′n 109°47′w﻿ / ﻿35.07°n 109.78°w    december 9, 1962   
+45  california\n36°29′n 121°10′w﻿ / ﻿36.48°n 121.16°w    january 10, 2013   
+46  california\n41°18′n 124°00′w﻿ / ﻿41.30°n 124.00°w     october 2, 1968   
+47    colorado\n40°24′n 105°35′w﻿ / ﻿40.40°n 105.58°w    january 26, 1915   
+48     arizona\n32°15′n 110°30′w﻿ / ﻿32.25°n 110.50°w    october 14, 1994   
+49  california\n36°26′n 118°41′w﻿ / ﻿36.43°n 118.68°w  september 25, 1890   
+50      virginia\n38°32′n 78°21′w﻿ / ﻿38.53°n 78.35°w        may 22, 1926   
+51  north dakota\n46°58′n 103°27′w﻿ / ﻿46.97°n 103...   november 10, 1978   
+52  united states virgin islands\n18°20′n 64°44′w﻿...      august 2, 1956   
+53     minnesota\n48°30′n 92°53′w﻿ / ﻿48.50°n 92.88°w     january 8, 1971   
+54  south dakota\n43°34′n 103°29′w﻿ / ﻿43.57°n 103...     january 9, 1903   
+55      alaska\n61°00′n 142°00′w﻿ / ﻿61.00°n 142.00°w    december 2, 1980   
+56  wyoming, montana, idaho\n44°36′n 110°30′w﻿ / ﻿...       march 1, 1872   
+57  california\n37°50′n 119°30′w﻿ / ﻿37.83°n 119.50°w     october 1, 1890   
+58        utah\n37°18′n 113°03′w﻿ / ﻿37.30°n 113.05°w   november 19, 1919   
+
+                                 area  \
+0         47,389.67 acres (191.8 km2)   
+1           9,000.00 acres (36.4 km2)   
+2         76,518.98 acres (309.7 km2)   
+3        242,755.94 acres (982.4 km2)   
+4      801,163.21 acres (3,242.2 km2)   
+5        172,924.07 acres (699.8 km2)   
+6         32,950.03 acres (133.3 km2)   
+7         35,835.08 acres (145.0 km2)   
+8      337,597.83 acres (1,366.2 km2)   
+9        241,904.26 acres (979.0 km2)   
+10        46,766.45 acres (189.3 km2)   
+11     249,561.00 acres (1,009.9 km2)   
+12        26,545.86 acres (107.4 km2)   
+13       183,224.05 acres (741.5 km2)   
+14        32,860.73 acres (133.0 km2)   
+15  3,372,401.96 acres (13,647.6 km2)   
+16  4,740,911.72 acres (19,185.8 km2)   
+17        64,701.22 acres (261.8 km2)   
+18   1,508,537.90 acres (6,104.8 km2)   
+19  7,523,897.74 acres (30,448.1 km2)   
+20   1,013,572.41 acres (4,101.8 km2)   
+21  3,224,840.31 acres (13,050.5 km2)   
+22   1,217,403.32 acres (4,926.7 km2)   
+23     309,994.66 acres (1,254.5 km2)   
+24        77,180.00 acres (312.3 km2)   
+25        42,983.74 acres (173.9 km2)   
+26     521,490.13 acres (2,110.4 km2)   
+27        86,415.97 acres (349.7 km2)   
+28        29,093.67 acres (117.7 km2)   
+29     323,431.38 acres (1,308.9 km2)   
+30          5,549.75 acres (22.5 km2)   
+31     571,790.11 acres (2,314.0 km2)   
+32     789,745.47 acres (3,196.0 km2)   
+33  3,674,529.68 acres (14,870.3 km2)   
+34     669,982.99 acres (2,711.3 km2)   
+35     461,901.20 acres (1,869.2 km2)   
+36   1,750,716.50 acres (7,084.9 km2)   
+37  2,619,733.21 acres (10,601.7 km2)   
+38       106,372.36 acres (430.5 km2)   
+39        52,830.19 acres (213.8 km2)   
+40        52,121.93 acres (210.9 km2)   
+41       235,625.00 acres (953.5 km2)   
+42     504,780.94 acres (2,042.8 km2)   
+43     922,650.86 acres (3,733.8 km2)   
+44        93,532.57 acres (378.5 km2)   
+45        26,605.73 acres (107.7 km2)   
+46       112,512.05 acres (455.3 km2)   
+47     265,828.41 acres (1,075.8 km2)   
+48        91,439.71 acres (370.0 km2)   
+49     404,051.17 acres (1,635.1 km2)   
+50       199,045.23 acres (805.5 km2)   
+51        70,446.89 acres (285.1 km2)   
+52         14,688.87 acres (59.4 km2)   
+53       218,200.17 acres (883.0 km2)   
+54        28,295.03 acres (114.5 km2)   
+55  8,323,147.59 acres (33,682.6 km2)   
+56   2,219,790.71 acres (8,983.2 km2)   
+57     761,266.19 acres (3,080.7 km2)   
+58       146,597.60 acres (593.3 km2)   
+
+                                          description  
+0   covering most of mount desert island and other...  
+1   the southernmost national park is on three sam...  
+2   this site features more than 2,000 natural san...  
+3   the badlands are a collection of buttes, pinna...  
+4   named for the bend of the rio grande along the...  
+5   located in biscayne bay, this park at the nort...  
+6   the park protects a quarter of the gunnison ri...  
+7   bryce canyon is a giant natural amphitheatre a...  
+8   this landscape was eroded into canyons, buttes...  
+9   the park's waterpocket fold is a 100-mile (160...  
+10  carlsbad caverns has 117 caves, the longest of...  
+11  five of the eight channel islands are protecte...  
+12  on the congaree river, this park is the larges...  
+13  crater lake lies in the caldera of mount mazam...  
+14  this park along the cuyahoga river has waterfa...  
+15  death valley is the hottest, lowest, and dries...  
+16  centered around the mount mckinley, the talles...  
+17  the dry tortugas on the west end of the florid...  
+18  the everglades are the largest subtropical wil...  
+19  this northernmost park protects part of the br...  
+20  part of waterton glacier international peace p...  
+21  glacier bay has numerous tidewater glaciers, m...  
+22  the grand canyon, carved out by the colorado r...  
+23  grand teton is the tallest mountain in the tet...  
+24  based around wheeler peak, the great basin has...  
+25  the tallest dunes in north america are up to 7...  
+26  the great smoky mountains, part of the appalac...  
+27  this park has guadalupe peak, the highest poin...  
+28  the haleakalā volcano on maui has a very large...  
+29  this park on the big island protects the kīlau...  
+30  the only national park in an urban area, this ...  
+31  the largest island in lake superior, this park...  
+32  covering parts of the colorado and mojave dese...  
+33  this park on the alaska peninsula protects the...  
+34  near seward on the kenai peninsula, this park ...  
+35  home to several giant sequoia groves and the g...  
+36  kobuk valley has 61 miles (98 km) of the kobuk...  
+37  the region around lake clark has four active v...  
+38  lassen peak, the largest plug dome volcano in ...  
+39  with 392 miles (631 km) of passageways mapped,...  
+40  this area has over 4,000 archaeological sites ...  
+41  mount rainier, an active volcano, is the most ...  
+42  this complex includes the two units of the nat...  
+43  situated on the olympic peninsula, this park r...  
+44  this portion of the chinle formation has a gre...  
+45  known for the namesake eroded leftovers of hal...  
+46  this park and the co-managed state parks prote...  
+47  this section of the rocky mountains has ecosys...  
+48  split into the separate rincon mountain and tu...  
+49  this park protects the giant forest, which has...  
+50  shenandoah's blue ridge mountains are covered ...  
+51  this region that enticed and influenced presid...  
+52  the island of saint john has rich human and na...  
+53  this park on four main lakes, a site for canoe...  
+54  wind cave is distinctive for its calcite fin f...  
+55  this mountainous land has the convergence of t...  
+56  situated on the yellowstone caldera, the first...  
+57  yosemite has towering cliffs, waterfalls, and ...  
+58  this geologically unique area has colorful san...  
+Sample 3092 - Plan 1: Caption: none
+Sample 3092 - Plan 1: Original table: [['name', 'location', 'date_established', 'area', 'description'], ['acadia', 'maine\\n44°21′n 68°13′w\ufeff / \ufeff44.35°n 68.21°w', 'february 26, 1919', '47,389.67 acres (191.8\xa0km2)', 'covering most of mount desert island and other coastal islands, acadia features the tallest mountain on the atlantic coast of the united states, granite peaks, ocean shoreline, woodlands, and lakes. there are freshwater, estuary, forest, and intertidal habitats.'], ['american samoa', 'american samoa\\n14°15′s 170°41′w\ufeff / \ufeff14.25°s 170.68°w', 'october 31, 1988', '9,000.00 acres (36.4\xa0km2)', 'the southernmost national park is on three samoan islands and protects coral reefs, rainforests, volcanic mountains, and white beaches. the area is also home to flying foxes, brown boobies, sea turtles, and 900 species of fish.'], ['arches', 'utah\\n38°41′n 109°34′w\ufeff / \ufeff38.68°n 109.57°w', 'november 12, 1971', '76,518.98 acres (309.7\xa0km2)', 'this site features more than 2,000 natural sandstone arches, including the delicate arch. in a desert climate millions of years of erosion have led to these structures, and the arid ground has life-sustaining soil crust and potholes, natural water-collecting basins. other geologic formations are stone columns, spires, fins, and towers.'], ['badlands', 'south dakota\\n43°45′n 102°30′w\ufeff / \ufeff43.75°n 102.50°w', 'november 10, 1978', '242,755.94 acres (982.4\xa0km2)', "the badlands are a collection of buttes, pinnacles, spires, and grass prairies. it has the world's richest fossil beds from the oligocene epoch, and there is wildlife including bison, bighorn sheep, black-footed ferrets, and swift foxes."], ['big bend', 'texas\\n29°15′n 103°15′w\ufeff / \ufeff29.25°n 103.25°w', 'june 12, 1944', '801,163.21 acres (3,242.2\xa0km2)', 'named for the bend of the rio grande along the us–mexico border, this park includes a part of the chihuahuan desert. a wide variety of cretaceous and tertiary fossils as well as cultural artifacts of native americans exist within its borders.'], ['biscayne', 'florida\\n25°39′n 80°05′w\ufeff / \ufeff25.65°n 80.08°w', 'june 28, 1980', '172,924.07 acres (699.8\xa0km2)', 'located in biscayne bay, this park at the north end of the florida keys has four interrelated marine ecosystems: mangrove forest, the bay, the keys, and coral reefs. threatened animals include the west indian manatee, american crocodile, various sea turtles, and peregrine falcon.'], ['black canyon of the gunnison', 'colorado\\n38°34′n 107°43′w\ufeff / \ufeff38.57°n 107.72°w', 'october 21, 1999', '32,950.03 acres (133.3\xa0km2)', 'the park protects a quarter of the gunnison river, which has dark canyon walls from the precambrian era. the canyon has very steep descents, and it is a site for river rafting and rock climbing. the narrow, steep canyon, made of gneiss and schist, is often in shadow, appearing black.'], ['bryce canyon', 'utah\\n37°34′n 112°11′w\ufeff / \ufeff37.57°n 112.18°w', 'february 25, 1928', '35,835.08 acres (145.0\xa0km2)', 'bryce canyon is a giant natural amphitheatre along the paunsaugunt plateau. the unique area has hundreds of tall sandstone hoodoos formed by erosion. the region was originally settled by native americans and later by mormon pioneers.'], ['canyonlands', 'utah\\n38°12′n 109°56′w\ufeff / \ufeff38.2°n 109.93°w', 'september 12, 1964', '337,597.83 acres (1,366.2\xa0km2)', 'this landscape was eroded into canyons, buttes, and mesas by the colorado river, green river, and their tributaries, which divide the park into three districts. there are rock pinnacles and other naturally sculpted rock, as well as artifacts from ancient pueblo peoples.'], ['capitol reef', 'utah\\n38°12′n 111°10′w\ufeff / \ufeff38.20°n 111.17°w', 'december 18, 1971', '241,904.26 acres (979.0\xa0km2)', "the park's waterpocket fold is a 100-mile (160\xa0km) monocline that shows the earth's geologic layers. other natural features are monoliths and sandstone domes and cliffs shaped like the united states capitol."], ['carlsbad caverns', 'new mexico\\n32°10′n 104°26′w\ufeff / \ufeff32.17°n 104.44°w', 'may 14, 1930', '46,766.45 acres (189.3\xa0km2)', 'carlsbad caverns has 117 caves, the longest of which is over 120 miles (190\xa0km) long. the big room is almost 4,000 feet (1,200\xa0m) long, and the caves are home to over 400,000 mexican free-tailed bats and sixteen other species. above ground are the chihuahuan desert and rattlesnake springs.'], ['channel islands', 'california\\n34°01′n 119°25′w\ufeff / \ufeff34.01°n 119.42°w', 'march 5, 1980', '249,561.00 acres (1,009.9\xa0km2)', "five of the eight channel islands are protected, and half of the park's area is underwater. the islands have a unique mediterranean ecosystem. they are home to over 2,000 species of land plants and animals, and 145 are unique to them. the islands were originally settled by the chumash people."], ['congaree', 'south carolina\\n33°47′n 80°47′w\ufeff / \ufeff33.78°n 80.78°w', 'november 10, 2003', '26,545.86 acres (107.4\xa0km2)', 'on the congaree river, this park is the largest portion of old-growth floodplain forest left in north america. some of the trees are the tallest in the eastern us, and the boardwalk loop is an elevated walkway through the swamp.'], ['crater lake', 'oregon\\n42°56′n 122°06′w\ufeff / \ufeff42.94°n 122.1°w', 'may 22, 1902', '183,224.05 acres (741.5\xa0km2)', 'crater lake lies in the caldera of mount mazama formed 7,700 years ago after an eruption. it is the deepest lake in the united states and is known for its blue color and water clarity. there are two islands in the lake, and, with no inlets or outlets, all water comes through precipitation.'], ['cuyahoga valley', 'ohio\\n41°14′n 81°33′w\ufeff / \ufeff41.24°n 81.55°w', 'october 11, 2000', '32,860.73 acres (133.0\xa0km2)', 'this park along the cuyahoga river has waterfalls, hills, trails, and displays about early rural living. the ohio and erie canal towpath trail follows the ohio and erie canal, where mules towed canal boats. the park has numerous historic homes, bridges, and structures. the park also offers a scenic train ride with various trips available.'], ['death valley', 'california, nevada\\n36°14′n 116°49′w\ufeff / \ufeff36.24°n 116.82°w', 'october 31, 1994', '3,372,401.96 acres (13,647.6\xa0km2)', 'death valley is the hottest, lowest, and driest place in the united states. daytime temperatures have topped 130°f (54°c) and it is home to badwater basin, the lowest point in north america. there are canyons, colorful badlands, sand dunes, mountains, and over 1000 species of plants in this graben on a fault line. further geologic points of interest are salt flats, springs, and buttes.'], ['denali', 'alaska\\n63°20′n 150°30′w\ufeff / \ufeff63.33°n 150.50°w', 'february 26, 1917', '4,740,911.72 acres (19,185.8\xa0km2)', 'centered around the mount mckinley, the tallest mountain in north america, denali is serviced by a single road leading to wonder lake. mckinley and other peaks of the alaska range are covered with long glaciers and boreal forest. wildlife includes grizzly bears, dall sheep, caribou, and gray wolves.'], ['dry tortugas', 'florida\\n24°38′n 82°52′w\ufeff / \ufeff24.63°n 82.87°w', 'october 26, 1992', '64,701.22 acres (261.8\xa0km2)', 'the dry tortugas on the west end of the florida keys are the site of fort jefferson, the largest masonry structure in the western hemisphere. with most of the park being water, it is the home of coral reefs and shipwrecks and is only accessible by plane or boat.'], ['everglades', 'florida\\n25°19′n 80°56′w\ufeff / \ufeff25.32°n 80.93°w', 'may 30, 1934', '1,508,537.90 acres (6,104.8\xa0km2)', 'the everglades are the largest subtropical wilderness in the united states. this mangrove ecosystem and marine estuary is home to 36 protected species, including the florida panther, american crocodile, and west indian manatee. some areas have been drained and developed; restoration projects aim to restore the ecology.'], ['gates of the arctic', 'alaska\\n67°47′n 153°18′w\ufeff / \ufeff67.78°n 153.30°w', 'december 2, 1980', '7,523,897.74 acres (30,448.1\xa0km2)', 'this northernmost park protects part of the brooks range and has no park facilities. the land is home to alaska natives, who have relied on the land and caribou for 11,000 years.'], ['glacier', 'montana\\n48°48′n 114°00′w\ufeff / \ufeff48.80°n 114.00°w', 'may 11, 1910', '1,013,572.41 acres (4,101.8\xa0km2)', "part of waterton glacier international peace park, this park has 26 remaining glaciers and 130 named lakes under the tall rocky mountain peaks. there are historic hotels and a landmark road in this region of rapidly receding glaciers. these mountains, formed by an overthrust, have the world's best sedimentary fossils from the proterozoic era."], ['glacier bay', 'alaska\\n58°30′n 137°00′w\ufeff / \ufeff58.50°n 137.00°w', 'december 2, 1980', '3,224,840.31 acres (13,050.5\xa0km2)', 'glacier bay has numerous tidewater glaciers, mountains, and fjords. the temperate rainforest and the bay are home to grizzly bears, mountain goats, whales, seals, and eagles. when discovered in 1794 by george vancouver, the entire bay was covered by ice, but the glaciers have receded over 65 miles (105\xa0km).'], ['grand canyon', 'arizona\\n36°04′n 112°08′w\ufeff / \ufeff36.06°n 112.14°w', 'february 26, 1919', '1,217,403.32 acres (4,926.7\xa0km2)', 'the grand canyon, carved out by the colorado river, is 277 miles (446\xa0km) long, up to 1 mile (1.6\xa0km) deep, and up to 15 miles (24\xa0km) wide. millions of years of exposure has formed colorful layers of the colorado plateau in mesas and canyon walls.'], ['grand teton', 'wyoming\\n43°44′n 110°48′w\ufeff / \ufeff43.73°n 110.80°w', 'february 26, 1929', '309,994.66 acres (1,254.5\xa0km2)', "grand teton is the tallest mountain in the teton range. the park's jackson hole valley and reflective piedmont lakes contrast with the tall mountains, which abruptly rise from the sage-covered valley."], ['great basin', 'nevada\\n38°59′n 114°18′w\ufeff / \ufeff38.98°n 114.30°w', 'october 27, 1986', '77,180.00 acres (312.3\xa0km2)', "based around wheeler peak, the great basin has 5,000-year-old bristlecone pines, glacial moraines, and the limestone lehman caves. it has some of the country's darkest night skies, and there are animal species including townsend's big-eared bat, pronghorn, and bonneville cutthroat trout."], ['great sand dunes', 'colorado\\n37°44′n 105°31′w\ufeff / \ufeff37.73°n 105.51°w', 'september 13, 2004', '42,983.74 acres (173.9\xa0km2)', 'the tallest dunes in north america are up to 750 feet (230\xa0m) tall and neighbor grasslands, shrublands and wetlands. they were formed by sand deposits of the rio grande on the san luis valley. the park also has alpine lakes, six 13,000-foot mountains, and ancient forests.'], ['great smoky mountains', 'north carolina, tennessee\\n35°41′n 83°32′w\ufeff / \ufeff35.68°n 83.53°w', 'june 15, 1934', '521,490.13 acres (2,110.4\xa0km2)', "the great smoky mountains, part of the appalachian mountains, have a wide range of elevations, making them home to over 400 vertebrate species, 100 tree species, and 5000 plant species. hiking is the park's main attraction, with over 800 miles (1,300\xa0km) of trails, including 70 miles (110\xa0km) of the appalachian trail. other activities are fishing, horseback riding, and visiting some of nearly 80 historic structures."], ['guadalupe mountains', 'texas\\n31°55′n 104°52′w\ufeff / \ufeff31.92°n 104.87°w', 'october 15, 1966', '86,415.97 acres (349.7\xa0km2)', 'this park has guadalupe peak, the highest point in texas, the scenic mckittrick canyon full of bigtooth maples, part of the chihuahuan desert, and a fossilized reef from the permian.'], ['haleakalā', 'hawaii\\n20°43′n 156°10′w\ufeff / \ufeff20.72°n 156.17°w', 'august 1, 1916', '29,093.67 acres (117.7\xa0km2)', "the haleakalā volcano on maui has a very large crater with many cinder cones, hosmer's grove of alien trees, and the native hawaiian goose. the kipahulu section has numerous pools with freshwater fish. this national park has the greatest number of endangered species."], ['hawaii volcanoes', 'hawaii\\n19°23′n 155°12′w\ufeff / \ufeff19.38°n 155.20°w', 'august 1, 1916', '323,431.38 acres (1,308.9\xa0km2)', "this park on the big island protects the kīlauea and mauna loa volcanoes, two of the world's most active. diverse ecosystems of the park range from those at sea level to 13,000 feet (4,000\xa0m)."], ['hot springs', 'arkansas\\n34°31′n 93°03′w\ufeff / \ufeff34.51°n 93.05°w', 'march 4, 1921', '5,549.75 acres (22.5\xa0km2)', 'the only national park in an urban area, this smallest national park is based around the natural hot springs that have been managed for public use. bathhouse row preserves 47 of these with many beneficial minerals.'], ['isle royale', 'michigan\\n48°06′n 88°33′w\ufeff / \ufeff48.10°n 88.55°w', 'march 3, 1931', '571,790.11 acres (2,314.0\xa0km2)', 'the largest island in lake superior, this park is a site of isolation and wilderness. it has many shipwrecks, waterways, and hiking trails. the park also includes over 400 smaller islands in the waters up to 4.5 miles (7.2\xa0km) from the island. there are only 20 mammal species and it is known for its wolf and moose relationship.'], ['joshua tree', 'california\\n33°47′n 115°54′w\ufeff / \ufeff33.79°n 115.90°w', 'october 31, 1994', '789,745.47 acres (3,196.0\xa0km2)', 'covering parts of the colorado and mojave deserts and the little san bernardino mountains, this is the home of the joshua tree. across great elevation changes are sand dunes, dry lakes, rugged mountains, and granite monoliths.'], ['katmai', 'alaska\\n58°30′n 155°00′w\ufeff / \ufeff58.50°n 155.00°w', 'december 2, 1980', '3,674,529.68 acres (14,870.3\xa0km2)', 'this park on the alaska peninsula protects the valley of ten thousand smokes, an ash flow formed by the 1912 eruption of novarupta, as well as mount katmai. over 2,000 brown bears come here to catch spawning salmon.'], ['kenai fjords', 'alaska\\n59°55′n 149°39′w\ufeff / \ufeff59.92°n 149.65°w', 'december 2, 1980', '669,982.99 acres (2,711.3\xa0km2)', 'near seward on the kenai peninsula, this park protects the harding icefield and at least 38 glaciers and fjords stemming from it. the only area accessible to the public by road is exit glacier, while the rest can only be viewed by boat tours.'], ['kings canyon', 'california\\n36°48′n 118°33′w\ufeff / \ufeff36.80°n 118.55°w', 'march 4, 1940', '461,901.20 acres (1,869.2\xa0km2)', "home to several giant sequoia groves and the general grant tree, the world's second largest, this park also has part of the kings river, site of the granite kings canyon, and san joaquin river, as well as the boyden cave."], ['kobuk valley', 'alaska\\n67°33′n 159°17′w\ufeff / \ufeff67.55°n 159.28°w', 'december 2, 1980', '1,750,716.50 acres (7,084.9\xa0km2)', 'kobuk valley has 61 miles (98\xa0km) of the kobuk river and three regions of sand dunes. created by glaciers, the great kobuk, the little kobuk, and the hunt river sand dunes can reach 100 feet (30\xa0m) high and 100\xa0°f (38\xa0°c), and they are the largest dunes in the arctic. twice a year, half a million caribou migrate through the dunes and across river bluffs that contain ice age fossils.'], ['lake clark', 'alaska\\n60°58′n 153°25′w\ufeff / \ufeff60.97°n 153.42°w', 'december 2, 1980', '2,619,733.21 acres (10,601.7\xa0km2)', 'the region around lake clark has four active volcanoes, including mount redoubt, rivers, glaciers, and waterfalls. there are temperate rainforests, a tundra plateau, and three mountain ranges.'], ['lassen volcanic', 'california\\n40°29′n 121°31′w\ufeff / \ufeff40.49°n 121.51°w', 'august 9, 1916', '106,372.36 acres (430.5\xa0km2)', 'lassen peak, the largest plug dome volcano in the world, is joined by all three other types of volcanoes in this park: shield, cinder dome, and composite. other than the volcano, which last erupted in 1915, the park has hydrothermal areas, including fumaroles, boiling pools, and steaming ground, heated by molten rock under the peak.'], ['mammoth cave', 'kentucky\\n37°11′n 86°06′w\ufeff / \ufeff37.18°n 86.10°w', 'july 1, 1941', '52,830.19 acres (213.8\xa0km2)', "with 392 miles (631\xa0km) of passageways mapped, mammoth cave is by far the world's longest cave system. cave animals include eight bat species, kentucky cave shrimp, northern cavefish, and cave salamanders. above ground, the park contains green river (kentucky), 70 miles of hiking trails, sinkholes, and springs."], ['mesa verde', 'colorado\\n37°11′n 108°29′w\ufeff / \ufeff37.18°n 108.49°w', 'june 29, 1906', '52,121.93 acres (210.9\xa0km2)', 'this area has over 4,000 archaeological sites of the ancestral pueblo, who lived here for 700 years. cliff dwellings built in the 12th and 13th centuries include cliff palace, which has 150 rooms and 23 kivas, and the balcony house, with passages and tunnels.'], ['mount rainier', 'washington\\n46°51′n 121°45′w\ufeff / \ufeff46.85°n 121.75°w', 'march 2, 1899', '235,625.00 acres (953.5\xa0km2)', 'mount rainier, an active volcano, is the most prominent peak in the cascades, and it is covered by 26 named glaciers including carbon glacier and emmons glacier, the largest in the continental united states. the mountain is popular for climbing, and more than half of the park is covered by subalpine and alpine forests. paradise on the south slope is one of the snowiest places in the world, and the longmire visitor center is the start of the wonderland trail, which encircles the mountain.'], ['north cascades', 'washington\\n48°42′n 121°12′w\ufeff / \ufeff48.70°n 121.20°w', 'october 2, 1968', '504,780.94 acres (2,042.8\xa0km2)', 'this complex includes the two units of the national park and the ross lake and lake chelan national recreation areas. there are numerous glaciers, and popular hiking and climbing areas are cascade pass, mount shuksan, mount triumph, and eldorado peak.'], ['olympic', 'washington\\n47°58′n 123°30′w\ufeff / \ufeff47.97°n 123.50°w', 'june 29, 1938', '922,650.86 acres (3,733.8\xa0km2)', 'situated on the olympic peninsula, this park ranges from pacific shoreline with tide pools to temperate rainforests to mount olympus. the glaciated olympic mountains overlook the hoh rain forest and quinault rain forest, the wettest area of the continental united states.'], ['petrified forest', 'arizona\\n35°04′n 109°47′w\ufeff / \ufeff35.07°n 109.78°w', 'december 9, 1962', '93,532.57 acres (378.5\xa0km2)', 'this portion of the chinle formation has a great concentration of 225-million-year-old petrified wood. the surrounding region, the painted desert, has eroded red-hued volcanic rock called bentonite. there are also dinosaur fossils and over 350 native american sites.'], ['pinnacles', 'california\\n36°29′n 121°10′w\ufeff / \ufeff36.48°n 121.16°w', 'january 10, 2013', '26,605.73 acres (107.7\xa0km2)', 'known for the namesake eroded leftovers of half of an extinct volcano, it is popular for its rock climbing.'], ['redwood', 'california\\n41°18′n 124°00′w\ufeff / \ufeff41.30°n 124.00°w', 'october 2, 1968', '112,512.05 acres (455.3\xa0km2)', 'this park and the co-managed state parks protect almost half of all remaining coastal redwoods, the tallest trees on earth. there are three large river systems in this very seismically active area, and the 37 miles (60\xa0km) of protected coastline have tide pools and seastacks. the prairie, estuary, coast, river, and forest ecosystems have varied animal and plant species.'], ['rocky mountain', 'colorado\\n40°24′n 105°35′w\ufeff / \ufeff40.40°n 105.58°w', 'january 26, 1915', '265,828.41 acres (1,075.8\xa0km2)', 'this section of the rocky mountains has ecosystems varying in elevation from the over 150 riparian lakes to montane and subalpine forests to the alpine tundra. large wildlife including mule deer, bighorn sheep, black bears, and cougars inhabit these igneous mountains and glacier valleys. the fourteener longs peak and bear lake are popular destinations.'], ['saguaro', 'arizona\\n32°15′n 110°30′w\ufeff / \ufeff32.25°n 110.50°w', 'october 14, 1994', '91,439.71 acres (370.0\xa0km2)', 'split into the separate rincon mountain and tucson mountain districts, the dry sonoran desert is still home to much life in six biotic communities. beyond the namesake giant saguaro cacti, there are barrel cacti, cholla cacti, and prickly pears, as well as lesser long-nosed bats, spotted owls, and javelinas.'], ['sequoia', 'california\\n36°26′n 118°41′w\ufeff / \ufeff36.43°n 118.68°w', 'september 25, 1890', '404,051.17 acres (1,635.1\xa0km2)', "this park protects the giant forest, which has the world's largest tree, general sherman, as well as four of the next nine. it also has over 240 caves, the tallest mountain in the continental u.s., mount whitney, and the granite dome moro rock."], ['shenandoah', 'virginia\\n38°32′n 78°21′w\ufeff / \ufeff38.53°n 78.35°w', 'may 22, 1926', '199,045.23 acres (805.5\xa0km2)', "shenandoah's blue ridge mountains are covered by hardwood forests that are home to tens of thousands of animals. the skyline drive and appalachian trail run the entire length of this narrow park that has more than 500 miles (800\xa0km) of hiking trails along scenic overlooks and waterfalls of the shenandoah river."], ['theodore roosevelt', 'north dakota\\n46°58′n 103°27′w\ufeff / \ufeff46.97°n 103.45°w', 'november 10, 1978', '70,446.89 acres (285.1\xa0km2)', "this region that enticed and influenced president theodore roosevelt is now a park of three units in the badlands. besides roosevelt's historic cabin, there are scenic drives and backcountry hiking opportunities. wildlife includes american bison, pronghorns, bighorn sheep, and wild horses."], ['virgin islands', 'united states virgin islands\\n18°20′n 64°44′w\ufeff / \ufeff18.33°n 64.73°w', 'august 2, 1956', '14,688.87 acres (59.4\xa0km2)', "the island of saint john has rich human and natural history. there are taino archaeological sites and ruins of sugar plantations from columbus's time. past the pristine beaches are mangroves, seagrass beds, coral reefs and algal plains."], ['voyageurs', 'minnesota\\n48°30′n 92°53′w\ufeff / \ufeff48.50°n 92.88°w', 'january 8, 1971', '218,200.17 acres (883.0\xa0km2)', 'this park on four main lakes, a site for canoeing, kayaking, and fishing, has a history of ojibwe native americans, french fur traders called voyageurs, and a gold rush. formed by glaciers, this region has tall bluffs, rock gardens, islands and bays, and historic buildings.'], ['wind cave', 'south dakota\\n43°34′n 103°29′w\ufeff / \ufeff43.57°n 103.48°w', 'january 9, 1903', '28,295.03 acres (114.5\xa0km2)', "wind cave is distinctive for its calcite fin formations called boxwork and needle-like growths called frostwork. the cave, which was discovered by the sound of wind coming from a hole in the ground, is the world's densest cave system. above ground is a mixed-grass prairie with animals such as bison, black-footed ferrets, and prairie dogs, and ponderosa pine forests home to cougars and elk."], ['wrangell\xa0–st.\xa0elias', 'alaska\\n61°00′n 142°00′w\ufeff / \ufeff61.00°n 142.00°w', 'december 2, 1980', '8,323,147.59 acres (33,682.6\xa0km2)', "this mountainous land has the convergence of the alaska, chugach, and wrangell-saint elias ranges, which have many of the continent's tallest mountains over 16,000 feet (4,900\xa0m), including mount saint elias. more than 25% of this park of volcanic peaks is covered with glaciers, including the tidewater hubbard glacier, piedmont malaspina glacier, and valley nabesna glacier."], ['yellowstone', 'wyoming, montana, idaho\\n44°36′n 110°30′w\ufeff / \ufeff44.60°n 110.50°w', 'march 1, 1872', '2,219,790.71 acres (8,983.2\xa0km2)', 'situated on the yellowstone caldera, the first national park in the world has vast geothermal areas such as hot springs and geysers, the best-known being old faithful and grand prismatic spring. the yellow-hued grand canyon of the yellowstone river has numerous waterfalls, and four mountain ranges run through the park. there are almost 60 mammal species, including the gray wolf, grizzly bear, lynx, bison, and elk.'], ['yosemite', 'california\\n37°50′n 119°30′w\ufeff / \ufeff37.83°n 119.50°w', 'october 1, 1890', '761,266.19 acres (3,080.7\xa0km2)', "yosemite has towering cliffs, waterfalls, and sequoias in a diverse area of geology and hydrology. half dome and el capitan rise from the central glacier-formed yosemite valley, as does yosemite falls, north america's tallest waterfall. three giant sequoia groves and vast wilderness are home to diverse wildlife."], ['zion', 'utah\\n37°18′n 113°03′w\ufeff / \ufeff37.30°n 113.05°w', 'november 19, 1919', '146,597.60 acres (593.3\xa0km2)', 'this geologically unique area has colorful sandstone canyons, high plateaus, and rock towers. natural arches and exposed formations of the colorado plateau make up a large wilderness of four ecosystems.']]
+########################################################################################################################
+Sample 3092 - Plan 1: Operation 1: Select rows where the 'name' column does not have an image associated with it.
+Sample 3092 - Plan 1: Selected indices: []
+Sample 3092 - Plan 1: X-Table after operation df:
+                            name  \
+0                         acadia   
+1                 american samoa   
+2                         arches   
+3                       badlands   
+4                       big bend   
+5                       biscayne   
+6   black canyon of the gunnison   
+7                   bryce canyon   
+8                    canyonlands   
+9                   capitol reef   
+10              carlsbad caverns   
+11               channel islands   
+12                      congaree   
+13                   crater lake   
+14               cuyahoga valley   
+15                  death valley   
+16                        denali   
+17                  dry tortugas   
+18                    everglades   
+19           gates of the arctic   
+20                       glacier   
+21                   glacier bay   
+22                  grand canyon   
+23                   grand teton   
+24                   great basin   
+25              great sand dunes   
+26         great smoky mountains   
+27           guadalupe mountains   
+28                     haleakalā   
+29              hawaii volcanoes   
+30                   hot springs   
+31                   isle royale   
+32                   joshua tree   
+33                        katmai   
+34                  kenai fjords   
+35                  kings canyon   
+36                  kobuk valley   
+37                    lake clark   
+38               lassen volcanic   
+39                  mammoth cave   
+40                    mesa verde   
+41                 mount rainier   
+42                north cascades   
+43                       olympic   
+44              petrified forest   
+45                     pinnacles   
+46                       redwood   
+47                rocky mountain   
+48                       saguaro   
+49                       sequoia   
+50                    shenandoah   
+51            theodore roosevelt   
+52                virgin islands   
+53                     voyageurs   
+54                     wind cave   
+55           wrangell –st. elias   
+56                   yellowstone   
+57                      yosemite   
+58                          zion   
+
+                                             location    date_established  \
+0          maine\n44°21′n 68°13′w﻿ / ﻿44.35°n 68.21°w   february 26, 1919   
+1   american samoa\n14°15′s 170°41′w﻿ / ﻿14.25°s 1...    october 31, 1988   
+2         utah\n38°41′n 109°34′w﻿ / ﻿38.68°n 109.57°w   november 12, 1971   
+3   south dakota\n43°45′n 102°30′w﻿ / ﻿43.75°n 102...   november 10, 1978   
+4        texas\n29°15′n 103°15′w﻿ / ﻿29.25°n 103.25°w       june 12, 1944   
+5        florida\n25°39′n 80°05′w﻿ / ﻿25.65°n 80.08°w       june 28, 1980   
+6     colorado\n38°34′n 107°43′w﻿ / ﻿38.57°n 107.72°w    october 21, 1999   
+7         utah\n37°34′n 112°11′w﻿ / ﻿37.57°n 112.18°w   february 25, 1928   
+8          utah\n38°12′n 109°56′w﻿ / ﻿38.2°n 109.93°w  september 12, 1964   
+9         utah\n38°12′n 111°10′w﻿ / ﻿38.20°n 111.17°w   december 18, 1971   
+10  new mexico\n32°10′n 104°26′w﻿ / ﻿32.17°n 104.44°w        may 14, 1930   
+11  california\n34°01′n 119°25′w﻿ / ﻿34.01°n 119.42°w       march 5, 1980   
+12  south carolina\n33°47′n 80°47′w﻿ / ﻿33.78°n 80...   november 10, 2003   
+13       oregon\n42°56′n 122°06′w﻿ / ﻿42.94°n 122.1°w        may 22, 1902   
+14          ohio\n41°14′n 81°33′w﻿ / ﻿41.24°n 81.55°w    october 11, 2000   
+15  california, nevada\n36°14′n 116°49′w﻿ / ﻿36.24...    october 31, 1994   
+16      alaska\n63°20′n 150°30′w﻿ / ﻿63.33°n 150.50°w   february 26, 1917   
+17       florida\n24°38′n 82°52′w﻿ / ﻿24.63°n 82.87°w    october 26, 1992   
+18       florida\n25°19′n 80°56′w﻿ / ﻿25.32°n 80.93°w        may 30, 1934   
+19      alaska\n67°47′n 153°18′w﻿ / ﻿67.78°n 153.30°w    december 2, 1980   
+20     montana\n48°48′n 114°00′w﻿ / ﻿48.80°n 114.00°w        may 11, 1910   
+21      alaska\n58°30′n 137°00′w﻿ / ﻿58.50°n 137.00°w    december 2, 1980   
+22     arizona\n36°04′n 112°08′w﻿ / ﻿36.06°n 112.14°w   february 26, 1919   
+23     wyoming\n43°44′n 110°48′w﻿ / ﻿43.73°n 110.80°w   february 26, 1929   
+24      nevada\n38°59′n 114°18′w﻿ / ﻿38.98°n 114.30°w    october 27, 1986   
+25    colorado\n37°44′n 105°31′w﻿ / ﻿37.73°n 105.51°w  september 13, 2004   
+26  north carolina, tennessee\n35°41′n 83°32′w﻿ / ...       june 15, 1934   
+27       texas\n31°55′n 104°52′w﻿ / ﻿31.92°n 104.87°w    october 15, 1966   
+28      hawaii\n20°43′n 156°10′w﻿ / ﻿20.72°n 156.17°w      august 1, 1916   
+29      hawaii\n19°23′n 155°12′w﻿ / ﻿19.38°n 155.20°w      august 1, 1916   
+30      arkansas\n34°31′n 93°03′w﻿ / ﻿34.51°n 93.05°w       march 4, 1921   
+31      michigan\n48°06′n 88°33′w﻿ / ﻿48.10°n 88.55°w       march 3, 1931   
+32  california\n33°47′n 115°54′w﻿ / ﻿33.79°n 115.90°w    october 31, 1994   
+33      alaska\n58°30′n 155°00′w﻿ / ﻿58.50°n 155.00°w    december 2, 1980   
+34      alaska\n59°55′n 149°39′w﻿ / ﻿59.92°n 149.65°w    december 2, 1980   
+35  california\n36°48′n 118°33′w﻿ / ﻿36.80°n 118.55°w       march 4, 1940   
+36      alaska\n67°33′n 159°17′w﻿ / ﻿67.55°n 159.28°w    december 2, 1980   
+37      alaska\n60°58′n 153°25′w﻿ / ﻿60.97°n 153.42°w    december 2, 1980   
+38  california\n40°29′n 121°31′w﻿ / ﻿40.49°n 121.51°w      august 9, 1916   
+39      kentucky\n37°11′n 86°06′w﻿ / ﻿37.18°n 86.10°w        july 1, 1941   
+40    colorado\n37°11′n 108°29′w﻿ / ﻿37.18°n 108.49°w       june 29, 1906   
+41  washington\n46°51′n 121°45′w﻿ / ﻿46.85°n 121.75°w       march 2, 1899   
+42  washington\n48°42′n 121°12′w﻿ / ﻿48.70°n 121.20°w     october 2, 1968   
+43  washington\n47°58′n 123°30′w﻿ / ﻿47.97°n 123.50°w       june 29, 1938   
+44     arizona\n35°04′n 109°47′w﻿ / ﻿35.07°n 109.78°w    december 9, 1962   
+45  california\n36°29′n 121°10′w﻿ / ﻿36.48°n 121.16°w    january 10, 2013   
+46  california\n41°18′n 124°00′w﻿ / ﻿41.30°n 124.00°w     october 2, 1968   
+47    colorado\n40°24′n 105°35′w﻿ / ﻿40.40°n 105.58°w    january 26, 1915   
+48     arizona\n32°15′n 110°30′w﻿ / ﻿32.25°n 110.50°w    october 14, 1994   
+49  california\n36°26′n 118°41′w﻿ / ﻿36.43°n 118.68°w  september 25, 1890   
+50      virginia\n38°32′n 78°21′w﻿ / ﻿38.53°n 78.35°w        may 22, 1926   
+51  north dakota\n46°58′n 103°27′w﻿ / ﻿46.97°n 103...   november 10, 1978   
+52  united states virgin islands\n18°20′n 64°44′w﻿...      august 2, 1956   
+53     minnesota\n48°30′n 92°53′w﻿ / ﻿48.50°n 92.88°w     january 8, 1971   
+54  south dakota\n43°34′n 103°29′w﻿ / ﻿43.57°n 103...     january 9, 1903   
+55      alaska\n61°00′n 142°00′w﻿ / ﻿61.00°n 142.00°w    december 2, 1980   
+56  wyoming, montana, idaho\n44°36′n 110°30′w﻿ / ﻿...       march 1, 1872   
+57  california\n37°50′n 119°30′w﻿ / ﻿37.83°n 119.50°w     october 1, 1890   
+58        utah\n37°18′n 113°03′w﻿ / ﻿37.30°n 113.05°w   november 19, 1919   
+
+                                 area  \
+0         47,389.67 acres (191.8 km2)   
+1           9,000.00 acres (36.4 km2)   
+2         76,518.98 acres (309.7 km2)   
+3        242,755.94 acres (982.4 km2)   
+4      801,163.21 acres (3,242.2 km2)   
+5        172,924.07 acres (699.8 km2)   
+6         32,950.03 acres (133.3 km2)   
+7         35,835.08 acres (145.0 km2)   
+8      337,597.83 acres (1,366.2 km2)   
+9        241,904.26 acres (979.0 km2)   
+10        46,766.45 acres (189.3 km2)   
+11     249,561.00 acres (1,009.9 km2)   
+12        26,545.86 acres (107.4 km2)   
+13       183,224.05 acres (741.5 km2)   
+14        32,860.73 acres (133.0 km2)   
+15  3,372,401.96 acres (13,647.6 km2)   
+16  4,740,911.72 acres (19,185.8 km2)   
+17        64,701.22 acres (261.8 km2)   
+18   1,508,537.90 acres (6,104.8 km2)   
+19  7,523,897.74 acres (30,448.1 km2)   
+20   1,013,572.41 acres (4,101.8 km2)   
+21  3,224,840.31 acres (13,050.5 km2)   
+22   1,217,403.32 acres (4,926.7 km2)   
+23     309,994.66 acres (1,254.5 km2)   
+24        77,180.00 acres (312.3 km2)   
+25        42,983.74 acres (173.9 km2)   
+26     521,490.13 acres (2,110.4 km2)   
+27        86,415.97 acres (349.7 km2)   
+28        29,093.67 acres (117.7 km2)   
+29     323,431.38 acres (1,308.9 km2)   
+30          5,549.75 acres (22.5 km2)   
+31     571,790.11 acres (2,314.0 km2)   
+32     789,745.47 acres (3,196.0 km2)   
+33  3,674,529.68 acres (14,870.3 km2)   
+34     669,982.99 acres (2,711.3 km2)   
+35     461,901.20 acres (1,869.2 km2)   
+36   1,750,716.50 acres (7,084.9 km2)   
+37  2,619,733.21 acres (10,601.7 km2)   
+38       106,372.36 acres (430.5 km2)   
+39        52,830.19 acres (213.8 km2)   
+40        52,121.93 acres (210.9 km2)   
+41       235,625.00 acres (953.5 km2)   
+42     504,780.94 acres (2,042.8 km2)   
+43     922,650.86 acres (3,733.8 km2)   
+44        93,532.57 acres (378.5 km2)   
+45        26,605.73 acres (107.7 km2)   
+46       112,512.05 acres (455.3 km2)   
+47     265,828.41 acres (1,075.8 km2)   
+48        91,439.71 acres (370.0 km2)   
+49     404,051.17 acres (1,635.1 km2)   
+50       199,045.23 acres (805.5 km2)   
+51        70,446.89 acres (285.1 km2)   
+52         14,688.87 acres (59.4 km2)   
+53       218,200.17 acres (883.0 km2)   
+54        28,295.03 acres (114.5 km2)   
+55  8,323,147.59 acres (33,682.6 km2)   
+56   2,219,790.71 acres (8,983.2 km2)   
+57     761,266.19 acres (3,080.7 km2)   
+58       146,597.60 acres (593.3 km2)   
+
+                                          description  
+0   covering most of mount desert island and other...  
+1   the southernmost national park is on three sam...  
+2   this site features more than 2,000 natural san...  
+3   the badlands are a collection of buttes, pinna...  
+4   named for the bend of the rio grande along the...  
+5   located in biscayne bay, this park at the nort...  
+6   the park protects a quarter of the gunnison ri...  
+7   bryce canyon is a giant natural amphitheatre a...  
+8   this landscape was eroded into canyons, buttes...  
+9   the park's waterpocket fold is a 100-mile (160...  
+10  carlsbad caverns has 117 caves, the longest of...  
+11  five of the eight channel islands are protecte...  
+12  on the congaree river, this park is the larges...  
+13  crater lake lies in the caldera of mount mazam...  
+14  this park along the cuyahoga river has waterfa...  
+15  death valley is the hottest, lowest, and dries...  
+16  centered around the mount mckinley, the talles...  
+17  the dry tortugas on the west end of the florid...  
+18  the everglades are the largest subtropical wil...  
+19  this northernmost park protects part of the br...  
+20  part of waterton glacier international peace p...  
+21  glacier bay has numerous tidewater glaciers, m...  
+22  the grand canyon, carved out by the colorado r...  
+23  grand teton is the tallest mountain in the tet...  
+24  based around wheeler peak, the great basin has...  
+25  the tallest dunes in north america are up to 7...  
+26  the great smoky mountains, part of the appalac...  
+27  this park has guadalupe peak, the highest poin...  
+28  the haleakalā volcano on maui has a very large...  
+29  this park on the big island protects the kīlau...  
+30  the only national park in an urban area, this ...  
+31  the largest island in lake superior, this park...  
+32  covering parts of the colorado and mojave dese...  
+33  this park on the alaska peninsula protects the...  
+34  near seward on the kenai peninsula, this park ...  
+35  home to several giant sequoia groves and the g...  
+36  kobuk valley has 61 miles (98 km) of the kobuk...  
+37  the region around lake clark has four active v...  
+38  lassen peak, the largest plug dome volcano in ...  
+39  with 392 miles (631 km) of passageways mapped,...  
+40  this area has over 4,000 archaeological sites ...  
+41  mount rainier, an active volcano, is the most ...  
+42  this complex includes the two units of the nat...  
+43  situated on the olympic peninsula, this park r...  
+44  this portion of the chinle formation has a gre...  
+45  known for the namesake eroded leftovers of hal...  
+46  this park and the co-managed state parks prote...  
+47  this section of the rocky mountains has ecosys...  
+48  split into the separate rincon mountain and tu...  
+49  this park protects the giant forest, which has...  
+50  shenandoah's blue ridge mountains are covered ...  
+51  this region that enticed and influenced presid...  
+52  the island of saint john has rich human and na...  
+53  this park on four main lakes, a site for canoe...  
+54  wind cave is distinctive for its calcite fin f...  
+55  this mountainous land has the convergence of t...  
+56  situated on the yellowstone caldera, the first...  
+57  yosemite has towering cliffs, waterfalls, and ...  
+58  this geologically unique area has colorful san...  
+Sample 3092 - Plan 1: Table after operation: [['name', 'location', 'date_established', 'area', 'description'], ['acadia', 'maine\\n44°21′n 68°13′w\ufeff / \ufeff44.35°n 68.21°w', 'february 26, 1919', '47,389.67 acres (191.8\xa0km2)', 'covering most of mount desert island and other coastal islands, acadia features the tallest mountain on the atlantic coast of the united states, granite peaks, ocean shoreline, woodlands, and lakes. there are freshwater, estuary, forest, and intertidal habitats.'], ['american samoa', 'american samoa\\n14°15′s 170°41′w\ufeff / \ufeff14.25°s 170.68°w', 'october 31, 1988', '9,000.00 acres (36.4\xa0km2)', 'the southernmost national park is on three samoan islands and protects coral reefs, rainforests, volcanic mountains, and white beaches. the area is also home to flying foxes, brown boobies, sea turtles, and 900 species of fish.'], ['arches', 'utah\\n38°41′n 109°34′w\ufeff / \ufeff38.68°n 109.57°w', 'november 12, 1971', '76,518.98 acres (309.7\xa0km2)', 'this site features more than 2,000 natural sandstone arches, including the delicate arch. in a desert climate millions of years of erosion have led to these structures, and the arid ground has life-sustaining soil crust and potholes, natural water-collecting basins. other geologic formations are stone columns, spires, fins, and towers.'], ['badlands', 'south dakota\\n43°45′n 102°30′w\ufeff / \ufeff43.75°n 102.50°w', 'november 10, 1978', '242,755.94 acres (982.4\xa0km2)', "the badlands are a collection of buttes, pinnacles, spires, and grass prairies. it has the world's richest fossil beds from the oligocene epoch, and there is wildlife including bison, bighorn sheep, black-footed ferrets, and swift foxes."], ['big bend', 'texas\\n29°15′n 103°15′w\ufeff / \ufeff29.25°n 103.25°w', 'june 12, 1944', '801,163.21 acres (3,242.2\xa0km2)', 'named for the bend of the rio grande along the us–mexico border, this park includes a part of the chihuahuan desert. a wide variety of cretaceous and tertiary fossils as well as cultural artifacts of native americans exist within its borders.'], ['biscayne', 'florida\\n25°39′n 80°05′w\ufeff / \ufeff25.65°n 80.08°w', 'june 28, 1980', '172,924.07 acres (699.8\xa0km2)', 'located in biscayne bay, this park at the north end of the florida keys has four interrelated marine ecosystems: mangrove forest, the bay, the keys, and coral reefs. threatened animals include the west indian manatee, american crocodile, various sea turtles, and peregrine falcon.'], ['black canyon of the gunnison', 'colorado\\n38°34′n 107°43′w\ufeff / \ufeff38.57°n 107.72°w', 'october 21, 1999', '32,950.03 acres (133.3\xa0km2)', 'the park protects a quarter of the gunnison river, which has dark canyon walls from the precambrian era. the canyon has very steep descents, and it is a site for river rafting and rock climbing. the narrow, steep canyon, made of gneiss and schist, is often in shadow, appearing black.'], ['bryce canyon', 'utah\\n37°34′n 112°11′w\ufeff / \ufeff37.57°n 112.18°w', 'february 25, 1928', '35,835.08 acres (145.0\xa0km2)', 'bryce canyon is a giant natural amphitheatre along the paunsaugunt plateau. the unique area has hundreds of tall sandstone hoodoos formed by erosion. the region was originally settled by native americans and later by mormon pioneers.'], ['canyonlands', 'utah\\n38°12′n 109°56′w\ufeff / \ufeff38.2°n 109.93°w', 'september 12, 1964', '337,597.83 acres (1,366.2\xa0km2)', 'this landscape was eroded into canyons, buttes, and mesas by the colorado river, green river, and their tributaries, which divide the park into three districts. there are rock pinnacles and other naturally sculpted rock, as well as artifacts from ancient pueblo peoples.'], ['capitol reef', 'utah\\n38°12′n 111°10′w\ufeff / \ufeff38.20°n 111.17°w', 'december 18, 1971', '241,904.26 acres (979.0\xa0km2)', "the park's waterpocket fold is a 100-mile (160\xa0km) monocline that shows the earth's geologic layers. other natural features are monoliths and sandstone domes and cliffs shaped like the united states capitol."], ['carlsbad caverns', 'new mexico\\n32°10′n 104°26′w\ufeff / \ufeff32.17°n 104.44°w', 'may 14, 1930', '46,766.45 acres (189.3\xa0km2)', 'carlsbad caverns has 117 caves, the longest of which is over 120 miles (190\xa0km) long. the big room is almost 4,000 feet (1,200\xa0m) long, and the caves are home to over 400,000 mexican free-tailed bats and sixteen other species. above ground are the chihuahuan desert and rattlesnake springs.'], ['channel islands', 'california\\n34°01′n 119°25′w\ufeff / \ufeff34.01°n 119.42°w', 'march 5, 1980', '249,561.00 acres (1,009.9\xa0km2)', "five of the eight channel islands are protected, and half of the park's area is underwater. the islands have a unique mediterranean ecosystem. they are home to over 2,000 species of land plants and animals, and 145 are unique to them. the islands were originally settled by the chumash people."], ['congaree', 'south carolina\\n33°47′n 80°47′w\ufeff / \ufeff33.78°n 80.78°w', 'november 10, 2003', '26,545.86 acres (107.4\xa0km2)', 'on the congaree river, this park is the largest portion of old-growth floodplain forest left in north america. some of the trees are the tallest in the eastern us, and the boardwalk loop is an elevated walkway through the swamp.'], ['crater lake', 'oregon\\n42°56′n 122°06′w\ufeff / \ufeff42.94°n 122.1°w', 'may 22, 1902', '183,224.05 acres (741.5\xa0km2)', 'crater lake lies in the caldera of mount mazama formed 7,700 years ago after an eruption. it is the deepest lake in the united states and is known for its blue color and water clarity. there are two islands in the lake, and, with no inlets or outlets, all water comes through precipitation.'], ['cuyahoga valley', 'ohio\\n41°14′n 81°33′w\ufeff / \ufeff41.24°n 81.55°w', 'october 11, 2000', '32,860.73 acres (133.0\xa0km2)', 'this park along the cuyahoga river has waterfalls, hills, trails, and displays about early rural living. the ohio and erie canal towpath trail follows the ohio and erie canal, where mules towed canal boats. the park has numerous historic homes, bridges, and structures. the park also offers a scenic train ride with various trips available.'], ['death valley', 'california, nevada\\n36°14′n 116°49′w\ufeff / \ufeff36.24°n 116.82°w', 'october 31, 1994', '3,372,401.96 acres (13,647.6\xa0km2)', 'death valley is the hottest, lowest, and driest place in the united states. daytime temperatures have topped 130°f (54°c) and it is home to badwater basin, the lowest point in north america. there are canyons, colorful badlands, sand dunes, mountains, and over 1000 species of plants in this graben on a fault line. further geologic points of interest are salt flats, springs, and buttes.'], ['denali', 'alaska\\n63°20′n 150°30′w\ufeff / \ufeff63.33°n 150.50°w', 'february 26, 1917', '4,740,911.72 acres (19,185.8\xa0km2)', 'centered around the mount mckinley, the tallest mountain in north america, denali is serviced by a single road leading to wonder lake. mckinley and other peaks of the alaska range are covered with long glaciers and boreal forest. wildlife includes grizzly bears, dall sheep, caribou, and gray wolves.'], ['dry tortugas', 'florida\\n24°38′n 82°52′w\ufeff / \ufeff24.63°n 82.87°w', 'october 26, 1992', '64,701.22 acres (261.8\xa0km2)', 'the dry tortugas on the west end of the florida keys are the site of fort jefferson, the largest masonry structure in the western hemisphere. with most of the park being water, it is the home of coral reefs and shipwrecks and is only accessible by plane or boat.'], ['everglades', 'florida\\n25°19′n 80°56′w\ufeff / \ufeff25.32°n 80.93°w', 'may 30, 1934', '1,508,537.90 acres (6,104.8\xa0km2)', 'the everglades are the largest subtropical wilderness in the united states. this mangrove ecosystem and marine estuary is home to 36 protected species, including the florida panther, american crocodile, and west indian manatee. some areas have been drained and developed; restoration projects aim to restore the ecology.'], ['gates of the arctic', 'alaska\\n67°47′n 153°18′w\ufeff / \ufeff67.78°n 153.30°w', 'december 2, 1980', '7,523,897.74 acres (30,448.1\xa0km2)', 'this northernmost park protects part of the brooks range and has no park facilities. the land is home to alaska natives, who have relied on the land and caribou for 11,000 years.'], ['glacier', 'montana\\n48°48′n 114°00′w\ufeff / \ufeff48.80°n 114.00°w', 'may 11, 1910', '1,013,572.41 acres (4,101.8\xa0km2)', "part of waterton glacier international peace park, this park has 26 remaining glaciers and 130 named lakes under the tall rocky mountain peaks. there are historic hotels and a landmark road in this region of rapidly receding glaciers. these mountains, formed by an overthrust, have the world's best sedimentary fossils from the proterozoic era."], ['glacier bay', 'alaska\\n58°30′n 137°00′w\ufeff / \ufeff58.50°n 137.00°w', 'december 2, 1980', '3,224,840.31 acres (13,050.5\xa0km2)', 'glacier bay has numerous tidewater glaciers, mountains, and fjords. the temperate rainforest and the bay are home to grizzly bears, mountain goats, whales, seals, and eagles. when discovered in 1794 by george vancouver, the entire bay was covered by ice, but the glaciers have receded over 65 miles (105\xa0km).'], ['grand canyon', 'arizona\\n36°04′n 112°08′w\ufeff / \ufeff36.06°n 112.14°w', 'february 26, 1919', '1,217,403.32 acres (4,926.7\xa0km2)', 'the grand canyon, carved out by the colorado river, is 277 miles (446\xa0km) long, up to 1 mile (1.6\xa0km) deep, and up to 15 miles (24\xa0km) wide. millions of years of exposure has formed colorful layers of the colorado plateau in mesas and canyon walls.'], ['grand teton', 'wyoming\\n43°44′n 110°48′w\ufeff / \ufeff43.73°n 110.80°w', 'february 26, 1929', '309,994.66 acres (1,254.5\xa0km2)', "grand teton is the tallest mountain in the teton range. the park's jackson hole valley and reflective piedmont lakes contrast with the tall mountains, which abruptly rise from the sage-covered valley."], ['great basin', 'nevada\\n38°59′n 114°18′w\ufeff / \ufeff38.98°n 114.30°w', 'october 27, 1986', '77,180.00 acres (312.3\xa0km2)', "based around wheeler peak, the great basin has 5,000-year-old bristlecone pines, glacial moraines, and the limestone lehman caves. it has some of the country's darkest night skies, and there are animal species including townsend's big-eared bat, pronghorn, and bonneville cutthroat trout."], ['great sand dunes', 'colorado\\n37°44′n 105°31′w\ufeff / \ufeff37.73°n 105.51°w', 'september 13, 2004', '42,983.74 acres (173.9\xa0km2)', 'the tallest dunes in north america are up to 750 feet (230\xa0m) tall and neighbor grasslands, shrublands and wetlands. they were formed by sand deposits of the rio grande on the san luis valley. the park also has alpine lakes, six 13,000-foot mountains, and ancient forests.'], ['great smoky mountains', 'north carolina, tennessee\\n35°41′n 83°32′w\ufeff / \ufeff35.68°n 83.53°w', 'june 15, 1934', '521,490.13 acres (2,110.4\xa0km2)', "the great smoky mountains, part of the appalachian mountains, have a wide range of elevations, making them home to over 400 vertebrate species, 100 tree species, and 5000 plant species. hiking is the park's main attraction, with over 800 miles (1,300\xa0km) of trails, including 70 miles (110\xa0km) of the appalachian trail. other activities are fishing, horseback riding, and visiting some of nearly 80 historic structures."], ['guadalupe mountains', 'texas\\n31°55′n 104°52′w\ufeff / \ufeff31.92°n 104.87°w', 'october 15, 1966', '86,415.97 acres (349.7\xa0km2)', 'this park has guadalupe peak, the highest point in texas, the scenic mckittrick canyon full of bigtooth maples, part of the chihuahuan desert, and a fossilized reef from the permian.'], ['haleakalā', 'hawaii\\n20°43′n 156°10′w\ufeff / \ufeff20.72°n 156.17°w', 'august 1, 1916', '29,093.67 acres (117.7\xa0km2)', "the haleakalā volcano on maui has a very large crater with many cinder cones, hosmer's grove of alien trees, and the native hawaiian goose. the kipahulu section has numerous pools with freshwater fish. this national park has the greatest number of endangered species."], ['hawaii volcanoes', 'hawaii\\n19°23′n 155°12′w\ufeff / \ufeff19.38°n 155.20°w', 'august 1, 1916', '323,431.38 acres (1,308.9\xa0km2)', "this park on the big island protects the kīlauea and mauna loa volcanoes, two of the world's most active. diverse ecosystems of the park range from those at sea level to 13,000 feet (4,000\xa0m)."], ['hot springs', 'arkansas\\n34°31′n 93°03′w\ufeff / \ufeff34.51°n 93.05°w', 'march 4, 1921', '5,549.75 acres (22.5\xa0km2)', 'the only national park in an urban area, this smallest national park is based around the natural hot springs that have been managed for public use. bathhouse row preserves 47 of these with many beneficial minerals.'], ['isle royale', 'michigan\\n48°06′n 88°33′w\ufeff / \ufeff48.10°n 88.55°w', 'march 3, 1931', '571,790.11 acres (2,314.0\xa0km2)', 'the largest island in lake superior, this park is a site of isolation and wilderness. it has many shipwrecks, waterways, and hiking trails. the park also includes over 400 smaller islands in the waters up to 4.5 miles (7.2\xa0km) from the island. there are only 20 mammal species and it is known for its wolf and moose relationship.'], ['joshua tree', 'california\\n33°47′n 115°54′w\ufeff / \ufeff33.79°n 115.90°w', 'october 31, 1994', '789,745.47 acres (3,196.0\xa0km2)', 'covering parts of the colorado and mojave deserts and the little san bernardino mountains, this is the home of the joshua tree. across great elevation changes are sand dunes, dry lakes, rugged mountains, and granite monoliths.'], ['katmai', 'alaska\\n58°30′n 155°00′w\ufeff / \ufeff58.50°n 155.00°w', 'december 2, 1980', '3,674,529.68 acres (14,870.3\xa0km2)', 'this park on the alaska peninsula protects the valley of ten thousand smokes, an ash flow formed by the 1912 eruption of novarupta, as well as mount katmai. over 2,000 brown bears come here to catch spawning salmon.'], ['kenai fjords', 'alaska\\n59°55′n 149°39′w\ufeff / \ufeff59.92°n 149.65°w', 'december 2, 1980', '669,982.99 acres (2,711.3\xa0km2)', 'near seward on the kenai peninsula, this park protects the harding icefield and at least 38 glaciers and fjords stemming from it. the only area accessible to the public by road is exit glacier, while the rest can only be viewed by boat tours.'], ['kings canyon', 'california\\n36°48′n 118°33′w\ufeff / \ufeff36.80°n 118.55°w', 'march 4, 1940', '461,901.20 acres (1,869.2\xa0km2)', "home to several giant sequoia groves and the general grant tree, the world's second largest, this park also has part of the kings river, site of the granite kings canyon, and san joaquin river, as well as the boyden cave."], ['kobuk valley', 'alaska\\n67°33′n 159°17′w\ufeff / \ufeff67.55°n 159.28°w', 'december 2, 1980', '1,750,716.50 acres (7,084.9\xa0km2)', 'kobuk valley has 61 miles (98\xa0km) of the kobuk river and three regions of sand dunes. created by glaciers, the great kobuk, the little kobuk, and the hunt river sand dunes can reach 100 feet (30\xa0m) high and 100\xa0°f (38\xa0°c), and they are the largest dunes in the arctic. twice a year, half a million caribou migrate through the dunes and across river bluffs that contain ice age fossils.'], ['lake clark', 'alaska\\n60°58′n 153°25′w\ufeff / \ufeff60.97°n 153.42°w', 'december 2, 1980', '2,619,733.21 acres (10,601.7\xa0km2)', 'the region around lake clark has four active volcanoes, including mount redoubt, rivers, glaciers, and waterfalls. there are temperate rainforests, a tundra plateau, and three mountain ranges.'], ['lassen volcanic', 'california\\n40°29′n 121°31′w\ufeff / \ufeff40.49°n 121.51°w', 'august 9, 1916', '106,372.36 acres (430.5\xa0km2)', 'lassen peak, the largest plug dome volcano in the world, is joined by all three other types of volcanoes in this park: shield, cinder dome, and composite. other than the volcano, which last erupted in 1915, the park has hydrothermal areas, including fumaroles, boiling pools, and steaming ground, heated by molten rock under the peak.'], ['mammoth cave', 'kentucky\\n37°11′n 86°06′w\ufeff / \ufeff37.18°n 86.10°w', 'july 1, 1941', '52,830.19 acres (213.8\xa0km2)', "with 392 miles (631\xa0km) of passageways mapped, mammoth cave is by far the world's longest cave system. cave animals include eight bat species, kentucky cave shrimp, northern cavefish, and cave salamanders. above ground, the park contains green river (kentucky), 70 miles of hiking trails, sinkholes, and springs."], ['mesa verde', 'colorado\\n37°11′n 108°29′w\ufeff / \ufeff37.18°n 108.49°w', 'june 29, 1906', '52,121.93 acres (210.9\xa0km2)', 'this area has over 4,000 archaeological sites of the ancestral pueblo, who lived here for 700 years. cliff dwellings built in the 12th and 13th centuries include cliff palace, which has 150 rooms and 23 kivas, and the balcony house, with passages and tunnels.'], ['mount rainier', 'washington\\n46°51′n 121°45′w\ufeff / \ufeff46.85°n 121.75°w', 'march 2, 1899', '235,625.00 acres (953.5\xa0km2)', 'mount rainier, an active volcano, is the most prominent peak in the cascades, and it is covered by 26 named glaciers including carbon glacier and emmons glacier, the largest in the continental united states. the mountain is popular for climbing, and more than half of the park is covered by subalpine and alpine forests. paradise on the south slope is one of the snowiest places in the world, and the longmire visitor center is the start of the wonderland trail, which encircles the mountain.'], ['north cascades', 'washington\\n48°42′n 121°12′w\ufeff / \ufeff48.70°n 121.20°w', 'october 2, 1968', '504,780.94 acres (2,042.8\xa0km2)', 'this complex includes the two units of the national park and the ross lake and lake chelan national recreation areas. there are numerous glaciers, and popular hiking and climbing areas are cascade pass, mount shuksan, mount triumph, and eldorado peak.'], ['olympic', 'washington\\n47°58′n 123°30′w\ufeff / \ufeff47.97°n 123.50°w', 'june 29, 1938', '922,650.86 acres (3,733.8\xa0km2)', 'situated on the olympic peninsula, this park ranges from pacific shoreline with tide pools to temperate rainforests to mount olympus. the glaciated olympic mountains overlook the hoh rain forest and quinault rain forest, the wettest area of the continental united states.'], ['petrified forest', 'arizona\\n35°04′n 109°47′w\ufeff / \ufeff35.07°n 109.78°w', 'december 9, 1962', '93,532.57 acres (378.5\xa0km2)', 'this portion of the chinle formation has a great concentration of 225-million-year-old petrified wood. the surrounding region, the painted desert, has eroded red-hued volcanic rock called bentonite. there are also dinosaur fossils and over 350 native american sites.'], ['pinnacles', 'california\\n36°29′n 121°10′w\ufeff / \ufeff36.48°n 121.16°w', 'january 10, 2013', '26,605.73 acres (107.7\xa0km2)', 'known for the namesake eroded leftovers of half of an extinct volcano, it is popular for its rock climbing.'], ['redwood', 'california\\n41°18′n 124°00′w\ufeff / \ufeff41.30°n 124.00°w', 'october 2, 1968', '112,512.05 acres (455.3\xa0km2)', 'this park and the co-managed state parks protect almost half of all remaining coastal redwoods, the tallest trees on earth. there are three large river systems in this very seismically active area, and the 37 miles (60\xa0km) of protected coastline have tide pools and seastacks. the prairie, estuary, coast, river, and forest ecosystems have varied animal and plant species.'], ['rocky mountain', 'colorado\\n40°24′n 105°35′w\ufeff / \ufeff40.40°n 105.58°w', 'january 26, 1915', '265,828.41 acres (1,075.8\xa0km2)', 'this section of the rocky mountains has ecosystems varying in elevation from the over 150 riparian lakes to montane and subalpine forests to the alpine tundra. large wildlife including mule deer, bighorn sheep, black bears, and cougars inhabit these igneous mountains and glacier valleys. the fourteener longs peak and bear lake are popular destinations.'], ['saguaro', 'arizona\\n32°15′n 110°30′w\ufeff / \ufeff32.25°n 110.50°w', 'october 14, 1994', '91,439.71 acres (370.0\xa0km2)', 'split into the separate rincon mountain and tucson mountain districts, the dry sonoran desert is still home to much life in six biotic communities. beyond the namesake giant saguaro cacti, there are barrel cacti, cholla cacti, and prickly pears, as well as lesser long-nosed bats, spotted owls, and javelinas.'], ['sequoia', 'california\\n36°26′n 118°41′w\ufeff / \ufeff36.43°n 118.68°w', 'september 25, 1890', '404,051.17 acres (1,635.1\xa0km2)', "this park protects the giant forest, which has the world's largest tree, general sherman, as well as four of the next nine. it also has over 240 caves, the tallest mountain in the continental u.s., mount whitney, and the granite dome moro rock."], ['shenandoah', 'virginia\\n38°32′n 78°21′w\ufeff / \ufeff38.53°n 78.35°w', 'may 22, 1926', '199,045.23 acres (805.5\xa0km2)', "shenandoah's blue ridge mountains are covered by hardwood forests that are home to tens of thousands of animals. the skyline drive and appalachian trail run the entire length of this narrow park that has more than 500 miles (800\xa0km) of hiking trails along scenic overlooks and waterfalls of the shenandoah river."], ['theodore roosevelt', 'north dakota\\n46°58′n 103°27′w\ufeff / \ufeff46.97°n 103.45°w', 'november 10, 1978', '70,446.89 acres (285.1\xa0km2)', "this region that enticed and influenced president theodore roosevelt is now a park of three units in the badlands. besides roosevelt's historic cabin, there are scenic drives and backcountry hiking opportunities. wildlife includes american bison, pronghorns, bighorn sheep, and wild horses."], ['virgin islands', 'united states virgin islands\\n18°20′n 64°44′w\ufeff / \ufeff18.33°n 64.73°w', 'august 2, 1956', '14,688.87 acres (59.4\xa0km2)', "the island of saint john has rich human and natural history. there are taino archaeological sites and ruins of sugar plantations from columbus's time. past the pristine beaches are mangroves, seagrass beds, coral reefs and algal plains."], ['voyageurs', 'minnesota\\n48°30′n 92°53′w\ufeff / \ufeff48.50°n 92.88°w', 'january 8, 1971', '218,200.17 acres (883.0\xa0km2)', 'this park on four main lakes, a site for canoeing, kayaking, and fishing, has a history of ojibwe native americans, french fur traders called voyageurs, and a gold rush. formed by glaciers, this region has tall bluffs, rock gardens, islands and bays, and historic buildings.'], ['wind cave', 'south dakota\\n43°34′n 103°29′w\ufeff / \ufeff43.57°n 103.48°w', 'january 9, 1903', '28,295.03 acres (114.5\xa0km2)', "wind cave is distinctive for its calcite fin formations called boxwork and needle-like growths called frostwork. the cave, which was discovered by the sound of wind coming from a hole in the ground, is the world's densest cave system. above ground is a mixed-grass prairie with animals such as bison, black-footed ferrets, and prairie dogs, and ponderosa pine forests home to cougars and elk."], ['wrangell\xa0–st.\xa0elias', 'alaska\\n61°00′n 142°00′w\ufeff / \ufeff61.00°n 142.00°w', 'december 2, 1980', '8,323,147.59 acres (33,682.6\xa0km2)', "this mountainous land has the convergence of the alaska, chugach, and wrangell-saint elias ranges, which have many of the continent's tallest mountains over 16,000 feet (4,900\xa0m), including mount saint elias. more than 25% of this park of volcanic peaks is covered with glaciers, including the tidewater hubbard glacier, piedmont malaspina glacier, and valley nabesna glacier."], ['yellowstone', 'wyoming, montana, idaho\\n44°36′n 110°30′w\ufeff / \ufeff44.60°n 110.50°w', 'march 1, 1872', '2,219,790.71 acres (8,983.2\xa0km2)', 'situated on the yellowstone caldera, the first national park in the world has vast geothermal areas such as hot springs and geysers, the best-known being old faithful and grand prismatic spring. the yellow-hued grand canyon of the yellowstone river has numerous waterfalls, and four mountain ranges run through the park. there are almost 60 mammal species, including the gray wolf, grizzly bear, lynx, bison, and elk.'], ['yosemite', 'california\\n37°50′n 119°30′w\ufeff / \ufeff37.83°n 119.50°w', 'october 1, 1890', '761,266.19 acres (3,080.7\xa0km2)', "yosemite has towering cliffs, waterfalls, and sequoias in a diverse area of geology and hydrology. half dome and el capitan rise from the central glacier-formed yosemite valley, as does yosemite falls, north america's tallest waterfall. three giant sequoia groves and vast wilderness are home to diverse wildlife."], ['zion', 'utah\\n37°18′n 113°03′w\ufeff / \ufeff37.30°n 113.05°w', 'november 19, 1919', '146,597.60 acres (593.3\xa0km2)', 'this geologically unique area has colorful sandstone canyons, high plateaus, and rock towers. natural arches and exposed formations of the colorado plateau make up a large wilderness of four ecosystems.']]
+########################################################################################################################
+Sample 3092 - Plan 1: Operation 2: Count the number of rows.
+Sample 3092 - Plan 1: Selected indices: []
+Sample 3092 - Plan 1: X-Table after operation df:
+   row_count
+0         59
+Sample 3092 - Plan 1: Table after operation: [['row_count'], [59]]
+Fall-back: FALSE
+Answer from plan 1: [[59]]
+Groundtruth: ['0']

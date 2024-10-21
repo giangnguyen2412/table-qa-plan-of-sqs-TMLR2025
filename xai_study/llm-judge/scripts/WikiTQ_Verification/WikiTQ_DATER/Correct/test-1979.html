@@ -1,0 +1,30 @@
+
+    <html>
+    <head>
+    <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { text-align: center; }
+    .cot-title { color: blue; }
+    .pos-title { color: green; }
+    h2 { color: black; text-align: left; }
+    h3 { color: black; text-align: left; }
+    h4 { color: darkslategray; }
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    table, th, td { border: 1px solid #ddd; padding: 8px; }
+    th { background-color: #f2f2f2; }
+    tr:nth-child(even) { background-color: #f9f9f9; }
+    .highlight { background-color: #ffffcc; }
+    .true { color: green; }
+    .false { color: red; }
+    .highlighted-text { background-color: yellow; }
+    .step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+    .step { display: block; }
+    .result-label { font-weight: bold; padding: 5px; margin-top: 20px; display: inline-block; }
+    .tp { background-color: lightgreen; }
+    .tn { background-color: lightblue; }
+    .fp { background-color: lightcoral; }
+    .fn { background-color: lightgoldenrodyellow; }
+    </style>
+    </head>
+    <body>
+    <hr><h3><span>Question:</span> from which city did the most contestants come from?</h3><hr><h3><span>Input Table:</span></h3><div class="step"><div class="step-title">Step 1: Select Rows (row 10, row 13, row 11, row 12) and Select Columns (celebrity, residence, Residence, Celebrity)</div><div id="original-table" class="content"><table><tr><th><span class='highlighted-text'>Celebrity</span></th><th><span class='highlighted-text'>Residence</span></th><th>Famous for.../Occupation</th><th>Age</th><th>Status</th></tr><tr><td><span class="highlighted-text">Nagore Robles</span></td><td><span class="highlighted-text">Bilbao</span></td><td>Gran Hermano 11 Housemate</td><td>28</td><td>Winner</td></tr><tr><td><span class="highlighted-text">Raquel Bollo</span></td><td><span class="highlighted-text">Seville</span></td><td>TV Host & ex-wife of Chiquetete</td><td>43</td><td>Runner-Up</td></tr><tr><td><span class="highlighted-text">Blanca de Borbón</span></td><td><span class="highlighted-text">Oviedo, Asturias</span></td><td>Alfonso XIII's illegitimate granddaughter</td><td>55</td><td>3rd Finalist</td></tr><tr><td><span class="highlighted-text">Regina Do Santos</span></td><td><span class="highlighted-text">Brazil</span></td><td>Singer & Dancer</td><td>58</td><td>1st / 14th Evicted</td></tr><tr><td><span class="highlighted-text">Liberto López de la Franca</span></td><td><span class="highlighted-text">Madrid</span></td><td>Good manner teacher</td><td>40</td><td>13th Evicted</td></tr><tr><td><span class="highlighted-text">Mª Ángeles Delgado</span></td><td><span class="highlighted-text">Valladolid</span></td><td>Mother of Reality-show star Aída Nízar</td><td>57</td><td>8th / 12th Evicted</td></tr><tr><td><span class="highlighted-text">Úrsula Aguilar</span></td><td><span class="highlighted-text">Málaga</span></td><td>Miss Málaga 2011</td><td>24</td><td>11th Evicted</td></tr><tr><td><span class="highlighted-text">Álvaro Muñoz-Escassi</span></td><td><span class="highlighted-text">Seville</span></td><td>Horse rider & ex-boyfriend of Lara Dibildos</td><td>42</td><td>10th Evicted</td></tr><tr><td><span class="highlighted-text">Pedro Reche, "Reche"</span></td><td><span class="highlighted-text">Langreo, Asturias</span></td><td>Reality show star</td><td>27</td><td>9th Evicted</td></tr><tr><td><span class="highlighted-text">Dionisio Rodríguez, "Dioni"</span></td><td><span class="highlighted-text">Madrid</span></td><td><span class="highlighted-text">Ex Security Guard, robbed a security van</span></td><td><span class="highlighted-text">62</span></td><td><span class="highlighted-text">Ejected</span></td></tr><tr><td><span class="highlighted-text">Antonio David Flores</span></td><td><span class="highlighted-text">Madrid</span></td><td><span class="highlighted-text">Ex-son-in-law of Rocío Jurado</span></td><td><span class="highlighted-text">36</span></td><td><span class="highlighted-text">7th Evicted</span></td></tr><tr><td><span class="highlighted-text">Raúl Hidalgo</span></td><td><span class="highlighted-text">Valladolid</span></td><td><span class="highlighted-text">Reality show star</span></td><td><span class="highlighted-text">29</span></td><td><span class="highlighted-text">6th Evicted</span></td></tr><tr><td><span class="highlighted-text">Leticia Sabater</span></td><td><span class="highlighted-text">Barcelona</span></td><td><span class="highlighted-text">TV Host</span></td><td><span class="highlighted-text">45</span></td><td><span class="highlighted-text">5th Evicted</span></td></tr><tr><td><span class="highlighted-text">Brenda Cerdá</span></td><td><span class="highlighted-text">Valencia</span></td><td>Reality show star</td><td>19</td><td>4th Evicted</td></tr><tr><td><span class="highlighted-text">Sonia Baby</span></td><td><span class="highlighted-text">Elche, Valencia</span></td><td>Porn Actress</td><td>30</td><td>3rd Evicted</td></tr><tr><td><span class="highlighted-text">Bárbara Rey</span></td><td><span class="highlighted-text">Totana, Murcia</span></td><td>Actress, Vedette, TV Host</td><td>61</td><td>2nd Evicted</td></tr></table></div></div><hr><div class="step"><div class="step-title">Sub-table Selection</div><div id="sub-table-selection" class="content"><table><tr><th>Residence</th><th>Celebrity</th></tr><tr><td>Madrid</td><td>Dionisio Rodríguez, "Dioni"</td></tr><tr><td>Madrid</td><td>Antonio David Flores</td></tr><tr><td>Valladolid</td><td>Raúl Hidalgo</td></tr><tr><td>Barcelona</td><td>Leticia Sabater</td></tr></table></div></div><hr><div class="step"><div class="step-title">Factually-checked information: 1 contestants come from Málaga.AND 1 contestants come from Brazil.AND 3 contestants come from Madrid.</div><h2>Prompting LLM for the final answer... >>> </h2><hr><h3>Prediction: Madrid</h3></body></html>

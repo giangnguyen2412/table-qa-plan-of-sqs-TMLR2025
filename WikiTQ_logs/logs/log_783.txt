@@ -1,0 +1,41 @@
+************************************************************************************************************************
+Sample 783 - Plan 1: Query: how many of dino's singles appeared on charts besides the billboard hot 100?
+Sample 783 - Plan 1: Groundtruth: ['2']
+Sample 783 - Plan 1: X-Original table pd: 
+    year                 song         album position                  chart
+0   1987        "summergirls"          24/7       50      billboard hot 100
+1   1989               "24/7"          24/7       42      billboard hot 100
+2   1989               "24/7"          24/7       12  hot r&b/hip-hop songs
+3   1989          "i like it"          24/7        7      billboard hot 100
+4   1989          "i like it"          24/7        3    hot dance club play
+5   1989           "sunshine"          24/7       23      billboard hot 100
+6   1990  "never 2 much of u"          24/7       61      billboard hot 100
+7   1990              "romeo"      swingin'        6      billboard hot 100
+8   1991             "gentle"      swingin'       31      billboard hot 100
+9   1993          "ooh child"  the way i am       27      billboard hot 100
+10  1993          "endlessly"  the way i am       --      billboard hot 100
+Sample 783 - Plan 1: Caption: none
+Sample 783 - Plan 1: Original table: [['year', 'song', 'album', 'position', 'chart'], ['1987', '"summergirls"', '24/7', '50', 'billboard hot 100'], ['1989', '"24/7"', '24/7', '42', 'billboard hot 100'], ['1989', '"24/7"', '24/7', '12', 'hot r&b/hip-hop songs'], ['1989', '"i like it"', '24/7', '7', 'billboard hot 100'], ['1989', '"i like it"', '24/7', '3', 'hot dance club play'], ['1989', '"sunshine"', '24/7', '23', 'billboard hot 100'], ['1990', '"never 2 much of u"', '24/7', '61', 'billboard hot 100'], ['1990', '"romeo"', "swingin'", '6', 'billboard hot 100'], ['1991', '"gentle"', "swingin'", '31', 'billboard hot 100'], ['1993', '"ooh child"', 'the way i am', '27', 'billboard hot 100'], ['1993', '"endlessly"', 'the way i am', '--', 'billboard hot 100']]
+########################################################################################################################
+Sample 783 - Plan 1: Operation 1: Select rows where the 'chart' column is not equal to 'billboard hot 100'.
+Sample 783 - Plan 1: Selected indices: [[4, 4], [2, 4]]
+Sample 783 - Plan 1: X-Table after operation df:
+   year         song album  position                  chart
+0  1989       "24/7"  24/7        12  hot r&b/hip-hop songs
+1  1989  "i like it"  24/7         3    hot dance club play
+Sample 783 - Plan 1: Table after operation: [['year', 'song', 'album', 'position', 'chart'], [1989, '"24/7"', '24/7', '12', 'hot r&b/hip-hop songs'], [1989, '"i like it"', '24/7', '3', 'hot dance club play']]
+########################################################################################################################
+Sample 783 - Plan 1: Operation 2: Select rows where the 'album' column is equal to '24/7'.
+Sample 783 - Plan 1: Selected indices: [[0, 2], [1, 2]]
+Sample 783 - Plan 1: X-Table after operation df:
+   year         song album  position                  chart
+0  1989       "24/7"  24/7        12  hot r&b/hip-hop songs
+1  1989  "i like it"  24/7         3    hot dance club play
+Sample 783 - Plan 1: Table after operation: [['year', 'song', 'album', 'position', 'chart'], [1989, '"24/7"', '24/7', 12, 'hot r&b/hip-hop songs'], [1989, '"i like it"', '24/7', 3, 'hot dance club play']]
+########################################################################################################################
+Sample 783 - Plan 1: Operation 3: Count the number of rows.
+SQL execution error in operation 3: Execution failed on sql 'Write a SQL command that: Count the number of rows.': near "Write": syntax error
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['hot r&b/hip-hop songs', 'hot dance club play']]
+Groundtruth: ['2']

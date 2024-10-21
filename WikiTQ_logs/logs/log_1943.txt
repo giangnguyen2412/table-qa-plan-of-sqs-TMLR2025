@@ -1,0 +1,66 @@
+************************************************************************************************************************
+Sample 1943 - Plan 1: Query: what venue comes first?
+Sample 1943 - Plan 1: Groundtruth: ['Venice, Italy']
+Sample 1943 - Plan 1: X-Original table pd: 
+   year             competition                   venue position     event  \
+0  1986         venice marathon           venice, italy      1st  marathon   
+1  1987     world championships             rome, italy     13th  marathon   
+2  1987         venice marathon           venice, italy      1st  marathon   
+3  1990  european championships    split, fr yugoslavia      4th  marathon   
+4  1991     world championships            tokyo, japan      6th  marathon   
+5  1992           olympic games        barcelona, spain      5th  marathon   
+6  1993     world championships      stuttgart, germany        —  marathon   
+7  1996           olympic games  atlanta, united states     20th  marathon   
+
+     notes  
+0  2:18:44  
+1  2:17:45  
+2  2:10:01  
+3  2:17:45  
+4  2:15:58  
+5  2:14:15  
+6      dnf  
+7  2:17:27  
+Sample 1943 - Plan 1: Caption: none
+Sample 1943 - Plan 1: Original table: [['year', 'competition', 'venue', 'position', 'event', 'notes'], ['1986', 'venice marathon', 'venice, italy', '1st', 'marathon', '2:18:44'], ['1987', 'world championships', 'rome, italy', '13th', 'marathon', '2:17:45'], ['1987', 'venice marathon', 'venice, italy', '1st', 'marathon', '2:10:01'], ['1990', 'european championships', 'split, fr yugoslavia', '4th', 'marathon', '2:17:45'], ['1991', 'world championships', 'tokyo, japan', '6th', 'marathon', '2:15:58'], ['1992', 'olympic games', 'barcelona, spain', '5th', 'marathon', '2:14:15'], ['1993', 'world championships', 'stuttgart, germany', '—', 'marathon', 'dnf'], ['1996', 'olympic games', 'atlanta, united states', '20th', 'marathon', '2:17:27']]
+########################################################################################################################
+Sample 1943 - Plan 1: Operation 1: Order the table by 'year' in ascending order.
+Sample 1943 - Plan 1: Selected indices: [[4, 0], [0, 0], [7, 0], [2, 0], [3, 0], [5, 0], [6, 0], [1, 0]]
+Sample 1943 - Plan 1: X-Table after operation df:
+   year             competition                   venue position     event  \
+0  1986         venice marathon           venice, italy      1st  marathon   
+1  1987     world championships             rome, italy     13th  marathon   
+2  1987         venice marathon           venice, italy      1st  marathon   
+3  1990  european championships    split, fr yugoslavia      4th  marathon   
+4  1991     world championships            tokyo, japan      6th  marathon   
+5  1992           olympic games        barcelona, spain      5th  marathon   
+6  1993     world championships      stuttgart, germany        —  marathon   
+7  1996           olympic games  atlanta, united states     20th  marathon   
+
+     notes  
+0  2:18:44  
+1  2:17:45  
+2  2:10:01  
+3  2:17:45  
+4  2:15:58  
+5  2:14:15  
+6      dnf  
+7  2:17:27  
+Sample 1943 - Plan 1: Table after operation: [['year', 'competition', 'venue', 'position', 'event', 'notes'], [1986, 'venice marathon', 'venice, italy', '1st', 'marathon', '2:18:44'], [1987, 'world championships', 'rome, italy', '13th', 'marathon', '2:17:45'], [1987, 'venice marathon', 'venice, italy', '1st', 'marathon', '2:10:01'], [1990, 'european championships', 'split, fr yugoslavia', '4th', 'marathon', '2:17:45'], [1991, 'world championships', 'tokyo, japan', '6th', 'marathon', '2:15:58'], [1992, 'olympic games', 'barcelona, spain', '5th', 'marathon', '2:14:15'], [1993, 'world championships', 'stuttgart, germany', '—', 'marathon', 'dnf'], [1996, 'olympic games', 'atlanta, united states', '20th', 'marathon', '2:17:27']]
+########################################################################################################################
+Sample 1943 - Plan 1: Operation 2: Select row number 1.
+Sample 1943 - Plan 1: Selected indices: []
+Sample 1943 - Plan 1: X-Table after operation df:
+   year      competition          venue position     event    notes
+0  1986  venice marathon  venice, italy      1st  marathon  2:18:44
+Sample 1943 - Plan 1: Table after operation: [['year', 'competition', 'venue', 'position', 'event', 'notes'], [1986, 'venice marathon', 'venice, italy', '1st', 'marathon', '2:18:44']]
+########################################################################################################################
+Sample 1943 - Plan 1: Operation 3: Select the 'venue' column.
+Sample 1943 - Plan 1: Selected indices: []
+Sample 1943 - Plan 1: X-Table after operation df:
+           venue
+0  venice, italy
+Sample 1943 - Plan 1: Table after operation: [['venue'], ['venice, italy']]
+Fall-back: FALSE
+Answer from plan 1: [['venice, italy']]
+Groundtruth: ['Venice, Italy']

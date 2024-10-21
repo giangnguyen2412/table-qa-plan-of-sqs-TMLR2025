@@ -1,0 +1,63 @@
+************************************************************************************************************************
+Sample 1872 - Plan 1: Query: what are the total number of recipients whose nationality is listed as something other than united states?
+Sample 1872 - Plan 1: Groundtruth: ['4']
+Sample 1872 - Plan 1: X-Original table pd: 
+    year                                         recipient     nationality  \
+0   1997                                       elie wiesel   united states   
+1   1998                                       herman wouk   united states   
+2   1999                                    a.m. rosenthal   united states   
+3   2000                                sir martin gilbert  united kingdom   
+4   2001                                     cynthia ozick   united states   
+5   2002                               charles krauthammer   united states   
+6   2003                                ruth roskies wisse   united states   
+7   2004                                       arthur cohn     switzerland   
+8   2005                                    william safire   united states   
+9   2006                                      daniel pipes   united states   
+10  2007                                  norman podhoretz   united states   
+11  2008  david be'eri, mordechai eliav, rabbi yehuda maly          israel   
+12  2009                                    caroline glick          israel   
+13  2010                                  malcolm hoenlein   united states   
+
+                                           profession speech  
+0   professional writer\nwinner of the nobel peace...         
+1   professional writer and 1952 pulitzer prize wi...         
+2   former new york times editor\nformer new york ...         
+3                                historian and writer         
+4                                 professional writer         
+5                       the washington post columnist    [1]  
+6             yiddish professor of harvard university    [2]  
+7                                filmmaker and writer         
+8   author, journalist and speechwriter\n1978 puli...         
+9                                author and historian         
+10                                  author, columnist         
+11                                                            
+12                                         journalist         
+13  executive vice chairman of the conference of p...         
+Sample 1872 - Plan 1: Caption: none
+Sample 1872 - Plan 1: Original table: [['year', 'recipient', 'nationality', 'profession', 'speech'], ['1997', 'elie wiesel', 'united states', 'professional writer\\nwinner of the nobel peace prize (1986)', ''], ['1998', 'herman wouk', 'united states', 'professional writer and 1952 pulitzer prize winner', ''], ['1999', 'a.m. rosenthal', 'united states', 'former new york times editor\\nformer new york daily news columnist', ''], ['2000', 'sir martin gilbert', 'united kingdom', 'historian and writer', ''], ['2001', 'cynthia ozick', 'united states', 'professional writer', ''], ['2002', 'charles krauthammer', 'united states', 'the washington post columnist', '[1]'], ['2003', 'ruth roskies wisse', 'united states', 'yiddish professor of harvard university', '[2]'], ['2004', 'arthur cohn', 'switzerland', 'filmmaker and writer', ''], ['2005', 'william safire', 'united states', 'author, journalist and speechwriter\\n1978 pulitzer prize winner', ''], ['2006', 'daniel pipes', 'united states', 'author and historian', ''], ['2007', 'norman podhoretz', 'united states', 'author, columnist', ''], ['2008', "david be'eri, mordechai eliav, rabbi yehuda maly", 'israel', '', ''], ['2009', 'caroline glick', 'israel', 'journalist', ''], ['2010', 'malcolm hoenlein', 'united states', 'executive vice chairman of the conference of presidents of major american jewish organizations', '']]
+########################################################################################################################
+Sample 1872 - Plan 1: Operation 1: Select rows where the 'nationality' column is not equal to 'united states'.
+Sample 1872 - Plan 1: Selected indices: [[3, 2], [12, 2], [7, 2], [11, 2]]
+Sample 1872 - Plan 1: X-Table after operation df:
+   year                                         recipient     nationality  \
+0  2000                                sir martin gilbert  united kingdom   
+1  2004                                       arthur cohn     switzerland   
+2  2008  david be'eri, mordechai eliav, rabbi yehuda maly          israel   
+3  2009                                    caroline glick          israel   
+
+             profession  speech  
+0  historian and writer     NaN  
+1  filmmaker and writer     NaN  
+2                           NaN  
+3            journalist     NaN  
+Sample 1872 - Plan 1: Table after operation: [['year', 'recipient', 'nationality', 'profession', 'speech'], [2000, 'sir martin gilbert', 'united kingdom', 'historian and writer', ''], [2004, 'arthur cohn', 'switzerland', 'filmmaker and writer', ''], [2008, "david be'eri, mordechai eliav, rabbi yehuda maly", 'israel', '', ''], [2009, 'caroline glick', 'israel', 'journalist', '']]
+########################################################################################################################
+Sample 1872 - Plan 1: Operation 2: Count the number of rows.
+Sample 1872 - Plan 1: Selected indices: []
+Sample 1872 - Plan 1: X-Table after operation df:
+   row_count
+0          4
+Sample 1872 - Plan 1: Table after operation: [['row_count'], [4]]
+Fall-back: FALSE
+Answer from plan 1: [[4]]
+Groundtruth: ['4']

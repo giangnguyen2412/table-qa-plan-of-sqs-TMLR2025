@@ -1,0 +1,108 @@
+************************************************************************************************************************
+Sample 3091 - Plan 1: Query: was the attendance in week 3 above or below the attendance in week 6?
+Sample 3091 - Plan 1: Groundtruth: ['Below']
+Sample 3091 - Plan 1: X-Original table pd: 
+    week          date result record                opponent  points_for  \
+0      1  september 18    win    1–0    at minnesota vikings          16   
+1      2  september 25    win    2–0         new york giants          41   
+2      3     october 2    win    3–0    tampa bay buccaneers          23   
+3      4     october 9    win    4–0  at st. louis cardinals          30   
+4      5    october 16    win    5–0     washington redskins          34   
+5      6    october 23    win    6–0  at philadelphia eagles          16   
+6      7    october 30    win    7–0           detroit lions          37   
+7      8    november 6    win    8–0      at new york giants          24   
+8      9   november 14   loss    8–1     st. louis cardinals          17   
+9     10   november 20   loss    8–2  at pittsburgh steelers          13   
+10    11   november 27    win    9–2  at washington redskins          14   
+11    12    december 4    win   10–2     philadelphia eagles          24   
+12    13   december 12    win   11–2  at san francisco 49ers          42   
+13    14   december 18    win   12–2          denver broncos          14   
+
+    points_against  first_downs attendance  
+0               10           16     47,678  
+1               21           25     64,215  
+2                7           23     55,316  
+3               24           22     50,129  
+4               16           23     62,115  
+5               10           17     65,507  
+6                0           20     63,160  
+7               10           13     74,532  
+8               24           16     64,038  
+9               28           20     49,761  
+10               7           19     55,031  
+11              14           19     60,289  
+12              35           24     55,851  
+13               6           15     63,752  
+Sample 3091 - Plan 1: Caption: none
+Sample 3091 - Plan 1: Original table: [['week', 'date', 'result', 'record', 'opponent', 'points_for', 'points_against', 'first_downs', 'attendance'], ['1', 'september 18', 'win', '1–0', 'at minnesota vikings', '16', '10', '16', '47,678'], ['2', 'september 25', 'win', '2–0', 'new york giants', '41', '21', '25', '64,215'], ['3', 'october 2', 'win', '3–0', 'tampa bay buccaneers', '23', '7', '23', '55,316'], ['4', 'october 9', 'win', '4–0', 'at st. louis cardinals', '30', '24', '22', '50,129'], ['5', 'october 16', 'win', '5–0', 'washington redskins', '34', '16', '23', '62,115'], ['6', 'october 23', 'win', '6–0', 'at philadelphia eagles', '16', '10', '17', '65,507'], ['7', 'october 30', 'win', '7–0', 'detroit lions', '37', '0', '20', '63,160'], ['8', 'november 6', 'win', '8–0', 'at new york giants', '24', '10', '13', '74,532'], ['9', 'november 14', 'loss', '8–1', 'st. louis cardinals', '17', '24', '16', '64,038'], ['10', 'november 20', 'loss', '8–2', 'at pittsburgh steelers', '13', '28', '20', '49,761'], ['11', 'november 27', 'win', '9–2', 'at washington redskins', '14', '7', '19', '55,031'], ['12', 'december 4', 'win', '10–2', 'philadelphia eagles', '24', '14', '19', '60,289'], ['13', 'december 12', 'win', '11–2', 'at san francisco 49ers', '42', '35', '24', '55,851'], ['14', 'december 18', 'win', '12–2', 'denver broncos', '14', '6', '15', '63,752']]
+########################################################################################################################
+Sample 3091 - Plan 1: Operation 1: Select the row where the 'week' is 3.
+Sample 3091 - Plan 1: Selected indices: [[2, 0]]
+Sample 3091 - Plan 1: X-Table after operation df:
+   week       date result record              opponent  points_for  \
+0     3  october 2    win    3–0  tampa bay buccaneers          23   
+
+   points_against  first_downs attendance  
+0               7           23     55,316  
+Sample 3091 - Plan 1: Table after operation: [['week', 'date', 'result', 'record', 'opponent', 'points_for', 'points_against', 'first_downs', 'attendance'], [3, 'october 2', 'win', '3–0', 'tampa bay buccaneers', 23, 7, 23, '55,316']]
+########################################################################################################################
+Sample 3091 - Plan 1: Operation 2: Extract the attendance value from the 'attendance' column in the selected row.
+Sample 3091 - Plan 1: Selected indices: []
+Sample 3091 - Plan 1: X-Table after operation df:
+  attendance
+0     55,316
+Sample 3091 - Plan 1: Table after operation: [['attendance'], ['55,316']]
+########################################################################################################################
+Sample 3091 - Plan 1: Operation 3: Store the attendance value from step 2 in a variable.
+Sample 3091 - Plan 1: Selected indices: []
+Sample 3091 - Plan 1: X-Table after operation df:
+  attendance_value
+0           55,316
+Sample 3091 - Plan 1: Table after operation: [['attendance_value'], ['55,316']]
+########################################################################################################################
+Sample 3091 - Plan 1: Operation 4: Select the row where the 'week' is 6.
+Sample 3091 - Plan 1: Selected indices: [[0, 0]]
+Sample 3091 - Plan 1: X-Table after operation df:
+  attendance_value
+0           55,316
+Sample 3091 - Plan 1: Table after operation: [['attendance_value'], ['55,316']]
+########################################################################################################################
+Sample 3091 - Plan 1: Operation 5: Extract the attendance value from the 'attendance' column in the selected row.
+Sample 3091 - Plan 1: Selected indices: []
+Sample 3091 - Plan 1: X-Table after operation df:
+  attendance_value
+0           55,316
+Sample 3091 - Plan 1: Table after operation: [['attendance_value'], ['55,316']]
+########################################################################################################################
+Sample 3091 - Plan 1: Operation 6: Compare the attendance value from step 3 with the attendance value from step 5.
+Sample 3091 - Plan 1: Selected indices: [[0, 0]]
+Sample 3091 - Plan 1: X-Table after operation df:
+  attendance_value
+0           55,316
+Sample 3091 - Plan 1: Table after operation: [['attendance_value'], ['55,316']]
+########################################################################################################################
+Sample 3091 - Plan 1: Operation 7: If the attendance value from step 3 is greater than the attendance value from step 5, the attendance in week 3 was above the attendance in week 6.
+Sample 3091 - Plan 1: Selected indices: []
+Sample 3091 - Plan 1: X-Table after operation df:
+                                              result
+0  The attendance in week 3 was not above the att...
+Sample 3091 - Plan 1: Table after operation: [['result'], ['The attendance in week 3 was not above the attendance in week 6']]
+########################################################################################################################
+Sample 3091 - Plan 1: Operation 8: If the attendance value from step 3 is less than the attendance value from step 5, the attendance in week 3 was below the attendance in week 6.
+Sample 3091 - Plan 1: Selected indices: []
+Sample 3091 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [result]
+Index: []
+Sample 3091 - Plan 1: Table after operation: [['result']]
+########################################################################################################################
+Sample 3091 - Plan 1: Operation 9: If the attendance value from step 3 is equal to the attendance value from step 5, the attendance in week 3 was the same as the attendance
+SQL execution error in operation 9: Execution failed on sql 'SELECT CASE 
+    WHEN (SELECT attendance FROM table_sql WHERE result = 'step 3') = (SELECT attendance FROM table_sql WHERE result = 'step 5') THEN 'The attendance in week 3 was the same as the attendance'
+    ELSE 'The attendance in week 3 was different from the attendance'
+END AS result
+FROM table_sql;': no such column: attendance
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['below']]
+Groundtruth: ['Below']

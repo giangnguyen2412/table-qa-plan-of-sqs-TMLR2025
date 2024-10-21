@@ -1,0 +1,60 @@
+************************************************************************************************************************
+Sample 2730 - Plan 1: Query: what schools have consecutively raised their api year after year?
+Sample 2730 - Plan 1: Groundtruth: ['Woodrow Wilson High School', 'Santee Education Complex']
+Sample 2730 - Plan 1: X-Original table pd: 
+                                       school  c_2007  c_2008  c_2009  c_2010  \
+0  francisco bravo medical magnet high school   807.0     818     815     820   
+1  marc and eva stern math and science school   718.0     792     788     788   
+2  oscar de la hoya animo charter high school   662.0     726     709     710   
+3               james a. garfield high school   553.0     597     593     632   
+4                 abraham lincoln high school   594.0     609     588     616   
+5                  woodrow wilson high school   582.0     585     600     615   
+6              theodore roosevelt high school   557.0     551     576     608   
+7                thomas jefferson high school   457.0     516     514     546   
+8                    santee education complex     NaN     502     521     552   
+
+   c_2011  
+0   832.0  
+1   809.0  
+2   744.0  
+3   705.0  
+4   643.0  
+5   636.0  
+6     NaN  
+7   546.0  
+8   565.0  
+Sample 2730 - Plan 1: Caption: none
+Sample 2730 - Plan 1: Original table: [['school', 'c_2007', 'c_2008', 'c_2009', 'c_2010', 'c_2011'], ['francisco bravo medical magnet high school', '807', '818', '815', '820', '832'], ['marc and eva stern math and science school', '718', '792', '788', '788', '809'], ['oscar de la hoya animo charter high school', '662', '726', '709', '710', '744'], ['james a. garfield high school', '553', '597', '593', '632', '705'], ['abraham lincoln high school', '594', '609', '588', '616', '643'], ['woodrow wilson high school', '582', '585', '600', '615', '636'], ['theodore roosevelt high school', '557', '551', '576', '608', ''], ['thomas jefferson high school', '457', '516', '514', '546', '546'], ['santee education complex', '', '502', '521', '552', '565']]
+########################################################################################################################
+Sample 2730 - Plan 1: Operation 1: Calculate the difference between consecutive years for each school by subtracting the value in the current year column from the value in the previous year column.
+Sample 2730 - Plan 1: Selected indices: []
+Sample 2730 - Plan 1: X-Table after operation df:
+                                       school  diff_2007_2008  diff_2008_2009  \
+0  francisco bravo medical magnet high school            11.0              -3   
+1  marc and eva stern math and science school            74.0              -4   
+2  oscar de la hoya animo charter high school            64.0             -17   
+3               james a. garfield high school            44.0              -4   
+4                 abraham lincoln high school            15.0             -21   
+5                  woodrow wilson high school             3.0              15   
+6              theodore roosevelt high school            -6.0              25   
+7                thomas jefferson high school            59.0              -2   
+8                    santee education complex             NaN              19   
+
+   diff_2009_2010  diff_2010_2011  
+0               5            12.0  
+1               0            21.0  
+2               1            34.0  
+3              39            73.0  
+4              28            27.0  
+5              15            21.0  
+6              32             NaN  
+7              32             0.0  
+8              31            13.0  
+Sample 2730 - Plan 1: Table after operation: [['school', 'diff_2007_2008', 'diff_2008_2009', 'diff_2009_2010', 'diff_2010_2011'], ['francisco bravo medical magnet high school', 11.0, -3, 5, 12.0], ['marc and eva stern math and science school', 74.0, -4, 0, 21.0], ['oscar de la hoya animo charter high school', 64.0, -17, 1, 34.0], ['james a. garfield high school', 44.0, -4, 39, 73.0], ['abraham lincoln high school', 15.0, -21, 28, 27.0], ['woodrow wilson high school', 3.0, 15, 15, 21.0], ['theodore roosevelt high school', -6.0, 25, 32, nan], ['thomas jefferson high school', 59.0, -2, 32, 0.0], ['santee education complex', nan, 19, 31, 13.0]]
+########################################################################################################################
+Sample 2730 - Plan 1: Operation 2: Add a new column 'consecutive_increase' to the existing table to store the calculated differences.
+SQL execution error in operation 2: 'NoneType' object is not iterable
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['francisco bravo medical magnet high school', 'marc and eva stern math and science school']]
+Groundtruth: ['Woodrow Wilson High School', 'Santee Education Complex']

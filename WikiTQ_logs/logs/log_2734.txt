@@ -1,0 +1,41 @@
+************************************************************************************************************************
+Sample 2734 - Plan 1: Query: how many churches in levanger were built between 1800 and 1900?
+Sample 2734 - Plan 1: Groundtruth: ['4']
+Sample 2734 - Plan 1: X-Original table pd: 
+       parish        church_name    location  year_built
+0  alstadhaug  alstadhaug church  alstadhaug        1180
+1        ekne        ekne church        ekne        1893
+2    levanger    levanger church    levanger        1902
+3    levanger     bamberg church    levanger        1998
+4   markabygd  markabygda church   markabygd        1887
+5   okkenhaug   okkenhaug chapel   okkenhaug        1893
+6     ytterøy     ytterøy church    ytterøya        1890
+7        åsen        åsen church        åsen        1904
+Sample 2734 - Plan 1: Caption: none
+Sample 2734 - Plan 1: Original table: [['parish', 'church_name', 'location', 'year_built'], ['alstadhaug', 'alstadhaug church', 'alstadhaug', '1180'], ['ekne', 'ekne church', 'ekne', '1893'], ['levanger', 'levanger church', 'levanger', '1902'], ['levanger', 'bamberg church', 'levanger', '1998'], ['markabygd', 'markabygda church', 'markabygd', '1887'], ['okkenhaug', 'okkenhaug chapel', 'okkenhaug', '1893'], ['ytterøy', 'ytterøy church', 'ytterøya', '1890'], ['åsen', 'åsen church', 'åsen', '1904']]
+########################################################################################################################
+Sample 2734 - Plan 1: Operation 1: Select rows where 'parish' is 'levanger'.
+Sample 2734 - Plan 1: Selected indices: [[2, 0], [3, 0]]
+Sample 2734 - Plan 1: X-Table after operation df:
+     parish      church_name  location  year_built
+0  levanger  levanger church  levanger        1902
+1  levanger   bamberg church  levanger        1998
+Sample 2734 - Plan 1: Table after operation: [['parish', 'church_name', 'location', 'year_built'], ['levanger', 'levanger church', 'levanger', 1902], ['levanger', 'bamberg church', 'levanger', 1998]]
+########################################################################################################################
+Sample 2734 - Plan 1: Operation 2: Select rows where 'year_built' is greater than or equal to 1800 and less than or equal to 1900.
+Sample 2734 - Plan 1: Selected indices: []
+Sample 2734 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [parish, church_name, location, year_built]
+Index: []
+Sample 2734 - Plan 1: Table after operation: [['parish', 'church_name', 'location', 'year_built']]
+########################################################################################################################
+Sample 2734 - Plan 1: Operation 3: Count the number of rows.
+Sample 2734 - Plan 1: Selected indices: []
+Sample 2734 - Plan 1: X-Table after operation df:
+   row_count
+0          0
+Sample 2734 - Plan 1: Table after operation: [['row_count'], [0]]
+Fall-back: FALSE
+Answer from plan 1: [[0]]
+Groundtruth: ['4']

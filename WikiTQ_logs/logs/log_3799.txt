@@ -1,0 +1,72 @@
+************************************************************************************************************************
+Sample 3799 - Plan 1: Query: the eighth aerial victory was not in france but what other country?
+Sample 3799 - Plan 1: Groundtruth: ['Middelkerke, Belgium']
+Sample 3799 - Plan 1: X-Original table pd: 
+   no_                     date_time                     aircraft  \
+0    1  4 december 1916 @ 1100 hours  nieuport serial number 3958   
+1    2    24 april 1917 @ 0840 hours   sopwith triplane s/n n5460   
+2    3       2 may 1917 @ 0945 hours   sopwith triplane s/n n5460   
+3    4      11 may 1917 @ 1950 hours   sopwith triplane s/n n5460   
+4    5      11 may 1917 @ 1950 hours   sopwith triplane s/n n5460   
+5    6      23 may 1917 @ 1800 hours   sopwith triplane s/n n5460   
+6    7     24 july 1917 @ 0635 hours   sopwith triplane s/n n5462   
+7    8     28 july 1917 @ 1735 hours   sopwith triplane s/n n5462   
+
+                          foe                          result  \
+0                albatros d.i      driven down out of control   
+1              albatros d.iii      driven down out of control   
+2  german two-seater aircraft      driven down out of control   
+3              albatros d.iii      driven down out of control   
+4              albatros d.iii  set afire in midair; destroyed   
+5              albatros d.iii      driven down out of control   
+6  german two-seater aircraft      driven down out of control   
+7  german two-seater aircraft      driven down out of control   
+
+                       location                                 notes  
+0  northeast of bapaume, france     victory shared with another pilot  
+1                sailly, france                                        
+2                 douai, france                                        
+3                 douai, france                                        
+4                 douai, france                                        
+5                 douai, france                                        
+6                     leffinghe                                        
+7          middelkerke, belgium  victory shared with francis mellersh  
+Sample 3799 - Plan 1: Caption: none
+Sample 3799 - Plan 1: Original table: [['no_', 'date_time', 'aircraft', 'foe', 'result', 'location', 'notes'], ['1', '4 december 1916 @ 1100 hours', 'nieuport serial number 3958', 'albatros d.i', 'driven down out of control', 'northeast of bapaume, france', 'victory shared with another pilot'], ['2', '24 april 1917 @ 0840 hours', 'sopwith triplane s/n n5460', 'albatros d.iii', 'driven down out of control', 'sailly, france', ''], ['3', '2 may 1917 @ 0945 hours', 'sopwith triplane s/n n5460', 'german two-seater aircraft', 'driven down out of control', 'douai, france', ''], ['4', '11 may 1917 @ 1950 hours', 'sopwith triplane s/n n5460', 'albatros d.iii', 'driven down out of control', 'douai, france', ''], ['5', '11 may 1917 @ 1950 hours', 'sopwith triplane s/n n5460', 'albatros d.iii', 'set afire in midair; destroyed', 'douai, france', ''], ['6', '23 may 1917 @ 1800 hours', 'sopwith triplane s/n n5460', 'albatros d.iii', 'driven down out of control', 'douai, france', ''], ['7', '24 july 1917 @ 0635 hours', 'sopwith triplane s/n n5462', 'german two-seater aircraft', 'driven down out of control', 'leffinghe', ''], ['8', '28 july 1917 @ 1735 hours', 'sopwith triplane s/n n5462', 'german two-seater aircraft', 'driven down out of control', 'middelkerke, belgium', 'victory shared with francis mellersh']]
+########################################################################################################################
+Sample 3799 - Plan 1: Operation 1: Select rows where the 'no_' is 8.
+Sample 3799 - Plan 1: Selected indices: [[7, 0]]
+Sample 3799 - Plan 1: X-Table after operation df:
+   no_                  date_time                    aircraft  \
+0    8  28 july 1917 @ 1735 hours  sopwith triplane s/n n5462   
+
+                          foe                      result  \
+0  german two-seater aircraft  driven down out of control   
+
+               location                                 notes  
+0  middelkerke, belgium  victory shared with francis mellersh  
+Sample 3799 - Plan 1: Table after operation: [['no_', 'date_time', 'aircraft', 'foe', 'result', 'location', 'notes'], [8, '28 july 1917 @ 1735 hours', 'sopwith triplane s/n n5462', 'german two-seater aircraft', 'driven down out of control', 'middelkerke, belgium', 'victory shared with francis mellersh']]
+########################################################################################################################
+Sample 3799 - Plan 1: Operation 2: Select the 'location' column.
+Sample 3799 - Plan 1: Selected indices: []
+Sample 3799 - Plan 1: X-Table after operation df:
+               location
+0  middelkerke, belgium
+Sample 3799 - Plan 1: Table after operation: [['location'], ['middelkerke, belgium']]
+########################################################################################################################
+Sample 3799 - Plan 1: Operation 3: Exclude rows where the 'location' is 'france'.
+Sample 3799 - Plan 1: Selected indices: [[0, 0]]
+Sample 3799 - Plan 1: X-Table after operation df:
+               location
+0  middelkerke, belgium
+Sample 3799 - Plan 1: Table after operation: [['location'], ['middelkerke, belgium']]
+########################################################################################################################
+Sample 3799 - Plan 1: Operation 4: Select the distinct values from the 'location' column.
+Sample 3799 - Plan 1: Selected indices: []
+Sample 3799 - Plan 1: X-Table after operation df:
+               location
+0  middelkerke, belgium
+Sample 3799 - Plan 1: Table after operation: [['location'], ['middelkerke, belgium']]
+Fall-back: FALSE
+Answer from plan 1: [['middelkerke, belgium']]
+Groundtruth: ['Middelkerke, Belgium']

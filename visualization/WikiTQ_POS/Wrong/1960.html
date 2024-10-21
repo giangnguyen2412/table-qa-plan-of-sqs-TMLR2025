@@ -1,0 +1,381 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> what is the difference between most and least times?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select the 'times_' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>wrestler_</td>
+<td>times_</td>
+<td>date_</td>
+<td>location_</td>
+<td>notes_</td>
+</tr>
+<tr>
+<td>super delfin</td>
+<td>1</td>
+<td>january 4, 2000</td>
+<td>tokyo, japan</td>
+<td>beat dick togo for the championship</td>
+</tr>
+<tr>
+<td>takehiro murahama</td>
+<td>1</td>
+<td>may 7, 2000</td>
+<td>tokyo, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>super delfin</td>
+<td>2</td>
+<td>june 18, 2000</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>gamma</td>
+<td>1</td>
+<td>june 24, 2001</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>super delfin</td>
+<td>3</td>
+<td>january 3, 2002</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>takehiro murahama</td>
+<td>2</td>
+<td>july 6, 2003</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>daio quallt</td>
+<td>1</td>
+<td>april 17, 2004</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>billyken kid</td>
+<td>1</td>
+<td>august 8, 2004</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>“big boss” ma-g-ma</td>
+<td>1</td>
+<td>october 2, 2004</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>super dolphin</td>
+<td>1</td>
+<td>february 13, 2005</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>super delfin</td>
+<td>4</td>
+<td>february 26, 2006</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>billyken kid</td>
+<td>2</td>
+<td>august 26, 2006</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>tigers mask</td>
+<td>1</td>
+<td>february 12, 2007</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>hideyoshi</td>
+<td>1</td>
+<td>july 26, 2008</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>billyken kid</td>
+<td>3</td>
+<td>february 15, 2009</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>dick togo</td>
+<td>1</td>
+<td>july 25, 2009</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>billyken kid</td>
+<td>4</td>
+<td>february 11, 2010</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>cima</td>
+<td>1</td>
+<td>june 18, 2010</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>tigers mask</td>
+<td>2</td>
+<td>july 29, 2010</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>asian cougar / kuuga</td>
+<td>1</td>
+<td>august 28, 2010</td>
+<td>osaka, japan</td>
+<td>asian cougar renamed himself kuuga during his reign.</td>
+</tr>
+<tr>
+<td>tigers mask</td>
+<td>3</td>
+<td>april 29, 2011</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>billyken kid</td>
+<td>5</td>
+<td>august 14, 2011</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>daisuke harada</td>
+<td>1</td>
+<td>february 26, 2012</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>black buffalo</td>
+<td>1</td>
+<td>march 25, 2012</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>daisuke harada</td>
+<td>2</td>
+<td>july 22, 2012</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>vacated</td>
+<td>n/a</td>
+<td>march 30, 2013</td>
+<td>osaka, japan</td>
+<td>title vacated, after harada announced that he was not re-signing with osaka pro after his contract ran out on april 29, 2013.</td>
+</tr>
+<tr>
+<td>tigers mask</td>
+<td>4</td>
+<td>may 19, 2013</td>
+<td>osaka, japan</td>
+<td>defeated billyken kid in the finals of a four-man tournament to win the vacant title.</td>
+</tr>
+<tr>
+<td>quiet storm</td>
+<td>1</td>
+<td>july 21, 2013</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+<tr>
+<td>zeus</td>
+<td>1</td>
+<td>january 19, 2014</td>
+<td>osaka, japan</td>
+<td></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Calculate the maximum value from the 'times_' column.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>times_</td>
+</tr>
+<tr>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+</tr>
+<tr>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+</tr>
+<tr>
+<td>2</td>
+</tr>
+<tr>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+</tr>
+<tr>
+<td>4</td>
+</tr>
+<tr>
+<td>2</td>
+</tr>
+<tr>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+</tr>
+<tr>
+<td>1</td>
+</tr>
+<tr>
+<td>4</td>
+</tr>
+<tr>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+</tr>
+<tr>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+</tr>
+<tr>
+<td>5</td>
+</tr>
+<tr>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+</tr>
+<tr>
+<td>n/a</td>
+</tr>
+<tr>
+<td>4</td>
+</tr>
+<tr>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Calculate the minimum value from the 'times_' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>maximum_value</td>
+</tr>
+<tr>
+<td>5</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Calculate the difference between the maximum and minimum values.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>minimum_value</td>
+</tr>
+<tr>
+<td>5</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>difference</td>
+</tr>
+<tr>
+<td>0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[0]]</h3>
+</body></html>

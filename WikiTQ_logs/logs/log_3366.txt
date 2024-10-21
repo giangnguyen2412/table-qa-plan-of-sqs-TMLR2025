@@ -1,0 +1,50 @@
+************************************************************************************************************************
+Sample 3366 - Plan 1: Query: how many people were murdered in eastern regions in 1944/45?
+Sample 3366 - Plan 1: Groundtruth: ['100,000']
+Sample 3366 - Plan 1: X-Original table pd: 
+                  description_losses c_1939_40 c_1940_41 c_1941_42 c_1942_43  \
+0                  direct war losses   360,000                                 
+1                           murdered    75,000   100,000   116,000   133,000   
+2          deaths in prisons & camps    69,000   210,000   220,000   266,000   
+3  deaths outside of prisons & camps              42,000    71,000   142,000   
+4        murdered in eastern regions                                           
+5             deaths other countries                                           
+6                              total   504,000   352,000   407,000   541,000   
+
+  c_1943_44 c_1944_45      total  
+0             183,000    543,000  
+1    82,000              506,000  
+2   381,000            1,146,000  
+3   218,000              473,000  
+4             100,000    100,000  
+5                          2,000  
+6   681,000   270,000  2,770,000  
+Sample 3366 - Plan 1: Caption: none
+Sample 3366 - Plan 1: Original table: [['description_losses', 'c_1939_40', 'c_1940_41', 'c_1941_42', 'c_1942_43', 'c_1943_44', 'c_1944_45', 'total'], ['direct war losses', '360,000', '', '', '', '', '183,000', '543,000'], ['murdered', '75,000', '100,000', '116,000', '133,000', '82,000', '', '506,000'], ['deaths in prisons & camps', '69,000', '210,000', '220,000', '266,000', '381,000', '', '1,146,000'], ['deaths outside of prisons & camps', '', '42,000', '71,000', '142,000', '218,000', '', '473,000'], ['murdered in eastern regions', '', '', '', '', '', '100,000', '100,000'], ['deaths other countries', '', '', '', '', '', '', '2,000'], ['total', '504,000', '352,000', '407,000', '541,000', '681,000', '270,000', '2,770,000']]
+########################################################################################################################
+Sample 3366 - Plan 1: Operation 1: Select the row where the 'description_losses' is 'murdered in eastern regions'.
+Sample 3366 - Plan 1: Selected indices: [[4, 0]]
+Sample 3366 - Plan 1: X-Table after operation df:
+            description_losses  c_1939_40  c_1940_41  c_1941_42  c_1942_43  \
+0  murdered in eastern regions        NaN        NaN        NaN        NaN   
+
+   c_1943_44 c_1944_45    total  
+0        NaN   100,000  100,000  
+Sample 3366 - Plan 1: Table after operation: [['description_losses', 'c_1939_40', 'c_1940_41', 'c_1941_42', 'c_1942_43', 'c_1943_44', 'c_1944_45', 'total'], ['murdered in eastern regions', '', '', '', '', '', '100,000', '100,000']]
+########################################################################################################################
+Sample 3366 - Plan 1: Operation 2: Select the column 'c_1944_45'.
+Sample 3366 - Plan 1: Selected indices: []
+Sample 3366 - Plan 1: X-Table after operation df:
+  c_1944_45
+0   100,000
+Sample 3366 - Plan 1: Table after operation: [['c_1944_45'], ['100,000']]
+########################################################################################################################
+Sample 3366 - Plan 1: Operation 3: Extract the numerical value from the selected cell.
+Sample 3366 - Plan 1: Selected indices: []
+Sample 3366 - Plan 1: X-Table after operation df:
+   numerical_value
+0           100000
+Sample 3366 - Plan 1: Table after operation: [['numerical_value'], [100000]]
+Fall-back: FALSE
+Answer from plan 1: [[100000]]
+Groundtruth: ['100,000']

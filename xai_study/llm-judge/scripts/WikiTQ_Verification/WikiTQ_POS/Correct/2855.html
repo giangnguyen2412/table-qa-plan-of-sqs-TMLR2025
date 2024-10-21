@@ -1,0 +1,541 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> what model has the most quantity?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Order the table by the 'quantity' column in descending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>manufacturer</td>
+<td>model</td>
+<td>length__feet_</td>
+<td>quantity</td>
+<td>fleet_series</td>
+<td>fuel_propulsion</td>
+<td>powertrain</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1996</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new flyer</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">d60</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">60 (articulated)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">30</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1901-1930*</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">diesel</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">detroit diesel series 50\nallison b400r</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1998</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nabi</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">416</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">40</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">133</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3001-3067, 3101-3166*</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">diesel</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cummins m11e\nallison b400r</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1999</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nabi</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">40-lfw</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">40</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">44</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4001-4044</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">diesel</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nabi</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">40-lfw</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">40</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">23</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7201-7223</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">diesel</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cummins ism\nallison b400r</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mci</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">d4500</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">45</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">30</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6001-6030</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">diesel</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2001</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mci</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">d4500</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">45</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6031-6040</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">diesel</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2003</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mci</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">d4500</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">45</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">39</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6041-6079</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">diesel</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2003</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nabi</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">40-lfw</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">40</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">46</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4051-4090</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">diesel</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cummins isl\nallison b400r</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2003</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">van hool</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a330</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">40</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">110</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1001-1110</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">diesel</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cummins ism\nvoith d864.3e</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2003</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">van hool</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ag300</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">60</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">57</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2001-2057</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">diesel</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cummins ism\nvoith d864.3e</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2005</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">van hool</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a300fc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">40</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fc1-fc3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">hydrogen</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">van hool</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a300k</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">30</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">50</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5001-5050</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">diesel</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cummins isb\nvoith d864.3e</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2007</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">van hool</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ag300</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">60</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2101-2110</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">diesel</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cummins isl\nvoith d864.3e</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2007</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">van hool</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ag300</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">60</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">15</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2151-2165</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">diesel</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cummins ism\nvoith d864.3e</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">van hool</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a300l</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">40</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">27</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1201-1227</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">diesel</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cummins isl\nvoith d864.5</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">van hool</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a300k</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">30</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5099</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">diesel-electric hybrid</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">van hool</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a300k</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">30</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">39</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5101-5139</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">diesel</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cummins isb\nvoith d854.5</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2010</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">van hool</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ag300</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">60</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2191-2199</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">diesel</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cummins isl\nvoith d864.5</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2010</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">van hool</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a300l fc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">40</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">12</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fc4-fc16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">hydrogen</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2013</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gillig</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">low-floor advantage</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">40</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">65</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1301-1365</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">diesel</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cummins isl 280 hp \nallison b400 6-speed</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2013</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new flyer</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">xcelsior d60</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">60</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">23</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2201-2223</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">diesel</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cummins isl 330 hp\nallison b400 6-speed</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2013</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gillig</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">low-floor advantage</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">40</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">55</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6101-6155</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">diesel</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cummins isl 280 hp\nallison b400 6-speed</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select row number 1.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>manufacturer</td>
+<td>model</td>
+<td>length__feet_</td>
+<td>quantity</td>
+<td>fleet_series</td>
+<td>fuel_propulsion</td>
+<td>powertrain</td>
+</tr>
+<tr>
+<td>1998</td>
+<td>nabi</td>
+<td>416</td>
+<td>40</td>
+<td>133</td>
+<td>3001-3067, 3101-3166*</td>
+<td>diesel</td>
+<td>cummins m11e\nallison b400r</td>
+</tr>
+<tr>
+<td>2003</td>
+<td>van hool</td>
+<td>a330</td>
+<td>40</td>
+<td>110</td>
+<td>1001-1110</td>
+<td>diesel</td>
+<td>cummins ism\nvoith d864.3e</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>gillig</td>
+<td>low-floor advantage</td>
+<td>40</td>
+<td>65</td>
+<td>1301-1365</td>
+<td>diesel</td>
+<td>cummins isl 280 hp \nallison b400 6-speed</td>
+</tr>
+<tr>
+<td>2003</td>
+<td>van hool</td>
+<td>ag300</td>
+<td>60</td>
+<td>57</td>
+<td>2001-2057</td>
+<td>diesel</td>
+<td>cummins ism\nvoith d864.3e</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>gillig</td>
+<td>low-floor advantage</td>
+<td>40</td>
+<td>55</td>
+<td>6101-6155</td>
+<td>diesel</td>
+<td>cummins isl 280 hp\nallison b400 6-speed</td>
+</tr>
+<tr>
+<td>2006</td>
+<td>van hool</td>
+<td>a300k</td>
+<td>30</td>
+<td>50</td>
+<td>5001-5050</td>
+<td>diesel</td>
+<td>cummins isb\nvoith d864.3e</td>
+</tr>
+<tr>
+<td>2003</td>
+<td>nabi</td>
+<td>40-lfw</td>
+<td>40</td>
+<td>46</td>
+<td>4051-4090</td>
+<td>diesel</td>
+<td>cummins isl\nallison b400r</td>
+</tr>
+<tr>
+<td>1999</td>
+<td>nabi</td>
+<td>40-lfw</td>
+<td>40</td>
+<td>44</td>
+<td>4001-4044</td>
+<td>diesel</td>
+<td></td>
+</tr>
+<tr>
+<td>2003</td>
+<td>mci</td>
+<td>d4500</td>
+<td>45</td>
+<td>39</td>
+<td>6041-6079</td>
+<td>diesel</td>
+<td></td>
+</tr>
+<tr>
+<td>2008</td>
+<td>van hool</td>
+<td>a300k</td>
+<td>30</td>
+<td>39</td>
+<td>5101-5139</td>
+<td>diesel</td>
+<td>cummins isb\nvoith d854.5</td>
+</tr>
+<tr>
+<td>1996</td>
+<td>new flyer</td>
+<td>d60</td>
+<td>60 (articulated)</td>
+<td>30</td>
+<td>1901-1930*</td>
+<td>diesel</td>
+<td>detroit diesel series 50\nallison b400r</td>
+</tr>
+<tr>
+<td>2000</td>
+<td>mci</td>
+<td>d4500</td>
+<td>45</td>
+<td>30</td>
+<td>6001-6030</td>
+<td>diesel</td>
+<td></td>
+</tr>
+<tr>
+<td>2008</td>
+<td>van hool</td>
+<td>a300l</td>
+<td>40</td>
+<td>27</td>
+<td>1201-1227</td>
+<td>diesel</td>
+<td>cummins isl\nvoith d864.5</td>
+</tr>
+<tr>
+<td>2000</td>
+<td>nabi</td>
+<td>40-lfw</td>
+<td>40</td>
+<td>23</td>
+<td>7201-7223</td>
+<td>diesel</td>
+<td>cummins ism\nallison b400r</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>new flyer</td>
+<td>xcelsior d60</td>
+<td>60</td>
+<td>23</td>
+<td>2201-2223</td>
+<td>diesel</td>
+<td>cummins isl 330 hp\nallison b400 6-speed</td>
+</tr>
+<tr>
+<td>2007</td>
+<td>van hool</td>
+<td>ag300</td>
+<td>60</td>
+<td>15</td>
+<td>2151-2165</td>
+<td>diesel</td>
+<td>cummins ism\nvoith d864.3e</td>
+</tr>
+<tr>
+<td>2010</td>
+<td>van hool</td>
+<td>a300l fc</td>
+<td>40</td>
+<td>12</td>
+<td>fc4-fc16</td>
+<td>hydrogen</td>
+<td></td>
+</tr>
+<tr>
+<td>2001</td>
+<td>mci</td>
+<td>d4500</td>
+<td>45</td>
+<td>10</td>
+<td>6031-6040</td>
+<td>diesel</td>
+<td></td>
+</tr>
+<tr>
+<td>2007</td>
+<td>van hool</td>
+<td>ag300</td>
+<td>60</td>
+<td>10</td>
+<td>2101-2110</td>
+<td>diesel</td>
+<td>cummins isl\nvoith d864.3e</td>
+</tr>
+<tr>
+<td>2010</td>
+<td>van hool</td>
+<td>ag300</td>
+<td>60</td>
+<td>9</td>
+<td>2191-2199</td>
+<td>diesel</td>
+<td>cummins isl\nvoith d864.5</td>
+</tr>
+<tr>
+<td>2005</td>
+<td>van hool</td>
+<td>a300fc</td>
+<td>40</td>
+<td>3</td>
+<td>fc1-fc3</td>
+<td>hydrogen</td>
+<td></td>
+</tr>
+<tr>
+<td>2008</td>
+<td>van hool</td>
+<td>a300k</td>
+<td>30</td>
+<td>1</td>
+<td>5099</td>
+<td>diesel-electric hybrid</td>
+<td></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select the 'model' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>manufacturer</td>
+<td>model</td>
+<td>length__feet_</td>
+<td>quantity</td>
+<td>fleet_series</td>
+<td>fuel_propulsion</td>
+<td>powertrain</td>
+</tr>
+<tr>
+<td>1998</td>
+<td>nabi</td>
+<td>416</td>
+<td>40</td>
+<td>133</td>
+<td>3001-3067, 3101-3166*</td>
+<td>diesel</td>
+<td>cummins m11e\nallison b400r</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>model</td>
+</tr>
+<tr>
+<td>416</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[416]]</h3>
+</body></html>

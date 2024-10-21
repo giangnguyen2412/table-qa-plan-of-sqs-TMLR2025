@@ -1,0 +1,94 @@
+************************************************************************************************************************
+Sample 1715 - Plan 1: Query: who was the only team to win in 2009?
+Sample 1715 - Plan 1: Groundtruth: ['Philadelphia Eagles']
+Sample 1715 - Plan 1: X-Original table pd: 
+    year          date               winner      result                loser  \
+0   2000  september 10      new york giants       33-18  philadelphia eagles   
+1   2000    october 29      new york giants        24-7  philadelphia eagles   
+2   2001     january 7      new york giants       20-10  philadelphia eagles   
+3   2001    october 22  philadelphia eagles        10-9      new york giants   
+4   2001   december 30  philadelphia eagles       24-21      new york giants   
+5   2002    october 28  philadelphia eagles        17-3      new york giants   
+6   2002   december 28      new york giants        10-7  philadelphia eagles   
+7   2003    october 19  philadelphia eagles       14-10      new york giants   
+8   2003   november 16  philadelphia eagles       28-10      new york giants   
+9   2004  september 12  philadelphia eagles       31-17      new york giants   
+10  2004   november 28  philadelphia eagles        27-6      new york giants   
+11  2005   november 20      new york giants       27-17  philadelphia eagles   
+12  2005   december 11      new york giants  26-23 (ot)  philadelphia eagles   
+13  2006  september 17      new york giants  30-24 (ot)  philadelphia eagles   
+14  2006   december 17  philadelphia eagles       36-22      new york giants   
+15  2007     january 7  philadelphia eagles       23-20      new york giants   
+16  2007  september 30      new york giants        16-3  philadelphia eagles   
+17  2007    december 9      new york giants       16-13  philadelphia eagles   
+18  2008    november 9      new york giants       36-31  philadelphia eagles   
+19  2008    december 7  philadelphia eagles       20-14      new york giants   
+20  2009    january 11  philadelphia eagles       23-11      new york giants   
+21  2009    november 1  philadelphia eagles       40-17      new york giants   
+22  2009   december 13  philadelphia eagles       45-38      new york giants   
+
+                   location  
+0          veterans stadium  
+1            giants stadium  
+2            giants stadium  
+3            giants stadium  
+4          veterans stadium  
+5          veterans stadium  
+6            giants stadium  
+7            giants stadium  
+8   lincoln financial field  
+9   lincoln financial field  
+10           giants stadium  
+11           giants stadium  
+12  lincoln financial field  
+13  lincoln financial field  
+14           giants stadium  
+15  lincoln financial field  
+16           giants stadium  
+17  lincoln financial field  
+18  lincoln financial field  
+19           giants stadium  
+20           giants stadium  
+21  lincoln financial field  
+22           giants stadium  
+Sample 1715 - Plan 1: Caption: none
+Sample 1715 - Plan 1: Original table: [['year', 'date', 'winner', 'result', 'loser', 'location'], ['2000', 'september 10', 'new york giants', '33-18', 'philadelphia eagles', 'veterans stadium'], ['2000', 'october 29', 'new york giants', '24-7', 'philadelphia eagles', 'giants stadium'], ['2001', 'january 7', 'new york giants', '20-10', 'philadelphia eagles', 'giants stadium'], ['2001', 'october 22', 'philadelphia eagles', '10-9', 'new york giants', 'giants stadium'], ['2001', 'december 30', 'philadelphia eagles', '24-21', 'new york giants', 'veterans stadium'], ['2002', 'october 28', 'philadelphia eagles', '17-3', 'new york giants', 'veterans stadium'], ['2002', 'december 28', 'new york giants', '10-7', 'philadelphia eagles', 'giants stadium'], ['2003', 'october 19', 'philadelphia eagles', '14-10', 'new york giants', 'giants stadium'], ['2003', 'november 16', 'philadelphia eagles', '28-10', 'new york giants', 'lincoln financial field'], ['2004', 'september 12', 'philadelphia eagles', '31-17', 'new york giants', 'lincoln financial field'], ['2004', 'november 28', 'philadelphia eagles', '27-6', 'new york giants', 'giants stadium'], ['2005', 'november 20', 'new york giants', '27-17', 'philadelphia eagles', 'giants stadium'], ['2005', 'december 11', 'new york giants', '26-23 (ot)', 'philadelphia eagles', 'lincoln financial field'], ['2006', 'september 17', 'new york giants', '30-24 (ot)', 'philadelphia eagles', 'lincoln financial field'], ['2006', 'december 17', 'philadelphia eagles', '36-22', 'new york giants', 'giants stadium'], ['2007', 'january 7', 'philadelphia eagles', '23-20', 'new york giants', 'lincoln financial field'], ['2007', 'september 30', 'new york giants', '16-3', 'philadelphia eagles', 'giants stadium'], ['2007', 'december 9', 'new york giants', '16-13', 'philadelphia eagles', 'lincoln financial field'], ['2008', 'november 9', 'new york giants', '36-31', 'philadelphia eagles', 'lincoln financial field'], ['2008', 'december 7', 'philadelphia eagles', '20-14', 'new york giants', 'giants stadium'], ['2009', 'january 11', 'philadelphia eagles', '23-11', 'new york giants', 'giants stadium'], ['2009', 'november 1', 'philadelphia eagles', '40-17', 'new york giants', 'lincoln financial field'], ['2009', 'december 13', 'philadelphia eagles', '45-38', 'new york giants', 'giants stadium']]
+########################################################################################################################
+Sample 1715 - Plan 1: Operation 1: Select rows where 'year' is 2009.
+Sample 1715 - Plan 1: Selected indices: [[20, 0], [21, 0], [22, 0]]
+Sample 1715 - Plan 1: X-Table after operation df:
+   year         date               winner result            loser  \
+0  2009   january 11  philadelphia eagles  23-11  new york giants   
+1  2009   november 1  philadelphia eagles  40-17  new york giants   
+2  2009  december 13  philadelphia eagles  45-38  new york giants   
+
+                  location  
+0           giants stadium  
+1  lincoln financial field  
+2           giants stadium  
+Sample 1715 - Plan 1: Table after operation: [['year', 'date', 'winner', 'result', 'loser', 'location'], [2009, 'january 11', 'philadelphia eagles', '23-11', 'new york giants', 'giants stadium'], [2009, 'november 1', 'philadelphia eagles', '40-17', 'new york giants', 'lincoln financial field'], [2009, 'december 13', 'philadelphia eagles', '45-38', 'new york giants', 'giants stadium']]
+########################################################################################################################
+Sample 1715 - Plan 1: Operation 2: Select the 'winner' column.
+Sample 1715 - Plan 1: Selected indices: []
+Sample 1715 - Plan 1: X-Table after operation df:
+                winner
+0  philadelphia eagles
+1  philadelphia eagles
+2  philadelphia eagles
+Sample 1715 - Plan 1: Table after operation: [['winner'], ['philadelphia eagles'], ['philadelphia eagles'], ['philadelphia eagles']]
+########################################################################################################################
+Sample 1715 - Plan 1: Operation 3: Count the number of distinct values in the 'winner' column.
+Sample 1715 - Plan 1: Selected indices: []
+Sample 1715 - Plan 1: X-Table after operation df:
+   distinct_winner_count
+0                      1
+Sample 1715 - Plan 1: Table after operation: [['distinct_winner_count'], [1]]
+########################################################################################################################
+Sample 1715 - Plan 1: Operation 4: If the count is equal to 1, select the unique value in the 'winner' column as the answer to the question.
+SQL execution error in operation 4: Execution failed on sql 'SELECT winner
+FROM table_sql
+WHERE distinct_winner_count = 1;': no such column: winner
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['philadelphia eagles']]
+Groundtruth: ['Philadelphia Eagles']

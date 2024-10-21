@@ -1,0 +1,43 @@
+************************************************************************************************************************
+Sample 1619 - Plan 1: Query: who captured the most vessels?
+Sample 1619 - Plan 1: Groundtruth: ['Perry']
+Sample 1619 - Plan 1: X-Original table pd: 
+            vessel      captor              date        location
+0         porpoise     raritan   23 january 1845  rio de janeiro
+1           albert  bainbridge         june 1845           bahia
+2          laurens     onkahye   23 january 1848  rio de janeiro
+3  a.d. richardson       perry  11 december 1848  rio de janeiro
+4     independence       perry  13 december 1848  rio de janeiro
+5            susan       perry   6 february 1849  rio de janeiro
+Sample 1619 - Plan 1: Caption: none
+Sample 1619 - Plan 1: Original table: [['vessel', 'captor', 'date', 'location'], ['porpoise', 'raritan', '23 january 1845', 'rio de janeiro'], ['albert', 'bainbridge', 'june 1845', 'bahia'], ['laurens', 'onkahye', '23 january 1848', 'rio de janeiro'], ['a.d. richardson', 'perry', '11 december 1848', 'rio de janeiro'], ['independence', 'perry', '13 december 1848', 'rio de janeiro'], ['susan', 'perry', '6 february 1849', 'rio de janeiro']]
+########################################################################################################################
+Sample 1619 - Plan 1: Operation 1: Count the number of vessels captured by each captor.
+Sample 1619 - Plan 1: Selected indices: []
+Sample 1619 - Plan 1: X-Table after operation df:
+       captor  num_vessels_captured
+0  bainbridge                     1
+1     onkahye                     1
+2       perry                     3
+3     raritan                     1
+Sample 1619 - Plan 1: Table after operation: [['captor', 'num_vessels_captured'], ['bainbridge', 1], ['onkahye', 1], ['perry', 3], ['raritan', 1]]
+########################################################################################################################
+Sample 1619 - Plan 1: Operation 2: Order the table by the count of vessels captured in descending order.
+Sample 1619 - Plan 1: Selected indices: [[0, 1], [1, 1], [2, 1], [3, 1]]
+Sample 1619 - Plan 1: X-Table after operation df:
+       captor  num_vessels_captured
+0       perry                     3
+1  bainbridge                     1
+2     onkahye                     1
+3     raritan                     1
+Sample 1619 - Plan 1: Table after operation: [['captor', 'num_vessels_captured'], ['perry', 3], ['bainbridge', 1], ['onkahye', 1], ['raritan', 1]]
+########################################################################################################################
+Sample 1619 - Plan 1: Operation 3: Select the captor with the highest count of captured vessels.
+Sample 1619 - Plan 1: Selected indices: []
+Sample 1619 - Plan 1: X-Table after operation df:
+  captor
+0  perry
+Sample 1619 - Plan 1: Table after operation: [['captor'], ['perry']]
+Fall-back: FALSE
+Answer from plan 1: [['perry']]
+Groundtruth: ['Perry']

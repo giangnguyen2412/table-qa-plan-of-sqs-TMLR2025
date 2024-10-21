@@ -1,0 +1,38 @@
+************************************************************************************************************************
+Sample 1454 - Plan 1: Query: ed perlmutter is how many districts away from mark udalls district
+Sample 1454 - Plan 1: Groundtruth: ['5']
+Sample 1454 - Plan 1: X-Original table pd: 
+   district         incumbent c_2008_status     democratic        republican
+0         1     diana degette   re-election  diana degette      george lilly
+1         2        mark udall          open    jared polis      scott starin
+2         3      john salazar   re-election   john salazar        wayne wolf
+3         4  marilyn musgrave   re-election   betsy markey  marilyn musgrave
+4         5      doug lamborn   re-election    hal bidlack      doug lamborn
+5         6      tom tancredo          open       hank eng      mike coffman
+6         7     ed perlmutter   re-election  ed perlmutter     john w. lerew
+Sample 1454 - Plan 1: Caption: none
+Sample 1454 - Plan 1: Original table: [['district', 'incumbent', 'c_2008_status', 'democratic', 'republican'], ['1', 'diana degette', 're-election', 'diana degette', 'george lilly'], ['2', 'mark udall', 'open', 'jared polis', 'scott starin'], ['3', 'john salazar', 're-election', 'john salazar', 'wayne wolf'], ['4', 'marilyn musgrave', 're-election', 'betsy markey', 'marilyn musgrave'], ['5', 'doug lamborn', 're-election', 'hal bidlack', 'doug lamborn'], ['6', 'tom tancredo', 'open', 'hank eng', 'mike coffman'], ['7', 'ed perlmutter', 're-election', 'ed perlmutter', 'john w. lerew']]
+########################################################################################################################
+Sample 1454 - Plan 1: Operation 1: Select the row where the 'incumbent' is 'ed perlmutter'.
+Sample 1454 - Plan 1: Selected indices: [[6, 1]]
+Sample 1454 - Plan 1: X-Table after operation df:
+   district      incumbent c_2008_status     democratic     republican
+0         7  ed perlmutter   re-election  ed perlmutter  john w. lerew
+Sample 1454 - Plan 1: Table after operation: [['district', 'incumbent', 'c_2008_status', 'democratic', 'republican'], [7, 'ed perlmutter', 're-election', 'ed perlmutter', 'john w. lerew']]
+########################################################################################################################
+Sample 1454 - Plan 1: Operation 2: Retrieve the value of the 'district' column for the selected row.
+Sample 1454 - Plan 1: Selected indices: []
+Sample 1454 - Plan 1: X-Table after operation df:
+   district
+0         7
+Sample 1454 - Plan 1: Table after operation: [['district'], [7]]
+########################################################################################################################
+Sample 1454 - Plan 1: Operation 3: Subtract the value of the 'district' column for the selected row from the value of the 'district' column where the 'incumbent' is 'mark udall'.
+SQL execution error in operation 3: Execution failed on sql 'SELECT district - (SELECT district FROM table_sql WHERE incumbent = 'mark udall') AS result
+FROM table_sql
+WHERE district = 7;
+-- Subtract the value of the 'district' column for the selected row from the value of the 'district' column where the 'incumbent' is 'mark udall'.': no such column: incumbent
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['5']]
+Groundtruth: ['5']

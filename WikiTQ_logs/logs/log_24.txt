@@ -1,0 +1,48 @@
+************************************************************************************************************************
+Sample 24 - Plan 1: Query: what match comes after gl-b-5?
+Sample 24 - Plan 1: Groundtruth: ['GL-B-6']
+Sample 24 - Plan 1: X-Original table pd: 
+             match    date venue opponents score
+0           gl-b-1  2008..  [[]]      [[]]     -
+1           gl-b-2  2008..  [[]]      [[]]     -
+2           gl-b-3  2008..  [[]]      [[]]     -
+3           gl-b-4  2008..  [[]]      [[]]     -
+4           gl-b-5  2008..  [[]]      [[]]     -
+5           gl-b-6  2008..  [[]]      [[]]     -
+6  quarterfinals-1  2008..  [[]]      [[]]     -
+7  quarterfinals-2  2008..  [[]]      [[]]     -
+Sample 24 - Plan 1: Caption: none
+Sample 24 - Plan 1: Original table: [['match', 'date', 'venue', 'opponents', 'score'], ['gl-b-1', '2008..', '[[]]', '[[]]', '-'], ['gl-b-2', '2008..', '[[]]', '[[]]', '-'], ['gl-b-3', '2008..', '[[]]', '[[]]', '-'], ['gl-b-4', '2008..', '[[]]', '[[]]', '-'], ['gl-b-5', '2008..', '[[]]', '[[]]', '-'], ['gl-b-6', '2008..', '[[]]', '[[]]', '-'], ['quarterfinals-1', '2008..', '[[]]', '[[]]', '-'], ['quarterfinals-2', '2008..', '[[]]', '[[]]', '-']]
+########################################################################################################################
+Sample 24 - Plan 1: Operation 1: Select the row where the 'match' is 'gl-b-5'.
+Sample 24 - Plan 1: Selected indices: [[4, 0]]
+Sample 24 - Plan 1: X-Table after operation df:
+    match    date venue opponents score
+0  gl-b-5  2008..  [[]]      [[]]     -
+Sample 24 - Plan 1: Table after operation: [['match', 'date', 'venue', 'opponents', 'score'], ['gl-b-5', '2008..', '[[]]', '[[]]', '-']]
+########################################################################################################################
+Sample 24 - Plan 1: Operation 2: Determine the position of the selected row.
+Sample 24 - Plan 1: Selected indices: []
+Sample 24 - Plan 1: X-Table after operation df:
+   position
+0         1
+Sample 24 - Plan 1: Table after operation: [['position'], [1]]
+########################################################################################################################
+Sample 24 - Plan 1: Operation 3: Select the row with the position one greater than the selected row.
+Sample 24 - Plan 1: Selected indices: []
+Sample 24 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [position]
+Index: []
+Sample 24 - Plan 1: Table after operation: [['position']]
+########################################################################################################################
+Sample 24 - Plan 1: Operation 4: Select the 'match' column from the final row.
+Sample 24 - Plan 1: Selected indices: []
+Sample 24 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [position]
+Index: []
+Sample 24 - Plan 1: Table after operation: [['position']]
+Fall-back: TRUE
+Answer from plan 1: [['gl-b-6']]
+Groundtruth: ['GL-B-6']

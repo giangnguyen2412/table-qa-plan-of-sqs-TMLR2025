@@ -1,0 +1,749 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which player had the longest streak of seasons as top scorer?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Extract the 'league_ntop_scorer' column from the table.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>season</td>
+<td>league_npos_</td>
+<td>league_ncompetition</td>
+<td>league_ntop_scorer</td>
+<td>danish_cup</td>
+<td>europe</td>
+<td>others</td>
+</tr>
+<tr>
+<td>1981-82</td>
+<td>4</td>
+<td>1982 1st division</td>
+<td>michael laudrup (15)</td>
+<td>4th round</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1982-83</td>
+<td>4</td>
+<td>1983 1st division</td>
+<td>brian chrøis (12)</td>
+<td>4th round</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1983-84</td>
+<td>4</td>
+<td>1984 1st division</td>
+<td>jens kolding (11)</td>
+<td>3rd round</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1984-85</td>
+<td>1</td>
+<td>1985 1st division</td>
+<td>claus nielsen (17)</td>
+<td>3rd round</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1985-86</td>
+<td>2</td>
+<td>1986 1st division</td>
+<td>claus nielsen (16)</td>
+<td>quarter-final</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1986-87</td>
+<td>1</td>
+<td>1987 1st division</td>
+<td>claus nielsen (20)</td>
+<td>4th round</td>
+<td>ec1 quarter-final</td>
+<td></td>
+</tr>
+<tr>
+<td>1987-88</td>
+<td>1</td>
+<td>1988 1st division</td>
+<td>bent christensen (21)</td>
+<td>finalist</td>
+<td>ec3 2nd round</td>
+<td></td>
+</tr>
+<tr>
+<td>1988-89</td>
+<td>2</td>
+<td>1989 1st division</td>
+<td>bent christensen (10)</td>
+<td>winner</td>
+<td>ec1 1st round</td>
+<td></td>
+</tr>
+<tr>
+<td>1989-90</td>
+<td>1</td>
+<td>1990 1st division</td>
+<td>bent christensen (17)</td>
+<td>quarter-final</td>
+<td>ec1 1st round</td>
+<td></td>
+</tr>
+<tr>
+<td>1990-91</td>
+<td>1</td>
+<td>1991 superliga</td>
+<td>bent christensen (11)</td>
+<td>semi-final</td>
+<td>ec3 semi-final</td>
+<td></td>
+</tr>
+<tr>
+<td>1991-92</td>
+<td>7</td>
+<td>1991-92 superliga</td>
+<td>kim vilfort (9)</td>
+<td>4th round</td>
+<td>ec1 2nd round</td>
+<td></td>
+</tr>
+<tr>
+<td>1992-93</td>
+<td>3</td>
+<td>1992-93 superliga</td>
+<td>kim vilfort (10)</td>
+<td>5th round</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1993-94</td>
+<td>3</td>
+<td>1993-94 superliga</td>
+<td>mark strudal (13)</td>
+<td>winner</td>
+<td>ec3 3rd round</td>
+<td></td>
+</tr>
+<tr>
+<td>1994-95</td>
+<td>2</td>
+<td>1994-95 superliga</td>
+<td>mark strudal (12)</td>
+<td>quarter-final</td>
+<td>ec2 2nd round</td>
+<td>danish supercup winner</td>
+</tr>
+<tr>
+<td>1995-96</td>
+<td>1</td>
+<td>1995-96 superliga</td>
+<td>peter møller (15)</td>
+<td>finalist</td>
+<td>ec3 3rd round</td>
+<td></td>
+</tr>
+<tr>
+<td>1996-97</td>
+<td>1</td>
+<td>1996-97 superliga</td>
+<td>peter møller (22)</td>
+<td>semi-final</td>
+<td>ec1 qualification round\nec3 quarter-final</td>
+<td>danish supercup winner</td>
+</tr>
+<tr>
+<td>1997-98</td>
+<td>1</td>
+<td>1997-98 superliga</td>
+<td>ebbe sand (28)</td>
+<td>winner</td>
+<td>ec1 qual 2nd round\nec3 1st round</td>
+<td>danish supercup winner</td>
+</tr>
+<tr>
+<td>1998-99</td>
+<td>2</td>
+<td>1998-99 superliga</td>
+<td>ebbe sand (19)</td>
+<td>semi-final</td>
+<td>ec1 group stage</td>
+<td></td>
+</tr>
+<tr>
+<td>1999-00</td>
+<td>2</td>
+<td>1999-00 superliga</td>
+<td>bent christensen (13)</td>
+<td>semi-final</td>
+<td>ec1 qual 3rd round\nec3 1st round</td>
+<td></td>
+</tr>
+<tr>
+<td>2000-01</td>
+<td>2</td>
+<td>2000-01 superliga</td>
+<td>peter graulund (21)</td>
+<td>quarter-final</td>
+<td>ec1 qual 3rd round\nec3 1st round</td>
+<td></td>
+</tr>
+<tr>
+<td>2001-02</td>
+<td>1</td>
+<td>2001-02 superliga</td>
+<td>peter madsen (22)</td>
+<td>5th round</td>
+<td>ec3 3rd round</td>
+<td></td>
+</tr>
+<tr>
+<td>2002-03</td>
+<td>2</td>
+<td>2002-03 superliga</td>
+<td>mattias jonson (11)</td>
+<td>winner</td>
+<td>ec1 qual 3rd round\nec3 1st round</td>
+<td>danish supercup winner</td>
+</tr>
+<tr>
+<td>2003-04</td>
+<td>2</td>
+<td>2003-04 superliga</td>
+<td>thomas kahlenberg (11)</td>
+<td>semi-final</td>
+<td>ec3 3rd round</td>
+<td></td>
+</tr>
+<tr>
+<td>2004-05</td>
+<td>1</td>
+<td>2004-05 superliga</td>
+<td>thomas kahlenberg (13)</td>
+<td>winner</td>
+<td>ec3 qual 2nd round</td>
+<td>royal league group stage</td>
+</tr>
+<tr>
+<td>2005-06</td>
+<td>2</td>
+<td>2005-06 superliga</td>
+<td>johan elmander (13)</td>
+<td>semi-final</td>
+<td>ec1 qual 3rd round\nec3 group stage</td>
+<td>royal league group stage\ndanish league cup winner</td>
+</tr>
+<tr>
+<td>2006-07</td>
+<td>6</td>
+<td>2006-07 superliga</td>
+<td>morten rasmussen (15)</td>
+<td>4th round</td>
+<td>ec3 1st round</td>
+<td>royal league winner\ndanish league cup winner</td>
+</tr>
+<tr>
+<td>2007-08</td>
+<td>8</td>
+<td>2007-08 superliga</td>
+<td>morten rasmussen (7)\nmartin ericsson (7)</td>
+<td>winner</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2008-09</td>
+<td>3</td>
+<td>2008-09 superliga</td>
+<td>morten rasmussen (9)\nalexander farnerud (9)\nousman jallow (9)</td>
+<td>semi-final</td>
+<td>ec3 1st round</td>
+<td></td>
+</tr>
+<tr>
+<td>2009-10</td>
+<td>3</td>
+<td>2009-10 superliga</td>
+<td>morten rasmussen (12)</td>
+<td>4th round</td>
+<td>ec3 qual play-off round</td>
+<td></td>
+</tr>
+<tr>
+<td>2010-11</td>
+<td>3</td>
+<td>2010-11 superliga</td>
+<td>michael krohn-dehli (11)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2011-12</td>
+<td>9</td>
+<td>2011-12 superliga</td>
+<td>simon makienok christoffersen (10)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Split the values in the 'league_ntop_scorer' column to separate the player names and their corresponding streak of seasons.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>league_ntop_scorer</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">michael laudrup (15)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">brian chrøis (12)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">jens kolding (11)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">claus nielsen (17)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">claus nielsen (16)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">claus nielsen (20)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">bent christensen (21)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">bent christensen (10)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">bent christensen (17)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">bent christensen (11)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">kim vilfort (9)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">kim vilfort (10)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">mark strudal (13)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">mark strudal (12)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">peter møller (15)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">peter møller (22)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">ebbe sand (28)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">ebbe sand (19)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">bent christensen (13)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">peter graulund (21)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">peter madsen (22)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">mattias jonson (11)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">thomas kahlenberg (11)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">thomas kahlenberg (13)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">johan elmander (13)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">morten rasmussen (15)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">morten rasmussen (7)\nmartin ericsson (7)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">morten rasmussen (9)\nalexander farnerud (9)\nousman jallow (9)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">morten rasmussen (12)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">michael krohn-dehli (11)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">simon makienok christoffersen (10)</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Calculate the length of each player's streak of seasons as top scorer.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>player_name</td>
+<td>streak_of_seasons</td>
+</tr>
+<tr>
+<td>michael laudrup</td>
+<td>15</td>
+</tr>
+<tr>
+<td>brian chrøis</td>
+<td>12</td>
+</tr>
+<tr>
+<td>jens kolding</td>
+<td>11</td>
+</tr>
+<tr>
+<td>claus nielsen</td>
+<td>17</td>
+</tr>
+<tr>
+<td>claus nielsen</td>
+<td>16</td>
+</tr>
+<tr>
+<td>claus nielsen</td>
+<td>20</td>
+</tr>
+<tr>
+<td>bent christensen</td>
+<td>21</td>
+</tr>
+<tr>
+<td>bent christensen</td>
+<td>10</td>
+</tr>
+<tr>
+<td>bent christensen</td>
+<td>17</td>
+</tr>
+<tr>
+<td>bent christensen</td>
+<td>11</td>
+</tr>
+<tr>
+<td>kim vilfort</td>
+<td>9</td>
+</tr>
+<tr>
+<td>kim vilfort</td>
+<td>10</td>
+</tr>
+<tr>
+<td>mark strudal</td>
+<td>13</td>
+</tr>
+<tr>
+<td>mark strudal</td>
+<td>12</td>
+</tr>
+<tr>
+<td>peter møller</td>
+<td>15</td>
+</tr>
+<tr>
+<td>peter møller</td>
+<td>22</td>
+</tr>
+<tr>
+<td>ebbe sand</td>
+<td>28</td>
+</tr>
+<tr>
+<td>ebbe sand</td>
+<td>19</td>
+</tr>
+<tr>
+<td>bent christensen</td>
+<td>13</td>
+</tr>
+<tr>
+<td>peter graulund</td>
+<td>21</td>
+</tr>
+<tr>
+<td>peter madsen</td>
+<td>22</td>
+</tr>
+<tr>
+<td>mattias jonson</td>
+<td>11</td>
+</tr>
+<tr>
+<td>thomas kahlenberg</td>
+<td>11</td>
+</tr>
+<tr>
+<td>thomas kahlenberg</td>
+<td>13</td>
+</tr>
+<tr>
+<td>johan elmander</td>
+<td>13</td>
+</tr>
+<tr>
+<td>morten rasmussen</td>
+<td>15</td>
+</tr>
+<tr>
+<td>morten rasmussen</td>
+<td>7</td>
+</tr>
+<tr>
+<td>morten rasmussen</td>
+<td>9</td>
+</tr>
+<tr>
+<td>morten rasmussen</td>
+<td>12</td>
+</tr>
+<tr>
+<td>michael krohn-dehli</td>
+<td>11</td>
+</tr>
+<tr>
+<td>simon makienok christoffersen</td>
+<td>10</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Order the table by the length of the streak of seasons in descending order.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>player_name</td>
+<td>longest_streak</td>
+</tr>
+<tr>
+<td>bent christensen</td>
+<td><span class="highlighted-cell" title="Used in transformation">21</span></td>
+</tr>
+<tr>
+<td>brian chrøis</td>
+<td><span class="highlighted-cell" title="Used in transformation">12</span></td>
+</tr>
+<tr>
+<td>claus nielsen</td>
+<td><span class="highlighted-cell" title="Used in transformation">20</span></td>
+</tr>
+<tr>
+<td>ebbe sand</td>
+<td><span class="highlighted-cell" title="Used in transformation">28</span></td>
+</tr>
+<tr>
+<td>jens kolding</td>
+<td><span class="highlighted-cell" title="Used in transformation">11</span></td>
+</tr>
+<tr>
+<td>johan elmander</td>
+<td><span class="highlighted-cell" title="Used in transformation">13</span></td>
+</tr>
+<tr>
+<td>kim vilfort</td>
+<td><span class="highlighted-cell" title="Used in transformation">10</span></td>
+</tr>
+<tr>
+<td>mark strudal</td>
+<td><span class="highlighted-cell" title="Used in transformation">13</span></td>
+</tr>
+<tr>
+<td>mattias jonson</td>
+<td><span class="highlighted-cell" title="Used in transformation">11</span></td>
+</tr>
+<tr>
+<td>michael krohn-dehli</td>
+<td><span class="highlighted-cell" title="Used in transformation">11</span></td>
+</tr>
+<tr>
+<td>michael laudrup</td>
+<td><span class="highlighted-cell" title="Used in transformation">15</span></td>
+</tr>
+<tr>
+<td>morten rasmussen</td>
+<td><span class="highlighted-cell" title="Used in transformation">15</span></td>
+</tr>
+<tr>
+<td>peter graulund</td>
+<td><span class="highlighted-cell" title="Used in transformation">21</span></td>
+</tr>
+<tr>
+<td>peter madsen</td>
+<td><span class="highlighted-cell" title="Used in transformation">22</span></td>
+</tr>
+<tr>
+<td>peter møller</td>
+<td><span class="highlighted-cell" title="Used in transformation">22</span></td>
+</tr>
+<tr>
+<td>simon makienok christoffersen</td>
+<td><span class="highlighted-cell" title="Used in transformation">10</span></td>
+</tr>
+<tr>
+<td>thomas kahlenberg</td>
+<td><span class="highlighted-cell" title="Used in transformation">13</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 5: Select row number 1.</div>
+<div id="step-3" class="content">
+<table>
+<tr>
+<td>player_name</td>
+<td>longest_streak</td>
+</tr>
+<tr>
+<td>ebbe sand</td>
+<td>28</td>
+</tr>
+<tr>
+<td>peter madsen</td>
+<td>22</td>
+</tr>
+<tr>
+<td>peter møller</td>
+<td>22</td>
+</tr>
+<tr>
+<td>bent christensen</td>
+<td>21</td>
+</tr>
+<tr>
+<td>peter graulund</td>
+<td>21</td>
+</tr>
+<tr>
+<td>claus nielsen</td>
+<td>20</td>
+</tr>
+<tr>
+<td>michael laudrup</td>
+<td>15</td>
+</tr>
+<tr>
+<td>morten rasmussen</td>
+<td>15</td>
+</tr>
+<tr>
+<td>johan elmander</td>
+<td>13</td>
+</tr>
+<tr>
+<td>mark strudal</td>
+<td>13</td>
+</tr>
+<tr>
+<td>thomas kahlenberg</td>
+<td>13</td>
+</tr>
+<tr>
+<td>brian chrøis</td>
+<td>12</td>
+</tr>
+<tr>
+<td>jens kolding</td>
+<td>11</td>
+</tr>
+<tr>
+<td>mattias jonson</td>
+<td>11</td>
+</tr>
+<tr>
+<td>michael krohn-dehli</td>
+<td>11</td>
+</tr>
+<tr>
+<td>kim vilfort</td>
+<td>10</td>
+</tr>
+<tr>
+<td>simon makienok christoffersen</td>
+<td>10</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 6: Select the player name from the selected row.</div>
+<div id="step-4" class="content">
+<table>
+<tr>
+<td>player_name</td>
+<td>longest_streak</td>
+</tr>
+<tr>
+<td>ebbe sand</td>
+<td>28</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>player_name</td>
+</tr>
+<tr>
+<td>ebbe sand</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['ebbe sand']]</h3>
+</body></html>

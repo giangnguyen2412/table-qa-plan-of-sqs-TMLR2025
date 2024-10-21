@@ -1,0 +1,70 @@
+************************************************************************************************************************
+Sample 3505 - Plan 1: Query: what year did morocco win the largest amount of medals during the summer games?
+Sample 3505 - Plan 1: Groundtruth: ['2008']
+Sample 3505 - Plan 1: X-Original table pd: 
+            games athletes  gold  silver  bronze  total rank
+0      1988 seoul       14     0       0       1      1   48
+1  1992 barcelona        5     0       0       0      0    –
+2    1996 atlanta        4     0       0       0      0    –
+3     2000 sydney        7     0       0       0      0    –
+4     2004 athens       10     2       4       0      6   42
+5    2008 beijing       18     4       1       2      7   32
+6     2012 london       31     3       0       3      6   37
+7           total    total     9       5       6     20   54
+Sample 3505 - Plan 1: Caption: none
+Sample 3505 - Plan 1: Original table: [['games', 'athletes', 'gold', 'silver', 'bronze', 'total', 'rank'], ['1988 seoul', '14', '0', '0', '1', '1', '48'], ['1992 barcelona', '5', '0', '0', '0', '0', '–'], ['1996 atlanta', '4', '0', '0', '0', '0', '–'], ['2000 sydney', '7', '0', '0', '0', '0', '–'], ['2004 athens', '10', '2', '4', '0', '6', '42'], ['2008 beijing', '18', '4', '1', '2', '7', '32'], ['2012 london', '31', '3', '0', '3', '6', '37'], ['total', 'total', '9', '5', '6', '20', '54']]
+########################################################################################################################
+Sample 3505 - Plan 1: Operation 1: Select rows where 'rank' is not equal to '-'.
+Sample 3505 - Plan 1: Selected indices: [[4, 6], [0, 6], [7, 6], [2, 6], [5, 6], [3, 6], [6, 6], [1, 6]]
+Sample 3505 - Plan 1: X-Table after operation df:
+            games athletes  gold  silver  bronze  total rank
+0      1988 seoul       14     0       0       1      1   48
+1  1992 barcelona        5     0       0       0      0    –
+2    1996 atlanta        4     0       0       0      0    –
+3     2000 sydney        7     0       0       0      0    –
+4     2004 athens       10     2       4       0      6   42
+5    2008 beijing       18     4       1       2      7   32
+6     2012 london       31     3       0       3      6   37
+7           total    total     9       5       6     20   54
+Sample 3505 - Plan 1: Table after operation: [['games', 'athletes', 'gold', 'silver', 'bronze', 'total', 'rank'], ['1988 seoul', '14', 0, 0, 1, 1, '48'], ['1992 barcelona', '5', 0, 0, 0, 0, '–'], ['1996 atlanta', '4', 0, 0, 0, 0, '–'], ['2000 sydney', '7', 0, 0, 0, 0, '–'], ['2004 athens', '10', 2, 4, 0, 6, '42'], ['2008 beijing', '18', 4, 1, 2, 7, '32'], ['2012 london', '31', 3, 0, 3, 6, '37'], ['total', 'total', 9, 5, 6, 20, '54']]
+########################################################################################################################
+Sample 3505 - Plan 1: Operation 2: Select rows where 'gold', 'silver', and 'bronze' are greater than 0.
+Sample 3505 - Plan 1: Selected indices: [[7, 4], [5, 4], [7, 3], [7, 2], [5, 3], [5, 2]]
+Sample 3505 - Plan 1: X-Table after operation df:
+          games athletes  gold  silver  bronze  total  rank
+0  2008 beijing       18     4       1       2      7    32
+1         total    total     9       5       6     20    54
+Sample 3505 - Plan 1: Table after operation: [['games', 'athletes', 'gold', 'silver', 'bronze', 'total', 'rank'], ['2008 beijing', '18', 4, 1, 2, 7, '32'], ['total', 'total', 9, 5, 6, 20, '54']]
+########################################################################################################################
+Sample 3505 - Plan 1: Operation 3: Calculate the total number of medals for each row by summing the 'gold', 'silver', and 'bronze' columns.
+Sample 3505 - Plan 1: Selected indices: []
+Sample 3505 - Plan 1: X-Table after operation df:
+          games athletes  gold  silver  bronze  total_medals  rank
+0  2008 beijing       18     4       1       2             7    32
+1         total    total     9       5       6            20    54
+Sample 3505 - Plan 1: Table after operation: [['games', 'athletes', 'gold', 'silver', 'bronze', 'total_medals', 'rank'], ['2008 beijing', '18', 4, 1, 2, 7, 32], ['total', 'total', 9, 5, 6, 20, 54]]
+########################################################################################################################
+Sample 3505 - Plan 1: Operation 4: Order the table by the total number of medals in descending order.
+Sample 3505 - Plan 1: Selected indices: [[0, 5], [1, 5]]
+Sample 3505 - Plan 1: X-Table after operation df:
+          games athletes  gold  silver  bronze  total_medals  rank
+0         total    total     9       5       6            20    54
+1  2008 beijing       18     4       1       2             7    32
+Sample 3505 - Plan 1: Table after operation: [['games', 'athletes', 'gold', 'silver', 'bronze', 'total_medals', 'rank'], ['total', 'total', 9, 5, 6, 20, 54], ['2008 beijing', '18', 4, 1, 2, 7, 32]]
+########################################################################################################################
+Sample 3505 - Plan 1: Operation 5: Select row number 1.
+Sample 3505 - Plan 1: Selected indices: []
+Sample 3505 - Plan 1: X-Table after operation df:
+   games athletes  gold  silver  bronze  total_medals  rank
+0  total    total     9       5       6            20    54
+Sample 3505 - Plan 1: Table after operation: [['games', 'athletes', 'gold', 'silver', 'bronze', 'total_medals', 'rank'], ['total', 'total', 9, 5, 6, 20, 54]]
+########################################################################################################################
+Sample 3505 - Plan 1: Operation 6: Select the 'games' column.
+Sample 3505 - Plan 1: Selected indices: []
+Sample 3505 - Plan 1: X-Table after operation df:
+   games
+0  total
+Sample 3505 - Plan 1: Table after operation: [['games'], ['total']]
+Fall-back: FALSE
+Answer from plan 1: [['total']]
+Groundtruth: ['2008']

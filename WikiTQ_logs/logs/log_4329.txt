@@ -1,0 +1,58 @@
+************************************************************************************************************************
+Sample 4329 - Plan 1: Query: which is the last season that nicolás used an aprilia moto?
+Sample 4329 - Plan 1: Groundtruth: ['2011']
+Sample 4329 - Plan 1: X-Original table pd: 
+   season  class     moto  races  win  podiums  pole     pts position
+0    2004  125cc  aprilia      1    0        0     0       0       nc
+1    2005  125cc    derbi     13    0        0     0       1     36th
+2    2006  125cc    derbi     16    0        0     0      53     14th
+3    2007  125cc    derbi     17    0        0     0      19     22nd
+4    2008  125cc  aprilia     17    1        5     0     176      5th
+5    2009  125cc  aprilia     16    1        4     0   179.5      3rd
+6    2010  125cc  aprilia     16    3       14     1     296      2nd
+7    2011  125cc  aprilia     16    8       11     7     302      1st
+8    2012  moto2    suter     17    0        1     0      37     17th
+9    2013  moto2    suter     17    3        4     1     150      7th
+10   2014  moto2    suter      1    0        0     0      0*      nc*
+11  total                    147   16       39     9  1213.5         
+Sample 4329 - Plan 1: Caption: none
+Sample 4329 - Plan 1: Original table: [['season', 'class', 'moto', 'races', 'win', 'podiums', 'pole', 'pts', 'position'], ['2004', '125cc', 'aprilia', '1', '0', '0', '0', '0', 'nc'], ['2005', '125cc', 'derbi', '13', '0', '0', '0', '1', '36th'], ['2006', '125cc', 'derbi', '16', '0', '0', '0', '53', '14th'], ['2007', '125cc', 'derbi', '17', '0', '0', '0', '19', '22nd'], ['2008', '125cc', 'aprilia', '17', '1', '5', '0', '176', '5th'], ['2009', '125cc', 'aprilia', '16', '1', '4', '0', '179.5', '3rd'], ['2010', '125cc', 'aprilia', '16', '3', '14', '1', '296', '2nd'], ['2011', '125cc', 'aprilia', '16', '8', '11', '7', '302', '1st'], ['2012', 'moto2', 'suter', '17', '0', '1', '0', '37', '17th'], ['2013', 'moto2', 'suter', '17', '3', '4', '1', '150', '7th'], ['2014', 'moto2', 'suter', '1', '0', '0', '0', '0*', 'nc*'], ['total', '', '', '147', '16', '39', '9', '1213.5', '']]
+########################################################################################################################
+Sample 4329 - Plan 1: Operation 1: Select rows where the 'moto' column is 'aprilia'.
+Sample 4329 - Plan 1: Selected indices: [[6, 2], [4, 2], [0, 2], [7, 2], [5, 2]]
+Sample 4329 - Plan 1: X-Table after operation df:
+   season  class     moto  races  win  podiums  pole    pts position
+0    2004  125cc  aprilia      1    0        0     0    0.0       nc
+1    2008  125cc  aprilia     17    1        5     0  176.0      5th
+2    2009  125cc  aprilia     16    1        4     0  179.5      3rd
+3    2010  125cc  aprilia     16    3       14     1  296.0      2nd
+4    2011  125cc  aprilia     16    8       11     7  302.0      1st
+Sample 4329 - Plan 1: Table after operation: [['season', 'class', 'moto', 'races', 'win', 'podiums', 'pole', 'pts', 'position'], ['2004', '125cc', 'aprilia', 1, 0, 0, 0, '0', 'nc'], ['2008', '125cc', 'aprilia', 17, 1, 5, 0, '176', '5th'], ['2009', '125cc', 'aprilia', 16, 1, 4, 0, '179.5', '3rd'], ['2010', '125cc', 'aprilia', 16, 3, 14, 1, '296', '2nd'], ['2011', '125cc', 'aprilia', 16, 8, 11, 7, '302', '1st']]
+########################################################################################################################
+Sample 4329 - Plan 1: Operation 2: Order the table by the 'season' column in descending order.
+Sample 4329 - Plan 1: Selected indices: [[4, 0], [0, 0], [2, 0], [3, 0], [1, 0]]
+Sample 4329 - Plan 1: X-Table after operation df:
+   season  class     moto  races  win  podiums  pole    pts position
+0    2011  125cc  aprilia     16    8       11     7  302.0      1st
+1    2010  125cc  aprilia     16    3       14     1  296.0      2nd
+2    2009  125cc  aprilia     16    1        4     0  179.5      3rd
+3    2008  125cc  aprilia     17    1        5     0  176.0      5th
+4    2004  125cc  aprilia      1    0        0     0    0.0       nc
+Sample 4329 - Plan 1: Table after operation: [['season', 'class', 'moto', 'races', 'win', 'podiums', 'pole', 'pts', 'position'], [2011, '125cc', 'aprilia', 16, 8, 11, 7, 302.0, '1st'], [2010, '125cc', 'aprilia', 16, 3, 14, 1, 296.0, '2nd'], [2009, '125cc', 'aprilia', 16, 1, 4, 0, 179.5, '3rd'], [2008, '125cc', 'aprilia', 17, 1, 5, 0, 176.0, '5th'], [2004, '125cc', 'aprilia', 1, 0, 0, 0, 0.0, 'nc']]
+########################################################################################################################
+Sample 4329 - Plan 1: Operation 3: Select the first row.
+Sample 4329 - Plan 1: Selected indices: []
+Sample 4329 - Plan 1: X-Table after operation df:
+   season  class     moto  races  win  podiums  pole    pts position
+0    2011  125cc  aprilia     16    8       11     7  302.0      1st
+Sample 4329 - Plan 1: Table after operation: [['season', 'class', 'moto', 'races', 'win', 'podiums', 'pole', 'pts', 'position'], [2011, '125cc', 'aprilia', 16, 8, 11, 7, 302.0, '1st']]
+########################################################################################################################
+Sample 4329 - Plan 1: Operation 4: Select the 'season' column.
+Sample 4329 - Plan 1: Selected indices: []
+Sample 4329 - Plan 1: X-Table after operation df:
+   season
+0    2011
+Sample 4329 - Plan 1: Table after operation: [['season'], [2011]]
+Fall-back: FALSE
+Answer from plan 1: [[2011]]
+Groundtruth: ['2011']

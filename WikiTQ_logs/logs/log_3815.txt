@@ -1,0 +1,63 @@
+************************************************************************************************************************
+Sample 3815 - Plan 1: Query: who was the next pick after rich yonakor?
+Sample 3815 - Plan 1: Groundtruth: ['Calvin Roberts']
+Sample 3815 - Plan 1: X-Original table pd: 
+    round  pick          player position    nationality  \
+0       1    15  reggie johnson     pf/c  united states   
+1       2    39   michael miley           united states   
+2       3    60    lavon mercer           united states   
+3       3    61    rich yonakor           united states   
+4       4    83  calvin roberts           united states   
+5       5   107        gib hinz           united states   
+6       6   129     dean uthoff           united states   
+7       7   153      allan zahn           united states   
+8       8   172     bill bailey           united states   
+9       9   192     al williams           united states   
+10     10   209    steve schall           united states   
+
+               school_club_team  
+0                     tennessee  
+1   california state-long beach  
+2                       georgia  
+3                north carolina  
+4    california state-fullerton  
+5          wisconsin-eau claire  
+6                    iowa state  
+7                      arkansas  
+8            texas pan-american  
+9             north texas state  
+10                     arkansas  
+Sample 3815 - Plan 1: Caption: none
+Sample 3815 - Plan 1: Original table: [['round', 'pick', 'player', 'position', 'nationality', 'school_club_team'], ['1', '15', 'reggie johnson', 'pf/c', 'united states', 'tennessee'], ['2', '39', 'michael miley', '', 'united states', 'california state-long beach'], ['3', '60', 'lavon mercer', '', 'united states', 'georgia'], ['3', '61', 'rich yonakor', '', 'united states', 'north carolina'], ['4', '83', 'calvin roberts', '', 'united states', 'california state-fullerton'], ['5', '107', 'gib hinz', '', 'united states', 'wisconsin-eau claire'], ['6', '129', 'dean uthoff', '', 'united states', 'iowa state'], ['7', '153', 'allan zahn', '', 'united states', 'arkansas'], ['8', '172', 'bill bailey', '', 'united states', 'texas pan-american'], ['9', '192', 'al williams', '', 'united states', 'north texas state'], ['10', '209', 'steve schall', '', 'united states', 'arkansas']]
+########################################################################################################################
+Sample 3815 - Plan 1: Operation 1: Select the row where the 'pick' is greater than the pick of 'rich yonakor'.
+Sample 3815 - Plan 1: Selected indices: [[6, 2], [7, 1], [8, 1], [6, 1], [10, 1], [5, 1], [4, 2], [9, 2], [7, 2], [8, 2], [9, 1], [4, 1], [10, 2], [5, 2]]
+Sample 3815 - Plan 1: X-Table after operation df:
+   round  pick          player  position    nationality  \
+0      4    83  calvin roberts       NaN  united states   
+1      5   107        gib hinz       NaN  united states   
+2      6   129     dean uthoff       NaN  united states   
+3      7   153      allan zahn       NaN  united states   
+4      8   172     bill bailey       NaN  united states   
+5      9   192     al williams       NaN  united states   
+6     10   209    steve schall       NaN  united states   
+
+             school_club_team  
+0  california state-fullerton  
+1        wisconsin-eau claire  
+2                  iowa state  
+3                    arkansas  
+4          texas pan-american  
+5           north texas state  
+6                    arkansas  
+Sample 3815 - Plan 1: Table after operation: [['round', 'pick', 'player', 'position', 'nationality', 'school_club_team'], [4, 83, 'calvin roberts', '', 'united states', 'california state-fullerton'], [5, 107, 'gib hinz', '', 'united states', 'wisconsin-eau claire'], [6, 129, 'dean uthoff', '', 'united states', 'iowa state'], [7, 153, 'allan zahn', '', 'united states', 'arkansas'], [8, 172, 'bill bailey', '', 'united states', 'texas pan-american'], [9, 192, 'al williams', '', 'united states', 'north texas state'], [10, 209, 'steve schall', '', 'united states', 'arkansas']]
+########################################################################################################################
+Sample 3815 - Plan 1: Operation 2: Select the 'player' column from the selected row.
+Sample 3815 - Plan 1: Selected indices: []
+Sample 3815 - Plan 1: X-Table after operation df:
+           player
+0  calvin roberts
+Sample 3815 - Plan 1: Table after operation: [['player'], ['calvin roberts']]
+Fall-back: FALSE
+Answer from plan 1: [['calvin roberts']]
+Groundtruth: ['Calvin Roberts']

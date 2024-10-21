@@ -1,0 +1,75 @@
+************************************************************************************************************************
+Sample 712 - Plan 1: Query: players who scored at most 1 total goal
+Sample 712 - Plan 1: Groundtruth: ['Cahill', 'Colosimo', 'Culina', 'Elrich', 'Griffiths', 'Skoko', 'Zdrilic']
+Sample 712 - Plan 1: X-Original table pd: 
+          player friendlies fifa_confederations_cup fifa_world_cup_qual_  \
+0         aloisi          1                       4                    -   
+1      bresciano          2                       -                    1   
+2       thompson          1                       -                    2   
+3         viduka          1                       -                    2   
+4   chipperfield          1                       -                    1   
+5        emerton          -                       -                    2   
+6        milicic          2                       -                    -   
+7         cahill          -                       -                    1   
+8       colosimo          1                       -                    -   
+9         culina          -                       -                    1   
+10        elrich          1                       -                    -   
+11     griffiths          1                       -                    -   
+12         skoko          -                       1                    -   
+13       zdrilic          1                       -                    -   
+
+    total_goals  
+0             5  
+1             3  
+2             3  
+3             3  
+4             2  
+5             2  
+6             2  
+7             1  
+8             1  
+9             1  
+10            1  
+11            1  
+12            1  
+13            1  
+Sample 712 - Plan 1: Caption: none
+Sample 712 - Plan 1: Original table: [['player', 'friendlies', 'fifa_confederations_cup', 'fifa_world_cup_qual_', 'total_goals'], ['aloisi', '1', '4', '-', '5'], ['bresciano', '2', '-', '1', '3'], ['thompson', '1', '-', '2', '3'], ['viduka', '1', '-', '2', '3'], ['chipperfield', '1', '-', '1', '2'], ['emerton', '-', '-', '2', '2'], ['milicic', '2', '-', '-', '2'], ['cahill', '-', '-', '1', '1'], ['colosimo', '1', '-', '-', '1'], ['culina', '-', '-', '1', '1'], ['elrich', '1', '-', '-', '1'], ['griffiths', '1', '-', '-', '1'], ['skoko', '-', '1', '-', '1'], ['zdrilic', '1', '-', '-', '1']]
+########################################################################################################################
+Sample 712 - Plan 1: Operation 1: Select rows where the 'total_goals' column is less than or equal to 1.
+Sample 712 - Plan 1: Selected indices: [[12, 4], [7, 4], [13, 4], [8, 4], [10, 4], [11, 4], [9, 4]]
+Sample 712 - Plan 1: X-Table after operation df:
+      player friendlies fifa_confederations_cup fifa_world_cup_qual_  \
+0     cahill          -                       -                    1   
+1   colosimo          1                       -                    -   
+2     culina          -                       -                    1   
+3     elrich          1                       -                    -   
+4  griffiths          1                       -                    -   
+5      skoko          -                       1                    -   
+6    zdrilic          1                       -                    -   
+
+   total_goals  
+0            1  
+1            1  
+2            1  
+3            1  
+4            1  
+5            1  
+6            1  
+Sample 712 - Plan 1: Table after operation: [['player', 'friendlies', 'fifa_confederations_cup', 'fifa_world_cup_qual_', 'total_goals'], ['cahill', '-', '-', '1', 1], ['colosimo', '1', '-', '-', 1], ['culina', '-', '-', '1', 1], ['elrich', '1', '-', '-', 1], ['griffiths', '1', '-', '-', 1], ['skoko', '-', '1', '-', 1], ['zdrilic', '1', '-', '-', 1]]
+########################################################################################################################
+Sample 712 - Plan 1: Operation 2: Select the 'player' column.
+Sample 712 - Plan 1: Selected indices: []
+Sample 712 - Plan 1: X-Table after operation df:
+      player
+0     cahill
+1   colosimo
+2     culina
+3     elrich
+4  griffiths
+5      skoko
+6    zdrilic
+Sample 712 - Plan 1: Table after operation: [['player'], ['cahill'], ['colosimo'], ['culina'], ['elrich'], ['griffiths'], ['skoko'], ['zdrilic']]
+Fall-back: FALSE
+Answer from plan 1: [['cahill'], ['colosimo'], ['culina'], ['elrich'], ['griffiths'], ['skoko'], ['zdrilic']]
+Groundtruth: ['Cahill', 'Colosimo', 'Culina', 'Elrich', 'Griffiths', 'Skoko', 'Zdrilic']

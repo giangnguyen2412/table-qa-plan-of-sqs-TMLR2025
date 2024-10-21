@@ -1,0 +1,58 @@
+************************************************************************************************************************
+Sample 2980 - Plan 1: Query: which political lieutenant left office in the 1990s and was in the district of roverbal?
+Sample 2980 - Plan 1: Groundtruth: ['Benoît Bouchard']
+Sample 2980 - Plan 1: X-Original table pd: 
+  political_lieutenant                                   district_n_area_  \
+0   georges-henri héon                          argenteuil\n(laurentides)   
+1          léon balcer                         trois-rivières\n(mauricie)   
+2     marcel faribault                                               none   
+3        claude wagner                      saint-hyacinthe\n(montérégie)   
+4      lucien bouchard          lac-saint-jean\n(saguenay-lac-saint-jean)   
+5      benoît bouchard                roberval\n(saguenay-lac-saint-jean)   
+6       monique landry           blainville—deux-montagnes\n(laurentides)   
+7        andré bachand  richmond—arthabaska\n(centre-du-québec &\neast...   
+
+   took_office  left_office                 party_leader  
+0         1949         1949               george a. drew  
+1         1957         1965      john george diefenbaker  
+2         1967         1968             robert stanfield  
+3         1972         1978  robert stanfield\njoe clark  
+4         1988         1990               brian mulroney  
+5         1990         1993               brian mulroney  
+6         1993         1993                 kim campbell  
+7         1998         2004      joe clark\npeter mackay  
+Sample 2980 - Plan 1: Caption: none
+Sample 2980 - Plan 1: Original table: [['political_lieutenant', 'district_n_area_', 'took_office', 'left_office', 'party_leader'], ['georges-henri héon', 'argenteuil\\n(laurentides)', '1949', '1949', 'george a. drew'], ['léon balcer', 'trois-rivières\\n(mauricie)', '1957', '1965', 'john george diefenbaker'], ['marcel faribault', 'none', '1967', '1968', 'robert stanfield'], ['claude wagner', 'saint-hyacinthe\\n(montérégie)', '1972', '1978', 'robert stanfield\\njoe clark'], ['lucien bouchard', 'lac-saint-jean\\n(saguenay-lac-saint-jean)', '1988', '1990', 'brian mulroney'], ['benoît bouchard', 'roberval\\n(saguenay-lac-saint-jean)', '1990', '1993', 'brian mulroney'], ['monique landry', 'blainville—deux-montagnes\\n(laurentides)', '1993', '1993', 'kim campbell'], ['andré bachand', 'richmond—arthabaska\\n(centre-du-québec &\\neastern townships)', '1998', '2004', 'joe clark\\npeter mackay']]
+########################################################################################################################
+Sample 2980 - Plan 1: Operation 1: Select rows where 'left_office' is in the 1990s.
+Sample 2980 - Plan 1: Selected indices: [[5, 3], [6, 3], [4, 3]]
+Sample 2980 - Plan 1: X-Table after operation df:
+  political_lieutenant                           district_n_area_  \
+0      lucien bouchard  lac-saint-jean\n(saguenay-lac-saint-jean)   
+1      benoît bouchard        roberval\n(saguenay-lac-saint-jean)   
+2       monique landry   blainville—deux-montagnes\n(laurentides)   
+
+   took_office  left_office    party_leader  
+0         1988         1990  brian mulroney  
+1         1990         1993  brian mulroney  
+2         1993         1993    kim campbell  
+Sample 2980 - Plan 1: Table after operation: [['political_lieutenant', 'district_n_area_', 'took_office', 'left_office', 'party_leader'], ['lucien bouchard', 'lac-saint-jean\\n(saguenay-lac-saint-jean)', 1988, 1990, 'brian mulroney'], ['benoît bouchard', 'roberval\\n(saguenay-lac-saint-jean)', 1990, 1993, 'brian mulroney'], ['monique landry', 'blainville—deux-montagnes\\n(laurentides)', 1993, 1993, 'kim campbell']]
+########################################################################################################################
+Sample 2980 - Plan 1: Operation 2: Select rows where 'district_n_area_' is 'roverbal'.
+Sample 2980 - Plan 1: Selected indices: []
+Sample 2980 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [political_lieutenant, district_n_area_, took_office, left_office, party_leader]
+Index: []
+Sample 2980 - Plan 1: Table after operation: [['political_lieutenant', 'district_n_area_', 'took_office', 'left_office', 'party_leader']]
+########################################################################################################################
+Sample 2980 - Plan 1: Operation 3: Select the 'political_lieutenant' column.
+Sample 2980 - Plan 1: Selected indices: []
+Sample 2980 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [political_lieutenant]
+Index: []
+Sample 2980 - Plan 1: Table after operation: [['political_lieutenant']]
+Fall-back: TRUE
+Answer from plan 1: [['benoît bouchard']]
+Groundtruth: ['Benoît Bouchard']

@@ -1,0 +1,49 @@
+************************************************************************************************************************
+Sample 1819 - Plan 1: Query: what is the total number of races in which jonathan webb was the winner?
+Sample 1819 - Plan 1: Groundtruth: ['4']
+Sample 1819 - Plan 1: X-Original table pd: 
+   rd_                          event                    circuit  \
+0    1                    clipsal 500    adelaide street circuit   
+1    2                         winton       winton motor raceway   
+2    3          dunlop townsville 400  townsville street circuit   
+3    4   norton 360 sandown challenge            sandown raceway   
+4    5    queensland house & land 300         queensland raceway   
+5    6  supercheap auto bathurst 1000     mount panorama circuit   
+6    7             sydney telstra 500    homebush street circuit   
+
+                    location          date         winner  
+0  adelaide, south australia     19-22 mar  david russell  
+1          benalla, victoria       1-3 may  jonathon webb  
+2     townsville, queensland     10-12 jul   james moffat  
+3        melbourne, victoria  31 jul-aug 2  david russell  
+4        ipswich, queensland     21-23 aug  jonathon webb  
+5  bathurst, new south wales      8-11 oct  jonathon webb  
+6    sydney, new south wales       4-6 dec  jonathon webb  
+Sample 1819 - Plan 1: Caption: none
+Sample 1819 - Plan 1: Original table: [['rd_', 'event', 'circuit', 'location', 'date', 'winner'], ['1', 'clipsal 500', 'adelaide street circuit', 'adelaide, south australia', '19-22 mar', 'david russell'], ['2', 'winton', 'winton motor raceway', 'benalla, victoria', '1-3 may', 'jonathon webb'], ['3', 'dunlop townsville 400', 'townsville street circuit', 'townsville, queensland', '10-12 jul', 'james moffat'], ['4', 'norton 360 sandown challenge', 'sandown raceway', 'melbourne, victoria', '31 jul-aug 2', 'david russell'], ['5', 'queensland house & land 300', 'queensland raceway', 'ipswich, queensland', '21-23 aug', 'jonathon webb'], ['6', 'supercheap auto bathurst 1000', 'mount panorama circuit', 'bathurst, new south wales', '8-11 oct', 'jonathon webb'], ['7', 'sydney telstra 500', 'homebush street circuit', 'sydney, new south wales', '4-6 dec', 'jonathon webb']]
+########################################################################################################################
+Sample 1819 - Plan 1: Operation 1: Select rows where the 'winner' is 'jonathon webb'.
+Sample 1819 - Plan 1: Selected indices: [[4, 5], [5, 5], [6, 5], [1, 5]]
+Sample 1819 - Plan 1: X-Table after operation df:
+   rd_                          event                  circuit  \
+0    2                         winton     winton motor raceway   
+1    5    queensland house & land 300       queensland raceway   
+2    6  supercheap auto bathurst 1000   mount panorama circuit   
+3    7             sydney telstra 500  homebush street circuit   
+
+                    location       date         winner  
+0          benalla, victoria    1-3 may  jonathon webb  
+1        ipswich, queensland  21-23 aug  jonathon webb  
+2  bathurst, new south wales   8-11 oct  jonathon webb  
+3    sydney, new south wales    4-6 dec  jonathon webb  
+Sample 1819 - Plan 1: Table after operation: [['rd_', 'event', 'circuit', 'location', 'date', 'winner'], [2, 'winton', 'winton motor raceway', 'benalla, victoria', '1-3 may', 'jonathon webb'], [5, 'queensland house & land 300', 'queensland raceway', 'ipswich, queensland', '21-23 aug', 'jonathon webb'], [6, 'supercheap auto bathurst 1000', 'mount panorama circuit', 'bathurst, new south wales', '8-11 oct', 'jonathon webb'], [7, 'sydney telstra 500', 'homebush street circuit', 'sydney, new south wales', '4-6 dec', 'jonathon webb']]
+########################################################################################################################
+Sample 1819 - Plan 1: Operation 2: Count the number of rows.
+Sample 1819 - Plan 1: Selected indices: []
+Sample 1819 - Plan 1: X-Table after operation df:
+   row_count
+0          4
+Sample 1819 - Plan 1: Table after operation: [['row_count'], [4]]
+Fall-back: FALSE
+Answer from plan 1: [[4]]
+Groundtruth: ['4']

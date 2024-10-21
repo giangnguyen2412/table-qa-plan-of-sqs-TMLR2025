@@ -1,0 +1,1241 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> the total number of distributors that supply ppc</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'ppc' column is 'yes' or 'no'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>distribution</td>
+<td>x86</td>
+<td>x86_64</td>
+<td>ia64</td>
+<td>ppc</td>
+<td>ppc64</td>
+<td>sparc32</td>
+<td>sparc64</td>
+<td>arm</td>
+<td>hppa</td>
+<td>mips</td>
+<td>sh</td>
+<td>s390</td>
+<td>s390x</td>
+<td>alpha</td>
+<td>m68k</td>
+</tr>
+<tr>
+<td>arch linux</td>
+<td>yes (>=i686)</td>
+<td>yes</td>
+<td>no</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">discontinued unofficial port</span></td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>yes\nunofficial</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">backtrack</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bodhi linux</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">boss linux</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">?</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+</tr>
+<tr>
+<td>centos</td>
+<td>yes</td>
+<td>yes</td>
+<td>discontinued\n3.5-3.8\n4.1-4.7</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">beta\n4.0</span></td>
+<td>no</td>
+<td>beta\n4.2</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>discontinued\n3.5-3.8\n4.1-4.7</td>
+<td>discontinued\n3.5-3.8\n4.1-4.7</td>
+<td>discontinued\n4.2-4.3</td>
+<td>no</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chakra</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">?</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">crux</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+</tr>
+<tr>
+<td>debian</td>
+<td>yes</td>
+<td>yes\n4.0+</td>
+<td>discontinued\n3.0-7.0</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes\n2.2+</span></td>
+<td>yes</td>
+<td>discontinued on lenny</td>
+<td>yes</td>
+<td>yes\n2.2+</td>
+<td>discontinued\n3.0-5.0</td>
+<td>yes\n3.0+</td>
+<td>in progress</td>
+<td>discontinued\n3.0-7</td>
+<td>yes\n7+</td>
+<td>discontinued\n2.1-5.0</td>
+<td>discontinued\n2.0-3.1</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fedora</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">discontinued from\nfedora 9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">still active but slow in development, last available is\nfedora 12\n, working on\nfedora 18</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">inactive from\nfedora 13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">finnix</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">frugalware</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gentoo</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kali linux</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mepis</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mintppc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">oes2-linux</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">openelec</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">opensuse</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">partial</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">partial</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">openwrt</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">oracle linux</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">discontinued\n5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">red flag linux</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">discontinued\n3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">discontinued\n3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+</tr>
+<tr>
+<td>red hat linux</td>
+<td>yes</td>
+<td>no</td>
+<td>discontinued\n7.1-7.2</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">test release\n5.1</span></td>
+<td>no</td>
+<td>discontinued\n4.0-4.2\n5.1-6.2</td>
+<td>test release\n5.1</td>
+<td>no</td>
+<td>no</td>
+<td>test release\n5.1</td>
+<td>no</td>
+<td>discontinued\n7.2</td>
+<td>discontinued\n7.1</td>
+<td>discontinued\n2.1-7.1</td>
+<td>test release\n5.1</td>
+</tr>
+<tr>
+<td>red hat enterprise linux</td>
+<td>discontinued\n2.1-6</td>
+<td>yes\n3+</td>
+<td>discontinued\n2.1-5</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes\n3+</span></td>
+<td>yes\n3+</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>discontinued\n3-4</td>
+<td>yes\n3+</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rxart desktop</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">porteus</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">scientific linux</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">discontinued\n3-4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">shr</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">slackware</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">discontinued\n?</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">discontinued\n?</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">discontinued\n?</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">discontinued\n8.1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">source mage gnu/linux</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">suse linux enterprise server</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tor-ramdisk</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ubuntu/kubuntu/xubuntu/lubuntu</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">xbmc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yellow dog linux</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">no</span></td>
+</tr>
+<tr>
+<td>distribution</td>
+<td>x86</td>
+<td>x86-64</td>
+<td>ia64</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ppc</span></td>
+<td>ppc64</td>
+<td>sparc32</td>
+<td>sparc64</td>
+<td>arm</td>
+<td>hppa</td>
+<td>mips</td>
+<td>sh</td>
+<td>s390</td>
+<td>s390x</td>
+<td>alpha</td>
+<td>m68k</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Count the number of rows that satisfy the condition in step 1.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>distribution</td>
+<td>x86</td>
+<td>x86_64</td>
+<td>ia64</td>
+<td>ppc</td>
+<td>ppc64</td>
+<td>sparc32</td>
+<td>sparc64</td>
+<td>arm</td>
+<td>hppa</td>
+<td>mips</td>
+<td>sh</td>
+<td>s390</td>
+<td>s390x</td>
+<td>alpha</td>
+<td>m68k</td>
+</tr>
+<tr>
+<td>backtrack</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>bodhi linux</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>boss linux</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>?</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>chakra</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>?</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>crux</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>fedora</td>
+<td>yes</td>
+<td>yes</td>
+<td>discontinued from\nfedora 9</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>still active but slow in development, last available is\nfedora 12\n, working on\nfedora 18</td>
+<td>yes</td>
+<td>no</td>
+<td>inactive from\nfedora 13</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>finnix</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>frugalware</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>gentoo</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>kali linux</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>mepis</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>mintppc</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>oes2-linux</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>openelec</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>opensuse</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>partial</td>
+<td>partial</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>openwrt</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>oracle linux</td>
+<td>yes</td>
+<td>yes</td>
+<td>discontinued\n5</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>red flag linux</td>
+<td>yes</td>
+<td>yes</td>
+<td>discontinued\n3</td>
+<td>no</td>
+<td>discontinued\n3</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>rxart desktop</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>porteus</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>scientific linux</td>
+<td>yes</td>
+<td>yes</td>
+<td>discontinued\n3-4</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>shr</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>slackware</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>discontinued\n?</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>discontinued\n?</td>
+<td>discontinued\n?</td>
+<td>discontinued\n8.1</td>
+<td>no</td>
+</tr>
+<tr>
+<td>source mage gnu/linux</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>suse linux enterprise server</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>tor-ramdisk</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>ubuntu/kubuntu/xubuntu/lubuntu</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>xbmc</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>yellow dog linux</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>COUNT(*)</td>
+</tr>
+<tr>
+<td>10</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[10]]</h3>
+</body></html>

@@ -1,0 +1,1041 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which year was the first to break a 20% increase in passengers?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Extract the numerical value from the 'passenger_nchange' column then add column 'num_change' to the existing table.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>total_npassengers</td>
+<td>passenger_nchange</td>
+<td>domestic</td>
+<td>international_n_total_</td>
+<td>international_n_non_cis_</td>
+<td>cis</td>
+<td>aircraft_nlandings</td>
+<td>cargo_n_tonnes_</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">930 251</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">+2%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">698 957</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">231 294</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">155 898</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">75 396</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8 619</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">18 344</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2001</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1 028 295</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">+10,5%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">733 022</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">295 273</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">186 861</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">108 412</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9 062</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">22 178</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2002</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1 182 815</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">+15,0%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">793 295</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">389 520</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">239 461</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">150 059</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10 162</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20 153</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2003</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1 335 757</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">+12,9%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">879 665</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">456 092</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">297 421</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">158 671</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10 092</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">18 054</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2004</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1 553 628</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">+16,3%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">972 287</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">581 341</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">429 049</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">152 292</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11 816</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20 457</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2005</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1 566 792</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">+0,8%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1 006 422</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">560 370</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">429 790</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">130 580</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11 877</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11 545</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1 764 948</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">+12,7%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1 128 489</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">636 459</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">488 954</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">147 505</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13 289</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">15 519</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2007</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2 345 097</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">+32,9%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1 486 888</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">858 209</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">683 092</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">175 117</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">16 767</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">16 965</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2 529 395</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">+7,8%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1 523 102</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1 006 293</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">815 124</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">191 169</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">16 407</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">17 142</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2009</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2 169 136</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">−14,2%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1 290 639</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">878 497</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">727 718</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">150 779</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13 798</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13 585</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2010</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2 748 919</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">+26,7%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1 529 245</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1 219 674</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1 017 509</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">202 165</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">15 989</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">22 946</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2011</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3 355 883</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">+22,1%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1 856 948</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1 498 935</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1 184 771</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">314 164</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20 142</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24 890</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2012</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3 783 069</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">+12.7%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1 934 016</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1 849 053</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1 448 765</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">439 668</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">21 728</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">25 866</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2013</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4 293 002</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">+13.5%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2 180 227</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2 112 775</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">25 728</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">27 800</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Calculate the percentage increase in passengers by multiplying the 'total_npassengers' column with the 'num_change' column and adding it to the 'total_npassengers' column. Add column 'passenger_increase' to the existing table.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>total_npassengers</td>
+<td>passenger_nchange</td>
+<td>domestic</td>
+<td>international_n_total_</td>
+<td>international_n_non_cis_</td>
+<td>cis</td>
+<td>aircraft_nlandings</td>
+<td>cargo_n_tonnes_</td>
+<td>num_change</td>
+</tr>
+<tr>
+<td>2000</td>
+<td><span class="highlighted-cell" title="Used in transformation">930 251</span></td>
+<td>+2%</td>
+<td>698 957</td>
+<td>231 294</td>
+<td>155 898</td>
+<td>75 396</td>
+<td>8 619</td>
+<td>18 344</td>
+<td><span class="highlighted-cell" title="Used in transformation">2.0</span></td>
+</tr>
+<tr>
+<td>2001</td>
+<td><span class="highlighted-cell" title="Used in transformation">1 028 295</span></td>
+<td>+10,5%</td>
+<td>733 022</td>
+<td>295 273</td>
+<td>186 861</td>
+<td>108 412</td>
+<td>9 062</td>
+<td>22 178</td>
+<td><span class="highlighted-cell" title="Used in transformation">10.0</span></td>
+</tr>
+<tr>
+<td>2002</td>
+<td><span class="highlighted-cell" title="Used in transformation">1 182 815</span></td>
+<td>+15,0%</td>
+<td>793 295</td>
+<td>389 520</td>
+<td>239 461</td>
+<td>150 059</td>
+<td>10 162</td>
+<td>20 153</td>
+<td><span class="highlighted-cell" title="Used in transformation">15.0</span></td>
+</tr>
+<tr>
+<td>2003</td>
+<td><span class="highlighted-cell" title="Used in transformation">1 335 757</span></td>
+<td>+12,9%</td>
+<td>879 665</td>
+<td>456 092</td>
+<td>297 421</td>
+<td>158 671</td>
+<td>10 092</td>
+<td>18 054</td>
+<td><span class="highlighted-cell" title="Used in transformation">12.0</span></td>
+</tr>
+<tr>
+<td>2004</td>
+<td><span class="highlighted-cell" title="Used in transformation">1 553 628</span></td>
+<td>+16,3%</td>
+<td>972 287</td>
+<td>581 341</td>
+<td>429 049</td>
+<td>152 292</td>
+<td>11 816</td>
+<td>20 457</td>
+<td><span class="highlighted-cell" title="Used in transformation">16.0</span></td>
+</tr>
+<tr>
+<td>2005</td>
+<td><span class="highlighted-cell" title="Used in transformation">1 566 792</span></td>
+<td>+0,8%</td>
+<td>1 006 422</td>
+<td>560 370</td>
+<td>429 790</td>
+<td>130 580</td>
+<td>11 877</td>
+<td>11 545</td>
+<td><span class="highlighted-cell" title="Used in transformation">0.0</span></td>
+</tr>
+<tr>
+<td>2006</td>
+<td><span class="highlighted-cell" title="Used in transformation">1 764 948</span></td>
+<td>+12,7%</td>
+<td>1 128 489</td>
+<td>636 459</td>
+<td>488 954</td>
+<td>147 505</td>
+<td>13 289</td>
+<td>15 519</td>
+<td><span class="highlighted-cell" title="Used in transformation">12.0</span></td>
+</tr>
+<tr>
+<td>2007</td>
+<td><span class="highlighted-cell" title="Used in transformation">2 345 097</span></td>
+<td>+32,9%</td>
+<td>1 486 888</td>
+<td>858 209</td>
+<td>683 092</td>
+<td>175 117</td>
+<td>16 767</td>
+<td>16 965</td>
+<td><span class="highlighted-cell" title="Used in transformation">32.0</span></td>
+</tr>
+<tr>
+<td>2008</td>
+<td><span class="highlighted-cell" title="Used in transformation">2 529 395</span></td>
+<td>+7,8%</td>
+<td>1 523 102</td>
+<td>1 006 293</td>
+<td>815 124</td>
+<td>191 169</td>
+<td>16 407</td>
+<td>17 142</td>
+<td><span class="highlighted-cell" title="Used in transformation">7.0</span></td>
+</tr>
+<tr>
+<td>2009</td>
+<td><span class="highlighted-cell" title="Used in transformation">2 169 136</span></td>
+<td>−14,2%</td>
+<td>1 290 639</td>
+<td>878 497</td>
+<td>727 718</td>
+<td>150 779</td>
+<td>13 798</td>
+<td>13 585</td>
+<td><span class="highlighted-cell" title="Used in transformation">0.0</span></td>
+</tr>
+<tr>
+<td>2010</td>
+<td><span class="highlighted-cell" title="Used in transformation">2 748 919</span></td>
+<td>+26,7%</td>
+<td>1 529 245</td>
+<td>1 219 674</td>
+<td>1 017 509</td>
+<td>202 165</td>
+<td>15 989</td>
+<td>22 946</td>
+<td><span class="highlighted-cell" title="Used in transformation">26.0</span></td>
+</tr>
+<tr>
+<td>2011</td>
+<td><span class="highlighted-cell" title="Used in transformation">3 355 883</span></td>
+<td>+22,1%</td>
+<td>1 856 948</td>
+<td>1 498 935</td>
+<td>1 184 771</td>
+<td>314 164</td>
+<td>20 142</td>
+<td>24 890</td>
+<td><span class="highlighted-cell" title="Used in transformation">22.0</span></td>
+</tr>
+<tr>
+<td>2012</td>
+<td><span class="highlighted-cell" title="Used in transformation">3 783 069</span></td>
+<td>+12.7%</td>
+<td>1 934 016</td>
+<td>1 849 053</td>
+<td>1 448 765</td>
+<td>439 668</td>
+<td>21 728</td>
+<td>25 866</td>
+<td><span class="highlighted-cell" title="Used in transformation">12.7</span></td>
+</tr>
+<tr>
+<td>2013</td>
+<td><span class="highlighted-cell" title="Used in transformation">4 293 002</span></td>
+<td>+13.5%</td>
+<td>2 180 227</td>
+<td>2 112 775</td>
+<td></td>
+<td></td>
+<td>25 728</td>
+<td>27 800</td>
+<td><span class="highlighted-cell" title="Used in transformation">13.5</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select rows where the 'passenger_increase' is greater than or equal to 20%.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>total_npassengers</td>
+<td>passenger_nchange</td>
+<td>domestic</td>
+<td>international_n_total_</td>
+<td>international_n_non_cis_</td>
+<td>cis</td>
+<td>aircraft_nlandings</td>
+<td>cargo_n_tonnes_</td>
+<td>num_change</td>
+<td>passenger_increase</td>
+</tr>
+<tr>
+<td>2000</td>
+<td>930 251</td>
+<td>+2%</td>
+<td>698 957</td>
+<td>231 294</td>
+<td>155 898</td>
+<td>75 396</td>
+<td>8 619</td>
+<td>18 344</td>
+<td>2.0</td>
+<td><span class="highlighted-cell" title="Used in transformation">948856.02</span></td>
+</tr>
+<tr>
+<td>2001</td>
+<td>1 028 295</td>
+<td>+10,5%</td>
+<td>733 022</td>
+<td>295 273</td>
+<td>186 861</td>
+<td>108 412</td>
+<td>9 062</td>
+<td>22 178</td>
+<td>10.0</td>
+<td><span class="highlighted-cell" title="Used in transformation">1131124.5</span></td>
+</tr>
+<tr>
+<td>2002</td>
+<td>1 182 815</td>
+<td>+15,0%</td>
+<td>793 295</td>
+<td>389 520</td>
+<td>239 461</td>
+<td>150 059</td>
+<td>10 162</td>
+<td>20 153</td>
+<td>15.0</td>
+<td><span class="highlighted-cell" title="Used in transformation">1360237.25</span></td>
+</tr>
+<tr>
+<td>2003</td>
+<td>1 335 757</td>
+<td>+12,9%</td>
+<td>879 665</td>
+<td>456 092</td>
+<td>297 421</td>
+<td>158 671</td>
+<td>10 092</td>
+<td>18 054</td>
+<td>12.0</td>
+<td><span class="highlighted-cell" title="Used in transformation">1496047.84</span></td>
+</tr>
+<tr>
+<td>2004</td>
+<td>1 553 628</td>
+<td>+16,3%</td>
+<td>972 287</td>
+<td>581 341</td>
+<td>429 049</td>
+<td>152 292</td>
+<td>11 816</td>
+<td>20 457</td>
+<td>16.0</td>
+<td><span class="highlighted-cell" title="Used in transformation">1802208.48</span></td>
+</tr>
+<tr>
+<td>2005</td>
+<td>1 566 792</td>
+<td>+0,8%</td>
+<td>1 006 422</td>
+<td>560 370</td>
+<td>429 790</td>
+<td>130 580</td>
+<td>11 877</td>
+<td>11 545</td>
+<td>0.0</td>
+<td><span class="highlighted-cell" title="Used in transformation">1566792.0</span></td>
+</tr>
+<tr>
+<td>2006</td>
+<td>1 764 948</td>
+<td>+12,7%</td>
+<td>1 128 489</td>
+<td>636 459</td>
+<td>488 954</td>
+<td>147 505</td>
+<td>13 289</td>
+<td>15 519</td>
+<td>12.0</td>
+<td><span class="highlighted-cell" title="Used in transformation">1976741.76</span></td>
+</tr>
+<tr>
+<td>2007</td>
+<td>2 345 097</td>
+<td>+32,9%</td>
+<td>1 486 888</td>
+<td>858 209</td>
+<td>683 092</td>
+<td>175 117</td>
+<td>16 767</td>
+<td>16 965</td>
+<td>32.0</td>
+<td><span class="highlighted-cell" title="Used in transformation">3095528.04</span></td>
+</tr>
+<tr>
+<td>2008</td>
+<td>2 529 395</td>
+<td>+7,8%</td>
+<td>1 523 102</td>
+<td>1 006 293</td>
+<td>815 124</td>
+<td>191 169</td>
+<td>16 407</td>
+<td>17 142</td>
+<td>7.0</td>
+<td><span class="highlighted-cell" title="Used in transformation">2706452.65</span></td>
+</tr>
+<tr>
+<td>2009</td>
+<td>2 169 136</td>
+<td>−14,2%</td>
+<td>1 290 639</td>
+<td>878 497</td>
+<td>727 718</td>
+<td>150 779</td>
+<td>13 798</td>
+<td>13 585</td>
+<td>0.0</td>
+<td><span class="highlighted-cell" title="Used in transformation">2169136.0</span></td>
+</tr>
+<tr>
+<td>2010</td>
+<td>2 748 919</td>
+<td>+26,7%</td>
+<td>1 529 245</td>
+<td>1 219 674</td>
+<td>1 017 509</td>
+<td>202 165</td>
+<td>15 989</td>
+<td>22 946</td>
+<td>26.0</td>
+<td><span class="highlighted-cell" title="Used in transformation">3463637.94</span></td>
+</tr>
+<tr>
+<td>2011</td>
+<td>3 355 883</td>
+<td>+22,1%</td>
+<td>1 856 948</td>
+<td>1 498 935</td>
+<td>1 184 771</td>
+<td>314 164</td>
+<td>20 142</td>
+<td>24 890</td>
+<td>22.0</td>
+<td><span class="highlighted-cell" title="Used in transformation">4094177.26</span></td>
+</tr>
+<tr>
+<td>2012</td>
+<td>3 783 069</td>
+<td>+12.7%</td>
+<td>1 934 016</td>
+<td>1 849 053</td>
+<td>1 448 765</td>
+<td>439 668</td>
+<td>21 728</td>
+<td>25 866</td>
+<td>12.7</td>
+<td><span class="highlighted-cell" title="Used in transformation">4263518.763</span></td>
+</tr>
+<tr>
+<td>2013</td>
+<td>4 293 002</td>
+<td>+13.5%</td>
+<td>2 180 227</td>
+<td>2 112 775</td>
+<td></td>
+<td></td>
+<td>25 728</td>
+<td>27 800</td>
+<td>13.5</td>
+<td><span class="highlighted-cell" title="Used in transformation">4872557.27</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Order the table by 'year' in ascending order.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>total_npassengers</td>
+<td>passenger_nchange</td>
+<td>domestic</td>
+<td>international_n_total_</td>
+<td>international_n_non_cis_</td>
+<td>cis</td>
+<td>aircraft_nlandings</td>
+<td>cargo_n_tonnes_</td>
+<td>num_change</td>
+<td>passenger_increase</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2000</span></td>
+<td>930 251</td>
+<td>+2%</td>
+<td>698 957</td>
+<td>231 294</td>
+<td>155 898</td>
+<td>75 396</td>
+<td>8 619</td>
+<td>18 344</td>
+<td>2.0</td>
+<td>948856.02</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2001</span></td>
+<td>1 028 295</td>
+<td>+10,5%</td>
+<td>733 022</td>
+<td>295 273</td>
+<td>186 861</td>
+<td>108 412</td>
+<td>9 062</td>
+<td>22 178</td>
+<td>10.0</td>
+<td>1131124.5</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2002</span></td>
+<td>1 182 815</td>
+<td>+15,0%</td>
+<td>793 295</td>
+<td>389 520</td>
+<td>239 461</td>
+<td>150 059</td>
+<td>10 162</td>
+<td>20 153</td>
+<td>15.0</td>
+<td>1360237.25</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2003</span></td>
+<td>1 335 757</td>
+<td>+12,9%</td>
+<td>879 665</td>
+<td>456 092</td>
+<td>297 421</td>
+<td>158 671</td>
+<td>10 092</td>
+<td>18 054</td>
+<td>12.0</td>
+<td>1496047.84</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2004</span></td>
+<td>1 553 628</td>
+<td>+16,3%</td>
+<td>972 287</td>
+<td>581 341</td>
+<td>429 049</td>
+<td>152 292</td>
+<td>11 816</td>
+<td>20 457</td>
+<td>16.0</td>
+<td>1802208.48</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2005</span></td>
+<td>1 566 792</td>
+<td>+0,8%</td>
+<td>1 006 422</td>
+<td>560 370</td>
+<td>429 790</td>
+<td>130 580</td>
+<td>11 877</td>
+<td>11 545</td>
+<td>0.0</td>
+<td>1566792.0</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2006</span></td>
+<td>1 764 948</td>
+<td>+12,7%</td>
+<td>1 128 489</td>
+<td>636 459</td>
+<td>488 954</td>
+<td>147 505</td>
+<td>13 289</td>
+<td>15 519</td>
+<td>12.0</td>
+<td>1976741.76</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2007</span></td>
+<td>2 345 097</td>
+<td>+32,9%</td>
+<td>1 486 888</td>
+<td>858 209</td>
+<td>683 092</td>
+<td>175 117</td>
+<td>16 767</td>
+<td>16 965</td>
+<td>32.0</td>
+<td>3095528.04</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2008</span></td>
+<td>2 529 395</td>
+<td>+7,8%</td>
+<td>1 523 102</td>
+<td>1 006 293</td>
+<td>815 124</td>
+<td>191 169</td>
+<td>16 407</td>
+<td>17 142</td>
+<td>7.0</td>
+<td>2706452.65</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2009</span></td>
+<td>2 169 136</td>
+<td>−14,2%</td>
+<td>1 290 639</td>
+<td>878 497</td>
+<td>727 718</td>
+<td>150 779</td>
+<td>13 798</td>
+<td>13 585</td>
+<td>0.0</td>
+<td>2169136.0</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2010</span></td>
+<td>2 748 919</td>
+<td>+26,7%</td>
+<td>1 529 245</td>
+<td>1 219 674</td>
+<td>1 017 509</td>
+<td>202 165</td>
+<td>15 989</td>
+<td>22 946</td>
+<td>26.0</td>
+<td>3463637.94</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2011</span></td>
+<td>3 355 883</td>
+<td>+22,1%</td>
+<td>1 856 948</td>
+<td>1 498 935</td>
+<td>1 184 771</td>
+<td>314 164</td>
+<td>20 142</td>
+<td>24 890</td>
+<td>22.0</td>
+<td>4094177.26</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2012</span></td>
+<td>3 783 069</td>
+<td>+12.7%</td>
+<td>1 934 016</td>
+<td>1 849 053</td>
+<td>1 448 765</td>
+<td>439 668</td>
+<td>21 728</td>
+<td>25 866</td>
+<td>12.7</td>
+<td>4263518.763</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2013</span></td>
+<td>4 293 002</td>
+<td>+13.5%</td>
+<td>2 180 227</td>
+<td>2 112 775</td>
+<td></td>
+<td></td>
+<td>25 728</td>
+<td>27 800</td>
+<td>13.5</td>
+<td>4872557.27</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 5: Select row number 1.</div>
+<div id="step-3" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>total_npassengers</td>
+<td>passenger_nchange</td>
+<td>domestic</td>
+<td>international_n_total_</td>
+<td>international_n_non_cis_</td>
+<td>cis</td>
+<td>aircraft_nlandings</td>
+<td>cargo_n_tonnes_</td>
+<td>num_change</td>
+<td>passenger_increase</td>
+</tr>
+<tr>
+<td>2000</td>
+<td>930 251</td>
+<td>+2%</td>
+<td>698 957</td>
+<td>231 294</td>
+<td>155 898</td>
+<td>75 396</td>
+<td>8 619</td>
+<td>18 344</td>
+<td>2.0</td>
+<td>948856.02</td>
+</tr>
+<tr>
+<td>2001</td>
+<td>1 028 295</td>
+<td>+10,5%</td>
+<td>733 022</td>
+<td>295 273</td>
+<td>186 861</td>
+<td>108 412</td>
+<td>9 062</td>
+<td>22 178</td>
+<td>10.0</td>
+<td>1131124.5</td>
+</tr>
+<tr>
+<td>2002</td>
+<td>1 182 815</td>
+<td>+15,0%</td>
+<td>793 295</td>
+<td>389 520</td>
+<td>239 461</td>
+<td>150 059</td>
+<td>10 162</td>
+<td>20 153</td>
+<td>15.0</td>
+<td>1360237.25</td>
+</tr>
+<tr>
+<td>2003</td>
+<td>1 335 757</td>
+<td>+12,9%</td>
+<td>879 665</td>
+<td>456 092</td>
+<td>297 421</td>
+<td>158 671</td>
+<td>10 092</td>
+<td>18 054</td>
+<td>12.0</td>
+<td>1496047.84</td>
+</tr>
+<tr>
+<td>2004</td>
+<td>1 553 628</td>
+<td>+16,3%</td>
+<td>972 287</td>
+<td>581 341</td>
+<td>429 049</td>
+<td>152 292</td>
+<td>11 816</td>
+<td>20 457</td>
+<td>16.0</td>
+<td>1802208.48</td>
+</tr>
+<tr>
+<td>2005</td>
+<td>1 566 792</td>
+<td>+0,8%</td>
+<td>1 006 422</td>
+<td>560 370</td>
+<td>429 790</td>
+<td>130 580</td>
+<td>11 877</td>
+<td>11 545</td>
+<td>0.0</td>
+<td>1566792.0</td>
+</tr>
+<tr>
+<td>2006</td>
+<td>1 764 948</td>
+<td>+12,7%</td>
+<td>1 128 489</td>
+<td>636 459</td>
+<td>488 954</td>
+<td>147 505</td>
+<td>13 289</td>
+<td>15 519</td>
+<td>12.0</td>
+<td>1976741.76</td>
+</tr>
+<tr>
+<td>2007</td>
+<td>2 345 097</td>
+<td>+32,9%</td>
+<td>1 486 888</td>
+<td>858 209</td>
+<td>683 092</td>
+<td>175 117</td>
+<td>16 767</td>
+<td>16 965</td>
+<td>32.0</td>
+<td>3095528.04</td>
+</tr>
+<tr>
+<td>2008</td>
+<td>2 529 395</td>
+<td>+7,8%</td>
+<td>1 523 102</td>
+<td>1 006 293</td>
+<td>815 124</td>
+<td>191 169</td>
+<td>16 407</td>
+<td>17 142</td>
+<td>7.0</td>
+<td>2706452.65</td>
+</tr>
+<tr>
+<td>2009</td>
+<td>2 169 136</td>
+<td>−14,2%</td>
+<td>1 290 639</td>
+<td>878 497</td>
+<td>727 718</td>
+<td>150 779</td>
+<td>13 798</td>
+<td>13 585</td>
+<td>0.0</td>
+<td>2169136.0</td>
+</tr>
+<tr>
+<td>2010</td>
+<td>2 748 919</td>
+<td>+26,7%</td>
+<td>1 529 245</td>
+<td>1 219 674</td>
+<td>1 017 509</td>
+<td>202 165</td>
+<td>15 989</td>
+<td>22 946</td>
+<td>26.0</td>
+<td>3463637.94</td>
+</tr>
+<tr>
+<td>2011</td>
+<td>3 355 883</td>
+<td>+22,1%</td>
+<td>1 856 948</td>
+<td>1 498 935</td>
+<td>1 184 771</td>
+<td>314 164</td>
+<td>20 142</td>
+<td>24 890</td>
+<td>22.0</td>
+<td>4094177.26</td>
+</tr>
+<tr>
+<td>2012</td>
+<td>3 783 069</td>
+<td>+12.7%</td>
+<td>1 934 016</td>
+<td>1 849 053</td>
+<td>1 448 765</td>
+<td>439 668</td>
+<td>21 728</td>
+<td>25 866</td>
+<td>12.7</td>
+<td>4263518.763</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>4 293 002</td>
+<td>+13.5%</td>
+<td>2 180 227</td>
+<td>2 112 775</td>
+<td></td>
+<td></td>
+<td>25 728</td>
+<td>27 800</td>
+<td>13.5</td>
+<td>4872557.27</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 6: Select the 'year' column.</div>
+<div id="step-4" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>total_npassengers</td>
+<td>passenger_nchange</td>
+<td>domestic</td>
+<td>international_n_total_</td>
+<td>international_n_non_cis_</td>
+<td>cis</td>
+<td>aircraft_nlandings</td>
+<td>cargo_n_tonnes_</td>
+<td>num_change</td>
+<td>passenger_increase</td>
+</tr>
+<tr>
+<td>2000</td>
+<td>930 251</td>
+<td>+2%</td>
+<td>698 957</td>
+<td>231 294</td>
+<td>155 898</td>
+<td>75 396</td>
+<td>8 619</td>
+<td>18 344</td>
+<td>2.0</td>
+<td>948856.02</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>year</td>
+</tr>
+<tr>
+<td>2000</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[2000]]</h3>
+</body></html>

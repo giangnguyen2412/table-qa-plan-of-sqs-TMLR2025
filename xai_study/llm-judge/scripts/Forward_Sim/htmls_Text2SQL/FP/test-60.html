@@ -1,0 +1,39 @@
+
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+.sql-command { background-color: #f0f0f0; padding: 10px; border-left: 4px solid #4CAF50; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> peter lowry 's pick number was 25</h3>
+<h3>Input Table: 2008 mls superdraft</h3>
+<div class="step">
+<table>
+<tr><td>pick</td><td>mls_team</td><td>player</td><td>position</td><td>affiliation</td></tr><tr><td>15</td><td>san jose earthquakes</td><td>shea salinas</td><td>m</td><td>furman carolina dynamo</td></tr><tr><td>16</td><td>new york red bulls</td><td>eric brunner</td><td>d</td><td>ohio state michigan bucks</td></tr><tr><td>17</td><td>real salt lake</td><td>alex nimo</td><td>f</td><td>generation adidas</td></tr><tr><td>18</td><td>new england revolution</td><td>michael videira</td><td>m</td><td>duke cary railhawks u23 's</td></tr><tr><td>19</td><td>fc dallas</td><td>eric avila</td><td>m</td><td>uc santa barbara ventura county fusion</td></tr><tr><td>20</td><td>columbus crew</td><td>george josten</td><td>m / f</td><td>gonzaga michigan bucks</td></tr><tr><td>21</td><td>los angeles galaxy</td><td>ely allen</td><td>f / m</td><td>washington</td></tr><tr><td>22</td><td>columbus crew</td><td>ricardo pierre - louis</td><td>f</td><td>lee university cape cod crusaders</td></tr><tr><td>23</td><td>kansas city wizards</td><td>yomby william</td><td>d</td><td>old dominion hampton roads piranhas</td></tr><tr><td>24</td><td>dc united</td><td>andrew jacobson</td><td>m</td><td>california</td></tr><tr><td>25</td><td>kansas city wizards</td><td>jonathan leathers</td><td>d</td><td>furman atlanta silverbacks u23 's</td></tr><tr><td>26</td><td>chicago fire</td><td>peter lowry</td><td>m / f</td><td>santa clara san jose frogs</td></tr><tr><td>27</td><td>new england revolution</td><td>joe germanese</td><td>m</td><td>duke cary railhawks u23 's</td></tr><tr><td>28</td><td>toronto fc</td><td>brian edwards</td><td>gk</td><td>wake forest</td></tr>
+</table>
+</div>
+<h3>SQL Command:</h3>
+<div class="sql-command">SELECT 
+    CASE 
+        WHEN (SELECT pick FROM table_sql WHERE player = 'peter lowry') = 26 
+        THEN 'TRUE' 
+        ELSE 'FALSE' 
+    END;</div>
+</body></html>

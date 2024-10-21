@@ -1,0 +1,513 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> who were the top five drivers in the race?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Order the table by the 'pos' column in ascending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>pos</td>
+<td>no</td>
+<td>driver</td>
+<td>constructor</td>
+<td>laps</td>
+<td>time_retired</td>
+<td>grid</td>
+<td>points</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jack brabham</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">brabham-repco</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">48</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1:48:31.3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">22</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mike parkes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ferrari</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">48</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+ 9.5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">14</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">denny hulme</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">brabham-repco</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">46</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+ 2 laps</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jochen rindt</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cooper-maserati</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">46</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+ 2 laps</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">26</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dan gurney</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">eagle-climax</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">45</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+ 3 laps</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">14</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">44</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">john taylor</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">brabham-brm</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">45</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+ 3 laps</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">15</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">36</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bob anderson</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">brabham-climax</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">44</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+ 4 laps</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chris amon</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cooper-maserati</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">44</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+ 4 laps</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">nc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">42</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">guy ligier</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cooper-maserati</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">42</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">not classified</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">ret</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pedro rodríguez</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lotus-climax</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">40</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">oil leak</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">nc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lorenzo bandini</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ferrari</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">37</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">not classified</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">nc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">30</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jo bonnier</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">brabham-climax</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">32</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">not classified</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">ret</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">graham hill</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">brm</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">engine</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">ret</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">38</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jo siffert</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cooper-maserati</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fuel system</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">ret</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">32</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mike spence</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lotus-brm</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">clutch</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">ret</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">john surtees</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cooper-maserati</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fuel system</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">ret</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">peter arundell</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lotus-brm</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gearbox</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">dns</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jim clark</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lotus-climax</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">accident</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">(18)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select the top five rows from the ordered table.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>pos</td>
+<td>no</td>
+<td>driver</td>
+<td>constructor</td>
+<td>laps</td>
+<td>time_retired</td>
+<td>grid</td>
+<td>points</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+<td>12</td>
+<td>jack brabham</td>
+<td>brabham-repco</td>
+<td>48.0</td>
+<td>1:48:31.3</td>
+<td>4</td>
+<td>9.0</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">2</span></td>
+<td>22</td>
+<td>mike parkes</td>
+<td>ferrari</td>
+<td>48.0</td>
+<td>+ 9.5</td>
+<td>3</td>
+<td>6.0</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">3</span></td>
+<td>14</td>
+<td>denny hulme</td>
+<td>brabham-repco</td>
+<td>46.0</td>
+<td>+ 2 laps</td>
+<td>9</td>
+<td>4.0</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">4</span></td>
+<td>6</td>
+<td>jochen rindt</td>
+<td>cooper-maserati</td>
+<td>46.0</td>
+<td>+ 2 laps</td>
+<td>5</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">5</span></td>
+<td>26</td>
+<td>dan gurney</td>
+<td>eagle-climax</td>
+<td>45.0</td>
+<td>+ 3 laps</td>
+<td>14</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>6</td>
+<td>44</td>
+<td>john taylor</td>
+<td>brabham-brm</td>
+<td>45.0</td>
+<td>+ 3 laps</td>
+<td>15</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>36</td>
+<td>bob anderson</td>
+<td>brabham-climax</td>
+<td>44.0</td>
+<td>+ 4 laps</td>
+<td>12</td>
+<td>None</td>
+</tr>
+<tr>
+<td>8</td>
+<td>8</td>
+<td>chris amon</td>
+<td>cooper-maserati</td>
+<td>44.0</td>
+<td>+ 4 laps</td>
+<td>7</td>
+<td>None</td>
+</tr>
+<tr>
+<td>dns</td>
+<td>2</td>
+<td>jim clark</td>
+<td>lotus-climax</td>
+<td>None</td>
+<td>accident</td>
+<td>(18)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>nc</td>
+<td>42</td>
+<td>guy ligier</td>
+<td>cooper-maserati</td>
+<td>42.0</td>
+<td>not classified</td>
+<td>11</td>
+<td>None</td>
+</tr>
+<tr>
+<td>nc</td>
+<td>20</td>
+<td>lorenzo bandini</td>
+<td>ferrari</td>
+<td>37.0</td>
+<td>not classified</td>
+<td>1</td>
+<td>None</td>
+</tr>
+<tr>
+<td>nc</td>
+<td>30</td>
+<td>jo bonnier</td>
+<td>brabham-climax</td>
+<td>32.0</td>
+<td>not classified</td>
+<td>17</td>
+<td>None</td>
+</tr>
+<tr>
+<td>ret</td>
+<td>2</td>
+<td>pedro rodríguez</td>
+<td>lotus-climax</td>
+<td>40.0</td>
+<td>oil leak</td>
+<td>13</td>
+<td>None</td>
+</tr>
+<tr>
+<td>ret</td>
+<td>16</td>
+<td>graham hill</td>
+<td>brm</td>
+<td>13.0</td>
+<td>engine</td>
+<td>8</td>
+<td>None</td>
+</tr>
+<tr>
+<td>ret</td>
+<td>38</td>
+<td>jo siffert</td>
+<td>cooper-maserati</td>
+<td>10.0</td>
+<td>fuel system</td>
+<td>6</td>
+<td>None</td>
+</tr>
+<tr>
+<td>ret</td>
+<td>32</td>
+<td>mike spence</td>
+<td>lotus-brm</td>
+<td>8.0</td>
+<td>clutch</td>
+<td>10</td>
+<td>None</td>
+</tr>
+<tr>
+<td>ret</td>
+<td>10</td>
+<td>john surtees</td>
+<td>cooper-maserati</td>
+<td>5.0</td>
+<td>fuel system</td>
+<td>2</td>
+<td>None</td>
+</tr>
+<tr>
+<td>ret</td>
+<td>4</td>
+<td>peter arundell</td>
+<td>lotus-brm</td>
+<td>3.0</td>
+<td>gearbox</td>
+<td>16</td>
+<td>None</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select the 'driver' column from the resulting table.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>pos</td>
+<td>no</td>
+<td>driver</td>
+<td>constructor</td>
+<td>laps</td>
+<td>time_retired</td>
+<td>grid</td>
+<td>points</td>
+</tr>
+<tr>
+<td>1</td>
+<td>12</td>
+<td>jack brabham</td>
+<td>brabham-repco</td>
+<td>48.0</td>
+<td>1:48:31.3</td>
+<td>4</td>
+<td>9.0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>22</td>
+<td>mike parkes</td>
+<td>ferrari</td>
+<td>48.0</td>
+<td>+ 9.5</td>
+<td>3</td>
+<td>6.0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>14</td>
+<td>denny hulme</td>
+<td>brabham-repco</td>
+<td>46.0</td>
+<td>+ 2 laps</td>
+<td>9</td>
+<td>4.0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>6</td>
+<td>jochen rindt</td>
+<td>cooper-maserati</td>
+<td>46.0</td>
+<td>+ 2 laps</td>
+<td>5</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>26</td>
+<td>dan gurney</td>
+<td>eagle-climax</td>
+<td>45.0</td>
+<td>+ 3 laps</td>
+<td>14</td>
+<td>2.0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>driver</td>
+</tr>
+<tr>
+<td>jack brabham</td>
+</tr>
+<tr>
+<td>mike parkes</td>
+</tr>
+<tr>
+<td>denny hulme</td>
+</tr>
+<tr>
+<td>jochen rindt</td>
+</tr>
+<tr>
+<td>dan gurney</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['jack brabham'], ['mike parkes'], ['denny hulme'], ['jochen rindt'], ['dan gurney']]</h3>
+</body></html>

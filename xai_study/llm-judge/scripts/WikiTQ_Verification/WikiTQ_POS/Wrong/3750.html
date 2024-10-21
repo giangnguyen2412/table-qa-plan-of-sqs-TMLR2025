@@ -1,0 +1,2441 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how many representatives with k last names were from wisconsin?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'state' is 'wisconsin'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>representative</td>
+<td>years</td>
+<td>state</td>
+<td>party</td>
+<td>lifespan</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">charles a. kading</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1927–1933</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">wisconsin</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">republican</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1874–1956</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">steve kagen</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2007–2011</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">wisconsin</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">democratic</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1949–</span></td>
+</tr>
+<tr>
+<td>florence prag kahn</td>
+<td>1925–1936</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">california</span></td>
+<td>republican</td>
+<td>1866–1948</td>
+</tr>
+<tr>
+<td>julius kahn</td>
+<td>1899–1903\n1905–1924</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">california</span></td>
+<td>republican</td>
+<td>1861–1924</td>
+</tr>
+<tr>
+<td>martin kalbfleisch</td>
+<td>1863–1865</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>democratic</td>
+<td>1804–1873</td>
+</tr>
+<tr>
+<td>nicholas t. kane</td>
+<td>1887</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>democratic</td>
+<td>1846–1887</td>
+</tr>
+<tr>
+<td>paul kanjorski</td>
+<td>1985–2011</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>democratic</td>
+<td>1937–</td>
+</tr>
+<tr>
+<td>charles a. karch</td>
+<td>1931–1932</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">illinois</span></td>
+<td>democratic</td>
+<td>1875–1932</td>
+</tr>
+<tr>
+<td>raymond w. karst</td>
+<td>1949–1951</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">missouri</span></td>
+<td>democratic</td>
+<td>1902–1987</td>
+</tr>
+<tr>
+<td>frank m. karsten</td>
+<td>1947–1969</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">missouri</span></td>
+<td>democratic</td>
+<td>1913–1992</td>
+</tr>
+<tr>
+<td>joseph karth</td>
+<td>1959–1977</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">minnesota</span></td>
+<td>democratic-farmer-labor</td>
+<td>1922–2005</td>
+</tr>
+<tr>
+<td>george a. kasem</td>
+<td>1959–1961</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">california</span></td>
+<td>democratic</td>
+<td>1919–2002</td>
+</tr>
+<tr>
+<td>john kasich</td>
+<td>1983–2001</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ohio</span></td>
+<td>republican</td>
+<td>1952–</td>
+</tr>
+<tr>
+<td>john a. kasson</td>
+<td>1863–1867\n1873–1877\n1881–1884</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">iowa</span></td>
+<td>republican</td>
+<td>1822–1910</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bob kasten</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1975–1979</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">wisconsin</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">republican</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1942–</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">robert kastenmeier</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1959–1991</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">wisconsin</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">democratic</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1924–</span></td>
+</tr>
+<tr>
+<td>david s. kaufman</td>
+<td>1846–1851</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">texas</span></td>
+<td>democratic</td>
+<td>1813–1851</td>
+</tr>
+<tr>
+<td>edward kavanagh</td>
+<td>1831–1835</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">maine</span></td>
+<td>democratic</td>
+<td>1795–1844</td>
+</tr>
+<tr>
+<td>will kirk kaynor</td>
+<td>1929</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">massachusetts</span></td>
+<td>republican</td>
+<td>1884–1929</td>
+</tr>
+<tr>
+<td>abraham kazen</td>
+<td>1967–1985</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">texas</span></td>
+<td>democratic</td>
+<td>1919–1987</td>
+</tr>
+<tr>
+<td>john kean</td>
+<td>1883–1885\n1887–1889</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new jersey</span></td>
+<td>republican</td>
+<td>1852–1914</td>
+</tr>
+<tr>
+<td>robert kean</td>
+<td>1939–1959</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new jersey</span></td>
+<td>republican</td>
+<td>1893–1980</td>
+</tr>
+<tr>
+<td>bernard w. kearney</td>
+<td>1943–1959</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>republican</td>
+<td>1889–1976</td>
+</tr>
+<tr>
+<td>carroll d. kearns</td>
+<td>1947–1963</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>republican</td>
+<td>1900–1976</td>
+</tr>
+<tr>
+<td>charles cyrus kearns</td>
+<td>1915–1931</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ohio</span></td>
+<td>republican</td>
+<td>1869–1931</td>
+</tr>
+<tr>
+<td>edward keating</td>
+<td>1913–1919</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">colorado</span></td>
+<td>democratic</td>
+<td>1875–1965</td>
+</tr>
+<tr>
+<td>kenneth keating</td>
+<td>1947–1959</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>republican</td>
+<td>1900–1975</td>
+</tr>
+<tr>
+<td>william j. keating</td>
+<td>1971–1974</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ohio</span></td>
+<td>republican</td>
+<td>1927–</td>
+</tr>
+<tr>
+<td>elizabeth kee</td>
+<td>1951–1965</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">west virginia</span></td>
+<td>democratic</td>
+<td>1895–1975</td>
+</tr>
+<tr>
+<td>james kee</td>
+<td>1965–1973</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">west virginia</span></td>
+<td>democratic</td>
+<td>1917–1989</td>
+</tr>
+<tr>
+<td>john kee</td>
+<td>1933–1951</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">west virginia</span></td>
+<td>democratic</td>
+<td>1874–1951</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">frank bateman keefe</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1939–1951</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">wisconsin</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">republican</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1887–1952</span></td>
+</tr>
+<tr>
+<td>russell w. keeney</td>
+<td>1957–1958</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">illinois</span></td>
+<td>republican</td>
+<td>1897–1958</td>
+</tr>
+<tr>
+<td>richard keese</td>
+<td>1827–1829</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>democratic</td>
+<td>1794–1883</td>
+</tr>
+<tr>
+<td>estes kefauver</td>
+<td>1939–1949</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tennessee</span></td>
+<td>democratic</td>
+<td>1903–1963</td>
+</tr>
+<tr>
+<td>james nicholas kehoe</td>
+<td>1901–1905</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kentucky</span></td>
+<td>democratic</td>
+<td>1862–1945</td>
+</tr>
+<tr>
+<td>walter kehoe</td>
+<td>1917–1919</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">florida</span></td>
+<td>democratic</td>
+<td>1870–1938</td>
+</tr>
+<tr>
+<td>edward c. kehr</td>
+<td>1875–1877</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">missouri</span></td>
+<td>democratic</td>
+<td>1837–1918</td>
+</tr>
+<tr>
+<td>j. warren keifer</td>
+<td>1877–1885\n1905–1911</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ohio</span></td>
+<td>republican</td>
+<td>1836–1932</td>
+</tr>
+<tr>
+<td>edwin w. keightley</td>
+<td>1877–1879</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">michigan</span></td>
+<td>republican</td>
+<td>1843–1926</td>
+</tr>
+<tr>
+<td>george may keim</td>
+<td>1838–1843</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>democratic</td>
+<td>1805–1861</td>
+</tr>
+<tr>
+<td>william high keim</td>
+<td>1858–1859</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>republican</td>
+<td>1813–1862</td>
+</tr>
+<tr>
+<td>abraham lincoln keister</td>
+<td>1913–1917</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>republican</td>
+<td>1852–1917</td>
+</tr>
+<tr>
+<td>hastings keith</td>
+<td>1959–1973</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">massachusetts</span></td>
+<td>republican</td>
+<td>1915–2005</td>
+</tr>
+<tr>
+<td>laurence m. keitt</td>
+<td>1853–1856\n1856–1860</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">south carolina</span></td>
+<td>democratic</td>
+<td>1824–1864</td>
+</tr>
+<tr>
+<td>john a. keliher</td>
+<td>1903–1911</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">massachusetts</span></td>
+<td>democratic</td>
+<td>1866–1938</td>
+</tr>
+<tr>
+<td>kent e. keller</td>
+<td>1931–1941</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">illinois</span></td>
+<td>democratic</td>
+<td>1867–1954</td>
+</tr>
+<tr>
+<td>oscar keller</td>
+<td>1919–1927</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">minnesota</span></td>
+<td>republican</td>
+<td>1878–1927</td>
+</tr>
+<tr>
+<td>ric keller</td>
+<td>2001–2009</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">florida</span></td>
+<td>republican</td>
+<td>1964–</td>
+</tr>
+<tr>
+<td>augustine b. kelley</td>
+<td>1941–1957</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>democratic</td>
+<td>1883–1957</td>
+</tr>
+<tr>
+<td>harrison kelley</td>
+<td>1889–1891</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kansas</span></td>
+<td>republican</td>
+<td>1836–1897</td>
+</tr>
+<tr>
+<td>john edward kelley</td>
+<td>1897–1899</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">south dakota</span></td>
+<td>populist</td>
+<td>1853–1941</td>
+</tr>
+<tr>
+<td>patrick h. kelley</td>
+<td>1913–1923</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">michigan</span></td>
+<td>republican</td>
+<td>1867–1925</td>
+</tr>
+<tr>
+<td>william d. kelley</td>
+<td>1861–1890</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>republican</td>
+<td>1814–1890</td>
+</tr>
+<tr>
+<td>charles kellogg</td>
+<td>1825–1827</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>democratic</td>
+<td>1773–1842</td>
+</tr>
+<tr>
+<td>francis william kellogg</td>
+<td>1859–1865</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">michigan</span></td>
+<td>republican</td>
+<td>1810–1879</td>
+</tr>
+<tr>
+<td>francis william kellogg</td>
+<td>1868–1869</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">alabama</span></td>
+<td>republican</td>
+<td>1810–1879</td>
+</tr>
+<tr>
+<td>orlando kellogg</td>
+<td>1847–1849</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>whig</td>
+<td>1809–1865</td>
+</tr>
+<tr>
+<td>orlando kellogg</td>
+<td>1863–1865</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>republican</td>
+<td>1809–1865</td>
+</tr>
+<tr>
+<td>stephen wright kellogg</td>
+<td>1869–1875</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">connecticut</span></td>
+<td>republican</td>
+<td>1822–1904</td>
+</tr>
+<tr>
+<td>william kellogg</td>
+<td>1857–1863</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">illinois</span></td>
+<td>republican</td>
+<td>1814–1872</td>
+</tr>
+<tr>
+<td>william p. kellogg</td>
+<td>1883–1885</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">louisiana</span></td>
+<td>republican</td>
+<td>1830–1918</td>
+</tr>
+<tr>
+<td>edna f. kelly</td>
+<td>1949–1969</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>democratic</td>
+<td>1906–1997</td>
+</tr>
+<tr>
+<td>edward a. kelly</td>
+<td>1931–1943\n1945–1947</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">illinois</span></td>
+<td>democratic</td>
+<td>1892–1969</td>
+</tr>
+<tr>
+<td>george b. kelly</td>
+<td>1937–1939</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>democratic</td>
+<td>1900–1971</td>
+</tr>
+<tr>
+<td>james kelly</td>
+<td>1805–1809</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>federalist</td>
+<td>1760–1819</td>
+</tr>
+<tr>
+<td>john kelly</td>
+<td>1855–1858</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>democratic</td>
+<td>1822–1886</td>
+</tr>
+<tr>
+<td>melville clyde kelly</td>
+<td>1913–1915</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>republican</td>
+<td>1883–1935</td>
+</tr>
+<tr>
+<td>melville clyde kelly</td>
+<td>1917–1919</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>progressive</td>
+<td>1883–1935</td>
+</tr>
+<tr>
+<td>melville clyde kelly</td>
+<td>1919–1935</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>republican</td>
+<td>1883–1935</td>
+</tr>
+<tr>
+<td>richard kelly</td>
+<td>1975–1981</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">florida</span></td>
+<td>republican</td>
+<td>1924–2005</td>
+</tr>
+<tr>
+<td>sue w. kelly</td>
+<td>1995–2007</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>republican</td>
+<td>1936–</td>
+</tr>
+<tr>
+<td>william h. kelsey</td>
+<td>1855–1857</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>oppositionist</td>
+<td>1812–1879</td>
+</tr>
+<tr>
+<td>william h. kelsey</td>
+<td>1857–1859\n1867–1871</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>republican</td>
+<td>1812–1879</td>
+</tr>
+<tr>
+<td>john r. kelso</td>
+<td>1865–1867</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">missouri</span></td>
+<td>independent republican</td>
+<td>1831–1891</td>
+</tr>
+<tr>
+<td>omer madison kem</td>
+<td>1891–1897</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nebraska</span></td>
+<td>populist</td>
+<td>1855–1942</td>
+</tr>
+<tr>
+<td>gouverneur kemble</td>
+<td>1837–1841</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>democratic</td>
+<td>1786–1875</td>
+</tr>
+<tr>
+<td>bolivar e. kemp</td>
+<td>1925–1933</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">louisiana</span></td>
+<td>democratic</td>
+<td>1871–1933</td>
+</tr>
+<tr>
+<td>jack kemp</td>
+<td>1971–1989</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>republican</td>
+<td>1935–2009</td>
+</tr>
+<tr>
+<td>thomas kempshall</td>
+<td>1839–1841</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>whig</td>
+<td>1795–1865</td>
+</tr>
+<tr>
+<td>thomas kenan</td>
+<td>1805–1811</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">north carolina</span></td>
+<td>democratic-republican</td>
+<td>1771–1843</td>
+</tr>
+<tr>
+<td>charles west kendall</td>
+<td>1871–1875</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nevada</span></td>
+<td>democratic</td>
+<td>1828–1914</td>
+</tr>
+<tr>
+<td>elva r. kendall</td>
+<td>1929–1931</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kentucky</span></td>
+<td>republican</td>
+<td>1893–1968</td>
+</tr>
+<tr>
+<td>john w. kendall</td>
+<td>1891–1892</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kentucky</span></td>
+<td>democratic</td>
+<td>1834–1892</td>
+</tr>
+<tr>
+<td>jonas kendall</td>
+<td>1819–1821</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">massachusetts</span></td>
+<td>federalist</td>
+<td>1757–1844</td>
+</tr>
+<tr>
+<td>joseph g. kendall</td>
+<td>1829–1833</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">massachusetts</span></td>
+<td>national republican</td>
+<td>1788–1847</td>
+</tr>
+<tr>
+<td>joseph m. kendall</td>
+<td>1892–1893\n1895–1897</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kentucky</span></td>
+<td>democratic</td>
+<td>1863–1933</td>
+</tr>
+<tr>
+<td>nathan e. kendall</td>
+<td>1909–1913</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">iowa</span></td>
+<td>republican</td>
+<td>1868–1936</td>
+</tr>
+<tr>
+<td>samuel austin kendall</td>
+<td>1919–1933</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>republican</td>
+<td>1859–1933</td>
+</tr>
+<tr>
+<td>john e. kenna</td>
+<td>1877–1883</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">west virginia</span></td>
+<td>democratic</td>
+<td>1848–1893</td>
+</tr>
+<tr>
+<td>ambrose kennedy</td>
+<td>1913–1923</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rhode island</span></td>
+<td>republican</td>
+<td>1875–1967</td>
+</tr>
+<tr>
+<td>ambrose jerome kennedy</td>
+<td>1932–1941</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">maryland</span></td>
+<td>democratic</td>
+<td>1893–1950</td>
+</tr>
+<tr>
+<td>andrew kennedy</td>
+<td>1841–1847</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">indiana</span></td>
+<td>democratic</td>
+<td>1810–1847</td>
+</tr>
+<tr>
+<td>charles a. kennedy</td>
+<td>1907–1921</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">iowa</span></td>
+<td>republican</td>
+<td>1869–1951</td>
+</tr>
+<tr>
+<td>james kennedy</td>
+<td>1903–1911</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ohio</span></td>
+<td>republican</td>
+<td>1853–1928</td>
+</tr>
+<tr>
+<td>john f. kennedy</td>
+<td>1947–1953</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">massachusetts</span></td>
+<td>democratic</td>
+<td>1917–1963</td>
+</tr>
+<tr>
+<td>john l. kennedy</td>
+<td>1905–1907</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nebraska</span></td>
+<td>republican</td>
+<td>1854–1946</td>
+</tr>
+<tr>
+<td>john p. kennedy</td>
+<td>1838–1839\n1841–1845</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">maryland</span></td>
+<td>whig</td>
+<td>1795–1870</td>
+</tr>
+<tr>
+<td>joseph patrick kennedy ii</td>
+<td>1987–1999</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">massachusetts</span></td>
+<td>democratic</td>
+<td>1952–</td>
+</tr>
+<tr>
+<td>mark kennedy</td>
+<td>2001–2007</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">minnesota</span></td>
+<td>republican</td>
+<td>1957–</td>
+</tr>
+<tr>
+<td>martin j. kennedy</td>
+<td>1930–1945</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>democratic</td>
+<td>1892–1955</td>
+</tr>
+<tr>
+<td>michael j. kennedy</td>
+<td>1939–1943</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>democratic</td>
+<td>1897–1949</td>
+</tr>
+<tr>
+<td>patrick kennedy</td>
+<td>1995–2011</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rhode island</span></td>
+<td>democratic</td>
+<td>1967–</td>
+</tr>
+<tr>
+<td>robert p. kennedy</td>
+<td>1887–1891</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ohio</span></td>
+<td>republican</td>
+<td>1840–1918</td>
+</tr>
+<tr>
+<td>william kennedy</td>
+<td>1803–1805\n1809–1811\n1813–1815</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">north carolina</span></td>
+<td>democratic-republican</td>
+<td>1768–1834</td>
+</tr>
+<tr>
+<td>william kennedy</td>
+<td>1913–1915</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">connecticut</span></td>
+<td>democratic</td>
+<td>1854–1918</td>
+</tr>
+<tr>
+<td>barbara b. kennelly</td>
+<td>1981–1999</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">connecticut</span></td>
+<td>democratic</td>
+<td>1936–</td>
+</tr>
+<tr>
+<td>luther martin kennett</td>
+<td>1855–1857</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">missouri</span></td>
+<td>oppositionist</td>
+<td>1807–1873</td>
+</tr>
+<tr>
+<td>edward aloysius kenney</td>
+<td>1933–1938</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new jersey</span></td>
+<td>democratic</td>
+<td>1884–1938</td>
+</tr>
+<tr>
+<td>william kennon, jr.</td>
+<td>1847–1849</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ohio</span></td>
+<td>democratic</td>
+<td>1802–1867</td>
+</tr>
+<tr>
+<td>william kennon, sr.</td>
+<td>1829–1833\n1835–1837</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ohio</span></td>
+<td>democratic</td>
+<td>1793–1881</td>
+</tr>
+<tr>
+<td>everett kent</td>
+<td>1923–1925\n1927–1929</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>democratic</td>
+<td>1888–1963</td>
+</tr>
+<tr>
+<td>joseph kent</td>
+<td>1811–1815\n1819–1825</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">maryland</span></td>
+<td>democratic-republican</td>
+<td>1779–1837</td>
+</tr>
+<tr>
+<td>joseph kent</td>
+<td>1825–1826</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">maryland</span></td>
+<td>national republican</td>
+<td>1779–1837</td>
+</tr>
+<tr>
+<td>moss kent</td>
+<td>1813–1817</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>federalist</td>
+<td>1766–1838</td>
+</tr>
+<tr>
+<td>william kent</td>
+<td>1911–1913</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">california</span></td>
+<td>progressive republican</td>
+<td>1864–1928</td>
+</tr>
+<tr>
+<td>william kent</td>
+<td>1913–1917</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">california</span></td>
+<td>independent</td>
+<td>1864–1928</td>
+</tr>
+<tr>
+<td>william scheuneman kenyon</td>
+<td>1859–1861</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>republican</td>
+<td>1820–1896</td>
+</tr>
+<tr>
+<td>eugene james keogh</td>
+<td>1937–1967</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>democratic</td>
+<td>1907–1989</td>
+</tr>
+<tr>
+<td>fred j. kern</td>
+<td>1901–1903</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">illinois</span></td>
+<td>democratic</td>
+<td>1864–1931</td>
+</tr>
+<tr>
+<td>francis kernan</td>
+<td>1863–1865</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>democratic</td>
+<td>1816–1892</td>
+</tr>
+<tr>
+<td>brian d. kerns</td>
+<td>2001–2003</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">indiana</span></td>
+<td>republican</td>
+<td>1957–</td>
+</tr>
+<tr>
+<td>daniel kerr</td>
+<td>1887–1891</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">iowa</span></td>
+<td>republican</td>
+<td>1836–1916</td>
+</tr>
+<tr>
+<td>james kerr</td>
+<td>1889–1891</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>democratic</td>
+<td>1851–1908</td>
+</tr>
+<tr>
+<td>john kerr</td>
+<td>1813–1815\n1815–1817</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">virginia</span></td>
+<td>democratic-republican</td>
+<td>1782–1842</td>
+</tr>
+<tr>
+<td>john bozman kerr</td>
+<td>1849–1851</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">maryland</span></td>
+<td>whig</td>
+<td>1809–1878</td>
+</tr>
+<tr>
+<td>john h. kerr</td>
+<td>1923–1953</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">north carolina</span></td>
+<td>democratic</td>
+<td>1873–1958</td>
+</tr>
+<tr>
+<td>john leeds kerr</td>
+<td>1825–1829\n1831–1833</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">maryland</span></td>
+<td>national republican</td>
+<td>1780–1844</td>
+</tr>
+<tr>
+<td>john kerr, jr.</td>
+<td>1853–1855</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">north carolina</span></td>
+<td>whig</td>
+<td>1811–1879</td>
+</tr>
+<tr>
+<td>josiah kerr</td>
+<td>1900–1901</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">maryland</span></td>
+<td>republican</td>
+<td>1861–1920</td>
+</tr>
+<tr>
+<td>michael c. kerr</td>
+<td>1865–1873\n1875–1876</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">indiana</span></td>
+<td>democratic</td>
+<td>1827–1876</td>
+</tr>
+<tr>
+<td>winfield s. kerr</td>
+<td>1895–1901</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ohio</span></td>
+<td>republican</td>
+<td>1852–1917</td>
+</tr>
+<tr>
+<td>james kerrigan</td>
+<td>1861–1863</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>independent democrat</td>
+<td>1828–1899</td>
+</tr>
+<tr>
+<td>john kershaw</td>
+<td>1813–1815</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">south carolina</span></td>
+<td>democratic-republican</td>
+<td>1765–1829</td>
+</tr>
+<tr>
+<td>charles j. kersten</td>
+<td>1947–1949\n1951–1955</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wisconsin</span></td>
+<td>republican</td>
+<td>1902–1972</td>
+</tr>
+<tr>
+<td>john c. ketcham</td>
+<td>1921–1933</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">michigan</span></td>
+<td>republican</td>
+<td>1873–1941</td>
+</tr>
+<tr>
+<td>john h. ketcham</td>
+<td>1865–1873\n1877–1893\n1897–1906</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>republican</td>
+<td>1832–1906</td>
+</tr>
+<tr>
+<td>winthrop welles ketcham</td>
+<td>1875–1876</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>republican</td>
+<td>1820–1879</td>
+</tr>
+<tr>
+<td>william m. ketchum</td>
+<td>1973–1978</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">california</span></td>
+<td>republican</td>
+<td>1921–1978</td>
+</tr>
+<tr>
+<td>william kettner</td>
+<td>1913–1921</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">california</span></td>
+<td>democratic</td>
+<td>1864–1930</td>
+</tr>
+<tr>
+<td>john a. key</td>
+<td>1913–1919</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ohio</span></td>
+<td>democratic</td>
+<td>1871–1954</td>
+</tr>
+<tr>
+<td>philip key</td>
+<td>1791–1793</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">maryland</span></td>
+<td>pro-administration</td>
+<td>1750–1820</td>
+</tr>
+<tr>
+<td>philip barton key</td>
+<td>1807–1813</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">maryland</span></td>
+<td>federalist</td>
+<td>1757–1815</td>
+</tr>
+<tr>
+<td>elias keyes</td>
+<td>1821–1823</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">vermont</span></td>
+<td>democratic-republican</td>
+<td>1758–1844</td>
+</tr>
+<tr>
+<td>martha keys</td>
+<td>1975–1979</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kansas</span></td>
+<td>democratic</td>
+<td>1930–</td>
+</tr>
+<tr>
+<td>david kidder</td>
+<td>1823–1827</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">maine</span></td>
+<td>national republican</td>
+<td>1787–1860</td>
+</tr>
+<tr>
+<td>zedekiah kidwell</td>
+<td>1853–1857</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">virginia</span></td>
+<td>democratic</td>
+<td>1814–1872</td>
+</tr>
+<tr>
+<td>andrew kiefer</td>
+<td>1893–1897</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">minnesota</span></td>
+<td>republican</td>
+<td>1832–1904</td>
+</tr>
+<tr>
+<td>charles edward kiefner</td>
+<td>1925–1927\n1929–1931</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">missouri</span></td>
+<td>republican</td>
+<td>1869–1942</td>
+</tr>
+<tr>
+<td>edgar raymond kiess</td>
+<td>1913–1930</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>republican</td>
+<td>1875–1930</td>
+</tr>
+<tr>
+<td>james kilbourne</td>
+<td>1813–1817</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ohio</span></td>
+<td>democratic-republican</td>
+<td>1770–1850</td>
+</tr>
+<tr>
+<td>clarence e. kilburn</td>
+<td>1940–1965</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>republican</td>
+<td>1893–1975</td>
+</tr>
+<tr>
+<td>paul j. kilday</td>
+<td>1939–1961</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">texas</span></td>
+<td>democratic</td>
+<td>1900–1968</td>
+</tr>
+<tr>
+<td>constantine b. kilgore</td>
+<td>1887–1895</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">texas</span></td>
+<td>democratic</td>
+<td>1835–1897</td>
+</tr>
+<tr>
+<td>daniel kilgore</td>
+<td>1834–1838</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ohio</span></td>
+<td>democratic</td>
+<td>1793–1851</td>
+</tr>
+<tr>
+<td>david kilgore</td>
+<td>1857–1861</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">indiana</span></td>
+<td>republican</td>
+<td>1804–1879</td>
+</tr>
+<tr>
+<td>joe m. kilgore</td>
+<td>1955–1965</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">texas</span></td>
+<td>democratic</td>
+<td>1918–1999</td>
+</tr>
+<tr>
+<td>joseph kille</td>
+<td>1839–1841</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new jersey</span></td>
+<td>democratic</td>
+<td>1790–1865</td>
+</tr>
+<tr>
+<td>john weinland killinger</td>
+<td>1859–1863\n1871–1875\n1877–1881</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>republican</td>
+<td>1824–1896</td>
+</tr>
+<tr>
+<td>carolyn cheeks kilpatrick</td>
+<td>1997–2011</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">michigan</span></td>
+<td>democratic</td>
+<td>1945–</td>
+</tr>
+<tr>
+<td>mary jo kilroy</td>
+<td>2009–2011</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ohio</span></td>
+<td>democratic</td>
+<td>1949–</td>
+</tr>
+<tr>
+<td>jay kim</td>
+<td>1993–1999</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">california</span></td>
+<td>republican</td>
+<td>1939–</td>
+</tr>
+<tr>
+<td>alanson m. kimball</td>
+<td>1875–1877</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wisconsin</span></td>
+<td>republican</td>
+<td>1827–1913</td>
+</tr>
+<tr>
+<td>henry m. kimball</td>
+<td>1935</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">michigan</span></td>
+<td>republican</td>
+<td>1878–1935</td>
+</tr>
+<tr>
+<td>william p. kimball</td>
+<td>1907–1909</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kentucky</span></td>
+<td>democratic</td>
+<td>1857–1926</td>
+</tr>
+<tr>
+<td>william kimmel</td>
+<td>1877–1881</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">maryland</span></td>
+<td>democratic</td>
+<td>1812–1886</td>
+</tr>
+<tr>
+<td>john kincaid</td>
+<td>1829–1831</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kentucky</span></td>
+<td>democratic</td>
+<td>1791–1873</td>
+</tr>
+<tr>
+<td>david hayes kincheloe</td>
+<td>1915–1930</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kentucky</span></td>
+<td>democratic</td>
+<td>1877–1950</td>
+</tr>
+<tr>
+<td>george j. kindel</td>
+<td>1913–1915</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">colorado</span></td>
+<td>democratic</td>
+<td>1855–1930</td>
+</tr>
+<tr>
+<td>tom kindness</td>
+<td>1975–1987</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ohio</span></td>
+<td>republican</td>
+<td>1929–2004</td>
+</tr>
+<tr>
+<td>john j. kindred</td>
+<td>1911–1913\n1921–1929</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>democratic</td>
+<td>1864–1937</td>
+</tr>
+<tr>
+<td>adam king</td>
+<td>1827–1833</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>democratic</td>
+<td>1783–1835</td>
+</tr>
+<tr>
+<td>andrew king</td>
+<td>1871–1873</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">missouri</span></td>
+<td>democratic</td>
+<td>1812–1895</td>
+</tr>
+<tr>
+<td>austin augustus king</td>
+<td>1863–1865</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">missouri</span></td>
+<td>unionist</td>
+<td>1802–1870</td>
+</tr>
+<tr>
+<td>carleton j. king</td>
+<td>1961–1974</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>republican</td>
+<td>1904–1977</td>
+</tr>
+<tr>
+<td>cecil r. king</td>
+<td>1942–1969</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">california</span></td>
+<td>democratic</td>
+<td>1898–1974</td>
+</tr>
+<tr>
+<td>cyrus king</td>
+<td>1813–1817</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">massachusetts</span></td>
+<td>federalist</td>
+<td>1772–1817</td>
+</tr>
+<tr>
+<td>daniel p. king</td>
+<td>1843–1850</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">massachusetts</span></td>
+<td>whig</td>
+<td>1801–1850</td>
+</tr>
+<tr>
+<td>david s. king</td>
+<td>1959–1963\n1965–1967</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">utah</span></td>
+<td>democratic</td>
+<td>1917–2009</td>
+</tr>
+<tr>
+<td>edward john king</td>
+<td>1915–1929</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">illinois</span></td>
+<td>republican</td>
+<td>1867–1929</td>
+</tr>
+<tr>
+<td>george gordon king</td>
+<td>1849–1853</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rhode island</span></td>
+<td>whig</td>
+<td>1807–1870</td>
+</tr>
+<tr>
+<td>henry king</td>
+<td>1831–1835</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>democratic</td>
+<td>1790–1861</td>
+</tr>
+<tr>
+<td>j. floyd king</td>
+<td>1879–1887</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">louisiana</span></td>
+<td>democratic</td>
+<td>1842–1915</td>
+</tr>
+<tr>
+<td>james g. king</td>
+<td>1849–1851</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new jersey</span></td>
+<td>whig</td>
+<td>1791–1853</td>
+</tr>
+<tr>
+<td>john king</td>
+<td>1831–1833</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>democratic</td>
+<td>1775–1836</td>
+</tr>
+<tr>
+<td>john alsop king</td>
+<td>1849–1851</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>whig</td>
+<td>1788–1867</td>
+</tr>
+<tr>
+<td>karl c. king</td>
+<td>1951–1957</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>republican</td>
+<td>1897–1974</td>
+</tr>
+<tr>
+<td>perkins king</td>
+<td>1829–1831</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>democratic</td>
+<td>1784–1857</td>
+</tr>
+<tr>
+<td>preston king</td>
+<td>1843–1847</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>democratic</td>
+<td>1806–1865</td>
+</tr>
+<tr>
+<td>preston king</td>
+<td>1849–1853</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>free soiler</td>
+<td>1806–1865</td>
+</tr>
+<tr>
+<td>rufus h. king</td>
+<td>1855–1857</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>oppositionist</td>
+<td>1820–1890</td>
+</tr>
+<tr>
+<td>thomas butler king</td>
+<td>1839–1843\n1845–1850</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">georgia</span></td>
+<td>whig</td>
+<td>1800–1864</td>
+</tr>
+<tr>
+<td>william h. king</td>
+<td>1897–1899\n1900–1901</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">utah</span></td>
+<td>democratic</td>
+<td>1863–1949</td>
+</tr>
+<tr>
+<td>william r. king</td>
+<td>1811–1816</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">north carolina</span></td>
+<td>democratic-republican</td>
+<td>1786–1853</td>
+</tr>
+<tr>
+<td>william s. king</td>
+<td>1875–1877</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">minnesota</span></td>
+<td>republican</td>
+<td>1828–1900</td>
+</tr>
+<tr>
+<td>moses kinkaid</td>
+<td>1903–1922</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nebraska</span></td>
+<td>republican</td>
+<td>1856–1922</td>
+</tr>
+<tr>
+<td>eugene f. kinkead</td>
+<td>1909–1915</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new jersey</span></td>
+<td>democratic</td>
+<td>1876–1960</td>
+</tr>
+<tr>
+<td>george l. kinnard</td>
+<td>1833–1836</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">indiana</span></td>
+<td>democratic</td>
+<td>1803–1836</td>
+</tr>
+<tr>
+<td>thomas kinsella</td>
+<td>1871–1873</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>democratic</td>
+<td>1832–1884</td>
+</tr>
+<tr>
+<td>charles kinsey</td>
+<td>1817–1819\n1820–1821</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new jersey</span></td>
+<td>democratic-republican</td>
+<td>1773–1849</td>
+</tr>
+<tr>
+<td>william medcalf kinsey</td>
+<td>1889–1891</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">missouri</span></td>
+<td>republican</td>
+<td>1846–1931</td>
+</tr>
+<tr>
+<td>martin kinsley</td>
+<td>1819–1821</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">massachusetts</span></td>
+<td>democratic-republican</td>
+<td>1754–1835</td>
+</tr>
+<tr>
+<td>j. roland kinzer</td>
+<td>1930–1947</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>republican</td>
+<td>1874–1955</td>
+</tr>
+<tr>
+<td>george washington kipp</td>
+<td>1907–1909\n1911</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>democratic</td>
+<td>1847–1911</td>
+</tr>
+<tr>
+<td>andrew jackson kirk</td>
+<td>1926–1927</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kentucky</span></td>
+<td>republican</td>
+<td>1866–1933</td>
+</tr>
+<tr>
+<td>mark kirk</td>
+<td>2001–2010</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">illinois</span></td>
+<td>republican</td>
+<td>1959–</td>
+</tr>
+<tr>
+<td>ann kirkpatrick</td>
+<td>2009–2011</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">arizona</span></td>
+<td>democratic</td>
+<td>1950–</td>
+</tr>
+<tr>
+<td>joseph kirkland</td>
+<td>1821–1823</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>federalist</td>
+<td>1770–1844</td>
+</tr>
+<tr>
+<td>littleton kirkpatrick</td>
+<td>1843–1845</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new jersey</span></td>
+<td>democratic</td>
+<td>1797–1859</td>
+</tr>
+<tr>
+<td>sanford kirkpatrick</td>
+<td>1913–1915</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">iowa</span></td>
+<td>democratic</td>
+<td>1842–1932</td>
+</tr>
+<tr>
+<td>snyder s. kirkpatrick</td>
+<td>1895–1897</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kansas</span></td>
+<td>republican</td>
+<td>1848–1909</td>
+</tr>
+<tr>
+<td>william kirkpatrick</td>
+<td>1807–1809</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>democratic-republican</td>
+<td>1769–1832</td>
+</tr>
+<tr>
+<td>william huntington kirkpatrick</td>
+<td>1921–1923</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>republican</td>
+<td>1885–1970</td>
+</tr>
+<tr>
+<td>william sebring kirkpatrick</td>
+<td>1897–1899</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>republican</td>
+<td>1844–1932</td>
+</tr>
+<tr>
+<td>dorrance kirtland</td>
+<td>1817–1819</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>democratic-republican</td>
+<td>1770–1840</td>
+</tr>
+<tr>
+<td>michael j. kirwan</td>
+<td>1937–1970</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ohio</span></td>
+<td>democratic</td>
+<td>1886–1970</td>
+</tr>
+<tr>
+<td>john kissel</td>
+<td>1921–1923</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>republican</td>
+<td>1864–1938</td>
+</tr>
+<tr>
+<td>aaron kitchell</td>
+<td>1791–1793\n1795</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new jersey</span></td>
+<td>pro-administration</td>
+<td>1744–1820</td>
+</tr>
+<tr>
+<td>aaron kitchell</td>
+<td>1795–1797</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new jersey</span></td>
+<td>federalist</td>
+<td>1744–1820</td>
+</tr>
+<tr>
+<td>aaron kitchell</td>
+<td>1799–1801</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new jersey</span></td>
+<td>democratic-republican</td>
+<td>1744–1820</td>
+</tr>
+<tr>
+<td>bethuel kitchen</td>
+<td>1867–1869</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">west virginia</span></td>
+<td>republican</td>
+<td>1812–1895</td>
+</tr>
+<tr>
+<td>wade h. kitchens</td>
+<td>1937–1941</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">arkansas</span></td>
+<td>democratic</td>
+<td>1878–1966</td>
+</tr>
+<tr>
+<td>alvin paul kitchin</td>
+<td>1957–1963</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">north carolina</span></td>
+<td>democratic</td>
+<td>1908–1983</td>
+</tr>
+<tr>
+<td>claude kitchin</td>
+<td>1901–1923</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">north carolina</span></td>
+<td>democratic</td>
+<td>1869–1923</td>
+</tr>
+<tr>
+<td>william h. kitchin</td>
+<td>1879–1881</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">north carolina</span></td>
+<td>democratic</td>
+<td>1837–1901</td>
+</tr>
+<tr>
+<td>william walton kitchin</td>
+<td>1897–1909</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">north carolina</span></td>
+<td>democratic</td>
+<td>1866–1924</td>
+</tr>
+<tr>
+<td>john w. kittera</td>
+<td>1791–1795</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>pro-administration</td>
+<td>1752–1801</td>
+</tr>
+<tr>
+<td>john w. kittera</td>
+<td>1795–1801</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>federalist</td>
+<td>1752–1801</td>
+</tr>
+<tr>
+<td>thomas kittera</td>
+<td>1826–1827</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>national republican</td>
+<td>1789–1839</td>
+</tr>
+<tr>
+<td>george w. kittredge</td>
+<td>1853–1855</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new hampshire</span></td>
+<td>democratic</td>
+<td>1805–1881</td>
+</tr>
+<tr>
+<td>richard m. kleberg</td>
+<td>1931–1945</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">texas</span></td>
+<td>democratic</td>
+<td>1887–1955</td>
+</tr>
+<tr>
+<td>rudolph kleberg</td>
+<td>1896–1903</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">texas</span></td>
+<td>democratic</td>
+<td>1847–1924</td>
+</tr>
+<tr>
+<td>jerry kleczka</td>
+<td>1984–2005</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wisconsin</span></td>
+<td>democratic</td>
+<td>1943–</td>
+</tr>
+<tr>
+<td>john c. kleczka</td>
+<td>1919–1923</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wisconsin</span></td>
+<td>republican</td>
+<td>1885–1959</td>
+</tr>
+<tr>
+<td>arthur george klein</td>
+<td>1941–1945\n1946–1956</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>democratic</td>
+<td>1904–1968</td>
+</tr>
+<tr>
+<td>herbert klein</td>
+<td>1993–1995</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new jersey</span></td>
+<td>democratic</td>
+<td>1930–</td>
+</tr>
+<tr>
+<td>ron klein</td>
+<td>2007–2011</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">florida</span></td>
+<td>democratic</td>
+<td>1957–</td>
+</tr>
+<tr>
+<td>john j. kleiner</td>
+<td>1883–1887</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">indiana</span></td>
+<td>democratic</td>
+<td>1845–1911</td>
+</tr>
+<tr>
+<td>thomas s. kleppe</td>
+<td>1967–1971</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">north dakota</span></td>
+<td>republican</td>
+<td>1919–2007</td>
+</tr>
+<tr>
+<td>frank b. klepper</td>
+<td>1905–1907</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">missouri</span></td>
+<td>republican</td>
+<td>1864–1933</td>
+</tr>
+<tr>
+<td>ardolph loges kline</td>
+<td>1921–1923</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>republican</td>
+<td>1858–1930</td>
+</tr>
+<tr>
+<td>isaac clinton kline</td>
+<td>1921–1923</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>republican</td>
+<td>1858–1947</td>
+</tr>
+<tr>
+<td>marcus c.l. kline</td>
+<td>1903–1907</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>democratic</td>
+<td>1855–1911</td>
+</tr>
+<tr>
+<td>john klingensmith, jr.</td>
+<td>1835–1839</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>democratic</td>
+<td>1786–1854</td>
+</tr>
+<tr>
+<td>ron klink</td>
+<td>1993–2001</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>democratic</td>
+<td>1951–</td>
+</tr>
+<tr>
+<td>frank le blond kloeb</td>
+<td>1933–1937</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ohio</span></td>
+<td>democratic</td>
+<td>1890–1976</td>
+</tr>
+<tr>
+<td>robert klotz</td>
+<td>1879–1883</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>democratic</td>
+<td>1819–1895</td>
+</tr>
+<tr>
+<td>john c. kluczynski</td>
+<td>1951–1975</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">illinois</span></td>
+<td>democratic</td>
+<td>1896–1975</td>
+</tr>
+<tr>
+<td>scott l. klug</td>
+<td>1991–1999</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wisconsin</span></td>
+<td>republican</td>
+<td>1953–</td>
+</tr>
+<tr>
+<td>theodore f. kluttz</td>
+<td>1899–1905</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">north carolina</span></td>
+<td>democratic</td>
+<td>1848–1918</td>
+</tr>
+<tr>
+<td>anthony l. knapp</td>
+<td>1861–1865</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">illinois</span></td>
+<td>democratic</td>
+<td>1828–1881</td>
+</tr>
+<tr>
+<td>charles knapp</td>
+<td>1869–1871</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>republican</td>
+<td>1797–1880</td>
+</tr>
+<tr>
+<td>charles j. knapp</td>
+<td>1889–1891</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>republican</td>
+<td>1845–1916</td>
+</tr>
+<tr>
+<td>charles l. knapp</td>
+<td>1901–1911</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>republican</td>
+<td>1847–1929</td>
+</tr>
+<tr>
+<td>chauncey l. knapp</td>
+<td>1855–1857</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">massachusetts</span></td>
+<td>american</td>
+<td>1809–1898</td>
+</tr>
+<tr>
+<td>chauncey l. knapp</td>
+<td>1857–1859</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">massachusetts</span></td>
+<td>republican</td>
+<td>1809–1898</td>
+</tr>
+<tr>
+<td>robert m. knapp</td>
+<td>1873–1875\n1877–1879</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">illinois</span></td>
+<td>democratic</td>
+<td>1831–1889</td>
+</tr>
+<tr>
+<td>herman knickerbocker</td>
+<td>1809–1811</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>federalist</td>
+<td>1779–1855</td>
+</tr>
+<tr>
+<td>frank c. kniffin</td>
+<td>1931–1939</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ohio</span></td>
+<td>democratic</td>
+<td>1894–1968</td>
+</tr>
+<tr>
+<td>charles landon knight</td>
+<td>1921–1923</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ohio</span></td>
+<td>republican</td>
+<td>1867–1933</td>
+</tr>
+<tr>
+<td>jonathan knight</td>
+<td>1855–1857</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>oppositionist</td>
+<td>1787–1858</td>
+</tr>
+<tr>
+<td>nehemiah knight</td>
+<td>1803–1808</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rhode island</span></td>
+<td>democratic-republican</td>
+<td>1746–1808</td>
+</tr>
+<tr>
+<td>joe knollenberg</td>
+<td>1993–2009</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">michigan</span></td>
+<td>republican</td>
+<td>1933–</td>
+</tr>
+<tr>
+<td>philip knopf</td>
+<td>1903–1909</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">illinois</span></td>
+<td>republican</td>
+<td>1847–1920</td>
+</tr>
+<tr>
+<td>j. proctor knott</td>
+<td>1867–1871\n1875–1883</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kentucky</span></td>
+<td>democratic</td>
+<td>1830–1911</td>
+</tr>
+<tr>
+<td>joseph r. knowland</td>
+<td>1903–1914</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">california</span></td>
+<td>republican</td>
+<td>1873–1966</td>
+</tr>
+<tr>
+<td>freeman t. knowles</td>
+<td>1897–1899</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">south dakota</span></td>
+<td>populist</td>
+<td>1846–1910</td>
+</tr>
+<tr>
+<td>ebenezer knowlton</td>
+<td>1855–1857</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">maine</span></td>
+<td>oppositionist</td>
+<td>1815–1874</td>
+</tr>
+<tr>
+<td>james knox</td>
+<td>1853–1855</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">illinois</span></td>
+<td>whig</td>
+<td>1807–1876</td>
+</tr>
+<tr>
+<td>james knox</td>
+<td>1855–1857</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">illinois</span></td>
+<td>oppositionist</td>
+<td>1807–1876</td>
+</tr>
+<tr>
+<td>samuel knox</td>
+<td>1864–1865</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">missouri</span></td>
+<td>unconditional unionist</td>
+<td>1815–1905</td>
+</tr>
+<tr>
+<td>victor a. knox</td>
+<td>1953–1965</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">michigan</span></td>
+<td>republican</td>
+<td>1899–1976</td>
+</tr>
+<tr>
+<td>william shadrach knox</td>
+<td>1895–1903</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">massachusetts</span></td>
+<td>republican</td>
+<td>1843–1914</td>
+</tr>
+<tr>
+<td>coya knutson</td>
+<td>1955–1959</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">minnesota</span></td>
+<td>democratic-farmer-labor</td>
+<td>1912–1996</td>
+</tr>
+<tr>
+<td>harold knutson</td>
+<td>1917–1949</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">minnesota</span></td>
+<td>republican</td>
+<td>1880–1953</td>
+</tr>
+<tr>
+<td>ed koch</td>
+<td>1969–1977</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>democratic</td>
+<td>1924–2013</td>
+</tr>
+<tr>
+<td>leo kocialkowski</td>
+<td>1933–1943</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">illinois</span></td>
+<td>democratic</td>
+<td>1882–1958</td>
+</tr>
+<tr>
+<td>raymond p. kogovsek</td>
+<td>1979–1985</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">colorado</span></td>
+<td>democratic</td>
+<td>1941–</td>
+</tr>
+<tr>
+<td>jim kolbe</td>
+<td>1985–2007</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">arizona</span></td>
+<td>republican</td>
+<td>1942–</td>
+</tr>
+<tr>
+<td>joseph p. kolter</td>
+<td>1983–1993</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>democratic</td>
+<td>1926–</td>
+</tr>
+<tr>
+<td>george konig</td>
+<td>1911–1913</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">maryland</span></td>
+<td>democratic</td>
+<td>1856–1913</td>
+</tr>
+<tr>
+<td>ernie konnyu</td>
+<td>1987–1989</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">california</span></td>
+<td>republican</td>
+<td>1937–</td>
+</tr>
+<tr>
+<td>thomas f. konop</td>
+<td>1911–1917</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wisconsin</span></td>
+<td>democratic</td>
+<td>1879–1964</td>
+</tr>
+<tr>
+<td>william henry koontz</td>
+<td>1866–1869</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>republican</td>
+<td>1830–1911</td>
+</tr>
+<tr>
+<td>michael j. kopetski</td>
+<td>1991–1995</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">oregon</span></td>
+<td>democratic</td>
+<td>1949–</td>
+</tr>
+<tr>
+<td>arthur w. kopp</td>
+<td>1909–1913</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wisconsin</span></td>
+<td>republican</td>
+<td>1874–1967</td>
+</tr>
+<tr>
+<td>william f. kopp</td>
+<td>1921–1933</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">iowa</span></td>
+<td>republican</td>
+<td>1869–1938</td>
+</tr>
+<tr>
+<td>herman p. kopplemann</td>
+<td>1933–1939\n1941–1943\n1945–1947</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">connecticut</span></td>
+<td>democratic</td>
+<td>1880–1957</td>
+</tr>
+<tr>
+<td>charles a. korbly</td>
+<td>1909–1915</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">indiana</span></td>
+<td>democratic</td>
+<td>1871–1937</td>
+</tr>
+<tr>
+<td>franklin f. korell</td>
+<td>1927–1931</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">oregon</span></td>
+<td>republican</td>
+<td>1889–1965</td>
+</tr>
+<tr>
+<td>horace r. kornegay</td>
+<td>1961–1969</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">north carolina</span></td>
+<td>democratic</td>
+<td>1924–2009</td>
+</tr>
+<tr>
+<td>suzanne kosmas</td>
+<td>2009–2011</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">florida</span></td>
+<td>democratic</td>
+<td>1944–</td>
+</tr>
+<tr>
+<td>peter h. kostmayer</td>
+<td>1977–1981\n1983–1993</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>democratic</td>
+<td>1946–</td>
+</tr>
+<tr>
+<td>frank kowalski</td>
+<td>1959–1963</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">connecticut</span></td>
+<td>democratic</td>
+<td>1907–1974</td>
+</tr>
+<tr>
+<td>charles kramer</td>
+<td>1933–1943</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">california</span></td>
+<td>democratic</td>
+<td>1879–1943</td>
+</tr>
+<tr>
+<td>ken kramer</td>
+<td>1979–1987</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">colorado</span></td>
+<td>republican</td>
+<td>1942–</td>
+</tr>
+<tr>
+<td>frank kratovil</td>
+<td>2009–2011</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">maryland</span></td>
+<td>democratic</td>
+<td>1968–</td>
+</tr>
+<tr>
+<td>milton kraus</td>
+<td>1917–1923</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">indiana</span></td>
+<td>republican</td>
+<td>1866–1942</td>
+</tr>
+<tr>
+<td>jacob krebs</td>
+<td>1826–1827</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>democratic</td>
+<td>1782–1847</td>
+</tr>
+<tr>
+<td>john hans krebs</td>
+<td>1975–1979</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">california</span></td>
+<td>democratic</td>
+<td>1926–</td>
+</tr>
+<tr>
+<td>paul j. krebs</td>
+<td>1965–1967</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new jersey</span></td>
+<td>democratic</td>
+<td>1912–1996</td>
+</tr>
+<tr>
+<td>aaron shenk kreider</td>
+<td>1913–1923</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>republican</td>
+<td>1863–1929</td>
+</tr>
+<tr>
+<td>mike kreidler</td>
+<td>1993–1995</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">washington</span></td>
+<td>democratic</td>
+<td>1943–</td>
+</tr>
+<tr>
+<td>george kremer</td>
+<td>1823–1825</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>democratic-republican</td>
+<td>1775–1854</td>
+</tr>
+<tr>
+<td>george kremer</td>
+<td>1825–1829</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>democratic</td>
+<td>1775–1854</td>
+</tr>
+<tr>
+<td>george frederic kribbs</td>
+<td>1891–1895</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>democratic</td>
+<td>1846–1938</td>
+</tr>
+<tr>
+<td>john kronmiller</td>
+<td>1909–1911</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">maryland</span></td>
+<td>republican</td>
+<td>1858–1928</td>
+</tr>
+<tr>
+<td>bob krueger</td>
+<td>1975–1979</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">texas</span></td>
+<td>democratic</td>
+<td>1935–</td>
+</tr>
+<tr>
+<td>otto krueger</td>
+<td>1953–1959</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">north dakota</span></td>
+<td>republican</td>
+<td>1890–1963</td>
+</tr>
+<tr>
+<td>edward h. kruse</td>
+<td>1949–1951</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">indiana</span></td>
+<td>democratic</td>
+<td>1918–2000</td>
+</tr>
+<tr>
+<td>randy kuhl</td>
+<td>2005–2009</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>republican</td>
+<td>1943–</td>
+</tr>
+<tr>
+<td>joseph henry kuhns</td>
+<td>1851–1853</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>whig</td>
+<td>1800–1883</td>
+</tr>
+<tr>
+<td>monroe henry kulp</td>
+<td>1895–1899</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>republican</td>
+<td>1858–1911</td>
+</tr>
+<tr>
+<td>jacob michael kunkel</td>
+<td>1857–1861</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">maryland</span></td>
+<td>democratic</td>
+<td>1822–1870</td>
+</tr>
+<tr>
+<td>john c. kunkel</td>
+<td>1939–1951\n1961–1966</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>republican</td>
+<td>1898–1970</td>
+</tr>
+<tr>
+<td>john christian kunkel</td>
+<td>1855–1857</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>oppositionist</td>
+<td>1816–1870</td>
+</tr>
+<tr>
+<td>john christian kunkel</td>
+<td>1857–1859</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>republican</td>
+<td>1816–1870</td>
+</tr>
+<tr>
+<td>stanley h. kunz</td>
+<td>1921–1931\n1932–1933</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">illinois</span></td>
+<td>democratic</td>
+<td>1864–1946</td>
+</tr>
+<tr>
+<td>theodore r. kupferman</td>
+<td>1966–1969</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york</span></td>
+<td>republican</td>
+<td>1920–2003</td>
+</tr>
+<tr>
+<td>jacob banks kurtz</td>
+<td>1923–1935</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>republican</td>
+<td>1867–1960</td>
+</tr>
+<tr>
+<td>william henry kurtz</td>
+<td>1851–1855</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pennsylvania</span></td>
+<td>democratic</td>
+<td>1804–1868</td>
+</tr>
+<tr>
+<td>gustav küstermann</td>
+<td>1907–1911</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wisconsin</span></td>
+<td>republican</td>
+<td>1850–1919</td>
+</tr>
+<tr>
+<td>andrew j. kuykendall</td>
+<td>1865–1867</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">illinois</span></td>
+<td>republican</td>
+<td>1815–1891</td>
+</tr>
+<tr>
+<td>dan kuykendall</td>
+<td>1967–1975</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tennessee</span></td>
+<td>republican</td>
+<td>1924–2008</td>
+</tr>
+<tr>
+<td>steven t. kuykendall</td>
+<td>1999–2001</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">california</span></td>
+<td>republican</td>
+<td>1947–</td>
+</tr>
+<tr>
+<td>ole j. kvale</td>
+<td>1923–1929</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">minnesota</span></td>
+<td>farmer-labor</td>
+<td>1869–1929</td>
+</tr>
+<tr>
+<td>paul john kvale</td>
+<td>1929–1939</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">minnesota</span></td>
+<td>farmer-labor</td>
+<td>1896–1960</td>
+</tr>
+<tr>
+<td>john henry kyl</td>
+<td>1959–1965\n1967–1973</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">iowa</span></td>
+<td>republican</td>
+<td>1919–2002</td>
+</tr>
+<tr>
+<td>jon kyl</td>
+<td>1987–1995</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">arizona</span></td>
+<td>republican</td>
+<td>1942–</td>
+</tr>
+<tr>
+<td>john kyle</td>
+<td>1891–1897</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mississippi</span></td>
+<td>democratic</td>
+<td>1851–1913</td>
+</tr>
+<tr>
+<td>thomas b. kyle</td>
+<td>1901–1905</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ohio</span></td>
+<td>republican</td>
+<td>1856–1915</td>
+</tr>
+<tr>
+<td>peter n. kyros</td>
+<td>1967–1975</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">maine</span></td>
+<td>democratic</td>
+<td>1925–2012</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select rows where the 'representative' column ends with the letter 'k'.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>representative</td>
+<td>years</td>
+<td>state</td>
+<td>party</td>
+<td>lifespan</td>
+</tr>
+<tr>
+<td>charles a. kading</td>
+<td>1927–1933</td>
+<td>wisconsin</td>
+<td>republican</td>
+<td>1874–1956</td>
+</tr>
+<tr>
+<td>steve kagen</td>
+<td>2007–2011</td>
+<td>wisconsin</td>
+<td>democratic</td>
+<td>1949–</td>
+</tr>
+<tr>
+<td>bob kasten</td>
+<td>1975–1979</td>
+<td>wisconsin</td>
+<td>republican</td>
+<td>1942–</td>
+</tr>
+<tr>
+<td>robert kastenmeier</td>
+<td>1959–1991</td>
+<td>wisconsin</td>
+<td>democratic</td>
+<td>1924–</td>
+</tr>
+<tr>
+<td>frank bateman keefe</td>
+<td>1939–1951</td>
+<td>wisconsin</td>
+<td>republican</td>
+<td>1887–1952</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Count the number of rows.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>representative</td>
+<td>years</td>
+<td>state</td>
+<td>party</td>
+<td>lifespan</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>row_count</td>
+</tr>
+<tr>
+<td>0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[0]]</h3>
+</body></html>

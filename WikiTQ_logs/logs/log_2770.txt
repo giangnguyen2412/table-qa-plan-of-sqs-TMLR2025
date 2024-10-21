@@ -1,0 +1,82 @@
+************************************************************************************************************************
+Sample 2770 - Plan 1: Query: how many consecutive years did andy appear
+Sample 2770 - Plan 1: Groundtruth: ['2']
+Sample 2770 - Plan 1: X-Original table pd: 
+     time  wind    auto         athlete     nationality  \
+0   20.6y                andy stanfield   united states   
+1    20.6                andy stanfield   united states   
+2    20.6   0.0             thane baker   united states   
+3    20.6         20.75    bobby morrow   united states   
+4    20.6                manfred germar    west germany   
+5   20.6y  −1.6              ray norton   united states   
+6    20.6                    ray norton   united states   
+7   20.5y                 peter radford  united kingdom   
+8    20.5   0.0   20.75   stone johnson   united states   
+9    20.5   0.0              ray norton   united states   
+10   20.5         20.65   livio berruti           italy   
+11   20.5         20.62   livio berruti           italy   
+12  20.5y  −1.1   20.67    paul drayton   united states   
+13  20.3y  −0.1              henry carr   united states   
+14  20.2y   0.5              henry carr   united states   
+15  20.0y   0.0            tommie smith   united states   
+16  19.8a   0.9  19.83a    tommie smith   united states   
+17  19.8a   0.9  19.86a  donald quarrie         jamaica   
+18  19.8+   1.3          donald quarrie         jamaica   
+
+                 location_of_race               date  
+0     philadelphia, united states       may 26, 1951  
+1      los angeles, united states      june 28, 1952  
+2      bakersfield, united states      june 23, 1956  
+3            melbourne, australia  november 27, 1956  
+4              wuppertal, germany    october 1, 1958  
+5         berkeley, united states     march 19, 1960  
+6     philadelphia, united states     april 30, 1960  
+7   wolverhampton, united kingdom       may 28, 1960  
+8         stanford, united states       july 2, 1960  
+9         stanford, united states       july 2, 1960  
+10                    rome, italy  september 3, 1960  
+11                    rome, italy  september 3, 1960  
+12          walnut, united states      june 23, 1962  
+13           tempe, united states     march 23, 1963  
+14           tempe, united states      april 4, 1964  
+15      sacramento, united states      june 11, 1968  
+16            mexico city, mexico   october 16, 1968  
+17                 cali, colombia     august 3, 1971  
+18  eugene, oregon, united states       june 7, 1975  
+Sample 2770 - Plan 1: Caption: none
+Sample 2770 - Plan 1: Original table: [['time', 'wind', 'auto', 'athlete', 'nationality', 'location_of_race', 'date'], ['20.6y', '', '', 'andy stanfield', 'united states', 'philadelphia, united states', 'may 26, 1951'], ['20.6', '', '', 'andy stanfield', 'united states', 'los angeles, united states', 'june 28, 1952'], ['20.6', '0.0', '', 'thane baker', 'united states', 'bakersfield, united states', 'june 23, 1956'], ['20.6', '', '20.75', 'bobby morrow', 'united states', 'melbourne, australia', 'november 27, 1956'], ['20.6', '', '', 'manfred germar', 'west germany', 'wuppertal, germany', 'october 1, 1958'], ['20.6y', '−1.6', '', 'ray norton', 'united states', 'berkeley, united states', 'march 19, 1960'], ['20.6', '', '', 'ray norton', 'united states', 'philadelphia, united states', 'april 30, 1960'], ['20.5y', '', '', 'peter radford', 'united kingdom', 'wolverhampton, united kingdom', 'may 28, 1960'], ['20.5', '0.0', '20.75', 'stone johnson', 'united states', 'stanford, united states', 'july 2, 1960'], ['20.5', '0.0', '', 'ray norton', 'united states', 'stanford, united states', 'july 2, 1960'], ['20.5', '', '20.65', 'livio berruti', 'italy', 'rome, italy', 'september 3, 1960'], ['20.5', '', '20.62', 'livio berruti', 'italy', 'rome, italy', 'september 3, 1960'], ['20.5y', '−1.1', '20.67', 'paul drayton', 'united states', 'walnut, united states', 'june 23, 1962'], ['20.3y', '−0.1', '', 'henry carr', 'united states', 'tempe, united states', 'march 23, 1963'], ['20.2y', '0.5', '', 'henry carr', 'united states', 'tempe, united states', 'april 4, 1964'], ['20.0y', '0.0', '', 'tommie smith', 'united states', 'sacramento, united states', 'june 11, 1968'], ['19.8a', '0.9', '19.83a', 'tommie smith', 'united states', 'mexico city, mexico', 'october 16, 1968'], ['19.8a', '0.9', '19.86a', 'donald quarrie', 'jamaica', 'cali, colombia', 'august 3, 1971'], ['19.8+', '1.3', '', 'donald quarrie', 'jamaica', 'eugene, oregon, united states', 'june 7, 1975']]
+########################################################################################################################
+Sample 2770 - Plan 1: Operation 1: Select rows where 'athlete' is 'andy stanfield'.
+Sample 2770 - Plan 1: Selected indices: [[0, 3], [1, 3]]
+Sample 2770 - Plan 1: X-Table after operation df:
+    time  wind  auto         athlete    nationality  \
+0  20.6y   NaN   NaN  andy stanfield  united states   
+1   20.6   NaN   NaN  andy stanfield  united states   
+
+              location_of_race           date  
+0  philadelphia, united states   may 26, 1951  
+1   los angeles, united states  june 28, 1952  
+Sample 2770 - Plan 1: Table after operation: [['time', 'wind', 'auto', 'athlete', 'nationality', 'location_of_race', 'date'], ['20.6y', '', '', 'andy stanfield', 'united states', 'philadelphia, united states', 'may 26, 1951'], ['20.6', '', '', 'andy stanfield', 'united states', 'los angeles, united states', 'june 28, 1952']]
+########################################################################################################################
+Sample 2770 - Plan 1: Operation 2: Select the 'date' column.
+Sample 2770 - Plan 1: Selected indices: []
+Sample 2770 - Plan 1: X-Table after operation df:
+            date
+0   may 26, 1951
+1  june 28, 1952
+Sample 2770 - Plan 1: Table after operation: [['date'], ['may 26, 1951'], ['june 28, 1952']]
+########################################################################################################################
+Sample 2770 - Plan 1: Operation 3: Extract the year from the 'date' column and add a new column 'year'.
+Sample 2770 - Plan 1: Selected indices: [[0, 0], [1, 0]]
+Sample 2770 - Plan 1: X-Table after operation df:
+            date  year
+0   may 26, 1951  1951
+1  june 28, 1952  1952
+Sample 2770 - Plan 1: Table after operation: [['date', 'year'], ['may 26, 1951', '1951'], ['june 28, 1952', '1952']]
+########################################################################################################################
+Sample 2770 - Plan 1: Operation 4: Order the table by the 'year' column in ascending order.
+SQL execution error in operation 4: Execution failed on sql 'Write a SQL command that: Order the table by the 'year' column in ascending order.': near "Write": syntax error
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['2']]
+Groundtruth: ['2']

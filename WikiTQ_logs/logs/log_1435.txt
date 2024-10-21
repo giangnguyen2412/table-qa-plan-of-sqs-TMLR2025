@@ -1,0 +1,40 @@
+************************************************************************************************************************
+Sample 1435 - Plan 1: Query: how many more passengers did london heathrow have than bristol?
+Sample 1435 - Plan 1: Groundtruth: ['588,865']
+Sample 1435 - Plan 1: X-Original table pd: 
+   rank                airport passengers_handled change_n2011_12
+0     1        london heathrow            828,531              0%
+1     2         london gatwick            607,417              7%
+2     3        london stansted            331,607              3%
+3     4           london luton            276,488              0%
+4     5  belfast international            266,987              8%
+5     6                bristol            239,666              8%
+6     7             birmingham            208,123              2%
+7     8            southampton            173,576             24%
+8     9            london city            158,239              6%
+9    10           belfast city            100,003              4%
+Sample 1435 - Plan 1: Caption: none
+Sample 1435 - Plan 1: Original table: [['rank', 'airport', 'passengers_handled', 'change_n2011_12'], ['1', 'london heathrow', '828,531', '0%'], ['2', 'london gatwick', '607,417', '7%'], ['3', 'london stansted', '331,607', '3%'], ['4', 'london luton', '276,488', '0%'], ['5', 'belfast international', '266,987', '8%'], ['6', 'bristol', '239,666', '8%'], ['7', 'birmingham', '208,123', '2%'], ['8', 'southampton', '173,576', '24%'], ['9', 'london city', '158,239', '6%'], ['10', 'belfast city', '100,003', '4%']]
+########################################################################################################################
+Sample 1435 - Plan 1: Operation 1: Select the row where the 'airport' is 'london heathrow'.
+Sample 1435 - Plan 1: Selected indices: [[0, 1]]
+Sample 1435 - Plan 1: X-Table after operation df:
+   rank          airport passengers_handled change_n2011_12
+0     1  london heathrow            828,531              0%
+Sample 1435 - Plan 1: Table after operation: [['rank', 'airport', 'passengers_handled', 'change_n2011_12'], [1, 'london heathrow', '828,531', '0%']]
+########################################################################################################################
+Sample 1435 - Plan 1: Operation 2: Select the 'passengers_handled' column.
+Sample 1435 - Plan 1: Selected indices: []
+Sample 1435 - Plan 1: X-Table after operation df:
+  passengers_handled
+0            828,531
+Sample 1435 - Plan 1: Table after operation: [['passengers_handled'], ['828,531']]
+########################################################################################################################
+Sample 1435 - Plan 1: Operation 3: Subtract the value in the 'passengers_handled' column for the row where the 'airport' is 'bristol' from the value obtained in step 2.
+SQL execution error in operation 3: Execution failed on sql 'SELECT passengers_handled - 828531 AS result
+FROM table_sql
+WHERE airport = 'bristol';': no such column: airport
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['568865']]
+Groundtruth: ['588,865']

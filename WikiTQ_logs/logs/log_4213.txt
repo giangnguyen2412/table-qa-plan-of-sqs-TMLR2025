@@ -1,0 +1,59 @@
+************************************************************************************************************************
+Sample 4213 - Plan 1: Query: what was the top finish in 2b division?
+Sample 4213 - Plan 1: Groundtruth: ['4th']
+Sample 4213 - Plan 1: X-Original table pd: 
+     season  tier division place
+0   1988/89     4       3ª   3rd
+1   1989/90     4       3ª   1st
+2   1990/91     3      2ªb   6th
+3   1991/92     3      2ªb  12th
+4   1992/93     3      2ªb   4th
+5   1993/94     3      2ªb  15th
+6   1994/95     3      2ªb   9th
+7   1995/96     3      2ªb  19th
+8   1996/97     4       3ª   2nd
+9   1997/98     4       3ª   1st
+10  1998/99     4       3ª   6th
+Sample 4213 - Plan 1: Caption: none
+Sample 4213 - Plan 1: Original table: [['season', 'tier', 'division', 'place'], ['1988/89', '4', '3ª', '3rd'], ['1989/90', '4', '3ª', '1st'], ['1990/91', '3', '2ªb', '6th'], ['1991/92', '3', '2ªb', '12th'], ['1992/93', '3', '2ªb', '4th'], ['1993/94', '3', '2ªb', '15th'], ['1994/95', '3', '2ªb', '9th'], ['1995/96', '3', '2ªb', '19th'], ['1996/97', '4', '3ª', '2nd'], ['1997/98', '4', '3ª', '1st'], ['1998/99', '4', '3ª', '6th']]
+########################################################################################################################
+Sample 4213 - Plan 1: Operation 1: Select rows where the 'division' is '2ªb'.
+Sample 4213 - Plan 1: Selected indices: [[6, 2], [4, 2], [7, 2], [2, 2], [3, 2], [5, 2]]
+Sample 4213 - Plan 1: X-Table after operation df:
+    season  tier division place
+0  1990/91     3      2ªb   6th
+1  1991/92     3      2ªb  12th
+2  1992/93     3      2ªb   4th
+3  1993/94     3      2ªb  15th
+4  1994/95     3      2ªb   9th
+5  1995/96     3      2ªb  19th
+Sample 4213 - Plan 1: Table after operation: [['season', 'tier', 'division', 'place'], ['1990/91', 3, '2ªb', '6th'], ['1991/92', 3, '2ªb', '12th'], ['1992/93', 3, '2ªb', '4th'], ['1993/94', 3, '2ªb', '15th'], ['1994/95', 3, '2ªb', '9th'], ['1995/96', 3, '2ªb', '19th']]
+########################################################################################################################
+Sample 4213 - Plan 1: Operation 2: Order the table by 'place' in ascending order.
+Sample 4213 - Plan 1: Selected indices: [[4, 3], [0, 3], [2, 3], [3, 3], [5, 3], [1, 3]]
+Sample 4213 - Plan 1: X-Table after operation df:
+    season  tier division place
+0  1991/92     3      2ªb  12th
+1  1993/94     3      2ªb  15th
+2  1995/96     3      2ªb  19th
+3  1992/93     3      2ªb   4th
+4  1990/91     3      2ªb   6th
+5  1994/95     3      2ªb   9th
+Sample 4213 - Plan 1: Table after operation: [['season', 'tier', 'division', 'place'], ['1991/92', 3, '2ªb', '12th'], ['1993/94', 3, '2ªb', '15th'], ['1995/96', 3, '2ªb', '19th'], ['1992/93', 3, '2ªb', '4th'], ['1990/91', 3, '2ªb', '6th'], ['1994/95', 3, '2ªb', '9th']]
+########################################################################################################################
+Sample 4213 - Plan 1: Operation 3: Select row number 1.
+Sample 4213 - Plan 1: Selected indices: []
+Sample 4213 - Plan 1: X-Table after operation df:
+    season  tier division place
+0  1991/92     3      2ªb  12th
+Sample 4213 - Plan 1: Table after operation: [['season', 'tier', 'division', 'place'], ['1991/92', 3, '2ªb', '12th']]
+########################################################################################################################
+Sample 4213 - Plan 1: Operation 4: Select the 'place' column.
+Sample 4213 - Plan 1: Selected indices: []
+Sample 4213 - Plan 1: X-Table after operation df:
+  place
+0  12th
+Sample 4213 - Plan 1: Table after operation: [['place'], ['12th']]
+Fall-back: FALSE
+Answer from plan 1: [['12th']]
+Groundtruth: ['4th']

@@ -1,0 +1,187 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> what is the location of the latest race?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Order the table by 'date' in descending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>season</td>
+<td>date</td>
+<td>location</td>
+<td>discipline</td>
+<td>place</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1993</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">27 feb 1993</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">whistler, bc, canada</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">downhill</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2nd</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1994</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">12 dec 1993</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">val-d'isère, france</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">super g</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3rd</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1994</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">29 dec 1993</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bormio, italy</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">downhill</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3rd</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1994</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">12 mar 1994</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">whistler, bc, canada</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">downhill</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3rd</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1994</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">13 mar 1994</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">whistler, bc, canada</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">super g</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1st</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1994</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">16 mar 1994</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">vail, co, usa</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">downhill</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3rd</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1995</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">11 dec 1994</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tignes, france</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">super g</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2nd</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select row number 1.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>season</td>
+<td>date</td>
+<td>location</td>
+<td>discipline</td>
+<td>place</td>
+</tr>
+<tr>
+<td>1994</td>
+<td>29 dec 1993</td>
+<td>bormio, italy</td>
+<td>downhill</td>
+<td>3rd</td>
+</tr>
+<tr>
+<td>1993</td>
+<td>27 feb 1993</td>
+<td>whistler, bc, canada</td>
+<td>downhill</td>
+<td>2nd</td>
+</tr>
+<tr>
+<td>1994</td>
+<td>16 mar 1994</td>
+<td>vail, co, usa</td>
+<td>downhill</td>
+<td>3rd</td>
+</tr>
+<tr>
+<td>1994</td>
+<td>13 mar 1994</td>
+<td>whistler, bc, canada</td>
+<td>super g</td>
+<td>1st</td>
+</tr>
+<tr>
+<td>1994</td>
+<td>12 mar 1994</td>
+<td>whistler, bc, canada</td>
+<td>downhill</td>
+<td>3rd</td>
+</tr>
+<tr>
+<td>1994</td>
+<td>12 dec 1993</td>
+<td>val-d'isère, france</td>
+<td>super g</td>
+<td>3rd</td>
+</tr>
+<tr>
+<td>1995</td>
+<td>11 dec 1994</td>
+<td>tignes, france</td>
+<td>super g</td>
+<td>2nd</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select the 'location' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>season</td>
+<td>date</td>
+<td>location</td>
+<td>discipline</td>
+<td>place</td>
+</tr>
+<tr>
+<td>1994</td>
+<td>29 dec 1993</td>
+<td>bormio, italy</td>
+<td>downhill</td>
+<td>3rd</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>location</td>
+</tr>
+<tr>
+<td>bormio, italy</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['bormio, italy']]</h3>
+</body></html>

@@ -1,0 +1,315 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> does route number 150 or number w13 go to becontree heath bus station?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where 'route_number' is either '150' or 'w13'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>route_number</td>
+<td>route</td>
+<td>via</td>
+<td>operator</td>
+<td>operation</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">25</span></td>
+<td>ilford hainault street to oxford circus</td>
+<td>holborn , aldgate , stratford</td>
+<td>first london</td>
+<td>24 hours. london buses service. times</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">66</span></td>
+<td>leytonstone station to romford station</td>
+<td>wanstead , redbridge , gants hill , newbury park</td>
+<td>arriva london</td>
+<td>daily. london buses service. times</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">86</span></td>
+<td>stratford bus station to romford station</td>
+<td>manor park, ilford , seven kings</td>
+<td>stagecoach london</td>
+<td>daily. london buses service. times</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">101</span></td>
+<td>wanstead station to gallions reach shopping centre</td>
+<td>manor park , east ham , beckton</td>
+<td>stagecoach london</td>
+<td>daily. london buses service. times</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">123</span></td>
+<td>ilford hainault street to wood green bus station</td>
+<td>gants hill , walthamstow, tottenham, turnpike lane</td>
+<td>arriva london</td>
+<td>daily. london buses service. times</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">128</span></td>
+<td>claybury broadway to romford station</td>
+<td>barkingside, gants hill , ilford</td>
+<td>arriva london</td>
+<td>24 hours. london buses service. times</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">145</span></td>
+<td>leytonstone to dagenham asda</td>
+<td>redbridge , ilford, becontree</td>
+<td>stagecoach london</td>
+<td>daily. london buses service. times</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">147</span></td>
+<td>ilford hainault street to canning town station</td>
+<td>east ham , newham general hospital, custom house</td>
+<td>stagecoach london</td>
+<td>daily. london buses service. times</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">150</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chigwell row to becontree heath bus station</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">hainault barkingside, gants hill , ilford</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">arriva london</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">daily. london buses service. times</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">167</span></td>
+<td>debden to ilford hainault street</td>
+<td>loughton , barkingside, gants hill</td>
+<td>blue triangle</td>
+<td>daily. london buses service. times</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">169</span></td>
+<td>barking town centre to clayhall the glade</td>
+<td>ilford , newbury park, barkingside</td>
+<td>stagecoach london</td>
+<td>daily. london buses service. times</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">179</span></td>
+<td>chingford to ilford hainault street</td>
+<td>woodford green, south woodford , gants hill</td>
+<td>first london</td>
+<td>daily. london buses service. times</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">247</span></td>
+<td>barkingside station to romford station</td>
+<td>hainault , collier row</td>
+<td>stagecoach london</td>
+<td>daily. london buses service. times</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">275</span></td>
+<td>walthamstow st james street station to barkingside tesco</td>
+<td>highams park, woodford green, woodford bridge</td>
+<td>arriva london</td>
+<td>daily. london buses service. times</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">296</span></td>
+<td>ilford sainbury's to romford station</td>
+<td>gants hill , newbury park, rose lane</td>
+<td>stagecoach london</td>
+<td>daily. london buses service. times</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">308</span></td>
+<td>wanstead station to clapton park millfields road</td>
+<td>forest gate , stratford , leyton</td>
+<td>first london</td>
+<td>daily. london buses service. times</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">362</span></td>
+<td>grange hill to king george hospital</td>
+<td>hainault, marks gate, chadwell heath</td>
+<td>blue triangle</td>
+<td>daily. london buses service. times</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">364</span></td>
+<td>ilford hainault street to dagenham east station</td>
+<td>goodmayes , becontree, dagenham heathway</td>
+<td>blue triangle</td>
+<td>daily. london buses service. times</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">366</span></td>
+<td>redbridge falmouth gardens to beckton station</td>
+<td>redbridge , ilford, barking</td>
+<td>stagecoach london</td>
+<td>daily. london buses service. times</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">396</span></td>
+<td>ilford sainbury's to king george hospital</td>
+<td>gants hill , newbury park, little heath</td>
+<td>stagecoach london</td>
+<td>daily. london buses service. times</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">462</span></td>
+<td>hainault the lowe to ilford hainault street</td>
+<td>grange hill , barkingside, gants hill</td>
+<td>arriva london</td>
+<td>daily. london buses service. times</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">el1</span></td>
+<td>ilford station to barking reach</td>
+<td>ilford lane, barking , river road</td>
+<td>blue triangle</td>
+<td>24 hours. london buses service. times</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">el2</span></td>
+<td>ilford station to dagenham dock station</td>
+<td>barking , thames view estate, dagenham</td>
+<td>blue triangle</td>
+<td>daily. london buses service. times</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w12</span></td>
+<td>walthamstow coppermill lane to wanstead station</td>
+<td>walthamstow central , whipps cross hospital, south woodford</td>
+<td>hct group</td>
+<td>daily. london buses service. times</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">w13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">woodford wells to leytonstone station</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">woodford green, snaresbrook , wanstead</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">hct group</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">daily. london buses service. times</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w14</span></td>
+<td>leyton asda to woodford bridge</td>
+<td>south woodford , wanstead , leytonstone</td>
+<td>arriva london</td>
+<td>daily. london buses service. times</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w19</span></td>
+<td>walthamstow angel avenue to ilford station</td>
+<td>walthamstow central , leytonstone , manor park</td>
+<td>blue triangle</td>
+<td>daily. london buses service. times</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select the 'route' column.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>route_number</td>
+<td>route</td>
+<td>via</td>
+<td>operator</td>
+<td>operation</td>
+</tr>
+<tr>
+<td>150</td>
+<td>chigwell row to becontree heath bus station</td>
+<td>hainault barkingside, gants hill , ilford</td>
+<td>arriva london</td>
+<td>daily. london buses service. times</td>
+</tr>
+<tr>
+<td>w13</td>
+<td>woodford wells to leytonstone station</td>
+<td>woodford green, snaresbrook , wanstead</td>
+<td>hct group</td>
+<td>daily. london buses service. times</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Check if any of the selected routes contain the phrase 'becontree heath bus station'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>route</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">chigwell row to becontree heath bus station</span></td>
+</tr>
+<tr>
+<td>woodford wells to leytonstone station</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: If there is a route that goes to 'becontree heath bus station', the answer is 'Yes'.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>route</td>
+</tr>
+<tr>
+<td>chigwell row to becontree heath bus station</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 5: If none of the selected routes go to 'becontree heath bus station', the answer is 'No'.</div>
+<div id="step-3" class="content">
+<table>
+<tr>
+<td>answer</td>
+</tr>
+<tr>
+<td>Yes</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>answer</td>
+</tr>
+<tr>
+<td>No</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['No']]</h3>
+</body></html>

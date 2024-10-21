@@ -1,0 +1,481 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which of the riders had the most points?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Order the table by the 'points' column in descending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>pos</td>
+<td>rider</td>
+<td>manufacturer</td>
+<td>time_retired</td>
+<td>points</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">loris capirossi</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">honda</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">38:04.730</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">25</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">valentino rossi</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">aprilia</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+0.180</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">20</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jeremy mcwilliams</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">aprilia</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+0.534</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">16</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tohru ukawa</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">honda</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+0.537</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">13</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">shinya nakano</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yamaha</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+0.742</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">11</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ralf waldmann</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">aprilia</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+7.019</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">10</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">franco battaini</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">aprilia</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+20.889</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">9</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stefano perugini</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">honda</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+20.891</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">8</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jason vincent</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">honda</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+21.310</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">7</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">anthony west</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tsr-honda</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+26.816</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">6</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">alex hofmann</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tsr-honda</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+26.933</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">5</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sebastian porto</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yamaha</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+27.054</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">4</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tomomi manako</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yamaha</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+27.903</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">3</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">14</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">masaki tokudome</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tsr-honda</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+33.161</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">15</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jarno janssen</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tsr-honda</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+56.248</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">luca boscoscuro</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tsr-honda</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+56.432</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">johann stigefelt</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yamaha</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+1:07.433</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">18</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">julien allemand</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tsr-honda</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+1:16.347</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fonsi nieto</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yamaha</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+1:25.622</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lucas oliver bulto</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yamaha</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+1:25.758</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">21</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">david garcia</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yamaha</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+1:33.867</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">22</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rudie markink</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">aprilia</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+1:40.280</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">23</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">arno visscher</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">aprilia</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+1:40.635</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">henk van de lagemaat</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">honda</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">+1 lap</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ret</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">maurice bolwerk</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tsr-honda</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">retirement</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ret</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">andre romein</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">honda</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">retirement</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ret</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">roberto rolfo</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">aprilia</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">retirement</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ret</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">marcellino lucchi</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">aprilia</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">retirement</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select row number 1.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>pos</td>
+<td>rider</td>
+<td>manufacturer</td>
+<td>time_retired</td>
+<td>points</td>
+</tr>
+<tr>
+<td>1</td>
+<td>loris capirossi</td>
+<td>honda</td>
+<td>38:04.730</td>
+<td>25.0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>valentino rossi</td>
+<td>aprilia</td>
+<td>+0.180</td>
+<td>20.0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>jeremy mcwilliams</td>
+<td>aprilia</td>
+<td>+0.534</td>
+<td>16.0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>tohru ukawa</td>
+<td>honda</td>
+<td>+0.537</td>
+<td>13.0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>shinya nakano</td>
+<td>yamaha</td>
+<td>+0.742</td>
+<td>11.0</td>
+</tr>
+<tr>
+<td>6</td>
+<td>ralf waldmann</td>
+<td>aprilia</td>
+<td>+7.019</td>
+<td>10.0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>franco battaini</td>
+<td>aprilia</td>
+<td>+20.889</td>
+<td>9.0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>stefano perugini</td>
+<td>honda</td>
+<td>+20.891</td>
+<td>8.0</td>
+</tr>
+<tr>
+<td>9</td>
+<td>jason vincent</td>
+<td>honda</td>
+<td>+21.310</td>
+<td>7.0</td>
+</tr>
+<tr>
+<td>10</td>
+<td>anthony west</td>
+<td>tsr-honda</td>
+<td>+26.816</td>
+<td>6.0</td>
+</tr>
+<tr>
+<td>11</td>
+<td>alex hofmann</td>
+<td>tsr-honda</td>
+<td>+26.933</td>
+<td>5.0</td>
+</tr>
+<tr>
+<td>12</td>
+<td>sebastian porto</td>
+<td>yamaha</td>
+<td>+27.054</td>
+<td>4.0</td>
+</tr>
+<tr>
+<td>13</td>
+<td>tomomi manako</td>
+<td>yamaha</td>
+<td>+27.903</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>14</td>
+<td>masaki tokudome</td>
+<td>tsr-honda</td>
+<td>+33.161</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>15</td>
+<td>jarno janssen</td>
+<td>tsr-honda</td>
+<td>+56.248</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>16</td>
+<td>luca boscoscuro</td>
+<td>tsr-honda</td>
+<td>+56.432</td>
+<td>None</td>
+</tr>
+<tr>
+<td>17</td>
+<td>johann stigefelt</td>
+<td>yamaha</td>
+<td>+1:07.433</td>
+<td>None</td>
+</tr>
+<tr>
+<td>18</td>
+<td>julien allemand</td>
+<td>tsr-honda</td>
+<td>+1:16.347</td>
+<td>None</td>
+</tr>
+<tr>
+<td>19</td>
+<td>fonsi nieto</td>
+<td>yamaha</td>
+<td>+1:25.622</td>
+<td>None</td>
+</tr>
+<tr>
+<td>20</td>
+<td>lucas oliver bulto</td>
+<td>yamaha</td>
+<td>+1:25.758</td>
+<td>None</td>
+</tr>
+<tr>
+<td>21</td>
+<td>david garcia</td>
+<td>yamaha</td>
+<td>+1:33.867</td>
+<td>None</td>
+</tr>
+<tr>
+<td>22</td>
+<td>rudie markink</td>
+<td>aprilia</td>
+<td>+1:40.280</td>
+<td>None</td>
+</tr>
+<tr>
+<td>23</td>
+<td>arno visscher</td>
+<td>aprilia</td>
+<td>+1:40.635</td>
+<td>None</td>
+</tr>
+<tr>
+<td>24</td>
+<td>henk van de lagemaat</td>
+<td>honda</td>
+<td>+1 lap</td>
+<td>None</td>
+</tr>
+<tr>
+<td>ret</td>
+<td>maurice bolwerk</td>
+<td>tsr-honda</td>
+<td>retirement</td>
+<td>None</td>
+</tr>
+<tr>
+<td>ret</td>
+<td>andre romein</td>
+<td>honda</td>
+<td>retirement</td>
+<td>None</td>
+</tr>
+<tr>
+<td>ret</td>
+<td>roberto rolfo</td>
+<td>aprilia</td>
+<td>retirement</td>
+<td>None</td>
+</tr>
+<tr>
+<td>ret</td>
+<td>marcellino lucchi</td>
+<td>aprilia</td>
+<td>retirement</td>
+<td>None</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select the 'rider' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>pos</td>
+<td>rider</td>
+<td>manufacturer</td>
+<td>time_retired</td>
+<td>points</td>
+</tr>
+<tr>
+<td>1</td>
+<td>loris capirossi</td>
+<td>honda</td>
+<td>38:04.730</td>
+<td>25.0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>rider</td>
+</tr>
+<tr>
+<td>loris capirossi</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['loris capirossi']]</h3>
+</body></html>

@@ -1,0 +1,44 @@
+************************************************************************************************************************
+Sample 2273 - Plan 1: Query: what is the number of countries who have a total of 0 bronze medals?
+Sample 2273 - Plan 1: Groundtruth: ['5']
+Sample 2273 - Plan 1: X-Original table pd: 
+     rank              nation  gold  silver  bronze  total
+0       1         china (chn)    14      14      13     41
+1       2         india (ind)     7       6       4     17
+2       3  saudi arabia (ksa)     7       1       0      8
+3       4    kazakhstan (kaz)     3       4       5     12
+4       5   south korea (kor)     3       2       1      6
+5       6         japan (jpn)     2      13       8     23
+6       7       bahrain (brn)     2       1       1      4
+7       8     sri lanka (sri)     2       0       2      4
+8       9         qatar (qat)     1       4       3      8
+9      10      thailand (tha)     1       1       2      4
+10     11    kyrgyzstan (kgz)     1       1       0      2
+11     12        kuwait (kuw)     1       0       0      1
+12     12   north korea (prk)     1       0       0      1
+13     14    uzbekistan (uzb)     0       1       3      4
+14     15          iran (iri)     0       1       0      1
+15  total               total    45      49      42    136
+Sample 2273 - Plan 1: Caption: none
+Sample 2273 - Plan 1: Original table: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['1', 'china\xa0(chn)', '14', '14', '13', '41'], ['2', 'india\xa0(ind)', '7', '6', '4', '17'], ['3', 'saudi arabia\xa0(ksa)', '7', '1', '0', '8'], ['4', 'kazakhstan\xa0(kaz)', '3', '4', '5', '12'], ['5', 'south korea\xa0(kor)', '3', '2', '1', '6'], ['6', 'japan\xa0(jpn)', '2', '13', '8', '23'], ['7', 'bahrain\xa0(brn)', '2', '1', '1', '4'], ['8', 'sri lanka\xa0(sri)', '2', '0', '2', '4'], ['9', 'qatar\xa0(qat)', '1', '4', '3', '8'], ['10', 'thailand\xa0(tha)', '1', '1', '2', '4'], ['11', 'kyrgyzstan\xa0(kgz)', '1', '1', '0', '2'], ['12', 'kuwait\xa0(kuw)', '1', '0', '0', '1'], ['12', 'north korea\xa0(prk)', '1', '0', '0', '1'], ['14', 'uzbekistan\xa0(uzb)', '0', '1', '3', '4'], ['15', 'iran\xa0(iri)', '0', '1', '0', '1'], ['total', 'total', '45', '49', '42', '136']]
+########################################################################################################################
+Sample 2273 - Plan 1: Operation 1: Select rows where the 'bronze' column is equal to 0.
+Sample 2273 - Plan 1: Selected indices: [[12, 4], [2, 4], [14, 4], [10, 4], [11, 4]]
+Sample 2273 - Plan 1: X-Table after operation df:
+   rank              nation  gold  silver  bronze  total
+0     3  saudi arabia (ksa)     7       1       0      8
+1    11    kyrgyzstan (kgz)     1       1       0      2
+2    12        kuwait (kuw)     1       0       0      1
+3    12   north korea (prk)     1       0       0      1
+4    15          iran (iri)     0       1       0      1
+Sample 2273 - Plan 1: Table after operation: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['3', 'saudi arabia\xa0(ksa)', 7, 1, 0, 8], ['11', 'kyrgyzstan\xa0(kgz)', 1, 1, 0, 2], ['12', 'kuwait\xa0(kuw)', 1, 0, 0, 1], ['12', 'north korea\xa0(prk)', 1, 0, 0, 1], ['15', 'iran\xa0(iri)', 0, 1, 0, 1]]
+########################################################################################################################
+Sample 2273 - Plan 1: Operation 2: Count the number of rows.
+Sample 2273 - Plan 1: Selected indices: []
+Sample 2273 - Plan 1: X-Table after operation df:
+   row_count
+0          5
+Sample 2273 - Plan 1: Table after operation: [['row_count'], [5]]
+Fall-back: FALSE
+Answer from plan 1: [[5]]
+Groundtruth: ['5']

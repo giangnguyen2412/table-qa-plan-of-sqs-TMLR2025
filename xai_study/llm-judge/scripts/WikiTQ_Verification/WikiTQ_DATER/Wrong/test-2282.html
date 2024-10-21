@@ -1,0 +1,30 @@
+
+    <html>
+    <head>
+    <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { text-align: center; }
+    .cot-title { color: blue; }
+    .pos-title { color: green; }
+    h2 { color: black; text-align: left; }
+    h3 { color: black; text-align: left; }
+    h4 { color: darkslategray; }
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    table, th, td { border: 1px solid #ddd; padding: 8px; }
+    th { background-color: #f2f2f2; }
+    tr:nth-child(even) { background-color: #f9f9f9; }
+    .highlight { background-color: #ffffcc; }
+    .true { color: green; }
+    .false { color: red; }
+    .highlighted-text { background-color: yellow; }
+    .step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+    .step { display: block; }
+    .result-label { font-weight: bold; padding: 5px; margin-top: 20px; display: inline-block; }
+    .tp { background-color: lightgreen; }
+    .tn { background-color: lightblue; }
+    .fp { background-color: lightcoral; }
+    .fn { background-color: lightgoldenrodyellow; }
+    </style>
+    </head>
+    <body>
+    <hr><h3><span>Question:</span> what is the next listed format after combination field?</h3><hr><h3><span>Input Table:</span></h3><div class="step"><div class="step-title">Step 1: Select Rows (row 3, row 2) and Select Columns (decimal64, Format, columns)</div><div id="original-table" class="content"><table><tr><th>decimal32</th><th><span class='highlighted-text'>decimal64</span></th><th>decimal128</th><th>decimal(32k)</th><th><span class='highlighted-text'>Format</span></th></tr><tr><td>1</td><td><span class="highlighted-text">1</span></td><td>1</td><td>1</td><td><span class="highlighted-text">Sign field (bits)</span></td></tr><tr><td><span class="highlighted-text">5</span></td><td><span class="highlighted-text">5</span></td><td><span class="highlighted-text">5</span></td><td><span class="highlighted-text">5</span></td><td><span class="highlighted-text">Combination field (bits)</span></td></tr><tr><td><span class="highlighted-text">6</span></td><td><span class="highlighted-text">8</span></td><td><span class="highlighted-text">12</span></td><td><span class="highlighted-text">w = 2×k + 4</span></td><td><span class="highlighted-text">Exponent continuation field (bits)</span></td></tr><tr><td>20</td><td><span class="highlighted-text">50</span></td><td>110</td><td>t = 30×k−10</td><td><span class="highlighted-text">Coefficient continuation field (bits)</span></td></tr><tr><td>32</td><td><span class="highlighted-text">64</span></td><td>128</td><td>32×k</td><td><span class="highlighted-text">Total size (bits)</span></td></tr><tr><td>7</td><td><span class="highlighted-text">16</span></td><td>34</td><td>p = 3×t/10+1 = 9×k−2</td><td><span class="highlighted-text">Coefficient size (decimal digits)</span></td></tr><tr><td>192</td><td><span class="highlighted-text">768</span></td><td>12288</td><td>3×2w = 48×4k</td><td><span class="highlighted-text">Exponent range</span></td></tr><tr><td>96</td><td><span class="highlighted-text">384</span></td><td>6144</td><td>Emax = 3×2w−1</td><td><span class="highlighted-text">Largest value is 9.99...×10Emax</span></td></tr><tr><td>−95</td><td><span class="highlighted-text">−383</span></td><td>−6143</td><td>Emin = 1−Emax</td><td><span class="highlighted-text">Smallest normalized value is 1.00...×10Emin</span></td></tr><tr><td>−101</td><td><span class="highlighted-text">−398</span></td><td>−6176</td><td>Etiny = 2−p−Emax</td><td><span class="highlighted-text">Smallest non-zero value is 1×10Etiny</span></td></tr></table></div></div><hr><div class="step"><div class="step-title">Sub-table Selection</div><div id="sub-table-selection" class="content"><table><tr><th>decimal64</th><th>Format</th></tr><tr><td>5</td><td>Combination field (bits)</td></tr><tr><td>8</td><td>Exponent continuation field (bits)</td></tr></table></div></div><hr><div class="step"><div class="step-title">Factually-checked information: Not Available!</div><h2>Prompting LLM for the final answer... >>> </h2><hr><h3>Prediction: exponent continuation field</h3></body></html>

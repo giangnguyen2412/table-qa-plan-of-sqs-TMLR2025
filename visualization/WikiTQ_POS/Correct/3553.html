@@ -1,0 +1,317 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which operator has the least amount of boats?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Count the number of boats for each operator.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>hull</td>
+<td>type</td>
+<td>original_name</td>
+<td>original_operator</td>
+<td>delivery</td>
+<td>disposition__2012_</td>
+<td>c_2nd_name</td>
+<td>c_2nd_operator</td>
+<td>c_3rd_name</td>
+<td>c_3rd_operator</td>
+</tr>
+<tr>
+<td>№ 1</td>
+<td>929-117</td>
+<td>tsubasa</td>
+<td>sado kisen</td>
+<td>mar 1998</td>
+<td>active</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>№ 2</td>
+<td>929-117</td>
+<td>pegasus</td>
+<td>kyusyu shosen co. ltd.</td>
+<td>jun 1989</td>
+<td>active</td>
+<td>toppy 1</td>
+<td>tane yaku jetfoils</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>№ 3</td>
+<td>929-117</td>
+<td>toppy 1</td>
+<td>tane yaku jetfoils</td>
+<td>sep 1989</td>
+<td>active</td>
+<td>beetle 3</td>
+<td>jr kyushu jet ferries</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>№ 4</td>
+<td>929-117</td>
+<td>princess dacil</td>
+<td>trasmediterranea</td>
+<td>mar 1990</td>
+<td>active</td>
+<td>pegasus</td>
+<td>kyusyu shosen co. ltd.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>№ 5</td>
+<td>929-117</td>
+<td>nagasaki</td>
+<td>jr kyushu jet ferries</td>
+<td>apr 1990</td>
+<td>active</td>
+<td>beetle 1</td>
+<td>jr kyushu jet ferries</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>№ 6</td>
+<td>929-117</td>
+<td>beetle</td>
+<td>jr kyushu jet ferries</td>
+<td>jul 1990</td>
+<td>active</td>
+<td>rocket</td>
+<td>cosmo line</td>
+<td>rocket 3</td>
+<td>tane yaku jetfoils</td>
+</tr>
+<tr>
+<td>№ 7</td>
+<td>929-117</td>
+<td>unicorn</td>
+<td>kyusyu shosen co. ltd.</td>
+<td>oct 1990</td>
+<td>active</td>
+<td>pegasus 2</td>
+<td>kyusyu shosen co. ltd.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>№ 8</td>
+<td>929-117</td>
+<td>beetle 2</td>
+<td>jr kyushu jet ferries</td>
+<td>feb 1991</td>
+<td>active</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>№ 9</td>
+<td>929-117</td>
+<td>venus</td>
+<td>kyushu yusen</td>
+<td>mar 1991</td>
+<td>active</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>№ 10</td>
+<td>929-117</td>
+<td>suisei</td>
+<td>sado kisen</td>
+<td>apr 1991</td>
+<td>active</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>№ 11</td>
+<td>929-117</td>
+<td>princess teguise</td>
+<td>trasmediterranea</td>
+<td>jun 1991</td>
+<td>active</td>
+<td>2007 toppy 5</td>
+<td>tane yaku jetfoils</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>№ 12</td>
+<td>929-117</td>
+<td>toppy 2</td>
+<td>tane yaku jetfoils</td>
+<td>apr 1992</td>
+<td>active</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>№ 13</td>
+<td>929-117</td>
+<td>toppy 3</td>
+<td>tane yaku jetfoils</td>
+<td>mar 1995</td>
+<td>active</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>№ 14</td>
+<td>929-117</td>
+<td>crystal wing</td>
+<td>kaijo access co.</td>
+<td>jun 1994</td>
+<td>active</td>
+<td>2002 beetle 5</td>
+<td>jr kyushu jet ferries</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>№ 15</td>
+<td>929-117</td>
+<td>emerald wing</td>
+<td>kaijo access co.</td>
+<td>jun 1994</td>
+<td>active</td>
+<td>2004 rocket 1</td>
+<td>cosmo line</td>
+<td>-</td>
+<td>tane yaku jetfoil</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Order the table by the count of boats in ascending order.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>original_operator</td>
+<td>boat_count</td>
+</tr>
+<tr>
+<td>jr kyushu jet ferries</td>
+<td><span class="highlighted-cell" title="Used in transformation">3</span></td>
+</tr>
+<tr>
+<td>kaijo access co.</td>
+<td><span class="highlighted-cell" title="Used in transformation">2</span></td>
+</tr>
+<tr>
+<td>kyushu yusen</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>kyusyu shosen co. ltd.</td>
+<td><span class="highlighted-cell" title="Used in transformation">2</span></td>
+</tr>
+<tr>
+<td>sado kisen</td>
+<td><span class="highlighted-cell" title="Used in transformation">2</span></td>
+</tr>
+<tr>
+<td>tane yaku jetfoils</td>
+<td><span class="highlighted-cell" title="Used in transformation">3</span></td>
+</tr>
+<tr>
+<td>trasmediterranea</td>
+<td><span class="highlighted-cell" title="Used in transformation">2</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select the operator with the least amount of boats.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>original_operator</td>
+<td>boat_count</td>
+</tr>
+<tr>
+<td>kyushu yusen</td>
+<td>1</td>
+</tr>
+<tr>
+<td>kaijo access co.</td>
+<td>2</td>
+</tr>
+<tr>
+<td>kyusyu shosen co. ltd.</td>
+<td>2</td>
+</tr>
+<tr>
+<td>sado kisen</td>
+<td>2</td>
+</tr>
+<tr>
+<td>trasmediterranea</td>
+<td>2</td>
+</tr>
+<tr>
+<td>jr kyushu jet ferries</td>
+<td>3</td>
+</tr>
+<tr>
+<td>tane yaku jetfoils</td>
+<td>3</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>original_operator</td>
+</tr>
+<tr>
+<td>kyushu yusen</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['kyushu yusen']]</h3>
+</body></html>

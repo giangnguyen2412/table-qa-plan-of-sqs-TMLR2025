@@ -1,0 +1,860 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which genre holds the most titles?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Group the table by the 'genre' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>title</td>
+<td>genre</td>
+<td>publisher</td>
+<td>notes</td>
+</tr>
+<tr>
+<td>1903</td>
+<td>betty zane</td>
+<td>historical</td>
+<td>charles francis press</td>
+<td></td>
+</tr>
+<tr>
+<td>1906</td>
+<td>spirit of the border</td>
+<td>historical</td>
+<td>a. l. burt & company</td>
+<td>sequel to betty zane</td>
+</tr>
+<tr>
+<td>1908</td>
+<td>the last of the plainsmen</td>
+<td>western</td>
+<td>outing publishing</td>
+<td>inspired by charles "buffalo" jones</td>
+</tr>
+<tr>
+<td>1909</td>
+<td>the last trail</td>
+<td>western</td>
+<td>outing publishing</td>
+<td>sequel to spirit of the border</td>
+</tr>
+<tr>
+<td>1909</td>
+<td>the shortstop</td>
+<td>baseball</td>
+<td>a. c. mcclurg</td>
+<td></td>
+</tr>
+<tr>
+<td>1910</td>
+<td>the heritage of the desert</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1910</td>
+<td>the young forester</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1911</td>
+<td>the young pitcher</td>
+<td>baseball</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1911</td>
+<td>the young lion hunter</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1912</td>
+<td>riders of the purple sage</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1912</td>
+<td>ken ward in the jungle</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1913</td>
+<td>desert gold</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1914</td>
+<td>the light of western stars</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1915</td>
+<td>the lone star ranger</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1915</td>
+<td>the rainbow trail</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td>sequel to riders of the purple sage</td>
+</tr>
+<tr>
+<td>1916</td>
+<td>the border legion</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1917</td>
+<td>wildfire</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1918</td>
+<td>the up trail</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1919</td>
+<td>the desert of wheat</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1919</td>
+<td>tales of fishes</td>
+<td>fishing</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1920</td>
+<td>the man of the forest</td>
+<td>western</td>
+<td>grosset & dunlap</td>
+<td></td>
+</tr>
+<tr>
+<td>1920</td>
+<td>the redheaded outfield and other baseball stories</td>
+<td>baseball</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1921</td>
+<td>the mysterious rider</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1921</td>
+<td>to the last man</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1922</td>
+<td>the day of the beast</td>
+<td>fiction</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1922</td>
+<td>tales of lonely trails</td>
+<td>adventure</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1923</td>
+<td>wanderer of the wasteland</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1923</td>
+<td>tappan's burro</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1924</td>
+<td>the call of the canyon</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1924</td>
+<td>roping lions in the grand canyon</td>
+<td>adventure</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1924</td>
+<td>tales of southern rivers</td>
+<td>fishing</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1925</td>
+<td>the thundering herd</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1925</td>
+<td>the vanishing american</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1925</td>
+<td>tales of fishing virgin seas</td>
+<td>fishing</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1926</td>
+<td>under the tonto rim</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1926</td>
+<td>tales of the angler's eldorado, new zealand</td>
+<td>fishing</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1927</td>
+<td>forlorn river</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1927</td>
+<td>tales of swordfish and tuna</td>
+<td>fishing</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1928</td>
+<td>nevada</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td>sequel to forlorn river</td>
+</tr>
+<tr>
+<td>1928</td>
+<td>wild horse mesa</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1928</td>
+<td>don, the story of a lion dog</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1928</td>
+<td>avalanche</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1928</td>
+<td>tales of fresh water fishing</td>
+<td>fishing</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1929</td>
+<td>fighting caravans</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1929</td>
+<td>stairs of sand</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1930</td>
+<td>the wolf tracker</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1930</td>
+<td>the shepherd of guadaloupe</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1931</td>
+<td>sunset pass</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1931</td>
+<td>tales of tahitian waters</td>
+<td>fishing</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1931</td>
+<td>book of camps and trails</td>
+<td>adventure</td>
+<td>harper & brothers</td>
+<td>partial re-print of tales of lonely trails</td>
+</tr>
+<tr>
+<td>1932</td>
+<td>arizona ames</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1932</td>
+<td>robbers' roost</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1933</td>
+<td>the drift fence</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1933</td>
+<td>the hash knife outfit</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td>sequel to the drift fence</td>
+</tr>
+<tr>
+<td>1934</td>
+<td>the code of the west</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1935</td>
+<td>thunder mountain</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1935</td>
+<td>the trail driver</td>
+<td>western</td>
+<td>whitman publishing</td>
+<td></td>
+</tr>
+<tr>
+<td>1936</td>
+<td>the lost wagon train</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1937</td>
+<td>west of the pecos</td>
+<td>western</td>
+<td>whitman publishing</td>
+<td></td>
+</tr>
+<tr>
+<td>1937</td>
+<td>an american angler in australia</td>
+<td>fishing</td>
+<td>whitman publishing</td>
+<td></td>
+</tr>
+<tr>
+<td>1938</td>
+<td>raiders of spanish peaks</td>
+<td>western</td>
+<td>whitman publishing</td>
+<td></td>
+</tr>
+<tr>
+<td>1939</td>
+<td>western union</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1939</td>
+<td>knights of the range</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1940</td>
+<td>thirty thousand on the hoof</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1940</td>
+<td>twin sombreros</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td>sequel to knights of the range</td>
+</tr>
+<tr>
+<td>1942</td>
+<td>majesty’s rancho</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td>sequel to light of western stars</td>
+</tr>
+<tr>
+<td>1943</td>
+<td>omnibus</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1943</td>
+<td>stairs of sand</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td>sequel to wanderer of the wasteland</td>
+</tr>
+<tr>
+<td>1944</td>
+<td>the wilderness trek</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1946</td>
+<td>shadow on the trail</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1947</td>
+<td>valley of wild horses</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1948</td>
+<td>rogue river feud</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1949</td>
+<td>the deer stalker</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1950</td>
+<td>the maverick queen</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1951</td>
+<td>the dude ranger</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1952</td>
+<td>captives of the desert</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1952</td>
+<td>adventures in fishing</td>
+<td>fishing</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1953</td>
+<td>wyoming</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1954</td>
+<td>lost pueblo</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1955</td>
+<td>black mesa</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1956</td>
+<td>stranger from the tonto</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1957</td>
+<td>the fugitive trail</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1958</td>
+<td>arizona clan</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1959</td>
+<td>horse heaven hill</td>
+<td>western</td>
+<td>harper & brothers</td>
+<td></td>
+</tr>
+<tr>
+<td>1960</td>
+<td>the ranger and other stories</td>
+<td>western</td>
+<td>harper & row</td>
+<td></td>
+</tr>
+<tr>
+<td>1961</td>
+<td>blue feather and other stories</td>
+<td>western</td>
+<td>harper & row</td>
+<td></td>
+</tr>
+<tr>
+<td>1963</td>
+<td>boulder dam</td>
+<td>historical</td>
+<td>harpercollins</td>
+<td></td>
+</tr>
+<tr>
+<td>1974</td>
+<td>the adventures of finspot</td>
+<td>fishing</td>
+<td>d-j books</td>
+<td></td>
+</tr>
+<tr>
+<td>1975</td>
+<td>zane grey's greatest indian stories</td>
+<td>western</td>
+<td>dorchester publishing</td>
+<td>includes original ending to the vanishing american (1925)</td>
+</tr>
+<tr>
+<td>1977</td>
+<td>the reef girl</td>
+<td>fishing</td>
+<td>harper & row</td>
+<td></td>
+</tr>
+<tr>
+<td>1978</td>
+<td>tales from a fisherman’s log</td>
+<td>fishing</td>
+<td>hodder & stoughton</td>
+<td></td>
+</tr>
+<tr>
+<td>1979</td>
+<td>the camp robber and other stories</td>
+<td>western</td>
+<td>walter j. black</td>
+<td></td>
+</tr>
+<tr>
+<td>1981</td>
+<td>the lord of lackawaxen creek</td>
+<td>adventure</td>
+<td>lime rock press</td>
+<td></td>
+</tr>
+<tr>
+<td>1982</td>
+<td>angler's eldorado: zane grey in new zealand</td>
+<td>fishing</td>
+<td>walter j. black</td>
+<td>partial reprint of 1926 edition (first 10 chapters, plus additional content)</td>
+</tr>
+<tr>
+<td>1994</td>
+<td>george washington, frontiersman</td>
+<td>historical</td>
+<td>forge books</td>
+<td></td>
+</tr>
+<tr>
+<td>1996</td>
+<td>last of the duanes</td>
+<td>western</td>
+<td>gunsmoke westerns</td>
+<td>unabridged version of the lone star ranger (1915)</td>
+</tr>
+<tr>
+<td>2003</td>
+<td>the desert crucible</td>
+<td>western</td>
+<td>leisure books</td>
+<td>unabridged version of the rainbow trail (1915)</td>
+</tr>
+<tr>
+<td>2004</td>
+<td>tonto basin</td>
+<td>western</td>
+<td>leisure books</td>
+<td>unabridged version of to the last man (1921)</td>
+</tr>
+<tr>
+<td>2007</td>
+<td>shower of gold</td>
+<td>western</td>
+<td>leisure books</td>
+<td>unabridged version of desert gold (1915)</td>
+</tr>
+<tr>
+<td>2008</td>
+<td>the great trek</td>
+<td>western</td>
+<td>five star</td>
+<td>unabridged version of the wilderness trek (1944)</td>
+</tr>
+<tr>
+<td>2009</td>
+<td>tales of the gladiator</td>
+<td>fishing</td>
+<td>zg collections</td>
+<td></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Count the number of titles in each genre group.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>genre</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">adventure</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">baseball</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">fiction</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">fishing</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">historical</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">western</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Order the genre groups by the count of titles in descending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>genre</td>
+<td>title_count</td>
+</tr>
+<tr>
+<td>adventure</td>
+<td>1</td>
+</tr>
+<tr>
+<td>baseball</td>
+<td>1</td>
+</tr>
+<tr>
+<td>fiction</td>
+<td>1</td>
+</tr>
+<tr>
+<td>fishing</td>
+<td>1</td>
+</tr>
+<tr>
+<td>historical</td>
+<td>1</td>
+</tr>
+<tr>
+<td>western</td>
+<td>1</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Select the genre with the highest count of titles.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>genre</td>
+<td>title_count</td>
+</tr>
+<tr>
+<td>adventure</td>
+<td>1</td>
+</tr>
+<tr>
+<td>baseball</td>
+<td>1</td>
+</tr>
+<tr>
+<td>fiction</td>
+<td>1</td>
+</tr>
+<tr>
+<td>fishing</td>
+<td>1</td>
+</tr>
+<tr>
+<td>historical</td>
+<td>1</td>
+</tr>
+<tr>
+<td>western</td>
+<td>1</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>genre</td>
+</tr>
+<tr>
+<td>adventure</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['adventure']]</h3>
+</body></html>

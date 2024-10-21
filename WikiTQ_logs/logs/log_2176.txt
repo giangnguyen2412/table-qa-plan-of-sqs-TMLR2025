@@ -1,0 +1,46 @@
+************************************************************************************************************************
+Sample 2176 - Plan 1: Query: what is the total number of affiliates?
+Sample 2176 - Plan 1: Groundtruth: ['34']
+Sample 2176 - Plan 1: X-Original table pd: 
+             network_name flagship                      programming_type  \
+0  canal de las estrellas    xew 2  soap operas, retro movies and sports   
+1                 canal 5   xhgc 5          cartoons, movies, and series   
+2                azteca 7  xhimt 7            sports, series, and movies   
+3              galavisión    xeq 9          retro programming and sports   
+4           tv 10 chiapas    xhttg                           educational   
+5               azteca 13  xhdf 13         news, soap operas, and sports   
+6             independent                                         varies   
+
+                            owner  affiliates  
+0                        televisa          10  
+1                        televisa           4  
+2                       tv azteca           5  
+3                        televisa           1  
+4  gobierno del estado de chiapas           7  
+5                       tv azteca           4  
+6                     independent           3  
+Sample 2176 - Plan 1: Caption: none
+Sample 2176 - Plan 1: Original table: [['network_name', 'flagship', 'programming_type', 'owner', 'affiliates'], ['canal de las estrellas', 'xew 2', 'soap operas, retro movies and sports', 'televisa', '10'], ['canal 5', 'xhgc 5', 'cartoons, movies, and series', 'televisa', '4'], ['azteca 7', 'xhimt 7', 'sports, series, and movies', 'tv azteca', '5'], ['galavisión', 'xeq 9', 'retro programming and sports', 'televisa', '1'], ['tv 10 chiapas', 'xhttg', 'educational', 'gobierno del estado de chiapas', '7'], ['azteca 13', 'xhdf 13', 'news, soap operas, and sports', 'tv azteca', '4'], ['independent', '', 'varies', 'independent', '3']]
+########################################################################################################################
+Sample 2176 - Plan 1: Operation 1: Select the 'affiliates' column.
+Sample 2176 - Plan 1: Selected indices: []
+Sample 2176 - Plan 1: X-Table after operation df:
+   affiliates
+0          10
+1           4
+2           5
+3           1
+4           7
+5           4
+6           3
+Sample 2176 - Plan 1: Table after operation: [['affiliates'], [10], [4], [5], [1], [7], [4], [3]]
+########################################################################################################################
+Sample 2176 - Plan 1: Operation 2: Sum the values in the 'affiliates' column.
+Sample 2176 - Plan 1: Selected indices: []
+Sample 2176 - Plan 1: X-Table after operation df:
+   total_affiliates
+0                34
+Sample 2176 - Plan 1: Table after operation: [['total_affiliates'], [34]]
+Fall-back: FALSE
+Answer from plan 1: [[34]]
+Groundtruth: ['34']

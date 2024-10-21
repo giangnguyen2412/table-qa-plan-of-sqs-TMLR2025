@@ -1,0 +1,435 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which was the most sold model in the year of 2000?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select the 'model' and 'c_2000' columns from the table.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>model</td>
+<td>c_1991</td>
+<td>c_1995</td>
+<td>c_1996</td>
+<td>c_1997</td>
+<td>c_1998</td>
+<td>c_1999</td>
+<td>c_2000</td>
+<td>c_2001</td>
+<td>c_2002</td>
+<td>c_2003</td>
+<td>c_2004</td>
+<td>c_2005</td>
+<td>c_2006</td>
+<td>c_2007</td>
+<td>c_2008</td>
+<td>c_2009</td>
+<td>c_2010</td>
+<td>c_2011</td>
+<td>c_2012</td>
+<td>c_2013</td>
+</tr>
+<tr>
+<td>škoda felicia</td>
+<td>172,000</td>
+<td>210,000</td>
+<td></td>
+<td>288,458</td>
+<td>261,127</td>
+<td>241,256</td>
+<td>148,028</td>
+<td>44,963</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+</tr>
+<tr>
+<td>škoda octavia</td>
+<td>−</td>
+<td>−</td>
+<td></td>
+<td>47,876</td>
+<td>102,373</td>
+<td>143,251</td>
+<td>158,503</td>
+<td>164,134</td>
+<td>164,017</td>
+<td>165,635</td>
+<td>181,683</td>
+<td>233,322</td>
+<td>270,274</td>
+<td>309,951</td>
+<td>344,857</td>
+<td>317,335</td>
+<td>349,746</td>
+<td>387,200</td>
+<td>409,360</td>
+<td>359,600</td>
+</tr>
+<tr>
+<td>škoda fabia</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>823</td>
+<td>128,872</td>
+<td>250,978</td>
+<td>264,641</td>
+<td>260,988</td>
+<td>247,600</td>
+<td>236,698</td>
+<td>243,982</td>
+<td>232,890</td>
+<td>246,561</td>
+<td>264,173</td>
+<td>229,045</td>
+<td>266,800</td>
+<td>255,025</td>
+<td>202,000</td>
+</tr>
+<tr>
+<td>škoda superb</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>177</td>
+<td>16,867</td>
+<td>23,135</td>
+<td>22,392</td>
+<td>22,091</td>
+<td>20,989</td>
+<td>20,530</td>
+<td>25,645</td>
+<td>44,548</td>
+<td>98,873</td>
+<td>116,700</td>
+<td>106,847</td>
+<td>94,400</td>
+</tr>
+<tr>
+<td>škoda roomster</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>14,422</td>
+<td>66,661</td>
+<td>57,467</td>
+<td>47,152</td>
+<td>32,332</td>
+<td>36,000</td>
+<td>39,249</td>
+<td>33,300</td>
+</tr>
+<tr>
+<td>škoda yeti</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>11,018</td>
+<td>52,604</td>
+<td>70,300</td>
+<td>90,952</td>
+<td>82,400</td>
+</tr>
+<tr>
+<td>škoda rapid</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>1,700</td>
+<td>9,292</td>
+<td>103,800</td>
+</tr>
+<tr>
+<td>škoda citigo</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>509</td>
+<td>36,687</td>
+<td>45,200</td>
+</tr>
+<tr>
+<td>total</td>
+<td>172,000</td>
+<td>210,000</td>
+<td>261,000</td>
+<td>336,334</td>
+<td>363,500</td>
+<td>385,330</td>
+<td>435,403</td>
+<td>460,252</td>
+<td>445,525</td>
+<td>449,758</td>
+<td>451,675</td>
+<td>492,111</td>
+<td>549,667</td>
+<td>630,032</td>
+<td>674,530</td>
+<td>684,226</td>
+<td>762,600</td>
+<td>879,200</td>
+<td>949,412</td>
+<td>920,800</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Filter out the rows where the 'c_2000' value is not empty.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>model</td>
+<td>c_2000</td>
+</tr>
+<tr>
+<td>škoda felicia</td>
+<td><span class="highlighted-cell" title="Used in transformation">148,028</span></td>
+</tr>
+<tr>
+<td>škoda octavia</td>
+<td><span class="highlighted-cell" title="Used in transformation">158,503</span></td>
+</tr>
+<tr>
+<td>škoda fabia</td>
+<td><span class="highlighted-cell" title="Used in transformation">128,872</span></td>
+</tr>
+<tr>
+<td>škoda superb</td>
+<td><span class="highlighted-cell" title="Used in transformation">−</span></td>
+</tr>
+<tr>
+<td>škoda roomster</td>
+<td><span class="highlighted-cell" title="Used in transformation">−</span></td>
+</tr>
+<tr>
+<td>škoda yeti</td>
+<td><span class="highlighted-cell" title="Used in transformation">−</span></td>
+</tr>
+<tr>
+<td>škoda rapid</td>
+<td><span class="highlighted-cell" title="Used in transformation">−</span></td>
+</tr>
+<tr>
+<td>škoda citigo</td>
+<td><span class="highlighted-cell" title="Used in transformation">−</span></td>
+</tr>
+<tr>
+<td>total</td>
+<td><span class="highlighted-cell" title="Used in transformation">435,403</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Order the table by the 'c_2000' column in descending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>model</td>
+<td>c_2000</td>
+</tr>
+<tr>
+<td>škoda felicia</td>
+<td><span class="highlighted-cell" title="Used in transformation">148,028</span></td>
+</tr>
+<tr>
+<td>škoda octavia</td>
+<td><span class="highlighted-cell" title="Used in transformation">158,503</span></td>
+</tr>
+<tr>
+<td>škoda fabia</td>
+<td><span class="highlighted-cell" title="Used in transformation">128,872</span></td>
+</tr>
+<tr>
+<td>škoda superb</td>
+<td><span class="highlighted-cell" title="Used in transformation">−</span></td>
+</tr>
+<tr>
+<td>škoda roomster</td>
+<td><span class="highlighted-cell" title="Used in transformation">−</span></td>
+</tr>
+<tr>
+<td>škoda yeti</td>
+<td><span class="highlighted-cell" title="Used in transformation">−</span></td>
+</tr>
+<tr>
+<td>škoda rapid</td>
+<td><span class="highlighted-cell" title="Used in transformation">−</span></td>
+</tr>
+<tr>
+<td>škoda citigo</td>
+<td><span class="highlighted-cell" title="Used in transformation">−</span></td>
+</tr>
+<tr>
+<td>total</td>
+<td><span class="highlighted-cell" title="Used in transformation">435,403</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Select the first row.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>model</td>
+<td>c_2000</td>
+</tr>
+<tr>
+<td>total</td>
+<td>435,403</td>
+</tr>
+<tr>
+<td>škoda octavia</td>
+<td>158,503</td>
+</tr>
+<tr>
+<td>škoda felicia</td>
+<td>148,028</td>
+</tr>
+<tr>
+<td>škoda fabia</td>
+<td>128,872</td>
+</tr>
+<tr>
+<td>škoda superb</td>
+<td>−</td>
+</tr>
+<tr>
+<td>škoda roomster</td>
+<td>−</td>
+</tr>
+<tr>
+<td>škoda yeti</td>
+<td>−</td>
+</tr>
+<tr>
+<td>škoda rapid</td>
+<td>−</td>
+</tr>
+<tr>
+<td>škoda citigo</td>
+<td>−</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 5: Select the 'model' value from the selected row.</div>
+<div id="step-3" class="content">
+<table>
+<tr>
+<td>model</td>
+<td>c_2000</td>
+</tr>
+<tr>
+<td>total</td>
+<td>435,403</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>model</td>
+</tr>
+<tr>
+<td>total</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['total']]</h3>
+</body></html>

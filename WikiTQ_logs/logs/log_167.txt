@@ -1,0 +1,87 @@
+************************************************************************************************************************
+Sample 167 - Plan 1: Query: which song topped the club play singles list?
+Sample 167 - Plan 1: Groundtruth: ['"Thanks to You"']
+Sample 167 - Plan 1: X-Original table pd: 
+   year                        name        label hot_black_singles  \
+0  1982  "he's gonna take you home"       becket                 ―   
+1  1982             "thanks to you"       becket               #44   
+2  1983            "i need you now"         jive                 ―   
+3  1984                 "thin line"  power house                 ―   
+4  1986              "say it again"       spring                 ―   
+5  1986              "say it again"       spring                 ―   
+6  1987            "send it c.o.d."    new image                 ―   
+
+  club_play_singles  
+0                 ―  
+1                #1  
+2                 ―  
+3                 ―  
+4                 ―  
+5                 ―  
+6                 ―  
+Sample 167 - Plan 1: Caption: none
+Sample 167 - Plan 1: Original table: [['year', 'name', 'label', 'hot_black_singles', 'club_play_singles'], ['1982', '"he\'s gonna take you home"', 'becket', '―', '―'], ['1982', '"thanks to you"', 'becket', '#44', '#1'], ['1983', '"i need you now"', 'jive', '―', '―'], ['1984', '"thin line"', 'power house', '―', '―'], ['1986', '"say it again"', 'spring', '―', '―'], ['1986', '"say it again"', 'spring', '―', '―'], ['1987', '"send it c.o.d."', 'new image', '―', '―']]
+########################################################################################################################
+Sample 167 - Plan 1: Operation 1: Select rows where the 'club_play_singles' column is not null.
+Sample 167 - Plan 1: Selected indices: []
+Sample 167 - Plan 1: X-Table after operation df:
+   year                        name        label hot_black_singles  \
+0  1982  "he's gonna take you home"       becket                 ―   
+1  1982             "thanks to you"       becket               #44   
+2  1983            "i need you now"         jive                 ―   
+3  1984                 "thin line"  power house                 ―   
+4  1986              "say it again"       spring                 ―   
+5  1986              "say it again"       spring                 ―   
+6  1987            "send it c.o.d."    new image                 ―   
+
+  club_play_singles  
+0                 ―  
+1                #1  
+2                 ―  
+3                 ―  
+4                 ―  
+5                 ―  
+6                 ―  
+Sample 167 - Plan 1: Table after operation: [['year', 'name', 'label', 'hot_black_singles', 'club_play_singles'], [1982, '"he\'s gonna take you home"', 'becket', '―', '―'], [1982, '"thanks to you"', 'becket', '#44', '#1'], [1983, '"i need you now"', 'jive', '―', '―'], [1984, '"thin line"', 'power house', '―', '―'], [1986, '"say it again"', 'spring', '―', '―'], [1986, '"say it again"', 'spring', '―', '―'], [1987, '"send it c.o.d."', 'new image', '―', '―']]
+########################################################################################################################
+Sample 167 - Plan 1: Operation 2: Order the table by the 'club_play_singles' column in descending order.
+Sample 167 - Plan 1: Selected indices: [[4, 4], [2, 4], [0, 4], [3, 4], [5, 4], [6, 4], [1, 4]]
+Sample 167 - Plan 1: X-Table after operation df:
+   year                        name        label hot_black_singles  \
+0  1982  "he's gonna take you home"       becket                 ―   
+1  1983            "i need you now"         jive                 ―   
+2  1984                 "thin line"  power house                 ―   
+3  1986              "say it again"       spring                 ―   
+4  1986              "say it again"       spring                 ―   
+5  1987            "send it c.o.d."    new image                 ―   
+6  1982             "thanks to you"       becket               #44   
+
+  club_play_singles  
+0                 ―  
+1                 ―  
+2                 ―  
+3                 ―  
+4                 ―  
+5                 ―  
+6                #1  
+Sample 167 - Plan 1: Table after operation: [['year', 'name', 'label', 'hot_black_singles', 'club_play_singles'], [1982, '"he\'s gonna take you home"', 'becket', '―', '―'], [1983, '"i need you now"', 'jive', '―', '―'], [1984, '"thin line"', 'power house', '―', '―'], [1986, '"say it again"', 'spring', '―', '―'], [1986, '"say it again"', 'spring', '―', '―'], [1987, '"send it c.o.d."', 'new image', '―', '―'], [1982, '"thanks to you"', 'becket', '#44', '#1']]
+########################################################################################################################
+Sample 167 - Plan 1: Operation 3: Select row number 1.
+Sample 167 - Plan 1: Selected indices: []
+Sample 167 - Plan 1: X-Table after operation df:
+   year                        name   label hot_black_singles  \
+0  1982  "he's gonna take you home"  becket                 ―   
+
+  club_play_singles  
+0                 ―  
+Sample 167 - Plan 1: Table after operation: [['year', 'name', 'label', 'hot_black_singles', 'club_play_singles'], [1982, '"he\'s gonna take you home"', 'becket', '―', '―']]
+########################################################################################################################
+Sample 167 - Plan 1: Operation 4: Select the 'name' column.
+Sample 167 - Plan 1: Selected indices: []
+Sample 167 - Plan 1: X-Table after operation df:
+                         name
+0  "he's gonna take you home"
+Sample 167 - Plan 1: Table after operation: [['name'], ['"he\'s gonna take you home"']]
+Fall-back: FALSE
+Answer from plan 1: [['"he\'s gonna take you home"']]
+Groundtruth: ['"Thanks to You"']

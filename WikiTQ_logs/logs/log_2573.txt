@@ -1,0 +1,48 @@
+************************************************************************************************************************
+Sample 2573 - Plan 1: Query: how many strokes did david toms make?
+Sample 2573 - Plan 1: Groundtruth: ['212']
+Sample 2573 - Plan 1: X-Original table pd: 
+  place            player        country         score to_par
+0     1     retief goosen   south africa  68-70-69=207     –3
+1    t2       olin browne  united states  67-71-72=210      e
+2    t2        jason gore  united states  71-67-72=210      e
+3    t4  michael campbell    new zealand  71-69-71=211     +1
+4    t4       mark hensby      australia  71-68-72=211     +1
+5     6        david toms  united states  70-72-70=212     +2
+6    t7        k. j. choi    south korea  69-70-74=213     +3
+7    t7     peter hedblom         sweden  77-66-70=213     +3
+8    t7      lee westwood        england  68-72-73=213     +3
+9    t7       tiger woods  united states  70-71-72=213     +3
+Sample 2573 - Plan 1: Caption: none
+Sample 2573 - Plan 1: Original table: [['place', 'player', 'country', 'score', 'to_par'], ['1', 'retief goosen', 'south africa', '68-70-69=207', '–3'], ['t2', 'olin browne', 'united states', '67-71-72=210', 'e'], ['t2', 'jason gore', 'united states', '71-67-72=210', 'e'], ['t4', 'michael campbell', 'new zealand', '71-69-71=211', '+1'], ['t4', 'mark hensby', 'australia', '71-68-72=211', '+1'], ['6', 'david toms', 'united states', '70-72-70=212', '+2'], ['t7', 'k. j. choi', 'south korea', '69-70-74=213', '+3'], ['t7', 'peter hedblom', 'sweden', '77-66-70=213', '+3'], ['t7', 'lee westwood', 'england', '68-72-73=213', '+3'], ['t7', 'tiger woods', 'united states', '70-71-72=213', '+3']]
+########################################################################################################################
+Sample 2573 - Plan 1: Operation 1: Select rows where the 'player' is 'david toms'.
+Sample 2573 - Plan 1: Selected indices: [[5, 1]]
+Sample 2573 - Plan 1: X-Table after operation df:
+   place      player        country         score  to_par
+0      6  david toms  united states  70-72-70=212       2
+Sample 2573 - Plan 1: Table after operation: [['place', 'player', 'country', 'score', 'to_par'], ['6', 'david toms', 'united states', '70-72-70=212', '+2']]
+########################################################################################################################
+Sample 2573 - Plan 1: Operation 2: Extract the numerical value from the 'score' column then add column 'num_score' to the existing table.
+Sample 2573 - Plan 1: Selected indices: [[0, 3]]
+Sample 2573 - Plan 1: X-Table after operation df:
+   place      player        country         score  to_par  num_score
+0      6  david toms  united states  70-72-70=212       2        212
+Sample 2573 - Plan 1: Table after operation: [['place', 'player', 'country', 'score', 'to_par', 'num_score'], [6, 'david toms', 'united states', '70-72-70=212', 2, 212]]
+########################################################################################################################
+Sample 2573 - Plan 1: Operation 3: Select rows where the 'player' is 'david toms'.
+Sample 2573 - Plan 1: Selected indices: [[0, 1]]
+Sample 2573 - Plan 1: X-Table after operation df:
+   place      player        country         score  to_par  num_score
+0      6  david toms  united states  70-72-70=212       2        212
+Sample 2573 - Plan 1: Table after operation: [['place', 'player', 'country', 'score', 'to_par', 'num_score'], [6, 'david toms', 'united states', '70-72-70=212', 2, 212]]
+########################################################################################################################
+Sample 2573 - Plan 1: Operation 4: Select the 'num_score' column.
+Sample 2573 - Plan 1: Selected indices: []
+Sample 2573 - Plan 1: X-Table after operation df:
+   num_score
+0        212
+Sample 2573 - Plan 1: Table after operation: [['num_score'], [212]]
+Fall-back: FALSE
+Answer from plan 1: [[212]]
+Groundtruth: ['212']

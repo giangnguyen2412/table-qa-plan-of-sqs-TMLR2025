@@ -1,0 +1,390 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how many australians won a medal in the downhill events?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'event' column contains the word 'downhill'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>event</td>
+<td>class</td>
+<td>gold</td>
+<td>silver</td>
+<td>bronze</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">downhill</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">b1-3\ndetails</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bart bunting\nguide: nathan chivers\naustralia (aus)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">eric villalon\nguide: pere comet\nspain (esp)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yon santacana\nguide: raul capdevila\nspain (esp)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">downhill</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lw2\ndetails</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">michael milton\naustralia (aus)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">christian lanthaler\nitaly (ita)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jason lalla\nunited states (usa)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">downhill</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lw3,5/7,9\ndetails</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gerd schoenfelder\ngermany (ger)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">arno hirschbuehl\naustria (aut)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jacob rife\nunited states (usa)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">downhill</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lw4\ndetails</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">hans burn\nswitzerland (sui)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">james lagerstrom\nunited states (usa)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">steven bayley\nnew zealand (nzl)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">downhill</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lw6/8\ndetails</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rolf heinzmann\nswitzerland (sui)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lionel brun\nfrance (fra)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">markus pfefferle\ngermany (ger)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">downhill</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lw10\ndetails</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">martin braxenthaler\ngermany (ger)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chris waddell\nunited states (usa)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ronny persson\nsweden (swe)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">downhill</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lw11\ndetails</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">harald eder\naustria (aut)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">andreas schiestl\naustria (aut)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fabrizio zardini\nitaly (ita)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">downhill</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lw12\ndetails</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kevin bramble\nunited states (usa)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">christopher devlin-young\nunited states (usa)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">daniel wesley\ncanada (can)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">super-g</span></td>
+<td>b1-3\ndetails</td>
+<td>bart bunting\nguide: nathan chivers\naustralia (aus)</td>
+<td>eric villalon\nguide: pere comet\nspain (esp)</td>
+<td>yon santacana\nguide: raul capdevila\nspain (esp)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">super-g</span></td>
+<td>lw2\ndetails</td>
+<td>michael milton\naustralia (aus)</td>
+<td>christian lanthaler\nitaly (ita)</td>
+<td>florian planker\nitaly (ita)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">super-g</span></td>
+<td>lw3,5/7,9\ndetails</td>
+<td>gerd schoenfelder\ngermany (ger)</td>
+<td>romain riboud\nfrance (fra)</td>
+<td>arno hirschbuehl\naustria (aut)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">super-g</span></td>
+<td>lw4\ndetails</td>
+<td>hubert mandl\naustria (aut)</td>
+<td>josef schoesswendter\naustria (aut)</td>
+<td>steven bayley\nnew zealand (nzl)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">super-g</span></td>
+<td>lw6/8\ndetails</td>
+<td>rolf heinzmann\nswitzerland (sui)</td>
+<td>lionel brun\nfrance (fra)</td>
+<td>wolfgang moosbrugger\naustria (aut)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">super-g</span></td>
+<td>lw10\ndetails</td>
+<td>martin braxenthaler\ngermany (ger)</td>
+<td>ronny persson\nsweden (swe)</td>
+<td>michael kroener\ngermany (ger)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">super-g</span></td>
+<td>lw11\ndetails</td>
+<td>fabrizio zardini\nitaly (ita)</td>
+<td>andreas schiestl\naustria (aut)</td>
+<td>denis barbet\nfrance (fra)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">super-g</span></td>
+<td>lw12\ndetails</td>
+<td>christopher devlin-young\nunited states (usa)</td>
+<td>daniel wesley\ncanada (can)</td>
+<td>ludwig wolf\ngermany (ger)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">giant slalom</span></td>
+<td>b1-2\ndetails</td>
+<td>eric villalon\nguide: pere comet\nspain (esp)</td>
+<td>bart bunting\nguide: nathan chivers\naustralia (aus)</td>
+<td>radomir dudas\nguide: juraj mikulas\nslovakia (svk)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">giant slalom</span></td>
+<td>b3\ndetails</td>
+<td>yon santacana\nguide: raul capdevila\nspain (esp)</td>
+<td>gianmaria dal maistro\nguide: guido lanaro\nitaly (ita)</td>
+<td>andrew parr\nguide: david marchi\nunited states (usa)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">giant slalom</span></td>
+<td>lw2\ndetails</td>
+<td>michael milton\naustralia (aus)</td>
+<td>jason lalla\nunited states (usa)</td>
+<td>asle tangvik\nnorway (nor)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">giant slalom</span></td>
+<td>lw3,5/7,9\ndetails</td>
+<td>gerd schoenfelder\ngermany (ger)</td>
+<td>romain riboud\nfrance (fra)</td>
+<td>arno hirschbuehl\naustria (aut)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">giant slalom</span></td>
+<td>lw4\ndetails</td>
+<td>steven bayley\nnew zealand (nzl)</td>
+<td>hans burn\nswitzerland (sui)</td>
+<td>robert meusburger\naustria (aut)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">giant slalom</span></td>
+<td>lw6/8\ndetails</td>
+<td>rolf heinzmann\nswitzerland (sui)</td>
+<td>lionel brun\nfrance (fra)</td>
+<td>frank pfortmueller\ngermany (ger)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">giant slalom</span></td>
+<td>lw10\ndetails</td>
+<td>martin braxenthaler\ngermany (ger)</td>
+<td>ronny persson\nsweden (swe)</td>
+<td>chris waddell\nunited states (usa)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">giant slalom</span></td>
+<td>lw11\ndetails</td>
+<td>harald eder\naustria (aut)</td>
+<td>juergen egle\naustria (aut)</td>
+<td>andreas schiestl\naustria (aut)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">giant slalom</span></td>
+<td>lw12\ndetails</td>
+<td>hans joerg arnold\nswitzerland (sui)</td>
+<td>sang min han\nsouth korea (kor)</td>
+<td>scott patterson\ncanada (can)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">slalom</span></td>
+<td>b1-2\ndetails</td>
+<td>eric villalon\nguide: pere comet\nspain (esp)</td>
+<td>radomir dudas\nguide: juraj mikulas\nslovakia (svk)</td>
+<td>stefan kopcik\nguide: branislav mazgut\nslovakia (svk)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">slalom</span></td>
+<td>b3\ndetails</td>
+<td>chris williamson\nguide: bill harriott\ncanada (can)</td>
+<td>andrew parr\nguide: david marchi\nunited states (usa)</td>
+<td>norbert holik\nguide: radoslav grus\nslovakia (svk)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">slalom</span></td>
+<td>lw2\ndetails</td>
+<td>michael milton\naustralia (aus)</td>
+<td>monte meier\nunited states (usa)</td>
+<td>michael hipp\ngermany (ger)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">slalom</span></td>
+<td>lw3,5/7,9\ndetails</td>
+<td>gerd schoenfelder\ngermany (ger)</td>
+<td>arno hirschbuehl\naustria (aut)</td>
+<td>alexei moshkine\nrussia (rus)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">slalom</span></td>
+<td>lw4\ndetails</td>
+<td>hubert mandl\naustria (aut)</td>
+<td>hans burn\nswitzerland (sui)</td>
+<td>martin falch\naustria (aut)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">slalom</span></td>
+<td>lw6/8\ndetails</td>
+<td>wolfgang moosbrugger\naustria (aut)</td>
+<td>rolf heinzmann\nswitzerland (sui)</td>
+<td>lionel brun\nfrance (fra)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">slalom</span></td>
+<td>lw10\ndetails</td>
+<td>martin braxenthaler\ngermany (ger)</td>
+<td>ronny persson\nsweden (swe)</td>
+<td>chris waddell\nunited states (usa)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">slalom</span></td>
+<td>lw11\ndetails</td>
+<td>denis barbet\nfrance (fra)</td>
+<td>juergen egle\naustria (aut)</td>
+<td>harald eder\naustria (aut)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">slalom</span></td>
+<td>lw12\ndetails</td>
+<td>daniel wesley\ncanada (can)</td>
+<td>hans joerg arnold\nswitzerland (sui)</td>
+<td>ludwig wolf\ngermany (ger)</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select rows where the 'gold', 'silver', or 'bronze' columns contain the word 'australia'.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>event</td>
+<td>class</td>
+<td>gold</td>
+<td>silver</td>
+<td>bronze</td>
+</tr>
+<tr>
+<td>downhill</td>
+<td>b1-3\ndetails</td>
+<td><span class="highlighted-cell" title="Used in transformation">bart bunting\nguide: nathan chivers\naustralia (aus)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">eric villalon\nguide: pere comet\nspain (esp)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">yon santacana\nguide: raul capdevila\nspain (esp)</span></td>
+</tr>
+<tr>
+<td>downhill</td>
+<td>lw2\ndetails</td>
+<td><span class="highlighted-cell" title="Used in transformation">michael milton\naustralia (aus)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">christian lanthaler\nitaly (ita)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">jason lalla\nunited states (usa)</span></td>
+</tr>
+<tr>
+<td>downhill</td>
+<td>lw3,5/7,9\ndetails</td>
+<td>gerd schoenfelder\ngermany (ger)</td>
+<td>arno hirschbuehl\naustria (aut)</td>
+<td>jacob rife\nunited states (usa)</td>
+</tr>
+<tr>
+<td>downhill</td>
+<td>lw4\ndetails</td>
+<td>hans burn\nswitzerland (sui)</td>
+<td>james lagerstrom\nunited states (usa)</td>
+<td>steven bayley\nnew zealand (nzl)</td>
+</tr>
+<tr>
+<td>downhill</td>
+<td>lw6/8\ndetails</td>
+<td>rolf heinzmann\nswitzerland (sui)</td>
+<td>lionel brun\nfrance (fra)</td>
+<td>markus pfefferle\ngermany (ger)</td>
+</tr>
+<tr>
+<td>downhill</td>
+<td>lw10\ndetails</td>
+<td>martin braxenthaler\ngermany (ger)</td>
+<td>chris waddell\nunited states (usa)</td>
+<td>ronny persson\nsweden (swe)</td>
+</tr>
+<tr>
+<td>downhill</td>
+<td>lw11\ndetails</td>
+<td>harald eder\naustria (aut)</td>
+<td>andreas schiestl\naustria (aut)</td>
+<td>fabrizio zardini\nitaly (ita)</td>
+</tr>
+<tr>
+<td>downhill</td>
+<td>lw12\ndetails</td>
+<td>kevin bramble\nunited states (usa)</td>
+<td>christopher devlin-young\nunited states (usa)</td>
+<td>daniel wesley\ncanada (can)</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Count the number of rows selected in step 2.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>event</td>
+<td>class</td>
+<td>gold</td>
+<td>silver</td>
+<td>bronze</td>
+</tr>
+<tr>
+<td>downhill</td>
+<td>b1-3\ndetails</td>
+<td>bart bunting\nguide: nathan chivers\naustralia (aus)</td>
+<td>eric villalon\nguide: pere comet\nspain (esp)</td>
+<td>yon santacana\nguide: raul capdevila\nspain (esp)</td>
+</tr>
+<tr>
+<td>downhill</td>
+<td>lw2\ndetails</td>
+<td>michael milton\naustralia (aus)</td>
+<td>christian lanthaler\nitaly (ita)</td>
+<td>jason lalla\nunited states (usa)</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>row_count</td>
+</tr>
+<tr>
+<td>2</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[2]]</h3>
+</body></html>

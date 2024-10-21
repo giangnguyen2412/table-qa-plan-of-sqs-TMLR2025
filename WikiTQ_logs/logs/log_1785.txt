@@ -1,0 +1,79 @@
+************************************************************************************************************************
+Sample 1785 - Plan 1: Query: which publisher published the least titles?
+Sample 1785 - Plan 1: Groundtruth: ['University of Cambridge']
+Sample 1785 - Plan 1: X-Original table pd: 
+                                               title  year  \
+0  rural telecoms handbook: equipment and manufac...  1992   
+1  regional structure and telecommunications dema...  1982   
+2               the route to advanced communications  1991   
+3  global turf wars: re-inventing the telecoms op...  1999   
+4                   atm vendor & operator strategies  1993   
+5              the far reaching effects of broadband  2002   
+6  regulating the telecoms market: competition an...  2003   
+
+                                            authors  \
+0                         tim hills, david cleevely   
+1                                    d. d. cleevely   
+2  david cleevely, stefan stanislawski, ade ajibulu   
+3           tim hills, david cleevely, andrea smith   
+4           david cleevely, peter aknai, ian leslie   
+5                                    david cleevely   
+6               tim hills, david cleevely, ross pow   
+
+                                 publisher pages  
+0                    analysys publications     -  
+1                  university of cambridge     -  
+2                    analysys publications   178  
+3                    analysis publications   218  
+4                    analysis publications   180  
+5  institution of engineering & technology   415  
+6                    analysis publications    35  
+Sample 1785 - Plan 1: Caption: none
+Sample 1785 - Plan 1: Original table: [['title', 'year', 'authors', 'publisher', 'pages'], ['rural telecoms handbook: equipment and manufacturers', '1992', 'tim hills, david cleevely', 'analysys publications', '-'], ['regional structure and telecommunications demand: a case study of kenya (ph.d. thesis)', '1982', 'd. d. cleevely', 'university of cambridge', '-'], ['the route to advanced communications', '1991', 'david cleevely, stefan stanislawski, ade ajibulu', 'analysys publications', '178'], ['global turf wars: re-inventing the telecoms operator for the age of global competition', '1999', 'tim hills, david cleevely, andrea smith', 'analysis publications', '218'], ['atm vendor & operator strategies', '1993', 'david cleevely, peter aknai, ian leslie', 'analysis publications', '180'], ['the far reaching effects of broadband', '2002', 'david cleevely', 'institution of engineering & technology', '415'], ['regulating the telecoms market: competition and innovation in the broadband economy', '2003', 'tim hills, david cleevely, ross pow', 'analysis publications', '35']]
+########################################################################################################################
+Sample 1785 - Plan 1: Operation 1: Group the table by the 'publisher' column.
+Sample 1785 - Plan 1: Selected indices: []
+Sample 1785 - Plan 1: X-Table after operation df:
+                                 publisher
+0                    analysis publications
+1                    analysys publications
+2  institution of engineering & technology
+3                  university of cambridge
+Sample 1785 - Plan 1: Table after operation: [['publisher'], ['analysis publications'], ['analysys publications'], ['institution of engineering & technology'], ['university of cambridge']]
+########################################################################################################################
+Sample 1785 - Plan 1: Operation 2: Count the number of titles for each publisher.
+Sample 1785 - Plan 1: Selected indices: [[0, 0], [1, 0], [2, 0], [3, 0]]
+Sample 1785 - Plan 1: X-Table after operation df:
+                                 publisher  title_count
+0                    analysis publications            1
+1                    analysys publications            1
+2  institution of engineering & technology            1
+3                  university of cambridge            1
+Sample 1785 - Plan 1: Table after operation: [['publisher', 'title_count'], ['analysis publications', 1], ['analysys publications', 1], ['institution of engineering & technology', 1], ['university of cambridge', 1]]
+########################################################################################################################
+Sample 1785 - Plan 1: Operation 3: Order the table by the count of titles in ascending order.
+Sample 1785 - Plan 1: Selected indices: [[0, 1], [1, 1], [2, 1], [3, 1]]
+Sample 1785 - Plan 1: X-Table after operation df:
+                                 publisher  title_count
+0                    analysis publications            1
+1                    analysys publications            1
+2  institution of engineering & technology            1
+3                  university of cambridge            1
+Sample 1785 - Plan 1: Table after operation: [['publisher', 'title_count'], ['analysis publications', 1], ['analysys publications', 1], ['institution of engineering & technology', 1], ['university of cambridge', 1]]
+########################################################################################################################
+Sample 1785 - Plan 1: Operation 4: Select the row with the lowest count of titles.
+Sample 1785 - Plan 1: Selected indices: [[0, 1]]
+Sample 1785 - Plan 1: X-Table after operation df:
+               publisher  title_count
+0  analysis publications            1
+Sample 1785 - Plan 1: Table after operation: [['publisher', 'title_count'], ['analysis publications', 1]]
+########################################################################################################################
+Sample 1785 - Plan 1: Operation 5: Select the 'publisher' column from the selected row.
+Sample 1785 - Plan 1: Selected indices: []
+Sample 1785 - Plan 1: X-Table after operation df:
+               publisher
+0  analysis publications
+Sample 1785 - Plan 1: Table after operation: [['publisher'], ['analysis publications']]
+Fall-back: FALSE
+Answer from plan 1: [['analysis publications']]
+Groundtruth: ['University of Cambridge']

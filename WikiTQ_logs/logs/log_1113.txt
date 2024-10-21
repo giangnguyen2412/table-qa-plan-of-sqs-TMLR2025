@@ -1,0 +1,96 @@
+************************************************************************************************************************
+Sample 1113 - Plan 1: Query: who had more wins: greg pickett or bob tullius?
+Sample 1113 - Plan 1: Groundtruth: ['Bob Tullius']
+Sample 1113 - Plan 1: X-Original table pd: 
+   round         date         circuit           winning_driver__ta2_  \
+0      1       may 21     sears point                   greg pickett   
+1      2       june 4        westwood                ludwig heimrath   
+2      3      june 11        portland                    tuck thomas   
+3      4      june 25  mont-tremblant                  monte sheldon   
+4      5       july 8   watkins glen‡  hal shaw, jr.\n monte shelton   
+5      6    august 13        brainerd                   jerry hansen   
+6      7    august 19         mosport                   greg pickett   
+7      8  september 4    road america                   greg pickett   
+8      9    october 8     laguna seca                   greg pickett   
+9     10   november 5     mexico city                ludwig heimrath   
+
+  winning_vehicle__ta2_            winning_driver__ta1_ winning_vehicle__ta1_  
+0    chevrolet corvette                   gene bothello    chevrolet corvette  
+1           porsche 935                     nick engels    chevrolet corvette  
+2       chevrolet monza                  bob matkowitch    chevrolet corvette  
+3           porsche 935                     bob tullius            jaguar xjs  
+4           porsche 935  brian fuerstenau\n bob tullius            jaguar xjs  
+5       chevrolet monza                     bob tullius            jaguar xjs  
+6    chevrolet corvette                     bob tullius            jaguar xjs  
+7    chevrolet corvette                     bob tullius            jaguar xjs  
+8    chevrolet corvette                     bob tullius            jaguar xjs  
+9           porsche 935                     bob tullius            jaguar xjs  
+Sample 1113 - Plan 1: Caption: none
+Sample 1113 - Plan 1: Original table: [['round', 'date', 'circuit', 'winning_driver__ta2_', 'winning_vehicle__ta2_', 'winning_driver__ta1_', 'winning_vehicle__ta1_'], ['1', 'may 21', 'sears point', 'greg pickett', 'chevrolet corvette', 'gene bothello', 'chevrolet corvette'], ['2', 'june 4', 'westwood', 'ludwig heimrath', 'porsche 935', 'nick engels', 'chevrolet corvette'], ['3', 'june 11', 'portland', 'tuck thomas', 'chevrolet monza', 'bob matkowitch', 'chevrolet corvette'], ['4', 'june 25', 'mont-tremblant', 'monte sheldon', 'porsche 935', 'bob tullius', 'jaguar xjs'], ['5', 'july 8', 'watkins glen‡', 'hal shaw, jr.\\n monte shelton', 'porsche 935', 'brian fuerstenau\\n bob tullius', 'jaguar xjs'], ['6', 'august 13', 'brainerd', 'jerry hansen', 'chevrolet monza', 'bob tullius', 'jaguar xjs'], ['7', 'august 19', 'mosport', 'greg pickett', 'chevrolet corvette', 'bob tullius', 'jaguar xjs'], ['8', 'september 4', 'road america', 'greg pickett', 'chevrolet corvette', 'bob tullius', 'jaguar xjs'], ['9', 'october 8', 'laguna seca', 'greg pickett', 'chevrolet corvette', 'bob tullius', 'jaguar xjs'], ['10', 'november 5', 'mexico city', 'ludwig heimrath', 'porsche 935', 'bob tullius', 'jaguar xjs']]
+########################################################################################################################
+Sample 1113 - Plan 1: Operation 1: Select rows where the 'winning_driver__ta2_' is 'greg pickett'.
+Sample 1113 - Plan 1: Selected indices: [[6, 3], [8, 3], [0, 3], [7, 3]]
+Sample 1113 - Plan 1: X-Table after operation df:
+   round         date       circuit winning_driver__ta2_  \
+0      1       may 21   sears point         greg pickett   
+1      7    august 19       mosport         greg pickett   
+2      8  september 4  road america         greg pickett   
+3      9    october 8   laguna seca         greg pickett   
+
+  winning_vehicle__ta2_ winning_driver__ta1_ winning_vehicle__ta1_  
+0    chevrolet corvette        gene bothello    chevrolet corvette  
+1    chevrolet corvette          bob tullius            jaguar xjs  
+2    chevrolet corvette          bob tullius            jaguar xjs  
+3    chevrolet corvette          bob tullius            jaguar xjs  
+Sample 1113 - Plan 1: Table after operation: [['round', 'date', 'circuit', 'winning_driver__ta2_', 'winning_vehicle__ta2_', 'winning_driver__ta1_', 'winning_vehicle__ta1_'], [1, 'may 21', 'sears point', 'greg pickett', 'chevrolet corvette', 'gene bothello', 'chevrolet corvette'], [7, 'august 19', 'mosport', 'greg pickett', 'chevrolet corvette', 'bob tullius', 'jaguar xjs'], [8, 'september 4', 'road america', 'greg pickett', 'chevrolet corvette', 'bob tullius', 'jaguar xjs'], [9, 'october 8', 'laguna seca', 'greg pickett', 'chevrolet corvette', 'bob tullius', 'jaguar xjs']]
+########################################################################################################################
+Sample 1113 - Plan 1: Operation 2: Count the number of rows.
+Sample 1113 - Plan 1: Selected indices: []
+Sample 1113 - Plan 1: X-Table after operation df:
+   row_count
+0          4
+Sample 1113 - Plan 1: Table after operation: [['row_count'], [4]]
+########################################################################################################################
+Sample 1113 - Plan 1: Operation 3: Store the count in a variable, let's call it 'greg_wins'.
+Sample 1113 - Plan 1: Selected indices: []
+Sample 1113 - Plan 1: X-Table after operation df:
+   greg_wins
+0          4
+Sample 1113 - Plan 1: Table after operation: [['greg_wins'], [4]]
+########################################################################################################################
+Sample 1113 - Plan 1: Operation 4: Select rows where the 'winning_driver__ta2_' is 'bob tullius'.
+Sample 1113 - Plan 1: Selected indices: [[0, 0]]
+Sample 1113 - Plan 1: X-Table after operation df:
+   greg_wins
+0          4
+Sample 1113 - Plan 1: Table after operation: [['greg_wins'], [4]]
+########################################################################################################################
+Sample 1113 - Plan 1: Operation 5: Count the number of rows.
+Sample 1113 - Plan 1: Selected indices: []
+Sample 1113 - Plan 1: X-Table after operation df:
+   row_count
+0          1
+Sample 1113 - Plan 1: Table after operation: [['row_count'], [1]]
+########################################################################################################################
+Sample 1113 - Plan 1: Operation 6: Store the count in a variable, let's call it 'bob_wins'.
+Sample 1113 - Plan 1: Selected indices: []
+Sample 1113 - Plan 1: X-Table after operation df:
+   bob_wins
+0         1
+Sample 1113 - Plan 1: Table after operation: [['bob_wins'], [1]]
+########################################################################################################################
+Sample 1113 - Plan 1: Operation 7: Compare the values of 'greg_wins' and 'bob_wins'.
+Sample 1113 - Plan 1: Selected indices: []
+Sample 1113 - Plan 1: X-Table after operation df:
+   bob_wins
+0         1
+Sample 1113 - Plan 1: Table after operation: [['bob_wins'], [1]]
+########################################################################################################################
+Sample 1113 - Plan 1: Operation 8: If 'greg_wins' is greater than 'bob_wins', the answer is 'greg pickett'.
+SQL execution error in operation 8: Execution failed on sql 'SELECT CASE WHEN greg_wins > bob_wins THEN 'greg pickett' END AS answer
+FROM table_sql;
+-- If 'greg_wins' is greater than 'bob_wins', the answer is 'greg pickett'.': no such column: greg_wins
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['greg pickett']]
+Groundtruth: ['Bob Tullius']

@@ -1,0 +1,205 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which airport has the most passengers?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Order the table by 'passengers' in descending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>rank</td>
+<td>city</td>
+<td>passengers</td>
+<td>top_carriers</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">los angeles, ca</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">700,000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">american, spirit, united</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chicago, il</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">673,000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">american, spirit, united</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">denver, co</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">654,000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">frontier, spirit, united</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">san francisco, ca</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">492,000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dallas/fort worth, tx</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">488,000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">american, united</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">newark, nj</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">480,000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">las vegas, nv</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">442,000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">spirit, united</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">charlotte, nc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">441,000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united, us airways</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">atlanta, ga</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">400,000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">delta, united</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">phoenix, az</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">393,000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united, us airways</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select row number 1.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>rank</td>
+<td>city</td>
+<td>passengers</td>
+<td>top_carriers</td>
+</tr>
+<tr>
+<td>1</td>
+<td>los angeles, ca</td>
+<td>700,000</td>
+<td>american, spirit, united</td>
+</tr>
+<tr>
+<td>2</td>
+<td>chicago, il</td>
+<td>673,000</td>
+<td>american, spirit, united</td>
+</tr>
+<tr>
+<td>3</td>
+<td>denver, co</td>
+<td>654,000</td>
+<td>frontier, spirit, united</td>
+</tr>
+<tr>
+<td>4</td>
+<td>san francisco, ca</td>
+<td>492,000</td>
+<td>united</td>
+</tr>
+<tr>
+<td>5</td>
+<td>dallas/fort worth, tx</td>
+<td>488,000</td>
+<td>american, united</td>
+</tr>
+<tr>
+<td>6</td>
+<td>newark, nj</td>
+<td>480,000</td>
+<td>united</td>
+</tr>
+<tr>
+<td>7</td>
+<td>las vegas, nv</td>
+<td>442,000</td>
+<td>spirit, united</td>
+</tr>
+<tr>
+<td>8</td>
+<td>charlotte, nc</td>
+<td>441,000</td>
+<td>united, us airways</td>
+</tr>
+<tr>
+<td>9</td>
+<td>atlanta, ga</td>
+<td>400,000</td>
+<td>delta, united</td>
+</tr>
+<tr>
+<td>10</td>
+<td>phoenix, az</td>
+<td>393,000</td>
+<td>united, us airways</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select the 'city' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>rank</td>
+<td>city</td>
+<td>passengers</td>
+<td>top_carriers</td>
+</tr>
+<tr>
+<td>1</td>
+<td>los angeles, ca</td>
+<td>700,000</td>
+<td>american, spirit, united</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>city</td>
+</tr>
+<tr>
+<td>los angeles, ca</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['los angeles, ca']]</h3>
+</body></html>

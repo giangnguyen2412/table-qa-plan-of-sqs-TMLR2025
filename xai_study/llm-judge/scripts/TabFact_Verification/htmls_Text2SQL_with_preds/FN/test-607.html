@@ -1,0 +1,40 @@
+
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+.sql-command { background-color: #f0f0f0; padding: 10px; border-left: 4px solid #4CAF50; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> brook lopez led the team in points for 5 straight games</h3>
+<h3>Input Table: 2010 - 11 new jersey nets season</h3>
+<div class="step">
+<table>
+<tr><td>game</td><td>date</td><td>team</td><td>score</td><td>high_points</td><td>high_rebounds</td><td>high_assists</td><td>location_attendance</td><td>record</td></tr><tr><td>75</td><td>9999-04-01</td><td>philadelphia</td><td>l 90 - 115 (ot)</td><td>brandan wright (15)</td><td>brandan wright (11)</td><td>deron williams (7)</td><td>wells fargo center 16695</td><td>23 - 52</td></tr><tr><td>76</td><td>9999-04-03</td><td>miami</td><td>l 94 - 108 (ot)</td><td>deron williams (18)</td><td>travis outlaw (9)</td><td>deron williams (9)</td><td>prudential center 18711</td><td>23 - 53</td></tr><tr><td>77</td><td>'9999-04-05'</td><td>minnesota</td><td>w 107 - 105 (ot)</td><td>brook lopez (30)</td><td>brook lopez (12)</td><td>deron williams (21)</td><td>prudential center 13461</td><td>24 - 53</td></tr><tr><td>78</td><td>9999-04-06</td><td>detroit</td><td>l 109 - 116 (ot)</td><td>brook lopez (39)</td><td>brook lopez (7)</td><td>jordan farmar (11)</td><td>the palace of auburn hills 14554</td><td>24 - 54</td></tr><tr><td>79</td><td>9999-04-08</td><td>new york</td><td>l 93 - 116 (ot)</td><td>brook lopez (27)</td><td>jordan farmar (8)</td><td>jordan farmar (9)</td><td>prudential center 18023</td><td>24 - 55</td></tr><tr><td>80</td><td>'9999-04-10'</td><td>toronto</td><td>l 92 - 99 (ot)</td><td>brook lopez (35)</td><td>brook lopez (11)</td><td>jordan farmar (7)</td><td>air canada centre 17755</td><td>24 - 56</td></tr><tr><td>81</td><td>9999-04-11</td><td>charlotte</td><td>l 103 - 105 (ot)</td><td>brook lopez (31)</td><td>dan gadzuric (8)</td><td>jordan farmar (9)</td><td>prudential center 13853</td><td>24 - 57</td></tr>
+</table>
+</div>
+<h3>SQL Command:</h3>
+<div class="sql-command">SELECT 
+    CASE 
+        WHEN (SELECT COUNT(*) FROM table_sql WHERE high_points = (SELECT MAX(high_points) FROM table_sql) AND game >= 75 AND game <= 79) = 5 
+        THEN 'TRUE' 
+        ELSE 'FALSE' 
+    END;</div>
+<h3>Prediction: False</h3>
+</body></html>

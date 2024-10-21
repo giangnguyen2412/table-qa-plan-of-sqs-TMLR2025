@@ -1,0 +1,52 @@
+************************************************************************************************************************
+Sample 2155 - Plan 1: Query: which is the only domestic route out of houston intercontinental that has a delta flight?
+Sample 2155 - Plan 1: Groundtruth: ['Atlanta, GA']
+Sample 2155 - Plan 1: X-Original table pd: 
+   rank                   city passengers              top_carriers
+0     1        los angeles, ca    700,000  american, spirit, united
+1     2            chicago, il    673,000  american, spirit, united
+2     3             denver, co    654,000  frontier, spirit, united
+3     4      san francisco, ca    492,000                    united
+4     5  dallas/fort worth, tx    488,000          american, united
+5     6             newark, nj    480,000                    united
+6     7          las vegas, nv    442,000            spirit, united
+7     8          charlotte, nc    441,000        united, us airways
+8     9            atlanta, ga    400,000             delta, united
+9    10            phoenix, az    393,000        united, us airways
+Sample 2155 - Plan 1: Caption: none
+Sample 2155 - Plan 1: Original table: [['rank', 'city', 'passengers', 'top_carriers'], ['1', 'los angeles, ca', '700,000', 'american, spirit, united'], ['2', 'chicago, il', '673,000', 'american, spirit, united'], ['3', 'denver, co', '654,000', 'frontier, spirit, united'], ['4', 'san francisco, ca', '492,000', 'united'], ['5', 'dallas/fort worth, tx', '488,000', 'american, united'], ['6', 'newark, nj', '480,000', 'united'], ['7', 'las vegas, nv', '442,000', 'spirit, united'], ['8', 'charlotte, nc', '441,000', 'united, us airways'], ['9', 'atlanta, ga', '400,000', 'delta, united'], ['10', 'phoenix, az', '393,000', 'united, us airways']]
+########################################################################################################################
+Sample 2155 - Plan 1: Operation 1: Select rows where the 'city' is 'houston intercontinental'.
+Sample 2155 - Plan 1: Selected indices: []
+Sample 2155 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [rank, city, passengers, top_carriers]
+Index: []
+Sample 2155 - Plan 1: Table after operation: [['rank', 'city', 'passengers', 'top_carriers']]
+########################################################################################################################
+Sample 2155 - Plan 1: Operation 2: Select rows where the 'top_carriers' column contains 'delta'.
+Sample 2155 - Plan 1: Selected indices: []
+Sample 2155 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [rank, city, passengers, top_carriers]
+Index: []
+Sample 2155 - Plan 1: Table after operation: [['rank', 'city', 'passengers', 'top_carriers']]
+########################################################################################################################
+Sample 2155 - Plan 1: Operation 3: Select rows where the 'top_carriers' column contains only one carrier.
+Sample 2155 - Plan 1: Selected indices: []
+Sample 2155 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [rank, city, passengers, top_carriers]
+Index: []
+Sample 2155 - Plan 1: Table after operation: [['rank', 'city', 'passengers', 'top_carriers']]
+########################################################################################################################
+Sample 2155 - Plan 1: Operation 4: Select the 'top_carriers' column.
+Sample 2155 - Plan 1: Selected indices: []
+Sample 2155 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [top_carriers]
+Index: []
+Sample 2155 - Plan 1: Table after operation: [['top_carriers']]
+Fall-back: TRUE
+Answer from plan 1: [['none']]
+Groundtruth: ['Atlanta, GA']

@@ -1,0 +1,115 @@
+************************************************************************************************************************
+Sample 3894 - Plan 1: Query: what origin has the least % total in 2009?
+Sample 3894 - Plan 1: Groundtruth: ['Oceania']
+Sample 3894 - Plan 1: X-Original table pd: 
+      naturalisations_by_origin   c_2000   c_2005   c_2009  __total_2009
+0                        africa   84 182   98 453   85 144          62.7
+1                       maghreb   68 185   75 224   56 024          41.2
+2            sub-saharan africa   10 622   15 624   22 214          16.4
+3                  other africa    5 375    7 605    6 906           5.1
+4                          asia   27 941   26 286   19 494          14.4
+5               south-east asia    7 265    4 069    2 475           1.8
+6                     east asia    1 139    1 280    1 622           1.2
+7                    south asia    4 246    4 436    3 660           2.7
+8                    other asia   15 291   16 501   11 737           8.6
+9   europe (not including cis )   22 085   18 072   14 753          10.9
+10                          cis    1 181    2 108    4 704           3.5
+11                 cis (europe)    1 000    1 535    4 454           3.3
+12                   cis (asia)      181      573      250           0.2
+13                      america    5 668    6 352    6 677           4.9
+14                north america    1 048      854      747           0.5
+15    south and central america    4 620    5 498    5 930           4.4
+16                      oceania       87      127      108           0.1
+17                       others    8 882    3 245    4 962           3.7
+18                        total  150 026  154 643  135 842         100.0
+Sample 3894 - Plan 1: Caption: none
+Sample 3894 - Plan 1: Original table: [['naturalisations_by_origin', 'c_2000', 'c_2005', 'c_2009', '__total_2009'], ['africa', '84 182', '98 453', '85 144', '62.7'], ['maghreb', '68 185', '75 224', '56 024', '41.2'], ['sub-saharan africa', '10 622', '15 624', '22 214', '16.4'], ['other africa', '5 375', '7 605', '6 906', '5.1'], ['asia', '27 941', '26 286', '19 494', '14.4'], ['south-east asia', '7 265', '4 069', '2 475', '1.8'], ['east asia', '1 139', '1 280', '1 622', '1.2'], ['south asia', '4 246', '4 436', '3 660', '2.7'], ['other asia', '15 291', '16 501', '11 737', '8.6'], ['europe (not including cis )', '22 085', '18 072', '14 753', '10.9'], ['cis', '1 181', '2 108', '4 704', '3.5'], ['cis (europe)', '1 000', '1 535', '4 454', '3.3'], ['cis (asia)', '181', '573', '250', '0.2'], ['america', '5 668', '6 352', '6 677', '4.9'], ['north america', '1 048', '854', '747', '0.5'], ['south and central america', '4 620', '5 498', '5 930', '4.4'], ['oceania', '87', '127', '108', '0.1'], ['others', '8 882', '3 245', '4 962', '3.7'], ['total', '150 026', '154 643', '135 842', '100']]
+########################################################################################################################
+Sample 3894 - Plan 1: Operation 1: Select the row where the 'naturalisations_by_origin' is not 'total'.
+Sample 3894 - Plan 1: Selected indices: [[9, 0], [4, 0], [16, 0], [11, 0], [0, 0], [17, 0], [12, 0], [7, 0], [2, 0], [13, 0], [8, 0], [3, 0], [14, 0], [15, 0], [10, 0], [5, 0], [6, 0], [1, 0]]
+Sample 3894 - Plan 1: X-Table after operation df:
+      naturalisations_by_origin  c_2000  c_2005  c_2009  __total_2009
+0                        africa  84 182  98 453  85 144          62.7
+1                       maghreb  68 185  75 224  56 024          41.2
+2            sub-saharan africa  10 622  15 624  22 214          16.4
+3                  other africa   5 375   7 605   6 906           5.1
+4                          asia  27 941  26 286  19 494          14.4
+5               south-east asia   7 265   4 069   2 475           1.8
+6                     east asia   1 139   1 280   1 622           1.2
+7                    south asia   4 246   4 436   3 660           2.7
+8                    other asia  15 291  16 501  11 737           8.6
+9   europe (not including cis )  22 085  18 072  14 753          10.9
+10                          cis   1 181   2 108   4 704           3.5
+11                 cis (europe)   1 000   1 535   4 454           3.3
+12                   cis (asia)     181     573     250           0.2
+13                      america   5 668   6 352   6 677           4.9
+14                north america   1 048     854     747           0.5
+15    south and central america   4 620   5 498   5 930           4.4
+16                      oceania      87     127     108           0.1
+17                       others   8 882   3 245   4 962           3.7
+Sample 3894 - Plan 1: Table after operation: [['naturalisations_by_origin', 'c_2000', 'c_2005', 'c_2009', '__total_2009'], ['africa', '84 182', '98 453', '85 144', 62.7], ['maghreb', '68 185', '75 224', '56 024', 41.2], ['sub-saharan africa', '10 622', '15 624', '22 214', 16.4], ['other africa', '5 375', '7 605', '6 906', 5.1], ['asia', '27 941', '26 286', '19 494', 14.4], ['south-east asia', '7 265', '4 069', '2 475', 1.8], ['east asia', '1 139', '1 280', '1 622', 1.2], ['south asia', '4 246', '4 436', '3 660', 2.7], ['other asia', '15 291', '16 501', '11 737', 8.6], ['europe (not including cis )', '22 085', '18 072', '14 753', 10.9], ['cis', '1 181', '2 108', '4 704', 3.5], ['cis (europe)', '1 000', '1 535', '4 454', 3.3], ['cis (asia)', '181', '573', '250', 0.2], ['america', '5 668', '6 352', '6 677', 4.9], ['north america', '1 048', '854', '747', 0.5], ['south and central america', '4 620', '5 498', '5 930', 4.4], ['oceania', '87', '127', '108', 0.1], ['others', '8 882', '3 245', '4 962', 3.7]]
+########################################################################################################################
+Sample 3894 - Plan 1: Operation 2: Calculate the percentage of the 'c_2009' column relative to the '__total_2009' column for each row.
+Sample 3894 - Plan 1: Selected indices: []
+Sample 3894 - Plan 1: X-Table after operation df:
+      naturalisations_by_origin     percentage
+0                        africa  135795.853270
+1                       maghreb  135980.582524
+2            sub-saharan africa  135451.219512
+3                  other africa  135411.764706
+4                          asia  135375.000000
+5               south-east asia  137500.000000
+6                     east asia  135166.666667
+7                    south asia  135555.555556
+8                    other asia  136476.744186
+9   europe (not including cis )  135348.623853
+10                          cis  134400.000000
+11                 cis (europe)  134969.696970
+12                   cis (asia)  125000.000000
+13                      america  136265.306122
+14                north america  149400.000000
+15    south and central america  134772.727273
+16                      oceania  108000.000000
+17                       others  134108.108108
+Sample 3894 - Plan 1: Table after operation: [['naturalisations_by_origin', 'percentage'], ['africa', 135795.85326953747], ['maghreb', 135980.58252427183], ['sub-saharan africa', 135451.21951219515], ['other africa', 135411.76470588238], ['asia', 135375.0], ['south-east asia', 137500.0], ['east asia', 135166.6666666667], ['south asia', 135555.55555555553], ['other asia', 136476.7441860465], ['europe (not including cis )', 135348.623853211], ['cis', 134400.0], ['cis (europe)', 134969.69696969696], ['cis (asia)', 125000.0], ['america', 136265.30612244896], ['north america', 149400.0], ['south and central america', 134772.72727272726], ['oceania', 108000.0], ['others', 134108.1081081081]]
+########################################################################################################################
+Sample 3894 - Plan 1: Operation 3: Order the table by the calculated percentage in ascending order.
+Sample 3894 - Plan 1: Selected indices: [[11, 1], [0, 1], [17, 1], [12, 1], [7, 1], [2, 1], [13, 1], [8, 1], [3, 1], [6, 1], [1, 1], [15, 1], [10, 1], [5, 1], [14, 1], [9, 1], [4, 1], [16, 1]]
+Sample 3894 - Plan 1: X-Table after operation df:
+      naturalisations_by_origin     percentage
+0                       oceania  108000.000000
+1                    cis (asia)  125000.000000
+2                        others  134108.108108
+3                           cis  134400.000000
+4     south and central america  134772.727273
+5                  cis (europe)  134969.696970
+6                     east asia  135166.666667
+7   europe (not including cis )  135348.623853
+8                          asia  135375.000000
+9                  other africa  135411.764706
+10           sub-saharan africa  135451.219512
+11                   south asia  135555.555556
+12                       africa  135795.853270
+13                      maghreb  135980.582524
+14                      america  136265.306122
+15                   other asia  136476.744186
+16              south-east asia  137500.000000
+17                north america  149400.000000
+Sample 3894 - Plan 1: Table after operation: [['naturalisations_by_origin', 'percentage'], ['oceania', 108000.0], ['cis (asia)', 125000.0], ['others', 134108.1081081081], ['cis', 134400.0], ['south and central america', 134772.72727272726], ['cis (europe)', 134969.69696969696], ['east asia', 135166.6666666667], ['europe (not including cis )', 135348.623853211], ['asia', 135375.0], ['other africa', 135411.76470588238], ['sub-saharan africa', 135451.21951219515], ['south asia', 135555.55555555553], ['africa', 135795.85326953747], ['maghreb', 135980.58252427183], ['america', 136265.30612244896], ['other asia', 136476.7441860465], ['south-east asia', 137500.0], ['north america', 149400.0]]
+########################################################################################################################
+Sample 3894 - Plan 1: Operation 4: Select the row number 1.
+Sample 3894 - Plan 1: Selected indices: []
+Sample 3894 - Plan 1: X-Table after operation df:
+  naturalisations_by_origin  percentage
+0                   oceania    108000.0
+Sample 3894 - Plan 1: Table after operation: [['naturalisations_by_origin', 'percentage'], ['oceania', 108000.0]]
+########################################################################################################################
+Sample 3894 - Plan 1: Operation 5: Select the 'naturalisations_by_origin' column.
+Sample 3894 - Plan 1: Selected indices: []
+Sample 3894 - Plan 1: X-Table after operation df:
+  naturalisations_by_origin
+0                   oceania
+Sample 3894 - Plan 1: Table after operation: [['naturalisations_by_origin'], ['oceania']]
+Fall-back: FALSE
+Answer from plan 1: [['oceania']]
+Groundtruth: ['Oceania']

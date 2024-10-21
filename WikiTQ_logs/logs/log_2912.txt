@@ -1,0 +1,132 @@
+************************************************************************************************************************
+Sample 2912 - Plan 1: Query: who was the last client that to and still receive drilling services?
+Sample 2912 - Plan 1: Groundtruth: ['Zueitina']
+Sample 2912 - Plan 1: X-Original table pd: 
+             client years_of_operation   area_of_operation   country  \
+0             agoco       1991-current         sarir field     libya   
+1             lasmo            1993-94         wadi borjuj     libya   
+2              waha               1994            el zahra     libya   
+3        ipc-dublin            1997-97               kilwa  tanzania   
+4               omv               1997           field 103     libya   
+5              fina               1997           el hamada     libya   
+6          marathon               1998       manzala field     egypt   
+7     khalda/repsol            1998-99         west desert     egypt   
+8             total       1999-current          el mabrouk     libya   
+9        agiba-agip               1999         west desert     egypt   
+10             ipll       1999-current       el naka field     libya   
+11              soc       2000-current          soc fields     libya   
+12             veba               2000    different fields     libya   
+13  perenco oil co.            2000-01  echirax concession     gabon   
+14         zueitina       2001-current           field 103     libya   
+
+              services  
+0   drilling, workover  
+1   drilling, workover  
+2   drilling, workover  
+3             drilling  
+4   drilling, workover  
+5   drilling, workover  
+6             drilling  
+7             drilling  
+8             drilling  
+9             drilling  
+10            drilling  
+11            drilling  
+12  drilling, workover  
+13            drilling  
+14  drilling, workover  
+Sample 2912 - Plan 1: Caption: none
+Sample 2912 - Plan 1: Original table: [['client', 'years_of_operation', 'area_of_operation', 'country', 'services'], ['agoco', '1991-current', 'sarir field', 'libya', 'drilling, workover'], ['lasmo', '1993-94', 'wadi borjuj', 'libya', 'drilling, workover'], ['waha', '1994', 'el zahra', 'libya', 'drilling, workover'], ['ipc-dublin', '1997-97', 'kilwa', 'tanzania', 'drilling'], ['omv', '1997', 'field 103', 'libya', 'drilling, workover'], ['fina', '1997', 'el hamada', 'libya', 'drilling, workover'], ['marathon', '1998', 'manzala field', 'egypt', 'drilling'], ['khalda/repsol', '1998-99', 'west desert', 'egypt', 'drilling'], ['total', '1999-current', 'el mabrouk', 'libya', 'drilling'], ['agiba-agip', '1999', 'west desert', 'egypt', 'drilling'], ['ipll', '1999-current', 'el naka field', 'libya', 'drilling'], ['soc', '2000-current', 'soc fields', 'libya', 'drilling'], ['veba', '2000', 'different fields', 'libya', 'drilling, workover'], ['perenco oil co.', '2000-01', 'echirax concession', 'gabon', 'drilling'], ['zueitina', '2001-current', 'field 103', 'libya', 'drilling, workover']]
+########################################################################################################################
+Sample 2912 - Plan 1: Operation 1: Select rows where the 'services' column contains the word 'drilling'.
+Sample 2912 - Plan 1: Selected indices: [[4, 4], [7, 4], [2, 4], [12, 4], [0, 4], [3, 4], [8, 4], [13, 4], [14, 4], [10, 4], [5, 4], [6, 4], [1, 4], [11, 4], [9, 4]]
+Sample 2912 - Plan 1: X-Table after operation df:
+             client years_of_operation   area_of_operation   country  \
+0             agoco       1991-current         sarir field     libya   
+1             lasmo            1993-94         wadi borjuj     libya   
+2              waha               1994            el zahra     libya   
+3        ipc-dublin            1997-97               kilwa  tanzania   
+4               omv               1997           field 103     libya   
+5              fina               1997           el hamada     libya   
+6          marathon               1998       manzala field     egypt   
+7     khalda/repsol            1998-99         west desert     egypt   
+8             total       1999-current          el mabrouk     libya   
+9        agiba-agip               1999         west desert     egypt   
+10             ipll       1999-current       el naka field     libya   
+11              soc       2000-current          soc fields     libya   
+12             veba               2000    different fields     libya   
+13  perenco oil co.            2000-01  echirax concession     gabon   
+14         zueitina       2001-current           field 103     libya   
+
+              services  
+0   drilling, workover  
+1   drilling, workover  
+2   drilling, workover  
+3             drilling  
+4   drilling, workover  
+5   drilling, workover  
+6             drilling  
+7             drilling  
+8             drilling  
+9             drilling  
+10            drilling  
+11            drilling  
+12  drilling, workover  
+13            drilling  
+14  drilling, workover  
+Sample 2912 - Plan 1: Table after operation: [['client', 'years_of_operation', 'area_of_operation', 'country', 'services'], ['agoco', '1991-current', 'sarir field', 'libya', 'drilling, workover'], ['lasmo', '1993-94', 'wadi borjuj', 'libya', 'drilling, workover'], ['waha', '1994', 'el zahra', 'libya', 'drilling, workover'], ['ipc-dublin', '1997-97', 'kilwa', 'tanzania', 'drilling'], ['omv', '1997', 'field 103', 'libya', 'drilling, workover'], ['fina', '1997', 'el hamada', 'libya', 'drilling, workover'], ['marathon', '1998', 'manzala field', 'egypt', 'drilling'], ['khalda/repsol', '1998-99', 'west desert', 'egypt', 'drilling'], ['total', '1999-current', 'el mabrouk', 'libya', 'drilling'], ['agiba-agip', '1999', 'west desert', 'egypt', 'drilling'], ['ipll', '1999-current', 'el naka field', 'libya', 'drilling'], ['soc', '2000-current', 'soc fields', 'libya', 'drilling'], ['veba', '2000', 'different fields', 'libya', 'drilling, workover'], ['perenco oil co.', '2000-01', 'echirax concession', 'gabon', 'drilling'], ['zueitina', '2001-current', 'field 103', 'libya', 'drilling, workover']]
+########################################################################################################################
+Sample 2912 - Plan 1: Operation 2: Order the table by 'years_of_operation' in descending order.
+Sample 2912 - Plan 1: Selected indices: [[11, 1], [0, 1], [12, 1], [7, 1], [2, 1], [13, 1], [8, 1], [14, 1], [6, 1], [3, 1], [1, 1], [10, 1], [5, 1], [9, 1], [4, 1]]
+Sample 2912 - Plan 1: X-Table after operation df:
+             client years_of_operation   area_of_operation   country  \
+0          zueitina       2001-current           field 103     libya   
+1               soc       2000-current          soc fields     libya   
+2   perenco oil co.            2000-01  echirax concession     gabon   
+3              veba               2000    different fields     libya   
+4             total       1999-current          el mabrouk     libya   
+5              ipll       1999-current       el naka field     libya   
+6        agiba-agip               1999         west desert     egypt   
+7     khalda/repsol            1998-99         west desert     egypt   
+8          marathon               1998       manzala field     egypt   
+9        ipc-dublin            1997-97               kilwa  tanzania   
+10              omv               1997           field 103     libya   
+11             fina               1997           el hamada     libya   
+12             waha               1994            el zahra     libya   
+13            lasmo            1993-94         wadi borjuj     libya   
+14            agoco       1991-current         sarir field     libya   
+
+              services  
+0   drilling, workover  
+1             drilling  
+2             drilling  
+3   drilling, workover  
+4             drilling  
+5             drilling  
+6             drilling  
+7             drilling  
+8             drilling  
+9             drilling  
+10  drilling, workover  
+11  drilling, workover  
+12  drilling, workover  
+13  drilling, workover  
+14  drilling, workover  
+Sample 2912 - Plan 1: Table after operation: [['client', 'years_of_operation', 'area_of_operation', 'country', 'services'], ['zueitina', '2001-current', 'field 103', 'libya', 'drilling, workover'], ['soc', '2000-current', 'soc fields', 'libya', 'drilling'], ['perenco oil co.', '2000-01', 'echirax concession', 'gabon', 'drilling'], ['veba', '2000', 'different fields', 'libya', 'drilling, workover'], ['total', '1999-current', 'el mabrouk', 'libya', 'drilling'], ['ipll', '1999-current', 'el naka field', 'libya', 'drilling'], ['agiba-agip', '1999', 'west desert', 'egypt', 'drilling'], ['khalda/repsol', '1998-99', 'west desert', 'egypt', 'drilling'], ['marathon', '1998', 'manzala field', 'egypt', 'drilling'], ['ipc-dublin', '1997-97', 'kilwa', 'tanzania', 'drilling'], ['omv', '1997', 'field 103', 'libya', 'drilling, workover'], ['fina', '1997', 'el hamada', 'libya', 'drilling, workover'], ['waha', '1994', 'el zahra', 'libya', 'drilling, workover'], ['lasmo', '1993-94', 'wadi borjuj', 'libya', 'drilling, workover'], ['agoco', '1991-current', 'sarir field', 'libya', 'drilling, workover']]
+########################################################################################################################
+Sample 2912 - Plan 1: Operation 3: Select row number 1.
+Sample 2912 - Plan 1: Selected indices: []
+Sample 2912 - Plan 1: X-Table after operation df:
+     client years_of_operation area_of_operation country            services
+0  zueitina       2001-current         field 103   libya  drilling, workover
+Sample 2912 - Plan 1: Table after operation: [['client', 'years_of_operation', 'area_of_operation', 'country', 'services'], ['zueitina', '2001-current', 'field 103', 'libya', 'drilling, workover']]
+########################################################################################################################
+Sample 2912 - Plan 1: Operation 4: Select the 'client' column.
+Sample 2912 - Plan 1: Selected indices: []
+Sample 2912 - Plan 1: X-Table after operation df:
+     client
+0  zueitina
+Sample 2912 - Plan 1: Table after operation: [['client'], ['zueitina']]
+Fall-back: FALSE
+Answer from plan 1: [['zueitina']]
+Groundtruth: ['Zueitina']

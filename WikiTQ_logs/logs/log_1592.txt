@@ -1,0 +1,117 @@
+************************************************************************************************************************
+Sample 1592 - Plan 1: Query: which school has the lowest student/teacher ratio?
+Sample 1592 - Plan 1: Groundtruth: ['Christ Lutheran School']
+Sample 1592 - Plan 1: X-Original table pd: 
+                              school_name low_grade high_grade  \
+0                 bethany lutheran school        pk          8   
+1               bethlehem lutheran school        pk          8   
+2                  christ lutheran school         k          8   
+3      community baptist christian school        pk         12   
+4           good shepherd early childhood        pk          k   
+5                  grace christian school        pk         12   
+6              holy cross lutheran school        pk          8   
+7                immanuel lutheran school        pk          8   
+8              michigan lutheran seminary         9         12   
+9     nouvel catholic central high school         9         12   
+10                  peace lutheran school        pk          8   
+11         sheridan road christian school         k         12   
+12             st helen elementary school         k          8   
+13  st john's evangelical lutheran school         k          8   
+14               st pauls lutheran school        pk          8   
+15           st stephen elementary school        pk          8   
+16    st thomas aquinas elementary school         k          8   
+17  tri-city seventh-day adventist school         1          8   
+18            valley lutheran high school         9         12   
+19                                  notes                        
+
+    students__k_12_  fte_teachers  student_teacher_ratio  
+0              28.0           3.6                   7.78  
+1             182.0          10.0                  18.20  
+2              12.0           2.0                   6.00  
+3             120.0           9.8                  12.24  
+4              20.0           1.0                  20.00  
+5             117.0          13.0                   9.00  
+6             135.0           7.9                  17.09  
+7              82.0           5.6                  14.64  
+8             313.0          31.0                  10.10  
+9             505.0          37.0                  13.65  
+10            229.0           NaN                    NaN  
+11             42.0           5.9                   7.12  
+12            182.0          10.9                  16.70  
+13             32.0           3.0                  10.67  
+14            155.0           9.6                  16.15  
+15            364.0          23.1                  15.76  
+16            403.0          25.0                  16.12  
+17             18.0           2.1                   8.57  
+18            344.0          21.0                  16.38  
+19              NaN           NaN                    NaN  
+Sample 1592 - Plan 1: Caption: none
+Sample 1592 - Plan 1: Original table: [['school_name', 'low_grade', 'high_grade', 'students__k_12_', 'fte_teachers', 'student_teacher_ratio'], ['bethany lutheran school', 'pk', '8', '28', '3.6', '7.78'], ['bethlehem lutheran school', 'pk', '8', '182', '10', '18.2'], ['christ lutheran school', 'k', '8', '12', '2', '6'], ['community baptist christian school', 'pk', '12', '120', '9.8', '12.24'], ['good shepherd early childhood', 'pk', 'k', '20', '1', '20'], ['grace christian school', 'pk', '12', '117', '13', '9'], ['holy cross lutheran school', 'pk', '8', '135', '7.9', '17.09'], ['immanuel lutheran school', 'pk', '8', '82', '5.6', '14.64'], ['michigan lutheran seminary', '9', '12', '313', '31', '10.1'], ['nouvel catholic central high school', '9', '12', '505', '37', '13.65'], ['peace lutheran school', 'pk', '8', '229', '', ''], ['sheridan road christian school', 'k', '12', '42', '5.9', '7.12'], ['st helen elementary school', 'k', '8', '182', '10.9', '16.7'], ["st john's evangelical lutheran school", 'k', '8', '32', '3', '10.67'], ['st pauls lutheran school', 'pk', '8', '155', '9.6', '16.15'], ['st stephen elementary school', 'pk', '8', '364', '23.1', '15.76'], ['st thomas aquinas elementary school', 'k', '8', '403', '25', '16.12'], ['tri-city seventh-day adventist school', '1', '8', '18', '2.1', '8.57'], ['valley lutheran high school', '9', '12', '344', '21', '16.38'], ['notes', '', '', '', '', '']]
+########################################################################################################################
+Sample 1592 - Plan 1: Operation 1: Order the table by the 'student_teacher_ratio' column in ascending order.
+Sample 1592 - Plan 1: Selected indices: [[9, 5], [11, 5], [0, 5], [2, 5], [13, 5], [15, 5], [6, 5], [4, 5], [17, 5], [19, 5], [8, 5], [10, 5], [18, 5], [1, 5], [12, 5], [3, 5], [14, 5], [5, 5], [16, 5], [7, 5]]
+Sample 1592 - Plan 1: X-Table after operation df:
+                              school_name low_grade high_grade  \
+0                   peace lutheran school        pk          8   
+1                                   notes                        
+2                  christ lutheran school         k          8   
+3          sheridan road christian school         k         12   
+4                 bethany lutheran school        pk          8   
+5   tri-city seventh-day adventist school         1          8   
+6                  grace christian school        pk         12   
+7              michigan lutheran seminary         9         12   
+8   st john's evangelical lutheran school         k          8   
+9      community baptist christian school        pk         12   
+10    nouvel catholic central high school         9         12   
+11               immanuel lutheran school        pk          8   
+12           st stephen elementary school        pk          8   
+13    st thomas aquinas elementary school         k          8   
+14               st pauls lutheran school        pk          8   
+15            valley lutheran high school         9         12   
+16             st helen elementary school         k          8   
+17             holy cross lutheran school        pk          8   
+18              bethlehem lutheran school        pk          8   
+19          good shepherd early childhood        pk          k   
+
+    students__k_12_  fte_teachers  student_teacher_ratio  
+0             229.0           NaN                    NaN  
+1               NaN           NaN                    NaN  
+2              12.0           2.0                   6.00  
+3              42.0           5.9                   7.12  
+4              28.0           3.6                   7.78  
+5              18.0           2.1                   8.57  
+6             117.0          13.0                   9.00  
+7             313.0          31.0                  10.10  
+8              32.0           3.0                  10.67  
+9             120.0           9.8                  12.24  
+10            505.0          37.0                  13.65  
+11             82.0           5.6                  14.64  
+12            364.0          23.1                  15.76  
+13            403.0          25.0                  16.12  
+14            155.0           9.6                  16.15  
+15            344.0          21.0                  16.38  
+16            182.0          10.9                  16.70  
+17            135.0           7.9                  17.09  
+18            182.0          10.0                  18.20  
+19             20.0           1.0                  20.00  
+Sample 1592 - Plan 1: Table after operation: [['school_name', 'low_grade', 'high_grade', 'students__k_12_', 'fte_teachers', 'student_teacher_ratio'], ['peace lutheran school', 'pk', '8', 229.0, nan, nan], ['notes', '', '', nan, nan, nan], ['christ lutheran school', 'k', '8', 12.0, 2.0, 6.0], ['sheridan road christian school', 'k', '12', 42.0, 5.9, 7.12], ['bethany lutheran school', 'pk', '8', 28.0, 3.6, 7.78], ['tri-city seventh-day adventist school', '1', '8', 18.0, 2.1, 8.57], ['grace christian school', 'pk', '12', 117.0, 13.0, 9.0], ['michigan lutheran seminary', '9', '12', 313.0, 31.0, 10.1], ["st john's evangelical lutheran school", 'k', '8', 32.0, 3.0, 10.67], ['community baptist christian school', 'pk', '12', 120.0, 9.8, 12.24], ['nouvel catholic central high school', '9', '12', 505.0, 37.0, 13.65], ['immanuel lutheran school', 'pk', '8', 82.0, 5.6, 14.64], ['st stephen elementary school', 'pk', '8', 364.0, 23.1, 15.76], ['st thomas aquinas elementary school', 'k', '8', 403.0, 25.0, 16.12], ['st pauls lutheran school', 'pk', '8', 155.0, 9.6, 16.15], ['valley lutheran high school', '9', '12', 344.0, 21.0, 16.38], ['st helen elementary school', 'k', '8', 182.0, 10.9, 16.7], ['holy cross lutheran school', 'pk', '8', 135.0, 7.9, 17.09], ['bethlehem lutheran school', 'pk', '8', 182.0, 10.0, 18.2], ['good shepherd early childhood', 'pk', 'k', 20.0, 1.0, 20.0]]
+########################################################################################################################
+Sample 1592 - Plan 1: Operation 2: Select row number 1.
+Sample 1592 - Plan 1: Selected indices: []
+Sample 1592 - Plan 1: X-Table after operation df:
+             school_name low_grade  high_grade  students__k_12_  fte_teachers  \
+0  peace lutheran school        pk           8            229.0           NaN   
+
+   student_teacher_ratio  
+0                    NaN  
+Sample 1592 - Plan 1: Table after operation: [['school_name', 'low_grade', 'high_grade', 'students__k_12_', 'fte_teachers', 'student_teacher_ratio'], ['peace lutheran school', 'pk', '8', 229.0, None, None]]
+########################################################################################################################
+Sample 1592 - Plan 1: Operation 3: Select the 'school_name' column.
+Sample 1592 - Plan 1: Selected indices: []
+Sample 1592 - Plan 1: X-Table after operation df:
+             school_name
+0  peace lutheran school
+Sample 1592 - Plan 1: Table after operation: [['school_name'], ['peace lutheran school']]
+Fall-back: FALSE
+Answer from plan 1: [['peace lutheran school']]
+Groundtruth: ['Christ Lutheran School']

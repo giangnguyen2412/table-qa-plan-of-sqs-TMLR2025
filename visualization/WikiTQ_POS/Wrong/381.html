@@ -1,0 +1,151 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how many incumbents are on the table</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'c_2008_status' column is 're-election'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>district</td>
+<td>incumbent</td>
+<td>c_2008_status</td>
+<td>democratic</td>
+<td>republican</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">diana degette</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">re-election</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">diana degette</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">george lilly</span></td>
+</tr>
+<tr>
+<td>2</td>
+<td>mark udall</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">open</span></td>
+<td>jared polis</td>
+<td>scott starin</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">john salazar</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">re-election</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">john salazar</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wayne wolf</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">marilyn musgrave</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">re-election</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">betsy markey</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">marilyn musgrave</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">doug lamborn</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">re-election</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">hal bidlack</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">doug lamborn</span></td>
+</tr>
+<tr>
+<td>6</td>
+<td>tom tancredo</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">open</span></td>
+<td>hank eng</td>
+<td>mike coffman</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ed perlmutter</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">re-election</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ed perlmutter</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">john w. lerew</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Count the number of rows.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>district</td>
+<td>incumbent</td>
+<td>c_2008_status</td>
+<td>democratic</td>
+<td>republican</td>
+</tr>
+<tr>
+<td>1</td>
+<td>diana degette</td>
+<td>re-election</td>
+<td>diana degette</td>
+<td>george lilly</td>
+</tr>
+<tr>
+<td>3</td>
+<td>john salazar</td>
+<td>re-election</td>
+<td>john salazar</td>
+<td>wayne wolf</td>
+</tr>
+<tr>
+<td>4</td>
+<td>marilyn musgrave</td>
+<td>re-election</td>
+<td>betsy markey</td>
+<td>marilyn musgrave</td>
+</tr>
+<tr>
+<td>5</td>
+<td>doug lamborn</td>
+<td>re-election</td>
+<td>hal bidlack</td>
+<td>doug lamborn</td>
+</tr>
+<tr>
+<td>7</td>
+<td>ed perlmutter</td>
+<td>re-election</td>
+<td>ed perlmutter</td>
+<td>john w. lerew</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>row_count</td>
+</tr>
+<tr>
+<td>5</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[5]]</h3>
+</body></html>

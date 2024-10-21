@@ -1,0 +1,41 @@
+
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+.sql-command { background-color: #f0f0f0; padding: 10px; border-left: 4px solid #4CAF50; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> week 4 had a higher attendance than week 3</h3>
+<h3>Input Table: 1997 oakland raiders season</h3>
+<div class="step">
+<table>
+<tr><td>week</td><td>date</td><td>opponent</td><td>result</td><td>tv_time</td><td>attendance</td></tr><tr><td>1</td><td>1997-08-31</td><td>tennessee oilers</td><td>l 24 - 21</td><td>nbc 10:00 am</td><td>30171</td></tr><tr><td>2</td><td>1997-09-08</td><td>kansas city chiefs</td><td>l 28 - 27</td><td>abc 6:00 pm</td><td>61523</td></tr><tr><td>3</td><td>1997-09-14</td><td>atlanta falcons</td><td>w 36 - 31</td><td>nbc 10:00 am</td><td>47922</td></tr><tr><td>4</td><td>1997-09-21</td><td>new york jets</td><td>l 23 - 22</td><td>nbc 10:00 am</td><td>72586</td></tr><tr><td>5</td><td>1997-09-28</td><td>st louis rams</td><td>w 35 - 17</td><td>fox 1:15 pm</td><td>42506</td></tr><tr><td>6</td><td>1997-10-05</td><td>san diego chargers</td><td>l 25 - 10</td><td>nbc 1:15 pm</td><td>43648</td></tr><tr><td>8</td><td>1997-10-19</td><td>denver broncos</td><td>w 28 - 25</td><td>nbc 1:15 pm</td><td>57006</td></tr><tr><td>9</td><td>1997-10-26</td><td>seattle seahawks</td><td>l 45 - 34</td><td>nbc 1:15 pm</td><td>66264</td></tr><tr><td>10</td><td>1997-11-02</td><td>carolina panthers</td><td>l 38 - 14</td><td>nbc 10:00 am</td><td>71064</td></tr><tr><td>11</td><td>1997-11-09</td><td>new orleans saints</td><td>l 13 - 10</td><td>fox 1:15 pm</td><td>40091</td></tr><tr><td>12</td><td>1997-11-16</td><td>san diego chargers</td><td>w 38 - 13</td><td>nbc 1:15 pm</td><td>65714</td></tr><tr><td>13</td><td>1997-11-24</td><td>denver broncos</td><td>l 31 - 3</td><td>abc 6:00 pm</td><td>75307</td></tr><tr><td>14</td><td>1997-11-30</td><td>miami dolphins</td><td>l 34 - 16</td><td>nbc 1:15 pm</td><td>50569</td></tr><tr><td>15</td><td>1997-12-07</td><td>kansas city chiefs</td><td>l 30 - 0</td><td>nbc 10:00 am</td><td>76379</td></tr><tr><td>16</td><td>1997-12-14</td><td>seattle seahawks</td><td>l 22 - 21</td><td>nbc 1:15 pm</td><td>40124</td></tr><tr><td>17</td><td>1997-12-21</td><td>jacksonville jaguars</td><td>l 20 - 9</td><td>nbc 1:15 pm</td><td>40032</td></tr>
+</table>
+</div>
+<h3>SQL Command:</h3>
+<div class="sql-command">SELECT 
+    CASE 
+        WHEN (SELECT attendance FROM table_sql WHERE week = 4) > 
+             (SELECT attendance FROM table_sql WHERE week = 3) 
+        THEN 'TRUE' 
+        ELSE 'FALSE' 
+    END;</div>
+<h3>Prediction: True</h3>
+</body></html>

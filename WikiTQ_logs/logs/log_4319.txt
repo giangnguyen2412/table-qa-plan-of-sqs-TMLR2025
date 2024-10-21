@@ -1,0 +1,111 @@
+************************************************************************************************************************
+Sample 4319 - Plan 1: Query: what aircraft was used before the 7th aerial victory?
+Sample 4319 - Plan 1: Groundtruth: ['Sopwith Triplane s/n N5460']
+Sample 4319 - Plan 1: X-Original table pd: 
+   no_                     date_time                     aircraft  \
+0    1  4 december 1916 @ 1100 hours  nieuport serial number 3958   
+1    2    24 april 1917 @ 0840 hours   sopwith triplane s/n n5460   
+2    3       2 may 1917 @ 0945 hours   sopwith triplane s/n n5460   
+3    4      11 may 1917 @ 1950 hours   sopwith triplane s/n n5460   
+4    5      11 may 1917 @ 1950 hours   sopwith triplane s/n n5460   
+5    6      23 may 1917 @ 1800 hours   sopwith triplane s/n n5460   
+6    7     24 july 1917 @ 0635 hours   sopwith triplane s/n n5462   
+7    8     28 july 1917 @ 1735 hours   sopwith triplane s/n n5462   
+
+                          foe                          result  \
+0                albatros d.i      driven down out of control   
+1              albatros d.iii      driven down out of control   
+2  german two-seater aircraft      driven down out of control   
+3              albatros d.iii      driven down out of control   
+4              albatros d.iii  set afire in midair; destroyed   
+5              albatros d.iii      driven down out of control   
+6  german two-seater aircraft      driven down out of control   
+7  german two-seater aircraft      driven down out of control   
+
+                       location                                 notes  
+0  northeast of bapaume, france     victory shared with another pilot  
+1                sailly, france                                        
+2                 douai, france                                        
+3                 douai, france                                        
+4                 douai, france                                        
+5                 douai, france                                        
+6                     leffinghe                                        
+7          middelkerke, belgium  victory shared with francis mellersh  
+Sample 4319 - Plan 1: Caption: none
+Sample 4319 - Plan 1: Original table: [['no_', 'date_time', 'aircraft', 'foe', 'result', 'location', 'notes'], ['1', '4 december 1916 @ 1100 hours', 'nieuport serial number 3958', 'albatros d.i', 'driven down out of control', 'northeast of bapaume, france', 'victory shared with another pilot'], ['2', '24 april 1917 @ 0840 hours', 'sopwith triplane s/n n5460', 'albatros d.iii', 'driven down out of control', 'sailly, france', ''], ['3', '2 may 1917 @ 0945 hours', 'sopwith triplane s/n n5460', 'german two-seater aircraft', 'driven down out of control', 'douai, france', ''], ['4', '11 may 1917 @ 1950 hours', 'sopwith triplane s/n n5460', 'albatros d.iii', 'driven down out of control', 'douai, france', ''], ['5', '11 may 1917 @ 1950 hours', 'sopwith triplane s/n n5460', 'albatros d.iii', 'set afire in midair; destroyed', 'douai, france', ''], ['6', '23 may 1917 @ 1800 hours', 'sopwith triplane s/n n5460', 'albatros d.iii', 'driven down out of control', 'douai, france', ''], ['7', '24 july 1917 @ 0635 hours', 'sopwith triplane s/n n5462', 'german two-seater aircraft', 'driven down out of control', 'leffinghe', ''], ['8', '28 july 1917 @ 1735 hours', 'sopwith triplane s/n n5462', 'german two-seater aircraft', 'driven down out of control', 'middelkerke, belgium', 'victory shared with francis mellersh']]
+########################################################################################################################
+Sample 4319 - Plan 1: Operation 1: Select rows where the 'no_' is less than 7.
+Sample 4319 - Plan 1: Selected indices: [[4, 0], [0, 0], [2, 0], [3, 0], [5, 0], [1, 0]]
+Sample 4319 - Plan 1: X-Table after operation df:
+   no_                     date_time                     aircraft  \
+0    1  4 december 1916 @ 1100 hours  nieuport serial number 3958   
+1    2    24 april 1917 @ 0840 hours   sopwith triplane s/n n5460   
+2    3       2 may 1917 @ 0945 hours   sopwith triplane s/n n5460   
+3    4      11 may 1917 @ 1950 hours   sopwith triplane s/n n5460   
+4    5      11 may 1917 @ 1950 hours   sopwith triplane s/n n5460   
+5    6      23 may 1917 @ 1800 hours   sopwith triplane s/n n5460   
+
+                          foe                          result  \
+0                albatros d.i      driven down out of control   
+1              albatros d.iii      driven down out of control   
+2  german two-seater aircraft      driven down out of control   
+3              albatros d.iii      driven down out of control   
+4              albatros d.iii  set afire in midair; destroyed   
+5              albatros d.iii      driven down out of control   
+
+                       location                              notes  
+0  northeast of bapaume, france  victory shared with another pilot  
+1                sailly, france                                     
+2                 douai, france                                     
+3                 douai, france                                     
+4                 douai, france                                     
+5                 douai, france                                     
+Sample 4319 - Plan 1: Table after operation: [['no_', 'date_time', 'aircraft', 'foe', 'result', 'location', 'notes'], [1, '4 december 1916 @ 1100 hours', 'nieuport serial number 3958', 'albatros d.i', 'driven down out of control', 'northeast of bapaume, france', 'victory shared with another pilot'], [2, '24 april 1917 @ 0840 hours', 'sopwith triplane s/n n5460', 'albatros d.iii', 'driven down out of control', 'sailly, france', ''], [3, '2 may 1917 @ 0945 hours', 'sopwith triplane s/n n5460', 'german two-seater aircraft', 'driven down out of control', 'douai, france', ''], [4, '11 may 1917 @ 1950 hours', 'sopwith triplane s/n n5460', 'albatros d.iii', 'driven down out of control', 'douai, france', ''], [5, '11 may 1917 @ 1950 hours', 'sopwith triplane s/n n5460', 'albatros d.iii', 'set afire in midair; destroyed', 'douai, france', ''], [6, '23 may 1917 @ 1800 hours', 'sopwith triplane s/n n5460', 'albatros d.iii', 'driven down out of control', 'douai, france', '']]
+########################################################################################################################
+Sample 4319 - Plan 1: Operation 2: Order the table by 'no_' in descending order.
+Sample 4319 - Plan 1: Selected indices: [[4, 0], [0, 0], [2, 0], [3, 0], [5, 0], [1, 0]]
+Sample 4319 - Plan 1: X-Table after operation df:
+   no_                     date_time                     aircraft  \
+0    6      23 may 1917 @ 1800 hours   sopwith triplane s/n n5460   
+1    5      11 may 1917 @ 1950 hours   sopwith triplane s/n n5460   
+2    4      11 may 1917 @ 1950 hours   sopwith triplane s/n n5460   
+3    3       2 may 1917 @ 0945 hours   sopwith triplane s/n n5460   
+4    2    24 april 1917 @ 0840 hours   sopwith triplane s/n n5460   
+5    1  4 december 1916 @ 1100 hours  nieuport serial number 3958   
+
+                          foe                          result  \
+0              albatros d.iii      driven down out of control   
+1              albatros d.iii  set afire in midair; destroyed   
+2              albatros d.iii      driven down out of control   
+3  german two-seater aircraft      driven down out of control   
+4              albatros d.iii      driven down out of control   
+5                albatros d.i      driven down out of control   
+
+                       location                              notes  
+0                 douai, france                                     
+1                 douai, france                                     
+2                 douai, france                                     
+3                 douai, france                                     
+4                sailly, france                                     
+5  northeast of bapaume, france  victory shared with another pilot  
+Sample 4319 - Plan 1: Table after operation: [['no_', 'date_time', 'aircraft', 'foe', 'result', 'location', 'notes'], [6, '23 may 1917 @ 1800 hours', 'sopwith triplane s/n n5460', 'albatros d.iii', 'driven down out of control', 'douai, france', ''], [5, '11 may 1917 @ 1950 hours', 'sopwith triplane s/n n5460', 'albatros d.iii', 'set afire in midair; destroyed', 'douai, france', ''], [4, '11 may 1917 @ 1950 hours', 'sopwith triplane s/n n5460', 'albatros d.iii', 'driven down out of control', 'douai, france', ''], [3, '2 may 1917 @ 0945 hours', 'sopwith triplane s/n n5460', 'german two-seater aircraft', 'driven down out of control', 'douai, france', ''], [2, '24 april 1917 @ 0840 hours', 'sopwith triplane s/n n5460', 'albatros d.iii', 'driven down out of control', 'sailly, france', ''], [1, '4 december 1916 @ 1100 hours', 'nieuport serial number 3958', 'albatros d.i', 'driven down out of control', 'northeast of bapaume, france', 'victory shared with another pilot']]
+########################################################################################################################
+Sample 4319 - Plan 1: Operation 3: Select row number 1.
+Sample 4319 - Plan 1: Selected indices: []
+Sample 4319 - Plan 1: X-Table after operation df:
+   no_                 date_time                    aircraft             foe  \
+0    6  23 may 1917 @ 1800 hours  sopwith triplane s/n n5460  albatros d.iii   
+
+                       result       location  notes  
+0  driven down out of control  douai, france    NaN  
+Sample 4319 - Plan 1: Table after operation: [['no_', 'date_time', 'aircraft', 'foe', 'result', 'location', 'notes'], [6, '23 may 1917 @ 1800 hours', 'sopwith triplane s/n n5460', 'albatros d.iii', 'driven down out of control', 'douai, france', '']]
+########################################################################################################################
+Sample 4319 - Plan 1: Operation 4: Select the 'aircraft' column.
+Sample 4319 - Plan 1: Selected indices: []
+Sample 4319 - Plan 1: X-Table after operation df:
+                     aircraft
+0  sopwith triplane s/n n5460
+Sample 4319 - Plan 1: Table after operation: [['aircraft'], ['sopwith triplane s/n n5460']]
+Fall-back: FALSE
+Answer from plan 1: [['sopwith triplane s/n n5460']]
+Groundtruth: ['Sopwith Triplane s/n N5460']

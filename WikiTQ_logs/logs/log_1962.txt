@@ -1,0 +1,65 @@
+************************************************************************************************************************
+Sample 1962 - Plan 1: Query: which is greater overall, the number of times india won or the number of times india lost?
+Sample 1962 - Plan 1: Groundtruth: ['Won']
+Sample 1962 - Plan 1: X-Original table pd: 
+    no_ score              player          team  balls  inns_ opposing_team  \
+0     1   123      kris srikkanth         india    103      1      pakistan   
+1     2  107*      desmond haynes   west indies    137      1      pakistan   
+2     3  100*    sachin tendulkar         india    103      2         kenya   
+3     4   121  marcus trescothick       england    109      2         india   
+4     5  108*         salman butt      pakistan    130      2         india   
+5     6  134*        graeme smith  south africa    124      2         india   
+6     7   118       upul tharanga     sri lanka    128      1         india   
+7     8  150*      gautam gambhir         india    137      2     sri lanka   
+8     9   107         virat kohli         india    114      2     sri lanka   
+9    10   106  ryan ten doeschate   netherlands    108      1       ireland   
+10   11   101       paul stirling       ireland     72      2   netherlands   
+11   12   106       nasir jamshed      pakistan    124      1         india   
+
+                date result  
+0   18 february 1987   lost  
+1    1 november 1989   lost  
+2        31 may 1998    won  
+3    19 january 2002   lost  
+4   13 november 2004    won  
+5   25 november 2005    won  
+6   24 december 2009   lost  
+7   24 december 2009    won  
+8   24 december 2009    won  
+9      18 march 2011   lost  
+10     18 march 2011    won  
+11    3 january 2013    won  
+Sample 1962 - Plan 1: Caption: none
+Sample 1962 - Plan 1: Original table: [['no_', 'score', 'player', 'team', 'balls', 'inns_', 'opposing_team', 'date', 'result'], ['1', '123', 'kris srikkanth', 'india', '103', '1', 'pakistan', '18 february 1987', 'lost'], ['2', '107*', 'desmond haynes', 'west indies', '137', '1', 'pakistan', '1 november 1989', 'lost'], ['3', '100*', 'sachin tendulkar', 'india', '103', '2', 'kenya', '31 may 1998', 'won'], ['4', '121', 'marcus trescothick', 'england', '109', '2', 'india', '19 january 2002', 'lost'], ['5', '108*', 'salman butt', 'pakistan', '130', '2', 'india', '13 november 2004', 'won'], ['6', '134*', 'graeme smith', 'south africa', '124', '2', 'india', '25 november 2005', 'won'], ['7', '118', 'upul tharanga', 'sri lanka', '128', '1', 'india', '24 december 2009', 'lost'], ['8', '150*', 'gautam gambhir', 'india', '137', '2', 'sri lanka', '24 december 2009', 'won'], ['9', '107', 'virat kohli', 'india', '114', '2', 'sri lanka', '24 december 2009', 'won'], ['10', '106', 'ryan ten doeschate', 'netherlands', '108', '1', 'ireland', '18 march 2011', 'lost'], ['11', '101', 'paul stirling', 'ireland', '72', '2', 'netherlands', '18 march 2011', 'won'], ['12', '106', 'nasir jamshed', 'pakistan', '124', '1', 'india', '3 january 2013', 'won']]
+########################################################################################################################
+Sample 1962 - Plan 1: Operation 1: Select rows where the 'team' is 'india'.
+Sample 1962 - Plan 1: Selected indices: [[2, 3], [8, 3], [0, 3], [7, 3]]
+Sample 1962 - Plan 1: X-Table after operation df:
+   no_ score            player   team  balls  inns_ opposing_team  \
+0    1   123    kris srikkanth  india    103      1      pakistan   
+1    3  100*  sachin tendulkar  india    103      2         kenya   
+2    8  150*    gautam gambhir  india    137      2     sri lanka   
+3    9   107       virat kohli  india    114      2     sri lanka   
+
+               date result  
+0  18 february 1987   lost  
+1       31 may 1998    won  
+2  24 december 2009    won  
+3  24 december 2009    won  
+Sample 1962 - Plan 1: Table after operation: [['no_', 'score', 'player', 'team', 'balls', 'inns_', 'opposing_team', 'date', 'result'], [1, '123', 'kris srikkanth', 'india', 103, 1, 'pakistan', '18 february 1987', 'lost'], [3, '100*', 'sachin tendulkar', 'india', 103, 2, 'kenya', '31 may 1998', 'won'], [8, '150*', 'gautam gambhir', 'india', 137, 2, 'sri lanka', '24 december 2009', 'won'], [9, '107', 'virat kohli', 'india', 114, 2, 'sri lanka', '24 december 2009', 'won']]
+########################################################################################################################
+Sample 1962 - Plan 1: Operation 2: Count the number of rows where the 'result' is 'won'.
+Sample 1962 - Plan 1: Selected indices: []
+Sample 1962 - Plan 1: X-Table after operation df:
+   COUNT(*)
+0         3
+Sample 1962 - Plan 1: Table after operation: [['COUNT(*)'], [3]]
+########################################################################################################################
+Sample 1962 - Plan 1: Operation 3: Count the number of rows where the 'result' is 'lost'.
+SQL execution error in operation 3: Execution failed on sql 'SELECT COUNT(*)
+FROM table_sql
+WHERE result = 'lost';': no such column: result
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['india won']]
+Groundtruth: ['Won']

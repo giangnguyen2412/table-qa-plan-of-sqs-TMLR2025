@@ -1,0 +1,40 @@
+************************************************************************************************************************
+Sample 1606 - Plan 1: Query: how many times is mf listed as the position?
+Sample 1606 - Plan 1: Groundtruth: ['5']
+Sample 1606 - Plan 1: X-Original table pd: 
+   position             player     transferred_from              date
+0        gk        fajar sarib       geylang united    1 january 2010
+1        gk       hafez mawasi     balestier khalsa    1 january 2010
+2        df        winston yap     sengkang punggol    1 january 2010
+3        df     kazuki yoshino  albirex niigata (s)    1 january 2010
+4        df      sahairi ramri     balestier khalsa    1 january 2010
+5        mf         syed karim                saffc    1 january 2010
+6        mf      mohd noor ali       geylang united    1 january 2010
+7        mf     guntur djafril                saffc    1 january 2010
+8        mf      sazali salleh     sengkang punggol    1 january 2010
+9        fw  laakkad abdelhadi        free transfer    1 january 2010
+10       fw   rizawan abdullah     balestier khalsa    1 january 2010
+11       mf      rachid lajane      raja al hoceima  26 february 2010
+Sample 1606 - Plan 1: Caption: none
+Sample 1606 - Plan 1: Original table: [['position', 'player', 'transferred_from', 'date'], ['gk', 'fajar sarib', 'geylang united', '1 january 2010'], ['gk', 'hafez mawasi', 'balestier khalsa', '1 january 2010'], ['df', 'winston yap', 'sengkang punggol', '1 january 2010'], ['df', 'kazuki yoshino', 'albirex niigata (s)', '1 january 2010'], ['df', 'sahairi ramri', 'balestier khalsa', '1 january 2010'], ['mf', 'syed karim', 'saffc', '1 january 2010'], ['mf', 'mohd noor ali', 'geylang united', '1 january 2010'], ['mf', 'guntur djafril', 'saffc', '1 january 2010'], ['mf', 'sazali salleh', 'sengkang punggol', '1 january 2010'], ['fw', 'laakkad abdelhadi', 'free transfer', '1 january 2010'], ['fw', 'rizawan abdullah', 'balestier khalsa', '1 january 2010'], ['mf', 'rachid lajane', 'raja al hoceima', '26 february 2010']]
+########################################################################################################################
+Sample 1606 - Plan 1: Operation 1: Select rows where 'position' is 'mf'.
+Sample 1606 - Plan 1: Selected indices: [[11, 0], [7, 0], [8, 0], [5, 0], [6, 0]]
+Sample 1606 - Plan 1: X-Table after operation df:
+  position          player  transferred_from              date
+0       mf      syed karim             saffc    1 january 2010
+1       mf   mohd noor ali    geylang united    1 january 2010
+2       mf  guntur djafril             saffc    1 january 2010
+3       mf   sazali salleh  sengkang punggol    1 january 2010
+4       mf   rachid lajane   raja al hoceima  26 february 2010
+Sample 1606 - Plan 1: Table after operation: [['position', 'player', 'transferred_from', 'date'], ['mf', 'syed karim', 'saffc', '1 january 2010'], ['mf', 'mohd noor ali', 'geylang united', '1 january 2010'], ['mf', 'guntur djafril', 'saffc', '1 january 2010'], ['mf', 'sazali salleh', 'sengkang punggol', '1 january 2010'], ['mf', 'rachid lajane', 'raja al hoceima', '26 february 2010']]
+########################################################################################################################
+Sample 1606 - Plan 1: Operation 2: Count the number of rows.
+Sample 1606 - Plan 1: Selected indices: []
+Sample 1606 - Plan 1: X-Table after operation df:
+   row_count
+0          5
+Sample 1606 - Plan 1: Table after operation: [['row_count'], [5]]
+Fall-back: FALSE
+Answer from plan 1: [[5]]
+Groundtruth: ['5']

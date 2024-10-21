@@ -1,0 +1,31 @@
+************************************************************************************************************************
+Sample 3306 - Plan 1: Query: which nation won only one bronze medal?
+Sample 3306 - Plan 1: Groundtruth: ['North Korea']
+Sample 3306 - Plan 1: X-Original table pd: 
+    rank       nation  gold  silver  bronze  total
+0      1        china    13       9      13     35
+1      2        japan     7      10       7     24
+2      3   uzbekistan     1       2       3      6
+3      4   kazakhstan     2       2       0      4
+4      5  north korea     1       0       1      2
+5      6  south korea     0       0       2      2
+6  total        total    24      23      26     73
+Sample 3306 - Plan 1: Caption: none
+Sample 3306 - Plan 1: Original table: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['1', 'china', '13', '9', '13', '35'], ['2', 'japan', '7', '10', '7', '24'], ['3', 'uzbekistan', '1', '2', '3', '6'], ['4', 'kazakhstan', '2', '2', '0', '4'], ['5', 'north korea', '1', '0', '1', '2'], ['6', 'south korea', '0', '0', '2', '2'], ['total', 'total', '24', '23', '26', '73']]
+########################################################################################################################
+Sample 3306 - Plan 1: Operation 1: Select rows where the 'bronze' column is equal to 1.
+Sample 3306 - Plan 1: Selected indices: [[4, 4]]
+Sample 3306 - Plan 1: X-Table after operation df:
+   rank       nation  gold  silver  bronze  total
+0     5  north korea     1       0       1      2
+Sample 3306 - Plan 1: Table after operation: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['5', 'north korea', 1, 0, 1, 2]]
+########################################################################################################################
+Sample 3306 - Plan 1: Operation 2: Select the 'nation' column.
+Sample 3306 - Plan 1: Selected indices: []
+Sample 3306 - Plan 1: X-Table after operation df:
+        nation
+0  north korea
+Sample 3306 - Plan 1: Table after operation: [['nation'], ['north korea']]
+Fall-back: FALSE
+Answer from plan 1: [['north korea']]
+Groundtruth: ['North Korea']

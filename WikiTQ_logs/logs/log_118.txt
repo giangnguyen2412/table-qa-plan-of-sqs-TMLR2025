@@ -1,0 +1,85 @@
+************************************************************************************************************************
+Sample 118 - Plan 1: Query: which date had the most attendance?
+Sample 118 - Plan 1: Groundtruth: ['October 17']
+Sample 118 - Plan 1: X-Original table pd: 
+            date            opponent_ rank_  \
+0   september 12         #7 nebraska*         
+1   september 19       at iowa state*         
+2   september 26             #6 ucla*         
+3      october 3      at northwestern   #18   
+4     october 10              indiana   #15   
+5     october 17       at #5 michigan   #12   
+6     october 24            minnesota    #6   
+7     october 31          at illinois   #16   
+8     november 7               purdue         
+9    november 14         at wisconsin         
+10   november 21       michigan state   #19   
+11     january 1  vs. #12 washington*   #13   
+
+                                                 site   tv   result attendance  
+0                     kinnick stadium • iowa city, ia        w 10-7     60,160  
+1         cyclone stadium • ames, ia (cy-hawk trophy)       l 12-23     53,922  
+2                     kinnick stadium • iowa city, ia        w 20-7     60,004  
+3                        dyche stadium • evanston, il        w 64-0     30,113  
+4                     kinnick stadium • iowa city, ia       w 42-28     60,000  
+5                    michigan stadium • ann arbor, mi         w 9-7    105,915  
+6   kinnick stadium • iowa city, ia (floyd of rose...  abc  l 10-12     60,000  
+7                    memorial stadium • champaign, il        l 7-24     66,877  
+8                     kinnick stadium • iowa city, ia        w 33-7     60,114  
+9                  camp randall stadium • madison, wi  abc   w 17-7     78,731  
+10                    kinnick stadium • iowa city, ia        w 36-7     60,103  
+11               rose bowl • pasadena, ca (rose bowl)  nbc   l 0-28    105,611  
+Sample 118 - Plan 1: Caption: none
+Sample 118 - Plan 1: Original table: [['date', 'opponent_', 'rank_', 'site', 'tv', 'result', 'attendance'], ['september 12', '#7\xa0nebraska*', '', 'kinnick stadium • iowa city, ia', '', 'w\xa010-7', '60,160'], ['september 19', 'at\xa0iowa state*', '', 'cyclone stadium • ames, ia (cy-hawk trophy)', '', 'l\xa012-23', '53,922'], ['september 26', '#6\xa0ucla*', '', 'kinnick stadium • iowa city, ia', '', 'w\xa020-7', '60,004'], ['october 3', 'at\xa0northwestern', '#18', 'dyche stadium • evanston, il', '', 'w\xa064-0', '30,113'], ['october 10', 'indiana', '#15', 'kinnick stadium • iowa city, ia', '', 'w\xa042-28', '60,000'], ['october 17', 'at\xa0#5\xa0michigan', '#12', 'michigan stadium • ann arbor, mi', '', 'w\xa09-7', '105,915'], ['october 24', 'minnesota', '#6', 'kinnick stadium • iowa city, ia (floyd of rosedale)', 'abc', 'l\xa010-12', '60,000'], ['october 31', 'at\xa0illinois', '#16', 'memorial stadium • champaign, il', '', 'l\xa07-24', '66,877'], ['november 7', 'purdue', '', 'kinnick stadium • iowa city, ia', '', 'w\xa033-7', '60,114'], ['november 14', 'at\xa0wisconsin', '', 'camp randall stadium • madison, wi', 'abc', 'w\xa017-7', '78,731'], ['november 21', 'michigan state', '#19', 'kinnick stadium • iowa city, ia', '', 'w\xa036-7', '60,103'], ['january 1', 'vs.\xa0#12\xa0washington*', '#13', 'rose bowl • pasadena, ca (rose bowl)', 'nbc', 'l\xa00-28', '105,611']]
+########################################################################################################################
+Sample 118 - Plan 1: Operation 1: Order the table by the 'attendance' column in descending order.
+Sample 118 - Plan 1: Selected indices: [[9, 6], [4, 6], [11, 6], [0, 6], [7, 6], [10, 6], [5, 6], [8, 6], [2, 6], [6, 6], [1, 6], [3, 6]]
+Sample 118 - Plan 1: X-Table after operation df:
+            date            opponent_ rank_  \
+0     october 17       at #5 michigan   #12   
+1      january 1  vs. #12 washington*   #13   
+2    november 14         at wisconsin         
+3     october 31          at illinois   #16   
+4   september 12         #7 nebraska*         
+5     november 7               purdue         
+6    november 21       michigan state   #19   
+7   september 26             #6 ucla*         
+8     october 10              indiana   #15   
+9     october 24            minnesota    #6   
+10  september 19       at iowa state*         
+11     october 3      at northwestern   #18   
+
+                                                 site   tv   result attendance  
+0                    michigan stadium • ann arbor, mi         w 9-7    105,915  
+1                rose bowl • pasadena, ca (rose bowl)  nbc   l 0-28    105,611  
+2                  camp randall stadium • madison, wi  abc   w 17-7     78,731  
+3                    memorial stadium • champaign, il        l 7-24     66,877  
+4                     kinnick stadium • iowa city, ia        w 10-7     60,160  
+5                     kinnick stadium • iowa city, ia        w 33-7     60,114  
+6                     kinnick stadium • iowa city, ia        w 36-7     60,103  
+7                     kinnick stadium • iowa city, ia        w 20-7     60,004  
+8                     kinnick stadium • iowa city, ia       w 42-28     60,000  
+9   kinnick stadium • iowa city, ia (floyd of rose...  abc  l 10-12     60,000  
+10        cyclone stadium • ames, ia (cy-hawk trophy)       l 12-23     53,922  
+11                       dyche stadium • evanston, il        w 64-0     30,113  
+Sample 118 - Plan 1: Table after operation: [['date', 'opponent_', 'rank_', 'site', 'tv', 'result', 'attendance'], ['october 17', 'at\xa0#5\xa0michigan', '#12', 'michigan stadium • ann arbor, mi', '', 'w\xa09-7', '105,915'], ['january 1', 'vs.\xa0#12\xa0washington*', '#13', 'rose bowl • pasadena, ca (rose bowl)', 'nbc', 'l\xa00-28', '105,611'], ['november 14', 'at\xa0wisconsin', '', 'camp randall stadium • madison, wi', 'abc', 'w\xa017-7', '78,731'], ['october 31', 'at\xa0illinois', '#16', 'memorial stadium • champaign, il', '', 'l\xa07-24', '66,877'], ['september 12', '#7\xa0nebraska*', '', 'kinnick stadium • iowa city, ia', '', 'w\xa010-7', '60,160'], ['november 7', 'purdue', '', 'kinnick stadium • iowa city, ia', '', 'w\xa033-7', '60,114'], ['november 21', 'michigan state', '#19', 'kinnick stadium • iowa city, ia', '', 'w\xa036-7', '60,103'], ['september 26', '#6\xa0ucla*', '', 'kinnick stadium • iowa city, ia', '', 'w\xa020-7', '60,004'], ['october 10', 'indiana', '#15', 'kinnick stadium • iowa city, ia', '', 'w\xa042-28', '60,000'], ['october 24', 'minnesota', '#6', 'kinnick stadium • iowa city, ia (floyd of rosedale)', 'abc', 'l\xa010-12', '60,000'], ['september 19', 'at\xa0iowa state*', '', 'cyclone stadium • ames, ia (cy-hawk trophy)', '', 'l\xa012-23', '53,922'], ['october 3', 'at\xa0northwestern', '#18', 'dyche stadium • evanston, il', '', 'w\xa064-0', '30,113']]
+########################################################################################################################
+Sample 118 - Plan 1: Operation 2: Select row number 1.
+Sample 118 - Plan 1: Selected indices: []
+Sample 118 - Plan 1: X-Table after operation df:
+         date       opponent_ rank_                              site  tv  \
+0  october 17  at #5 michigan   #12  michigan stadium • ann arbor, mi NaN   
+
+  result attendance  
+0  w 9-7    105,915  
+Sample 118 - Plan 1: Table after operation: [['date', 'opponent_', 'rank_', 'site', 'tv', 'result', 'attendance'], ['october 17', 'at\xa0#5\xa0michigan', '#12', 'michigan stadium • ann arbor, mi', '', 'w\xa09-7', '105,915']]
+########################################################################################################################
+Sample 118 - Plan 1: Operation 3: Select the 'date' column.
+Sample 118 - Plan 1: Selected indices: []
+Sample 118 - Plan 1: X-Table after operation df:
+         date
+0  october 17
+Sample 118 - Plan 1: Table after operation: [['date'], ['october 17']]
+Fall-back: FALSE
+Answer from plan 1: [['october 17']]
+Groundtruth: ['October 17']

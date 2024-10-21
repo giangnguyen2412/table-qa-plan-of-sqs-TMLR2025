@@ -1,0 +1,36 @@
+************************************************************************************************************************
+Sample 856 - Plan 1: Query: name a season that had more than 7 wins but less than 10.
+Sample 856 - Plan 1: Groundtruth: ['2002']
+Sample 856 - Plan 1: X-Original table pd: 
+   year  team_record_nw  team_record_nl                 playoffs
+0  2001               7               2  3rd qualifier, region 2
+1  2002               8               1  2nd qualifier, region 2
+2  2003               8               1  2nd qualifier, region 2
+3  2004               7               2  2nd qualifier, region 2
+4  2005               3               5    did not make playoffs
+5  2006               5               4  4th qualifier, region 2
+6  2007              13               1  1st qualifier, region 2
+7  2008               7               4  2nd qualifier, region 2
+8  2009               5               5    did not make playoffs
+9  2010               5               5    did not make playoffs
+Sample 856 - Plan 1: Caption: none
+Sample 856 - Plan 1: Original table: [['year', 'team_record_nw', 'team_record_nl', 'playoffs'], ['2001', '7', '2', '3rd qualifier, region 2'], ['2002', '8', '1', '2nd qualifier, region 2'], ['2003', '8', '1', '2nd qualifier, region 2'], ['2004', '7', '2', '2nd qualifier, region 2'], ['2005', '3', '5', 'did not make playoffs'], ['2006', '5', '4', '4th qualifier, region 2'], ['2007', '13', '1', '1st qualifier, region 2'], ['2008', '7', '4', '2nd qualifier, region 2'], ['2009', '5', '5', 'did not make playoffs'], ['2010', '5', '5', 'did not make playoffs']]
+########################################################################################################################
+Sample 856 - Plan 1: Operation 1: Select rows where the 'team_record_nw' is greater than 7 and the 'team_record_nw' is less than 10.
+Sample 856 - Plan 1: Selected indices: [[1, 1], [2, 1]]
+Sample 856 - Plan 1: X-Table after operation df:
+   year  team_record_nw  team_record_nl                 playoffs
+0  2002               8               1  2nd qualifier, region 2
+1  2003               8               1  2nd qualifier, region 2
+Sample 856 - Plan 1: Table after operation: [['year', 'team_record_nw', 'team_record_nl', 'playoffs'], [2002, 8, 1, '2nd qualifier, region 2'], [2003, 8, 1, '2nd qualifier, region 2']]
+########################################################################################################################
+Sample 856 - Plan 1: Operation 2: Select the 'year' column.
+Sample 856 - Plan 1: Selected indices: []
+Sample 856 - Plan 1: X-Table after operation df:
+   year
+0  2002
+1  2003
+Sample 856 - Plan 1: Table after operation: [['year'], [2002], [2003]]
+Fall-back: FALSE
+Answer from plan 1: [[2002], [2003]]
+Groundtruth: ['2002']

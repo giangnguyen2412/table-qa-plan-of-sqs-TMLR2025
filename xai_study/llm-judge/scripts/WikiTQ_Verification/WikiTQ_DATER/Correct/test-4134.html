@@ -1,0 +1,30 @@
+
+    <html>
+    <head>
+    <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { text-align: center; }
+    .cot-title { color: blue; }
+    .pos-title { color: green; }
+    h2 { color: black; text-align: left; }
+    h3 { color: black; text-align: left; }
+    h4 { color: darkslategray; }
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    table, th, td { border: 1px solid #ddd; padding: 8px; }
+    th { background-color: #f2f2f2; }
+    tr:nth-child(even) { background-color: #f9f9f9; }
+    .highlight { background-color: #ffffcc; }
+    .true { color: green; }
+    .false { color: red; }
+    .highlighted-text { background-color: yellow; }
+    .step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+    .step { display: block; }
+    .result-label { font-weight: bold; padding: 5px; margin-top: 20px; display: inline-block; }
+    .tp { background-color: lightgreen; }
+    .tn { background-color: lightblue; }
+    .fp { background-color: lightcoral; }
+    .fn { background-color: lightgoldenrodyellow; }
+    </style>
+    </head>
+    <body>
+    <hr><h3><span>Question:</span> in which venue did the vikings play after they played in mile high stadium?</h3><hr><h3><span>Input Table:</span></h3><div class="step"><div class="step-title">Step 1: Select Rows (row 5, row 6) and Select Columns (date, venue, Date, Venue, Opponent)</div><div id="original-table" class="content"><table><tr><th>Week</th><th><span class='highlighted-text'>Date</span></th><th><span class='highlighted-text'>Opponent</span></th><th>Results\nFinal score</th><th>Results\nTeam record</th><th><span class='highlighted-text'>Venue</span></th><th>Attendance</th></tr><tr><td>1</td><td><span class="highlighted-text">September 18</span></td><td><span class="highlighted-text">Washington Redskins</span></td><td>L 24–21</td><td>0–1</td><td><span class="highlighted-text">Metropolitan Stadium</span></td><td>47,900</td></tr><tr><td>2</td><td><span class="highlighted-text">September 24</span></td><td><span class="highlighted-text">at Detroit Lions</span></td><td>W 34–10</td><td>1–1</td><td><span class="highlighted-text">Tiger Stadium</span></td><td>54,418</td></tr><tr><td>3</td><td><span class="highlighted-text">October 1</span></td><td><span class="highlighted-text">Miami Dolphins</span></td><td>L 16–14</td><td>1–2</td><td><span class="highlighted-text">Metropolitan Stadium</span></td><td>47,900</td></tr><tr><td>4</td><td><span class="highlighted-text">October 8</span></td><td><span class="highlighted-text">St. Louis Cardinals</span></td><td>L 19–17</td><td>1–3</td><td><span class="highlighted-text">Metropolitan Stadium</span></td><td>49,687</td></tr><tr><td><span class="highlighted-text">5</span></td><td><span class="highlighted-text">October 15</span></td><td><span class="highlighted-text">at Denver Broncos</span></td><td><span class="highlighted-text">W 23–20</span></td><td><span class="highlighted-text">2–3</span></td><td><span class="highlighted-text">Mile High Stadium</span></td><td><span class="highlighted-text">51,656</span></td></tr><tr><td><span class="highlighted-text">6</span></td><td><span class="highlighted-text">October 23</span></td><td><span class="highlighted-text">at Chicago Bears</span></td><td><span class="highlighted-text">L 13–10</span></td><td><span class="highlighted-text">2–4</span></td><td><span class="highlighted-text">Soldier Field</span></td><td><span class="highlighted-text">55,701</span></td></tr><tr><td>7</td><td><span class="highlighted-text">October 29</span></td><td><span class="highlighted-text">at Green Bay Packers</span></td><td>W 27–13</td><td>3–4</td><td><span class="highlighted-text">Lambeau Field</span></td><td>56,263</td></tr><tr><td>8</td><td><span class="highlighted-text">November 5</span></td><td><span class="highlighted-text">New Orleans Saints</span></td><td>W 37–6</td><td>4–4</td><td><span class="highlighted-text">Metropolitan Stadium</span></td><td>49,784</td></tr><tr><td>9</td><td><span class="highlighted-text">November 12</span></td><td><span class="highlighted-text">Detroit Lions</span></td><td>W 16–14</td><td>5–4</td><td><span class="highlighted-text">Metropolitan Stadium</span></td><td>49,784</td></tr><tr><td>10</td><td><span class="highlighted-text">November 19</span></td><td><span class="highlighted-text">at Los Angeles Rams</span></td><td>W 45–41</td><td>6–4</td><td><span class="highlighted-text">Los Angeles Memorial Coliseum</span></td><td>77,982</td></tr><tr><td>11</td><td><span class="highlighted-text">November 26</span></td><td><span class="highlighted-text">at Pittsburgh Steelers</span></td><td>L 23–10</td><td>6–5</td><td><span class="highlighted-text">Three Rivers Stadium</span></td><td>50,348</td></tr><tr><td>12</td><td><span class="highlighted-text">December 3</span></td><td><span class="highlighted-text">Chicago Bears</span></td><td>W 23–10</td><td>7–5</td><td><span class="highlighted-text">Metropolitan Stadium</span></td><td>49,784</td></tr><tr><td>13</td><td><span class="highlighted-text">December 10</span></td><td><span class="highlighted-text">Green Bay Packers</span></td><td>L 23–7</td><td>7–6</td><td><span class="highlighted-text">Metropolitan Stadium</span></td><td>49,784</td></tr><tr><td>14</td><td><span class="highlighted-text">December 16</span></td><td><span class="highlighted-text">at San Francisco 49ers</span></td><td>L 20–17</td><td>7–7</td><td><span class="highlighted-text">Candlestick Park</span></td><td>61,214</td></tr></table></div></div><hr><div class="step"><div class="step-title">Sub-table Selection</div><div id="sub-table-selection" class="content"><table><tr><th>Date</th><th>Venue</th><th>Opponent</th></tr><tr><td>October 15</td><td>Mile High Stadium</td><td>at Denver Broncos</td></tr><tr><td>October 23</td><td>Soldier Field</td><td>at Chicago Bears</td></tr></table></div></div><hr><div class="step"><div class="step-title">Factually-checked information: Not Available!</div><h2>Prompting LLM for the final answer... >>> </h2><hr><h3>Prediction: soldier field</h3></body></html>

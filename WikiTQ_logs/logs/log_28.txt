@@ -1,0 +1,83 @@
+************************************************************************************************************************
+Sample 28 - Plan 1: Query: how many jury members were there?
+Sample 28 - Plan 1: Groundtruth: ['9']
+Sample 28 - Plan 1: X-Original table pd: 
+                                 contestant original_tribe switched_tribe  \
+0        yelena kondulaynen\n44.the actress       pelicans                  
+1                 kris kelmi\n47.the singer     barracudas                  
+2          aleksandr pashutin\n60.the actor     barracudas                  
+3               igor' livanov\n49.the actor       pelicans                  
+4        dana borisova\n26.the tv presenter       pelicans     barracudas   
+5        aleksandr byalko\n50.the physicist       pelicans     barracudas   
+6          tatyana dogileva\n45.the actress       pelicans     barracudas   
+7         tat'yana ovsiyenko\n36.the singer     barracudas       pelicans   
+8    viktor gusev\n47.the sport commentator       pelicans       pelicans   
+9         ivan demidov\n39.the tv presenter     barracudas       pelicans   
+10     yelena proklova\n49.the tv presenter       pelicans     barracudas   
+11      marina aleksandrova\n20.the actress     barracudas       pelicans   
+12              ivar kalnynsh\n54.the actor                                 
+13           vera glagoleva\n46.the actress                                 
+14  larisa verbitskaya\n43.the tv presenter     barracudas       pelicans   
+15            aleksandr lykov\n41.the actor     barracudas     barracudas   
+16               olga orlova\n25.the singer     barracudas      baracudas   
+17             yelena perova\n26.the singer       pelicans       pelicans   
+18  vladimir presnyakov, jr.\n34.the singer       pelicans       pelicans   
+
+   merged_tribe                                   finish  total_votes  
+0                                   1st voted out\nday 3            5  
+1                                   2nd voted out\nday 6            1  
+2                                   3rd voted out\nday 9            7  
+3                                     eliminated\nday 11            0  
+4                                  4th voted out\nday 12            5  
+5                                  5th voted out\nday 15            6  
+6                                  6th voted out\nday 18            3  
+7                                     eliminated\nday 19            1  
+8    crocodiles   7th voted out\n1st jury member\nday 21            6  
+9    crocodiles      eliminated\n2nd jury member\nday 23            3  
+10   crocodiles   8th voted out\n3rd jury member\nday 24            4  
+11   crocodiles   9th voted out\n4th jury member\nday 27            6  
+12   crocodiles  10th voted out\n5th jury member\nday 30            3  
+13   crocodiles  11th voted out\n6th jury member\nday 33            4  
+14   crocodiles  12th voted out\n7th jury member\nday 36           11  
+15   crocodiles  13th voted out\n8th jury member\nday 37            6  
+16   crocodiles      eliminated\n9th jury member\nday 38           10  
+17   crocodiles                                runner-up            2  
+18   crocodiles                            sole survivor            6  
+Sample 28 - Plan 1: Caption: none
+Sample 28 - Plan 1: Original table: [['contestant', 'original_tribe', 'switched_tribe', 'merged_tribe', 'finish', 'total_votes'], ['yelena kondulaynen\\n44.the actress', 'pelicans', '', '', '1st voted out\\nday 3', '5'], ['kris kelmi\\n47.the singer', 'barracudas', '', '', '2nd voted out\\nday 6', '1'], ['aleksandr pashutin\\n60.the actor', 'barracudas', '', '', '3rd voted out\\nday 9', '7'], ["igor' livanov\\n49.the actor", 'pelicans', '', '', 'eliminated\\nday 11', '0'], ['dana borisova\\n26.the tv presenter', 'pelicans', 'barracudas', '', '4th voted out\\nday 12', '5'], ['aleksandr byalko\\n50.the physicist', 'pelicans', 'barracudas', '', '5th voted out\\nday 15', '6'], ['tatyana dogileva\\n45.the actress', 'pelicans', 'barracudas', '', '6th voted out\\nday 18', '3'], ["tat'yana ovsiyenko\\n36.the singer", 'barracudas', 'pelicans', '', 'eliminated\\nday 19', '1'], ['viktor gusev\\n47.the sport commentator', 'pelicans', 'pelicans', 'crocodiles', '7th voted out\\n1st jury member\\nday 21', '6'], ['ivan demidov\\n39.the tv presenter', 'barracudas', 'pelicans', 'crocodiles', 'eliminated\\n2nd jury member\\nday 23', '3'], ['yelena proklova\\n49.the tv presenter', 'pelicans', 'barracudas', 'crocodiles', '8th voted out\\n3rd jury member\\nday 24', '4'], ['marina aleksandrova\\n20.the actress', 'barracudas', 'pelicans', 'crocodiles', '9th voted out\\n4th jury member\\nday 27', '6'], ['ivar kalnynsh\\n54.the actor', '', '', 'crocodiles', '10th voted out\\n5th jury member\\nday 30', '3'], ['vera glagoleva\\n46.the actress', '', '', 'crocodiles', '11th voted out\\n6th jury member\\nday 33', '4'], ['larisa verbitskaya\\n43.the tv presenter', 'barracudas', 'pelicans', 'crocodiles', '12th voted out\\n7th jury member\\nday 36', '11'], ['aleksandr lykov\\n41.the actor', 'barracudas', 'barracudas', 'crocodiles', '13th voted out\\n8th jury member\\nday 37', '6'], ['olga orlova\\n25.the singer', 'barracudas', 'baracudas', 'crocodiles', 'eliminated\\n9th jury member\\nday 38', '10'], ['yelena perova\\n26.the singer', 'pelicans', 'pelicans', 'crocodiles', 'runner-up', '2'], ['vladimir presnyakov, jr.\\n34.the singer', 'pelicans', 'pelicans', 'crocodiles', 'sole survivor', '6']]
+########################################################################################################################
+Sample 28 - Plan 1: Operation 1: Select rows where the 'finish' column contains the phrase 'jury member'.
+Sample 28 - Plan 1: Selected indices: [[12, 4], [13, 4], [8, 4], [14, 4], [15, 4], [10, 4], [16, 4], [11, 4], [9, 4]]
+Sample 28 - Plan 1: X-Table after operation df:
+                                contestant original_tribe switched_tribe  \
+0   viktor gusev\n47.the sport commentator       pelicans       pelicans   
+1        ivan demidov\n39.the tv presenter     barracudas       pelicans   
+2     yelena proklova\n49.the tv presenter       pelicans     barracudas   
+3      marina aleksandrova\n20.the actress     barracudas       pelicans   
+4              ivar kalnynsh\n54.the actor                                 
+5           vera glagoleva\n46.the actress                                 
+6  larisa verbitskaya\n43.the tv presenter     barracudas       pelicans   
+7            aleksandr lykov\n41.the actor     barracudas     barracudas   
+8               olga orlova\n25.the singer     barracudas      baracudas   
+
+  merged_tribe                                   finish  total_votes  
+0   crocodiles   7th voted out\n1st jury member\nday 21            6  
+1   crocodiles      eliminated\n2nd jury member\nday 23            3  
+2   crocodiles   8th voted out\n3rd jury member\nday 24            4  
+3   crocodiles   9th voted out\n4th jury member\nday 27            6  
+4   crocodiles  10th voted out\n5th jury member\nday 30            3  
+5   crocodiles  11th voted out\n6th jury member\nday 33            4  
+6   crocodiles  12th voted out\n7th jury member\nday 36           11  
+7   crocodiles  13th voted out\n8th jury member\nday 37            6  
+8   crocodiles      eliminated\n9th jury member\nday 38           10  
+Sample 28 - Plan 1: Table after operation: [['contestant', 'original_tribe', 'switched_tribe', 'merged_tribe', 'finish', 'total_votes'], ['viktor gusev\\n47.the sport commentator', 'pelicans', 'pelicans', 'crocodiles', '7th voted out\\n1st jury member\\nday 21', 6], ['ivan demidov\\n39.the tv presenter', 'barracudas', 'pelicans', 'crocodiles', 'eliminated\\n2nd jury member\\nday 23', 3], ['yelena proklova\\n49.the tv presenter', 'pelicans', 'barracudas', 'crocodiles', '8th voted out\\n3rd jury member\\nday 24', 4], ['marina aleksandrova\\n20.the actress', 'barracudas', 'pelicans', 'crocodiles', '9th voted out\\n4th jury member\\nday 27', 6], ['ivar kalnynsh\\n54.the actor', '', '', 'crocodiles', '10th voted out\\n5th jury member\\nday 30', 3], ['vera glagoleva\\n46.the actress', '', '', 'crocodiles', '11th voted out\\n6th jury member\\nday 33', 4], ['larisa verbitskaya\\n43.the tv presenter', 'barracudas', 'pelicans', 'crocodiles', '12th voted out\\n7th jury member\\nday 36', 11], ['aleksandr lykov\\n41.the actor', 'barracudas', 'barracudas', 'crocodiles', '13th voted out\\n8th jury member\\nday 37', 6], ['olga orlova\\n25.the singer', 'barracudas', 'baracudas', 'crocodiles', 'eliminated\\n9th jury member\\nday 38', 10]]
+########################################################################################################################
+Sample 28 - Plan 1: Operation 2: Count the number of rows selected in step 1.
+Sample 28 - Plan 1: Selected indices: []
+Sample 28 - Plan 1: X-Table after operation df:
+   row_count
+0          9
+Sample 28 - Plan 1: Table after operation: [['row_count'], [9]]
+Fall-back: FALSE
+Answer from plan 1: [[9]]
+Groundtruth: ['9']

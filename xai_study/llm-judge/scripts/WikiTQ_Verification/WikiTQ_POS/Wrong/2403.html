@@ -1,0 +1,209 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how many tablets have a genealogy?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'genealogy' column is not null.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>tablet</td>
+<td>genealogy</td>
+<td>narrative</td>
+<td>colophon</td>
+</tr>
+<tr>
+<td>1</td>
+<td>creation of universe 1:1</td>
+<td>1:2 to 2:3</td>
+<td>"this is the account of the heavens and of the earth when they were created." 2:4</td>
+</tr>
+<tr>
+<td>2</td>
+<td>heavens and earth 2:4</td>
+<td>2:5 to 4:26</td>
+<td>"this is the written account of adam." 5:1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>adam to noah 5:1 - 32</td>
+<td>6:1 - 8</td>
+<td>"this is the account of noah." 6:9</td>
+</tr>
+<tr>
+<td>4</td>
+<td>noah to shem, ham, and japeth 6:9 - 10</td>
+<td>6:11 to 9:29</td>
+<td>"this is the account of shem, ham, and japheth, noah's sons." 10:1</td>
+</tr>
+<tr>
+<td>5</td>
+<td>descendants of shem, ham, and japeth 10:1 - 32</td>
+<td>11:1 - 9</td>
+<td>"this is the account of shem." 11:10</td>
+</tr>
+<tr>
+<td>6</td>
+<td>shem to terah 11:10 - 26</td>
+<td>no narrative</td>
+<td>"this is the account of terah." 11:27</td>
+</tr>
+<tr>
+<td>7</td>
+<td>terah to abraham 11:27</td>
+<td>11:28 to 25:11</td>
+<td>"this is the account of abraham's son ishmael." 25:12 (eldest son)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>descendants of ishmael 25:13 - 18</td>
+<td>no narrative</td>
+<td>"this is the account of abraham's son isaac." 25:19</td>
+</tr>
+<tr>
+<td>9</td>
+<td>abraham to isaac 25:19</td>
+<td>25:20 to 35:29</td>
+<td>"this is the account of esau." 36:1 (eldest son)</td>
+</tr>
+<tr>
+<td>10</td>
+<td>descendants of esau 36:2 - 5</td>
+<td>36:6 - 8</td>
+<td>"this is the account of esau." 36:9</td>
+</tr>
+<tr>
+<td>11</td>
+<td>descendants of esau 36:10 to 37:1</td>
+<td>no narrative</td>
+<td>"this is the account of jacob." 37:2</td>
+</tr>
+<tr>
+<td></td>
+<td>no genealogy</td>
+<td>37:2 to 50:26</td>
+<td>no colophon</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Count the number of rows.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>tablet</td>
+<td>genealogy</td>
+<td>narrative</td>
+<td>colophon</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>creation of universe 1:1</td>
+<td>1:2 to 2:3</td>
+<td>"this is the account of the heavens and of the earth when they were created." 2:4</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>heavens and earth 2:4</td>
+<td>2:5 to 4:26</td>
+<td>"this is the written account of adam." 5:1</td>
+</tr>
+<tr>
+<td>3.0</td>
+<td>adam to noah 5:1 - 32</td>
+<td>6:1 - 8</td>
+<td>"this is the account of noah." 6:9</td>
+</tr>
+<tr>
+<td>4.0</td>
+<td>noah to shem, ham, and japeth 6:9 - 10</td>
+<td>6:11 to 9:29</td>
+<td>"this is the account of shem, ham, and japheth, noah's sons." 10:1</td>
+</tr>
+<tr>
+<td>5.0</td>
+<td>descendants of shem, ham, and japeth 10:1 - 32</td>
+<td>11:1 - 9</td>
+<td>"this is the account of shem." 11:10</td>
+</tr>
+<tr>
+<td>6.0</td>
+<td>shem to terah 11:10 - 26</td>
+<td>no narrative</td>
+<td>"this is the account of terah." 11:27</td>
+</tr>
+<tr>
+<td>7.0</td>
+<td>terah to abraham 11:27</td>
+<td>11:28 to 25:11</td>
+<td>"this is the account of abraham's son ishmael." 25:12 (eldest son)</td>
+</tr>
+<tr>
+<td>8.0</td>
+<td>descendants of ishmael 25:13 - 18</td>
+<td>no narrative</td>
+<td>"this is the account of abraham's son isaac." 25:19</td>
+</tr>
+<tr>
+<td>9.0</td>
+<td>abraham to isaac 25:19</td>
+<td>25:20 to 35:29</td>
+<td>"this is the account of esau." 36:1 (eldest son)</td>
+</tr>
+<tr>
+<td>10.0</td>
+<td>descendants of esau 36:2 - 5</td>
+<td>36:6 - 8</td>
+<td>"this is the account of esau." 36:9</td>
+</tr>
+<tr>
+<td>11.0</td>
+<td>descendants of esau 36:10 to 37:1</td>
+<td>no narrative</td>
+<td>"this is the account of jacob." 37:2</td>
+</tr>
+<tr>
+<td>None</td>
+<td>no genealogy</td>
+<td>37:2 to 50:26</td>
+<td>no colophon</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>row_count</td>
+</tr>
+<tr>
+<td>12</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[12]]</h3>
+</body></html>

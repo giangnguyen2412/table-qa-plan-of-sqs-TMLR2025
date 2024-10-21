@@ -1,0 +1,63 @@
+************************************************************************************************************************
+Sample 1306 - Plan 1: Query: other than 2002, what is the only other year that someone joined?
+Sample 1306 - Plan 1: Groundtruth: ['2008']
+Sample 1306 - Plan 1: X-Original table pd: 
+                association joining_year                men_s_team  \
+0                  china pr         2002                     china   
+1                      guam         2002                      guam   
+2                 hong kong         2002                 hong kong   
+3                     japan         2002                     japan   
+4                 korea dpr         2002                 korea dpr   
+5            korea republic         2002            korea republic   
+6                     macau         2002                     macau   
+7                  mongolia         2002                  mongolia   
+8  northern mariana islands       2008 1  northern mariana islands   
+9            chinese taipei         2002            chinese taipei   
+
+               women_s_team                               league  
+0                     china                 chinese super league  
+1                      guam                          guam league  
+2                 hong kong      hong kong first division league  
+3                     japan                            j. league  
+4                 korea dpr                     dpr korea league  
+5            korea republic                             k-league  
+6                     macau  campeonato da 1ª divisão do futebol  
+7                  mongolia              mongolia premier league  
+8  northern mariana islands        northern mariana championship  
+9            chinese taipei            intercity football league  
+Sample 1306 - Plan 1: Caption: none
+Sample 1306 - Plan 1: Original table: [['association', 'joining_year', 'men_s_team', 'women_s_team', 'league'], ['china pr', '2002', 'china', 'china', 'chinese super league'], ['guam', '2002', 'guam', 'guam', 'guam league'], ['hong kong', '2002', 'hong kong', 'hong kong', 'hong kong first division league'], ['japan', '2002', 'japan', 'japan', 'j. league'], ['korea dpr', '2002', 'korea dpr', 'korea dpr', 'dpr korea league'], ['korea republic', '2002', 'korea republic', 'korea republic', 'k-league'], ['macau', '2002', 'macau', 'macau', 'campeonato da 1ª divisão do futebol'], ['mongolia', '2002', 'mongolia', 'mongolia', 'mongolia premier league'], ['northern mariana islands', '2008 1', 'northern mariana islands', 'northern mariana islands', 'northern mariana championship'], ['chinese taipei', '2002', 'chinese taipei', 'chinese taipei', 'intercity football league']]
+########################################################################################################################
+Sample 1306 - Plan 1: Operation 1: Select rows where 'joining_year' is not equal to 2002.
+Sample 1306 - Plan 1: Selected indices: [[8, 1]]
+Sample 1306 - Plan 1: X-Table after operation df:
+                association joining_year                men_s_team  \
+0  northern mariana islands       2008 1  northern mariana islands   
+
+               women_s_team                         league  
+0  northern mariana islands  northern mariana championship  
+Sample 1306 - Plan 1: Table after operation: [['association', 'joining_year', 'men_s_team', 'women_s_team', 'league'], ['northern mariana islands', '2008 1', 'northern mariana islands', 'northern mariana islands', 'northern mariana championship']]
+########################################################################################################################
+Sample 1306 - Plan 1: Operation 2: Select the 'joining_year' column.
+Sample 1306 - Plan 1: Selected indices: []
+Sample 1306 - Plan 1: X-Table after operation df:
+  joining_year
+0       2008 1
+Sample 1306 - Plan 1: Table after operation: [['joining_year'], ['2008 1']]
+########################################################################################################################
+Sample 1306 - Plan 1: Operation 3: Remove duplicate values from the 'joining_year' column.
+Sample 1306 - Plan 1: Selected indices: []
+Sample 1306 - Plan 1: X-Table after operation df:
+  joining_year
+0       2008 1
+Sample 1306 - Plan 1: Table after operation: [['joining_year'], ['2008 1']]
+########################################################################################################################
+Sample 1306 - Plan 1: Operation 4: Select the remaining value in the 'joining_year' column.
+Sample 1306 - Plan 1: Selected indices: []
+Sample 1306 - Plan 1: X-Table after operation df:
+  joining_year
+0       2008 1
+Sample 1306 - Plan 1: Table after operation: [['joining_year'], ['2008 1']]
+Fall-back: FALSE
+Answer from plan 1: [['2008 1']]
+Groundtruth: ['2008']

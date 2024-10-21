@@ -1,0 +1,143 @@
+************************************************************************************************************************
+Sample 547 - Plan 1: Query: how many entrants in the 1930 rome grand prix had cars constructed by maserati?
+Sample 547 - Plan 1: Groundtruth: ['6']
+Sample 547 - Plan 1: X-Original table pd: 
+    no                       driver                     entrant  \
+0    2              luigi arcangeli   officine alfieri maserati   
+1    4                 louis chiron  automobiles ettore bugatti   
+2    6           clemente biondetti          scuderia materassi   
+3    8             pietro nicolotti               private entry   
+4   10               cleto nenzioni               private entry   
+5   12                luigi fagioli   officine alfieri maserati   
+6   14               fritz caflisch               private entry   
+7   16                achille varzi               sa alfa romeo   
+8   18             giuseppe campari            scuderia ferrari   
+9   20              arrigo sartorio               private entry   
+10  22                 mario tadini            scuderia ferrari   
+11  24  heinrich joachim von morgen               private entry   
+12  26                  emil frankl               private entry   
+13  28               tazio nuvolari               sa alfa romeo   
+14  30                  guy bouriat  automobiles ettore bugatti   
+15  32                 cesare renzi               private entry   
+16  34               cesare pastore               private entry   
+17  36         colonna de stigliano               private entry   
+18   ?             filippo sartorio       enrico or f. sartorio   
+19   ?              arrigo nenzioni           a. or e. nenzioni   
+20   ?      william grover-williams  automobiles ettore bugatti   
+21   ?                            ?            scuderia ferrari   
+22   ?                            ?            scuderia ferrari   
+
+      constructor               chassis  engine  
+0        maserati          maserati 26m  2.5 l8  
+1         bugatti          bugatti t35b  2.3 l8  
+2          talbot            talbot 700  1.5 l8  
+3      alfa romeo    alfa romeo 6c 1500  1.5 l6  
+4        maserati          maserati 26b  2.1 l8  
+5        maserati           maserati 26  1.7 l8  
+6   mercedes-benz      mercedes-benz ss  7.1 l6  
+7      alfa romeo         alfa romeo p2  2.0 l8  
+8      alfa romeo  alfa romeo 6c 1750gs  1.8 l6  
+9        maserati           maserati 26  1.5 l8  
+10     alfa romeo  alfa romeo 6c 1750gs  1.8 l6  
+11        bugatti          bugatti t35b  2.3 l8  
+12          steyr       steyr 4.5 liter  4.5 l6  
+13     alfa romeo         alfa romeo p2  2.0 l8  
+14        bugatti          bugatti t35b  2.3 l8  
+15        bugatti          bugatti t37a  1.5 l8  
+16       maserati          maserati 26b  2.1 l8  
+17     alfa romeo    alfa romeo 6c 1750  1.8 l6  
+18     alfa romeo    alfa romeo 6c 1750  1.5 l6  
+19       maserati           maserati 26  1.5 l8  
+20        bugatti          bugatti t35b  2.3 l8  
+21     alfa romeo         alfa romeo p2  2.0 l8  
+22     alfa romeo    alfa romeo 6c 1500  1.5 l6  
+Sample 547 - Plan 1: Caption: none
+Sample 547 - Plan 1: Original table: [['no', 'driver', 'entrant', 'constructor', 'chassis', 'engine'], ['2', 'luigi arcangeli', 'officine alfieri maserati', 'maserati', 'maserati 26m', '2.5 l8'], ['4', 'louis chiron', 'automobiles ettore bugatti', 'bugatti', 'bugatti t35b', '2.3 l8'], ['6', 'clemente biondetti', 'scuderia materassi', 'talbot', 'talbot 700', '1.5 l8'], ['8', 'pietro nicolotti', 'private entry', 'alfa romeo', 'alfa romeo 6c 1500', '1.5 l6'], ['10', 'cleto nenzioni', 'private entry', 'maserati', 'maserati 26b', '2.1 l8'], ['12', 'luigi fagioli', 'officine alfieri maserati', 'maserati', 'maserati 26', '1.7 l8'], ['14', 'fritz caflisch', 'private entry', 'mercedes-benz', 'mercedes-benz ss', '7.1 l6'], ['16', 'achille varzi', 'sa alfa romeo', 'alfa romeo', 'alfa romeo p2', '2.0 l8'], ['18', 'giuseppe campari', 'scuderia ferrari', 'alfa romeo', 'alfa romeo 6c 1750gs', '1.8 l6'], ['20', 'arrigo sartorio', 'private entry', 'maserati', 'maserati 26', '1.5 l8'], ['22', 'mario tadini', 'scuderia ferrari', 'alfa romeo', 'alfa romeo 6c 1750gs', '1.8 l6'], ['24', 'heinrich joachim von morgen', 'private entry', 'bugatti', 'bugatti t35b', '2.3 l8'], ['26', 'emil frankl', 'private entry', 'steyr', 'steyr 4.5 liter', '4.5 l6'], ['28', 'tazio nuvolari', 'sa alfa romeo', 'alfa romeo', 'alfa romeo p2', '2.0 l8'], ['30', 'guy bouriat', 'automobiles ettore bugatti', 'bugatti', 'bugatti t35b', '2.3 l8'], ['32', 'cesare renzi', 'private entry', 'bugatti', 'bugatti t37a', '1.5 l8'], ['34', 'cesare pastore', 'private entry', 'maserati', 'maserati 26b', '2.1 l8'], ['36', 'colonna de stigliano', 'private entry', 'alfa romeo', 'alfa romeo 6c 1750', '1.8 l6'], ['?', 'filippo sartorio', 'enrico or f. sartorio', 'alfa romeo', 'alfa romeo 6c 1750', '1.5 l6'], ['?', 'arrigo nenzioni', 'a. or e. nenzioni', 'maserati', 'maserati 26', '1.5 l8'], ['?', 'william grover-williams', 'automobiles ettore bugatti', 'bugatti', 'bugatti t35b', '2.3 l8'], ['?', '?', 'scuderia ferrari', 'alfa romeo', 'alfa romeo p2', '2.0 l8'], ['?', '?', 'scuderia ferrari', 'alfa romeo', 'alfa romeo 6c 1500', '1.5 l6']]
+########################################################################################################################
+Sample 547 - Plan 1: Operation 1: Select rows where the 'constructor' is 'maserati'.
+Sample 547 - Plan 1: Selected indices: [[9, 3], [4, 3], [16, 3], [0, 3], [19, 3], [5, 3]]
+Sample 547 - Plan 1: X-Table after operation df:
+   no           driver                    entrant constructor       chassis  \
+0   2  luigi arcangeli  officine alfieri maserati    maserati  maserati 26m   
+1  10   cleto nenzioni              private entry    maserati  maserati 26b   
+2  12    luigi fagioli  officine alfieri maserati    maserati   maserati 26   
+3  20  arrigo sartorio              private entry    maserati   maserati 26   
+4  34   cesare pastore              private entry    maserati  maserati 26b   
+5   ?  arrigo nenzioni          a. or e. nenzioni    maserati   maserati 26   
+
+   engine  
+0  2.5 l8  
+1  2.1 l8  
+2  1.7 l8  
+3  1.5 l8  
+4  2.1 l8  
+5  1.5 l8  
+Sample 547 - Plan 1: Table after operation: [['no', 'driver', 'entrant', 'constructor', 'chassis', 'engine'], ['2', 'luigi arcangeli', 'officine alfieri maserati', 'maserati', 'maserati 26m', '2.5 l8'], ['10', 'cleto nenzioni', 'private entry', 'maserati', 'maserati 26b', '2.1 l8'], ['12', 'luigi fagioli', 'officine alfieri maserati', 'maserati', 'maserati 26', '1.7 l8'], ['20', 'arrigo sartorio', 'private entry', 'maserati', 'maserati 26', '1.5 l8'], ['34', 'cesare pastore', 'private entry', 'maserati', 'maserati 26b', '2.1 l8'], ['?', 'arrigo nenzioni', 'a. or e. nenzioni', 'maserati', 'maserati 26', '1.5 l8']]
+########################################################################################################################
+Sample 547 - Plan 1: Operation 2: Select rows where the 'entrant' is not empty.
+Sample 547 - Plan 1: Selected indices: [[1, 2], [4, 2], [0, 2], [2, 2], [3, 2], [5, 2]]
+Sample 547 - Plan 1: X-Table after operation df:
+   no           driver                    entrant constructor       chassis  \
+0   2  luigi arcangeli  officine alfieri maserati    maserati  maserati 26m   
+1  10   cleto nenzioni              private entry    maserati  maserati 26b   
+2  12    luigi fagioli  officine alfieri maserati    maserati   maserati 26   
+3  20  arrigo sartorio              private entry    maserati   maserati 26   
+4  34   cesare pastore              private entry    maserati  maserati 26b   
+5   ?  arrigo nenzioni          a. or e. nenzioni    maserati   maserati 26   
+
+   engine  
+0  2.5 l8  
+1  2.1 l8  
+2  1.7 l8  
+3  1.5 l8  
+4  2.1 l8  
+5  1.5 l8  
+Sample 547 - Plan 1: Table after operation: [['no', 'driver', 'entrant', 'constructor', 'chassis', 'engine'], ['2', 'luigi arcangeli', 'officine alfieri maserati', 'maserati', 'maserati 26m', '2.5 l8'], ['10', 'cleto nenzioni', 'private entry', 'maserati', 'maserati 26b', '2.1 l8'], ['12', 'luigi fagioli', 'officine alfieri maserati', 'maserati', 'maserati 26', '1.7 l8'], ['20', 'arrigo sartorio', 'private entry', 'maserati', 'maserati 26', '1.5 l8'], ['34', 'cesare pastore', 'private entry', 'maserati', 'maserati 26b', '2.1 l8'], ['?', 'arrigo nenzioni', 'a. or e. nenzioni', 'maserati', 'maserati 26', '1.5 l8']]
+########################################################################################################################
+Sample 547 - Plan 1: Operation 3: Select rows where the 'no' is not empty.
+Sample 547 - Plan 1: Selected indices: [[4, 0], [0, 0], [2, 0], [3, 0], [5, 0], [1, 0]]
+Sample 547 - Plan 1: X-Table after operation df:
+   no           driver                    entrant constructor       chassis  \
+0   2  luigi arcangeli  officine alfieri maserati    maserati  maserati 26m   
+1  10   cleto nenzioni              private entry    maserati  maserati 26b   
+2  12    luigi fagioli  officine alfieri maserati    maserati   maserati 26   
+3  20  arrigo sartorio              private entry    maserati   maserati 26   
+4  34   cesare pastore              private entry    maserati  maserati 26b   
+5   ?  arrigo nenzioni          a. or e. nenzioni    maserati   maserati 26   
+
+   engine  
+0  2.5 l8  
+1  2.1 l8  
+2  1.7 l8  
+3  1.5 l8  
+4  2.1 l8  
+5  1.5 l8  
+Sample 547 - Plan 1: Table after operation: [['no', 'driver', 'entrant', 'constructor', 'chassis', 'engine'], ['2', 'luigi arcangeli', 'officine alfieri maserati', 'maserati', 'maserati 26m', '2.5 l8'], ['10', 'cleto nenzioni', 'private entry', 'maserati', 'maserati 26b', '2.1 l8'], ['12', 'luigi fagioli', 'officine alfieri maserati', 'maserati', 'maserati 26', '1.7 l8'], ['20', 'arrigo sartorio', 'private entry', 'maserati', 'maserati 26', '1.5 l8'], ['34', 'cesare pastore', 'private entry', 'maserati', 'maserati 26b', '2.1 l8'], ['?', 'arrigo nenzioni', 'a. or e. nenzioni', 'maserati', 'maserati 26', '1.5 l8']]
+########################################################################################################################
+Sample 547 - Plan 1: Operation 4: Select rows where the 'no' is not '?'.
+Sample 547 - Plan 1: Selected indices: [[4, 0], [0, 0], [2, 0], [3, 0], [1, 0]]
+Sample 547 - Plan 1: X-Table after operation df:
+   no           driver                    entrant constructor       chassis  \
+0   2  luigi arcangeli  officine alfieri maserati    maserati  maserati 26m   
+1  10   cleto nenzioni              private entry    maserati  maserati 26b   
+2  12    luigi fagioli  officine alfieri maserati    maserati   maserati 26   
+3  20  arrigo sartorio              private entry    maserati   maserati 26   
+4  34   cesare pastore              private entry    maserati  maserati 26b   
+
+   engine  
+0  2.5 l8  
+1  2.1 l8  
+2  1.7 l8  
+3  1.5 l8  
+4  2.1 l8  
+Sample 547 - Plan 1: Table after operation: [['no', 'driver', 'entrant', 'constructor', 'chassis', 'engine'], ['2', 'luigi arcangeli', 'officine alfieri maserati', 'maserati', 'maserati 26m', '2.5 l8'], ['10', 'cleto nenzioni', 'private entry', 'maserati', 'maserati 26b', '2.1 l8'], ['12', 'luigi fagioli', 'officine alfieri maserati', 'maserati', 'maserati 26', '1.7 l8'], ['20', 'arrigo sartorio', 'private entry', 'maserati', 'maserati 26', '1.5 l8'], ['34', 'cesare pastore', 'private entry', 'maserati', 'maserati 26b', '2.1 l8']]
+########################################################################################################################
+Sample 547 - Plan 1: Operation 5: Count the number of unique 'entrant' values from the filtered rows.
+Sample 547 - Plan 1: Selected indices: []
+Sample 547 - Plan 1: X-Table after operation df:
+   unique_entrant_count
+0                     2
+Sample 547 - Plan 1: Table after operation: [['unique_entrant_count'], [2]]
+Fall-back: FALSE
+Answer from plan 1: [[2]]
+Groundtruth: ['6']

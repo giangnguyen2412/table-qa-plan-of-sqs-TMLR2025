@@ -1,0 +1,73 @@
+************************************************************************************************************************
+Sample 2540 - Plan 1: Query: how many belgians have won the abel prize?
+Sample 2540 - Plan 1: Groundtruth: ['2']
+Sample 2540 - Plan 1: X-Original table pd: 
+    year                     laureate_s_               citizenship  \
+0   2003               jean-pierre serre                    french   
+1   2004  michael atiyah\nisadore singer         british\namerican   
+2   2005                       peter lax                  american   
+3   2006                lennart carleson                   swedish   
+4   2007        s. r. srinivasa varadhan           indian/american   
+5   2008  john g. thompson\njacques tits  american\nbelgian/french   
+6   2009                  mikhail gromov            russian/french   
+7   2010                    john t. tate                  american   
+8   2011                     john milnor                  american   
+9   2012                 endre szemerédi        hungarian/american   
+10  2013                  pierre deligne                   belgian   
+11  2014                  yakov g. sinai          russian/american   
+
+                                          institution  \
+0                                   collège de france   
+1   university of edinburgh\nmassachusetts institu...   
+2                                   courant institute   
+3                       royal institute of technology   
+4                                   courant institute   
+5            university of florida\ncollège de france   
+6   institut des hautes études scientifiques\ncour...   
+7                       university of texas at austin   
+8                              stony brook university   
+9      alfréd rényi institute\nand rutgers university   
+10                       institute for advanced study   
+11  landau institute for theoretical physics\nand ...   
+
+                                             citation  
+0   "for playing a key role in shaping the modern ...  
+1   "for their discovery and proof of the index th...  
+2   "for his groundbreaking contributions to the t...  
+3   "for his profound and seminal contributions to...  
+4   "for his fundamental contributions to probabil...  
+5   "for their profound achievements in algebra an...  
+6   "for his revolutionary contributions to geometry"  
+7   "for his vast and lasting impact on the theory...  
+8   "for pioneering discoveries in topology, geome...  
+9   "for his fundamental contributions to discrete...  
+10  "for seminal contributions to algebraic geomet...  
+11  "for his fundamental contributions to dynamica...  
+Sample 2540 - Plan 1: Caption: none
+Sample 2540 - Plan 1: Original table: [['year', 'laureate_s_', 'citizenship', 'institution', 'citation'], ['2003', 'jean-pierre serre', 'french', 'collège de france', '"for playing a key role in shaping the modern form of many parts of mathematics, including topology, algebraic geometry and number theory"'], ['2004', 'michael atiyah\\nisadore singer', 'british\\namerican', 'university of edinburgh\\nmassachusetts institute of technology', '"for their discovery and proof of the index theorem, bringing together topology, geometry and analysis, and their outstanding role in building new bridges between mathematics and theoretical physics"'], ['2005', 'peter lax', 'american', 'courant institute', '"for his groundbreaking contributions to the theory and application of partial differential equations and to the computation of their solutions"'], ['2006', 'lennart carleson', 'swedish', 'royal institute of technology', '"for his profound and seminal contributions to harmonic analysis and the theory of smooth dynamical systems"'], ['2007', 's. r. srinivasa varadhan', 'indian/american', 'courant institute', '"for his fundamental contributions to probability theory and in particular for creating a unified theory of large deviation"'], ['2008', 'john g. thompson\\njacques tits', 'american\\nbelgian/french', 'university of florida\\ncollège de france', '"for their profound achievements in algebra and in particular for shaping modern group theory"'], ['2009', 'mikhail gromov', 'russian/french', 'institut des hautes études scientifiques\\ncourant institute', '"for his revolutionary contributions to geometry"'], ['2010', 'john t. tate', 'american', 'university of texas at austin', '"for his vast and lasting impact on the theory of numbers"'], ['2011', 'john milnor', 'american', 'stony brook university', '"for pioneering discoveries in topology, geometry, and algebra"'], ['2012', 'endre szemerédi', 'hungarian/american', 'alfréd rényi institute\\nand rutgers university', '"for his fundamental contributions to discrete mathematics and theoretical computer science, and in recognition of the profound and lasting impact of these contributions on additive number theory and ergodic theory"'], ['2013', 'pierre deligne', 'belgian', 'institute for advanced study', '"for seminal contributions to algebraic geometry and for their transformative impact on number theory, representation theory, and related fields"'], ['2014', 'yakov g. sinai', 'russian/american', 'landau institute for theoretical physics\\nand princeton university', '"for his fundamental contributions to dynamical systems, ergodic theory, and mathematical physics"']]
+########################################################################################################################
+Sample 2540 - Plan 1: Operation 1: Select rows where 'citizenship' is 'belgian'.
+Sample 2540 - Plan 1: Selected indices: [[10, 2], [5, 2]]
+Sample 2540 - Plan 1: X-Table after operation df:
+   year                     laureate_s_               citizenship  \
+0  2008  john g. thompson\njacques tits  american\nbelgian/french   
+1  2013                  pierre deligne                   belgian   
+
+                                institution  \
+0  university of florida\ncollège de france   
+1              institute for advanced study   
+
+                                            citation  
+0  "for their profound achievements in algebra an...  
+1  "for seminal contributions to algebraic geomet...  
+Sample 2540 - Plan 1: Table after operation: [['year', 'laureate_s_', 'citizenship', 'institution', 'citation'], [2008, 'john g. thompson\\njacques tits', 'american\\nbelgian/french', 'university of florida\\ncollège de france', '"for their profound achievements in algebra and in particular for shaping modern group theory"'], [2013, 'pierre deligne', 'belgian', 'institute for advanced study', '"for seminal contributions to algebraic geometry and for their transformative impact on number theory, representation theory, and related fields"']]
+########################################################################################################################
+Sample 2540 - Plan 1: Operation 2: Count the number of rows.
+Sample 2540 - Plan 1: Selected indices: []
+Sample 2540 - Plan 1: X-Table after operation df:
+   row_count
+0          2
+Sample 2540 - Plan 1: Table after operation: [['row_count'], [2]]
+Fall-back: FALSE
+Answer from plan 1: [[2]]
+Groundtruth: ['2']

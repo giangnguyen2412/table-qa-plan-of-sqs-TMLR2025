@@ -1,0 +1,34 @@
+************************************************************************************************************************
+Sample 3801 - Plan 1: Query: what is the number of countries that won only one medal?
+Sample 3801 - Plan 1: Groundtruth: ['3']
+Sample 3801 - Plan 1: X-Original table pd: 
+    rank         nation  gold  silver  bronze  total
+0    1.0         brazil    21       9      12     42
+1    2.0  united states     9       3       6     18
+2    3.0          china     1       9       8     18
+3    4.0      australia     1       1       1      3
+4    4.0    netherlands     1       1       1      3
+5    6.0        estonia     1       0       0      1
+6    7.0        germany     0       5       1      6
+7    8.0         russia     0       2       3      5
+8    9.0      argentina     0       2       0      2
+9   10.0    switzerland     0       1       1      2
+10  11.0         norway     0       1       0      1
+11  12.0        austria     0       0       1      1
+Sample 3801 - Plan 1: Caption: none
+Sample 3801 - Plan 1: Original table: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['1.', 'brazil', '21', '9', '12', '42'], ['2.', 'united states', '9', '3', '6', '18'], ['3.', 'china', '1', '9', '8', '18'], ['4.', 'australia', '1', '1', '1', '3'], ['4.', 'netherlands', '1', '1', '1', '3'], ['6.', 'estonia', '1', '0', '0', '1'], ['7.', 'germany', '0', '5', '1', '6'], ['8.', 'russia', '0', '2', '3', '5'], ['9.', 'argentina', '0', '2', '0', '2'], ['10.', 'switzerland', '0', '1', '1', '2'], ['11.', 'norway', '0', '1', '0', '1'], ['12.', 'austria', '0', '0', '1', '1']]
+########################################################################################################################
+Sample 3801 - Plan 1: Operation 1: Select rows where the 'gold', 'silver', and 'bronze' columns are all equal to 1.
+Sample 3801 - Plan 1: Selected indices: [[4, 4], [3, 4], [4, 3], [4, 2], [3, 3], [3, 2]]
+Sample 3801 - Plan 1: X-Table after operation df:
+   rank       nation  gold  silver  bronze  total
+0   4.0    australia     1       1       1      3
+1   4.0  netherlands     1       1       1      3
+Sample 3801 - Plan 1: Table after operation: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], [4.0, 'australia', 1, 1, 1, 3], [4.0, 'netherlands', 1, 1, 1, 3]]
+########################################################################################################################
+Sample 3801 - Plan 1: Operation 2: Count the number of rows.
+SQL execution error in operation 2: Execution failed on sql 'Write a SQL command that: Count the number of rows.': near "Write": syntax error
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['4']]
+Groundtruth: ['3']

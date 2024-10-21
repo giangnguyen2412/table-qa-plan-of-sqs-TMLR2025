@@ -1,0 +1,56 @@
+************************************************************************************************************************
+Sample 932 - Plan 1: Query: name an athlete from the same country as schroder.
+Sample 932 - Plan 1: Groundtruth: ['Klaus Jürgen Schneider']
+Sample 932 - Plan 1: X-Original table pd: 
+    hand   auto  wind                 athlete     nationality   birthdate  \
+0    NaN  10.26   2.3            troy douglas     netherlands  30.11.1962   
+1    NaN  10.29   1.9            troy douglas     netherlands  30.11.1962   
+2    NaN  10.60   NaN            bill collins   united states  20.11.1950   
+3    NaN  10.84   1.8         erik oostweegel     netherlands  29.04.1960   
+4    NaN  10.87   NaN              eddie hart   united states  24.04.1949   
+5    NaN  10.90   NaN           thaddeus bell   united states  28.11.1942   
+6    NaN  10.93   0.6          gilles echevin          france  01.09.1948   
+7   10.7    NaN   NaN  klaus jürgen schneider         germany  02.03.1942   
+8   10.7    NaN   NaN             walt butler   united states  21.03.1941   
+9   10.7    NaN   NaN             thane baker   united states  04.10.1931   
+10   NaN  10.95   NaN          george mcneill  united kingdom  19.02.1947   
+11   NaN  10.95   NaN     karl heinz schröder         germany  17.06.1939   
+
+      location        date  
+0      utrecht  10.07.2004  
+1       leiden  07.06.2003  
+2               06.06.1992  
+3      tilburg  10.06.2000  
+4       eugene  03.08.1989  
+5      raleigh  01.05.1988  
+6     grenoble  07.05.1989  
+7    stuttgart  07.07.1982  
+8   northridge  16.05.1981  
+9      elkhart  13.09.1972  
+10   melbourne  31.11.1987  
+11    hannover  28.07.1979  
+Sample 932 - Plan 1: Caption: none
+Sample 932 - Plan 1: Original table: [['hand', 'auto', 'wind', 'athlete', 'nationality', 'birthdate', 'location', 'date'], ['', '10.26', '2.3', 'troy douglas', 'netherlands', '30.11.1962', 'utrecht', '10.07.2004'], ['', '10.29', '1.9', 'troy douglas', 'netherlands', '30.11.1962', 'leiden', '07.06.2003'], ['', '10.60', '', 'bill collins', 'united states', '20.11.1950', '', '06.06.1992'], ['', '10.84', '1.8', 'erik oostweegel', 'netherlands', '29.04.1960', 'tilburg', '10.06.2000'], ['', '10.87', '', 'eddie hart', 'united states', '24.04.1949', 'eugene', '03.08.1989'], ['', '10.90', '', 'thaddeus bell', 'united states', '28.11.1942', 'raleigh', '01.05.1988'], ['', '10.93', '0.6', 'gilles echevin', 'france', '01.09.1948', 'grenoble', '07.05.1989'], ['10.7', '', '', 'klaus jürgen schneider', 'germany', '02.03.1942', 'stuttgart', '07.07.1982'], ['10.7', '', '', 'walt butler', 'united states', '21.03.1941', 'northridge', '16.05.1981'], ['10.7', '', '', 'thane baker', 'united states', '04.10.1931', 'elkhart', '13.09.1972'], ['', '10.95', '', 'george mcneill', 'united kingdom', '19.02.1947', 'melbourne', '31.11.1987'], ['', '10.95', '', 'karl heinz schröder', 'germany', '17.06.1939', 'hannover', '28.07.1979']]
+########################################################################################################################
+Sample 932 - Plan 1: Operation 1: Select rows where the 'nationality' is the same as 'germany'.
+Sample 932 - Plan 1: Selected indices: [[7, 4], [11, 4]]
+Sample 932 - Plan 1: X-Table after operation df:
+   hand   auto  wind                 athlete nationality   birthdate  \
+0  10.7    NaN   NaN  klaus jürgen schneider     germany  02.03.1942   
+1   NaN  10.95   NaN     karl heinz schröder     germany  17.06.1939   
+
+    location        date  
+0  stuttgart  07.07.1982  
+1   hannover  28.07.1979  
+Sample 932 - Plan 1: Table after operation: [['hand', 'auto', 'wind', 'athlete', 'nationality', 'birthdate', 'location', 'date'], [10.7, nan, None, 'klaus jürgen schneider', 'germany', '02.03.1942', 'stuttgart', '07.07.1982'], [nan, 10.95, None, 'karl heinz schröder', 'germany', '17.06.1939', 'hannover', '28.07.1979']]
+########################################################################################################################
+Sample 932 - Plan 1: Operation 2: Select the 'athlete' column.
+Sample 932 - Plan 1: Selected indices: []
+Sample 932 - Plan 1: X-Table after operation df:
+                  athlete
+0  klaus jürgen schneider
+1     karl heinz schröder
+Sample 932 - Plan 1: Table after operation: [['athlete'], ['klaus jürgen schneider'], ['karl heinz schröder']]
+Fall-back: FALSE
+Answer from plan 1: [['klaus jürgen schneider'], ['karl heinz schröder']]
+Groundtruth: ['Klaus Jürgen Schneider']

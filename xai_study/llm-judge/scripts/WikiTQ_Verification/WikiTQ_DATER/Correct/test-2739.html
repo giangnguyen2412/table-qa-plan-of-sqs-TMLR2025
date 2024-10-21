@@ -1,0 +1,30 @@
+
+    <html>
+    <head>
+    <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { text-align: center; }
+    .cot-title { color: blue; }
+    .pos-title { color: green; }
+    h2 { color: black; text-align: left; }
+    h3 { color: black; text-align: left; }
+    h4 { color: darkslategray; }
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    table, th, td { border: 1px solid #ddd; padding: 8px; }
+    th { background-color: #f2f2f2; }
+    tr:nth-child(even) { background-color: #f9f9f9; }
+    .highlight { background-color: #ffffcc; }
+    .true { color: green; }
+    .false { color: red; }
+    .highlighted-text { background-color: yellow; }
+    .step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+    .step { display: block; }
+    .result-label { font-weight: bold; padding: 5px; margin-top: 20px; display: inline-block; }
+    .tp { background-color: lightgreen; }
+    .tn { background-color: lightblue; }
+    .fp { background-color: lightcoral; }
+    .fn { background-color: lightgoldenrodyellow; }
+    </style>
+    </head>
+    <body>
+    <hr><h3><span>Question:</span> the challengers have only won how many times?</h3><hr><h3><span>Input Table:</span></h3><div class="step"><div class="step-title">Step 1: Select Rows (row 5, row 10, row 9) and Select Columns (Winner, challenger, winner, Challenger)</div><div id="original-table" class="content"><table><tr><th>Episode</th><th>Show #</th><th>Iron Chef</th><th><span class='highlighted-text'>Challenger</span></th><th>Challenger specialty</th><th>Secret ingredient(s) or theme</th><th><span class='highlighted-text'>Winner</span></th><th>Final score</th></tr><tr><td>1</td><td>IA0502</td><td>Bobby Flay</td><td><span class="highlighted-text">Ben Ford</span></td><td>Regional American</td><td>Blue foot chicken</td><td><span class="highlighted-text">Bobby Flay</span></td><td>44-35</td></tr><tr><td>2</td><td>IA0508</td><td>Mario Batali</td><td><span class="highlighted-text">Tony Liu</span></td><td>Pan-European</td><td>Opah</td><td><span class="highlighted-text">Mario Batali</span></td><td>55-47</td></tr><tr><td>3</td><td>IA0509</td><td>Cat Cora</td><td><span class="highlighted-text">Alexandra Guarnaschelli</span></td><td>French-American</td><td>Farmers' Market</td><td><span class="highlighted-text">Cat Cora</span></td><td>45-41</td></tr><tr><td>4</td><td>IA0501</td><td>Mario Batali</td><td><span class="highlighted-text">Andrew Carmellini</span></td><td>Urban Italian</td><td>Parmigiano-Reggiano</td><td><span class="highlighted-text">Mario Batali</span></td><td>56-55</td></tr><tr><td><span class="highlighted-text">5</span></td><td><span class="highlighted-text">IA0504</span></td><td><span class="highlighted-text">Cat Cora</span></td><td><span class="highlighted-text">Mark Tarbell</span></td><td><span class="highlighted-text">Seasonal Organic</span></td><td><span class="highlighted-text">Apples</span></td><td><span class="highlighted-text">Mark Tarbell</span></td><td><span class="highlighted-text">50-44</span></td></tr><tr><td>6</td><td>IA0506</td><td>Bobby Flay</td><td><span class="highlighted-text">Kurt Boucher</span></td><td>French-American</td><td>Arctic char</td><td><span class="highlighted-text">Bobby Flay</span></td><td>46-39</td></tr><tr><td>7</td><td>IA0510</td><td>Mario Batali</td><td><span class="highlighted-text">Charles Clark</span></td><td>New American</td><td>Halibut</td><td><span class="highlighted-text">Mario Batali</span></td><td>51-50</td></tr><tr><td>8</td><td>IA0507</td><td>Cat Cora</td><td><span class="highlighted-text">Mary Dumont</span></td><td>French-American</td><td>Milk and cream</td><td><span class="highlighted-text">Cat Cora</span></td><td>51-46</td></tr><tr><td><span class="highlighted-text">9</span></td><td><span class="highlighted-text">IASP07</span></td><td><span class="highlighted-text">Michael Symon</span></td><td><span class="highlighted-text">Ricky Moore</span></td><td><span class="highlighted-text">Contemporary American</span></td><td><span class="highlighted-text">Traditional Thanksgiving</span></td><td><span class="highlighted-text">Michael Symon</span></td><td><span class="highlighted-text">51-43</span></td></tr><tr><td><span class="highlighted-text">10</span></td><td><span class="highlighted-text">IASP08</span></td><td><span class="highlighted-text">Cat Cora & Paula Deen</span></td><td><span class="highlighted-text">Tyler Florence & Robert Irvine</span></td><td><span class="highlighted-text">Southern (Deen), Contemporary American (Florence), International (Irvine)</span></td><td><span class="highlighted-text">Sugar</span></td><td><span class="highlighted-text">Cat Cora & Paula Deen</span></td><td><span class="highlighted-text">49-47</span></td></tr><tr><td>11</td><td>IA0503</td><td>Cat Cora</td><td><span class="highlighted-text">Todd Richards</span></td><td>Modern Southern</td><td>Carrots</td><td><span class="highlighted-text">Cat Cora</span></td><td>48-46</td></tr><tr><td>12</td><td>IA0505</td><td>Masaharu Morimoto</td><td><span class="highlighted-text">Fortunato Nicotra</span></td><td>Seasonal Italian</td><td>Kampachi</td><td><span class="highlighted-text">Masaharu Morimoto</span></td><td>59-50</td></tr></table></div></div><hr><div class="step"><div class="step-title">Sub-table Selection</div><div id="sub-table-selection" class="content"><table><tr><th>Winner</th><th>Challenger</th></tr><tr><td>Mark Tarbell</td><td>Mark Tarbell</td></tr><tr><td>Michael Symon</td><td>Ricky Moore</td></tr><tr><td>Cat Cora & Paula Deen</td><td>Tyler Florence & Robert Irvine</td></tr></table></div></div><hr><div class="step"><div class="step-title">Factually-checked information: Not Available!</div><h2>Prompting LLM for the final answer... >>> </h2><hr><h3>Prediction: 1</h3></body></html>

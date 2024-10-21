@@ -1,0 +1,421 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which team finished first?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Order the table by 'past_season' in ascending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>team</td>
+<td>city</td>
+<td>venue</td>
+<td>capacity</td>
+<td>head_coach</td>
+<td>team_captain</td>
+<td>past_season</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">aboomoslem</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mashhad</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">samen</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">35,000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ali hanteh</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">saeed khani</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">4th</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bargh shiraz</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">shiraz</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">hafezieh</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20,000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rasoul korbekandi</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sattar zare</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">7th</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">damash gilan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rasht</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sardar jangal</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">15,000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stanko poklepović</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mohammad reza mahdavi</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">15th</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">est. ahvaz</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ahvaz</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">takhti ahvaz</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">30,000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">khodadad azizi</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">afshin komaei</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">8th</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">esteghlal</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tehran</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">azadi</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">90,000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">amir ghalenoei</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">farhad majidi</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">13th</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">foolad</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ahvaz</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">takhti ahvaz</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">15,000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">majid jalali</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ali badavi</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">qualifier</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">malavan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">anzali</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">takhti anzali</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8,000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mohammad ahmadzadeh</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">masoud gholamalizad</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">16th</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mes kerman</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kerman</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">shahid bahonar</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">15,000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">parviz mazloomi</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">farzad hosseinkhani</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">10th</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">moghavemat</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">shiraz</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">hafezieh</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20,000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gholam hossein peyrovani</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mostafa sabri</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">14th</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pas hamedan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">hamedan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ghods</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5,000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">vinko begovic</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">omid khouraj</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">5th</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">paykan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">qazvin</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">shahid rajaei</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5,000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ali asghar modir roosta</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mohammad reza tahmasebi</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">9th</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">payam</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mashhad</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">samen</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">35,000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kazem ghiyasiyan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mehdi hasheminasab</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">qualifier</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">persepolis</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tehran</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">azadi</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">90,000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nelo vingada</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">karim bagheri</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">champion</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rah ahan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rey, iran</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">rah ahan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">15,000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mehdi tartar</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ahmad taghavi</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">12th</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">saba qom</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">qom</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yadegar emam</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">15,000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">firouz karimi</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yahya golmohammadi</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">3rd</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">saipa</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">karaj</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">enghelab karaj</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">15,000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mohammad mayeli kohan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ebrahim sadeghi</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">11th</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sepahan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">esfahan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">foolad shahr</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">25,000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">farhad kazemi</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">moharram navidkia</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2nd</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">zob ahan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">esfahan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">foolad shahr</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">25,000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mansour ebrahimzadeh</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mohammad salsali</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">6th</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select row number 1.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>team</td>
+<td>city</td>
+<td>venue</td>
+<td>capacity</td>
+<td>head_coach</td>
+<td>team_captain</td>
+<td>past_season</td>
+</tr>
+<tr>
+<td>mes kerman</td>
+<td>kerman</td>
+<td>shahid bahonar</td>
+<td>15,000</td>
+<td>parviz mazloomi</td>
+<td>farzad hosseinkhani</td>
+<td>10th</td>
+</tr>
+<tr>
+<td>saipa</td>
+<td>karaj</td>
+<td>enghelab karaj</td>
+<td>15,000</td>
+<td>mohammad mayeli kohan</td>
+<td>ebrahim sadeghi</td>
+<td>11th</td>
+</tr>
+<tr>
+<td>rah ahan</td>
+<td>rey, iran</td>
+<td>rah ahan</td>
+<td>15,000</td>
+<td>mehdi tartar</td>
+<td>ahmad taghavi</td>
+<td>12th</td>
+</tr>
+<tr>
+<td>esteghlal</td>
+<td>tehran</td>
+<td>azadi</td>
+<td>90,000</td>
+<td>amir ghalenoei</td>
+<td>farhad majidi</td>
+<td>13th</td>
+</tr>
+<tr>
+<td>moghavemat</td>
+<td>shiraz</td>
+<td>hafezieh</td>
+<td>20,000</td>
+<td>gholam hossein peyrovani</td>
+<td>mostafa sabri</td>
+<td>14th</td>
+</tr>
+<tr>
+<td>damash gilan</td>
+<td>rasht</td>
+<td>sardar jangal</td>
+<td>15,000</td>
+<td>stanko poklepović</td>
+<td>mohammad reza mahdavi</td>
+<td>15th</td>
+</tr>
+<tr>
+<td>malavan</td>
+<td>anzali</td>
+<td>takhti anzali</td>
+<td>8,000</td>
+<td>mohammad ahmadzadeh</td>
+<td>masoud gholamalizad</td>
+<td>16th</td>
+</tr>
+<tr>
+<td>sepahan</td>
+<td>esfahan</td>
+<td>foolad shahr</td>
+<td>25,000</td>
+<td>farhad kazemi</td>
+<td>moharram navidkia</td>
+<td>2nd</td>
+</tr>
+<tr>
+<td>saba qom</td>
+<td>qom</td>
+<td>yadegar emam</td>
+<td>15,000</td>
+<td>firouz karimi</td>
+<td>yahya golmohammadi</td>
+<td>3rd</td>
+</tr>
+<tr>
+<td>aboomoslem</td>
+<td>mashhad</td>
+<td>samen</td>
+<td>35,000</td>
+<td>ali hanteh</td>
+<td>saeed khani</td>
+<td>4th</td>
+</tr>
+<tr>
+<td>pas hamedan</td>
+<td>hamedan</td>
+<td>ghods</td>
+<td>5,000</td>
+<td>vinko begovic</td>
+<td>omid khouraj</td>
+<td>5th</td>
+</tr>
+<tr>
+<td>zob ahan</td>
+<td>esfahan</td>
+<td>foolad shahr</td>
+<td>25,000</td>
+<td>mansour ebrahimzadeh</td>
+<td>mohammad salsali</td>
+<td>6th</td>
+</tr>
+<tr>
+<td>bargh shiraz</td>
+<td>shiraz</td>
+<td>hafezieh</td>
+<td>20,000</td>
+<td>rasoul korbekandi</td>
+<td>sattar zare</td>
+<td>7th</td>
+</tr>
+<tr>
+<td>est. ahvaz</td>
+<td>ahvaz</td>
+<td>takhti ahvaz</td>
+<td>30,000</td>
+<td>khodadad azizi</td>
+<td>afshin komaei</td>
+<td>8th</td>
+</tr>
+<tr>
+<td>paykan</td>
+<td>qazvin</td>
+<td>shahid rajaei</td>
+<td>5,000</td>
+<td>ali asghar modir roosta</td>
+<td>mohammad reza tahmasebi</td>
+<td>9th</td>
+</tr>
+<tr>
+<td>persepolis</td>
+<td>tehran</td>
+<td>azadi</td>
+<td>90,000</td>
+<td>nelo vingada</td>
+<td>karim bagheri</td>
+<td>champion</td>
+</tr>
+<tr>
+<td>foolad</td>
+<td>ahvaz</td>
+<td>takhti ahvaz</td>
+<td>15,000</td>
+<td>majid jalali</td>
+<td>ali badavi</td>
+<td>qualifier</td>
+</tr>
+<tr>
+<td>payam</td>
+<td>mashhad</td>
+<td>samen</td>
+<td>35,000</td>
+<td>kazem ghiyasiyan</td>
+<td>mehdi hasheminasab</td>
+<td>qualifier</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select the 'team' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>team</td>
+<td>city</td>
+<td>venue</td>
+<td>capacity</td>
+<td>head_coach</td>
+<td>team_captain</td>
+<td>past_season</td>
+</tr>
+<tr>
+<td>mes kerman</td>
+<td>kerman</td>
+<td>shahid bahonar</td>
+<td>15,000</td>
+<td>parviz mazloomi</td>
+<td>farzad hosseinkhani</td>
+<td>10th</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>team</td>
+</tr>
+<tr>
+<td>mes kerman</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['mes kerman']]</h3>
+</body></html>

@@ -1,0 +1,63 @@
+************************************************************************************************************************
+Sample 3354 - Plan 1: Query: which team has at least 8 seasons played?
+Sample 3354 - Plan 1: Groundtruth: ['Baltimore Bullets']
+Sample 3354 - Plan 1: X-Original table pd: 
+                       team                      city  years_active  \
+0          anderson packers         anderson, indiana     1949–1950   
+1               baa buffalo         buffalo, new york  never played   
+2          baa indianapolis     indianapolis, indiana  never played   
+3        baltimore bullets*       baltimore, maryland     1947–1954   
+4             chicago stags         chicago, illinois     1946–1950   
+5          cleveland rebels           cleveland, ohio     1946–1947   
+6            denver nuggets          denver, colorado     1949–1950   
+7           detroit falcons         detroit, michigan     1946–1947   
+8         indianapolis jets     indianapolis, indiana     1948–1949   
+9    indianapolis olympians     indianapolis, indiana     1949–1953   
+10       pittsburgh ironmen  pittsburgh, pennsylvania     1946–1947   
+11  providence steamrollers  providence, rhode island     1946–1949   
+12      sheboygan red skins      sheboygan, wisconsin     1949–1950   
+13        st. louis bombers       st. louis, missouri     1946–1950   
+14          toronto huskies          toronto, ontario     1946–1947   
+15      washington capitols          washington, d.c.     1946–1951   
+16           waterloo hawks            waterloo, iowa     1949–1950   
+
+    seasons_played win_loss_record  win_  playoffs_appearances  
+0                1           37–27  .578                     1  
+1                0             0–0   n/a                     0  
+2                0             0–0   n/a                     0  
+3                8         158–292  .351                     3  
+4                4          145–92  .612                     4  
+5                1           30–30  .500                     1  
+6                1           11–51  .177                     0  
+7                1           20–40  .333                     0  
+8                1           18–42  .300                     0  
+9                4         132–137  .491                     4  
+10               1           15–45  .250                     0  
+11               3          46–122  .274                     0  
+12               1           22–40  .355                     1  
+13               4         122–115  .515                     3  
+14               1           22–38  .367                     0  
+15               5         157–114  .579                     4  
+16               1           19–43  .306                     0  
+Sample 3354 - Plan 1: Caption: none
+Sample 3354 - Plan 1: Original table: [['team', 'city', 'years_active', 'seasons_played', 'win_loss_record', 'win_', 'playoffs_appearances'], ['anderson packers', 'anderson, indiana', '1949–1950', '1', '37–27', '.578', '1'], ['baa buffalo', 'buffalo, new york', 'never played', '0', '0–0', 'n/a', '0'], ['baa indianapolis', 'indianapolis, indiana', 'never played', '0', '0–0', 'n/a', '0'], ['baltimore bullets*', 'baltimore, maryland', '1947–1954', '8', '158–292', '.351', '3'], ['chicago stags', 'chicago, illinois', '1946–1950', '4', '145–92', '.612', '4'], ['cleveland rebels', 'cleveland, ohio', '1946–1947', '1', '30–30', '.500', '1'], ['denver nuggets', 'denver, colorado', '1949–1950', '1', '11–51', '.177', '0'], ['detroit falcons', 'detroit, michigan', '1946–1947', '1', '20–40', '.333', '0'], ['indianapolis jets', 'indianapolis, indiana', '1948–1949', '1', '18–42', '.300', '0'], ['indianapolis olympians', 'indianapolis, indiana', '1949–1953', '4', '132–137', '.491', '4'], ['pittsburgh ironmen', 'pittsburgh, pennsylvania', '1946–1947', '1', '15–45', '.250', '0'], ['providence steamrollers', 'providence, rhode island', '1946–1949', '3', '46–122', '.274', '0'], ['sheboygan red skins', 'sheboygan, wisconsin', '1949–1950', '1', '22–40', '.355', '1'], ['st. louis bombers', 'st. louis, missouri', '1946–1950', '4', '122–115', '.515', '3'], ['toronto huskies', 'toronto, ontario', '1946–1947', '1', '22–38', '.367', '0'], ['washington capitols', 'washington, d.c.', '1946–1951', '5', '157–114', '.579', '4'], ['waterloo hawks', 'waterloo, iowa', '1949–1950', '1', '19–43', '.306', '0']]
+########################################################################################################################
+Sample 3354 - Plan 1: Operation 1: Select rows where 'seasons_played' is greater than or equal to 8.
+Sample 3354 - Plan 1: Selected indices: [[3, 3]]
+Sample 3354 - Plan 1: X-Table after operation df:
+                 team                 city years_active  seasons_played  \
+0  baltimore bullets*  baltimore, maryland    1947–1954               8   
+
+  win_loss_record   win_  playoffs_appearances  
+0         158–292  0.351                     3  
+Sample 3354 - Plan 1: Table after operation: [['team', 'city', 'years_active', 'seasons_played', 'win_loss_record', 'win_', 'playoffs_appearances'], ['baltimore bullets*', 'baltimore, maryland', '1947–1954', 8, '158–292', '.351', 3]]
+########################################################################################################################
+Sample 3354 - Plan 1: Operation 2: Select the 'team' column.
+Sample 3354 - Plan 1: Selected indices: []
+Sample 3354 - Plan 1: X-Table after operation df:
+                 team
+0  baltimore bullets*
+Sample 3354 - Plan 1: Table after operation: [['team'], ['baltimore bullets*']]
+Fall-back: FALSE
+Answer from plan 1: [['baltimore bullets*']]
+Groundtruth: ['Baltimore Bullets']

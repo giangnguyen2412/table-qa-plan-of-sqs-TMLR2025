@@ -1,0 +1,482 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how many years at most was the oldest ship active?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Extract the 'years_active' column from the table.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>ship</td>
+<td>hull_no_</td>
+<td>status</td>
+<td>years_active</td>
+<td>nvr_npage</td>
+</tr>
+<tr>
+<td>henry j. kaiser</td>
+<td>t-ao-187</td>
+<td>active—southern california duty oiler</td>
+<td>1986–present</td>
+<td>ao187</td>
+</tr>
+<tr>
+<td>joshua humphreys</td>
+<td>t-ao-188</td>
+<td>inactivated 1996, returned to service 2005</td>
+<td>1987-1996; 2005-2006; 2010-present</td>
+<td>ao188</td>
+</tr>
+<tr>
+<td>john lenthall</td>
+<td>t-ao-189</td>
+<td>active</td>
+<td>1987-1996; 1998–present</td>
+<td>ao189</td>
+</tr>
+<tr>
+<td>andrew j. higgins</td>
+<td>t-ao-190</td>
+<td>inactivated may 1996. sold to the chilean navy may 2009. towed to atlantic marine alabama shipyard, mobile, alabama, september 2009 for three-month refit. commissioned in chilean navy on 10 february 2010 and renamed almirante montt.[1]</td>
+<td>1987-1996 (usa); 2010–present (chile)</td>
+<td>ao190</td>
+</tr>
+<tr>
+<td>benjamin isherwood</td>
+<td>t-ao-191</td>
+<td>cancelled when 95.3% complete,\ntransferred to the maritime administration,\nlaid up in the james river reserve fleet,\nscrapped in 2011</td>
+<td>launched 1988, christened 1991, never in service</td>
+<td>ao191</td>
+</tr>
+<tr>
+<td>henry eckford</td>
+<td>t-ao-192</td>
+<td>cancelled when 84% complete,\ntransferred to the maritime administration,\nlaid up in the james river reserve fleet,\nscrapped in 2011</td>
+<td>launched 1989, never in service</td>
+<td>ao192</td>
+</tr>
+<tr>
+<td>walter s. diehl</td>
+<td>t-ao-193</td>
+<td>active</td>
+<td>1988–present</td>
+<td>ao193</td>
+</tr>
+<tr>
+<td>john ericsson</td>
+<td>t-ao-194</td>
+<td>active</td>
+<td>1991–present</td>
+<td>ao194</td>
+</tr>
+<tr>
+<td>leroy grumman</td>
+<td>t-ao-195</td>
+<td>active</td>
+<td>1989–present</td>
+<td>ao195</td>
+</tr>
+<tr>
+<td>kanawha</td>
+<td>t-ao-196</td>
+<td>active</td>
+<td>1991–present</td>
+<td>ao196</td>
+</tr>
+<tr>
+<td>pecos</td>
+<td>t-ao-197</td>
+<td>active</td>
+<td>1990–present</td>
+<td>ao197</td>
+</tr>
+<tr>
+<td>big horn</td>
+<td>t-ao-198</td>
+<td>active</td>
+<td>1992–present</td>
+<td>ao198</td>
+</tr>
+<tr>
+<td>tippecanoe</td>
+<td>t-ao-199</td>
+<td>active</td>
+<td>1993–present</td>
+<td>ao199</td>
+</tr>
+<tr>
+<td>guadalupe</td>
+<td>t-ao-200</td>
+<td>active</td>
+<td>1992–present</td>
+<td>ao200</td>
+</tr>
+<tr>
+<td>patuxent</td>
+<td>t-ao-201</td>
+<td>active</td>
+<td>1995–present</td>
+<td>ao201</td>
+</tr>
+<tr>
+<td>yukon</td>
+<td>t-ao-202</td>
+<td>active</td>
+<td>1994–present</td>
+<td>ao202</td>
+</tr>
+<tr>
+<td>laramie</td>
+<td>t-ao-203</td>
+<td>active</td>
+<td>1996–present</td>
+<td>ao203</td>
+</tr>
+<tr>
+<td>rappahannock</td>
+<td>t-ao-204</td>
+<td>active</td>
+<td>1995–present</td>
+<td>ao204</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Split the 'years_active' values by the delimiter '-' to separate the start and end years.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>years_active</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1986–present</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1987-1996; 2005-2006; 2010-present</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1987-1996; 1998–present</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1987-1996 (usa); 2010–present (chile)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">launched 1988, christened 1991, never in service</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">launched 1989, never in service</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1988–present</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1991–present</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1989–present</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1991–present</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1990–present</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1992–present</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1993–present</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1992–present</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1995–present</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1994–present</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1996–present</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1995–present</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Calculate the duration of each ship's activity by subtracting the start year from the end year.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>years_active</td>
+<td>start_year</td>
+<td>end_year</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1986–present</span></td>
+<td><span class="highlighted-cell" title="Used in transformation"></span></td>
+<td>1986–present</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1987-1996; 2005-2006; 2010-present</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">1987</span></td>
+<td>1996; 2005-2006; 2010-present</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1987-1996; 1998–present</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">1987</span></td>
+<td>1996; 1998–present</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1987-1996 (usa); 2010–present (chile)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">1987</span></td>
+<td>1996 (usa); 2010–present (chile)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">launched 1988, christened 1991, never in service</span></td>
+<td><span class="highlighted-cell" title="Used in transformation"></span></td>
+<td>launched 1988, christened 1991, never in service</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">launched 1989, never in service</span></td>
+<td><span class="highlighted-cell" title="Used in transformation"></span></td>
+<td>launched 1989, never in service</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1988–present</span></td>
+<td><span class="highlighted-cell" title="Used in transformation"></span></td>
+<td>1988–present</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1991–present</span></td>
+<td><span class="highlighted-cell" title="Used in transformation"></span></td>
+<td>1991–present</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1989–present</span></td>
+<td><span class="highlighted-cell" title="Used in transformation"></span></td>
+<td>1989–present</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1991–present</span></td>
+<td><span class="highlighted-cell" title="Used in transformation"></span></td>
+<td>1991–present</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1990–present</span></td>
+<td><span class="highlighted-cell" title="Used in transformation"></span></td>
+<td>1990–present</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1992–present</span></td>
+<td><span class="highlighted-cell" title="Used in transformation"></span></td>
+<td>1992–present</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1993–present</span></td>
+<td><span class="highlighted-cell" title="Used in transformation"></span></td>
+<td>1993–present</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1992–present</span></td>
+<td><span class="highlighted-cell" title="Used in transformation"></span></td>
+<td>1992–present</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1995–present</span></td>
+<td><span class="highlighted-cell" title="Used in transformation"></span></td>
+<td>1995–present</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1994–present</span></td>
+<td><span class="highlighted-cell" title="Used in transformation"></span></td>
+<td>1994–present</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1996–present</span></td>
+<td><span class="highlighted-cell" title="Used in transformation"></span></td>
+<td>1996–present</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">1995–present</span></td>
+<td><span class="highlighted-cell" title="Used in transformation"></span></td>
+<td>1995–present</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Find the maximum duration among all ships.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>years_active</td>
+<td>start_year</td>
+<td>end_year</td>
+<td>duration</td>
+</tr>
+<tr>
+<td>1986–present</td>
+<td>None</td>
+<td>1986–present</td>
+<td>None</td>
+</tr>
+<tr>
+<td>1987-1996; 2005-2006; 2010-present</td>
+<td>1987.0</td>
+<td>1996; 2005-2006; 2010-present</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>1987-1996; 1998–present</td>
+<td>1987.0</td>
+<td>1996; 1998–present</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>1987-1996 (usa); 2010–present (chile)</td>
+<td>1987.0</td>
+<td>1996 (usa); 2010–present (chile)</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>launched 1988, christened 1991, never in service</td>
+<td>None</td>
+<td>launched 1988, christened 1991, never in service</td>
+<td>None</td>
+</tr>
+<tr>
+<td>launched 1989, never in service</td>
+<td>None</td>
+<td>launched 1989, never in service</td>
+<td>None</td>
+</tr>
+<tr>
+<td>1988–present</td>
+<td>None</td>
+<td>1988–present</td>
+<td>None</td>
+</tr>
+<tr>
+<td>1991–present</td>
+<td>None</td>
+<td>1991–present</td>
+<td>None</td>
+</tr>
+<tr>
+<td>1989–present</td>
+<td>None</td>
+<td>1989–present</td>
+<td>None</td>
+</tr>
+<tr>
+<td>1991–present</td>
+<td>None</td>
+<td>1991–present</td>
+<td>None</td>
+</tr>
+<tr>
+<td>1990–present</td>
+<td>None</td>
+<td>1990–present</td>
+<td>None</td>
+</tr>
+<tr>
+<td>1992–present</td>
+<td>None</td>
+<td>1992–present</td>
+<td>None</td>
+</tr>
+<tr>
+<td>1993–present</td>
+<td>None</td>
+<td>1993–present</td>
+<td>None</td>
+</tr>
+<tr>
+<td>1992–present</td>
+<td>None</td>
+<td>1992–present</td>
+<td>None</td>
+</tr>
+<tr>
+<td>1995–present</td>
+<td>None</td>
+<td>1995–present</td>
+<td>None</td>
+</tr>
+<tr>
+<td>1994–present</td>
+<td>None</td>
+<td>1994–present</td>
+<td>None</td>
+</tr>
+<tr>
+<td>1996–present</td>
+<td>None</td>
+<td>1996–present</td>
+<td>None</td>
+</tr>
+<tr>
+<td>1995–present</td>
+<td>None</td>
+<td>1995–present</td>
+<td>None</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 5: Return the maximum duration as the answer to the question.</div>
+<div id="step-3" class="content">
+<table>
+<tr>
+<td>max_duration</td>
+</tr>
+<tr>
+<td>0.0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>answer</td>
+</tr>
+<tr>
+<td>0.0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[0.0]]</h3>
+</body></html>

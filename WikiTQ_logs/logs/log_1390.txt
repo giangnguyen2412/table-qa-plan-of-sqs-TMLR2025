@@ -1,0 +1,535 @@
+************************************************************************************************************************
+Sample 1390 - Plan 1: Query: in how many games did brad miller have the highest number of points and rebounds?
+Sample 1390 - Plan 1: Groundtruth: ['2']
+Sample 1390 - Plan 1: X-Original table pd: 
+    game        date            team            score  \
+0     33   january 2       @ detroit          l 92–98   
+1     34   january 3       @ indiana        l 117–122   
+2     35   january 5    @ new jersey          l 90–98   
+3     36   january 6       @ chicago          l 94–99   
+4     37   january 9           miami   l 115–119 (ot)   
+5     38  january 11          dallas         w 102–95   
+6     39  january 13         orlando        l 107–139   
+7     40  january 14  @ golden state  w 135–133 (3ot)   
+8     41  january 16       milwaukee        l 122–129   
+9     42  january 20        @ denver         l 99–118   
+10    43  january 21      washington        l 107–110   
+11    44  january 24     @ milwaukee        l 104–106   
+12    45  january 25       @ toronto         l 97–113   
+13    46  january 27     @ cleveland        l 110–117   
+14    47  january 28        @ boston        l 100–119   
+15    48  january 30         chicago         l 88–109   
+
+                        high_points  \
+0                  brad miller (25)   
+1                 kevin martin (45)   
+2                 kevin martin (36)   
+3                 kevin martin (29)   
+4                 john salmons (29)   
+5                 kevin martin (21)   
+6                 kevin martin (30)   
+7                  brad miller (30)   
+8   john salmons, kevin martin (24)   
+9                 kevin martin (25)   
+10    john salmons, beno udrih (24)   
+11                kevin martin (20)   
+12                john salmons (21)   
+13                kevin martin (35)   
+14                john salmons (22)   
+15                kevin martin (27)   
+
+                                        high_rebounds  \
+0                                    brad miller (16)   
+1                                  bobby jackson (10)   
+2                                    kenny thomas (8)   
+3                                    brad miller (12)   
+4                                    brad miller (16)   
+5                                   spencer hawes (8)   
+6                                francisco garcía (5)   
+7                                    brad miller (22)   
+8                                 jason thompson (11)   
+9                                 jason thompson (11)   
+10  john salmons, shelden williams, jason thompson...   
+11                                   brad miller (13)   
+12                                   john salmons (7)   
+13                                   kevin martin (7)   
+14                                jason thompson (11)   
+15                                jason thompson (12)   
+
+                                    high_assists  \
+0                               john salmons (4)   
+1                  kevin martin, brad miller (6)   
+2                                brad miller (8)   
+3                                 beno udrih (5)   
+4   john salmons, brad miller, bobby jackson (4)   
+5                                 beno udrih (6)   
+6                           francisco garcía (5)   
+7                   john salmons, beno udrih (7)   
+8                               john salmons (6)   
+9                   john salmons, beno udrih (5)   
+10                              john salmons (5)   
+11                               brad miller (9)   
+12                                beno udrih (5)   
+13                              kevin martin (7)   
+14                              john salmons (5)   
+15               spencer hawes, kevin martin (3)   
+
+                  location_nattendance record  
+0   the palace of auburn hills\n22,076   8–25  
+1           conseco fieldhouse\n12,765   8–26  
+2                  izod center\n12,314   8–27  
+3                united center\n18,060   8–28  
+4                   arco arena\n12,587   8–29  
+5                   arco arena\n12,294   9–29  
+6                   arco arena\n11,168   9–30  
+7                 oracle arena\n19,122  10–30  
+8                   arco arena\n11,663  10–31  
+9                 pepsi center\n15,164  10–32  
+10                  arco arena\n10,821  10–33  
+11              bradley center\n15,379  10–34  
+12           air canada centre\n18,127  10–35  
+13         quicken loans arena\n20,562  10–36  
+14         td banknorth garden\n18,624  10–37  
+15                  arco arena\n13,356  10–38  
+Sample 1390 - Plan 1: Caption: none
+Sample 1390 - Plan 1: Original table: [['game', 'date', 'team', 'score', 'high_points', 'high_rebounds', 'high_assists', 'location_nattendance', 'record'], ['33', 'january 2', '@ detroit', 'l 92–98', 'brad miller (25)', 'brad miller (16)', 'john salmons (4)', 'the palace of auburn hills\\n22,076', '8–25'], ['34', 'january 3', '@ indiana', 'l 117–122', 'kevin martin (45)', 'bobby jackson (10)', 'kevin martin, brad miller (6)', 'conseco fieldhouse\\n12,765', '8–26'], ['35', 'january 5', '@ new jersey', 'l 90–98', 'kevin martin (36)', 'kenny thomas (8)', 'brad miller (8)', 'izod center\\n12,314', '8–27'], ['36', 'january 6', '@ chicago', 'l 94–99', 'kevin martin (29)', 'brad miller (12)', 'beno udrih (5)', 'united center\\n18,060', '8–28'], ['37', 'january 9', 'miami', 'l 115–119 (ot)', 'john salmons (29)', 'brad miller (16)', 'john salmons, brad miller, bobby jackson (4)', 'arco arena\\n12,587', '8–29'], ['38', 'january 11', 'dallas', 'w 102–95', 'kevin martin (21)', 'spencer hawes (8)', 'beno udrih (6)', 'arco arena\\n12,294', '9–29'], ['39', 'january 13', 'orlando', 'l 107–139', 'kevin martin (30)', 'francisco garcía (5)', 'francisco garcía (5)', 'arco arena\\n11,168', '9–30'], ['40', 'january 14', '@ golden state', 'w 135–133 (3ot)', 'brad miller (30)', 'brad miller (22)', 'john salmons, beno udrih (7)', 'oracle arena\\n19,122', '10–30'], ['41', 'january 16', 'milwaukee', 'l 122–129', 'john salmons, kevin martin (24)', 'jason thompson (11)', 'john salmons (6)', 'arco arena\\n11,663', '10–31'], ['42', 'january 20', '@ denver', 'l 99–118', 'kevin martin (25)', 'jason thompson (11)', 'john salmons, beno udrih (5)', 'pepsi center\\n15,164', '10–32'], ['43', 'january 21', 'washington', 'l 107–110', 'john salmons, beno udrih (24)', 'john salmons, shelden williams, jason thompson (5)', 'john salmons (5)', 'arco arena\\n10,821', '10–33'], ['44', 'january 24', '@ milwaukee', 'l 104–106', 'kevin martin (20)', 'brad miller (13)', 'brad miller (9)', 'bradley center\\n15,379', '10–34'], ['45', 'january 25', '@ toronto', 'l 97–113', 'john salmons (21)', 'john salmons (7)', 'beno udrih (5)', 'air canada centre\\n18,127', '10–35'], ['46', 'january 27', '@ cleveland', 'l 110–117', 'kevin martin (35)', 'kevin martin (7)', 'kevin martin (7)', 'quicken loans arena\\n20,562', '10–36'], ['47', 'january 28', '@ boston', 'l 100–119', 'john salmons (22)', 'jason thompson (11)', 'john salmons (5)', 'td banknorth garden\\n18,624', '10–37'], ['48', 'january 30', 'chicago', 'l 88–109', 'kevin martin (27)', 'jason thompson (12)', 'spencer hawes, kevin martin (3)', 'arco arena\\n13,356', '10–38']]
+########################################################################################################################
+Sample 1390 - Plan 1: Operation 1: Extract the numerical value from the 'score' column then add column 'num_score' to existing table.
+Sample 1390 - Plan 1: Selected indices: [[0, 3], [1, 3], [2, 3], [3, 3], [4, 3], [5, 3], [6, 3], [7, 3], [8, 3], [9, 3], [10, 3], [11, 3], [12, 3], [13, 3], [14, 3], [15, 3]]
+Sample 1390 - Plan 1: X-Table after operation df:
+    game        date            team            score  \
+0     33   january 2       @ detroit          l 92–98   
+1     34   january 3       @ indiana        l 117–122   
+2     35   january 5    @ new jersey          l 90–98   
+3     36   january 6       @ chicago          l 94–99   
+4     37   january 9           miami   l 115–119 (ot)   
+5     38  january 11          dallas         w 102–95   
+6     39  january 13         orlando        l 107–139   
+7     40  january 14  @ golden state  w 135–133 (3ot)   
+8     41  january 16       milwaukee        l 122–129   
+9     42  january 20        @ denver         l 99–118   
+10    43  january 21      washington        l 107–110   
+11    44  january 24     @ milwaukee        l 104–106   
+12    45  january 25       @ toronto         l 97–113   
+13    46  january 27     @ cleveland        l 110–117   
+14    47  january 28        @ boston        l 100–119   
+15    48  january 30         chicago         l 88–109   
+
+                        high_points  \
+0                  brad miller (25)   
+1                 kevin martin (45)   
+2                 kevin martin (36)   
+3                 kevin martin (29)   
+4                 john salmons (29)   
+5                 kevin martin (21)   
+6                 kevin martin (30)   
+7                  brad miller (30)   
+8   john salmons, kevin martin (24)   
+9                 kevin martin (25)   
+10    john salmons, beno udrih (24)   
+11                kevin martin (20)   
+12                john salmons (21)   
+13                kevin martin (35)   
+14                john salmons (22)   
+15                kevin martin (27)   
+
+                                        high_rebounds  \
+0                                    brad miller (16)   
+1                                  bobby jackson (10)   
+2                                    kenny thomas (8)   
+3                                    brad miller (12)   
+4                                    brad miller (16)   
+5                                   spencer hawes (8)   
+6                                francisco garcía (5)   
+7                                    brad miller (22)   
+8                                 jason thompson (11)   
+9                                 jason thompson (11)   
+10  john salmons, shelden williams, jason thompson...   
+11                                   brad miller (13)   
+12                                   john salmons (7)   
+13                                   kevin martin (7)   
+14                                jason thompson (11)   
+15                                jason thompson (12)   
+
+                                    high_assists  \
+0                               john salmons (4)   
+1                  kevin martin, brad miller (6)   
+2                                brad miller (8)   
+3                                 beno udrih (5)   
+4   john salmons, brad miller, bobby jackson (4)   
+5                                 beno udrih (6)   
+6                           francisco garcía (5)   
+7                   john salmons, beno udrih (7)   
+8                               john salmons (6)   
+9                   john salmons, beno udrih (5)   
+10                              john salmons (5)   
+11                               brad miller (9)   
+12                                beno udrih (5)   
+13                              kevin martin (7)   
+14                              john salmons (5)   
+15               spencer hawes, kevin martin (3)   
+
+                  location_nattendance record  num_score  
+0   the palace of auburn hills\n22,076   8–25          0  
+1           conseco fieldhouse\n12,765   8–26          0  
+2                  izod center\n12,314   8–27          0  
+3                united center\n18,060   8–28          0  
+4                   arco arena\n12,587   8–29          0  
+5                   arco arena\n12,294   9–29          0  
+6                   arco arena\n11,168   9–30          0  
+7                 oracle arena\n19,122  10–30          0  
+8                   arco arena\n11,663  10–31          0  
+9                 pepsi center\n15,164  10–32          0  
+10                  arco arena\n10,821  10–33          0  
+11              bradley center\n15,379  10–34          0  
+12           air canada centre\n18,127  10–35          0  
+13         quicken loans arena\n20,562  10–36          0  
+14         td banknorth garden\n18,624  10–37          0  
+15                  arco arena\n13,356  10–38          0  
+Sample 1390 - Plan 1: Table after operation: [['game', 'date', 'team', 'score', 'high_points', 'high_rebounds', 'high_assists', 'location_nattendance', 'record', 'num_score'], [33, 'january 2', '@ detroit', 'l 92–98', 'brad miller (25)', 'brad miller (16)', 'john salmons (4)', 'the palace of auburn hills\\n22,076', '8–25', 0], [34, 'january 3', '@ indiana', 'l 117–122', 'kevin martin (45)', 'bobby jackson (10)', 'kevin martin, brad miller (6)', 'conseco fieldhouse\\n12,765', '8–26', 0], [35, 'january 5', '@ new jersey', 'l 90–98', 'kevin martin (36)', 'kenny thomas (8)', 'brad miller (8)', 'izod center\\n12,314', '8–27', 0], [36, 'january 6', '@ chicago', 'l 94–99', 'kevin martin (29)', 'brad miller (12)', 'beno udrih (5)', 'united center\\n18,060', '8–28', 0], [37, 'january 9', 'miami', 'l 115–119 (ot)', 'john salmons (29)', 'brad miller (16)', 'john salmons, brad miller, bobby jackson (4)', 'arco arena\\n12,587', '8–29', 0], [38, 'january 11', 'dallas', 'w 102–95', 'kevin martin (21)', 'spencer hawes (8)', 'beno udrih (6)', 'arco arena\\n12,294', '9–29', 0], [39, 'january 13', 'orlando', 'l 107–139', 'kevin martin (30)', 'francisco garcía (5)', 'francisco garcía (5)', 'arco arena\\n11,168', '9–30', 0], [40, 'january 14', '@ golden state', 'w 135–133 (3ot)', 'brad miller (30)', 'brad miller (22)', 'john salmons, beno udrih (7)', 'oracle arena\\n19,122', '10–30', 0], [41, 'january 16', 'milwaukee', 'l 122–129', 'john salmons, kevin martin (24)', 'jason thompson (11)', 'john salmons (6)', 'arco arena\\n11,663', '10–31', 0], [42, 'january 20', '@ denver', 'l 99–118', 'kevin martin (25)', 'jason thompson (11)', 'john salmons, beno udrih (5)', 'pepsi center\\n15,164', '10–32', 0], [43, 'january 21', 'washington', 'l 107–110', 'john salmons, beno udrih (24)', 'john salmons, shelden williams, jason thompson (5)', 'john salmons (5)', 'arco arena\\n10,821', '10–33', 0], [44, 'january 24', '@ milwaukee', 'l 104–106', 'kevin martin (20)', 'brad miller (13)', 'brad miller (9)', 'bradley center\\n15,379', '10–34', 0], [45, 'january 25', '@ toronto', 'l 97–113', 'john salmons (21)', 'john salmons (7)', 'beno udrih (5)', 'air canada centre\\n18,127', '10–35', 0], [46, 'january 27', '@ cleveland', 'l 110–117', 'kevin martin (35)', 'kevin martin (7)', 'kevin martin (7)', 'quicken loans arena\\n20,562', '10–36', 0], [47, 'january 28', '@ boston', 'l 100–119', 'john salmons (22)', 'jason thompson (11)', 'john salmons (5)', 'td banknorth garden\\n18,624', '10–37', 0], [48, 'january 30', 'chicago', 'l 88–109', 'kevin martin (27)', 'jason thompson (12)', 'spencer hawes, kevin martin (3)', 'arco arena\\n13,356', '10–38', 0]]
+########################################################################################################################
+Sample 1390 - Plan 1: Operation 2: Extract the numerical value from the 'high_points' column then add column 'num_high_points' to existing table.
+Sample 1390 - Plan 1: Selected indices: [[0, 4], [1, 4], [2, 4], [3, 4], [4, 4], [5, 4], [6, 4], [7, 4], [8, 4], [9, 4], [10, 4], [11, 4], [12, 4], [13, 4], [14, 4], [15, 4]]
+Sample 1390 - Plan 1: X-Table after operation df:
+    game        date            team            score  \
+0     33   january 2       @ detroit          l 92–98   
+1     34   january 3       @ indiana        l 117–122   
+2     35   january 5    @ new jersey          l 90–98   
+3     36   january 6       @ chicago          l 94–99   
+4     37   january 9           miami   l 115–119 (ot)   
+5     38  january 11          dallas         w 102–95   
+6     39  january 13         orlando        l 107–139   
+7     40  january 14  @ golden state  w 135–133 (3ot)   
+8     41  january 16       milwaukee        l 122–129   
+9     42  january 20        @ denver         l 99–118   
+10    43  january 21      washington        l 107–110   
+11    44  january 24     @ milwaukee        l 104–106   
+12    45  january 25       @ toronto         l 97–113   
+13    46  january 27     @ cleveland        l 110–117   
+14    47  january 28        @ boston        l 100–119   
+15    48  january 30         chicago         l 88–109   
+
+                        high_points  \
+0                  brad miller (25)   
+1                 kevin martin (45)   
+2                 kevin martin (36)   
+3                 kevin martin (29)   
+4                 john salmons (29)   
+5                 kevin martin (21)   
+6                 kevin martin (30)   
+7                  brad miller (30)   
+8   john salmons, kevin martin (24)   
+9                 kevin martin (25)   
+10    john salmons, beno udrih (24)   
+11                kevin martin (20)   
+12                john salmons (21)   
+13                kevin martin (35)   
+14                john salmons (22)   
+15                kevin martin (27)   
+
+                                        high_rebounds  \
+0                                    brad miller (16)   
+1                                  bobby jackson (10)   
+2                                    kenny thomas (8)   
+3                                    brad miller (12)   
+4                                    brad miller (16)   
+5                                   spencer hawes (8)   
+6                                francisco garcía (5)   
+7                                    brad miller (22)   
+8                                 jason thompson (11)   
+9                                 jason thompson (11)   
+10  john salmons, shelden williams, jason thompson...   
+11                                   brad miller (13)   
+12                                   john salmons (7)   
+13                                   kevin martin (7)   
+14                                jason thompson (11)   
+15                                jason thompson (12)   
+
+                                    high_assists  \
+0                               john salmons (4)   
+1                  kevin martin, brad miller (6)   
+2                                brad miller (8)   
+3                                 beno udrih (5)   
+4   john salmons, brad miller, bobby jackson (4)   
+5                                 beno udrih (6)   
+6                           francisco garcía (5)   
+7                   john salmons, beno udrih (7)   
+8                               john salmons (6)   
+9                   john salmons, beno udrih (5)   
+10                              john salmons (5)   
+11                               brad miller (9)   
+12                                beno udrih (5)   
+13                              kevin martin (7)   
+14                              john salmons (5)   
+15               spencer hawes, kevin martin (3)   
+
+                  location_nattendance record  num_score  num_high_points  
+0   the palace of auburn hills\n22,076   8–25          0               25  
+1           conseco fieldhouse\n12,765   8–26          0               45  
+2                  izod center\n12,314   8–27          0               36  
+3                united center\n18,060   8–28          0               29  
+4                   arco arena\n12,587   8–29          0               29  
+5                   arco arena\n12,294   9–29          0               21  
+6                   arco arena\n11,168   9–30          0               30  
+7                 oracle arena\n19,122  10–30          0               30  
+8                   arco arena\n11,663  10–31          0               24  
+9                 pepsi center\n15,164  10–32          0               25  
+10                  arco arena\n10,821  10–33          0               24  
+11              bradley center\n15,379  10–34          0               20  
+12           air canada centre\n18,127  10–35          0               21  
+13         quicken loans arena\n20,562  10–36          0               35  
+14         td banknorth garden\n18,624  10–37          0               22  
+15                  arco arena\n13,356  10–38          0               27  
+Sample 1390 - Plan 1: Table after operation: [['game', 'date', 'team', 'score', 'high_points', 'high_rebounds', 'high_assists', 'location_nattendance', 'record', 'num_score', 'num_high_points'], [33, 'january 2', '@ detroit', 'l 92–98', 'brad miller (25)', 'brad miller (16)', 'john salmons (4)', 'the palace of auburn hills\\n22,076', '8–25', 0, 25], [34, 'january 3', '@ indiana', 'l 117–122', 'kevin martin (45)', 'bobby jackson (10)', 'kevin martin, brad miller (6)', 'conseco fieldhouse\\n12,765', '8–26', 0, 45], [35, 'january 5', '@ new jersey', 'l 90–98', 'kevin martin (36)', 'kenny thomas (8)', 'brad miller (8)', 'izod center\\n12,314', '8–27', 0, 36], [36, 'january 6', '@ chicago', 'l 94–99', 'kevin martin (29)', 'brad miller (12)', 'beno udrih (5)', 'united center\\n18,060', '8–28', 0, 29], [37, 'january 9', 'miami', 'l 115–119 (ot)', 'john salmons (29)', 'brad miller (16)', 'john salmons, brad miller, bobby jackson (4)', 'arco arena\\n12,587', '8–29', 0, 29], [38, 'january 11', 'dallas', 'w 102–95', 'kevin martin (21)', 'spencer hawes (8)', 'beno udrih (6)', 'arco arena\\n12,294', '9–29', 0, 21], [39, 'january 13', 'orlando', 'l 107–139', 'kevin martin (30)', 'francisco garcía (5)', 'francisco garcía (5)', 'arco arena\\n11,168', '9–30', 0, 30], [40, 'january 14', '@ golden state', 'w 135–133 (3ot)', 'brad miller (30)', 'brad miller (22)', 'john salmons, beno udrih (7)', 'oracle arena\\n19,122', '10–30', 0, 30], [41, 'january 16', 'milwaukee', 'l 122–129', 'john salmons, kevin martin (24)', 'jason thompson (11)', 'john salmons (6)', 'arco arena\\n11,663', '10–31', 0, 24], [42, 'january 20', '@ denver', 'l 99–118', 'kevin martin (25)', 'jason thompson (11)', 'john salmons, beno udrih (5)', 'pepsi center\\n15,164', '10–32', 0, 25], [43, 'january 21', 'washington', 'l 107–110', 'john salmons, beno udrih (24)', 'john salmons, shelden williams, jason thompson (5)', 'john salmons (5)', 'arco arena\\n10,821', '10–33', 0, 24], [44, 'january 24', '@ milwaukee', 'l 104–106', 'kevin martin (20)', 'brad miller (13)', 'brad miller (9)', 'bradley center\\n15,379', '10–34', 0, 20], [45, 'january 25', '@ toronto', 'l 97–113', 'john salmons (21)', 'john salmons (7)', 'beno udrih (5)', 'air canada centre\\n18,127', '10–35', 0, 21], [46, 'january 27', '@ cleveland', 'l 110–117', 'kevin martin (35)', 'kevin martin (7)', 'kevin martin (7)', 'quicken loans arena\\n20,562', '10–36', 0, 35], [47, 'january 28', '@ boston', 'l 100–119', 'john salmons (22)', 'jason thompson (11)', 'john salmons (5)', 'td banknorth garden\\n18,624', '10–37', 0, 22], [48, 'january 30', 'chicago', 'l 88–109', 'kevin martin (27)', 'jason thompson (12)', 'spencer hawes, kevin martin (3)', 'arco arena\\n13,356', '10–38', 0, 27]]
+########################################################################################################################
+Sample 1390 - Plan 1: Operation 3: Extract the numerical value from the 'high_rebounds' column then add column 'num_high_rebounds' to existing table.
+Sample 1390 - Plan 1: Selected indices: [[0, 5], [1, 5], [2, 5], [3, 5], [4, 5], [5, 5], [6, 5], [7, 5], [8, 5], [9, 5], [10, 5], [11, 5], [12, 5], [13, 5], [14, 5], [15, 5]]
+Sample 1390 - Plan 1: X-Table after operation df:
+    game        date            team            score  \
+0     33   january 2       @ detroit          l 92–98   
+1     34   january 3       @ indiana        l 117–122   
+2     35   january 5    @ new jersey          l 90–98   
+3     36   january 6       @ chicago          l 94–99   
+4     37   january 9           miami   l 115–119 (ot)   
+5     38  january 11          dallas         w 102–95   
+6     39  january 13         orlando        l 107–139   
+7     40  january 14  @ golden state  w 135–133 (3ot)   
+8     41  january 16       milwaukee        l 122–129   
+9     42  january 20        @ denver         l 99–118   
+10    43  january 21      washington        l 107–110   
+11    44  january 24     @ milwaukee        l 104–106   
+12    45  january 25       @ toronto         l 97–113   
+13    46  january 27     @ cleveland        l 110–117   
+14    47  january 28        @ boston        l 100–119   
+15    48  january 30         chicago         l 88–109   
+
+                        high_points  \
+0                  brad miller (25)   
+1                 kevin martin (45)   
+2                 kevin martin (36)   
+3                 kevin martin (29)   
+4                 john salmons (29)   
+5                 kevin martin (21)   
+6                 kevin martin (30)   
+7                  brad miller (30)   
+8   john salmons, kevin martin (24)   
+9                 kevin martin (25)   
+10    john salmons, beno udrih (24)   
+11                kevin martin (20)   
+12                john salmons (21)   
+13                kevin martin (35)   
+14                john salmons (22)   
+15                kevin martin (27)   
+
+                                        high_rebounds  \
+0                                    brad miller (16)   
+1                                  bobby jackson (10)   
+2                                    kenny thomas (8)   
+3                                    brad miller (12)   
+4                                    brad miller (16)   
+5                                   spencer hawes (8)   
+6                                francisco garcía (5)   
+7                                    brad miller (22)   
+8                                 jason thompson (11)   
+9                                 jason thompson (11)   
+10  john salmons, shelden williams, jason thompson...   
+11                                   brad miller (13)   
+12                                   john salmons (7)   
+13                                   kevin martin (7)   
+14                                jason thompson (11)   
+15                                jason thompson (12)   
+
+                                    high_assists  \
+0                               john salmons (4)   
+1                  kevin martin, brad miller (6)   
+2                                brad miller (8)   
+3                                 beno udrih (5)   
+4   john salmons, brad miller, bobby jackson (4)   
+5                                 beno udrih (6)   
+6                           francisco garcía (5)   
+7                   john salmons, beno udrih (7)   
+8                               john salmons (6)   
+9                   john salmons, beno udrih (5)   
+10                              john salmons (5)   
+11                               brad miller (9)   
+12                                beno udrih (5)   
+13                              kevin martin (7)   
+14                              john salmons (5)   
+15               spencer hawes, kevin martin (3)   
+
+                  location_nattendance record  num_score  num_high_points  \
+0   the palace of auburn hills\n22,076   8–25          0               25   
+1           conseco fieldhouse\n12,765   8–26          0               45   
+2                  izod center\n12,314   8–27          0               36   
+3                united center\n18,060   8–28          0               29   
+4                   arco arena\n12,587   8–29          0               29   
+5                   arco arena\n12,294   9–29          0               21   
+6                   arco arena\n11,168   9–30          0               30   
+7                 oracle arena\n19,122  10–30          0               30   
+8                   arco arena\n11,663  10–31          0               24   
+9                 pepsi center\n15,164  10–32          0               25   
+10                  arco arena\n10,821  10–33          0               24   
+11              bradley center\n15,379  10–34          0               20   
+12           air canada centre\n18,127  10–35          0               21   
+13         quicken loans arena\n20,562  10–36          0               35   
+14         td banknorth garden\n18,624  10–37          0               22   
+15                  arco arena\n13,356  10–38          0               27   
+
+    num_high_rebounds  
+0                  16  
+1                  10  
+2                   8  
+3                  12  
+4                  16  
+5                   8  
+6                   5  
+7                  22  
+8                  11  
+9                  11  
+10                  5  
+11                 13  
+12                  7  
+13                  7  
+14                 11  
+15                 12  
+Sample 1390 - Plan 1: Table after operation: [['game', 'date', 'team', 'score', 'high_points', 'high_rebounds', 'high_assists', 'location_nattendance', 'record', 'num_score', 'num_high_points', 'num_high_rebounds'], [33, 'january 2', '@ detroit', 'l 92–98', 'brad miller (25)', 'brad miller (16)', 'john salmons (4)', 'the palace of auburn hills\\n22,076', '8–25', 0, 25, 16], [34, 'january 3', '@ indiana', 'l 117–122', 'kevin martin (45)', 'bobby jackson (10)', 'kevin martin, brad miller (6)', 'conseco fieldhouse\\n12,765', '8–26', 0, 45, 10], [35, 'january 5', '@ new jersey', 'l 90–98', 'kevin martin (36)', 'kenny thomas (8)', 'brad miller (8)', 'izod center\\n12,314', '8–27', 0, 36, 8], [36, 'january 6', '@ chicago', 'l 94–99', 'kevin martin (29)', 'brad miller (12)', 'beno udrih (5)', 'united center\\n18,060', '8–28', 0, 29, 12], [37, 'january 9', 'miami', 'l 115–119 (ot)', 'john salmons (29)', 'brad miller (16)', 'john salmons, brad miller, bobby jackson (4)', 'arco arena\\n12,587', '8–29', 0, 29, 16], [38, 'january 11', 'dallas', 'w 102–95', 'kevin martin (21)', 'spencer hawes (8)', 'beno udrih (6)', 'arco arena\\n12,294', '9–29', 0, 21, 8], [39, 'january 13', 'orlando', 'l 107–139', 'kevin martin (30)', 'francisco garcía (5)', 'francisco garcía (5)', 'arco arena\\n11,168', '9–30', 0, 30, 5], [40, 'january 14', '@ golden state', 'w 135–133 (3ot)', 'brad miller (30)', 'brad miller (22)', 'john salmons, beno udrih (7)', 'oracle arena\\n19,122', '10–30', 0, 30, 22], [41, 'january 16', 'milwaukee', 'l 122–129', 'john salmons, kevin martin (24)', 'jason thompson (11)', 'john salmons (6)', 'arco arena\\n11,663', '10–31', 0, 24, 11], [42, 'january 20', '@ denver', 'l 99–118', 'kevin martin (25)', 'jason thompson (11)', 'john salmons, beno udrih (5)', 'pepsi center\\n15,164', '10–32', 0, 25, 11], [43, 'january 21', 'washington', 'l 107–110', 'john salmons, beno udrih (24)', 'john salmons, shelden williams, jason thompson (5)', 'john salmons (5)', 'arco arena\\n10,821', '10–33', 0, 24, 5], [44, 'january 24', '@ milwaukee', 'l 104–106', 'kevin martin (20)', 'brad miller (13)', 'brad miller (9)', 'bradley center\\n15,379', '10–34', 0, 20, 13], [45, 'january 25', '@ toronto', 'l 97–113', 'john salmons (21)', 'john salmons (7)', 'beno udrih (5)', 'air canada centre\\n18,127', '10–35', 0, 21, 7], [46, 'january 27', '@ cleveland', 'l 110–117', 'kevin martin (35)', 'kevin martin (7)', 'kevin martin (7)', 'quicken loans arena\\n20,562', '10–36', 0, 35, 7], [47, 'january 28', '@ boston', 'l 100–119', 'john salmons (22)', 'jason thompson (11)', 'john salmons (5)', 'td banknorth garden\\n18,624', '10–37', 0, 22, 11], [48, 'january 30', 'chicago', 'l 88–109', 'kevin martin (27)', 'jason thompson (12)', 'spencer hawes, kevin martin (3)', 'arco arena\\n13,356', '10–38', 0, 27, 12]]
+########################################################################################################################
+Sample 1390 - Plan 1: Operation 4: Order the table by 'num_score' in descending order.
+Sample 1390 - Plan 1: Selected indices: [[9, 9], [4, 9], [0, 9], [11, 9], [12, 9], [7, 9], [2, 9], [13, 9], [8, 9], [3, 9], [14, 9], [15, 9], [10, 9], [5, 9], [6, 9], [1, 9]]
+Sample 1390 - Plan 1: X-Table after operation df:
+    game        date            team            score  \
+0     33   january 2       @ detroit          l 92–98   
+1     34   january 3       @ indiana        l 117–122   
+2     35   january 5    @ new jersey          l 90–98   
+3     36   january 6       @ chicago          l 94–99   
+4     37   january 9           miami   l 115–119 (ot)   
+5     38  january 11          dallas         w 102–95   
+6     39  january 13         orlando        l 107–139   
+7     40  january 14  @ golden state  w 135–133 (3ot)   
+8     41  january 16       milwaukee        l 122–129   
+9     42  january 20        @ denver         l 99–118   
+10    43  january 21      washington        l 107–110   
+11    44  january 24     @ milwaukee        l 104–106   
+12    45  january 25       @ toronto         l 97–113   
+13    46  january 27     @ cleveland        l 110–117   
+14    47  january 28        @ boston        l 100–119   
+15    48  january 30         chicago         l 88–109   
+
+                        high_points  \
+0                  brad miller (25)   
+1                 kevin martin (45)   
+2                 kevin martin (36)   
+3                 kevin martin (29)   
+4                 john salmons (29)   
+5                 kevin martin (21)   
+6                 kevin martin (30)   
+7                  brad miller (30)   
+8   john salmons, kevin martin (24)   
+9                 kevin martin (25)   
+10    john salmons, beno udrih (24)   
+11                kevin martin (20)   
+12                john salmons (21)   
+13                kevin martin (35)   
+14                john salmons (22)   
+15                kevin martin (27)   
+
+                                        high_rebounds  \
+0                                    brad miller (16)   
+1                                  bobby jackson (10)   
+2                                    kenny thomas (8)   
+3                                    brad miller (12)   
+4                                    brad miller (16)   
+5                                   spencer hawes (8)   
+6                                francisco garcía (5)   
+7                                    brad miller (22)   
+8                                 jason thompson (11)   
+9                                 jason thompson (11)   
+10  john salmons, shelden williams, jason thompson...   
+11                                   brad miller (13)   
+12                                   john salmons (7)   
+13                                   kevin martin (7)   
+14                                jason thompson (11)   
+15                                jason thompson (12)   
+
+                                    high_assists  \
+0                               john salmons (4)   
+1                  kevin martin, brad miller (6)   
+2                                brad miller (8)   
+3                                 beno udrih (5)   
+4   john salmons, brad miller, bobby jackson (4)   
+5                                 beno udrih (6)   
+6                           francisco garcía (5)   
+7                   john salmons, beno udrih (7)   
+8                               john salmons (6)   
+9                   john salmons, beno udrih (5)   
+10                              john salmons (5)   
+11                               brad miller (9)   
+12                                beno udrih (5)   
+13                              kevin martin (7)   
+14                              john salmons (5)   
+15               spencer hawes, kevin martin (3)   
+
+                  location_nattendance record  num_score  num_high_points  \
+0   the palace of auburn hills\n22,076   8–25          0               25   
+1           conseco fieldhouse\n12,765   8–26          0               45   
+2                  izod center\n12,314   8–27          0               36   
+3                united center\n18,060   8–28          0               29   
+4                   arco arena\n12,587   8–29          0               29   
+5                   arco arena\n12,294   9–29          0               21   
+6                   arco arena\n11,168   9–30          0               30   
+7                 oracle arena\n19,122  10–30          0               30   
+8                   arco arena\n11,663  10–31          0               24   
+9                 pepsi center\n15,164  10–32          0               25   
+10                  arco arena\n10,821  10–33          0               24   
+11              bradley center\n15,379  10–34          0               20   
+12           air canada centre\n18,127  10–35          0               21   
+13         quicken loans arena\n20,562  10–36          0               35   
+14         td banknorth garden\n18,624  10–37          0               22   
+15                  arco arena\n13,356  10–38          0               27   
+
+    num_high_rebounds  
+0                  16  
+1                  10  
+2                   8  
+3                  12  
+4                  16  
+5                   8  
+6                   5  
+7                  22  
+8                  11  
+9                  11  
+10                  5  
+11                 13  
+12                  7  
+13                  7  
+14                 11  
+15                 12  
+Sample 1390 - Plan 1: Table after operation: [['game', 'date', 'team', 'score', 'high_points', 'high_rebounds', 'high_assists', 'location_nattendance', 'record', 'num_score', 'num_high_points', 'num_high_rebounds'], [33, 'january 2', '@ detroit', 'l 92–98', 'brad miller (25)', 'brad miller (16)', 'john salmons (4)', 'the palace of auburn hills\\n22,076', '8–25', 0, 25, 16], [34, 'january 3', '@ indiana', 'l 117–122', 'kevin martin (45)', 'bobby jackson (10)', 'kevin martin, brad miller (6)', 'conseco fieldhouse\\n12,765', '8–26', 0, 45, 10], [35, 'january 5', '@ new jersey', 'l 90–98', 'kevin martin (36)', 'kenny thomas (8)', 'brad miller (8)', 'izod center\\n12,314', '8–27', 0, 36, 8], [36, 'january 6', '@ chicago', 'l 94–99', 'kevin martin (29)', 'brad miller (12)', 'beno udrih (5)', 'united center\\n18,060', '8–28', 0, 29, 12], [37, 'january 9', 'miami', 'l 115–119 (ot)', 'john salmons (29)', 'brad miller (16)', 'john salmons, brad miller, bobby jackson (4)', 'arco arena\\n12,587', '8–29', 0, 29, 16], [38, 'january 11', 'dallas', 'w 102–95', 'kevin martin (21)', 'spencer hawes (8)', 'beno udrih (6)', 'arco arena\\n12,294', '9–29', 0, 21, 8], [39, 'january 13', 'orlando', 'l 107–139', 'kevin martin (30)', 'francisco garcía (5)', 'francisco garcía (5)', 'arco arena\\n11,168', '9–30', 0, 30, 5], [40, 'january 14', '@ golden state', 'w 135–133 (3ot)', 'brad miller (30)', 'brad miller (22)', 'john salmons, beno udrih (7)', 'oracle arena\\n19,122', '10–30', 0, 30, 22], [41, 'january 16', 'milwaukee', 'l 122–129', 'john salmons, kevin martin (24)', 'jason thompson (11)', 'john salmons (6)', 'arco arena\\n11,663', '10–31', 0, 24, 11], [42, 'january 20', '@ denver', 'l 99–118', 'kevin martin (25)', 'jason thompson (11)', 'john salmons, beno udrih (5)', 'pepsi center\\n15,164', '10–32', 0, 25, 11], [43, 'january 21', 'washington', 'l 107–110', 'john salmons, beno udrih (24)', 'john salmons, shelden williams, jason thompson (5)', 'john salmons (5)', 'arco arena\\n10,821', '10–33', 0, 24, 5], [44, 'january 24', '@ milwaukee', 'l 104–106', 'kevin martin (20)', 'brad miller (13)', 'brad miller (9)', 'bradley center\\n15,379', '10–34', 0, 20, 13], [45, 'january 25', '@ toronto', 'l 97–113', 'john salmons (21)', 'john salmons (7)', 'beno udrih (5)', 'air canada centre\\n18,127', '10–35', 0, 21, 7], [46, 'january 27', '@ cleveland', 'l 110–117', 'kevin martin (35)', 'kevin martin (7)', 'kevin martin (7)', 'quicken loans arena\\n20,562', '10–36', 0, 35, 7], [47, 'january 28', '@ boston', 'l 100–119', 'john salmons (22)', 'jason thompson (11)', 'john salmons (5)', 'td banknorth garden\\n18,624', '10–37', 0, 22, 11], [48, 'january 30', 'chicago', 'l 88–109', 'kevin martin (27)', 'jason thompson (12)', 'spencer hawes, kevin martin (3)', 'arco arena\\n13,356', '10–38', 0, 27, 12]]
+########################################################################################################################
+Sample 1390 - Plan 1: Operation 5: Select row number 1.
+Sample 1390 - Plan 1: Selected indices: []
+Sample 1390 - Plan 1: X-Table after operation df:
+   game       date       team    score       high_points     high_rebounds  \
+0    33  january 2  @ detroit  l 92–98  brad miller (25)  brad miller (16)   
+
+       high_assists                location_nattendance record  num_score  \
+0  john salmons (4)  the palace of auburn hills\n22,076   8–25          0   
+
+   num_high_points  num_high_rebounds  
+0               25                 16  
+Sample 1390 - Plan 1: Table after operation: [['game', 'date', 'team', 'score', 'high_points', 'high_rebounds', 'high_assists', 'location_nattendance', 'record', 'num_score', 'num_high_points', 'num_high_rebounds'], [33, 'january 2', '@ detroit', 'l 92–98', 'brad miller (25)', 'brad miller (16)', 'john salmons (4)', 'the palace of auburn hills\\n22,076', '8–25', 0, 25, 16]]
+########################################################################################################################
+Sample 1390 - Plan 1: Operation 6: Select the 'game' column.
+Sample 1390 - Plan 1: Selected indices: []
+Sample 1390 - Plan 1: X-Table after operation df:
+   game
+0    33
+Sample 1390 - Plan 1: Table after operation: [['game'], [33]]
+########################################################################################################################
+Sample 1390 - Plan 1: Operation 7: Select the 'num_high_points' column.
+SQL execution error in operation 7: Execution failed on sql 'SELECT num_high_points
+FROM table_sql;': no such column: num_high_points
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['2']]
+Groundtruth: ['2']

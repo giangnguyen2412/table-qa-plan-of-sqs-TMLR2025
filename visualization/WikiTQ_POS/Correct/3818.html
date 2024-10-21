@@ -1,0 +1,263 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> who had the top time at the 1966 grand prix?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where 'pos' is '1' to filter out the top position.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>pos</td>
+<td>no</td>
+<td>driver</td>
+<td>constructor</td>
+<td>laps</td>
+<td>time_retired</td>
+<td>grid</td>
+<td>points</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jack brabham</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">brabham-repco</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">48</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1:48:31.3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td>22</td>
+<td>mike parkes</td>
+<td>ferrari</td>
+<td>48</td>
+<td>+ 9.5</td>
+<td>3</td>
+<td>6</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td>14</td>
+<td>denny hulme</td>
+<td>brabham-repco</td>
+<td>46</td>
+<td>+ 2 laps</td>
+<td>9</td>
+<td>4</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td>6</td>
+<td>jochen rindt</td>
+<td>cooper-maserati</td>
+<td>46</td>
+<td>+ 2 laps</td>
+<td>5</td>
+<td>3</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5</span></td>
+<td>26</td>
+<td>dan gurney</td>
+<td>eagle-climax</td>
+<td>45</td>
+<td>+ 3 laps</td>
+<td>14</td>
+<td>2</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+<td>44</td>
+<td>john taylor</td>
+<td>brabham-brm</td>
+<td>45</td>
+<td>+ 3 laps</td>
+<td>15</td>
+<td>1</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7</span></td>
+<td>36</td>
+<td>bob anderson</td>
+<td>brabham-climax</td>
+<td>44</td>
+<td>+ 4 laps</td>
+<td>12</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td>8</td>
+<td>chris amon</td>
+<td>cooper-maserati</td>
+<td>44</td>
+<td>+ 4 laps</td>
+<td>7</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nc</span></td>
+<td>42</td>
+<td>guy ligier</td>
+<td>cooper-maserati</td>
+<td>42</td>
+<td>not classified</td>
+<td>11</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ret</span></td>
+<td>2</td>
+<td>pedro rodríguez</td>
+<td>lotus-climax</td>
+<td>40</td>
+<td>oil leak</td>
+<td>13</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nc</span></td>
+<td>20</td>
+<td>lorenzo bandini</td>
+<td>ferrari</td>
+<td>37</td>
+<td>not classified</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nc</span></td>
+<td>30</td>
+<td>jo bonnier</td>
+<td>brabham-climax</td>
+<td>32</td>
+<td>not classified</td>
+<td>17</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ret</span></td>
+<td>16</td>
+<td>graham hill</td>
+<td>brm</td>
+<td>13</td>
+<td>engine</td>
+<td>8</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ret</span></td>
+<td>38</td>
+<td>jo siffert</td>
+<td>cooper-maserati</td>
+<td>10</td>
+<td>fuel system</td>
+<td>6</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ret</span></td>
+<td>32</td>
+<td>mike spence</td>
+<td>lotus-brm</td>
+<td>8</td>
+<td>clutch</td>
+<td>10</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ret</span></td>
+<td>10</td>
+<td>john surtees</td>
+<td>cooper-maserati</td>
+<td>5</td>
+<td>fuel system</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ret</span></td>
+<td>4</td>
+<td>peter arundell</td>
+<td>lotus-brm</td>
+<td>3</td>
+<td>gearbox</td>
+<td>16</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dns</span></td>
+<td>2</td>
+<td>jim clark</td>
+<td>lotus-climax</td>
+<td></td>
+<td>accident</td>
+<td>(18)</td>
+<td></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select the 'driver' column to identify the driver with the top time at the 1966 grand prix.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>pos</td>
+<td>no</td>
+<td>driver</td>
+<td>constructor</td>
+<td>laps</td>
+<td>time_retired</td>
+<td>grid</td>
+<td>points</td>
+</tr>
+<tr>
+<td>1</td>
+<td>12</td>
+<td>jack brabham</td>
+<td>brabham-repco</td>
+<td>48.0</td>
+<td>1:48:31.3</td>
+<td>4</td>
+<td>9.0</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>driver</td>
+</tr>
+<tr>
+<td>jack brabham</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['jack brabham']]</h3>
+</body></html>

@@ -1,0 +1,332 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which manager finished first the most?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'finish' column is '1st'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>record</td>
+<td>finish</td>
+<td>manager</td>
+<td>playoffs</td>
+</tr>
+<tr>
+<td>1961</td>
+<td>68-86</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6th</span></td>
+<td>tommy heath / bill werle</td>
+<td>none</td>
+</tr>
+<tr>
+<td>1962</td>
+<td>77-76</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5th</span></td>
+<td>irv noren</td>
+<td>none</td>
+</tr>
+<tr>
+<td>1963</td>
+<td>81-77</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4th</span></td>
+<td>irv noren</td>
+<td></td>
+</tr>
+<tr>
+<td>1964</td>
+<td>60-98</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10th</span></td>
+<td>bob lemon</td>
+<td></td>
+</tr>
+<tr>
+<td>1965</td>
+<td>75-72</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6th (t)</span></td>
+<td>george case</td>
+<td></td>
+</tr>
+<tr>
+<td>1966</td>
+<td>63-84</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10th</span></td>
+<td>george case</td>
+<td></td>
+</tr>
+<tr>
+<td>1967</td>
+<td>60-87</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12th</span></td>
+<td>wayne terwilliger</td>
+<td></td>
+</tr>
+<tr>
+<td>1968</td>
+<td>78-69</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3rd</span></td>
+<td>bill adair</td>
+<td></td>
+</tr>
+<tr>
+<td>1969</td>
+<td>74-72</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4th</span></td>
+<td>chuck tanner</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1970</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">98-48</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1st</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chuck tanner</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lost league finals</span></td>
+</tr>
+<tr>
+<td>1971</td>
+<td>73-73</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4th (t)</span></td>
+<td>bill adair</td>
+<td></td>
+</tr>
+<tr>
+<td>1972</td>
+<td>74-74</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5th</span></td>
+<td>rocky bridges</td>
+<td></td>
+</tr>
+<tr>
+<td>1973</td>
+<td>70-74</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5th</span></td>
+<td>rocky bridges / warren hacker / roy hartsfield</td>
+<td></td>
+</tr>
+<tr>
+<td>1974</td>
+<td>67-77</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6th</span></td>
+<td>roy hartsfield</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1975</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">88-56</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1st</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">roy hartsfield</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">league champs</span></td>
+</tr>
+<tr>
+<td>1976</td>
+<td>77-68</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2nd</span></td>
+<td>roy hartsfield</td>
+<td>league champs</td>
+</tr>
+<tr>
+<td>1977</td>
+<td>79-67</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2nd</span></td>
+<td>dick phillips</td>
+<td>lost league finals</td>
+</tr>
+<tr>
+<td>1978</td>
+<td>56-82</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8th</span></td>
+<td>dick phillips</td>
+<td></td>
+</tr>
+<tr>
+<td>1979</td>
+<td>72-76</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8th</span></td>
+<td>dick phillips</td>
+<td>lost league finals</td>
+</tr>
+<tr>
+<td>1980</td>
+<td>76-65</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5th</span></td>
+<td>doug rader</td>
+<td>lost league finals</td>
+</tr>
+<tr>
+<td>1981</td>
+<td>72-65</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3rd (t)</span></td>
+<td>doug rader</td>
+<td>lost in 1st round</td>
+</tr>
+<tr>
+<td>1982</td>
+<td>73-71</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5th</span></td>
+<td>doug rader</td>
+<td></td>
+</tr>
+<tr>
+<td>1983</td>
+<td>72-71</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5th</span></td>
+<td>tom trebelhorn</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1984</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">87-53</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1st</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tommy sandt</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lost league finals</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1985</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">84-59</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1st</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tommy sandt</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lost in 1st round</span></td>
+</tr>
+<tr>
+<td>1986</td>
+<td>65-79</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9th</span></td>
+<td>tommy sandt</td>
+<td></td>
+</tr>
+<tr>
+<td>1987</td>
+<td>65-75</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9th</span></td>
+<td>bob bailey</td>
+<td></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Count the number of occurrences for each 'manager' in the selected rows.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>record</td>
+<td>finish</td>
+<td>manager</td>
+<td>playoffs</td>
+</tr>
+<tr>
+<td>1970</td>
+<td>98-48</td>
+<td>1st</td>
+<td>chuck tanner</td>
+<td>lost league finals</td>
+</tr>
+<tr>
+<td>1975</td>
+<td>88-56</td>
+<td>1st</td>
+<td>roy hartsfield</td>
+<td>league champs</td>
+</tr>
+<tr>
+<td>1984</td>
+<td>87-53</td>
+<td>1st</td>
+<td>tommy sandt</td>
+<td>lost league finals</td>
+</tr>
+<tr>
+<td>1985</td>
+<td>84-59</td>
+<td>1st</td>
+<td>tommy sandt</td>
+<td>lost in 1st round</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Order the result by the count of occurrences in descending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>manager</td>
+<td>manager_count</td>
+</tr>
+<tr>
+<td>chuck tanner</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>roy hartsfield</td>
+<td><span class="highlighted-cell" title="Used in transformation">1</span></td>
+</tr>
+<tr>
+<td>tommy sandt</td>
+<td><span class="highlighted-cell" title="Used in transformation">2</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Select the 'manager' with the highest count as the answer to the question.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>manager</td>
+<td>manager_count</td>
+</tr>
+<tr>
+<td>tommy sandt</td>
+<td>2</td>
+</tr>
+<tr>
+<td>chuck tanner</td>
+<td>1</td>
+</tr>
+<tr>
+<td>roy hartsfield</td>
+<td>1</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>manager</td>
+</tr>
+<tr>
+<td>tommy sandt</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['tommy sandt']]</h3>
+</body></html>

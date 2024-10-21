@@ -1,0 +1,63 @@
+************************************************************************************************************************
+Sample 1722 - Plan 1: Query: which candidate in the 2014 south australian state election had the highest percentage of votes?
+Sample 1722 - Plan 1: Groundtruth: ['Adrian Pederick']
+Sample 1722 - Plan 1: X-Original table pd: 
+                 party           candidate   votes     _    __
+0              liberal     adrian pederick  11,469  55.1  −6.7
+1                labor          lou bailey   5,314  25.5  +2.5
+2         family first   daniel gutteridge   1,654   7.9  +0.8
+3               greens         damien pyne   1,458   7.0  −1.0
+4         nationals sa       rachel titley     912   4.4  +4.4
+5   total formal votes  total formal votes  20,807  96.8  +0.0
+6       informal votes      informal votes     697   3.2  −0.0
+7              turnout             turnout  21,504  92.1  −0.7
+8              liberal     adrian pederick  13,444  64.6  −3.1
+9                labor          lou bailey   7,363  35.4  +3.1
+10        liberal hold        liberal hold   swing  −3.1      
+Sample 1722 - Plan 1: Caption: none
+Sample 1722 - Plan 1: Original table: [['party', 'candidate', 'votes', '_', '__'], ['liberal', 'adrian pederick', '11,469', '55.1', '−6.7'], ['labor', 'lou bailey', '5,314', '25.5', '+2.5'], ['family first', 'daniel gutteridge', '1,654', '7.9', '+0.8'], ['greens', 'damien pyne', '1,458', '7.0', '−1.0'], ['nationals sa', 'rachel titley', '912', '4.4', '+4.4'], ['total formal votes', 'total formal votes', '20,807', '96.8', '+0.0'], ['informal votes', 'informal votes', '697', '3.2', '−0.0'], ['turnout', 'turnout', '21,504', '92.1', '−0.7'], ['liberal', 'adrian pederick', '13,444', '64.6', '−3.1'], ['labor', 'lou bailey', '7,363', '35.4', '+3.1'], ['liberal hold', 'liberal hold', 'swing', '−3.1', '']]
+########################################################################################################################
+Sample 1722 - Plan 1: Operation 1: Select rows where the 'party' is not 'total formal votes' and not 'informal votes' and not 'turnout'.
+Sample 1722 - Plan 1: Selected indices: []
+Sample 1722 - Plan 1: X-Table after operation df:
+          party          candidate   votes     _    __
+0       liberal    adrian pederick  11,469  55.1  −6.7
+1         labor         lou bailey   5,314  25.5  +2.5
+2  family first  daniel gutteridge   1,654   7.9  +0.8
+3        greens        damien pyne   1,458   7.0  −1.0
+4  nationals sa      rachel titley     912   4.4  +4.4
+5       liberal    adrian pederick  13,444  64.6  −3.1
+6         labor         lou bailey   7,363  35.4  +3.1
+7  liberal hold       liberal hold   swing  −3.1      
+Sample 1722 - Plan 1: Table after operation: [['party', 'candidate', 'votes', '_', '__'], ['liberal', 'adrian pederick', '11,469', '55.1', '−6.7'], ['labor', 'lou bailey', '5,314', '25.5', '+2.5'], ['family first', 'daniel gutteridge', '1,654', '7.9', '+0.8'], ['greens', 'damien pyne', '1,458', '7.0', '−1.0'], ['nationals sa', 'rachel titley', '912', '4.4', '+4.4'], ['liberal', 'adrian pederick', '13,444', '64.6', '−3.1'], ['labor', 'lou bailey', '7,363', '35.4', '+3.1'], ['liberal hold', 'liberal hold', 'swing', '−3.1', '']]
+########################################################################################################################
+Sample 1722 - Plan 1: Operation 2: Order the table by the 'votes' column in descending order.
+Sample 1722 - Plan 1: Selected indices: [[6, 2], [1, 2], [4, 2], [0, 2], [7, 2], [2, 2], [3, 2], [5, 2]]
+Sample 1722 - Plan 1: X-Table after operation df:
+          party          candidate   votes     _    __
+0       liberal    adrian pederick  13,444  64.6  −3.1
+1       liberal    adrian pederick  11,469  55.1  −6.7
+2         labor         lou bailey   7,363  35.4  +3.1
+3         labor         lou bailey   5,314  25.5  +2.5
+4  family first  daniel gutteridge   1,654   7.9  +0.8
+5        greens        damien pyne   1,458   7.0  −1.0
+6  nationals sa      rachel titley     912   4.4  +4.4
+7  liberal hold       liberal hold   swing  −3.1      
+Sample 1722 - Plan 1: Table after operation: [['party', 'candidate', 'votes', '_', '__'], ['liberal', 'adrian pederick', '13,444', '64.6', '−3.1'], ['liberal', 'adrian pederick', '11,469', '55.1', '−6.7'], ['labor', 'lou bailey', '7,363', '35.4', '+3.1'], ['labor', 'lou bailey', '5,314', '25.5', '+2.5'], ['family first', 'daniel gutteridge', '1,654', '7.9', '+0.8'], ['greens', 'damien pyne', '1,458', '7.0', '−1.0'], ['nationals sa', 'rachel titley', '912', '4.4', '+4.4'], ['liberal hold', 'liberal hold', 'swing', '−3.1', '']]
+########################################################################################################################
+Sample 1722 - Plan 1: Operation 3: Select row number 1.
+Sample 1722 - Plan 1: Selected indices: []
+Sample 1722 - Plan 1: X-Table after operation df:
+     party        candidate   votes     _    __
+0  liberal  adrian pederick  13,444  64.6  −3.1
+Sample 1722 - Plan 1: Table after operation: [['party', 'candidate', 'votes', '_', '__'], ['liberal', 'adrian pederick', '13,444', '64.6', '−3.1']]
+########################################################################################################################
+Sample 1722 - Plan 1: Operation 4: Select the 'candidate' column.
+Sample 1722 - Plan 1: Selected indices: []
+Sample 1722 - Plan 1: X-Table after operation df:
+         candidate
+0  adrian pederick
+Sample 1722 - Plan 1: Table after operation: [['candidate'], ['adrian pederick']]
+Fall-back: FALSE
+Answer from plan 1: [['adrian pederick']]
+Groundtruth: ['Adrian Pederick']

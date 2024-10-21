@@ -1,0 +1,322 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> what was the largest difference in attendance?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Extract the numerical values from the 'attendance' column and add a new column 'num_attendance' to the existing table.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>week</td>
+<td>date</td>
+<td>opponent</td>
+<td>result</td>
+<td>attendance</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">september 13, 1987</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">san diego chargers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w 20–13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">56,940</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">september 20, 1987</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at seattle seahawks</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">l 43–14</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">61,667</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">–</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">september 27, 1987</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">minnesota vikings</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">canceled</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">october 4, 1987</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at los angeles raiders</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">l 35–17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">10,708</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">october 11, 1987</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at miami dolphins</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">l 42–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">25,867</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">october 18, 1987</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">denver broncos</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">l 26–17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">20,296</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">october 25, 1987</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at san diego chargers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">l 42–21</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">47,972</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">november 1, 1987</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at chicago bears</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">l 31–28</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">63,498</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">november 8, 1987</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pittsburgh steelers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">l 17–16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">45,249</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">november 15, 1987</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">new york jets</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">l 16–9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">40,718</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">november 22, 1987</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">green bay packers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">l 23–3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">34,611</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">november 26, 1987</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at detroit lions</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w 27–20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">43,820</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 6, 1987</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at cincinnati bengals</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">l 30–27</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">46,489</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 13, 1987</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">los angeles raiders</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w 16–10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">63,834</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">14</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 19, 1987</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">at denver broncos</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">l 20–17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">75,053</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">15</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 27, 1987</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">seattle seahawks</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">w 41–20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">20,370</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Calculate the difference between the maximum and minimum values in the 'num_attendance' column.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>week</td>
+<td>date</td>
+<td>opponent</td>
+<td>result</td>
+<td>attendance</td>
+<td>num_attendance</td>
+</tr>
+<tr>
+<td>1</td>
+<td>september 13, 1987</td>
+<td>san diego chargers</td>
+<td>w 20–13</td>
+<td>56,940</td>
+<td>56940</td>
+</tr>
+<tr>
+<td>2</td>
+<td>september 20, 1987</td>
+<td>at seattle seahawks</td>
+<td>l 43–14</td>
+<td>61,667</td>
+<td>61667</td>
+</tr>
+<tr>
+<td>–</td>
+<td>september 27, 1987</td>
+<td>minnesota vikings</td>
+<td>canceled</td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>october 4, 1987</td>
+<td>at los angeles raiders</td>
+<td>l 35–17</td>
+<td>10,708</td>
+<td>10708</td>
+</tr>
+<tr>
+<td>4</td>
+<td>october 11, 1987</td>
+<td>at miami dolphins</td>
+<td>l 42–0</td>
+<td>25,867</td>
+<td>25867</td>
+</tr>
+<tr>
+<td>5</td>
+<td>october 18, 1987</td>
+<td>denver broncos</td>
+<td>l 26–17</td>
+<td>20,296</td>
+<td>20296</td>
+</tr>
+<tr>
+<td>6</td>
+<td>october 25, 1987</td>
+<td>at san diego chargers</td>
+<td>l 42–21</td>
+<td>47,972</td>
+<td>47972</td>
+</tr>
+<tr>
+<td>7</td>
+<td>november 1, 1987</td>
+<td>at chicago bears</td>
+<td>l 31–28</td>
+<td>63,498</td>
+<td>63498</td>
+</tr>
+<tr>
+<td>8</td>
+<td>november 8, 1987</td>
+<td>pittsburgh steelers</td>
+<td>l 17–16</td>
+<td>45,249</td>
+<td>45249</td>
+</tr>
+<tr>
+<td>9</td>
+<td>november 15, 1987</td>
+<td>new york jets</td>
+<td>l 16–9</td>
+<td>40,718</td>
+<td>40718</td>
+</tr>
+<tr>
+<td>10</td>
+<td>november 22, 1987</td>
+<td>green bay packers</td>
+<td>l 23–3</td>
+<td>34,611</td>
+<td>34611</td>
+</tr>
+<tr>
+<td>11</td>
+<td>november 26, 1987</td>
+<td>at detroit lions</td>
+<td>w 27–20</td>
+<td>43,820</td>
+<td>43820</td>
+</tr>
+<tr>
+<td>12</td>
+<td>december 6, 1987</td>
+<td>at cincinnati bengals</td>
+<td>l 30–27</td>
+<td>46,489</td>
+<td>46489</td>
+</tr>
+<tr>
+<td>13</td>
+<td>december 13, 1987</td>
+<td>los angeles raiders</td>
+<td>w 16–10</td>
+<td>63,834</td>
+<td>63834</td>
+</tr>
+<tr>
+<td>14</td>
+<td>december 19, 1987</td>
+<td>at denver broncos</td>
+<td>l 20–17</td>
+<td>75,053</td>
+<td>75053</td>
+</tr>
+<tr>
+<td>15</td>
+<td>december 27, 1987</td>
+<td>seattle seahawks</td>
+<td>w 41–20</td>
+<td>20,370</td>
+<td>20370</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select the calculated difference as the largest difference in attendance.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>attendance_difference</td>
+</tr>
+<tr>
+<td>75053</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>largest_difference</td>
+</tr>
+<tr>
+<td>75053</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[75053]]</h3>
+</body></html>

@@ -1,0 +1,70 @@
+************************************************************************************************************************
+Sample 2618 - Plan 1: Query: was there a greater difference in scores against millspaps or vanderbilt?
+Sample 2618 - Plan 1: Groundtruth: ['Millspaps']
+Sample 2618 - Plan 1: X-Original table pd: 
+              date            opponent  \
+0     september 24           millsaps*   
+1        october 2       at vanderbilt   
+2        october 9  at mississippi a&m   
+3       october 16     at georgia tech   
+4       october 23             sewanee   
+5       october 30                 lsu   
+6       november 6            kentucky   
+7      november 13             florida   
+8      november 25             georgia   
+9  january 1, 1927       vs. stanford*   
+
+                                            site  result  
+0                   denny field • tuscaloosa, al  w 54–0  
+1                   dudley field • nashville, tn  w 19–7  
+2  meridian fairgrounds • meridian, ms (rivalry)  w 26–7  
+3                      grant field • atlanta, ga  w 21–0  
+4                rickwood field • birmingham, al   w 2–0  
+5         denny field • tuscaloosa, al (rivalry)  w 24–0  
+6                rickwood field • birmingham, al  w 14–0  
+7                  cramton bowl • montgomery, al  w 49–0  
+8                rickwood field • birmingham, al  w 33–6  
+9           rose bowl • pasadena, ca (rose bowl)   t 7–7  
+Sample 2618 - Plan 1: Caption: none
+Sample 2618 - Plan 1: Original table: [['date', 'opponent', 'site', 'result'], ['september 24', 'millsaps*', 'denny field • tuscaloosa, al', 'w\xa054–0'], ['october 2', 'at\xa0vanderbilt', 'dudley field • nashville, tn', 'w\xa019–7'], ['october 9', 'at\xa0mississippi a&m', 'meridian fairgrounds • meridian, ms (rivalry)', 'w\xa026–7'], ['october 16', 'at\xa0georgia tech', 'grant field • atlanta, ga', 'w\xa021–0'], ['october 23', 'sewanee', 'rickwood field • birmingham, al', 'w\xa02–0'], ['october 30', 'lsu', 'denny field • tuscaloosa, al (rivalry)', 'w\xa024–0'], ['november 6', 'kentucky', 'rickwood field • birmingham, al', 'w\xa014–0'], ['november 13', 'florida', 'cramton bowl • montgomery, al', 'w\xa049–0'], ['november 25', 'georgia', 'rickwood field • birmingham, al', 'w\xa033–6'], ['january 1, 1927', 'vs.\xa0stanford*', 'rose bowl • pasadena, ca (rose bowl)', 't\xa07–7']]
+########################################################################################################################
+Sample 2618 - Plan 1: Operation 1: Select rows where the 'opponent' is 'millsaps*' and 'vanderbilt'.
+Sample 2618 - Plan 1: Selected indices: [[0, 1], [1, 1]]
+Sample 2618 - Plan 1: X-Table after operation df:
+           date       opponent                          site  result
+0  september 24      millsaps*  denny field • tuscaloosa, al  w 54–0
+1     october 2  at vanderbilt  dudley field • nashville, tn  w 19–7
+Sample 2618 - Plan 1: Table after operation: [['date', 'opponent', 'site', 'result'], ['september 24', 'millsaps*', 'denny field • tuscaloosa, al', 'w\xa054–0'], ['october 2', 'at\xa0vanderbilt', 'dudley field • nashville, tn', 'w\xa019–7']]
+########################################################################################################################
+Sample 2618 - Plan 1: Operation 2: Extract the scores from the 'result' column for each opponent.
+Sample 2618 - Plan 1: Selected indices: []
+Sample 2618 - Plan 1: X-Table after operation df:
+        opponent  score
+0      millsaps*   54–0
+1  at vanderbilt   19–7
+Sample 2618 - Plan 1: Table after operation: [['opponent', 'score'], ['millsaps*', '\xa054–0'], ['at\xa0vanderbilt', '\xa019–7']]
+########################################################################################################################
+Sample 2618 - Plan 1: Operation 3: Calculate the difference in scores for each opponent.
+Sample 2618 - Plan 1: Selected indices: []
+Sample 2618 - Plan 1: X-Table after operation df:
+        opponent  score_difference
+0      millsaps*                 0
+1  at vanderbilt                 7
+Sample 2618 - Plan 1: Table after operation: [['opponent', 'score_difference'], ['millsaps*', 0], ['at\xa0vanderbilt', 7]]
+########################################################################################################################
+Sample 2618 - Plan 1: Operation 4: Compare the difference in scores for 'millsaps*' and 'vanderbilt'.
+Sample 2618 - Plan 1: Selected indices: [[0, 0]]
+Sample 2618 - Plan 1: X-Table after operation df:
+    opponent  score_difference
+0  millsaps*                 0
+Sample 2618 - Plan 1: Table after operation: [['opponent', 'score_difference'], ['millsaps*', 0]]
+########################################################################################################################
+Sample 2618 - Plan 1: Operation 5: Determine which opponent had a greater difference in scores.
+Sample 2618 - Plan 1: Selected indices: []
+Sample 2618 - Plan 1: X-Table after operation df:
+    opponent
+0  millsaps*
+Sample 2618 - Plan 1: Table after operation: [['opponent'], ['millsaps*']]
+Fall-back: FALSE
+Answer from plan 1: [['millsaps*']]
+Groundtruth: ['Millspaps']

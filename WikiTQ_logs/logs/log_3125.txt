@@ -1,0 +1,86 @@
+************************************************************************************************************************
+Sample 3125 - Plan 1: Query: which series had more points: formula pilota china or formula 3 euro series?
+Sample 3125 - Plan 1: Groundtruth: ['Formula Pilota China']
+Sample 3125 - Plan 1: X-Original table pd: 
+    season                                     series                team  \
+0     2007            asian formula renault challenge   champ motorsports   
+1     2008            asian formula renault challenge   champ motorsports   
+2     2009            asian formula renault challenge    asia racing team   
+3     2009  formula renault 2.0 northern european cup   krenek motorsport   
+4     2010                           ats formel 3 cup      china sonangol   
+5     2010                      austria formula 3 cup   sonangol motopark   
+6     2011                       formula pilota china    asia racing team   
+7     2012                      formula 3 euro series  angola racing team   
+8     2012            59th macau grand prix formula 3  angola racing team   
+9     2012                       masters of formula 3  angola racing team   
+10    2012             british formula 3 championship  angola racing team   
+11    2013                                 gp3 series              carlin   
+
+    races  wins  poles  f_laps  podiums points position  
+0      12     0      0       0        1     64     14th  
+1      13     0      0       0        3    193      4th  
+2      12     6      2       4        7    287      2nd  
+3      14     0      0       0        0     44     21st  
+4       5     0      0       0        0      0     19th  
+5       4     1      2       3        2     35      9th  
+6      12     2      0       0        3    124      2nd  
+7      21     0      0       0        0     14     14th  
+8       2     0      0       0        0      —     23rd  
+9       1     0      0       0        0      —     18th  
+10      5     0      0       0        0      —        —  
+11     16     0      0       0        0      0     23rd  
+Sample 3125 - Plan 1: Caption: none
+Sample 3125 - Plan 1: Original table: [['season', 'series', 'team', 'races', 'wins', 'poles', 'f_laps', 'podiums', 'points', 'position'], ['2007', 'asian formula renault challenge', 'champ motorsports', '12', '0', '0', '0', '1', '64', '14th'], ['2008', 'asian formula renault challenge', 'champ motorsports', '13', '0', '0', '0', '3', '193', '4th'], ['2009', 'asian formula renault challenge', 'asia racing team', '12', '6', '2', '4', '7', '287', '2nd'], ['2009', 'formula renault 2.0 northern european cup', 'krenek motorsport', '14', '0', '0', '0', '0', '44', '21st'], ['2010', 'ats formel 3 cup', 'china sonangol', '5', '0', '0', '0', '0', '0', '19th'], ['2010', 'austria formula 3 cup', 'sonangol motopark', '4', '1', '2', '3', '2', '35', '9th'], ['2011', 'formula pilota china', 'asia racing team', '12', '2', '0', '0', '3', '124', '2nd'], ['2012', 'formula 3 euro series', 'angola racing team', '21', '0', '0', '0', '0', '14', '14th'], ['2012', '59th macau grand prix formula 3', 'angola racing team', '2', '0', '0', '0', '0', '—', '23rd'], ['2012', 'masters of formula 3', 'angola racing team', '1', '0', '0', '0', '0', '—', '18th'], ['2012', 'british formula 3 championship', 'angola racing team', '5', '0', '0', '0', '0', '—', '—'], ['2013', 'gp3 series', 'carlin', '16', '0', '0', '0', '0', '0', '23rd']]
+########################################################################################################################
+Sample 3125 - Plan 1: Operation 1: Select rows where 'series' is either 'formula pilota china' or 'formula 3 euro series'.
+Sample 3125 - Plan 1: Selected indices: [[6, 1], [7, 1]]
+Sample 3125 - Plan 1: X-Table after operation df:
+   season                 series                team  races  wins  poles  \
+0    2011   formula pilota china    asia racing team     12     2      0   
+1    2012  formula 3 euro series  angola racing team     21     0      0   
+
+   f_laps  podiums  points position  
+0       0        3     124      2nd  
+1       0        0      14     14th  
+Sample 3125 - Plan 1: Table after operation: [['season', 'series', 'team', 'races', 'wins', 'poles', 'f_laps', 'podiums', 'points', 'position'], [2011, 'formula pilota china', 'asia racing team', 12, 2, 0, 0, 3, '124', '2nd'], [2012, 'formula 3 euro series', 'angola racing team', 21, 0, 0, 0, 0, '14', '14th']]
+########################################################################################################################
+Sample 3125 - Plan 1: Operation 2: Select the 'series' and 'points' columns.
+Sample 3125 - Plan 1: Selected indices: []
+Sample 3125 - Plan 1: X-Table after operation df:
+                  series  points
+0   formula pilota china     124
+1  formula 3 euro series      14
+Sample 3125 - Plan 1: Table after operation: [['series', 'points'], ['formula pilota china', 124], ['formula 3 euro series', 14]]
+########################################################################################################################
+Sample 3125 - Plan 1: Operation 3: Group the table by 'series'.
+Sample 3125 - Plan 1: Selected indices: []
+Sample 3125 - Plan 1: X-Table after operation df:
+                  series  total_points
+0  formula 3 euro series            14
+1   formula pilota china           124
+Sample 3125 - Plan 1: Table after operation: [['series', 'total_points'], ['formula 3 euro series', 14], ['formula pilota china', 124]]
+########################################################################################################################
+Sample 3125 - Plan 1: Operation 4: Calculate the sum of 'points' for each series.
+Sample 3125 - Plan 1: Selected indices: []
+Sample 3125 - Plan 1: X-Table after operation df:
+                  series  sum_points
+0  formula 3 euro series          14
+1   formula pilota china         124
+Sample 3125 - Plan 1: Table after operation: [['series', 'sum_points'], ['formula 3 euro series', 14], ['formula pilota china', 124]]
+########################################################################################################################
+Sample 3125 - Plan 1: Operation 5: Compare the sum of 'points' for 'formula pilota china' and 'formula 3 euro series'.
+Sample 3125 - Plan 1: Selected indices: []
+Sample 3125 - Plan 1: X-Table after operation df:
+   points_china  points_euro
+0           124           14
+Sample 3125 - Plan 1: Table after operation: [['points_china', 'points_euro'], [124, 14]]
+########################################################################################################################
+Sample 3125 - Plan 1: Operation 6: Select the series with the higher sum of points as the answer to the question.
+Sample 3125 - Plan 1: Selected indices: []
+Sample 3125 - Plan 1: X-Table after operation df:
+  higher_sum_of_points
+0                China
+Sample 3125 - Plan 1: Table after operation: [['higher_sum_of_points'], ['China']]
+Fall-back: FALSE
+Answer from plan 1: [['China']]
+Groundtruth: ['Formula Pilota China']

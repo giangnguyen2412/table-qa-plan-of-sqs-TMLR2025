@@ -1,0 +1,68 @@
+************************************************************************************************************************
+Sample 327 - Plan 1: Query: which song was on the us mainstream rock charts the most?--"one thing" or "the sick"?
+Sample 327 - Plan 1: Groundtruth: ['"Bleeder"']
+Sample 327 - Plan 1: X-Original table pd: 
+   year           song us_hot_100 u_s__modern_rock u_s__mainstream_rock  \
+0  1997     "pacifier"          -                -                    -   
+1  1997    "one thing"          -                -                    -   
+2  1997      "defaced"          -                -                    -   
+3  1998  "breathe out"          -                -                    -   
+4  1998     "the sick"          -                -                    -   
+5  2001      "bleeder"          -                -                   32   
+6  2003        "ether"          -                -                    -   
+
+                                 album  
+0                             pacifier  
+1                             pacifier  
+2                             pacifier  
+3  an audio guide to everyday atrocity  
+4  an audio guide to everyday atrocity  
+5                             violence  
+6                            skeletons  
+Sample 327 - Plan 1: Caption: none
+Sample 327 - Plan 1: Original table: [['year', 'song', 'us_hot_100', 'u_s__modern_rock', 'u_s__mainstream_rock', 'album'], ['1997', '"pacifier"', '-', '-', '-', 'pacifier'], ['1997', '"one thing"', '-', '-', '-', 'pacifier'], ['1997', '"defaced"', '-', '-', '-', 'pacifier'], ['1998', '"breathe out"', '-', '-', '-', 'an audio guide to everyday atrocity'], ['1998', '"the sick"', '-', '-', '-', 'an audio guide to everyday atrocity'], ['2001', '"bleeder"', '-', '-', '32', 'violence'], ['2003', '"ether"', '-', '-', '-', 'skeletons']]
+########################################################################################################################
+Sample 327 - Plan 1: Operation 1: Select rows where 'u_s__mainstream_rock' is not equal to '-'.
+Sample 327 - Plan 1: Selected indices: [[5, 4]]
+Sample 327 - Plan 1: X-Table after operation df:
+   year       song us_hot_100 u_s__modern_rock  u_s__mainstream_rock     album
+0  2001  "bleeder"          -                -                    32  violence
+Sample 327 - Plan 1: Table after operation: [['year', 'song', 'us_hot_100', 'u_s__modern_rock', 'u_s__mainstream_rock', 'album'], [2001, '"bleeder"', '-', '-', '32', 'violence']]
+########################################################################################################################
+Sample 327 - Plan 1: Operation 2: Group the selected rows by 'song'.
+Sample 327 - Plan 1: Selected indices: []
+Sample 327 - Plan 1: X-Table after operation df:
+        song
+0  "bleeder"
+Sample 327 - Plan 1: Table after operation: [['song'], ['"bleeder"']]
+########################################################################################################################
+Sample 327 - Plan 1: Operation 3: Count the number of occurrences of each song in the grouped rows.
+Sample 327 - Plan 1: Selected indices: [[0, 0]]
+Sample 327 - Plan 1: X-Table after operation df:
+        song  count
+0  "bleeder"      1
+Sample 327 - Plan 1: Table after operation: [['song', 'count'], ['"bleeder"', 1]]
+########################################################################################################################
+Sample 327 - Plan 1: Operation 4: Order the grouped rows by the count of occurrences in descending order.
+Sample 327 - Plan 1: Selected indices: [[0, 1]]
+Sample 327 - Plan 1: X-Table after operation df:
+        song  count
+0  "bleeder"      1
+Sample 327 - Plan 1: Table after operation: [['song', 'count'], ['"bleeder"', 1]]
+########################################################################################################################
+Sample 327 - Plan 1: Operation 5: Select the first row.
+Sample 327 - Plan 1: Selected indices: []
+Sample 327 - Plan 1: X-Table after operation df:
+        song  count
+0  "bleeder"      1
+Sample 327 - Plan 1: Table after operation: [['song', 'count'], ['"bleeder"', 1]]
+########################################################################################################################
+Sample 327 - Plan 1: Operation 6: Select the 'song' column.
+Sample 327 - Plan 1: Selected indices: []
+Sample 327 - Plan 1: X-Table after operation df:
+        song
+0  "bleeder"
+Sample 327 - Plan 1: Table after operation: [['song'], ['"bleeder"']]
+Fall-back: FALSE
+Answer from plan 1: [['"bleeder"']]
+Groundtruth: ['"Bleeder"']

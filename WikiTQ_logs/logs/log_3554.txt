@@ -1,0 +1,85 @@
+************************************************************************************************************************
+Sample 3554 - Plan 1: Query: how many times is herself listed under the role column?
+Sample 3554 - Plan 1: Groundtruth: ['7']
+Sample 3554 - Plan 1: X-Original table pd: 
+         year                           title                 role  \
+0        1991                   flesh'n blood             penelope   
+1        1992                     true colors                lorae   
+2        1994  the all-new mickey mouse (mmc)              herself   
+3   1994–1999                  sister, sister      tamera campbell   
+4        1995     are you afraid of the dark?       evil chameleon   
+5   1995–1996      the adventures of hyperman      emma c. squared   
+6        1996                        all that              herself   
+7        1997                       smart guy              roxanne   
+8        1998                     blues clues              herself   
+9        1999                       detention  orangejella labelle   
+10       2000         how i loved a macho boy         jamal santos   
+11  2004–2006                 strong medicine    dr. kayla thorton   
+12  2006–2007                      family guy               esther   
+13       2009                       roommates                 hope   
+14       2009       the super hero squad show         misty knight   
+15       2011           things we do for love              lourdes   
+16       2011           access hollywood live              herself   
+17       2011                     chrisjayify              herself   
+18  2011–2013                    tia & tamera              herself   
+19       2012                 christmas angel              daphney   
+20       2013                        the real              herself   
+21       2014                melissa and joey              gillian   
+
+                                      notes  
+0                                 1 episode  
+1                                 1 episode  
+2                                 1 episode  
+3                              119 episodes  
+4                                 1 episode  
+5                                8 episodes  
+6                                            
+7                                 1 episode  
+8                                 1 episode  
+9                               13 episodes  
+10                               3 episodes  
+11                              37 episodes  
+12                        voice\n3 episodes  
+13                              13 episodes  
+14                                1 episode  
+15                               5 episodes  
+16                                  co-host  
+17                 episode: "drugs are bad"  
+18                       executive producer  
+19                                           
+20                                     host  
+21  season 3 episode 24 'to tell the truth'  
+Sample 3554 - Plan 1: Caption: none
+Sample 3554 - Plan 1: Original table: [['year', 'title', 'role', 'notes'], ['1991', "flesh'n blood", 'penelope', '1 episode'], ['1992', 'true colors', 'lorae', '1 episode'], ['1994', 'the all-new mickey mouse (mmc)', 'herself', '1 episode'], ['1994–1999', 'sister, sister', 'tamera campbell', '119 episodes'], ['1995', 'are you afraid of the dark?', 'evil chameleon', '1 episode'], ['1995–1996', 'the adventures of hyperman', 'emma c. squared', '8 episodes'], ['1996', 'all that', 'herself', ''], ['1997', 'smart guy', 'roxanne', '1 episode'], ['1998', 'blues clues', 'herself', '1 episode'], ['1999', 'detention', 'orangejella labelle', '13 episodes'], ['2000', 'how i loved a macho boy', 'jamal santos', '3 episodes'], ['2004–2006', 'strong medicine', 'dr. kayla thorton', '37 episodes'], ['2006–2007', 'family guy', 'esther', 'voice\\n3 episodes'], ['2009', 'roommates', 'hope', '13 episodes'], ['2009', 'the super hero squad show', 'misty knight', '1 episode'], ['2011', 'things we do for love', 'lourdes', '5 episodes'], ['2011', 'access hollywood live', 'herself', 'co-host'], ['2011', 'chrisjayify', 'herself', 'episode: "drugs are bad"'], ['2011–2013', 'tia & tamera', 'herself', 'executive producer'], ['2012', 'christmas angel', 'daphney', ''], ['2013', 'the real', 'herself', 'host'], ['2014', 'melissa and joey', 'gillian', "season 3 episode 24 'to tell the truth'"]]
+########################################################################################################################
+Sample 3554 - Plan 1: Operation 1: Select rows where the 'role' column is 'herself'.
+Sample 3554 - Plan 1: Selected indices: [[6, 2], [16, 2], [17, 2], [18, 2], [2, 2], [8, 2], [20, 2]]
+Sample 3554 - Plan 1: X-Table after operation df:
+        year                           title     role  \
+0       1994  the all-new mickey mouse (mmc)  herself   
+1       1996                        all that  herself   
+2       1998                     blues clues  herself   
+3       2011           access hollywood live  herself   
+4       2011                     chrisjayify  herself   
+5  2011–2013                    tia & tamera  herself   
+6       2013                        the real  herself   
+
+                      notes  
+0                 1 episode  
+1                            
+2                 1 episode  
+3                   co-host  
+4  episode: "drugs are bad"  
+5        executive producer  
+6                      host  
+Sample 3554 - Plan 1: Table after operation: [['year', 'title', 'role', 'notes'], ['1994', 'the all-new mickey mouse (mmc)', 'herself', '1 episode'], ['1996', 'all that', 'herself', ''], ['1998', 'blues clues', 'herself', '1 episode'], ['2011', 'access hollywood live', 'herself', 'co-host'], ['2011', 'chrisjayify', 'herself', 'episode: "drugs are bad"'], ['2011–2013', 'tia & tamera', 'herself', 'executive producer'], ['2013', 'the real', 'herself', 'host']]
+########################################################################################################################
+Sample 3554 - Plan 1: Operation 2: Count the number of rows.
+Sample 3554 - Plan 1: Selected indices: []
+Sample 3554 - Plan 1: X-Table after operation df:
+   row_count
+0          7
+Sample 3554 - Plan 1: Table after operation: [['row_count'], [7]]
+Fall-back: FALSE
+Answer from plan 1: [[7]]
+Groundtruth: ['7']

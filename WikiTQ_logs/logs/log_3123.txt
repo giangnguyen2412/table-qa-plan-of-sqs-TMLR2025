@@ -1,0 +1,51 @@
+************************************************************************************************************************
+Sample 3123 - Plan 1: Query: which season had more wins, 2007 or 2003?
+Sample 3123 - Plan 1: Groundtruth: ['2007']
+Sample 3123 - Plan 1: X-Original table pd: 
+   year  team_record_nw  team_record_nl                 playoffs
+0  2001               7               2  3rd qualifier, region 2
+1  2002               8               1  2nd qualifier, region 2
+2  2003               8               1  2nd qualifier, region 2
+3  2004               7               2  2nd qualifier, region 2
+4  2005               3               5    did not make playoffs
+5  2006               5               4  4th qualifier, region 2
+6  2007              13               1  1st qualifier, region 2
+7  2008               7               4  2nd qualifier, region 2
+8  2009               5               5    did not make playoffs
+9  2010               5               5    did not make playoffs
+Sample 3123 - Plan 1: Caption: none
+Sample 3123 - Plan 1: Original table: [['year', 'team_record_nw', 'team_record_nl', 'playoffs'], ['2001', '7', '2', '3rd qualifier, region 2'], ['2002', '8', '1', '2nd qualifier, region 2'], ['2003', '8', '1', '2nd qualifier, region 2'], ['2004', '7', '2', '2nd qualifier, region 2'], ['2005', '3', '5', 'did not make playoffs'], ['2006', '5', '4', '4th qualifier, region 2'], ['2007', '13', '1', '1st qualifier, region 2'], ['2008', '7', '4', '2nd qualifier, region 2'], ['2009', '5', '5', 'did not make playoffs'], ['2010', '5', '5', 'did not make playoffs']]
+########################################################################################################################
+Sample 3123 - Plan 1: Operation 1: Select rows where the 'year' is either 2007 or 2003.
+Sample 3123 - Plan 1: Selected indices: [[2, 0], [6, 0]]
+Sample 3123 - Plan 1: X-Table after operation df:
+   year  team_record_nw  team_record_nl                 playoffs
+0  2003               8               1  2nd qualifier, region 2
+1  2007              13               1  1st qualifier, region 2
+Sample 3123 - Plan 1: Table after operation: [['year', 'team_record_nw', 'team_record_nl', 'playoffs'], [2003, 8, 1, '2nd qualifier, region 2'], [2007, 13, 1, '1st qualifier, region 2']]
+########################################################################################################################
+Sample 3123 - Plan 1: Operation 2: Calculate the total number of wins for each year by summing the values in the 'team_record_nw' column.
+Sample 3123 - Plan 1: Selected indices: []
+Sample 3123 - Plan 1: X-Table after operation df:
+   year  total_wins
+0  2003           8
+1  2007          13
+Sample 3123 - Plan 1: Table after operation: [['year', 'total_wins'], [2003, 8], [2007, 13]]
+########################################################################################################################
+Sample 3123 - Plan 1: Operation 3: Compare the total number of wins for each year.
+Sample 3123 - Plan 1: Selected indices: []
+Sample 3123 - Plan 1: X-Table after operation df:
+   year  total_wins
+0  2007          13
+1  2003           8
+Sample 3123 - Plan 1: Table after operation: [['year', 'total_wins'], [2007, 13], [2003, 8]]
+########################################################################################################################
+Sample 3123 - Plan 1: Operation 4: Select the year with more wins as the answer to the question.
+Sample 3123 - Plan 1: Selected indices: []
+Sample 3123 - Plan 1: X-Table after operation df:
+   year
+0  2007
+Sample 3123 - Plan 1: Table after operation: [['year'], [2007]]
+Fall-back: FALSE
+Answer from plan 1: [[2007]]
+Groundtruth: ['2007']

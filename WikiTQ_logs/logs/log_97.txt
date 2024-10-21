@@ -1,0 +1,41 @@
+************************************************************************************************************************
+Sample 97 - Plan 1: Query: when did the restaurant "verre" at the hilton dubai creek close?
+Sample 97 - Plan 1: Groundtruth: ['October 2011']
+Sample 97 - Plan 1: X-Original table pd: 
+                           restaurant  \
+0     verre at the hilton dubai creek   
+1               maze by gordon ramsay   
+2       gordon ramsay at conrad tokyo   
+3             cerise by gordon ramsay   
+4               maze by gordon ramsay   
+5  maze / maze grill by gordon ramsay   
+
+                                      location date_opened   date_closed  
+0                  dubai, united arab emirates              october 2011  
+1                 the pearl-qatar, doha, qatar        2010    march 2012  
+2                   conrad tokyo, tokyo, japan                         -  
+3                         minato, tokyo, japan                         -  
+4  one and only hotel, cape town, south africa  april 2009     july 2010  
+5         crown metropol, melbourne, australia  march 2010   august 2011  
+Sample 97 - Plan 1: Caption: none
+Sample 97 - Plan 1: Original table: [['restaurant', 'location', 'date_opened', 'date_closed'], ['verre at the hilton dubai creek', 'dubai, united arab emirates', '', 'october 2011'], ['maze by gordon ramsay', 'the pearl-qatar, doha, qatar', '2010', 'march 2012'], ['gordon ramsay at conrad tokyo', 'conrad tokyo, tokyo, japan', '', '-'], ['cerise by gordon ramsay', 'minato, tokyo, japan', '', '-'], ['maze by gordon ramsay', 'one and only hotel, cape town, south africa', 'april 2009', 'july 2010'], ['maze / maze grill by gordon ramsay', 'crown metropol, melbourne, australia', 'march 2010', 'august 2011']]
+########################################################################################################################
+Sample 97 - Plan 1: Operation 1: Select rows where the 'restaurant' is 'verre at the hilton dubai creek'.
+Sample 97 - Plan 1: Selected indices: [[0, 0]]
+Sample 97 - Plan 1: X-Table after operation df:
+                        restaurant                     location  date_opened  \
+0  verre at the hilton dubai creek  dubai, united arab emirates          NaN   
+
+    date_closed  
+0  october 2011  
+Sample 97 - Plan 1: Table after operation: [['restaurant', 'location', 'date_opened', 'date_closed'], ['verre at the hilton dubai creek', 'dubai, united arab emirates', '', 'october 2011']]
+########################################################################################################################
+Sample 97 - Plan 1: Operation 2: Select the 'date_closed' column.
+Sample 97 - Plan 1: Selected indices: []
+Sample 97 - Plan 1: X-Table after operation df:
+    date_closed
+0  october 2011
+Sample 97 - Plan 1: Table after operation: [['date_closed'], ['october 2011']]
+Fall-back: FALSE
+Answer from plan 1: [['october 2011']]
+Groundtruth: ['October 2011']

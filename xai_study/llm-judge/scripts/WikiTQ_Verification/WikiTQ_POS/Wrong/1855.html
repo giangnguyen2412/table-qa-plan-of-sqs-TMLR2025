@@ -1,0 +1,175 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how many total goals were scored in the korea-india under-17 game on october 4, 2008?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'date' is '4 october' and the 'opponents' is 'india'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>date</td>
+<td>venue</td>
+<td>opponents</td>
+<td>score</td>
+<td>competition</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20 march</span></td>
+<td>fukuoka (a)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">japan</span></td>
+<td>2–0</td>
+<td>sanix cup</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20 march</span></td>
+<td>fukuoka (a)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">china pr</span></td>
+<td>1–0</td>
+<td>sanix cup</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8 august</span></td>
+<td>toyota (n)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">brazil</span></td>
+<td>0–0</td>
+<td>toyota cup</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9 august</span></td>
+<td>toyota (a)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">japan</span></td>
+<td>2–2</td>
+<td>toyota cup</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10 august</span></td>
+<td>toyota (n)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united arab emirates</span></td>
+<td>6–0</td>
+<td>toyota cup</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">4 october</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tashkent (n)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">india</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5–2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">afc u-16 championship (group b)</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6 october</span></td>
+<td>tashkent (n)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">indonesia</span></td>
+<td>9–0</td>
+<td>afc u-16 championship (group b)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8 october</span></td>
+<td>tashkent (n)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">syria</span></td>
+<td>1–1</td>
+<td>afc u-16 championship (group b)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12 october</span></td>
+<td>tashkent (a)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">uzbekistan</span></td>
+<td>3–0</td>
+<td>afc u-16 championship (quarterfinal)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">15 october</span></td>
+<td>tashkent (n)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">japan</span></td>
+<td>2–1</td>
+<td>afc u-16 championship (semifinal)</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">18 october</span></td>
+<td>tashkent (n)</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">iran</span></td>
+<td>1–2</td>
+<td>afc u-16 championship (final)</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Extract the numerical values from the 'score' column and add a column 'goals_scored' to the existing table.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>date</td>
+<td>venue</td>
+<td>opponents</td>
+<td>score</td>
+<td>competition</td>
+</tr>
+<tr>
+<td>4 october</td>
+<td>tashkent (n)</td>
+<td>india</td>
+<td><span class="highlighted-cell" title="Used in transformation">5–2</span></td>
+<td>afc u-16 championship (group b)</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Calculate the sum of the 'goals_scored' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>date</td>
+<td>venue</td>
+<td>opponents</td>
+<td>score</td>
+<td>competition</td>
+<td>goals_scored</td>
+</tr>
+<tr>
+<td>4 october</td>
+<td>tashkent (n)</td>
+<td>india</td>
+<td>5–2</td>
+<td>afc u-16 championship (group b)</td>
+<td>5</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>total_goals_scored</td>
+</tr>
+<tr>
+<td>5</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[5]]</h3>
+</body></html>

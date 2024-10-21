@@ -1,0 +1,605 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how many games are above 2 october 1920?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'date' is greater than '2 oct 1920'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>date</td>
+<td>opponents</td>
+<td>venue</td>
+<td>result</td>
+<td>scorers</td>
+<td>attendance</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">28 aug 1920</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">reading</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">h</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">14,500</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1 sep 1920</span></td>
+<td>bristol rovers</td>
+<td>a</td>
+<td>2–3</td>
+<td>walker, wolstenholme</td>
+<td>10,000</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">4 sep 1920</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">reading</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10,000</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">9 sep 1920</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bristol rovers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">h</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8,000</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11 sep 1920</span></td>
+<td>plymouth argyle</td>
+<td>a</td>
+<td>1–5</td>
+<td>wolstenholme</td>
+<td>12,000</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">18 sep 1920</span></td>
+<td>plymouth argyle</td>
+<td>h</td>
+<td>0–0</td>
+<td></td>
+<td>8,000</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">25 sep 1920</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">exeter city</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wolstenholme</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8,000</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2 oct 1920</span></td>
+<td>exeter city</td>
+<td>h</td>
+<td>2–0</td>
+<td>wolstenholme 2</td>
+<td>8,000</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">9 oct 1920</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">millwall</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">h</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3–1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">devlin 2, walker</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">14,000</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">16 oct 1920</span></td>
+<td>millwall</td>
+<td>a</td>
+<td>0–1</td>
+<td></td>
+<td>20,000</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">21 oct 1920</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">swindon town</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">h</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10,000</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">23 oct 1920</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">portsmouth</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">h</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">devlin</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9,000</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">30 oct 1920</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">portsmouth</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">devlin, dobson</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13,679</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">6 nov 1920</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gillingham</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">h</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wolstenholme</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7,000</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13 nov 1920</span></td>
+<td>gillingham</td>
+<td>a</td>
+<td>4–1</td>
+<td>dobson, wolstenholme, blott, devlin</td>
+<td>8,000</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">27 nov 1920</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">swindon town</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7,000</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">4 dec 1920</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">watford</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">h</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6,000</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11 dec 1920</span></td>
+<td>watford</td>
+<td>a</td>
+<td>1–5</td>
+<td>wright</td>
+<td>7,000</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">18 dec 1920</span></td>
+<td>brentford</td>
+<td>a</td>
+<td>2–2</td>
+<td>wright, thompson</td>
+<td>6,000</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">25 dec 1920</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">southend united</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">h</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1–1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dobson</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9,000</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">27 dec 1920</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">southend united</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1–2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">walker</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10,000</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1 jan 1921</span></td>
+<td>brentford</td>
+<td>h</td>
+<td>3–1</td>
+<td>dobson, walker, cox</td>
+<td>7,500</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13 jan 1921</span></td>
+<td>norwich city</td>
+<td>h</td>
+<td>2–0</td>
+<td>wright, cox</td>
+<td>4,000</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">22 jan 1921</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">norwich city</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5,000</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">29 jan 1921</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">northampton town</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">h</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1–1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dobson</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8,000</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">5 feb 1921</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">northampton town</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">groves, wright</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8,000</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12 feb 1921</span></td>
+<td>crystal palace</td>
+<td>h</td>
+<td>0–1</td>
+<td></td>
+<td>12,000</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19 feb 1921</span></td>
+<td>crystal palace</td>
+<td>a</td>
+<td>0–2</td>
+<td></td>
+<td>7,000</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">26 feb 1921</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">brighton & hove albion</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">h</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8,000</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">5 mar 1921</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">brighton & hove albion</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8,000</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12 mar 1921</span></td>
+<td>grimsby town</td>
+<td>h</td>
+<td>2–1</td>
+<td>devlin, kelson</td>
+<td>8,000</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19 mar 1921</span></td>
+<td>grimsby town</td>
+<td>a</td>
+<td>1–1</td>
+<td>devlin</td>
+<td>9,000</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">25 mar 1921</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">merthyr town</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">h</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12,600</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">26 mar 1921</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">queens park rangers</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10,000</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">28 mar 1921</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">merthyr town</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2–1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gaughan, devlin</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6,000</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2 apr 1921</span></td>
+<td>queens park rangers</td>
+<td>h</td>
+<td>1–3</td>
+<td>devlin</td>
+<td>7,500</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">9 apr 1921</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">swansea town</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">h</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1–1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">walker</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6,000</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">16 apr 1921</span></td>
+<td>swansea town</td>
+<td>a</td>
+<td>2–1</td>
+<td>dobson, wolstenholme</td>
+<td>14,000</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">23 apr 1921</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">luton town</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">a</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2–2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">walker, devlin</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9,000</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">30 apr 1921</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">luton town</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">h</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">devlin 2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5,000</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2 may 1921</span></td>
+<td>southampton</td>
+<td>a</td>
+<td>0–0</td>
+<td></td>
+<td>6,000</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">7 may 1921</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">southampton</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">h</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8,000</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Count the number of rows.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>date</td>
+<td>opponents</td>
+<td>venue</td>
+<td>result</td>
+<td>scorers</td>
+<td>attendance</td>
+</tr>
+<tr>
+<td>28 aug 1920</td>
+<td>reading</td>
+<td>h</td>
+<td>0–1</td>
+<td></td>
+<td>14,500</td>
+</tr>
+<tr>
+<td>4 sep 1920</td>
+<td>reading</td>
+<td>a</td>
+<td>0–4</td>
+<td></td>
+<td>10,000</td>
+</tr>
+<tr>
+<td>9 sep 1920</td>
+<td>bristol rovers</td>
+<td>h</td>
+<td>0–2</td>
+<td></td>
+<td>8,000</td>
+</tr>
+<tr>
+<td>25 sep 1920</td>
+<td>exeter city</td>
+<td>a</td>
+<td>1–0</td>
+<td>wolstenholme</td>
+<td>8,000</td>
+</tr>
+<tr>
+<td>9 oct 1920</td>
+<td>millwall</td>
+<td>h</td>
+<td>3–1</td>
+<td>devlin 2, walker</td>
+<td>14,000</td>
+</tr>
+<tr>
+<td>21 oct 1920</td>
+<td>swindon town</td>
+<td>h</td>
+<td>0–1</td>
+<td></td>
+<td>10,000</td>
+</tr>
+<tr>
+<td>23 oct 1920</td>
+<td>portsmouth</td>
+<td>h</td>
+<td>1–0</td>
+<td>devlin</td>
+<td>9,000</td>
+</tr>
+<tr>
+<td>30 oct 1920</td>
+<td>portsmouth</td>
+<td>a</td>
+<td>2–0</td>
+<td>devlin, dobson</td>
+<td>13,679</td>
+</tr>
+<tr>
+<td>6 nov 1920</td>
+<td>gillingham</td>
+<td>h</td>
+<td>1–0</td>
+<td>wolstenholme</td>
+<td>7,000</td>
+</tr>
+<tr>
+<td>27 nov 1920</td>
+<td>swindon town</td>
+<td>a</td>
+<td>0–5</td>
+<td></td>
+<td>7,000</td>
+</tr>
+<tr>
+<td>4 dec 1920</td>
+<td>watford</td>
+<td>h</td>
+<td>0–2</td>
+<td></td>
+<td>6,000</td>
+</tr>
+<tr>
+<td>25 dec 1920</td>
+<td>southend united</td>
+<td>h</td>
+<td>1–1</td>
+<td>dobson</td>
+<td>9,000</td>
+</tr>
+<tr>
+<td>27 dec 1920</td>
+<td>southend united</td>
+<td>a</td>
+<td>1–2</td>
+<td>walker</td>
+<td>10,000</td>
+</tr>
+<tr>
+<td>22 jan 1921</td>
+<td>norwich city</td>
+<td>a</td>
+<td>0–3</td>
+<td></td>
+<td>5,000</td>
+</tr>
+<tr>
+<td>29 jan 1921</td>
+<td>northampton town</td>
+<td>h</td>
+<td>1–1</td>
+<td>dobson</td>
+<td>8,000</td>
+</tr>
+<tr>
+<td>5 feb 1921</td>
+<td>northampton town</td>
+<td>a</td>
+<td>2–0</td>
+<td>groves, wright</td>
+<td>8,000</td>
+</tr>
+<tr>
+<td>26 feb 1921</td>
+<td>brighton & hove albion</td>
+<td>h</td>
+<td>0–4</td>
+<td></td>
+<td>8,000</td>
+</tr>
+<tr>
+<td>5 mar 1921</td>
+<td>brighton & hove albion</td>
+<td>a</td>
+<td>0–1</td>
+<td></td>
+<td>8,000</td>
+</tr>
+<tr>
+<td>25 mar 1921</td>
+<td>merthyr town</td>
+<td>h</td>
+<td>0–3</td>
+<td></td>
+<td>12,600</td>
+</tr>
+<tr>
+<td>26 mar 1921</td>
+<td>queens park rangers</td>
+<td>a</td>
+<td>0–2</td>
+<td></td>
+<td>10,000</td>
+</tr>
+<tr>
+<td>28 mar 1921</td>
+<td>merthyr town</td>
+<td>a</td>
+<td>2–1</td>
+<td>gaughan, devlin</td>
+<td>6,000</td>
+</tr>
+<tr>
+<td>9 apr 1921</td>
+<td>swansea town</td>
+<td>h</td>
+<td>1–1</td>
+<td>walker</td>
+<td>6,000</td>
+</tr>
+<tr>
+<td>23 apr 1921</td>
+<td>luton town</td>
+<td>a</td>
+<td>2–2</td>
+<td>walker, devlin</td>
+<td>9,000</td>
+</tr>
+<tr>
+<td>30 apr 1921</td>
+<td>luton town</td>
+<td>h</td>
+<td>2–0</td>
+<td>devlin 2</td>
+<td>5,000</td>
+</tr>
+<tr>
+<td>7 may 1921</td>
+<td>southampton</td>
+<td>h</td>
+<td>0–0</td>
+<td></td>
+<td>8,000</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>row_count</td>
+</tr>
+<tr>
+<td>25</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[25]]</h3>
+</body></html>

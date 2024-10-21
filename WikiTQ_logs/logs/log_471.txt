@@ -1,0 +1,55 @@
+************************************************************************************************************************
+Sample 471 - Plan 1: Query: who had more gold medals, japan or north korea?
+Sample 471 - Plan 1: Groundtruth: ['Japan']
+Sample 471 - Plan 1: X-Original table pd: 
+    rank       nation  gold  silver  bronze  total
+0      1        china    13       9      13     35
+1      2        japan     7      10       7     24
+2      3   uzbekistan     1       2       3      6
+3      4   kazakhstan     2       2       0      4
+4      5  north korea     1       0       1      2
+5      6  south korea     0       0       2      2
+6  total        total    24      23      26     73
+Sample 471 - Plan 1: Caption: none
+Sample 471 - Plan 1: Original table: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['1', 'china', '13', '9', '13', '35'], ['2', 'japan', '7', '10', '7', '24'], ['3', 'uzbekistan', '1', '2', '3', '6'], ['4', 'kazakhstan', '2', '2', '0', '4'], ['5', 'north korea', '1', '0', '1', '2'], ['6', 'south korea', '0', '0', '2', '2'], ['total', 'total', '24', '23', '26', '73']]
+########################################################################################################################
+Sample 471 - Plan 1: Operation 1: Select rows where 'nation' is 'japan' or 'north korea'.
+Sample 471 - Plan 1: Selected indices: [[1, 1], [4, 1]]
+Sample 471 - Plan 1: X-Table after operation df:
+   rank       nation  gold  silver  bronze  total
+0     2        japan     7      10       7     24
+1     5  north korea     1       0       1      2
+Sample 471 - Plan 1: Table after operation: [['rank', 'nation', 'gold', 'silver', 'bronze', 'total'], ['2', 'japan', 7, 10, 7, 24], ['5', 'north korea', 1, 0, 1, 2]]
+########################################################################################################################
+Sample 471 - Plan 1: Operation 2: Select the 'gold' column.
+Sample 471 - Plan 1: Selected indices: []
+Sample 471 - Plan 1: X-Table after operation df:
+   gold
+0     7
+1     1
+Sample 471 - Plan 1: Table after operation: [['gold'], [7], [1]]
+########################################################################################################################
+Sample 471 - Plan 1: Operation 3: Compare the values in the 'gold' column for both rows.
+Sample 471 - Plan 1: Selected indices: [[0, 0], [1, 0]]
+Sample 471 - Plan 1: X-Table after operation df:
+  comparison_result
+0             Equal
+1         Not Equal
+Sample 471 - Plan 1: Table after operation: [['comparison_result'], ['Equal'], ['Not Equal']]
+########################################################################################################################
+Sample 471 - Plan 1: Operation 4: Select the row with the higher value.
+Sample 471 - Plan 1: Selected indices: [[1, 0]]
+Sample 471 - Plan 1: X-Table after operation df:
+  comparison_result
+0         Not Equal
+Sample 471 - Plan 1: Table after operation: [['comparison_result'], ['Not Equal']]
+########################################################################################################################
+Sample 471 - Plan 1: Operation 5: Select the 'nation' column from the selected row.
+Sample 471 - Plan 1: Selected indices: []
+Sample 471 - Plan 1: X-Table after operation df:
+      nation
+0  Not Equal
+Sample 471 - Plan 1: Table after operation: [['nation'], ['Not Equal']]
+Fall-back: FALSE
+Answer from plan 1: [['Not Equal']]
+Groundtruth: ['Japan']

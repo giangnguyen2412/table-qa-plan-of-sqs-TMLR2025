@@ -1,0 +1,61 @@
+************************************************************************************************************************
+Sample 720 - Plan 1: Query: what were the total number of routes that used interjet?
+Sample 720 - Plan 1: Groundtruth: ['7']
+Sample 720 - Plan 1: X-Original table pd: 
+   rank                            city passengers  ranking  \
+0     1            quintana roo, cancún    132,046      NaN   
+1     2           nuevo león, monterrey    106,513      NaN   
+2     3              guerrero, acapulco     56,069      NaN   
+3     4            jalisco, guadalajara     52,584      NaN   
+4     5        jalisco, puerto vallarta     43,419      1.0   
+5     6  baja california sur, los cabos     37,526      1.0   
+6     7    guerrero, ixtapa/zihuatanejo     35,507      NaN   
+7     8        baja california, tijuana     14,906      NaN   
+8     9           tabasco, villahermosa      6,928      1.0   
+9    10             tamaulipas, tampico      3,619      1.0   
+
+                                 airline  
+0  aeroméxico connect, interjet, volaris  
+1           aeroméxico connect, interjet  
+2           aeroméxico connect, interjet  
+3            aeroméxico connect, volaris  
+4                               interjet  
+5                               interjet  
+6                               interjet  
+7                               interjet  
+8                            vivaaerobus  
+9                            vivaaerobus  
+Sample 720 - Plan 1: Caption: none
+Sample 720 - Plan 1: Original table: [['rank', 'city', 'passengers', 'ranking', 'airline'], ['1', 'quintana roo, cancún', '132,046', '', 'aeroméxico connect, interjet, volaris'], ['2', 'nuevo león, monterrey', '106,513', '', 'aeroméxico connect, interjet'], ['3', 'guerrero, acapulco', '56,069', '', 'aeroméxico connect, interjet'], ['4', 'jalisco, guadalajara', '52,584', '', 'aeroméxico connect, volaris'], ['5', 'jalisco, puerto vallarta', '43,419', '1', 'interjet'], ['6', 'baja california sur, los cabos', '37,526', '1', 'interjet'], ['7', 'guerrero, ixtapa/zihuatanejo', '35,507', '', 'interjet'], ['8', 'baja california, tijuana', '14,906', '', 'interjet'], ['9', 'tabasco, villahermosa', '6,928', '1', 'vivaaerobus'], ['10', 'tamaulipas, tampico', '3,619', '1', 'vivaaerobus']]
+########################################################################################################################
+Sample 720 - Plan 1: Operation 1: Select rows where the 'airline' column contains the value 'interjet'.
+Sample 720 - Plan 1: Selected indices: [[4, 4], [7, 4], [2, 4], [0, 4], [5, 4], [6, 4], [1, 4]]
+Sample 720 - Plan 1: X-Table after operation df:
+   rank                            city passengers  ranking  \
+0     1            quintana roo, cancún    132,046      NaN   
+1     2           nuevo león, monterrey    106,513      NaN   
+2     3              guerrero, acapulco     56,069      NaN   
+3     5        jalisco, puerto vallarta     43,419      1.0   
+4     6  baja california sur, los cabos     37,526      1.0   
+5     7    guerrero, ixtapa/zihuatanejo     35,507      NaN   
+6     8        baja california, tijuana     14,906      NaN   
+
+                                 airline  
+0  aeroméxico connect, interjet, volaris  
+1           aeroméxico connect, interjet  
+2           aeroméxico connect, interjet  
+3                               interjet  
+4                               interjet  
+5                               interjet  
+6                               interjet  
+Sample 720 - Plan 1: Table after operation: [['rank', 'city', 'passengers', 'ranking', 'airline'], [1, 'quintana roo, cancún', '132,046', nan, 'aeroméxico connect, interjet, volaris'], [2, 'nuevo león, monterrey', '106,513', nan, 'aeroméxico connect, interjet'], [3, 'guerrero, acapulco', '56,069', nan, 'aeroméxico connect, interjet'], [5, 'jalisco, puerto vallarta', '43,419', 1.0, 'interjet'], [6, 'baja california sur, los cabos', '37,526', 1.0, 'interjet'], [7, 'guerrero, ixtapa/zihuatanejo', '35,507', nan, 'interjet'], [8, 'baja california, tijuana', '14,906', nan, 'interjet']]
+########################################################################################################################
+Sample 720 - Plan 1: Operation 2: Count the number of rows.
+Sample 720 - Plan 1: Selected indices: []
+Sample 720 - Plan 1: X-Table after operation df:
+   row_count
+0          7
+Sample 720 - Plan 1: Table after operation: [['row_count'], [7]]
+Fall-back: FALSE
+Answer from plan 1: [[7]]
+Groundtruth: ['7']

@@ -1,0 +1,56 @@
+************************************************************************************************************************
+Sample 692 - Plan 1: Query: in rwhat year coin was smaller than the rest
+Sample 692 - Plan 1: Groundtruth: ['1992']
+Sample 692 - Plan 1: X-Original table pd: 
+   year                                              model denomination  \
+0  1992          re-establishment of kroon, 28 august 1992   100 krooni   
+1  1996  atlanta olympics, 100th anniversary of modern ...   100 krooni   
+2  1998  80th anniversary of declaration of independenc...   100 krooni   
+3  1992                re-establishment of krooni currency    10 krooni   
+4  1992                                 barcelona olympics    10 krooni   
+5  1998  80th anniversary of declaration of independenc...    10 krooni   
+6  2002  370th anniversary of the founding of tartu uni...    10 krooni   
+7  2004                         the flag of estonia – 2004    10 krooni   
+
+  metal_composition                                 dimensions  
+0       .900 silver  23 grams (0.81 oz)36 millimetres (1.4 in)  
+1       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)  
+2       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)  
+3       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)  
+4       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)  
+5       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)  
+6       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)  
+7       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)  
+Sample 692 - Plan 1: Caption: none
+Sample 692 - Plan 1: Original table: [['year', 'model', 'denomination', 'metal_composition', 'dimensions'], ['1992', 're-establishment of kroon, 28 august 1992', '100 krooni', '.900 silver', '23 grams (0.81\xa0oz)36 millimetres (1.4\xa0in)'], ['1996', 'atlanta olympics, 100th anniversary of modern olympiad', '100 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)'], ['1998', '80th anniversary of declaration of independence, 1918–1998', '100 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)'], ['1992', 're-establishment of krooni currency', '10 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)'], ['1992', 'barcelona olympics', '10 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)'], ['1998', '80th anniversary of declaration of independence, 1918–1998', '10 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)'], ['2002', '370th anniversary of the founding of tartu university', '10 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)'], ['2004', 'the flag of estonia – 2004', '10 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)']]
+########################################################################################################################
+Sample 692 - Plan 1: Operation 1: Extract the numerical value from the 'dimensions' column to obtain the size of each coin.
+Sample 692 - Plan 1: Selected indices: [[0, 4], [1, 4], [2, 4], [3, 4], [4, 4], [5, 4], [6, 4], [7, 4]]
+Sample 692 - Plan 1: X-Table after operation df:
+   year                                              model denomination  \
+0  1992          re-establishment of kroon, 28 august 1992   100 krooni   
+1  1996  atlanta olympics, 100th anniversary of modern ...   100 krooni   
+2  1998  80th anniversary of declaration of independenc...   100 krooni   
+3  1992                re-establishment of krooni currency    10 krooni   
+4  1992                                 barcelona olympics    10 krooni   
+5  1998  80th anniversary of declaration of independenc...    10 krooni   
+6  2002  370th anniversary of the founding of tartu uni...    10 krooni   
+7  2004                         the flag of estonia – 2004    10 krooni   
+
+  metal_composition                                 dimensions  coin_size  
+0       .900 silver  23 grams (0.81 oz)36 millimetres (1.4 in)        0.0  
+1       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)        0.0  
+2       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)        0.0  
+3       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)        0.0  
+4       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)        0.0  
+5       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)        0.0  
+6       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)        0.0  
+7       .925 silver  25 grams (0.88 oz)38 millimetres (1.5 in)        0.0  
+Sample 692 - Plan 1: Table after operation: [['year', 'model', 'denomination', 'metal_composition', 'dimensions', 'coin_size'], [1992, 're-establishment of kroon, 28 august 1992', '100 krooni', '.900 silver', '23 grams (0.81\xa0oz)36 millimetres (1.4\xa0in)', 0.0], [1996, 'atlanta olympics, 100th anniversary of modern olympiad', '100 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)', 0.0], [1998, '80th anniversary of declaration of independence, 1918–1998', '100 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)', 0.0], [1992, 're-establishment of krooni currency', '10 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)', 0.0], [1992, 'barcelona olympics', '10 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)', 0.0], [1998, '80th anniversary of declaration of independence, 1918–1998', '10 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)', 0.0], [2002, '370th anniversary of the founding of tartu university', '10 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)', 0.0], [2004, 'the flag of estonia – 2004', '10 krooni', '.925 silver', '25 grams (0.88\xa0oz)38 millimetres (1.5\xa0in)', 0.0]]
+########################################################################################################################
+Sample 692 - Plan 1: Operation 2: Add a column 'size' to the existing table with the extracted numerical values.
+SQL execution error in operation 2: 'NoneType' object is not iterable
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['1992']]
+Groundtruth: ['1992']

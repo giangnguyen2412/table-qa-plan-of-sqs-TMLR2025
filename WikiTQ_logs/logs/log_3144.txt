@@ -1,0 +1,73 @@
+************************************************************************************************************************
+Sample 3144 - Plan 1: Query: who had the highest total spectatorship?
+Sample 3144 - Plan 1: Groundtruth: ['Australian Football League']
+Sample 3144 - Plan 1: X-Original table pd: 
+                          competition total_spectatorship  \
+0                            a-league           1,772,133   
+1          australian football league           6,931,085   
+2                     big bash league             550,262   
+3          national basketball league             547,021   
+4               national rugby league           3,345,248   
+5                         super rugby             773,940   
+6                  rugby championship             133,532   
+7              state of origin series             186,607   
+8  women's national basketball league              77,944   
+
+  average_match_attendance       year  
+0                   12,707  2012/2013  
+1                   33,484       2013  
+2                   17,750  2011/2012  
+3                    4,031  2010/2011  
+4                   16,643       2013  
+5                   19,348       2012  
+6                   44,511       2012  
+7                   62,202       2011  
+8                           2010/2011  
+Sample 3144 - Plan 1: Caption: none
+Sample 3144 - Plan 1: Original table: [['competition', 'total_spectatorship', 'average_match_attendance', 'year'], ['a-league', '1,772,133', '12,707', '2012/2013'], ['australian football league', '6,931,085', '33,484', '2013'], ['big bash league', '550,262', '17,750', '2011/2012'], ['national basketball league', '547,021', '4,031', '2010/2011'], ['national rugby league', '3,345,248', '16,643', '2013'], ['super rugby', '773,940', '19,348', '2012'], ['rugby championship', '133,532', '44,511', '2012'], ['state of origin series', '186,607', '62,202', '2011'], ["women's national basketball league", '77,944', '', '2010/2011']]
+########################################################################################################################
+Sample 3144 - Plan 1: Operation 1: Order the table by 'total_spectatorship' in descending order.
+Sample 3144 - Plan 1: Selected indices: [[0, 1], [7, 1], [2, 1], [8, 1], [3, 1], [6, 1], [1, 1], [5, 1], [4, 1]]
+Sample 3144 - Plan 1: X-Table after operation df:
+                          competition total_spectatorship  \
+0          australian football league           6,931,085   
+1               national rugby league           3,345,248   
+2                            a-league           1,772,133   
+3                         super rugby             773,940   
+4                     big bash league             550,262   
+5          national basketball league             547,021   
+6              state of origin series             186,607   
+7                  rugby championship             133,532   
+8  women's national basketball league              77,944   
+
+  average_match_attendance       year  
+0                   33,484       2013  
+1                   16,643       2013  
+2                   12,707  2012/2013  
+3                   19,348       2012  
+4                   17,750  2011/2012  
+5                    4,031  2010/2011  
+6                   62,202       2011  
+7                   44,511       2012  
+8                           2010/2011  
+Sample 3144 - Plan 1: Table after operation: [['competition', 'total_spectatorship', 'average_match_attendance', 'year'], ['australian football league', '6,931,085', '33,484', '2013'], ['national rugby league', '3,345,248', '16,643', '2013'], ['a-league', '1,772,133', '12,707', '2012/2013'], ['super rugby', '773,940', '19,348', '2012'], ['big bash league', '550,262', '17,750', '2011/2012'], ['national basketball league', '547,021', '4,031', '2010/2011'], ['state of origin series', '186,607', '62,202', '2011'], ['rugby championship', '133,532', '44,511', '2012'], ["women's national basketball league", '77,944', '', '2010/2011']]
+########################################################################################################################
+Sample 3144 - Plan 1: Operation 2: Select row number 1.
+Sample 3144 - Plan 1: Selected indices: []
+Sample 3144 - Plan 1: X-Table after operation df:
+                  competition total_spectatorship average_match_attendance  \
+0  australian football league           6,931,085                   33,484   
+
+   year  
+0  2013  
+Sample 3144 - Plan 1: Table after operation: [['competition', 'total_spectatorship', 'average_match_attendance', 'year'], ['australian football league', '6,931,085', '33,484', '2013']]
+########################################################################################################################
+Sample 3144 - Plan 1: Operation 3: Select the 'competition' column.
+Sample 3144 - Plan 1: Selected indices: []
+Sample 3144 - Plan 1: X-Table after operation df:
+                  competition
+0  australian football league
+Sample 3144 - Plan 1: Table after operation: [['competition'], ['australian football league']]
+Fall-back: FALSE
+Answer from plan 1: [['australian football league']]
+Groundtruth: ['Australian Football League']

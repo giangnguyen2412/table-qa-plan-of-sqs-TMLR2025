@@ -1,0 +1,73 @@
+************************************************************************************************************************
+Sample 1105 - Plan 1: Query: episode number with the same challenger specialty as episodes 3 and 6
+Sample 1105 - Plan 1: Groundtruth: ['8']
+Sample 1105 - Plan 1: X-Original table pd: 
+    episode  show__              iron_chef                      challenger  \
+0         1  ia0502             bobby flay                        ben ford   
+1         2  ia0508           mario batali                        tony liu   
+2         3  ia0509               cat cora         alexandra guarnaschelli   
+3         4  ia0501           mario batali               andrew carmellini   
+4         5  ia0504               cat cora                    mark tarbell   
+5         6  ia0506             bobby flay                    kurt boucher   
+6         7  ia0510           mario batali                   charles clark   
+7         8  ia0507               cat cora                     mary dumont   
+8         9  iasp07          michael symon                     ricky moore   
+9        10  iasp08  cat cora & paula deen  tyler florence & robert irvine   
+10       11  ia0503               cat cora                   todd richards   
+11       12  ia0505      masaharu morimoto               fortunato nicotra   
+
+                                 challenger_specialty  \
+0                                   regional american   
+1                                        pan-european   
+2                                     french-american   
+3                                       urban italian   
+4                                    seasonal organic   
+5                                     french-american   
+6                                        new american   
+7                                     french-american   
+8                               contemporary american   
+9   southern (deen), contemporary american (floren...   
+10                                    modern southern   
+11                                   seasonal italian   
+
+   secret_ingredient_s__or_theme                 winner final_score  
+0              blue foot chicken             bobby flay       44-35  
+1                           opah           mario batali       55-47  
+2                farmers' market               cat cora       45-41  
+3            parmigiano-reggiano           mario batali       56-55  
+4                         apples           mark tarbell       50-44  
+5                    arctic char             bobby flay       46-39  
+6                        halibut           mario batali       51-50  
+7                 milk and cream               cat cora       51-46  
+8       traditional thanksgiving          michael symon       51-43  
+9                          sugar  cat cora & paula deen       49-47  
+10                       carrots               cat cora       48-46  
+11                      kampachi      masaharu morimoto       59-50  
+Sample 1105 - Plan 1: Caption: none
+Sample 1105 - Plan 1: Original table: [['episode', 'show__', 'iron_chef', 'challenger', 'challenger_specialty', 'secret_ingredient_s__or_theme', 'winner', 'final_score'], ['1', 'ia0502', 'bobby flay', 'ben ford', 'regional american', 'blue foot chicken', 'bobby flay', '44-35'], ['2', 'ia0508', 'mario batali', 'tony liu', 'pan-european', 'opah', 'mario batali', '55-47'], ['3', 'ia0509', 'cat cora', 'alexandra guarnaschelli', 'french-american', "farmers' market", 'cat cora', '45-41'], ['4', 'ia0501', 'mario batali', 'andrew carmellini', 'urban italian', 'parmigiano-reggiano', 'mario batali', '56-55'], ['5', 'ia0504', 'cat cora', 'mark tarbell', 'seasonal organic', 'apples', 'mark tarbell', '50-44'], ['6', 'ia0506', 'bobby flay', 'kurt boucher', 'french-american', 'arctic char', 'bobby flay', '46-39'], ['7', 'ia0510', 'mario batali', 'charles clark', 'new american', 'halibut', 'mario batali', '51-50'], ['8', 'ia0507', 'cat cora', 'mary dumont', 'french-american', 'milk and cream', 'cat cora', '51-46'], ['9', 'iasp07', 'michael symon', 'ricky moore', 'contemporary american', 'traditional thanksgiving', 'michael symon', '51-43'], ['10', 'iasp08', 'cat cora & paula deen', 'tyler florence & robert irvine', 'southern (deen), contemporary american (florence), international (irvine)', 'sugar', 'cat cora & paula deen', '49-47'], ['11', 'ia0503', 'cat cora', 'todd richards', 'modern southern', 'carrots', 'cat cora', '48-46'], ['12', 'ia0505', 'masaharu morimoto', 'fortunato nicotra', 'seasonal italian', 'kampachi', 'masaharu morimoto', '59-50']]
+########################################################################################################################
+Sample 1105 - Plan 1: Operation 1: Select rows where the 'challenger_specialty' is the same as the 'challenger_specialty' in episodes 3 and 6.
+Sample 1105 - Plan 1: Selected indices: []
+Sample 1105 - Plan 1: X-Table after operation df:
+   episode  show__   iron_chef               challenger challenger_specialty  \
+0        3  ia0509    cat cora  alexandra guarnaschelli      french-american   
+1        6  ia0506  bobby flay             kurt boucher      french-american   
+2        8  ia0507    cat cora              mary dumont      french-american   
+
+  secret_ingredient_s__or_theme      winner final_score  
+0               farmers' market    cat cora       45-41  
+1                   arctic char  bobby flay       46-39  
+2                milk and cream    cat cora       51-46  
+Sample 1105 - Plan 1: Table after operation: [['episode', 'show__', 'iron_chef', 'challenger', 'challenger_specialty', 'secret_ingredient_s__or_theme', 'winner', 'final_score'], [3, 'ia0509', 'cat cora', 'alexandra guarnaschelli', 'french-american', "farmers' market", 'cat cora', '45-41'], [6, 'ia0506', 'bobby flay', 'kurt boucher', 'french-american', 'arctic char', 'bobby flay', '46-39'], [8, 'ia0507', 'cat cora', 'mary dumont', 'french-american', 'milk and cream', 'cat cora', '51-46']]
+########################################################################################################################
+Sample 1105 - Plan 1: Operation 2: Select the 'episode' column.
+Sample 1105 - Plan 1: Selected indices: []
+Sample 1105 - Plan 1: X-Table after operation df:
+   episode
+0        3
+1        6
+2        8
+Sample 1105 - Plan 1: Table after operation: [['episode'], [3], [6], [8]]
+Fall-back: FALSE
+Answer from plan 1: [[3], [6], [8]]
+Groundtruth: ['8']

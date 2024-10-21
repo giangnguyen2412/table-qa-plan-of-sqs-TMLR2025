@@ -1,0 +1,117 @@
+************************************************************************************************************************
+Sample 214 - Plan 1: Query: all songs are over 3:00 but which song?
+Sample 214 - Plan 1: Groundtruth: ['Intro']
+Sample 214 - Plan 1: X-Original table pd: 
+     _                    title  time        lyrics  \
+0    1                  "intro"  1:16                 
+1    2                  "seven"  3:30       boondox   
+2    3               "out here"  3:18       boondox   
+3    4       "it ain't a thang"  3:45       boondox   
+4    5                "digging"  3:04       boondox   
+5    6     "lady in the jaguar"  3:55  boondox\nicp   
+6    7  "they pray with snakes"  3:56       boondox   
+7    8            "rollin hard"  4:07       boondox   
+8    9            "the harvest"  3:53  boondox\namb   
+9   10                 "sippin"  3:16       boondox   
+10  11           "lake of fire"  4:12       boondox   
+11  12               "red mist"  3:54       boondox   
+12  13             "angel like"  3:42       boondox   
+
+                         music   producer_s_  \
+0                                              
+1                mike e. clark       boondox   
+2   mike e. clark\ntino grosse       boondox   
+3                mike e. clark       boondox   
+4                         kuma       boondox   
+5                mike e. clark  boondox\nicp   
+6                         kuma       boondox   
+7                mike e. clark       boondox   
+8                         kuma  boondox\namb   
+9                mike e. clark       boondox   
+10               mike e. clark       boondox   
+11               mike e. clark       boondox   
+12               mike e. clark       boondox   
+
+                             performer_s_  
+0                                          
+1                                 boondox  
+2                                 boondox  
+3                                 boondox  
+4                                 boondox  
+5                            boondox\nicp  
+6                                 boondox  
+7                                 boondox  
+8                boondox\naxe murder boyz  
+9                                 boondox  
+10                                boondox  
+11  boondox\nblaze ya dead homie\ntwiztid  
+12                                boondox  
+Sample 214 - Plan 1: Caption: none
+Sample 214 - Plan 1: Original table: [['_', 'title', 'time', 'lyrics', 'music', 'producer_s_', 'performer_s_'], ['1', '"intro"', '1:16', '', '', '', ''], ['2', '"seven"', '3:30', 'boondox', 'mike e. clark', 'boondox', 'boondox'], ['3', '"out here"', '3:18', 'boondox', 'mike e. clark\\ntino grosse', 'boondox', 'boondox'], ['4', '"it ain\'t a thang"', '3:45', 'boondox', 'mike e. clark', 'boondox', 'boondox'], ['5', '"digging"', '3:04', 'boondox', 'kuma', 'boondox', 'boondox'], ['6', '"lady in the jaguar"', '3:55', 'boondox\\nicp', 'mike e. clark', 'boondox\\nicp', 'boondox\\nicp'], ['7', '"they pray with snakes"', '3:56', 'boondox', 'kuma', 'boondox', 'boondox'], ['8', '"rollin hard"', '4:07', 'boondox', 'mike e. clark', 'boondox', 'boondox'], ['9', '"the harvest"', '3:53', 'boondox\\namb', 'kuma', 'boondox\\namb', 'boondox\\naxe murder boyz'], ['10', '"sippin"', '3:16', 'boondox', 'mike e. clark', 'boondox', 'boondox'], ['11', '"lake of fire"', '4:12', 'boondox', 'mike e. clark', 'boondox', 'boondox'], ['12', '"red mist"', '3:54', 'boondox', 'mike e. clark', 'boondox', 'boondox\\nblaze ya dead homie\\ntwiztid'], ['13', '"angel like"', '3:42', 'boondox', 'mike e. clark', 'boondox', 'boondox']]
+########################################################################################################################
+Sample 214 - Plan 1: Operation 1: Select rows where the 'time' column is greater than '3:00'.
+Sample 214 - Plan 1: Selected indices: [[6, 2], [1, 2], [9, 2], [4, 2], [11, 2], [12, 2], [7, 2], [2, 2], [8, 2], [3, 2], [10, 2], [5, 2]]
+Sample 214 - Plan 1: X-Table after operation df:
+     _                    title  time        lyrics  \
+0    2                  "seven"  3:30       boondox   
+1    3               "out here"  3:18       boondox   
+2    4       "it ain't a thang"  3:45       boondox   
+3    5                "digging"  3:04       boondox   
+4    6     "lady in the jaguar"  3:55  boondox\nicp   
+5    7  "they pray with snakes"  3:56       boondox   
+6    8            "rollin hard"  4:07       boondox   
+7    9            "the harvest"  3:53  boondox\namb   
+8   10                 "sippin"  3:16       boondox   
+9   11           "lake of fire"  4:12       boondox   
+10  12               "red mist"  3:54       boondox   
+11  13             "angel like"  3:42       boondox   
+
+                         music   producer_s_  \
+0                mike e. clark       boondox   
+1   mike e. clark\ntino grosse       boondox   
+2                mike e. clark       boondox   
+3                         kuma       boondox   
+4                mike e. clark  boondox\nicp   
+5                         kuma       boondox   
+6                mike e. clark       boondox   
+7                         kuma  boondox\namb   
+8                mike e. clark       boondox   
+9                mike e. clark       boondox   
+10               mike e. clark       boondox   
+11               mike e. clark       boondox   
+
+                             performer_s_  
+0                                 boondox  
+1                                 boondox  
+2                                 boondox  
+3                                 boondox  
+4                            boondox\nicp  
+5                                 boondox  
+6                                 boondox  
+7                boondox\naxe murder boyz  
+8                                 boondox  
+9                                 boondox  
+10  boondox\nblaze ya dead homie\ntwiztid  
+11                                boondox  
+Sample 214 - Plan 1: Table after operation: [['_', 'title', 'time', 'lyrics', 'music', 'producer_s_', 'performer_s_'], [2, '"seven"', '3:30', 'boondox', 'mike e. clark', 'boondox', 'boondox'], [3, '"out here"', '3:18', 'boondox', 'mike e. clark\\ntino grosse', 'boondox', 'boondox'], [4, '"it ain\'t a thang"', '3:45', 'boondox', 'mike e. clark', 'boondox', 'boondox'], [5, '"digging"', '3:04', 'boondox', 'kuma', 'boondox', 'boondox'], [6, '"lady in the jaguar"', '3:55', 'boondox\\nicp', 'mike e. clark', 'boondox\\nicp', 'boondox\\nicp'], [7, '"they pray with snakes"', '3:56', 'boondox', 'kuma', 'boondox', 'boondox'], [8, '"rollin hard"', '4:07', 'boondox', 'mike e. clark', 'boondox', 'boondox'], [9, '"the harvest"', '3:53', 'boondox\\namb', 'kuma', 'boondox\\namb', 'boondox\\naxe murder boyz'], [10, '"sippin"', '3:16', 'boondox', 'mike e. clark', 'boondox', 'boondox'], [11, '"lake of fire"', '4:12', 'boondox', 'mike e. clark', 'boondox', 'boondox'], [12, '"red mist"', '3:54', 'boondox', 'mike e. clark', 'boondox', 'boondox\\nblaze ya dead homie\\ntwiztid'], [13, '"angel like"', '3:42', 'boondox', 'mike e. clark', 'boondox', 'boondox']]
+########################################################################################################################
+Sample 214 - Plan 1: Operation 2: Select the 'title' column.
+Sample 214 - Plan 1: Selected indices: []
+Sample 214 - Plan 1: X-Table after operation df:
+                      title
+0                   "seven"
+1                "out here"
+2        "it ain't a thang"
+3                 "digging"
+4      "lady in the jaguar"
+5   "they pray with snakes"
+6             "rollin hard"
+7             "the harvest"
+8                  "sippin"
+9            "lake of fire"
+10               "red mist"
+11             "angel like"
+Sample 214 - Plan 1: Table after operation: [['title'], ['"seven"'], ['"out here"'], ['"it ain\'t a thang"'], ['"digging"'], ['"lady in the jaguar"'], ['"they pray with snakes"'], ['"rollin hard"'], ['"the harvest"'], ['"sippin"'], ['"lake of fire"'], ['"red mist"'], ['"angel like"']]
+Fall-back: FALSE
+Answer from plan 1: [['"seven"'], ['"out here"'], ['"it ain\'t a thang"'], ['"digging"'], ['"lady in the jaguar"'], ['"they pray with snakes"'], ['"rollin hard"'], ['"the harvest"'], ['"sippin"'], ['"lake of fire"'], ['"red mist"'], ['"angel like"']]
+Groundtruth: ['Intro']

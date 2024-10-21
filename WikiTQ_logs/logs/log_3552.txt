@@ -1,0 +1,68 @@
+************************************************************************************************************************
+Sample 3552 - Plan 1: Query: whose name is listed before justin holiday?
+Sample 3552 - Plan 1: Groundtruth: ['Artem Wallace']
+Sample 3552 - Plan 1: X-Original table pd: 
+     _                   name height  weight__lbs__ position   class  \
+0    0             joel smith   6'4"            210        g  rs jr.   
+1    1          venoy overton  5'11"            180        g     fr.   
+2    4             tim morris   6'4"            210        g     sr.   
+3    5         justin dentmon  5'11"            185        g     jr.   
+4   11  matthew bryan-amaning   6'9"            235        f     fr.   
+5   20           ryan appleby   6'3"            170        g     sr.   
+6   21          artem wallace   6'8"            250        c     jr.   
+7   22         justin holiday   6'6"            170        f     fr.   
+8   24       quincy pondexter   6'6"            210        f     so.   
+9   32          joe wolfinger   7'0"            255        c  rs so.   
+10  40           jon brockman   6'7"            255        f     jr.   
+11  44           darnell gant   6'8"            215        f     fr.   
+
+                 hometown                previous_team_s_  
+0        lompoc, ca, u.s.                brewster academy  
+1       seattle, wa, u.s.                     franklin hs  
+2        spokane wa, u.s.               central valley hs  
+3    carbondale, il, u.s.               winchendon school  
+4   london, england, u.k.               south kent school  
+5      stanwood, wa, u.s.                         florida  
+6        toledo, wa, u.s.                       toledo hs  
+7    chatsworth, ca, u.s.            campbell hall school  
+8        fresno, ca, u.s.         san joaquin memorial hs  
+9      portland, or, u.s.  northfield mount hermon school  
+10    snohomish, wa, u.s.                snohomish sr. hs  
+11  los angeles, ca, u.s.                     crenshaw hs  
+Sample 3552 - Plan 1: Caption: none
+Sample 3552 - Plan 1: Original table: [['_', 'name', 'height', 'weight__lbs__', 'position', 'class', 'hometown', 'previous_team_s_'], ['0', 'joel smith', '6\'4"', '210', 'g', 'rs jr.', 'lompoc, ca, u.s.', 'brewster academy'], ['1', 'venoy overton', '5\'11"', '180', 'g', 'fr.', 'seattle, wa, u.s.', 'franklin hs'], ['4', 'tim morris', '6\'4"', '210', 'g', 'sr.', 'spokane wa, u.s.', 'central valley hs'], ['5', 'justin dentmon', '5\'11"', '185', 'g', 'jr.', 'carbondale, il, u.s.', 'winchendon school'], ['11', 'matthew bryan-amaning', '6\'9"', '235', 'f', 'fr.', 'london, england, u.k.', 'south kent school'], ['20', 'ryan appleby', '6\'3"', '170', 'g', 'sr.', 'stanwood, wa, u.s.', 'florida'], ['21', 'artem wallace', '6\'8"', '250', 'c', 'jr.', 'toledo, wa, u.s.', 'toledo hs'], ['22', 'justin holiday', '6\'6"', '170', 'f', 'fr.', 'chatsworth, ca, u.s.', 'campbell hall school'], ['24', 'quincy pondexter', '6\'6"', '210', 'f', 'so.', 'fresno, ca, u.s.', 'san joaquin memorial hs'], ['32', 'joe wolfinger', '7\'0"', '255', 'c', 'rs so.', 'portland, or, u.s.', 'northfield mount hermon school'], ['40', 'jon brockman', '6\'7"', '255', 'f', 'jr.', 'snohomish, wa, u.s.', 'snohomish sr. hs'], ['44', 'darnell gant', '6\'8"', '215', 'f', 'fr.', 'los angeles, ca, u.s.', 'crenshaw hs']]
+########################################################################################################################
+Sample 3552 - Plan 1: Operation 1: Select rows where the 'name' is listed before 'justin holiday'.
+Sample 3552 - Plan 1: Selected indices: [[0, 1], [11, 1], [3, 1], [6, 1], [10, 1], [9, 1]]
+Sample 3552 - Plan 1: X-Table after operation df:
+    _            name height  weight__lbs__ position   class  \
+0   0      joel smith   6'4"            210        g  rs jr.   
+1   5  justin dentmon  5'11"            185        g     jr.   
+2  21   artem wallace   6'8"            250        c     jr.   
+3  32   joe wolfinger   7'0"            255        c  rs so.   
+4  40    jon brockman   6'7"            255        f     jr.   
+5  44    darnell gant   6'8"            215        f     fr.   
+
+                hometown                previous_team_s_  
+0       lompoc, ca, u.s.                brewster academy  
+1   carbondale, il, u.s.               winchendon school  
+2       toledo, wa, u.s.                       toledo hs  
+3     portland, or, u.s.  northfield mount hermon school  
+4    snohomish, wa, u.s.                snohomish sr. hs  
+5  los angeles, ca, u.s.                     crenshaw hs  
+Sample 3552 - Plan 1: Table after operation: [['_', 'name', 'height', 'weight__lbs__', 'position', 'class', 'hometown', 'previous_team_s_'], [0, 'joel smith', '6\'4"', 210, 'g', 'rs jr.', 'lompoc, ca, u.s.', 'brewster academy'], [5, 'justin dentmon', '5\'11"', 185, 'g', 'jr.', 'carbondale, il, u.s.', 'winchendon school'], [21, 'artem wallace', '6\'8"', 250, 'c', 'jr.', 'toledo, wa, u.s.', 'toledo hs'], [32, 'joe wolfinger', '7\'0"', 255, 'c', 'rs so.', 'portland, or, u.s.', 'northfield mount hermon school'], [40, 'jon brockman', '6\'7"', 255, 'f', 'jr.', 'snohomish, wa, u.s.', 'snohomish sr. hs'], [44, 'darnell gant', '6\'8"', 215, 'f', 'fr.', 'los angeles, ca, u.s.', 'crenshaw hs']]
+########################################################################################################################
+Sample 3552 - Plan 1: Operation 2: Select the 'name' column from the resulting rows.
+Sample 3552 - Plan 1: Selected indices: []
+Sample 3552 - Plan 1: X-Table after operation df:
+             name
+0      joel smith
+1  justin dentmon
+2   artem wallace
+3   joe wolfinger
+4    jon brockman
+5    darnell gant
+Sample 3552 - Plan 1: Table after operation: [['name'], ['joel smith'], ['justin dentmon'], ['artem wallace'], ['joe wolfinger'], ['jon brockman'], ['darnell gant']]
+Fall-back: FALSE
+Answer from plan 1: [['joel smith'], ['justin dentmon'], ['artem wallace'], ['joe wolfinger'], ['jon brockman'], ['darnell gant']]
+Groundtruth: ['Artem Wallace']

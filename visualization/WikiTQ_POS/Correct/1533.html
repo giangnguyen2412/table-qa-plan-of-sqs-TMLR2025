@@ -1,0 +1,323 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> what team plays their games in the parc des princes?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'stadium' is 'parc des princes'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>_</td>
+<td>stadium</td>
+<td>capacity</td>
+<td>city</td>
+<td>region</td>
+<td>home_team</td>
+<td>opened</td>
+</tr>
+<tr>
+<td>1</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stade de france</span></td>
+<td>81,338</td>
+<td>paris</td>
+<td>île-de-france</td>
+<td>france national football team</td>
+<td>1998</td>
+</tr>
+<tr>
+<td>2</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stade vélodrome</span></td>
+<td>60,013</td>
+<td>marseille</td>
+<td>provence-alpes-côte d'azur</td>
+<td>olympique de marseille</td>
+<td>1937</td>
+</tr>
+<tr>
+<td>3</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">grand stade lille métropole</span></td>
+<td>50,186</td>
+<td>villeneuve-d'ascq</td>
+<td>nord-pas-de-calais</td>
+<td>lille osc</td>
+<td>2012</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">parc des princes</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">48,712</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">paris</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">île-de-france</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">paris saint-germain fc</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1897</span></td>
+</tr>
+<tr>
+<td>5</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stade félix bollaert</span></td>
+<td>41,233</td>
+<td>lens</td>
+<td>nord-pas-de-calais</td>
+<td>rc lens</td>
+<td>1932</td>
+</tr>
+<tr>
+<td>6</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stade gerland</span></td>
+<td>41,044</td>
+<td>lyon</td>
+<td>rhône-alpes</td>
+<td>olympique lyonnais</td>
+<td>1926</td>
+</tr>
+<tr>
+<td>7</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stade de la beaujoire</span></td>
+<td>38,285</td>
+<td>nantes</td>
+<td>pays de la loire</td>
+<td>fc nantes atlantique</td>
+<td>1984</td>
+</tr>
+<tr>
+<td>8</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stade geoffroy-guichard</span></td>
+<td>37,587</td>
+<td>saint-étienne</td>
+<td>rhône-alpes</td>
+<td>as saint-étienne</td>
+<td>1931</td>
+</tr>
+<tr>
+<td>9</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">allianz riviera</span></td>
+<td>35,624</td>
+<td>nice</td>
+<td>provence-alpes-côte d'azur</td>
+<td>ogc nice</td>
+<td>2013</td>
+</tr>
+<tr>
+<td>10</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stadium municipal</span></td>
+<td>35,575</td>
+<td>toulouse</td>
+<td>midi-pyrénées</td>
+<td>toulouse fc</td>
+<td>1937</td>
+</tr>
+<tr>
+<td>11</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stade chaban-delmas</span></td>
+<td>34,462</td>
+<td>bordeaux</td>
+<td>aquitaine</td>
+<td>fc girondins de bordeaux</td>
+<td>1938</td>
+</tr>
+<tr>
+<td>12</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stade de la mosson</span></td>
+<td>32,939</td>
+<td>montpellier</td>
+<td>languedoc-roussillon</td>
+<td>montpellier hsc</td>
+<td>1972</td>
+</tr>
+<tr>
+<td>13</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stade de la route de lorient</span></td>
+<td>31,127</td>
+<td>rennes</td>
+<td>brittany</td>
+<td>stade rennais fc</td>
+<td>1912</td>
+</tr>
+<tr>
+<td>14</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stade de la meinau</span></td>
+<td>29,230</td>
+<td>strasbourg</td>
+<td>alsace</td>
+<td>rc strasbourg</td>
+<td>1914</td>
+</tr>
+<tr>
+<td>15</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stade municipal saint-symphorien</span></td>
+<td>26,700</td>
+<td>metz</td>
+<td>lorraine</td>
+<td>fc metz</td>
+<td>1923</td>
+</tr>
+<tr>
+<td>16</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">grand stade du havre</span></td>
+<td>25,178</td>
+<td>le havre</td>
+<td>upper normandy</td>
+<td>le havre ac</td>
+<td>2012</td>
+</tr>
+<tr>
+<td>17</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mmarena</span></td>
+<td>25,000</td>
+<td>le mans</td>
+<td>pays de la loire</td>
+<td>le mans uc</td>
+<td>2011</td>
+</tr>
+<tr>
+<td>18</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stade du hainaut</span></td>
+<td>24,926</td>
+<td>valenciennes</td>
+<td>nord-pas-de-calais</td>
+<td>valenciennes fc</td>
+<td>2011</td>
+</tr>
+<tr>
+<td>19</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stade de l'abbé-deschamps</span></td>
+<td>23,467</td>
+<td>auxerre</td>
+<td>bourgogne</td>
+<td>aj auxerre</td>
+<td>1918</td>
+</tr>
+<tr>
+<td>20</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stade louis dugauguez</span></td>
+<td>23,189</td>
+<td>sedan</td>
+<td>champagne-ardenne</td>
+<td>club sportif sedan ardennes</td>
+<td>2000</td>
+</tr>
+<tr>
+<td>21</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stade auguste-delaune</span></td>
+<td>21,684</td>
+<td>reims</td>
+<td>champagne-ardenne</td>
+<td>stade reims</td>
+<td>1935</td>
+</tr>
+<tr>
+<td>22</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stade michel d'ornano</span></td>
+<td>21,500</td>
+<td>caen</td>
+<td>lower normandy</td>
+<td>stade malherbe caen</td>
+<td>1993</td>
+</tr>
+<tr>
+<td>23</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stade de l'aube</span></td>
+<td>20,400</td>
+<td>troyes</td>
+<td>champagne-ardenne</td>
+<td>troyes ac</td>
+<td>1956</td>
+</tr>
+<tr>
+<td>24</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stade marcel picot</span></td>
+<td>20,087</td>
+<td>tomblaine</td>
+<td>lorraine</td>
+<td>as nancy</td>
+<td>1926</td>
+</tr>
+<tr>
+<td>25</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stade des alpes</span></td>
+<td>20,068</td>
+<td>grenoble</td>
+<td>rhône-alpes</td>
+<td>grenoble foot 38</td>
+<td>2008</td>
+</tr>
+<tr>
+<td>26</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stade auguste bonal</span></td>
+<td>20,025</td>
+<td>montbéliard</td>
+<td>franche-comté</td>
+<td>fc sochaux-montbéliard</td>
+<td>2000</td>
+</tr>
+<tr>
+<td>27</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stade sébastien charléty</span></td>
+<td>20,000</td>
+<td>paris</td>
+<td>île-de-france</td>
+<td>paris fc</td>
+<td>1938</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select the 'home_team' column.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>_</td>
+<td>stadium</td>
+<td>capacity</td>
+<td>city</td>
+<td>region</td>
+<td>home_team</td>
+<td>opened</td>
+</tr>
+<tr>
+<td>4</td>
+<td>parc des princes</td>
+<td>48,712</td>
+<td>paris</td>
+<td>île-de-france</td>
+<td>paris saint-germain fc</td>
+<td>1897</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>home_team</td>
+</tr>
+<tr>
+<td>paris saint-germain fc</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['paris saint-germain fc']]</h3>
+</body></html>

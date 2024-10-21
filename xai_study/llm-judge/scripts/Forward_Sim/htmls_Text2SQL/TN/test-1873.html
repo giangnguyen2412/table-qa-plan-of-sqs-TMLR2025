@@ -1,0 +1,40 @@
+
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+.sql-command { background-color: #f0f0f0; padding: 10px; border-left: 4px solid #4CAF50; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> the us last won the solheim cup in 2009 , which was one of seven titles since 1990</h3>
+<h3>Input Table: solheim cup</h3>
+<div class="step">
+<table>
+<tr><td>year</td><td>venue</td><td>winning_team</td><td>score</td><td>usa_captain</td><td>europe_captain</td></tr><tr><td>2013-01-01</td><td>colorado golf club , colorado , usa</td><td>europe</td><td>18 - 10</td><td>meg mallon</td><td>liselotte neumann</td></tr><tr><td>2011-01-01</td><td>killeen castle golf resort , ireland</td><td>europe</td><td>15 - 13</td><td>rosie jones</td><td>alison nicholas</td></tr><tr><td>2009-01-01</td><td>rich harvest farms , illinois , usa</td><td>united states</td><td>16 - 12</td><td>beth daniel</td><td>alison nicholas</td></tr><tr><td>2007-01-01</td><td>halmstad gk , sweden</td><td>united states</td><td>16 - 12</td><td>betsy king</td><td>helen alfredsson</td></tr><tr><td>2005-01-01</td><td>crooked stick golf club , indiana , usa</td><td>united states</td><td>15½ - 12½</td><td>nancy lopez</td><td>catrin nilsmark</td></tr><tr><td>2003-01-01</td><td>barsebäck golf & country club , sweden</td><td>europe</td><td>17½ - 10½</td><td>patty sheehan</td><td>catrin nilsmark</td></tr><tr><td>2002-01-01</td><td>interlachen country club , minnesota , usa</td><td>united states</td><td>15½ - 12½</td><td>patty sheehan</td><td>dale reid</td></tr><tr><td>2000-01-01</td><td>loch lomond golf club , scotland</td><td>europe</td><td>14½ - 11½</td><td>pat bradley</td><td>dale reid</td></tr><tr><td>1998-01-01</td><td>muirfield village , ohio , usa</td><td>united states</td><td>16 - 12</td><td>judy rankin</td><td>pia nilsson</td></tr><tr><td>1996-01-01</td><td>st pierre golf & country club , wales</td><td>united states</td><td>17 - 11</td><td>judy rankin</td><td>mickey walker</td></tr><tr><td>1994-01-01</td><td>the greenbrier , west virginia , usa</td><td>united states</td><td>13 - 7</td><td>joanne carner</td><td>mickey walker</td></tr><tr><td>1992-01-01</td><td>dalmahoy country club , scotland</td><td>europe</td><td>11½ - 6½</td><td>kathy whitworth</td><td>mickey walker</td></tr><tr><td>1990-01-01</td><td>lake nona golf & country club , florida , usa</td><td>united states</td><td>11½ - 4½</td><td>kathy whitworth</td><td>mickey walker</td></tr>
+</table>
+</div>
+<h3>SQL Command:</h3>
+<div class="sql-command">SELECT 
+    CASE 
+        WHEN (SELECT winning_team FROM table_sql WHERE year = 2009) = 'united states' 
+             AND (SELECT COUNT(*) FROM table_sql WHERE year >= 1990 AND winning_team = 'united states') = 7 
+        THEN 'TRUE' 
+        ELSE 'FALSE' 
+    END;</div>
+</body></html>

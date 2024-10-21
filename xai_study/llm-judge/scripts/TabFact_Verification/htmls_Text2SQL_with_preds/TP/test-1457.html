@@ -1,0 +1,40 @@
+
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+.sql-command { background-color: #f0f0f0; padding: 10px; border-left: 4px solid #4CAF50; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> the new york jets took the same amount of wins as losses during the 1993 season</h3>
+<h3>Input Table: 1993 new york jets season</h3>
+<div class="step">
+<table>
+<tr><td>week</td><td>date</td><td>opponent</td><td>result</td><td>game_site</td><td>attendance</td></tr><tr><td>1</td><td>1993-09-05</td><td>denver broncos</td><td>l 26 - 20</td><td>the meadowlands</td><td>68130</td></tr><tr><td>2</td><td>1993-09-12</td><td>miami dolphins</td><td>w 24 - 14</td><td>joe robbie stadium</td><td>70314</td></tr><tr><td>4</td><td>1993-09-26</td><td>new england patriots</td><td>w 45 - 7</td><td>the meadowlands</td><td>64836</td></tr><tr><td>5</td><td>1993-10-03</td><td>philadelphia eagles</td><td>l 35 - 30</td><td>the meadowlands</td><td>72593</td></tr><tr><td>6</td><td>1993-10-10</td><td>los angeles raiders</td><td>l 24 - 20</td><td>los angeles memorial coliseum</td><td>41627</td></tr><tr><td>8</td><td>1993-10-24</td><td>buffalo bills</td><td>l 19 - 10</td><td>the meadowlands</td><td>71541</td></tr><tr><td>9</td><td>1993-10-31</td><td>new york giants</td><td>w 10 - 6</td><td>giants stadium</td><td>71659</td></tr><tr><td>10</td><td>1993-11-07</td><td>miami dolphins</td><td>w 27 - 10</td><td>the meadowlands</td><td>71306</td></tr><tr><td>11</td><td>1993-11-14</td><td>indianapolis colts</td><td>w 31 - 17</td><td>rca dome</td><td>47351</td></tr><tr><td>12</td><td>1993-11-21</td><td>cincinnati bengals</td><td>w 17 - 12</td><td>the meadowlands</td><td>64264</td></tr><tr><td>13</td><td>1993-11-28</td><td>new england patriots</td><td>w 6 - 0</td><td>foxboro stadium</td><td>42810</td></tr><tr><td>14</td><td>1993-12-05</td><td>indianapolis colts</td><td>l 9 - 6</td><td>the meadowlands</td><td>45799</td></tr><tr><td>15</td><td>1993-12-11</td><td>washington redskins</td><td>w 3 - 0</td><td>robert f kennedy memorial stadium</td><td>47970</td></tr><tr><td>16</td><td>1993-12-18</td><td>dallas cowboys</td><td>l 28 - 7</td><td>the meadowlands</td><td>73233</td></tr><tr><td>17</td><td>1993-12-26</td><td>buffalo bills</td><td>l 16 - 14</td><td>rich stadium</td><td>70817</td></tr><tr><td>18</td><td>1994-01-02</td><td>houston oilers</td><td>l 24 - 0</td><td>houston astrodome</td><td>61040</td></tr>
+</table>
+</div>
+<h3>SQL Command:</h3>
+<div class="sql-command">SELECT 
+    CASE 
+        WHEN (SELECT COUNT(*) FROM table_sql WHERE result = 'w') = (SELECT COUNT(*) FROM table_sql WHERE result = 'l') 
+        THEN 'TRUE' 
+        ELSE 'FALSE' 
+    END;</div>
+<h3>Prediction: True</h3>
+</body></html>

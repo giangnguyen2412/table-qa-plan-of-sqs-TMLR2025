@@ -1,0 +1,581 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how many times was duane thomas a leading rusher?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'leading_rusher' column is 'duane thomas'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>season</td>
+<td>team</td>
+<td>record</td>
+<td>head_coach</td>
+<td>quarterback</td>
+<td>leading_rusher</td>
+<td>leading_receiver</td>
+<td>all_pros</td>
+<td>runner_up</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1970</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dallas cowboys</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10–4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tom landry*</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">craig morton</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">duane thomas</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bob hayes*</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">howley</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">san francisco 49ers</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1971</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dallas cowboys†</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11–3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tom landry*</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">roger staubach*</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">duane thomas</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bob hayes*</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">lilly*, niland, wright*</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">san francisco 49ers</span></td>
+</tr>
+<tr>
+<td>1972</td>
+<td>washington redskins</td>
+<td>11–3</td>
+<td>george allen*</td>
+<td>billy kilmer</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">larry brown</span></td>
+<td>charley taylor*</td>
+<td>brown, hanburger*</td>
+<td>dallas cowboys</td>
+</tr>
+<tr>
+<td>1973</td>
+<td>minnesota vikings</td>
+<td>12–2</td>
+<td>bud grant*</td>
+<td>fran tarkenton*</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chuck foreman</span></td>
+<td>john gilliam</td>
+<td>eller*, page*, yary*</td>
+<td>dallas cowboys</td>
+</tr>
+<tr>
+<td>1974</td>
+<td>minnesota vikings</td>
+<td>10–4</td>
+<td>bud grant*</td>
+<td>fran tarkenton*</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chuck foreman</span></td>
+<td>jim lash</td>
+<td>page*, yary*</td>
+<td>los angeles rams</td>
+</tr>
+<tr>
+<td>1975</td>
+<td>dallas cowboys</td>
+<td>10–4</td>
+<td>tom landry*</td>
+<td>roger staubach*</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">robert newhouse</span></td>
+<td>drew pearson</td>
+<td>none</td>
+<td>los angeles rams</td>
+</tr>
+<tr>
+<td>1976</td>
+<td>minnesota vikings</td>
+<td>11–2–1</td>
+<td>bud grant*</td>
+<td>fran tarkenton*</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chuck foreman</span></td>
+<td>sammy white</td>
+<td>yary*</td>
+<td>los angeles rams</td>
+</tr>
+<tr>
+<td>1977</td>
+<td>dallas cowboys†</td>
+<td>12–2</td>
+<td>tom landry*</td>
+<td>roger staubach*</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tony dorsett*</span></td>
+<td>drew pearson</td>
+<td>harris, herrera, martin, pearson</td>
+<td>minnesota vikings</td>
+</tr>
+<tr>
+<td>1978</td>
+<td>dallas cowboys</td>
+<td>12–4</td>
+<td>tom landry*</td>
+<td>roger staubach*</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tony dorsett*</span></td>
+<td>tony hill</td>
+<td>harris, white*</td>
+<td>los angeles rams</td>
+</tr>
+<tr>
+<td>1979</td>
+<td>los angeles rams</td>
+<td>9–7</td>
+<td>ray malavasi</td>
+<td>pat haden</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wendell tyler</span></td>
+<td>preston dennard</td>
+<td>brooks, youngblood*</td>
+<td>tampa bay buccaneers</td>
+</tr>
+<tr>
+<td>1980</td>
+<td>philadelphia eagles</td>
+<td>12–4</td>
+<td>dick vermeil</td>
+<td>ron jaworski</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wilbert montgomery</span></td>
+<td>charlie smith</td>
+<td>johnson</td>
+<td>dallas cowboys</td>
+</tr>
+<tr>
+<td>1981</td>
+<td>san francisco 49ers†</td>
+<td>13–3</td>
+<td>bill walsh*</td>
+<td>joe montana*</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ricky patton</span></td>
+<td>dwight clark</td>
+<td>dean*, lott*</td>
+<td>dallas cowboys</td>
+</tr>
+<tr>
+<td>1982</td>
+<td>washington redskins†</td>
+<td>8–1</td>
+<td>joe gibbs*</td>
+<td>joe theismann</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">john riggins*</span></td>
+<td>charlie brown</td>
+<td>moseley</td>
+<td>dallas cowboys</td>
+</tr>
+<tr>
+<td>1983</td>
+<td>washington redskins</td>
+<td>14–2</td>
+<td>joe gibbs*</td>
+<td>joe theismann</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">john riggins*</span></td>
+<td>charlie brown</td>
+<td>butz, grimm*, jacoby, murphy, nelms, riggins*, theismann</td>
+<td>san francisco 49ers</td>
+</tr>
+<tr>
+<td>1984</td>
+<td>san francisco 49ers†</td>
+<td>15–1</td>
+<td>bill walsh*</td>
+<td>joe montana*</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">wendell tyler</span></td>
+<td>dwight clark</td>
+<td>fahnhorst</td>
+<td>chicago bears</td>
+</tr>
+<tr>
+<td>1985</td>
+<td>chicago bears†</td>
+<td>15–1</td>
+<td>mike ditka*</td>
+<td>jim mcmahon</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">walter payton*</span></td>
+<td>willie gault</td>
+<td>covert, dent*, mcmichael, payton*, singletary*</td>
+<td>los angeles rams</td>
+</tr>
+<tr>
+<td>1986</td>
+<td>new york giants†</td>
+<td>14–2</td>
+<td>bill parcells*</td>
+<td>phil simms</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">joe morris</span></td>
+<td>mark bavaro</td>
+<td>bavaro, landeta, morris, taylor*</td>
+<td>washington redskins</td>
+</tr>
+<tr>
+<td>1987</td>
+<td>washington redskins†</td>
+<td>11–4</td>
+<td>joe gibbs*</td>
+<td>jay schroeder</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">george rogers</span></td>
+<td>gary clark</td>
+<td>clark, wilburn</td>
+<td>minnesota vikings</td>
+</tr>
+<tr>
+<td>1988</td>
+<td>san francisco 49ers†</td>
+<td>10–6</td>
+<td>bill walsh*</td>
+<td>joe montana*</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">roger craig</span></td>
+<td>jerry rice*</td>
+<td>craig, rice*</td>
+<td>chicago bears</td>
+</tr>
+<tr>
+<td>1989</td>
+<td>san francisco 49ers†</td>
+<td>14–2</td>
+<td>george seifert</td>
+<td>joe montana*</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">roger craig</span></td>
+<td>jerry rice*</td>
+<td>cofer, lott*, montana*, rice*,</td>
+<td>los angeles rams</td>
+</tr>
+<tr>
+<td>1990</td>
+<td>new york giants†</td>
+<td>13–3</td>
+<td>bill parcells*</td>
+<td>phil simms</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ottis anderson</span></td>
+<td>stephen baker</td>
+<td>johnson, landeta</td>
+<td>san francisco 49ers</td>
+</tr>
+<tr>
+<td>1991</td>
+<td>washington redskins†</td>
+<td>14–2</td>
+<td>joe gibbs*</td>
+<td>mark rypien</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">earnest byner</span></td>
+<td>gary clark</td>
+<td>green*, lachey</td>
+<td>detroit lions</td>
+</tr>
+<tr>
+<td>1992</td>
+<td>dallas cowboys†</td>
+<td>13–3</td>
+<td>jimmy johnson</td>
+<td>troy aikman*</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">emmitt smith*</span></td>
+<td>michael irvin*</td>
+<td>novacek, smith*</td>
+<td>san francisco 49ers</td>
+</tr>
+<tr>
+<td>1993</td>
+<td>dallas cowboys†</td>
+<td>12–4</td>
+<td>jimmy johnson</td>
+<td>troy aikman*</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">emmitt smith*</span></td>
+<td>michael irvin*</td>
+<td>smith*, williams</td>
+<td>san francisco 49ers</td>
+</tr>
+<tr>
+<td>1994</td>
+<td>san francisco 49ers†</td>
+<td>13–3</td>
+<td>george seifert</td>
+<td>steve young*</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ricky watters</span></td>
+<td>jerry rice*</td>
+<td>rice*, sanders*, young*</td>
+<td>dallas cowboys</td>
+</tr>
+<tr>
+<td>1995</td>
+<td>dallas cowboys†</td>
+<td>12–4</td>
+<td>barry switzer</td>
+<td>troy aikman*</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">emmitt smith*</span></td>
+<td>michael irvin*</td>
+<td>newton, smith*, woodson</td>
+<td>green bay packers</td>
+</tr>
+<tr>
+<td>1996</td>
+<td>green bay packers†</td>
+<td>13–3</td>
+<td>mike holmgren</td>
+<td>brett favre</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">edgar bennett</span></td>
+<td>antonio freeman</td>
+<td>butler, favre</td>
+<td>carolina panthers</td>
+</tr>
+<tr>
+<td>1997</td>
+<td>green bay packers</td>
+<td>13–3</td>
+<td>mike holmgren</td>
+<td>brett favre</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dorsey levens</span></td>
+<td>antonio freeman</td>
+<td>butler, favre</td>
+<td>san francisco 49ers</td>
+</tr>
+<tr>
+<td>1998</td>
+<td>atlanta falcons</td>
+<td>14–2</td>
+<td>dan reeves</td>
+<td>chris chandler</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jamal anderson</span></td>
+<td>tony martin</td>
+<td>anderson</td>
+<td>minnesota vikings</td>
+</tr>
+<tr>
+<td>1999</td>
+<td>st. louis rams†</td>
+<td>13–3</td>
+<td>dick vermeil</td>
+<td>kurt warner</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">marshall faulk*</span></td>
+<td>isaac bruce</td>
+<td>carter, faulk*, pace, warner</td>
+<td>tampa bay buccaneers</td>
+</tr>
+<tr>
+<td>2000</td>
+<td>new york giants</td>
+<td>12–4</td>
+<td>jim fassel</td>
+<td>kerry collins</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tiki barber</span></td>
+<td>amani toomer</td>
+<td>none</td>
+<td>minnesota vikings</td>
+</tr>
+<tr>
+<td>2001</td>
+<td>st. louis rams</td>
+<td>14–2</td>
+<td>mike martz</td>
+<td>kurt warner</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">marshall faulk*</span></td>
+<td>torry holt</td>
+<td>faulk*, pace, warner, williams*</td>
+<td>philadelphia eagles</td>
+</tr>
+<tr>
+<td>2002</td>
+<td>tampa bay buccaneers†</td>
+<td>12–4</td>
+<td>jon gruden</td>
+<td>brad johnson</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">michael pittman</span></td>
+<td>keyshawn johnson</td>
+<td>brooks*, rice, sapp*</td>
+<td>philadelphia eagles</td>
+</tr>
+<tr>
+<td>2003</td>
+<td>carolina panthers</td>
+<td>11–5</td>
+<td>john fox</td>
+<td>jake delhomme</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">stephen davis</span></td>
+<td>steve smith</td>
+<td>jenkins</td>
+<td>philadelphia eagles</td>
+</tr>
+<tr>
+<td>2004</td>
+<td>philadelphia eagles</td>
+<td>13–3</td>
+<td>andy reid</td>
+<td>donovan mcnabb</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">brian westbrook</span></td>
+<td>terrell owens</td>
+<td>dawkins, owens, sheppard</td>
+<td>atlanta falcons</td>
+</tr>
+<tr>
+<td>2005</td>
+<td>seattle seahawks</td>
+<td>13–3</td>
+<td>mike holmgren</td>
+<td>matt hasselbeck</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">shaun alexander</span></td>
+<td>bobby engram</td>
+<td>alexander, hutchinson, jones*, strong</td>
+<td>carolina panthers</td>
+</tr>
+<tr>
+<td>2006</td>
+<td>chicago bears</td>
+<td>13–3</td>
+<td>lovie smith</td>
+<td>rex grossman</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">thomas jones</span></td>
+<td>muhsin muhammad</td>
+<td>gould, hester, kreutz, urlacher</td>
+<td>new orleans saints</td>
+</tr>
+<tr>
+<td>2007</td>
+<td>new york giants†</td>
+<td>10–6</td>
+<td>tom coughlin</td>
+<td>eli manning</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">brandon jacobs</span></td>
+<td>plaxico burress</td>
+<td>none</td>
+<td>green bay packers</td>
+</tr>
+<tr>
+<td>2008</td>
+<td>arizona cardinals</td>
+<td>9–7</td>
+<td>ken whisenhunt</td>
+<td>kurt warner</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">edgerrin james</span></td>
+<td>larry fitzgerald</td>
+<td>fitzgerald</td>
+<td>philadelphia eagles</td>
+</tr>
+<tr>
+<td>2009</td>
+<td>new orleans saints†</td>
+<td>13–3</td>
+<td>sean payton</td>
+<td>drew brees</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">pierre thomas</span></td>
+<td>marques colston</td>
+<td>evans</td>
+<td>minnesota vikings</td>
+</tr>
+<tr>
+<td>2010</td>
+<td>green bay packers†</td>
+<td>10–6</td>
+<td>mike mccarthy</td>
+<td>aaron rodgers</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">brandon jackson</span></td>
+<td>greg jennings</td>
+<td>clifton, collins, jennings, matthews, woodson</td>
+<td>chicago bears</td>
+</tr>
+<tr>
+<td>2011</td>
+<td>new york giants†</td>
+<td>9–7</td>
+<td>tom coughlin</td>
+<td>eli manning</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ahmad bradshaw</span></td>
+<td>victor cruz</td>
+<td>pierre-paul</td>
+<td>san francisco 49ers</td>
+</tr>
+<tr>
+<td>2012</td>
+<td>san francisco 49ers</td>
+<td>11–4–1</td>
+<td>jim harbaugh</td>
+<td>colin kaepernick</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">frank gore</span></td>
+<td>michael crabtree</td>
+<td>bowman, goldson, iupati, lee, smith, willis</td>
+<td>atlanta falcons</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>seattle seahawks†</td>
+<td>13–3</td>
+<td>pete carroll</td>
+<td>russell wilson</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">marshawn lynch</span></td>
+<td>golden tate</td>
+<td>sherman, thomas</td>
+<td>san francisco 49ers</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Count the number of rows selected.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>season</td>
+<td>team</td>
+<td>record</td>
+<td>head_coach</td>
+<td>quarterback</td>
+<td>leading_rusher</td>
+<td>leading_receiver</td>
+<td>all_pros</td>
+<td>runner_up</td>
+</tr>
+<tr>
+<td>1970</td>
+<td>dallas cowboys</td>
+<td>10–4</td>
+<td>tom landry*</td>
+<td>craig morton</td>
+<td>duane thomas</td>
+<td>bob hayes*</td>
+<td>howley</td>
+<td>san francisco 49ers</td>
+</tr>
+<tr>
+<td>1971</td>
+<td>dallas cowboys†</td>
+<td>11–3</td>
+<td>tom landry*</td>
+<td>roger staubach*</td>
+<td>duane thomas</td>
+<td>bob hayes*</td>
+<td>lilly*, niland, wright*</td>
+<td>san francisco 49ers</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>row_count</td>
+</tr>
+<tr>
+<td>2</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[2]]</h3>
+</body></html>

@@ -1,0 +1,66 @@
+************************************************************************************************************************
+Sample 2393 - Plan 1: Query: how many cooper-maserati cars were in the race?
+Sample 2393 - Plan 1: Groundtruth: ['5']
+Sample 2393 - Plan 1: X-Original table pd: 
+    pos  no           driver      constructor  laps    time_retired  grid  \
+0     1  12     jack brabham    brabham-repco  48.0       1:48:31.3     4   
+1     2  22      mike parkes          ferrari  48.0           + 9.5     3   
+2     3  14      denny hulme    brabham-repco  46.0        + 2 laps     9   
+3     4   6     jochen rindt  cooper-maserati  46.0        + 2 laps     5   
+4     5  26       dan gurney     eagle-climax  45.0        + 3 laps    14   
+5     6  44      john taylor      brabham-brm  45.0        + 3 laps    15   
+6     7  36     bob anderson   brabham-climax  44.0        + 4 laps    12   
+7     8   8       chris amon  cooper-maserati  44.0        + 4 laps     7   
+8    nc  42       guy ligier  cooper-maserati  42.0  not classified    11   
+9   ret   2  pedro rodríguez     lotus-climax  40.0        oil leak    13   
+10   nc  20  lorenzo bandini          ferrari  37.0  not classified     1   
+11   nc  30       jo bonnier   brabham-climax  32.0  not classified    17   
+12  ret  16      graham hill              brm  13.0          engine     8   
+13  ret  38       jo siffert  cooper-maserati  10.0     fuel system     6   
+14  ret  32      mike spence        lotus-brm   8.0          clutch    10   
+15  ret  10     john surtees  cooper-maserati   5.0     fuel system     2   
+16  ret   4   peter arundell        lotus-brm   3.0         gearbox    16   
+17  dns   2        jim clark     lotus-climax   NaN        accident  (18)   
+
+    points  
+0      9.0  
+1      6.0  
+2      4.0  
+3      3.0  
+4      2.0  
+5      1.0  
+6      NaN  
+7      NaN  
+8      NaN  
+9      NaN  
+10     NaN  
+11     NaN  
+12     NaN  
+13     NaN  
+14     NaN  
+15     NaN  
+16     NaN  
+17     NaN  
+Sample 2393 - Plan 1: Caption: none
+Sample 2393 - Plan 1: Original table: [['pos', 'no', 'driver', 'constructor', 'laps', 'time_retired', 'grid', 'points'], ['1', '12', 'jack brabham', 'brabham-repco', '48', '1:48:31.3', '4', '9'], ['2', '22', 'mike parkes', 'ferrari', '48', '+ 9.5', '3', '6'], ['3', '14', 'denny hulme', 'brabham-repco', '46', '+ 2 laps', '9', '4'], ['4', '6', 'jochen rindt', 'cooper-maserati', '46', '+ 2 laps', '5', '3'], ['5', '26', 'dan gurney', 'eagle-climax', '45', '+ 3 laps', '14', '2'], ['6', '44', 'john taylor', 'brabham-brm', '45', '+ 3 laps', '15', '1'], ['7', '36', 'bob anderson', 'brabham-climax', '44', '+ 4 laps', '12', ''], ['8', '8', 'chris amon', 'cooper-maserati', '44', '+ 4 laps', '7', ''], ['nc', '42', 'guy ligier', 'cooper-maserati', '42', 'not classified', '11', ''], ['ret', '2', 'pedro rodríguez', 'lotus-climax', '40', 'oil leak', '13', ''], ['nc', '20', 'lorenzo bandini', 'ferrari', '37', 'not classified', '1', ''], ['nc', '30', 'jo bonnier', 'brabham-climax', '32', 'not classified', '17', ''], ['ret', '16', 'graham hill', 'brm', '13', 'engine', '8', ''], ['ret', '38', 'jo siffert', 'cooper-maserati', '10', 'fuel system', '6', ''], ['ret', '32', 'mike spence', 'lotus-brm', '8', 'clutch', '10', ''], ['ret', '10', 'john surtees', 'cooper-maserati', '5', 'fuel system', '2', ''], ['ret', '4', 'peter arundell', 'lotus-brm', '3', 'gearbox', '16', ''], ['dns', '2', 'jim clark', 'lotus-climax', '', 'accident', '(18)', '']]
+########################################################################################################################
+Sample 2393 - Plan 1: Operation 1: Select rows where the 'constructor' column is 'cooper-maserati'.
+Sample 2393 - Plan 1: Selected indices: [[7, 3], [13, 3], [8, 3], [3, 3], [15, 3]]
+Sample 2393 - Plan 1: X-Table after operation df:
+   pos  no        driver      constructor  laps    time_retired  grid  points
+0    4   6  jochen rindt  cooper-maserati  46.0        + 2 laps     5     3.0
+1    8   8    chris amon  cooper-maserati  44.0        + 4 laps     7     NaN
+2   nc  42    guy ligier  cooper-maserati  42.0  not classified    11     NaN
+3  ret  38    jo siffert  cooper-maserati  10.0     fuel system     6     NaN
+4  ret  10  john surtees  cooper-maserati   5.0     fuel system     2     NaN
+Sample 2393 - Plan 1: Table after operation: [['pos', 'no', 'driver', 'constructor', 'laps', 'time_retired', 'grid', 'points'], ['4', 6, 'jochen rindt', 'cooper-maserati', 46.0, '+ 2 laps', '5', 3.0], ['8', 8, 'chris amon', 'cooper-maserati', 44.0, '+ 4 laps', '7', nan], ['nc', 42, 'guy ligier', 'cooper-maserati', 42.0, 'not classified', '11', nan], ['ret', 38, 'jo siffert', 'cooper-maserati', 10.0, 'fuel system', '6', nan], ['ret', 10, 'john surtees', 'cooper-maserati', 5.0, 'fuel system', '2', nan]]
+########################################################################################################################
+Sample 2393 - Plan 1: Operation 2: Count the number of rows.
+Sample 2393 - Plan 1: Selected indices: []
+Sample 2393 - Plan 1: X-Table after operation df:
+   row_count
+0          5
+Sample 2393 - Plan 1: Table after operation: [['row_count'], [5]]
+Fall-back: FALSE
+Answer from plan 1: [[5]]
+Groundtruth: ['5']

@@ -1,0 +1,79 @@
+************************************************************************************************************************
+Sample 463 - Plan 1: Query: list the number of times the rating was above a 4.0.
+Sample 463 - Plan 1: Groundtruth: ['3']
+Sample 463 - Plan 1: X-Original table pd: 
+   year network                                  nascar_ncountdown  \
+0  2007    espn       brent musburger\nsuzy kolber\nbrad daugherty   
+1  2008    espn      allen bestwick\nrusty wallace\nbrad daugherty   
+2  2009    espn  allen bestwick\nrusty wallace\nbrad daugherty\...   
+3  2010    espn  allen bestwick\nrusty wallace\nbrad daugherty\...   
+4  2011    espn      nicole briscoe\nrusty wallace\nbrad daugherty   
+5  2012    espn  nicole briscoe\nrusty wallace\nbrad daugherty\...   
+6  2013    espn  nicole briscoe\nrusty wallace\nbrad daugherty\...   
+7  2014    espn                                                      
+
+       lap_by_lap        color_commentator_s_  \
+0     jerry punch  rusty wallace\nandy petree   
+1     jerry punch   dale jarrett\nandy petree   
+2     jerry punch   dale jarrett\nandy petree   
+3      marty reid   dale jarrett\nandy petree   
+4  allen bestwick   dale jarrett\nandy petree   
+5  allen bestwick   dale jarrett\nandy petree   
+6  allen bestwick   dale jarrett\nandy petree   
+7                                               
+
+                                       pit_reporters          ratings  \
+0  dave burns\njamie little\nallen bestwick\nmike...  4.2 (4.9 cable)   
+1  dave burns\njamie little\nshannon spake\nmike ...  4.3 (5.1 cable)   
+2  dave burns\njamie little\nshannon spake\nvince...  4.1 (4.8 cable)   
+3  dave burns\njamie little\njerry punch\nvince w...  3.6 (4.2 cable)   
+4  dave burns\njamie little\njerry punch\nvince w...  4.0 (4.6 cable)   
+5  dave burns\njamie little\njerry punch\nvince w...              3.3   
+6  dave burns\njamie little\njerry punch\nvince w...              3.6   
+7                                                                       
+
+         viewers  
+0  6.574 million  
+1  6.668 million  
+2  6.487 million  
+3  5.709 million  
+4  6.337 million  
+5    5.1 million  
+6    5.5 million  
+7                 
+Sample 463 - Plan 1: Caption: none
+Sample 463 - Plan 1: Original table: [['year', 'network', 'nascar_ncountdown', 'lap_by_lap', 'color_commentator_s_', 'pit_reporters', 'ratings', 'viewers'], ['2007', 'espn', 'brent musburger\\nsuzy kolber\\nbrad daugherty', 'jerry punch', 'rusty wallace\\nandy petree', 'dave burns\\njamie little\\nallen bestwick\\nmike massaro', '4.2 (4.9 cable)', '6.574 million'], ['2008', 'espn', 'allen bestwick\\nrusty wallace\\nbrad daugherty', 'jerry punch', 'dale jarrett\\nandy petree', 'dave burns\\njamie little\\nshannon spake\\nmike massaro', '4.3 (5.1 cable)', '6.668 million'], ['2009', 'espn', 'allen bestwick\\nrusty wallace\\nbrad daugherty\\nray evernham', 'jerry punch', 'dale jarrett\\nandy petree', 'dave burns\\njamie little\\nshannon spake\\nvince welch', '4.1 (4.8 cable)', '6.487 million'], ['2010', 'espn', 'allen bestwick\\nrusty wallace\\nbrad daugherty\\nray evernham', 'marty reid', 'dale jarrett\\nandy petree', 'dave burns\\njamie little\\njerry punch\\nvince welch', '3.6 (4.2 cable)', '5.709 million'], ['2011', 'espn', 'nicole briscoe\\nrusty wallace\\nbrad daugherty', 'allen bestwick', 'dale jarrett\\nandy petree', 'dave burns\\njamie little\\njerry punch\\nvince welch', '4.0 (4.6 cable)', '6.337 million'], ['2012', 'espn', 'nicole briscoe\\nrusty wallace\\nbrad daugherty\\nray evernham', 'allen bestwick', 'dale jarrett\\nandy petree', 'dave burns\\njamie little\\njerry punch\\nvince welch', '3.3', '5.1 million'], ['2013', 'espn', 'nicole briscoe\\nrusty wallace\\nbrad daugherty\\nray evernham', 'allen bestwick', 'dale jarrett\\nandy petree', 'dave burns\\njamie little\\njerry punch\\nvince welch', '3.6', '5.5 million'], ['2014', 'espn', '', '', '', '', '', '']]
+########################################################################################################################
+Sample 463 - Plan 1: Operation 1: Select rows where the 'ratings' column is greater than 4.0.
+Sample 463 - Plan 1: Selected indices: []
+Sample 463 - Plan 1: X-Table after operation df:
+   year network                                  nascar_ncountdown  \
+0  2007    espn       brent musburger\nsuzy kolber\nbrad daugherty   
+1  2008    espn      allen bestwick\nrusty wallace\nbrad daugherty   
+2  2009    espn  allen bestwick\nrusty wallace\nbrad daugherty\...   
+
+    lap_by_lap        color_commentator_s_  \
+0  jerry punch  rusty wallace\nandy petree   
+1  jerry punch   dale jarrett\nandy petree   
+2  jerry punch   dale jarrett\nandy petree   
+
+                                       pit_reporters          ratings  \
+0  dave burns\njamie little\nallen bestwick\nmike...  4.2 (4.9 cable)   
+1  dave burns\njamie little\nshannon spake\nmike ...  4.3 (5.1 cable)   
+2  dave burns\njamie little\nshannon spake\nvince...  4.1 (4.8 cable)   
+
+         viewers  
+0  6.574 million  
+1  6.668 million  
+2  6.487 million  
+Sample 463 - Plan 1: Table after operation: [['year', 'network', 'nascar_ncountdown', 'lap_by_lap', 'color_commentator_s_', 'pit_reporters', 'ratings', 'viewers'], [2007, 'espn', 'brent musburger\\nsuzy kolber\\nbrad daugherty', 'jerry punch', 'rusty wallace\\nandy petree', 'dave burns\\njamie little\\nallen bestwick\\nmike massaro', '4.2 (4.9 cable)', '6.574 million'], [2008, 'espn', 'allen bestwick\\nrusty wallace\\nbrad daugherty', 'jerry punch', 'dale jarrett\\nandy petree', 'dave burns\\njamie little\\nshannon spake\\nmike massaro', '4.3 (5.1 cable)', '6.668 million'], [2009, 'espn', 'allen bestwick\\nrusty wallace\\nbrad daugherty\\nray evernham', 'jerry punch', 'dale jarrett\\nandy petree', 'dave burns\\njamie little\\nshannon spake\\nvince welch', '4.1 (4.8 cable)', '6.487 million']]
+########################################################################################################################
+Sample 463 - Plan 1: Operation 2: Count the number of rows.
+Sample 463 - Plan 1: Selected indices: []
+Sample 463 - Plan 1: X-Table after operation df:
+   row_count
+0          3
+Sample 463 - Plan 1: Table after operation: [['row_count'], [3]]
+Fall-back: FALSE
+Answer from plan 1: [[3]]
+Groundtruth: ['3']

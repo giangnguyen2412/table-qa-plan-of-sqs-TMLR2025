@@ -1,0 +1,38 @@
+************************************************************************************************************************
+Sample 2707 - Plan 1: Query: what is the number of victories won by carl fogarty in 1999?
+Sample 2707 - Plan 1: Groundtruth: ['11']
+Sample 2707 - Plan 1: X-Original table pd: 
+   year            rider victories          bike manufacturer_s_championship
+0  1994     carl fogarty        11    ducati 916                      ducati
+1  1995     carl fogarty        13    ducati 916                      ducati
+2  1996      troy corser         7    ducati 916                      ducati
+3  1998     carl fogarty         3    ducati 916                      ducati
+4  1999     carl fogarty        11    ducati 996                      ducati
+5  2000  (colin edwards)       (7)  (honda rc51)                      ducati
+6  2001     troy bayliss         6    ducati 996                      ducati
+Sample 2707 - Plan 1: Caption: none
+Sample 2707 - Plan 1: Original table: [['year', 'rider', 'victories', 'bike', 'manufacturer_s_championship'], ['1994', 'carl fogarty', '11', 'ducati 916', 'ducati'], ['1995', 'carl fogarty', '13', 'ducati 916', 'ducati'], ['1996', 'troy corser', '7', 'ducati 916', 'ducati'], ['1998', 'carl fogarty', '3', 'ducati 916', 'ducati'], ['1999', 'carl fogarty', '11', 'ducati 996', 'ducati'], ['2000', '(colin edwards)', '(7)', '(honda rc51)', 'ducati'], ['2001', 'troy bayliss', '6', 'ducati 996', 'ducati']]
+########################################################################################################################
+Sample 2707 - Plan 1: Operation 1: Select rows where 'rider' is 'carl fogarty' and 'year' is 1999.
+Sample 2707 - Plan 1: Selected indices: [[4, 0], [4, 1]]
+Sample 2707 - Plan 1: X-Table after operation df:
+   year         rider  victories        bike manufacturer_s_championship
+0  1999  carl fogarty         11  ducati 996                      ducati
+Sample 2707 - Plan 1: Table after operation: [['year', 'rider', 'victories', 'bike', 'manufacturer_s_championship'], [1999, 'carl fogarty', '11', 'ducati 996', 'ducati']]
+########################################################################################################################
+Sample 2707 - Plan 1: Operation 2: Select the 'victories' column.
+Sample 2707 - Plan 1: Selected indices: []
+Sample 2707 - Plan 1: X-Table after operation df:
+   victories
+0         11
+Sample 2707 - Plan 1: Table after operation: [['victories'], [11]]
+########################################################################################################################
+Sample 2707 - Plan 1: Operation 3: Calculate the sum of the values in the 'victories' column.
+Sample 2707 - Plan 1: Selected indices: []
+Sample 2707 - Plan 1: X-Table after operation df:
+   total_victories
+0               11
+Sample 2707 - Plan 1: Table after operation: [['total_victories'], [11]]
+Fall-back: FALSE
+Answer from plan 1: [[11]]
+Groundtruth: ['11']

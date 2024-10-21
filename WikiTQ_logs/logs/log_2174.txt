@@ -1,0 +1,42 @@
+************************************************************************************************************************
+Sample 2174 - Plan 1: Query: what is the number of divisions jiangsu sainty had in 2008?
+Sample 2174 - Plan 1: Groundtruth: ['2']
+Sample 2174 - Plan 1: X-Original table pd: 
+    season             team country  division  apps  goals
+0     2003  shandong luneng   china         1     4      0
+1     2004  shandong luneng   china         1     0      0
+2     2005  shandong luneng   china         1     0      0
+3     2006    chengdu wuniu   china         2     1      0
+4     2007  shandong luneng   china         1     0      0
+5     2008   jiangsu sainty   china         2    24      0
+6     2009   jiangsu sainty   china         1    15      0
+7     2010   jiangsu sainty   china         1    17      0
+8     2011   jiangsu sainty   china         1     9      0
+9     2012   jiangsu sainty   china         1     0      0
+10    2013   jiangsu sainty   china         1    11      0
+Sample 2174 - Plan 1: Caption: none
+Sample 2174 - Plan 1: Original table: [['season', 'team', 'country', 'division', 'apps', 'goals'], ['2003', 'shandong luneng', 'china', '1', '4', '0'], ['2004', 'shandong luneng', 'china', '1', '0', '0'], ['2005', 'shandong luneng', 'china', '1', '0', '0'], ['2006', 'chengdu wuniu', 'china', '2', '1', '0'], ['2007', 'shandong luneng', 'china', '1', '0', '0'], ['2008', 'jiangsu sainty', 'china', '2', '24', '0'], ['2009', 'jiangsu sainty', 'china', '1', '15', '0'], ['2010', 'jiangsu sainty', 'china', '1', '17', '0'], ['2011', 'jiangsu sainty', 'china', '1', '9', '0'], ['2012', 'jiangsu sainty', 'china', '1', '0', '0'], ['2013', 'jiangsu sainty', 'china', '1', '11', '0']]
+########################################################################################################################
+Sample 2174 - Plan 1: Operation 1: Select rows where 'team' is 'jiangsu sainty' and 'season' is 2008.
+Sample 2174 - Plan 1: Selected indices: [[5, 0], [5, 1]]
+Sample 2174 - Plan 1: X-Table after operation df:
+   season            team country  division  apps  goals
+0    2008  jiangsu sainty   china         2    24      0
+Sample 2174 - Plan 1: Table after operation: [['season', 'team', 'country', 'division', 'apps', 'goals'], [2008, 'jiangsu sainty', 'china', 2, 24, 0]]
+########################################################################################################################
+Sample 2174 - Plan 1: Operation 2: Select the 'division' column.
+Sample 2174 - Plan 1: Selected indices: []
+Sample 2174 - Plan 1: X-Table after operation df:
+   division
+0         2
+Sample 2174 - Plan 1: Table after operation: [['division'], [2]]
+########################################################################################################################
+Sample 2174 - Plan 1: Operation 3: Count the number of distinct divisions in the selected rows.
+Sample 2174 - Plan 1: Selected indices: []
+Sample 2174 - Plan 1: X-Table after operation df:
+   distinct_divisions
+0                   1
+Sample 2174 - Plan 1: Table after operation: [['distinct_divisions'], [1]]
+Fall-back: FALSE
+Answer from plan 1: [[1]]
+Groundtruth: ['2']

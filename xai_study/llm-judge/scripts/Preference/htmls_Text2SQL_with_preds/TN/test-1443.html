@@ -1,0 +1,40 @@
+
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+.sql-command { background-color: #f0f0f0; padding: 10px; border-left: 4px solid #4CAF50; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> the final score on september 17 at soldier field was 10 - 27</h3>
+<h3>Input Table: nbc sunday night football results (2006 - present)</h3>
+<div class="step">
+<table>
+<tr><td>date</td><td>visiting_team</td><td>final_score</td><td>host_team</td><td>stadium</td></tr><tr><td>9999-09-07</td><td>miami dolphins</td><td>17 - 28</td><td>pittsburgh steelers</td><td>heinz field</td></tr><tr><td>9999-09-10</td><td>indianapolis colts</td><td>26 - 21</td><td>new york giants</td><td>giants stadium</td></tr><tr><td>9999-09-17</td><td>washington redskins</td><td>10 - 27</td><td>dallas cowboys</td><td>texas stadium</td></tr><tr><td>9999-09-24</td><td>denver broncos</td><td>17 - 7</td><td>new england patriots</td><td>gillette stadium</td></tr><tr><td>9999-10-01</td><td>seattle seahawks</td><td>6 - 37</td><td>chicago bears</td><td>soldier field</td></tr><tr><td>9999-10-08</td><td>pittsburgh steelers</td><td>13 - 23</td><td>san diego chargers</td><td>qualcomm stadium</td></tr><tr><td>9999-10-15</td><td>oakland raiders</td><td>3 - 13</td><td>denver broncos</td><td>invesco field at mile high</td></tr><tr><td>9999-10-29</td><td>dallas cowboys</td><td>35 - 14</td><td>carolina panthers</td><td>bank of america stadium</td></tr><tr><td>9999-11-05</td><td>indianapolis colts</td><td>27 - 20</td><td>new england patriots</td><td>gillette stadium</td></tr><tr><td>9999-11-12</td><td>chicago bears</td><td>38 - 20</td><td>new york giants</td><td>giants stadium</td></tr><tr><td>9999-11-19</td><td>san diego chargers</td><td>35 - 27</td><td>denver broncos</td><td>invesco field at mile high</td></tr><tr><td>9999-11-26</td><td>philadelphia eagles</td><td>21 - 45</td><td>indianapolis colts</td><td>rca dome</td></tr><tr><td>9999-12-03</td><td>seattle seahawks</td><td>23 - 20</td><td>denver broncos</td><td>invesco field at mile high</td></tr><tr><td>9999-12-10</td><td>new orleans saints</td><td>42 - 17</td><td>dallas cowboys</td><td>texas stadium</td></tr><tr><td>9999-12-17</td><td>kansas city chiefs</td><td>9 - 20</td><td>san diego chargers</td><td>qualcomm stadium</td></tr><tr><td>9999-12-25</td><td>philadelphia eagles</td><td>23 - 7</td><td>dallas cowboys</td><td>texas stadium</td></tr><tr><td>9999-12-31</td><td>green bay packers</td><td>26 - 7</td><td>chicago bears</td><td>soldier field</td></tr><tr><td>0001-01-06</td><td>kansas city chiefs</td><td>8 - 23</td><td>indianapolis colts</td><td>rca dome</td></tr><tr><td>0001-01-06</td><td>dallas cowboys</td><td>20 - 21</td><td>seattle seahawks</td><td>qwest field</td></tr>
+</table>
+</div>
+<h3>SQL Command:</h3>
+<div class="sql-command">SELECT 
+    CASE 
+        WHEN (SELECT final_score FROM table_sql WHERE date = '9999-09-17' AND stadium = 'soldier field') = '10 - 27' 
+        THEN 'TRUE' 
+        ELSE 'FALSE' 
+    END;</div>
+<h3>Prediction: False</h3>
+</body></html>

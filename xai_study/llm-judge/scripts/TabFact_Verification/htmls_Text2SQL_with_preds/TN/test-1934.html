@@ -1,0 +1,42 @@
+
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+.sql-command { background-color: #f0f0f0; padding: 10px; border-left: 4px solid #4CAF50; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> besides mickael delage , there were only one other winner in the mountain classifcation</h3>
+<h3>Input Table: 2010 vuelta a españa</h3>
+<div class="step">
+<table>
+<tr><td>stage</td><td>winner</td><td>general_classification</td><td>points_classification</td><td>mountains_classification</td><td>combination_classification</td><td>team_classification</td></tr><tr><td>1</td><td>team htc - columbia</td><td>mark cavendish</td><td>mark cavendish 1</td><td>not awarded</td><td>mark cavendish</td><td>team htc - columbia</td></tr><tr><td>2</td><td>yauheni hutarovich</td><td>mark cavendish</td><td>yauheni hutarovich</td><td>mickaël delage</td><td>javier ramírez</td><td>team htc - columbia</td></tr><tr><td>3</td><td>philippe gilbert</td><td>philippe gilbert</td><td>philippe gilbert</td><td>serafín martínez</td><td>serafín martínez</td><td>team htc - columbia</td></tr><tr><td>4</td><td>igor antón</td><td>philippe gilbert</td><td>igor antón</td><td>serafín martínez</td><td>vincenzo nibali</td><td>caisse d'epargne</td></tr><tr><td>5</td><td>tyler farrar</td><td>philippe gilbert</td><td>igor antón</td><td>serafín martínez</td><td>vincenzo nibali</td><td>caisse d'epargne</td></tr><tr><td>6</td><td>thor hushovd</td><td>philippe gilbert</td><td>philippe gilbert</td><td>serafín martínez</td><td>philippe gilbert</td><td>caisse d'epargne</td></tr><tr><td>7</td><td>alessandro petacchi</td><td>philippe gilbert</td><td>mark cavendish</td><td>serafín martínez</td><td>philippe gilbert</td><td>caisse d'epargne</td></tr><tr><td>8</td><td>david moncoutié</td><td>igor antón</td><td>mark cavendish</td><td>serafín martínez</td><td>vincenzo nibali</td><td>caisse d'epargne</td></tr><tr><td>9</td><td>david lópez</td><td>igor antón</td><td>mark cavendish</td><td>david moncoutié</td><td>vincenzo nibali</td><td>caisse d'epargne</td></tr><tr><td>10</td><td>imanol erviti</td><td>joaquim rodríguez</td><td>mark cavendish</td><td>david moncoutié</td><td>david moncoutié</td><td>caisse d'epargne</td></tr><tr><td>11</td><td>igor antón</td><td>igor antón</td><td>igor antón</td><td>david moncoutié</td><td>igor antón</td><td>caisse d'epargne</td></tr><tr><td>12</td><td>mark cavendish</td><td>igor antón</td><td>mark cavendish</td><td>david moncoutié</td><td>igor antón</td><td>caisse d'epargne</td></tr><tr><td>13</td><td>mark cavendish</td><td>igor antón</td><td>mark cavendish</td><td>david moncoutié</td><td>igor antón</td><td>caisse d'epargne</td></tr><tr><td>14</td><td>joaquim rodríguez</td><td>vincenzo nibali</td><td>mark cavendish</td><td>david moncoutié</td><td>joaquim rodríguez</td><td>caisse d'epargne</td></tr><tr><td>15</td><td>carlos barredo</td><td>vincenzo nibali</td><td>mark cavendish</td><td>david moncoutié</td><td>joaquim rodríguez</td><td>team katusha</td></tr><tr><td>16</td><td>mikel nieve</td><td>joaquim rodríguez</td><td>mark cavendish</td><td>david moncoutié</td><td>joaquim rodríguez</td><td>team katusha</td></tr><tr><td>17</td><td>peter velits</td><td>vincenzo nibali</td><td>mark cavendish</td><td>david moncoutié</td><td>joaquim rodríguez</td><td>team katusha</td></tr><tr><td>18</td><td>mark cavendish</td><td>vincenzo nibali</td><td>mark cavendish</td><td>david moncoutié</td><td>joaquim rodríguez</td><td>team katusha</td></tr><tr><td>19</td><td>philippe gilbert</td><td>vincenzo nibali</td><td>mark cavendish</td><td>david moncoutié</td><td>joaquim rodríguez</td><td>team katusha</td></tr><tr><td>20</td><td>ezequiel mosquera 2</td><td>vincenzo nibali</td><td>mark cavendish</td><td>david moncoutié</td><td>vincenzo nibali</td><td>team katusha</td></tr><tr><td>21</td><td>tyler farrar</td><td>vincenzo nibali</td><td>mark cavendish</td><td>david moncoutié</td><td>vincenzo nibali</td><td>team katusha</td></tr>
+</table>
+</div>
+<h3>SQL Command:</h3>
+<div class="sql-command">SELECT 
+    CASE 
+        WHEN COUNT(*) = 1 THEN 'TRUE' 
+        ELSE 'FALSE' 
+    END 
+FROM table_sql 
+WHERE mountains_classification != 'not awarded' 
+AND winner != 'mickaël delage';</div>
+<h3>Prediction: False</h3>
+</body></html>

@@ -1,0 +1,130 @@
+************************************************************************************************************************
+Sample 1886 - Plan 1: Query: which year from 1999 to 2012 had the most championships?
+Sample 1886 - Plan 1: Groundtruth: ['2005', '2006']
+Sample 1886 - Plan 1: X-Original table pd: 
+    year                    competition                       venue  position  \
+0   1999      world youth championships           bydgoszcz, poland  13th (q)   
+1   2001  european junior championships             grosseto, italy       7th   
+2   2002     world junior championships           kingston, jamaica       8th   
+3   2003     european u23 championships           bydgoszcz, poland  13th (q)   
+4   2005     european u23 championships             erfurt, germany       7th   
+5   2005                    universiade               izmir, turkey       5th   
+6   2006     world indoor championships              moscow, russia  10th (q)   
+7   2006         european championships          gothenburg, sweden       5th   
+8   2007  european indoor championships  birmingham, united kingdom  16th (q)   
+9   2008                  olympic games              beijing, china      11th   
+10  2010         european championships            barcelona, spain       3rd   
+11  2012         european championships           helsinki, finland         –   
+
+     notes  
+0   4.60 m  
+1   5.15 m  
+2   5.30 m  
+3   5.20 m  
+4   5.50 m  
+5   5.50 m  
+6   5.65 m  
+7   5.65 m  
+8   5.40 m  
+9   5.45 m  
+10  5.75 m  
+11      nm  
+Sample 1886 - Plan 1: Caption: none
+Sample 1886 - Plan 1: Original table: [['year', 'competition', 'venue', 'position', 'notes'], ['1999', 'world youth championships', 'bydgoszcz, poland', '13th (q)', '4.60 m'], ['2001', 'european junior championships', 'grosseto, italy', '7th', '5.15 m'], ['2002', 'world junior championships', 'kingston, jamaica', '8th', '5.30 m'], ['2003', 'european u23 championships', 'bydgoszcz, poland', '13th (q)', '5.20 m'], ['2005', 'european u23 championships', 'erfurt, germany', '7th', '5.50 m'], ['2005', 'universiade', 'izmir, turkey', '5th', '5.50 m'], ['2006', 'world indoor championships', 'moscow, russia', '10th (q)', '5.65 m'], ['2006', 'european championships', 'gothenburg, sweden', '5th', '5.65 m'], ['2007', 'european indoor championships', 'birmingham, united kingdom', '16th (q)', '5.40 m'], ['2008', 'olympic games', 'beijing, china', '11th', '5.45 m'], ['2010', 'european championships', 'barcelona, spain', '3rd', '5.75 m'], ['2012', 'european championships', 'helsinki, finland', '–', 'nm']]
+########################################################################################################################
+Sample 1886 - Plan 1: Operation 1: Select rows where 'position' is not equal to '-'.
+Sample 1886 - Plan 1: Selected indices: [[9, 3], [4, 3], [0, 3], [11, 3], [7, 3], [2, 3], [8, 3], [3, 3], [10, 3], [5, 3], [6, 3], [1, 3]]
+Sample 1886 - Plan 1: X-Table after operation df:
+    year                    competition                       venue  position  \
+0   1999      world youth championships           bydgoszcz, poland  13th (q)   
+1   2001  european junior championships             grosseto, italy       7th   
+2   2002     world junior championships           kingston, jamaica       8th   
+3   2003     european u23 championships           bydgoszcz, poland  13th (q)   
+4   2005     european u23 championships             erfurt, germany       7th   
+5   2005                    universiade               izmir, turkey       5th   
+6   2006     world indoor championships              moscow, russia  10th (q)   
+7   2006         european championships          gothenburg, sweden       5th   
+8   2007  european indoor championships  birmingham, united kingdom  16th (q)   
+9   2008                  olympic games              beijing, china      11th   
+10  2010         european championships            barcelona, spain       3rd   
+11  2012         european championships           helsinki, finland         –   
+
+     notes  
+0   4.60 m  
+1   5.15 m  
+2   5.30 m  
+3   5.20 m  
+4   5.50 m  
+5   5.50 m  
+6   5.65 m  
+7   5.65 m  
+8   5.40 m  
+9   5.45 m  
+10  5.75 m  
+11      nm  
+Sample 1886 - Plan 1: Table after operation: [['year', 'competition', 'venue', 'position', 'notes'], [1999, 'world youth championships', 'bydgoszcz, poland', '13th (q)', '4.60 m'], [2001, 'european junior championships', 'grosseto, italy', '7th', '5.15 m'], [2002, 'world junior championships', 'kingston, jamaica', '8th', '5.30 m'], [2003, 'european u23 championships', 'bydgoszcz, poland', '13th (q)', '5.20 m'], [2005, 'european u23 championships', 'erfurt, germany', '7th', '5.50 m'], [2005, 'universiade', 'izmir, turkey', '5th', '5.50 m'], [2006, 'world indoor championships', 'moscow, russia', '10th (q)', '5.65 m'], [2006, 'european championships', 'gothenburg, sweden', '5th', '5.65 m'], [2007, 'european indoor championships', 'birmingham, united kingdom', '16th (q)', '5.40 m'], [2008, 'olympic games', 'beijing, china', '11th', '5.45 m'], [2010, 'european championships', 'barcelona, spain', '3rd', '5.75 m'], [2012, 'european championships', 'helsinki, finland', '–', 'nm']]
+########################################################################################################################
+Sample 1886 - Plan 1: Operation 2: Group the table by 'year'.
+Sample 1886 - Plan 1: Selected indices: []
+Sample 1886 - Plan 1: X-Table after operation df:
+   year
+0  1999
+1  2001
+2  2002
+3  2003
+4  2005
+5  2006
+6  2007
+7  2008
+8  2010
+9  2012
+Sample 1886 - Plan 1: Table after operation: [['year'], [1999], [2001], [2002], [2003], [2005], [2006], [2007], [2008], [2010], [2012]]
+########################################################################################################################
+Sample 1886 - Plan 1: Operation 3: Count the number of rows for each 'year'.
+Sample 1886 - Plan 1: Selected indices: [[0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0], [9, 0]]
+Sample 1886 - Plan 1: X-Table after operation df:
+   year  count
+0  1999      1
+1  2001      1
+2  2002      1
+3  2003      1
+4  2005      1
+5  2006      1
+6  2007      1
+7  2008      1
+8  2010      1
+9  2012      1
+Sample 1886 - Plan 1: Table after operation: [['year', 'count'], [1999, 1], [2001, 1], [2002, 1], [2003, 1], [2005, 1], [2006, 1], [2007, 1], [2008, 1], [2010, 1], [2012, 1]]
+########################################################################################################################
+Sample 1886 - Plan 1: Operation 4: Order the table by the count in descending order.
+Sample 1886 - Plan 1: Selected indices: [[0, 1], [7, 1], [2, 1], [8, 1], [3, 1], [6, 1], [1, 1], [5, 1], [9, 1], [4, 1]]
+Sample 1886 - Plan 1: X-Table after operation df:
+   year  count
+0  1999      1
+1  2001      1
+2  2002      1
+3  2003      1
+4  2005      1
+5  2006      1
+6  2007      1
+7  2008      1
+8  2010      1
+9  2012      1
+Sample 1886 - Plan 1: Table after operation: [['year', 'count'], [1999, 1], [2001, 1], [2002, 1], [2003, 1], [2005, 1], [2006, 1], [2007, 1], [2008, 1], [2010, 1], [2012, 1]]
+########################################################################################################################
+Sample 1886 - Plan 1: Operation 5: Select row number 1.
+Sample 1886 - Plan 1: Selected indices: []
+Sample 1886 - Plan 1: X-Table after operation df:
+   year  count
+0  1999      1
+Sample 1886 - Plan 1: Table after operation: [['year', 'count'], [1999, 1]]
+########################################################################################################################
+Sample 1886 - Plan 1: Operation 6: Select the 'year' column.
+Sample 1886 - Plan 1: Selected indices: []
+Sample 1886 - Plan 1: X-Table after operation df:
+   year
+0  1999
+Sample 1886 - Plan 1: Table after operation: [['year'], [1999]]
+Fall-back: FALSE
+Answer from plan 1: [[1999]]
+Groundtruth: ['2005', '2006']

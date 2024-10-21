@@ -1,0 +1,45 @@
+************************************************************************************************************************
+Sample 200 - Plan 1: Query: who was the first lieutenant to take office?
+Sample 200 - Plan 1: Groundtruth: ['Georges-Henri Héon']
+Sample 200 - Plan 1: X-Original table pd: 
+  political_lieutenant                                   district_n_area_  \
+0   georges-henri héon                          argenteuil\n(laurentides)   
+1          léon balcer                         trois-rivières\n(mauricie)   
+2     marcel faribault                                               none   
+3        claude wagner                      saint-hyacinthe\n(montérégie)   
+4      lucien bouchard          lac-saint-jean\n(saguenay-lac-saint-jean)   
+5      benoît bouchard                roberval\n(saguenay-lac-saint-jean)   
+6       monique landry           blainville—deux-montagnes\n(laurentides)   
+7        andré bachand  richmond—arthabaska\n(centre-du-québec &\neast...   
+
+   took_office  left_office                 party_leader  
+0         1949         1949               george a. drew  
+1         1957         1965      john george diefenbaker  
+2         1967         1968             robert stanfield  
+3         1972         1978  robert stanfield\njoe clark  
+4         1988         1990               brian mulroney  
+5         1990         1993               brian mulroney  
+6         1993         1993                 kim campbell  
+7         1998         2004      joe clark\npeter mackay  
+Sample 200 - Plan 1: Caption: none
+Sample 200 - Plan 1: Original table: [['political_lieutenant', 'district_n_area_', 'took_office', 'left_office', 'party_leader'], ['georges-henri héon', 'argenteuil\\n(laurentides)', '1949', '1949', 'george a. drew'], ['léon balcer', 'trois-rivières\\n(mauricie)', '1957', '1965', 'john george diefenbaker'], ['marcel faribault', 'none', '1967', '1968', 'robert stanfield'], ['claude wagner', 'saint-hyacinthe\\n(montérégie)', '1972', '1978', 'robert stanfield\\njoe clark'], ['lucien bouchard', 'lac-saint-jean\\n(saguenay-lac-saint-jean)', '1988', '1990', 'brian mulroney'], ['benoît bouchard', 'roberval\\n(saguenay-lac-saint-jean)', '1990', '1993', 'brian mulroney'], ['monique landry', 'blainville—deux-montagnes\\n(laurentides)', '1993', '1993', 'kim campbell'], ['andré bachand', 'richmond—arthabaska\\n(centre-du-québec &\\neastern townships)', '1998', '2004', 'joe clark\\npeter mackay']]
+########################################################################################################################
+Sample 200 - Plan 1: Operation 1: Select the first row from the table.
+Sample 200 - Plan 1: Selected indices: []
+Sample 200 - Plan 1: X-Table after operation df:
+  political_lieutenant           district_n_area_  took_office  left_office  \
+0   georges-henri héon  argenteuil\n(laurentides)         1949         1949   
+
+     party_leader  
+0  george a. drew  
+Sample 200 - Plan 1: Table after operation: [['political_lieutenant', 'district_n_area_', 'took_office', 'left_office', 'party_leader'], ['georges-henri héon', 'argenteuil\\n(laurentides)', 1949, 1949, 'george a. drew']]
+########################################################################################################################
+Sample 200 - Plan 1: Operation 2: Select the 'political_lieutenant' column from the selected row.
+Sample 200 - Plan 1: Selected indices: []
+Sample 200 - Plan 1: X-Table after operation df:
+  political_lieutenant
+0   georges-henri héon
+Sample 200 - Plan 1: Table after operation: [['political_lieutenant'], ['georges-henri héon']]
+Fall-back: FALSE
+Answer from plan 1: [['georges-henri héon']]
+Groundtruth: ['Georges-Henri Héon']

@@ -1,0 +1,88 @@
+************************************************************************************************************************
+Sample 2512 - Plan 1: Query: how many ferries were delivered in 1991?
+Sample 2512 - Plan 1: Groundtruth: ['4']
+Sample 2512 - Plan 1: X-Original table pd: 
+    hull     type     original_name       original_operator  delivery  \
+0    № 1  929-117           tsubasa              sado kisen  mar 1998   
+1    № 2  929-117           pegasus  kyusyu shosen co. ltd.  jun 1989   
+2    № 3  929-117           toppy 1      tane yaku jetfoils  sep 1989   
+3    № 4  929-117    princess dacil        trasmediterranea  mar 1990   
+4    № 5  929-117          nagasaki   jr kyushu jet ferries  apr 1990   
+5    № 6  929-117            beetle   jr kyushu jet ferries  jul 1990   
+6    № 7  929-117           unicorn  kyusyu shosen co. ltd.  oct 1990   
+7    № 8  929-117          beetle 2   jr kyushu jet ferries  feb 1991   
+8    № 9  929-117             venus            kyushu yusen  mar 1991   
+9   № 10  929-117            suisei              sado kisen  apr 1991   
+10  № 11  929-117  princess teguise        trasmediterranea  jun 1991   
+11  № 12  929-117           toppy 2      tane yaku jetfoils  apr 1992   
+12  № 13  929-117           toppy 3      tane yaku jetfoils  mar 1995   
+13  № 14  929-117      crystal wing        kaijo access co.  jun 1994   
+14  № 15  929-117      emerald wing        kaijo access co.  jun 1994   
+
+   disposition__2012_     c_2nd_name          c_2nd_operator c_3rd_name  \
+0              active                                                     
+1              active        toppy 1      tane yaku jetfoils              
+2              active       beetle 3   jr kyushu jet ferries              
+3              active        pegasus  kyusyu shosen co. ltd.              
+4              active       beetle 1   jr kyushu jet ferries              
+5              active         rocket              cosmo line   rocket 3   
+6              active      pegasus 2  kyusyu shosen co. ltd.              
+7              active                                                     
+8              active                                                     
+9              active                                                     
+10             active   2007 toppy 5      tane yaku jetfoils              
+11             active                                                     
+12             active                                                     
+13             active  2002 beetle 5   jr kyushu jet ferries              
+14             active  2004 rocket 1              cosmo line          -   
+
+        c_3rd_operator  
+0                       
+1                       
+2                       
+3                       
+4                       
+5   tane yaku jetfoils  
+6                       
+7                       
+8                       
+9                       
+10                      
+11                      
+12                      
+13                      
+14   tane yaku jetfoil  
+Sample 2512 - Plan 1: Caption: none
+Sample 2512 - Plan 1: Original table: [['hull', 'type', 'original_name', 'original_operator', 'delivery', 'disposition__2012_', 'c_2nd_name', 'c_2nd_operator', 'c_3rd_name', 'c_3rd_operator'], ['№ 1', '929-117', 'tsubasa', 'sado kisen', 'mar 1998', 'active', '', '', '', ''], ['№ 2', '929-117', 'pegasus', 'kyusyu shosen co. ltd.', 'jun 1989', 'active', 'toppy 1', 'tane yaku jetfoils', '', ''], ['№ 3', '929-117', 'toppy 1', 'tane yaku jetfoils', 'sep 1989', 'active', 'beetle 3', 'jr kyushu jet ferries', '', ''], ['№ 4', '929-117', 'princess dacil', 'trasmediterranea', 'mar 1990', 'active', 'pegasus', 'kyusyu shosen co. ltd.', '', ''], ['№ 5', '929-117', 'nagasaki', 'jr kyushu jet ferries', 'apr 1990', 'active', 'beetle 1', 'jr kyushu jet ferries', '', ''], ['№ 6', '929-117', 'beetle', 'jr kyushu jet ferries', 'jul 1990', 'active', 'rocket', 'cosmo line', 'rocket 3', 'tane yaku jetfoils'], ['№ 7', '929-117', 'unicorn', 'kyusyu shosen co. ltd.', 'oct 1990', 'active', 'pegasus 2', 'kyusyu shosen co. ltd.', '', ''], ['№ 8', '929-117', 'beetle 2', 'jr kyushu jet ferries', 'feb 1991', 'active', '', '', '', ''], ['№ 9', '929-117', 'venus', 'kyushu yusen', 'mar 1991', 'active', '', '', '', ''], ['№ 10', '929-117', 'suisei', 'sado kisen', 'apr 1991', 'active', '', '', '', ''], ['№ 11', '929-117', 'princess teguise', 'trasmediterranea', 'jun 1991', 'active', '2007 toppy 5', 'tane yaku jetfoils', '', ''], ['№ 12', '929-117', 'toppy 2', 'tane yaku jetfoils', 'apr 1992', 'active', '', '', '', ''], ['№ 13', '929-117', 'toppy 3', 'tane yaku jetfoils', 'mar 1995', 'active', '', '', '', ''], ['№ 14', '929-117', 'crystal wing', 'kaijo access co.', 'jun 1994', 'active', '2002 beetle 5', 'jr kyushu jet ferries', '', ''], ['№ 15', '929-117', 'emerald wing', 'kaijo access co.', 'jun 1994', 'active', '2004 rocket 1', 'cosmo line', '-', 'tane yaku jetfoil']]
+########################################################################################################################
+Sample 2512 - Plan 1: Operation 1: Select rows where the 'delivery' column contains the year '1991'.
+Sample 2512 - Plan 1: Selected indices: [[7, 4], [8, 4], [10, 4], [9, 4]]
+Sample 2512 - Plan 1: X-Table after operation df:
+   hull     type     original_name      original_operator  delivery  \
+0   № 8  929-117          beetle 2  jr kyushu jet ferries  feb 1991   
+1   № 9  929-117             venus           kyushu yusen  mar 1991   
+2  № 10  929-117            suisei             sado kisen  apr 1991   
+3  № 11  929-117  princess teguise       trasmediterranea  jun 1991   
+
+  disposition__2012_    c_2nd_name      c_2nd_operator  c_3rd_name  \
+0             active                                           NaN   
+1             active                                           NaN   
+2             active                                           NaN   
+3             active  2007 toppy 5  tane yaku jetfoils         NaN   
+
+   c_3rd_operator  
+0             NaN  
+1             NaN  
+2             NaN  
+3             NaN  
+Sample 2512 - Plan 1: Table after operation: [['hull', 'type', 'original_name', 'original_operator', 'delivery', 'disposition__2012_', 'c_2nd_name', 'c_2nd_operator', 'c_3rd_name', 'c_3rd_operator'], ['№ 8', '929-117', 'beetle 2', 'jr kyushu jet ferries', 'feb 1991', 'active', '', '', '', ''], ['№ 9', '929-117', 'venus', 'kyushu yusen', 'mar 1991', 'active', '', '', '', ''], ['№ 10', '929-117', 'suisei', 'sado kisen', 'apr 1991', 'active', '', '', '', ''], ['№ 11', '929-117', 'princess teguise', 'trasmediterranea', 'jun 1991', 'active', '2007 toppy 5', 'tane yaku jetfoils', '', '']]
+########################################################################################################################
+Sample 2512 - Plan 1: Operation 2: Count the number of rows selected in step 1.
+Sample 2512 - Plan 1: Selected indices: []
+Sample 2512 - Plan 1: X-Table after operation df:
+   row_count
+0          4
+Sample 2512 - Plan 1: Table after operation: [['row_count'], [4]]
+Fall-back: FALSE
+Answer from plan 1: [[4]]
+Groundtruth: ['4']

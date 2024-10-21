@@ -1,0 +1,890 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how many were in the north district?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'district' is 'north'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>common_name</td>
+<td>district</td>
+<td>hebrew</td>
+<td>arabic</td>
+<td>population_n_2009_</td>
+<td>area_n_km²_</td>
+<td>mayor</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">acre</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">north</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">עכו</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">عكا</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">46,300</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13.533</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">shimon lancry</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">afula</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">north</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">עפולה</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">العفولة</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">40,500</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">26.909</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">avi elkabetz</span></td>
+</tr>
+<tr>
+<td>arad</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">south</span></td>
+<td>ערד</td>
+<td>عراد</td>
+<td>23,400</td>
+<td>93.140</td>
+<td>tali ploskov</td>
+</tr>
+<tr>
+<td>ariel</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">judea & samaria\n(west bank)</span></td>
+<td>אריאל</td>
+<td>أريأل</td>
+<td>17,600</td>
+<td>14.677</td>
+<td>eliyahu shaviro</td>
+</tr>
+<tr>
+<td>ashdod</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">south</span></td>
+<td>אשדוד</td>
+<td>أشدود</td>
+<td>206,400</td>
+<td>47.242</td>
+<td>yehiel lasri</td>
+</tr>
+<tr>
+<td>ashkelon</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">south</span></td>
+<td>אשקלון</td>
+<td>عسقلان</td>
+<td>111,900</td>
+<td>47.788</td>
+<td>benny vaknin</td>
+</tr>
+<tr>
+<td>baqa-jatt</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">haifa</span></td>
+<td>באקה-ג'ת</td>
+<td>باقة جت</td>
+<td>34,300</td>
+<td>16.392</td>
+<td>yitzhak veled</td>
+</tr>
+<tr>
+<td>bat yam</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tel aviv</span></td>
+<td>בת ים</td>
+<td>بات يام</td>
+<td>130,000</td>
+<td>8.167</td>
+<td>shlomo lahiani</td>
+</tr>
+<tr>
+<td>beersheba</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">south</span></td>
+<td>באר שבע</td>
+<td>بئر السبع</td>
+<td>197,300</td>
+<td>52.903</td>
+<td>rubik danilovich</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">beit she'an</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">north</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">בית שאן</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">بيسان</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">16,900</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7.330</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jacky levi</span></td>
+</tr>
+<tr>
+<td>beit shemesh</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jerusalem</span></td>
+<td>בית שמש</td>
+<td>بيت شيمش</td>
+<td>77,100</td>
+<td>34.259</td>
+<td>moshe abutbul</td>
+</tr>
+<tr>
+<td>beitar illit</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">judea & samaria\n(west bank)</span></td>
+<td>ביתר עילית</td>
+<td>بيتار عيليت</td>
+<td>35,000</td>
+<td>6.801</td>
+<td>meir rubenstein</td>
+</tr>
+<tr>
+<td>bnei brak</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tel aviv</span></td>
+<td>בני ברק</td>
+<td>بني براك</td>
+<td>154,400</td>
+<td>7.088</td>
+<td>ya'akov asher</td>
+</tr>
+<tr>
+<td>dimona</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">south</span></td>
+<td>דימונה</td>
+<td>ديمونة</td>
+<td>32,400</td>
+<td>29.877</td>
+<td>meir cohen</td>
+</tr>
+<tr>
+<td>eilat</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">south</span></td>
+<td>אילת</td>
+<td>إيلات</td>
+<td>47,400</td>
+<td>84.789</td>
+<td>meir yitzhak halevi</td>
+</tr>
+<tr>
+<td>el'ad</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">center</span></td>
+<td>אלעד</td>
+<td>أيلعاد</td>
+<td>36,300</td>
+<td>2.756</td>
+<td>yitzhak idan</td>
+</tr>
+<tr>
+<td>giv'atayim</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tel aviv</span></td>
+<td>גבעתיים</td>
+<td>جفعاتايم</td>
+<td>53,000</td>
+<td>3.246</td>
+<td>ran kunik</td>
+</tr>
+<tr>
+<td>giv'at shmuel</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">center</span></td>
+<td>גבעת שמואל</td>
+<td></td>
+<td>21,800</td>
+<td>2.579</td>
+<td>yossi brodny</td>
+</tr>
+<tr>
+<td>hadera</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">haifa</span></td>
+<td>חדרה</td>
+<td>الخضيرة</td>
+<td>80,200</td>
+<td>49.359</td>
+<td>haim avitan</td>
+</tr>
+<tr>
+<td>haifa</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">haifa</span></td>
+<td>חיפה</td>
+<td>حيفا</td>
+<td>265,600</td>
+<td>63.666</td>
+<td>yona yahav</td>
+</tr>
+<tr>
+<td>herzliya</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tel aviv</span></td>
+<td>הרצליה</td>
+<td>هرتسليا</td>
+<td>87,000</td>
+<td>21.585</td>
+<td>yehonatan yassur</td>
+</tr>
+<tr>
+<td>hod hasharon</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">center</span></td>
+<td>הוד השרון</td>
+<td>هود هشارون</td>
+<td>47,200</td>
+<td>21.585</td>
+<td>hai adiv</td>
+</tr>
+<tr>
+<td>holon</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tel aviv</span></td>
+<td>חולון</td>
+<td>حولون</td>
+<td>184,700</td>
+<td>18.927</td>
+<td>moti sasson</td>
+</tr>
+<tr>
+<td>jerusalem</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jerusalem</span></td>
+<td>ירושלים</td>
+<td>أورشليم, القدس</td>
+<td>815,600</td>
+<td>125.156</td>
+<td>nir barkat</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">karmiel</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">north</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">כרמיאל</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">كرميئيل</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">44,100</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19.188</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">adi eldar</span></td>
+</tr>
+<tr>
+<td>kafr qasim</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">center</span></td>
+<td>כפר קאסם</td>
+<td>كفر قاسم</td>
+<td>18,800</td>
+<td>8.745</td>
+<td>sami issa</td>
+</tr>
+<tr>
+<td>kfar saba</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">center</span></td>
+<td>כפר סבא</td>
+<td>كفار سابا</td>
+<td>83,600</td>
+<td>14.169</td>
+<td>yehuda ben-hemo</td>
+</tr>
+<tr>
+<td>kiryat ata</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">haifa</span></td>
+<td>קריית אתא</td>
+<td>كريات آتا</td>
+<td>50,700</td>
+<td>16.706</td>
+<td>ya'akov peretz</td>
+</tr>
+<tr>
+<td>kiryat bialik</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">haifa</span></td>
+<td>קריית ביאליק</td>
+<td>كريات بياليك</td>
+<td>37,300</td>
+<td>8.178</td>
+<td>eli dokursky</td>
+</tr>
+<tr>
+<td>kiryat gat</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">south</span></td>
+<td>קריית גת</td>
+<td>كريات جات</td>
+<td>47,400</td>
+<td>16.302</td>
+<td>aviram dahari</td>
+</tr>
+<tr>
+<td>kiryat malakhi</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">south</span></td>
+<td>קריית מלאכי</td>
+<td>كريات ملاخي</td>
+<td>20,600</td>
+<td>4.632</td>
+<td>motti malka</td>
+</tr>
+<tr>
+<td>kiryat motzkin</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">haifa</span></td>
+<td>קריית מוצקין</td>
+<td>كريات موتسكين</td>
+<td>38,000</td>
+<td>3.778</td>
+<td>haim zuri</td>
+</tr>
+<tr>
+<td>kiryat ono</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tel aviv</span></td>
+<td>קריית אונו</td>
+<td>كريات أونو</td>
+<td>31,000</td>
+<td>4.112</td>
+<td>yossi nishri</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kiryat shmona</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">north</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">קריית שמונה</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">كريات شمونة</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">23,100</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">14.228</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nissim malka</span></td>
+</tr>
+<tr>
+<td>kiryat yam</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">haifa</span></td>
+<td>קריית ים</td>
+<td>كريات يام</td>
+<td>37,700</td>
+<td>4.339</td>
+<td>shmuel sisso</td>
+</tr>
+<tr>
+<td>lod</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">center</span></td>
+<td>לוד</td>
+<td>اللد</td>
+<td>69,800</td>
+<td>12.226</td>
+<td>yair revivo</td>
+</tr>
+<tr>
+<td>ma'ale adumim</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">judea & samaria\n(west bank)</span></td>
+<td>מעלה אדומים</td>
+<td>معلي أدوميم</td>
+<td>34,300</td>
+<td>49.177</td>
+<td>benny kashriel</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ma'alot-tarshiha</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">north</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">מעלות-תרשיחא</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">معالوت ترشيحا</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20,600</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6.832</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">shlomo bohbot</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">migdal haemek</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">north</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">מגדל העמק</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">مجدال هعيمق</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">23,900</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7.637</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">eliyahu barda</span></td>
+</tr>
+<tr>
+<td>modi'in illit</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">judea & samaria\n(west bank)</span></td>
+<td>מודיעין עילית</td>
+<td>موديعين عيليت</td>
+<td>46,200</td>
+<td>4.746</td>
+<td>ya'akov gutterman</td>
+</tr>
+<tr>
+<td>modi'in-maccabim-re'ut</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">center</span></td>
+<td>מודיעין-מכבים-רעות</td>
+<td>موديعين-مكابيم-ريعوت</td>
+<td>72,700</td>
+<td>50.176</td>
+<td>haim beebas</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nahariya</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">north</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">נהריה</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">نهاريا</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">51,200</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10.233</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jacky sabag</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nazareth</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">north</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">נצרת</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">الناصرة</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">72,200</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">14.123</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ali salam</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nazareth illit</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">north</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">נצרת עילית</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">الناصرة العليا</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">40,800</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">32.521</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">shimon gapso</span></td>
+</tr>
+<tr>
+<td>nesher</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">haifa</span></td>
+<td>נשר</td>
+<td>نيشر</td>
+<td>23,600</td>
+<td>12.790</td>
+<td>david amar</td>
+</tr>
+<tr>
+<td>ness ziona</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">center</span></td>
+<td>נס ציונה</td>
+<td>نيس تسيونا</td>
+<td>38,100</td>
+<td>15.579</td>
+<td>yossi shvo</td>
+</tr>
+<tr>
+<td>netanya</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">center</span></td>
+<td>נתניה</td>
+<td>نتانيا</td>
+<td>183,200</td>
+<td>28.954</td>
+<td>miriam feirberg</td>
+</tr>
+<tr>
+<td>netivot</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">south</span></td>
+<td>נתיבות</td>
+<td>نتيفوت</td>
+<td>26,700</td>
+<td>5.626</td>
+<td>yehiel zohar</td>
+</tr>
+<tr>
+<td>ofakim</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">south</span></td>
+<td>אופקים</td>
+<td>أوفاكيم</td>
+<td>24,000</td>
+<td>10.273</td>
+<td>zvika greengold</td>
+</tr>
+<tr>
+<td>or akiva</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">haifa</span></td>
+<td>אור עקיבא</td>
+<td>أور عكيفا</td>
+<td>16,100</td>
+<td>3.539</td>
+<td>simha yosipov</td>
+</tr>
+<tr>
+<td>or yehuda</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tel aviv</span></td>
+<td>אור יהודה</td>
+<td>أور يهودا</td>
+<td>34,400</td>
+<td>5.141</td>
+<td>david yosef</td>
+</tr>
+<tr>
+<td>petah tikva</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">center</span></td>
+<td>פתח תקווה</td>
+<td>بيتح تكفا</td>
+<td>209,600</td>
+<td>35.868</td>
+<td>itzik braverman</td>
+</tr>
+<tr>
+<td>qalansawe</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">center</span></td>
+<td>קלנסווה</td>
+<td>قلنسوة</td>
+<td>18,700</td>
+<td>8.417</td>
+<td></td>
+</tr>
+<tr>
+<td>ra'anana</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">center</span></td>
+<td>רעננה</td>
+<td>رعنانا</td>
+<td>68,300</td>
+<td>14.878</td>
+<td>nahum hofree</td>
+</tr>
+<tr>
+<td>rahat</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">south</span></td>
+<td>רהט</td>
+<td>رهط</td>
+<td>51,700</td>
+<td>19.586</td>
+<td>talal al-krenawi</td>
+</tr>
+<tr>
+<td>ramat gan</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tel aviv</span></td>
+<td>רמת גן</td>
+<td>رمات غان</td>
+<td>145,000</td>
+<td>13.229</td>
+<td>yisrael zinger</td>
+</tr>
+<tr>
+<td>ramat hasharon</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tel aviv</span></td>
+<td>רמת השרון</td>
+<td>رمات هشارون</td>
+<td>40,600</td>
+<td>16.792</td>
+<td>yitzhak rochberger</td>
+</tr>
+<tr>
+<td>ramla</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">center</span></td>
+<td>רמלה</td>
+<td>الرملة</td>
+<td>65,800</td>
+<td>11.854</td>
+<td>yoel lavi</td>
+</tr>
+<tr>
+<td>rehovot</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">center</span></td>
+<td>רחובות</td>
+<td>رحوفوت</td>
+<td>112,700</td>
+<td>23.041</td>
+<td>rahamim malul</td>
+</tr>
+<tr>
+<td>rishon lezion</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">center</span></td>
+<td>ראשון לציון</td>
+<td>ريشون لتسيون</td>
+<td>228,200</td>
+<td>58.704</td>
+<td>dov tzur</td>
+</tr>
+<tr>
+<td>rosh haayin</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">center</span></td>
+<td>ראש העין</td>
+<td>رأس العين</td>
+<td>38,500</td>
+<td>24.390</td>
+<td>moshe sinai</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">safed</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">north</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">צפת</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">صفد</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">29,500</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">29.248</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ilan shohat</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sakhnin</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">north</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">סח'נין</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">سخنين</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">25,700</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9.816</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">mazen ghnaim</span></td>
+</tr>
+<tr>
+<td>sderot</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">south</span></td>
+<td>שדרות</td>
+<td>سديروت</td>
+<td>23,700</td>
+<td>4.472</td>
+<td>david buskila</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">shefa-'amr (shfar'am)</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">north</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">שפרעם</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">شفا عمرو</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">36,200</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19.766</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nahed khazem</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tamra</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">north</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">טמרה</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">طمرة</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">28,700</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">29.259</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">abu el-hija adel</span></td>
+</tr>
+<tr>
+<td>tayibe</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">center</span></td>
+<td>טייבה</td>
+<td>الطيبة</td>
+<td>36,500</td>
+<td>18.662</td>
+<td>hemi doron</td>
+</tr>
+<tr>
+<td>tel aviv</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tel aviv</span></td>
+<td>תל אביב</td>
+<td>تل أبيب يافا</td>
+<td>403,700</td>
+<td>51.788</td>
+<td>ron huldai</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">tiberias</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">north</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">טבריה</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">طبريا</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">41,300</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10.872</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">zohar oved</span></td>
+</tr>
+<tr>
+<td>tira</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">center</span></td>
+<td>טירה</td>
+<td>الطيرة</td>
+<td>22,600</td>
+<td>11.894</td>
+<td>mamoun abd al-hay</td>
+</tr>
+<tr>
+<td>tirat carmel</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">haifa</span></td>
+<td>טירת כרמל</td>
+<td>طيرة الكرمل</td>
+<td>18,600</td>
+<td>5.601</td>
+<td>aryeh tal</td>
+</tr>
+<tr>
+<td>umm al-fahm</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">haifa</span></td>
+<td>אום אל-פחם</td>
+<td>أم الفحم</td>
+<td>46,100</td>
+<td>22.253</td>
+<td>khaled aghbariyya</td>
+</tr>
+<tr>
+<td>yavne</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">center</span></td>
+<td>יבנה</td>
+<td>يبنة</td>
+<td>33,000</td>
+<td>10.700</td>
+<td>zvi gov-ari</td>
+</tr>
+<tr>
+<td>yehud-monosson</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">center</span></td>
+<td>יהוד-מונוסון</td>
+<td>يهود مونوسون</td>
+<td>26,500</td>
+<td>5.014</td>
+<td>yossi ben-david</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yokneam</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">north</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">יקנעם</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">يوقنعم</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">19,100</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7.390</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">simon alfasi</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Count the number of rows.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>common_name</td>
+<td>district</td>
+<td>hebrew</td>
+<td>arabic</td>
+<td>population_n_2009_</td>
+<td>area_n_km²_</td>
+<td>mayor</td>
+</tr>
+<tr>
+<td>acre</td>
+<td>north</td>
+<td>עכו</td>
+<td>عكا</td>
+<td>46,300</td>
+<td>13.533</td>
+<td>shimon lancry</td>
+</tr>
+<tr>
+<td>afula</td>
+<td>north</td>
+<td>עפולה</td>
+<td>العفولة</td>
+<td>40,500</td>
+<td>26.909</td>
+<td>avi elkabetz</td>
+</tr>
+<tr>
+<td>beit she'an</td>
+<td>north</td>
+<td>בית שאן</td>
+<td>بيسان</td>
+<td>16,900</td>
+<td>7.33</td>
+<td>jacky levi</td>
+</tr>
+<tr>
+<td>karmiel</td>
+<td>north</td>
+<td>כרמיאל</td>
+<td>كرميئيل</td>
+<td>44,100</td>
+<td>19.188</td>
+<td>adi eldar</td>
+</tr>
+<tr>
+<td>kiryat shmona</td>
+<td>north</td>
+<td>קריית שמונה</td>
+<td>كريات شمونة</td>
+<td>23,100</td>
+<td>14.228</td>
+<td>nissim malka</td>
+</tr>
+<tr>
+<td>ma'alot-tarshiha</td>
+<td>north</td>
+<td>מעלות-תרשיחא</td>
+<td>معالوت ترشيحا</td>
+<td>20,600</td>
+<td>6.832</td>
+<td>shlomo bohbot</td>
+</tr>
+<tr>
+<td>migdal haemek</td>
+<td>north</td>
+<td>מגדל העמק</td>
+<td>مجدال هعيمق</td>
+<td>23,900</td>
+<td>7.637</td>
+<td>eliyahu barda</td>
+</tr>
+<tr>
+<td>nahariya</td>
+<td>north</td>
+<td>נהריה</td>
+<td>نهاريا</td>
+<td>51,200</td>
+<td>10.233</td>
+<td>jacky sabag</td>
+</tr>
+<tr>
+<td>nazareth</td>
+<td>north</td>
+<td>נצרת</td>
+<td>الناصرة</td>
+<td>72,200</td>
+<td>14.123</td>
+<td>ali salam</td>
+</tr>
+<tr>
+<td>nazareth illit</td>
+<td>north</td>
+<td>נצרת עילית</td>
+<td>الناصرة العليا</td>
+<td>40,800</td>
+<td>32.521</td>
+<td>shimon gapso</td>
+</tr>
+<tr>
+<td>safed</td>
+<td>north</td>
+<td>צפת</td>
+<td>صفد</td>
+<td>29,500</td>
+<td>29.248</td>
+<td>ilan shohat</td>
+</tr>
+<tr>
+<td>sakhnin</td>
+<td>north</td>
+<td>סח'נין</td>
+<td>سخنين</td>
+<td>25,700</td>
+<td>9.816</td>
+<td>mazen ghnaim</td>
+</tr>
+<tr>
+<td>shefa-'amr (shfar'am)</td>
+<td>north</td>
+<td>שפרעם</td>
+<td>شفا عمرو</td>
+<td>36,200</td>
+<td>19.766</td>
+<td>nahed khazem</td>
+</tr>
+<tr>
+<td>tamra</td>
+<td>north</td>
+<td>טמרה</td>
+<td>طمرة</td>
+<td>28,700</td>
+<td>29.259</td>
+<td>abu el-hija adel</td>
+</tr>
+<tr>
+<td>tiberias</td>
+<td>north</td>
+<td>טבריה</td>
+<td>طبريا</td>
+<td>41,300</td>
+<td>10.872</td>
+<td>zohar oved</td>
+</tr>
+<tr>
+<td>yokneam</td>
+<td>north</td>
+<td>יקנעם</td>
+<td>يوقنعم</td>
+<td>19,100</td>
+<td>7.39</td>
+<td>simon alfasi</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>row_count</td>
+</tr>
+<tr>
+<td>16</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[16]]</h3>
+</body></html>

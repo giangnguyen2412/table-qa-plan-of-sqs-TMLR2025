@@ -1,0 +1,301 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which yacht had the least loa?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Order the table by 'loa_n_metres_' in ascending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>position</td>
+<td>sail_number</td>
+<td>yacht</td>
+<td>state_country</td>
+<td>yacht_type</td>
+<td>loa_n_metres_</td>
+<td>skipper</td>
+<td>elapsed_time_nd_hh_mm_ss</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">us17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sayonara</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">usa</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">farr ilc maxi</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">24.13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">larry ellison</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2:19:03:32</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">c1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">brindabella</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nsw</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jutson 79</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">24.07</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">george snow</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2:21:55:06</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">yc1000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ausmaid</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sa</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">farr 47</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">14.24</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kevan pearce</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3:06:02:29</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">aus70</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ragamuffin</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nsw</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">farr 50</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">15.15</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">syd fischer</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3:06:11:29</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cok1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nokia</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ci</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">farr ketch maxi</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">25.20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">david witt</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3:09:19:00</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sm1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">fudge</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">vic</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">elliot 56</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">17.07</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">peter hansen</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3:11:00:26</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6606</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">quest</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nsw</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nelson marek 46</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">14.12</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bob steel</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3:14:41:28</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9090</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">industrial quest</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">qld</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nelson marek 43</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">13.11</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kevin miller</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3:14:58:46</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4826</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">aspect computing</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nsw</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">radford 16.5 sloop</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">16.50</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">david pescud</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3:15:28:24</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8338</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">afr midnight rambler</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nsw</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">hick 35</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">10.66</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ed psaltis\nbob thomas</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3:16:04:40</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select row number 1.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>position</td>
+<td>sail_number</td>
+<td>yacht</td>
+<td>state_country</td>
+<td>yacht_type</td>
+<td>loa_n_metres_</td>
+<td>skipper</td>
+<td>elapsed_time_nd_hh_mm_ss</td>
+</tr>
+<tr>
+<td>10</td>
+<td>8338</td>
+<td>afr midnight rambler</td>
+<td>nsw</td>
+<td>hick 35</td>
+<td>10.66</td>
+<td>ed psaltis\nbob thomas</td>
+<td>3:16:04:40</td>
+</tr>
+<tr>
+<td>8</td>
+<td>9090</td>
+<td>industrial quest</td>
+<td>qld</td>
+<td>nelson marek 43</td>
+<td>13.11</td>
+<td>kevin miller</td>
+<td>3:14:58:46</td>
+</tr>
+<tr>
+<td>7</td>
+<td>6606</td>
+<td>quest</td>
+<td>nsw</td>
+<td>nelson marek 46</td>
+<td>14.12</td>
+<td>bob steel</td>
+<td>3:14:41:28</td>
+</tr>
+<tr>
+<td>3</td>
+<td>yc1000</td>
+<td>ausmaid</td>
+<td>sa</td>
+<td>farr 47</td>
+<td>14.24</td>
+<td>kevan pearce</td>
+<td>3:06:02:29</td>
+</tr>
+<tr>
+<td>4</td>
+<td>aus70</td>
+<td>ragamuffin</td>
+<td>nsw</td>
+<td>farr 50</td>
+<td>15.15</td>
+<td>syd fischer</td>
+<td>3:06:11:29</td>
+</tr>
+<tr>
+<td>9</td>
+<td>4826</td>
+<td>aspect computing</td>
+<td>nsw</td>
+<td>radford 16.5 sloop</td>
+<td>16.5</td>
+<td>david pescud</td>
+<td>3:15:28:24</td>
+</tr>
+<tr>
+<td>6</td>
+<td>sm1</td>
+<td>fudge</td>
+<td>vic</td>
+<td>elliot 56</td>
+<td>17.07</td>
+<td>peter hansen</td>
+<td>3:11:00:26</td>
+</tr>
+<tr>
+<td>2</td>
+<td>c1</td>
+<td>brindabella</td>
+<td>nsw</td>
+<td>jutson 79</td>
+<td>24.07</td>
+<td>george snow</td>
+<td>2:21:55:06</td>
+</tr>
+<tr>
+<td>1</td>
+<td>us17</td>
+<td>sayonara</td>
+<td>usa</td>
+<td>farr ilc maxi</td>
+<td>24.13</td>
+<td>larry ellison</td>
+<td>2:19:03:32</td>
+</tr>
+<tr>
+<td>5</td>
+<td>cok1</td>
+<td>nokia</td>
+<td>ci</td>
+<td>farr ketch maxi</td>
+<td>25.2</td>
+<td>david witt</td>
+<td>3:09:19:00</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select the 'yacht' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>position</td>
+<td>sail_number</td>
+<td>yacht</td>
+<td>state_country</td>
+<td>yacht_type</td>
+<td>loa_n_metres_</td>
+<td>skipper</td>
+<td>elapsed_time_nd_hh_mm_ss</td>
+</tr>
+<tr>
+<td>10</td>
+<td>8338</td>
+<td>afr midnight rambler</td>
+<td>nsw</td>
+<td>hick 35</td>
+<td>10.66</td>
+<td>ed psaltis\nbob thomas</td>
+<td>3:16:04:40</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>yacht</td>
+</tr>
+<tr>
+<td>afr midnight rambler</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['afr midnight rambler']]</h3>
+</body></html>

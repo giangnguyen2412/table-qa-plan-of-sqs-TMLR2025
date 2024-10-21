@@ -1,0 +1,44 @@
+
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+.sql-command { background-color: #f0f0f0; padding: 10px; border-left: 4px solid #4CAF50; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> fitzroy has a higher score than any of the other teams</h3>
+<h3>Input Table: 1975 vfl season</h3>
+<div class="step">
+<table>
+<tr><td>home_team</td><td>home_team_score</td><td>away_team</td><td>away_team_score</td><td>venue</td><td>crowd</td><td>date</td></tr><tr><td>geelong</td><td>14.20 (104)</td><td>melbourne</td><td>14.14 (98)</td><td>kardinia park</td><td>13328</td><td>1975-06-07</td></tr><tr><td>st kilda</td><td>15.9 (99)</td><td>north melbourne</td><td>17.19 (121)</td><td>moorabbin oval</td><td>17811</td><td>1975-06-07</td></tr><tr><td>richmond</td><td>19.14 (128)</td><td>essendon</td><td>12.9 (81)</td><td>mcg</td><td>49469</td><td>1975-06-07</td></tr><tr><td>hawthorn</td><td>19.24 (138)</td><td>collingwood</td><td>13.11 (89)</td><td>princes park</td><td>23830</td><td>1975-06-07</td></tr><tr><td>fitzroy</td><td>15.7 (97)</td><td>carlton</td><td>16.10 (106)</td><td>junction oval</td><td>16249</td><td>1975-06-07</td></tr><tr><td>footscray</td><td>13.11 (89)</td><td>south melbourne</td><td>12.15 (87)</td><td>vfl park</td><td>14056</td><td>1975-06-07</td></tr>
+</table>
+</div>
+<h3>SQL Command:</h3>
+<div class="sql-command">SELECT 
+    CASE 
+        WHEN (SELECT MAX(home_team_score) FROM table_sql) > 
+             (SELECT MAX(away_team_score) FROM table_sql) 
+             AND (SELECT MAX(home_team_score) FROM table_sql) > 
+             (SELECT MAX(away_team_score) FROM table_sql WHERE home_team != 'fitzroy') 
+             AND (SELECT MAX(home_team_score) FROM table_sql) > 
+             (SELECT MAX(away_team_score) FROM table_sql WHERE home_team != 'fitzroy' AND away_team != 'fitzroy') 
+        THEN 'TRUE' 
+        ELSE 'FALSE' 
+    END;</div>
+</body></html>

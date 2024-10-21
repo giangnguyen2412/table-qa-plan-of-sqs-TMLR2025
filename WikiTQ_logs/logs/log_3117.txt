@@ -1,0 +1,110 @@
+************************************************************************************************************************
+Sample 3117 - Plan 1: Query: what year had 3 more matches than the previous year?
+Sample 3117 - Plan 1: Groundtruth: ['1986']
+Sample 3117 - Plan 1: X-Original table pd: 
+   year matches        winner results    pakistan_ncaptain  \
+0  1978       4  pakistan win   3 - 1  islahuddin siddique   
+1  1981       4  pakistan win   2 - 1        akhtar rasool   
+2  1986       7     india win   3 - 2        hassan sardar   
+3  1988       6          draw   2 - 2            nasir ali   
+4  1998       8  pakistan win   4 - 3          tahir zaman   
+5  1999       9  pakistan win   5 - 3          atif bashir   
+6  2004       8  pakistan win   4 - 2         waseem ahmad   
+7  2006       6  pakistan win   3 - 1     mohammad saqlain   
+8  2013     tba           tba     tba                  tba   
+
+       pakistan_ncoach   india_ncaptain        india_ncoach  
+0     sayad a. hussain    v. j. philips        r. s. gentle  
+1            zakauddin    surjeet singh       harmeek singh  
+2     anwar ahmad khan  mohmmad shaheed        m. p. ganesh  
+3     manzoor-ul-hasan     m. m. somaya        m. p. ganesh  
+4  islahuddin siddique   dhanraj pillay         v bhaskaran  
+5       shahnaz shaikh      anil aldrin         v bhaskaran  
+6      roelant oltmans    dileep tirkey         gehard rach  
+7           asif bajwa    ignace tirkey  rajinder singh jr.  
+8                  tba              tba                 tba  
+Sample 3117 - Plan 1: Caption: none
+Sample 3117 - Plan 1: Original table: [['year', 'matches', 'winner', 'results', 'pakistan_ncaptain', 'pakistan_ncoach', 'india_ncaptain', 'india_ncoach'], ['1978', '4', 'pakistan win', '3 - 1', 'islahuddin siddique', 'sayad a. hussain', 'v. j. philips', 'r. s. gentle'], ['1981', '4', 'pakistan win', '2 - 1', 'akhtar rasool', 'zakauddin', 'surjeet singh', 'harmeek singh'], ['1986', '7', 'india win', '3 - 2', 'hassan sardar', 'anwar ahmad khan', 'mohmmad shaheed', 'm. p. ganesh'], ['1988', '6', 'draw', '2 - 2', 'nasir ali', 'manzoor-ul-hasan', 'm. m. somaya', 'm. p. ganesh'], ['1998', '8', 'pakistan win', '4 - 3', 'tahir zaman', 'islahuddin siddique', 'dhanraj pillay', 'v bhaskaran'], ['1999', '9', 'pakistan win', '5 - 3', 'atif bashir', 'shahnaz shaikh', 'anil aldrin', 'v bhaskaran'], ['2004', '8', 'pakistan win', '4 - 2', 'waseem ahmad', 'roelant oltmans', 'dileep tirkey', 'gehard rach'], ['2006', '6', 'pakistan win', '3 - 1', 'mohammad saqlain', 'asif bajwa', 'ignace tirkey', 'rajinder singh jr.'], ['2013', 'tba', 'tba', 'tba', 'tba', 'tba', 'tba', 'tba']]
+########################################################################################################################
+Sample 3117 - Plan 1: Operation 1: Calculate the number of matches for each year by adding a new column 'num_matches' to the existing table.
+Sample 3117 - Plan 1: Selected indices: [[0, 1], [1, 1], [2, 1], [3, 1], [4, 1], [5, 1], [6, 1], [7, 1], [8, 1]]
+Sample 3117 - Plan 1: X-Table after operation df:
+   year matches        winner results    pakistan_ncaptain  \
+0  1978       4  pakistan win   3 - 1  islahuddin siddique   
+1  1981       4  pakistan win   2 - 1        akhtar rasool   
+2  1986       7     india win   3 - 2        hassan sardar   
+3  1988       6          draw   2 - 2            nasir ali   
+4  1998       8  pakistan win   4 - 3          tahir zaman   
+5  1999       9  pakistan win   5 - 3          atif bashir   
+6  2004       8  pakistan win   4 - 2         waseem ahmad   
+7  2006       6  pakistan win   3 - 1     mohammad saqlain   
+8  2013     tba           tba     tba                  tba   
+
+       pakistan_ncoach   india_ncaptain        india_ncoach  num_matches  
+0     sayad a. hussain    v. j. philips        r. s. gentle            4  
+1            zakauddin    surjeet singh       harmeek singh            4  
+2     anwar ahmad khan  mohmmad shaheed        m. p. ganesh            7  
+3     manzoor-ul-hasan     m. m. somaya        m. p. ganesh            6  
+4  islahuddin siddique   dhanraj pillay         v bhaskaran            8  
+5       shahnaz shaikh      anil aldrin         v bhaskaran            9  
+6      roelant oltmans    dileep tirkey         gehard rach            8  
+7           asif bajwa    ignace tirkey  rajinder singh jr.            6  
+8                  tba              tba                 tba            0  
+Sample 3117 - Plan 1: Table after operation: [['year', 'matches', 'winner', 'results', 'pakistan_ncaptain', 'pakistan_ncoach', 'india_ncaptain', 'india_ncoach', 'num_matches'], [1978, '4', 'pakistan win', '3 - 1', 'islahuddin siddique', 'sayad a. hussain', 'v. j. philips', 'r. s. gentle', 4], [1981, '4', 'pakistan win', '2 - 1', 'akhtar rasool', 'zakauddin', 'surjeet singh', 'harmeek singh', 4], [1986, '7', 'india win', '3 - 2', 'hassan sardar', 'anwar ahmad khan', 'mohmmad shaheed', 'm. p. ganesh', 7], [1988, '6', 'draw', '2 - 2', 'nasir ali', 'manzoor-ul-hasan', 'm. m. somaya', 'm. p. ganesh', 6], [1998, '8', 'pakistan win', '4 - 3', 'tahir zaman', 'islahuddin siddique', 'dhanraj pillay', 'v bhaskaran', 8], [1999, '9', 'pakistan win', '5 - 3', 'atif bashir', 'shahnaz shaikh', 'anil aldrin', 'v bhaskaran', 9], [2004, '8', 'pakistan win', '4 - 2', 'waseem ahmad', 'roelant oltmans', 'dileep tirkey', 'gehard rach', 8], [2006, '6', 'pakistan win', '3 - 1', 'mohammad saqlain', 'asif bajwa', 'ignace tirkey', 'rajinder singh jr.', 6], [2013, 'tba', 'tba', 'tba', 'tba', 'tba', 'tba', 'tba', 0]]
+########################################################################################################################
+Sample 3117 - Plan 1: Operation 2: Calculate the number of matches for the previous year by adding a new column 'prev_year_matches' to the existing table.
+Sample 3117 - Plan 1: Selected indices: [[0, 1], [0, 0], [1, 1], [1, 0], [2, 1], [2, 0], [3, 1], [3, 0], [4, 1], [4, 0], [5, 1], [5, 0], [6, 1], [6, 0], [7, 1], [7, 0], [8, 1], [8, 0]]
+Sample 3117 - Plan 1: X-Table after operation df:
+   year matches        winner results    pakistan_ncaptain  \
+0  1978       4  pakistan win   3 - 1  islahuddin siddique   
+1  1981       4  pakistan win   2 - 1        akhtar rasool   
+2  1986       7     india win   3 - 2        hassan sardar   
+3  1988       6          draw   2 - 2            nasir ali   
+4  1998       8  pakistan win   4 - 3          tahir zaman   
+5  1999       9  pakistan win   5 - 3          atif bashir   
+6  2004       8  pakistan win   4 - 2         waseem ahmad   
+7  2006       6  pakistan win   3 - 1     mohammad saqlain   
+8  2013     tba           tba     tba                  tba   
+
+       pakistan_ncoach   india_ncaptain        india_ncoach  num_matches  \
+0     sayad a. hussain    v. j. philips        r. s. gentle            4   
+1            zakauddin    surjeet singh       harmeek singh            4   
+2     anwar ahmad khan  mohmmad shaheed        m. p. ganesh            7   
+3     manzoor-ul-hasan     m. m. somaya        m. p. ganesh            6   
+4  islahuddin siddique   dhanraj pillay         v bhaskaran            8   
+5       shahnaz shaikh      anil aldrin         v bhaskaran            9   
+6      roelant oltmans    dileep tirkey         gehard rach            8   
+7           asif bajwa    ignace tirkey  rajinder singh jr.            6   
+8                  tba              tba                 tba            0   
+
+   prev_year_matches  
+0                NaN  
+1                4.0  
+2                4.0  
+3                7.0  
+4                6.0  
+5                8.0  
+6                9.0  
+7                8.0  
+8                6.0  
+Sample 3117 - Plan 1: Table after operation: [['year', 'matches', 'winner', 'results', 'pakistan_ncaptain', 'pakistan_ncoach', 'india_ncaptain', 'india_ncoach', 'num_matches', 'prev_year_matches'], [1978, '4', 'pakistan win', '3 - 1', 'islahuddin siddique', 'sayad a. hussain', 'v. j. philips', 'r. s. gentle', 4, None], [1981, '4', 'pakistan win', '2 - 1', 'akhtar rasool', 'zakauddin', 'surjeet singh', 'harmeek singh', 4, '4'], [1986, '7', 'india win', '3 - 2', 'hassan sardar', 'anwar ahmad khan', 'mohmmad shaheed', 'm. p. ganesh', 7, '4'], [1988, '6', 'draw', '2 - 2', 'nasir ali', 'manzoor-ul-hasan', 'm. m. somaya', 'm. p. ganesh', 6, '7'], [1998, '8', 'pakistan win', '4 - 3', 'tahir zaman', 'islahuddin siddique', 'dhanraj pillay', 'v bhaskaran', 8, '6'], [1999, '9', 'pakistan win', '5 - 3', 'atif bashir', 'shahnaz shaikh', 'anil aldrin', 'v bhaskaran', 9, '8'], [2004, '8', 'pakistan win', '4 - 2', 'waseem ahmad', 'roelant oltmans', 'dileep tirkey', 'gehard rach', 8, '9'], [2006, '6', 'pakistan win', '3 - 1', 'mohammad saqlain', 'asif bajwa', 'ignace tirkey', 'rajinder singh jr.', 6, '8'], [2013, 'tba', 'tba', 'tba', 'tba', 'tba', 'tba', 'tba', 0, '6']]
+########################################################################################################################
+Sample 3117 - Plan 1: Operation 3: Select rows where the 'num_matches' is 3 more than the 'prev_year_matches'.
+Sample 3117 - Plan 1: Selected indices: [[2, 8]]
+Sample 3117 - Plan 1: X-Table after operation df:
+   year  matches     winner results pakistan_ncaptain   pakistan_ncoach  \
+0  1986        7  india win   3 - 2     hassan sardar  anwar ahmad khan   
+
+    india_ncaptain  india_ncoach  num_matches  prev_year_matches  
+0  mohmmad shaheed  m. p. ganesh            7                4.0  
+Sample 3117 - Plan 1: Table after operation: [['year', 'matches', 'winner', 'results', 'pakistan_ncaptain', 'pakistan_ncoach', 'india_ncaptain', 'india_ncoach', 'num_matches', 'prev_year_matches'], [1986, '7', 'india win', '3 - 2', 'hassan sardar', 'anwar ahmad khan', 'mohmmad shaheed', 'm. p. ganesh', 7, 4.0]]
+########################################################################################################################
+Sample 3117 - Plan 1: Operation 4: Select the 'year' column.
+Sample 3117 - Plan 1: Selected indices: []
+Sample 3117 - Plan 1: X-Table after operation df:
+   year
+0  1986
+Sample 3117 - Plan 1: Table after operation: [['year'], [1986]]
+Fall-back: FALSE
+Answer from plan 1: [[1986]]
+Groundtruth: ['1986']

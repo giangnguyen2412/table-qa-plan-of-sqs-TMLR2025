@@ -1,0 +1,304 @@
+************************************************************************************************************************
+Sample 1786 - Plan 1: Query: what was the next tie listed after the 1989-1990 season?
+Sample 1786 - Plan 1: Groundtruth: ['1990-1991 Season']
+Sample 1786 - Plan 1: X-Original table pd: 
+       season_torneo jornada_or_other home_team result away_team  \
+0   1983–1984 season                2    chivas    1–1   américa   
+1   1983–1984 season               21   américa    1–1    chivas   
+2   1983–1984 season        final ida    chivas    2–2   américa   
+3   1983–1984 season     final vuelta   américa    3–1    chivas   
+4   1984–1985 season               13   américa    0–0    chivas   
+..               ...              ...       ...    ...       ...   
+71     clausura 2012               14    chivas    0-1   america   
+72     apertura 2012               12   america    1-3    chivas   
+73     clausura 2013               12    chivas    0-2   america   
+74     apertura 2013               13   america    2-0    chivas   
+75     clausura 2014               13    chivas    0-4   américa   
+
+             stadium               date  
+0    estadio jalisco  11 september 1983  
+1     estadio azteca    22 january 1984  
+2    estadio jalisco        7 june 1984  
+3     estadio azteca       10 june 1984  
+4     estadio azteca   11 december 1984  
+..               ...                ...  
+71  estadio omnilife      april 8, 2012  
+72    estadio azteca    october 6, 2012  
+73  estadio omnilife     march 31, 2013  
+74    estadio azteca    october 5, 2013  
+75  estadio omnilife     march 30, 2014  
+
+[76 rows x 7 columns]
+Sample 1786 - Plan 1: Caption: none
+Sample 1786 - Plan 1: Original table: [['season_torneo', 'jornada_or_other', 'home_team', 'result', 'away_team', 'stadium', 'date'], ['1983–1984 season', '2', 'chivas', '1–1', 'américa', 'estadio jalisco', '11 september 1983'], ['1983–1984 season', '21', 'américa', '1–1', 'chivas', 'estadio azteca', '22 january 1984'], ['1983–1984 season', 'final ida', 'chivas', '2–2', 'américa', 'estadio jalisco', '7 june 1984'], ['1983–1984 season', 'final vuelta', 'américa', '3–1', 'chivas', 'estadio azteca', '10 june 1984'], ['1984–1985 season', '13', 'américa', '0–0', 'chivas', 'estadio azteca', '11 december 1984'], ['1984–1985 season', '32', 'chivas', '0–0', 'américa', 'estadio jalisco', '24 march 1985'], ['1984–1985 season', 'quarterfinals ida', 'chivas', '0–2', 'américa', 'estadio jalisco', '7 may 1985'], ['1984–1985 season', 'quarterfinals vuelta', 'américa', '1–0', 'chivas', 'estadio azteca', '12 may 1985'], ['1986–1987 season', '3', 'américa', '1–0', 'chivas', 'estadio azteca', '17 august 1986'], ['1986–1987 season', '24', 'chivas', '2–2', 'américa', 'estadio jalisco', '11 january 1987'], ['1987–1988 season', '15', 'américa', '1–0', 'chivas', 'estadio azteca', '20 december 1987'], ['1987–1988 season', '34', 'chivas', '3–2', 'américa', 'estadio jalisco', '15 may 1988'], ['1988–1989 season', '12', 'chivas', '2–2', 'américa', 'estadio jalisco', '29 december 1988'], ['1988–1989 season', '31', 'américa', '3–1', 'chivas', 'estadio azteca', '30 april 1989'], ['1988-1989 season', 'liguilla', 'américa', '2-1', 'chivas', 'estadio azteca', 'june 22, 1989'], ['1988-1989 season', 'liquilla', 'chivas', '1-2', 'américa', 'estadio jalisco', 'june 25, 1989'], ['1989-1990 season', '3', 'chivas', '2-2', 'américa', 'estadio jalisco', 'september 24, 1989'], ['1989-1990 season', '22', 'américa', '2-2', 'chivas', 'estadio azteca', 'january 14, 1990'], ['1990-1991 season', '12', 'chivas', '1-1', 'américa', 'estadio jalisco', 'december 9, 1990'], ['1990-1991 season', '31', 'américa', '2-2', 'chivas', 'estadio azteca', 'april 14, 1991'], ['1990-1991 season', 'semifinals ida', 'chivas', '0-2', 'américa', 'estadio jalisco', 'june 13, 1991'], ['1990-1991 season', 'semifinals vuelta', 'américa', '3-0', 'chivas', 'estadio azteca', 'june 16, 1991'], ['1991-1992 season', '2', 'américa', '1-1', 'chivas', 'estadio azteca', 'september 22, 1991'], ['1991-1992 season', '21', 'chivas', '0-0', 'américa', 'estadio jalisco', 'january 19, 1992'], ['1992-1993 season', '3', 'chivas', '1-0', 'américa', 'estadio jalisco', 'august 30, 1992'], ['1992-1993 season', '22', 'américa', '2-1', 'chivas', 'estadio azteca', 'january 10, 1993'], ['1993-1994 season', '4', 'chivas', '0-0', 'américa', 'estadio jalisco', 'september 5, 1993'], ['1993-1994 season', '23', 'américa', '1-0', 'chivas', 'estadio azteca', 'january 5, 1994'], ['1994-1995 season', '11', 'chivas', '3-4', 'américa', 'estadio jalisco', 'november 13, 1994'], ['1994-1995 season', '30', 'américa', '0-0', 'chivas', 'estadio azteca', 'march 19, 1995'], ['1995-1996 season', '9', 'chivas', '0-2', 'américa', 'estadio jalisco', 'october 22, 1995'], ['1995-1996 season', '26', 'américa', '2-3', 'chivas', 'estadio azteca', 'february 18, 1996'], ['invierno 1996', '3', 'chivas', '5-0', 'américa', 'estadio jalisco', 'august 25, 1996'], ['verano 1997', '3', 'américa', '0-0', 'chivas', 'estadio azteca', 'january 27, 1997'], ['invierno 1997', '4', 'chivas', '1-2', 'américa', 'estadio jalisco', 'august 10, 1997'], ['invierno 1997', 'quarterfinals ida', 'chivas', '1-3', 'américa', 'estadio jalisco', 'november 18, 1997'], ['invierno 1997', 'quarterfinals vuelta', 'américa', '1-0', 'chivas', 'estadio azteca', 'november 21, 1997'], ['verano 1998', '4', 'américa', '0-0', 'chivas', 'estadio azteca', 'january 15, 1998'], ['invierno 1998', '8', 'chivas', '1-0', 'américa', 'estadio jalisco', 'september 20, 1998'], ['verano 1999', '8', 'américa', '0-1', 'chivas', 'estadio azteca', 'march 7, 1999'], ['invierno 1999', '5', 'américa', '2-0', 'chivas', 'estadio azteca', 'september 12, 1999'], ['invierno 1999', 'quarterfinals ida', 'chivas', '0-0', 'américa', 'estadio jalisco', 'december 2, 1999'], ['invierno 1999', 'quarterfinals vuelta', 'américa', '1-0', 'chivas', 'estadio azteca', 'december 5, 1999'], ['verano 2000', '5', 'chivas', '3-0', 'américa', 'estadio jalisco', 'february 13, 2000'], ['invierno 2000', '7', 'américa', '0-3', 'chivas', 'estadio azteca', 'september 10, 2000'], ['verano 2001', '7', 'chivas', '1-2', 'américa', 'estadio jalisco', 'february 14, 2001'], ['invierno 2001', '14', 'chivas', '1-1', 'américa', 'estadio jalisco', 'october 21, 2001'], ['verano 2002', '14', 'américa', '2-3', 'chivas', 'estadio azteca', 'march 31, 2002'], ['apertura 2002', '2', 'chivas', '0-1', 'américa', 'estadio jalisco', 'august 11, 2002'], ['clausura 2003', '2', 'américa', '1-1', 'chivas', 'estadio azteca', 'january 19, 2002'], ['apertura 2003', '17', 'américa', '1-2', 'chivas', 'estadio azteca', 'november 9, 2003'], ['clausura 2004', '17', 'chivas', '0-1', 'américa', 'estadio jalisco', 'may 1, 2004'], ['apertura 2004', '9', 'chivas', '1-1', 'américa', 'estadio jalisco', 'october 2, 2004'], ['clausura 2005', '9', 'américa', '3-3', 'chivas', 'estadio azteca', 'march 13, 2005'], ['apertura 2005', '7', 'américa', '0-0', 'chivas', 'estadio azteca', 'september 11, 2005'], ['clausura 2006', '7', 'chivas', '1-0', 'américa', 'estadio jalisco', 'february 26, 2006'], ['apertura 2006', '11', 'chivas', '2-0', 'américa', 'estadio jalisco', 'september 30, 2006'], ['apertura 2006', 'semifinals ida', 'chivas', '2-0', 'américa', 'estadio jalisco', 'november 30, 2006'], ['apertura 2006', 'semifinals vuelta', 'américa', '0-0', 'chivas', 'estadio azteca', 'december 3, 2006'], ['clausura 2007', '11', 'américa', '1-0', 'chivas', 'estadio azteca', 'march 18, 2007'], ['clausura 2007', 'semifinals ida', 'américa', '1-0', 'chivas', 'estadio azteca', 'may 17, 2007'], ['clausura 2007', 'semifinals vuelta', 'chivas', '0-1', 'américa', 'estadio jalisco', 'may 20, 2007'], ['apertura 2007', '14', 'américa', '2-1', 'chivas', 'estadio azteca', 'october 28, 2007'], ['clausura 2008', '14 (clasico 200)', 'chivas', '3-2', 'américa', 'estadio jalisco', 'april 13, 2008'], ['apertura 2008', '14', 'américa', '1-2', 'chivas', 'estadio azteca', 'october 26, 2008'], ['clausura 2009', '14', 'chivas', '1-0', 'américa', 'estadio jalisco', 'april 19, 2009'], ['apertura 2009', '13', 'america', '1-0', 'chivas', 'estadio azteca', 'october 25, 2009'], ['bicentenario 2010', '13', 'chivas', '1-0', 'america', 'estadio jalisco', 'april 4, 2010'], ['apertura 2010', '13', 'américa', '0-0', 'chivas', 'estadio azteca', 'october 24, 2010'], ['clausura 2011', '13', 'chivas', '3-0', 'america', 'estadio omnilife', 'april 10, 2011'], ['apertura 2011', '14', 'america', '1-3', 'chivas', 'estadio azteca', 'october 23, 2011'], ['clausura 2012', '14', 'chivas', '0-1', 'america', 'estadio omnilife', 'april 8, 2012'], ['apertura 2012', '12', 'america', '1-3', 'chivas', 'estadio azteca', 'october 6, 2012'], ['clausura 2013', '12', 'chivas', '0-2', 'america', 'estadio omnilife', 'march 31, 2013'], ['apertura 2013', '13', 'america', '2-0', 'chivas', 'estadio azteca', 'october 5, 2013'], ['clausura 2014', '13', 'chivas', '0-4', 'américa', 'estadio omnilife', 'march 30, 2014']]
+########################################################################################################################
+Sample 1786 - Plan 1: Operation 1: Filter the table to include only the rows after the 1989-1990 season.
+Sample 1786 - Plan 1: Selected indices: [[37, 0], [70, 0], [59, 0], [28, 0], [50, 0], [61, 0], [19, 0], [30, 0], [41, 0], [52, 0], [74, 0], [32, 0], [43, 0], [65, 0], [63, 0], [21, 0], [54, 0], [23, 0], [34, 0], [45, 0], [56, 0], [67, 0], [36, 0], [47, 0], [58, 0], [69, 0], [27, 0], [60, 0], [51, 0], [25, 0], [38, 0], [49, 0], [71, 0], [18, 0], [29, 0], [40, 0], [62, 0], [73, 0], [20, 0], [31, 0], [53, 0], [64, 0], [22, 0], [55, 0], [42, 0], [75, 0], [33, 0], [44, 0], [66, 0], [24, 0], [35, 0], [46, 0], [57, 0], [68, 0], [26, 0], [48, 0], [39, 0], [72, 0]]
+Sample 1786 - Plan 1: X-Table after operation df:
+        season_torneo      jornada_or_other home_team result away_team  \
+0    1990-1991 season                    12    chivas    1-1   américa   
+1    1990-1991 season                    31   américa    2-2    chivas   
+2    1990-1991 season        semifinals ida    chivas    0-2   américa   
+3    1990-1991 season     semifinals vuelta   américa    3-0    chivas   
+4    1991-1992 season                     2   américa    1-1    chivas   
+5    1991-1992 season                    21    chivas    0-0   américa   
+6    1992-1993 season                     3    chivas    1-0   américa   
+7    1992-1993 season                    22   américa    2-1    chivas   
+8    1993-1994 season                     4    chivas    0-0   américa   
+9    1993-1994 season                    23   américa    1-0    chivas   
+10   1994-1995 season                    11    chivas    3-4   américa   
+11   1994-1995 season                    30   américa    0-0    chivas   
+12   1995-1996 season                     9    chivas    0-2   américa   
+13   1995-1996 season                    26   américa    2-3    chivas   
+14      invierno 1996                     3    chivas    5-0   américa   
+15        verano 1997                     3   américa    0-0    chivas   
+16      invierno 1997                     4    chivas    1-2   américa   
+17      invierno 1997     quarterfinals ida    chivas    1-3   américa   
+18      invierno 1997  quarterfinals vuelta   américa    1-0    chivas   
+19        verano 1998                     4   américa    0-0    chivas   
+20      invierno 1998                     8    chivas    1-0   américa   
+21        verano 1999                     8   américa    0-1    chivas   
+22      invierno 1999                     5   américa    2-0    chivas   
+23      invierno 1999     quarterfinals ida    chivas    0-0   américa   
+24      invierno 1999  quarterfinals vuelta   américa    1-0    chivas   
+25        verano 2000                     5    chivas    3-0   américa   
+26      invierno 2000                     7   américa    0-3    chivas   
+27        verano 2001                     7    chivas    1-2   américa   
+28      invierno 2001                    14    chivas    1-1   américa   
+29        verano 2002                    14   américa    2-3    chivas   
+30      apertura 2002                     2    chivas    0-1   américa   
+31      clausura 2003                     2   américa    1-1    chivas   
+32      apertura 2003                    17   américa    1-2    chivas   
+33      clausura 2004                    17    chivas    0-1   américa   
+34      apertura 2004                     9    chivas    1-1   américa   
+35      clausura 2005                     9   américa    3-3    chivas   
+36      apertura 2005                     7   américa    0-0    chivas   
+37      clausura 2006                     7    chivas    1-0   américa   
+38      apertura 2006                    11    chivas    2-0   américa   
+39      apertura 2006        semifinals ida    chivas    2-0   américa   
+40      apertura 2006     semifinals vuelta   américa    0-0    chivas   
+41      clausura 2007                    11   américa    1-0    chivas   
+42      clausura 2007        semifinals ida   américa    1-0    chivas   
+43      clausura 2007     semifinals vuelta    chivas    0-1   américa   
+44      apertura 2007                    14   américa    2-1    chivas   
+45      clausura 2008      14 (clasico 200)    chivas    3-2   américa   
+46      apertura 2008                    14   américa    1-2    chivas   
+47      clausura 2009                    14    chivas    1-0   américa   
+48      apertura 2009                    13   america    1-0    chivas   
+49  bicentenario 2010                    13    chivas    1-0   america   
+50      apertura 2010                    13   américa    0-0    chivas   
+51      clausura 2011                    13    chivas    3-0   america   
+52      apertura 2011                    14   america    1-3    chivas   
+53      clausura 2012                    14    chivas    0-1   america   
+54      apertura 2012                    12   america    1-3    chivas   
+55      clausura 2013                    12    chivas    0-2   america   
+56      apertura 2013                    13   america    2-0    chivas   
+57      clausura 2014                    13    chivas    0-4   américa   
+
+             stadium                date  
+0    estadio jalisco    december 9, 1990  
+1     estadio azteca      april 14, 1991  
+2    estadio jalisco       june 13, 1991  
+3     estadio azteca       june 16, 1991  
+4     estadio azteca  september 22, 1991  
+5    estadio jalisco    january 19, 1992  
+6    estadio jalisco     august 30, 1992  
+7     estadio azteca    january 10, 1993  
+8    estadio jalisco   september 5, 1993  
+9     estadio azteca     january 5, 1994  
+10   estadio jalisco   november 13, 1994  
+11    estadio azteca      march 19, 1995  
+12   estadio jalisco    october 22, 1995  
+13    estadio azteca   february 18, 1996  
+14   estadio jalisco     august 25, 1996  
+15    estadio azteca    january 27, 1997  
+16   estadio jalisco     august 10, 1997  
+17   estadio jalisco   november 18, 1997  
+18    estadio azteca   november 21, 1997  
+19    estadio azteca    january 15, 1998  
+20   estadio jalisco  september 20, 1998  
+21    estadio azteca       march 7, 1999  
+22    estadio azteca  september 12, 1999  
+23   estadio jalisco    december 2, 1999  
+24    estadio azteca    december 5, 1999  
+25   estadio jalisco   february 13, 2000  
+26    estadio azteca  september 10, 2000  
+27   estadio jalisco   february 14, 2001  
+28   estadio jalisco    october 21, 2001  
+29    estadio azteca      march 31, 2002  
+30   estadio jalisco     august 11, 2002  
+31    estadio azteca    january 19, 2002  
+32    estadio azteca    november 9, 2003  
+33   estadio jalisco         may 1, 2004  
+34   estadio jalisco     october 2, 2004  
+35    estadio azteca      march 13, 2005  
+36    estadio azteca  september 11, 2005  
+37   estadio jalisco   february 26, 2006  
+38   estadio jalisco  september 30, 2006  
+39   estadio jalisco   november 30, 2006  
+40    estadio azteca    december 3, 2006  
+41    estadio azteca      march 18, 2007  
+42    estadio azteca        may 17, 2007  
+43   estadio jalisco        may 20, 2007  
+44    estadio azteca    october 28, 2007  
+45   estadio jalisco      april 13, 2008  
+46    estadio azteca    october 26, 2008  
+47   estadio jalisco      april 19, 2009  
+48    estadio azteca    october 25, 2009  
+49   estadio jalisco       april 4, 2010  
+50    estadio azteca    october 24, 2010  
+51  estadio omnilife      april 10, 2011  
+52    estadio azteca    october 23, 2011  
+53  estadio omnilife       april 8, 2012  
+54    estadio azteca     october 6, 2012  
+55  estadio omnilife      march 31, 2013  
+56    estadio azteca     october 5, 2013  
+57  estadio omnilife      march 30, 2014  
+Sample 1786 - Plan 1: Table after operation: [['season_torneo', 'jornada_or_other', 'home_team', 'result', 'away_team', 'stadium', 'date'], ['1990-1991 season', '12', 'chivas', '1-1', 'américa', 'estadio jalisco', 'december 9, 1990'], ['1990-1991 season', '31', 'américa', '2-2', 'chivas', 'estadio azteca', 'april 14, 1991'], ['1990-1991 season', 'semifinals ida', 'chivas', '0-2', 'américa', 'estadio jalisco', 'june 13, 1991'], ['1990-1991 season', 'semifinals vuelta', 'américa', '3-0', 'chivas', 'estadio azteca', 'june 16, 1991'], ['1991-1992 season', '2', 'américa', '1-1', 'chivas', 'estadio azteca', 'september 22, 1991'], ['1991-1992 season', '21', 'chivas', '0-0', 'américa', 'estadio jalisco', 'january 19, 1992'], ['1992-1993 season', '3', 'chivas', '1-0', 'américa', 'estadio jalisco', 'august 30, 1992'], ['1992-1993 season', '22', 'américa', '2-1', 'chivas', 'estadio azteca', 'january 10, 1993'], ['1993-1994 season', '4', 'chivas', '0-0', 'américa', 'estadio jalisco', 'september 5, 1993'], ['1993-1994 season', '23', 'américa', '1-0', 'chivas', 'estadio azteca', 'january 5, 1994'], ['1994-1995 season', '11', 'chivas', '3-4', 'américa', 'estadio jalisco', 'november 13, 1994'], ['1994-1995 season', '30', 'américa', '0-0', 'chivas', 'estadio azteca', 'march 19, 1995'], ['1995-1996 season', '9', 'chivas', '0-2', 'américa', 'estadio jalisco', 'october 22, 1995'], ['1995-1996 season', '26', 'américa', '2-3', 'chivas', 'estadio azteca', 'february 18, 1996'], ['invierno 1996', '3', 'chivas', '5-0', 'américa', 'estadio jalisco', 'august 25, 1996'], ['verano 1997', '3', 'américa', '0-0', 'chivas', 'estadio azteca', 'january 27, 1997'], ['invierno 1997', '4', 'chivas', '1-2', 'américa', 'estadio jalisco', 'august 10, 1997'], ['invierno 1997', 'quarterfinals ida', 'chivas', '1-3', 'américa', 'estadio jalisco', 'november 18, 1997'], ['invierno 1997', 'quarterfinals vuelta', 'américa', '1-0', 'chivas', 'estadio azteca', 'november 21, 1997'], ['verano 1998', '4', 'américa', '0-0', 'chivas', 'estadio azteca', 'january 15, 1998'], ['invierno 1998', '8', 'chivas', '1-0', 'américa', 'estadio jalisco', 'september 20, 1998'], ['verano 1999', '8', 'américa', '0-1', 'chivas', 'estadio azteca', 'march 7, 1999'], ['invierno 1999', '5', 'américa', '2-0', 'chivas', 'estadio azteca', 'september 12, 1999'], ['invierno 1999', 'quarterfinals ida', 'chivas', '0-0', 'américa', 'estadio jalisco', 'december 2, 1999'], ['invierno 1999', 'quarterfinals vuelta', 'américa', '1-0', 'chivas', 'estadio azteca', 'december 5, 1999'], ['verano 2000', '5', 'chivas', '3-0', 'américa', 'estadio jalisco', 'february 13, 2000'], ['invierno 2000', '7', 'américa', '0-3', 'chivas', 'estadio azteca', 'september 10, 2000'], ['verano 2001', '7', 'chivas', '1-2', 'américa', 'estadio jalisco', 'february 14, 2001'], ['invierno 2001', '14', 'chivas', '1-1', 'américa', 'estadio jalisco', 'october 21, 2001'], ['verano 2002', '14', 'américa', '2-3', 'chivas', 'estadio azteca', 'march 31, 2002'], ['apertura 2002', '2', 'chivas', '0-1', 'américa', 'estadio jalisco', 'august 11, 2002'], ['clausura 2003', '2', 'américa', '1-1', 'chivas', 'estadio azteca', 'january 19, 2002'], ['apertura 2003', '17', 'américa', '1-2', 'chivas', 'estadio azteca', 'november 9, 2003'], ['clausura 2004', '17', 'chivas', '0-1', 'américa', 'estadio jalisco', 'may 1, 2004'], ['apertura 2004', '9', 'chivas', '1-1', 'américa', 'estadio jalisco', 'october 2, 2004'], ['clausura 2005', '9', 'américa', '3-3', 'chivas', 'estadio azteca', 'march 13, 2005'], ['apertura 2005', '7', 'américa', '0-0', 'chivas', 'estadio azteca', 'september 11, 2005'], ['clausura 2006', '7', 'chivas', '1-0', 'américa', 'estadio jalisco', 'february 26, 2006'], ['apertura 2006', '11', 'chivas', '2-0', 'américa', 'estadio jalisco', 'september 30, 2006'], ['apertura 2006', 'semifinals ida', 'chivas', '2-0', 'américa', 'estadio jalisco', 'november 30, 2006'], ['apertura 2006', 'semifinals vuelta', 'américa', '0-0', 'chivas', 'estadio azteca', 'december 3, 2006'], ['clausura 2007', '11', 'américa', '1-0', 'chivas', 'estadio azteca', 'march 18, 2007'], ['clausura 2007', 'semifinals ida', 'américa', '1-0', 'chivas', 'estadio azteca', 'may 17, 2007'], ['clausura 2007', 'semifinals vuelta', 'chivas', '0-1', 'américa', 'estadio jalisco', 'may 20, 2007'], ['apertura 2007', '14', 'américa', '2-1', 'chivas', 'estadio azteca', 'october 28, 2007'], ['clausura 2008', '14 (clasico 200)', 'chivas', '3-2', 'américa', 'estadio jalisco', 'april 13, 2008'], ['apertura 2008', '14', 'américa', '1-2', 'chivas', 'estadio azteca', 'october 26, 2008'], ['clausura 2009', '14', 'chivas', '1-0', 'américa', 'estadio jalisco', 'april 19, 2009'], ['apertura 2009', '13', 'america', '1-0', 'chivas', 'estadio azteca', 'october 25, 2009'], ['bicentenario 2010', '13', 'chivas', '1-0', 'america', 'estadio jalisco', 'april 4, 2010'], ['apertura 2010', '13', 'américa', '0-0', 'chivas', 'estadio azteca', 'october 24, 2010'], ['clausura 2011', '13', 'chivas', '3-0', 'america', 'estadio omnilife', 'april 10, 2011'], ['apertura 2011', '14', 'america', '1-3', 'chivas', 'estadio azteca', 'october 23, 2011'], ['clausura 2012', '14', 'chivas', '0-1', 'america', 'estadio omnilife', 'april 8, 2012'], ['apertura 2012', '12', 'america', '1-3', 'chivas', 'estadio azteca', 'october 6, 2012'], ['clausura 2013', '12', 'chivas', '0-2', 'america', 'estadio omnilife', 'march 31, 2013'], ['apertura 2013', '13', 'america', '2-0', 'chivas', 'estadio azteca', 'october 5, 2013'], ['clausura 2014', '13', 'chivas', '0-4', 'américa', 'estadio omnilife', 'march 30, 2014']]
+########################################################################################################################
+Sample 1786 - Plan 1: Operation 2: Order the filtered table by the 'season_torneo' column in ascending order.
+Sample 1786 - Plan 1: Selected indices: [[4, 0], [37, 0], [28, 0], [17, 0], [50, 0], [8, 0], [30, 0], [52, 0], [41, 0], [19, 0], [10, 0], [32, 0], [43, 0], [1, 0], [21, 0], [54, 0], [12, 0], [34, 0], [56, 0], [45, 0], [23, 0], [3, 0], [36, 0], [47, 0], [14, 0], [5, 0], [27, 0], [51, 0], [25, 0], [16, 0], [38, 0], [49, 0], [7, 0], [40, 0], [18, 0], [29, 0], [31, 0], [53, 0], [20, 0], [22, 0], [55, 0], [9, 0], [42, 0], [0, 0], [11, 0], [44, 0], [33, 0], [2, 0], [13, 0], [46, 0], [35, 0], [57, 0], [24, 0], [26, 0], [48, 0], [15, 0], [6, 0], [39, 0]]
+Sample 1786 - Plan 1: X-Table after operation df:
+        season_torneo      jornada_or_other home_team result away_team  \
+0    1990-1991 season                    12    chivas    1-1   américa   
+1    1990-1991 season                    31   américa    2-2    chivas   
+2    1990-1991 season        semifinals ida    chivas    0-2   américa   
+3    1990-1991 season     semifinals vuelta   américa    3-0    chivas   
+4    1991-1992 season                     2   américa    1-1    chivas   
+5    1991-1992 season                    21    chivas    0-0   américa   
+6    1992-1993 season                     3    chivas    1-0   américa   
+7    1992-1993 season                    22   américa    2-1    chivas   
+8    1993-1994 season                     4    chivas    0-0   américa   
+9    1993-1994 season                    23   américa    1-0    chivas   
+10   1994-1995 season                    11    chivas    3-4   américa   
+11   1994-1995 season                    30   américa    0-0    chivas   
+12   1995-1996 season                     9    chivas    0-2   américa   
+13   1995-1996 season                    26   américa    2-3    chivas   
+14      apertura 2002                     2    chivas    0-1   américa   
+15      apertura 2003                    17   américa    1-2    chivas   
+16      apertura 2004                     9    chivas    1-1   américa   
+17      apertura 2005                     7   américa    0-0    chivas   
+18      apertura 2006                    11    chivas    2-0   américa   
+19      apertura 2006        semifinals ida    chivas    2-0   américa   
+20      apertura 2006     semifinals vuelta   américa    0-0    chivas   
+21      apertura 2007                    14   américa    2-1    chivas   
+22      apertura 2008                    14   américa    1-2    chivas   
+23      apertura 2009                    13   america    1-0    chivas   
+24      apertura 2010                    13   américa    0-0    chivas   
+25      apertura 2011                    14   america    1-3    chivas   
+26      apertura 2012                    12   america    1-3    chivas   
+27      apertura 2013                    13   america    2-0    chivas   
+28  bicentenario 2010                    13    chivas    1-0   america   
+29      clausura 2003                     2   américa    1-1    chivas   
+30      clausura 2004                    17    chivas    0-1   américa   
+31      clausura 2005                     9   américa    3-3    chivas   
+32      clausura 2006                     7    chivas    1-0   américa   
+33      clausura 2007                    11   américa    1-0    chivas   
+34      clausura 2007        semifinals ida   américa    1-0    chivas   
+35      clausura 2007     semifinals vuelta    chivas    0-1   américa   
+36      clausura 2008      14 (clasico 200)    chivas    3-2   américa   
+37      clausura 2009                    14    chivas    1-0   américa   
+38      clausura 2011                    13    chivas    3-0   america   
+39      clausura 2012                    14    chivas    0-1   america   
+40      clausura 2013                    12    chivas    0-2   america   
+41      clausura 2014                    13    chivas    0-4   américa   
+42      invierno 1996                     3    chivas    5-0   américa   
+43      invierno 1997                     4    chivas    1-2   américa   
+44      invierno 1997     quarterfinals ida    chivas    1-3   américa   
+45      invierno 1997  quarterfinals vuelta   américa    1-0    chivas   
+46      invierno 1998                     8    chivas    1-0   américa   
+47      invierno 1999                     5   américa    2-0    chivas   
+48      invierno 1999     quarterfinals ida    chivas    0-0   américa   
+49      invierno 1999  quarterfinals vuelta   américa    1-0    chivas   
+50      invierno 2000                     7   américa    0-3    chivas   
+51      invierno 2001                    14    chivas    1-1   américa   
+52        verano 1997                     3   américa    0-0    chivas   
+53        verano 1998                     4   américa    0-0    chivas   
+54        verano 1999                     8   américa    0-1    chivas   
+55        verano 2000                     5    chivas    3-0   américa   
+56        verano 2001                     7    chivas    1-2   américa   
+57        verano 2002                    14   américa    2-3    chivas   
+
+             stadium                date  
+0    estadio jalisco    december 9, 1990  
+1     estadio azteca      april 14, 1991  
+2    estadio jalisco       june 13, 1991  
+3     estadio azteca       june 16, 1991  
+4     estadio azteca  september 22, 1991  
+5    estadio jalisco    january 19, 1992  
+6    estadio jalisco     august 30, 1992  
+7     estadio azteca    january 10, 1993  
+8    estadio jalisco   september 5, 1993  
+9     estadio azteca     january 5, 1994  
+10   estadio jalisco   november 13, 1994  
+11    estadio azteca      march 19, 1995  
+12   estadio jalisco    october 22, 1995  
+13    estadio azteca   february 18, 1996  
+14   estadio jalisco     august 11, 2002  
+15    estadio azteca    november 9, 2003  
+16   estadio jalisco     october 2, 2004  
+17    estadio azteca  september 11, 2005  
+18   estadio jalisco  september 30, 2006  
+19   estadio jalisco   november 30, 2006  
+20    estadio azteca    december 3, 2006  
+21    estadio azteca    october 28, 2007  
+22    estadio azteca    october 26, 2008  
+23    estadio azteca    october 25, 2009  
+24    estadio azteca    october 24, 2010  
+25    estadio azteca    october 23, 2011  
+26    estadio azteca     october 6, 2012  
+27    estadio azteca     october 5, 2013  
+28   estadio jalisco       april 4, 2010  
+29    estadio azteca    january 19, 2002  
+30   estadio jalisco         may 1, 2004  
+31    estadio azteca      march 13, 2005  
+32   estadio jalisco   february 26, 2006  
+33    estadio azteca      march 18, 2007  
+34    estadio azteca        may 17, 2007  
+35   estadio jalisco        may 20, 2007  
+36   estadio jalisco      april 13, 2008  
+37   estadio jalisco      april 19, 2009  
+38  estadio omnilife      april 10, 2011  
+39  estadio omnilife       april 8, 2012  
+40  estadio omnilife      march 31, 2013  
+41  estadio omnilife      march 30, 2014  
+42   estadio jalisco     august 25, 1996  
+43   estadio jalisco     august 10, 1997  
+44   estadio jalisco   november 18, 1997  
+45    estadio azteca   november 21, 1997  
+46   estadio jalisco  september 20, 1998  
+47    estadio azteca  september 12, 1999  
+48   estadio jalisco    december 2, 1999  
+49    estadio azteca    december 5, 1999  
+50    estadio azteca  september 10, 2000  
+51   estadio jalisco    october 21, 2001  
+52    estadio azteca    january 27, 1997  
+53    estadio azteca    january 15, 1998  
+54    estadio azteca       march 7, 1999  
+55   estadio jalisco   february 13, 2000  
+56   estadio jalisco   february 14, 2001  
+57    estadio azteca      march 31, 2002  
+Sample 1786 - Plan 1: Table after operation: [['season_torneo', 'jornada_or_other', 'home_team', 'result', 'away_team', 'stadium', 'date'], ['1990-1991 season', '12', 'chivas', '1-1', 'américa', 'estadio jalisco', 'december 9, 1990'], ['1990-1991 season', '31', 'américa', '2-2', 'chivas', 'estadio azteca', 'april 14, 1991'], ['1990-1991 season', 'semifinals ida', 'chivas', '0-2', 'américa', 'estadio jalisco', 'june 13, 1991'], ['1990-1991 season', 'semifinals vuelta', 'américa', '3-0', 'chivas', 'estadio azteca', 'june 16, 1991'], ['1991-1992 season', '2', 'américa', '1-1', 'chivas', 'estadio azteca', 'september 22, 1991'], ['1991-1992 season', '21', 'chivas', '0-0', 'américa', 'estadio jalisco', 'january 19, 1992'], ['1992-1993 season', '3', 'chivas', '1-0', 'américa', 'estadio jalisco', 'august 30, 1992'], ['1992-1993 season', '22', 'américa', '2-1', 'chivas', 'estadio azteca', 'january 10, 1993'], ['1993-1994 season', '4', 'chivas', '0-0', 'américa', 'estadio jalisco', 'september 5, 1993'], ['1993-1994 season', '23', 'américa', '1-0', 'chivas', 'estadio azteca', 'january 5, 1994'], ['1994-1995 season', '11', 'chivas', '3-4', 'américa', 'estadio jalisco', 'november 13, 1994'], ['1994-1995 season', '30', 'américa', '0-0', 'chivas', 'estadio azteca', 'march 19, 1995'], ['1995-1996 season', '9', 'chivas', '0-2', 'américa', 'estadio jalisco', 'october 22, 1995'], ['1995-1996 season', '26', 'américa', '2-3', 'chivas', 'estadio azteca', 'february 18, 1996'], ['apertura 2002', '2', 'chivas', '0-1', 'américa', 'estadio jalisco', 'august 11, 2002'], ['apertura 2003', '17', 'américa', '1-2', 'chivas', 'estadio azteca', 'november 9, 2003'], ['apertura 2004', '9', 'chivas', '1-1', 'américa', 'estadio jalisco', 'october 2, 2004'], ['apertura 2005', '7', 'américa', '0-0', 'chivas', 'estadio azteca', 'september 11, 2005'], ['apertura 2006', '11', 'chivas', '2-0', 'américa', 'estadio jalisco', 'september 30, 2006'], ['apertura 2006', 'semifinals ida', 'chivas', '2-0', 'américa', 'estadio jalisco', 'november 30, 2006'], ['apertura 2006', 'semifinals vuelta', 'américa', '0-0', 'chivas', 'estadio azteca', 'december 3, 2006'], ['apertura 2007', '14', 'américa', '2-1', 'chivas', 'estadio azteca', 'october 28, 2007'], ['apertura 2008', '14', 'américa', '1-2', 'chivas', 'estadio azteca', 'october 26, 2008'], ['apertura 2009', '13', 'america', '1-0', 'chivas', 'estadio azteca', 'october 25, 2009'], ['apertura 2010', '13', 'américa', '0-0', 'chivas', 'estadio azteca', 'october 24, 2010'], ['apertura 2011', '14', 'america', '1-3', 'chivas', 'estadio azteca', 'october 23, 2011'], ['apertura 2012', '12', 'america', '1-3', 'chivas', 'estadio azteca', 'october 6, 2012'], ['apertura 2013', '13', 'america', '2-0', 'chivas', 'estadio azteca', 'october 5, 2013'], ['bicentenario 2010', '13', 'chivas', '1-0', 'america', 'estadio jalisco', 'april 4, 2010'], ['clausura 2003', '2', 'américa', '1-1', 'chivas', 'estadio azteca', 'january 19, 2002'], ['clausura 2004', '17', 'chivas', '0-1', 'américa', 'estadio jalisco', 'may 1, 2004'], ['clausura 2005', '9', 'américa', '3-3', 'chivas', 'estadio azteca', 'march 13, 2005'], ['clausura 2006', '7', 'chivas', '1-0', 'américa', 'estadio jalisco', 'february 26, 2006'], ['clausura 2007', '11', 'américa', '1-0', 'chivas', 'estadio azteca', 'march 18, 2007'], ['clausura 2007', 'semifinals ida', 'américa', '1-0', 'chivas', 'estadio azteca', 'may 17, 2007'], ['clausura 2007', 'semifinals vuelta', 'chivas', '0-1', 'américa', 'estadio jalisco', 'may 20, 2007'], ['clausura 2008', '14 (clasico 200)', 'chivas', '3-2', 'américa', 'estadio jalisco', 'april 13, 2008'], ['clausura 2009', '14', 'chivas', '1-0', 'américa', 'estadio jalisco', 'april 19, 2009'], ['clausura 2011', '13', 'chivas', '3-0', 'america', 'estadio omnilife', 'april 10, 2011'], ['clausura 2012', '14', 'chivas', '0-1', 'america', 'estadio omnilife', 'april 8, 2012'], ['clausura 2013', '12', 'chivas', '0-2', 'america', 'estadio omnilife', 'march 31, 2013'], ['clausura 2014', '13', 'chivas', '0-4', 'américa', 'estadio omnilife', 'march 30, 2014'], ['invierno 1996', '3', 'chivas', '5-0', 'américa', 'estadio jalisco', 'august 25, 1996'], ['invierno 1997', '4', 'chivas', '1-2', 'américa', 'estadio jalisco', 'august 10, 1997'], ['invierno 1997', 'quarterfinals ida', 'chivas', '1-3', 'américa', 'estadio jalisco', 'november 18, 1997'], ['invierno 1997', 'quarterfinals vuelta', 'américa', '1-0', 'chivas', 'estadio azteca', 'november 21, 1997'], ['invierno 1998', '8', 'chivas', '1-0', 'américa', 'estadio jalisco', 'september 20, 1998'], ['invierno 1999', '5', 'américa', '2-0', 'chivas', 'estadio azteca', 'september 12, 1999'], ['invierno 1999', 'quarterfinals ida', 'chivas', '0-0', 'américa', 'estadio jalisco', 'december 2, 1999'], ['invierno 1999', 'quarterfinals vuelta', 'américa', '1-0', 'chivas', 'estadio azteca', 'december 5, 1999'], ['invierno 2000', '7', 'américa', '0-3', 'chivas', 'estadio azteca', 'september 10, 2000'], ['invierno 2001', '14', 'chivas', '1-1', 'américa', 'estadio jalisco', 'october 21, 2001'], ['verano 1997', '3', 'américa', '0-0', 'chivas', 'estadio azteca', 'january 27, 1997'], ['verano 1998', '4', 'américa', '0-0', 'chivas', 'estadio azteca', 'january 15, 1998'], ['verano 1999', '8', 'américa', '0-1', 'chivas', 'estadio azteca', 'march 7, 1999'], ['verano 2000', '5', 'chivas', '3-0', 'américa', 'estadio jalisco', 'february 13, 2000'], ['verano 2001', '7', 'chivas', '1-2', 'américa', 'estadio jalisco', 'february 14, 2001'], ['verano 2002', '14', 'américa', '2-3', 'chivas', 'estadio azteca', 'march 31, 2002']]
+########################################################################################################################
+Sample 1786 - Plan 1: Operation 3: Select the first row from the ordered table.
+Sample 1786 - Plan 1: Selected indices: [[0, 1], [0, 4], [0, 0], [0, 3], [0, 6], [0, 2], [0, 5]]
+Sample 1786 - Plan 1: X-Table after operation df:
+      season_torneo  jornada_or_other home_team result away_team  \
+0  1990-1991 season                12    chivas    1-1   américa   
+
+           stadium              date  
+0  estadio jalisco  december 9, 1990  
+Sample 1786 - Plan 1: Table after operation: [['season_torneo', 'jornada_or_other', 'home_team', 'result', 'away_team', 'stadium', 'date'], ['1990-1991 season', '12', 'chivas', '1-1', 'américa', 'estadio jalisco', 'december 9, 1990']]
+########################################################################################################################
+Sample 1786 - Plan 1: Operation 4: Select the 'season_torneo', 'jornada_or_other', 'home_team', 'result', 'away_team', 'stadium', and 'date' columns from the selected row.
+Sample 1786 - Plan 1: Selected indices: []
+Sample 1786 - Plan 1: X-Table after operation df:
+      season_torneo  jornada_or_other home_team result away_team  \
+0  1990-1991 season                12    chivas    1-1   américa   
+
+           stadium              date  
+0  estadio jalisco  december 9, 1990  
+Sample 1786 - Plan 1: Table after operation: [['season_torneo', 'jornada_or_other', 'home_team', 'result', 'away_team', 'stadium', 'date'], ['1990-1991 season', 12, 'chivas', '1-1', 'américa', 'estadio jalisco', 'december 9, 1990']]
+Fall-back: FALSE
+Answer from plan 1: [['1990-1991 season', 12, 'chivas', '1-1', 'américa', 'estadio jalisco', 'december 9, 1990']]
+Groundtruth: ['1990-1991 Season']

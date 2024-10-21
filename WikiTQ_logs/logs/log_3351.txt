@@ -1,0 +1,85 @@
+************************************************************************************************************************
+Sample 3351 - Plan 1: Query: which team was the top competitor in the imparja cup for the community division in 2009?
+Sample 3351 - Plan 1: Groundtruth: ['Tangentyere']
+Sample 3351 - Plan 1: X-Original table pd: 
+    year state_territory_men_s_division state_territory_women_s_division  \
+0   2012                     queensland                  new south wales   
+1   2012                new south wales                  new south wales   
+2   2011                new south wales                  new south wales   
+3   2010              western australia                                    
+4   2009                     queensland                                    
+5   2008                     queensland                                    
+6   2007                new south wales                                    
+7   2006                     queensland                                    
+8   2005                     queensland                                    
+9   2004                     queensland                                    
+10  2003                new south wales                                    
+11  2002             northern territory                                    
+12  2001                       tasmania                                    
+
+   major_centres_division community_division women_s_division  
+0                                                              
+1                  darwin   brothers in arms    bush potatoes  
+2          maranoa murris         gap angels    bush potatoes  
+3                                                              
+4               alkupitja        tangentyere  new south wales  
+5               katherine           cooktown  new south wales  
+6               alkupitja         cat tigers      cga cougars  
+7           alice springs    melville island           darwin  
+8           alice springs          alkupitja           darwin  
+9           alice springs          normanton    tennant creek  
+10                 darwin                                      
+11                 darwin                                      
+12                                                             
+Sample 3351 - Plan 1: Caption: none
+Sample 3351 - Plan 1: Original table: [['year', 'state_territory_men_s_division', 'state_territory_women_s_division', 'major_centres_division', 'community_division', 'women_s_division'], ['2012', 'queensland', 'new south wales', '', '', ''], ['2012', 'new south wales', 'new south wales', 'darwin', 'brothers in arms', 'bush potatoes'], ['2011', 'new south wales', 'new south wales', 'maranoa murris', 'gap angels', 'bush potatoes'], ['2010', 'western australia', '', '', '', ''], ['2009', 'queensland', '', 'alkupitja', 'tangentyere', 'new south wales'], ['2008', 'queensland', '', 'katherine', 'cooktown', 'new south wales'], ['2007', 'new south wales', '', 'alkupitja', 'cat tigers', 'cga cougars'], ['2006', 'queensland', '', 'alice springs', 'melville island', 'darwin'], ['2005', 'queensland', '', 'alice springs', 'alkupitja', 'darwin'], ['2004', 'queensland', '', 'alice springs', 'normanton', 'tennant creek'], ['2003', 'new south wales', '', 'darwin', '', ''], ['2002', 'northern territory', '', 'darwin', '', ''], ['2001', 'tasmania', '', '', '', '']]
+########################################################################################################################
+Sample 3351 - Plan 1: Operation 1: Select rows where the 'year' is 2009.
+Sample 3351 - Plan 1: Selected indices: [[4, 0]]
+Sample 3351 - Plan 1: X-Table after operation df:
+   year state_territory_men_s_division  state_territory_women_s_division  \
+0  2009                     queensland                               NaN   
+
+  major_centres_division community_division women_s_division  
+0              alkupitja        tangentyere  new south wales  
+Sample 3351 - Plan 1: Table after operation: [['year', 'state_territory_men_s_division', 'state_territory_women_s_division', 'major_centres_division', 'community_division', 'women_s_division'], [2009, 'queensland', '', 'alkupitja', 'tangentyere', 'new south wales']]
+########################################################################################################################
+Sample 3351 - Plan 1: Operation 2: Select rows where the 'community_division' is not empty.
+Sample 3351 - Plan 1: Selected indices: [[0, 4]]
+Sample 3351 - Plan 1: X-Table after operation df:
+   year state_territory_men_s_division  state_territory_women_s_division  \
+0  2009                     queensland                               NaN   
+
+  major_centres_division community_division women_s_division  
+0              alkupitja        tangentyere  new south wales  
+Sample 3351 - Plan 1: Table after operation: [['year', 'state_territory_men_s_division', 'state_territory_women_s_division', 'major_centres_division', 'community_division', 'women_s_division'], [2009, 'queensland', None, 'alkupitja', 'tangentyere', 'new south wales']]
+########################################################################################################################
+Sample 3351 - Plan 1: Operation 3: Order the table by the 'community_division' in ascending order.
+Sample 3351 - Plan 1: Selected indices: [[0, 4]]
+Sample 3351 - Plan 1: X-Table after operation df:
+   year state_territory_men_s_division  state_territory_women_s_division  \
+0  2009                     queensland                               NaN   
+
+  major_centres_division community_division women_s_division  
+0              alkupitja        tangentyere  new south wales  
+Sample 3351 - Plan 1: Table after operation: [['year', 'state_territory_men_s_division', 'state_territory_women_s_division', 'major_centres_division', 'community_division', 'women_s_division'], [2009, 'queensland', None, 'alkupitja', 'tangentyere', 'new south wales']]
+########################################################################################################################
+Sample 3351 - Plan 1: Operation 4: Select row number 1.
+Sample 3351 - Plan 1: Selected indices: []
+Sample 3351 - Plan 1: X-Table after operation df:
+   year state_territory_men_s_division  state_territory_women_s_division  \
+0  2009                     queensland                               NaN   
+
+  major_centres_division community_division women_s_division  
+0              alkupitja        tangentyere  new south wales  
+Sample 3351 - Plan 1: Table after operation: [['year', 'state_territory_men_s_division', 'state_territory_women_s_division', 'major_centres_division', 'community_division', 'women_s_division'], [2009, 'queensland', None, 'alkupitja', 'tangentyere', 'new south wales']]
+########################################################################################################################
+Sample 3351 - Plan 1: Operation 5: Select the 'community_division' column.
+Sample 3351 - Plan 1: Selected indices: []
+Sample 3351 - Plan 1: X-Table after operation df:
+  community_division
+0        tangentyere
+Sample 3351 - Plan 1: Table after operation: [['community_division'], ['tangentyere']]
+Fall-back: FALSE
+Answer from plan 1: [['tangentyere']]
+Groundtruth: ['Tangentyere']

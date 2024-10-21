@@ -1,0 +1,100 @@
+************************************************************************************************************************
+Sample 2562 - Plan 1: Query: which contestant was evicted before the the final 3 were left?
+Sample 2562 - Plan 1: Groundtruth: ['Regina Do Santos']
+Sample 2562 - Plan 1: X-Original table pd: 
+                      celebrity          residence  \
+0                 nagore robles             bilbao   
+1                  raquel bollo            seville   
+2              blanca de borbón   oviedo, asturias   
+3              regina do santos             brazil   
+4    liberto lópez de la franca             madrid   
+5            mª ángeles delgado         valladolid   
+6                úrsula aguilar             málaga   
+7          álvaro muñoz-escassi            seville   
+8          pedro reche, "reche"  langreo, asturias   
+9   dionisio rodríguez, "dioni"             madrid   
+10         antonio david flores             madrid   
+11                 raúl hidalgo         valladolid   
+12              leticia sabater          barcelona   
+13                 brenda cerdá           valencia   
+14                   sonia baby    elche, valencia   
+15                  bárbara rey     totana, murcia   
+
+                       famous_for____occupation  age              status  
+0                     gran hermano 11 housemate   28              winner  
+1               tv host & ex-wife of chiquetete   43           runner-up  
+2     alfonso xiii's illegitimate granddaughter   55        3rd finalist  
+3                               singer & dancer   58  1st / 14th evicted  
+4                           good manner teacher   40        13th evicted  
+5        mother of reality-show star aída nízar   57  8th / 12th evicted  
+6                              miss málaga 2011   24        11th evicted  
+7   horse rider & ex-boyfriend of lara dibildos   42        10th evicted  
+8                             reality show star   27         9th evicted  
+9      ex security guard, robbed a security van   62             ejected  
+10                ex-son-in-law of rocío jurado   36         7th evicted  
+11                            reality show star   29         6th evicted  
+12                                      tv host   45         5th evicted  
+13                            reality show star   19         4th evicted  
+14                                 porn actress   30         3rd evicted  
+15                    actress, vedette, tv host   61         2nd evicted  
+Sample 2562 - Plan 1: Caption: none
+Sample 2562 - Plan 1: Original table: [['celebrity', 'residence', 'famous_for____occupation', 'age', 'status'], ['nagore robles', 'bilbao', 'gran hermano 11 housemate', '28', 'winner'], ['raquel bollo', 'seville', 'tv host & ex-wife of chiquetete', '43', 'runner-up'], ['blanca de borbón', 'oviedo, asturias', "alfonso xiii's illegitimate granddaughter", '55', '3rd finalist'], ['regina do santos', 'brazil', 'singer & dancer', '58', '1st / 14th evicted'], ['liberto lópez de la franca', 'madrid', 'good manner teacher', '40', '13th evicted'], ['mª ángeles delgado', 'valladolid', 'mother of reality-show star aída nízar', '57', '8th / 12th evicted'], ['úrsula aguilar', 'málaga', 'miss málaga 2011', '24', '11th evicted'], ['álvaro muñoz-escassi', 'seville', 'horse rider & ex-boyfriend of lara dibildos', '42', '10th evicted'], ['pedro reche, "reche"', 'langreo, asturias', 'reality show star', '27', '9th evicted'], ['dionisio rodríguez, "dioni"', 'madrid', 'ex security guard, robbed a security van', '62', 'ejected'], ['antonio david flores', 'madrid', 'ex-son-in-law of rocío jurado', '36', '7th evicted'], ['raúl hidalgo', 'valladolid', 'reality show star', '29', '6th evicted'], ['leticia sabater', 'barcelona', 'tv host', '45', '5th evicted'], ['brenda cerdá', 'valencia', 'reality show star', '19', '4th evicted'], ['sonia baby', 'elche, valencia', 'porn actress', '30', '3rd evicted'], ['bárbara rey', 'totana, murcia', 'actress, vedette, tv host', '61', '2nd evicted']]
+########################################################################################################################
+Sample 2562 - Plan 1: Operation 1: Select rows where the 'status' is not equal to 'winner' or 'runner-up'.
+Sample 2562 - Plan 1: Selected indices: [[4, 4], [7, 4], [2, 4], [12, 4], [8, 4], [3, 4], [13, 4], [14, 4], [15, 4], [10, 4], [5, 4], [6, 4], [11, 4], [9, 4]]
+Sample 2562 - Plan 1: X-Table after operation df:
+                      celebrity          residence  \
+0              blanca de borbón   oviedo, asturias   
+1              regina do santos             brazil   
+2    liberto lópez de la franca             madrid   
+3            mª ángeles delgado         valladolid   
+4                úrsula aguilar             málaga   
+5          álvaro muñoz-escassi            seville   
+6          pedro reche, "reche"  langreo, asturias   
+7   dionisio rodríguez, "dioni"             madrid   
+8          antonio david flores             madrid   
+9                  raúl hidalgo         valladolid   
+10              leticia sabater          barcelona   
+11                 brenda cerdá           valencia   
+12                   sonia baby    elche, valencia   
+13                  bárbara rey     totana, murcia   
+
+                       famous_for____occupation  age              status  
+0     alfonso xiii's illegitimate granddaughter   55        3rd finalist  
+1                               singer & dancer   58  1st / 14th evicted  
+2                           good manner teacher   40        13th evicted  
+3        mother of reality-show star aída nízar   57  8th / 12th evicted  
+4                              miss málaga 2011   24        11th evicted  
+5   horse rider & ex-boyfriend of lara dibildos   42        10th evicted  
+6                             reality show star   27         9th evicted  
+7      ex security guard, robbed a security van   62             ejected  
+8                 ex-son-in-law of rocío jurado   36         7th evicted  
+9                             reality show star   29         6th evicted  
+10                                      tv host   45         5th evicted  
+11                            reality show star   19         4th evicted  
+12                                 porn actress   30         3rd evicted  
+13                    actress, vedette, tv host   61         2nd evicted  
+Sample 2562 - Plan 1: Table after operation: [['celebrity', 'residence', 'famous_for____occupation', 'age', 'status'], ['blanca de borbón', 'oviedo, asturias', "alfonso xiii's illegitimate granddaughter", 55, '3rd finalist'], ['regina do santos', 'brazil', 'singer & dancer', 58, '1st / 14th evicted'], ['liberto lópez de la franca', 'madrid', 'good manner teacher', 40, '13th evicted'], ['mª ángeles delgado', 'valladolid', 'mother of reality-show star aída nízar', 57, '8th / 12th evicted'], ['úrsula aguilar', 'málaga', 'miss málaga 2011', 24, '11th evicted'], ['álvaro muñoz-escassi', 'seville', 'horse rider & ex-boyfriend of lara dibildos', 42, '10th evicted'], ['pedro reche, "reche"', 'langreo, asturias', 'reality show star', 27, '9th evicted'], ['dionisio rodríguez, "dioni"', 'madrid', 'ex security guard, robbed a security van', 62, 'ejected'], ['antonio david flores', 'madrid', 'ex-son-in-law of rocío jurado', 36, '7th evicted'], ['raúl hidalgo', 'valladolid', 'reality show star', 29, '6th evicted'], ['leticia sabater', 'barcelona', 'tv host', 45, '5th evicted'], ['brenda cerdá', 'valencia', 'reality show star', 19, '4th evicted'], ['sonia baby', 'elche, valencia', 'porn actress', 30, '3rd evicted'], ['bárbara rey', 'totana, murcia', 'actress, vedette, tv host', 61, '2nd evicted']]
+########################################################################################################################
+Sample 2562 - Plan 1: Operation 2: Select the 'contestant' column.
+Sample 2562 - Plan 1: Selected indices: []
+Sample 2562 - Plan 1: X-Table after operation df:
+                      celebrity
+0              blanca de borbón
+1              regina do santos
+2    liberto lópez de la franca
+3            mª ángeles delgado
+4                úrsula aguilar
+5          álvaro muñoz-escassi
+6          pedro reche, "reche"
+7   dionisio rodríguez, "dioni"
+8          antonio david flores
+9                  raúl hidalgo
+10              leticia sabater
+11                 brenda cerdá
+12                   sonia baby
+13                  bárbara rey
+Sample 2562 - Plan 1: Table after operation: [['celebrity'], ['blanca de borbón'], ['regina do santos'], ['liberto lópez de la franca'], ['mª ángeles delgado'], ['úrsula aguilar'], ['álvaro muñoz-escassi'], ['pedro reche, "reche"'], ['dionisio rodríguez, "dioni"'], ['antonio david flores'], ['raúl hidalgo'], ['leticia sabater'], ['brenda cerdá'], ['sonia baby'], ['bárbara rey']]
+Fall-back: FALSE
+Answer from plan 1: [['blanca de borbón'], ['regina do santos'], ['liberto lópez de la franca'], ['mª ángeles delgado'], ['úrsula aguilar'], ['álvaro muñoz-escassi'], ['pedro reche, "reche"'], ['dionisio rodríguez, "dioni"'], ['antonio david flores'], ['raúl hidalgo'], ['leticia sabater'], ['brenda cerdá'], ['sonia baby'], ['bárbara rey']]
+Groundtruth: ['Regina Do Santos']

@@ -1,0 +1,78 @@
+************************************************************************************************************************
+Sample 484 - Plan 1: Query: what year was the recipient not herself nor "heaven"?
+Sample 484 - Plan 1: Groundtruth: ['2014']
+Sample 484 - Plan 1: X-Original table pd: 
+    year                         award                               category  \
+0   2012  cyworld digital music awards  rookie & song of the month (february)   
+1   2012            asia song festival                       new artist award   
+2   2012        4th melon music awards                        best new artist   
+3   2012            soompi gayo awards                      top 50 songs (#3)   
+4   2012               so-loved awards                   best female newcomer   
+5   2012  14th mnet asian music awards                 best new female artist   
+6   2013       27th golden disk awards                        best new artist   
+7   2013       23rd seoul music awards                           rookie award   
+8   2013        mnet pre-grammy awards                       mnet rising star   
+9   2013   2nd gaon chart k-pop awards                 new female solo artist   
+10  2013        5th melon music awards                         top 10 artists   
+11  2013  15th mnet asian music awards                     best female artist   
+12  2013  15th mnet asian music awards                     artist of the year   
+13  2013  15th mnet asian music awards        best vocal performance - female   
+14  2013  15th mnet asian music awards         bc - unionpay song of the year   
+15  2014       28th golden disk awards                        digital bonsang   
+16  2014           soompi music awards                     best female artist   
+
+   recipient     result  
+0   "heaven"        won  
+1    herself        won  
+2    herself        won  
+3   "heaven"        won  
+4    herself        won  
+5    herself        won  
+6    herself        won  
+7    herself        won  
+8    herself        won  
+9    herself        won  
+10   herself        won  
+11   herself  nominated  
+12   herself  nominated  
+13     "u&i"        won  
+14     "u&i"  nominated  
+15     "u&i"        won  
+16     "u&i"        won  
+Sample 484 - Plan 1: Caption: none
+Sample 484 - Plan 1: Original table: [['year', 'award', 'category', 'recipient', 'result'], ['2012', 'cyworld digital music awards', 'rookie & song of the month (february)', '"heaven"', 'won'], ['2012', 'asia song festival', 'new artist award', 'herself', 'won'], ['2012', '4th melon music awards', 'best new artist', 'herself', 'won'], ['2012', 'soompi gayo awards', 'top 50 songs (#3)', '"heaven"', 'won'], ['2012', 'so-loved awards', 'best female newcomer', 'herself', 'won'], ['2012', '14th mnet asian music awards', 'best new female artist', 'herself', 'won'], ['2013', '27th golden disk awards', 'best new artist', 'herself', 'won'], ['2013', '23rd seoul music awards', 'rookie award', 'herself', 'won'], ['2013', 'mnet pre-grammy awards', 'mnet rising star', 'herself', 'won'], ['2013', '2nd gaon chart k-pop awards', 'new female solo artist', 'herself', 'won'], ['2013', '5th melon music awards', 'top 10 artists', 'herself', 'won'], ['2013', '15th mnet asian music awards', 'best female artist', 'herself', 'nominated'], ['2013', '15th mnet asian music awards', 'artist of the year', 'herself', 'nominated'], ['2013', '15th mnet asian music awards', 'best vocal performance - female', '"u&i"', 'won'], ['2013', '15th mnet asian music awards', 'bc - unionpay song of the year', '"u&i"', 'nominated'], ['2014', '28th golden disk awards', 'digital bonsang', '"u&i"', 'won'], ['2014', 'soompi music awards', 'best female artist', '"u&i"', 'won']]
+########################################################################################################################
+Sample 484 - Plan 1: Operation 1: Select rows where the 'recipient' is not 'herself' and not 'heaven'.
+Sample 484 - Plan 1: Selected indices: []
+Sample 484 - Plan 1: X-Table after operation df:
+   year                         award                               category  \
+0  2012  cyworld digital music awards  rookie & song of the month (february)   
+1  2012            soompi gayo awards                      top 50 songs (#3)   
+2  2013  15th mnet asian music awards        best vocal performance - female   
+3  2013  15th mnet asian music awards         bc - unionpay song of the year   
+4  2014       28th golden disk awards                        digital bonsang   
+5  2014           soompi music awards                     best female artist   
+
+  recipient     result  
+0  "heaven"        won  
+1  "heaven"        won  
+2     "u&i"        won  
+3     "u&i"  nominated  
+4     "u&i"        won  
+5     "u&i"        won  
+Sample 484 - Plan 1: Table after operation: [['year', 'award', 'category', 'recipient', 'result'], [2012, 'cyworld digital music awards', 'rookie & song of the month (february)', '"heaven"', 'won'], [2012, 'soompi gayo awards', 'top 50 songs (#3)', '"heaven"', 'won'], [2013, '15th mnet asian music awards', 'best vocal performance - female', '"u&i"', 'won'], [2013, '15th mnet asian music awards', 'bc - unionpay song of the year', '"u&i"', 'nominated'], [2014, '28th golden disk awards', 'digital bonsang', '"u&i"', 'won'], [2014, 'soompi music awards', 'best female artist', '"u&i"', 'won']]
+########################################################################################################################
+Sample 484 - Plan 1: Operation 2: Select the 'year' column.
+Sample 484 - Plan 1: Selected indices: []
+Sample 484 - Plan 1: X-Table after operation df:
+   year
+0  2012
+1  2012
+2  2013
+3  2013
+4  2014
+5  2014
+Sample 484 - Plan 1: Table after operation: [['year'], [2012], [2012], [2013], [2013], [2014], [2014]]
+Fall-back: FALSE
+Answer from plan 1: [[2012], [2012], [2013], [2013], [2014], [2014]]
+Groundtruth: ['2014']

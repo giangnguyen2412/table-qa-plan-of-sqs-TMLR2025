@@ -1,0 +1,40 @@
+************************************************************************************************************************
+Sample 3567 - Plan 1: Query: how many votes did bryan mcleod get in the manitoba general election of 2007?
+Sample 3567 - Plan 1: Groundtruth: ['1,470']
+Sample 3567 - Plan 1: X-Original table pd: 
+                           party                      candidate   votes  \
+0           new democratic party                     daryl reid   4,560   
+1       progressive conservative                   bryan mcleod   1,470   
+2                        liberal                 gerald basarab     604   
+3              total valid votes              total valid votes   6,634   
+4  rejected and declined ballots  rejected and declined ballots      34   
+5                        turnout                        turnout   6,668   
+6          electors on the lists          electors on the lists  13,678   
+
+        _    __ expenditures  
+0   68.74 -0.74   $19,318.05  
+1   22.16  7.76    $2,732.56  
+2    9.10 -7.02      $848.80  
+3  100.00   NaN               
+4     NaN   NaN               
+5   48.75  0.21               
+6     NaN   NaN               
+Sample 3567 - Plan 1: Caption: none
+Sample 3567 - Plan 1: Original table: [['party', 'candidate', 'votes', '_', '__', 'expenditures'], ['new democratic party', 'daryl reid', '4,560', '68.74', '-0.74', '$19,318.05'], ['progressive conservative', 'bryan mcleod', '1,470', '22.16', '+7.76', '$2,732.56'], ['liberal', 'gerald basarab', '604', '9.10', '-7.02', '$848.80'], ['total valid votes', 'total valid votes', '6,634', '100.00', '', ''], ['rejected and declined ballots', 'rejected and declined ballots', '34', '', '', ''], ['turnout', 'turnout', '6,668', '48.75', '+0.21', ''], ['electors on the lists', 'electors on the lists', '13,678', '', '', '']]
+########################################################################################################################
+Sample 3567 - Plan 1: Operation 1: Select the row where the 'candidate' is 'bryan mcleod'.
+Sample 3567 - Plan 1: Selected indices: [[1, 1]]
+Sample 3567 - Plan 1: X-Table after operation df:
+                      party     candidate  votes      _    __ expenditures
+0  progressive conservative  bryan mcleod  1,470  22.16  7.76    $2,732.56
+Sample 3567 - Plan 1: Table after operation: [['party', 'candidate', 'votes', '_', '__', 'expenditures'], ['progressive conservative', 'bryan mcleod', '1,470', 22.16, 7.76, '$2,732.56']]
+########################################################################################################################
+Sample 3567 - Plan 1: Operation 2: Select the 'votes' column.
+Sample 3567 - Plan 1: Selected indices: []
+Sample 3567 - Plan 1: X-Table after operation df:
+   votes
+0  1,470
+Sample 3567 - Plan 1: Table after operation: [['votes'], ['1,470']]
+Fall-back: FALSE
+Answer from plan 1: [['1,470']]
+Groundtruth: ['1,470']

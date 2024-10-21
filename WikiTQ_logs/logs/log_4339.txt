@@ -1,0 +1,53 @@
+************************************************************************************************************************
+Sample 4339 - Plan 1: Query: what is the total amount of attendance from gamestorm 10-15?
+Sample 4339 - Plan 1: Groundtruth: ['5532']
+Sample 4339 - Plan 1: X-Original table pd: 
+      iteration              dates                  location attendance  \
+0  gamestorm 10         march 2008  red lion - vancouver, wa        750   
+1  gamestorm 11  march 26–29, 2009    hilton - vancouver, wa        736   
+2  gamestorm 12  march 25–28, 2010    hilton - vancouver, wa        802   
+3  gamestorm 13  march 24–27, 2011    hilton - vancouver, wa        984   
+4  gamestorm 14  march 22–25, 2012    hilton - vancouver, wa       1072   
+5  gamestorm 15  march 21–24, 2013    hilton - vancouver, wa       1188   
+6  gamestorm 16  march 20–23, 2014    hilton - vancouver, wa        tba   
+
+                                               notes  
+0                                                  -  
+1  debut of video games, first-ever artist guest ...  
+2            board games guest of honor: tom lehmann  
+3        guests: lisa steenson, michael a. stackpole  
+4  boardgame:andrew hackard and sam mitschke of s...  
+5                                                     
+6  guests: mike selinker, shane lacy hensley, lis...  
+Sample 4339 - Plan 1: Caption: none
+Sample 4339 - Plan 1: Original table: [['iteration', 'dates', 'location', 'attendance', 'notes'], ['gamestorm 10', 'march 2008', 'red lion - vancouver, wa', '750', '-'], ['gamestorm 11', 'march 26–29, 2009', 'hilton - vancouver, wa', '736', 'debut of video games, first-ever artist guest of honor, rob alexander'], ['gamestorm 12', 'march 25–28, 2010', 'hilton - vancouver, wa', '802', 'board games guest of honor: tom lehmann'], ['gamestorm 13', 'march 24–27, 2011', 'hilton - vancouver, wa', '984', 'guests: lisa steenson, michael a. stackpole'], ['gamestorm 14', 'march 22–25, 2012', 'hilton - vancouver, wa', '1072', 'boardgame:andrew hackard and sam mitschke of steve jackson games - rpg: jason bulmahn'], ['gamestorm 15', 'march 21–24, 2013', 'hilton - vancouver, wa', '1188', ''], ['gamestorm 16', 'march 20–23, 2014', 'hilton - vancouver, wa', 'tba', 'guests: mike selinker, shane lacy hensley, lisa steenson, zev shlasinger of z-man games']]
+########################################################################################################################
+Sample 4339 - Plan 1: Operation 1: Select rows where 'iteration' is between 'gamestorm 10' and 'gamestorm 15'.
+Sample 4339 - Plan 1: Selected indices: [[4, 0], [0, 0], [2, 0], [3, 0], [5, 0], [1, 0]]
+Sample 4339 - Plan 1: X-Table after operation df:
+      iteration              dates                  location  attendance  \
+0  gamestorm 10         march 2008  red lion - vancouver, wa         750   
+1  gamestorm 11  march 26–29, 2009    hilton - vancouver, wa         736   
+2  gamestorm 12  march 25–28, 2010    hilton - vancouver, wa         802   
+3  gamestorm 13  march 24–27, 2011    hilton - vancouver, wa         984   
+4  gamestorm 14  march 22–25, 2012    hilton - vancouver, wa        1072   
+5  gamestorm 15  march 21–24, 2013    hilton - vancouver, wa        1188   
+
+                                               notes  
+0                                                  -  
+1  debut of video games, first-ever artist guest ...  
+2            board games guest of honor: tom lehmann  
+3        guests: lisa steenson, michael a. stackpole  
+4  boardgame:andrew hackard and sam mitschke of s...  
+5                                                     
+Sample 4339 - Plan 1: Table after operation: [['iteration', 'dates', 'location', 'attendance', 'notes'], ['gamestorm 10', 'march 2008', 'red lion - vancouver, wa', '750', '-'], ['gamestorm 11', 'march 26–29, 2009', 'hilton - vancouver, wa', '736', 'debut of video games, first-ever artist guest of honor, rob alexander'], ['gamestorm 12', 'march 25–28, 2010', 'hilton - vancouver, wa', '802', 'board games guest of honor: tom lehmann'], ['gamestorm 13', 'march 24–27, 2011', 'hilton - vancouver, wa', '984', 'guests: lisa steenson, michael a. stackpole'], ['gamestorm 14', 'march 22–25, 2012', 'hilton - vancouver, wa', '1072', 'boardgame:andrew hackard and sam mitschke of steve jackson games - rpg: jason bulmahn'], ['gamestorm 15', 'march 21–24, 2013', 'hilton - vancouver, wa', '1188', '']]
+########################################################################################################################
+Sample 4339 - Plan 1: Operation 2: Sum the 'attendance' column from the selected rows.
+Sample 4339 - Plan 1: Selected indices: []
+Sample 4339 - Plan 1: X-Table after operation df:
+   total_attendance
+0              5532
+Sample 4339 - Plan 1: Table after operation: [['total_attendance'], [5532]]
+Fall-back: FALSE
+Answer from plan 1: [[5532]]
+Groundtruth: ['5532']

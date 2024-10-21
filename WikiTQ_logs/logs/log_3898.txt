@@ -1,0 +1,97 @@
+************************************************************************************************************************
+Sample 3898 - Plan 1: Query: what is the last stop on route 10?
+Sample 3898 - Plan 1: Groundtruth: ['Cataraqui Town Centre']
+Sample 3898 - Plan 1: X-Original table pd: 
+   route                                       destinations  \
+0      1              montreal street\nst. lawrence college   
+1      2                   kingston centre\ndivision street   
+2      3                          kingston centre\ndowntown   
+3      4                                    princess street   
+4      6        cataraqui town centre\nst. lawrence college   
+5      7                 dalton/division\nmidland/gardiners   
+6      9                    downtown\ncataraqui town centre   
+7     10                 amherstview\ncataraqui town centre   
+8     11             kingston centre\ncataraqui town centre   
+9     12                        kingston centre\nhighway 15   
+10   12a                             cfb kingston\ndowntown   
+11    18                        train station\nbus terminal   
+12    19                montreal street\nqueen's university   
+13    14  train station\ncataraqui town centre / midland...   
+14    15          reddendale\ncataraqui town centre - woods   
+15    16                        train station\nbus terminal   
+
+                                                  via frequency_n_minutes_  \
+0                                            downtown                   30   
+1                      st. lawrence college\ndowntown                   30   
+2   queen mary road\nst. lawrence college\nking st...                   30   
+3                     cataraqui town centre\ndowntown                   30   
+4                               gardiners town centre                   30   
+5   cataraqui town centre\ntrain station\nbus term...                   30   
+6       brock st. / barrie st.\ngardiners town centre                   20   
+7                                    collins bay road                   30   
+8                    bath road\ngardiners town centre                   30   
+9              downtown\ncfb kingston (off-peak only)                   30   
+10                                                                      30   
+11  downtown\nqueen's university\nst. lawrence col...                    *   
+12                                           downtown                   30   
+13                          waterloo-davis\nmultiplex                   30   
+14                              gardiners town centre                   30   
+15                                    kingston centre                   30   
+
+   peak_hours_only                       former  
+0                   cataraqui town centre-woods  
+1                                                
+2                                                
+3                                                
+4                                      downtown  
+5                                                
+6                                                
+7                               kingston centre  
+8                           (formerly route 71)  
+9                                             -  
+10               x                               
+11                              student circuit  
+12               x                               
+13                           (formerly route a)  
+14                           (formerly route b)  
+15                           (formerly route c)  
+Sample 3898 - Plan 1: Caption: none
+Sample 3898 - Plan 1: Original table: [['route', 'destinations', 'via', 'frequency_n_minutes_', 'peak_hours_only', 'former'], ['1', 'montreal street\\nst. lawrence college', 'downtown', '30', '', 'cataraqui town centre-woods'], ['2', 'kingston centre\\ndivision street', 'st. lawrence college\\ndowntown', '30', '', ''], ['3', 'kingston centre\\ndowntown', 'queen mary road\\nst. lawrence college\\nking street', '30', '', ''], ['4', 'princess street', 'cataraqui town centre\\ndowntown', '30', '', ''], ['6', 'cataraqui town centre\\nst. lawrence college', 'gardiners town centre', '30', '', 'downtown'], ['7', 'dalton/division\\nmidland/gardiners', 'cataraqui town centre\\ntrain station\\nbus terminal', '30', '', ''], ['9', 'downtown\\ncataraqui town centre', 'brock st. / barrie st.\\ngardiners town centre', '20', '', ''], ['10', 'amherstview\\ncataraqui town centre', 'collins bay road', '30', '', 'kingston centre'], ['11', 'kingston centre\\ncataraqui town centre', 'bath road\\ngardiners town centre', '30', '', '(formerly route 71)'], ['12', 'kingston centre\\nhighway 15', 'downtown\\ncfb kingston (off-peak only)', '30', '', '-'], ['12a', 'cfb kingston\\ndowntown', '', '30', 'x', ''], ['18', 'train station\\nbus terminal', "downtown\\nqueen's university\\nst. lawrence college", '*', '', 'student circuit'], ['19', "montreal street\\nqueen's university", 'downtown', '30', 'x', ''], ['14', 'train station\\ncataraqui town centre / midland avenue', 'waterloo-davis\\nmultiplex', '30', '', '(formerly route a)'], ['15', 'reddendale\\ncataraqui town centre - woods', 'gardiners town centre', '30', '', '(formerly route b)'], ['16', 'train station\\nbus terminal', 'kingston centre', '30', '', '(formerly route c)']]
+########################################################################################################################
+Sample 3898 - Plan 1: Operation 1: Select rows where 'route' is '10'.
+Sample 3898 - Plan 1: Selected indices: [[7, 0]]
+Sample 3898 - Plan 1: X-Table after operation df:
+   route                        destinations               via  \
+0     10  amherstview\ncataraqui town centre  collins bay road   
+
+   frequency_n_minutes_  peak_hours_only           former  
+0                    30              NaN  kingston centre  
+Sample 3898 - Plan 1: Table after operation: [['route', 'destinations', 'via', 'frequency_n_minutes_', 'peak_hours_only', 'former'], ['10', 'amherstview\\ncataraqui town centre', 'collins bay road', '30', '', 'kingston centre']]
+########################################################################################################################
+Sample 3898 - Plan 1: Operation 2: Select the 'destinations' column.
+Sample 3898 - Plan 1: Selected indices: []
+Sample 3898 - Plan 1: X-Table after operation df:
+                         destinations
+0  amherstview\ncataraqui town centre
+Sample 3898 - Plan 1: Table after operation: [['destinations'], ['amherstview\\ncataraqui town centre']]
+########################################################################################################################
+Sample 3898 - Plan 1: Operation 3: Split the 'destinations' column by the '\n' delimiter to separate multiple destinations.
+Sample 3898 - Plan 1: Selected indices: [[0, 0]]
+Sample 3898 - Plan 1: X-Table after operation df:
+  destination_1           destination_2
+0   amherstview  ncataraqui town centre
+Sample 3898 - Plan 1: Table after operation: [['destination_1', 'destination_2'], ['amherstview', 'ncataraqui town centre']]
+########################################################################################################################
+Sample 3898 - Plan 1: Operation 4: Select the last element from the split destinations.
+Sample 3898 - Plan 1: Selected indices: []
+Sample 3898 - Plan 1: X-Table after operation df:
+  last_element
+0  town centre
+Sample 3898 - Plan 1: Table after operation: [['last_element'], ['town centre']]
+########################################################################################################################
+Sample 3898 - Plan 1: Operation 5: Remove any leading or trailing whitespace from the last destination.
+SQL execution error in operation 5: 'NoneType' object is not iterable
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['collins bay road']]
+Groundtruth: ['Cataraqui Town Centre']

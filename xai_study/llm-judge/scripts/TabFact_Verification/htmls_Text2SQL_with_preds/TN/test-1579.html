@@ -1,0 +1,41 @@
+
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+.sql-command { background-color: #f0f0f0; padding: 10px; border-left: 4px solid #4CAF50; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> the screening completed on 30 june 2006 was started five months after the screening that was completed on 4 october 2006</h3>
+<h3>Input Table: none</h3>
+<div class="step">
+<table>
+<tr><td>screening_started</td><td>screening_completed</td><td>chapter_unfrozen</td><td>chapter_opened</td><td>chapter_closed</td></tr><tr><td>2005-11-25</td><td>2005-12-22</td><td>9999-01-01</td><td>2008-12-19</td><td>9999-01-01</td></tr><tr><td>2006-06-21</td><td>2006-07-20</td><td>9999-01-01</td><td>2008-06-17</td><td>9999-01-01</td></tr><tr><td>2006-02-06</td><td>2006-03-03</td><td>9999-01-01</td><td>2008-06-17</td><td>9999-01-01</td></tr><tr><td>2006-06-12</td><td>2006-07-14</td><td>9999-01-01</td><td>2008-12-19</td><td>9999-01-01</td></tr><tr><td>2006-03-09</td><td>2006-04-28</td><td>9999-01-01</td><td>2010-06-30</td><td>9999-01-01</td></tr><tr><td>2006-06-06</td><td>2006-07-12</td><td>9999-01-01</td><td>2009-06-30</td><td>9999-01-01</td></tr><tr><td>2006-02-16</td><td>2006-03-23</td><td>9999-01-01</td><td>9999-01-01</td><td>9999-01-01</td></tr><tr><td>2006-06-19</td><td>2006-07-18</td><td>9999-01-01</td><td>2007-06-25</td><td>9999-01-01</td></tr><tr><td>2006-02-08</td><td>2006-03-22</td><td>9999-01-01</td><td>9999-01-01</td><td>9999-01-01</td></tr><tr><td>2006-03-27</td><td>2006-05-01</td><td>9999-01-01</td><td>2007-03-29</td><td>9999-01-01</td></tr><tr><td>2006-06-30</td><td>2006-09-29</td><td>9999-01-01</td><td>2007-12-19</td><td>9999-01-01</td></tr><tr><td>2006-09-11</td><td>2006-10-10</td><td>2013-02-12</td><td>2013-06-25</td><td>9999-01-01</td></tr><tr><td>2006-09-07</td><td>2006-10-13</td><td>9999-01-01</td><td>9999-01-01</td><td>9999-01-01</td></tr><tr><td>2005-10-20</td><td>2005-11-14</td><td>9999-01-01</td><td>2006-06-12</td><td>2006-06-12</td></tr><tr><td>2006-04-03</td><td>2006-06-02</td><td>9999-01-01</td><td>2009-12-21</td><td>9999-01-01</td></tr><tr><td>2006-06-08</td><td>2006-07-11</td><td>9999-01-01</td><td>2007-12-19</td><td>9999-01-01</td></tr><tr><td>2006-05-18</td><td>2006-06-30</td><td>9999-01-01</td><td>2007-07-26</td><td>9999-01-01</td></tr><tr><td>9999-01-01</td><td>9999-01-01</td><td>9999-01-01</td><td>9999-01-01</td><td>9999-01-01</td></tr>
+</table>
+</div>
+<h3>SQL Command:</h3>
+<div class="sql-command">SELECT 
+    CASE 
+        WHEN (SELECT screening_started FROM table_sql WHERE screening_completed = '2006-06-30') > 
+             (SELECT screening_started FROM table_sql WHERE screening_completed = '2006-10-04') 
+        THEN 'TRUE' 
+        ELSE 'FALSE' 
+    END;</div>
+<h3>Prediction: False</h3>
+</body></html>

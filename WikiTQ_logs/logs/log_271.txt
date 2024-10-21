@@ -1,0 +1,182 @@
+************************************************************************************************************************
+Sample 271 - Plan 1: Query: how long is the shortest song?
+Sample 271 - Plan 1: Groundtruth: ['0:49']
+Sample 271 - Plan 1: X-Original table pd: 
+     _                        title                 featured_guest_s_  \
+0    1                        "hog"                                     
+1    2           "where y'all from"                                     
+2    3  "fuckin wit uh house party"                                     
+3    4           "the shadiest one"                            cj mac   
+4    5            "can't hold back"                          ice cube   
+5    6               "keep hustlin"                  e-40 & too short   
+6    7              "just clownin'"                                     
+7    8          "the autobiography"                                     
+8    9          "worldwide gunnin'"                                     
+9   10                  "like that"  ice cube, daz dillinger & cj mac   
+10  11      "call it what you want"                                     
+11  12               "rich rollin'"                                     
+12  13                    "cheddar"                mack 10 & ice cube   
+13  14                  "bank lick"                                     
+14  15               "it's all bad"                                     
+15  16                "better days"                         ron banks   
+16  17                "the outcome"                                     
+
+        producer_s_  time                                         sample__s_  
+0         battlecat  4:24            *"3 time felons" by westside connection  
+1         battlecat  1:11                                                     
+2         battlecat  4:49  *"hollywood squares" by bootsy's rubber band\n...  
+3         ant banks  4:26                                                     
+4        skooby doo  3:34        *"ain't no half-steppin'" by big daddy kane  
+5         young tre  3:39  *"yearning for your love" by the gap band\n*"i...  
+6         battlecat  3:59  *"(not just) knee deep" by funkadelic\n*"too t...  
+7      crazy toones  1:21                                                     
+8        skooby doo  3:25                                                     
+9     daz dillinger  4:29  *"just rhymin' with biz" by big daddy kane\n*"...  
+10     crazy toones  4:29           *"knucklehead" by grover washington, jr.  
+11            dutch  3:40                                                     
+12       mo-suave-a  4:12  *"gotta get my hands on some (money)" by the f...  
+13               wc  0:49                                                     
+14        battlecat  4:15                    *"chocolate city" by parliament  
+15        barr nine  3:53                *"it's gonna be alright" by crimies  
+16  douglas coleman  2:45                                                     
+Sample 271 - Plan 1: Caption: none
+Sample 271 - Plan 1: Original table: [['_', 'title', 'featured_guest_s_', 'producer_s_', 'time', 'sample__s_'], ['1', '"hog"', '', 'battlecat', '4:24', '*"3 time felons" by westside connection'], ['2', '"where y\'all from"', '', 'battlecat', '1:11', ''], ['3', '"fuckin wit uh house party"', '', 'battlecat', '4:49', '*"hollywood squares" by bootsy\'s rubber band\\n*"(not just) knee deep" by funkadelic'], ['4', '"the shadiest one"', 'cj mac', 'ant banks', '4:26', ''], ['5', '"can\'t hold back"', 'ice cube', 'skooby doo', '3:34', '*"ain\'t no half-steppin\'" by big daddy kane'], ['6', '"keep hustlin"', 'e-40 & too short', 'young tre', '3:39', '*"yearning for your love" by the gap band\\n*"intimate connection" by kleeer'], ['7', '"just clownin\'"', '', 'battlecat', '3:59', '*"(not just) knee deep" by funkadelic\\n*"too tight for light" by funkadelic'], ['8', '"the autobiography"', '', 'crazy toones', '1:21', ''], ['9', '"worldwide gunnin\'"', '', 'skooby doo', '3:25', ''], ['10', '"like that"', 'ice cube, daz dillinger & cj mac', 'daz dillinger', '4:29', '*"just rhymin\' with biz" by big daddy kane\\n*"west up!" by wc and the maad circle'], ['11', '"call it what you want"', '', 'crazy toones', '4:29', '*"knucklehead" by grover washington, jr.'], ['12', '"rich rollin\'"', '', 'dutch', '3:40', ''], ['13', '"cheddar"', 'mack 10 & ice cube', 'mo-suave-a', '4:12', '*"gotta get my hands on some (money)" by the fatback band'], ['14', '"bank lick"', '', 'wc', '0:49', ''], ['15', '"it\'s all bad"', '', 'battlecat', '4:15', '*"chocolate city" by parliament'], ['16', '"better days"', 'ron banks', 'barr nine', '3:53', '*"it\'s gonna be alright" by crimies'], ['17', '"the outcome"', '', 'douglas coleman', '2:45', '']]
+########################################################################################################################
+Sample 271 - Plan 1: Operation 1: Extract the numerical value from the 'time' column then add column 'num_time' to the existing table.
+Sample 271 - Plan 1: Selected indices: [[0, 4], [1, 4], [2, 4], [3, 4], [4, 4], [5, 4], [6, 4], [7, 4], [8, 4], [9, 4], [10, 4], [11, 4], [12, 4], [13, 4], [14, 4], [15, 4], [16, 4]]
+Sample 271 - Plan 1: X-Table after operation df:
+     _                        title                 featured_guest_s_  \
+0    1                        "hog"                                     
+1    2           "where y'all from"                                     
+2    3  "fuckin wit uh house party"                                     
+3    4           "the shadiest one"                            cj mac   
+4    5            "can't hold back"                          ice cube   
+5    6               "keep hustlin"                  e-40 & too short   
+6    7              "just clownin'"                                     
+7    8          "the autobiography"                                     
+8    9          "worldwide gunnin'"                                     
+9   10                  "like that"  ice cube, daz dillinger & cj mac   
+10  11      "call it what you want"                                     
+11  12               "rich rollin'"                                     
+12  13                    "cheddar"                mack 10 & ice cube   
+13  14                  "bank lick"                                     
+14  15               "it's all bad"                                     
+15  16                "better days"                         ron banks   
+16  17                "the outcome"                                     
+
+        producer_s_  time                                         sample__s_  \
+0         battlecat  4:24            *"3 time felons" by westside connection   
+1         battlecat  1:11                                                      
+2         battlecat  4:49  *"hollywood squares" by bootsy's rubber band\n...   
+3         ant banks  4:26                                                      
+4        skooby doo  3:34        *"ain't no half-steppin'" by big daddy kane   
+5         young tre  3:39  *"yearning for your love" by the gap band\n*"i...   
+6         battlecat  3:59  *"(not just) knee deep" by funkadelic\n*"too t...   
+7      crazy toones  1:21                                                      
+8        skooby doo  3:25                                                      
+9     daz dillinger  4:29  *"just rhymin' with biz" by big daddy kane\n*"...   
+10     crazy toones  4:29           *"knucklehead" by grover washington, jr.   
+11            dutch  3:40                                                      
+12       mo-suave-a  4:12  *"gotta get my hands on some (money)" by the f...   
+13               wc  0:49                                                      
+14        battlecat  4:15                    *"chocolate city" by parliament   
+15        barr nine  3:53                *"it's gonna be alright" by crimies   
+16  douglas coleman  2:45                                                      
+
+    num_time  
+0        264  
+1         71  
+2        289  
+3        266  
+4        214  
+5        219  
+6        239  
+7         81  
+8        205  
+9        269  
+10       269  
+11       220  
+12       252  
+13        49  
+14       255  
+15       233  
+16       165  
+Sample 271 - Plan 1: Table after operation: [['_', 'title', 'featured_guest_s_', 'producer_s_', 'time', 'sample__s_', 'num_time'], [1, '"hog"', '', 'battlecat', '4:24', '*"3 time felons" by westside connection', 264], [2, '"where y\'all from"', '', 'battlecat', '1:11', '', 71], [3, '"fuckin wit uh house party"', '', 'battlecat', '4:49', '*"hollywood squares" by bootsy\'s rubber band\\n*"(not just) knee deep" by funkadelic', 289], [4, '"the shadiest one"', 'cj mac', 'ant banks', '4:26', '', 266], [5, '"can\'t hold back"', 'ice cube', 'skooby doo', '3:34', '*"ain\'t no half-steppin\'" by big daddy kane', 214], [6, '"keep hustlin"', 'e-40 & too short', 'young tre', '3:39', '*"yearning for your love" by the gap band\\n*"intimate connection" by kleeer', 219], [7, '"just clownin\'"', '', 'battlecat', '3:59', '*"(not just) knee deep" by funkadelic\\n*"too tight for light" by funkadelic', 239], [8, '"the autobiography"', '', 'crazy toones', '1:21', '', 81], [9, '"worldwide gunnin\'"', '', 'skooby doo', '3:25', '', 205], [10, '"like that"', 'ice cube, daz dillinger & cj mac', 'daz dillinger', '4:29', '*"just rhymin\' with biz" by big daddy kane\\n*"west up!" by wc and the maad circle', 269], [11, '"call it what you want"', '', 'crazy toones', '4:29', '*"knucklehead" by grover washington, jr.', 269], [12, '"rich rollin\'"', '', 'dutch', '3:40', '', 220], [13, '"cheddar"', 'mack 10 & ice cube', 'mo-suave-a', '4:12', '*"gotta get my hands on some (money)" by the fatback band', 252], [14, '"bank lick"', '', 'wc', '0:49', '', 49], [15, '"it\'s all bad"', '', 'battlecat', '4:15', '*"chocolate city" by parliament', 255], [16, '"better days"', 'ron banks', 'barr nine', '3:53', '*"it\'s gonna be alright" by crimies', 233], [17, '"the outcome"', '', 'douglas coleman', '2:45', '', 165]]
+########################################################################################################################
+Sample 271 - Plan 1: Operation 2: Order the table by 'num_time' in ascending order.
+Sample 271 - Plan 1: Selected indices: [[9, 6], [4, 6], [16, 6], [11, 6], [14, 6], [0, 6], [12, 6], [7, 6], [15, 6], [13, 6], [8, 6], [5, 6], [6, 6], [1, 6], [3, 6], [10, 6], [2, 6]]
+Sample 271 - Plan 1: X-Table after operation df:
+     _                        title                 featured_guest_s_  \
+0   14                  "bank lick"                                     
+1    2           "where y'all from"                                     
+2    8          "the autobiography"                                     
+3   17                "the outcome"                                     
+4    9          "worldwide gunnin'"                                     
+5    5            "can't hold back"                          ice cube   
+6    6               "keep hustlin"                  e-40 & too short   
+7   12               "rich rollin'"                                     
+8   16                "better days"                         ron banks   
+9    7              "just clownin'"                                     
+10  13                    "cheddar"                mack 10 & ice cube   
+11  15               "it's all bad"                                     
+12   1                        "hog"                                     
+13   4           "the shadiest one"                            cj mac   
+14  10                  "like that"  ice cube, daz dillinger & cj mac   
+15  11      "call it what you want"                                     
+16   3  "fuckin wit uh house party"                                     
+
+        producer_s_  time                                         sample__s_  \
+0                wc  0:49                                                      
+1         battlecat  1:11                                                      
+2      crazy toones  1:21                                                      
+3   douglas coleman  2:45                                                      
+4        skooby doo  3:25                                                      
+5        skooby doo  3:34        *"ain't no half-steppin'" by big daddy kane   
+6         young tre  3:39  *"yearning for your love" by the gap band\n*"i...   
+7             dutch  3:40                                                      
+8         barr nine  3:53                *"it's gonna be alright" by crimies   
+9         battlecat  3:59  *"(not just) knee deep" by funkadelic\n*"too t...   
+10       mo-suave-a  4:12  *"gotta get my hands on some (money)" by the f...   
+11        battlecat  4:15                    *"chocolate city" by parliament   
+12        battlecat  4:24            *"3 time felons" by westside connection   
+13        ant banks  4:26                                                      
+14    daz dillinger  4:29  *"just rhymin' with biz" by big daddy kane\n*"...   
+15     crazy toones  4:29           *"knucklehead" by grover washington, jr.   
+16        battlecat  4:49  *"hollywood squares" by bootsy's rubber band\n...   
+
+    num_time  
+0         49  
+1         71  
+2         81  
+3        165  
+4        205  
+5        214  
+6        219  
+7        220  
+8        233  
+9        239  
+10       252  
+11       255  
+12       264  
+13       266  
+14       269  
+15       269  
+16       289  
+Sample 271 - Plan 1: Table after operation: [['_', 'title', 'featured_guest_s_', 'producer_s_', 'time', 'sample__s_', 'num_time'], [14, '"bank lick"', '', 'wc', '0:49', '', 49], [2, '"where y\'all from"', '', 'battlecat', '1:11', '', 71], [8, '"the autobiography"', '', 'crazy toones', '1:21', '', 81], [17, '"the outcome"', '', 'douglas coleman', '2:45', '', 165], [9, '"worldwide gunnin\'"', '', 'skooby doo', '3:25', '', 205], [5, '"can\'t hold back"', 'ice cube', 'skooby doo', '3:34', '*"ain\'t no half-steppin\'" by big daddy kane', 214], [6, '"keep hustlin"', 'e-40 & too short', 'young tre', '3:39', '*"yearning for your love" by the gap band\\n*"intimate connection" by kleeer', 219], [12, '"rich rollin\'"', '', 'dutch', '3:40', '', 220], [16, '"better days"', 'ron banks', 'barr nine', '3:53', '*"it\'s gonna be alright" by crimies', 233], [7, '"just clownin\'"', '', 'battlecat', '3:59', '*"(not just) knee deep" by funkadelic\\n*"too tight for light" by funkadelic', 239], [13, '"cheddar"', 'mack 10 & ice cube', 'mo-suave-a', '4:12', '*"gotta get my hands on some (money)" by the fatback band', 252], [15, '"it\'s all bad"', '', 'battlecat', '4:15', '*"chocolate city" by parliament', 255], [1, '"hog"', '', 'battlecat', '4:24', '*"3 time felons" by westside connection', 264], [4, '"the shadiest one"', 'cj mac', 'ant banks', '4:26', '', 266], [10, '"like that"', 'ice cube, daz dillinger & cj mac', 'daz dillinger', '4:29', '*"just rhymin\' with biz" by big daddy kane\\n*"west up!" by wc and the maad circle', 269], [11, '"call it what you want"', '', 'crazy toones', '4:29', '*"knucklehead" by grover washington, jr.', 269], [3, '"fuckin wit uh house party"', '', 'battlecat', '4:49', '*"hollywood squares" by bootsy\'s rubber band\\n*"(not just) knee deep" by funkadelic', 289]]
+########################################################################################################################
+Sample 271 - Plan 1: Operation 3: Select row number 1.
+Sample 271 - Plan 1: Selected indices: []
+Sample 271 - Plan 1: X-Table after operation df:
+    _        title  featured_guest_s_ producer_s_  time  sample__s_  num_time
+0  14  "bank lick"                NaN          wc  0:49         NaN        49
+Sample 271 - Plan 1: Table after operation: [['_', 'title', 'featured_guest_s_', 'producer_s_', 'time', 'sample__s_', 'num_time'], [14, '"bank lick"', '', 'wc', '0:49', '', 49]]
+########################################################################################################################
+Sample 271 - Plan 1: Operation 4: Select the 'num_time' column.
+Sample 271 - Plan 1: Selected indices: []
+Sample 271 - Plan 1: X-Table after operation df:
+   num_time
+0        49
+Sample 271 - Plan 1: Table after operation: [['num_time'], [49]]
+Fall-back: FALSE
+Answer from plan 1: [[49]]
+Groundtruth: ['0:49']

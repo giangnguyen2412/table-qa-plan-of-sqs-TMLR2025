@@ -1,0 +1,39 @@
+
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+.sql-command { background-color: #f0f0f0; padding: 10px; border-left: 4px solid #4CAF50; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> the score was 1 - 0 when the home team was shrewsbury town</h3>
+<h3>Input Table: 1990 - 91 fa cup</h3>
+<div class="step">
+<table>
+<tr><td>tie_no</td><td>home_team</td><td>score</td><td>away_team</td><td>date</td></tr><tr><td>1</td><td>liverpool</td><td>2 - 2</td><td>brighton & hove albion</td><td>1991-01-26</td></tr><tr><td>replay</td><td>brighton & hove albion</td><td>2 - 3</td><td>liverpool</td><td>1991-01-30</td></tr><tr><td>2</td><td>notts county</td><td>2 - 0</td><td>oldham athletic</td><td>1991-01-26</td></tr><tr><td>3</td><td>crewe alexandra</td><td>1 - 0</td><td>rotherham united</td><td>1991-01-26</td></tr><tr><td>4</td><td>luton town</td><td>1 - 1</td><td>west ham united</td><td>1991-01-26</td></tr><tr><td>replay</td><td>west ham united</td><td>5 - 0</td><td>luton town</td><td>1991-01-30</td></tr><tr><td>5</td><td>woking</td><td>0 - 1</td><td>everton</td><td>1991-01-27</td></tr><tr><td>6</td><td>shrewsbury town</td><td>1 - 0</td><td>wimbledon</td><td>1991-01-26</td></tr><tr><td>7</td><td>newcastle united</td><td>2 - 2</td><td>nottingham forest</td><td>1991-02-13</td></tr><tr><td>replay</td><td>nottingham forest</td><td>3 - 0</td><td>newcastle united</td><td>1991-02-18</td></tr><tr><td>8</td><td>tottenham hotspur</td><td>4 - 2</td><td>oxford united</td><td>1991-01-26</td></tr><tr><td>9</td><td>coventry city</td><td>1 - 1</td><td>southampton</td><td>1991-01-26</td></tr><tr><td>replay</td><td>southampton</td><td>2 - 0</td><td>coventry city</td><td>1991-01-29</td></tr><tr><td>10</td><td>portsmouth</td><td>5 - 1</td><td>bournemouth</td><td>1991-01-26</td></tr><tr><td>11</td><td>manchester united</td><td>1 - 0</td><td>bolton wanderers</td><td>1991-01-26</td></tr><tr><td>12</td><td>norwich city</td><td>3 - 1</td><td>swindon town</td><td>1991-01-26</td></tr><tr><td>13</td><td>millwall</td><td>4 - 4</td><td>sheffield wednesday</td><td>1991-01-26</td></tr><tr><td>replay</td><td>sheffield wednesday</td><td>2 - 0</td><td>millwall</td><td>1991-01-30</td></tr><tr><td>14</td><td>port vale</td><td>1 - 2</td><td>manchester city</td><td>1991-01-26</td></tr><tr><td>15</td><td>arsenal</td><td>0 - 0</td><td>leeds united</td><td>1991-01-27</td></tr><tr><td>replay</td><td>leeds united</td><td>1 - 1</td><td>arsenal</td><td>1991-01-30</td></tr><tr><td>replay</td><td>arsenal</td><td>0 - 0</td><td>leeds united</td><td>1991-02-13</td></tr><tr><td>replay</td><td>leeds united</td><td>1 - 2</td><td>arsenal</td><td>1991-02-16</td></tr><tr><td>16</td><td>cambridge united</td><td>2 - 0</td><td>middlesbrough</td><td>1991-01-26</td></tr>
+</table>
+</div>
+<h3>SQL Command:</h3>
+<div class="sql-command">SELECT 
+    CASE 
+        WHEN (SELECT score FROM table_sql WHERE home_team = 'shrewsbury town') = '1 - 0' 
+        THEN 'TRUE' 
+        ELSE 'FALSE' 
+    END;</div>
+</body></html>

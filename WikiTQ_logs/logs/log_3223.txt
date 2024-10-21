@@ -1,0 +1,53 @@
+************************************************************************************************************************
+Sample 3223 - Plan 1: Query: did scot bennett score above or below 3 league goals?
+Sample 3223 - Plan 1: Groundtruth: ['above']
+Sample 3223 - Plan 1: X-Original table pd: 
+             name  league  fa_cup  league_cup  jp_trophy  total
+0    scot bennett       5       0           0          0      5
+1     danny coles       3       0           0          0      3
+2   liam sercombe       1       0           0          0      1
+3        alan gow       4       0           0          0      4
+4    john o'flynn      11       0           1          0     12
+5   guillem bauza       2       0           0          0      2
+6   jimmy keohane       3       0           0          0      3
+7     pat baldwin       1       0           0          0      1
+8   jamie cureton      20       0           0          0     20
+9    arron davies       3       0           0          0      3
+10   jake gosling       1       0           0          0      1
+11      own goals       0       0           0          0      0
+12          total       0       0           0          0      0
+Sample 3223 - Plan 1: Caption: none
+Sample 3223 - Plan 1: Original table: [['name', 'league', 'fa_cup', 'league_cup', 'jp_trophy', 'total'], ['scot bennett', '5', '0', '0', '0', '5'], ['danny coles', '3', '0', '0', '0', '3'], ['liam sercombe', '1', '0', '0', '0', '1'], ['alan gow', '4', '0', '0', '0', '4'], ["john o'flynn", '11', '0', '1', '0', '12'], ['guillem bauza', '2', '0', '0', '0', '2'], ['jimmy keohane', '3', '0', '0', '0', '3'], ['pat baldwin', '1', '0', '0', '0', '1'], ['jamie cureton', '20', '0', '0', '0', '20'], ['arron davies', '3', '0', '0', '0', '3'], ['jake gosling', '1', '0', '0', '0', '1'], ['own goals', '0', '0', '0', '0', '0'], ['total', '0', '0', '0', '0', '0']]
+########################################################################################################################
+Sample 3223 - Plan 1: Operation 1: Select the row where the 'name' is 'scot bennett'.
+Sample 3223 - Plan 1: Selected indices: [[0, 0]]
+Sample 3223 - Plan 1: X-Table after operation df:
+           name  league  fa_cup  league_cup  jp_trophy  total
+0  scot bennett       5       0           0          0      5
+Sample 3223 - Plan 1: Table after operation: [['name', 'league', 'fa_cup', 'league_cup', 'jp_trophy', 'total'], ['scot bennett', 5, 0, 0, 0, 5]]
+########################################################################################################################
+Sample 3223 - Plan 1: Operation 2: Select the 'league' column.
+Sample 3223 - Plan 1: Selected indices: []
+Sample 3223 - Plan 1: X-Table after operation df:
+   league
+0       5
+Sample 3223 - Plan 1: Table after operation: [['league'], [5]]
+########################################################################################################################
+Sample 3223 - Plan 1: Operation 3: Compare the value in the 'league' column to the number 3.
+Sample 3223 - Plan 1: Selected indices: []
+Sample 3223 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [league]
+Index: []
+Sample 3223 - Plan 1: Table after operation: [['league']]
+########################################################################################################################
+Sample 3223 - Plan 1: Operation 4: Determine if the value is above or below 3 league goals based on the comparison result.
+Sample 3223 - Plan 1: Selected indices: []
+Sample 3223 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [league, comparison_result]
+Index: []
+Sample 3223 - Plan 1: Table after operation: [['league', 'comparison_result']]
+Fall-back: TRUE
+Answer from plan 1: [['below']]
+Groundtruth: ['above']

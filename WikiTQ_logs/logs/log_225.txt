@@ -1,0 +1,55 @@
+************************************************************************************************************************
+Sample 225 - Plan 1: Query: what is the total number of euro 2000 qualifying competitions?
+Sample 225 - Plan 1: Groundtruth: ['6']
+Sample 225 - Plan 1: X-Original table pd: 
+     _              date                             venue    opponent score  \
+0  1.0     27 march 1999         mestalla, valencia, spain     austria   3–0   
+1  2.0     27 march 1999         mestalla, valencia, spain     austria   5–0   
+2  3.0     31 march 1999  olimpico, serravalle, san marino  san marino   0–3   
+3  4.0  8 september 1999            vivero, badajoz, spain      cyprus   1–0   
+4  5.0  8 september 1999            vivero, badajoz, spain      cyprus   2–0   
+5  6.0  8 september 1999            vivero, badajoz, spain      cyprus   4–0   
+6  7.0   26 january 2000     cartagonova, cartagena, spain      poland   2–0   
+7  8.0   26 january 2000     cartagonova, cartagena, spain      poland   3–0   
+
+  result           competition  
+0    9–0  euro 2000 qualifying  
+1    9–0  euro 2000 qualifying  
+2    0–6  euro 2000 qualifying  
+3    8–0  euro 2000 qualifying  
+4    8–0  euro 2000 qualifying  
+5    8–0  euro 2000 qualifying  
+6    3–0              friendly  
+7    3–0              friendly  
+Sample 225 - Plan 1: Caption: none
+Sample 225 - Plan 1: Original table: [['_', 'date', 'venue', 'opponent', 'score', 'result', 'competition'], ['1.', '27 march 1999', 'mestalla, valencia, spain', 'austria', '3–0', '9–0', 'euro 2000 qualifying'], ['2.', '27 march 1999', 'mestalla, valencia, spain', 'austria', '5–0', '9–0', 'euro 2000 qualifying'], ['3.', '31 march 1999', 'olimpico, serravalle, san marino', 'san marino', '0–3', '0–6', 'euro 2000 qualifying'], ['4.', '8 september 1999', 'vivero, badajoz, spain', 'cyprus', '1–0', '8–0', 'euro 2000 qualifying'], ['5.', '8 september 1999', 'vivero, badajoz, spain', 'cyprus', '2–0', '8–0', 'euro 2000 qualifying'], ['6.', '8 september 1999', 'vivero, badajoz, spain', 'cyprus', '4–0', '8–0', 'euro 2000 qualifying'], ['7.', '26 january 2000', 'cartagonova, cartagena, spain', 'poland', '2–0', '3–0', 'friendly'], ['8.', '26 january 2000', 'cartagonova, cartagena, spain', 'poland', '3–0', '3–0', 'friendly']]
+########################################################################################################################
+Sample 225 - Plan 1: Operation 1: Select rows where the 'competition' column is 'euro 2000 qualifying'.
+Sample 225 - Plan 1: Selected indices: [[4, 6], [0, 6], [2, 6], [5, 6], [3, 6], [1, 6]]
+Sample 225 - Plan 1: X-Table after operation df:
+     _              date                             venue    opponent score  \
+0  1.0     27 march 1999         mestalla, valencia, spain     austria   3–0   
+1  2.0     27 march 1999         mestalla, valencia, spain     austria   5–0   
+2  3.0     31 march 1999  olimpico, serravalle, san marino  san marino   0–3   
+3  4.0  8 september 1999            vivero, badajoz, spain      cyprus   1–0   
+4  5.0  8 september 1999            vivero, badajoz, spain      cyprus   2–0   
+5  6.0  8 september 1999            vivero, badajoz, spain      cyprus   4–0   
+
+  result           competition  
+0    9–0  euro 2000 qualifying  
+1    9–0  euro 2000 qualifying  
+2    0–6  euro 2000 qualifying  
+3    8–0  euro 2000 qualifying  
+4    8–0  euro 2000 qualifying  
+5    8–0  euro 2000 qualifying  
+Sample 225 - Plan 1: Table after operation: [['_', 'date', 'venue', 'opponent', 'score', 'result', 'competition'], [1.0, '27 march 1999', 'mestalla, valencia, spain', 'austria', '3–0', '9–0', 'euro 2000 qualifying'], [2.0, '27 march 1999', 'mestalla, valencia, spain', 'austria', '5–0', '9–0', 'euro 2000 qualifying'], [3.0, '31 march 1999', 'olimpico, serravalle, san marino', 'san marino', '0–3', '0–6', 'euro 2000 qualifying'], [4.0, '8 september 1999', 'vivero, badajoz, spain', 'cyprus', '1–0', '8–0', 'euro 2000 qualifying'], [5.0, '8 september 1999', 'vivero, badajoz, spain', 'cyprus', '2–0', '8–0', 'euro 2000 qualifying'], [6.0, '8 september 1999', 'vivero, badajoz, spain', 'cyprus', '4–0', '8–0', 'euro 2000 qualifying']]
+########################################################################################################################
+Sample 225 - Plan 1: Operation 2: Count the number of rows.
+Sample 225 - Plan 1: Selected indices: []
+Sample 225 - Plan 1: X-Table after operation df:
+   row_count
+0          6
+Sample 225 - Plan 1: Table after operation: [['row_count'], [6]]
+Fall-back: FALSE
+Answer from plan 1: [[6]]
+Groundtruth: ['6']

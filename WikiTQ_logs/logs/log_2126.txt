@@ -1,0 +1,96 @@
+************************************************************************************************************************
+Sample 2126 - Plan 1: Query: the games played at hsbc arena is above/below 6?
+Sample 2126 - Plan 1: Groundtruth: ['above']
+Sample 2126 - Plan 1: X-Original table pd: 
+    game               date                 opponent               location  \
+0      1  december 30, 2007     @ portland lumberjax            rose garden   
+1      2   january 12, 2007          new york titans             hsbc arena   
+2      3   january 13, 2007       @ colorado mammoth           pepsi center   
+3      4   january 20, 2007          minnesota swarm             hsbc arena   
+4      5   february 2, 2007             toronto rock             hsbc arena   
+5      6   february 3, 2007           @ toronto rock      air canada centre   
+6      7  february 11, 2007        @ chicago shamrox           sears centre   
+7      8  february 17, 2007     @ philadelphia wings        wachovia center   
+8      9  february 24, 2007       philadelphia wings             hsbc arena   
+9     10      march 4, 2007        @ minnesota swarm     xcel energy center   
+10    11     march 17, 2007        @ new york titans  madison square garden   
+11    12     march 24, 2007         colorado mammoth             hsbc arena   
+12    13     march 31, 2007          chicago shamrox             hsbc arena   
+13    14      april 7, 2007            arizona sting             hsbc arena   
+14    15     april 13, 2007    rochester knighthawks             hsbc arena   
+15    16     april 14, 2007  @ rochester knighthawks       blue cross arena   
+
+      score  ot attendance record  
+0   l 10–11  ot      8,437    0–1  
+1   w 16–14         18,690    1–1  
+2   l 10–11  ot     16,523    1–2  
+3   w 22–13         12,883    2–2  
+4   l 10–14         13,659    2–3  
+5    l 8–13         15,471    2–4  
+6   w 12–11          5,010    3–4  
+7    w 12–8         12,688    4–4  
+8   w 13–12         14,882    5–4  
+9   w 16–15          7,504    6–4  
+10   w 11–8          7,012    7–4  
+11  w 19–15         15,156    8–4  
+12  w 15–10         16,228    9–4  
+13   w 15–5         13,492   10–4  
+14  l 10–14         15,334   10–5  
+15   l 8–14         11,200   10–6  
+Sample 2126 - Plan 1: Caption: none
+Sample 2126 - Plan 1: Original table: [['game', 'date', 'opponent', 'location', 'score', 'ot', 'attendance', 'record'], ['1', 'december 30, 2007', '@ portland lumberjax', 'rose garden', 'l 10–11', 'ot', '8,437', '0–1'], ['2', 'january 12, 2007', 'new york titans', 'hsbc arena', 'w 16–14', '', '18,690', '1–1'], ['3', 'january 13, 2007', '@ colorado mammoth', 'pepsi center', 'l 10–11', 'ot', '16,523', '1–2'], ['4', 'january 20, 2007', 'minnesota swarm', 'hsbc arena', 'w 22–13', '', '12,883', '2–2'], ['5', 'february 2, 2007', 'toronto rock', 'hsbc arena', 'l 10–14', '', '13,659', '2–3'], ['6', 'february 3, 2007', '@ toronto rock', 'air canada centre', 'l 8–13', '', '15,471', '2–4'], ['7', 'february 11, 2007', '@ chicago shamrox', 'sears centre', 'w 12–11', '', '5,010', '3–4'], ['8', 'february 17, 2007', '@ philadelphia wings', 'wachovia center', 'w 12–8', '', '12,688', '4–4'], ['9', 'february 24, 2007', 'philadelphia wings', 'hsbc arena', 'w 13–12', '', '14,882', '5–4'], ['10', 'march 4, 2007', '@ minnesota swarm', 'xcel energy center', 'w 16–15', '', '7,504', '6–4'], ['11', 'march 17, 2007', '@ new york titans', 'madison square garden', 'w 11–8', '', '7,012', '7–4'], ['12', 'march 24, 2007', 'colorado mammoth', 'hsbc arena', 'w 19–15', '', '15,156', '8–4'], ['13', 'march 31, 2007', 'chicago shamrox', 'hsbc arena', 'w 15–10', '', '16,228', '9–4'], ['14', 'april 7, 2007', 'arizona sting', 'hsbc arena', 'w 15–5', '', '13,492', '10–4'], ['15', 'april 13, 2007', 'rochester knighthawks', 'hsbc arena', 'l 10–14', '', '15,334', '10–5'], ['16', 'april 14, 2007', '@ rochester knighthawks', 'blue cross arena', 'l 8–14', '', '11,200', '10–6']]
+########################################################################################################################
+Sample 2126 - Plan 1: Operation 1: Select rows where the 'location' is 'hsbc arena'.
+Sample 2126 - Plan 1: Selected indices: [[4, 3], [11, 3], [12, 3], [13, 3], [8, 3], [3, 3], [14, 3], [1, 3]]
+Sample 2126 - Plan 1: X-Table after operation df:
+   game               date               opponent    location    score  ot  \
+0     2   january 12, 2007        new york titans  hsbc arena  w 16–14 NaN   
+1     4   january 20, 2007        minnesota swarm  hsbc arena  w 22–13 NaN   
+2     5   february 2, 2007           toronto rock  hsbc arena  l 10–14 NaN   
+3     9  february 24, 2007     philadelphia wings  hsbc arena  w 13–12 NaN   
+4    12     march 24, 2007       colorado mammoth  hsbc arena  w 19–15 NaN   
+5    13     march 31, 2007        chicago shamrox  hsbc arena  w 15–10 NaN   
+6    14      april 7, 2007          arizona sting  hsbc arena   w 15–5 NaN   
+7    15     april 13, 2007  rochester knighthawks  hsbc arena  l 10–14 NaN   
+
+  attendance record  
+0     18,690    1–1  
+1     12,883    2–2  
+2     13,659    2–3  
+3     14,882    5–4  
+4     15,156    8–4  
+5     16,228    9–4  
+6     13,492   10–4  
+7     15,334   10–5  
+Sample 2126 - Plan 1: Table after operation: [['game', 'date', 'opponent', 'location', 'score', 'ot', 'attendance', 'record'], [2, 'january 12, 2007', 'new york titans', 'hsbc arena', 'w 16–14', '', '18,690', '1–1'], [4, 'january 20, 2007', 'minnesota swarm', 'hsbc arena', 'w 22–13', '', '12,883', '2–2'], [5, 'february 2, 2007', 'toronto rock', 'hsbc arena', 'l 10–14', '', '13,659', '2–3'], [9, 'february 24, 2007', 'philadelphia wings', 'hsbc arena', 'w 13–12', '', '14,882', '5–4'], [12, 'march 24, 2007', 'colorado mammoth', 'hsbc arena', 'w 19–15', '', '15,156', '8–4'], [13, 'march 31, 2007', 'chicago shamrox', 'hsbc arena', 'w 15–10', '', '16,228', '9–4'], [14, 'april 7, 2007', 'arizona sting', 'hsbc arena', 'w 15–5', '', '13,492', '10–4'], [15, 'april 13, 2007', 'rochester knighthawks', 'hsbc arena', 'l 10–14', '', '15,334', '10–5']]
+########################################################################################################################
+Sample 2126 - Plan 1: Operation 2: Count the number of rows.
+Sample 2126 - Plan 1: Selected indices: []
+Sample 2126 - Plan 1: X-Table after operation df:
+   row_count
+0          8
+Sample 2126 - Plan 1: Table after operation: [['row_count'], [8]]
+########################################################################################################################
+Sample 2126 - Plan 1: Operation 3: Compare the count to 6.
+Sample 2126 - Plan 1: Selected indices: [[0, 0]]
+Sample 2126 - Plan 1: X-Table after operation df:
+   row_count
+0          8
+Sample 2126 - Plan 1: Table after operation: [['row_count'], [8]]
+########################################################################################################################
+Sample 2126 - Plan 1: Operation 4: If the count is above 6, the answer is "above".
+Sample 2126 - Plan 1: Selected indices: []
+Sample 2126 - Plan 1: X-Table after operation df:
+  answer
+0  above
+Sample 2126 - Plan 1: Table after operation: [['answer'], ['above']]
+########################################################################################################################
+Sample 2126 - Plan 1: Operation 5: If the count is below or equal to 6, the answer is "below".
+Sample 2126 - Plan 1: Selected indices: []
+Sample 2126 - Plan 1: X-Table after operation df:
+  answer
+0  below
+Sample 2126 - Plan 1: Table after operation: [['answer'], ['below']]
+Fall-back: FALSE
+Answer from plan 1: [['below']]
+Groundtruth: ['above']

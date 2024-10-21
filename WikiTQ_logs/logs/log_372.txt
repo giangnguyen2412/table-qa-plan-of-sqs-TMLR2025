@@ -1,0 +1,94 @@
+************************************************************************************************************************
+Sample 372 - Plan 1: Query: which film had two consecutive nominations for the alma award outstanding actor in a television series?
+Sample 372 - Plan 1: Groundtruth: ['Spin City']
+Sample 372 - Plan 1: X-Original table pd: 
+    year     result                                              award  \
+0   1989        won          bronze wrangler theatrical motion picture   
+1   1999  nominated  sag award outstanding performance by a cast in...   
+2   1999  nominated    online film critics society award for best cast   
+3   2001  nominated  alma award outstanding actor in a television s...   
+4   2002  nominated  alma award outstanding actor in a television s...   
+5   2002        won  golden globe award best performance by an acto...   
+6   2002  nominated      kids' choice awards favorite television actor   
+7   2005  nominated  sag award outstanding performance by a male ac...   
+8   2005  nominated  golden globe award for best actor – television...   
+9   2006        won       golden icon award best actor - comedy series   
+10  2006  nominated  emmy award for outstanding lead actor - comedy...   
+11  2006  nominated  golden globe award for best actor – television...   
+12  2007  nominated        people's choice award favorite male tv star   
+13  2007  nominated          teen choice award choice tv actor: comedy   
+14  2007  nominated  emmy award for outstanding lead actor - comedy...   
+15  2008  nominated        people's choice award favorite male tv star   
+16  2008  nominated         teen choice awards choice tv actor: comedy   
+17  2008  nominated             outstanding lead actor - comedy series   
+18  2008        won  alma award outstanding actor in a comedy telev...   
+19  2010  nominated  sag award outstanding performance by a male ac...   
+20  2012        won       wwe slammy award top social media ambassador   
+
+                    film  
+0             young guns  
+1   being john malkovich  
+2   being john malkovich  
+3              spin city  
+4              spin city  
+5              spin city  
+6     two and a half men  
+7     two and a half men  
+8     two and a half men  
+9     two and a half men  
+10    two and a half men  
+11    two and a half men  
+12                        
+13    two and a half men  
+14    two and a half men  
+15                        
+16    two and a half men  
+17    two and a half men  
+18    two and a half men  
+19    two and a half men  
+20               wwe raw  
+Sample 372 - Plan 1: Caption: none
+Sample 372 - Plan 1: Original table: [['year', 'result', 'award', 'film'], ['1989', 'won', 'bronze wrangler theatrical motion picture', 'young guns'], ['1999', 'nominated', 'sag award outstanding performance by a cast in a theatrical motion picture', 'being john malkovich'], ['1999', 'nominated', 'online film critics society award for best cast', 'being john malkovich'], ['2001', 'nominated', 'alma award outstanding actor in a television series', 'spin city'], ['2002', 'nominated', 'alma award outstanding actor in a television series', 'spin city'], ['2002', 'won', 'golden globe award best performance by an actor in a television series - musical or comedy', 'spin city'], ['2002', 'nominated', "kids' choice awards favorite television actor", 'two and a half men'], ['2005', 'nominated', 'sag award outstanding performance by a male actor in a comedy series', 'two and a half men'], ['2005', 'nominated', 'golden globe award for best actor – television series musical or comedy', 'two and a half men'], ['2006', 'won', 'golden icon award best actor - comedy series', 'two and a half men'], ['2006', 'nominated', 'emmy award for outstanding lead actor - comedy series', 'two and a half men'], ['2006', 'nominated', 'golden globe award for best actor – television series musical or comedy', 'two and a half men'], ['2007', 'nominated', "people's choice award favorite male tv star", ''], ['2007', 'nominated', 'teen choice award choice tv actor: comedy', 'two and a half men'], ['2007', 'nominated', 'emmy award for outstanding lead actor - comedy series', 'two and a half men'], ['2008', 'nominated', "people's choice award favorite male tv star", ''], ['2008', 'nominated', 'teen choice awards choice tv actor: comedy', 'two and a half men'], ['2008', 'nominated', 'outstanding lead actor - comedy series', 'two and a half men'], ['2008', 'won', 'alma award outstanding actor in a comedy television series', 'two and a half men'], ['2010', 'nominated', 'sag award outstanding performance by a male actor in a comedy series', 'two and a half men'], ['2012', 'won', 'wwe slammy award top social media ambassador', 'wwe raw']]
+########################################################################################################################
+Sample 372 - Plan 1: Operation 1: Select rows where the 'award' is 'alma award outstanding actor in a television series'.
+Sample 372 - Plan 1: Selected indices: [[3, 2], [4, 2]]
+Sample 372 - Plan 1: X-Table after operation df:
+   year     result                                              award  \
+0  2001  nominated  alma award outstanding actor in a television s...   
+1  2002  nominated  alma award outstanding actor in a television s...   
+
+        film  
+0  spin city  
+1  spin city  
+Sample 372 - Plan 1: Table after operation: [['year', 'result', 'award', 'film'], [2001, 'nominated', 'alma award outstanding actor in a television series', 'spin city'], [2002, 'nominated', 'alma award outstanding actor in a television series', 'spin city']]
+########################################################################################################################
+Sample 372 - Plan 1: Operation 2: Add a column 'consecutive_nominations' to the existing table.
+Sample 372 - Plan 1: Selected indices: [[0, 1], [0, 0], [1, 1], [1, 0]]
+Sample 372 - Plan 1: X-Table after operation df:
+   year     result                                              award  \
+0  2001  nominated  alma award outstanding actor in a television s...   
+1  2002  nominated  alma award outstanding actor in a television s...   
+
+        film  consecutive_nominations  
+0  spin city                        0  
+1  spin city                        1  
+Sample 372 - Plan 1: Table after operation: [['year', 'result', 'award', 'film', 'consecutive_nominations'], [2001, 'nominated', 'alma award outstanding actor in a television series', 'spin city', 0], [2002, 'nominated', 'alma award outstanding actor in a television series', 'spin city', 1]]
+########################################################################################################################
+Sample 372 - Plan 1: Operation 3: Calculate the difference between the 'year' values of consecutive rows and add the result to the 'consecutive_nominations' column.
+Sample 372 - Plan 1: Selected indices: [[0, 0], [0, 4], [1, 0], [1, 4]]
+Sample 372 - Plan 1: X-Table after operation df:
+   year     result                                              award  \
+0  2001  nominated  alma award outstanding actor in a television s...   
+1  2002  nominated  alma award outstanding actor in a television s...   
+
+        film  consecutive_nominations  consecutive_nominations  
+0  spin city                        0                      NaN  
+1  spin city                        1                      1.0  
+Sample 372 - Plan 1: Table after operation: [['year', 'result', 'award', 'film', 'consecutive_nominations', 'consecutive_nominations'], [2001, 'nominated', 'alma award outstanding actor in a television series', 'spin city', 0, nan], [2002, 'nominated', 'alma award outstanding actor in a television series', 'spin city', 1, 1.0]]
+########################################################################################################################
+Sample 372 - Plan 1: Operation 4: Select rows where the 'consecutive_nominations' is equal to 1.
+SQL execution error in operation 4: duplicate column name: consecutive_nominations
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['spin city']]
+Groundtruth: ['Spin City']

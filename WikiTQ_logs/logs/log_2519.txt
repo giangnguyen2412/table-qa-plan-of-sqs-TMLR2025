@@ -1,0 +1,132 @@
+************************************************************************************************************************
+Sample 2519 - Plan 1: Query: are the years listed in consecutive order or are they not?
+Sample 2519 - Plan 1: Groundtruth: ['Yes']
+Sample 2519 - Plan 1: X-Original table pd: 
+    year state_territory_men_s_division state_territory_women_s_division  \
+0   2012                     queensland                  new south wales   
+1   2012                new south wales                  new south wales   
+2   2011                new south wales                  new south wales   
+3   2010              western australia                                    
+4   2009                     queensland                                    
+5   2008                     queensland                                    
+6   2007                new south wales                                    
+7   2006                     queensland                                    
+8   2005                     queensland                                    
+9   2004                     queensland                                    
+10  2003                new south wales                                    
+11  2002             northern territory                                    
+12  2001                       tasmania                                    
+
+   major_centres_division community_division women_s_division  
+0                                                              
+1                  darwin   brothers in arms    bush potatoes  
+2          maranoa murris         gap angels    bush potatoes  
+3                                                              
+4               alkupitja        tangentyere  new south wales  
+5               katherine           cooktown  new south wales  
+6               alkupitja         cat tigers      cga cougars  
+7           alice springs    melville island           darwin  
+8           alice springs          alkupitja           darwin  
+9           alice springs          normanton    tennant creek  
+10                 darwin                                      
+11                 darwin                                      
+12                                                             
+Sample 2519 - Plan 1: Caption: none
+Sample 2519 - Plan 1: Original table: [['year', 'state_territory_men_s_division', 'state_territory_women_s_division', 'major_centres_division', 'community_division', 'women_s_division'], ['2012', 'queensland', 'new south wales', '', '', ''], ['2012', 'new south wales', 'new south wales', 'darwin', 'brothers in arms', 'bush potatoes'], ['2011', 'new south wales', 'new south wales', 'maranoa murris', 'gap angels', 'bush potatoes'], ['2010', 'western australia', '', '', '', ''], ['2009', 'queensland', '', 'alkupitja', 'tangentyere', 'new south wales'], ['2008', 'queensland', '', 'katherine', 'cooktown', 'new south wales'], ['2007', 'new south wales', '', 'alkupitja', 'cat tigers', 'cga cougars'], ['2006', 'queensland', '', 'alice springs', 'melville island', 'darwin'], ['2005', 'queensland', '', 'alice springs', 'alkupitja', 'darwin'], ['2004', 'queensland', '', 'alice springs', 'normanton', 'tennant creek'], ['2003', 'new south wales', '', 'darwin', '', ''], ['2002', 'northern territory', '', 'darwin', '', ''], ['2001', 'tasmania', '', '', '', '']]
+########################################################################################################################
+Sample 2519 - Plan 1: Operation 1: Order the table by the 'year' column in ascending order.
+Sample 2519 - Plan 1: Selected indices: [[9, 0], [4, 0], [0, 0], [11, 0], [12, 0], [7, 0], [2, 0], [8, 0], [3, 0], [10, 0], [5, 0], [6, 0], [1, 0]]
+Sample 2519 - Plan 1: X-Table after operation df:
+    year state_territory_men_s_division state_territory_women_s_division  \
+0   2001                       tasmania                                    
+1   2002             northern territory                                    
+2   2003                new south wales                                    
+3   2004                     queensland                                    
+4   2005                     queensland                                    
+5   2006                     queensland                                    
+6   2007                new south wales                                    
+7   2008                     queensland                                    
+8   2009                     queensland                                    
+9   2010              western australia                                    
+10  2011                new south wales                  new south wales   
+11  2012                     queensland                  new south wales   
+12  2012                new south wales                  new south wales   
+
+   major_centres_division community_division women_s_division  
+0                                                              
+1                  darwin                                      
+2                  darwin                                      
+3           alice springs          normanton    tennant creek  
+4           alice springs          alkupitja           darwin  
+5           alice springs    melville island           darwin  
+6               alkupitja         cat tigers      cga cougars  
+7               katherine           cooktown  new south wales  
+8               alkupitja        tangentyere  new south wales  
+9                                                              
+10         maranoa murris         gap angels    bush potatoes  
+11                                                             
+12                 darwin   brothers in arms    bush potatoes  
+Sample 2519 - Plan 1: Table after operation: [['year', 'state_territory_men_s_division', 'state_territory_women_s_division', 'major_centres_division', 'community_division', 'women_s_division'], [2001, 'tasmania', '', '', '', ''], [2002, 'northern territory', '', 'darwin', '', ''], [2003, 'new south wales', '', 'darwin', '', ''], [2004, 'queensland', '', 'alice springs', 'normanton', 'tennant creek'], [2005, 'queensland', '', 'alice springs', 'alkupitja', 'darwin'], [2006, 'queensland', '', 'alice springs', 'melville island', 'darwin'], [2007, 'new south wales', '', 'alkupitja', 'cat tigers', 'cga cougars'], [2008, 'queensland', '', 'katherine', 'cooktown', 'new south wales'], [2009, 'queensland', '', 'alkupitja', 'tangentyere', 'new south wales'], [2010, 'western australia', '', '', '', ''], [2011, 'new south wales', 'new south wales', 'maranoa murris', 'gap angels', 'bush potatoes'], [2012, 'queensland', 'new south wales', '', '', ''], [2012, 'new south wales', 'new south wales', 'darwin', 'brothers in arms', 'bush potatoes']]
+########################################################################################################################
+Sample 2519 - Plan 1: Operation 2: Check if the 'year' values are consecutive by comparing each 'year' value with the previous 'year' value.
+Sample 2519 - Plan 1: Selected indices: [[0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0], [9, 0], [10, 0], [11, 0], [12, 0]]
+Sample 2519 - Plan 1: X-Table after operation df:
+    year state_territory_men_s_division state_territory_women_s_division  \
+0   2001                       tasmania                                    
+1   2002             northern territory                                    
+2   2003                new south wales                                    
+3   2004                     queensland                                    
+4   2005                     queensland                                    
+5   2006                     queensland                                    
+6   2007                new south wales                                    
+7   2008                     queensland                                    
+8   2009                     queensland                                    
+9   2010              western australia                                    
+10  2011                new south wales                  new south wales   
+11  2012                     queensland                  new south wales   
+12  2012                new south wales                  new south wales   
+
+   major_centres_division community_division women_s_division  \
+0                                                               
+1                  darwin                                       
+2                  darwin                                       
+3           alice springs          normanton    tennant creek   
+4           alice springs          alkupitja           darwin   
+5           alice springs    melville island           darwin   
+6               alkupitja         cat tigers      cga cougars   
+7               katherine           cooktown  new south wales   
+8               alkupitja        tangentyere  new south wales   
+9                                                               
+10         maranoa murris         gap angels    bush potatoes   
+11                                                              
+12                 darwin   brothers in arms    bush potatoes   
+
+   consecutive_years  
+0    Not Consecutive  
+1        Consecutive  
+2        Consecutive  
+3        Consecutive  
+4        Consecutive  
+5        Consecutive  
+6        Consecutive  
+7        Consecutive  
+8        Consecutive  
+9        Consecutive  
+10       Consecutive  
+11       Consecutive  
+12   Not Consecutive  
+Sample 2519 - Plan 1: Table after operation: [['year', 'state_territory_men_s_division', 'state_territory_women_s_division', 'major_centres_division', 'community_division', 'women_s_division', 'consecutive_years'], [2001, 'tasmania', '', '', '', '', 'Not Consecutive'], [2002, 'northern territory', '', 'darwin', '', '', 'Consecutive'], [2003, 'new south wales', '', 'darwin', '', '', 'Consecutive'], [2004, 'queensland', '', 'alice springs', 'normanton', 'tennant creek', 'Consecutive'], [2005, 'queensland', '', 'alice springs', 'alkupitja', 'darwin', 'Consecutive'], [2006, 'queensland', '', 'alice springs', 'melville island', 'darwin', 'Consecutive'], [2007, 'new south wales', '', 'alkupitja', 'cat tigers', 'cga cougars', 'Consecutive'], [2008, 'queensland', '', 'katherine', 'cooktown', 'new south wales', 'Consecutive'], [2009, 'queensland', '', 'alkupitja', 'tangentyere', 'new south wales', 'Consecutive'], [2010, 'western australia', '', '', '', '', 'Consecutive'], [2011, 'new south wales', 'new south wales', 'maranoa murris', 'gap angels', 'bush potatoes', 'Consecutive'], [2012, 'queensland', 'new south wales', '', '', '', 'Consecutive'], [2012, 'new south wales', 'new south wales', 'darwin', 'brothers in arms', 'bush potatoes', 'Not Consecutive']]
+########################################################################################################################
+Sample 2519 - Plan 1: Operation 3: If all 'year' values are consecutive, the answer is "The years listed are in consecutive order."
+Sample 2519 - Plan 1: Selected indices: []
+Sample 2519 - Plan 1: X-Table after operation df:
+                                           result
+0  The years listed are not in consecutive order.
+Sample 2519 - Plan 1: Table after operation: [['result'], ['The years listed are not in consecutive order.']]
+########################################################################################################################
+Sample 2519 - Plan 1: Operation 4: If any 'year' values are not consecutive, the answer is "The years listed are not in consecutive order."
+SQL execution error in operation 4: Execution failed on sql 'Write a SQL command that: If any 'year' values are not consecutive, the answer is "The years listed are not in consecutive order."': near "Write": syntax error
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['yes']]
+Groundtruth: ['Yes']

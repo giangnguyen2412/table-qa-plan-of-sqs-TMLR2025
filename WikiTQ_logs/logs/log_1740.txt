@@ -1,0 +1,34 @@
+************************************************************************************************************************
+Sample 1740 - Plan 1: Query: how many players attended wake forest university before being drafted?
+Sample 1740 - Plan 1: Groundtruth: ['2']
+Sample 1740 - Plan 1: X-Original table pd: 
+   round  pick            name position             college
+0      1     9  brian urlacher        s          new mexico
+1      2    39      mike brown        s            nebraska
+2      3    69       dez white       wr        georgia tech
+3      3    87    dustin lyman       te         wake forest
+4      4   125   reggie austin       db         wake forest
+5      6   170    frank murphy       wr        kansas state
+6      6   174    paul edinger        k      michigan state
+7      7   223    james cotton       de          ohio state
+8      7   254   michael green        s  northwestern state
+Sample 1740 - Plan 1: Caption: none
+Sample 1740 - Plan 1: Original table: [['round', 'pick', 'name', 'position', 'college'], ['1', '9', 'brian urlacher', 's', 'new mexico'], ['2', '39', 'mike brown', 's', 'nebraska'], ['3', '69', 'dez white', 'wr', 'georgia tech'], ['3', '87', 'dustin lyman', 'te', 'wake forest'], ['4', '125', 'reggie austin', 'db', 'wake forest'], ['6', '170', 'frank murphy', 'wr', 'kansas state'], ['6', '174', 'paul edinger', 'k', 'michigan state'], ['7', '223', 'james cotton', 'de', 'ohio state'], ['7', '254', 'michael green', 's', 'northwestern state']]
+########################################################################################################################
+Sample 1740 - Plan 1: Operation 1: Select rows where the 'college' is 'wake forest'.
+Sample 1740 - Plan 1: Selected indices: [[4, 4], [3, 4]]
+Sample 1740 - Plan 1: X-Table after operation df:
+   round  pick           name position      college
+0      3    87   dustin lyman       te  wake forest
+1      4   125  reggie austin       db  wake forest
+Sample 1740 - Plan 1: Table after operation: [['round', 'pick', 'name', 'position', 'college'], [3, 87, 'dustin lyman', 'te', 'wake forest'], [4, 125, 'reggie austin', 'db', 'wake forest']]
+########################################################################################################################
+Sample 1740 - Plan 1: Operation 2: Count the number of rows.
+Sample 1740 - Plan 1: Selected indices: []
+Sample 1740 - Plan 1: X-Table after operation df:
+   row_count
+0          2
+Sample 1740 - Plan 1: Table after operation: [['row_count'], [2]]
+Fall-back: FALSE
+Answer from plan 1: [[2]]
+Groundtruth: ['2']

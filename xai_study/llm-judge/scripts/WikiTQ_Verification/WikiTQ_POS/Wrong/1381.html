@@ -1,0 +1,584 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> who was the first racer who was more than 20 seconds behind the leader?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'pos' is greater than 1.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>pos</td>
+<td>rider</td>
+<td>manufacturer</td>
+<td>time_retired</td>
+<td>points</td>
+</tr>
+<tr>
+<td>1</td>
+<td>loris capirossi</td>
+<td>honda</td>
+<td>38:04.730</td>
+<td>25</td>
+</tr>
+<tr>
+<td>2</td>
+<td>valentino rossi</td>
+<td>aprilia</td>
+<td>+0.180</td>
+<td>20</td>
+</tr>
+<tr>
+<td>3</td>
+<td>jeremy mcwilliams</td>
+<td>aprilia</td>
+<td>+0.534</td>
+<td>16</td>
+</tr>
+<tr>
+<td>4</td>
+<td>tohru ukawa</td>
+<td>honda</td>
+<td>+0.537</td>
+<td>13</td>
+</tr>
+<tr>
+<td>5</td>
+<td>shinya nakano</td>
+<td>yamaha</td>
+<td>+0.742</td>
+<td>11</td>
+</tr>
+<tr>
+<td>6</td>
+<td>ralf waldmann</td>
+<td>aprilia</td>
+<td>+7.019</td>
+<td>10</td>
+</tr>
+<tr>
+<td>7</td>
+<td>franco battaini</td>
+<td>aprilia</td>
+<td>+20.889</td>
+<td>9</td>
+</tr>
+<tr>
+<td>8</td>
+<td>stefano perugini</td>
+<td>honda</td>
+<td>+20.891</td>
+<td>8</td>
+</tr>
+<tr>
+<td>9</td>
+<td>jason vincent</td>
+<td>honda</td>
+<td>+21.310</td>
+<td>7</td>
+</tr>
+<tr>
+<td>10</td>
+<td>anthony west</td>
+<td>tsr-honda</td>
+<td>+26.816</td>
+<td>6</td>
+</tr>
+<tr>
+<td>11</td>
+<td>alex hofmann</td>
+<td>tsr-honda</td>
+<td>+26.933</td>
+<td>5</td>
+</tr>
+<tr>
+<td>12</td>
+<td>sebastian porto</td>
+<td>yamaha</td>
+<td>+27.054</td>
+<td>4</td>
+</tr>
+<tr>
+<td>13</td>
+<td>tomomi manako</td>
+<td>yamaha</td>
+<td>+27.903</td>
+<td>3</td>
+</tr>
+<tr>
+<td>14</td>
+<td>masaki tokudome</td>
+<td>tsr-honda</td>
+<td>+33.161</td>
+<td>2</td>
+</tr>
+<tr>
+<td>15</td>
+<td>jarno janssen</td>
+<td>tsr-honda</td>
+<td>+56.248</td>
+<td>1</td>
+</tr>
+<tr>
+<td>16</td>
+<td>luca boscoscuro</td>
+<td>tsr-honda</td>
+<td>+56.432</td>
+<td></td>
+</tr>
+<tr>
+<td>17</td>
+<td>johann stigefelt</td>
+<td>yamaha</td>
+<td>+1:07.433</td>
+<td></td>
+</tr>
+<tr>
+<td>18</td>
+<td>julien allemand</td>
+<td>tsr-honda</td>
+<td>+1:16.347</td>
+<td></td>
+</tr>
+<tr>
+<td>19</td>
+<td>fonsi nieto</td>
+<td>yamaha</td>
+<td>+1:25.622</td>
+<td></td>
+</tr>
+<tr>
+<td>20</td>
+<td>lucas oliver bulto</td>
+<td>yamaha</td>
+<td>+1:25.758</td>
+<td></td>
+</tr>
+<tr>
+<td>21</td>
+<td>david garcia</td>
+<td>yamaha</td>
+<td>+1:33.867</td>
+<td></td>
+</tr>
+<tr>
+<td>22</td>
+<td>rudie markink</td>
+<td>aprilia</td>
+<td>+1:40.280</td>
+<td></td>
+</tr>
+<tr>
+<td>23</td>
+<td>arno visscher</td>
+<td>aprilia</td>
+<td>+1:40.635</td>
+<td></td>
+</tr>
+<tr>
+<td>24</td>
+<td>henk van de lagemaat</td>
+<td>honda</td>
+<td>+1 lap</td>
+<td></td>
+</tr>
+<tr>
+<td>ret</td>
+<td>maurice bolwerk</td>
+<td>tsr-honda</td>
+<td>retirement</td>
+<td></td>
+</tr>
+<tr>
+<td>ret</td>
+<td>andre romein</td>
+<td>honda</td>
+<td>retirement</td>
+<td></td>
+</tr>
+<tr>
+<td>ret</td>
+<td>roberto rolfo</td>
+<td>aprilia</td>
+<td>retirement</td>
+<td></td>
+</tr>
+<tr>
+<td>ret</td>
+<td>marcellino lucchi</td>
+<td>aprilia</td>
+<td>retirement</td>
+<td></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select the 'rider' column.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>pos</td>
+<td>rider</td>
+<td>manufacturer</td>
+<td>time_retired</td>
+<td>points</td>
+</tr>
+<tr>
+<td>2</td>
+<td>valentino rossi</td>
+<td>aprilia</td>
+<td>+0.180</td>
+<td>20.0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>jeremy mcwilliams</td>
+<td>aprilia</td>
+<td>+0.534</td>
+<td>16.0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>tohru ukawa</td>
+<td>honda</td>
+<td>+0.537</td>
+<td>13.0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>shinya nakano</td>
+<td>yamaha</td>
+<td>+0.742</td>
+<td>11.0</td>
+</tr>
+<tr>
+<td>6</td>
+<td>ralf waldmann</td>
+<td>aprilia</td>
+<td>+7.019</td>
+<td>10.0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>franco battaini</td>
+<td>aprilia</td>
+<td>+20.889</td>
+<td>9.0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>stefano perugini</td>
+<td>honda</td>
+<td>+20.891</td>
+<td>8.0</td>
+</tr>
+<tr>
+<td>9</td>
+<td>jason vincent</td>
+<td>honda</td>
+<td>+21.310</td>
+<td>7.0</td>
+</tr>
+<tr>
+<td>10</td>
+<td>anthony west</td>
+<td>tsr-honda</td>
+<td>+26.816</td>
+<td>6.0</td>
+</tr>
+<tr>
+<td>11</td>
+<td>alex hofmann</td>
+<td>tsr-honda</td>
+<td>+26.933</td>
+<td>5.0</td>
+</tr>
+<tr>
+<td>12</td>
+<td>sebastian porto</td>
+<td>yamaha</td>
+<td>+27.054</td>
+<td>4.0</td>
+</tr>
+<tr>
+<td>13</td>
+<td>tomomi manako</td>
+<td>yamaha</td>
+<td>+27.903</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>14</td>
+<td>masaki tokudome</td>
+<td>tsr-honda</td>
+<td>+33.161</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>15</td>
+<td>jarno janssen</td>
+<td>tsr-honda</td>
+<td>+56.248</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>16</td>
+<td>luca boscoscuro</td>
+<td>tsr-honda</td>
+<td>+56.432</td>
+<td>None</td>
+</tr>
+<tr>
+<td>17</td>
+<td>johann stigefelt</td>
+<td>yamaha</td>
+<td>+1:07.433</td>
+<td>None</td>
+</tr>
+<tr>
+<td>18</td>
+<td>julien allemand</td>
+<td>tsr-honda</td>
+<td>+1:16.347</td>
+<td>None</td>
+</tr>
+<tr>
+<td>19</td>
+<td>fonsi nieto</td>
+<td>yamaha</td>
+<td>+1:25.622</td>
+<td>None</td>
+</tr>
+<tr>
+<td>20</td>
+<td>lucas oliver bulto</td>
+<td>yamaha</td>
+<td>+1:25.758</td>
+<td>None</td>
+</tr>
+<tr>
+<td>21</td>
+<td>david garcia</td>
+<td>yamaha</td>
+<td>+1:33.867</td>
+<td>None</td>
+</tr>
+<tr>
+<td>22</td>
+<td>rudie markink</td>
+<td>aprilia</td>
+<td>+1:40.280</td>
+<td>None</td>
+</tr>
+<tr>
+<td>23</td>
+<td>arno visscher</td>
+<td>aprilia</td>
+<td>+1:40.635</td>
+<td>None</td>
+</tr>
+<tr>
+<td>24</td>
+<td>henk van de lagemaat</td>
+<td>honda</td>
+<td>+1 lap</td>
+<td>None</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Order the table by 'pos' in ascending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>rider</td>
+</tr>
+<tr>
+<td>valentino rossi</td>
+</tr>
+<tr>
+<td>jeremy mcwilliams</td>
+</tr>
+<tr>
+<td>tohru ukawa</td>
+</tr>
+<tr>
+<td>shinya nakano</td>
+</tr>
+<tr>
+<td>ralf waldmann</td>
+</tr>
+<tr>
+<td>franco battaini</td>
+</tr>
+<tr>
+<td>stefano perugini</td>
+</tr>
+<tr>
+<td>jason vincent</td>
+</tr>
+<tr>
+<td>anthony west</td>
+</tr>
+<tr>
+<td>alex hofmann</td>
+</tr>
+<tr>
+<td>sebastian porto</td>
+</tr>
+<tr>
+<td>tomomi manako</td>
+</tr>
+<tr>
+<td>masaki tokudome</td>
+</tr>
+<tr>
+<td>jarno janssen</td>
+</tr>
+<tr>
+<td>luca boscoscuro</td>
+</tr>
+<tr>
+<td>johann stigefelt</td>
+</tr>
+<tr>
+<td>julien allemand</td>
+</tr>
+<tr>
+<td>fonsi nieto</td>
+</tr>
+<tr>
+<td>lucas oliver bulto</td>
+</tr>
+<tr>
+<td>david garcia</td>
+</tr>
+<tr>
+<td>rudie markink</td>
+</tr>
+<tr>
+<td>arno visscher</td>
+</tr>
+<tr>
+<td>henk van de lagemaat</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Select row number 1.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>rider</td>
+</tr>
+<tr>
+<td>alex hofmann</td>
+</tr>
+<tr>
+<td>anthony west</td>
+</tr>
+<tr>
+<td>arno visscher</td>
+</tr>
+<tr>
+<td>david garcia</td>
+</tr>
+<tr>
+<td>fonsi nieto</td>
+</tr>
+<tr>
+<td>franco battaini</td>
+</tr>
+<tr>
+<td>henk van de lagemaat</td>
+</tr>
+<tr>
+<td>jarno janssen</td>
+</tr>
+<tr>
+<td>jason vincent</td>
+</tr>
+<tr>
+<td>jeremy mcwilliams</td>
+</tr>
+<tr>
+<td>johann stigefelt</td>
+</tr>
+<tr>
+<td>julien allemand</td>
+</tr>
+<tr>
+<td>luca boscoscuro</td>
+</tr>
+<tr>
+<td>lucas oliver bulto</td>
+</tr>
+<tr>
+<td>masaki tokudome</td>
+</tr>
+<tr>
+<td>ralf waldmann</td>
+</tr>
+<tr>
+<td>rudie markink</td>
+</tr>
+<tr>
+<td>sebastian porto</td>
+</tr>
+<tr>
+<td>shinya nakano</td>
+</tr>
+<tr>
+<td>stefano perugini</td>
+</tr>
+<tr>
+<td>tohru ukawa</td>
+</tr>
+<tr>
+<td>tomomi manako</td>
+</tr>
+<tr>
+<td>valentino rossi</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>rider</td>
+</tr>
+<tr>
+<td>alex hofmann</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['alex hofmann']]</h3>
+</body></html>

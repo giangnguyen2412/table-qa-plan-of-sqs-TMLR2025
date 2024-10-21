@@ -1,0 +1,123 @@
+************************************************************************************************************************
+Sample 1965 - Plan 1: Query: which candidate listed had the highest percentage?
+Sample 1965 - Plan 1: Groundtruth: ['Albert Wynn']
+Sample 1965 - Plan 1: X-Original table pd: 
+     district        incumbent       party  first_nelected  \
+0  maryland 1  wayne gilchrest  republican            1990   
+1  maryland 2   robert ehrlich  republican            1994   
+2  maryland 3       ben cardin  democratic            1986   
+3  maryland 4      albert wynn  democratic            1992   
+4  maryland 5      steny hoyer  democratic            1981   
+5  maryland 6  roscoe bartlett  republican            1992   
+6  maryland 7  elijah cummings  democratic            1996   
+7  maryland 8   connie morella  republican            1986   
+
+                                         result  \
+0                                    re-elected   
+1  retired to run for governor\ndemocratic gain   
+2                                    re-elected   
+3                                    re-elected   
+4                                    re-elected   
+5                                    re-elected   
+6                                    re-elected   
+7             lost re-election\ndemocratic gain   
+
+                                          candidates  
+0  wayne gilchrest (r) 76.67%\nann tamlyn (d) 23.16%  
+1  dutch ruppersberger (d) 54.16%\nhelen bentley ...  
+2    ben cardin (d) 65.72%\nscott conwell (r) 34.18%  
+3     albert wynn (d) 78.57%\njohn kimble (r) 20.82%  
+4  steny hoyer (d) 69.27%\njoseph crawford (r) 30...  
+5  roscoe bartlett (r) 66.11%\ndonald dearmon (d)...  
+6  elijah cummings (d) 73.53%\njoseph ward (r) 26...  
+7  chris van hollen (d) 51.71%\nconnie morella (r...  
+Sample 1965 - Plan 1: Caption: none
+Sample 1965 - Plan 1: Original table: [['district', 'incumbent', 'party', 'first_nelected', 'result', 'candidates'], ['maryland 1', 'wayne gilchrest', 'republican', '1990', 're-elected', 'wayne gilchrest (r) 76.67%\\nann tamlyn (d) 23.16%'], ['maryland 2', 'robert ehrlich', 'republican', '1994', 'retired to run for governor\\ndemocratic gain', 'dutch ruppersberger (d) 54.16%\\nhelen bentley (r) 45.57%'], ['maryland 3', 'ben cardin', 'democratic', '1986', 're-elected', 'ben cardin (d) 65.72%\\nscott conwell (r) 34.18%'], ['maryland 4', 'albert wynn', 'democratic', '1992', 're-elected', 'albert wynn (d) 78.57%\\njohn kimble (r) 20.82%'], ['maryland 5', 'steny hoyer', 'democratic', '1981', 're-elected', 'steny hoyer (d) 69.27%\\njoseph crawford (r) 30.52%'], ['maryland 6', 'roscoe bartlett', 'republican', '1992', 're-elected', 'roscoe bartlett (r) 66.11%\\ndonald dearmon (d) 33.80%'], ['maryland 7', 'elijah cummings', 'democratic', '1996', 're-elected', 'elijah cummings (d) 73.53%\\njoseph ward (r) 26.38%'], ['maryland 8', 'connie morella', 'republican', '1986', 'lost re-election\\ndemocratic gain', 'chris van hollen (d) 51.71%\\nconnie morella (r) 47.49%\\nstephen bassett (un) 0.73%']]
+########################################################################################################################
+Sample 1965 - Plan 1: Operation 1: Extract the numerical percentage from the 'candidates' column then add column 'num_percentage' to the existing table.
+Sample 1965 - Plan 1: Selected indices: [[0, 5], [1, 5], [2, 5], [3, 5], [4, 5], [5, 5], [6, 5], [7, 5]]
+Sample 1965 - Plan 1: X-Table after operation df:
+     district        incumbent       party  first_nelected  \
+0  maryland 1  wayne gilchrest  republican            1990   
+1  maryland 2   robert ehrlich  republican            1994   
+2  maryland 3       ben cardin  democratic            1986   
+3  maryland 4      albert wynn  democratic            1992   
+4  maryland 5      steny hoyer  democratic            1981   
+5  maryland 6  roscoe bartlett  republican            1992   
+6  maryland 7  elijah cummings  democratic            1996   
+7  maryland 8   connie morella  republican            1986   
+
+                                         result  \
+0                                    re-elected   
+1  retired to run for governor\ndemocratic gain   
+2                                    re-elected   
+3                                    re-elected   
+4                                    re-elected   
+5                                    re-elected   
+6                                    re-elected   
+7             lost re-election\ndemocratic gain   
+
+                                          candidates  num_percentage  
+0  wayne gilchrest (r) 76.67%\nann tamlyn (d) 23.16%             0.0  
+1  dutch ruppersberger (d) 54.16%\nhelen bentley ...             0.0  
+2    ben cardin (d) 65.72%\nscott conwell (r) 34.18%             0.0  
+3     albert wynn (d) 78.57%\njohn kimble (r) 20.82%             0.0  
+4  steny hoyer (d) 69.27%\njoseph crawford (r) 30...             0.0  
+5  roscoe bartlett (r) 66.11%\ndonald dearmon (d)...             0.0  
+6  elijah cummings (d) 73.53%\njoseph ward (r) 26...             0.0  
+7  chris van hollen (d) 51.71%\nconnie morella (r...             0.0  
+Sample 1965 - Plan 1: Table after operation: [['district', 'incumbent', 'party', 'first_nelected', 'result', 'candidates', 'num_percentage'], ['maryland 1', 'wayne gilchrest', 'republican', 1990, 're-elected', 'wayne gilchrest (r) 76.67%\\nann tamlyn (d) 23.16%', 0.0], ['maryland 2', 'robert ehrlich', 'republican', 1994, 'retired to run for governor\\ndemocratic gain', 'dutch ruppersberger (d) 54.16%\\nhelen bentley (r) 45.57%', 0.0], ['maryland 3', 'ben cardin', 'democratic', 1986, 're-elected', 'ben cardin (d) 65.72%\\nscott conwell (r) 34.18%', 0.0], ['maryland 4', 'albert wynn', 'democratic', 1992, 're-elected', 'albert wynn (d) 78.57%\\njohn kimble (r) 20.82%', 0.0], ['maryland 5', 'steny hoyer', 'democratic', 1981, 're-elected', 'steny hoyer (d) 69.27%\\njoseph crawford (r) 30.52%', 0.0], ['maryland 6', 'roscoe bartlett', 'republican', 1992, 're-elected', 'roscoe bartlett (r) 66.11%\\ndonald dearmon (d) 33.80%', 0.0], ['maryland 7', 'elijah cummings', 'democratic', 1996, 're-elected', 'elijah cummings (d) 73.53%\\njoseph ward (r) 26.38%', 0.0], ['maryland 8', 'connie morella', 'republican', 1986, 'lost re-election\\ndemocratic gain', 'chris van hollen (d) 51.71%\\nconnie morella (r) 47.49%\\nstephen bassett (un) 0.73%', 0.0]]
+########################################################################################################################
+Sample 1965 - Plan 1: Operation 2: Order the table by 'num_percentage' in descending order.
+Sample 1965 - Plan 1: Selected indices: [[4, 6], [0, 6], [7, 6], [2, 6], [5, 6], [3, 6], [6, 6], [1, 6]]
+Sample 1965 - Plan 1: X-Table after operation df:
+     district        incumbent       party  first_nelected  \
+0  maryland 1  wayne gilchrest  republican            1990   
+1  maryland 2   robert ehrlich  republican            1994   
+2  maryland 3       ben cardin  democratic            1986   
+3  maryland 4      albert wynn  democratic            1992   
+4  maryland 5      steny hoyer  democratic            1981   
+5  maryland 6  roscoe bartlett  republican            1992   
+6  maryland 7  elijah cummings  democratic            1996   
+7  maryland 8   connie morella  republican            1986   
+
+                                         result  \
+0                                    re-elected   
+1  retired to run for governor\ndemocratic gain   
+2                                    re-elected   
+3                                    re-elected   
+4                                    re-elected   
+5                                    re-elected   
+6                                    re-elected   
+7             lost re-election\ndemocratic gain   
+
+                                          candidates  num_percentage  
+0  wayne gilchrest (r) 76.67%\nann tamlyn (d) 23.16%             0.0  
+1  dutch ruppersberger (d) 54.16%\nhelen bentley ...             0.0  
+2    ben cardin (d) 65.72%\nscott conwell (r) 34.18%             0.0  
+3     albert wynn (d) 78.57%\njohn kimble (r) 20.82%             0.0  
+4  steny hoyer (d) 69.27%\njoseph crawford (r) 30...             0.0  
+5  roscoe bartlett (r) 66.11%\ndonald dearmon (d)...             0.0  
+6  elijah cummings (d) 73.53%\njoseph ward (r) 26...             0.0  
+7  chris van hollen (d) 51.71%\nconnie morella (r...             0.0  
+Sample 1965 - Plan 1: Table after operation: [['district', 'incumbent', 'party', 'first_nelected', 'result', 'candidates', 'num_percentage'], ['maryland 1', 'wayne gilchrest', 'republican', 1990, 're-elected', 'wayne gilchrest (r) 76.67%\\nann tamlyn (d) 23.16%', 0.0], ['maryland 2', 'robert ehrlich', 'republican', 1994, 'retired to run for governor\\ndemocratic gain', 'dutch ruppersberger (d) 54.16%\\nhelen bentley (r) 45.57%', 0.0], ['maryland 3', 'ben cardin', 'democratic', 1986, 're-elected', 'ben cardin (d) 65.72%\\nscott conwell (r) 34.18%', 0.0], ['maryland 4', 'albert wynn', 'democratic', 1992, 're-elected', 'albert wynn (d) 78.57%\\njohn kimble (r) 20.82%', 0.0], ['maryland 5', 'steny hoyer', 'democratic', 1981, 're-elected', 'steny hoyer (d) 69.27%\\njoseph crawford (r) 30.52%', 0.0], ['maryland 6', 'roscoe bartlett', 'republican', 1992, 're-elected', 'roscoe bartlett (r) 66.11%\\ndonald dearmon (d) 33.80%', 0.0], ['maryland 7', 'elijah cummings', 'democratic', 1996, 're-elected', 'elijah cummings (d) 73.53%\\njoseph ward (r) 26.38%', 0.0], ['maryland 8', 'connie morella', 'republican', 1986, 'lost re-election\\ndemocratic gain', 'chris van hollen (d) 51.71%\\nconnie morella (r) 47.49%\\nstephen bassett (un) 0.73%', 0.0]]
+########################################################################################################################
+Sample 1965 - Plan 1: Operation 3: Select row number 1.
+Sample 1965 - Plan 1: Selected indices: []
+Sample 1965 - Plan 1: X-Table after operation df:
+     district        incumbent       party  first_nelected      result  \
+0  maryland 1  wayne gilchrest  republican            1990  re-elected   
+
+                                          candidates  num_percentage  
+0  wayne gilchrest (r) 76.67%\nann tamlyn (d) 23.16%             0.0  
+Sample 1965 - Plan 1: Table after operation: [['district', 'incumbent', 'party', 'first_nelected', 'result', 'candidates', 'num_percentage'], ['maryland 1', 'wayne gilchrest', 'republican', 1990, 're-elected', 'wayne gilchrest (r) 76.67%\\nann tamlyn (d) 23.16%', 0.0]]
+########################################################################################################################
+Sample 1965 - Plan 1: Operation 4: Select the 'candidates' column.
+Sample 1965 - Plan 1: Selected indices: []
+Sample 1965 - Plan 1: X-Table after operation df:
+                                          candidates
+0  wayne gilchrest (r) 76.67%\nann tamlyn (d) 23.16%
+Sample 1965 - Plan 1: Table after operation: [['candidates'], ['wayne gilchrest (r) 76.67%\\nann tamlyn (d) 23.16%']]
+Fall-back: FALSE
+Answer from plan 1: [['wayne gilchrest (r) 76.67%\\nann tamlyn (d) 23.16%']]
+Groundtruth: ['Albert Wynn']

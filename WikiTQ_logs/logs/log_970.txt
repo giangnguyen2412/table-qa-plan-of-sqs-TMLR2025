@@ -1,0 +1,159 @@
+************************************************************************************************************************
+Sample 970 - Plan 1: Query: how many games were decided by only one goal?
+Sample 970 - Plan 1: Groundtruth: ['4']
+Sample 970 - Plan 1: X-Original table pd: 
+              date           opponent   score  result                 location
+0    nov. 29, 1963            queen's     9–5     win  coliseum, ann arbor, mi
+1    nov. 30, 1963            queen's     9–5     win  coliseum, ann arbor, mi
+2    dec. 13, 1963            toronto     3–5    loss  coliseum, ann arbor, mi
+3    dec. 14, 1963            toronto    10–0     win  coliseum, ann arbor, mi
+4     jan. 7, 1964        minn-duluth     8–4     win               duluth, mn
+5     jan. 8, 1964        minn-duluth     7–2     win               duluth, mn
+6    jan. 10, 1964          minnesota     5–1     win          minneapolis, mn
+7    jan. 11, 1964          minnesota     5–6    loss          minneapolis, mn
+8    jan. 17, 1964  loyola (montreal)    12–1     win  coliseum, ann arbor, mi
+9    jan. 18, 1964  loyola (montreal)    14–2     win  coliseum, ann arbor, mi
+10   jan. 24, 1964      michigan tech     6–2     win  coliseum, ann arbor, mi
+11   jan. 25, 1964      michigan tech     5–3     win  coliseum, ann arbor, mi
+12   jan. 31, 1964   colorado college     7–0     win  coliseum, ann arbor, mi
+13    feb. 1, 1964   colorado college    12–4     win  coliseum, ann arbor, mi
+14    feb. 7, 1964               ohio    14–0     win               athens, oh
+15    feb. 8, 1964         ohio state    21–0     win             columbus, oh
+16   feb. 14, 1964     michigan state     2–0     win         east lansing, mi
+17   feb. 15, 1964     michigan state     7–2     win  coliseum, ann arbor, mi
+18   feb. 21, 1964          minnesota     6–3     win  coliseum, ann arbor, mi
+19   feb. 22, 1964          minnesota     8–2     win  coliseum, ann arbor, mi
+20   feb. 28, 1964      michigan tech     1–3    loss             houghton, mi
+21   feb. 29, 1964      michigan tech     4–3     win             houghton, mi
+22   march 6, 1964     michigan state     9–4     win         east lansing, mi
+23   march 7, 1964     michigan state    13–4     win  coliseum, ann arbor, mi
+24  march 12, 1964      michigan tech     4–3     win  coliseum, ann arbor, mi
+25  march 13, 1964      michigan tech     5–5     tie  coliseum, ann arbor, mi
+26  march 14, 1964             denver     2–6    loss  coliseum, ann arbor, mi
+27  march 20, 1964         providence     3–2     win               denver, co
+28  march 21, 1964             denver     6–3     win               denver, co
+29                                     217–80  24–4–1                         
+Sample 970 - Plan 1: Caption: none
+Sample 970 - Plan 1: Original table: [['date', 'opponent', 'score', 'result', 'location'], ['nov. 29, 1963', "queen's", '9–5', 'win', 'coliseum, ann arbor, mi'], ['nov. 30, 1963', "queen's", '9–5', 'win', 'coliseum, ann arbor, mi'], ['dec. 13, 1963', 'toronto', '3–5', 'loss', 'coliseum, ann arbor, mi'], ['dec. 14, 1963', 'toronto', '10–0', 'win', 'coliseum, ann arbor, mi'], ['jan. 7, 1964', 'minn-duluth', '8–4', 'win', 'duluth, mn'], ['jan. 8, 1964', 'minn-duluth', '7–2', 'win', 'duluth, mn'], ['jan. 10, 1964', 'minnesota', '5–1', 'win', 'minneapolis, mn'], ['jan. 11, 1964', 'minnesota', '5–6', 'loss', 'minneapolis, mn'], ['jan. 17, 1964', 'loyola (montreal)', '12–1', 'win', 'coliseum, ann arbor, mi'], ['jan. 18, 1964', 'loyola (montreal)', '14–2', 'win', 'coliseum, ann arbor, mi'], ['jan. 24, 1964', 'michigan tech', '6–2', 'win', 'coliseum, ann arbor, mi'], ['jan. 25, 1964', 'michigan tech', '5–3', 'win', 'coliseum, ann arbor, mi'], ['jan. 31, 1964', 'colorado college', '7–0', 'win', 'coliseum, ann arbor, mi'], ['feb. 1, 1964', 'colorado college', '12–4', 'win', 'coliseum, ann arbor, mi'], ['feb. 7, 1964', 'ohio', '14–0', 'win', 'athens, oh'], ['feb. 8, 1964', 'ohio state', '21–0', 'win', 'columbus, oh'], ['feb. 14, 1964', 'michigan state', '2–0', 'win', 'east lansing, mi'], ['feb. 15, 1964', 'michigan state', '7–2', 'win', 'coliseum, ann arbor, mi'], ['feb. 21, 1964', 'minnesota', '6–3', 'win', 'coliseum, ann arbor, mi'], ['feb. 22, 1964', 'minnesota', '8–2', 'win', 'coliseum, ann arbor, mi'], ['feb. 28, 1964', 'michigan tech', '1–3', 'loss', 'houghton, mi'], ['feb. 29, 1964', 'michigan tech', '4–3', 'win', 'houghton, mi'], ['march 6, 1964', 'michigan state', '9–4', 'win', 'east lansing, mi'], ['march 7, 1964', 'michigan state', '13–4', 'win', 'coliseum, ann arbor, mi'], ['march 12, 1964', 'michigan tech', '4–3', 'win', 'coliseum, ann arbor, mi'], ['march 13, 1964', 'michigan tech', '5–5', 'tie', 'coliseum, ann arbor, mi'], ['march 14, 1964', 'denver', '2–6', 'loss', 'coliseum, ann arbor, mi'], ['march 20, 1964', 'providence', '3–2', 'win', 'denver, co'], ['march 21, 1964', 'denver', '6–3', 'win', 'denver, co'], ['', '', '217–80', '24–4–1', '']]
+########################################################################################################################
+Sample 970 - Plan 1: Operation 1: Select rows where the 'result' column is 'win' or 'loss'.
+Sample 970 - Plan 1: Selected indices: [[4, 3], [28, 3], [17, 3], [8, 3], [19, 3], [10, 3], [1, 3], [21, 3], [12, 3], [23, 3], [3, 3], [14, 3], [5, 3], [27, 3], [16, 3], [7, 3], [18, 3], [20, 3], [22, 3], [9, 3], [0, 3], [11, 3], [2, 3], [13, 3], [24, 3], [15, 3], [26, 3], [6, 3]]
+Sample 970 - Plan 1: X-Table after operation df:
+              date           opponent score result                 location
+0    nov. 29, 1963            queen's   9–5    win  coliseum, ann arbor, mi
+1    nov. 30, 1963            queen's   9–5    win  coliseum, ann arbor, mi
+2    dec. 13, 1963            toronto   3–5   loss  coliseum, ann arbor, mi
+3    dec. 14, 1963            toronto  10–0    win  coliseum, ann arbor, mi
+4     jan. 7, 1964        minn-duluth   8–4    win               duluth, mn
+5     jan. 8, 1964        minn-duluth   7–2    win               duluth, mn
+6    jan. 10, 1964          minnesota   5–1    win          minneapolis, mn
+7    jan. 11, 1964          minnesota   5–6   loss          minneapolis, mn
+8    jan. 17, 1964  loyola (montreal)  12–1    win  coliseum, ann arbor, mi
+9    jan. 18, 1964  loyola (montreal)  14–2    win  coliseum, ann arbor, mi
+10   jan. 24, 1964      michigan tech   6–2    win  coliseum, ann arbor, mi
+11   jan. 25, 1964      michigan tech   5–3    win  coliseum, ann arbor, mi
+12   jan. 31, 1964   colorado college   7–0    win  coliseum, ann arbor, mi
+13    feb. 1, 1964   colorado college  12–4    win  coliseum, ann arbor, mi
+14    feb. 7, 1964               ohio  14–0    win               athens, oh
+15    feb. 8, 1964         ohio state  21–0    win             columbus, oh
+16   feb. 14, 1964     michigan state   2–0    win         east lansing, mi
+17   feb. 15, 1964     michigan state   7–2    win  coliseum, ann arbor, mi
+18   feb. 21, 1964          minnesota   6–3    win  coliseum, ann arbor, mi
+19   feb. 22, 1964          minnesota   8–2    win  coliseum, ann arbor, mi
+20   feb. 28, 1964      michigan tech   1–3   loss             houghton, mi
+21   feb. 29, 1964      michigan tech   4–3    win             houghton, mi
+22   march 6, 1964     michigan state   9–4    win         east lansing, mi
+23   march 7, 1964     michigan state  13–4    win  coliseum, ann arbor, mi
+24  march 12, 1964      michigan tech   4–3    win  coliseum, ann arbor, mi
+25  march 14, 1964             denver   2–6   loss  coliseum, ann arbor, mi
+26  march 20, 1964         providence   3–2    win               denver, co
+27  march 21, 1964             denver   6–3    win               denver, co
+Sample 970 - Plan 1: Table after operation: [['date', 'opponent', 'score', 'result', 'location'], ['nov. 29, 1963', "queen's", '9–5', 'win', 'coliseum, ann arbor, mi'], ['nov. 30, 1963', "queen's", '9–5', 'win', 'coliseum, ann arbor, mi'], ['dec. 13, 1963', 'toronto', '3–5', 'loss', 'coliseum, ann arbor, mi'], ['dec. 14, 1963', 'toronto', '10–0', 'win', 'coliseum, ann arbor, mi'], ['jan. 7, 1964', 'minn-duluth', '8–4', 'win', 'duluth, mn'], ['jan. 8, 1964', 'minn-duluth', '7–2', 'win', 'duluth, mn'], ['jan. 10, 1964', 'minnesota', '5–1', 'win', 'minneapolis, mn'], ['jan. 11, 1964', 'minnesota', '5–6', 'loss', 'minneapolis, mn'], ['jan. 17, 1964', 'loyola (montreal)', '12–1', 'win', 'coliseum, ann arbor, mi'], ['jan. 18, 1964', 'loyola (montreal)', '14–2', 'win', 'coliseum, ann arbor, mi'], ['jan. 24, 1964', 'michigan tech', '6–2', 'win', 'coliseum, ann arbor, mi'], ['jan. 25, 1964', 'michigan tech', '5–3', 'win', 'coliseum, ann arbor, mi'], ['jan. 31, 1964', 'colorado college', '7–0', 'win', 'coliseum, ann arbor, mi'], ['feb. 1, 1964', 'colorado college', '12–4', 'win', 'coliseum, ann arbor, mi'], ['feb. 7, 1964', 'ohio', '14–0', 'win', 'athens, oh'], ['feb. 8, 1964', 'ohio state', '21–0', 'win', 'columbus, oh'], ['feb. 14, 1964', 'michigan state', '2–0', 'win', 'east lansing, mi'], ['feb. 15, 1964', 'michigan state', '7–2', 'win', 'coliseum, ann arbor, mi'], ['feb. 21, 1964', 'minnesota', '6–3', 'win', 'coliseum, ann arbor, mi'], ['feb. 22, 1964', 'minnesota', '8–2', 'win', 'coliseum, ann arbor, mi'], ['feb. 28, 1964', 'michigan tech', '1–3', 'loss', 'houghton, mi'], ['feb. 29, 1964', 'michigan tech', '4–3', 'win', 'houghton, mi'], ['march 6, 1964', 'michigan state', '9–4', 'win', 'east lansing, mi'], ['march 7, 1964', 'michigan state', '13–4', 'win', 'coliseum, ann arbor, mi'], ['march 12, 1964', 'michigan tech', '4–3', 'win', 'coliseum, ann arbor, mi'], ['march 14, 1964', 'denver', '2–6', 'loss', 'coliseum, ann arbor, mi'], ['march 20, 1964', 'providence', '3–2', 'win', 'denver, co'], ['march 21, 1964', 'denver', '6–3', 'win', 'denver, co']]
+########################################################################################################################
+Sample 970 - Plan 1: Operation 2: Select the 'score' column.
+Sample 970 - Plan 1: Selected indices: []
+Sample 970 - Plan 1: X-Table after operation df:
+   score
+0    9–5
+1    9–5
+2    3–5
+3   10–0
+4    8–4
+5    7–2
+6    5–1
+7    5–6
+8   12–1
+9   14–2
+10   6–2
+11   5–3
+12   7–0
+13  12–4
+14  14–0
+15  21–0
+16   2–0
+17   7–2
+18   6–3
+19   8–2
+20   1–3
+21   4–3
+22   9–4
+23  13–4
+24   4–3
+25   2–6
+26   3–2
+27   6–3
+Sample 970 - Plan 1: Table after operation: [['score'], ['9–5'], ['9–5'], ['3–5'], ['10–0'], ['8–4'], ['7–2'], ['5–1'], ['5–6'], ['12–1'], ['14–2'], ['6–2'], ['5–3'], ['7–0'], ['12–4'], ['14–0'], ['21–0'], ['2–0'], ['7–2'], ['6–3'], ['8–2'], ['1–3'], ['4–3'], ['9–4'], ['13–4'], ['4–3'], ['2–6'], ['3–2'], ['6–3']]
+########################################################################################################################
+Sample 970 - Plan 1: Operation 3: Calculate the absolute difference between the scores of each game.
+Sample 970 - Plan 1: Selected indices: []
+Sample 970 - Plan 1: X-Table after operation df:
+    score_difference
+0                  4
+1                  4
+2                  2
+3                 10
+4                  4
+5                  5
+6                  4
+7                  1
+8                 11
+9                 12
+10                 4
+11                 2
+12                 7
+13                 8
+14                14
+15                21
+16                 2
+17                 5
+18                 3
+19                 6
+20                 2
+21                 1
+22                 5
+23                 9
+24                 1
+25                 4
+26                 1
+27                 3
+Sample 970 - Plan 1: Table after operation: [['score_difference'], [4], [4], [2], [10], [4], [5], [4], [1], [11], [12], [4], [2], [7], [8], [14], [21], [2], [5], [3], [6], [2], [1], [5], [9], [1], [4], [1], [3]]
+########################################################################################################################
+Sample 970 - Plan 1: Operation 4: Select rows where the absolute difference is equal to 1.
+Sample 970 - Plan 1: Selected indices: []
+Sample 970 - Plan 1: X-Table after operation df:
+   score_difference
+0                 1
+1                 1
+2                 1
+3                 1
+Sample 970 - Plan 1: Table after operation: [['score_difference'], [1], [1], [1], [1]]
+########################################################################################################################
+Sample 970 - Plan 1: Operation 5: Count the number of rows.
+Sample 970 - Plan 1: Selected indices: []
+Sample 970 - Plan 1: X-Table after operation df:
+   row_count
+0          4
+Sample 970 - Plan 1: Table after operation: [['row_count'], [4]]
+Fall-back: FALSE
+Answer from plan 1: [[4]]
+Groundtruth: ['4']

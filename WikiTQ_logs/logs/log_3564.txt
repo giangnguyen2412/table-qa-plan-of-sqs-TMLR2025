@@ -1,0 +1,59 @@
+************************************************************************************************************************
+Sample 3564 - Plan 1: Query: what is the total attendance for october?
+Sample 3564 - Plan 1: Groundtruth: ['200,227']
+Sample 3564 - Plan 1: X-Original table pd: 
+    week                date                 opponent   result attendance
+0      1   september 6, 1981      at los angeles rams  w 27–20     63,198
+1      2  september 13, 1981      at cleveland browns    w 9–3     79,483
+2      3  september 20, 1981           miami dolphins  l 16–10     47,379
+3      4  september 27, 1981         at new york jets  l 33–17     50,309
+4      5     october 4, 1981       cincinnati bengals  w 17–10     44,350
+5      6    october 11, 1981         seattle seahawks  w 35–17     42,671
+6      7    october 18, 1981  at new england patriots  l 38–10     60,474
+7      8    october 26, 1981   at pittsburgh steelers  l 26–13     52,732
+8      9    november 1, 1981    at cincinnati bengals  l 34–21     54,736
+9     10    november 8, 1981          oakland raiders  w 17–16     45,519
+10    11   november 15, 1981    at kansas city chiefs  l 23–10     73,984
+11    12   november 22, 1981       new orleans saints  l 27–24     49,581
+12    13   november 29, 1981          atlanta falcons  l 31–27     40,201
+13    14    december 3, 1981         cleveland browns  w 17–13     44,502
+14    15   december 13, 1981   at san francisco 49ers   l 28–6     55,707
+15    16   december 20, 1981      pittsburgh steelers  w 21–20     41,056
+Sample 3564 - Plan 1: Caption: none
+Sample 3564 - Plan 1: Original table: [['week', 'date', 'opponent', 'result', 'attendance'], ['1', 'september 6, 1981', 'at los angeles rams', 'w 27–20', '63,198'], ['2', 'september 13, 1981', 'at cleveland browns', 'w 9–3', '79,483'], ['3', 'september 20, 1981', 'miami dolphins', 'l 16–10', '47,379'], ['4', 'september 27, 1981', 'at new york jets', 'l 33–17', '50,309'], ['5', 'october 4, 1981', 'cincinnati bengals', 'w 17–10', '44,350'], ['6', 'october 11, 1981', 'seattle seahawks', 'w 35–17', '42,671'], ['7', 'october 18, 1981', 'at new england patriots', 'l 38–10', '60,474'], ['8', 'october 26, 1981', 'at pittsburgh steelers', 'l 26–13', '52,732'], ['9', 'november 1, 1981', 'at cincinnati bengals', 'l 34–21', '54,736'], ['10', 'november 8, 1981', 'oakland raiders', 'w 17–16', '45,519'], ['11', 'november 15, 1981', 'at kansas city chiefs', 'l 23–10', '73,984'], ['12', 'november 22, 1981', 'new orleans saints', 'l 27–24', '49,581'], ['13', 'november 29, 1981', 'atlanta falcons', 'l 31–27', '40,201'], ['14', 'december 3, 1981', 'cleveland browns', 'w 17–13', '44,502'], ['15', 'december 13, 1981', 'at san francisco 49ers', 'l 28–6', '55,707'], ['16', 'december 20, 1981', 'pittsburgh steelers', 'w 21–20', '41,056']]
+########################################################################################################################
+Sample 3564 - Plan 1: Operation 1: Select rows where the 'date' column contains the month of October.
+Sample 3564 - Plan 1: Selected indices: [[6, 1], [4, 1], [5, 1], [7, 1]]
+Sample 3564 - Plan 1: X-Table after operation df:
+   week              date                 opponent   result attendance
+0     5   october 4, 1981       cincinnati bengals  w 17–10     44,350
+1     6  october 11, 1981         seattle seahawks  w 35–17     42,671
+2     7  october 18, 1981  at new england patriots  l 38–10     60,474
+3     8  october 26, 1981   at pittsburgh steelers  l 26–13     52,732
+Sample 3564 - Plan 1: Table after operation: [['week', 'date', 'opponent', 'result', 'attendance'], [5, 'october 4, 1981', 'cincinnati bengals', 'w 17–10', '44,350'], [6, 'october 11, 1981', 'seattle seahawks', 'w 35–17', '42,671'], [7, 'october 18, 1981', 'at new england patriots', 'l 38–10', '60,474'], [8, 'october 26, 1981', 'at pittsburgh steelers', 'l 26–13', '52,732']]
+########################################################################################################################
+Sample 3564 - Plan 1: Operation 2: Extract the numerical value from the 'attendance' column then add column 'num_attendance' to the existing table.
+Sample 3564 - Plan 1: Selected indices: [[0, 4], [1, 4], [2, 4], [3, 4]]
+Sample 3564 - Plan 1: X-Table after operation df:
+   week              date                 opponent   result attendance  \
+0     5   october 4, 1981       cincinnati bengals  w 17–10     44,350   
+1     6  october 11, 1981         seattle seahawks  w 35–17     42,671   
+2     7  october 18, 1981  at new england patriots  l 38–10     60,474   
+3     8  october 26, 1981   at pittsburgh steelers  l 26–13     52,732   
+
+   num_attendance  
+0           44350  
+1           42671  
+2           60474  
+3           52732  
+Sample 3564 - Plan 1: Table after operation: [['week', 'date', 'opponent', 'result', 'attendance', 'num_attendance'], [5, 'october 4, 1981', 'cincinnati bengals', 'w 17–10', '44,350', 44350], [6, 'october 11, 1981', 'seattle seahawks', 'w 35–17', '42,671', 42671], [7, 'october 18, 1981', 'at new england patriots', 'l 38–10', '60,474', 60474], [8, 'october 26, 1981', 'at pittsburgh steelers', 'l 26–13', '52,732', 52732]]
+########################################################################################################################
+Sample 3564 - Plan 1: Operation 3: Sum the values from the 'num_attendance' column.
+Sample 3564 - Plan 1: Selected indices: []
+Sample 3564 - Plan 1: X-Table after operation df:
+   total_num_attendance
+0                200227
+Sample 3564 - Plan 1: Table after operation: [['total_num_attendance'], [200227]]
+Fall-back: FALSE
+Answer from plan 1: [[200227]]
+Groundtruth: ['200,227']

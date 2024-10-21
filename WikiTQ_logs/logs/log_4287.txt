@@ -1,0 +1,82 @@
+************************************************************************************************************************
+Sample 4287 - Plan 1: Query: who had consecutive league champs?
+Sample 4287 - Plan 1: Groundtruth: ['Roy Hartsfield']
+Sample 4287 - Plan 1: X-Original table pd: 
+    year record   finish                                         manager  \
+0   1961  68-86      6th                        tommy heath / bill werle   
+1   1962  77-76      5th                                       irv noren   
+2   1963  81-77      4th                                       irv noren   
+3   1964  60-98     10th                                       bob lemon   
+4   1965  75-72  6th (t)                                     george case   
+5   1966  63-84     10th                                     george case   
+6   1967  60-87     12th                               wayne terwilliger   
+7   1968  78-69      3rd                                      bill adair   
+8   1969  74-72      4th                                    chuck tanner   
+9   1970  98-48      1st                                    chuck tanner   
+10  1971  73-73  4th (t)                                      bill adair   
+11  1972  74-74      5th                                   rocky bridges   
+12  1973  70-74      5th  rocky bridges / warren hacker / roy hartsfield   
+13  1974  67-77      6th                                  roy hartsfield   
+14  1975  88-56      1st                                  roy hartsfield   
+15  1976  77-68      2nd                                  roy hartsfield   
+16  1977  79-67      2nd                                   dick phillips   
+17  1978  56-82      8th                                   dick phillips   
+18  1979  72-76      8th                                   dick phillips   
+19  1980  76-65      5th                                      doug rader   
+20  1981  72-65  3rd (t)                                      doug rader   
+21  1982  73-71      5th                                      doug rader   
+22  1983  72-71      5th                                  tom trebelhorn   
+23  1984  87-53      1st                                     tommy sandt   
+24  1985  84-59      1st                                     tommy sandt   
+25  1986  65-79      9th                                     tommy sandt   
+26  1987  65-75      9th                                      bob bailey   
+
+              playoffs  
+0                 none  
+1                 none  
+2                       
+3                       
+4                       
+5                       
+6                       
+7                       
+8                       
+9   lost league finals  
+10                      
+11                      
+12                      
+13                      
+14       league champs  
+15       league champs  
+16  lost league finals  
+17                      
+18  lost league finals  
+19  lost league finals  
+20   lost in 1st round  
+21                      
+22                      
+23  lost league finals  
+24   lost in 1st round  
+25                      
+26                      
+Sample 4287 - Plan 1: Caption: none
+Sample 4287 - Plan 1: Original table: [['year', 'record', 'finish', 'manager', 'playoffs'], ['1961', '68-86', '6th', 'tommy heath / bill werle', 'none'], ['1962', '77-76', '5th', 'irv noren', 'none'], ['1963', '81-77', '4th', 'irv noren', ''], ['1964', '60-98', '10th', 'bob lemon', ''], ['1965', '75-72', '6th (t)', 'george case', ''], ['1966', '63-84', '10th', 'george case', ''], ['1967', '60-87', '12th', 'wayne terwilliger', ''], ['1968', '78-69', '3rd', 'bill adair', ''], ['1969', '74-72', '4th', 'chuck tanner', ''], ['1970', '98-48', '1st', 'chuck tanner', 'lost league finals'], ['1971', '73-73', '4th (t)', 'bill adair', ''], ['1972', '74-74', '5th', 'rocky bridges', ''], ['1973', '70-74', '5th', 'rocky bridges / warren hacker / roy hartsfield', ''], ['1974', '67-77', '6th', 'roy hartsfield', ''], ['1975', '88-56', '1st', 'roy hartsfield', 'league champs'], ['1976', '77-68', '2nd', 'roy hartsfield', 'league champs'], ['1977', '79-67', '2nd', 'dick phillips', 'lost league finals'], ['1978', '56-82', '8th', 'dick phillips', ''], ['1979', '72-76', '8th', 'dick phillips', 'lost league finals'], ['1980', '76-65', '5th', 'doug rader', 'lost league finals'], ['1981', '72-65', '3rd (t)', 'doug rader', 'lost in 1st round'], ['1982', '73-71', '5th', 'doug rader', ''], ['1983', '72-71', '5th', 'tom trebelhorn', ''], ['1984', '87-53', '1st', 'tommy sandt', 'lost league finals'], ['1985', '84-59', '1st', 'tommy sandt', 'lost in 1st round'], ['1986', '65-79', '9th', 'tommy sandt', ''], ['1987', '65-75', '9th', 'bob bailey', '']]
+########################################################################################################################
+Sample 4287 - Plan 1: Operation 1: Select rows where the 'playoffs' column is 'league champs'.
+Sample 4287 - Plan 1: Selected indices: [[15, 4], [14, 4]]
+Sample 4287 - Plan 1: X-Table after operation df:
+   year record finish         manager       playoffs
+0  1975  88-56    1st  roy hartsfield  league champs
+1  1976  77-68    2nd  roy hartsfield  league champs
+Sample 4287 - Plan 1: Table after operation: [['year', 'record', 'finish', 'manager', 'playoffs'], [1975, '88-56', '1st', 'roy hartsfield', 'league champs'], [1976, '77-68', '2nd', 'roy hartsfield', 'league champs']]
+########################################################################################################################
+Sample 4287 - Plan 1: Operation 2: Select the 'manager' column.
+Sample 4287 - Plan 1: Selected indices: []
+Sample 4287 - Plan 1: X-Table after operation df:
+          manager
+0  roy hartsfield
+1  roy hartsfield
+Sample 4287 - Plan 1: Table after operation: [['manager'], ['roy hartsfield'], ['roy hartsfield']]
+Fall-back: FALSE
+Answer from plan 1: [['roy hartsfield'], ['roy hartsfield']]
+Groundtruth: ['Roy Hartsfield']

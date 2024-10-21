@@ -1,0 +1,162 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Statement:</span> the highest average for atletico ciudad was 0.61</h3>
+<h3>Input Table: 2008 - 09 segunda división b</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: f_select_row(*)</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>goalkeeper</td>
+<td>goals</td>
+<td>matches</td>
+<td>average</td>
+<td>team</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">miguel zapata</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">28</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">0.61</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">atlético ciudad</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">rubén martínez</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">24</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">32</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">0.75</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">cartagena</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">orlando quintana</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">29</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">34</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">0.85</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">lorca deportiva</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">álvaro campos</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">24</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">28</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">0.86</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">real murcia b</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation">matías garavano</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">26</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">30</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">0.87</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">mérida</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: f_select_column(average, team)</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>goalkeeper</td>
+<td>goals</td>
+<td>matches</td>
+<td>average</td>
+<td>team</td>
+</tr>
+<tr>
+<td>miguel zapata</td>
+<td>17</td>
+<td>28</td>
+<td><span class="highlighted-cell" title="Used in transformation">0.61</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">atlético ciudad</span></td>
+</tr>
+<tr>
+<td>rubén martínez</td>
+<td>24</td>
+<td>32</td>
+<td><span class="highlighted-cell" title="Used in transformation">0.75</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">cartagena</span></td>
+</tr>
+<tr>
+<td>orlando quintana</td>
+<td>29</td>
+<td>34</td>
+<td><span class="highlighted-cell" title="Used in transformation">0.85</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">lorca deportiva</span></td>
+</tr>
+<tr>
+<td>álvaro campos</td>
+<td>24</td>
+<td>28</td>
+<td><span class="highlighted-cell" title="Used in transformation">0.86</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">real murcia b</span></td>
+</tr>
+<tr>
+<td>matías garavano</td>
+<td>26</td>
+<td>30</td>
+<td><span class="highlighted-cell" title="Used in transformation">0.87</span></td>
+<td><span class="highlighted-cell" title="Used in transformation">mérida</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: simple_query()</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>average</td>
+<td>team</td>
+</tr>
+<tr>
+<td>0.61</td>
+<td>atlético ciudad</td>
+</tr>
+<tr>
+<td>0.75</td>
+<td>cartagena</td>
+</tr>
+<tr>
+<td>0.85</td>
+<td>lorca deportiva</td>
+</tr>
+<tr>
+<td>0.86</td>
+<td>real murcia b</td>
+</tr>
+<tr>
+<td>0.87</td>
+<td>mérida</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h2>Prompting LLM for the final answer... >>> </h2>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> TRUE</h3>
+</body></html>

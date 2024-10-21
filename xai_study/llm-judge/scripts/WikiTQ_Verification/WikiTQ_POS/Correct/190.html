@@ -1,0 +1,333 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> what is the last film that lars von trier made?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Order the table by 'year' in descending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>film</td>
+<td>rotten_tomatoes</td>
+<td>metacritic</td>
+<td>imdb</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1982</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">images of liberation</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">n/a</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">n/a</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5.1/10</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1984</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the element of crime</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">77%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">n/a</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6.9/10</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1987</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">epidemic</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">33%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">66%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6.1/10</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1991</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">europa</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">85%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">66%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7.7/10</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1996</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">breaking the waves</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">86%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">76%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7.9/10</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1998</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the idiots</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">70%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">47%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6.9/10</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2000</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dancer in the dark</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">68%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">61%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8.0/10</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2003</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the five obstructions</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">88%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">79%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7.5/10</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2003</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dogville</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">70%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">59%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8.0/10</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2005</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">manderlay</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">51%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">46%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7.4/10</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2006</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the boss of it all</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">74%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">71%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6.7/10</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2009</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">antichrist</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">48%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">49%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6.6/10</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2011</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">melancholia</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">77%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">80%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7.1/10</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2013</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nymphomaniac: volume i</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">77%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">63%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7.5/10</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2013</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">nymphomaniac: volume ii</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">79%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">76%</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7.2/10</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select the 'film' column.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>film</td>
+<td>rotten_tomatoes</td>
+<td>metacritic</td>
+<td>imdb</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>nymphomaniac: volume i</td>
+<td>77%</td>
+<td>63%</td>
+<td>7.5/10</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>nymphomaniac: volume ii</td>
+<td>79%</td>
+<td>76%</td>
+<td>7.2/10</td>
+</tr>
+<tr>
+<td>2011</td>
+<td>melancholia</td>
+<td>77%</td>
+<td>80%</td>
+<td>7.1/10</td>
+</tr>
+<tr>
+<td>2009</td>
+<td>antichrist</td>
+<td>48%</td>
+<td>49%</td>
+<td>6.6/10</td>
+</tr>
+<tr>
+<td>2006</td>
+<td>the boss of it all</td>
+<td>74%</td>
+<td>71%</td>
+<td>6.7/10</td>
+</tr>
+<tr>
+<td>2005</td>
+<td>manderlay</td>
+<td>51%</td>
+<td>46%</td>
+<td>7.4/10</td>
+</tr>
+<tr>
+<td>2003</td>
+<td>the five obstructions</td>
+<td>88%</td>
+<td>79%</td>
+<td>7.5/10</td>
+</tr>
+<tr>
+<td>2003</td>
+<td>dogville</td>
+<td>70%</td>
+<td>59%</td>
+<td>8.0/10</td>
+</tr>
+<tr>
+<td>2000</td>
+<td>dancer in the dark</td>
+<td>68%</td>
+<td>61%</td>
+<td>8.0/10</td>
+</tr>
+<tr>
+<td>1998</td>
+<td>the idiots</td>
+<td>70%</td>
+<td>47%</td>
+<td>6.9/10</td>
+</tr>
+<tr>
+<td>1996</td>
+<td>breaking the waves</td>
+<td>86%</td>
+<td>76%</td>
+<td>7.9/10</td>
+</tr>
+<tr>
+<td>1991</td>
+<td>europa</td>
+<td>85%</td>
+<td>66%</td>
+<td>7.7/10</td>
+</tr>
+<tr>
+<td>1987</td>
+<td>epidemic</td>
+<td>33%</td>
+<td>66%</td>
+<td>6.1/10</td>
+</tr>
+<tr>
+<td>1984</td>
+<td>the element of crime</td>
+<td>77%</td>
+<td>n/a</td>
+<td>6.9/10</td>
+</tr>
+<tr>
+<td>1982</td>
+<td>images of liberation</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>5.1/10</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select row number 1.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>film</td>
+</tr>
+<tr>
+<td>nymphomaniac: volume i</td>
+</tr>
+<tr>
+<td>nymphomaniac: volume ii</td>
+</tr>
+<tr>
+<td>melancholia</td>
+</tr>
+<tr>
+<td>antichrist</td>
+</tr>
+<tr>
+<td>the boss of it all</td>
+</tr>
+<tr>
+<td>manderlay</td>
+</tr>
+<tr>
+<td>the five obstructions</td>
+</tr>
+<tr>
+<td>dogville</td>
+</tr>
+<tr>
+<td>dancer in the dark</td>
+</tr>
+<tr>
+<td>the idiots</td>
+</tr>
+<tr>
+<td>breaking the waves</td>
+</tr>
+<tr>
+<td>europa</td>
+</tr>
+<tr>
+<td>epidemic</td>
+</tr>
+<tr>
+<td>the element of crime</td>
+</tr>
+<tr>
+<td>images of liberation</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>film</td>
+</tr>
+<tr>
+<td>nymphomaniac: volume i</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['nymphomaniac: volume i']]</h3>
+</body></html>

@@ -1,0 +1,109 @@
+************************************************************************************************************************
+Sample 2135 - Plan 1: Query: what country had the largest number of drivers?
+Sample 2135 - Plan 1: Groundtruth: ['Italy']
+Sample 2135 - Plan 1: X-Original table pd: 
+    pos  no              driver             constructor  laps    time_retired  \
+0     1   1         alain prost             mclaren-tag    82     1:54:20.388   
+1     2   6       nelson piquet          williams-honda    82         + 4.205   
+2     3  28    stefan johansson                 ferrari    81         + 1 lap   
+3     4   3      martin brundle         tyrrell-renault    81         + 1 lap   
+4     5   4    philippe streiff         tyrrell-renault    80     out of fuel   
+5     6  11     johnny dumfries           lotus-renault    80        + 2 laps   
+6     7  25         rené arnoux          ligier-renault    79        + 3 laps   
+7     8  26     philippe alliot          ligier-renault    79        + 3 laps   
+8     9  14     jonathan palmer                zakspeed    77        + 5 laps   
+9    10  19            teo fabi            benetton-bmw    77        + 5 laps   
+10   nc  16      patrick tambay               lola-ford    70  not classified   
+11  ret   5       nigel mansell          williams-honda    63            tyre   
+12  ret   7    riccardo patrese             brabham-bmw    63      electrical   
+13  ret   2        keke rosberg             mclaren-tag    62            tyre   
+14   nc  22          allen berg       osella-alfa romeo    61  not classified   
+15  ret   8       derek warwick             brabham-bmw    57          brakes   
+16  ret  17    christian danner              arrows-bmw    52          engine   
+17  ret  18     thierry boutsen              arrows-bmw    50          engine   
+18  ret  12        ayrton senna           lotus-renault    43          engine   
+19  ret  23   andrea de cesaris  minardi-motori moderni    40      mechanical   
+20  ret  20      gerhard berger            benetton-bmw    40          engine   
+21  ret  29   huub rothengatter                zakspeed    29      suspension   
+22  ret  15          alan jones               lola-ford    16          engine   
+23  ret  24  alessandro nannini  minardi-motori moderni    10        accident   
+24  ret  21  piercarlo ghinzani       osella-alfa romeo     2    transmission   
+25  ret  27    michele alboreto                 ferrari     0       collision   
+
+    grid  points  
+0      4     9.0  
+1      2     6.0  
+2     12     4.0  
+3     16     3.0  
+4     10     2.0  
+5     14     1.0  
+6      5     NaN  
+7      8     NaN  
+8     21     NaN  
+9     13     NaN  
+10    17     NaN  
+11     1     NaN  
+12    19     NaN  
+13     7     NaN  
+14    26     NaN  
+15    20     NaN  
+16    24     NaN  
+17    22     NaN  
+18     3     NaN  
+19    11     NaN  
+20     6     NaN  
+21    23     NaN  
+22    15     NaN  
+23    18     NaN  
+24    25     NaN  
+25     9     NaN  
+Sample 2135 - Plan 1: Caption: none
+Sample 2135 - Plan 1: Original table: [['pos', 'no', 'driver', 'constructor', 'laps', 'time_retired', 'grid', 'points'], ['1', '1', 'alain prost', 'mclaren-tag', '82', '1:54:20.388', '4', '9'], ['2', '6', 'nelson piquet', 'williams-honda', '82', '+ 4.205', '2', '6'], ['3', '28', 'stefan johansson', 'ferrari', '81', '+ 1 lap', '12', '4'], ['4', '3', 'martin brundle', 'tyrrell-renault', '81', '+ 1 lap', '16', '3'], ['5', '4', 'philippe streiff', 'tyrrell-renault', '80', 'out of fuel', '10', '2'], ['6', '11', 'johnny dumfries', 'lotus-renault', '80', '+ 2 laps', '14', '1'], ['7', '25', 'rené arnoux', 'ligier-renault', '79', '+ 3 laps', '5', ''], ['8', '26', 'philippe alliot', 'ligier-renault', '79', '+ 3 laps', '8', ''], ['9', '14', 'jonathan palmer', 'zakspeed', '77', '+ 5 laps', '21', ''], ['10', '19', 'teo fabi', 'benetton-bmw', '77', '+ 5 laps', '13', ''], ['nc', '16', 'patrick tambay', 'lola-ford', '70', 'not classified', '17', ''], ['ret', '5', 'nigel mansell', 'williams-honda', '63', 'tyre', '1', ''], ['ret', '7', 'riccardo patrese', 'brabham-bmw', '63', 'electrical', '19', ''], ['ret', '2', 'keke rosberg', 'mclaren-tag', '62', 'tyre', '7', ''], ['nc', '22', 'allen berg', 'osella-alfa romeo', '61', 'not classified', '26', ''], ['ret', '8', 'derek warwick', 'brabham-bmw', '57', 'brakes', '20', ''], ['ret', '17', 'christian danner', 'arrows-bmw', '52', 'engine', '24', ''], ['ret', '18', 'thierry boutsen', 'arrows-bmw', '50', 'engine', '22', ''], ['ret', '12', 'ayrton senna', 'lotus-renault', '43', 'engine', '3', ''], ['ret', '23', 'andrea de cesaris', 'minardi-motori moderni', '40', 'mechanical', '11', ''], ['ret', '20', 'gerhard berger', 'benetton-bmw', '40', 'engine', '6', ''], ['ret', '29', 'huub rothengatter', 'zakspeed', '29', 'suspension', '23', ''], ['ret', '15', 'alan jones', 'lola-ford', '16', 'engine', '15', ''], ['ret', '24', 'alessandro nannini', 'minardi-motori moderni', '10', 'accident', '18', ''], ['ret', '21', 'piercarlo ghinzani', 'osella-alfa romeo', '2', 'transmission', '25', ''], ['ret', '27', 'michele alboreto', 'ferrari', '0', 'collision', '9', '']]
+########################################################################################################################
+Sample 2135 - Plan 1: Operation 1: Select the 'driver' column.
+Sample 2135 - Plan 1: Selected indices: []
+Sample 2135 - Plan 1: X-Table after operation df:
+                driver
+0          alain prost
+1        nelson piquet
+2     stefan johansson
+3       martin brundle
+4     philippe streiff
+5      johnny dumfries
+6          rené arnoux
+7      philippe alliot
+8      jonathan palmer
+9             teo fabi
+10      patrick tambay
+11       nigel mansell
+12    riccardo patrese
+13        keke rosberg
+14          allen berg
+15       derek warwick
+16    christian danner
+17     thierry boutsen
+18        ayrton senna
+19   andrea de cesaris
+20      gerhard berger
+21   huub rothengatter
+22          alan jones
+23  alessandro nannini
+24  piercarlo ghinzani
+25    michele alboreto
+Sample 2135 - Plan 1: Table after operation: [['driver'], ['alain prost'], ['nelson piquet'], ['stefan johansson'], ['martin brundle'], ['philippe streiff'], ['johnny dumfries'], ['rené arnoux'], ['philippe alliot'], ['jonathan palmer'], ['teo fabi'], ['patrick tambay'], ['nigel mansell'], ['riccardo patrese'], ['keke rosberg'], ['allen berg'], ['derek warwick'], ['christian danner'], ['thierry boutsen'], ['ayrton senna'], ['andrea de cesaris'], ['gerhard berger'], ['huub rothengatter'], ['alan jones'], ['alessandro nannini'], ['piercarlo ghinzani'], ['michele alboreto']]
+########################################################################################################################
+Sample 2135 - Plan 1: Operation 2: Count the number of distinct drivers.
+Sample 2135 - Plan 1: Selected indices: []
+Sample 2135 - Plan 1: X-Table after operation df:
+   distinct_drivers
+0                26
+Sample 2135 - Plan 1: Table after operation: [['distinct_drivers'], [26]]
+########################################################################################################################
+Sample 2135 - Plan 1: Operation 3: Group the drivers by country.
+SQL execution error in operation 3: Execution failed on sql 'SELECT country, SUM(distinct_drivers) AS total_drivers
+FROM table_sql
+GROUP BY country;': no such column: country
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['italy']]
+Groundtruth: ['Italy']

@@ -1,0 +1,190 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> which nations do not have more than twenty gold medals?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where the 'gold' column is less than or equal to 20.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>rank</td>
+<td>nation</td>
+<td>gold</td>
+<td>silver</td>
+<td>bronze</td>
+<td>total</td>
+</tr>
+<tr>
+<td>1</td>
+<td>china</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">63</span></td>
+<td>46</td>
+<td>32</td>
+<td>141</td>
+</tr>
+<tr>
+<td>2</td>
+<td>great britain</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">35</span></td>
+<td>30</td>
+<td>29</td>
+<td>94</td>
+</tr>
+<tr>
+<td>3</td>
+<td>canada</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">28</span></td>
+<td>19</td>
+<td>25</td>
+<td>72</td>
+</tr>
+<tr>
+<td>4</td>
+<td>united states</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">27</span></td>
+<td>22</td>
+<td>39</td>
+<td>88</td>
+</tr>
+<tr>
+<td>5</td>
+<td>australia</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">26</span></td>
+<td>38</td>
+<td>36</td>
+<td>100</td>
+</tr>
+<tr>
+<td>6</td>
+<td>ukraine</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24</span></td>
+<td>12</td>
+<td>19</td>
+<td>55</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">spain</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">27</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">71</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">germany</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">19</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">28</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">31</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">78</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">france</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">18</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">26</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">30</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">74</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">japan</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">17</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">53</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select the 'nation' column.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>rank</td>
+<td>nation</td>
+<td>gold</td>
+<td>silver</td>
+<td>bronze</td>
+<td>total</td>
+</tr>
+<tr>
+<td>7</td>
+<td>spain</td>
+<td>20</td>
+<td>27</td>
+<td>24</td>
+<td>71</td>
+</tr>
+<tr>
+<td>8</td>
+<td>germany</td>
+<td>19</td>
+<td>28</td>
+<td>31</td>
+<td>78</td>
+</tr>
+<tr>
+<td>9</td>
+<td>france</td>
+<td>18</td>
+<td>26</td>
+<td>30</td>
+<td>74</td>
+</tr>
+<tr>
+<td>10</td>
+<td>japan</td>
+<td>17</td>
+<td>16</td>
+<td>20</td>
+<td>53</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>nation</td>
+</tr>
+<tr>
+<td>spain</td>
+</tr>
+<tr>
+<td>germany</td>
+</tr>
+<tr>
+<td>france</td>
+</tr>
+<tr>
+<td>japan</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['spain'], ['germany'], ['france'], ['japan']]</h3>
+</body></html>

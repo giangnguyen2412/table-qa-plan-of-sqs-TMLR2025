@@ -1,0 +1,80 @@
+************************************************************************************************************************
+Sample 535 - Plan 1: Query: what was the largest difference in attendance?
+Sample 535 - Plan 1: Groundtruth: ['64,345']
+Sample 535 - Plan 1: X-Original table pd: 
+   week                date                opponent    result attendance
+0     1  september 13, 1987      san diego chargers   w 20–13     56,940
+1     2  september 20, 1987     at seattle seahawks   l 43–14     61,667
+2     –  september 27, 1987       minnesota vikings  canceled           
+3     3     october 4, 1987  at los angeles raiders   l 35–17     10,708
+4     4    october 11, 1987       at miami dolphins    l 42–0     25,867
+5     5    october 18, 1987          denver broncos   l 26–17     20,296
+6     6    october 25, 1987   at san diego chargers   l 42–21     47,972
+7     7    november 1, 1987        at chicago bears   l 31–28     63,498
+8     8    november 8, 1987     pittsburgh steelers   l 17–16     45,249
+9     9   november 15, 1987           new york jets    l 16–9     40,718
+10   10   november 22, 1987       green bay packers    l 23–3     34,611
+11   11   november 26, 1987        at detroit lions   w 27–20     43,820
+12   12    december 6, 1987   at cincinnati bengals   l 30–27     46,489
+13   13   december 13, 1987     los angeles raiders   w 16–10     63,834
+14   14   december 19, 1987       at denver broncos   l 20–17     75,053
+15   15   december 27, 1987        seattle seahawks   w 41–20     20,370
+Sample 535 - Plan 1: Caption: none
+Sample 535 - Plan 1: Original table: [['week', 'date', 'opponent', 'result', 'attendance'], ['1', 'september 13, 1987', 'san diego chargers', 'w 20–13', '56,940'], ['2', 'september 20, 1987', 'at seattle seahawks', 'l 43–14', '61,667'], ['–', 'september 27, 1987', 'minnesota vikings', 'canceled', ''], ['3', 'october 4, 1987', 'at los angeles raiders', 'l 35–17', '10,708'], ['4', 'october 11, 1987', 'at miami dolphins', 'l 42–0', '25,867'], ['5', 'october 18, 1987', 'denver broncos', 'l 26–17', '20,296'], ['6', 'october 25, 1987', 'at san diego chargers', 'l 42–21', '47,972'], ['7', 'november 1, 1987', 'at chicago bears', 'l 31–28', '63,498'], ['8', 'november 8, 1987', 'pittsburgh steelers', 'l 17–16', '45,249'], ['9', 'november 15, 1987', 'new york jets', 'l 16–9', '40,718'], ['10', 'november 22, 1987', 'green bay packers', 'l 23–3', '34,611'], ['11', 'november 26, 1987', 'at detroit lions', 'w 27–20', '43,820'], ['12', 'december 6, 1987', 'at cincinnati bengals', 'l 30–27', '46,489'], ['13', 'december 13, 1987', 'los angeles raiders', 'w 16–10', '63,834'], ['14', 'december 19, 1987', 'at denver broncos', 'l 20–17', '75,053'], ['15', 'december 27, 1987', 'seattle seahawks', 'w 41–20', '20,370']]
+########################################################################################################################
+Sample 535 - Plan 1: Operation 1: Extract the numerical values from the 'attendance' column and add a new column 'num_attendance' to the existing table.
+Sample 535 - Plan 1: Selected indices: [[0, 4], [1, 4], [2, 4], [3, 4], [4, 4], [5, 4], [6, 4], [7, 4], [8, 4], [9, 4], [10, 4], [11, 4], [12, 4], [13, 4], [14, 4], [15, 4]]
+Sample 535 - Plan 1: X-Table after operation df:
+   week                date                opponent    result attendance  \
+0     1  september 13, 1987      san diego chargers   w 20–13     56,940   
+1     2  september 20, 1987     at seattle seahawks   l 43–14     61,667   
+2     –  september 27, 1987       minnesota vikings  canceled              
+3     3     october 4, 1987  at los angeles raiders   l 35–17     10,708   
+4     4    october 11, 1987       at miami dolphins    l 42–0     25,867   
+5     5    october 18, 1987          denver broncos   l 26–17     20,296   
+6     6    october 25, 1987   at san diego chargers   l 42–21     47,972   
+7     7    november 1, 1987        at chicago bears   l 31–28     63,498   
+8     8    november 8, 1987     pittsburgh steelers   l 17–16     45,249   
+9     9   november 15, 1987           new york jets    l 16–9     40,718   
+10   10   november 22, 1987       green bay packers    l 23–3     34,611   
+11   11   november 26, 1987        at detroit lions   w 27–20     43,820   
+12   12    december 6, 1987   at cincinnati bengals   l 30–27     46,489   
+13   13   december 13, 1987     los angeles raiders   w 16–10     63,834   
+14   14   december 19, 1987       at denver broncos   l 20–17     75,053   
+15   15   december 27, 1987        seattle seahawks   w 41–20     20,370   
+
+    num_attendance  
+0            56940  
+1            61667  
+2                0  
+3            10708  
+4            25867  
+5            20296  
+6            47972  
+7            63498  
+8            45249  
+9            40718  
+10           34611  
+11           43820  
+12           46489  
+13           63834  
+14           75053  
+15           20370  
+Sample 535 - Plan 1: Table after operation: [['week', 'date', 'opponent', 'result', 'attendance', 'num_attendance'], ['1', 'september 13, 1987', 'san diego chargers', 'w 20–13', '56,940', 56940], ['2', 'september 20, 1987', 'at seattle seahawks', 'l 43–14', '61,667', 61667], ['–', 'september 27, 1987', 'minnesota vikings', 'canceled', '', 0], ['3', 'october 4, 1987', 'at los angeles raiders', 'l 35–17', '10,708', 10708], ['4', 'october 11, 1987', 'at miami dolphins', 'l 42–0', '25,867', 25867], ['5', 'october 18, 1987', 'denver broncos', 'l 26–17', '20,296', 20296], ['6', 'october 25, 1987', 'at san diego chargers', 'l 42–21', '47,972', 47972], ['7', 'november 1, 1987', 'at chicago bears', 'l 31–28', '63,498', 63498], ['8', 'november 8, 1987', 'pittsburgh steelers', 'l 17–16', '45,249', 45249], ['9', 'november 15, 1987', 'new york jets', 'l 16–9', '40,718', 40718], ['10', 'november 22, 1987', 'green bay packers', 'l 23–3', '34,611', 34611], ['11', 'november 26, 1987', 'at detroit lions', 'w 27–20', '43,820', 43820], ['12', 'december 6, 1987', 'at cincinnati bengals', 'l 30–27', '46,489', 46489], ['13', 'december 13, 1987', 'los angeles raiders', 'w 16–10', '63,834', 63834], ['14', 'december 19, 1987', 'at denver broncos', 'l 20–17', '75,053', 75053], ['15', 'december 27, 1987', 'seattle seahawks', 'w 41–20', '20,370', 20370]]
+########################################################################################################################
+Sample 535 - Plan 1: Operation 2: Calculate the difference between the maximum and minimum values in the 'num_attendance' column.
+Sample 535 - Plan 1: Selected indices: []
+Sample 535 - Plan 1: X-Table after operation df:
+   attendance_difference
+0                  75053
+Sample 535 - Plan 1: Table after operation: [['attendance_difference'], [75053]]
+########################################################################################################################
+Sample 535 - Plan 1: Operation 3: Select the calculated difference as the largest difference in attendance.
+Sample 535 - Plan 1: Selected indices: []
+Sample 535 - Plan 1: X-Table after operation df:
+   largest_difference
+0               75053
+Sample 535 - Plan 1: Table after operation: [['largest_difference'], [75053]]
+Fall-back: FALSE
+Answer from plan 1: [[75053]]
+Groundtruth: ['64,345']

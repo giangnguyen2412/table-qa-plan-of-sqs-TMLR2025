@@ -1,0 +1,63 @@
+************************************************************************************************************************
+Sample 2511 - Plan 1: Query: what is the mean monthly sunshine hours in september?
+Sample 2511 - Plan 1: Groundtruth: ['120']
+Sample 2511 - Plan 1: X-Original table pd: 
+                                month           jan           feb  \
+0                average high °c (°f)     −10\n(14)     −11\n(12)   
+1                  daily mean °c (°f)  −13.5\n(7.7)  −14.5\n(5.9)   
+2                 average low °c (°f)      −17\n(1)      −18\n(0)   
+3           precipitation mm (inches)    12\n(0.47)    13\n(0.51)   
+4  avg. precipitation days (≥ 1.0 mm)             9             9   
+5         mean monthly sunshine hours             0            28   
+
+            mar           apr         may         jun         jul         aug  \
+0     −12\n(10)      −5\n(23)     3\n(37)     8\n(46)    11\n(52)    10\n(50)   
+1  −15.5\n(4.1)  −8.5\n(16.7)     0\n(32)     5\n(41)     8\n(46)     7\n(45)   
+2     −19\n(−2)     −12\n(10)    −3\n(27)     2\n(36)     5\n(41)     4\n(39)   
+3    12\n(0.47)    13\n(0.51)  16\n(0.63)  22\n(0.87)  29\n(1.14)  26\n(1.02)   
+4            10             9           8           7           8           9   
+5            93           180         279         300         279         217   
+
+          sep         oct         nov         dec          year  
+0     5\n(41)    −1\n(30)    −5\n(23)    −8\n(18)  −1.3\n(29.7)  
+1     2\n(36)    −4\n(25)    −8\n(18)   −11\n(12)  −4.5\n(23.9)  
+2    −1\n(30)    −7\n(19)   −11\n(12)    −14\n(7)  −7.6\n(18.3)  
+3  35\n(1.38)  26\n(1.02)  23\n(0.91)  17\n(0.67)    244\n(9.6)  
+4          10          10          11          10           110  
+5         120          62          30           0         1,588  
+Sample 2511 - Plan 1: Caption: none
+Sample 2511 - Plan 1: Original table: [['month', 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec', 'year'], ['average high °c (°f)', '−10\\n(14)', '−11\\n(12)', '−12\\n(10)', '−5\\n(23)', '3\\n(37)', '8\\n(46)', '11\\n(52)', '10\\n(50)', '5\\n(41)', '−1\\n(30)', '−5\\n(23)', '−8\\n(18)', '−1.3\\n(29.7)'], ['daily mean °c (°f)', '−13.5\\n(7.7)', '−14.5\\n(5.9)', '−15.5\\n(4.1)', '−8.5\\n(16.7)', '0\\n(32)', '5\\n(41)', '8\\n(46)', '7\\n(45)', '2\\n(36)', '−4\\n(25)', '−8\\n(18)', '−11\\n(12)', '−4.5\\n(23.9)'], ['average low °c (°f)', '−17\\n(1)', '−18\\n(0)', '−19\\n(−2)', '−12\\n(10)', '−3\\n(27)', '2\\n(36)', '5\\n(41)', '4\\n(39)', '−1\\n(30)', '−7\\n(19)', '−11\\n(12)', '−14\\n(7)', '−7.6\\n(18.3)'], ['precipitation mm (inches)', '12\\n(0.47)', '13\\n(0.51)', '12\\n(0.47)', '13\\n(0.51)', '16\\n(0.63)', '22\\n(0.87)', '29\\n(1.14)', '26\\n(1.02)', '35\\n(1.38)', '26\\n(1.02)', '23\\n(0.91)', '17\\n(0.67)', '244\\n(9.6)'], ['avg. precipitation days (≥ 1.0 mm)', '9', '9', '10', '9', '8', '7', '8', '9', '10', '10', '11', '10', '110'], ['mean monthly sunshine hours', '0', '28', '93', '180', '279', '300', '279', '217', '120', '62', '30', '0', '1,588']]
+########################################################################################################################
+Sample 2511 - Plan 1: Operation 1: Select the 'month' and 'sep' columns.
+Sample 2511 - Plan 1: Selected indices: []
+Sample 2511 - Plan 1: X-Table after operation df:
+                                month         sep
+0                average high °c (°f)     5\n(41)
+1                  daily mean °c (°f)     2\n(36)
+2                 average low °c (°f)    −1\n(30)
+3           precipitation mm (inches)  35\n(1.38)
+4  avg. precipitation days (≥ 1.0 mm)          10
+5         mean monthly sunshine hours         120
+Sample 2511 - Plan 1: Table after operation: [['month', 'sep'], ['average high °c (°f)', '5\\n(41)'], ['daily mean °c (°f)', '2\\n(36)'], ['average low °c (°f)', '−1\\n(30)'], ['precipitation mm (inches)', '35\\n(1.38)'], ['avg. precipitation days (≥ 1.0 mm)', '10'], ['mean monthly sunshine hours', '120']]
+########################################################################################################################
+Sample 2511 - Plan 1: Operation 2: Extract the numerical value from the 'sep' column and add a column 'num_sep' to the existing table.
+Sample 2511 - Plan 1: Selected indices: [[0, 1], [1, 1], [2, 1], [3, 1], [4, 1], [5, 1]]
+Sample 2511 - Plan 1: X-Table after operation df:
+                                month         sep  num_sep
+0                average high °c (°f)     5\n(41)        5
+1                  daily mean °c (°f)     2\n(36)        2
+2                 average low °c (°f)    −1\n(30)        0
+3           precipitation mm (inches)  35\n(1.38)       35
+4  avg. precipitation days (≥ 1.0 mm)          10        0
+5         mean monthly sunshine hours         120        0
+Sample 2511 - Plan 1: Table after operation: [['month', 'sep', 'num_sep'], ['average high °c (°f)', '5\\n(41)', 5], ['daily mean °c (°f)', '2\\n(36)', 2], ['average low °c (°f)', '−1\\n(30)', 0], ['precipitation mm (inches)', '35\\n(1.38)', 35], ['avg. precipitation days (≥ 1.0 mm)', '10', 0], ['mean monthly sunshine hours', '120', 0]]
+########################################################################################################################
+Sample 2511 - Plan 1: Operation 3: Select the 'mean monthly sunshine hours' from the 'num_sep' column.
+Sample 2511 - Plan 1: Selected indices: []
+Sample 2511 - Plan 1: X-Table after operation df:
+                       num_sep
+0  mean monthly sunshine hours
+Sample 2511 - Plan 1: Table after operation: [['num_sep'], ['mean monthly sunshine hours']]
+Fall-back: FALSE
+Answer from plan 1: [['mean monthly sunshine hours']]
+Groundtruth: ['120']

@@ -1,0 +1,163 @@
+************************************************************************************************************************
+Sample 233 - Plan 1: Query: what is the name of the last manufacturer on this chart?
+Sample 233 - Plan 1: Groundtruth: ['Gillig']
+Sample 233 - Plan 1: X-Original table pd: 
+    year manufacturer                model     length__feet_  quantity  \
+0   1996    new flyer                  d60  60 (articulated)        30   
+1   1998         nabi                  416                40       133   
+2   1999         nabi               40-lfw                40        44   
+3   2000         nabi               40-lfw                40        23   
+4   2000          mci                d4500                45        30   
+5   2001          mci                d4500                45        10   
+6   2003          mci                d4500                45        39   
+7   2003         nabi               40-lfw                40        46   
+8   2003     van hool                 a330                40       110   
+9   2003     van hool                ag300                60        57   
+10  2005     van hool               a300fc                40         3   
+11  2006     van hool                a300k                30        50   
+12  2007     van hool                ag300                60        10   
+13  2007     van hool                ag300                60        15   
+14  2008     van hool                a300l                40        27   
+15  2008     van hool                a300k                30         1   
+16  2008     van hool                a300k                30        39   
+17  2010     van hool                ag300                60         9   
+18  2010     van hool             a300l fc                40        12   
+19  2013       gillig  low-floor advantage                40        65   
+20  2013    new flyer         xcelsior d60                60        23   
+21  2013       gillig  low-floor advantage                40        55   
+
+             fleet_series         fuel_propulsion  \
+0              1901-1930*                  diesel   
+1   3001-3067, 3101-3166*                  diesel   
+2               4001-4044                  diesel   
+3               7201-7223                  diesel   
+4               6001-6030                  diesel   
+5               6031-6040                  diesel   
+6               6041-6079                  diesel   
+7               4051-4090                  diesel   
+8               1001-1110                  diesel   
+9               2001-2057                  diesel   
+10                fc1-fc3                hydrogen   
+11              5001-5050                  diesel   
+12              2101-2110                  diesel   
+13              2151-2165                  diesel   
+14              1201-1227                  diesel   
+15                   5099  diesel-electric hybrid   
+16              5101-5139                  diesel   
+17              2191-2199                  diesel   
+18               fc4-fc16                hydrogen   
+19              1301-1365                  diesel   
+20              2201-2223                  diesel   
+21              6101-6155                  diesel   
+
+                                   powertrain  
+0     detroit diesel series 50\nallison b400r  
+1                 cummins m11e\nallison b400r  
+2                                              
+3                  cummins ism\nallison b400r  
+4                                              
+5                                              
+6                                              
+7                  cummins isl\nallison b400r  
+8                  cummins ism\nvoith d864.3e  
+9                  cummins ism\nvoith d864.3e  
+10                                             
+11                 cummins isb\nvoith d864.3e  
+12                 cummins isl\nvoith d864.3e  
+13                 cummins ism\nvoith d864.3e  
+14                  cummins isl\nvoith d864.5  
+15                                             
+16                  cummins isb\nvoith d854.5  
+17                  cummins isl\nvoith d864.5  
+18                                             
+19  cummins isl 280 hp \nallison b400 6-speed  
+20   cummins isl 330 hp\nallison b400 6-speed  
+21   cummins isl 280 hp\nallison b400 6-speed  
+Sample 233 - Plan 1: Caption: none
+Sample 233 - Plan 1: Original table: [['year', 'manufacturer', 'model', 'length__feet_', 'quantity', 'fleet_series', 'fuel_propulsion', 'powertrain'], ['1996', 'new flyer', 'd60', '60 (articulated)', '30', '1901-1930*', 'diesel', 'detroit diesel series 50\\nallison b400r'], ['1998', 'nabi', '416', '40', '133', '3001-3067, 3101-3166*', 'diesel', 'cummins m11e\\nallison b400r'], ['1999', 'nabi', '40-lfw', '40', '44', '4001-4044', 'diesel', ''], ['2000', 'nabi', '40-lfw', '40', '23', '7201-7223', 'diesel', 'cummins ism\\nallison b400r'], ['2000', 'mci', 'd4500', '45', '30', '6001-6030', 'diesel', ''], ['2001', 'mci', 'd4500', '45', '10', '6031-6040', 'diesel', ''], ['2003', 'mci', 'd4500', '45', '39', '6041-6079', 'diesel', ''], ['2003', 'nabi', '40-lfw', '40', '46', '4051-4090', 'diesel', 'cummins isl\\nallison b400r'], ['2003', 'van hool', 'a330', '40', '110', '1001-1110', 'diesel', 'cummins ism\\nvoith d864.3e'], ['2003', 'van hool', 'ag300', '60', '57', '2001-2057', 'diesel', 'cummins ism\\nvoith d864.3e'], ['2005', 'van hool', 'a300fc', '40', '3', 'fc1-fc3', 'hydrogen', ''], ['2006', 'van hool', 'a300k', '30', '50', '5001-5050', 'diesel', 'cummins isb\\nvoith d864.3e'], ['2007', 'van hool', 'ag300', '60', '10', '2101-2110', 'diesel', 'cummins isl\\nvoith d864.3e'], ['2007', 'van hool', 'ag300', '60', '15', '2151-2165', 'diesel', 'cummins ism\\nvoith d864.3e'], ['2008', 'van hool', 'a300l', '40', '27', '1201-1227', 'diesel', 'cummins isl\\nvoith d864.5'], ['2008', 'van hool', 'a300k', '30', '1', '5099', 'diesel-electric hybrid', ''], ['2008', 'van hool', 'a300k', '30', '39', '5101-5139', 'diesel', 'cummins isb\\nvoith d854.5'], ['2010', 'van hool', 'ag300', '60', '9', '2191-2199', 'diesel', 'cummins isl\\nvoith d864.5'], ['2010', 'van hool', 'a300l fc', '40', '12', 'fc4-fc16', 'hydrogen', ''], ['2013', 'gillig', 'low-floor advantage', '40', '65', '1301-1365', 'diesel', 'cummins isl 280 hp \\nallison b400 6-speed'], ['2013', 'new flyer', 'xcelsior d60', '60', '23', '2201-2223', 'diesel', 'cummins isl 330 hp\\nallison b400 6-speed'], ['2013', 'gillig', 'low-floor advantage', '40', '55', '6101-6155', 'diesel', 'cummins isl 280 hp\\nallison b400 6-speed']]
+########################################################################################################################
+Sample 233 - Plan 1: Operation 1: Order the table by the 'manufacturer' column in descending order.
+Sample 233 - Plan 1: Selected indices: [[12, 1], [14, 1], [3, 1], [5, 1], [16, 1], [18, 1], [7, 1], [20, 1], [9, 1], [11, 1], [0, 1], [2, 1], [13, 1], [6, 1], [15, 1], [4, 1], [17, 1], [8, 1], [19, 1], [1, 1], [10, 1], [21, 1]]
+Sample 233 - Plan 1: X-Table after operation df:
+    year manufacturer                model     length__feet_  quantity  \
+0   2003     van hool                 a330                40       110   
+1   2003     van hool                ag300                60        57   
+2   2005     van hool               a300fc                40         3   
+3   2006     van hool                a300k                30        50   
+4   2007     van hool                ag300                60        10   
+5   2007     van hool                ag300                60        15   
+6   2008     van hool                a300l                40        27   
+7   2008     van hool                a300k                30         1   
+8   2008     van hool                a300k                30        39   
+9   2010     van hool                ag300                60         9   
+10  2010     van hool             a300l fc                40        12   
+11  1996    new flyer                  d60  60 (articulated)        30   
+12  2013    new flyer         xcelsior d60                60        23   
+13  1998         nabi                  416                40       133   
+14  1999         nabi               40-lfw                40        44   
+15  2000         nabi               40-lfw                40        23   
+16  2003         nabi               40-lfw                40        46   
+17  2000          mci                d4500                45        30   
+18  2001          mci                d4500                45        10   
+19  2003          mci                d4500                45        39   
+20  2013       gillig  low-floor advantage                40        65   
+21  2013       gillig  low-floor advantage                40        55   
+
+             fleet_series         fuel_propulsion  \
+0               1001-1110                  diesel   
+1               2001-2057                  diesel   
+2                 fc1-fc3                hydrogen   
+3               5001-5050                  diesel   
+4               2101-2110                  diesel   
+5               2151-2165                  diesel   
+6               1201-1227                  diesel   
+7                    5099  diesel-electric hybrid   
+8               5101-5139                  diesel   
+9               2191-2199                  diesel   
+10               fc4-fc16                hydrogen   
+11             1901-1930*                  diesel   
+12              2201-2223                  diesel   
+13  3001-3067, 3101-3166*                  diesel   
+14              4001-4044                  diesel   
+15              7201-7223                  diesel   
+16              4051-4090                  diesel   
+17              6001-6030                  diesel   
+18              6031-6040                  diesel   
+19              6041-6079                  diesel   
+20              1301-1365                  diesel   
+21              6101-6155                  diesel   
+
+                                   powertrain  
+0                  cummins ism\nvoith d864.3e  
+1                  cummins ism\nvoith d864.3e  
+2                                              
+3                  cummins isb\nvoith d864.3e  
+4                  cummins isl\nvoith d864.3e  
+5                  cummins ism\nvoith d864.3e  
+6                   cummins isl\nvoith d864.5  
+7                                              
+8                   cummins isb\nvoith d854.5  
+9                   cummins isl\nvoith d864.5  
+10                                             
+11    detroit diesel series 50\nallison b400r  
+12   cummins isl 330 hp\nallison b400 6-speed  
+13                cummins m11e\nallison b400r  
+14                                             
+15                 cummins ism\nallison b400r  
+16                 cummins isl\nallison b400r  
+17                                             
+18                                             
+19                                             
+20  cummins isl 280 hp \nallison b400 6-speed  
+21   cummins isl 280 hp\nallison b400 6-speed  
+Sample 233 - Plan 1: Table after operation: [['year', 'manufacturer', 'model', 'length__feet_', 'quantity', 'fleet_series', 'fuel_propulsion', 'powertrain'], [2003, 'van hool', 'a330', '40', 110, '1001-1110', 'diesel', 'cummins ism\\nvoith d864.3e'], [2003, 'van hool', 'ag300', '60', 57, '2001-2057', 'diesel', 'cummins ism\\nvoith d864.3e'], [2005, 'van hool', 'a300fc', '40', 3, 'fc1-fc3', 'hydrogen', ''], [2006, 'van hool', 'a300k', '30', 50, '5001-5050', 'diesel', 'cummins isb\\nvoith d864.3e'], [2007, 'van hool', 'ag300', '60', 10, '2101-2110', 'diesel', 'cummins isl\\nvoith d864.3e'], [2007, 'van hool', 'ag300', '60', 15, '2151-2165', 'diesel', 'cummins ism\\nvoith d864.3e'], [2008, 'van hool', 'a300l', '40', 27, '1201-1227', 'diesel', 'cummins isl\\nvoith d864.5'], [2008, 'van hool', 'a300k', '30', 1, '5099', 'diesel-electric hybrid', ''], [2008, 'van hool', 'a300k', '30', 39, '5101-5139', 'diesel', 'cummins isb\\nvoith d854.5'], [2010, 'van hool', 'ag300', '60', 9, '2191-2199', 'diesel', 'cummins isl\\nvoith d864.5'], [2010, 'van hool', 'a300l fc', '40', 12, 'fc4-fc16', 'hydrogen', ''], [1996, 'new flyer', 'd60', '60 (articulated)', 30, '1901-1930*', 'diesel', 'detroit diesel series 50\\nallison b400r'], [2013, 'new flyer', 'xcelsior d60', '60', 23, '2201-2223', 'diesel', 'cummins isl 330 hp\\nallison b400 6-speed'], [1998, 'nabi', '416', '40', 133, '3001-3067, 3101-3166*', 'diesel', 'cummins m11e\\nallison b400r'], [1999, 'nabi', '40-lfw', '40', 44, '4001-4044', 'diesel', ''], [2000, 'nabi', '40-lfw', '40', 23, '7201-7223', 'diesel', 'cummins ism\\nallison b400r'], [2003, 'nabi', '40-lfw', '40', 46, '4051-4090', 'diesel', 'cummins isl\\nallison b400r'], [2000, 'mci', 'd4500', '45', 30, '6001-6030', 'diesel', ''], [2001, 'mci', 'd4500', '45', 10, '6031-6040', 'diesel', ''], [2003, 'mci', 'd4500', '45', 39, '6041-6079', 'diesel', ''], [2013, 'gillig', 'low-floor advantage', '40', 65, '1301-1365', 'diesel', 'cummins isl 280 hp \\nallison b400 6-speed'], [2013, 'gillig', 'low-floor advantage', '40', 55, '6101-6155', 'diesel', 'cummins isl 280 hp\\nallison b400 6-speed']]
+########################################################################################################################
+Sample 233 - Plan 1: Operation 2: Select the 'manufacturer' column from the last row of the ordered table.
+SQL execution error in operation 2: Execution failed on sql 'SELECT manufacturer
+FROM table_sql
+ORDER BY id DESC
+LIMIT 1;': no such column: id
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['gillig']]
+Groundtruth: ['Gillig']

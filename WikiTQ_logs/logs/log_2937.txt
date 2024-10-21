@@ -1,0 +1,156 @@
+************************************************************************************************************************
+Sample 2937 - Plan 1: Query: which ship has been active for the most amount of years?
+Sample 2937 - Plan 1: Groundtruth: ['Henry J. Kaiser']
+Sample 2937 - Plan 1: X-Original table pd: 
+                  ship  hull_no_  \
+0      henry j. kaiser  t-ao-187   
+1     joshua humphreys  t-ao-188   
+2        john lenthall  t-ao-189   
+3    andrew j. higgins  t-ao-190   
+4   benjamin isherwood  t-ao-191   
+5        henry eckford  t-ao-192   
+6      walter s. diehl  t-ao-193   
+7        john ericsson  t-ao-194   
+8        leroy grumman  t-ao-195   
+9              kanawha  t-ao-196   
+10               pecos  t-ao-197   
+11            big horn  t-ao-198   
+12          tippecanoe  t-ao-199   
+13           guadalupe  t-ao-200   
+14            patuxent  t-ao-201   
+15               yukon  t-ao-202   
+16             laramie  t-ao-203   
+17        rappahannock  t-ao-204   
+
+                                               status  \
+0               active—southern california duty oiler   
+1          inactivated 1996, returned to service 2005   
+2                                              active   
+3   inactivated may 1996. sold to the chilean navy...   
+4   cancelled when 95.3% complete,\ntransferred to...   
+5   cancelled when 84% complete,\ntransferred to t...   
+6                                              active   
+7                                              active   
+8                                              active   
+9                                              active   
+10                                             active   
+11                                             active   
+12                                             active   
+13                                             active   
+14                                             active   
+15                                             active   
+16                                             active   
+17                                             active   
+
+                                        years_active nvr_npage  
+0                                       1986–present     ao187  
+1                 1987-1996; 2005-2006; 2010-present     ao188  
+2                            1987-1996; 1998–present     ao189  
+3              1987-1996 (usa); 2010–present (chile)     ao190  
+4   launched 1988, christened 1991, never in service     ao191  
+5                    launched 1989, never in service     ao192  
+6                                       1988–present     ao193  
+7                                       1991–present     ao194  
+8                                       1989–present     ao195  
+9                                       1991–present     ao196  
+10                                      1990–present     ao197  
+11                                      1992–present     ao198  
+12                                      1993–present     ao199  
+13                                      1992–present     ao200  
+14                                      1995–present     ao201  
+15                                      1994–present     ao202  
+16                                      1996–present     ao203  
+17                                      1995–present     ao204  
+Sample 2937 - Plan 1: Caption: none
+Sample 2937 - Plan 1: Original table: [['ship', 'hull_no_', 'status', 'years_active', 'nvr_npage'], ['henry j. kaiser', 't-ao-187', 'active—southern california duty oiler', '1986–present', 'ao187'], ['joshua humphreys', 't-ao-188', 'inactivated 1996, returned to service 2005', '1987-1996; 2005-2006; 2010-present', 'ao188'], ['john lenthall', 't-ao-189', 'active', '1987-1996; 1998–present', 'ao189'], ['andrew j. higgins', 't-ao-190', 'inactivated may 1996. sold to the chilean navy may 2009. towed to atlantic marine alabama shipyard, mobile, alabama, september 2009 for three-month refit. commissioned in chilean navy on 10 february 2010 and renamed almirante montt.[1]', '1987-1996 (usa); 2010–present (chile)', 'ao190'], ['benjamin isherwood', 't-ao-191', 'cancelled when 95.3% complete,\\ntransferred to the maritime administration,\\nlaid up in the james river reserve fleet,\\nscrapped in 2011', 'launched 1988, christened 1991, never in service', 'ao191'], ['henry eckford', 't-ao-192', 'cancelled when 84% complete,\\ntransferred to the maritime administration,\\nlaid up in the james river reserve fleet,\\nscrapped in 2011', 'launched 1989, never in service', 'ao192'], ['walter s. diehl', 't-ao-193', 'active', '1988–present', 'ao193'], ['john ericsson', 't-ao-194', 'active', '1991–present', 'ao194'], ['leroy grumman', 't-ao-195', 'active', '1989–present', 'ao195'], ['kanawha', 't-ao-196', 'active', '1991–present', 'ao196'], ['pecos', 't-ao-197', 'active', '1990–present', 'ao197'], ['big horn', 't-ao-198', 'active', '1992–present', 'ao198'], ['tippecanoe', 't-ao-199', 'active', '1993–present', 'ao199'], ['guadalupe', 't-ao-200', 'active', '1992–present', 'ao200'], ['patuxent', 't-ao-201', 'active', '1995–present', 'ao201'], ['yukon', 't-ao-202', 'active', '1994–present', 'ao202'], ['laramie', 't-ao-203', 'active', '1996–present', 'ao203'], ['rappahannock', 't-ao-204', 'active', '1995–present', 'ao204']]
+########################################################################################################################
+Sample 2937 - Plan 1: Operation 1: Extract the numerical values from the 'years_active' column and add a new column 'num_years_active' to the existing table.
+Sample 2937 - Plan 1: Selected indices: [[0, 3], [1, 3], [2, 3], [3, 3], [4, 3], [5, 3], [6, 3], [7, 3], [8, 3], [9, 3], [10, 3], [11, 3], [12, 3], [13, 3], [14, 3], [15, 3], [16, 3], [17, 3]]
+Sample 2937 - Plan 1: X-Table after operation df:
+                  ship  hull_no_  \
+0      henry j. kaiser  t-ao-187   
+1     joshua humphreys  t-ao-188   
+2        john lenthall  t-ao-189   
+3    andrew j. higgins  t-ao-190   
+4   benjamin isherwood  t-ao-191   
+5        henry eckford  t-ao-192   
+6      walter s. diehl  t-ao-193   
+7        john ericsson  t-ao-194   
+8        leroy grumman  t-ao-195   
+9              kanawha  t-ao-196   
+10               pecos  t-ao-197   
+11            big horn  t-ao-198   
+12          tippecanoe  t-ao-199   
+13           guadalupe  t-ao-200   
+14            patuxent  t-ao-201   
+15               yukon  t-ao-202   
+16             laramie  t-ao-203   
+17        rappahannock  t-ao-204   
+
+                                               status  \
+0               active—southern california duty oiler   
+1          inactivated 1996, returned to service 2005   
+2                                              active   
+3   inactivated may 1996. sold to the chilean navy...   
+4   cancelled when 95.3% complete,\ntransferred to...   
+5   cancelled when 84% complete,\ntransferred to t...   
+6                                              active   
+7                                              active   
+8                                              active   
+9                                              active   
+10                                             active   
+11                                             active   
+12                                             active   
+13                                             active   
+14                                             active   
+15                                             active   
+16                                             active   
+17                                             active   
+
+                                        years_active nvr_npage  \
+0                                       1986–present     ao187   
+1                 1987-1996; 2005-2006; 2010-present     ao188   
+2                            1987-1996; 1998–present     ao189   
+3              1987-1996 (usa); 2010–present (chile)     ao190   
+4   launched 1988, christened 1991, never in service     ao191   
+5                    launched 1989, never in service     ao192   
+6                                       1988–present     ao193   
+7                                       1991–present     ao194   
+8                                       1989–present     ao195   
+9                                       1991–present     ao196   
+10                                      1990–present     ao197   
+11                                      1992–present     ao198   
+12                                      1993–present     ao199   
+13                                      1992–present     ao200   
+14                                      1995–present     ao201   
+15                                      1994–present     ao202   
+16                                      1996–present     ao203   
+17                                      1995–present     ao204   
+
+    num_years_active  
+0                  0  
+1               1987  
+2               1987  
+3               1987  
+4                  0  
+5                  0  
+6                  0  
+7                  0  
+8                  0  
+9                  0  
+10                 0  
+11                 0  
+12                 0  
+13                 0  
+14                 0  
+15                 0  
+16                 0  
+17                 0  
+Sample 2937 - Plan 1: Table after operation: [['ship', 'hull_no_', 'status', 'years_active', 'nvr_npage', 'num_years_active'], ['henry j. kaiser', 't-ao-187', 'active—southern california duty oiler', '1986–present', 'ao187', 0], ['joshua humphreys', 't-ao-188', 'inactivated 1996, returned to service 2005', '1987-1996; 2005-2006; 2010-present', 'ao188', 1987], ['john lenthall', 't-ao-189', 'active', '1987-1996; 1998–present', 'ao189', 1987], ['andrew j. higgins', 't-ao-190', 'inactivated may 1996. sold to the chilean navy may 2009. towed to atlantic marine alabama shipyard, mobile, alabama, september 2009 for three-month refit. commissioned in chilean navy on 10 february 2010 and renamed almirante montt.[1]', '1987-1996 (usa); 2010–present (chile)', 'ao190', 1987], ['benjamin isherwood', 't-ao-191', 'cancelled when 95.3% complete,\\ntransferred to the maritime administration,\\nlaid up in the james river reserve fleet,\\nscrapped in 2011', 'launched 1988, christened 1991, never in service', 'ao191', 0], ['henry eckford', 't-ao-192', 'cancelled when 84% complete,\\ntransferred to the maritime administration,\\nlaid up in the james river reserve fleet,\\nscrapped in 2011', 'launched 1989, never in service', 'ao192', 0], ['walter s. diehl', 't-ao-193', 'active', '1988–present', 'ao193', 0], ['john ericsson', 't-ao-194', 'active', '1991–present', 'ao194', 0], ['leroy grumman', 't-ao-195', 'active', '1989–present', 'ao195', 0], ['kanawha', 't-ao-196', 'active', '1991–present', 'ao196', 0], ['pecos', 't-ao-197', 'active', '1990–present', 'ao197', 0], ['big horn', 't-ao-198', 'active', '1992–present', 'ao198', 0], ['tippecanoe', 't-ao-199', 'active', '1993–present', 'ao199', 0], ['guadalupe', 't-ao-200', 'active', '1992–present', 'ao200', 0], ['patuxent', 't-ao-201', 'active', '1995–present', 'ao201', 0], ['yukon', 't-ao-202', 'active', '1994–present', 'ao202', 0], ['laramie', 't-ao-203', 'active', '1996–present', 'ao203', 0], ['rappahannock', 't-ao-204', 'active', '1995–present', 'ao204', 0]]
+########################################################################################################################
+Sample 2937 - Plan 1: Operation 2: Split the 'years_active' values by the delimiter '-' to separate the start and end years.
+SQL execution error in operation 2: Execution failed on sql 'Write a SQL command that: Split the 'years_active' values by the delimiter '-' to separate the start and end years.': near "Write": syntax error
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['henry j. kaiser']]
+Groundtruth: ['Henry J. Kaiser']

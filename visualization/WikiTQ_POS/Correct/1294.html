@@ -1,0 +1,461 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how many total away games were played?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where 'home_away' is 'away'.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>round</td>
+<td>date</td>
+<td>home_away</td>
+<td>opponent_team</td>
+<td>score</td>
+<td>scorers</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">august 24, 2008</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">away</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ks vllaznia shkodër</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">august 30, 2008</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">away</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ks teuta durrës</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">migen memelli  42',</span></td>
+</tr>
+<tr>
+<td>3</td>
+<td>september 14, 2008</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">home</span></td>
+<td>kf partizani tirana</td>
+<td>2–1</td>
+<td>daniel xhafa  20', andi lila  90'</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">september 20, 2008</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">away</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ks apolonia fier</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">andi lila  28', migen memelli  32'</span></td>
+</tr>
+<tr>
+<td>5</td>
+<td>september 27, 2008</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">home</span></td>
+<td>ks flamurtari vlorë</td>
+<td>3–1</td>
+<td>migen memelli  17'  57'  61'</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">october 4, 2008</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">away</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ks bylis ballsh</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td>7</td>
+<td>october 19, 2008</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">home</span></td>
+<td>ks dinamo tirana</td>
+<td>2–1</td>
+<td>migen memelli  32', gjergji muzaka  51'</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">october 25, 2008</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">away</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ks shkumbini peqin</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td>9</td>
+<td>november 2, 2008</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">home</span></td>
+<td>ks besa kavaje</td>
+<td>1–1</td>
+<td>jetmir sefa  63',</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">november 9, 2008</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">away</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ks elbasani</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td>11</td>
+<td>november 15, 2008</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">home</span></td>
+<td>ks lushnja</td>
+<td>1–0</td>
+<td>laert ndoni (o.g)  13'</td>
+</tr>
+<tr>
+<td>12</td>
+<td>november 23, 2008</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">home</span></td>
+<td>ks vllaznia shkoder</td>
+<td>1–1</td>
+<td>bledar devolli  79'</td>
+</tr>
+<tr>
+<td>13</td>
+<td>november 29, 2008</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">home</span></td>
+<td>ks teuta durres</td>
+<td>1–2</td>
+<td>jetmir sefa  77'</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">14</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 7, 2008</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">away</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kf partizani tirana</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2–2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jetmir sefa  2', migen memelli  82'</span></td>
+</tr>
+<tr>
+<td>15</td>
+<td>december 13, 2008</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">home</span></td>
+<td>ks apolonia fier</td>
+<td>3–0</td>
+<td>daniel xhafa  37'  48', andi lila  64'</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">16</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">december 21, 2008</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">away</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ks flamurtari vlorë</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td>17</td>
+<td>december 27, 2008</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">home</span></td>
+<td>ks bylis ballsh</td>
+<td>6–2</td>
+<td>pedro neves (o.g)  2', migen memelli  4'  35'  57', gjergji muzaka  13', daniel xhafa  32'</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">18</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">january 31, 2009</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">away</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ks dinamo tirana</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2–4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">migen memelli  8'  77', ansi agolli  58', daniel xhafa  88'</span></td>
+</tr>
+<tr>
+<td>19</td>
+<td>february 5, 2009</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">home</span></td>
+<td>ks shkumbini peqin</td>
+<td>2–0</td>
+<td>andi lila  27', ansi agolli  70'</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">20</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">february 15, 2009</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">away</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ks besa kavaje</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1–3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">daniel xhafa  29', ansi agolli  53', migen memelli  73'</span></td>
+</tr>
+<tr>
+<td>21</td>
+<td>february 21, 2009</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">home</span></td>
+<td>ks elbasani</td>
+<td>0–0</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">22</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">march 1, 2009</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">away</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ks lushnja</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td>23</td>
+<td>march 7, 2009</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">home</span></td>
+<td>ks lushnja</td>
+<td>2–1</td>
+<td>migen memelli  22', devis mukaj  64'</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">24</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">march 15, 2009</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">away</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ks bylis ballsh</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">0–0</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;"></span></td>
+</tr>
+<tr>
+<td>25</td>
+<td>march 21, 2009</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">home</span></td>
+<td>apolonia fier</td>
+<td>2–0</td>
+<td>bledar devolli  32', devis mukaj  75'</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">26</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">april 5, 2009</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">away</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">flamurtari vlore</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1–2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">migen memelli  1'  37'</span></td>
+</tr>
+<tr>
+<td>27</td>
+<td>april 11, 2009</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">home</span></td>
+<td>kf elbasani</td>
+<td>3–0</td>
+<td>daniel xhafa  51', devis mukaj  77', migen memelli  86'</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">28</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">april 18, 2009</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">away</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">partizani tirana</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2–2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">daniel xhafa  56'  87'</span></td>
+</tr>
+<tr>
+<td>29</td>
+<td>april 25, 2009</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">home</span></td>
+<td>ks teuta durres</td>
+<td>4–1</td>
+<td>migen memelli  5'  74', daniel xhafa  41', ansi agolli  83'</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">30</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">may 2, 2009</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">away</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ks besa kavaje</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1–1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">migen memelli  20'</span></td>
+</tr>
+<tr>
+<td>31</td>
+<td>may 9, 2009</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">home</span></td>
+<td>ks shkumbini peqin</td>
+<td>3–1</td>
+<td>ahmed mujdragic (o.g)  18', gjergji muzaka  27', migen memelli  31'</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">32</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">may 16, 2009</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">away</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">dinamo tirana</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2–3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ansi agolli  12', sabien lila  40', ergys sorra  73'</span></td>
+</tr>
+<tr>
+<td>33</td>
+<td>may 23, 2009</td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">home</span></td>
+<td>ks vllaznia shkoder</td>
+<td>2–1</td>
+<td>devis mukaj  2', migen memelli  30'</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Count the number of rows.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>round</td>
+<td>date</td>
+<td>home_away</td>
+<td>opponent_team</td>
+<td>score</td>
+<td>scorers</td>
+</tr>
+<tr>
+<td>1</td>
+<td>august 24, 2008</td>
+<td>away</td>
+<td>ks vllaznia shkodër</td>
+<td>0–0</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>august 30, 2008</td>
+<td>away</td>
+<td>ks teuta durrës</td>
+<td>0–1</td>
+<td>migen memelli  42',</td>
+</tr>
+<tr>
+<td>4</td>
+<td>september 20, 2008</td>
+<td>away</td>
+<td>ks apolonia fier</td>
+<td>0–2</td>
+<td>andi lila  28', migen memelli  32'</td>
+</tr>
+<tr>
+<td>6</td>
+<td>october 4, 2008</td>
+<td>away</td>
+<td>ks bylis ballsh</td>
+<td>0–0</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>october 25, 2008</td>
+<td>away</td>
+<td>ks shkumbini peqin</td>
+<td>0–0</td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td>november 9, 2008</td>
+<td>away</td>
+<td>ks elbasani</td>
+<td>1–0</td>
+<td></td>
+</tr>
+<tr>
+<td>14</td>
+<td>december 7, 2008</td>
+<td>away</td>
+<td>kf partizani tirana</td>
+<td>2–2</td>
+<td>jetmir sefa  2', migen memelli  82'</td>
+</tr>
+<tr>
+<td>16</td>
+<td>december 21, 2008</td>
+<td>away</td>
+<td>ks flamurtari vlorë</td>
+<td>2–0</td>
+<td></td>
+</tr>
+<tr>
+<td>18</td>
+<td>january 31, 2009</td>
+<td>away</td>
+<td>ks dinamo tirana</td>
+<td>2–4</td>
+<td>migen memelli  8'  77', ansi agolli  58', daniel xhafa  88'</td>
+</tr>
+<tr>
+<td>20</td>
+<td>february 15, 2009</td>
+<td>away</td>
+<td>ks besa kavaje</td>
+<td>1–3</td>
+<td>daniel xhafa  29', ansi agolli  53', migen memelli  73'</td>
+</tr>
+<tr>
+<td>22</td>
+<td>march 1, 2009</td>
+<td>away</td>
+<td>ks lushnja</td>
+<td>0–0</td>
+<td></td>
+</tr>
+<tr>
+<td>24</td>
+<td>march 15, 2009</td>
+<td>away</td>
+<td>ks bylis ballsh</td>
+<td>0–0</td>
+<td></td>
+</tr>
+<tr>
+<td>26</td>
+<td>april 5, 2009</td>
+<td>away</td>
+<td>flamurtari vlore</td>
+<td>1–2</td>
+<td>migen memelli  1'  37'</td>
+</tr>
+<tr>
+<td>28</td>
+<td>april 18, 2009</td>
+<td>away</td>
+<td>partizani tirana</td>
+<td>2–2</td>
+<td>daniel xhafa  56'  87'</td>
+</tr>
+<tr>
+<td>30</td>
+<td>may 2, 2009</td>
+<td>away</td>
+<td>ks besa kavaje</td>
+<td>1–1</td>
+<td>migen memelli  20'</td>
+</tr>
+<tr>
+<td>32</td>
+<td>may 16, 2009</td>
+<td>away</td>
+<td>dinamo tirana</td>
+<td>2–3</td>
+<td>ansi agolli  12', sabien lila  40', ergys sorra  73'</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>row_count</td>
+</tr>
+<tr>
+<td>16</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[16]]</h3>
+</body></html>

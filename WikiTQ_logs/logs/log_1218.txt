@@ -1,0 +1,91 @@
+************************************************************************************************************************
+Sample 1218 - Plan 1: Query: where is the first men's division held at?
+Sample 1218 - Plan 1: Groundtruth: ['Tasmania']
+Sample 1218 - Plan 1: X-Original table pd: 
+    year state_territory_men_s_division state_territory_women_s_division  \
+0   2012                     queensland                  new south wales   
+1   2012                new south wales                  new south wales   
+2   2011                new south wales                  new south wales   
+3   2010              western australia                                    
+4   2009                     queensland                                    
+5   2008                     queensland                                    
+6   2007                new south wales                                    
+7   2006                     queensland                                    
+8   2005                     queensland                                    
+9   2004                     queensland                                    
+10  2003                new south wales                                    
+11  2002             northern territory                                    
+12  2001                       tasmania                                    
+
+   major_centres_division community_division women_s_division  
+0                                                              
+1                  darwin   brothers in arms    bush potatoes  
+2          maranoa murris         gap angels    bush potatoes  
+3                                                              
+4               alkupitja        tangentyere  new south wales  
+5               katherine           cooktown  new south wales  
+6               alkupitja         cat tigers      cga cougars  
+7           alice springs    melville island           darwin  
+8           alice springs          alkupitja           darwin  
+9           alice springs          normanton    tennant creek  
+10                 darwin                                      
+11                 darwin                                      
+12                                                             
+Sample 1218 - Plan 1: Caption: none
+Sample 1218 - Plan 1: Original table: [['year', 'state_territory_men_s_division', 'state_territory_women_s_division', 'major_centres_division', 'community_division', 'women_s_division'], ['2012', 'queensland', 'new south wales', '', '', ''], ['2012', 'new south wales', 'new south wales', 'darwin', 'brothers in arms', 'bush potatoes'], ['2011', 'new south wales', 'new south wales', 'maranoa murris', 'gap angels', 'bush potatoes'], ['2010', 'western australia', '', '', '', ''], ['2009', 'queensland', '', 'alkupitja', 'tangentyere', 'new south wales'], ['2008', 'queensland', '', 'katherine', 'cooktown', 'new south wales'], ['2007', 'new south wales', '', 'alkupitja', 'cat tigers', 'cga cougars'], ['2006', 'queensland', '', 'alice springs', 'melville island', 'darwin'], ['2005', 'queensland', '', 'alice springs', 'alkupitja', 'darwin'], ['2004', 'queensland', '', 'alice springs', 'normanton', 'tennant creek'], ['2003', 'new south wales', '', 'darwin', '', ''], ['2002', 'northern territory', '', 'darwin', '', ''], ['2001', 'tasmania', '', '', '', '']]
+########################################################################################################################
+Sample 1218 - Plan 1: Operation 1: Select the row where the 'state_territory_men_s_division' is not empty.
+Sample 1218 - Plan 1: Selected indices: [[0, 1], [11, 1], [12, 1], [7, 1], [2, 1], [8, 1], [3, 1], [6, 1], [1, 1], [10, 1], [5, 1], [9, 1], [4, 1]]
+Sample 1218 - Plan 1: X-Table after operation df:
+    year state_territory_men_s_division state_territory_women_s_division  \
+0   2012                     queensland                  new south wales   
+1   2012                new south wales                  new south wales   
+2   2011                new south wales                  new south wales   
+3   2010              western australia                                    
+4   2009                     queensland                                    
+5   2008                     queensland                                    
+6   2007                new south wales                                    
+7   2006                     queensland                                    
+8   2005                     queensland                                    
+9   2004                     queensland                                    
+10  2003                new south wales                                    
+11  2002             northern territory                                    
+12  2001                       tasmania                                    
+
+   major_centres_division community_division women_s_division  
+0                                                              
+1                  darwin   brothers in arms    bush potatoes  
+2          maranoa murris         gap angels    bush potatoes  
+3                                                              
+4               alkupitja        tangentyere  new south wales  
+5               katherine           cooktown  new south wales  
+6               alkupitja         cat tigers      cga cougars  
+7           alice springs    melville island           darwin  
+8           alice springs          alkupitja           darwin  
+9           alice springs          normanton    tennant creek  
+10                 darwin                                      
+11                 darwin                                      
+12                                                             
+Sample 1218 - Plan 1: Table after operation: [['year', 'state_territory_men_s_division', 'state_territory_women_s_division', 'major_centres_division', 'community_division', 'women_s_division'], [2012, 'queensland', 'new south wales', '', '', ''], [2012, 'new south wales', 'new south wales', 'darwin', 'brothers in arms', 'bush potatoes'], [2011, 'new south wales', 'new south wales', 'maranoa murris', 'gap angels', 'bush potatoes'], [2010, 'western australia', '', '', '', ''], [2009, 'queensland', '', 'alkupitja', 'tangentyere', 'new south wales'], [2008, 'queensland', '', 'katherine', 'cooktown', 'new south wales'], [2007, 'new south wales', '', 'alkupitja', 'cat tigers', 'cga cougars'], [2006, 'queensland', '', 'alice springs', 'melville island', 'darwin'], [2005, 'queensland', '', 'alice springs', 'alkupitja', 'darwin'], [2004, 'queensland', '', 'alice springs', 'normanton', 'tennant creek'], [2003, 'new south wales', '', 'darwin', '', ''], [2002, 'northern territory', '', 'darwin', '', ''], [2001, 'tasmania', '', '', '', '']]
+########################################################################################################################
+Sample 1218 - Plan 1: Operation 2: Select the 'state_territory_men_s_division' column from the selected row.
+Sample 1218 - Plan 1: Selected indices: []
+Sample 1218 - Plan 1: X-Table after operation df:
+   state_territory_men_s_division
+0                      queensland
+1                 new south wales
+2                 new south wales
+3               western australia
+4                      queensland
+5                      queensland
+6                 new south wales
+7                      queensland
+8                      queensland
+9                      queensland
+10                new south wales
+11             northern territory
+12                       tasmania
+Sample 1218 - Plan 1: Table after operation: [['state_territory_men_s_division'], ['queensland'], ['new south wales'], ['new south wales'], ['western australia'], ['queensland'], ['queensland'], ['new south wales'], ['queensland'], ['queensland'], ['queensland'], ['new south wales'], ['northern territory'], ['tasmania']]
+Fall-back: FALSE
+Answer from plan 1: [['queensland'], ['new south wales'], ['new south wales'], ['western australia'], ['queensland'], ['queensland'], ['new south wales'], ['queensland'], ['queensland'], ['queensland'], ['new south wales'], ['northern territory'], ['tasmania']]
+Groundtruth: ['Tasmania']

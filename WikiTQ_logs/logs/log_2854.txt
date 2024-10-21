@@ -1,0 +1,177 @@
+************************************************************************************************************************
+Sample 2854 - Plan 1: Query: which building held the record for tallest freestanding structure before the burj khalifa?
+Sample 2854 - Plan 1: Groundtruth: ['CN Tower']
+Sample 2854 - Plan 1: X-Original table pd: 
+                     name                               country  \
+0   great pyramid of giza                                 egypt   
+1       lincoln cathedral                               england   
+2       st. mary's church                               germany   
+3    strasbourg cathedral  germany and/or france (today france)   
+4              st nikolai                               germany   
+5    notre-dame cathedral                                france   
+6       cologne cathedral                               germany   
+7     washington monument                         united states   
+8            eiffel tower                                france   
+9       chrysler building                         united states   
+10  empire state building                         united states   
+11        ostankino tower                                russia   
+12               cn tower                                canada   
+13           burj khalifa                  united arab emirates   
+
+                town height_nmetres___ft structural_type   held_record  \
+0               giza           146 / 480       mausoleum  2570 bc–1311   
+1            lincoln         159.7 / 524          church     1311–1549   
+2          stralsund           151 / 500          church     1549–1647   
+3         strasbourg           142 / 470          church     1647–1874   
+4            hamburg         147.3 / 483          church     1874–1876   
+5              rouen           151 / 500          church     1876–1880   
+6            cologne         157.4 / 516          church     1880–1884   
+7   washington, d.c.         169.3 / 555        monument     1884–1889   
+8              paris         300.6 / 986           tower     1889–1930   
+9      new york city         319 / 1,046      skyscraper     1930–1931   
+10     new york city         448 / 1,472      skyscraper     1931–1967   
+11            moscow         540 / 1,772           tower     1967–1976   
+12           toronto         553 / 1,815           tower     1976–2007   
+13             dubai       829.8 / 2,722      skyscraper  2007–present   
+
+                                                notes  
+0   due to erosion today it stands at the height o...  
+1   spire collapsed in 1549; today, stands at a he...  
+2   spire destroyed by lightning in 1647; today st...  
+3                                                      
+4   due to aerial bombing in world war ii the nave...  
+5                                                      
+6                                                      
+7                                                      
+8   currently stands at a height of 324 metres (1,...  
+9                                                      
+10                                                     
+11                                                     
+12                                                     
+13                      topped-out on 17 january 2009  
+Sample 2854 - Plan 1: Caption: none
+Sample 2854 - Plan 1: Original table: [['name', 'country', 'town', 'height_nmetres___ft', 'structural_type', 'held_record', 'notes'], ['great pyramid of giza', 'egypt', 'giza', '146 / 480', 'mausoleum', '2570 bc–1311', 'due to erosion today it stands at the height of 138.8 metres (455\xa0ft).'], ['lincoln cathedral', 'england', 'lincoln', '159.7 / 524', 'church', '1311–1549', 'spire collapsed in 1549; today, stands at a height of 83 metres (272\xa0ft).'], ["st. mary's church", 'germany', 'stralsund', '151 / 500', 'church', '1549–1647', 'spire destroyed by lightning in 1647; today stands at a height of 104 metres (341\xa0ft).'], ['strasbourg cathedral', 'germany and/or france (today france)', 'strasbourg', '142 / 470', 'church', '1647–1874', ''], ['st nikolai', 'germany', 'hamburg', '147.3 / 483', 'church', '1874–1876', 'due to aerial bombing in world war ii the nave was demolished; only the spire remains.'], ['notre-dame cathedral', 'france', 'rouen', '151 / 500', 'church', '1876–1880', ''], ['cologne cathedral', 'germany', 'cologne', '157.4 / 516', 'church', '1880–1884', ''], ['washington monument', 'united states', 'washington, d.c.', '169.3 / 555', 'monument', '1884–1889', ''], ['eiffel tower', 'france', 'paris', '300.6 / 986', 'tower', '1889–1930', 'currently stands at a height of 324 metres (1,063\xa0ft).'], ['chrysler building', 'united states', 'new york city', '319 / 1,046', 'skyscraper', '1930–1931', ''], ['empire state building', 'united states', 'new york city', '448 / 1,472', 'skyscraper', '1931–1967', ''], ['ostankino tower', 'russia', 'moscow', '540 / 1,772', 'tower', '1967–1976', ''], ['cn tower', 'canada', 'toronto', '553 / 1,815', 'tower', '1976–2007', ''], ['burj khalifa', 'united arab emirates', 'dubai', '829.8 / 2,722', 'skyscraper', '2007–present', 'topped-out on 17 january 2009']]
+########################################################################################################################
+Sample 2854 - Plan 1: Operation 1: Select rows where the 'held_record' column is not empty.
+Sample 2854 - Plan 1: Selected indices: [[10, 5], [5, 5], [6, 5], [1, 5], [9, 5], [4, 5], [0, 5], [11, 5], [12, 5], [7, 5], [2, 5], [13, 5], [8, 5], [3, 5]]
+Sample 2854 - Plan 1: X-Table after operation df:
+                     name                               country  \
+0   great pyramid of giza                                 egypt   
+1       lincoln cathedral                               england   
+2       st. mary's church                               germany   
+3    strasbourg cathedral  germany and/or france (today france)   
+4              st nikolai                               germany   
+5    notre-dame cathedral                                france   
+6       cologne cathedral                               germany   
+7     washington monument                         united states   
+8            eiffel tower                                france   
+9       chrysler building                         united states   
+10  empire state building                         united states   
+11        ostankino tower                                russia   
+12               cn tower                                canada   
+13           burj khalifa                  united arab emirates   
+
+                town height_nmetres___ft structural_type   held_record  \
+0               giza           146 / 480       mausoleum  2570 bc–1311   
+1            lincoln         159.7 / 524          church     1311–1549   
+2          stralsund           151 / 500          church     1549–1647   
+3         strasbourg           142 / 470          church     1647–1874   
+4            hamburg         147.3 / 483          church     1874–1876   
+5              rouen           151 / 500          church     1876–1880   
+6            cologne         157.4 / 516          church     1880–1884   
+7   washington, d.c.         169.3 / 555        monument     1884–1889   
+8              paris         300.6 / 986           tower     1889–1930   
+9      new york city         319 / 1,046      skyscraper     1930–1931   
+10     new york city         448 / 1,472      skyscraper     1931–1967   
+11            moscow         540 / 1,772           tower     1967–1976   
+12           toronto         553 / 1,815           tower     1976–2007   
+13             dubai       829.8 / 2,722      skyscraper  2007–present   
+
+                                                notes  
+0   due to erosion today it stands at the height o...  
+1   spire collapsed in 1549; today, stands at a he...  
+2   spire destroyed by lightning in 1647; today st...  
+3                                                      
+4   due to aerial bombing in world war ii the nave...  
+5                                                      
+6                                                      
+7                                                      
+8   currently stands at a height of 324 metres (1,...  
+9                                                      
+10                                                     
+11                                                     
+12                                                     
+13                      topped-out on 17 january 2009  
+Sample 2854 - Plan 1: Table after operation: [['name', 'country', 'town', 'height_nmetres___ft', 'structural_type', 'held_record', 'notes'], ['great pyramid of giza', 'egypt', 'giza', '146 / 480', 'mausoleum', '2570 bc–1311', 'due to erosion today it stands at the height of 138.8 metres (455\xa0ft).'], ['lincoln cathedral', 'england', 'lincoln', '159.7 / 524', 'church', '1311–1549', 'spire collapsed in 1549; today, stands at a height of 83 metres (272\xa0ft).'], ["st. mary's church", 'germany', 'stralsund', '151 / 500', 'church', '1549–1647', 'spire destroyed by lightning in 1647; today stands at a height of 104 metres (341\xa0ft).'], ['strasbourg cathedral', 'germany and/or france (today france)', 'strasbourg', '142 / 470', 'church', '1647–1874', ''], ['st nikolai', 'germany', 'hamburg', '147.3 / 483', 'church', '1874–1876', 'due to aerial bombing in world war ii the nave was demolished; only the spire remains.'], ['notre-dame cathedral', 'france', 'rouen', '151 / 500', 'church', '1876–1880', ''], ['cologne cathedral', 'germany', 'cologne', '157.4 / 516', 'church', '1880–1884', ''], ['washington monument', 'united states', 'washington, d.c.', '169.3 / 555', 'monument', '1884–1889', ''], ['eiffel tower', 'france', 'paris', '300.6 / 986', 'tower', '1889–1930', 'currently stands at a height of 324 metres (1,063\xa0ft).'], ['chrysler building', 'united states', 'new york city', '319 / 1,046', 'skyscraper', '1930–1931', ''], ['empire state building', 'united states', 'new york city', '448 / 1,472', 'skyscraper', '1931–1967', ''], ['ostankino tower', 'russia', 'moscow', '540 / 1,772', 'tower', '1967–1976', ''], ['cn tower', 'canada', 'toronto', '553 / 1,815', 'tower', '1976–2007', ''], ['burj khalifa', 'united arab emirates', 'dubai', '829.8 / 2,722', 'skyscraper', '2007–present', 'topped-out on 17 january 2009']]
+########################################################################################################################
+Sample 2854 - Plan 1: Operation 2: Order the table by the 'held_record' column in descending order.
+Sample 2854 - Plan 1: Selected indices: [[10, 5], [5, 5], [6, 5], [1, 5], [9, 5], [4, 5], [0, 5], [11, 5], [12, 5], [7, 5], [2, 5], [13, 5], [8, 5], [3, 5]]
+Sample 2854 - Plan 1: X-Table after operation df:
+                     name                               country  \
+0   great pyramid of giza                                 egypt   
+1            burj khalifa                  united arab emirates   
+2                cn tower                                canada   
+3         ostankino tower                                russia   
+4   empire state building                         united states   
+5       chrysler building                         united states   
+6            eiffel tower                                france   
+7     washington monument                         united states   
+8       cologne cathedral                               germany   
+9    notre-dame cathedral                                france   
+10             st nikolai                               germany   
+11   strasbourg cathedral  germany and/or france (today france)   
+12      st. mary's church                               germany   
+13      lincoln cathedral                               england   
+
+                town height_nmetres___ft structural_type   held_record  \
+0               giza           146 / 480       mausoleum  2570 bc–1311   
+1              dubai       829.8 / 2,722      skyscraper  2007–present   
+2            toronto         553 / 1,815           tower     1976–2007   
+3             moscow         540 / 1,772           tower     1967–1976   
+4      new york city         448 / 1,472      skyscraper     1931–1967   
+5      new york city         319 / 1,046      skyscraper     1930–1931   
+6              paris         300.6 / 986           tower     1889–1930   
+7   washington, d.c.         169.3 / 555        monument     1884–1889   
+8            cologne         157.4 / 516          church     1880–1884   
+9              rouen           151 / 500          church     1876–1880   
+10           hamburg         147.3 / 483          church     1874–1876   
+11        strasbourg           142 / 470          church     1647–1874   
+12         stralsund           151 / 500          church     1549–1647   
+13           lincoln         159.7 / 524          church     1311–1549   
+
+                                                notes  
+0   due to erosion today it stands at the height o...  
+1                       topped-out on 17 january 2009  
+2                                                      
+3                                                      
+4                                                      
+5                                                      
+6   currently stands at a height of 324 metres (1,...  
+7                                                      
+8                                                      
+9                                                      
+10  due to aerial bombing in world war ii the nave...  
+11                                                     
+12  spire destroyed by lightning in 1647; today st...  
+13  spire collapsed in 1549; today, stands at a he...  
+Sample 2854 - Plan 1: Table after operation: [['name', 'country', 'town', 'height_nmetres___ft', 'structural_type', 'held_record', 'notes'], ['great pyramid of giza', 'egypt', 'giza', '146 / 480', 'mausoleum', '2570 bc–1311', 'due to erosion today it stands at the height of 138.8 metres (455\xa0ft).'], ['burj khalifa', 'united arab emirates', 'dubai', '829.8 / 2,722', 'skyscraper', '2007–present', 'topped-out on 17 january 2009'], ['cn tower', 'canada', 'toronto', '553 / 1,815', 'tower', '1976–2007', ''], ['ostankino tower', 'russia', 'moscow', '540 / 1,772', 'tower', '1967–1976', ''], ['empire state building', 'united states', 'new york city', '448 / 1,472', 'skyscraper', '1931–1967', ''], ['chrysler building', 'united states', 'new york city', '319 / 1,046', 'skyscraper', '1930–1931', ''], ['eiffel tower', 'france', 'paris', '300.6 / 986', 'tower', '1889–1930', 'currently stands at a height of 324 metres (1,063\xa0ft).'], ['washington monument', 'united states', 'washington, d.c.', '169.3 / 555', 'monument', '1884–1889', ''], ['cologne cathedral', 'germany', 'cologne', '157.4 / 516', 'church', '1880–1884', ''], ['notre-dame cathedral', 'france', 'rouen', '151 / 500', 'church', '1876–1880', ''], ['st nikolai', 'germany', 'hamburg', '147.3 / 483', 'church', '1874–1876', 'due to aerial bombing in world war ii the nave was demolished; only the spire remains.'], ['strasbourg cathedral', 'germany and/or france (today france)', 'strasbourg', '142 / 470', 'church', '1647–1874', ''], ["st. mary's church", 'germany', 'stralsund', '151 / 500', 'church', '1549–1647', 'spire destroyed by lightning in 1647; today stands at a height of 104 metres (341\xa0ft).'], ['lincoln cathedral', 'england', 'lincoln', '159.7 / 524', 'church', '1311–1549', 'spire collapsed in 1549; today, stands at a height of 83 metres (272\xa0ft).']]
+########################################################################################################################
+Sample 2854 - Plan 1: Operation 3: Select row number 2.
+Sample 2854 - Plan 1: Selected indices: []
+Sample 2854 - Plan 1: X-Table after operation df:
+           name               country   town height_nmetres___ft  \
+0  burj khalifa  united arab emirates  dubai       829.8 / 2,722   
+
+  structural_type   held_record                          notes  
+0      skyscraper  2007–present  topped-out on 17 january 2009  
+Sample 2854 - Plan 1: Table after operation: [['name', 'country', 'town', 'height_nmetres___ft', 'structural_type', 'held_record', 'notes'], ['burj khalifa', 'united arab emirates', 'dubai', '829.8 / 2,722', 'skyscraper', '2007–present', 'topped-out on 17 january 2009']]
+########################################################################################################################
+Sample 2854 - Plan 1: Operation 4: Select the 'name' column.
+Sample 2854 - Plan 1: Selected indices: []
+Sample 2854 - Plan 1: X-Table after operation df:
+           name
+0  burj khalifa
+Sample 2854 - Plan 1: Table after operation: [['name'], ['burj khalifa']]
+Fall-back: FALSE
+Answer from plan 1: [['burj khalifa']]
+Groundtruth: ['CN Tower']

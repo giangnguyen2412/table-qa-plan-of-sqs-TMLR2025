@@ -1,0 +1,58 @@
+************************************************************************************************************************
+Sample 3899 - Plan 1: Query: who would be the successor after the speaker of the house of representatives in an emergency?
+Sample 3899 - Plan 1: Groundtruth: ['Attorney General of New Mexico']
+Sample 3899 - Plan 1: X-Original table pd: 
+       _                                    office          current_officer
+0    NaN               may succeed to governorship                         
+1    NaN                    governor of new mexico          susana martinez
+2    1.0         lieutenant governor of new mexico             john sanchez
+3    2.0          secretary of state of new mexico             dianna duran
+4    3.0       president pro tempore of the senate           mary kay papen
+5    4.0   speaker of the house of representatives          w. ken martinez
+6    NaN  may serve as emergency interim successor                         
+7    4.0            attorney general of new mexico                gary king
+8    5.0                             state auditor          hector balderas
+9    6.0                           state treasurer           james b. lewis
+10   7.0              commissioner of public lands               ray powell
+11   8.0       public regulation commission, chair            patrick lyons
+12   9.0            public regulation commissioner            karen montoya
+13  10.0            public regulation commissioner         valerie espinoza
+14  11.0            public regulation commissioner  theresa becenti–aguilar
+15  12.0            public regulation commissioner                 ben hall
+Sample 3899 - Plan 1: Caption: none
+Sample 3899 - Plan 1: Original table: [['_', 'office', 'current_officer'], ['', 'may succeed to governorship', ''], ['', 'governor of new mexico', 'susana martinez'], ['1', 'lieutenant governor of new mexico', 'john sanchez'], ['2', 'secretary of state of new mexico', 'dianna duran'], ['3', 'president pro tempore of the senate', 'mary kay papen'], ['4', 'speaker of the house of representatives', 'w. ken martinez'], ['', 'may serve as emergency interim successor', ''], ['4', 'attorney general of new mexico', 'gary king'], ['5', 'state auditor', 'hector balderas'], ['6', 'state treasurer', 'james b. lewis'], ['7', 'commissioner of public lands', 'ray powell'], ['8', 'public regulation commission, chair', 'patrick lyons'], ['9', 'public regulation commissioner', 'karen montoya'], ['10', 'public regulation commissioner', 'valerie espinoza'], ['11', 'public regulation commissioner', 'theresa becenti–aguilar'], ['12', 'public regulation commissioner', 'ben hall']]
+########################################################################################################################
+Sample 3899 - Plan 1: Operation 1: Select rows where the 'current_officer' is empty (nan).
+Sample 3899 - Plan 1: Selected indices: [[0, 2], [6, 2]]
+Sample 3899 - Plan 1: X-Table after operation df:
+    _                                    office  current_officer
+0 NaN               may succeed to governorship              NaN
+1 NaN  may serve as emergency interim successor              NaN
+Sample 3899 - Plan 1: Table after operation: [['_', 'office', 'current_officer'], [None, 'may succeed to governorship', ''], [None, 'may serve as emergency interim successor', '']]
+########################################################################################################################
+Sample 3899 - Plan 1: Operation 2: Order the table by the '_column' in ascending order.
+Sample 3899 - Plan 1: Selected indices: [[1, 0], [0, 0]]
+Sample 3899 - Plan 1: X-Table after operation df:
+    _                                    office  current_officer
+0 NaN               may succeed to governorship              NaN
+1 NaN  may serve as emergency interim successor              NaN
+Sample 3899 - Plan 1: Table after operation: [['_', 'office', 'current_officer'], [None, 'may succeed to governorship', None], [None, 'may serve as emergency interim successor', None]]
+########################################################################################################################
+Sample 3899 - Plan 1: Operation 3: Select the row number after the row where the 'current_officer' is 'speaker of the house of representatives'.
+Sample 3899 - Plan 1: Selected indices: []
+Sample 3899 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [_, office, current_officer]
+Index: []
+Sample 3899 - Plan 1: Table after operation: [['_', 'office', 'current_officer']]
+########################################################################################################################
+Sample 3899 - Plan 1: Operation 4: Select the 'current_officer' column.
+Sample 3899 - Plan 1: Selected indices: []
+Sample 3899 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [current_officer]
+Index: []
+Sample 3899 - Plan 1: Table after operation: [['current_officer']]
+Fall-back: TRUE
+Answer from plan 1: [['may serve as emergency interim successor']]
+Groundtruth: ['Attorney General of New Mexico']

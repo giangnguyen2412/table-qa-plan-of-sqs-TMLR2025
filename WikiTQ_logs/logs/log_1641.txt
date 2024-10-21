@@ -1,0 +1,70 @@
+************************************************************************************************************************
+Sample 1641 - Plan 1: Query: what is the total number of yachts on the list whose names start with an a?
+Sample 1641 - Plan 1: Groundtruth: ['3']
+Sample 1641 - Plan 1: X-Original table pd: 
+   position sail_number                 yacht state_country  \
+0         1        us17              sayonara           usa   
+1         2          c1           brindabella           nsw   
+2         3      yc1000               ausmaid            sa   
+3         4       aus70            ragamuffin           nsw   
+4         5        cok1                 nokia            ci   
+5         6         sm1                 fudge           vic   
+6         7        6606                 quest           nsw   
+7         8        9090      industrial quest           qld   
+8         9        4826      aspect computing           nsw   
+9        10        8338  afr midnight rambler           nsw   
+
+           yacht_type  loa_n_metres_                 skipper  \
+0       farr ilc maxi          24.13           larry ellison   
+1           jutson 79          24.07             george snow   
+2             farr 47          14.24            kevan pearce   
+3             farr 50          15.15             syd fischer   
+4     farr ketch maxi          25.20              david witt   
+5           elliot 56          17.07            peter hansen   
+6     nelson marek 46          14.12               bob steel   
+7     nelson marek 43          13.11            kevin miller   
+8  radford 16.5 sloop          16.50            david pescud   
+9             hick 35          10.66  ed psaltis\nbob thomas   
+
+  elapsed_time_nd_hh_mm_ss  
+0               2:19:03:32  
+1               2:21:55:06  
+2               3:06:02:29  
+3               3:06:11:29  
+4               3:09:19:00  
+5               3:11:00:26  
+6               3:14:41:28  
+7               3:14:58:46  
+8               3:15:28:24  
+9               3:16:04:40  
+Sample 1641 - Plan 1: Caption: none
+Sample 1641 - Plan 1: Original table: [['position', 'sail_number', 'yacht', 'state_country', 'yacht_type', 'loa_n_metres_', 'skipper', 'elapsed_time_nd_hh_mm_ss'], ['1', 'us17', 'sayonara', 'usa', 'farr ilc maxi', '24.13', 'larry ellison', '2:19:03:32'], ['2', 'c1', 'brindabella', 'nsw', 'jutson 79', '24.07', 'george snow', '2:21:55:06'], ['3', 'yc1000', 'ausmaid', 'sa', 'farr 47', '14.24', 'kevan pearce', '3:06:02:29'], ['4', 'aus70', 'ragamuffin', 'nsw', 'farr 50', '15.15', 'syd fischer', '3:06:11:29'], ['5', 'cok1', 'nokia', 'ci', 'farr ketch maxi', '25.20', 'david witt', '3:09:19:00'], ['6', 'sm1', 'fudge', 'vic', 'elliot 56', '17.07', 'peter hansen', '3:11:00:26'], ['7', '6606', 'quest', 'nsw', 'nelson marek 46', '14.12', 'bob steel', '3:14:41:28'], ['8', '9090', 'industrial quest', 'qld', 'nelson marek 43', '13.11', 'kevin miller', '3:14:58:46'], ['9', '4826', 'aspect computing', 'nsw', 'radford 16.5 sloop', '16.50', 'david pescud', '3:15:28:24'], ['10', '8338', 'afr midnight rambler', 'nsw', 'hick 35', '10.66', 'ed psaltis\\nbob thomas', '3:16:04:40']]
+########################################################################################################################
+Sample 1641 - Plan 1: Operation 1: Select rows where the 'yacht' column starts with the letter 'a'.
+Sample 1641 - Plan 1: Selected indices: [[8, 2], [9, 2], [2, 2]]
+Sample 1641 - Plan 1: X-Table after operation df:
+   position sail_number                 yacht state_country  \
+0         3      yc1000               ausmaid            sa   
+1         9        4826      aspect computing           nsw   
+2        10        8338  afr midnight rambler           nsw   
+
+           yacht_type  loa_n_metres_                 skipper  \
+0             farr 47          14.24            kevan pearce   
+1  radford 16.5 sloop          16.50            david pescud   
+2             hick 35          10.66  ed psaltis\nbob thomas   
+
+  elapsed_time_nd_hh_mm_ss  
+0               3:06:02:29  
+1               3:15:28:24  
+2               3:16:04:40  
+Sample 1641 - Plan 1: Table after operation: [['position', 'sail_number', 'yacht', 'state_country', 'yacht_type', 'loa_n_metres_', 'skipper', 'elapsed_time_nd_hh_mm_ss'], [3, 'yc1000', 'ausmaid', 'sa', 'farr 47', 14.24, 'kevan pearce', '3:06:02:29'], [9, '4826', 'aspect computing', 'nsw', 'radford 16.5 sloop', 16.5, 'david pescud', '3:15:28:24'], [10, '8338', 'afr midnight rambler', 'nsw', 'hick 35', 10.66, 'ed psaltis\\nbob thomas', '3:16:04:40']]
+########################################################################################################################
+Sample 1641 - Plan 1: Operation 2: Count the number of rows.
+Sample 1641 - Plan 1: Selected indices: []
+Sample 1641 - Plan 1: X-Table after operation df:
+   row_count
+0          3
+Sample 1641 - Plan 1: Table after operation: [['row_count'], [3]]
+Fall-back: FALSE
+Answer from plan 1: [[3]]
+Groundtruth: ['3']

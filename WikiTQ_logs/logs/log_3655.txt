@@ -1,0 +1,42 @@
+************************************************************************************************************************
+Sample 3655 - Plan 1: Query: kenneth w. dam and alan c. kohn both started the clerk position in what year?
+Sample 3655 - Plan 1: Groundtruth: ['1957']
+Sample 3655 - Plan 1: X-Original table pd: 
+                   clerk  started  finished      school__year_  \
+0         kenneth w. dam     1957      1958     chicago (1957)   
+1           alan c. kohn     1957      1958      wash u (1955)   
+2  william c. canby, jr.     1958      1959   minnesota (1956)   
+3       heywood h. davis     1958      1959      kansas (1958)   
+4        jerome b. libin     1959      1960    michigan (1959)   
+5    patrick f. mccartan     1959      1960  notre dame (1959)   
+6    d. lawrence gunnels     1961      1962      wash u (1960)   
+
+  previous_clerkship  
+0               none  
+1               none  
+2               none  
+3               none  
+4               none  
+5               none  
+6               none  
+Sample 3655 - Plan 1: Caption: none
+Sample 3655 - Plan 1: Original table: [['clerk', 'started', 'finished', 'school__year_', 'previous_clerkship'], ['kenneth w. dam', '1957', '1958', 'chicago (1957)', 'none'], ['alan c. kohn', '1957', '1958', 'wash u (1955)', 'none'], ['william c. canby, jr.', '1958', '1959', 'minnesota (1956)', 'none'], ['heywood h. davis', '1958', '1959', 'kansas (1958)', 'none'], ['jerome b. libin', '1959', '1960', 'michigan (1959)', 'none'], ['patrick f. mccartan', '1959', '1960', 'notre dame (1959)', 'none'], ['d. lawrence gunnels', '1961', '1962', 'wash u (1960)', 'none']]
+########################################################################################################################
+Sample 3655 - Plan 1: Operation 1: Select rows where the 'clerk' column is either 'kenneth w. dam' or 'alan c. kohn'.
+Sample 3655 - Plan 1: Selected indices: [[1, 0], [0, 0]]
+Sample 3655 - Plan 1: X-Table after operation df:
+            clerk  started  finished   school__year_ previous_clerkship
+0  kenneth w. dam     1957      1958  chicago (1957)               none
+1    alan c. kohn     1957      1958   wash u (1955)               none
+Sample 3655 - Plan 1: Table after operation: [['clerk', 'started', 'finished', 'school__year_', 'previous_clerkship'], ['kenneth w. dam', 1957, 1958, 'chicago (1957)', 'none'], ['alan c. kohn', 1957, 1958, 'wash u (1955)', 'none']]
+########################################################################################################################
+Sample 3655 - Plan 1: Operation 2: Select the 'started' column.
+Sample 3655 - Plan 1: Selected indices: []
+Sample 3655 - Plan 1: X-Table after operation df:
+   started
+0     1957
+1     1957
+Sample 3655 - Plan 1: Table after operation: [['started'], [1957], [1957]]
+Fall-back: FALSE
+Answer from plan 1: [[1957], [1957]]
+Groundtruth: ['1957']

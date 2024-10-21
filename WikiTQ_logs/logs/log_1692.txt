@@ -1,0 +1,110 @@
+************************************************************************************************************************
+Sample 1692 - Plan 1: Query: what is the event with the largest distance?
+Sample 1692 - Plan 1: Groundtruth: ['Pan Arab Games']
+Sample 1692 - Plan 1: X-Original table pd: 
+    year                 competition               venue   position    event  \
+0   2007              pan arab games        cairo, egypt        4th    200 m   
+1   2008  asian indoor championships         doha, qatar        4th     60 m   
+2   2008  world indoor championships     valencia, spain   28th (h)     60 m   
+3   2008  world junior championships   bydgoszcz, poland        7th    200 m   
+4   2008               olympic games      beijing, china   40th (h)    200 m   
+5   2009          asian indoor games      hanoi, vietnam        4th     60 m   
+6   2009         world championships     berlin, germany  25th (qf)    200 m   
+7   2009         asian championships    guangzhou, china        1st    200 m   
+8   2010                 asian games    guangzhou, china        3rd    200 m   
+9   2011         asian championships          kobe, jpan        3rd    200 m   
+10  2011         world championships  daegu, south korea   48th (h)    200 m   
+11  2011              pan arab games         doha, qatar        5th    100 m   
+12  2011              pan arab games         doha, qatar        3rd  4x100 m   
+
+         notes  
+0   20.94 (nr)  
+1         6.81  
+2         6.88  
+3        21.10  
+4        21.00  
+5    6.72 (nr)  
+6        20.97  
+7        21.07  
+8        20.83  
+9        20.97  
+10       21.45  
+11       21.59  
+12       40.15  
+Sample 1692 - Plan 1: Caption: none
+Sample 1692 - Plan 1: Original table: [['year', 'competition', 'venue', 'position', 'event', 'notes'], ['2007', 'pan arab games', 'cairo, egypt', '4th', '200 m', '20.94 (nr)'], ['2008', 'asian indoor championships', 'doha, qatar', '4th', '60 m', '6.81'], ['2008', 'world indoor championships', 'valencia, spain', '28th (h)', '60 m', '6.88'], ['2008', 'world junior championships', 'bydgoszcz, poland', '7th', '200 m', '21.10'], ['2008', 'olympic games', 'beijing, china', '40th (h)', '200 m', '21.00'], ['2009', 'asian indoor games', 'hanoi, vietnam', '4th', '60 m', '6.72 (nr)'], ['2009', 'world championships', 'berlin, germany', '25th (qf)', '200 m', '20.97'], ['2009', 'asian championships', 'guangzhou, china', '1st', '200 m', '21.07'], ['2010', 'asian games', 'guangzhou, china', '3rd', '200 m', '20.83'], ['2011', 'asian championships', 'kobe, jpan', '3rd', '200 m', '20.97'], ['2011', 'world championships', 'daegu, south korea', '48th (h)', '200 m', '21.45'], ['2011', 'pan arab games', 'doha, qatar', '5th', '100 m', '21.59'], ['2011', 'pan arab games', 'doha, qatar', '3rd', '4x100 m', '40.15']]
+########################################################################################################################
+Sample 1692 - Plan 1: Operation 1: Extract the numerical value from the 'event' column then add column 'distance' to the existing table.
+Sample 1692 - Plan 1: Selected indices: [[0, 4], [1, 4], [2, 4], [3, 4], [4, 4], [5, 4], [6, 4], [7, 4], [8, 4], [9, 4], [10, 4], [11, 4], [12, 4]]
+Sample 1692 - Plan 1: X-Table after operation df:
+    year                 competition               venue   position    event  \
+0   2007              pan arab games        cairo, egypt        4th    200 m   
+1   2008  asian indoor championships         doha, qatar        4th     60 m   
+2   2008  world indoor championships     valencia, spain   28th (h)     60 m   
+3   2008  world junior championships   bydgoszcz, poland        7th    200 m   
+4   2008               olympic games      beijing, china   40th (h)    200 m   
+5   2009          asian indoor games      hanoi, vietnam        4th     60 m   
+6   2009         world championships     berlin, germany  25th (qf)    200 m   
+7   2009         asian championships    guangzhou, china        1st    200 m   
+8   2010                 asian games    guangzhou, china        3rd    200 m   
+9   2011         asian championships          kobe, jpan        3rd    200 m   
+10  2011         world championships  daegu, south korea   48th (h)    200 m   
+11  2011              pan arab games         doha, qatar        5th    100 m   
+12  2011              pan arab games         doha, qatar        3rd  4x100 m   
+
+         notes  distance  
+0   20.94 (nr)         0  
+1         6.81         0  
+2         6.88         0  
+3        21.10         0  
+4        21.00         0  
+5    6.72 (nr)         0  
+6        20.97         0  
+7        21.07         0  
+8        20.83         0  
+9        20.97         0  
+10       21.45         0  
+11       21.59         0  
+12       40.15         0  
+Sample 1692 - Plan 1: Table after operation: [['year', 'competition', 'venue', 'position', 'event', 'notes', 'distance'], [2007, 'pan arab games', 'cairo, egypt', '4th', '200 m', '20.94 (nr)', 0], [2008, 'asian indoor championships', 'doha, qatar', '4th', '60 m', '6.81', 0], [2008, 'world indoor championships', 'valencia, spain', '28th (h)', '60 m', '6.88', 0], [2008, 'world junior championships', 'bydgoszcz, poland', '7th', '200 m', '21.10', 0], [2008, 'olympic games', 'beijing, china', '40th (h)', '200 m', '21.00', 0], [2009, 'asian indoor games', 'hanoi, vietnam', '4th', '60 m', '6.72 (nr)', 0], [2009, 'world championships', 'berlin, germany', '25th (qf)', '200 m', '20.97', 0], [2009, 'asian championships', 'guangzhou, china', '1st', '200 m', '21.07', 0], [2010, 'asian games', 'guangzhou, china', '3rd', '200 m', '20.83', 0], [2011, 'asian championships', 'kobe, jpan', '3rd', '200 m', '20.97', 0], [2011, 'world championships', 'daegu, south korea', '48th (h)', '200 m', '21.45', 0], [2011, 'pan arab games', 'doha, qatar', '5th', '100 m', '21.59', 0], [2011, 'pan arab games', 'doha, qatar', '3rd', '4x100 m', '40.15', 0]]
+########################################################################################################################
+Sample 1692 - Plan 1: Operation 2: Split the 'event' column by space to separate the distance and unit.
+Sample 1692 - Plan 1: Selected indices: [[0, 6], [0, 4], [1, 6], [1, 4], [2, 6], [2, 4], [3, 6], [3, 4], [4, 6], [4, 4], [5, 6], [5, 4], [6, 6], [6, 4], [7, 6], [7, 4], [8, 6], [8, 4], [9, 6], [9, 4], [10, 6], [10, 4], [11, 6], [11, 4], [12, 6], [12, 4]]
+Sample 1692 - Plan 1: X-Table after operation df:
+    year                 competition               venue   position    event  \
+0   2007              pan arab games        cairo, egypt        4th    200 m   
+1   2008  asian indoor championships         doha, qatar        4th     60 m   
+2   2008  world indoor championships     valencia, spain   28th (h)     60 m   
+3   2008  world junior championships   bydgoszcz, poland        7th    200 m   
+4   2008               olympic games      beijing, china   40th (h)    200 m   
+5   2009          asian indoor games      hanoi, vietnam        4th     60 m   
+6   2009         world championships     berlin, germany  25th (qf)    200 m   
+7   2009         asian championships    guangzhou, china        1st    200 m   
+8   2010                 asian games    guangzhou, china        3rd    200 m   
+9   2011         asian championships          kobe, jpan        3rd    200 m   
+10  2011         world championships  daegu, south korea   48th (h)    200 m   
+11  2011              pan arab games         doha, qatar        5th    100 m   
+12  2011              pan arab games         doha, qatar        3rd  4x100 m   
+
+         notes distance distance unit  
+0   20.94 (nr)        0      200    m  
+1         6.81        0       60    m  
+2         6.88        0       60    m  
+3        21.10        0      200    m  
+4        21.00        0      200    m  
+5    6.72 (nr)        0       60    m  
+6        20.97        0      200    m  
+7        21.07        0      200    m  
+8        20.83        0      200    m  
+9        20.97        0      200    m  
+10       21.45        0      200    m  
+11       21.59        0      100    m  
+12       40.15        0    4x100    m  
+Sample 1692 - Plan 1: Table after operation: [['year', 'competition', 'venue', 'position', 'event', 'notes', 'distance', 'distance', 'unit'], [2007, 'pan arab games', 'cairo, egypt', '4th', '200 m', '20.94 (nr)', 0, '200', 'm'], [2008, 'asian indoor championships', 'doha, qatar', '4th', '60 m', '6.81', 0, '60', 'm'], [2008, 'world indoor championships', 'valencia, spain', '28th (h)', '60 m', '6.88', 0, '60', 'm'], [2008, 'world junior championships', 'bydgoszcz, poland', '7th', '200 m', '21.10', 0, '200', 'm'], [2008, 'olympic games', 'beijing, china', '40th (h)', '200 m', '21.00', 0, '200', 'm'], [2009, 'asian indoor games', 'hanoi, vietnam', '4th', '60 m', '6.72 (nr)', 0, '60', 'm'], [2009, 'world championships', 'berlin, germany', '25th (qf)', '200 m', '20.97', 0, '200', 'm'], [2009, 'asian championships', 'guangzhou, china', '1st', '200 m', '21.07', 0, '200', 'm'], [2010, 'asian games', 'guangzhou, china', '3rd', '200 m', '20.83', 0, '200', 'm'], [2011, 'asian championships', 'kobe, jpan', '3rd', '200 m', '20.97', 0, '200', 'm'], [2011, 'world championships', 'daegu, south korea', '48th (h)', '200 m', '21.45', 0, '200', 'm'], [2011, 'pan arab games', 'doha, qatar', '5th', '100 m', '21.59', 0, '100', 'm'], [2011, 'pan arab games', 'doha, qatar', '3rd', '4x100 m', '40.15', 0, '4x100', 'm']]
+########################################################################################################################
+Sample 1692 - Plan 1: Operation 3: Convert the distance values to a consistent unit (e.g., meters).
+SQL execution error in operation 3: duplicate column name: distance
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['200 m']]
+Groundtruth: ['Pan Arab Games']

@@ -1,0 +1,61 @@
+************************************************************************************************************************
+Sample 84 - Plan 1: Query: what is the next team listed after widnes vikings?
+Sample 84 - Plan 1: Groundtruth: ['Wigan Warriors']
+Sample 84 - Plan 1: X-Original table pd: 
+                                        team                          stadium  \
+0               bradford bulls (2014 season)                provident stadium   
+1            castleford tigers (2014 season)  the wish communications stadium   
+2             catalans dragons (2014 season)             stade gilbert brutus   
+3          huddersfield giants (2014 season)             john smith's stadium   
+4                         hull (2014 season)  kingston communications stadium   
+5         hull kingston rovers (2014 season)                  ms3 craven park   
+6                 leeds rhinos (2014 season)      headingley carnegie stadium   
+7               london broncos (2014 season)                 twickenham stoop   
+8            salford city reds (2014 season)             salford city stadium   
+9               st helens rlfc (2014 season)                    langtree park   
+10  wakefield trinity wildcats (2014 season)         rapid solicitors stadium   
+11           warrington wolves (2014 season)          halliwell jones stadium   
+12              widnes vikings (2014 season)      the select security stadium   
+13              wigan warriors (2014 season)                       dw stadium   
+
+   capacity                                     city_area  
+0    27,000                      bradford, west yorkshire  
+1    11,750                    castleford, west yorkshire  
+2    14,000        perpignan, pyrénées-orientales, france  
+3    24,544                  huddersfield, west yorkshire  
+4    25,404  kingston upon hull, east riding of yorkshire  
+5     9,471  kingston upon hull, east riding of yorkshire  
+6    22,250                         leeds, west yorkshire  
+7    12,700                            twickenham, london  
+8    12,000                   salford, greater manchester  
+9    18,000                         st helens, merseyside  
+10   11,000                     wakefield, west yorkshire  
+11   15,500                          warrington, cheshire  
+12   13,500                     widnes, cheshire, england  
+13   25,138                     wigan, greater manchester  
+Sample 84 - Plan 1: Caption: none
+Sample 84 - Plan 1: Original table: [['team', 'stadium', 'capacity', 'city_area'], ['bradford bulls (2014 season)', 'provident stadium', '27,000', 'bradford, west yorkshire'], ['castleford tigers (2014 season)', 'the wish communications stadium', '11,750', 'castleford, west yorkshire'], ['catalans dragons (2014 season)', 'stade gilbert brutus', '14,000', 'perpignan, pyrénées-orientales, france'], ['huddersfield giants (2014 season)', "john smith's stadium", '24,544', 'huddersfield, west yorkshire'], ['hull (2014 season)', 'kingston communications stadium', '25,404', 'kingston upon hull, east riding of yorkshire'], ['hull kingston rovers (2014 season)', 'ms3 craven park', '9,471', 'kingston upon hull, east riding of yorkshire'], ['leeds rhinos (2014 season)', 'headingley carnegie stadium', '22,250', 'leeds, west yorkshire'], ['london broncos (2014 season)', 'twickenham stoop', '12,700', 'twickenham, london'], ['salford city reds (2014 season)', 'salford city stadium', '12,000', 'salford, greater manchester'], ['st helens rlfc (2014 season)', 'langtree park', '18,000', 'st helens, merseyside'], ['wakefield trinity wildcats (2014 season)', 'rapid solicitors stadium', '11,000', 'wakefield, west yorkshire'], ['warrington wolves (2014 season)', 'halliwell jones stadium', '15,500', 'warrington, cheshire'], ['widnes vikings (2014 season)', 'the select security stadium', '13,500', 'widnes, cheshire, england'], ['wigan warriors (2014 season)', 'dw stadium', '25,138', 'wigan, greater manchester']]
+########################################################################################################################
+Sample 84 - Plan 1: Operation 1: Select the row where the 'team' is 'widnes vikings'.
+Sample 84 - Plan 1: Selected indices: [[12, 0]]
+Sample 84 - Plan 1: X-Table after operation df:
+                           team                      stadium capacity  \
+0  widnes vikings (2014 season)  the select security stadium   13,500   
+
+                   city_area  
+0  widnes, cheshire, england  
+Sample 84 - Plan 1: Table after operation: [['team', 'stadium', 'capacity', 'city_area'], ['widnes vikings (2014 season)', 'the select security stadium', '13,500', 'widnes, cheshire, england']]
+########################################################################################################################
+Sample 84 - Plan 1: Operation 2: Determine the row number of the selected row.
+Sample 84 - Plan 1: Selected indices: []
+Sample 84 - Plan 1: X-Table after operation df:
+   row_number
+0           1
+Sample 84 - Plan 1: Table after operation: [['row_number'], [1]]
+########################################################################################################################
+Sample 84 - Plan 1: Operation 3: Select the row with the row number that is one greater than the selected row.
+SQL execution error in operation 3: Execution failed on sql 'Write a SQL command that: Select the row with the row number that is one greater than the selected row.': near "Write": syntax error
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['wigan warriors (2014 season)']]
+Groundtruth: ['Wigan Warriors']

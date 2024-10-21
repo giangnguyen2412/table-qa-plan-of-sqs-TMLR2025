@@ -1,0 +1,53 @@
+************************************************************************************************************************
+Sample 3733 - Plan 1: Query: at least how many more people attended gamestorm 15 than gamestrom 13?
+Sample 3733 - Plan 1: Groundtruth: ['204']
+Sample 3733 - Plan 1: X-Original table pd: 
+      iteration              dates                  location attendance  \
+0  gamestorm 10         march 2008  red lion - vancouver, wa        750   
+1  gamestorm 11  march 26–29, 2009    hilton - vancouver, wa        736   
+2  gamestorm 12  march 25–28, 2010    hilton - vancouver, wa        802   
+3  gamestorm 13  march 24–27, 2011    hilton - vancouver, wa        984   
+4  gamestorm 14  march 22–25, 2012    hilton - vancouver, wa       1072   
+5  gamestorm 15  march 21–24, 2013    hilton - vancouver, wa       1188   
+6  gamestorm 16  march 20–23, 2014    hilton - vancouver, wa        tba   
+
+                                               notes  
+0                                                  -  
+1  debut of video games, first-ever artist guest ...  
+2            board games guest of honor: tom lehmann  
+3        guests: lisa steenson, michael a. stackpole  
+4  boardgame:andrew hackard and sam mitschke of s...  
+5                                                     
+6  guests: mike selinker, shane lacy hensley, lis...  
+Sample 3733 - Plan 1: Caption: none
+Sample 3733 - Plan 1: Original table: [['iteration', 'dates', 'location', 'attendance', 'notes'], ['gamestorm 10', 'march 2008', 'red lion - vancouver, wa', '750', '-'], ['gamestorm 11', 'march 26–29, 2009', 'hilton - vancouver, wa', '736', 'debut of video games, first-ever artist guest of honor, rob alexander'], ['gamestorm 12', 'march 25–28, 2010', 'hilton - vancouver, wa', '802', 'board games guest of honor: tom lehmann'], ['gamestorm 13', 'march 24–27, 2011', 'hilton - vancouver, wa', '984', 'guests: lisa steenson, michael a. stackpole'], ['gamestorm 14', 'march 22–25, 2012', 'hilton - vancouver, wa', '1072', 'boardgame:andrew hackard and sam mitschke of steve jackson games - rpg: jason bulmahn'], ['gamestorm 15', 'march 21–24, 2013', 'hilton - vancouver, wa', '1188', ''], ['gamestorm 16', 'march 20–23, 2014', 'hilton - vancouver, wa', 'tba', 'guests: mike selinker, shane lacy hensley, lisa steenson, zev shlasinger of z-man games']]
+########################################################################################################################
+Sample 3733 - Plan 1: Operation 1: Select rows where 'iteration' is 'gamestorm 15' and 'iteration' is 'gamestorm 13'.
+Sample 3733 - Plan 1: Selected indices: [[5, 0], [3, 0]]
+Sample 3733 - Plan 1: X-Table after operation df:
+      iteration              dates                location  attendance  \
+0  gamestorm 13  march 24–27, 2011  hilton - vancouver, wa         984   
+1  gamestorm 15  march 21–24, 2013  hilton - vancouver, wa        1188   
+
+                                         notes  
+0  guests: lisa steenson, michael a. stackpole  
+1                                               
+Sample 3733 - Plan 1: Table after operation: [['iteration', 'dates', 'location', 'attendance', 'notes'], ['gamestorm 13', 'march 24–27, 2011', 'hilton - vancouver, wa', '984', 'guests: lisa steenson, michael a. stackpole'], ['gamestorm 15', 'march 21–24, 2013', 'hilton - vancouver, wa', '1188', '']]
+########################################################################################################################
+Sample 3733 - Plan 1: Operation 2: Select the 'attendance' column for both rows.
+Sample 3733 - Plan 1: Selected indices: []
+Sample 3733 - Plan 1: X-Table after operation df:
+   attendance
+0         984
+1        1188
+Sample 3733 - Plan 1: Table after operation: [['attendance'], [984], [1188]]
+########################################################################################################################
+Sample 3733 - Plan 1: Operation 3: Calculate the difference between the 'attendance' values of gamestorm 15 and gamestorm 13.
+SQL execution error in operation 3: Execution failed on sql 'SELECT attendance AS gamestorm_15_attendance - (SELECT attendance FROM table_sql WHERE attendance = 984) AS attendance_difference
+FROM table_sql
+WHERE attendance = 1188;
+-- Calculate the difference between the 'attendance' values of gamestorm 15 and gamestorm 13.': near "-": syntax error
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['206']]
+Groundtruth: ['204']

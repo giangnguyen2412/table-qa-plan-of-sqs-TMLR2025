@@ -1,0 +1,80 @@
+************************************************************************************************************************
+Sample 2655 - Plan 1: Query: how long did the cologne cathedral hold the record for tallest freestanding structure?
+Sample 2655 - Plan 1: Groundtruth: ['4 years']
+Sample 2655 - Plan 1: X-Original table pd: 
+                     name                               country  \
+0   great pyramid of giza                                 egypt   
+1       lincoln cathedral                               england   
+2       st. mary's church                               germany   
+3    strasbourg cathedral  germany and/or france (today france)   
+4              st nikolai                               germany   
+5    notre-dame cathedral                                france   
+6       cologne cathedral                               germany   
+7     washington monument                         united states   
+8            eiffel tower                                france   
+9       chrysler building                         united states   
+10  empire state building                         united states   
+11        ostankino tower                                russia   
+12               cn tower                                canada   
+13           burj khalifa                  united arab emirates   
+
+                town height_nmetres___ft structural_type   held_record  \
+0               giza           146 / 480       mausoleum  2570 bc–1311   
+1            lincoln         159.7 / 524          church     1311–1549   
+2          stralsund           151 / 500          church     1549–1647   
+3         strasbourg           142 / 470          church     1647–1874   
+4            hamburg         147.3 / 483          church     1874–1876   
+5              rouen           151 / 500          church     1876–1880   
+6            cologne         157.4 / 516          church     1880–1884   
+7   washington, d.c.         169.3 / 555        monument     1884–1889   
+8              paris         300.6 / 986           tower     1889–1930   
+9      new york city         319 / 1,046      skyscraper     1930–1931   
+10     new york city         448 / 1,472      skyscraper     1931–1967   
+11            moscow         540 / 1,772           tower     1967–1976   
+12           toronto         553 / 1,815           tower     1976–2007   
+13             dubai       829.8 / 2,722      skyscraper  2007–present   
+
+                                                notes  
+0   due to erosion today it stands at the height o...  
+1   spire collapsed in 1549; today, stands at a he...  
+2   spire destroyed by lightning in 1647; today st...  
+3                                                      
+4   due to aerial bombing in world war ii the nave...  
+5                                                      
+6                                                      
+7                                                      
+8   currently stands at a height of 324 metres (1,...  
+9                                                      
+10                                                     
+11                                                     
+12                                                     
+13                      topped-out on 17 january 2009  
+Sample 2655 - Plan 1: Caption: none
+Sample 2655 - Plan 1: Original table: [['name', 'country', 'town', 'height_nmetres___ft', 'structural_type', 'held_record', 'notes'], ['great pyramid of giza', 'egypt', 'giza', '146 / 480', 'mausoleum', '2570 bc–1311', 'due to erosion today it stands at the height of 138.8 metres (455\xa0ft).'], ['lincoln cathedral', 'england', 'lincoln', '159.7 / 524', 'church', '1311–1549', 'spire collapsed in 1549; today, stands at a height of 83 metres (272\xa0ft).'], ["st. mary's church", 'germany', 'stralsund', '151 / 500', 'church', '1549–1647', 'spire destroyed by lightning in 1647; today stands at a height of 104 metres (341\xa0ft).'], ['strasbourg cathedral', 'germany and/or france (today france)', 'strasbourg', '142 / 470', 'church', '1647–1874', ''], ['st nikolai', 'germany', 'hamburg', '147.3 / 483', 'church', '1874–1876', 'due to aerial bombing in world war ii the nave was demolished; only the spire remains.'], ['notre-dame cathedral', 'france', 'rouen', '151 / 500', 'church', '1876–1880', ''], ['cologne cathedral', 'germany', 'cologne', '157.4 / 516', 'church', '1880–1884', ''], ['washington monument', 'united states', 'washington, d.c.', '169.3 / 555', 'monument', '1884–1889', ''], ['eiffel tower', 'france', 'paris', '300.6 / 986', 'tower', '1889–1930', 'currently stands at a height of 324 metres (1,063\xa0ft).'], ['chrysler building', 'united states', 'new york city', '319 / 1,046', 'skyscraper', '1930–1931', ''], ['empire state building', 'united states', 'new york city', '448 / 1,472', 'skyscraper', '1931–1967', ''], ['ostankino tower', 'russia', 'moscow', '540 / 1,772', 'tower', '1967–1976', ''], ['cn tower', 'canada', 'toronto', '553 / 1,815', 'tower', '1976–2007', ''], ['burj khalifa', 'united arab emirates', 'dubai', '829.8 / 2,722', 'skyscraper', '2007–present', 'topped-out on 17 january 2009']]
+########################################################################################################################
+Sample 2655 - Plan 1: Operation 1: Select the row where the 'name' is 'cologne cathedral'.
+Sample 2655 - Plan 1: Selected indices: [[6, 0]]
+Sample 2655 - Plan 1: X-Table after operation df:
+                name  country     town height_nmetres___ft structural_type  \
+0  cologne cathedral  germany  cologne         157.4 / 516          church   
+
+  held_record  notes  
+0   1880–1884    NaN  
+Sample 2655 - Plan 1: Table after operation: [['name', 'country', 'town', 'height_nmetres___ft', 'structural_type', 'held_record', 'notes'], ['cologne cathedral', 'germany', 'cologne', '157.4 / 516', 'church', '1880–1884', '']]
+########################################################################################################################
+Sample 2655 - Plan 1: Operation 2: Extract the 'held_record' column from the selected row.
+Sample 2655 - Plan 1: Selected indices: []
+Sample 2655 - Plan 1: X-Table after operation df:
+  held_record
+0   1880–1884
+Sample 2655 - Plan 1: Table after operation: [['held_record'], ['1880–1884']]
+########################################################################################################################
+Sample 2655 - Plan 1: Operation 3: Calculate the duration of the record by subtracting the start year from the end year in the 'held_record' column.
+Sample 2655 - Plan 1: Selected indices: []
+Sample 2655 - Plan 1: X-Table after operation df:
+   duration
+0     -1796
+Sample 2655 - Plan 1: Table after operation: [['duration'], [-1796]]
+Fall-back: FALSE
+Answer from plan 1: [[-1796]]
+Groundtruth: ['4 years']

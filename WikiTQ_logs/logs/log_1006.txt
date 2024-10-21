@@ -1,0 +1,57 @@
+************************************************************************************************************************
+Sample 1006 - Plan 1: Query: did danny coles score more or less than 6 goals total?
+Sample 1006 - Plan 1: Groundtruth: ['less']
+Sample 1006 - Plan 1: X-Original table pd: 
+             name  league  fa_cup  league_cup  jp_trophy  total
+0    scot bennett       5       0           0          0      5
+1     danny coles       3       0           0          0      3
+2   liam sercombe       1       0           0          0      1
+3        alan gow       4       0           0          0      4
+4    john o'flynn      11       0           1          0     12
+5   guillem bauza       2       0           0          0      2
+6   jimmy keohane       3       0           0          0      3
+7     pat baldwin       1       0           0          0      1
+8   jamie cureton      20       0           0          0     20
+9    arron davies       3       0           0          0      3
+10   jake gosling       1       0           0          0      1
+11      own goals       0       0           0          0      0
+12          total       0       0           0          0      0
+Sample 1006 - Plan 1: Caption: none
+Sample 1006 - Plan 1: Original table: [['name', 'league', 'fa_cup', 'league_cup', 'jp_trophy', 'total'], ['scot bennett', '5', '0', '0', '0', '5'], ['danny coles', '3', '0', '0', '0', '3'], ['liam sercombe', '1', '0', '0', '0', '1'], ['alan gow', '4', '0', '0', '0', '4'], ["john o'flynn", '11', '0', '1', '0', '12'], ['guillem bauza', '2', '0', '0', '0', '2'], ['jimmy keohane', '3', '0', '0', '0', '3'], ['pat baldwin', '1', '0', '0', '0', '1'], ['jamie cureton', '20', '0', '0', '0', '20'], ['arron davies', '3', '0', '0', '0', '3'], ['jake gosling', '1', '0', '0', '0', '1'], ['own goals', '0', '0', '0', '0', '0'], ['total', '0', '0', '0', '0', '0']]
+########################################################################################################################
+Sample 1006 - Plan 1: Operation 1: Select the row where the 'name' is 'danny coles'.
+Sample 1006 - Plan 1: Selected indices: [[1, 0]]
+Sample 1006 - Plan 1: X-Table after operation df:
+          name  league  fa_cup  league_cup  jp_trophy  total
+0  danny coles       3       0           0          0      3
+Sample 1006 - Plan 1: Table after operation: [['name', 'league', 'fa_cup', 'league_cup', 'jp_trophy', 'total'], ['danny coles', 3, 0, 0, 0, 3]]
+########################################################################################################################
+Sample 1006 - Plan 1: Operation 2: Select the 'total' column from the selected row.
+Sample 1006 - Plan 1: Selected indices: []
+Sample 1006 - Plan 1: X-Table after operation df:
+   total
+0      3
+Sample 1006 - Plan 1: Table after operation: [['total'], [3]]
+########################################################################################################################
+Sample 1006 - Plan 1: Operation 3: Compare the value in the 'total' column to 6.
+Sample 1006 - Plan 1: Selected indices: []
+Sample 1006 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [total]
+Index: []
+Sample 1006 - Plan 1: Table after operation: [['total']]
+########################################################################################################################
+Sample 1006 - Plan 1: Operation 4: Determine if the value is greater than or less than 6.
+Sample 1006 - Plan 1: Selected indices: []
+Sample 1006 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [total]
+Index: []
+Sample 1006 - Plan 1: Table after operation: [['total']]
+########################################################################################################################
+Sample 1006 - Plan 1: Operation 5: Provide the answer based on the comparison result.
+SQL execution error in operation 5: Execution failed on sql 'Write a SQL command that: Provide the answer based on the comparison result.': near "Write": syntax error
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['less']]
+Groundtruth: ['less']

@@ -1,0 +1,41 @@
+************************************************************************************************************************
+Sample 3895 - Plan 1: Query: how many competitions had above 20 games?
+Sample 3895 - Plan 1: Groundtruth: ['6']
+Sample 3895 - Plan 1: X-Original table pd: 
+     season                club              competition  games  goals
+0   2002/03           raec mons           jupiler league     19      0
+1   2003/04           raec mons           jupiler league     23      0
+2   2004/05       ksv roeselare  belgian second division     29      1
+3   2005/06       ksv roeselare           jupiler league     26      0
+4   2006/07       ksv roeselare           jupiler league     29      1
+5   2007/08       ksv roeselare           jupiler league     25      0
+6   2008/09  excelsior mouscron           jupiler league     31      1
+7   2009/10  excelsior mouscron           jupiler league     14      1
+8   2009/10        győri eto fc             soproni liga      1      0
+9   2010/11            kortrijk           jupiler league      0      0
+10                                                totaal    278      4
+Sample 3895 - Plan 1: Caption: none
+Sample 3895 - Plan 1: Original table: [['season', 'club', 'competition', 'games', 'goals'], ['2002/03', 'raec mons', 'jupiler league', '19', '0'], ['2003/04', 'raec mons', 'jupiler league', '23', '0'], ['2004/05', 'ksv roeselare', 'belgian second division', '29', '1'], ['2005/06', 'ksv roeselare', 'jupiler league', '26', '0'], ['2006/07', 'ksv roeselare', 'jupiler league', '29', '1'], ['2007/08', 'ksv roeselare', 'jupiler league', '25', '0'], ['2008/09', 'excelsior mouscron', 'jupiler league', '31', '1'], ['2009/10', 'excelsior mouscron', 'jupiler league', '14', '1'], ['2009/10', 'győri eto fc', 'soproni liga', '1', '0'], ['2010/11', 'kortrijk', 'jupiler league', '0', '0'], ['', '', 'totaal', '278', '4']]
+########################################################################################################################
+Sample 3895 - Plan 1: Operation 1: Select rows where 'games' is greater than 20.
+Sample 3895 - Plan 1: Selected indices: [[4, 3], [2, 3], [3, 3], [10, 3], [5, 3], [6, 3], [1, 3]]
+Sample 3895 - Plan 1: X-Table after operation df:
+    season                club              competition  games  goals
+0  2003/04           raec mons           jupiler league     23      0
+1  2004/05       ksv roeselare  belgian second division     29      1
+2  2005/06       ksv roeselare           jupiler league     26      0
+3  2006/07       ksv roeselare           jupiler league     29      1
+4  2007/08       ksv roeselare           jupiler league     25      0
+5  2008/09  excelsior mouscron           jupiler league     31      1
+6                                                totaal    278      4
+Sample 3895 - Plan 1: Table after operation: [['season', 'club', 'competition', 'games', 'goals'], ['2003/04', 'raec mons', 'jupiler league', 23, 0], ['2004/05', 'ksv roeselare', 'belgian second division', 29, 1], ['2005/06', 'ksv roeselare', 'jupiler league', 26, 0], ['2006/07', 'ksv roeselare', 'jupiler league', 29, 1], ['2007/08', 'ksv roeselare', 'jupiler league', 25, 0], ['2008/09', 'excelsior mouscron', 'jupiler league', 31, 1], ['', '', 'totaal', 278, 4]]
+########################################################################################################################
+Sample 3895 - Plan 1: Operation 2: Count the number of distinct 'competition' values from the selected rows.
+Sample 3895 - Plan 1: Selected indices: []
+Sample 3895 - Plan 1: X-Table after operation df:
+   distinct_competition_count
+0                           3
+Sample 3895 - Plan 1: Table after operation: [['distinct_competition_count'], [3]]
+Fall-back: FALSE
+Answer from plan 1: [[3]]
+Groundtruth: ['6']

@@ -1,0 +1,501 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> when was the last competition?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Order the table by the 'date' column in descending order.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>date</td>
+<td>competition</td>
+<td>location</td>
+<td>country</td>
+<td>event</td>
+<td>placing</td>
+<td>rider</td>
+<td>nationality</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">31 october 2008</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008–09 world cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">manchester</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united kingdom</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sprint</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">victoria pendleton</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gbr</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">31 october 2008</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008–09 world cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">manchester</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united kingdom</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">keirin</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jason kenny</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gbr</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1 november 2008</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008–09 world cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">manchester</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united kingdom</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sprint</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jason kenny</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gbr</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1 november 2008</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008–09 world cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">manchester</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united kingdom</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">500 m time trial</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">victoria pendleton</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gbr</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2 november 2008</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008–09 world cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">manchester</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united kingdom</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">team sprint</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ross edgar</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gbr</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2 november 2008</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008–09 world cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">manchester</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united kingdom</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">team sprint</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jason kenny</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gbr</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2 november 2008</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008–09 world cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">manchester</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united kingdom</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">team sprint</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jamie staff</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gbr</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2 november 2008</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008–09 world cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">manchester</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united kingdom</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">keirin</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">victoria pendleton</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gbr</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2 november 2008</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5th international keirin event</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">manchester</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united kingdom</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">international keirin</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ross edgar</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gbr</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">13 february 2009</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008–09 world cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">copenhagen</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">denmark</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">team sprint</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chris hoy</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gbr</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">13 february 2009</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008–09 world cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">copenhagen</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">denmark</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">team sprint</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jason kenny</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gbr</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">13 february 2009</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008–09 world cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">copenhagen</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">denmark</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">team sprint</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jamie staff</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gbr</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">13 february 2009</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008–09 world cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">copenhagen</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">denmark</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sprint</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">victoria pendleton</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gbr</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">30 october 2009</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2009–10 world cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">manchester</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united kingdom</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">keirin</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chris hoy</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gbr</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">30 october 2009</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2009–10 world cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">manchester</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united kingdom</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sprint</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">victoria pendleton</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gbr</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">30 october 2009</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2009–10 world cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">manchester</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united kingdom</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">sprint</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chris hoy</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gbr</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">30 october 2009</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2009–10 world cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">manchester</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united kingdom</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">500 m time trial</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">victoria pendleton</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gbr</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1 november 2009</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2009–10 world cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">manchester</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united kingdom</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">team sprint</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">ross edgar</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gbr</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1 november 2009</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2009–10 world cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">manchester</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united kingdom</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">team sprint</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">chris hoy</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gbr</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1 november 2009</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2009–10 world cup</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">manchester</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">united kingdom</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">team sprint</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jamie staff</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gbr</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select the first row.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>date</td>
+<td>competition</td>
+<td>location</td>
+<td>country</td>
+<td>event</td>
+<td>placing</td>
+<td>rider</td>
+<td>nationality</td>
+</tr>
+<tr>
+<td>31 october 2008</td>
+<td>2008–09 world cup</td>
+<td>manchester</td>
+<td>united kingdom</td>
+<td>sprint</td>
+<td>1</td>
+<td>victoria pendleton</td>
+<td>gbr</td>
+</tr>
+<tr>
+<td>31 october 2008</td>
+<td>2008–09 world cup</td>
+<td>manchester</td>
+<td>united kingdom</td>
+<td>keirin</td>
+<td>2</td>
+<td>jason kenny</td>
+<td>gbr</td>
+</tr>
+<tr>
+<td>30 october 2009</td>
+<td>2009–10 world cup</td>
+<td>manchester</td>
+<td>united kingdom</td>
+<td>keirin</td>
+<td>1</td>
+<td>chris hoy</td>
+<td>gbr</td>
+</tr>
+<tr>
+<td>30 october 2009</td>
+<td>2009–10 world cup</td>
+<td>manchester</td>
+<td>united kingdom</td>
+<td>sprint</td>
+<td>1</td>
+<td>victoria pendleton</td>
+<td>gbr</td>
+</tr>
+<tr>
+<td>30 october 2009</td>
+<td>2009–10 world cup</td>
+<td>manchester</td>
+<td>united kingdom</td>
+<td>sprint</td>
+<td>1</td>
+<td>chris hoy</td>
+<td>gbr</td>
+</tr>
+<tr>
+<td>30 october 2009</td>
+<td>2009–10 world cup</td>
+<td>manchester</td>
+<td>united kingdom</td>
+<td>500 m time trial</td>
+<td>2</td>
+<td>victoria pendleton</td>
+<td>gbr</td>
+</tr>
+<tr>
+<td>2 november 2008</td>
+<td>2008–09 world cup</td>
+<td>manchester</td>
+<td>united kingdom</td>
+<td>team sprint</td>
+<td>1</td>
+<td>ross edgar</td>
+<td>gbr</td>
+</tr>
+<tr>
+<td>2 november 2008</td>
+<td>2008–09 world cup</td>
+<td>manchester</td>
+<td>united kingdom</td>
+<td>team sprint</td>
+<td>1</td>
+<td>jason kenny</td>
+<td>gbr</td>
+</tr>
+<tr>
+<td>2 november 2008</td>
+<td>2008–09 world cup</td>
+<td>manchester</td>
+<td>united kingdom</td>
+<td>team sprint</td>
+<td>1</td>
+<td>jamie staff</td>
+<td>gbr</td>
+</tr>
+<tr>
+<td>2 november 2008</td>
+<td>2008–09 world cup</td>
+<td>manchester</td>
+<td>united kingdom</td>
+<td>keirin</td>
+<td>1</td>
+<td>victoria pendleton</td>
+<td>gbr</td>
+</tr>
+<tr>
+<td>2 november 2008</td>
+<td>5th international keirin event</td>
+<td>manchester</td>
+<td>united kingdom</td>
+<td>international keirin</td>
+<td>2</td>
+<td>ross edgar</td>
+<td>gbr</td>
+</tr>
+<tr>
+<td>13 february 2009</td>
+<td>2008–09 world cup</td>
+<td>copenhagen</td>
+<td>denmark</td>
+<td>team sprint</td>
+<td>1</td>
+<td>chris hoy</td>
+<td>gbr</td>
+</tr>
+<tr>
+<td>13 february 2009</td>
+<td>2008–09 world cup</td>
+<td>copenhagen</td>
+<td>denmark</td>
+<td>team sprint</td>
+<td>1</td>
+<td>jason kenny</td>
+<td>gbr</td>
+</tr>
+<tr>
+<td>13 february 2009</td>
+<td>2008–09 world cup</td>
+<td>copenhagen</td>
+<td>denmark</td>
+<td>team sprint</td>
+<td>1</td>
+<td>jamie staff</td>
+<td>gbr</td>
+</tr>
+<tr>
+<td>13 february 2009</td>
+<td>2008–09 world cup</td>
+<td>copenhagen</td>
+<td>denmark</td>
+<td>sprint</td>
+<td>1</td>
+<td>victoria pendleton</td>
+<td>gbr</td>
+</tr>
+<tr>
+<td>1 november 2009</td>
+<td>2009–10 world cup</td>
+<td>manchester</td>
+<td>united kingdom</td>
+<td>team sprint</td>
+<td>1</td>
+<td>ross edgar</td>
+<td>gbr</td>
+</tr>
+<tr>
+<td>1 november 2009</td>
+<td>2009–10 world cup</td>
+<td>manchester</td>
+<td>united kingdom</td>
+<td>team sprint</td>
+<td>1</td>
+<td>chris hoy</td>
+<td>gbr</td>
+</tr>
+<tr>
+<td>1 november 2009</td>
+<td>2009–10 world cup</td>
+<td>manchester</td>
+<td>united kingdom</td>
+<td>team sprint</td>
+<td>1</td>
+<td>jamie staff</td>
+<td>gbr</td>
+</tr>
+<tr>
+<td>1 november 2008</td>
+<td>2008–09 world cup</td>
+<td>manchester</td>
+<td>united kingdom</td>
+<td>sprint</td>
+<td>1</td>
+<td>jason kenny</td>
+<td>gbr</td>
+</tr>
+<tr>
+<td>1 november 2008</td>
+<td>2008–09 world cup</td>
+<td>manchester</td>
+<td>united kingdom</td>
+<td>500 m time trial</td>
+<td>1</td>
+<td>victoria pendleton</td>
+<td>gbr</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select the 'competition' column.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>date</td>
+<td>competition</td>
+<td>location</td>
+<td>country</td>
+<td>event</td>
+<td>placing</td>
+<td>rider</td>
+<td>nationality</td>
+</tr>
+<tr>
+<td>31 october 2008</td>
+<td>2008–09 world cup</td>
+<td>manchester</td>
+<td>united kingdom</td>
+<td>sprint</td>
+<td>1</td>
+<td>victoria pendleton</td>
+<td>gbr</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>competition</td>
+</tr>
+<tr>
+<td>2008–09 world cup</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['2008–09 world cup']]</h3>
+</body></html>

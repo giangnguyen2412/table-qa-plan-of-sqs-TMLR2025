@@ -1,0 +1,50 @@
+************************************************************************************************************************
+Sample 1615 - Plan 1: Query: which airport is the most busy?
+Sample 1615 - Plan 1: Groundtruth: ['London Heathrow']
+Sample 1615 - Plan 1: X-Original table pd: 
+   rank                airport passengers_handled change_n2011_12
+0     1        london heathrow            828,531              0%
+1     2         london gatwick            607,417              7%
+2     3        london stansted            331,607              3%
+3     4           london luton            276,488              0%
+4     5  belfast international            266,987              8%
+5     6                bristol            239,666              8%
+6     7             birmingham            208,123              2%
+7     8            southampton            173,576             24%
+8     9            london city            158,239              6%
+9    10           belfast city            100,003              4%
+Sample 1615 - Plan 1: Caption: none
+Sample 1615 - Plan 1: Original table: [['rank', 'airport', 'passengers_handled', 'change_n2011_12'], ['1', 'london heathrow', '828,531', '0%'], ['2', 'london gatwick', '607,417', '7%'], ['3', 'london stansted', '331,607', '3%'], ['4', 'london luton', '276,488', '0%'], ['5', 'belfast international', '266,987', '8%'], ['6', 'bristol', '239,666', '8%'], ['7', 'birmingham', '208,123', '2%'], ['8', 'southampton', '173,576', '24%'], ['9', 'london city', '158,239', '6%'], ['10', 'belfast city', '100,003', '4%']]
+########################################################################################################################
+Sample 1615 - Plan 1: Operation 1: Order the table by 'passengers_handled' in descending order.
+Sample 1615 - Plan 1: Selected indices: [[6, 2], [1, 2], [9, 2], [4, 2], [0, 2], [7, 2], [2, 2], [8, 2], [3, 2], [5, 2]]
+Sample 1615 - Plan 1: X-Table after operation df:
+   rank                airport passengers_handled change_n2011_12
+0     1        london heathrow            828,531              0%
+1     2         london gatwick            607,417              7%
+2     3        london stansted            331,607              3%
+3     4           london luton            276,488              0%
+4     5  belfast international            266,987              8%
+5     6                bristol            239,666              8%
+6     7             birmingham            208,123              2%
+7     8            southampton            173,576             24%
+8     9            london city            158,239              6%
+9    10           belfast city            100,003              4%
+Sample 1615 - Plan 1: Table after operation: [['rank', 'airport', 'passengers_handled', 'change_n2011_12'], [1, 'london heathrow', '828,531', '0%'], [2, 'london gatwick', '607,417', '7%'], [3, 'london stansted', '331,607', '3%'], [4, 'london luton', '276,488', '0%'], [5, 'belfast international', '266,987', '8%'], [6, 'bristol', '239,666', '8%'], [7, 'birmingham', '208,123', '2%'], [8, 'southampton', '173,576', '24%'], [9, 'london city', '158,239', '6%'], [10, 'belfast city', '100,003', '4%']]
+########################################################################################################################
+Sample 1615 - Plan 1: Operation 2: Select row number 1.
+Sample 1615 - Plan 1: Selected indices: []
+Sample 1615 - Plan 1: X-Table after operation df:
+   rank          airport passengers_handled change_n2011_12
+0     1  london heathrow            828,531              0%
+Sample 1615 - Plan 1: Table after operation: [['rank', 'airport', 'passengers_handled', 'change_n2011_12'], [1, 'london heathrow', '828,531', '0%']]
+########################################################################################################################
+Sample 1615 - Plan 1: Operation 3: Select the 'airport' column.
+Sample 1615 - Plan 1: Selected indices: []
+Sample 1615 - Plan 1: X-Table after operation df:
+           airport
+0  london heathrow
+Sample 1615 - Plan 1: Table after operation: [['airport'], ['london heathrow']]
+Fall-back: FALSE
+Answer from plan 1: [['london heathrow']]
+Groundtruth: ['London Heathrow']

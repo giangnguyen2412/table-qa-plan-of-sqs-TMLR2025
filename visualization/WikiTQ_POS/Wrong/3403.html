@@ -1,0 +1,256 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> what is the year that each of the matches took place in?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Extract the year from the 'date' column and add a new column 'year' to the existing table.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>match</td>
+<td>date</td>
+<td>venue</td>
+<td>opponents</td>
+<td>score</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gl-a-1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2006..</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">[[]]</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">[[]]</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">-</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gl-a-2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2006..</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">[[]]</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">[[]]</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">-</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gl-a-3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2006..</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">[[]]</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">[[]]</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">-</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gl-a-4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2006..</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">[[]]</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">[[]]</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">-</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gl-a-5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2006..</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">[[]]</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">[[]]</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">-</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">gl-a-6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2006..</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">[[]]</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">[[]]</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">-</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">quarterfinals-1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2006..</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">[[]]</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">[[]]</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">-</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">quarterfinals-2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2006..</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">[[]]</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">[[]]</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">-</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">semifinals-1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2006..</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">[[]]</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">[[]]</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">-</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">semifinals-2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">2006..</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">[[]]</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">[[]]</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">-</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Select the 'match' and 'year' columns.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>match</td>
+<td>date</td>
+<td>venue</td>
+<td>opponents</td>
+<td>score</td>
+<td>year</td>
+</tr>
+<tr>
+<td>gl-a-1</td>
+<td>2006..</td>
+<td>[[]]</td>
+<td>[[]]</td>
+<td>-</td>
+<td>2006</td>
+</tr>
+<tr>
+<td>gl-a-2</td>
+<td>2006..</td>
+<td>[[]]</td>
+<td>[[]]</td>
+<td>-</td>
+<td>2006</td>
+</tr>
+<tr>
+<td>gl-a-3</td>
+<td>2006..</td>
+<td>[[]]</td>
+<td>[[]]</td>
+<td>-</td>
+<td>2006</td>
+</tr>
+<tr>
+<td>gl-a-4</td>
+<td>2006..</td>
+<td>[[]]</td>
+<td>[[]]</td>
+<td>-</td>
+<td>2006</td>
+</tr>
+<tr>
+<td>gl-a-5</td>
+<td>2006..</td>
+<td>[[]]</td>
+<td>[[]]</td>
+<td>-</td>
+<td>2006</td>
+</tr>
+<tr>
+<td>gl-a-6</td>
+<td>2006..</td>
+<td>[[]]</td>
+<td>[[]]</td>
+<td>-</td>
+<td>2006</td>
+</tr>
+<tr>
+<td>quarterfinals-1</td>
+<td>2006..</td>
+<td>[[]]</td>
+<td>[[]]</td>
+<td>-</td>
+<td>2006</td>
+</tr>
+<tr>
+<td>quarterfinals-2</td>
+<td>2006..</td>
+<td>[[]]</td>
+<td>[[]]</td>
+<td>-</td>
+<td>2006</td>
+</tr>
+<tr>
+<td>semifinals-1</td>
+<td>2006..</td>
+<td>[[]]</td>
+<td>[[]]</td>
+<td>-</td>
+<td>2006</td>
+</tr>
+<tr>
+<td>semifinals-2</td>
+<td>2006..</td>
+<td>[[]]</td>
+<td>[[]]</td>
+<td>-</td>
+<td>2006</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>match</td>
+<td>year</td>
+</tr>
+<tr>
+<td>gl-a-1</td>
+<td>2006</td>
+</tr>
+<tr>
+<td>gl-a-2</td>
+<td>2006</td>
+</tr>
+<tr>
+<td>gl-a-3</td>
+<td>2006</td>
+</tr>
+<tr>
+<td>gl-a-4</td>
+<td>2006</td>
+</tr>
+<tr>
+<td>gl-a-5</td>
+<td>2006</td>
+</tr>
+<tr>
+<td>gl-a-6</td>
+<td>2006</td>
+</tr>
+<tr>
+<td>quarterfinals-1</td>
+<td>2006</td>
+</tr>
+<tr>
+<td>quarterfinals-2</td>
+<td>2006</td>
+</tr>
+<tr>
+<td>semifinals-1</td>
+<td>2006</td>
+</tr>
+<tr>
+<td>semifinals-2</td>
+<td>2006</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['gl-a-1', 2006], ['gl-a-2', 2006], ['gl-a-3', 2006], ['gl-a-4', 2006], ['gl-a-5', 2006], ['gl-a-6', 2006], ['quarterfinals-1', 2006], ['quarterfinals-2', 2006], ['semifinals-1', 2006], ['semifinals-2', 2006]]</h3>
+</body></html>

@@ -1,0 +1,51 @@
+************************************************************************************************************************
+Sample 1765 - Plan 1: Query: the api of woodrow wilson was 600 in 2009. what was it the previous year?
+Sample 1765 - Plan 1: Groundtruth: ['585']
+Sample 1765 - Plan 1: X-Original table pd: 
+                                       school  c_2007  c_2008  c_2009  c_2010  \
+0  francisco bravo medical magnet high school   807.0     818     815     820   
+1  marc and eva stern math and science school   718.0     792     788     788   
+2  oscar de la hoya animo charter high school   662.0     726     709     710   
+3               james a. garfield high school   553.0     597     593     632   
+4                 abraham lincoln high school   594.0     609     588     616   
+5                  woodrow wilson high school   582.0     585     600     615   
+6              theodore roosevelt high school   557.0     551     576     608   
+7                thomas jefferson high school   457.0     516     514     546   
+8                    santee education complex     NaN     502     521     552   
+
+   c_2011  
+0   832.0  
+1   809.0  
+2   744.0  
+3   705.0  
+4   643.0  
+5   636.0  
+6     NaN  
+7   546.0  
+8   565.0  
+Sample 1765 - Plan 1: Caption: none
+Sample 1765 - Plan 1: Original table: [['school', 'c_2007', 'c_2008', 'c_2009', 'c_2010', 'c_2011'], ['francisco bravo medical magnet high school', '807', '818', '815', '820', '832'], ['marc and eva stern math and science school', '718', '792', '788', '788', '809'], ['oscar de la hoya animo charter high school', '662', '726', '709', '710', '744'], ['james a. garfield high school', '553', '597', '593', '632', '705'], ['abraham lincoln high school', '594', '609', '588', '616', '643'], ['woodrow wilson high school', '582', '585', '600', '615', '636'], ['theodore roosevelt high school', '557', '551', '576', '608', ''], ['thomas jefferson high school', '457', '516', '514', '546', '546'], ['santee education complex', '', '502', '521', '552', '565']]
+########################################################################################################################
+Sample 1765 - Plan 1: Operation 1: Select the row where the 'school' is 'woodrow wilson high school'.
+Sample 1765 - Plan 1: Selected indices: [[5, 0]]
+Sample 1765 - Plan 1: X-Table after operation df:
+                       school  c_2007  c_2008  c_2009  c_2010  c_2011
+0  woodrow wilson high school   582.0     585     600     615   636.0
+Sample 1765 - Plan 1: Table after operation: [['school', 'c_2007', 'c_2008', 'c_2009', 'c_2010', 'c_2011'], ['woodrow wilson high school', 582.0, 585, 600, 615, 636.0]]
+########################################################################################################################
+Sample 1765 - Plan 1: Operation 2: Extract the value from the 'c_2009' column.
+Sample 1765 - Plan 1: Selected indices: []
+Sample 1765 - Plan 1: X-Table after operation df:
+   extracted_value
+0              600
+Sample 1765 - Plan 1: Table after operation: [['extracted_value'], [600]]
+########################################################################################################################
+Sample 1765 - Plan 1: Operation 3: Subtract 1 from the extracted value to get the previous year's API value.
+Sample 1765 - Plan 1: Selected indices: []
+Sample 1765 - Plan 1: X-Table after operation df:
+   previous_year_api_value
+0                      599
+Sample 1765 - Plan 1: Table after operation: [['previous_year_api_value'], [599]]
+Fall-back: FALSE
+Answer from plan 1: [[599]]
+Groundtruth: ['585']

@@ -1,0 +1,45 @@
+************************************************************************************************************************
+Sample 3021 - Plan 1: Query: at most, how many games were played in one year?
+Sample 3021 - Plan 1: Groundtruth: ['31']
+Sample 3021 - Plan 1: X-Original table pd: 
+     season                club              competition  games  goals
+0   2002/03           raec mons           jupiler league     19      0
+1   2003/04           raec mons           jupiler league     23      0
+2   2004/05       ksv roeselare  belgian second division     29      1
+3   2005/06       ksv roeselare           jupiler league     26      0
+4   2006/07       ksv roeselare           jupiler league     29      1
+5   2007/08       ksv roeselare           jupiler league     25      0
+6   2008/09  excelsior mouscron           jupiler league     31      1
+7   2009/10  excelsior mouscron           jupiler league     14      1
+8   2009/10        győri eto fc             soproni liga      1      0
+9   2010/11            kortrijk           jupiler league      0      0
+10                                                totaal    278      4
+Sample 3021 - Plan 1: Caption: none
+Sample 3021 - Plan 1: Original table: [['season', 'club', 'competition', 'games', 'goals'], ['2002/03', 'raec mons', 'jupiler league', '19', '0'], ['2003/04', 'raec mons', 'jupiler league', '23', '0'], ['2004/05', 'ksv roeselare', 'belgian second division', '29', '1'], ['2005/06', 'ksv roeselare', 'jupiler league', '26', '0'], ['2006/07', 'ksv roeselare', 'jupiler league', '29', '1'], ['2007/08', 'ksv roeselare', 'jupiler league', '25', '0'], ['2008/09', 'excelsior mouscron', 'jupiler league', '31', '1'], ['2009/10', 'excelsior mouscron', 'jupiler league', '14', '1'], ['2009/10', 'győri eto fc', 'soproni liga', '1', '0'], ['2010/11', 'kortrijk', 'jupiler league', '0', '0'], ['', '', 'totaal', '278', '4']]
+########################################################################################################################
+Sample 3021 - Plan 1: Operation 1: Select rows where the 'games' column is not empty.
+Sample 3021 - Plan 1: Selected indices: [[9, 3], [4, 3], [0, 3], [7, 3], [2, 3], [8, 3], [3, 3], [10, 3], [5, 3], [6, 3], [1, 3]]
+Sample 3021 - Plan 1: X-Table after operation df:
+     season                club              competition  games  goals
+0   2002/03           raec mons           jupiler league     19      0
+1   2003/04           raec mons           jupiler league     23      0
+2   2004/05       ksv roeselare  belgian second division     29      1
+3   2005/06       ksv roeselare           jupiler league     26      0
+4   2006/07       ksv roeselare           jupiler league     29      1
+5   2007/08       ksv roeselare           jupiler league     25      0
+6   2008/09  excelsior mouscron           jupiler league     31      1
+7   2009/10  excelsior mouscron           jupiler league     14      1
+8   2009/10        győri eto fc             soproni liga      1      0
+9   2010/11            kortrijk           jupiler league      0      0
+10                                                totaal    278      4
+Sample 3021 - Plan 1: Table after operation: [['season', 'club', 'competition', 'games', 'goals'], ['2002/03', 'raec mons', 'jupiler league', 19, 0], ['2003/04', 'raec mons', 'jupiler league', 23, 0], ['2004/05', 'ksv roeselare', 'belgian second division', 29, 1], ['2005/06', 'ksv roeselare', 'jupiler league', 26, 0], ['2006/07', 'ksv roeselare', 'jupiler league', 29, 1], ['2007/08', 'ksv roeselare', 'jupiler league', 25, 0], ['2008/09', 'excelsior mouscron', 'jupiler league', 31, 1], ['2009/10', 'excelsior mouscron', 'jupiler league', 14, 1], ['2009/10', 'győri eto fc', 'soproni liga', 1, 0], ['2010/11', 'kortrijk', 'jupiler league', 0, 0], ['', '', 'totaal', 278, 4]]
+########################################################################################################################
+Sample 3021 - Plan 1: Operation 2: Calculate the maximum value from the 'games' column.
+Sample 3021 - Plan 1: Selected indices: []
+Sample 3021 - Plan 1: X-Table after operation df:
+   max_games
+0        278
+Sample 3021 - Plan 1: Table after operation: [['max_games'], [278]]
+Fall-back: FALSE
+Answer from plan 1: [[278]]
+Groundtruth: ['31']

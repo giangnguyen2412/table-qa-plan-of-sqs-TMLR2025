@@ -1,0 +1,46 @@
+************************************************************************************************************************
+Sample 3922 - Plan 1: Query: in which year did he have his most wins in grand slam matches?
+Sample 3922 - Plan 1: Groundtruth: ['2012']
+Sample 3922 - Plan 1: X-Original table pd: 
+         tournament c_2007 c_2008 c_2009 c_2010 c_2011 c_2012 c_2013 c_2014  \
+0   australian open     1r     1r      a     2r     1r     3r     2r     1r   
+1       french open     q1     q1      a     2r     q1     1r     1r          
+2         wimbledon     q1      a     1r     2r     1r     3r     1r          
+3           us open     q3     q2     q3     1r     1r     1r     1r          
+4          win–loss    0–1    0–1    0–1    3–4    0–3    4–4    1–4    0–1   
+5     titles–finals    0–0    0–0    0–0    0–0    0–0    0–1    0–0          
+6  year-end ranking    139    325     82     89    112     51     81          
+
+    w_l  
+0   4–7  
+1   1–3  
+2   3–5  
+3   0–4  
+4  8–19  
+5   0–1  
+6        
+Sample 3922 - Plan 1: Caption: none
+Sample 3922 - Plan 1: Original table: [['tournament', 'c_2007', 'c_2008', 'c_2009', 'c_2010', 'c_2011', 'c_2012', 'c_2013', 'c_2014', 'w_l'], ['australian open', '1r', '1r', 'a', '2r', '1r', '3r', '2r', '1r', '4–7'], ['french open', 'q1', 'q1', 'a', '2r', 'q1', '1r', '1r', '', '1–3'], ['wimbledon', 'q1', 'a', '1r', '2r', '1r', '3r', '1r', '', '3–5'], ['us open', 'q3', 'q2', 'q3', '1r', '1r', '1r', '1r', '', '0–4'], ['win–loss', '0–1', '0–1', '0–1', '3–4', '0–3', '4–4', '1–4', '0–1', '8–19'], ['titles–finals', '0–0', '0–0', '0–0', '0–0', '0–0', '0–1', '0–0', '', '0–1'], ['year-end ranking', '139', '325', '82', '89', '112', '51', '81', '', '']]
+########################################################################################################################
+Sample 3922 - Plan 1: Operation 1: Filter the table to include only the rows representing the player's performance in grand slam matches.
+Sample 3922 - Plan 1: Selected indices: [[1, 0], [2, 0], [0, 0], [3, 0]]
+Sample 3922 - Plan 1: X-Table after operation df:
+        tournament c_2007 c_2008 c_2009 c_2010 c_2011 c_2012 c_2013 c_2014  \
+0  australian open     1r     1r      a     2r     1r     3r     2r     1r   
+1      french open     q1     q1      a     2r     q1     1r     1r          
+2        wimbledon     q1      a     1r     2r     1r     3r     1r          
+3          us open     q3     q2     q3     1r     1r     1r     1r          
+
+   w_l  
+0  4–7  
+1  1–3  
+2  3–5  
+3  0–4  
+Sample 3922 - Plan 1: Table after operation: [['tournament', 'c_2007', 'c_2008', 'c_2009', 'c_2010', 'c_2011', 'c_2012', 'c_2013', 'c_2014', 'w_l'], ['australian open', '1r', '1r', 'a', '2r', '1r', '3r', '2r', '1r', '4–7'], ['french open', 'q1', 'q1', 'a', '2r', 'q1', '1r', '1r', '', '1–3'], ['wimbledon', 'q1', 'a', '1r', '2r', '1r', '3r', '1r', '', '3–5'], ['us open', 'q3', 'q2', 'q3', '1r', '1r', '1r', '1r', '', '0–4']]
+########################################################################################################################
+Sample 3922 - Plan 1: Operation 2: Create a new column 'wins' to calculate the number of wins for each year by counting the occurrences of 'W' in the cells representing the player's performance in grand slam matches.
+SQL execution error in operation 2: 'NoneType' object is not iterable
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['2012']]
+Groundtruth: ['2012']

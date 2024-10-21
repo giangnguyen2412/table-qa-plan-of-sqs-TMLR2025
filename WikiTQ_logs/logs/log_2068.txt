@@ -1,0 +1,88 @@
+************************************************************************************************************************
+Sample 2068 - Plan 1: Query: was she nominated for awards for the film alemari or addhuri?
+Sample 2068 - Plan 1: Groundtruth: ['Addhuri']
+Sample 2068 - Plan 1: X-Original table pd: 
+    year                       film       role language  \
+0   2008             moggina manasu  chanchala  kannada   
+1   2009  olave jeevana lekkachaara    rukmini  kannada   
+2   2009                  love guru      kushi  kannada   
+3   2010        krishnan love story     geetha  kannada   
+4   2010              gaana bajaana     radhey  kannada   
+5   2011                   hudugaru   gayithri  kannada   
+6   2012                    alemari      neeli  kannada   
+7   2012              breaking news   shraddha  kannada   
+8   2012                    addhuri     poorna  kannada   
+9   2012                 18th cross      punya  kannada   
+10  2012                      sagar      kajal  kannada   
+11  2012                      drama    nandini  kannada   
+12  2013                  kaddipudi        uma  kannada   
+13  2013                    dilwala    preethi  kannada   
+14  2013                  bahaddoor     anjali  kannada   
+15  2014       mr. & mrs. ramachari                       
+16  2014                  endendigu                       
+
+                                                notes  
+0   filmfare award for best actress - kannada\nkar...  
+1              innovative film award for best actress  
+2           filmfare award for best actress - kannada  
+3   filmfare award for best actress - kannada\nuda...  
+4                                                      
+5   nominated, filmfare award for best actress – k...  
+6                                                      
+7                                                      
+8   udaya award for best actress\nnominated — siim...  
+9                                                      
+10                                                     
+11                                                     
+12                                                     
+13                                                     
+14                                            filming  
+15                                          announced  
+16                                            filming  
+Sample 2068 - Plan 1: Caption: none
+Sample 2068 - Plan 1: Original table: [['year', 'film', 'role', 'language', 'notes'], ['2008', 'moggina manasu', 'chanchala', 'kannada', 'filmfare award for best actress - kannada\\nkarnataka state film award for best actress'], ['2009', 'olave jeevana lekkachaara', 'rukmini', 'kannada', 'innovative film award for best actress'], ['2009', 'love guru', 'kushi', 'kannada', 'filmfare award for best actress - kannada'], ['2010', 'krishnan love story', 'geetha', 'kannada', 'filmfare award for best actress - kannada\\nudaya award for best actress'], ['2010', 'gaana bajaana', 'radhey', 'kannada', ''], ['2011', 'hudugaru', 'gayithri', 'kannada', 'nominated, filmfare award for best actress – kannada'], ['2012', 'alemari', 'neeli', 'kannada', ''], ['2012', 'breaking news', 'shraddha', 'kannada', ''], ['2012', 'addhuri', 'poorna', 'kannada', 'udaya award for best actress\\nnominated — siima award for best actress\\nnominated — filmfare award for best actress\xa0– kannada'], ['2012', '18th cross', 'punya', 'kannada', ''], ['2012', 'sagar', 'kajal', 'kannada', ''], ['2012', 'drama', 'nandini', 'kannada', ''], ['2013', 'kaddipudi', 'uma', 'kannada', ''], ['2013', 'dilwala', 'preethi', 'kannada', ''], ['2013', 'bahaddoor', 'anjali', 'kannada', 'filming'], ['2014', 'mr. & mrs. ramachari', '', '', 'announced'], ['2014', 'endendigu', '', '', 'filming']]
+########################################################################################################################
+Sample 2068 - Plan 1: Operation 1: Select rows where the 'film' column is either 'alemari' or 'addhuri'.
+Sample 2068 - Plan 1: Selected indices: [[6, 1], [8, 1]]
+Sample 2068 - Plan 1: X-Table after operation df:
+   year     film    role language  \
+0  2012  alemari   neeli  kannada   
+1  2012  addhuri  poorna  kannada   
+
+                                               notes  
+0                                                     
+1  udaya award for best actress\nnominated — siim...  
+Sample 2068 - Plan 1: Table after operation: [['year', 'film', 'role', 'language', 'notes'], [2012, 'alemari', 'neeli', 'kannada', ''], [2012, 'addhuri', 'poorna', 'kannada', 'udaya award for best actress\\nnominated — siima award for best actress\\nnominated — filmfare award for best actress\xa0– kannada']]
+########################################################################################################################
+Sample 2068 - Plan 1: Operation 2: Select the 'notes' column.
+Sample 2068 - Plan 1: Selected indices: []
+Sample 2068 - Plan 1: X-Table after operation df:
+                                               notes
+0                                                   
+1  udaya award for best actress\nnominated — siim...
+Sample 2068 - Plan 1: Table after operation: [['notes'], [''], ['udaya award for best actress\\nnominated — siima award for best actress\\nnominated — filmfare award for best actress\xa0– kannada']]
+########################################################################################################################
+Sample 2068 - Plan 1: Operation 3: Check if the 'notes' column contains the word "nominated".
+Sample 2068 - Plan 1: Selected indices: [[1, 0]]
+Sample 2068 - Plan 1: X-Table after operation df:
+                                               notes
+0  udaya award for best actress\nnominated — siim...
+Sample 2068 - Plan 1: Table after operation: [['notes'], ['udaya award for best actress\\nnominated — siima award for best actress\\nnominated — filmfare award for best actress\xa0– kannada']]
+########################################################################################################################
+Sample 2068 - Plan 1: Operation 4: If the 'notes' column contains the word "nominated" for either 'alemari' or 'addhuri', the answer to the question is "Yes".
+Sample 2068 - Plan 1: Selected indices: []
+Sample 2068 - Plan 1: X-Table after operation df:
+  answer
+0     No
+Sample 2068 - Plan 1: Table after operation: [['answer'], ['No']]
+########################################################################################################################
+Sample 2068 - Plan 1: Operation 5: If the 'notes' column does not contain the word "nominated" for either 'alemari' or 'addhuri', the answer to the question is "No".
+SQL execution error in operation 5: Execution failed on sql 'SELECT CASE 
+           WHEN (SELECT COUNT(*) FROM table_sql WHERE (notes NOT LIKE '%nominated%' AND (player = 'alemari' OR player = 'addhuri'))) > 0 THEN 'No'
+           ELSE 'Yes'
+       END AS answer;
+-- If the 'notes' column does not contain the word "nominated" for either 'alemari' or 'addhuri', the answer to the question is "No".': no such column: notes
+Intermediate table does not have the expected structure.
+Fall-back: TRUE
+Answer from plan 1: [['nominated — siima award for best actress', 'nominated — filmfare award for best actress – kannada']]
+Groundtruth: ['Addhuri']

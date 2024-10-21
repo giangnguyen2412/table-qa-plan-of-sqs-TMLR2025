@@ -1,0 +1,397 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> how long did this series run in years?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Calculate the start year of the series by extracting the year from the 'premiere_date' column and adding a new column 'start_year' to the existing table.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>series_number</td>
+<td>season_number</td>
+<td>episode_title</td>
+<td>premiere_date</td>
+<td>production_code</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">going up!</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">october 25, 1998</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">101</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">who's the man</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">november 1, 1998</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">102</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">3</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">vootle-muck-a-heev</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">november 8, 1998</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">103</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">4</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">close encounters</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">november 15, 1998</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">104</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">5</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">hurricane jules</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">november 22, 1998</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">105</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">6</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">switcheroo</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">november 29, 1998</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">106</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">7</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">front page</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">january 17, 1999</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">107</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">8</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">special fx-ation</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">january 24, 1999</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">108</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">9</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">the famous stone gold</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">january 31, 1999</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">109</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">10</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">kiss and tell</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">february 7, 1999</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">110</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">11</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">jb's big break</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">february 21, 1999</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">111</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">12</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">bottom's up</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">march 7, 1999</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">112</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">13</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">hot dog</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">march 14, 1999</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">113</span></td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Calculate the end year of the series by adding 10 years to the start year and adding a new column 'end_year' to the existing table.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>series_number</td>
+<td>season_number</td>
+<td>episode_title</td>
+<td>premiere_date</td>
+<td>production_code</td>
+<td>start_year</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>going up!</td>
+<td>october 25, 1998</td>
+<td>101</td>
+<td><span class="highlighted-cell" title="Used in transformation">1998</span></td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>who's the man</td>
+<td>november 1, 1998</td>
+<td>102</td>
+<td><span class="highlighted-cell" title="Used in transformation">1998</span></td>
+</tr>
+<tr>
+<td>3</td>
+<td>3</td>
+<td>vootle-muck-a-heev</td>
+<td>november 8, 1998</td>
+<td>103</td>
+<td><span class="highlighted-cell" title="Used in transformation">1998</span></td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>close encounters</td>
+<td>november 15, 1998</td>
+<td>104</td>
+<td><span class="highlighted-cell" title="Used in transformation">1998</span></td>
+</tr>
+<tr>
+<td>5</td>
+<td>5</td>
+<td>hurricane jules</td>
+<td>november 22, 1998</td>
+<td>105</td>
+<td><span class="highlighted-cell" title="Used in transformation">1998</span></td>
+</tr>
+<tr>
+<td>6</td>
+<td>6</td>
+<td>switcheroo</td>
+<td>november 29, 1998</td>
+<td>106</td>
+<td><span class="highlighted-cell" title="Used in transformation">1998</span></td>
+</tr>
+<tr>
+<td>7</td>
+<td>7</td>
+<td>front page</td>
+<td>january 17, 1999</td>
+<td>107</td>
+<td><span class="highlighted-cell" title="Used in transformation">1999</span></td>
+</tr>
+<tr>
+<td>8</td>
+<td>8</td>
+<td>special fx-ation</td>
+<td>january 24, 1999</td>
+<td>108</td>
+<td><span class="highlighted-cell" title="Used in transformation">1999</span></td>
+</tr>
+<tr>
+<td>9</td>
+<td>9</td>
+<td>the famous stone gold</td>
+<td>january 31, 1999</td>
+<td>109</td>
+<td><span class="highlighted-cell" title="Used in transformation">1999</span></td>
+</tr>
+<tr>
+<td>10</td>
+<td>10</td>
+<td>kiss and tell</td>
+<td>february 7, 1999</td>
+<td>110</td>
+<td><span class="highlighted-cell" title="Used in transformation">1999</span></td>
+</tr>
+<tr>
+<td>11</td>
+<td>11</td>
+<td>jb's big break</td>
+<td>february 21, 1999</td>
+<td>111</td>
+<td><span class="highlighted-cell" title="Used in transformation">1999</span></td>
+</tr>
+<tr>
+<td>12</td>
+<td>12</td>
+<td>bottom's up</td>
+<td>march 7, 1999</td>
+<td>112</td>
+<td><span class="highlighted-cell" title="Used in transformation">1999</span></td>
+</tr>
+<tr>
+<td>13</td>
+<td>13</td>
+<td>hot dog</td>
+<td>march 14, 1999</td>
+<td>113</td>
+<td><span class="highlighted-cell" title="Used in transformation">1999</span></td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select the maximum value from the 'end_year' column as the final answer for the question.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>series_number</td>
+<td>season_number</td>
+<td>episode_title</td>
+<td>premiere_date</td>
+<td>production_code</td>
+<td>start_year</td>
+<td>end_year</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>going up!</td>
+<td>october 25, 1998</td>
+<td>101</td>
+<td>1998</td>
+<td>2008</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>who's the man</td>
+<td>november 1, 1998</td>
+<td>102</td>
+<td>1998</td>
+<td>2008</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3</td>
+<td>vootle-muck-a-heev</td>
+<td>november 8, 1998</td>
+<td>103</td>
+<td>1998</td>
+<td>2008</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>close encounters</td>
+<td>november 15, 1998</td>
+<td>104</td>
+<td>1998</td>
+<td>2008</td>
+</tr>
+<tr>
+<td>5</td>
+<td>5</td>
+<td>hurricane jules</td>
+<td>november 22, 1998</td>
+<td>105</td>
+<td>1998</td>
+<td>2008</td>
+</tr>
+<tr>
+<td>6</td>
+<td>6</td>
+<td>switcheroo</td>
+<td>november 29, 1998</td>
+<td>106</td>
+<td>1998</td>
+<td>2008</td>
+</tr>
+<tr>
+<td>7</td>
+<td>7</td>
+<td>front page</td>
+<td>january 17, 1999</td>
+<td>107</td>
+<td>1999</td>
+<td>2009</td>
+</tr>
+<tr>
+<td>8</td>
+<td>8</td>
+<td>special fx-ation</td>
+<td>january 24, 1999</td>
+<td>108</td>
+<td>1999</td>
+<td>2009</td>
+</tr>
+<tr>
+<td>9</td>
+<td>9</td>
+<td>the famous stone gold</td>
+<td>january 31, 1999</td>
+<td>109</td>
+<td>1999</td>
+<td>2009</td>
+</tr>
+<tr>
+<td>10</td>
+<td>10</td>
+<td>kiss and tell</td>
+<td>february 7, 1999</td>
+<td>110</td>
+<td>1999</td>
+<td>2009</td>
+</tr>
+<tr>
+<td>11</td>
+<td>11</td>
+<td>jb's big break</td>
+<td>february 21, 1999</td>
+<td>111</td>
+<td>1999</td>
+<td>2009</td>
+</tr>
+<tr>
+<td>12</td>
+<td>12</td>
+<td>bottom's up</td>
+<td>march 7, 1999</td>
+<td>112</td>
+<td>1999</td>
+<td>2009</td>
+</tr>
+<tr>
+<td>13</td>
+<td>13</td>
+<td>hot dog</td>
+<td>march 14, 1999</td>
+<td>113</td>
+<td>1999</td>
+<td>2009</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>final_answer</td>
+</tr>
+<tr>
+<td>2009</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [[2009]]</h3>
+</body></html>

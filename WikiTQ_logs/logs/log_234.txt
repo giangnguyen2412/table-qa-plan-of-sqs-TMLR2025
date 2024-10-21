@@ -1,0 +1,87 @@
+************************************************************************************************************************
+Sample 234 - Plan 1: Query: how many left wings were picked in the eighth round?
+Sample 234 - Plan 1: Groundtruth: ['5']
+Sample 234 - Plan 1: X-Original table pd: 
+    pick__           player    position     nationality  \
+0      148       paul krake      goalie          canada   
+1      149       phil huber      center          canada   
+2      150   derek langille     defense          canada   
+3      151        jim solly   left wing          canada   
+4      152  sergei starikov     defense    soviet union   
+5      153      milan tichy     defense  czechoslovakia   
+6      154        jon pratt   left wing   united states   
+7      155     rob sangster   left wing          canada   
+8      156     kevin plager  right wing   united states   
+9      157  raymond saumier  right wing          canada   
+10     158        andy suhy     defense   united states   
+11     159     sverre sears     defense   united states   
+12     160    greg spenrath     defense          canada   
+13     161     derek plante      center   united states   
+14     162    darcy martini     defense          canada   
+15     163      david shute   left wing   united states   
+16     164      rick allain     defense          canada   
+17     165       sean whyte  right wing          canada   
+18     166     dean holoien  right wing          canada   
+19     167   patrick lebeau   left wing          canada   
+20     168    kevin wortman     defense   united states   
+
+                 nhl_team                  college_junior_club_team  
+0        quebec nordiques     university of alaska anchorage (ncaa)  
+1      new york islanders                    kamloops blazers (whl)  
+2     toronto maple leafs               north bay centennials (ohl)  
+3           winnipeg jets     bowling green state university (ncaa)  
+4       new jersey devils                        cska moscow (ussr)  
+5      chicago blackhawks               prince albert raiders (whl)  
+6   minnesota north stars             pingree high school (ushs-ma)  
+7       vancouver canucks                   kitchener rangers (ohl)  
+8         st. louis blues       parkway north high school (ushs-mo)  
+9        hartford whalers           trois rivieres draveurs (qmjhl)  
+10      detroit red wings        western michigan university (ncaa)  
+11    philadelphia flyers               princeton university (ncaa)  
+12       new york rangers                  tri-city americans (whl)  
+13         buffalo sabres             cloquet high school (ushs-mn)  
+14        edmonton oilers  michigan technological university (ncaa)  
+15    pittsburgh penguins                    victoria cougars (whl)  
+16          boston bruins                   kitchener rangers (ohl)  
+17      los angeles kings                      guelph platers (ohl)  
+18    washington capitals                    saskatoon blades (whl)  
+19     montreal canadiens                      st-jean lynx (qmjhl)  
+20         calgary flames     american international college (ncaa)  
+Sample 234 - Plan 1: Caption: none
+Sample 234 - Plan 1: Original table: [['pick__', 'player', 'position', 'nationality', 'nhl_team', 'college_junior_club_team'], ['148', 'paul krake', 'goalie', 'canada', 'quebec nordiques', 'university of alaska anchorage (ncaa)'], ['149', 'phil huber', 'center', 'canada', 'new york islanders', 'kamloops blazers (whl)'], ['150', 'derek langille', 'defense', 'canada', 'toronto maple leafs', 'north bay centennials (ohl)'], ['151', 'jim solly', 'left wing', 'canada', 'winnipeg jets', 'bowling green state university (ncaa)'], ['152', 'sergei starikov', 'defense', 'soviet union', 'new jersey devils', 'cska moscow (ussr)'], ['153', 'milan tichy', 'defense', 'czechoslovakia', 'chicago blackhawks', 'prince albert raiders (whl)'], ['154', 'jon pratt', 'left wing', 'united states', 'minnesota north stars', 'pingree high school (ushs-ma)'], ['155', 'rob sangster', 'left wing', 'canada', 'vancouver canucks', 'kitchener rangers (ohl)'], ['156', 'kevin plager', 'right wing', 'united states', 'st. louis blues', 'parkway north high school (ushs-mo)'], ['157', 'raymond saumier', 'right wing', 'canada', 'hartford whalers', 'trois rivieres draveurs (qmjhl)'], ['158', 'andy suhy', 'defense', 'united states', 'detroit red wings', 'western michigan university (ncaa)'], ['159', 'sverre sears', 'defense', 'united states', 'philadelphia flyers', 'princeton university (ncaa)'], ['160', 'greg spenrath', 'defense', 'canada', 'new york rangers', 'tri-city americans (whl)'], ['161', 'derek plante', 'center', 'united states', 'buffalo sabres', 'cloquet high school (ushs-mn)'], ['162', 'darcy martini', 'defense', 'canada', 'edmonton oilers', 'michigan technological university (ncaa)'], ['163', 'david shute', 'left wing', 'united states', 'pittsburgh penguins', 'victoria cougars (whl)'], ['164', 'rick allain', 'defense', 'canada', 'boston bruins', 'kitchener rangers (ohl)'], ['165', 'sean whyte', 'right wing', 'canada', 'los angeles kings', 'guelph platers (ohl)'], ['166', 'dean holoien', 'right wing', 'canada', 'washington capitals', 'saskatoon blades (whl)'], ['167', 'patrick lebeau', 'left wing', 'canada', 'montreal canadiens', 'st-jean lynx (qmjhl)'], ['168', 'kevin wortman', 'defense', 'united states', 'calgary flames', 'american international college (ncaa)']]
+########################################################################################################################
+Sample 234 - Plan 1: Operation 1: Select rows where the 'position' is 'left wing'.
+Sample 234 - Plan 1: Selected indices: [[6, 2], [7, 2], [19, 2], [3, 2], [15, 2]]
+Sample 234 - Plan 1: X-Table after operation df:
+   pick__          player   position    nationality               nhl_team  \
+0     151       jim solly  left wing         canada          winnipeg jets   
+1     154       jon pratt  left wing  united states  minnesota north stars   
+2     155    rob sangster  left wing         canada      vancouver canucks   
+3     163     david shute  left wing  united states    pittsburgh penguins   
+4     167  patrick lebeau  left wing         canada     montreal canadiens   
+
+                college_junior_club_team  
+0  bowling green state university (ncaa)  
+1          pingree high school (ushs-ma)  
+2                kitchener rangers (ohl)  
+3                 victoria cougars (whl)  
+4                   st-jean lynx (qmjhl)  
+Sample 234 - Plan 1: Table after operation: [['pick__', 'player', 'position', 'nationality', 'nhl_team', 'college_junior_club_team'], [151, 'jim solly', 'left wing', 'canada', 'winnipeg jets', 'bowling green state university (ncaa)'], [154, 'jon pratt', 'left wing', 'united states', 'minnesota north stars', 'pingree high school (ushs-ma)'], [155, 'rob sangster', 'left wing', 'canada', 'vancouver canucks', 'kitchener rangers (ohl)'], [163, 'david shute', 'left wing', 'united states', 'pittsburgh penguins', 'victoria cougars (whl)'], [167, 'patrick lebeau', 'left wing', 'canada', 'montreal canadiens', 'st-jean lynx (qmjhl)']]
+########################################################################################################################
+Sample 234 - Plan 1: Operation 2: Select rows where the 'pick__' is in the eighth round.
+Sample 234 - Plan 1: Selected indices: []
+Sample 234 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [pick__, player, position, nationality, nhl_team, college_junior_club_team]
+Index: []
+Sample 234 - Plan 1: Table after operation: [['pick__', 'player', 'position', 'nationality', 'nhl_team', 'college_junior_club_team']]
+########################################################################################################################
+Sample 234 - Plan 1: Operation 3: Count the number of rows.
+Sample 234 - Plan 1: Selected indices: []
+Sample 234 - Plan 1: X-Table after operation df:
+   row_count
+0          0
+Sample 234 - Plan 1: Table after operation: [['row_count'], [0]]
+Fall-back: FALSE
+Answer from plan 1: [[0]]
+Groundtruth: ['5']

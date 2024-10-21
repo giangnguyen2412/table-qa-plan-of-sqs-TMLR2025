@@ -1,0 +1,412 @@
+<html><head>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { text-align: center; }
+.cot-title { color: blue; }
+.pos-title { color: green; }
+h2 { color: black; text-align: left; }
+h3 { color: black; text-align: left; }
+h4 { color: darkslategray; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+table, th, td { border: 1px solid #ddd; padding: 8px; }
+th { background-color: #f2f2f2; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+.highlight { background-color: #ffffcc; }
+.true { color: green; }
+.false { color: red; }
+.highlighted-cell { background-color: yellow; cursor: pointer; }
+.step-title { background-color: #f1f1f1; color: #444; padding: 10px; margin: 10px 0; font-size: 18px; border-left: 4px solid #888; }
+.step { display: block; }
+</style>
+</head><body>
+<hr>
+<h3><span>Question:</span> what was the top team in 1971?</h3>
+<h3>Input Table:</h3>
+<div class="step">
+<div class="step">
+<div class="step-title">Step 1: Select rows where 'year' is 1971.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>winners</td>
+<td>runners_up</td>
+<td>third</td>
+<td>fourth</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:#90EE90;">1971</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">cologne</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">royal sporting club anderlecht</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">real zaragoza</span></td>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">-</span></td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1972</span></td>
+<td>hamburg sv</td>
+<td>sociedade esportiva palmeiras</td>
+<td>real zaragoza</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1973</span></td>
+<td>borussia mönchengladbach</td>
+<td>pfc cska sofia</td>
+<td>real zaragoza</td>
+<td>west ham</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1974</span></td>
+<td>real zaragoza</td>
+<td>eintracht frankfurt</td>
+<td>fc molenbeek brussels strombeek</td>
+<td>partizan belgrade</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1975</span></td>
+<td>real zaragoza</td>
+<td>club atlético boca juniors</td>
+<td>fk vojvodina</td>
+<td>boavista futebol clube</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1976</span></td>
+<td>real zaragoza</td>
+<td>górnik zabrze</td>
+<td>ofk belgrade</td>
+<td>olympiacos fc</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1977</span></td>
+<td>pfc cska sofia</td>
+<td>real zaragoza</td>
+<td>fk radnički niš</td>
+<td>rcd espanyol</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1978</span></td>
+<td>real zaragoza</td>
+<td>club nacional de football</td>
+<td>pfc sliven</td>
+<td>fk trepca mitrovica</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1979</span></td>
+<td>real zaragoza</td>
+<td>nk dinamo zagreb</td>
+<td>vasas sc</td>
+<td>fk sarajevo</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1980</span></td>
+<td>rcd espanyol</td>
+<td>real zaragoza</td>
+<td>sporting lisboa</td>
+<td>partizan belgrade</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1981</span></td>
+<td>real zaragoza</td>
+<td>nottingham forest football club</td>
+<td>tisza volán sc</td>
+<td>club atlético osasuna</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1982</span></td>
+<td>manchester united f.c.</td>
+<td>real zaragoza</td>
+<td>mtk hungária fc</td>
+<td>budapest honvéd fc</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1983</span></td>
+<td>real zaragoza</td>
+<td>club américa</td>
+<td>aston villa football club</td>
+<td>politehnica timişoara</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1984</span></td>
+<td>videoton sc</td>
+<td>universidad católica</td>
+<td>real zaragoza</td>
+<td>defensor sporting club</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1985</span></td>
+<td>fútbol club barcelona</td>
+<td>real zaragoza</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1986</span></td>
+<td>real zaragoza</td>
+<td>cologne</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1987</span></td>
+<td>real zaragoza</td>
+<td>checoslovaquia</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1988</span></td>
+<td>club atlético peñarol</td>
+<td>real zaragoza</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1989</span></td>
+<td>real zaragoza</td>
+<td>club de fútbol atlante</td>
+<td>aragon</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1990</span></td>
+<td>fc dinamo moscow</td>
+<td>real zaragoza</td>
+<td>real betis balompié</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1991</span></td>
+<td>real zaragoza</td>
+<td>dinamo bucharest</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1992</span></td>
+<td>real zaragoza</td>
+<td>fútbol club barcelona</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1993</span></td>
+<td>club de regatas vasco da gama</td>
+<td>real zaragoza</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1994</span></td>
+<td>real zaragoza</td>
+<td>cska moscow</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1995</span></td>
+<td>real zaragoza</td>
+<td>club nacional de football</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1996</span></td>
+<td>real zaragoza</td>
+<td>hamburg sv</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1997</span></td>
+<td>società sportiva lazio</td>
+<td>real zaragoza</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1998</span></td>
+<td>parma</td>
+<td>real zaragoza</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">1999</span></td>
+<td>real zaragoza</td>
+<td>feyenoord rotterdam</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2000</span></td>
+<td>real zaragoza</td>
+<td>parma</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2001</span></td>
+<td>real zaragoza</td>
+<td>fc twente</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2002</span></td>
+<td>real zaragoza</td>
+<td>athletic club</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2003</span></td>
+<td>real zaragoza</td>
+<td>chievo</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2004</span></td>
+<td>club atlético de madrid</td>
+<td>real zaragoza</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2005</span></td>
+<td>real zaragoza</td>
+<td>real madrid club de fútbol</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2006</span></td>
+<td>real zaragoza</td>
+<td>associazione sportiva livorno calcio</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2007</span></td>
+<td>real zaragoza</td>
+<td>juventus football club</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2008</span></td>
+<td>getafe club de fútbol</td>
+<td>real zaragoza</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2009</span></td>
+<td>società sportiva lazio</td>
+<td>real zaragoza</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2010</span></td>
+<td>sociedad deportiva huesca</td>
+<td>real zaragoza</td>
+<td>cd teruel</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2011</span></td>
+<td>real zaragoza</td>
+<td>rcd espanyol</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><span class="highlighted-cell" title="Used in transformation" style="background-color:yellow;">2012</span></td>
+<td>real zaragoza</td>
+<td>rcd espanyol</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 2: Order the table by 'winners' in ascending order.</div>
+<div id="step-0" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>winners</td>
+<td>runners_up</td>
+<td>third</td>
+<td>fourth</td>
+</tr>
+<tr>
+<td>1971</td>
+<td><span class="highlighted-cell" title="Used in transformation">cologne</span></td>
+<td>royal sporting club anderlecht</td>
+<td>real zaragoza</td>
+<td>-</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 3: Select row number 1.</div>
+<div id="step-1" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>winners</td>
+<td>runners_up</td>
+<td>third</td>
+<td>fourth</td>
+</tr>
+<tr>
+<td>1971</td>
+<td>cologne</td>
+<td>royal sporting club anderlecht</td>
+<td>real zaragoza</td>
+<td>-</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<div class="step">
+<div class="step-title">Step 4: Select the 'winners' column.</div>
+<div id="step-2" class="content">
+<table>
+<tr>
+<td>year</td>
+<td>winners</td>
+<td>runners_up</td>
+<td>third</td>
+<td>fourth</td>
+</tr>
+<tr>
+<td>1971</td>
+<td>cologne</td>
+<td>royal sporting club anderlecht</td>
+<td>real zaragoza</td>
+<td>-</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<table>
+<tr>
+<td>winners</td>
+</tr>
+<tr>
+<td>cologne</td>
+</tr>
+</table>
+</div>
+</div>
+<hr>
+<h3>Prediction:</span> [['cologne']]</h3>
+</body></html>
