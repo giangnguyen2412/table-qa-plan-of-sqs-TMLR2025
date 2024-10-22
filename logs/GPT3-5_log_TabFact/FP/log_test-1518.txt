@@ -1,0 +1,67 @@
+************************************************************************************************************************
+Sample test-1518 - Plan 1: Statement: the hometown of the last player of the list is las vegas , nv
+Sample test-1518 - Plan 1: Groundtruth: FALSE
+Sample test-1518 - Plan 1: X-Original table pd: 
+             player  height                       school  \
+0        khem birch   6 - 9              notre dame prep   
+1       perry ellis   6 - 8  wichita heights high school   
+2        myles mack   5 - 9       st anthony high school   
+3  shabazz muhammad   6 - 6    bishop gorman high school   
+4       cody zeller  6 - 11       washington high school   
+
+                 hometown            college  
+0  montreal , qc , canada  pittsburgh / unlv  
+1            wichita , ks             kansas  
+2        jersey city , nj            rutgers  
+3          las vegas , nv               ucla  
+4         washington , in            indiana  
+Sample test-1518 - Plan 1: Caption: usa today all - usa high school basketball team
+Sample test-1518 - Plan 1: Original table: [['player', 'height', 'school', 'hometown', 'college'], ['khem birch', '6 - 9', 'notre dame prep', 'montreal , qc , canada', 'pittsburgh / unlv'], ['perry ellis', '6 - 8', 'wichita heights high school', 'wichita , ks', 'kansas'], ['myles mack', '5 - 9', 'st anthony high school', 'jersey city , nj', 'rutgers'], ['shabazz muhammad', '6 - 6', 'bishop gorman high school', 'las vegas , nv', 'ucla'], ['cody zeller', '6 - 11', 'washington high school', 'washington , in', 'indiana']]
+########################################################################################################################
+Sample test-1518 - Plan 1: Operation 1: Order the table by the row number in ascending order.
+Sample test-1518 - Plan 1: Selected indices: [[0, 0], [1, 0], [2, 0], [3, 0], [4, 0]]
+Sample test-1518 - Plan 1: X-Table after operation df:
+             player  height                       school  \
+0       cody zeller  6 - 11       washington high school   
+1        khem birch   6 - 9              notre dame prep   
+2        myles mack   5 - 9       st anthony high school   
+3       perry ellis   6 - 8  wichita heights high school   
+4  shabazz muhammad   6 - 6    bishop gorman high school   
+
+                 hometown            college  row_number  
+0         washington , in            indiana           1  
+1  montreal , qc , canada  pittsburgh / unlv           2  
+2        jersey city , nj            rutgers           3  
+3            wichita , ks             kansas           4  
+4          las vegas , nv               ucla           5  
+Sample test-1518 - Plan 1: Table after operation: [['player', 'height', 'school', 'hometown', 'college', 'row_number'], ['cody zeller', '6 - 11', 'washington high school', 'washington , in', 'indiana', 1], ['khem birch', '6 - 9', 'notre dame prep', 'montreal , qc , canada', 'pittsburgh / unlv', 2], ['myles mack', '5 - 9', 'st anthony high school', 'jersey city , nj', 'rutgers', 3], ['perry ellis', '6 - 8', 'wichita heights high school', 'wichita , ks', 'kansas', 4], ['shabazz muhammad', '6 - 6', 'bishop gorman high school', 'las vegas , nv', 'ucla', 5]]
+########################################################################################################################
+Sample test-1518 - Plan 1: Operation 2: Select row number 5.
+Sample test-1518 - Plan 1: Selected indices: [[4, 5]]
+Sample test-1518 - Plan 1: X-Table after operation df:
+             player height                     school        hometown college  \
+0  shabazz muhammad  6 - 6  bishop gorman high school  las vegas , nv    ucla   
+
+   row_number  
+0           5  
+Sample test-1518 - Plan 1: Table after operation: [['player', 'height', 'school', 'hometown', 'college', 'row_number'], ['shabazz muhammad', '6 - 6', 'bishop gorman high school', 'las vegas , nv', 'ucla', 5]]
+########################################################################################################################
+Sample test-1518 - Plan 1: Operation 3: Select rows where the 'hometown' is 'las vegas , nv'.
+Sample test-1518 - Plan 1: Selected indices: [[0, 3]]
+Sample test-1518 - Plan 1: X-Table after operation df:
+             player height                     school        hometown college  \
+0  shabazz muhammad  6 - 6  bishop gorman high school  las vegas , nv    ucla   
+
+   row_number  
+0           5  
+Sample test-1518 - Plan 1: Table after operation: [['player', 'height', 'school', 'hometown', 'college', 'row_number'], ['shabazz muhammad', '6 - 6', 'bishop gorman high school', 'las vegas , nv', 'ucla', 5]]
+########################################################################################################################
+Sample test-1518 - Plan 1: Operation 4: Use a `CASE` statement to return TRUE if the number of rows is equal to 1, otherwise return FALSE.
+Sample test-1518 - Plan 1: Selected indices: [[0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5]]
+Sample test-1518 - Plan 1: X-Table after operation df:
+  verification_result
+0                TRUE
+Sample test-1518 - Plan 1: Table after operation: [['verification_result'], ['TRUE']]
+Answer from plan 1: TRUE
+Groundtruth: FALSE
+Fall-back: FALSE

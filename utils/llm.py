@@ -82,38 +82,27 @@ class ChatGPT:
         if options is None:
             options = self.get_model_options()
 
-        # if self.model_name == "gpt-3.5-turbo-0613":
-        #
-        #     # the_engine = "gpt-35-turbo-0613"
-        #     the_engine = "gpt-35-turbo-16k-0613"
-        #
-        # elif self.model_name == "gpt-4-turbo":
-        #     the_engine = "gpt-4-turbo-2024-04-09"
-        #
-        # elif self.model_name == "gpt-4o":
-        #     the_engine = "gpt-4o-2024-05-13"
-
-
         if self.model_name == "gpt-3.5-turbo-0613":
             # the_engine = "gpt-35-turbo-0613"
             # the_engine = "gpt-35-turbo-16k-0613"
-            the_engine = "gpt-3.5-turbo-16k-0613"
+            the_engine = "gpt-3.5-turbo-16k"
 
         elif self.model_name == "gpt-4-turbo":
             the_engine = "gpt-4-turbo-2024-04-09"
 
         elif self.model_name == "gpt-4o":
-            the_engine = "gpt-4o-2024-05-13"
-        
+            # the_engine = "gpt-4o-2024-05-13"
+            the_engine = "gpt-4o-mini"
+
         else:
             raise ValueError("Invalid model name. Use 'gpt-3.5-turbo' or 'gpt-4-turbo'.")
+
+        print("The LLM engine is:", the_engine)
 
         gpt_responses = None
         retry_num = 0
         retry_limit = 2  # Try two times
         error = None
-        # TODO: This is for GPT3.5, please change accoridingly when running other models
-        max_context_length = 16384
 
         while gpt_responses is None:
             try:
@@ -125,14 +114,11 @@ class ChatGPT:
                         {"role": "user", "content": prompt},
                     ],
                     # engine = the_engine,
-                    model= the_engine,
+                    model=the_engine,
                     stop=end_str,
                     **options
                 )
                 error = None
-            
-                # if self.model_name != "gpt-3.5-turbo-0613":
-                #     time.sleep(8)
 
             except Exception as e:
                 print(str(e), flush=True)
@@ -140,16 +126,14 @@ class ChatGPT:
                 if "This model's maximum context length is" in str(e):
                     print(e, flush=True)
                     return "Exceed context length"
-                else:
-                    time.sleep(70)
+                else:  # Rate limit
+                    time.sleep(10)
                     retry_num += 1
         if error:
             raise Exception(error)
 
         results = []
-        # print(gpt_responses)
         for i, res in enumerate(gpt_responses.choices):
-            # breakpoint()
             text = res.message.content
             # What is fake confidence?
             fake_conf = (len(gpt_responses.choices) - i) / len(gpt_responses.choices)

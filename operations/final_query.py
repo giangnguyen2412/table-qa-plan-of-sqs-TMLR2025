@@ -138,25 +138,7 @@ def simple_query(sample, table_info, llm, debug=False, use_demo=True, llm_option
 
     return sample_copy
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+############################################################################################################
 
 wikitq_demo = """
 /*
@@ -200,7 +182,7 @@ row 3 : t2 | mike weir | canada | 68 + 71 = 139 | - 1
 row 4 : 4 | rod pampling | australia | 66 + 74 = 140 | e
 row 5 : t5 | chad campbell | united states | 69 + 72 = 141 | + 1
 */
-Question: Which player had a to par score of -1?
+Question: Which players had a to par score of -1?
 The answer is: ['billy andrade', 'mike weir']
 
 /*
@@ -276,12 +258,16 @@ def wikitq_simple_query(sample, table_info, llm, debug=False, use_demo=True, llm
     question = sample["statement"]
 
     prompt = ""
-    prompt += "Here is the question about the table, and the task is to answer the question based on the table. Look at the above examples, your answer must be a python list with each element is a string. Otherwise, you will be penalized!\n"
+    prompt += "Here is the question about the table, and the task is to answer the question based on the table. " \
+              "Look at the above examples, your answer must be a python list with each element is a string. " \
+              "Otherwise, you will be penalized!\n"
 
     if use_demo:
         prompt += "\n"
         prompt += wikitq_demo + "\n\n"
-        prompt += "Here is the question about the table, and the task is to answer the question based on the table. Look at the above examples, your answer must be a python list.  Otherwise, you will be penalized!\n"
+        prompt += "Here is the question about the table, and the task is to answer the question based on the table. " \
+                  "Look at the above examples, your answer must be a python list.  " \
+                  "Otherwise, you will be penalized!\n"
         prompt += "\n"
     
     prompt += "/*\n"
@@ -309,4 +295,3 @@ def wikitq_simple_query(sample, table_info, llm, debug=False, use_demo=True, llm
     sample_copy["chain"].append(operation)
 
     return sample_copy
-

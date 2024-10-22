@@ -124,8 +124,8 @@ def tabfact_compute_accuracy(results):
 
         else:
             na_count += 1
-            if os.path.exists(log_path):
-                os.remove(log_path)
+            # if os.path.exists(log_path):
+            #     os.remove(log_path)
             # SQL not executable, consider as wrong for log management
             # wrong_ids.append(item['id'])
 

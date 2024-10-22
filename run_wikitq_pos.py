@@ -17,7 +17,8 @@ from utils.chain import *
 from utils.wikitq_eval import *
 import openai
 
-openai.api_key = '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'
+# openai.api_key = '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'
+openai.api_key = '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'
 
 # Sample indices for testing
 targetted_indices = random.sample(range(4344), k=5)
@@ -35,7 +36,7 @@ def main(
 ):
     # Set model name and base URL based on selected model
     if model.upper() in ['GPT4-O', 'GPT4O']:
-        n_proc, chunk_size, use_subset = 1, 1, True
+        n_proc, chunk_size, use_subset = 10, 10, True
         model_name = "gpt-4o"
     elif model.upper() in ['GPT-4', 'GPT4']:
         n_proc, chunk_size = 1, 1
@@ -142,8 +143,8 @@ def main(
         else:
             pos_count += 1
 
-        if res['is_sql_executable'] is False:
-            continue
+        # if res['is_sql_executable'] is False:
+        #     continue
         if len(res_preds) == 0:
             continue
 

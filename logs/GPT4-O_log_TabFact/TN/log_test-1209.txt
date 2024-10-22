@@ -1,0 +1,38 @@
+************************************************************************************************************************
+Sample test-1209 - Plan 1: Statement: plymouth argyle played the away team derby county after 14 march 1984
+Sample test-1209 - Plan 1: Groundtruth: FALSE
+Sample test-1209 - Plan 1: X-Original table pd: 
+   tie_no            home_team  score            away_team        date
+0       1         notts county  1 - 2              everton  1984-03-10
+1       2  sheffield wednesday  0 - 0          southampton  1984-03-11
+2  replay          southampton  5 - 1  sheffield wednesday  1984-03-20
+3       3      plymouth argyle  0 - 0         derby county  1984-03-10
+4  replay         derby county  0 - 1      plymouth argyle  1984-03-14
+5       4      birmingham city  1 - 3              watford  1984-03-10
+Sample test-1209 - Plan 1: Caption: 1983 - 84 fa cup
+Sample test-1209 - Plan 1: Original table: [['tie_no', 'home_team', 'score', 'away_team', 'date'], ['1', 'notts county', '1 - 2', 'everton', '1984-03-10'], ['2', 'sheffield wednesday', '0 - 0', 'southampton', '1984-03-11'], ['replay', 'southampton', '5 - 1', 'sheffield wednesday', '1984-03-20'], ['3', 'plymouth argyle', '0 - 0', 'derby county', '1984-03-10'], ['replay', 'derby county', '0 - 1', 'plymouth argyle', '1984-03-14'], ['4', 'birmingham city', '1 - 3', 'watford', '1984-03-10']]
+########################################################################################################################
+Sample test-1209 - Plan 1: Operation 1: Select rows where 'home_team' is 'plymouth argyle' and 'away_team' is 'derby county'.
+Sample test-1209 - Plan 1: Selected indices: [[3, 1], [3, 3]]
+Sample test-1209 - Plan 1: X-Table after operation df:
+   tie_no        home_team  score     away_team        date
+0       3  plymouth argyle  0 - 0  derby county  1984-03-10
+Sample test-1209 - Plan 1: Table after operation: [['tie_no', 'home_team', 'score', 'away_team', 'date'], ['3', 'plymouth argyle', '0 - 0', 'derby county', '1984-03-10']]
+########################################################################################################################
+Sample test-1209 - Plan 1: Operation 2: Select rows where 'date' is after '1984-03-14'.
+Sample test-1209 - Plan 1: Selected indices: []
+Sample test-1209 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [tie_no, home_team, score, away_team, date]
+Index: []
+Sample test-1209 - Plan 1: Table after operation: [['tie_no', 'home_team', 'score', 'away_team', 'date']]
+########################################################################################################################
+Sample test-1209 - Plan 1: Operation 3: Use a `CASE` statement to return TRUE if the number of rows is equal to 1, otherwise return FALSE.
+Sample test-1209 - Plan 1: Selected indices: []
+Sample test-1209 - Plan 1: X-Table after operation df:
+  verification_result
+0               FALSE
+Sample test-1209 - Plan 1: Table after operation: [['verification_result'], ['FALSE']]
+Answer from plan 1: FALSE
+Groundtruth: FALSE
+Fall-back: FALSE

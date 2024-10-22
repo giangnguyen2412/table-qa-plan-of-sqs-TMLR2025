@@ -29,9 +29,10 @@ from operations import *
 # openai.api_version = "2024-02-15-preview"
 
 # OpenAI API key (replace with proper security handling in production)
-openai.api_key = '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'
+openai.api_key = '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'
 
-targetted_indices = random.sample(range(2024), k=3)
+targetted_indices = random.sample(range(2024), k=5)
+
 
 print('Samples tested:', targetted_indices)
 
@@ -48,7 +49,7 @@ def main(
         load_dataset: bool = False,
 ):
     if model == 'GPT4-O':
-        n_proc, chunk_size, use_subset = 1, 1, True
+        n_proc, chunk_size, use_subset = 10, 10, True
         model_name = "gpt-4o"
 
     elif model == 'GPT4':

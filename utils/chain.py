@@ -70,8 +70,8 @@ def wikitq_natural_language_chain_exec_one_sample(sample, llm, llm_options=None,
 
     original_table = copy.deepcopy(table_text)  # Store the original table
     groundtruth = answer
-    results = []
-    is_sql_executable = True
+    is_sql_executable = False
+    fall_back_llm = True
 
     try:
         # PLANNING
@@ -82,8 +82,10 @@ def wikitq_natural_language_chain_exec_one_sample(sample, llm, llm_options=None,
         if not plans or not plans_generated_successfully:
             logger.error('Failed to generate plans or initial executable flag is False!')
             print('ERR2: Failed to generate plans or initial executable flag is False!')
-            is_sql_executable = False
-            return sample_id, 'N/A', is_sql_executable, groundtruth, {}
+
+            result_dict = {}
+            final_answer = wikitq_fall_back(original_table, sample, llm)
+            return sample_id, final_answer, is_sql_executable, groundtruth, result_dict, fall_back_llm
 
         for plan_idx, plan in enumerate(plans):
             intermediate_table = copy.deepcopy(original_table)  # Reset the table for each plan
@@ -147,7 +149,6 @@ def wikitq_natural_language_chain_exec_one_sample(sample, llm, llm_options=None,
                     all_operations_successful = False
                     break
 
-        fall_back_llm = True
         if all_operations_successful is True:
             # Remove the header for the final answer
             final_answer = intermediate_table[1:]
@@ -168,6 +169,7 @@ def wikitq_natural_language_chain_exec_one_sample(sample, llm, llm_options=None,
             else:
                 logger.info(f'Fall-back: FALSE')
                 fall_back_llm = False
+                is_sql_executable = True
 
             logger.info(f'Answer from plan {plan_idx + 1}: {final_answer}')
             logger.info(f'Groundtruth: {groundtruth}')
@@ -186,21 +188,21 @@ def wikitq_natural_language_chain_exec_one_sample(sample, llm, llm_options=None,
             print('DB1: Answer:', answer)
             print('WIKITQ final answer for fall back 2:\n', final_answer)
 
-
         return sample_id, final_answer, is_sql_executable, groundtruth, {}, fall_back_llm
 
     except Exception as e:
         print(f'ERR1: Unexpected error occurred: {e}')
         print(traceback.format_exc())  # Print the detailed traceback information
-        is_sql_executable = False
-        return sample_id, 'N/A', is_sql_executable, groundtruth, {}, fall_back_llm
 
+        result_dict = {}
+        final_answer = wikitq_fall_back(original_table, sample, llm)
+        return sample_id, final_answer, is_sql_executable, groundtruth, result_dict, fall_back_llm
 
 ##################################################################################################################
 ##################################################################################################################
 ##################################################################################################################
 ##################################################################################################################
-# TabFact handles
+# TabFact functions
 
 def tabfact_fall_back(fb_table, sample, llm):
     table_info = {}
@@ -230,6 +232,7 @@ def tabfact_natural_language_chain_exec_one_sample(sample, llm, llm_options=None
     original_table = copy.deepcopy(table_info["table_text"])  # Store the original table
     groundtruth = "TRUE" if sample["label"] == 1 else "FALSE"
     results = []
+    is_sql_executable = False
 
     try:
         # PLANNING
@@ -241,7 +244,10 @@ def tabfact_natural_language_chain_exec_one_sample(sample, llm, llm_options=None
             logger.error('Failed to generate plans or initial executable flag is False!')
             print('ERR2:Failed to generate plans or initial executable flag is False!')
 
-            return sample_id, 'N/A', False, groundtruth, {}, None
+            answer = tabfact_fall_back(original_table, sample, llm)
+            result_dict = {}
+
+            return sample_id, answer, is_sql_executable, groundtruth, result_dict, None
 
         for plan_idx, plan in enumerate(plans):
 
@@ -377,7 +383,10 @@ def tabfact_natural_language_chain_exec_one_sample(sample, llm, llm_options=None
         logger.error(f"Unexpected error in generating plans: {e}")
         print(f'ERR5: Planning failed!: {e}')
 
-        return sample_id, 'N/A', False, groundtruth, {}, None
+        answer = tabfact_fall_back(original_table, sample, llm)
+        result_dict = {}
+        is_sql_executable = False
+        return sample_id, answer, is_sql_executable, groundtruth, result_dict, None
 
 
 ##################################################################################################################
@@ -479,111 +488,6 @@ def conduct_single_solver_mp(
             result_samples[idx]['is_sql_executable'] = all_samples[idx]['is_sql_executable']
 
     return result_samples
-
-
-def get_act_func(name, using_sql):
-    try:
-        # if ('add_column' in name or 'select_row' in name or 'sort' in name) \
-        # and USING_SQL is True:
-        # if USING_SQL is True:
-
-        if using_sql is True:
-            return eval(f"{name}_act_sql")
-        else:
-            return eval(f"{name}_act")
-    except:
-
-        def _default_act(table_text, *args, **kwargs):
-            return copy.deepcopy(table_text)
-
-        if "query" not in name:
-            print("Unknown operation: ", name)
-        return _default_act
-
-
-def get_table_info(sample, skip_op=[], first_n_op=None):
-    table_text = sample["table_text"]
-    chain = sample["chain"]
-    if 'using_sql' in sample:
-        using_sql = sample["using_sql"]
-
-    if first_n_op is not None:
-        chain = chain[:first_n_op]
-
-    table_info = {
-        "table_text": table_text,
-        "act_chain": [],
-    }
-    for operation in chain:
-        operation_name = operation["operation_name"]
-
-        act_func = get_act_func(operation_name, using_sql)
-        if DEBUG:
-            print(table_info)
-            print(operation)
-        table_info = act_func(table_info, operation, skip_op=skip_op)
-
-    return table_info
-
-
-def get_table_log(sample, skip_op=[], first_n_op=None):
-    table_text = sample["table_text"]
-    chain = sample["chain"]
-
-    if first_n_op is not None:
-        chain = chain[:first_n_op]
-
-    table_log = []
-
-    table_info = {
-        "table_text": table_text,
-        "act_chain": [],
-    }
-    table_log.append(table_info)
-
-    for operation in chain:
-        operation_name = operation["operation_name"]    
-        act_func = get_act_func(operation_name, using_sql=False)
-        table_info = act_func(table_info, operation, skip_op=skip_op)
-        if DEBUG:
-            print(operation_name)
-        if 'row' in operation_name:
-            # print('HERE')
-            # print(table_info)
-            # print('HERE')
-            if '_real_select_rows' in table_info:
-                table_info['act_chain'][-1] = table_info['_real_select_rows']
-            # else:
-            #     table_info['act_chain'][-1] = table_info['act_chain']
-
-        if 'query' in operation_name:
-            table_info['act_chain'].append(f'{operation_name}()')
-            table_info['cotable_result'] = operation['parameter_and_conf'][0][0]
-        table_log.append(table_info)
-
-    return table_log
-
-def get_operation_name(string):
-    # f_xxxx(...)
-    res = re.findall(r"f_(.*?)\(.*\)", string)[0]
-    return res
-
-
-def get_all_operation_names(string):
-    if DEBUG:
-        print('Here print the operation names:')
-        print(string)
-    operation_names = []
-    parts = string.split("->")
-    for part in parts:
-        part = part.strip()
-        if part == "<END>":
-            operation_names.append("<END>")
-        else:
-            res = re.findall(r"f_(.*?)\(.*\)", part)
-            if res:
-                operation_names.append(res[0])
-    return operation_names
 
 def generate_prompt_for_next_step(
     sample,
@@ -889,47 +793,49 @@ def dynamic_chain_exec_with_cache_for_loop(
 def _wikitq_natural_language_chain_exec_with_cache_mp_core(arg):
     idx, sample, llm, llm_options, strategy, cache_dir = arg
 
-    if LLM == 'GPT3-5':
-        sample_id, answer, is_sql_executable, groundtruth, result_dict, fall_back_llm  = wikitq_natural_language_chain_exec_one_sample(
-            sample, llm=llm, llm_options=llm_options, strategy=strategy,
-        )
+    # if LLM == 'GPT3-5':
+    #     sample_id, answer, is_sql_executable, groundtruth, result_dict, fall_back_llm  = wikitq_natural_language_chain_exec_one_sample(
+    #         sample, llm=llm, llm_options=llm_options, strategy=strategy,
+    #     )
+    #
+    #     return sample, sample_id, answer, is_sql_executable, groundtruth, result_dict, None, fall_back_llm
+    #
+    # else:
 
+    # Load existing processed results
+    processed_samples = load_processed_samples(result_file_name)
+    sample_id = sample["id"]
+    if str(sample_id) in processed_samples:
+        print(f"Skipping already processed sample {sample_id}")
+
+        answer = processed_samples[f'{sample_id}'][f'{sample_id}']['answer']
+        is_sql_executable = processed_samples[f'{sample_id}'][f'{sample_id}']['is_sql_executable']
+        groundtruth = processed_samples[f'{sample_id}'][f'{sample_id}']['groundtruth']
+        result_dict = processed_samples[f'{sample_id}'][f'{sample_id}']['answer_plans']
+        fall_back_llm = processed_samples[f'{sample_id}'][f'{sample_id}']['fallback_LLM']
         return sample, sample_id, answer, is_sql_executable, groundtruth, result_dict, None, fall_back_llm
 
     else:
+        sample_id, answer, is_sql_executable, groundtruth, result_dict, fall_back_llm  = wikitq_natural_language_chain_exec_one_sample(sample, llm=llm, llm_options=llm_options, strategy=strategy)
 
-        # Load existing processed results
-        processed_samples = load_processed_samples(result_file_name)
-        sample_id = sample["id"]
-        if str(sample_id) in processed_samples:
-            print(f"Skipping already processed sample {sample_id}")
-            
-            answer = processed_samples[f'{sample_id}'][f'{sample_id}']['answer']
-            is_sql_executable = processed_samples[f'{sample_id}'][f'{sample_id}']['is_sql_executable']
-            groundtruth = processed_samples[f'{sample_id}'][f'{sample_id}']['groundtruth']
-            result_dict = processed_samples[f'{sample_id}'][f'{sample_id}']['answer_plans']
-            fall_back_llm = processed_samples[f'{sample_id}'][f'{sample_id}']['fallback_LLM']
-            return sample, sample_id, answer, is_sql_executable, groundtruth, result_dict, None, fall_back_llm
-        
-        else:
-            sample_id, answer, is_sql_executable, groundtruth, result_dict, fall_back_llm  = wikitq_natural_language_chain_exec_one_sample(sample, llm=llm, llm_options=llm_options, strategy=strategy)
+        result_samples = {}
+        result_samples[f'{sample_id}'] = {}
+        result_samples[f'{sample_id}']['input'] = sample
+        result_samples[f'{sample_id}']['id'] = sample_id
+        result_samples[f'{sample_id}']['answer'] = answer
+        result_samples[f'{sample_id}']['answer_plans'] = result_dict
+        result_samples[f'{sample_id}']['groundtruth'] = groundtruth
+        result_samples[f'{sample_id}']['fallback_LLM'] = fall_back_llm
+        result_samples[f'{sample_id}']['is_sql_executable'] = is_sql_executable
 
-            result_samples = {}
-            result_samples[f'{sample_id}'] = {}
-            result_samples[f'{sample_id}']['input'] = sample
-            result_samples[f'{sample_id}']['id'] = sample_id
-            result_samples[f'{sample_id}']['answer'] = answer
-            result_samples[f'{sample_id}']['answer_plans'] = result_dict
-            result_samples[f'{sample_id}']['groundtruth'] = groundtruth
-            result_samples[f'{sample_id}']['fallback_LLM'] = fall_back_llm
-            result_samples[f'{sample_id}']['is_sql_executable'] = is_sql_executable
+        processed_samples[str(sample_id)] = result_samples
+        # print('SAVING..')
+        print('Caching in progress..')
 
-            processed_samples[str(sample_id)] = result_samples
-            print('SAVING..')
-            # Save the updated result samples
-            save_processed_samples(result_file_name, processed_samples)
+        # Save the updated result samples
+        save_processed_samples(result_file_name, processed_samples)
 
-            return sample, sample_id, answer, is_sql_executable, groundtruth, result_dict, None, fall_back_llm
+        return sample, sample_id, answer, is_sql_executable, groundtruth, result_dict, None, fall_back_llm
 
 
 
@@ -955,49 +861,49 @@ def save_processed_samples(result_file_path, result_samples):
 def _natural_language_chain_exec_with_cache_mp_core(arg):
     idx, sample, llm, llm_options, strategy, cache_dir = arg
 
-    if LLM == 'GPT3-5':
-        sample_id, answer, is_sql_executable, groundtruth, result_dict, fb_llm = tabfact_natural_language_chain_exec_one_sample(
-            sample, llm=llm, llm_options=llm_options, strategy=strategy,
-        )
+    # if LLM == 'GPT3-5':
+    #     sample_id, answer, is_sql_executable, groundtruth, result_dict, fb_llm = tabfact_natural_language_chain_exec_one_sample(
+    #         sample, llm=llm, llm_options=llm_options, strategy=strategy,
+    #     )
+    #
+    #     return True, sample, sample_id, answer, is_sql_executable, groundtruth, result_dict, None, fb_llm
+    # else: # do the caching for other models than gpt3-5
+    unprocessed = True
 
-        return True, sample, sample_id, answer, is_sql_executable, groundtruth, result_dict, None, fb_llm
-    else: # do the caching for other models than gpt3-5
-        unprocessed = True
+    # Load existing processed results
+    processed_samples = load_processed_samples(result_file_name)
 
-        # Load existing processed results
-        processed_samples = load_processed_samples(result_file_name)
+    sample_id = sample["id"]
+    # Check if the sample has already been processed
+    if str(sample_id) in processed_samples:
+        unprocessed = False
+        print(f"Skipping already processed sample {sample_id}")
 
-        sample_id = sample["id"]
-        # Check if the sample has already been processed
-        if str(sample_id) in processed_samples:
-            unprocessed = False
-            print(f"Skipping already processed sample {sample_id}")
+        answer = processed_samples[f'{sample_id}'][f'{sample_id}']['answer']
+        is_sql_executable = processed_samples[f'{sample_id}'][f'{sample_id}']['is_sql_executable']
+        groundtruth = processed_samples[f'{sample_id}'][f'{sample_id}']['groundtruth']
+        result_dict = processed_samples[f'{sample_id}'][f'{sample_id}']['answer_plans']
+        fb_llm = processed_samples[f'{sample_id}'][f'{sample_id}']['fallback_LLM']
+        return unprocessed, sample, sample_id, answer, is_sql_executable, groundtruth, result_dict, None, fb_llm
 
-            answer = processed_samples[f'{sample_id}'][f'{sample_id}']['answer']
-            is_sql_executable = processed_samples[f'{sample_id}'][f'{sample_id}']['is_sql_executable']
-            groundtruth = processed_samples[f'{sample_id}'][f'{sample_id}']['groundtruth']
-            result_dict = processed_samples[f'{sample_id}'][f'{sample_id}']['answer_plans']
-            fb_llm = processed_samples[f'{sample_id}'][f'{sample_id}']['fallback_LLM']
-            return unprocessed, sample, sample_id, answer, is_sql_executable, groundtruth, result_dict, None, fb_llm
+    else:
+        sample_id, answer, is_sql_executable, groundtruth, result_dict, fb_llm = tabfact_natural_language_chain_exec_one_sample(sample, llm=llm, llm_options=llm_options, strategy=strategy)
 
-        else:
-            sample_id, answer, is_sql_executable, groundtruth, result_dict, fb_llm = tabfact_natural_language_chain_exec_one_sample(sample, llm=llm, llm_options=llm_options, strategy=strategy)
-            
-            result_samples = {}
-            result_samples[f'{sample_id}'] = {}
-            result_samples[f'{sample_id}']['input'] = sample
-            result_samples[f'{sample_id}']['id'] = sample_id
-            result_samples[f'{sample_id}']['answer'] = answer
-            result_samples[f'{sample_id}']['answer_plans'] = result_dict
-            result_samples[f'{sample_id}']['groundtruth'] = groundtruth
-            result_samples[f'{sample_id}']['fallback_LLM'] = fb_llm
-            result_samples[f'{sample_id}']['is_sql_executable'] = is_sql_executable
+        result_samples = {}
+        result_samples[f'{sample_id}'] = {}
+        result_samples[f'{sample_id}']['input'] = sample
+        result_samples[f'{sample_id}']['id'] = sample_id
+        result_samples[f'{sample_id}']['answer'] = answer
+        result_samples[f'{sample_id}']['answer_plans'] = result_dict
+        result_samples[f'{sample_id}']['groundtruth'] = groundtruth
+        result_samples[f'{sample_id}']['fallback_LLM'] = fb_llm
+        result_samples[f'{sample_id}']['is_sql_executable'] = is_sql_executable
 
-            processed_samples[str(sample_id)] = result_samples
-            print('SAVING..')
-            # Save the updated result samples
-            save_processed_samples(result_file_name, processed_samples)
-            return unprocessed, sample, sample_id, answer, is_sql_executable, groundtruth, result_dict, None, fb_llm
+        processed_samples[str(sample_id)] = result_samples
+        print('Caching in progress..')
+        # Save the updated result samples
+        save_processed_samples(result_file_name, processed_samples)
+        return unprocessed, sample, sample_id, answer, is_sql_executable, groundtruth, result_dict, None, fb_llm
 
 def _dynamic_chain_exec_with_cache_mp_core(arg):
     idx, sample, llm, llm_options, strategy, cache_dir = arg

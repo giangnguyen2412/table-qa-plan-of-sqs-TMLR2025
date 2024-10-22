@@ -1,0 +1,98 @@
+Unexpected error in generating plans: name 'get_table_info' is not defined
+Unexpected error in generating plans: name 'get_table_info' is not defined
+************************************************************************************************************************
+Sample test-1508 - Plan 1: Statement: arienai kisu was broadcasted 14 days after the title with the earliest broadcast date
+Sample test-1508 - Plan 1: Groundtruth: FALSE
+Sample test-1508 - Plan 1: X-Original table pd: 
+  unnamed__0 episode_title          romanized_title  \
+0       ep 1       おまえが欲しい            omae ga hosii   
+1       ep 2       ありえないキス             arienai kisu   
+2       ep 3      復讐のプロポーズ      fukusyū no puropōzu   
+3       ep 4  こんなに好きだったんだ…  konna ni suki dattanda…   
+4       ep 5   好きと言えたらいいのに    suki to ietara iinoni   
+5       ep 6      最終章序幕・別れ    saishūshōjomakuwakare   
+
+                     translation_of_title broadcast_date ratings  
+0                              i want you     2010-05-10   22.4%  
+1                    the unthinkable kiss     2010-05-17   19.2%  
+2             the proposal out of revenge     2010-05-24   15.6%  
+3            that 's how much i liked you     2010-05-31   15.5%  
+4        if only i could say , i like you     2010-06-07   17.4%  
+5  a prologue of final chapter , farewell     2010-06-14   13.4%  
+Sample test-1508 - Plan 1: Caption: tsuki no koibito
+Sample test-1508 - Plan 1: Original table: [['unnamed__0', 'episode_title', 'romanized_title', 'translation_of_title', 'broadcast_date', 'ratings'], ['ep 1', 'おまえが欲しい', 'omae ga hosii', 'i want you', '2010-05-10', '22.4%'], ['ep 2', 'ありえないキス', 'arienai kisu', 'the unthinkable kiss', '2010-05-17', '19.2%'], ['ep 3', '復讐のプロポーズ', 'fukusyū no puropōzu', 'the proposal out of revenge', '2010-05-24', '15.6%'], ['ep 4', 'こんなに好きだったんだ…', 'konna ni suki dattanda…', "that 's how much i liked you", '2010-05-31', '15.5%'], ['ep 5', '好きと言えたらいいのに', 'suki to ietara iinoni', 'if only i could say , i like you', '2010-06-07', '17.4%'], ['ep 6', '最終章序幕・別れ', 'saishūshōjomakuwakare', 'a prologue of final chapter , farewell', '2010-06-14', '13.4%']]
+########################################################################################################################
+Sample test-1508 - Plan 1: Operation 1: Order the table by 'broadcast_date' in ascending order.
+Sample test-1508 - Plan 1: Selected indices: [[4, 4], [2, 4], [0, 4], [3, 4], [5, 4], [1, 4]]
+Sample test-1508 - Plan 1: X-Table after operation df:
+  unnamed__0 episode_title          romanized_title  \
+0       ep 1       おまえが欲しい            omae ga hosii   
+1       ep 2       ありえないキス             arienai kisu   
+2       ep 3      復讐のプロポーズ      fukusyū no puropōzu   
+3       ep 4  こんなに好きだったんだ…  konna ni suki dattanda…   
+4       ep 5   好きと言えたらいいのに    suki to ietara iinoni   
+5       ep 6      最終章序幕・別れ    saishūshōjomakuwakare   
+
+                     translation_of_title broadcast_date ratings  
+0                              i want you     2010-05-10   22.4%  
+1                    the unthinkable kiss     2010-05-17   19.2%  
+2             the proposal out of revenge     2010-05-24   15.6%  
+3            that 's how much i liked you     2010-05-31   15.5%  
+4        if only i could say , i like you     2010-06-07   17.4%  
+5  a prologue of final chapter , farewell     2010-06-14   13.4%  
+Sample test-1508 - Plan 1: Table after operation: [['unnamed__0', 'episode_title', 'romanized_title', 'translation_of_title', 'broadcast_date', 'ratings'], ['ep 1', 'おまえが欲しい', 'omae ga hosii', 'i want you', '2010-05-10', '22.4%'], ['ep 2', 'ありえないキス', 'arienai kisu', 'the unthinkable kiss', '2010-05-17', '19.2%'], ['ep 3', '復讐のプロポーズ', 'fukusyū no puropōzu', 'the proposal out of revenge', '2010-05-24', '15.6%'], ['ep 4', 'こんなに好きだったんだ…', 'konna ni suki dattanda…', "that 's how much i liked you", '2010-05-31', '15.5%'], ['ep 5', '好きと言えたらいいのに', 'suki to ietara iinoni', 'if only i could say , i like you', '2010-06-07', '17.4%'], ['ep 6', '最終章序幕・別れ', 'saishūshōjomakuwakare', 'a prologue of final chapter , farewell', '2010-06-14', '13.4%']]
+########################################################################################################################
+Sample test-1508 - Plan 1: Operation 2: Select row number 1 to get the episode with the earliest broadcast date.
+Sample test-1508 - Plan 1: Selected indices: [[0, 4]]
+Sample test-1508 - Plan 1: X-Table after operation df:
+  unnamed__0 episode_title romanized_title translation_of_title  \
+0       ep 1       おまえが欲しい   omae ga hosii           i want you   
+
+  broadcast_date ratings  
+0     2010-05-10   22.4%  
+Sample test-1508 - Plan 1: Table after operation: [['unnamed__0', 'episode_title', 'romanized_title', 'translation_of_title', 'broadcast_date', 'ratings'], ['ep 1', 'おまえが欲しい', 'omae ga hosii', 'i want you', '2010-05-10', '22.4%']]
+########################################################################################################################
+Sample test-1508 - Plan 1: Operation 3: Extract the 'broadcast_date' of the selected episode and convert it to a date format.
+Sample test-1508 - Plan 1: Selected indices: [[0, 0], [0, 4]]
+Sample test-1508 - Plan 1: X-Table after operation df:
+  unnamed__0 episode_title romanized_title translation_of_title  \
+0       ep 1       おまえが欲しい   omae ga hosii           i want you   
+
+  broadcast_date ratings formatted_broadcast_date  
+0     2010-05-10   22.4%               2010-05-10  
+Sample test-1508 - Plan 1: Table after operation: [['unnamed__0', 'episode_title', 'romanized_title', 'translation_of_title', 'broadcast_date', 'ratings', 'formatted_broadcast_date'], ['ep 1', 'おまえが欲しい', 'omae ga hosii', 'i want you', '2010-05-10', '22.4%', '2010-05-10']]
+########################################################################################################################
+Sample test-1508 - Plan 1: Operation 4: Select rows where 'episode_title' is 'ありえないキス' (arienai kisu).
+Sample test-1508 - Plan 1: Selected indices: []
+Sample test-1508 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [unnamed__0, episode_title, romanized_title, translation_of_title, broadcast_date, ratings, formatted_broadcast_date]
+Index: []
+Sample test-1508 - Plan 1: Table after operation: [['unnamed__0', 'episode_title', 'romanized_title', 'translation_of_title', 'broadcast_date', 'ratings', 'formatted_broadcast_date']]
+########################################################################################################################
+Sample test-1508 - Plan 1: Operation 5: Extract the 'broadcast_date' of 'ありえないキス' and convert it to a date format.
+Sample test-1508 - Plan 1: Selected indices: []
+Sample test-1508 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [formatted_broadcast_date]
+Index: []
+Sample test-1508 - Plan 1: Table after operation: [['formatted_broadcast_date']]
+########################################################################################################################
+Sample test-1508 - Plan 1: Operation 6: Calculate the difference in days between the broadcast date of 'ありえないキス' and the earliest broadcast date.
+Sample test-1508 - Plan 1: Selected indices: []
+Sample test-1508 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [formatted_broadcast_date, date_difference]
+Index: []
+Sample test-1508 - Plan 1: Table after operation: [['formatted_broadcast_date', 'date_difference']]
+########################################################################################################################
+Sample test-1508 - Plan 1: Operation 7: Use a `CASE` statement to return TRUE if the difference is equal to 14 days, otherwise return FALSE.
+Sample test-1508 - Plan 1: Selected indices: []
+Sample test-1508 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [verification_result]
+Index: []
+Sample test-1508 - Plan 1: Table after operation: [['verification_result']]
+Fall-back: TRUE
+Answer from plan 1: FALSE
+Groundtruth: FALSE

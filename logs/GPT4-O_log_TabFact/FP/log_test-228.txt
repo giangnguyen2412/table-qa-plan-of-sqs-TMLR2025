@@ -31,8 +31,44 @@ Sample test-228 - Plan 1: X-Original table pd:
 Sample test-228 - Plan 1: Caption: reasons to be pretty
 Sample test-228 - Plan 1: Original table: [['year', 'award_ceremony', 'category', 'nominee', 'result'], ['2009', 'tony award', 'best play', 'neil labute', 'nominated'], ['2009', 'tony award', 'best performance by a leading actor in a play', 'thomas sadoski', 'nominated'], ['2009', 'tony award', 'best performance by a featured actress in a play', 'marin ireland', 'nominated'], ['2009', 'drama desk award', 'outstanding play', 'outstanding play', 'nominated'], ['2009', 'drama desk award', 'outstanding actor in a play', 'thomas sadoski', 'nominated'], ['2009', 'drama desk award', 'outstanding director of a play', 'terry kinney', 'nominated'], ['2009', 'theatre world award', 'theatre world award', 'marin ireland', 'won']]
 ########################################################################################################################
-Sample test-228 - Plan 1: Operation 1: Plan:
-Sample test-228 - Plan 1: Selected indices: [[0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [1, 0], [1, 1], [1, 2], [1, 3], [1, 4], [2, 0], [2, 1], [2, 2], [2, 3], [2, 4], [3, 0], [3, 1], [3, 2], [3, 3], [3, 4], [4, 0], [4, 1], [4, 2], [4, 3], [4, 4], [5, 0], [5, 1], [5, 2], [5, 3], [5, 4], [6, 0], [6, 1], [6, 2], [6, 3], [6, 4]]
+Sample test-228 - Plan 1: Operation 1: Select rows where 'award_ceremony' is 'drama desk award'.
+Sample test-228 - Plan 1: Selected indices: [[3, 1], [4, 1], [5, 1]]
+Sample test-228 - Plan 1: X-Table after operation df:
+   year    award_ceremony                        category           nominee  \
+0  2009  drama desk award                outstanding play  outstanding play   
+1  2009  drama desk award     outstanding actor in a play    thomas sadoski   
+2  2009  drama desk award  outstanding director of a play      terry kinney   
+
+      result  
+0  nominated  
+1  nominated  
+2  nominated  
+Sample test-228 - Plan 1: Table after operation: [['year', 'award_ceremony', 'category', 'nominee', 'result'], [2009, 'drama desk award', 'outstanding play', 'outstanding play', 'nominated'], [2009, 'drama desk award', 'outstanding actor in a play', 'thomas sadoski', 'nominated'], [2009, 'drama desk award', 'outstanding director of a play', 'terry kinney', 'nominated']]
+########################################################################################################################
+Sample test-228 - Plan 1: Operation 2: Extract the distinct years from the 'year' column then add column 'distinct_years' to existing table.
+Sample test-228 - Plan 1: Selected indices: [[0, 0], [1, 0], [2, 0]]
+Sample test-228 - Plan 1: X-Table after operation df:
+   year    award_ceremony                        category           nominee  \
+0  2009  drama desk award                outstanding play  outstanding play   
+1  2009  drama desk award     outstanding actor in a play    thomas sadoski   
+2  2009  drama desk award  outstanding director of a play      terry kinney   
+
+      result  distinct_years  
+0  nominated               1  
+1  nominated               1  
+2  nominated               1  
+Sample test-228 - Plan 1: Table after operation: [['year', 'award_ceremony', 'category', 'nominee', 'result', 'distinct_years'], [2009, 'drama desk award', 'outstanding play', 'outstanding play', 'nominated', 1], [2009, 'drama desk award', 'outstanding actor in a play', 'thomas sadoski', 'nominated', 1], [2009, 'drama desk award', 'outstanding director of a play', 'terry kinney', 'nominated', 1]]
+########################################################################################################################
+Sample test-228 - Plan 1: Operation 3: Select rows where 'distinct_years' is greater than 1.
+Sample test-228 - Plan 1: Selected indices: []
+Sample test-228 - Plan 1: X-Table after operation df:
+Empty DataFrame
+Columns: [year, award_ceremony, category, nominee, result, distinct_years]
+Index: []
+Sample test-228 - Plan 1: Table after operation: [['year', 'award_ceremony', 'category', 'nominee', 'result', 'distinct_years']]
+########################################################################################################################
+Sample test-228 - Plan 1: Operation 4: Use a `CASE` statement to return TRUE if the number of rows is equal to 0, otherwise return FALSE.
+Sample test-228 - Plan 1: Selected indices: []
 Sample test-228 - Plan 1: X-Table after operation df:
   verification_result
 0                TRUE

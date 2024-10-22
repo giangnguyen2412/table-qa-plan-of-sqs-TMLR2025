@@ -1,0 +1,41 @@
+************************************************************************************************************************
+Sample test-1309 - Plan 1: Statement: mark o'meara had a score of 71 + 72 + 66 = 209
+Sample test-1309 - Plan 1: Groundtruth: TRUE
+Sample test-1309 - Plan 1: X-Original table pd: 
+  place          player        country               score to_par
+0     1  curtis strange  united states  70 + 67 + 69 = 206    - 7
+1    t2      nick faldo        england  72 + 67 + 68 = 207    - 6
+2    t2      bob gilder  united states  68 + 69 + 70 = 207    - 6
+3    t2   scott simpson  united states  69 + 66 + 72 = 207    - 6
+4    t5      larry mize  united states  69 + 67 + 72 = 208    - 5
+5    t5    d a weibring  united states  71 + 69 + 68 = 208    - 5
+6     7    mark o'meara  united states  71 + 72 + 66 = 209    - 4
+7     8    fred couples  united states  72 + 67 + 71 = 210    - 3
+8     9   lanny wadkins  united states  70 + 71 + 70 = 211    - 2
+9    10       ken green  united states  72 + 70 + 70 = 212    - 1
+Sample test-1309 - Plan 1: Caption: 1988 u.s. open (golf)
+Sample test-1309 - Plan 1: Original table: [['place', 'player', 'country', 'score', 'to_par'], ['1', 'curtis strange', 'united states', '70 + 67 + 69 = 206', '- 7'], ['t2', 'nick faldo', 'england', '72 + 67 + 68 = 207', '- 6'], ['t2', 'bob gilder', 'united states', '68 + 69 + 70 = 207', '- 6'], ['t2', 'scott simpson', 'united states', '69 + 66 + 72 = 207', '- 6'], ['t5', 'larry mize', 'united states', '69 + 67 + 72 = 208', '- 5'], ['t5', 'd a weibring', 'united states', '71 + 69 + 68 = 208', '- 5'], ['7', "mark o'meara", 'united states', '71 + 72 + 66 = 209', '- 4'], ['8', 'fred couples', 'united states', '72 + 67 + 71 = 210', '- 3'], ['9', 'lanny wadkins', 'united states', '70 + 71 + 70 = 211', '- 2'], ['10', 'ken green', 'united states', '72 + 70 + 70 = 212', '- 1']]
+########################################################################################################################
+Sample test-1309 - Plan 1: Operation 1: Select rows where 'player' is 'mark o'meara'.
+Sample test-1309 - Plan 1: Selected indices: [[6, 1]]
+Sample test-1309 - Plan 1: X-Table after operation df:
+   place        player        country               score to_par
+0      7  mark o'meara  united states  71 + 72 + 66 = 209    - 4
+Sample test-1309 - Plan 1: Table after operation: [['place', 'player', 'country', 'score', 'to_par'], ['7', "mark o'meara", 'united states', '71 + 72 + 66 = 209', '- 4']]
+########################################################################################################################
+Sample test-1309 - Plan 1: Operation 2: Select rows where 'score' is '71 + 72 + 66 = 209'.
+Sample test-1309 - Plan 1: Selected indices: [[0, 3]]
+Sample test-1309 - Plan 1: X-Table after operation df:
+   place        player        country               score to_par
+0      7  mark o'meara  united states  71 + 72 + 66 = 209    - 4
+Sample test-1309 - Plan 1: Table after operation: [['place', 'player', 'country', 'score', 'to_par'], [7, "mark o'meara", 'united states', '71 + 72 + 66 = 209', '- 4']]
+########################################################################################################################
+Sample test-1309 - Plan 1: Operation 3: Use a `CASE` statement to return TRUE if the number of rows is equal to 1, otherwise return FALSE.
+Sample test-1309 - Plan 1: Selected indices: [[0, 0], [0, 1], [0, 2], [0, 3], [0, 4]]
+Sample test-1309 - Plan 1: X-Table after operation df:
+  verification_result
+0                TRUE
+Sample test-1309 - Plan 1: Table after operation: [['verification_result'], ['TRUE']]
+Answer from plan 1: TRUE
+Groundtruth: TRUE
+Fall-back: FALSE

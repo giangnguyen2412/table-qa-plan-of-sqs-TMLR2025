@@ -37,11 +37,11 @@ class Config:
     def __init__(self):
         self.project_directory = '/home/giang/Downloads/job1/tabular-xai/src/plan-of-sqls'
         # self.LLM = 'GPT4'  # the model used for evaluation
-        # self.LLM = 'GPT3-5'  # the model used for evaluation
-        self.LLM = 'GPT4-O'  # the model used for evaluation
+        self.LLM = 'GPT3-5'  # the model used for evaluation
+        # self.LLM = 'GPT4-O'  # the model used for evaluation
 
-        # self.test_dataset = 'TabFact'  # Set to False to run TabFact
-        self.test_dataset = 'WikiTQ'  # Set to False to run WikiTQ
+        self.test_dataset = 'TabFact'
+        # self.test_dataset = 'WikiTQ'
 
         self.result_file_name = f'{self.LLM}_{self.test_dataset}_results.json'  # if you want to do caching in running evaluation
         
@@ -88,6 +88,8 @@ print(vars(config))
 
 syntax_instr1 = "If using SELECT COUNT(*), SUM, MAX, AVG, you MUST use AS to name the new column."
 pd.set_option('display.max_columns', None)  # to show full pandas dataframe for debugging
+
+#################################################################################################### TABLE CONVERSION FUNCTIONS ####################################################################################################
 
 def table2df(table_text, num_rows=100):
     header, rows = table_text[0], table_text[1:]
@@ -156,6 +158,11 @@ def table2string(
     return linear_table
 
 def df_to_string(df):
+    """
+    Converts a DataFrame to a string.
+    :param df:
+    :return:
+    """
     # Ensure all text in the DataFrame is in lowercase
     df = df.applymap(lambda x: x.lower() if isinstance(x, str) else x)
 
@@ -168,6 +175,12 @@ def df_to_formatted_table(
     df,
     caption=None,
 ):
+    """
+    Converts a DataFrame to a formatted table string.
+    :param df:
+    :param caption:
+    :return:
+    """
     linear_table = ""
     if caption is not None:
         linear_table += "table caption : " + caption + "\n"
@@ -185,6 +198,11 @@ def df_to_formatted_table(
 
 
 def list_to_formatted_string(data_list):
+    """
+    Converts a list to a formatted string.
+    :param data_list:
+    :return:
+    """
     # Create a DataFrame from the list
     headers = data_list[0]  # Extract the headers
     data = data_list[1:]    # Extract the data rows
@@ -199,6 +217,11 @@ def list_to_formatted_string(data_list):
 
 
 def list_to_formatted_table(data_list):
+    """
+    Converts a list to a formatted table string.
+    :param data_list:
+    :return:
+    """
     # Create a DataFrame from the list
     headers = data_list[0]  # Extract the headers
     data = data_list[1:]    # Extract the data rows
@@ -261,6 +284,113 @@ class MyEncoder(json.JSONEncoder):
 
         return json_repr
 
+
+def get_act_func(name, using_sql):
+    try:
+        # if ('add_column' in name or 'select_row' in name or 'sort' in name) \
+        # and USING_SQL is True:
+        # if USING_SQL is True:
+
+        if using_sql is True:
+            return eval(f"{name}_act_sql")
+        else:
+            return eval(f"{name}_act")
+    except:
+
+        def _default_act(table_text, *args, **kwargs):
+            return copy.deepcopy(table_text)
+
+        if "query" not in name:
+            print("Unknown operation: ", name)
+        return _default_act
+
+
+def get_table_info(sample, skip_op=[], first_n_op=None):
+    table_text = sample["table_text"]
+    chain = sample["chain"]
+    if 'using_sql' in sample:
+        using_sql = sample["using_sql"]
+
+    if first_n_op is not None:
+        chain = chain[:first_n_op]
+
+    table_info = {
+        "table_text": table_text,
+        "act_chain": [],
+    }
+    for operation in chain:
+        operation_name = operation["operation_name"]
+
+        act_func = get_act_func(operation_name, using_sql)
+        if DEBUG:
+            print(table_info)
+            print(operation)
+        table_info = act_func(table_info, operation, skip_op=skip_op)
+
+    return table_info
+
+
+def get_table_log(sample, skip_op=[], first_n_op=None):
+    table_text = sample["table_text"]
+    chain = sample["chain"]
+
+    if first_n_op is not None:
+        chain = chain[:first_n_op]
+
+    table_log = []
+
+    table_info = {
+        "table_text": table_text,
+        "act_chain": [],
+    }
+    table_log.append(table_info)
+
+    for operation in chain:
+        operation_name = operation["operation_name"]
+        act_func = get_act_func(operation_name, using_sql=False)
+        table_info = act_func(table_info, operation, skip_op=skip_op)
+        if DEBUG:
+            print(operation_name)
+        if 'row' in operation_name:
+            # print('HERE')
+            # print(table_info)
+            # print('HERE')
+            if '_real_select_rows' in table_info:
+                table_info['act_chain'][-1] = table_info['_real_select_rows']
+            # else:
+            #     table_info['act_chain'][-1] = table_info['act_chain']
+
+        if 'query' in operation_name:
+            table_info['act_chain'].append(f'{operation_name}()')
+            table_info['cotable_result'] = operation['parameter_and_conf'][0][0]
+        table_log.append(table_info)
+
+    return table_log
+
+def get_operation_name(string):
+    # f_xxxx(...)
+    res = re.findall(r"f_(.*?)\(.*\)", string)[0]
+    return res
+
+
+def get_all_operation_names(string):
+    if DEBUG:
+        print('Here print the operation names:')
+        print(string)
+    operation_names = []
+    parts = string.split("->")
+    for part in parts:
+        part = part.strip()
+        if part == "<END>":
+            operation_names.append("<END>")
+        else:
+            res = re.findall(r"f_(.*?)\(.*\)", part)
+            if res:
+                operation_names.append(res[0])
+    return operation_names
+
+#################################################################################################### SQL FUNCTIONS ####################################################################################################
+
 # Function to extract SQL code from a response
 def extract_sql_code(response):
     """
@@ -302,19 +432,6 @@ def apply_sql_to_df(df, sql, table_name):
     modified_df = pd.read_sql_query(sql, conn)
     conn.close()
     return modified_df
-
-
-def save_dataset_to_pkl(dataset, filepath):
-    """Save dataset to a pickle file."""
-    with open(filepath, 'wb') as file:
-        pickle.dump(dataset, file)
-
-
-def load_dataset_from_pkl(filepath):
-    """Load dataset from a pickle file."""
-    with open(filepath, 'rb') as file:
-        dataset = pickle.load(file)
-    return dataset
 
 
 def build_new_prompt_for_sql_correction(sql_command, table_text, cleaned_statement, error_log):
@@ -699,6 +816,20 @@ def transform_table_with_sqlalchemy(intermediate_table, sql, table_name):
         
     return modified_table, selected_indices
 
+
+#################################################################################################### DATASET SAVING/LOADING FUNCTIONS ####################################################################################################
+def save_dataset_to_pkl(dataset, filepath):
+    """Save dataset to a pickle file."""
+    with open(filepath, 'wb') as file:
+        pickle.dump(dataset, file)
+
+
+def load_dataset_from_pkl(filepath):
+    """Load dataset from a pickle file."""
+    with open(filepath, 'rb') as file:
+        dataset = pickle.load(file)
+    return dataset
+
 ##### LOGGING UTILITIES ########
 
 def setup_logger(sample_id):
@@ -748,8 +879,8 @@ def wikitq_setup_logger(sample_id):
     logger.addHandler(f_handler)
 
     return logger, log_filename
-##### LOGGING UTILITIES ########
 
+##### LOGGING UTILITIES ########
 
 def combine_files_from_directory(directory, false_log_files):
     """
