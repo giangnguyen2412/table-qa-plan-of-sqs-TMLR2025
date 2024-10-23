@@ -33,6 +33,13 @@ from utils.prompts import *
 from utils.plan import *
 
 
+import json
+import fcntl
+import time
+from filelock import FileLock
+
+
+
 #################################################################################################################################################################
 #################################################################################################################################################################
 #################################################################################################################################################################
@@ -790,120 +797,128 @@ def dynamic_chain_exec_with_cache_for_loop(
 
     return result_samples, dynamic_chain_log_list
 
+
+def save_processed_samples_safe(result_file_path, new_sample_data):
+    """Thread-safe function to save processed samples"""
+    lock_path = f"{result_file_path}.lock"
+    with FileLock(lock_path):
+        # Read current data
+        try:
+            with open(result_file_path, 'r') as f:
+                try:
+                    current_data = json.load(f)
+                except json.JSONDecodeError:
+                    current_data = {}
+        except FileNotFoundError:
+            current_data = {}
+
+        # Update with new data
+        current_data.update(new_sample_data)
+
+        # Write back
+        with open(result_file_path, 'w') as f:
+            json.dump(current_data, f, indent=4)
+
+
 def _wikitq_natural_language_chain_exec_with_cache_mp_core(arg):
     idx, sample, llm, llm_options, strategy, cache_dir = arg
 
-    # if LLM == 'GPT3-5':
-    #     sample_id, answer, is_sql_executable, groundtruth, result_dict, fall_back_llm  = wikitq_natural_language_chain_exec_one_sample(
-    #         sample, llm=llm, llm_options=llm_options, strategy=strategy,
-    #     )
-    #
-    #     return sample, sample_id, answer, is_sql_executable, groundtruth, result_dict, None, fall_back_llm
-    #
-    # else:
-
-    # Load existing processed results
-    processed_samples = load_processed_samples(result_file_name)
     sample_id = sample["id"]
+
+    # Load existing processed results - this is safe to do in parallel
+    try:
+        with open(result_file_name, 'r') as f:
+            processed_samples = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        processed_samples = {}
+
+    # Check if already processed
     if str(sample_id) in processed_samples:
         print(f"Skipping already processed sample {sample_id}")
+        cached_data = processed_samples[str(sample_id)][str(sample_id)]
+        return (sample, sample_id,
+                cached_data['answer'],
+                cached_data['is_sql_executable'],
+                cached_data['groundtruth'],
+                cached_data['answer_plans'],
+                None,
+                cached_data['fallback_LLM'])
 
-        answer = processed_samples[f'{sample_id}'][f'{sample_id}']['answer']
-        is_sql_executable = processed_samples[f'{sample_id}'][f'{sample_id}']['is_sql_executable']
-        groundtruth = processed_samples[f'{sample_id}'][f'{sample_id}']['groundtruth']
-        result_dict = processed_samples[f'{sample_id}'][f'{sample_id}']['answer_plans']
-        fall_back_llm = processed_samples[f'{sample_id}'][f'{sample_id}']['fallback_LLM']
-        return sample, sample_id, answer, is_sql_executable, groundtruth, result_dict, None, fall_back_llm
+    # Process new sample
+    sample_id, answer, is_sql_executable, groundtruth, result_dict, fall_back_llm = \
+        wikitq_natural_language_chain_exec_one_sample(
+            sample, llm=llm, llm_options=llm_options, strategy=strategy)
 
-    else:
-        sample_id, answer, is_sql_executable, groundtruth, result_dict, fall_back_llm  = wikitq_natural_language_chain_exec_one_sample(sample, llm=llm, llm_options=llm_options, strategy=strategy)
+    # Prepare new sample data
+    new_sample_data = {
+        str(sample_id): {
+            str(sample_id): {
+                'input': sample,
+                'id': sample_id,
+                'answer': answer,
+                'answer_plans': result_dict,
+                'groundtruth': groundtruth,
+                'fallback_LLM': fall_back_llm,
+                'is_sql_executable': is_sql_executable
+            }
+        }
+    }
 
-        result_samples = {}
-        result_samples[f'{sample_id}'] = {}
-        result_samples[f'{sample_id}']['input'] = sample
-        result_samples[f'{sample_id}']['id'] = sample_id
-        result_samples[f'{sample_id}']['answer'] = answer
-        result_samples[f'{sample_id}']['answer_plans'] = result_dict
-        result_samples[f'{sample_id}']['groundtruth'] = groundtruth
-        result_samples[f'{sample_id}']['fallback_LLM'] = fall_back_llm
-        result_samples[f'{sample_id}']['is_sql_executable'] = is_sql_executable
+    # Save with thread-safe function
+    save_processed_samples_safe(result_file_name, new_sample_data)
 
-        processed_samples[str(sample_id)] = result_samples
-        # print('SAVING..')
-        print('Caching in progress..')
-
-        # Save the updated result samples
-        save_processed_samples(result_file_name, processed_samples)
-
-        return sample, sample_id, answer, is_sql_executable, groundtruth, result_dict, None, fall_back_llm
-
-
-
-
-def load_processed_samples(result_file_path):
-    if os.path.exists(result_file_path):
-        with open(result_file_path, 'r') as f:
-            try:
-                return json.load(f)
-            except json.JSONDecodeError:
-                print(f"Warning: {result_file_path} is empty or corrupted. Starting with an empty dictionary.")
-                return {}
-    return {}
+    return sample, sample_id, answer, is_sql_executable, groundtruth, result_dict, None, fall_back_llm
 
 
-def save_processed_samples(result_file_path, result_samples):
-    with open(result_file_path, 'w') as f:
-        # print(f)
-        # print(result_samples)
-        json.dump(result_samples, f, indent=4)
-
-# Run POS only
 def _natural_language_chain_exec_with_cache_mp_core(arg):
     idx, sample, llm, llm_options, strategy, cache_dir = arg
 
-    # if LLM == 'GPT3-5':
-    #     sample_id, answer, is_sql_executable, groundtruth, result_dict, fb_llm = tabfact_natural_language_chain_exec_one_sample(
-    #         sample, llm=llm, llm_options=llm_options, strategy=strategy,
-    #     )
-    #
-    #     return True, sample, sample_id, answer, is_sql_executable, groundtruth, result_dict, None, fb_llm
-    # else: # do the caching for other models than gpt3-5
-    unprocessed = True
-
-    # Load existing processed results
-    processed_samples = load_processed_samples(result_file_name)
-
     sample_id = sample["id"]
-    # Check if the sample has already been processed
+
+    # Load existing processed results - this is safe to do in parallel
+    try:
+        with open(result_file_name, 'r') as f:
+            processed_samples = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        processed_samples = {}
+
+    # Check if already processed
     if str(sample_id) in processed_samples:
         unprocessed = False
         print(f"Skipping already processed sample {sample_id}")
+        cached_data = processed_samples[str(sample_id)][str(sample_id)]
+        return (unprocessed, sample, sample_id,
+                cached_data['answer'],
+                cached_data['is_sql_executable'],
+                cached_data['groundtruth'],
+                cached_data['answer_plans'],
+                None,
+                cached_data['fallback_LLM'])
 
-        answer = processed_samples[f'{sample_id}'][f'{sample_id}']['answer']
-        is_sql_executable = processed_samples[f'{sample_id}'][f'{sample_id}']['is_sql_executable']
-        groundtruth = processed_samples[f'{sample_id}'][f'{sample_id}']['groundtruth']
-        result_dict = processed_samples[f'{sample_id}'][f'{sample_id}']['answer_plans']
-        fb_llm = processed_samples[f'{sample_id}'][f'{sample_id}']['fallback_LLM']
-        return unprocessed, sample, sample_id, answer, is_sql_executable, groundtruth, result_dict, None, fb_llm
+    # Process new sample
+    sample_id, answer, is_sql_executable, groundtruth, result_dict, fb_llm = \
+        tabfact_natural_language_chain_exec_one_sample(
+            sample, llm=llm, llm_options=llm_options, strategy=strategy)
 
-    else:
-        sample_id, answer, is_sql_executable, groundtruth, result_dict, fb_llm = tabfact_natural_language_chain_exec_one_sample(sample, llm=llm, llm_options=llm_options, strategy=strategy)
+    # Prepare new sample data
+    new_sample_data = {
+        str(sample_id): {
+            str(sample_id): {
+                'input': sample,
+                'id': sample_id,
+                'answer': answer,
+                'answer_plans': result_dict,
+                'groundtruth': groundtruth,
+                'fallback_LLM': fb_llm,
+                'is_sql_executable': is_sql_executable
+            }
+        }
+    }
 
-        result_samples = {}
-        result_samples[f'{sample_id}'] = {}
-        result_samples[f'{sample_id}']['input'] = sample
-        result_samples[f'{sample_id}']['id'] = sample_id
-        result_samples[f'{sample_id}']['answer'] = answer
-        result_samples[f'{sample_id}']['answer_plans'] = result_dict
-        result_samples[f'{sample_id}']['groundtruth'] = groundtruth
-        result_samples[f'{sample_id}']['fallback_LLM'] = fb_llm
-        result_samples[f'{sample_id}']['is_sql_executable'] = is_sql_executable
+    # Save with thread-safe function
+    save_processed_samples_safe(result_file_name, new_sample_data)
 
-        processed_samples[str(sample_id)] = result_samples
-        print('Caching in progress..')
-        # Save the updated result samples
-        save_processed_samples(result_file_name, processed_samples)
-        return unprocessed, sample, sample_id, answer, is_sql_executable, groundtruth, result_dict, None, fb_llm
+    return True, sample, sample_id, answer, is_sql_executable, groundtruth, result_dict, None, fb_llm
 
 def _dynamic_chain_exec_with_cache_mp_core(arg):
     idx, sample, llm, llm_options, strategy, cache_dir = arg
@@ -915,13 +930,6 @@ def _dynamic_chain_exec_with_cache_mp_core(arg):
     if True:
         sample_id = sample["id"]
         cache_path = os.path.join(cache_dir, cache_filename.format(idx))
-
-        # Freddy 
-        # Caching results for saving intermediate computation - to uncomment for using cache
-        # if os.path.exists(cache_path):
-        #     _, proc_sample, log = pickle.load(open(cache_path, "rb"))
-        #     # print(cache_filename)
-        # else:
 
         if True:
 

@@ -8,7 +8,7 @@ import collections
 import numpy as np
 
 # Set the random seed for reproducibility
-random.seed(42)
+random.seed(35)
 
 from utils.load_data import *
 from utils.llm import ChatGPT
@@ -21,7 +21,7 @@ import openai
 openai.api_key = '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'
 
 # Sample indices for testing
-targetted_indices = random.sample(range(4344), k=5)
+targetted_indices = random.sample(range(4344), k=20)
 
 # Main function
 def main(

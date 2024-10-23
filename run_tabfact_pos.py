@@ -10,7 +10,7 @@ import openai
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 # Set the random seed for reproducibility
-random.seed(42)
+random.seed(110)
 
 # Import from utils and operations
 from utils.load_data import *
@@ -31,7 +31,7 @@ from operations import *
 # OpenAI API key (replace with proper security handling in production)
 openai.api_key = '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'
 
-targetted_indices = random.sample(range(2024), k=5)
+targetted_indices = random.sample(range(2024), k=30)
 
 
 print('Samples tested:', targetted_indices)
@@ -48,14 +48,13 @@ def main(
         chunk_size: int = 10,
         load_dataset: bool = False,
 ):
-    if model == 'GPT4-O':
+    # Set model name and base URL based on selected model
+    if model.upper() in ['GPT4-O', 'GPT4O']:
         n_proc, chunk_size, use_subset = 10, 10, True
         model_name = "gpt-4o"
-
-    elif model == 'GPT4':
+    elif model.upper() in ['GPT-4', 'GPT4']:
         n_proc, chunk_size = 1, 1
         model_name = "gpt-4-turbo"
-
     else:
         model_name = "gpt-3.5-turbo-0613"
 
