@@ -1,5 +1,3 @@
-# python run_tabfact_pos.py --use_subset True --load_dataset True > A_DEBUG_TABFACT.txt
-
 import fire
 import os
 import pandas as pd
@@ -10,7 +8,7 @@ import openai
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 # Set the random seed for reproducibility
-random.seed(110)
+random.seed(42)
 
 # Import from utils and operations
 from utils.load_data import *
@@ -29,9 +27,43 @@ from operations import *
 # openai.api_version = "2024-02-15-preview"
 
 # OpenAI API key (replace with proper security handling in production)
-openai.api_key = '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'
+# openai.api_key = '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'
 
-targetted_indices = random.sample(range(2024), k=30)
+
+############################################################################################################
+# USING LAB APIs in regular mode
+
+import yaml
+import os
+import json
+import argparse
+import random
+import time
+import openai
+from bs4 import BeautifulSoup
+from tqdm import tqdm
+import numpy as np
+import dotenv
+
+dotenv.load_dotenv()
+
+# Load the OpenAI API key and Azure endpoint from config
+with open("azure_openai_config.yaml") as f:
+    config_yaml = yaml.load(f, Loader=yaml.FullLoader)
+
+# Extract configuration variables
+api_key = config_yaml['api_key']
+azure_endpoint = config_yaml['azure_endpoint']
+api_version = config_yaml.get('api_version',)  # Default version if not specified
+
+# Set up OpenAI client with Azure settings
+openai.api_type = "azure"
+openai.api_key = api_key
+openai.api_base = azure_endpoint
+openai.api_version = api_version
+############################################################################################################
+
+targetted_indices = random.sample(range(2024), k=200)
 
 
 print('Samples tested:', targetted_indices)
@@ -130,6 +162,7 @@ def main(
 
     os.makedirs(result_dir, exist_ok=True)
 
+    # running POS
     proc_samples, _ = dynamic_chain_exec_with_cache_mp(
         dataset,
         llm=gpt_llm,
@@ -141,6 +174,7 @@ def main(
         chunk_size=chunk_size,
     )
 
+    # Print out the wrong samples for debugging
     for idx, sample in proc_samples.items():
         if sample['answer'] != sample['groundtruth'] and sample['is_sql_executable']:
             print(idx)
@@ -151,3 +185,5 @@ def main(
 
 if __name__ == "__main__":
     fire.Fire(main)
+
+# python run_tabfact_pos.py --use_subset True --load_dataset True > A_DEBUG_TABFACT.txt

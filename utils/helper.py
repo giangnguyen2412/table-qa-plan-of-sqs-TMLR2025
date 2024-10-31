@@ -40,12 +40,12 @@ class Config:
         # self.LLM = 'GPT3-5'  # the model used for evaluation
         self.LLM = 'GPT4-O'  # the model used for evaluation
 
-        # self.test_dataset = 'TabFact'
-        self.test_dataset = 'WikiTQ'
+        self.test_dataset = 'TabFact'
+        # self.test_dataset = 'WikiTQ'
 
-        self.result_file_name = f'{self.LLM}_{self.test_dataset}_results_filelock.json'  # if you want to do caching in running evaluation
+        self.result_file_name = f'{self.LLM}_{self.test_dataset}_results_test_run15.json'  # if you want to do caching in running evaluation
         
-        self.planning_log_path = f'logs/{self.LLM}_log_TabFact_filelock'  # Save logs file for each sample to this path for TabFact
+        self.planning_log_path = f'logs/{self.LLM}_log_TabFact_test15_run'  # Save logs file for each sample to this path for TabFact
         self.wikitq_planning_log_path = f'logs/{self.LLM}_log_WIKITQ_filelock' # Save logs file for each sample to this path for WikiTQ
         
         self.using_sql_for_COT = True

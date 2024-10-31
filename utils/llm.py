@@ -40,20 +40,6 @@ class ChatGPT:
             max_tokens=per_example_max_decode_steps,
         )
 
-
-    # # Initialize the tokenizer for the specific model
-    # tokenizer = tiktoken.get_encoding("tiktoken_ext.openai_public")
-
-    # # Function to accurately count tokens
-    # def count_tokens(prompt):
-    #     # Tokenize the prompt using the tiktoken tokenizer
-    #     return len(tokenizer.encode(prompt))
-
-    # # Function to accurately count tokens
-    # def count_tokens(prompt):
-    #     # Tokenize the prompt using OpenAI's tokenizer
-    #     return len(openai.Encoding.encode(prompt))
-
     # Function to truncate the head of the prompt
     def truncate_prompt_head_exact(prompt, max_tokens):
         tokens = openai.Encoding.encode(prompt)
@@ -99,6 +85,8 @@ class ChatGPT:
 
         print("The LLM engine is:", the_engine)
 
+        deploymnent = 'gpt-4o-mini-high-TPM'
+
         gpt_responses = None
         retry_num = 0
         retry_limit = 2  # Try two times
@@ -113,7 +101,7 @@ class ChatGPT:
                         {"role": "system", "content": "I will give you some examples, you need to follow the examples and complete the text, and no other content."},
                         {"role": "user", "content": prompt},
                     ],
-                    # engine = the_engine,
+                    engine = deploymnent,
                     model=the_engine,
                     stop=end_str,
                     **options

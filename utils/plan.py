@@ -140,31 +140,31 @@ def tabfact_natural_language_plan_step_to_sql(sample, intermediate_table, action
 
     prompt = ""
     prompt += tabfact_natural_language_step_to_sql_demo
-    prompt += "\n####\n"
+    prompt += "\n#### Here come to your task!!!\n"
 
     prompt += f"Given this table:\n"
     prompt += "/*\n" + table2string(intermediate_table) + "\n*/\n"
 
     data_type = table2df(intermediate_table).dtypes
 
-    prompt += "\nData types of columns:\n"
+    prompt += f"\nWrite a SQL command that: {action}\n"
+
+    prompt += "\n### Extra information: \nData types of columns:\n"
     for col, dtype in data_type.items():
         dtype_str = "string" if dtype == "object" else str(dtype)
         prompt += f"- {col}: {dtype_str}\n"
-
-    prompt += f"\nWrite a SQL command that: {action}\n"
 
     table_info = get_table_info(sample)
     num_rows = len(table_info["table_text"]) - 1
     prompt += f"The original table has {num_rows} rows.\n"
 
-    prompt += f"\n\nConstraints for your SQL:\n"
+    prompt += f"\n\n###Constraints for your SQL:\n"
 
     prompt += f"\n1.{syntax_instr1} If adding new columns, they should be different than columns {existing_cols}"
 
     prompt += f"\n2. Your SQL command MUST be compatible and executable by python sqlite3 and pandas."
     prompt += f"\n3. If using FROM, the table to be selected MUST be {table_name}."
-    prompt += "\n####\n"
+    prompt += "\n\nSQL is:\n"
     return prompt
 
 
@@ -203,14 +203,13 @@ def tabfact_generate_natural_language_planning(
 
     prompt += """
     Let's develop a step-by-step plan to verify if the given Statement is TRUE or FALSE on the given Table!
-    You MUST think carefully analyze the Statement and comprehend it before writing the plan!
+    You MUST carefully analyze the Statement and comprehend it before writing the plan!
 
     Plan Steps: Each step in your plan should be very atomic and straightforward, ensuring they can be easily executed or converted into SQL.
-    You MUST make sure all conditions (except those mentioned in the table caption) are checked properly in the steps.
+    You MUST make sure all information (except those mentioned in the table caption) are checked properly in the steps.
 
     Step order: The order of steps is crucial! You must ensure the orders support the correct information retrieval and verification!
     The next step will be executed on the output table of the previous step. The first step will be executed on the given Table.
-    The last step MUST use a CASE statement to return TRUE or FALSE based on the count of rows of the table input to the last step. The count should be devised from the Statement.
     
     For comparative or superlative Statement involving "highest", "lowest", "earliest", "latest", "better", "faster", "earlier", etc.,
     you should order the table accordingly before selecting rows. This ensures that the desired comparative or superlative data is correctly retrieved.
@@ -218,10 +217,12 @@ def tabfact_generate_natural_language_planning(
     Plan:\n
     """
 
-    if True:
-        print('Model prompt for plan:\n')
-        print(prompt)
-        print('X'*100)
+#     The last step MUST use a CASE statement to return TRUE or FALSE based on the count of rows of the table input to the last step. The count should be devised from the Statement.
+
+    # if True:
+    #     print('Model prompt for plan:\n')
+    #     print(prompt)
+    #     print('X'*100)
 
     try:
         responses = llm.generate_plus_with_score(
@@ -233,10 +234,10 @@ def tabfact_generate_natural_language_planning(
         print('ERR1: Cannot generate plans:', (e))
         return None, is_sql_executable
 
-    if True:
-        print('Model response for plan:\n')
-        print(responses)
-        print('X'*100)
+    # if True:
+    #     print('Model response for plan:\n')
+    #     print(responses)
+    #     print('X'*100)
 
     # Extract the plan
     responses.sort(key=lambda x: x[1], reverse=True)
