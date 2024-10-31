@@ -166,85 +166,152 @@ def tabfact_natural_language_plan_step_to_sql(sample, intermediate_table, action
     prompt += f"\n3. If using FROM, the table to be selected MUST be {table_name}."
     prompt += "\n\nSQL is:\n"
     return prompt
+#
+#
+# def tabfact_generate_natural_language_planning(
+#         sample,
+#         debug=False,
+#         llm=None,
+#         llm_options=None,
+#         strategy="top",
+# ):
+#     # Set up LLM options
+#     if llm_options is None:
+#         llm_options = llm.get_model_options()
+#     # llm_options["n"] = OPERATION_NUMS  # Request multiple responses for a single prompt
+#     llm_options["n"] = K_plans  # Request multiple responses for a single prompt
+#
+#     if llm_options["n"] > 1:
+#         llm_options["temperature"] = 0.8
+#         llm_options["top_p"] = 1.0
+#
+#     table_info = get_table_info(sample)
+#     act_chain = table_info["act_chain"]
+#     caption = sample["table_caption"]
+#     is_sql_executable = False
+#     num_rows = len(table_info["table_text"]) - 1
+#
+#     prompt = ""
+#
+#     prompt += tabfact_natural_language_plan_demo + "\n"
+#
+#     prompt += "\n### Here come to your task!\n"
+#     prompt += f"table caption: {caption}\n"
+#     prompt += "/*\n" + table2string(table_info["table_text"]) + "\n*/\n"
+#     prompt += f"This Table has {num_rows} rows.\n"
+#     prompt += "Statement: " + sample["statement"] + "\n"
+#
+#     prompt += """
+#     Let's develop a step-by-step plan to verify if the given Statement is TRUE or FALSE on the given Table!
+#     You MUST carefully analyze the Statement and comprehend it before writing the plan!
+#
+#     Plan Steps: Each step in your plan should be very atomic and straightforward, ensuring they can be easily executed or converted into SQL.
+#     You MUST make sure all information (except those mentioned in the table caption) are checked properly in the steps.
+#
+#     Step order: The order of steps is crucial! You must ensure the orders support the correct information retrieval and verification!
+#     The next step will be executed on the output table of the previous step. The first step will be executed on the given Table.
+#
+#     For comparative or superlative Statement involving "highest", "lowest", "earliest", "latest", "better", "faster", "earlier", etc.,
+#     you should order the table accordingly before selecting rows. This ensures that the desired comparative or superlative data is correctly retrieved.
+#
+#     Plan:\n
+#     """
+#
+# #     The last step MUST use a CASE statement to return TRUE or FALSE based on the count of rows of the table input to the last step. The count should be devised from the Statement.
+#
+#     # if True:
+#     #     print('Model prompt for plan:\n')
+#     #     print(prompt)
+#     #     print('X'*100)
+#
+#     try:
+#         responses = llm.generate_plus_with_score(
+#             prompt, options=llm_options, end_str="\n\n"
+#         )
+#         is_sql_executable = True
+#
+#     except Exception as e:
+#         print('ERR1: Cannot generate plans:', (e))
+#         return None, is_sql_executable
+#
+#     # if True:
+#     #     print('Model response for plan:\n')
+#     #     print(responses)
+#     #     print('X'*100)
+#
+#     # Extract the plan
+#     responses.sort(key=lambda x: x[1], reverse=True)
+#     plans = []
+#     for response, score in responses:
+#         plans.append(plan_to_step_list(response))
+#
+#     # print('generated plans:\n', plans)
+#     return plans, is_sql_executable
 
 
 def tabfact_generate_natural_language_planning(
         sample,
+        current_table,
+        operation_history=None,
         debug=False,
         llm=None,
         llm_options=None,
-        strategy="top",
+        strategy="top"
 ):
+    """
+    Generate the next operation dynamically based on current state and history.
+
+    Args:
+        sample: The original sample containing statement and table info
+        current_table: The current state of the table after previous operations
+        operation_history: List of previous operations that were executed
+        debug, llm, llm_options, strategy: Same as original function
+    """
+    if operation_history is None:
+        operation_history = []
+
     # Set up LLM options
     if llm_options is None:
         llm_options = llm.get_model_options()
-    # llm_options["n"] = OPERATION_NUMS  # Request multiple responses for a single prompt
-    llm_options["n"] = K_plans  # Request multiple responses for a single prompt
-
-    if llm_options["n"] > 1:
-        llm_options["temperature"] = 0.8
-        llm_options["top_p"] = 1.0
+    llm_options["n"] = 1  # We only need one next step at a time
 
     table_info = get_table_info(sample)
-    act_chain = table_info["act_chain"]
     caption = sample["table_caption"]
-    is_sql_executable = False
     num_rows = len(table_info["table_text"]) - 1
 
     prompt = ""
-
     prompt += tabfact_natural_language_plan_demo + "\n"
-
     prompt += "\n### Here come to your task!\n"
     prompt += f"table caption: {caption}\n"
-    prompt += "/*\n" + table2string(table_info["table_text"]) + "\n*/\n"
-    prompt += f"This Table has {num_rows} rows.\n"
-    prompt += "Statement: " + sample["statement"] + "\n"
+
+    # Show current state of the table
+    prompt += "Current table state:\n/*\n" + table2string(current_table) + "\n*/\n"
+
+    # Show history of operations
+    if operation_history:
+        prompt += "\nPrevious operations:\n"
+        for i, op in enumerate(operation_history, 1):
+            prompt += f"{i}. {op}\n"
+
+    prompt += f"Original table had {num_rows} rows.\n"
+    prompt += "Statement to verify: " + sample["statement"] + "\n"
 
     prompt += """
-    Let's develop a step-by-step plan to verify if the given Statement is TRUE or FALSE on the given Table!
-    You MUST carefully analyze the Statement and comprehend it before writing the plan!
+    Based on the current table state and previous operations, determine the next step to verify if the Statement is TRUE or FALSE.
 
-    Plan Steps: Each step in your plan should be very atomic and straightforward, ensuring they can be easily executed or converted into SQL.
-    You MUST make sure all information (except those mentioned in the table caption) are checked properly in the steps.
+    The next step should be atomic and straightforward, ensuring it can be easily executed or converted into SQL.
+    If the current table state is sufficient to make a final verification, return a step using a CASE statement 
+    to return TRUE or FALSE based on the count of rows.
 
-    Step order: The order of steps is crucial! You must ensure the orders support the correct information retrieval and verification!
-    The next step will be executed on the output table of the previous step. The first step will be executed on the given Table.
-    
-    For comparative or superlative Statement involving "highest", "lowest", "earliest", "latest", "better", "faster", "earlier", etc.,
-    you should order the table accordingly before selecting rows. This ensures that the desired comparative or superlative data is correctly retrieved.
-
-    Plan:\n
+    Next step:\n
     """
 
-#     The last step MUST use a CASE statement to return TRUE or FALSE based on the count of rows of the table input to the last step. The count should be devised from the Statement.
-
-    # if True:
-    #     print('Model prompt for plan:\n')
-    #     print(prompt)
-    #     print('X'*100)
-
     try:
-        responses = llm.generate_plus_with_score(
+        response = llm.generate_plus_with_score(
             prompt, options=llm_options, end_str="\n\n"
         )
-        is_sql_executable = True
-
+        next_step = plan_to_step_list(response[0][0])[0] if response else None
+        return next_step
     except Exception as e:
-        print('ERR1: Cannot generate plans:', (e))
-        return None, is_sql_executable
-
-    # if True:
-    #     print('Model response for plan:\n')
-    #     print(responses)
-    #     print('X'*100)
-
-    # Extract the plan
-    responses.sort(key=lambda x: x[1], reverse=True)
-    plans = []
-    for response, score in responses:
-        plans.append(plan_to_step_list(response))
-
-    # print('generated plans:\n', plans)
-    return plans, is_sql_executable
-
+        print('ERR: Cannot generate next step:', str(e))
+        return None
