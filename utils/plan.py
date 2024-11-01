@@ -320,23 +320,22 @@ The first step is:\n
 Based on the below current intermediate table and previous steps, write the next step to be applied to the current 
 intermediate table to verify if the Statement is TRUE or FALSE.
 
-Table caption: {caption}
-
-Current intermediate table:
-/*\n{table2string(current_table)}\n*/
-
-Previous executed steps:
-{history}
-
-Statement to verify: {sample["statement"]}
-
-Original table had {num_rows} rows.
-
 You do not need to check the information mentioned in the table caption.
 
 The next step should be atomic and straightforward, ensuring it can be easily executed or converted into SQL.
 If the current intermediate table and previous steps are sufficient to make a final verification, write a step using a CASE statement 
 to return TRUE or FALSE based on the count of rows in the current table.
+
+Table caption: {caption}
+Current intermediate table:
+/*\n{table2string(current_table)}\n*/
+
+Statement to verify: {sample["statement"]}
+
+Original table had {num_rows} rows.
+
+Previous executed steps:
+{history}
 
 The next step is:\n
                 """
