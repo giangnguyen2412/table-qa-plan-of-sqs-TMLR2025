@@ -285,23 +285,23 @@ def tabfact_generate_natural_language_planning(
     prompt += f"table caption: {caption}\n"
 
     # Show current state of the table
-    prompt += "Current table state:\n/*\n" + table2string(current_table) + "\n*/\n"
+    prompt += "Current intermediate table:\n/*\n" + table2string(current_table) + "\n*/\n"
 
     # Show history of operations
     if operation_history:
-        prompt += "\nPrevious operations:\n"
+        prompt += "\nPrevious steps:\n"
         for i, op in enumerate(operation_history, 1):
-            prompt += f"{i}. {op}\n"
+            prompt += f"Step {i}: {op}\n"
 
     prompt += f"Original table had {num_rows} rows.\n"
     prompt += "Statement to verify: " + sample["statement"] + "\n"
 
     prompt += """
-    Based on the current table state and previous operations, determine the next step to verify if the Statement is TRUE or FALSE.
+    Based on the current intermediate table and previous steps, determine the next step to verify if the Statement is TRUE or FALSE.
 
     The next step should be atomic and straightforward, ensuring it can be easily executed or converted into SQL.
-    If the current table state is sufficient to make a final verification, return a step using a CASE statement 
-    to return TRUE or FALSE based on the count of rows.
+    If the current intermediate table and previous steps are sufficient to make a final verification, return a step using a CASE statement 
+    to return TRUE or FALSE based on the count of rows in the current table.
 
     Next step:\n
     """
