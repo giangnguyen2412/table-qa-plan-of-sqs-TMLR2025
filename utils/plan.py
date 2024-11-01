@@ -280,39 +280,69 @@ elif planning_algorithm == 'dynamic':
         caption = sample["table_caption"]
         num_rows = len(table_info["table_text"]) - 1
 
-        prompt = ""
-        prompt += tabfact_natural_language_plan_demo + "\n"
-        prompt += "\n### Here come to your task!\n"
-        prompt += f"table caption: {caption}\n"
+        # If operation_history is None or empty, generate first step
+        if not operation_history:
+            prompt = ""
+            prompt += tabfact_natural_language_plan_demo + "\n"
+            prompt += f"""
+################## Here come to your task!
 
-        # Show current state of the table
-        prompt += "Current intermediate table:\n/*\n" + table2string(current_table) + "\n*/\n"
+Table caption: {caption}
 
-        history = []
-        # Show history of operations
-        if operation_history:
-            prompt += "\nPrevious steps:\n"
+Table:
+/*\n{table2string(current_table)}\n*/
+
+This Table has {num_rows} rows.
+Statement: {sample["statement"]}
+
+Let's write the first step to verify if the given Statement is TRUE or FALSE on the given Table!
+You MUST carefully analyze the Statement and comprehend it before writing the first step!
+You do not need to check the information already mentioned in the table caption.
+
+Your step should be very atomic and straightforward, ensuring it can be easily executed or converted into SQL.
+
+For comparative or superlative Statement involving "highest", "lowest", "earliest", "latest", "better", "faster", "earlier", etc.,
+you should order the table accordingly before selecting rows. This ensures that the desired comparative or superlative data is correctly retrieved.
+
+The first step is:\n
+                """
+        else:
+            # For subsequent steps, use the history-aware prompt
+            history = ""
             for i, op in enumerate(operation_history, 1):
-                prompt += f"Step {i}: {op}\n"
-                history += f"Step {i}: {op}\n"
+                history += f"{i}. {op}\n"
 
-        prompt += f"Original table had {num_rows} rows.\n"
-        prompt += "Statement to verify: " + sample["statement"] + "\n"
+            prompt = ""
+            prompt += tabfact_natural_language_plan_demo + "\n"
+            prompt += f"""
+################## Here come to your task!
 
-        prompt += f"""
-Based on the current intermediate table and previous steps, determine the next step to verify if the Statement is TRUE or FALSE.
+Based on the below current intermediate table and previous steps, write the next step to be applied to the current 
+intermediate table to verify if the Statement is TRUE or FALSE.
+
+Table caption: {caption}
+
+Current intermediate table:
+/*\n{table2string(current_table)}\n*/
+
+Previous executed steps:
+{history}
+
+Statement to verify: {sample["statement"]}
+
+Original table had {num_rows} rows.
+
+You do not need to check the information mentioned in the table caption.
 
 The next step should be atomic and straightforward, ensuring it can be easily executed or converted into SQL.
-If the current intermediate table and previous steps are sufficient to make a final verification, return a step using a CASE statement 
+If the current intermediate table and previous steps are sufficient to make a final verification, write a step using a CASE statement 
 to return TRUE or FALSE based on the count of rows in the current table.
 
-Again, the previous steps are:
-{history}
 The next step is:\n
-        """
+                """
 
         print("prompt to the model: ", prompt)
-        
+
         try:
             response = llm.generate_plus_with_score(
                 prompt, options=llm_options, end_str="\n\n"

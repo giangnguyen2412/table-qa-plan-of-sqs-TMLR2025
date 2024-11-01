@@ -416,6 +416,7 @@ elif planning_algorithm == 'dynamic':
         try:
             while True:  # Continue until we reach a verification step or max steps
 
+                print('operation_history:', operation_history)
                 if len(operation_history) >= 10:  # Prevent infinite loops
                     logger.warning("Maximum steps reached, falling back to default approach")
                     print("Maximum steps reached, falling back to default approach")
