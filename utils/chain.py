@@ -229,275 +229,280 @@ def tabfact_fall_back(fb_table, sample, llm):
 
     return answer
 
-#
-# def tabfact_natural_language_chain_exec_one_sample(sample, llm, llm_options=None, strategy="top", debug=False):
-#     logger, log_filename = setup_logger(sample["id"])
-#     table_info = get_table_info(sample)
-#     table_name = 'table_sql'
-#     sample_id = sample["id"]
-#     table_caption = sample['table_caption']
-#
-#     original_table = copy.deepcopy(table_info["table_text"])  # Store the original table
-#     groundtruth = "TRUE" if sample["label"] == 1 else "FALSE"
-#     results = []
-#     is_sql_executable = False
-#
-#     try:
-#         # PLANNING
-#         plans, plans_generated_successfully = tabfact_generate_natural_language_planning(
-#             sample, llm=llm, llm_options=llm_options, strategy=strategy, debug=debug
-#         )
-#
-#         if not plans or not plans_generated_successfully:
-#             logger.error('Failed to generate plans or initial executable flag is False!')
-#             print('ERR2:Failed to generate plans or initial executable flag is False!')
-#
-#             answer = tabfact_fall_back(original_table, sample, llm)
-#             result_dict = {}
-#
-#             return sample_id, answer, is_sql_executable, groundtruth, result_dict, None
-#
-#         for plan_idx, plan in enumerate(plans):
-#
-#             intermediate_table = copy.deepcopy(original_table)  # Reset the table for each plan
-#             all_operations_successful = True
-#             logger.info('*' * 120)
-#
-#             logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Statement: {sample["statement"]}')
-#             logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Groundtruth: {groundtruth}')
-#             logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: X-Original table pd: \n{table2df(intermediate_table)}')
-#             logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Caption: {table_caption}')
-#
-#             logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Original table: {intermediate_table}')
-#
-#
-#             for operation_idx, operation in enumerate(plan):
-#                 if operation_idx == (len(plan) - 1):  # Last operation
-#                     statement = sample["statement"]
-#                 else:
-#                     statement = None
-#
-#                 prompt = tabfact_natural_language_plan_step_to_sql(sample, intermediate_table, operation, table_name, statement)
-#                 logger.info('#' * 120)
-#                 try:
-#                     # print('prompt in to the model to get SQL:\n', prompt)
-#                     # PLAN TO SQL
-#                     responses = llm.generate_plus_with_score(prompt, options=llm_options, end_str="\n\n")
-#
-#                     # print('response from to the model to get SQL:\n', responses)
-#
-#                     if responses and len(responses) > 0 and len(responses[0]) > 0:
-#                         sql_command = extract_sql_code(responses[0][0])
-#                     else:
-#                         logger.error("No responses or unexpected response format.")
-#                         print(f'ERR3: No responses or unexpected response format:', responses)
-#                         continue  # Skip to the next iteration of the loop or handle error as needed
-#
-#                     previous_ops = plan[0:operation_idx]
-#                     logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Operation {operation_idx + 1}: {operation}')
-#
-#                     if SQL_EXECUTOR == 'SQL_ALCHEMY':
-#                         sql_command = text(sql_command)
-#                         intermediate_table, selected_indices = transform_table_with_sqlalchemy(intermediate_table, sql_command, table_name)
-#                         logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Selected indices: {selected_indices}')
-#
-#                     else:
-#                         intermediate_table, selected_indices = transform_table_with_sql(intermediate_table, sql_command, table_name)
-#                         logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Selected indices: {selected_indices}')
-#
-#                     logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: X-Table after operation df:\n{table2df(intermediate_table)}')
-#                     logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Table after operation: {(intermediate_table)}')
-#
-#                     if len(intermediate_table) == 2 and (intermediate_table[0][0] == 'verification_result' or intermediate_table[0][0] == 'comparison_result'):
-#                         all_operations_successful = True
-#                         break
-#                 except Exception as e:
-#                     logger.error(f"SQL execution error in operation {operation_idx + 1}: {e}")
-#                     print(f'Sample {sample_id} - Plan {plan_idx+1}: Operation {operation_idx + 1}: {operation}')
-#                     print(f'ERR4: SQL execution error in operation {operation_idx + 1}: {e}')
-#                     break
-#
-#             fall_back_llm = True
-#             if all_operations_successful:
-#                 if len(intermediate_table) > 1 and len(intermediate_table[1]) > 0:
-#                     answer = intermediate_table[1][0]
-#                     if answer in ["TRUE", "FALSE"]:
-#                         logger.info(f'Answer from plan {plan_idx + 1}: {answer}')
-#                         logger.info(f'Groundtruth: {groundtruth}')
-#                         fall_back_llm = False
-#                         logger.info(f'Fall-back: FALSE')
-#
-#                     else:
-#                         # Doing fallback here with original table if SQL is executable cannot give answer in the right format
-#                         answer = tabfact_fall_back(original_table, sample, llm)
-#                         print('final answer for fall back 3:\n', answer)
-#                         logger.info(f'Fall-back: TRUE')
-#
-#                         logger.info(f'Answer from plan {plan_idx + 1}: {answer}')
-#                         logger.info(f'Groundtruth: {groundtruth}')
-#
-#                 else: # Doing fallback here with original table if SQL is executable cannot give answer in the right format
-#                     # Doing fallback here with original table
-#                     answer = tabfact_fall_back(original_table, sample, llm)
-#                     logger.info(f'Fall-back: TRUE')
-#
-#                     logger.info(f'Answer from plan {plan_idx + 1}: {answer}')
-#                     logger.info(f'Groundtruth: {groundtruth}')
-#                     print('final answer for fall back 2:\n', answer)
-#             else:
-#                 # Doing fallback here with original table if SQL is failed
-#                     answer = tabfact_fall_back(original_table, sample, llm)
-#                     logger.info(f'Fall-back: TRUE')
-#
-#                     logger.info(f'Answer from plan {plan_idx + 1}: {answer}')
-#                     logger.info(f'Groundtruth: {groundtruth}')
-#                     print('final answer for fall back 1:\n', answer)
-#
-#             results.append(answer)
-#
-#         if results:
-#             # Majority vote
-#             result_counter = Counter(results)
-#             final_answer = result_counter.most_common(1)[0][0]
-#             is_sql_executable = True
-#             result_dict = dict(result_counter)
-#         else:
-#             final_answer = 'N/A'
-#             is_sql_executable = False
-#             print('it comes here')
-#             result_dict = {}
-#
-#         # Determine the correctness of the answer
-#         if final_answer == groundtruth:
-#             if final_answer == "TRUE":
-#                 correctness_dir = "TP"
-#             else:
-#                 correctness_dir = "TN"
-#         else:
-#             if final_answer == "TRUE":
-#                 correctness_dir = "FP"
-#             elif final_answer == "FALSE":
-#                 correctness_dir = "FN"
-#
-#         # Move the log file to the corresponding directory
-#         log_directory = os.path.dirname(log_filename)
-#         target_directory = os.path.join(log_directory, correctness_dir)
-#         os.makedirs(target_directory, exist_ok=True)
-#         shutil.move(log_filename, os.path.join(target_directory, os.path.basename(log_filename)))
-#
-#         return sample_id, final_answer, is_sql_executable, groundtruth, result_dict, fall_back_llm
-#
-#     except Exception as e:
-#         logger.error(f"Unexpected error in generating plans: {e}")
-#         print(f'ERR5: Planning failed!: {e}')
-#
-#         answer = tabfact_fall_back(original_table, sample, llm)
-#         result_dict = {}
-#         is_sql_executable = False
-#         return sample_id, answer, is_sql_executable, groundtruth, result_dict, None
+if planning_algorithm == 'static':
 
-def tabfact_natural_language_chain_exec_one_sample(sample, llm, llm_options=None, strategy="top", debug=False):
-    logger, log_filename = setup_logger(sample["id"])
-    table_info = get_table_info(sample)
-    table_name = 'table_sql'
-    sample_id = sample["id"]
-    table_caption = sample['table_caption']
 
-    original_table = copy.deepcopy(table_info["table_text"])
-    groundtruth = "TRUE" if sample["label"] == 1 else "FALSE"
-    operation_history = []
-    intermediate_table = copy.deepcopy(original_table)
-    is_sql_executable = False
+    def tabfact_natural_language_chain_exec_one_sample(sample, llm, llm_options=None, strategy="top", debug=False):
+        logger, log_filename = setup_logger(sample["id"])
+        table_info = get_table_info(sample)
+        table_name = 'table_sql'
+        sample_id = sample["id"]
+        table_caption = sample['table_caption']
 
-    try:
-        while True:  # Continue until we reach a verification step or max steps
-            break # Always fallback
+        original_table = copy.deepcopy(table_info["table_text"])  # Store the original table
+        groundtruth = "TRUE" if sample["label"] == 1 else "FALSE"
+        results = []
+        is_sql_executable = False
 
-            if len(operation_history) >= 10:  # Prevent infinite loops
-                logger.warning("Maximum steps reached, falling back to default approach")
-                print("Maximum steps reached, falling back to default approach")
-
-                break
-
-            # Get next operation dynamically
-            next_operation = tabfact_generate_natural_language_planning(
-                sample,
-                intermediate_table,
-                operation_history,
-                llm=llm,
-                llm_options=llm_options,
-                strategy=strategy,
-                debug=debug
+        try:
+            # PLANNING
+            plans, plans_generated_successfully = tabfact_generate_natural_language_planning(
+                sample, llm=llm, llm_options=llm_options, strategy=strategy, debug=debug
             )
 
-            if not next_operation:
-                logger.error('Failed to generate next operation')
-                print('Failed to generate next operation')
+            if not plans or not plans_generated_successfully:
+                logger.error('Failed to generate plans or initial executable flag is False!')
+                print('ERR2:Failed to generate plans or initial executable flag is False!')
 
-                break
+                answer = tabfact_fall_back(original_table, sample, llm)
+                result_dict = {}
 
-            # Log current state and operation
-            logger.info('*' * 120)
-            logger.info(f'Sample {sample_id} - Operation {len(operation_history) + 1}: {next_operation}')
-            logger.info(f'Current table state: {intermediate_table}')
+                return sample_id, answer, is_sql_executable, groundtruth, result_dict, None
 
-            # Convert operation to SQL and execute
-            prompt = tabfact_natural_language_plan_step_to_sql(
-                sample,
-                intermediate_table,
-                next_operation,
-                table_name,
-                sample["statement"] if "verification" in next_operation.lower() else None
-            )
+            for plan_idx, plan in enumerate(plans):
 
-            try:
-                responses = llm.generate_plus_with_score(prompt, options=llm_options, end_str="\n\n")
-                if responses and len(responses) > 0 and len(responses[0]) > 0:
-                    sql_command = extract_sql_code(responses[0][0])
+                intermediate_table = copy.deepcopy(original_table)  # Reset the table for each plan
+                all_operations_successful = True
+                logger.info('*' * 120)
+
+                logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Statement: {sample["statement"]}')
+                logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Groundtruth: {groundtruth}')
+                logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: X-Original table pd: \n{table2df(intermediate_table)}')
+                logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Caption: {table_caption}')
+
+                logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Original table: {intermediate_table}')
+
+
+                for operation_idx, operation in enumerate(plan):
+                    if operation_idx == (len(plan) - 1):  # Last operation
+                        statement = sample["statement"]
+                    else:
+                        statement = None
+
+                    prompt = tabfact_natural_language_plan_step_to_sql(sample, intermediate_table, operation, table_name, statement)
+                    logger.info('#' * 120)
+                    try:
+                        # print('prompt in to the model to get SQL:\n', prompt)
+                        # PLAN TO SQL
+                        responses = llm.generate_plus_with_score(prompt, options=llm_options, end_str="\n\n")
+
+                        # print('response from to the model to get SQL:\n', responses)
+
+                        if responses and len(responses) > 0 and len(responses[0]) > 0:
+                            sql_command = extract_sql_code(responses[0][0])
+                        else:
+                            logger.error("No responses or unexpected response format.")
+                            print(f'ERR3: No responses or unexpected response format:', responses)
+                            continue  # Skip to the next iteration of the loop or handle error as needed
+
+                        previous_ops = plan[0:operation_idx]
+                        logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Operation {operation_idx + 1}: {operation}')
+
+                        if SQL_EXECUTOR == 'SQL_ALCHEMY':
+                            sql_command = text(sql_command)
+                            intermediate_table, selected_indices = transform_table_with_sqlalchemy(intermediate_table, sql_command, table_name)
+                            logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Selected indices: {selected_indices}')
+
+                        else:
+                            intermediate_table, selected_indices = transform_table_with_sql(intermediate_table, sql_command, table_name)
+                            logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Selected indices: {selected_indices}')
+
+                        logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: X-Table after operation df:\n{table2df(intermediate_table)}')
+                        logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Table after operation: {(intermediate_table)}')
+
+                        if len(intermediate_table) == 2 and (intermediate_table[0][0] == 'verification_result' or intermediate_table[0][0] == 'comparison_result'):
+                            all_operations_successful = True
+                            break
+                    except Exception as e:
+                        logger.error(f"SQL execution error in operation {operation_idx + 1}: {e}")
+                        print(f'Sample {sample_id} - Plan {plan_idx+1}: Operation {operation_idx + 1}: {operation}')
+                        print(f'ERR4: SQL execution error in operation {operation_idx + 1}: {e}')
+                        break
+
+                fall_back_llm = True
+                if all_operations_successful:
+                    if len(intermediate_table) > 1 and len(intermediate_table[1]) > 0:
+                        answer = intermediate_table[1][0]
+                        if answer in ["TRUE", "FALSE"]:
+                            logger.info(f'Answer from plan {plan_idx + 1}: {answer}')
+                            logger.info(f'Groundtruth: {groundtruth}')
+                            fall_back_llm = False
+                            logger.info(f'Fall-back: FALSE')
+
+                        else:
+                            # Doing fallback here with original table if SQL is executable cannot give answer in the right format
+                            answer = tabfact_fall_back(original_table, sample, llm)
+                            print('final answer for fall back 3:\n', answer)
+                            logger.info(f'Fall-back: TRUE')
+
+                            logger.info(f'Answer from plan {plan_idx + 1}: {answer}')
+                            logger.info(f'Groundtruth: {groundtruth}')
+
+                    else: # Doing fallback here with original table if SQL is executable cannot give answer in the right format
+                        # Doing fallback here with original table
+                        answer = tabfact_fall_back(original_table, sample, llm)
+                        logger.info(f'Fall-back: TRUE')
+
+                        logger.info(f'Answer from plan {plan_idx + 1}: {answer}')
+                        logger.info(f'Groundtruth: {groundtruth}')
+                        print('final answer for fall back 2:\n', answer)
                 else:
-                    logger.error("No SQL generated")
-                    print("No SQL generated")
+                    # Doing fallback here with original table if SQL is failed
+                        answer = tabfact_fall_back(original_table, sample, llm)
+                        logger.info(f'Fall-back: TRUE')
+
+                        logger.info(f'Answer from plan {plan_idx + 1}: {answer}')
+                        logger.info(f'Groundtruth: {groundtruth}')
+                        print('final answer for fall back 1:\n', answer)
+
+                results.append(answer)
+
+            if results:
+                # Majority vote
+                result_counter = Counter(results)
+                final_answer = result_counter.most_common(1)[0][0]
+                is_sql_executable = True
+                result_dict = dict(result_counter)
+            else:
+                final_answer = 'N/A'
+                is_sql_executable = False
+                print('it comes here')
+                result_dict = {}
+
+            # Determine the correctness of the answer
+            if final_answer == groundtruth:
+                if final_answer == "TRUE":
+                    correctness_dir = "TP"
+                else:
+                    correctness_dir = "TN"
+            else:
+                if final_answer == "TRUE":
+                    correctness_dir = "FP"
+                elif final_answer == "FALSE":
+                    correctness_dir = "FN"
+
+            # Move the log file to the corresponding directory
+            log_directory = os.path.dirname(log_filename)
+            target_directory = os.path.join(log_directory, correctness_dir)
+            os.makedirs(target_directory, exist_ok=True)
+            shutil.move(log_filename, os.path.join(target_directory, os.path.basename(log_filename)))
+
+            return sample_id, final_answer, is_sql_executable, groundtruth, result_dict, fall_back_llm
+
+        except Exception as e:
+            logger.error(f"Unexpected error in generating plans: {e}")
+            print(f'ERR5: Planning failed!: {e}')
+
+            answer = tabfact_fall_back(original_table, sample, llm)
+            result_dict = {}
+            is_sql_executable = False
+            return sample_id, answer, is_sql_executable, groundtruth, result_dict, None
+
+elif planning_algorithm == 'dynamic':
+
+    def tabfact_natural_language_chain_exec_one_sample(sample, llm, llm_options=None, strategy="top", debug=False):
+        logger, log_filename = setup_logger(sample["id"])
+        table_info = get_table_info(sample)
+        table_name = 'table_sql'
+        sample_id = sample["id"]
+        table_caption = sample['table_caption']
+
+        original_table = copy.deepcopy(table_info["table_text"])
+        groundtruth = "TRUE" if sample["label"] == 1 else "FALSE"
+        operation_history = []
+        intermediate_table = copy.deepcopy(original_table)
+        is_sql_executable = False
+
+        try:
+            while True:  # Continue until we reach a verification step or max steps
+
+                if len(operation_history) >= 10:  # Prevent infinite loops
+                    logger.warning("Maximum steps reached, falling back to default approach")
+                    print("Maximum steps reached, falling back to default approach")
 
                     break
 
-                # Execute SQL
-                if SQL_EXECUTOR == 'SQL_ALCHEMY':
-                    sql_command = text(sql_command)
-                    intermediate_table, selected_indices = transform_table_with_sqlalchemy(
-                        intermediate_table, sql_command, table_name
-                    )
-                else:
-                    intermediate_table, selected_indices = transform_table_with_sql(
-                        intermediate_table, sql_command, table_name
-                    )
+                # Get next operation dynamically
+                next_operation = tabfact_generate_natural_language_planning(
+                    sample,
+                    intermediate_table,
+                    operation_history,
+                    llm=llm,
+                    llm_options=llm_options,
+                    strategy=strategy,
+                    debug=debug
+                )
 
-                operation_history.append(next_operation)
+                if not next_operation:
+                    logger.error('Failed to generate next operation')
+                    print('Failed to generate next operation')
 
-                # Check if we've reached a verification result
-                if (len(intermediate_table) == 2 and
-                        (intermediate_table[0][0] == 'verification_result' or
-                         intermediate_table[0][0] == 'comparison_result')):
-                    is_sql_executable = True
-                    answer = intermediate_table[1][0]
-                    if answer in ["TRUE", "FALSE"]:
-                        return sample_id, answer, is_sql_executable, groundtruth, {"dynamic": 1}, False
+                    break
 
-            except Exception as e:
-                print(f"SQL execution error 1: {e}")
-                logger.error(f"SQL execution error: {e}")
-                break
+                # Log current state and operation
+                logger.info('*' * 120)
+                logger.info(f'Sample {sample_id} - Operation {len(operation_history) + 1}: {next_operation}')
+                logger.info(f'Current table state: {intermediate_table}')
 
-        print(f"SQL execution error 3:\n {operation_history}")
+                # Convert operation to SQL and execute
+                prompt = tabfact_natural_language_plan_step_to_sql(
+                    sample,
+                    intermediate_table,
+                    next_operation,
+                    table_name,
+                    sample["statement"] if "verification" in next_operation.lower() else None
+                )
 
-        # If we exit the loop without a result, fall back to the original approach
-        answer = tabfact_fall_back(original_table, sample, llm)
-        return sample_id, answer, True, groundtruth, {"fallback": 1}, True
+                try:
+                    responses = llm.generate_plus_with_score(prompt, options=llm_options, end_str="\n\n")
+                    if responses and len(responses) > 0 and len(responses[0]) > 0:
+                        sql_command = extract_sql_code(responses[0][0])
+                    else:
+                        logger.error("No SQL generated")
+                        print("No SQL generated")
 
-    except Exception as e:
-        logger.error(f"Unexpected error: {e}")
-        print(f"Unexpected error 2: {e}")
-        answer = tabfact_fall_back(original_table, sample, llm)
-        return sample_id, answer, True, groundtruth, {"error": 1}, True
+                        break
+
+                    # Execute SQL
+                    if SQL_EXECUTOR == 'SQL_ALCHEMY':
+                        sql_command = text(sql_command)
+                        intermediate_table, selected_indices = transform_table_with_sqlalchemy(
+                            intermediate_table, sql_command, table_name
+                        )
+                    else:
+                        intermediate_table, selected_indices = transform_table_with_sql(
+                            intermediate_table, sql_command, table_name
+                        )
+
+                    operation_history.append(next_operation)
+
+                    # Check if we've reached a verification result
+                    if (len(intermediate_table) == 2 and
+                            (intermediate_table[0][0] == 'verification_result' or
+                             intermediate_table[0][0] == 'comparison_result')):
+                        is_sql_executable = True
+                        answer = intermediate_table[1][0]
+                        if answer in ["TRUE", "FALSE"]:
+                            return sample_id, answer, is_sql_executable, groundtruth, {"dynamic": 1}, False
+
+                except Exception as e:
+                    print(f"SQL execution error 1: {e}")
+                    logger.error(f"SQL execution error: {e}")
+                    break
+
+            print(f"SQL execution error 3:\n {operation_history}")
+
+            # If we exit the loop without a result, fall back to the original approach
+            answer = tabfact_fall_back(original_table, sample, llm)
+            return sample_id, answer, True, groundtruth, {"fallback": 1}, True
+
+        except Exception as e:
+            logger.error(f"Unexpected error: {e}")
+            print(f"Unexpected error 2: {e}")
+            answer = tabfact_fall_back(original_table, sample, llm)
+            return sample_id, answer, True, groundtruth, {"error": 1}, True
+else:
+    raise ValueError(f"Invalid planning algorithm: {planning_algorithm}")
 
 ##################################################################################################################
 ##################################################################################################################
