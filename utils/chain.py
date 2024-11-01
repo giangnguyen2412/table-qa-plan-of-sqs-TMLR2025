@@ -411,6 +411,8 @@ def tabfact_natural_language_chain_exec_one_sample(sample, llm, llm_options=None
 
     try:
         while True:  # Continue until we reach a verification step or max steps
+            break # Always fallback
+
             if len(operation_history) >= 10:  # Prevent infinite loops
                 logger.warning("Maximum steps reached, falling back to default approach")
                 print("Maximum steps reached, falling back to default approach")
