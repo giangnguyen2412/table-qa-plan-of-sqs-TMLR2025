@@ -64,146 +64,267 @@ def wikitq_fall_back(fb_table, sample, llm):
 
     return [fallback_answer]
 
+#
+if planning_algorithm == 'static':
 
-def wikitq_natural_language_chain_exec_one_sample(sample, llm, llm_options=None, strategy="top", debug=False):
-    table_name = 'table_sql'
-    question = sample['statement']
-    table_text = sample['table_text']
-    answer = sample['answer']
-    sample_id = sample['id']
+    def wikitq_natural_language_chain_exec_one_sample(sample, llm, llm_options=None, strategy="top", debug=False):
+        table_name = 'table_sql'
+        question = sample['statement']
+        table_text = sample['table_text']
+        answer = sample['answer']
+        sample_id = sample['id']
 
-    logger, log_filename = wikitq_setup_logger(sample_id)
+        logger, log_filename = wikitq_setup_logger(sample_id)
 
 
-    original_table = copy.deepcopy(table_text)  # Store the original table
-    groundtruth = answer
-    is_sql_executable = False
-    fall_back_llm = True
+        original_table = copy.deepcopy(table_text)  # Store the original table
+        groundtruth = answer
+        is_sql_executable = False
+        fall_back_llm = True
 
-    try:
-        # PLANNING
-        plans, plans_generated_successfully = wikitq_generate_natural_language_planning(
-            sample, llm=llm, llm_options=llm_options, strategy=strategy, debug=debug
-        )
+        try:
+            # PLANNING
+            plans, plans_generated_successfully = wikitq_generate_natural_language_planning(
+                sample, llm=llm, llm_options=llm_options, strategy=strategy, debug=debug
+            )
 
-        if not plans or not plans_generated_successfully:
-            logger.error('Failed to generate plans or initial executable flag is False!')
-            print('ERR2: Failed to generate plans or initial executable flag is False!')
+            if not plans or not plans_generated_successfully:
+                logger.error('Failed to generate plans or initial executable flag is False!')
+                print('ERR2: Failed to generate plans or initial executable flag is False!')
+
+                result_dict = {}
+                final_answer = wikitq_fall_back(original_table, sample, llm)
+                return sample_id, final_answer, is_sql_executable, groundtruth, result_dict, fall_back_llm
+
+            for plan_idx, plan in enumerate(plans):
+                intermediate_table = copy.deepcopy(original_table)  # Reset the table for each plan
+                all_operations_successful = True
+
+                logger.info('*' * 120)
+
+                logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Query: {sample["statement"]}')
+                logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Groundtruth: {groundtruth}')
+                logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: X-Original table pd: \n{table2df(intermediate_table)}')
+                logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Caption: none')
+
+                logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Original table: {intermediate_table}')
+
+
+                print('DB1: Generated plan:')
+                for operation_idx, operation in enumerate(plan):
+                    print('DB1: operation:', operation)
+
+                int_tables = []
+                int_tables.append(original_table)
+                for operation_idx, operation in enumerate(plan):
+                    if operation_idx == (len(plan) - 1):  # Last operation
+                        question = sample["statement"]
+                    else:
+                        question = None
+
+                    prompt = wikitq_natural_language_plan_step_to_sql(sample, intermediate_table, operation, table_name, question)
+                    logger.info('#' * 120)
+                    try:
+                        responses = llm.generate_plus_with_score(prompt, options=llm_options, end_str="\n\n")
+
+                        if responses and len(responses) > 0 and len(responses[0]) > 0:
+                            sql_command = extract_sql_code(responses[0][0])
+                        else:
+                            logger.error("No responses or unexpected response format.")
+                            print(f'ERR3: No responses or unexpected response format:', responses)
+                            continue  # Skip to the next iteration of the loop or handle error as needed
+
+                        previous_ops = plan[0:operation_idx]
+                        logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Operation {operation_idx + 1}: {operation}')
+
+                        if SQL_EXECUTOR == 'SQL_ALCHEMY':
+                            sql_command = text(sql_command)
+                            intermediate_table, selected_indices = transform_table_with_sqlalchemy(intermediate_table, sql_command, table_name)
+                            logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Selected indices: {selected_indices}')
+
+                        else:
+                            intermediate_table, selected_indices = transform_table_with_sql(intermediate_table, sql_command, table_name)
+                            logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Selected indices: {selected_indices}')
+
+                        int_tables.append(intermediate_table)
+
+                        logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: X-Table after operation df:\n{table2df(intermediate_table)}')
+                        logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Table after operation: {(intermediate_table)}')
+
+                    except Exception as e:
+                        logger.error(f"SQL execution error in operation {operation_idx + 1}: {e}")
+                        print(f'ERR4: SQL execution error in operation {operation_idx + 1}: {e}')
+                        print(traceback.format_exc())  # Print the detailed traceback information
+                        all_operations_successful = False
+                        break
+
+            if all_operations_successful is True:
+                # Remove the header for the final answer
+                final_answer = intermediate_table[1:]
+
+                print('formatted answer:', final_answer)
+
+                if len(final_answer) == 0 or None in final_answer[0]:
+                    print('empty final ans:', final_answer)
+                    # WIKITQ: Doing fallback here with original table if SQL is executable cannot give answer in the right format
+
+                    final_answer = wikitq_fall_back(original_table, sample, llm)
+
+                    print('DB1: Question:', question)
+                    print('DB1: Answer:', answer)
+                    print('WIKITQ final answer for fall back 3:\n', final_answer)
+                    logger.info(f'Fall-back: TRUE')
+
+                else:
+                    logger.info(f'Fall-back: FALSE')
+                    fall_back_llm = False
+                    is_sql_executable = True
+
+                logger.info(f'Answer from plan {plan_idx + 1}: {final_answer}')
+                logger.info(f'Groundtruth: {groundtruth}')
+
+            else:
+                logger.error("Intermediate table does not have the expected structure.")
+                final_answer = wikitq_fall_back(original_table, sample, llm)
+
+
+                logger.info(f'Fall-back: TRUE')
+                logger.info(f'Answer from plan {plan_idx + 1}: {final_answer}')
+                logger.info(f'Groundtruth: {groundtruth}')
+
+
+                print('DB1: Question:', question)
+                print('DB1: Answer:', answer)
+                print('WIKITQ final answer for fall back 2:\n', final_answer)
+
+            return sample_id, final_answer, is_sql_executable, groundtruth, {}, fall_back_llm
+
+        except Exception as e:
+            print(f'ERR1: Unexpected error occurred: {e}')
+            print(traceback.format_exc())  # Print the detailed traceback information
 
             result_dict = {}
             final_answer = wikitq_fall_back(original_table, sample, llm)
             return sample_id, final_answer, is_sql_executable, groundtruth, result_dict, fall_back_llm
 
-        for plan_idx, plan in enumerate(plans):
-            intermediate_table = copy.deepcopy(original_table)  # Reset the table for each plan
-            all_operations_successful = True
+elif planning_algorithm == 'dynamic':
 
-            logger.info('*' * 120)
+    def wikitq_natural_language_chain_exec_one_sample(sample, llm, llm_options=None, strategy="top", debug=False):
+        table_name = 'table_sql'
+        question = sample['statement']
+        table_text = sample['table_text']
+        answer = sample['answer']
+        sample_id = sample['id']
 
-            logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Query: {sample["statement"]}')
-            logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Groundtruth: {groundtruth}')
-            logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: X-Original table pd: \n{table2df(intermediate_table)}')
-            logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Caption: none')
+        logger, log_filename = wikitq_setup_logger(sample_id)
+        original_table = copy.deepcopy(table_text)
+        groundtruth = answer
+        intermediate_table = copy.deepcopy(original_table)
+        operation_history = []
+        is_sql_executable = False
+        fall_back_llm = True
 
-            logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Original table: {intermediate_table}')
+        try:
+            while True:
+                break
+                print('Operation history:', operation_history)
+                if len(operation_history) >= 10:
+                    logger.warning("Maximum steps reached, falling back to default approach")
+                    print("Maximum steps reached, falling back to default approach")
+                    break
 
+                # Get next operation dynamically
+                next_operation = wikitq_generate_natural_language_planning(
+                    sample,
+                    intermediate_table,
+                    operation_history,
+                    llm=llm,
+                    llm_options=llm_options,
+                    strategy=strategy,
+                    debug=debug
+                )
 
-            print('DB1: Generated plan:')
-            for operation_idx, operation in enumerate(plan):
-                print('DB1: operation:', operation)
+                if not next_operation:
+                    logger.error('Failed to generate next operation')
+                    print('Failed to generate next operation')
+                    break
 
-            int_tables = []
-            int_tables.append(original_table)
-            for operation_idx, operation in enumerate(plan):
-                if operation_idx == (len(plan) - 1):  # Last operation
-                    question = sample["statement"]
-                else:
-                    question = None
+                # Check if this is the final step
+                is_final_step = "Final step:" in next_operation
 
-                prompt = wikitq_natural_language_plan_step_to_sql(sample, intermediate_table, operation, table_name, question)
-                logger.info('#' * 120)
+                # Remove the final step indication from the operation text
+                next_operation = next_operation.replace("Final step:", "").strip()
+
+                # Log current state and operation
+                logger.info('*' * 120)
+                logger.info(f'Sample {sample_id} - Operation {len(operation_history) + 1}: {next_operation}')
+                logger.info(f'Current table state: {intermediate_table}')
+
+                # Convert operation to SQL and execute
+                prompt = wikitq_natural_language_plan_step_to_sql(
+                    sample,
+                    intermediate_table,
+                    next_operation,
+                    table_name,
+                    question
+                )
+
                 try:
                     responses = llm.generate_plus_with_score(prompt, options=llm_options, end_str="\n\n")
-
                     if responses and len(responses) > 0 and len(responses[0]) > 0:
                         sql_command = extract_sql_code(responses[0][0])
                     else:
-                        logger.error("No responses or unexpected response format.")
-                        print(f'ERR3: No responses or unexpected response format:', responses)
-                        continue  # Skip to the next iteration of the loop or handle error as needed
+                        logger.error("No SQL generated")
+                        print("No SQL generated")
+                        break
 
-                    previous_ops = plan[0:operation_idx]
-                    logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Operation {operation_idx + 1}: {operation}')
-
+                    # Execute SQL
                     if SQL_EXECUTOR == 'SQL_ALCHEMY':
                         sql_command = text(sql_command)
-                        intermediate_table, selected_indices = transform_table_with_sqlalchemy(intermediate_table, sql_command, table_name)
-                        logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Selected indices: {selected_indices}')
-
+                        intermediate_table, selected_indices = transform_table_with_sqlalchemy(
+                            intermediate_table, sql_command, table_name
+                        )
                     else:
-                        intermediate_table, selected_indices = transform_table_with_sql(intermediate_table, sql_command, table_name)
-                        logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Selected indices: {selected_indices}')
+                        intermediate_table, selected_indices = transform_table_with_sql(
+                            intermediate_table, sql_command, table_name
+                        )
 
-                    int_tables.append(intermediate_table)
+                    logger.info(f'Sample {sample_id} - Table after operation df:\n{table2df(intermediate_table)}')
+                    logger.info(f'Sample {sample_id} - Table after operation: {intermediate_table}')
 
-                    logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: X-Table after operation df:\n{table2df(intermediate_table)}')
-                    logger.info(f'Sample {sample_id} - Plan {plan_idx+1}: Table after operation: {(intermediate_table)}')
+                    operation_history.append(next_operation)
+
+                    # If this was the final step, extract and return the final answer
+                    if is_final_step:
+                        result_table = intermediate_table[1:]  # Remove header
+                        if len(result_table) > 0:
+                            is_sql_executable = True
+                            fall_back_llm = False
+                            return sample_id, result_table, is_sql_executable, groundtruth, {}, fall_back_llm
+                        else:
+                            logger.error("Final step executed but no result found.")
+                            break
 
                 except Exception as e:
-                    logger.error(f"SQL execution error in operation {operation_idx + 1}: {e}")
-                    print(f'ERR4: SQL execution error in operation {operation_idx + 1}: {e}')
-                    print(traceback.format_exc())  # Print the detailed traceback information
-                    all_operations_successful = False
+                    print(f"SQL execution error: {e}")
+                    logger.error(f"SQL execution error: {e}")
+                    print(traceback.format_exc())
                     break
 
-        if all_operations_successful is True:
-            # Remove the header for the final answer
-            final_answer = intermediate_table[1:]
-
-            print('formatted answer:', final_answer)
-
-            if len(final_answer) == 0 or None in final_answer[0]:
-                print('empty final ans:', final_answer)
-                # WIKITQ: Doing fallback here with original table if SQL is executable cannot give answer in the right format
-
-                final_answer = wikitq_fall_back(original_table, sample, llm)
-
-                print('DB1: Question:', question)
-                print('DB1: Answer:', answer)
-                print('WIKITQ final answer for fall back 3:\n', final_answer)
-                logger.info(f'Fall-back: TRUE')
-
-            else:
-                logger.info(f'Fall-back: FALSE')
-                fall_back_llm = False
-                is_sql_executable = True
-
-            logger.info(f'Answer from plan {plan_idx + 1}: {final_answer}')
-            logger.info(f'Groundtruth: {groundtruth}')
-
-        else:
-            logger.error("Intermediate table does not have the expected structure.")
+            # If we exit the loop without a result, fall back to the original approach
             final_answer = wikitq_fall_back(original_table, sample, llm)
+            return sample_id, final_answer, True, groundtruth, {"fallback": 1}, True
 
+        except Exception as e:
+            logger.error(f"Unexpected error: {e}")
+            print(f"Unexpected error: {e}")
+            print(traceback.format_exc())
+            final_answer = wikitq_fall_back(original_table, sample, llm)
+            return sample_id, final_answer, True, groundtruth, {"error": 1}, True
 
-            logger.info(f'Fall-back: TRUE')
-            logger.info(f'Answer from plan {plan_idx + 1}: {final_answer}')
-            logger.info(f'Groundtruth: {groundtruth}')
+else:
+    raise ValueError(f"Invalid planning algorithm: {planning_algorithm}")
 
-
-            print('DB1: Question:', question)
-            print('DB1: Answer:', answer)
-            print('WIKITQ final answer for fall back 2:\n', final_answer)
-
-        return sample_id, final_answer, is_sql_executable, groundtruth, {}, fall_back_llm
-
-    except Exception as e:
-        print(f'ERR1: Unexpected error occurred: {e}')
-        print(traceback.format_exc())  # Print the detailed traceback information
-
-        result_dict = {}
-        final_answer = wikitq_fall_back(original_table, sample, llm)
-        return sample_id, final_answer, is_sql_executable, groundtruth, result_dict, fall_back_llm
 
 ##################################################################################################################
 ##################################################################################################################
@@ -230,7 +351,6 @@ def tabfact_fall_back(fb_table, sample, llm):
     return answer
 
 if planning_algorithm == 'static':
-
 
     def tabfact_natural_language_chain_exec_one_sample(sample, llm, llm_options=None, strategy="top", debug=False):
         logger, log_filename = setup_logger(sample["id"])

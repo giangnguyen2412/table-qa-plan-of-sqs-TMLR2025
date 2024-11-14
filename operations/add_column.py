@@ -16,8 +16,48 @@
 import re
 import copy
 import numpy as np
-from utils.helper import table2string
+# from utils.helper import table2string
 
+import pandas as pd
+
+def table2df(table_text, num_rows=100):
+    header, rows = table_text[0], table_text[1:]
+
+    # if test_dataset == 'WikiTQ':
+    #     rows = rows[:num_rows]
+
+    df = pd.DataFrame(data=rows, columns=header)
+
+    # Convert columns to numeric where possible
+    for col in df.columns:
+        try:
+            df[col] = pd.to_numeric(df[col])
+        except Exception:
+            # If conversion fails, leave the column as is
+            pass
+
+    return df
+
+def table2string(
+    table_text,
+    num_rows=100,
+    caption=None,
+):
+    df = table2df(table_text, num_rows)
+    linear_table = ""
+    if caption is not None:
+        linear_table += "table caption : " + caption + "\n"
+
+    header = "col : " + " | ".join(df.columns) + "\n"
+    linear_table += header
+    rows = df.values.tolist()
+    for row_idx, row in enumerate(rows):
+        row = [str(x) for x in row]
+        line = "row {} : ".format(row_idx + 1) + " | ".join(row)
+        if row_idx != len(rows) - 1:
+            line += "\n"
+        linear_table += line
+    return linear_table
 
 add_column_demo = """To tell the statement is true or false, we can first use f_add_column() to add more columns to the table.
 
@@ -268,6 +308,7 @@ def add_column_act(table_info, operation, skip_op=[], debug=False):
     failure_table_info = copy.deepcopy(table_info)
     failure_table_info["act_chain"].append("skip f_add_column()")
     if "add_column" in skip_op:
+        print('Skip add_column')
         # print('CKPT 1!!')
         return failure_table_info
 
@@ -278,6 +319,8 @@ def add_column_act(table_info, operation, skip_op=[], debug=False):
     if len(operation["parameter_and_conf"]) == 0:
         # breakpoint()
         # print('CKPT 2!!')
+        print('Skip add_column')
+
         return failure_table_info
 
     add_column_key, _ = operation["parameter_and_conf"][0]
@@ -300,6 +343,8 @@ def add_column_act(table_info, operation, skip_op=[], debug=False):
         if debug:
             print("remove number of")
         # print('CKPT 3!!')
+        print('Skip add_column')
+
         return failure_table_info
 
     if len(set(add_column_contents)) == 1:
@@ -307,6 +352,8 @@ def add_column_act(table_info, operation, skip_op=[], debug=False):
         if debug:
             print("all same")
         # print('CKPT 4!!')
+        print('Skip add_column')
+
         return failure_table_info
 
     for x in add_column_contents:
@@ -315,6 +362,8 @@ def add_column_act(table_info, operation, skip_op=[], debug=False):
             if debug:
                 print("empty cell")
             # print('CKPT 5!!')
+            print('Skip add_column')
+
             return failure_table_info
 
     if add_column in headers:
@@ -322,6 +371,8 @@ def add_column_act(table_info, operation, skip_op=[], debug=False):
         if debug:
             print("same column header")
         # print('CKPT 6!!')
+        print('Skip add_column')
+
         return failure_table_info
 
     for header in header2contents:
@@ -331,6 +382,8 @@ def add_column_act(table_info, operation, skip_op=[], debug=False):
                 print("different header, same content")
             # print('CKPT 7!!')
             # breakpoint()
+            print('Skip add_column')
+
             return failure_table_info
 
     exist_flag = False
@@ -351,6 +404,8 @@ def add_column_act(table_info, operation, skip_op=[], debug=False):
             print(add_column, add_column_contents)
             print("not substring of a column")
         # print('CKPT 8!!')
+        print('Skip add_column')
+
         return failure_table_info
 
     if debug:

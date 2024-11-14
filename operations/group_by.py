@@ -16,8 +16,49 @@
 import re
 import numpy as np
 import copy
-from utils.helper import table2string
+# from utils.helper import table2string
 
+import pandas as pd
+
+
+def table2df(table_text, num_rows=100):
+    header, rows = table_text[0], table_text[1:]
+
+    # if test_dataset == 'WikiTQ':
+    #     rows = rows[:num_rows]
+
+    df = pd.DataFrame(data=rows, columns=header)
+
+    # Convert columns to numeric where possible
+    for col in df.columns:
+        try:
+            df[col] = pd.to_numeric(df[col])
+        except Exception:
+            # If conversion fails, leave the column as is
+            pass
+
+    return df
+
+def table2string(
+    table_text,
+    num_rows=100,
+    caption=None,
+):
+    df = table2df(table_text, num_rows)
+    linear_table = ""
+    if caption is not None:
+        linear_table += "table caption : " + caption + "\n"
+
+    header = "col : " + " | ".join(df.columns) + "\n"
+    linear_table += header
+    rows = df.values.tolist()
+    for row_idx, row in enumerate(rows):
+        row = [str(x) for x in row]
+        line = "row {} : ".format(row_idx + 1) + " | ".join(row)
+        if row_idx != len(rows) - 1:
+            line += "\n"
+        linear_table += line
+    return linear_table
 
 group_column_demo = """To tell the statement is true or false, we can first use f_group() to group the values in a column.
 
@@ -149,8 +190,12 @@ def group_column_act(table_info, operation, strategy="top", skip_op=[]):
     failure_table_info["act_chain"].append("skip f_group_column()")
 
     if "group_column" in skip_op:
+        print('Skip group_column')
+
         return failure_table_info
     if len(operation["parameter_and_conf"]) == 0:
+        print('Skip group_column')
+
         return failure_table_info
     if strategy == "top":
         group_column, group_info = eval(operation["parameter_and_conf"][0][0])

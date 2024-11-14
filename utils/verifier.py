@@ -17,7 +17,7 @@ import copy
 import re
 from tqdm import tqdm
 import numpy as np
-from utils.helper import table2string
+# from utils.helper import table2string
 from collections import defaultdict
 import pickle
 import os

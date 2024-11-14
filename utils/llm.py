@@ -85,7 +85,8 @@ class ChatGPT:
 
         print("The LLM engine is:", the_engine)
 
-        deploymnent = 'gpt-4o-mini-high-TPM'
+        # deployment = 'gpt-35-turbo-16k'
+        deployment = 'gpt-4o-mini-high-TPM'
 
         gpt_responses = None
         retry_num = 0
@@ -101,7 +102,7 @@ class ChatGPT:
                         {"role": "system", "content": "I will give you some examples, you need to follow the examples and complete the text, and no other content."},
                         {"role": "user", "content": prompt},
                     ],
-                    engine = deploymnent,
+                    engine = deployment ,
                     model=the_engine,
                     stop=end_str,
                     **options
@@ -121,12 +122,23 @@ class ChatGPT:
             raise Exception(error)
 
         results = []
-        for i, res in enumerate(gpt_responses.choices):
-            text = res.message.content
-            # What is fake confidence?
-            fake_conf = (len(gpt_responses.choices) - i) / len(gpt_responses.choices)
-            results.append((text, np.log(fake_conf)))
 
+        # print('(gpt_responses):', gpt_responses)
+        # for i, res in enumerate(gpt_responses.choices):
+        #     text = res.message.content
+        #     # What is fake confidence?
+        #     fake_conf = (len(gpt_responses.choices) - i) / len(gpt_responses.choices)
+        #     results.append((text, np.log(fake_conf)))
+
+        for i, res in enumerate(gpt_responses.choices):
+            try:
+                text = res.message.content  # This might need to be adjusted
+                fake_conf = (len(gpt_responses.choices) - i) / len(gpt_responses.choices)
+                results.append((text, np.log(fake_conf)))
+            except AttributeError as e:
+                print(f"Error accessing response content: {e}")
+                print(f"Full response: {gpt_responses}")  # Print full response for debugging
+                results.append(("Error accessing response content", 0))
         return results
 
     def generate(self, prompt, options=None, end_str=None):

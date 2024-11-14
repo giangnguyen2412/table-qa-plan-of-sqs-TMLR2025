@@ -23,12 +23,14 @@ import pickle
 import sqlite3
 import itertools
 import sqlparse
+import copy
 from typing import List
 from sqlalchemy import create_engine, Table, MetaData
 from sqlalchemy.orm import Session
 from _ctypes import PyObj_FromPtr
 from utils.prompts import *
 from utils.evaluate import *
+from operations import *
 
 #################################################################################################### RUNNING PARAMS ####################################################################################################
 # TODO: Currently, for WikiTQ, the max number of rows I input to the model is 100
@@ -40,13 +42,16 @@ class Config:
         # self.LLM = 'GPT3-5'  # the model used for evaluation
         self.LLM = 'GPT4-O'  # the model used for evaluation
 
-        self.test_dataset = 'TabFact'
-        # self.test_dataset = 'WikiTQ'
-
-        self.result_file_name = f'{self.LLM}_{self.test_dataset}_results_test_run26.json'  # if you want to do caching in running evaluation
+        # self.test_dataset = 'TabFact'
+        self.test_dataset = 'WikiTQ'
         
-        self.planning_log_path = f'logs/{self.LLM}_log_TabFact_test26_run'  # Save logs file for each sample to this path for TabFact
-        self.wikitq_planning_log_path = f'logs/{self.LLM}_log_WIKITQ_filelock' # Save logs file for each sample to this path for WikiTQ
+        # self.planning_algorithm = 'static'
+        self.planning_algorithm = 'dynamic'
+
+        self.result_file_name = f'{self.LLM}_{self.test_dataset}_results_test_run16.json'  # if you want to do caching in running evaluation
+        
+        self.planning_log_path = f'logs/{self.LLM}_log_TabFact_test59_run'  # Save logs file for each sample to this path for TabFact
+        self.wikitq_planning_log_path = f'logs/{self.LLM}_log_WikiTQ_test16_run' # Save logs file for each sample to this path for WikiTQ
         
         self.using_sql_for_COT = True
         self.NATURAL_LANGUAGE_PLANNING = True  # Planning with natural language
@@ -91,24 +96,6 @@ pd.set_option('display.max_columns', None)  # to show full pandas dataframe for 
 
 #################################################################################################### TABLE CONVERSION FUNCTIONS ####################################################################################################
 
-def table2df(table_text, num_rows=100):
-    header, rows = table_text[0], table_text[1:]
-
-    if test_dataset == 'WikiTQ':
-        rows = rows[:num_rows]
-
-    df = pd.DataFrame(data=rows, columns=header)
-
-    # Convert columns to numeric where possible
-    for col in df.columns:
-        try:
-            df[col] = pd.to_numeric(df[col])
-        except Exception:
-            # If conversion fails, leave the column as is
-            pass
-
-    return df
-
 
 def df2table(df):
     # Get the header from the DataFrame
@@ -135,6 +122,24 @@ def df2table(df):
 #             pass  # Keep the original data if conversion fails
 #
 #     return df
+
+def table2df(table_text, num_rows=100):
+    header, rows = table_text[0], table_text[1:]
+
+    if test_dataset == 'WikiTQ':
+        rows = rows[:num_rows]
+
+    df = pd.DataFrame(data=rows, columns=header)
+
+    # Convert columns to numeric where possible
+    for col in df.columns:
+        try:
+            df[col] = pd.to_numeric(df[col])
+        except Exception:
+            # If conversion fails, leave the column as is
+            pass
+
+    return df
 
 def table2string(
     table_text,
@@ -207,10 +212,10 @@ def list_to_formatted_string(data_list):
     headers = data_list[0]  # Extract the headers
     data = data_list[1:]    # Extract the data rows
     df = pd.DataFrame(data, columns=headers)
-    
+
     # Convert all text entries to lowercase
     df = df.applymap(lambda x: x.lower() if isinstance(x, str) else x)
-    
+
     # Convert the DataFrame to a string
     formatted_string = df.to_string(index=False, header=True)
     return formatted_string
@@ -226,7 +231,7 @@ def list_to_formatted_table(data_list):
     headers = data_list[0]  # Extract the headers
     data = data_list[1:]    # Extract the data rows
     df = pd.DataFrame(data, columns=headers)
-    
+
     linear_table = ""
     header = "col : " + " | ".join(df.columns) + "\n"
     linear_table += header
@@ -285,7 +290,7 @@ class MyEncoder(json.JSONEncoder):
         return json_repr
 
 
-def get_act_func(name, using_sql):
+def get_act_func(name, using_sql=False):
     try:
         # if ('add_column' in name or 'select_row' in name or 'sort' in name) \
         # and USING_SQL is True:
@@ -347,7 +352,7 @@ def get_table_log(sample, skip_op=[], first_n_op=None):
 
     for operation in chain:
         operation_name = operation["operation_name"]
-        act_func = get_act_func(operation_name, using_sql=False)
+        act_func = get_act_func(operation_name)
         table_info = act_func(table_info, operation, skip_op=skip_op)
         if DEBUG:
             print(operation_name)

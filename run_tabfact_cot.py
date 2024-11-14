@@ -1,5 +1,5 @@
-# python cot_run_tabfact_pos.py --load_dataset False --use_subset False > COTABLE_log.txt
-
+# python run_tabfact_cot.py --load_dataset False --use_subset True > COTABLE_log_gpt4omini.txt
+# TODO: You must set using_sql_for_COT; NATURAL_LANGUAGE_PLANNING and USING_SQL in helper.py to False
 import wandb
 import fire
 import os
@@ -21,21 +21,55 @@ import os
 import shutil
 from datetime import datetime
 
-# Azure OpenAI Credentials
-credential = AzureCliCredential()
-openai_token = credential.get_token("https://cognitiveservices.azure.com/.default")
-openai.api_key = openai_token.token
-############################################# Uncomment for using GPT3.5
-openai.api_base = "https://llmopenai.jpmchase.net/WS0001037P-exp" #required #alternative https://llm-test-cib-research.openai.azure.com/
-# openai.api_base = "https://llmopenai-02.jpmchase.net/WS0001037P-exp-use2/"
-#############################################
-openai.api_type = "azure_ad" # required
-openai.api_version = "2024-02-15-preview" # to work till: 2024/04/02: "2023-05-15"
-#### FREDDY
+# # Azure OpenAI Credentials
+# credential = AzureCliCredential()
+# openai_token = credential.get_token("https://cognitiveservices.azure.com/.default")
+# openai.api_key = openai_token.token
+# ############################################# Uncomment for using GPT3.5
+# openai.api_base = "https://llmopenai.jpmchase.net/WS0001037P-exp" #required #alternative https://llm-test-cib-research.openai.azure.com/
+# # openai.api_base = "https://llmopenai-02.jpmchase.net/WS0001037P-exp-use2/"
+# #############################################
+# openai.api_type = "azure_ad" # required
+# openai.api_version = "2024-02-15-preview" # to work till: 2024/04/02: "2023-05-15"
+# #### FREDDY
 
-# targetted_indices = [i for i in range(100,200)]
-# print('Samples tested:', targetted_indices)
-targetted_indices = []
+############################################################################################################
+# USING LAB APIs in regular mode
+
+import yaml
+import os
+import json
+import argparse
+import random
+import time
+import openai
+from bs4 import BeautifulSoup
+from tqdm import tqdm
+import numpy as np
+import dotenv
+
+dotenv.load_dotenv()
+
+# Load the OpenAI API key and Azure endpoint from config
+with open("azure_openai_config.yaml") as f:
+    config_yaml = yaml.load(f, Loader=yaml.FullLoader)
+
+# Extract configuration variables
+api_key = config_yaml['api_key']
+azure_endpoint = config_yaml['azure_endpoint']
+api_version = config_yaml.get('api_version',)  # Default version if not specified
+
+# Set up OpenAI client with Azure settings
+openai.api_type = "azure"
+openai.api_key = api_key
+openai.api_base = azure_endpoint
+openai.api_version = api_version
+############################################################################################################
+
+targetted_indices = [i for i in range(0,2)]
+# targetted_indices = []
+print('Samples tested:', targetted_indices)
+
 POS_DEBUG = False
 
 if POS_DEBUG:
@@ -49,8 +83,9 @@ def main(
         dataset_path: str = "data/tabfact/test.jsonl",
         raw2clean_path: str = "data/tabfact/raw2clean.jsonl",
         ############################################# Uncomment for using GPT3.5
-        model_name: str = "gpt-3.5-turbo-0613",
+        # model_name: str = "gpt-3.5-turbo-0613",
         # model_name: str = "gpt-4-turbo",
+        model_name: str = "gpt-4o",
 
         result_dir: str = "results/tabfact",
         first_n: int = -1,  # Can specify a subset or use None for all data 
@@ -91,8 +126,8 @@ def main(
     # Load processed dataset if needed
     if load_dataset is True:
         print('Loading preprocessed dataset...')
-        # dataset = load_dataset_from_pkl("processed_dataset.pkl")
-        dataset = load_dataset_from_pkl(f"{model_name}_processed_200_random_dataset.pkl")
+        dataset = load_dataset_from_pkl("processed_dataset.pkl")
+        # dataset = load_dataset_from_pkl(f"{model_name}_processed_200_random_dataset.pkl")
         # dataset = load_dataset_from_pkl(f"{model_name}_processed_500_random_dataset_seed42.pkl")
 
         

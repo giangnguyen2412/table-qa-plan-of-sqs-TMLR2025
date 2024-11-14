@@ -12,6 +12,7 @@ def plan_to_step_list(plan):
 
     return steps_list
 
+
 def wikitq_natural_language_plan_step_to_sql(sample, intermediate_table, action, table_name, statement):
     table_name = 'table_sql'
     question = sample['statement']
@@ -57,80 +58,187 @@ def wikitq_natural_language_plan_step_to_sql(sample, intermediate_table, action,
     prompt += "\n####\n"
     return prompt
 
+if planning_algorithm == 'static':
 
-def wikitq_generate_natural_language_planning(sample, debug=False, llm=None, llm_options=None, strategy="top"):
-    # Set up LLM options
-    if llm_options is None:
-        llm_options = llm.get_model_options()
-    # llm_options["n"] = OPERATION_NUMS  # Request multiple responses for a single prompt
-    llm_options["n"] = K_plans  # Request multiple responses for a single prompt
+    def wikitq_generate_natural_language_planning(sample, debug=False, llm=None, llm_options=None, strategy="top"):
+        # Set up LLM options
+        if llm_options is None:
+            llm_options = llm.get_model_options()
+        # llm_options["n"] = OPERATION_NUMS  # Request multiple responses for a single prompt
+        llm_options["n"] = K_plans  # Request multiple responses for a single prompt
 
-    if llm_options["n"] > 1:
-        llm_options["temperature"] = 0.8
-        llm_options["top_p"] = 1.0
+        if llm_options["n"] > 1:
+            llm_options["temperature"] = 0.8
+            llm_options["top_p"] = 1.0
 
-    statement = sample['statement']
-    table_text = sample['table_text']
-    answer = sample['answer']
+        statement = sample['statement']
+        table_text = sample['table_text']
+        answer = sample['answer']
 
-    is_sql_executable = False
-    num_rows = len(table_text) - 1
+        is_sql_executable = False
+        num_rows = len(table_text) - 1
 
-    prompt = ""
+        prompt = ""
 
-    prompt += wikitq_natural_language_plan_demo + "\n"
+        # prompt += general_natural_language_plan_demo + "\n"
+        prompt += wikitq_natural_language_plan_demo + "\n"
 
-    prompt += "\n### Here come to your task!\n"
-    # We dont have table caption in WikiTQ
-    prompt += "/*\n" + table2string(table_text) + "\n*/\n"
-    prompt += f"This Table has {num_rows} rows.\n"
-    prompt += "Question: " + statement + "\n"
+        prompt += "\n### Here come to your task!\n"
+        # We dont have table caption in WikiTQ
+        prompt += "/*\n" + table2string(table_text) + "\n*/\n"
+        prompt += f"This Table has {num_rows} rows.\n"
+        prompt += "Question: " + statement + "\n"
 
-    prompt += """
-    Let's develop a precise and detailed step-by-step plan to answer the given Question based on the provided Table.
+        prompt += """
+Let's develop a precise and detailed step-by-step plan to answer the given Question based on the provided Table.
 
-    Your steps will later be converted to SQL commands to transform the Table into the final answer for the question. 
-    You MUST thoroughly analyze and understand the Question before writing the plan.
+Your steps will later be converted to SQL commands to transform the Table into the final answer for the question.
+You MUST thoroughly analyze and understand the Question before writing the plan.
 
-    Plan Steps:
-    1. Each step in your plan should be atomic and straightforward, ensuring they can be easily executed or converted into SQL.
-    2. You MUST closely examine the Question and ensure all conditions are checked accurately.
+Plan Steps:
+1. Each step in your plan should be atomic and straightforward, ensuring they can be easily executed or converted into SQL.
+2. You MUST closely examine the Question and ensure all conditions are checked accurately.
 
-    Step Order:
-    1. The order of steps is crucial! Ensure the steps logically support the correct answering.
-    2. Each step will be executed sequentially, with the next step operating on the output table of the previous step. 
-    The first step will be executed on the given Table.
+Step Order:
+1. The order of steps is crucial! Ensure the steps logically support the correct answering.
+2. Each step will be executed sequentially, with the next step operating on the output table of the previous step.
+The first step will be executed on the given Table.
 
-    Final Step:
-    Ensure the last step involves selecting the relevant cells or calculating the values that correctly answer the Question.
+Final Step:
+Ensure the last step involves selecting the relevant cells or calculating the values that correctly answer the Question.
 
-    Plan:\n
-    """
+Plan:\n
+        """
 
-    # if True:
-    #     print('Model prompt for plan:\n')
-    #     print(prompt)
-    #     print('X'*100)
+        # if True:
+        #     print('Model prompt for plan:\n')
+        #     print(prompt)
+        #     print('X'*100)
 
-    try:
-        responses = llm.generate_plus_with_score(
-            prompt, options=llm_options, end_str="\n\n"
-        )
-        is_sql_executable = True
+        try:
+            responses = llm.generate_plus_with_score(
+                prompt, options=llm_options, end_str="\n\n"
+            )
+            is_sql_executable = True
 
-    except Exception as e:
-        print('ERR1: Cannot generate plans:', (e))
-        return None, is_sql_executable
+        except Exception as e:
+            print('ERR1: Cannot generate plans:', (e))
+            return None, is_sql_executable
 
-    # Extract the plan
-    responses.sort(key=lambda x: x[1], reverse=True)
-    plans = []
-    for response, score in responses:
-        plans.append(plan_to_step_list(response))
+        # Extract the plan
+        responses.sort(key=lambda x: x[1], reverse=True)
+        plans = []
+        for response, score in responses:
+            plans.append(plan_to_step_list(response))
 
-    # print('generated plans:\n', plans)
-    return plans, is_sql_executable
+        # print('generated plans:\n', plans)
+        return plans, is_sql_executable
 
+elif planning_algorithm == 'dynamic':
+
+    def wikitq_generate_natural_language_planning(
+            sample,
+            current_table,
+            operation_history=None,
+            debug=False,
+            llm=None,
+            llm_options=None,
+            strategy="top"
+    ):
+        """
+        Generate the next operation dynamically based on current state and history.
+        :param sample:
+        :param current_table:
+        :param operation_history:
+        :param debug:
+        :param llm:
+        :param llm_options:
+        :param strategy:
+        :return:
+        """
+        if operation_history is None:
+            operation_history = []
+
+        # Set up LLM options
+        if llm_options is None:
+            llm_options = llm.get_model_options()
+        llm_options["n"] = 1  # We only need one next step at a time
+
+        statement = sample['statement']
+        num_rows = len(current_table) - 1
+
+        if not operation_history:
+            prompt = ""
+            prompt += wikitq_natural_language_plan_demo + "\n"
+            # prompt += general_natural_language_plan_demo + "\n"
+            prompt += f"""
+################## Here comes your task!
+
+Input Table:
+{table2string(current_table)}
+
+This Table has {num_rows} rows.
+Question: {statement}
+
+Let's write the first step in the plan to transform the Input Table.
+You MUST carefully analyze and understand the Question before writing the first step!
+
+Your step should be very atomic and straightforward, ensuring it can be easily executed or converted into SQL.
+
+For comparative or superlative questions involving "highest", "lowest", "earliest", "latest", "better", "faster", "earlier", etc.,
+you should order the table accordingly before selecting rows. This ensures that the desired comparative or superlative data is correctly retrieved.
+
+Remember to always add the step number **1.** before step. If this step provides the final answer to the question, please indicate so by adding "Final step:".
+
+The first step is:
+            """
+        else:
+            # For subsequent steps, use the history-aware prompt
+            history = ""
+            for i, op in enumerate(operation_history, 1):
+                history += f"{i}. {op}\n"
+
+            prompt = ""
+            prompt += wikitq_natural_language_plan_demo + "\n"
+            # prompt += general_natural_language_plan_demo + "\n"
+            prompt += f"""
+################## Here comes your task!
+
+Based on the current intermediate table and previous steps, write the next step in the plan to transform the current intermediate table.
+
+Your next step should be atomic and straightforward, ensuring it can be easily executed or converted into SQL.
+Remember to always add the step number **{i+1}**. before step. If this step provides the final answer to the question, please indicate so by adding "Final step:"
+
+Current intermediate table:
+{table2string(current_table)}
+
+Question to answer: {statement}
+
+Original table had {num_rows} rows.
+
+Previous executed steps:
+{history}
+The next step is:
+            """
+
+        print("Prompt to the model: ", prompt)
+
+        try:
+            response = llm.generate_plus_with_score(
+                prompt, options=llm_options, end_str="\n\n"
+            )
+            next_step = plan_to_step_list(response[0][0])[0] if response else None
+            return next_step
+        except Exception as e:
+            print('ERR: Cannot generate next step:', str(e))
+            return None
+
+else:
+    raise ValueError(f"Invalid planning algorithm: {planning_algorithm}")
+
+############################################################################################################
+############################################################################################################
+############################################################################################################
 
 def tabfact_natural_language_plan_step_to_sql(sample, intermediate_table, action, table_name, statement):
     if len(intermediate_table[0]) > 1:
@@ -176,6 +284,15 @@ if planning_algorithm == 'static':
             llm_options=None,
             strategy="top",
     ):
+        """
+        Generate a natural language plan for the given sample.
+        :param sample:
+        :param debug:
+        :param llm:
+        :param llm_options:
+        :param strategy:
+        :return:
+        """
         # Set up LLM options
         if llm_options is None:
             llm_options = llm.get_model_options()
@@ -194,6 +311,7 @@ if planning_algorithm == 'static':
 
         prompt = ""
 
+        # prompt += general_natural_language_plan_demo + "\n"
         prompt += tabfact_natural_language_plan_demo + "\n"
 
         prompt += "\n### Here come to your task!\n"
@@ -284,6 +402,7 @@ elif planning_algorithm == 'dynamic':
         if not operation_history:
             prompt = ""
             prompt += tabfact_natural_language_plan_demo + "\n"
+            # prompt += general_natural_language_plan_demo + "\n"
             prompt += f"""
 ################## Here come to your task!
 
@@ -314,6 +433,7 @@ The first step is:\n
 
             prompt = ""
             prompt += tabfact_natural_language_plan_demo + "\n"
+            # prompt += general_natural_language_plan_demo + "\n"
             prompt += f"""
 ################## Here come to your task!
 

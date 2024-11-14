@@ -16,10 +16,49 @@
 import copy
 import re
 import numpy as np
-from utils.helper import table2string
+# from utils.helper import table2string
+import pandas as pd
 
 from third_party.select_column_row_prompts.select_column_row_prompts import select_row_demo
 
+def table2df(table_text, num_rows=100):
+    header, rows = table_text[0], table_text[1:]
+
+    # if test_dataset == 'WikiTQ':
+    #     rows = rows[:num_rows]
+
+    df = pd.DataFrame(data=rows, columns=header)
+
+    # Convert columns to numeric where possible
+    for col in df.columns:
+        try:
+            df[col] = pd.to_numeric(df[col])
+        except Exception:
+            # If conversion fails, leave the column as is
+            pass
+
+    return df
+
+def table2string(
+    table_text,
+    num_rows=100,
+    caption=None,
+):
+    df = table2df(table_text, num_rows)
+    linear_table = ""
+    if caption is not None:
+        linear_table += "table caption : " + caption + "\n"
+
+    header = "col : " + " | ".join(df.columns) + "\n"
+    linear_table += header
+    rows = df.values.tolist()
+    for row_idx, row in enumerate(rows):
+        row = [str(x) for x in row]
+        line = "row {} : ".format(row_idx + 1) + " | ".join(row)
+        if row_idx != len(rows) - 1:
+            line += "\n"
+        linear_table += line
+    return linear_table
 
 def select_row_build_prompt(table_text, statement, table_caption=None, num_rows=100):
     num_rows = 3
@@ -88,6 +127,8 @@ def select_row_act(table_info, operation, union_num=2, skip_op=[]):
     if "select_row" in skip_op:
         failure_table_info = copy.deepcopy(table_info)
         failure_table_info["act_chain"].append("skip f_select_row()")
+        print('Skip f_select_row')
+
         return failure_table_info
 
     # use union to aggregate the arguments for the select_row()
@@ -110,6 +151,8 @@ def select_row_act(table_info, operation, union_num=2, skip_op=[]):
     if "*" in selected_rows:
         failure_table_info = copy.deepcopy(table_info)
         failure_table_info["act_chain"].append("f_select_row(*)")
+        print('Skip f_select_row')
+
         return failure_table_info
 
     real_selected_rows = []
@@ -125,6 +168,8 @@ def select_row_act(table_info, operation, union_num=2, skip_op=[]):
     if len(new_table) == 1:
         failure_table_info = copy.deepcopy(table_info)
         failure_table_info["act_chain"].append("f_select_row(*)")
+        print('Skip f_select_row')
+
         return failure_table_info
 
     table_info["table_text"] = new_table

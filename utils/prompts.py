@@ -1,6 +1,915 @@
 
 # TABFACT
 
+
+general_natural_language_plan_demo = """
+We are working with a tabular dataset. 
+Your task is to develop a step-by-step plan to verify if a given statement is TRUE or FALSE or to find the correct answer based on a given table. 
+There exists data where smaller values indicate better, greater, or more favorable conditions, such as rankings, times, error rates, etc.
+
+Here are example plans you can refer to:
+
+### Table:
+table caption: 2005 tournament results
+/*
+col : id | name | hometown | score
+row 1 : 1 | alice | new york | 85
+row 2 : 2 | bob | los angeles | 90
+row 3 : 3 | charlie | chicago | 75
+row 4 : 4 | dave | new york | 88
+row 5 : 5 | eve | los angeles | 92
+*/
+Query: in 2005 tournament, bob and charlie are both from chicago.
+Plan:
+1. Select rows where the 'name' is 'bob' or 'charlie'.
+2. Select rows where 'hometown' is 'chicago'.
+3. Use a `CASE` statement to return TRUE if the number of rows is equal to 2, otherwise return FALSE.
+
+### Table:
+table caption: salary last year
+/*
+col : id | name | department | salary | years
+row 1 : 1 | alice | it | $95,000 | 3
+row 2 : 2 | bob | finance | $105,000 | 5
+row 3 : 3 | charlie | marketing | $88,000 | 2
+*/
+Query: no employee earns more than $100,000.
+Plan:
+1. Extract the numerical value from the 'salary' column then add column 'num_salary' to existing table.
+2. Select rows where the 'num_salary' is greater than 100000.
+3. Use a `CASE` statement to return TRUE if the number of rows is equal to 0, otherwise return FALSE.
+
+### Table:
+table caption: 2000 uk championship
+/*
+col : place | player | country | score | to_par
+row 1 : 1 | hale irwin | united states | 68 + 68 = 136 | e
+row 2 : 2 | fuzzy zoeller | united states | 71 + 66 = 137 | +3
+row 3 : t3 | david canipe | united states | 69 + 69 = 138 | +2
+row 4 : t4 | james canpo | france | 35 + 45 = 80 | -2
+*/
+Query: james canpo is the only player from france
+Plan:
+1. Extract the number of players from france from the 'country' column then add column 'france_cnt' to existing table.
+2. Select rows where 'france_cnt' is 1.
+3. Select rows where 'player' is 'james canpo'.
+4. Use a `CASE` statement to return TRUE if the number of rows is equal to 1, otherwise return FALSE.
+
+### Table:
+table caption: olympic 2018; table tennis
+/*
+col : rank | athlete | time
+row 1 : 1 | manjeet kaur (ind) | 52.17
+row 2 : 2 | olga tereshkova (kaz) | 51.86
+row 3 : 3 | pinki pramanik (ind) | 53.06
+*/
+Query: in table tennis of olympic 2018, there are at most 2 athletes from india.
+Plan: 
+1. Select rows where 'athlete' is 'ind' using LIKE function.
+2. Use a `CASE` statement to return TRUE if the number of rows is smaller than or equal to 2, otherwise return FALSE.
+
+### Table:
+/*
+col : id | name | hometown
+row 1 : 1 | alice | new york
+row 2 : 2 | bob | los angeles
+row 3 : 3 | charlie | chicago
+*/
+Query: which players are from chicago?
+Plan:
+1. Select rows where the 'hometown' is 'chicago'.
+2. Select the 'name' column.
+
+### Table:
+/*
+col : id | name | score
+row 1 : 1 | alice | 85
+row 2 : 2 | bob | 90
+row 3 : 3 | charlie | 75
+*/
+Query: what is the score of alice?
+Plan:
+1. Select rows where the 'name' is 'alice'.
+2. Select the 'score' column.
+
+### Table:
+/*
+col : id | name | salary
+row 1 : 1 | alice | $95,000
+row 2 : 2 | bob | $105,000
+row 3 : 3 | charlie | $88,000
+*/
+Query: how many employees earn more than $100,000?
+Plan:
+1. Extract the numerical value from the 'salary' column then add column 'num_salary' to existing table.
+2. Select rows where the 'num_salary' is greater than 100000.
+3. Count the number of rows.
+
+### Table:
+/*
+col : id | name | salary
+row 1 : 1 | alice | $95,000
+row 2 : 2 | bob | $105,000
+row 3 : 3 | charlie | $88,000
+*/
+Query: what is the average salary?
+Plan:
+1. Extract the numerical value from the 'salary' column then add column 'num_salary' to existing table.
+2. Calculate the average salary from the 'num_salary' column.
+
+### Table:
+/*
+col : place | player | score
+row 1 : 1 | hale irwin | 68 + 68 = 136
+row 2 : 2 | fuzzy zoeller | 71 + 66 = 137
+row 3 : t3 | david canipe | 69 + 69 = 138
+*/
+Query: who had the highest score?
+Plan:
+1. Extract the numerical score from the 'score' column then add column 'num_score' to existing table.
+2. Order the table by 'num_score' in descending order.
+3. Select row number 1.
+4. Select the 'player' column.
+
+### Table:
+/*
+col : place | player | score
+row 1 : 1 | hale irwin | 68 + 68 = 136
+row 2 : 2 | fuzzy zoeller | 71 + 66 = 137
+row 3 : t3 | david canipe | 69 + 69 = 138
+*/
+Query: what is the highest score?
+Plan:
+1. Extract the numerical score from the 'score' column then add column 'num_score' to existing table.
+2. Calculate the highest score from the 'num_score' column.
+
+### Table:
+/*
+col : rank | athlete | time
+row 1 : 1 | manjeet kaur (ind) | 52.17
+row 2 : 2 | olga tereshkova (kaz) | 51.86
+row 3 : 3 | pinki pramanik (ind) | 53.06
+*/
+Query: how many athletes from india participated in?
+Plan:
+1. Select rows where 'athlete' is 'ind' using LIKE function.
+2. Count the number of rows.
+
+### Table:
+table caption: olympic 2018; table tennis
+/*
+col : rank | athlete | time
+row 1 : 1 | manjeet kaur (ind) | 52.17
+row 2 : 2 | olga tereshkova (kaz) | 51.86
+row 3 : 3 | pinki pramanik (ind) | 53.06
+*/
+Query: manjeet had the highest rank in the competition.
+Plan: 
+1. Order the table by 'rank' in ascending order.
+2. Select row number 1.
+3. Select rows where 'athlete' is 'manjeet' using LIKE function.
+4. Use a `CASE` statement to return TRUE if the number of rows is equal to 1, otherwise return FALSE.
+
+### Table:
+table caption: book sale
+/*
+col : author | genre | books_sold
+row 1 : smith | fiction | 300
+row 2 : doe | fiction | 400
+row 3 : roe | non-fiction | 500
+*/
+Query: fiction is the best-selling genre.
+Plan:
+1. Order the table by 'books_sold' in descending order.
+2. Select row number 1.
+3. Select rows where 'genre' is 'fiction'.
+4. Use a `CASE` statement to return TRUE if the number of rows is equal to 1, otherwise return FALSE.
+
+### Table:
+table caption: book sale
+/*
+col : author | genre | books_sold
+row 1 : smith | fiction | 300
+row 2 : doe | fiction | 400
+row 3 : roe | non-fiction | 500
+*/
+Query: the maximum number of books sold is 600.
+Plan:
+1. Order the table by 'books_sold' in descending order.
+2. Select row number 1.
+3. Select rows where 'books_sold' is 600.
+4. Use a `CASE` statement to return TRUE if the number of rows is equal to 1, otherwise return FALSE.
+
+### Table:
+table caption: us open 2024
+/*
+col : game | venue | date | attendance
+row 1 : 1 | orlando | 2024-11-23 | 52000
+row 2 : 2 | new york | 2022-09-12 | 51000
+row 3 : 3 | san jose | 2024-09-09 | 53000
+*/
+Query: the earliest game was played in orlando.
+Plan: 
+1. Order the table by 'date' in ascending order.
+2. Select row number 1.
+3. Select rows where 'venue' is 'orlando'.
+4. Use a `CASE` statement to return TRUE if the number of rows is equal to 1, otherwise return FALSE.
+
+### Table:
+table caption: opponents of wildcats
+/*
+col : game_id | venue | when | attendance | team | game
+row 1 : 1 | orlando | 2024-11-23 | 52000 | magic | away
+row 2 : 2 | new york | 2022-09-12 | 48000 | knicks | away
+row 3 : 3 | orlando | 2024-09-11 | 50000 | tigers | away
+*/
+Query: all matches are on different dates
+Plan:
+1. Extract the number of distinct dates from the 'when' column then add column 'date_cnt' to existing table.
+2. Select rows where 'date_cnt' is 3.
+3. Use a `CASE` statement to return TRUE if the number of rows is greater than or equal to 1, otherwise return FALSE.
+
+### Table:
+table caption: attendance record in 2024
+*/
+col : game | venue | date | attendance
+row 1 : 1 | orlando | 2024-11-23 | 52000
+row 2 : 2 | new york | 2022-09-12 | 51000
+row 3 : 3 | san jose | 2024-09-09 | 53000
+*/
+Query: all the games are played in 2024
+Plan: 
+1. Extract the numerical year from the 'date' column then add column 'year' to existing table.
+2. Select rows where 'year' is not 2024.
+3. Use a `CASE` statement to return TRUE if the number of rows is equal to 0, otherwise return FALSE.
+
+### Table:
+table caption: attendance record in 2024
+*/
+col : game | venue | date | attendance
+row 1 : 1 | orlando | 2024-11-23 | 52000
+row 2 : 2 | new york | 2022-09-12 | 51000
+row 3 : 3 | san jose | 2024-09-09 | 53000
+*/
+Query: the lowest attendance was 50000
+Plan: 
+1. Order the table by 'attendance' in ascending order.
+2. Select row number 1.
+3. Select rows where 'attendance' is 50000.
+4. Use a `CASE` statement to return TRUE if the number of rows is equal to 1, otherwise return FALSE.
+
+### Table:
+table caption: final rankings and medals
+/*
+col : id | athlete | country | sport | medals
+row 1 : 1 | alice | usa | swimming | 5
+row 2 : 2 | bob | canada | hockey | 3
+row 3 : 3 | charlie | australia | athletics | 2
+*/
+Query: there is no athlete from canada.
+Plan:
+1. Select rows where 'country' is 'canada'.
+2. Use a `CASE` statement to return TRUE if the number of rows is equal to 0, otherwise return FALSE.
+
+### Table:
+table caption: final rankings 2009
+/*
+col : rank_sport | athlete | country | sport | medals
+row 1 : 1 | alice | usa | swimming | 5
+row 2 : 2 | bob | canada | hockey | 3
+row 3 : 3 | charlie | australia | athletics | 2
+row 4 : 4 | park | korea | gymnastics | 1
+*/
+Query: park has the lowest sport rank in 2009.
+Plan:
+1. Order the table by 'rank_sport' in descending order.
+2. Select row number 1.
+3. Select rows where 'athlete' is 'park'.
+4. Use a `CASE` statement to return TRUE if the number of rows is equal to 1, otherwise return FALSE.
+
+### Table:
+table caption: olympic rankings
+/*
+col : rank | total_medals | country | silver_medals | gold_medals
+row 1 : 1 | 7 | usa | 2 | 5
+row 2 : 2 | 7 | canada | 4 | 3
+row 3 : 3 | 4 | australia | 2 | 2
+*/
+Query: canada has the highest number of silver medals.
+Plan:
+1. Order the table by 'silver_medals' in descending order.
+2. Select row number 1.
+3. Select rows where 'country' is 'canada'.
+4. Use a `CASE` statement to return TRUE if the number of rows is equal to 1, otherwise return FALSE.
+
+### Table:
+table caption: game results in 2024
+/*
+col : game_id | venue | date | attendance | team
+row 1 : 1 | orlando | 2024-11-23 | 52000 | magic
+row 2 : 2 | new york | 2022-09-12 | 48000 | knicks
+row 3 : 3 | san jose | 2024-09-09 | 35000 | sharks
+*/
+Query: no games were played in december.
+Plan:
+1. Extract the numerical month from the 'date' column then add column 'month' to existing table.
+2. Select rows where 'month' is 12.
+3. Use a `CASE` statement to return TRUE if the number of rows is equal to 0, otherwise return FALSE.
+
+### Table:
+table caption: list of winners
+/*
+col : id | player | country | sport | medals
+row 1 : 1 | alice | usa | swimming | 5
+row 2 : 2 | bob | canada | hockey | 3
+row 3 : 3 | charlie | italia | athletics | 2
+*/
+Query: there are less than 2 players from italia in the list of winners.
+Plan:
+1. Select rows where 'country' is 'italia'.
+2. Use a `CASE` statement to return TRUE if the number of rows is smaller than 2, otherwise return FALSE.
+
+### Table:
+table caption: opponents of wildcats
+/*
+col : game_id | venue | date | attendance | team
+row 1 : 1 | orlando | 2024-11-23 | 52000 | magic
+row 2 : 2 | new york | 2022-09-12 | 48000 | knicks
+row 3 : 3 | san jose | 2024-09-09 | 35000 | sharks
+*/
+Query: sharks was the opponent of the last game.
+Plan:
+1. Order the table by 'game_id' in descending order.
+2. Select row number 1.
+3. Select rows where 'team' is 'sharks'.
+4. Use a `CASE` statement to return TRUE if the number of rows is equal to 1, otherwise return FALSE.
+
+### Table:
+table caption: book sales
+/*
+col : iso/iec_standard | status | wg
+row 1 : iso/iec tr 19759 | published (2005) | 20
+row 2 : iso/iec 15288 | published (2008) | 7
+row 3 : iso/iec 12207 | published (2011) | 7
+*/
+Query: 2 standards are published in 2011.
+Plan: 
+1. Extract the year from the 'status' column then add column 'year_published' to existing table.
+2. Select rows where 'year_published' is 2011.
+3. Use a `CASE` statement to return TRUE if the number of rows is equal to 2, otherwise return FALSE.
+
+### Table:
+table caption: book sales
+/*
+col : iso/iec_standard | status | wg
+row 1 : iso/iec tr 19759 | published (2005) | 20
+row 2 : iso/iec 15288 | published (2008) | 7
+row 3 : iso/iec 12207 | published (2011) | 7
+*/
+Query: the standard tr 19759 was released in 2005.
+Plan: 
+1. Extract the year from the 'status' column then add column 'year_published' to existing table.
+2. Select rows where 'year_published' is 2005.
+3. Select rows where 'iso/iec_standard' is 'tr 19759'.
+4. Use a `CASE` statement to return TRUE if the number of rows is equal to 1, otherwise return FALSE.
+
+### Table:
+table caption: 2018 financial report
+/*
+col : employee | department | money_per_hour
+row 1 : alice | hr | 50.55
+row 2 : bob | hr | 55.75
+row 3 : charlie | it | 60.33
+*/
+Query: in 2018, alice earned the most money per hour.
+Plan: 
+1. Order the table by 'money_per_hour' in descending order.
+2. Select row number 1.
+3. Select rows where the 'employee' is 'alice'.
+4. Use a `CASE` statement to return TRUE if the number of rows is equal to 1, otherwise return FALSE.
+
+### Table:
+table caption: project list
+/*
+col : project_id | project_name | department | start_date | deadline
+row 1 : 1 | migration | it | 2023-01-15 | 2024-03-01
+row 2 : 2 | rebranding | marketing | 2023-06-20 | 2023-12-15
+row 3 : 3 | audit | finance | 2023-09-10 | 2024-05-30
+*/
+Query: no project deadline is set before 2024.
+Plan:
+1. Extract the numerical year from the 'deadline' column then add column 'year' to existing table.
+2. Select rows where the 'year' is before 2024.
+3. Use a `CASE` statement to return TRUE if the number of rows is equal to 0, otherwise return FALSE.
+
+### Table:
+table caption: team building in nyc
+/*
+col : id | name | department | score
+row 1 : 1 | alice | hr | 90
+row 2 : 2 | bob | it | 80
+row 3 : 3 | charlie | finance | 88
+row 4 : 4 | dave | marketing | 70
+row 5 : 5 | eve | hr | 95
+*/
+Query: the average score of all employees is above 85.
+Plan:
+1. Extract the average of the 'score' column then add column 'avg_score' to existing table.
+2. Select rows where the 'avg_score' is greater than 85.
+3. Use a `CASE` statement to return TRUE if the number of rows is greater than or equal to 1, otherwise return FALSE.
+
+### Table:
+table caption: team building in nyc
+/*
+col : id | name | department | score
+row 1 : 1 | alice | hr | 90
+row 2 : 2 | bob | it | 80
+row 3 : 3 | charlie | finance | 88
+row 4 : 4 | dave | marketing | 70
+row 5 : 5 | eve | hr | 95
+*/
+Query: eve had the most score among the listed players.
+Plan:
+1. Order the table by 'score' in descending order.
+2. Select row number 1.
+3. Select rows where the 'name' is 'eve'.
+4. Use a `CASE` statement to return TRUE if the number of rows is equal to 1, otherwise return FALSE.
+
+### Table:
+table caption: team building in nyc
+/*
+col : id | name | department | score
+row 1 : 1 | alice | hr | 90
+row 2 : 2 | bob | it | 70
+row 3 : 3 | charlie | finance | 88
+row 4 : 4 | dave | marketing | 85
+row 5 : 5 | eve | hr | 95
+*/
+Query: the difference between the highest and lowest scores is more than 20.
+Plan:
+1. Extract the difference between the maximum value and minimum value of the 'score' column then add column 'score_diff' to existing table.
+2. Select rows where the 'score_diff' is greater than 20.
+3. Use a `CASE` statement to return TRUE if the number of rows is greater than or equal to 1, otherwise return FALSE.
+
+### Table:
+table caption: team building in nyc
+/*
+col : id | name | department | score
+row 1 : 1 | alice | hr | 90
+row 2 : 2 | bob | it | 70
+row 3 : 3 | charlie | finance | 88
+row 4 : 4 | dave | marketing | 70
+row 5 : 5 | eve | hr | 95
+*/
+Query: dave and bob together had the least amount of scores.
+Plan:
+1. Extract the minimum value of the 'score' column then add column 'min_score' to existing table.
+2. Select rows where the 'score' is equal to 'min_score'.
+3. Select rows where 'name' is 'dave' or 'bob'
+4. Use a `CASE` statement to return TRUE if the number of rows is equal to 2, otherwise return FALSE.
+
+### Table:
+table caption: opponents of wildcats
+/*
+col : game_id | venue | date | attendance | team | game
+row 1 : 1 | orlando | 2024-11-23 | 52000 | magic | away
+row 2 : 2 | new york | 2022-09-12 | 48000 | knicks | away
+row 3 : 3 | orlando | 2024-09-11 | 50000 | tigers | away
+*/
+Query: attendance of games in orlando is always over 50000.
+Plan:
+1. Select rows where 'venue' is 'orlando'.
+2. Select rows where the 'attendance' is less than or equal to 50000.
+3. Use a `CASE` statement to return TRUE if the number of rows is equal to 0, otherwise return FALSE.
+
+### Table:
+table caption: soccer ranking
+/*
+col : name | position | league_apps | league_goals | fa_cup_apps | fa_cup_goals | league_cup_apps | league_cup_goals | total_apps | total_goals
+row 1 : mike maginan | df | 0 | 0 | 0 | 0 | 0 (1) | 0 | 0 (1) | 0
+row 2 : tommy chris | df | 46 | 2 | 2 | 0 | 4 | 1 | 52 | 3
+row 3 : johny lowe | mf | 39 (1) | 10 | 1 | 0 | 4 | 0 | 44 (1) | 10
+row 4 : hannah denver | fw | 30 (8) | 17 | 2 | 0 | 3 | 1 | 35 (8) | 18
+*/
+Query: tommy chris played at mf
+Plan:
+1. Select rows where 'name' is 'tommy chris'.
+2. Select rows where 'position' is 'mf'.
+3. Use a `CASE` statement to return TRUE if the number of rows is equal to 1, otherwise return FALSE.
+
+### Table:
+table caption: soccer ranking
+/*
+col : name | position | league_apps | league_goals | fa_cup_apps | fa_cup_goals | league_cup_apps | league_cup_goals | total_apps | total_goals
+row 1 : mike maginan | df | 0 | 0 | 0 | 0 | 0 (1) | 0 | 0 (1) | 0
+row 2 : tommy chris | df | 46 | 2 | 2 | 0 | 4 | 1 | 52 | 3
+row 3 : johny lowe | mf | 39 (1) | 10 | 1 | 0 | 4 | 0 | 44 (1) | 10
+row 4 : hannah denver | fw | 30 (8) | 17 | 2 | 0 | 3 | 1 | 35 (8) | 18
+*/
+Query: none of the players scored at fa cup
+Plan:
+1. Select rows where 'fa_cup_goals' is not 0.
+2. Use a `CASE` statement to return TRUE if the number of rows is equal to 0, otherwise return FALSE.
+
+### Table:
+table caption: sales records
+/*
+col : id | product | region | sales
+row 1 : 1 | laptop | north | 100
+row 2 : 2 | tablet | south | 150
+row 3 : 3 | smartphone | north | 200
+row 4 : 4 | laptop | south | 250
+*/
+Query: the total sales in the north region is 300.
+Plan:
+1. Select rows where 'region' is 'north'.
+2. Extract the total sales in the north region by adding 'sales' column values then add column 'total_sale' to existing table.
+3. Select rows where 'total_sale' is 300.
+4. Use a `CASE` statement to return TRUE if the number of rows is greater than or equal to 1, otherwise return FALSE.
+
+### Table:
+table caption: project deadlines
+/*
+col : id | project | department | deadline
+row 1 : 1 | migration | it | 2023-12-01
+row 2 : 2 | rebranding | marketing | 2023-11-15
+row 3 : 3 | audit | finance | 2023-12-20
+*/
+Query: the audit project has the latest deadline.
+Plan:
+1. Order the table by 'deadline' in descending order.
+2. Select row number 1.
+3. Select rows where 'project' is 'audit'.
+4. Use a `CASE` statement to return TRUE if the number of rows is equal to 1, otherwise return FALSE.
+
+### Table:
+table caption: student test scores
+/*
+col : id | student | subject | score
+row 1 : 1 | alice | math | 8+9=17
+row 2 : 2 | bob | math | 9+7=16
+row 3 : 3 | charlie | math | 7+7=14
+row 4 : 4 | dave | math | 7+6=13
+*/
+Query: the total score of charlie is 14.
+Plan:
+1. Extract the numerical total score from the 'score' column then add column 'num_total_score' to existing table.
+2. Select rows where 'num_total_score' is 14.
+3. Select rows where 'student' is 'charlie'.
+4. Use a `CASE` statement to return TRUE if the number of rows is equal to 1, otherwise return FALSE.
+
+### Table:
+table caption: project deadlines 2024
+/*
+col : id | project | deadline
+row 1 : 1 | migration | 2024-03-01
+row 2 : 2 | rebranding | 2024-12-15
+row 3 : 3 | audit | 2024-05-30
+*/
+Query: all project deadlines are in 2024.
+Plan:
+1. Extract the numerical year from the 'deadline' column then add column 'year' to existing table.
+2. Select rows where 'year' is not 2024.
+3. Use a `CASE` statement to return TRUE if the number of rows is equal to 0, otherwise return FALSE.
+
+### Table:
+table caption: project deadlines 2024
+/*
+col : group | project | deadline
+row 1 : 10 | migration | 2024-03-01
+row 2 : 10 | rebranding | 2024-12-15
+row 3 : 10 | audit | 2024-05-30
+*/
+Query: only group ten's projects were listed.
+Plan:
+1. Select rows where 'group' is not 10.
+2. Use a `CASE` statement to return TRUE if the number of rows is equal to 0, otherwise return FALSE.
+
+### Table:
+table caption: project deadlines 2024
+/*
+col : group | project | date
+row 1 : 10 | migration | 2024-03-01
+row 2 : 10 | rebranding | 2024-12-15
+row 3 : 10 | audit | 2024-05-30
+*/
+Query: migration was the project of the earliest date.
+Plan:
+1. Order the table by 'date' in ascending order.
+2. Select row number 1.
+3. Select rows where 'project' is 'migration'.
+4. Use a `CASE` statement to return TRUE if the number of rows is equal to 1, otherwise return FALSE.
+
+### Table:
+table caption: tech conference attendance
+/*
+col : id | conference | location | attendance
+row 1 : 1 | conf A | san francisco | 32000
+row 2 : 2 | conf B | new york | 34000
+row 3 : 3 | conf C | chicago | 31000
+*/
+Query: all conferences have more than 30000 attendees.
+Plan:
+1. Select rows where 'attendance' is less than or equal to 30000.
+2. Use a `CASE` statement to return TRUE if the number of rows is equal to 0, otherwise return FALSE.
+
+### Table:
+table caption: international chess tournament
+/*
+col : id | player | country | games_won
+row 1 : 1 | alice | usa | 5
+row 2 : 2 | bob | uk | 3
+row 3 : 3 | charlie | india | 4
+row 4 : 4 | dave | usa | 6
+*/
+Query: all players from usa won more than 4 games.
+Plan:
+1. Select rows where 'country' is 'usa'.
+2. Select rows where 'games_won' is less than or equal to 4.
+3. Use a `CASE` statement to return TRUE if the number of rows is equal to 0, otherwise return FALSE.
+
+### Table:
+/*
+col : game_id | venue | date
+row 1 : 1 | orlando | 2024-11-23
+row 2 : 2 | new york | 2022-09-12
+row 3 : 3 | san jose | 2024-09-11
+*/
+Query: how many games were played on different dates?
+Plan:
+1. Count the number of distinct dates from the 'date' column.
+
+### Table:
+/*
+col : id | product | region | sales
+row 1 : 1 | laptop | north | 100
+row 2 : 2 | tablet | south | 150
+row 3 : 3 | smartphone | north | 200
+*/
+Query: what are the total sales in the north region?
+Plan:
+1. Select rows where 'region' is 'north'.
+2. Sum the sales from the 'sales' column.
+
+### Table:
+/*
+col : id | student | subject | score
+row 1 : 1 | alice | math | 85
+row 2 : 2 | bob | math | 90
+row 3 : 3 | charlie | math | 80
+*/
+Query: what is the score of charlie in math?
+Plan:
+1. Select rows where 'student' is 'charlie' and 'subject' is 'math'.
+2. Select the 'score' column.
+
+### Table:
+/*
+col : id | product | quarter | sales
+row 1 : 1 | laptop | Q1 | 100000
+row 2 : 2 | tablet | Q1 | 150000
+row 3 : 3 | smartphone | Q1 | 120000
+*/
+Query: which product had the highest sales in Q2?
+Plan:
+1. Select rows where 'quarter' is 'Q2'.
+2. Order the table by 'sales' in descending order.
+3. Select row number 1.
+4. Select the 'product' column.
+
+### Table:
+/*
+col : author | genre | books_sold
+row 1 : smith | fiction | 300
+row 2 : doe | fiction | 400
+row 3 : roe | non-fiction | 500
+*/
+Query: which genre had the highest book sales?
+Plan:
+1. Order the table by 'books_sold' in descending order.
+2. Select row number 1.
+3. Select the 'genre' column.
+
+### Table:
+/*
+col : employee | department | money_per_hour
+row 1 : alice | hr | 50.55
+row 2 : bob | hr | 55.75
+row 3 : charlie | it | 60.33
+*/
+Query: who earned the most money per hour in 2018?
+Plan:
+1. Order the table by 'money_per_hour' in descending order.
+2. Select row number 1.
+3. Select the 'employee' column.
+
+### Table:
+/*
+col : id | student | subject | score
+row 1 : 1 | alice | math | 85
+row 2 : 2 | bob | math | 90
+row 3 : 3 | charlie | math | 80
+*/
+Query: who has the third highest score in math?
+Plan:
+1. Order the table by 'score' in descending order.
+2. Select rows where 'subject' is 'math'.
+3. Select row number 3.
+4. Select the 'student' column.
+
+### Table:
+/*
+col : id | runner | country | time
+row 1 : 1 | alice | usa | 2:45:30
+row 2 : 2 | bob | kenya | 2:12:45
+row 3 : 3 | charlie | uk | 2:35:10
+*/
+Query: who had the fastest time in the marathon?
+Plan:
+1. Extract the number of seconds from the 'time' column then add column 'secs' to existing table.
+2. Order the table by 'secs' in ascending order.
+3. Select row number 1.
+4. Select the 'runner' column.
+
+### Table:
+/*
+col : id | runner | country | time
+row 1 : 1 | alice | usa | 2:45:30
+row 2 : 2 | bob | kenya | 2:12:45
+row 3 : 3 | charlie | uk | 2:35:10
+*/
+Query: how long does it take for bob to finish?
+Plan:
+1. Select rows where 'runner' is 'bob'.
+2. Select the 'time' column.
+
+### Table:
+/*
+col : name | position | league_apps | total_apps
+row 1 : mike maginan | df | 0 | 0
+row 2 : tommy chris | df | 46 | 52
+row 3 : johny lowe | mf | 39 | 44
+*/
+Query: how many players have total apps more than 50?
+Plan:
+1. Select rows where 'total_apps' is greater than 50.
+2. Count the number of rows.
+
+### Table:
+/*
+col : id | project | department | deadline
+row 1 : 1 | migration | it | 2023-12-01
+row 2 : 2 | rebranding | marketing | 2023-11-15
+row 3 : 3 | audit | finance | 2023-12-20
+*/
+Query: which project has the latest deadline?
+Plan:
+1. Order the table by 'deadline' in descending order.
+2. Select row number 1.
+3. Select the 'project' column.
+
+### Table:
+/*
+col : id | project | department | deadline
+row 1 : 1 | migration | it | 2023-12-01
+row 2 : 2 | rebranding | marketing | 2023-11-15
+row 3 : 3 | audit | finance | 2023-12-20
+*/
+Query: when is the dealine for rebrand?
+Plan:
+1. Select rows where 'project' is 'rebrand'.
+2. Select the 'deadline' column.
+
+### Table:
+/*
+col : id | conference | location | attendance
+row 1 : 1 | conf A | san francisco | 32000
+row 2 : 2 | conf B | new york | 34000
+row 3 : 3 | conf C | chicago | 31000
+*/
+Query: how many conferences had more than 30000 attendees?
+Plan:
+1. Select rows where 'attendance' is greater than 30000.
+2. Count the number of rows.
+
+### Table:
+/*
+col : student_id | name | subject | grade | year
+row 1 : 1 | alice | math | a | 2021
+row 2 : 2 | bob | math | b | 2021
+row 3 : 3 | charlie | science | a | 2021
+*/
+Query: how many students got an 'a' in math?
+Plan:
+1. Select rows where 'subject' is 'math' and 'grade' is 'a'.
+2. Count the number of rows.
+
+### Table:
+/*
+col : product_id | product_name | launch_date | units_sold
+row 1 : 1 | phone x | 2021-09-01 | 10000
+row 2 : 2 | laptop y | 2021-08-15 | 15000
+row 3 : 3 | tablet z | 2021-07-20 | 12000
+*/
+Query: which product had the highest units sold?
+Plan:
+1. Order the table by 'units_sold' in descending order.
+2. Select row number 1.
+3. Select the 'product_name' column.
+
+### Table:
+/*
+col : id | model | year | sales
+row 1 : 1 | model a | 2021 | 50000
+row 2 : 2 | model b | 2020 | 60000
+row 3 : 3 | model c | 2021 | 55000
+*/
+Query: what is the total sales for all cars in 2021?
+Plan:
+1. Select rows where 'year' is 2021.
+2. Sum the sales from the 'sales' column.
+
+### Table:
+/*
+col : movie_id | title | genre | rating
+row 1 : 1 | movie a | action | 8.5
+row 2 : 2 | movie b | drama | 7.8
+row 3 : 3 | movie c | comedy | 6.9
+*/
+Query: which movie has the lowest rating?
+Plan:
+1. Order the table by 'rating' in ascending order.
+2. Select row number 1.
+3. Select the 'title' column.
+
+### Table:
+/*
+col : ranking | title | genre
+row 1 : 1 | movie a | action
+row 2 : 2 | movie b | drama
+row 3 : 3 | movie c | comedy
+*/
+Query: which movies are top-2 best ranked?
+Plan:
+1. Order the table by 'ranking' in ascending order.
+2. Select row number 1 and 2.
+3. Select the 'title' column.
+
+### Table:
+/*
+col : year | team | goals_scored | goals_conceded
+row 1 : 2018 | france | 14 | 4
+row 2 : 2014 | germany | 18 | 7
+row 3 : 2010 | spain | 8 | 2
+*/
+Query: which team had the most goals scored in the world cup?
+Plan:
+1. Order the table by 'goals_scored' in descending order.
+2. Select row number 1.
+3. Select the 'team' column.
+
+### Table:
+/*
+col : year | school | graduates | dropouts
+row 1 : 2020 | school a | 200 | 20
+row 2 : 2019 | school b | 180 | 25
+row 3 : 2021 | school a | 220 | 15
+*/
+Query: which year had the highest number of graduates from school a?
+Plan:
+1. Select rows where 'school' is 'school a'.
+2. Order the table by 'graduates' in descending order.
+3. Select row number 1.
+4. Select the 'year' column.
+
+### Table:
+/*
+col : quarter | revenue | expenses | profit
+row 1 : Q1 | 100000 | 50000 | 50000
+row 2 : Q2 | 150000 | 70000 | 80000
+row 3 : Q3 | 200000 | 90000 | 110000
+*/
+Query: which quarter had the highest profit?
+Plan:
+1. Order the table by 'profit' in descending order.
+2. Select row number 1.
+3. Select the 'quarter' column.
+
+### Table:
+/*
+col : airport_code | city | passengers | flights
+row 1 : jfk | new york | 300000 | 2000
+row 2 : lax | los angeles | 350000 | 1800
+row 3 : ord | chicago | 250000 | 2200
+*/
+Query: which airport had the highest number of passengers?
+Plan:
+1. Order the table by 'passengers' in descending order.
+2. Select row number 1.
+3. Select the 'airport_code' column.
+"""
+
+
 tabfact_natural_language_plan_demo = """
 We are working on Table Fact Verification task (TabFact dataset).
 Your task is to develop step-by-step plan to verify if a given Statement is TRUE or FALSE on a given Table.

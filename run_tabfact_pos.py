@@ -63,7 +63,7 @@ openai.api_base = azure_endpoint
 openai.api_version = api_version
 ############################################################################################################
 
-targetted_indices = random.sample(range(2024), k=200)
+targetted_indices = random.sample(range(2024), k=2024)
 
 
 print('Samples tested:', targetted_indices)

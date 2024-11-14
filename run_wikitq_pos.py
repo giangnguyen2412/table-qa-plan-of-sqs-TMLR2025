@@ -8,7 +8,7 @@ import collections
 import numpy as np
 
 # Set the random seed for reproducibility
-random.seed(35)
+random.seed(42)
 
 from utils.load_data import *
 from utils.llm import ChatGPT
@@ -17,11 +17,43 @@ from utils.chain import *
 from utils.wikitq_eval import *
 import openai
 
-# openai.api_key = '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'
-openai.api_key = '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'
+# openai.api_key = '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'
+
+############################################################################################################
+# USING LAB APIs in regular mode
+
+import yaml
+import os
+import json
+import argparse
+import random
+import time
+import openai
+from bs4 import BeautifulSoup
+from tqdm import tqdm
+import numpy as np
+import dotenv
+
+dotenv.load_dotenv()
+
+# Load the OpenAI API key and Azure endpoint from config
+with open("azure_openai_config.yaml") as f:
+    config_yaml = yaml.load(f, Loader=yaml.FullLoader)
+
+# Extract configuration variables
+api_key = config_yaml['api_key']
+azure_endpoint = config_yaml['azure_endpoint']
+api_version = config_yaml.get('api_version',)  # Default version if not specified
+
+# Set up OpenAI client with Azure settings
+openai.api_type = "azure"
+openai.api_key = api_key
+openai.api_base = azure_endpoint
+openai.api_version = api_version
+############################################################################################################
 
 # Sample indices for testing
-targetted_indices = random.sample(range(4344), k=20)
+targetted_indices = random.sample(range(4344), k=4344)
 
 # Main function
 def main(

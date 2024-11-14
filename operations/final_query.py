@@ -15,9 +15,49 @@
 
 import copy
 import numpy as np
-from utils.helper import table2string
+# from utils.helper import table2string
 from utils.helper import *
 
+import pandas as pd
+
+def table2df(table_text, num_rows=100):
+    header, rows = table_text[0], table_text[1:]
+
+    # if test_dataset == 'WikiTQ':
+    #     rows = rows[:num_rows]
+
+    df = pd.DataFrame(data=rows, columns=header)
+
+    # Convert columns to numeric where possible
+    for col in df.columns:
+        try:
+            df[col] = pd.to_numeric(df[col])
+        except Exception:
+            # If conversion fails, leave the column as is
+            pass
+
+    return df
+
+def table2string(
+    table_text,
+    num_rows=100,
+    caption=None,
+):
+    df = table2df(table_text, num_rows)
+    linear_table = ""
+    if caption is not None:
+        linear_table += "table caption : " + caption + "\n"
+
+    header = "col : " + " | ".join(df.columns) + "\n"
+    linear_table += header
+    rows = df.values.tolist()
+    for row_idx, row in enumerate(rows):
+        row = [str(x) for x in row]
+        line = "row {} : ".format(row_idx + 1) + " | ".join(row)
+        if row_idx != len(rows) - 1:
+            line += "\n"
+        linear_table += line
+    return linear_table
 
 general_demo = """
 /*
@@ -77,7 +117,8 @@ def simple_query(sample, table_info, llm, debug=False, use_demo=True, llm_option
     caption = sample["table_caption"]
     statement = sample["statement"]
 
-    if USING_SQL_HIST_FINAL_QUERY is True and sample.get('is_sql_executable', False):
+    # if USING_SQL_HIST_FINAL_QUERY is True and sample.get('is_sql_executable', False):
+    if sample.get('is_sql_executable', False):
         # Initial data loading (first step's input data)
         columns = sample['table_text'][0]
         data_rows = sample['table_text'][1:]
@@ -259,14 +300,14 @@ def wikitq_simple_query(sample, table_info, llm, debug=False, use_demo=True, llm
 
     prompt = ""
     prompt += "Here is the question about the table, and the task is to answer the question based on the table. " \
-              "Look at the above examples, your answer must be a python list with each element is a string. " \
+              "Look at the above examples, your answer must be a list with each element is a string. " \
               "Otherwise, you will be penalized!\n"
 
     if use_demo:
         prompt += "\n"
         prompt += wikitq_demo + "\n\n"
         prompt += "Here is the question about the table, and the task is to answer the question based on the table. " \
-                  "Look at the above examples, your answer must be a python list.  " \
+                  "Look at the above examples, your answer must be a list.  " \
                   "Otherwise, you will be penalized!\n"
         prompt += "\n"
     
