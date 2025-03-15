@@ -1,37 +1,104 @@
-# Copyright 2024 The Chain-of-Table authors
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-# https://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
 import openai
-# from openai import OpenAI # OLD FREDDY
 import time
 import numpy as np
-import tiktoken
+import yaml
+import os
 
-# import openai 
-# from azure.identity import AzureCliCredential
 
-class ChatGPT:
-    def __init__(self, model_name, key):
-        self.model_name = model_name
-        self.key = key
+class TableQA_LLM:
+    def __init__(self, config_path="llm_config.yaml"):
+        # Load configuration
+        with open(config_path) as f:
+            self.config = yaml.load(f, Loader=yaml.FullLoader)
+
+        # Set provider based on config
+        self.provider = self.config.get('active_provider', 'azure_openai')
+
+        # Configure client based on provider
+        self._setup_client()
+
+    def _setup_client(self):
+        """Configure the appropriate client based on the active provider"""
+        if 'providers' in self.config:
+            provider_config = self.config['providers'][self.provider]
+
+            if self.provider == 'azure_openai':
+                # Set up Azure OpenAI
+                self.api_key = provider_config['api_key']
+                self.api_base = provider_config['base_endpoint']
+                self.api_version = provider_config.get('api_version', '2024-08-01-preview')
+
+                # Find active deployment
+                self.deployment_name = None
+                for depl in provider_config['deployments']['regular']:
+                    if depl.get('active', False):
+                        self.deployment_name = depl['name']
+                        break
+
+                # Configure Azure OpenAI client
+                openai.api_type = "azure"
+                openai.api_key = self.api_key
+                openai.api_base = self.api_base
+                openai.api_version = self.api_version
+
+                print(f"Using Azure OpenAI deployment: {self.deployment_name}")
+
+            elif self.provider == 'deepseek':
+                # Configure DeepSeek
+                self.api_key = provider_config['api_key']
+                self.base_url = provider_config['base_url']
+
+                # Find active model
+                self.model_name = None
+                for model in provider_config['models']:
+                    if model.get('active', False):
+                        self.model_name = model['name']
+                        break
+
+                # Import and configure DeepSeek client (you'll need their SDK)
+                # This would be your DeepSeek client code
+                # For example: self.client = DeepSeekClient(api_key=self.api_key, base_url=self.base_url)
+                print(f"Using DeepSeek model: {self.model_name}")
+
+            elif self.provider == 'sambanova':
+                # Configure SambaNova
+                self.api_key = provider_config['api_key']
+                self.base_url = provider_config['base_url']
+
+                # Find active model
+                self.model_name = None
+                for model in provider_config['models']:
+                    if model.get('active', False):
+                        self.model_name = model['name']
+                        break
+
+                # Import and configure SambaNova client (you'll need their SDK)
+                # This would be your SambaNova client code
+                # For example: self.client = SambanovaClient(api_key=self.api_key, base_url=self.base_url)
+                print(f"Using SambaNova model: {self.model_name}")
+
+        else:
+            # Legacy config
+            self.model_name = self.config.get('model_name', 'gpt-4o-mini')
+            self.api_key = self.config['api_key']
+            self.api_base = self.config['azure_endpoint']
+            self.api_version = self.config.get('api_version', '2024-08-01-preview')
+            self.deployment_name = self.config.get('deployment_name')
+
+            # Set up OpenAI client with Azure settings
+            openai.api_type = "azure"
+            openai.api_key = self.api_key
+            openai.api_base = self.api_base
+            openai.api_version = self.api_version
+
+            print(f"Using legacy config with model: {self.model_name}")
 
     def get_model_options(
-        self,
-        temperature=0,
-        per_example_max_decode_steps=150,
-        per_example_top_p=1,
-        n_sample=1,
+            self,
+            temperature=0,
+            per_example_max_decode_steps=150,
+            per_example_top_p=1,
+            n_sample=1,
     ):
         return dict(
             temperature=temperature,
@@ -40,8 +107,8 @@ class ChatGPT:
             max_tokens=per_example_max_decode_steps,
         )
 
-    # Function to truncate the head of the prompt
-    def truncate_prompt_head_exact(prompt, max_tokens):
+    # Truncation methods remain unchanged
+    def truncate_prompt_head_exact(self, prompt, max_tokens):
         tokens = openai.Encoding.encode(prompt)
         if len(tokens) > max_tokens:
             truncated_tokens = tokens[-max_tokens:]
@@ -49,14 +116,12 @@ class ChatGPT:
             truncated_tokens = tokens
         return openai.Encoding.decode(truncated_tokens)
 
-    def truncate_prompt(prompt, max_tokens):
-        # Truncate the prompt to fit within the maximum token limit
+    def truncate_prompt(self, prompt, max_tokens):
         tokens = prompt.split()
         truncated_tokens = tokens[:max_tokens]
         return ' '.join(truncated_tokens)
 
-    def truncate_prompt_head(prompt, max_tokens):
-        # Truncate the head of the prompt to fit within the maximum token limit
+    def truncate_prompt_head(self, prompt, max_tokens):
         tokens = prompt.split()
         if len(tokens) > max_tokens:
             truncated_tokens = tokens[-max_tokens:]
@@ -68,45 +133,65 @@ class ChatGPT:
         if options is None:
             options = self.get_model_options()
 
-        if self.model_name == "gpt-3.5-turbo-0613":
-            # the_engine = "gpt-35-turbo-0613"
-            # the_engine = "gpt-35-turbo-16k-0613"
-            the_engine = "gpt-3.5-turbo-16k"
-
-        elif self.model_name == "gpt-4-turbo":
-            the_engine = "gpt-4-turbo-2024-04-09"
-
-        elif self.model_name == "gpt-4o":
-            # the_engine = "gpt-4o-2024-05-13"
-            the_engine = "gpt-4o-mini"
-
-        else:
-            raise ValueError("Invalid model name. Use 'gpt-3.5-turbo' or 'gpt-4-turbo'.")
-
-        print("The LLM engine is:", the_engine)
-
-        # deployment = 'gpt-35-turbo-16k'
-        deployment = 'gpt-4o-mini-high-TPM'
-
-        gpt_responses = None
+        results = []
         retry_num = 0
-        retry_limit = 2  # Try two times
+        retry_limit = 2
         error = None
 
-        while gpt_responses is None:
+        while not results and retry_num <= retry_limit:
             try:
-                
-                ###########
-                gpt_responses = openai.ChatCompletion.create( # client.chat.completions.create( # OLD FREDDY
-                    messages=[
-                        {"role": "system", "content": "I will give you some examples, you need to follow the examples and complete the text, and no other content."},
-                        {"role": "user", "content": prompt},
-                    ],
-                    engine = deployment ,
-                    model=the_engine,
-                    stop=end_str,
-                    **options
-                )
+                if self.provider == 'azure_openai':
+                    # Azure OpenAI implementation
+                    gpt_responses = openai.ChatCompletion.create(
+                        messages=[
+                            {"role": "system",
+                             "content": "I will give you some examples, you need to follow the examples and complete the text, and no other content."},
+                            {"role": "user", "content": prompt},
+                        ],
+                        engine=self.deployment_name,
+                        stop=end_str,
+                        **options
+                    )
+
+                    for i, res in enumerate(gpt_responses.choices):
+                        try:
+                            text = res.message.content
+                            fake_conf = (len(gpt_responses.choices) - i) / len(gpt_responses.choices)
+                            results.append((text, np.log(fake_conf)))
+                        except AttributeError as e:
+                            print(f"Error accessing response content: {e}")
+                            results.append(("Error accessing response content", 0))
+
+                elif self.provider == 'deepseek':
+                    # DeepSeek implementation
+                    # You would use the DeepSeek SDK/API here
+                    # Example:
+                    # response = self.deepseek_client.generate(
+                    #     model=self.model_name,
+                    #     prompt=prompt,
+                    #     stop=end_str,
+                    #     **options
+                    # )
+                    #
+                    # text = response.get('text', '')
+                    # results.append((text, 0))  # Confidence score might differ
+                    pass
+
+                elif self.provider == 'sambanova':
+                    # SambaNova implementation
+                    # You would use the SambaNova SDK/API here
+                    # Example:
+                    # response = self.sambanova_client.generate(
+                    #     model=self.model_name,
+                    #     prompt=prompt,
+                    #     stop=end_str,
+                    #     **options
+                    # )
+                    #
+                    # text = response.get('text', '')
+                    # results.append((text, 0))  # Confidence score might differ
+                    pass
+
                 error = None
 
             except Exception as e:
@@ -115,30 +200,13 @@ class ChatGPT:
                 if "This model's maximum context length is" in str(e):
                     print(e, flush=True)
                     return "Exceed context length"
-                else:  # Rate limit
+                else:  # Rate limit or other error
                     time.sleep(10)
                     retry_num += 1
+
         if error:
             raise Exception(error)
 
-        results = []
-
-        # print('(gpt_responses):', gpt_responses)
-        # for i, res in enumerate(gpt_responses.choices):
-        #     text = res.message.content
-        #     # What is fake confidence?
-        #     fake_conf = (len(gpt_responses.choices) - i) / len(gpt_responses.choices)
-        #     results.append((text, np.log(fake_conf)))
-
-        for i, res in enumerate(gpt_responses.choices):
-            try:
-                text = res.message.content  # This might need to be adjusted
-                fake_conf = (len(gpt_responses.choices) - i) / len(gpt_responses.choices)
-                results.append((text, np.log(fake_conf)))
-            except AttributeError as e:
-                print(f"Error accessing response content: {e}")
-                print(f"Full response: {gpt_responses}")  # Print full response for debugging
-                results.append(("Error accessing response content", 0))
         return results
 
     def generate(self, prompt, options=None, end_str=None):

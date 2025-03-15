@@ -226,7 +226,6 @@ elif planning_algorithm == 'dynamic':
 
         try:
             while True:
-                break
                 print('Operation history:', operation_history)
                 if len(operation_history) >= 10:
                     logger.warning("Maximum steps reached, falling back to default approach")

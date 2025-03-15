@@ -14,7 +14,7 @@ pip install azure-mgmt-cognitiveservices
 az login # To authenticate OpenAI API usage
 python install.py
 ```
-
+ 
 
 ## TabFact
 

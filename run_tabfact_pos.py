@@ -12,26 +12,13 @@ random.seed(42)
 
 # Import from utils and operations
 from utils.load_data import *
-from utils.llm import ChatGPT
+from utils.llm import TableQA_LLM
 from utils.helper import *
 from utils.evaluate import *
 from utils.chain import *
 from operations import *
 
-# Define Azure OpenAI Credentials (commented out)
-# from azure.identity import AzureCliCredential
-# credential = AzureCliCredential()
-# openai_token = credential.get_token("https://cognitiveservices.azure.com/.default")
-# openai.api_key = openai_token.token
-# openai.api_type = "azure_ad"
-# openai.api_version = "2024-02-15-preview"
-
-# OpenAI API key (replace with proper security handling in production)
-# openai.api_key = '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'
-
-
 ############################################################################################################
-# USING LAB APIs in regular mode
 
 import yaml
 import os
@@ -47,23 +34,107 @@ import dotenv
 
 dotenv.load_dotenv()
 
-# Load the OpenAI API key and Azure endpoint from config
-with open("azure_openai_config.yaml") as f:
+# # Load the OpenAI API key and Azure endpoint from config
+# with open("llm_config.yaml") as f:
+#     config_yaml = yaml.load(f, Loader=yaml.FullLoader)
+#
+# # Extract configuration variables
+# api_key = config_yaml['api_key']
+# azure_endpoint = config_yaml['azure_endpoint']
+# api_version = config_yaml.get('api_version',)  # Default version if not specified
+#
+# # Set up OpenAI client with Azure settings
+# openai.api_type = "azure"
+# openai.api_key = api_key
+# openai.api_base = azure_endpoint
+# openai.api_version = api_version
+
+# Load the configuration from the YAML file
+with open("llm_config.yaml") as f:
     config_yaml = yaml.load(f, Loader=yaml.FullLoader)
 
-# Extract configuration variables
-api_key = config_yaml['api_key']
-azure_endpoint = config_yaml['azure_endpoint']
-api_version = config_yaml.get('api_version',)  # Default version if not specified
+# Determine which provider to use
+active_provider = config_yaml.get('active_provider', 'azure_openai')
 
-# Set up OpenAI client with Azure settings
-openai.api_type = "azure"
-openai.api_key = api_key
-openai.api_base = azure_endpoint
-openai.api_version = api_version
+# Check if we're using the new format with "providers" key
+if 'providers' in config_yaml:
+    # New format with multiple providers
+    if active_provider == 'azure_openai':
+        # Handle Azure OpenAI
+        provider_config = config_yaml['providers']['azure_openai']
+        api_key = provider_config['api_key']
+        azure_endpoint = provider_config['base_endpoint']
+        api_version = provider_config.get('api_version', '2024-08-01-preview')
+
+        # Find active deployment
+        deployment_name = None
+        for depl in provider_config['deployments']['regular']:
+            if depl.get('active', False):
+                deployment_name = depl['name']
+                break
+
+        # Set up OpenAI client with Azure settings
+        openai.api_type = "azure"
+        openai.api_key = api_key
+        openai.api_base = azure_endpoint
+        openai.api_version = api_version
+
+        # Use deployment_name in your subsequent code
+        print(f"Using Azure OpenAI deployment: {deployment_name}")
+
+    elif active_provider == 'deepseek':
+        # Handle DeepSeek
+        provider_config = config_yaml['providers']['deepseek']
+        api_key = provider_config['api_key']
+        base_url = provider_config['base_url']
+
+        # Find active model
+        model_name = None
+        for model in provider_config['models']:
+            if model.get('active', False):
+                model_name = model['name']
+                break
+
+        # Set up DeepSeek client
+        # This would be your DeepSeek client initialization code
+        # e.g., deepseek_client = DeepSeekClient(api_key=api_key, base_url=base_url)
+        print(f"Using DeepSeek model: {model_name}")
+
+    elif active_provider == 'sambanova':
+        # Handle SambaNova
+        provider_config = config_yaml['providers']['sambanova']
+        api_key = provider_config['api_key']
+        base_url = provider_config['base_url']
+
+        # Find active model
+        model_name = None
+        for model in provider_config['models']:
+            if model.get('active', False):
+                model_name = model['name']
+                break
+
+        # Set up SambaNova client
+        # This would be your SambaNova client initialization code
+        # e.g., sambanova_client = SambanovaClient(api_key=api_key, base_url=base_url)
+        print(f"Using SambaNova model: {model_name}")
+
+else:
+    # Handle legacy format (backward compatibility)
+    api_key = config_yaml['api_key']
+    azure_endpoint = config_yaml['azure_endpoint']
+    api_version = config_yaml.get('api_version', '2024-08-01-preview')
+    deployment_name = config_yaml.get('deployment_name')
+
+    # Set up OpenAI client with Azure settings
+    openai.api_type = "azure"
+    openai.api_key = api_key
+    openai.api_base = azure_endpoint
+    openai.api_version = api_version
+
+    print(f"Using legacy config with deployment: {deployment_name}")
 ############################################################################################################
 
-targetted_indices = random.sample(range(2024), k=2024)
+targetted_indices = random.sample(range(2024), k=20)
 
 
 print('Samples tested:', targetted_indices)
@@ -96,8 +167,9 @@ def main(
         n_proc, chunk_size = 3, 3
         print(n_proc, chunk_size)
 
-    # Initialize ChatGPT model
-    gpt_llm = ChatGPT(model_name=model_name, key=openai.api_key)
+    # Initialize TableQA_LLM model
+    # gpt_llm = TableQA_LLM(model_name=model_name, key=openai.api_key)
+    gpt_llm = TableQA_LLM()
 
     # Load or process dataset
     if load_dataset:

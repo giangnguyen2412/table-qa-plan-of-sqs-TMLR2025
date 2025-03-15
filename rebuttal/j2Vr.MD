@@ -1,13 +1,15 @@
 > 1. The authors report that 9.8% of samples on TabFact and 27.8% on WikiTQ could not be fully processed using POS and thus defaulted to end-to-end QA methods. Even on relatively simple Table QA datasets like TabFact and WikiTQ, these rates are notably high, raising concerns about POS’s scalability to more complex datasets, such as TabMWP. If the unprocessable rate rises significantly with more complex datasets, it raises the concern that POS may only improve interpretability with a sacrifice of precision provided in pure program-based methods. The authors do not provide enough analysis regarding this matter, such as a comparison of unprocessable rates between POS and other program-based models and the unprocessable rates on more complex table-QA datasets.
 
 
-Thank you for the constructive feedback! We agree with Reviewer `j2Vr’s` comment that the high rate of unprocessable samples does affect the utility of POS, especially when scaled to more complex datasets.
+Thank you for the great feedback! 
+As Reviewer `j2Vr` noted, the high rate of unprocessable samples in POS impacts scalability, particularly with complex datasets.
 
-Encouraged by this feedback, we delved into all cases where samples were unprocessable by POS (9.8% on TabFact and 27.8% on WikiTQ) and identified that **one-time planning** (generating a complete plan of steps at once in the beginning) is the bottleneck. Take this query as an example:
+Encouraged by this feedback, we delved into all cases where samples were unprocessable by POS (9.8% on TabFact and 27.8% on WikiTQ) and identified that **one-time planning** (generating a complete plan of steps at once in the beginning) is the bottleneck.
+Here is an example where one-time planning made the sample unprocessable:
 
-**Query**: True or False? "no games were played in **december**."
+**Query**: True or False? No games were played in **december**
 
-Table caption: final games in mlb
+Table caption: 2011 final games in mlb
 
 | game_id |   game_date  | score | attendance | team_name |
 |:-------:|:------------:|:-----:|:----------:|:---------:|
@@ -17,20 +19,20 @@ Table caption: final games in mlb
 |    4    | 30 sept 2011 |   1   |    2200    |   bears   |
 |    5    |  20 nov 2011 |   3   |    2100    |  wildcats |
 
-**One-time** plan of POS:
+Plan:
 
 1. Extract the month from the **date** column then add a new column.
 2. Select rows where **month = 12**.
 3. Use a **CASE** statement to return **TRUE** if the number of rows is **0**, otherwise **FALSE**.
 
-In the example above, the NL Planner generated Step 2 without seeing the output table of Step 1, which added a column with month names as text (e.g., "dec") instead of numeric values (e.g., "12"). 
+In this example, the NL Planner generated Step 2 without seeing the output table of Step 1, which added a column with month names as text (e.g., "dec") instead of numeric values (e.g., "12"). 
 Additionally, there is no guarantee that the new column from Step 1 is named "month," potentially causing Step 2 to reference a non-existent column.
 We found `198` such cases in TabFact and `1207` in WikiTQ, where the one-time planning approach makes Table QA queries unprocessable.
 
 In one-time planning (generating a complete plan of steps at once in the beginning), the NL Planner assumes that previous transformations have succeeded and produced the expected output. If any step fails (e.g., due to missing columns or data formatting issues), the process halts, leading to an unprocessable sample.
 
-We solved this issue by simply prompting the NL Planner to generate one step at a time (instead of generating a complete plan before transforming the table), with the input of planner being the previous steps and the current intermediate table. 
-We call this step-by-step planning. As shown below, this `significantly boosted the accuracy for both TabFact and WikiTQ` and `mitigated the unprocessable problem` that `Reviewer j2Vr` raised.
+We solved this issue by `step-by-step planning`—prompting the NL Planner to generate one step at a time (instead of generating a complete plan at once), with the input of NL Planner being the previous steps and the current intermediate table. 
+As shown in the tables below, step-by-step planning led to substantial improvements in processing accuracy and unprocessable rates for both TabFact and WikiTQ.
 
 Table: Table QA accuracy (&uarr;) on TabFact and WikiTQ datasets using step-by-step planning
 
@@ -51,11 +53,11 @@ Using GPT4o-mini as the LLM backbone, we found that POS is able to process the v
 of examples using SQLs only, reaching up to about `97%` on TabFact and `86%` on WikiTQ!
 It is important to note that WikiTQ contains considerable data noise [a], thus achieving this processable rate using SQLs alone is non-trivial. 
 
-We appreciate the Reviewer’s insights, which guided us toward a more robust and scalable solution for handling the problem.
+Again, we appreciate the Reviewer’s insights, which guided us toward a more robust and scalable solution for handling the problem.
 
 
 Regarding the scalability of POS to more complex datasets like TabMWP [b]. After looking at the dataset, we acknowledge that TabMWP indeed presents additional challenges due to its complexity and the diversity of reasoning requirements. 
-We will ensure that our paper includes a discussion on the potential and limitations of scaling POS to handle more complex problems, such as TabMWP.
+We will ensure that our paper includes a discussion on the potential and limitations of scaling POS to handle more complex problems.
 
 - [a] On the potential of lexico-logical alignments for semantic parsing to sql queries, EMNLP2020.
 
@@ -101,48 +103,12 @@ We report the result of the evaluation below:
 
 Table: Model prediction debugging accuracy (&uarr;) on TabFact and WikiTQ with LLM judges using different Table QA explanations. 
 
-<table style="text-align: center; width: 100%;">
-  <tr>
-    <th rowspan="2">Dataset</th>
-    <th colspan="4">TabFact</th>
-    <th colspan="2">WikiTQ</th>
-  </tr>
-  <tr>
-    <th>Text-to-SQL</th>
-    <th>DATER</th>
-    <th>CoTable</th>
-    <th>POS</th>
-    <th>DATER</th>
-    <th>POS</th>
-  </tr>
-  <tr>
-    <td>GPT-4o-mini</td>
-    <td>55.37%</td>
-    <td>55.43%</td>
-    <td>61.36%</td>
-    <td><b>76.74%</b></td>
-    <td>64.58%</td>
-    <td><b>71.93%</b></td>
-  </tr>
-  <tr>
-    <td>GPT-4o</td>
-    <td>55.97%</td>
-    <td>70.95%</td>
-    <td>67.34%</td>
-    <td><b>72.85%</b></td>
-    <td>73.31%</td>
-    <td><b>74.45%</b></td>
-  </tr>
-  <tr>
-    <td>GPT-4</td>
-    <td>49.93%</td>
-    <td>57.56%</td>
-    <td>60.38%</td>
-    <td><b>72.08%</b></td>
-    <td><b>73.5%</b></td>
-    <td>72.38%</td>
-  </tr>
-</table>
+|   Dataset   |   TabFact   |        |         |        | WikiTQ |        |
+|:-----------:|:-----------:|:------:|:-------:|:------:|:------:|:------:|
+|    Method   | Text-to-SQL | DATER  | CoTable |  POS   | DATER  |  POS   |
+| GPT-4o-mini |   55.37%    | 55.43% | 61.36%  | 76.74% | 64.58% | 71.93% |
+|    GPT-4o   |   55.97%    | 70.95% | 67.34%  | 72.85% | 73.31% | 74.45% |
+|    GPT-4    |   49.93%    | 57.56% | 60.38%  | 72.08% | 73.5%  | 72.38% |
 
 We find that POS significantly improves model prediction debugging accuracy compared to other Table QA baselines. 
 For example, on the TabFact dataset, POS achieves a debugging accuracy of 76.74% with GPT-4o-mini, 72.85% with GPT-4o, and 72.08% with GPT-4, outperforming other methods by margins of up to 21%. 
@@ -160,15 +126,15 @@ Similarly, on WikiTQ, POS reaches the highest accuracy of 74.45 with GPT4-o. The
 
 > 3. The NL Atomic Planner in POS depends on in-context planning examples that are specifically tailored to each dataset. This raises questions about its adaptability to a variety of reasoning types and Table QA problems. It remains unclear whether the current prompting schema can generalize effectively across different Table QA tasks.
 
-Thank you for the great comment! 
+Thank you for the insightful comment!
 
-Our in-context planning examples were specifically crafted to each dataset, 
-and it would be insightful to study the generalizability of the current prompting 
-schema. To shed light on this question, we modify our in-context planning 
-examples so that it does not contain any dataset-specific information. 
-Rather, the in-context examples are rewritten `to be general` in the format of general Table QA problems (e.g. input to NL Planner is Query/Table and output is Plan).
+Our in-context planning examples were indeed crafted specifically for each dataset. 
+To explore the generalizability of our prompting schema, we modified the examples 
+to remove any dataset-specific details. These revised, `general` in-context examples are 
+designed to handle typical Table QA tasks, where the input to the NL Planner 
+is simply the Query/Table and the output is the Plan.
 
-The general in-context planning examples now look like this:
+An example of the new generalized in-context prompt is as follows:
 
 ```markdown
 We are working with a tabular dataset.
@@ -187,9 +153,7 @@ Plan:
 2. Select the 'score' column.
 ```
 
-We run POS again using these `general` in-context examples and use them for both datasets.
-We find that using general in-context examples `only slightly decreased the accuracy` on both datasets 
-compared to using tailored/specific examples. See Table below:
+We ran POS again on both datasets using these generalized in-context examples. The results indicate that this change led to only a slight decrease in accuracy compared to dataset-specific examples, as shown in the table below:
 
 Table: Table QA accuracy (&uarr;) on TabFact and WikiTQ datasets using general in-context examples for planning.
 
@@ -200,22 +164,28 @@ Table: Table QA accuracy (&uarr;) on TabFact and WikiTQ datasets using general i
 |       POS 30 (full) general in-context planning examples        |  81.92% | 52.00% |
 |   POS 30 (full) dataset-specific in-context planning examples   |  83.45% | 54.95% |
 
-Yet, the accuracy of POS remains competitive, and it shows the minimal necessity of dataset-specific in-context examples.
-We also observe that the general in-context examples yield very low unprocessable rates. 
-Here the rate on TabFact goes from 3.16% → 3.06% and on WikiTQ goes from 13.58% → 14.48%.
+These findings confirm that POS remains competitive without a strong reliance on 
+dataset-specific examples. Additionally, we observed that the general in-context 
+examples led to low unprocessable rates, with TabFact rates changing from 
+3.16% → 3.06% and WikiTQ rates from 13.58% → 14.48%.
 
 Finally, it is also worth noting that reliance on tailored, dataset-specific examples is common across other methods, such as CoTable. 
-Typically, general prompts (e.g., Meta-prompting[1]) yield slightly lower accuracy than dataset-specific prompts but improve generalizability, as confirmed in our Table above as well.
+Typically, general prompts (e.g., Meta-prompting[1]) yield slightly lower accuracy than dataset-specific prompts but improve generalizability, a trend that aligns with our findings.
 
 - [1] Meta-Prompting: Enhancing Language Models with Task-Agnostic Scaffolding
 
 > 4. Further experimentation across a broader range of datasets (ideally 5–6) would be needed to demonstrate POS’s generalizability and robustness.
 
-Thank you for this suggestion! We would like to note that in existing works, including our main baselines (CoTable, Binder, Dater, and TableSQLify), TabFact and WikiTQ are also the primary datasets for evaluation. These datasets provide a comprehensive test of Table QA interpretability and accuracy.
+Thank you for this valuable suggestion!
 
-Due to limited time and API credit budget, we are currently unable to extend POS testing to additional datasets as requested. We kindly ask the reviewer for understanding and consideration of our evaluation on TabFact and WikiTQ.
+We would like to note that TabFact and WikiTQ are also the primary evaluation datasets 
+in existing works, including our main baselines—CoTable, Binder, Dater, and TableSQLify.
 
-The cost of running POS is particularly high due to the nature of these datasets. Since TabFact and WikiTQ involve large input tables and require in-context examples within the prompt, each request consumes a significant number of tokens.
-For example, testing TabFact and WikiTQ with step-by-step planning in Question 1 cost over $600, due to the extensive context window requirements of these datasets. In comparison, datasets like GSM8K[2] incur much lower costs, as they require fewer tokens per prompt. Given these considerations, we prioritized TabFact and WikiTQ to provide a robust and feasible evaluation within our resource constraints.
-
-- [2] Training Verifiers to Solve Math Word Problems
+Due to budget and time constraints, we are currently unable to extend POS testing to 
+additional datasets as suggested. The cost of running POS on TabFact and WikiTQ is 
+particularly high due to the large input tables and the in-context examples required 
+for each prompt, resulting in a high token usage. For instance, a single evaluation on 
+TabFact or WikiTQ using step-by-step planning incurred over $600 in API costs due to 
+the extensive context requirements. Given these constraints, we prioritized 
+TabFact and WikiTQ as they offer a robust and feasible evaluation within our available 
+resources.
