@@ -226,7 +226,7 @@ elif planning_algorithm == 'dynamic':
 
         try:
             while True:
-                print('Operation history:', operation_history)
+                # print('Operation history:', operation_history)
                 if len(operation_history) >= 10:
                     logger.warning("Maximum steps reached, falling back to default approach")
                     print("Maximum steps reached, falling back to default approach")
@@ -336,7 +336,7 @@ def tabfact_fall_back(fb_table, sample, llm):
     table_info["table_text"] = fb_table
     sample_copy = simple_query(sample, table_info, llm, debug=False, use_demo=False, llm_options=None)
 
-    print('answer for fall back:\n', sample_copy)
+    # print('answer for fall back:\n', sample_copy)
     
     fallback_answer = sample_copy["chain"][0]['parameter_and_conf'][0][0].upper()
 
@@ -451,7 +451,7 @@ if planning_algorithm == 'static':
                         else:
                             # Doing fallback here with original table if SQL is executable cannot give answer in the right format
                             answer = tabfact_fall_back(original_table, sample, llm)
-                            print('final answer for fall back 3:\n', answer)
+                            # print('final answer for fall back 3:\n', answer)
                             logger.info(f'Fall-back: TRUE')
 
                             logger.info(f'Answer from plan {plan_idx + 1}: {answer}')
@@ -464,7 +464,7 @@ if planning_algorithm == 'static':
 
                         logger.info(f'Answer from plan {plan_idx + 1}: {answer}')
                         logger.info(f'Groundtruth: {groundtruth}')
-                        print('final answer for fall back 2:\n', answer)
+                        # print('final answer for fall back 2:\n', answer)
                 else:
                     # Doing fallback here with original table if SQL is failed
                         answer = tabfact_fall_back(original_table, sample, llm)
@@ -472,7 +472,7 @@ if planning_algorithm == 'static':
 
                         logger.info(f'Answer from plan {plan_idx + 1}: {answer}')
                         logger.info(f'Groundtruth: {groundtruth}')
-                        print('final answer for fall back 1:\n', answer)
+                        # print('final answer for fall back 1:\n', answer)
 
                 results.append(answer)
 
@@ -535,7 +535,7 @@ elif planning_algorithm == 'dynamic':
         try:
             while True:  # Continue until we reach a verification step or max steps
 
-                print('operation_history:', operation_history)
+                # print('operation_history:', operation_history)
                 if len(operation_history) >= 10:  # Prevent infinite loops
                     logger.warning("Maximum steps reached, falling back to default approach")
                     print("Maximum steps reached, falling back to default approach")

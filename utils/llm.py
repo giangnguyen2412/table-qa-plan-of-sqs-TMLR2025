@@ -55,9 +55,7 @@ class TableQA_LLM:
                         self.model_name = model['name']
                         break
 
-                # Import and configure DeepSeek client (you'll need their SDK)
-                # This would be your DeepSeek client code
-                # For example: self.client = DeepSeekClient(api_key=self.api_key, base_url=self.base_url)
+                # Import and configure DeepSeek client (placeholder for now)
                 print(f"Using DeepSeek model: {self.model_name}")
 
             elif self.provider == 'sambanova':
@@ -72,9 +70,8 @@ class TableQA_LLM:
                         self.model_name = model['name']
                         break
 
-                # Import and configure SambaNova client (you'll need their SDK)
-                # This would be your SambaNova client code
-                # For example: self.client = SambanovaClient(api_key=self.api_key, base_url=self.base_url)
+                # For SambaNova, we'll initialize the client just before use
+                # to avoid any connection timeouts
                 print(f"Using SambaNova model: {self.model_name}")
 
         else:
@@ -107,7 +104,6 @@ class TableQA_LLM:
             max_tokens=per_example_max_decode_steps,
         )
 
-    # Truncation methods remain unchanged
     def truncate_prompt_head_exact(self, prompt, max_tokens):
         tokens = openai.Encoding.encode(prompt)
         if len(tokens) > max_tokens:
@@ -129,9 +125,12 @@ class TableQA_LLM:
             truncated_tokens = tokens
         return ' '.join(truncated_tokens)
 
-    def generate_plus_with_score(self, prompt, options=None, end_str=None):
+    def generate_plus_with_score(self, prompt, options=None, end_str=None, system_prompt=None):
         if options is None:
             options = self.get_model_options()
+
+        if system_prompt is None:
+            system_prompt = "I will give you some examples, you need to follow the examples and complete the text, and no other content."
 
         results = []
         retry_num = 0
@@ -144,8 +143,7 @@ class TableQA_LLM:
                     # Azure OpenAI implementation
                     gpt_responses = openai.ChatCompletion.create(
                         messages=[
-                            {"role": "system",
-                             "content": "I will give you some examples, you need to follow the examples and complete the text, and no other content."},
+                            {"role": "system", "content": system_prompt},
                             {"role": "user", "content": prompt},
                         ],
                         engine=self.deployment_name,
@@ -163,55 +161,85 @@ class TableQA_LLM:
                             results.append(("Error accessing response content", 0))
 
                 elif self.provider == 'deepseek':
-                    # DeepSeek implementation
-                    # You would use the DeepSeek SDK/API here
-                    # Example:
-                    # response = self.deepseek_client.generate(
-                    #     model=self.model_name,
-                    #     prompt=prompt,
-                    #     stop=end_str,
-                    #     **options
-                    # )
-                    #
-                    # text = response.get('text', '')
-                    # results.append((text, 0))  # Confidence score might differ
+                    # DeepSeek implementation placeholder
+                    # Will need to be filled based on DeepSeek's API documentation
                     pass
 
                 elif self.provider == 'sambanova':
-                    # SambaNova implementation
-                    # You would use the SambaNova SDK/API here
-                    # Example:
-                    # response = self.sambanova_client.generate(
-                    #     model=self.model_name,
-                    #     prompt=prompt,
-                    #     stop=end_str,
-                    #     **options
-                    # )
-                    #
-                    # text = response.get('text', '')
-                    # results.append((text, 0))  # Confidence score might differ
-                    pass
+                    # Initialize SambaNova client
+                    client = openai.OpenAI(
+                        api_key=self.api_key,
+                        base_url=self.base_url
+                    )
+
+                    sambanova_model = self.model_name
+
+                    # Set system prompt based on model type if not provided
+                    if system_prompt is None:
+                        system_prompt = "You are a helpful assistant."
+
+                    # Make the API call
+                    response = client.chat.completions.create(
+                        model=sambanova_model,
+                        messages=[
+                            {"role": "system", "content": system_prompt},
+                            {"role": "user", "content": prompt},
+                        ],
+                        temperature=options.get('temperature', 0),
+                        max_tokens=options.get('max_tokens', 150),
+                        stop=end_str
+                    )
+
+                    # Process results
+                    for i, choice in enumerate(response.choices):
+                        text = choice.message.content.strip()
+                        # For SambaNova, we'll just use a default confidence score
+                        fake_conf = 1.0
+                        results.append((text, np.log(fake_conf)))
 
                 error = None
 
             except Exception as e:
                 print(str(e), flush=True)
                 error = str(e)
-                if "This model's maximum context length is" in str(e):
-                    print(e, flush=True)
-                    return "Exceed context length"
-                else:  # Rate limit or other error
-                    time.sleep(10)
-                    retry_num += 1
 
-        if error:
+                if self.provider == 'sambanova':
+                    # Special handling for SambaNova errors
+                    if 'Please reduce the length of the message' in str(e):
+                        print("[SambaNova] Overflow context length.")
+                        return "Exceed context length"
+
+                    # Specific handling for rate limit errors (429)
+                    if 'rate limit exceeded' in str(e).lower():
+                        # Implement exponential backoff
+                        wait_time = 5 * (2 ** retry_num)
+                        print(f"[SambaNova] Rate limit exceeded, waiting {wait_time}s before retry...")
+                        time.sleep(wait_time)
+                    else:
+                        print(f"[SambaNova] Error: {e}, waiting 5s before retry...")
+                        time.sleep(5)
+                else:
+                    # Generic error handling for other providers
+                    if "This model's maximum context length is" in str(e):
+                        print(e, flush=True)
+                        return "Exceed context length"
+                    else:  # Rate limit or other error
+                        time.sleep(10)
+
+                retry_num += 1
+
+        if error and not results:
             raise Exception(error)
 
         return results
 
-    def generate(self, prompt, options=None, end_str=None):
+    def generate(self, prompt, options=None, end_str=None, system_prompt=None):
         if options is None:
             options = self.get_model_options()
         options["n"] = 1
-        result = self.generate_plus_with_score(prompt, options, end_str)[0][0]
-        return result
+
+        result = self.generate_plus_with_score(prompt, options, end_str, system_prompt)
+        if isinstance(result, str):  # Error message
+            return result
+
+        return result[0][0]

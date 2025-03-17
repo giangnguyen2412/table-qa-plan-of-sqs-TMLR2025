@@ -31,27 +31,71 @@ from _ctypes import PyObj_FromPtr
 from utils.prompts import *
 from utils.evaluate import *
 from operations import *
+import yaml
+import uuid
+import random
+import string
+import time
 
 #################################################################################################### RUNNING PARAMS ####################################################################################################
 # TODO: Currently, for WikiTQ, the max number of rows I input to the model is 100
 
 class Config:
     def __init__(self):
-        self.project_directory = '/home/giang/Downloads/job1/tabular-xai/src/plan-of-sqls'
-        # self.LLM = 'GPT4'  # the model used for evaluation
-        # self.LLM = 'GPT3-5'  # the model used for evaluation
-        self.LLM = 'GPT4-O'  # the model used for evaluation
+        # Generate a unique run ID
+        self.run_unique_id = self._generate_run_id()
 
-        # self.test_dataset = 'TabFact'
-        self.test_dataset = 'WikiTQ'
+        self.project_directory = '/home/giang/Downloads/table-qa-2025/'
+
+        # Load LLM configuration from YAML file
+        llm_config_path = os.path.join(self.project_directory, "llm_config.yaml")
+        if os.path.exists(llm_config_path):
+            with open(llm_config_path, "r") as f:
+                self.llm_config = yaml.load(f, Loader=yaml.FullLoader)
+
+            # Set active provider from config
+            self.active_provider = self.llm_config.get('active_provider', 'azure_openai')
+
+            # Set LLM name based on active provider and model
+            if self.active_provider == 'azure_openai':
+                provider_config = self.llm_config['providers']['azure_openai']
+                # Find active deployment
+                for depl in provider_config['deployments']['regular']:
+                    if depl.get('active', False):
+                        self.LLM = depl['name']
+                        break
+                else:
+                    self.LLM = 'GPT4-O'  # Default fallback
+
+            elif self.active_provider == 'sambanova':
+                provider_config = self.llm_config['providers']['sambanova']
+                self.LLM = provider_config.get('model_type', 'qwen')
+
+            elif self.active_provider == 'deepseek':
+                provider_config = self.llm_config['providers']['deepseek']
+                # Find active model
+                for model in provider_config['models']:
+                    if model.get('active', False):
+                        self.LLM = model['name']
+                        break
+                else:
+                    self.LLM = 'deepseek-chat'  # Default fallback
+        else:
+            # Default values if config file doesn't exist
+            self.LLM = 'GPT4-O'  # the model used for evaluation
+            self.active_provider = 'azure_openai'
+
+        self.test_dataset = 'TabFact'
+        # self.test_dataset = 'WikiTQ'
         
         # self.planning_algorithm = 'static'
         self.planning_algorithm = 'dynamic'
 
-        self.result_file_name = f'{self.LLM}_{self.test_dataset}_results_test_run16.json'  # if you want to do caching in running evaluation
-        
-        self.planning_log_path = f'logs/{self.LLM}_log_TabFact_test59_run'  # Save logs file for each sample to this path for TabFact
-        self.wikitq_planning_log_path = f'logs/{self.LLM}_log_WikiTQ_test16_run' # Save logs file for each sample to this path for WikiTQ
+        # self.result_file_name = f'{self.LLM}_{self.test_dataset}_results_test_run16.json'  # if you want to do caching in running evaluation
+        self.result_file_name = os.path.join(self.project_directory, 'result_files', f'{self.LLM}_results_test_run{self.run_unique_id}.json')  # if you want to do caching in running evaluation
+
+        self.tabfact_planning_log_path = os.path.join(self.project_directory, 'result_files', f'logs/{self.LLM}_log_TabFact_test{self.run_unique_id}_run')  # Save logs file for each sample to this path for TabFact
+        self.wikitq_planning_log_path = os.path.join(self.project_directory, 'result_files', f'logs/{self.LLM}_log_WikiTQ_test{self.run_unique_id}_run') # Save logs file for each sample to this path for WikiTQ
         
         self.using_sql_for_COT = True
         self.NATURAL_LANGUAGE_PLANNING = True  # Planning with natural language
@@ -79,6 +123,29 @@ class Config:
         self.idx_tracking_col = 'xai_tracking_idx'
 
         self.DEBUG = False
+
+
+    # def _generate_run_id(self):
+    #     """Generate an 8-character unique ID with letters and numbers"""
+    #     # Method 1: Using random with letters and digits
+    #     chars = string.ascii_letters + string.digits
+    #     return ''.join(random.choice(chars) for _ in range(8))
+    #
+    #     # Alternative method using UUID (commented out)
+    #     # return uuid.uuid4().hex[:8]
+
+    def _generate_run_id(self):
+        """Generate a unique ID using timestamp and random characters"""
+        # Get current timestamp in milliseconds
+        timestamp = int(time.time() * 1000)
+        # Convert to base 36 (using 0-9, a-z) to get a shorter string
+        timestamp_str = format(timestamp % 1000000, '06d')  # Last 6 digits of timestamp
+
+        # Add 2 random characters for extra uniqueness
+        chars = string.ascii_letters + string.digits
+        random_part = ''.join(random.choice(chars) for _ in range(2))
+
+        return timestamp_str + random_part
 
 # Create a config instance
 config = Config()
@@ -600,9 +667,9 @@ def transform_table_with_sql(intermediate_table, sql, table_name):
 
     ################## PARSE from WHERE
     # TODO: Need to implement checking for HAVING as well
-    print('SQL run:\n', sql)
+    # print('SQL run:\n', sql)
     sql_columns = extract_columns(sql, original_columns)
-    print('SQL cols:\n', sql_columns)
+    # print('SQL cols:\n', sql_columns)
     if '*' in sql_columns:
         sql_columns = column_indices
     ##############################
@@ -839,7 +906,13 @@ def load_dataset_from_pkl(filepath):
 
 def setup_logger(sample_id):
     """Set up the logger for each sample."""
-    log_directory = config.planning_log_path
+    if config.test_dataset == 'TabFact':
+        log_directory = config.tabfact_planning_log_path
+    elif config.test_dataset == 'WikiTQ':
+        log_directory = config.wikitq_planning_log_path
+    else:
+        raise ValueError("Invalid test dataset specified.")
+
     os.makedirs(log_directory, exist_ok=True)  # Ensure the directory exists
     log_filename = os.path.join(log_directory, f"log_{sample_id}.txt")
 
@@ -1185,7 +1258,7 @@ if VIS_STYLE == 4:
             file.write('</body></html>\n')
 
         if VIS_PURPOSE != 'DEBUGGING':
-            json_filename = f'{project_directory}/plan-of-sqls/visualization/Tabular_LLMs_human_study_vis_{VIS_STYLE}_{XAI_METHOD}.json'
+            json_filename = f'{project_directory}/visualization/Tabular_LLMs_human_study_vis_{VIS_STYLE}_{XAI_METHOD}.json'
             entry = {
                 'filename': os.path.basename(filename),
                 'statement': statement,
@@ -1313,7 +1386,7 @@ if VIS_STYLE == 5:
             file.write('</body></html>\n')
 
         if VIS_PURPOSE != 'DEBUGGING':
-            json_filename = f'{project_directory}/plan-of-sqls/visualization/Tabular_LLMs_human_study_vis_{VIS_STYLE}_{XAI_METHOD}.json'
+            json_filename = f'{project_directory}/visualization/Tabular_LLMs_human_study_vis_{VIS_STYLE}_{XAI_METHOD}.json'
             entry = {
                 'filename': os.path.basename(filename),
                 'statement': statement,

@@ -34,21 +34,6 @@ import dotenv
 
 dotenv.load_dotenv()
 
-# # Load the OpenAI API key and Azure endpoint from config
-# with open("llm_config.yaml") as f:
-#     config_yaml = yaml.load(f, Loader=yaml.FullLoader)
-#
-# # Extract configuration variables
-# api_key = config_yaml['api_key']
-# azure_endpoint = config_yaml['azure_endpoint']
-# api_version = config_yaml.get('api_version',)  # Default version if not specified
-#
-# # Set up OpenAI client with Azure settings
-# openai.api_type = "azure"
-# openai.api_key = api_key
-# openai.api_base = azure_endpoint
-# openai.api_version = api_version
-
 # Load the configuration from the YAML file
 with open("llm_config.yaml") as f:
     config_yaml = yaml.load(f, Loader=yaml.FullLoader)
@@ -81,6 +66,7 @@ if 'providers' in config_yaml:
 
         # Use deployment_name in your subsequent code
         print(f"Using Azure OpenAI deployment: {deployment_name}")
+        model_name = deployment_name
 
     elif active_provider == 'deepseek':
         # Handle DeepSeek
@@ -134,7 +120,7 @@ else:
     print(f"Using legacy config with deployment: {deployment_name}")
 ############################################################################################################
 
-targetted_indices = random.sample(range(2024), k=20)
+targetted_indices = random.sample(range(2024), k=2024)
 
 
 print('Samples tested:', targetted_indices)
@@ -142,24 +128,22 @@ print('Samples tested:', targetted_indices)
 def main(
         dataset_path: str = "data/tabfact/test.jsonl",
         raw2clean_path: str = "data/tabfact/raw2clean.jsonl",
-        model: str = LLM,
         result_dir: str = "results/tabfact",
-        first_n: int = 2024,
         use_subset: bool = False,
         subset_indices: list = targetted_indices,
         n_proc: int = 10,
-        chunk_size: int = 10,
+        chunk_size: int = 20,
         load_dataset: bool = False,
 ):
     # Set model name and base URL based on selected model
-    if model.upper() in ['GPT4-O', 'GPT4O']:
-        n_proc, chunk_size, use_subset = 10, 10, True
-        model_name = "gpt-4o"
-    elif model.upper() in ['GPT-4', 'GPT4']:
-        n_proc, chunk_size = 1, 1
-        model_name = "gpt-4-turbo"
-    else:
-        model_name = "gpt-3.5-turbo-0613"
+    # if model.upper() in ['GPT4-O', 'GPT4O']:
+    #     n_proc, chunk_size, use_subset = 10, 10, True
+    #     model_name = "gpt-4o"
+    # elif model.upper() in ['GPT-4', 'GPT4']:
+    #     n_proc, chunk_size = 1, 1
+    #     model_name = "gpt-4-turbo"
+    # else:
+    #     model_name = "gpt-3.5-turbo-0613"
 
     print(subset_indices, model_name)
 

@@ -221,7 +221,7 @@ Previous executed steps:
 The next step is:
             """
 
-        print("Prompt to the model: ", prompt)
+        # print("Prompt to the model: ", prompt)
 
         try:
             response = llm.generate_plus_with_score(
@@ -460,7 +460,7 @@ Previous executed steps:
 The next step is:\n
                 """
 
-        print("prompt to the model: ", prompt)
+        # print("prompt to the model: ", prompt)
 
         try:
             response = llm.generate_plus_with_score(
