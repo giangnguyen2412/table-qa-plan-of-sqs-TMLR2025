@@ -1,4 +1,4 @@
-# Trustworthy Table LLMs with Plan of SQLs
+# Interpretable LLM-based Table Question Answering | [pdf](https://arxiv.org/abs/2412.12386])
 
 
 ## Environment
