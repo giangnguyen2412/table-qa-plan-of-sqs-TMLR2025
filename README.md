@@ -1,7 +1,7 @@
-# Trustworthy Table LLMs with Plan of SQLs
+# Interpretable LLM-based Table Question Answering | [pdf](https://arxiv.org/abs/2412.12386)
 
 
-## Environment
+## Setup Environment
 
 ```shell
 # 1. Create a new conda environment with Python 3.10.13
@@ -21,7 +21,6 @@ az login
 
 # 5. Install any project-specific dependencies
 python install.py
-
 ```
  
 
