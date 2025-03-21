@@ -1,16 +1,25 @@
-import subprocess
+# install.py
 
-def install_packages(file_path):
-    with open(file_path, 'r') as file:
-        packages = file.readlines()
-    
-    for package in packages:
-        package = package.strip()
-        if package:
-            try:
-                subprocess.run(['pip', 'install', package], check=True)
-            except subprocess.CalledProcessError:
-                print(f"Failed to install {package}, skipping...")
+import subprocess
+import os
+
+def run_command(cmd):
+    print(f"Running: {cmd}")
+    subprocess.run(cmd, shell=True, check=True)
+
+def main():
+    print("Installing required Python packages...")
+    run_command("pip install -r requirements.txt")
+
+    print("Checking if Azure CLI is logged in...")
+    result = subprocess.run("az account show", shell=True)
+    if result.returncode != 0:
+        print("You are not logged into Azure CLI. Please run: az login")
+    else:
+        print("Azure CLI is already logged in.")
+
+    # Optional: Download datasets, create folders, etc.
+    # os.makedirs("data", exist_ok=True)
 
 if __name__ == "__main__":
-    install_packages('requirements.txtf')
+    main()
