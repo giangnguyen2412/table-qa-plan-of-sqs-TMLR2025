@@ -1,5 +1,13 @@
 # Interpretable LLM-based Table Question Answering | [pdf](https://arxiv.org/abs/2412.12386)
 
+## Abstract
+
+> Interpretability for Table Question Answering (Table QA) is critical, particularly in high-stakes industries like finance or healthcare.
+Although recent approaches using Large Language Models (LLMs) have significantly improved Table QA performance, their explanations for how the answers are generated are ambiguous.
+To fill this gap, we introduce Plan-of-SQLs (\POS), an interpretable approach to Table QA that answers an input query solely with SQL executions.
+Through qualitative and quantitative evaluations with human and LLM judges, we show that \POS is most preferred among explanation methods, helps human users understand model decision boundaries, and facilitates model success and error identification.
+Furthermore, when evaluated on standard benchmarks (TabFact, WikiTQ, and FetaQA), \POS achieves accuracy that is competitive with or superior to existing methods, while also offering greater efficiency—requiring significantly fewer LLM calls and database queries—and robust performance on large tables.
+Finally, we observe high agreement between LLM judges and human users when making decisions based on the same explanations, suggesting that LLMs could serve as effective proxies for humans in evaluating AI explanations.
 
 ## Setup Environment
 
@@ -22,7 +30,6 @@ az login
 # 5. Install any project-specific dependencies
 python install.py
 ```
- 
 
 ## TabFact
 
@@ -122,7 +129,7 @@ An example entry looks like:
     },
 ```
 
-## Visualizations
+## Visualizing Table QA explanations
 This will visualize explanations and the corresponding `json` file that contains the metadata for the explanations
 
 ```
@@ -130,11 +137,11 @@ cd visualization/script
 sh vis_POS.sh
 ```
 
-## LLM-as-a-Judge for XAI
+## LLM-as-a-Judge for Table QA explanations
 
 **Note**: Make sure you have the Visualizations before going to this evaluation 
 
-Step 1: Extract the similar examples accross XAI methods
+Step 1: Extract the similar examples across XAI methods
 
 ```
 cd xai_study/llm-judge/scripts
@@ -144,16 +151,22 @@ sh prepare_samples.sh
 Experiment 1: Preference - `Which explanation provides a clearer and more accurate reasoning process?`
 
 ```
-sh run_preference_exp.sh
+sh 
 ```
 
-Experiment 2: Decision-making - `Given an explanation, is the prediction correct? Answer with 'Yes' or 'No'`
+Experiment 2: Forward Simulation - `Given an explanation, what is the model prediction?'`
 
 ```
-sh run_desc_making_exp.sh
+sh 
 ```
 
-## Human evaluation for XAI
+Experiment 3: Decision-making - `Given an explanation, is the model prediction correct? Answer with 'Yes' or 'No'`
+
+```
+sh 
+```
+
+## Human evaluation for Table QA explanations
 
 **Note**: To update the interface, please change `visualizations` and the `json` files that contain metadata for explanations accordingly.
 
