@@ -1025,6 +1025,18 @@ def dynamic_chain_exec_with_cache_for_loop(
 
     return result_samples, dynamic_chain_log_list
 
+def bytes_to_serializable(obj):
+    """Convert bytes objects to Base64 encoded strings for JSON serialization."""
+    if isinstance(obj, bytes):
+        return obj.decode('utf-8', errors='replace')  # Try to decode as text
+    elif isinstance(obj, dict):
+        return {k: bytes_to_serializable(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        return [bytes_to_serializable(i) for i in obj]
+    elif isinstance(obj, tuple):
+        return tuple(bytes_to_serializable(i) for i in obj)
+    else:
+        return obj
 
 def save_processed_samples_safe(result_file_path, new_sample_data):
     """Thread-safe function to save processed samples"""
@@ -1040,12 +1052,33 @@ def save_processed_samples_safe(result_file_path, new_sample_data):
         except FileNotFoundError:
             current_data = {}
 
-        # Update with new data
-        current_data.update(new_sample_data)
+        # Update with new data, making sure it's JSON serializable
+        current_data.update(bytes_to_serializable(new_sample_data))
 
         # Write back
         with open(result_file_path, 'w') as f:
             json.dump(current_data, f, indent=4)
+
+# def save_processed_samples_safe(result_file_path, new_sample_data):
+#     """Thread-safe function to save processed samples"""
+#     lock_path = f"{result_file_path}.lock"
+#     with FileLock(lock_path):
+#         # Read current data
+#         try:
+#             with open(result_file_path, 'r') as f:
+#                 try:
+#                     current_data = json.load(f)
+#                 except json.JSONDecodeError:
+#                     current_data = {}
+#         except FileNotFoundError:
+#             current_data = {}
+#
+#         # Update with new data
+#         current_data.update(new_sample_data)
+#
+#         # Write back
+#         with open(result_file_path, 'w') as f:
+#             json.dump(current_data, f, indent=4)
 
 
 def _wikitq_natural_language_chain_exec_with_cache_mp_core(arg):
