@@ -173,84 +173,155 @@ def clean_text(text):
 import random
 import string
 
-def clean_column_names(column_names):
-    """Ensure column names are SQL-friendly by removing or replacing special characters and replacing spaces with underscores."""
-    # Create a dictionary to count occurrences of cleaned column names
-    cleaned_name_counts = {}
+# def clean_column_names(column_names):
+#     """Ensure column names are SQL-friendly by removing or replacing special characters and replacing spaces with underscores."""
+#     # Create a dictionary to count occurrences of cleaned column names
+#     cleaned_name_counts = {}
+#
+#     # Create a list to store the final cleaned column names
+#     cleaned_column_names = []
+#
+#     for column_name in column_names:
+#         orig_col = copy.deepcopy(column_name)
+#
+#         # Generate random name for empty column name
+#         if len(column_name) == 0:
+#             # Generate a random letter from a-z
+#             column_name = random.choice(string.ascii_lowercase)
+#
+#         # Replace periods, parentheses, and other non-alphanumeric characters (except underscores) with underscores
+#         cleaned_name = re.sub(r'[^\w\s]', '_', column_name.replace(' ', '_')).strip('_')
+#
+#         if len(cleaned_name) == 0:
+#             cleaned_name = random.choice(string.ascii_lowercase)
+#
+#         if cleaned_name[0].isdigit():
+#             cleaned_name = 'c_' + cleaned_name
+#
+#         cleaned_name = cleaned_name.lower()
+#
+#         # Check if the cleaned name already exists in the dictionary
+#         if cleaned_name in cleaned_name_counts:
+#             # Increment the count for this cleaned name
+#             cleaned_name_counts[cleaned_name] += 1
+#             # Append the count to the cleaned name to make it unique
+#             unique_cleaned_name = f"{cleaned_name}_{cleaned_name_counts[cleaned_name]}"
+#         else:
+#             # Add the cleaned name to the dictionary with a count of 0
+#             cleaned_name_counts[cleaned_name] = 0
+#             unique_cleaned_name = cleaned_name
+#
+#         # Add the unique cleaned name to the final list
+#         cleaned_column_names.append(unique_cleaned_name)
+#
+#     return cleaned_column_names
 
-    # Create a list to store the final cleaned column names
-    cleaned_column_names = []
+# def clean_column_name(column_name):
+#     """Ensure column names are SQL-friendly by removing or replacing special characters and replacing spaces with underscores."""
+#     # orig_col = copy.deepcopy(column_name)
+#     # Generate random name for empty column name
+#     if len(column_name) == 0:
+#         # Generate a random letter from a-z
+#         column_name = random.choice(string.ascii_lowercase)
+#
+#     # Replace periods, parentheses, and other non-alphanumeric characters (except underscores) with underscores
+#     cleaned_name = re.sub(r'[^\w\s]', '_', column_name.replace(' ', '_'))
+#
+#     if len(cleaned_name) == 0:
+#         return cleaned_name.lower()
+#
+#     if cleaned_name[0].isdigit():
+#         cleaned_name = 'c_' + cleaned_name
+#
+#     # Trim any trailing underscores that might have been added
+#     # cleaned_name = cleaned_name.strip('_')
+#     # Optionally convert to lowercase to avoid case sensitivity issues in SQL
+#     return cleaned_name.lower()
 
-    for column_name in column_names:
-        orig_col = copy.deepcopy(column_name)
+def clean_column_name(column_name, existing_columns=None):
+    """Ensure column names are SQL-friendly and unique by removing special characters and replacing spaces with underscores."""
+    if existing_columns is None:
+        existing_columns = []
 
-        # Generate random name for empty column name
-        if len(column_name) == 0:
-            # Generate a random letter from a-z
-            column_name = random.choice(string.ascii_lowercase)
-
-        # Replace periods, parentheses, and other non-alphanumeric characters (except underscores) with underscores
-        cleaned_name = re.sub(r'[^\w\s]', '_', column_name.replace(' ', '_')).strip('_')
-
-        if len(cleaned_name) == 0:
-            cleaned_name = random.choice(string.ascii_lowercase)
-
-        if cleaned_name[0].isdigit():
-            cleaned_name = 'c_' + cleaned_name
-
-        cleaned_name = cleaned_name.lower()
-
-        # Check if the cleaned name already exists in the dictionary
-        if cleaned_name in cleaned_name_counts:
-            # Increment the count for this cleaned name
-            cleaned_name_counts[cleaned_name] += 1
-            # Append the count to the cleaned name to make it unique
-            unique_cleaned_name = f"{cleaned_name}_{cleaned_name_counts[cleaned_name]}"
-        else:
-            # Add the cleaned name to the dictionary with a count of 0
-            cleaned_name_counts[cleaned_name] = 0
-            unique_cleaned_name = cleaned_name
-
-        # Add the unique cleaned name to the final list
-        cleaned_column_names.append(unique_cleaned_name)
-
-    return cleaned_column_names
-
-def clean_column_name(column_name):
-    """Ensure column names are SQL-friendly by removing or replacing special characters and replacing spaces with underscores."""
-    # orig_col = copy.deepcopy(column_name)
     # Generate random name for empty column name
-    # if len(column_name) == 0:
-    #     # Generate a random letter from a-z
-    #     column_name = random.choice(string.ascii_lowercase)
+    if len(column_name) == 0:
+        column_name = random.choice(string.ascii_lowercase)
 
-    # Replace periods, parentheses, and other non-alphanumeric characters (except underscores) with underscores
+    # Replace special characters with underscores
     cleaned_name = re.sub(r'[^\w\s]', '_', column_name.replace(' ', '_'))
 
     if len(cleaned_name) == 0:
-        return cleaned_name.lower()
+        cleaned_name = random.choice(string.ascii_lowercase)
 
     if cleaned_name[0].isdigit():
         cleaned_name = 'c_' + cleaned_name
 
-    # Trim any trailing underscores that might have been added
-    # cleaned_name = cleaned_name.strip('_')
-    # Optionally convert to lowercase to avoid case sensitivity issues in SQL
-    return cleaned_name.lower()
+    # Convert to lowercase
+    cleaned_name = cleaned_name.lower()
+
+    # Ensure the name is unique
+    original_cleaned = cleaned_name
+    counter = 1
+    while cleaned_name in existing_columns:
+        cleaned_name = f"{original_cleaned}_{counter}"
+        counter += 1
+
+    return cleaned_name
+
+def clean_column_names(column_names):
+    """
+    Clean all column names at once to make them SQL-friendly and ensure uniqueness.
+
+    Args:
+        column_names: A list of original column names
+
+    Returns:
+        A list of cleaned, unique column names
+    """
+    cleaned_names = []
+    name_counts = {}  # To track occurrences of each cleaned name
+
+    for col in column_names:
+        # Initial cleaning
+        if len(col) == 0:
+            cleaned = random.choice(string.ascii_lowercase)
+        else:
+            # Replace special characters and spaces
+            cleaned = re.sub(r'[^\w\s]', '_', col.replace(' ', '_'))
+
+            if len(cleaned) == 0:
+                cleaned = random.choice(string.ascii_lowercase)
+
+            if cleaned[0].isdigit():
+                cleaned = 'c_' + cleaned
+
+            cleaned = cleaned.lower()
+
+        # Handle duplicates
+        if cleaned in name_counts:
+            name_counts[cleaned] += 1
+            cleaned = f"{cleaned}_{name_counts[cleaned]}"
+        else:
+            name_counts[cleaned] = 0
+
+        cleaned_names.append(cleaned)
+
+    return cleaned_names
 
 def clean_table_text(table):
     """Apply text cleaning to each cell in a 2D table array, including column names."""
     cleaned_table = []
     if table:
         # Clean column names on the first row
-        column_names = [clean_column_name(col) for col in table[0]]
-        # column_names = clean_column_names(table[0])
+        # column_names = [clean_column_name(col) for col in table[0]]
+        column_names = clean_column_names(table[0])
         cleaned_table.append(column_names)
         # Clean the rest of the table data
         for row in table[1:]:
             cleaned_row = [clean_text(cell) for cell in row]
             cleaned_table.append(cleaned_row)
     return cleaned_table
+
 
 def preprocess_entry(data_entry):
     """Preprocess the data entry for consistent SQL operations."""

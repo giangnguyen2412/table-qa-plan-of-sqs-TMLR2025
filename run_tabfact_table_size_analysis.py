@@ -147,7 +147,8 @@ def main():
     # Collect all (answer, groundtruth, count) records from each file
     all_records = []
     # for path in sys.argv[1:]:
-    path = '/home/giang/Downloads/table-qa-2025/GPT4-O_TabFact_results_test_run58.json'
+    # path = '/home/giang/Downloads/table-qa-2025/result_files/GPT4-O_TabFact_results_test_run58.json'
+    path = '/home/giang/Downloads/table-qa-2025/result_files/gpt-35-turbo-16k_results_test_run152184Oh.json'
     file_records = parse_json_file(path)
     all_records.extend(file_records)
 

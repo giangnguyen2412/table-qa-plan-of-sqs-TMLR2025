@@ -131,8 +131,8 @@ def main(
         result_dir: str = "results/tabfact",
         use_subset: bool = False,
         subset_indices: list = targetted_indices,
-        n_proc: int = 10,
-        chunk_size: int = 20,
+        n_proc: int = 30,
+        chunk_size: int = 30,
         load_dataset: bool = False,
 ):
     # Set model name and base URL based on selected model

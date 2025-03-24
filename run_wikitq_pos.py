@@ -36,21 +36,6 @@ import dotenv
 
 dotenv.load_dotenv()
 
-# # Load the OpenAI API key and Azure endpoint from config
-# with open("llm_config.yaml") as f:
-#     config_yaml = yaml.load(f, Loader=yaml.FullLoader)
-#
-# # Extract configuration variables
-# api_key = config_yaml['api_key']
-# azure_endpoint = config_yaml['azure_endpoint']
-# api_version = config_yaml.get('api_version',)  # Default version if not specified
-#
-# # Set up OpenAI client with Azure settings
-# openai.api_type = "azure"
-# openai.api_key = api_key
-# openai.api_base = azure_endpoint
-# openai.api_version = api_version
-
 # Load the configuration from the YAML file
 with open("llm_config.yaml") as f:
     config_yaml = yaml.load(f, Loader=yaml.FullLoader)
@@ -83,6 +68,7 @@ if 'providers' in config_yaml:
 
         # Use deployment_name in your subsequent code
         print(f"Using Azure OpenAI deployment: {deployment_name}")
+        model_name = deployment_name
 
     elif active_provider == 'deepseek':
         # Handle DeepSeek
@@ -146,19 +132,12 @@ def main(
         first_n: int = 4344,
         use_subset: bool = False,
         subset_indices: list = targetted_indices,
-        n_proc: int = 10,
-        chunk_size: int = 10,
+        n_proc: int = 20,
+        chunk_size: int = 20,
         load_dataset: bool = False,
 ):
-    # Set model name and base URL based on selected model
-    if model.upper() in ['GPT4-O', 'GPT4O']:
-        n_proc, chunk_size, use_subset = 10, 10, True
-        model_name = "gpt-4o"
-    elif model.upper() in ['GPT-4', 'GPT4']:
-        n_proc, chunk_size = 1, 1
-        model_name = "gpt-4-turbo"
-    else:
-        model_name = "gpt-3.5-turbo-0613"
+
+    print(subset_indices, model_name)
 
     if K_plans > 1:
         n_proc, chunk_size = 3, 3
@@ -180,7 +159,6 @@ def main(
     dataset = dataset_raw[:first_n]
     dataset = [preprocess_entry(entry) for entry in dataset]
     dataset = dataset if not use_subset else [dataset[i] for i in subset_indices]
-
     print(f'Model name: {model_name}')
     print(f'Number of samples being tested: {len(dataset)}')
     print(f'Testing on: {test_dataset}')
@@ -361,3 +339,5 @@ def main(
 
 if __name__ == "__main__":
     fire.Fire(main)
+
+# python run_wikitq_pos.py --use_subset True --load_dataset True

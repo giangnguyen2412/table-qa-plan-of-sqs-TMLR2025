@@ -100,7 +100,7 @@ class Config:
         self.using_sql_for_COT = True
         self.NATURAL_LANGUAGE_PLANNING = True  # Planning with natural language
         
-        self.K_plans = 1  # Numer of attemtps to solve the problem with PoS
+        self.K_plans = 1  # Numer of attempts to solve the problem with PoS
         self.USING_SQL = True
         
         # VIS_STYLE = 4  # Series of highlighted tables
