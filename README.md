@@ -31,10 +31,6 @@ az login
 python install.py
 ```
 
-## Running Interpretable Table QA yourself
-
-[interactive interface](https://huggingface.co/spaces/luulinh90s/Interactive-Tabular-XAI)
-
 ## TabFact
 
 Step 1: Extract data
@@ -164,7 +160,7 @@ Experiment 2: Forward Simulation - `Given an explanation, what is the model pred
 sh 
 ```
 
-Experiment 3: Decision-making - `Given an explanation, is the model prediction correct? Answer with 'Yes' or 'No'`
+Experiment 3: Model Prediction Debugging - `Given an explanation, is the model prediction correct? Answer with 'Yes' or 'No'`
 
 ```
 sh 
@@ -172,11 +168,15 @@ sh
 
 ## Human evaluation for Table QA explanations
 
-**Note**: To update the interface, please change `visualizations` and the `json` files that contain metadata for explanations accordingly.
+We developed three interactive interfaces corresponding to the three XAI tasks explored in our paper:
 
-```
-cd xai_study/flask_experiment
-python app.py
-```
+- **Preference Ranking**: [Tabular-LLM-Study-Preference-Ranking](https://huggingface.co/spaces/luulinh90s/Tabular-LLM-Study-Preference-Ranking)
+- **Forward Simulation**: [Tabular-LLM-Study-Forward-Simulation](https://huggingface.co/spaces/luulinh90s/Tabular-LLM-Study-Forward-Simulation)
+- **Model Prediction Debugging**: [Tabular-LLM-Study-Debugging](https://huggingface.co/spaces/luulinh90s/Tabular-LLM-Study-Debugging)
 
+## An interactive interface for Table QA explanations
+
+We developed an interactive interface to visualize explanations for Table Question Answering (Table QA).
+
+[![Interactive Tabular XAI](https://huggingface.co/spaces/luulinh90s/Interactive-Tabular-XAI)](https://huggingface.co/spaces/luulinh90s/Interactive-Tabular-XAI)
 

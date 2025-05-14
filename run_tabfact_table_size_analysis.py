@@ -4,6 +4,7 @@ import json
 import sys
 import math
 
+
 def flatten_answer(ans):
     """
     Convert 'answer'/'groundtruth' to a simple lowercased string.
@@ -26,6 +27,7 @@ def flatten_answer(ans):
     # fallback
     return str(ans).strip().lower()
 
+
 def compute_table_token_count(table_text):
     """
     If 'table_token_count' is not given (as in WikiTQ),
@@ -46,6 +48,7 @@ def compute_table_token_count(table_text):
             # If row isn't a list, interpret it as a string
             total_chars += len(str(row))
     return total_chars
+
 
 def pearson_correlation(x_list, y_list):
     """
@@ -77,10 +80,11 @@ def pearson_correlation(x_list, y_list):
 
     return num / math.sqrt(den_x * den_y)
 
+
 def parse_json_file(json_path):
     """
     Parse a JSON file (TabFact or WikiTQ style).
-    Return a list of (pred_answer, gt_answer, table_count) for each entry.
+    Return a list of (pred_answer, gt_answer, table_count, fallback_llm) for each entry.
     """
     with open(json_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
@@ -110,6 +114,9 @@ def parse_json_file(json_path):
             raw_answer = content.get("answer", input_data.get("answer", ""))
             raw_groundtruth = content.get("groundtruth", input_data.get("groundtruth", ""))
 
+            # Get fallback_LLM value, default to False if not present
+            fallback_llm = content.get("fallback_LLM", False)
+
             # Flatten them to strings
             norm_answer = flatten_answer(raw_answer)
             norm_groundtruth = flatten_answer(raw_groundtruth)
@@ -122,9 +129,10 @@ def parse_json_file(json_path):
                 table_text = input_data.get("table_text", [])
                 table_count = compute_table_token_count(table_text)
 
-            records.append((norm_answer, norm_groundtruth, table_count))
+            records.append((norm_answer, norm_groundtruth, table_count, fallback_llm))
 
     return records
+
 
 def main():
     """
@@ -135,6 +143,7 @@ def main():
       - Reads one or more JSON files in TabFact / WikiTQ style.
       - Collects (answer, groundtruth, table_token_count).
       - Computes overall accuracy, plus correlation between table length and correctness.
+      - Reports wrong samples with fallback_LLM = True and fallback_LLM = False
       - Partitions the data into 3 bins by sample count (lowest 1/3, middle 1/3, highest 1/3).
         * Each bin has ~ the same number of samples.
       - Reports bin ranges, sample counts, and bin-wise accuracy.
@@ -144,7 +153,7 @@ def main():
     #     print("Usage: python compute_pos_accuracy_samplebins.py file1.json [file2.json ...]")
     #     sys.exit(1)
 
-    # Collect all (answer, groundtruth, count) records from each file
+    # Collect all (answer, groundtruth, count, fallback_llm) records from each file
     all_records = []
     # for path in sys.argv[1:]:
     # path = '/home/giang/Downloads/table-qa-2025/result_files/GPT4-O_TabFact_results_test_run58.json'
@@ -173,21 +182,35 @@ def main():
     total = 0
     correct = 0
 
+    # For the new fallback_LLM stats
+    wrong_with_fallback = 0
+    wrong_without_fallback = 0
+
     # For correlation: x_list = table_length, y_list = 1 if correct else 0
     x_list = []
     y_list = []
 
-    for (norm_answer, norm_gt, count) in sorted_records:
+    for (norm_answer, norm_gt, count, fallback_llm) in sorted_records:
         total += 1
         is_correct = (norm_answer == norm_gt)
         if is_correct:
             correct += 1
+        else:
+            # Track wrong samples based on fallback_LLM value
+            if fallback_llm:
+                wrong_with_fallback += 1
+            else:
+                wrong_without_fallback += 1
 
         x_list.append(count)
         y_list.append(1 if is_correct else 0)
 
     overall_accuracy = correct / total
     print(f"\nOverall Accuracy = {overall_accuracy:.3f} ({correct}/{total})")
+
+    # Display the new fallback_LLM statistics
+    print(f"Number of wrong samples when fallback_LLM = false: {wrong_without_fallback}")
+    print(f"Number of wrong samples when fallback_LLM = true: {wrong_with_fallback}")
 
     # Correlation between table length and correctness
     corr = pearson_correlation(x_list, y_list)
@@ -225,9 +248,10 @@ def main():
         b_min = bin_records[0][2]
         b_max = bin_records[-1][2]
         b_total = len(bin_records)
-        b_correct = sum(1 for (ans, gt, c) in bin_records if ans == gt)
+        b_correct = sum(1 for (ans, gt, c, fallback) in bin_records if ans == gt)
         b_acc = b_correct / b_total
-        print(f"{bin_name}: Range=[{b_min}, {b_max}] | Samples={b_total} | Accuracy={b_acc:.3f} ({b_correct}/{b_total})")
+        print(
+            f"{bin_name}: Range=[{b_min}, {b_max}] | Samples={b_total} | Accuracy={b_acc:.3f} ({b_correct}/{b_total})")
 
     print("\n--- Bin-wise Accuracy by Sample Count ---")
     compute_bin_stats(bin1_records, "Bin1 (lowest 1/3)")
@@ -239,7 +263,9 @@ def main():
     print("   ensuring each bin has ~the same number of samples.")
     print("2) This reveals whether accuracy systematically differs for short vs. long tables.")
     print("3) Check the correlation to see if performance degrades with length (negative r).")
-    print("4) The bin stats show accuracy and sample count in each bin.\n")
+    print("4) The bin stats show accuracy and sample count in each bin.")
+    print("5) We additionally display the count of wrong samples by fallback_LLM status.\n")
+
 
 if __name__ == "__main__":
     main()

@@ -88,8 +88,8 @@ class Config:
         self.test_dataset = 'TabFact'
         # self.test_dataset = 'WikiTQ'
         
-        # self.planning_algorithm = 'static'
-        self.planning_algorithm = 'dynamic'
+        self.planning_algorithm = 'static'
+        # self.planning_algorithm = 'dynamic'
 
         # self.result_file_name = f'{self.LLM}_{self.test_dataset}_results_test_run16.json'  # if you want to do caching in running evaluation
         self.result_file_name = os.path.join(self.project_directory, 'result_files', f'{self.LLM}_results_test_run{self.run_unique_id}.json')  # if you want to do caching in running evaluation

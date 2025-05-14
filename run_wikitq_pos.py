@@ -123,7 +123,7 @@ else:
 ############################################################################################################
 
 # Sample indices for testing
-targetted_indices = random.sample(range(4344), k=4344)
+targetted_indices = random.sample(range(4344), k=10)
 
 # Main function
 def main(

@@ -120,7 +120,7 @@ else:
     print(f"Using legacy config with deployment: {deployment_name}")
 ############################################################################################################
 
-targetted_indices = random.sample(range(2024), k=2024)
+targetted_indices = random.sample(range(2024), k=20)
 
 
 print('Samples tested:', targetted_indices)

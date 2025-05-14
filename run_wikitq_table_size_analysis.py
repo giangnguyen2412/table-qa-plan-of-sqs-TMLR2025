@@ -13,6 +13,7 @@ from utils.chain import *
 from utils.wikitq_eval import *
 import openai
 
+
 ########################################
 # Assumed imports from your codebase:
 # from utils.helper import tsv_unescape_list, to_value_list
@@ -41,6 +42,7 @@ def compute_table_token_count(table_text):
             total_chars += len(str(row))
     return total_chars
 
+
 def pearson_correlation(x_list, y_list):
     """
     Compute a basic Pearson correlation coefficient between x_list and y_list.
@@ -68,6 +70,7 @@ def pearson_correlation(x_list, y_list):
 
     return num / math.sqrt(den_x * den_y)
 
+
 def main():
     """
     Usage:
@@ -91,6 +94,7 @@ def main():
 
     # inference_json_path = sys.argv[1]
     inference_json_path = '/home/giang/Downloads/table-qa-2025/GPT4-O_WikiTQ_results_test_run16.json'
+    inference_json_path = '/home/giang/Downloads/table-qa-2025/result_files/GPT4-O_WikiTQ_results_test_run57.json'
 
     # --------------------------------------------------------------------------
     # 1) Load your 'proc_samples' from the WikiTQ JSON
@@ -150,6 +154,10 @@ def main():
     fb_count = 0
     fall_back_crt = 0
 
+    # For tracking wrong samples based on fallback_LLM status
+    wrong_with_fallback = 0
+    wrong_without_fallback = 0
+
     pos_count = 0
     pos_crt = 0
 
@@ -168,7 +176,7 @@ def main():
             #   "input", "answer", "fallback_LLM", etc.
             res_table = res['input']['table_text']
             res_st = res['input']['statement']
-            res_preds = res['answer']   # list-of-lists typically
+            res_preds = res['answer']  # list-of-lists typically
             fall_back = res.get('fallback_LLM', False)
 
             # fallback vs pos counting
@@ -232,12 +240,17 @@ def main():
             flag = check_denotation(target_values, pred_list)
             if flag:
                 deno_acc += 1
-
-            # If fallback is correct
-            if flag and fall_back:
-                fall_back_crt += 1
-            elif flag and not fall_back:
-                pos_crt += 1
+                # If fallback is correct
+                if fall_back:
+                    fall_back_crt += 1
+                else:
+                    pos_crt += 1
+            else:
+                # Count wrong answers based on fallback_LLM status
+                if fall_back:
+                    wrong_with_fallback += 1
+                else:
+                    wrong_without_fallback += 1
 
             # Compute table length
             table_len = compute_table_token_count(res_table)
@@ -249,24 +262,29 @@ def main():
     print(f"\nTotal samples in JSON: {total_samples}")
     print(f"Executability: {execs}/{total_samples}")
     if total_samples > 0:
-        print("Executability Rate:", f"{100*execs/total_samples:.2f}%")
+        print("Executability Rate:", f"{100 * execs / total_samples:.2f}%")
     print('\n')
 
     if total_samples > 0:
-        print('Fall-back Rate:', f"{100*fb_count/total_samples:.2f}%")
+        print('Fall-back Rate:', f"{100 * fb_count / total_samples:.2f}%")
     if fb_count > 0:
-        print('Fall-back Accuracy:', f"{100*fall_back_crt/fb_count:.2f}%")
+        print('Fall-back Accuracy:', f"{100 * fall_back_crt / fb_count:.2f}%")
+    print('\n')
+
+    # Display the new statistics about wrong samples
+    print(f"Number of wrong samples when fallback_LLM = false: {wrong_without_fallback}")
+    print(f"Number of wrong samples when fallback_LLM = true: {wrong_with_fallback}")
     print('\n')
 
     if total_samples > 0:
-        print('PoS Rate:', f"{100*pos_count/total_samples:.2f}%")
+        print('PoS Rate:', f"{100 * pos_count / total_samples:.2f}%")
     if pos_count > 0:
-        print('PoS Accuracy:', f"{100*pos_crt/pos_count:.2f}%")
+        print('PoS Accuracy:', f"{100 * pos_crt / pos_count:.2f}%")
     print('\n')
 
     print(f'Denotation: {deno_acc}/{total_samples}')
     if total_samples > 0:
-        print('Denotation Accuracy:', f"{100*deno_acc/total_samples:.2f}%")
+        print('Denotation Accuracy:', f"{100 * deno_acc / total_samples:.2f}%")
 
     # --------------------------------------------------------------------------
     # 5) Bin-based analysis + correlation
@@ -337,7 +355,9 @@ def main():
     print("\nAnalysis Summary:")
     print("1) Computed denotation accuracy for WikiTQ (using 'check_denotation' etc.).")
     print("2) Partitioned data into 3 bins by sample count, from smallest to largest table.")
-    print("3) Checked correlation to see if accuracy degrades as table length grows.\n")
+    print("3) Checked correlation to see if accuracy degrades as table length grows.")
+    print("4) Added statistics on wrong answers based on fallback_LLM status.\n")
+
 
 if __name__ == "__main__":
     main()
