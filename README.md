@@ -31,6 +31,10 @@ az login
 python install.py
 ```
 
+## Running Interpretable Table QA yourself
+
+[interactive interface](https://huggingface.co/spaces/luulinh90s/Interactive-Tabular-XAI)
+
 ## TabFact
 
 Step 1: Extract data
