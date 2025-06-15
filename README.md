@@ -1,13 +1,10 @@
 # Interpretable LLM-based Table Question Answering | [pdf](https://arxiv.org/abs/2412.12386)
 
+## Accepted at Transactions on Machine Learning Research 2025; [Review](https://openreview.net/forum?id=2eTsZBoU2W)
+
 ## Abstract
 
-> Interpretability for Table Question Answering (Table QA) is critical, particularly in high-stakes industries like finance or healthcare.
-Although recent approaches using Large Language Models (LLMs) have significantly improved Table QA performance, their explanations for how the answers are generated are ambiguous.
-To fill this gap, we introduce Plan-of-SQLs (\POS), an interpretable approach to Table QA that answers an input query solely with SQL executions.
-Through qualitative and quantitative evaluations with human and LLM judges, we show that \POS is most preferred among explanation methods, helps human users understand model decision boundaries, and facilitates model success and error identification.
-Furthermore, when evaluated on standard benchmarks (TabFact, WikiTQ, and FetaQA), \POS achieves accuracy that is competitive with or superior to existing methods, while also offering greater efficiency—requiring significantly fewer LLM calls and database queries—and robust performance on large tables.
-Finally, we observe high agreement between LLM judges and human users when making decisions based on the same explanations, suggesting that LLMs could serve as effective proxies for humans in evaluating AI explanations.
+> Interpretability in Table Question Answering (Table QA) is critical, especially in high-stakes domains like finance and healthcare. While recent Table QA approaches based on Large Language Models (LLMs) achieve high accuracy, they often produce ambiguous explanations of how answers are derived. We propose Plan-of-SQLs (POS), a new Table QA method that makes the model's decision-making process interpretable. POS decomposes a question into a sequence of atomic steps, each directly translated into an executable SQL command on the table, thereby ensuring that every intermediate result is transparent. Through extensive experiments, we show that: First, POS generates the highest-quality explanations among compared methods, which markedly improves the users' ability to simulate and verify the model’s decisions. Second, when evaluated on standard Table QA benchmarks (TabFact, WikiTQ, and FeTaQA), POS achieves QA accuracy that is competitive to existing methods, while also offering greater efficiency—requiring significantly fewer LLM calls and table database queries (up to 25x fewer)—and more robust performance on large-sized tables. Finally, we observe high agreement (up to 90.59% in forward simulation) between LLMs and human users when making decisions based on the same explanations, suggesting that LLMs could serve as an effective proxy for humans in evaluating Table QA explanations.
 
 ## Setup Environment
 
@@ -178,5 +175,16 @@ We developed three interactive interfaces corresponding to the three XAI tasks e
 
 We developed an interactive interface to visualize explanations for Table Question Answering (Table QA).
 
-[![Interactive Tabular XAI](https://huggingface.co/spaces/luulinh90s/Interactive-Tabular-XAI)](https://huggingface.co/spaces/luulinh90s/Interactive-Tabular-XAI)
+[Interactive Tabular XAI](https://huggingface.co/spaces/luulinh90s/Interactive-Tabular-XAI)
+
+## Consider citing our work
+
+```
+@article{nguyen2024interpretable,
+  title={Interpretable llm-based table question answering},
+  author={Nguyen, Giang and Brugere, Ivan and Sharma, Shubham and Kariyappa, Sanjay and Nguyen, Anh Totti and Lecue, Freddy},
+  journal={arXiv preprint arXiv:2412.12386},
+  year={2024}
+}
+```
 
